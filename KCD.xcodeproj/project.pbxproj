@@ -1,0 +1,480 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F4BDEB47187252F30069D0CE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4BDEB46187252F30069D0CE /* Cocoa.framework */; };
+		F4BDEB51187252F30069D0CE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4BDEB4F187252F30069D0CE /* InfoPlist.strings */; };
+		F4BDEB53187252F30069D0CE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BDEB52187252F30069D0CE /* main.m */; };
+		F4BDEB57187252F30069D0CE /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F4BDEB55187252F30069D0CE /* Credits.rtf */; };
+		F4BDEB5A187252F30069D0CE /* HMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BDEB59187252F30069D0CE /* HMAppDelegate.m */; };
+		F4BDEB5D187252F30069D0CE /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BDEB5B187252F30069D0CE /* MainMenu.xib */; };
+		F4BDEB5F187252F30069D0CE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4BDEB5E187252F30069D0CE /* Images.xcassets */; };
+		F4BDEB66187252F30069D0CE /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4BDEB65187252F30069D0CE /* XCTest.framework */; };
+		F4BDEB67187252F30069D0CE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4BDEB46187252F30069D0CE /* Cocoa.framework */; };
+		F4BDEB6F187252F30069D0CE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4BDEB6D187252F30069D0CE /* InfoPlist.strings */; };
+		F4BDEB71187252F30069D0CE /* KCDTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BDEB70187252F30069D0CE /* KCDTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F4BDEB68187252F30069D0CE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F4BDEB3B187252F30069D0CE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F4BDEB42187252F30069D0CE;
+			remoteInfo = KCD;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F4BDEB43187252F30069D0CE /* KCD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KCD.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4BDEB46187252F30069D0CE /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		F4BDEB49187252F30069D0CE /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		F4BDEB4A187252F30069D0CE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		F4BDEB4B187252F30069D0CE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F4BDEB4E187252F30069D0CE /* KCD-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KCD-Info.plist"; sourceTree = "<group>"; };
+		F4BDEB50187252F30069D0CE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F4BDEB52187252F30069D0CE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F4BDEB54187252F30069D0CE /* KCD-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KCD-Prefix.pch"; sourceTree = "<group>"; };
+		F4BDEB56187252F30069D0CE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		F4BDEB58187252F30069D0CE /* HMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMAppDelegate.h; sourceTree = "<group>"; };
+		F4BDEB59187252F30069D0CE /* HMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMAppDelegate.m; sourceTree = "<group>"; };
+		F4BDEB5C187252F30069D0CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		F4BDEB5E187252F30069D0CE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F4BDEB64187252F30069D0CE /* KCDTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KCDTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4BDEB65187252F30069D0CE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		F4BDEB6C187252F30069D0CE /* KCDTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KCDTests-Info.plist"; sourceTree = "<group>"; };
+		F4BDEB6E187252F30069D0CE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F4BDEB70187252F30069D0CE /* KCDTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KCDTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F4BDEB40187252F30069D0CE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4BDEB47187252F30069D0CE /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4BDEB61187252F30069D0CE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4BDEB67187252F30069D0CE /* Cocoa.framework in Frameworks */,
+				F4BDEB66187252F30069D0CE /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F4BDEB3A187252F30069D0CE = {
+			isa = PBXGroup;
+			children = (
+				F4BDEB4C187252F30069D0CE /* KCD */,
+				F4BDEB6A187252F30069D0CE /* KCDTests */,
+				F4BDEB45187252F30069D0CE /* Frameworks */,
+				F4BDEB44187252F30069D0CE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F4BDEB44187252F30069D0CE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F4BDEB43187252F30069D0CE /* KCD.app */,
+				F4BDEB64187252F30069D0CE /* KCDTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F4BDEB45187252F30069D0CE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F4BDEB46187252F30069D0CE /* Cocoa.framework */,
+				F4BDEB65187252F30069D0CE /* XCTest.framework */,
+				F4BDEB48187252F30069D0CE /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F4BDEB48187252F30069D0CE /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F4BDEB49187252F30069D0CE /* AppKit.framework */,
+				F4BDEB4A187252F30069D0CE /* CoreData.framework */,
+				F4BDEB4B187252F30069D0CE /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		F4BDEB4C187252F30069D0CE /* KCD */ = {
+			isa = PBXGroup;
+			children = (
+				F4BDEB58187252F30069D0CE /* HMAppDelegate.h */,
+				F4BDEB59187252F30069D0CE /* HMAppDelegate.m */,
+				F4BDEB5B187252F30069D0CE /* MainMenu.xib */,
+				F4BDEB5E187252F30069D0CE /* Images.xcassets */,
+				F4BDEB4D187252F30069D0CE /* Supporting Files */,
+			);
+			path = KCD;
+			sourceTree = "<group>";
+		};
+		F4BDEB4D187252F30069D0CE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F4BDEB4E187252F30069D0CE /* KCD-Info.plist */,
+				F4BDEB4F187252F30069D0CE /* InfoPlist.strings */,
+				F4BDEB52187252F30069D0CE /* main.m */,
+				F4BDEB54187252F30069D0CE /* KCD-Prefix.pch */,
+				F4BDEB55187252F30069D0CE /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F4BDEB6A187252F30069D0CE /* KCDTests */ = {
+			isa = PBXGroup;
+			children = (
+				F4BDEB70187252F30069D0CE /* KCDTests.m */,
+				F4BDEB6B187252F30069D0CE /* Supporting Files */,
+			);
+			path = KCDTests;
+			sourceTree = "<group>";
+		};
+		F4BDEB6B187252F30069D0CE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F4BDEB6C187252F30069D0CE /* KCDTests-Info.plist */,
+				F4BDEB6D187252F30069D0CE /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F4BDEB42187252F30069D0CE /* KCD */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4BDEB74187252F30069D0CE /* Build configuration list for PBXNativeTarget "KCD" */;
+			buildPhases = (
+				F4BDEB3F187252F30069D0CE /* Sources */,
+				F4BDEB40187252F30069D0CE /* Frameworks */,
+				F4BDEB41187252F30069D0CE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KCD;
+			productName = KCD;
+			productReference = F4BDEB43187252F30069D0CE /* KCD.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F4BDEB63187252F30069D0CE /* KCDTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4BDEB77187252F30069D0CE /* Build configuration list for PBXNativeTarget "KCDTests" */;
+			buildPhases = (
+				F4BDEB60187252F30069D0CE /* Sources */,
+				F4BDEB61187252F30069D0CE /* Frameworks */,
+				F4BDEB62187252F30069D0CE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F4BDEB69187252F30069D0CE /* PBXTargetDependency */,
+			);
+			name = KCDTests;
+			productName = KCDTests;
+			productReference = F4BDEB64187252F30069D0CE /* KCDTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F4BDEB3B187252F30069D0CE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = HM;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Hori,Masaki";
+				TargetAttributes = {
+					F4BDEB63187252F30069D0CE = {
+						TestTargetID = F4BDEB42187252F30069D0CE;
+					};
+				};
+			};
+			buildConfigurationList = F4BDEB3E187252F30069D0CE /* Build configuration list for PBXProject "KCD" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F4BDEB3A187252F30069D0CE;
+			productRefGroup = F4BDEB44187252F30069D0CE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F4BDEB42187252F30069D0CE /* KCD */,
+				F4BDEB63187252F30069D0CE /* KCDTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F4BDEB41187252F30069D0CE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4BDEB51187252F30069D0CE /* InfoPlist.strings in Resources */,
+				F4BDEB5F187252F30069D0CE /* Images.xcassets in Resources */,
+				F4BDEB57187252F30069D0CE /* Credits.rtf in Resources */,
+				F4BDEB5D187252F30069D0CE /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4BDEB62187252F30069D0CE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4BDEB6F187252F30069D0CE /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F4BDEB3F187252F30069D0CE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4BDEB53187252F30069D0CE /* main.m in Sources */,
+				F4BDEB5A187252F30069D0CE /* HMAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4BDEB60187252F30069D0CE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4BDEB71187252F30069D0CE /* KCDTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F4BDEB69187252F30069D0CE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F4BDEB42187252F30069D0CE /* KCD */;
+			targetProxy = F4BDEB68187252F30069D0CE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F4BDEB4F187252F30069D0CE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4BDEB50187252F30069D0CE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F4BDEB55187252F30069D0CE /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4BDEB56187252F30069D0CE /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		F4BDEB5B187252F30069D0CE /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4BDEB5C187252F30069D0CE /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		F4BDEB6D187252F30069D0CE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4BDEB6E187252F30069D0CE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F4BDEB72187252F30069D0CE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		F4BDEB73187252F30069D0CE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		F4BDEB75187252F30069D0CE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "KCD/KCD-Prefix.pch";
+				INFOPLIST_FILE = "KCD/KCD-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F4BDEB76187252F30069D0CE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "KCD/KCD-Prefix.pch";
+				INFOPLIST_FILE = "KCD/KCD-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		F4BDEB78187252F30069D0CE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/KCD.app/Contents/MacOS/KCD";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "KCD/KCD-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "KCDTests/KCDTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		F4BDEB79187252F30069D0CE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/KCD.app/Contents/MacOS/KCD";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "KCD/KCD-Prefix.pch";
+				INFOPLIST_FILE = "KCDTests/KCDTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F4BDEB3E187252F30069D0CE /* Build configuration list for PBXProject "KCD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4BDEB72187252F30069D0CE /* Debug */,
+				F4BDEB73187252F30069D0CE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F4BDEB74187252F30069D0CE /* Build configuration list for PBXNativeTarget "KCD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4BDEB75187252F30069D0CE /* Debug */,
+				F4BDEB76187252F30069D0CE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F4BDEB77187252F30069D0CE /* Build configuration list for PBXNativeTarget "KCDTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4BDEB78187252F30069D0CE /* Debug */,
+				F4BDEB79187252F30069D0CE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F4BDEB3B187252F30069D0CE /* Project object */;
+}
