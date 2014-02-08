@@ -18,6 +18,12 @@
 		F4BDEB67187252F30069D0CE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4BDEB46187252F30069D0CE /* Cocoa.framework */; };
 		F4BDEB6F187252F30069D0CE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4BDEB6D187252F30069D0CE /* InfoPlist.strings */; };
 		F4BDEB71187252F30069D0CE /* KCDTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BDEB70187252F30069D0CE /* KCDTests.m */; };
+		F4BDEB7B187253130069D0CE /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4BDEB7A187253130069D0CE /* WebKit.framework */; };
+		F4C041BA1875CAF5009273EB /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4C041B91875CAF5009273EB /* JavaScriptCore.framework */; };
+		F4C118F218A521FF005D5B25 /* HMHTTPProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C118F118A521FF005D5B25 /* HMHTTPProtocol.m */; };
+		F4C118FA18A67B1C005D5B25 /* CacheStoragePolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C118F518A67B1C005D5B25 /* CacheStoragePolicy.m */; };
+		F4C118FB18A67B1C005D5B25 /* CanonicalRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C118F718A67B1C005D5B25 /* CanonicalRequest.m */; };
+		F4C118FC18A67B1C005D5B25 /* CustomHTTPProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C118F918A67B1C005D5B25 /* CustomHTTPProtocol.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +56,16 @@
 		F4BDEB6C187252F30069D0CE /* KCDTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KCDTests-Info.plist"; sourceTree = "<group>"; };
 		F4BDEB6E187252F30069D0CE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F4BDEB70187252F30069D0CE /* KCDTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KCDTests.m; sourceTree = "<group>"; };
+		F4BDEB7A187253130069D0CE /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		F4C041B91875CAF5009273EB /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		F4C118F018A521FF005D5B25 /* HMHTTPProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMHTTPProtocol.h; sourceTree = "<group>"; };
+		F4C118F118A521FF005D5B25 /* HMHTTPProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMHTTPProtocol.m; sourceTree = "<group>"; };
+		F4C118F418A67B1C005D5B25 /* CacheStoragePolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheStoragePolicy.h; sourceTree = "<group>"; };
+		F4C118F518A67B1C005D5B25 /* CacheStoragePolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheStoragePolicy.m; sourceTree = "<group>"; };
+		F4C118F618A67B1C005D5B25 /* CanonicalRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanonicalRequest.h; sourceTree = "<group>"; };
+		F4C118F718A67B1C005D5B25 /* CanonicalRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CanonicalRequest.m; sourceTree = "<group>"; };
+		F4C118F818A67B1C005D5B25 /* CustomHTTPProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomHTTPProtocol.h; sourceTree = "<group>"; };
+		F4C118F918A67B1C005D5B25 /* CustomHTTPProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomHTTPProtocol.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +73,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4C041BA1875CAF5009273EB /* JavaScriptCore.framework in Frameworks */,
+				F4BDEB7B187253130069D0CE /* WebKit.framework in Frameworks */,
 				F4BDEB47187252F30069D0CE /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -95,6 +113,8 @@
 		F4BDEB45187252F30069D0CE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F4C041B91875CAF5009273EB /* JavaScriptCore.framework */,
+				F4BDEB7A187253130069D0CE /* WebKit.framework */,
 				F4BDEB46187252F30069D0CE /* Cocoa.framework */,
 				F4BDEB65187252F30069D0CE /* XCTest.framework */,
 				F4BDEB48187252F30069D0CE /* Other Frameworks */,
@@ -115,6 +135,9 @@
 		F4BDEB4C187252F30069D0CE /* KCD */ = {
 			isa = PBXGroup;
 			children = (
+				F4C118F318A67B05005D5B25 /* New Group */,
+				F4C118F018A521FF005D5B25 /* HMHTTPProtocol.h */,
+				F4C118F118A521FF005D5B25 /* HMHTTPProtocol.m */,
 				F4BDEB58187252F30069D0CE /* HMAppDelegate.h */,
 				F4BDEB59187252F30069D0CE /* HMAppDelegate.m */,
 				F4BDEB5B187252F30069D0CE /* MainMenu.xib */,
@@ -152,6 +175,19 @@
 				F4BDEB6D187252F30069D0CE /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F4C118F318A67B05005D5B25 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				F4C118F418A67B1C005D5B25 /* CacheStoragePolicy.h */,
+				F4C118F518A67B1C005D5B25 /* CacheStoragePolicy.m */,
+				F4C118F618A67B1C005D5B25 /* CanonicalRequest.h */,
+				F4C118F718A67B1C005D5B25 /* CanonicalRequest.m */,
+				F4C118F818A67B1C005D5B25 /* CustomHTTPProtocol.h */,
+				F4C118F918A67B1C005D5B25 /* CustomHTTPProtocol.m */,
+			);
+			name = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,7 +289,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4C118FA18A67B1C005D5B25 /* CacheStoragePolicy.m in Sources */,
 				F4BDEB53187252F30069D0CE /* main.m in Sources */,
+				F4C118FC18A67B1C005D5B25 /* CustomHTTPProtocol.m in Sources */,
+				F4C118FB18A67B1C005D5B25 /* CanonicalRequest.m in Sources */,
+				F4C118F218A521FF005D5B25 /* HMHTTPProtocol.m in Sources */,
 				F4BDEB5A187252F30069D0CE /* HMAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -343,9 +383,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.8;
 			};
 			name = Debug;
 		};
@@ -375,8 +415,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				SDKROOT = macosx;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx10.8;
 			};
 			name = Release;
 		};
@@ -465,6 +505,7 @@
 				F4BDEB76187252F30069D0CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F4BDEB77187252F30069D0CE /* Build configuration list for PBXNativeTarget "KCDTests" */ = {
 			isa = XCConfigurationList;
@@ -473,6 +514,7 @@
 				F4BDEB79187252F30069D0CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
