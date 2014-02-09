@@ -20,10 +20,13 @@
 		F4BDEB71187252F30069D0CE /* KCDTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BDEB70187252F30069D0CE /* KCDTests.m */; };
 		F4BDEB7B187253130069D0CE /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4BDEB7A187253130069D0CE /* WebKit.framework */; };
 		F4C041BA1875CAF5009273EB /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4C041B91875CAF5009273EB /* JavaScriptCore.framework */; };
-		F4C118F218A521FF005D5B25 /* HMHTTPProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C118F118A521FF005D5B25 /* HMHTTPProtocol.m */; };
 		F4C118FA18A67B1C005D5B25 /* CacheStoragePolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C118F518A67B1C005D5B25 /* CacheStoragePolicy.m */; };
 		F4C118FB18A67B1C005D5B25 /* CanonicalRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C118F718A67B1C005D5B25 /* CanonicalRequest.m */; };
 		F4C118FC18A67B1C005D5B25 /* CustomHTTPProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C118F918A67B1C005D5B25 /* CustomHTTPProtocol.m */; };
+		F4C1190218A6FFC2005D5B25 /* HMQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C1190118A6FFC2005D5B25 /* HMQueue.m */; };
+		F4C1190518A71AEA005D5B25 /* HMJSONReciever.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C1190418A71AEA005D5B25 /* HMJSONReciever.m */; };
+		F4C1190818A746EB005D5B25 /* HMJSONTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C1190718A746EB005D5B25 /* HMJSONTracker.m */; };
+		F4C1190B18A74DF0005D5B25 /* HMJSONCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C1190A18A74DF0005D5B25 /* HMJSONCommand.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,14 +61,20 @@
 		F4BDEB70187252F30069D0CE /* KCDTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KCDTests.m; sourceTree = "<group>"; };
 		F4BDEB7A187253130069D0CE /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		F4C041B91875CAF5009273EB /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		F4C118F018A521FF005D5B25 /* HMHTTPProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMHTTPProtocol.h; sourceTree = "<group>"; };
-		F4C118F118A521FF005D5B25 /* HMHTTPProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMHTTPProtocol.m; sourceTree = "<group>"; };
 		F4C118F418A67B1C005D5B25 /* CacheStoragePolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheStoragePolicy.h; sourceTree = "<group>"; };
 		F4C118F518A67B1C005D5B25 /* CacheStoragePolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheStoragePolicy.m; sourceTree = "<group>"; };
 		F4C118F618A67B1C005D5B25 /* CanonicalRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanonicalRequest.h; sourceTree = "<group>"; };
 		F4C118F718A67B1C005D5B25 /* CanonicalRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CanonicalRequest.m; sourceTree = "<group>"; };
 		F4C118F818A67B1C005D5B25 /* CustomHTTPProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomHTTPProtocol.h; sourceTree = "<group>"; };
 		F4C118F918A67B1C005D5B25 /* CustomHTTPProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomHTTPProtocol.m; sourceTree = "<group>"; };
+		F4C1190018A6FFC2005D5B25 /* HMQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMQueue.h; sourceTree = "<group>"; };
+		F4C1190118A6FFC2005D5B25 /* HMQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMQueue.m; sourceTree = "<group>"; };
+		F4C1190318A71AEA005D5B25 /* HMJSONReciever.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMJSONReciever.h; sourceTree = "<group>"; };
+		F4C1190418A71AEA005D5B25 /* HMJSONReciever.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMJSONReciever.m; sourceTree = "<group>"; };
+		F4C1190618A746EB005D5B25 /* HMJSONTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMJSONTracker.h; sourceTree = "<group>"; };
+		F4C1190718A746EB005D5B25 /* HMJSONTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMJSONTracker.m; sourceTree = "<group>"; };
+		F4C1190918A74DF0005D5B25 /* HMJSONCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMJSONCommand.h; sourceTree = "<group>"; };
+		F4C1190A18A74DF0005D5B25 /* HMJSONCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMJSONCommand.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,10 +145,16 @@
 			isa = PBXGroup;
 			children = (
 				F4C118F318A67B05005D5B25 /* New Group */,
-				F4C118F018A521FF005D5B25 /* HMHTTPProtocol.h */,
-				F4C118F118A521FF005D5B25 /* HMHTTPProtocol.m */,
 				F4BDEB58187252F30069D0CE /* HMAppDelegate.h */,
 				F4BDEB59187252F30069D0CE /* HMAppDelegate.m */,
+				F4C1190318A71AEA005D5B25 /* HMJSONReciever.h */,
+				F4C1190418A71AEA005D5B25 /* HMJSONReciever.m */,
+				F4C1190618A746EB005D5B25 /* HMJSONTracker.h */,
+				F4C1190718A746EB005D5B25 /* HMJSONTracker.m */,
+				F4C1190918A74DF0005D5B25 /* HMJSONCommand.h */,
+				F4C1190A18A74DF0005D5B25 /* HMJSONCommand.m */,
+				F4C1190018A6FFC2005D5B25 /* HMQueue.h */,
+				F4C1190118A6FFC2005D5B25 /* HMQueue.m */,
 				F4BDEB5B187252F30069D0CE /* MainMenu.xib */,
 				F4BDEB5E187252F30069D0CE /* Images.xcassets */,
 				F4BDEB4D187252F30069D0CE /* Supporting Files */,
@@ -289,11 +304,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4C1190218A6FFC2005D5B25 /* HMQueue.m in Sources */,
 				F4C118FA18A67B1C005D5B25 /* CacheStoragePolicy.m in Sources */,
+				F4C1190518A71AEA005D5B25 /* HMJSONReciever.m in Sources */,
+				F4C1190B18A74DF0005D5B25 /* HMJSONCommand.m in Sources */,
 				F4BDEB53187252F30069D0CE /* main.m in Sources */,
 				F4C118FC18A67B1C005D5B25 /* CustomHTTPProtocol.m in Sources */,
+				F4C1190818A746EB005D5B25 /* HMJSONTracker.m in Sources */,
 				F4C118FB18A67B1C005D5B25 /* CanonicalRequest.m in Sources */,
-				F4C118F218A521FF005D5B25 /* HMHTTPProtocol.m in Sources */,
 				F4BDEB5A187252F30069D0CE /* HMAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

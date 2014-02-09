@@ -119,6 +119,12 @@
     // protocol will not be nil
     // challenge will not be nil
 
+- (void)customHTTPProtocol:(CustomHTTPProtocol *)protocol didRecieveResponse:(NSURLResponse *)response;
+- (void)customHTTPProtocol:(CustomHTTPProtocol *)protocol didRecieveData:(NSData *)data;
+- (void)customHTTPProtocolDidFinishLoading:(CustomHTTPProtocol *)protocol;
+- (void)customHTTPProtocol:(CustomHTTPProtocol *)protocol didFailWithError:(NSError *)error;
+
+
 - (void)customHTTPProtocol:(CustomHTTPProtocol *)protocol logWithFormat:(NSString *)format arguments:(va_list)argList;
     // called on an arbitrary thread
     // protocol may be nil, implying a log message from the class itself

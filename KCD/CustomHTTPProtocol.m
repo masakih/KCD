@@ -608,6 +608,11 @@ static NSString * kOurRequestProperty = @"com.apple.dts.CustomHTTPProtocol";
             cacheStoragePolicy = NSURLCacheStorageAllowedInMemoryOnly;
         }
     }
+	
+	id<CustomHTTPProtocolDelegate> delegate = [[self class] delegate];
+	if([delegate respondsToSelector:@selector(customHTTPProtocol:didRecieveResponse:)]) {
+		[delegate customHTTPProtocol:self didRecieveResponse:response];
+	}
 
     [[self class] customHTTPProtocol:self logWithFormat:@"received response %@ with cache storage policy %zu", response, (size_t) cacheStoragePolicy];
     
@@ -645,6 +650,13 @@ static NSString * kOurRequestProperty = @"com.apple.dts.CustomHTTPProtocol";
     if (NO) {
         [[self class] customHTTPProtocol:self logWithFormat:@"received %zu bytes of data", (size_t) [data length]];
     }
+	
+	id<CustomHTTPProtocolDelegate> delegate = [[self class] delegate];
+	if([delegate respondsToSelector:@selector(customHTTPProtocol:didRecieveData:)]) {
+		[delegate customHTTPProtocol:self didRecieveData:data];
+	}
+	
+	
     [[self client] URLProtocol:self didLoadData:data];
 }
 
@@ -659,6 +671,11 @@ static NSString * kOurRequestProperty = @"com.apple.dts.CustomHTTPProtocol";
     assert([NSThread currentThread] == self.clientThread);
 
     [[self class] customHTTPProtocol:self logWithFormat:@"success"];
+	
+	id<CustomHTTPProtocolDelegate> delegate = [[self class] delegate];
+	if([delegate respondsToSelector:@selector(customHTTPProtocolDidFinishLoading:)]) {
+		[delegate customHTTPProtocolDidFinishLoading:self];
+	}
 
     // Just pass the call on to our client.
 
@@ -680,6 +697,11 @@ static NSString * kOurRequestProperty = @"com.apple.dts.CustomHTTPProtocol";
     assert([NSThread currentThread] == self.clientThread);
 
     [[self class] customHTTPProtocol:self logWithFormat:@"error %@ / %d", [error domain], (int) [error code]];
+	
+	id<CustomHTTPProtocolDelegate> delegate = [[self class] delegate];
+	if([delegate respondsToSelector:@selector(customHTTPProtocol:didFailWithError:)]) {
+		[delegate customHTTPProtocol:self didFailWithError:error];
+	}
 
     // Just pass the call on to our client.
 
