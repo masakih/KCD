@@ -36,8 +36,6 @@ static NSMutableArray *registerdCommands = nil;
 
 + (HMJSONCommand *)commandForAPI:(NSString *)api
 {
-	[[NSApp delegate] logLineReturn:@"%@", api];
-	
 	for(Class commandClass in registerdCommands) {
 		if([commandClass canExcuteAPI:api]) {
 			HMJSONCommand *command =  [commandClass new];
