@@ -11,7 +11,7 @@
 #import "HMQueue.h"
 #import "HMJSONCommand.h"
 
-
+static HMJSONTracker *sTracker = nil;
 
 @interface HMJSONTracker ()
 @property (retain) HMQueue *queue;
@@ -21,7 +21,13 @@
 @end
 
 @implementation HMJSONTracker
-
++ (void)load
+{
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		sTracker = [HMJSONTracker new];
+	});
+}
 - (id)init
 {
 	self = [super init];

@@ -13,10 +13,8 @@
 
 
 @interface HMAppDelegate ()
-@property (retain) HMJSONTracker *tracker;
 
 @property (retain) HMBroserWindowController *browserWindowController;
-
 @property (retain) HMJSONViewWindowController *logedJSONViewWindowController;
 @end
 
@@ -54,10 +52,10 @@ static FILE* logFileP = NULL;
 }
 
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
-	self.tracker = [HMJSONTracker new];
-}
+//- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+//{
+//
+//}
 
 - (void)awakeFromNib
 {
