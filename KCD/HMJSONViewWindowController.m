@@ -52,7 +52,7 @@
 		[self didChangeValueForKey:@"json"];
 		
 //		[self.argumentsView reloadData];
-		[self.jsonView reloadData];
+//		[self.jsonView reloadData];
 		
 		return;
 	}

@@ -10,6 +10,8 @@
 
 #import "HMQueue.h"
 #import "HMJSONCommand.h"
+#import "HMJSONNode.h"
+
 
 
 @interface HMJSONTracker ()
@@ -44,7 +46,7 @@
 					//
 					HMJSONCommand *command = [HMJSONCommand commandForAPI:[item objectForKey:@"api"]];
 					command.argumentsString = [item objectForKey:@"argument"];
-					[command doCommand:[item objectForKey:@"json"]];
+					[command doCommand:@[[HMJSONNode nodeWithJSON:[item objectForKey:@"json"]]]];
 				});
 			}
 			@catch (id e) {

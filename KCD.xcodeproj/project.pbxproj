@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F46F103618A7CE310063E503 /* HMJSONViewCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F46F103518A7CE310063E503 /* HMJSONViewCommand.m */; };
+		F46F104118A9B85E0063E503 /* HMJSONNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F46F104018A9B85E0063E503 /* HMJSONNode.m */; };
 		F47B78B218A7B42B0011386E /* HMJSONViewWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F47B78B018A7B42B0011386E /* HMJSONViewWindowController.m */; };
 		F47B78B318A7B42B0011386E /* HMJSONViewWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F47B78B118A7B42B0011386E /* HMJSONViewWindowController.xib */; };
 		F4BDEB47187252F30069D0CE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4BDEB46187252F30069D0CE /* Cocoa.framework */; };
@@ -45,6 +46,8 @@
 /* Begin PBXFileReference section */
 		F46F103418A7CE310063E503 /* HMJSONViewCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMJSONViewCommand.h; sourceTree = "<group>"; };
 		F46F103518A7CE310063E503 /* HMJSONViewCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMJSONViewCommand.m; sourceTree = "<group>"; };
+		F46F103F18A9B85E0063E503 /* HMJSONNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMJSONNode.h; sourceTree = "<group>"; };
+		F46F104018A9B85E0063E503 /* HMJSONNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMJSONNode.m; sourceTree = "<group>"; };
 		F47B78AF18A7B42B0011386E /* HMJSONViewWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMJSONViewWindowController.h; sourceTree = "<group>"; };
 		F47B78B018A7B42B0011386E /* HMJSONViewWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMJSONViewWindowController.m; sourceTree = "<group>"; };
 		F47B78B118A7B42B0011386E /* HMJSONViewWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMJSONViewWindowController.xib; sourceTree = "<group>"; };
@@ -163,6 +166,8 @@
 				F4C1190A18A74DF0005D5B25 /* HMJSONCommand.m */,
 				F46F103418A7CE310063E503 /* HMJSONViewCommand.h */,
 				F46F103518A7CE310063E503 /* HMJSONViewCommand.m */,
+				F46F103F18A9B85E0063E503 /* HMJSONNode.h */,
+				F46F104018A9B85E0063E503 /* HMJSONNode.m */,
 				F4C1190018A6FFC2005D5B25 /* HMQueue.h */,
 				F4C1190118A6FFC2005D5B25 /* HMQueue.m */,
 				F4BDEB5B187252F30069D0CE /* MainMenu.xib */,
@@ -326,6 +331,7 @@
 				F4BDEB53187252F30069D0CE /* main.m in Sources */,
 				F47B78B218A7B42B0011386E /* HMJSONViewWindowController.m in Sources */,
 				F4C118FC18A67B1C005D5B25 /* CustomHTTPProtocol.m in Sources */,
+				F46F104118A9B85E0063E503 /* HMJSONNode.m in Sources */,
 				F4C1190818A746EB005D5B25 /* HMJSONTracker.m in Sources */,
 				F4C118FB18A67B1C005D5B25 /* CanonicalRequest.m in Sources */,
 				F4BDEB5A187252F30069D0CE /* HMAppDelegate.m in Sources */,
