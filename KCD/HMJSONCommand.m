@@ -9,17 +9,22 @@
 #import "HMJSONCommand.h"
 
 #import "HMAppDelegate.h"
-
+#import "HMJSONNode.h"
 
 static NSMutableArray *registerdCommands = nil;
 
 
 @interface HMJSONCommand ()
+@property (retain, readwrite) NSArray *arguments;
 @property (copy, readwrite) NSString *api;
+@property (retain, readwrite) id json;
+@property (retain, readwrite) NSArray *jsonTree;
+
 @end
 
 @implementation HMJSONCommand
 @synthesize argumentsString = _argumentsString;
+@synthesize jsonData = _jsonData;
 
 + (void)load
 {
@@ -75,8 +80,26 @@ static NSMutableArray *registerdCommands = nil;
 	return [_argumentsString copy];
 }
 
+- (void)setJsonData:(NSData *)jsonData
+{
+	NSError *error = nil;
+	id json = [NSJSONSerialization JSONObjectWithData:jsonData
+											  options:NSJSONReadingAllowFragments
+												error:&error];
+	if(error) {
+		[[NSApp delegate] logLineReturn:@"\e[1m\e[31mFail decode JSON data\e[39m\e[22m %@", error];
+	} else {
+		self.json = json;
+		self.jsonTree = @[[HMJSONNode nodeWithJSON:json]];
+	}
+}
+- (NSData *)jsonData
+{
+	return _jsonData;
+}
+
 // abstruct
-- (void)doCommand:(id)json
+- (void)execute
 {
 	NSLog(@"Enter %s", __PRETTY_FUNCTION__);
 	assert(NO);

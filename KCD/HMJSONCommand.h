@@ -12,17 +12,20 @@
 
 + (HMJSONCommand *)commandForAPI:(NSString *)api;
 
-- (void)doCommand:(id)json;
-
 @property (copy) NSString *argumentsString;
-@property (retain) NSArray *arguments;
-@property (copy, readonly) NSString *api;
-@property (retain) id json;
+@property (retain) NSData *jsonData;
+
+- (void)execute;
 
 
 // for subclass
-+ (BOOL)canExcuteAPI:(NSString *)api;
+@property (copy, readonly) NSString *api;
+@property (retain, readonly) NSArray *arguments;
+@property (retain, readonly) id json;		// NSArray or NSDictionary
+@property (retain, readonly) NSArray *jsonTree;	// for NSTreeController
 
+
++ (BOOL)canExcuteAPI:(NSString *)api;
 + (void)registerClass:(Class)commandClass;
 
 @end

@@ -38,13 +38,10 @@
 	return self;
 }
 
-- (void)doCommand:(id)json
+- (void)execute
 {
-	self.json = json;
-	
 	HMAppDelegate *appDelegate = [NSApp delegate];
-	[appDelegate.jsonViewWindowController setCommand:@{@"api":self.api, @"argument":self.arguments, @"json":self.json, @"date": [NSDate date]}];
+	[appDelegate.jsonViewWindowController setCommand:@{@"api":self.api, @"argument":self.arguments, @"json":self.jsonTree, @"date": [NSDate date]}];
 }
-
 
 @end

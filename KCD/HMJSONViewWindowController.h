@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface HMJSONViewWindowController : NSWindowController <NSTableViewDataSource, NSOutlineViewDataSource>
+@interface HMJSONViewWindowController : NSWindowController
 @property (nonatomic, assign) IBOutlet NSTableView *argumentsView;
 @property (nonatomic, assign) IBOutlet NSOutlineView *jsonView;
 

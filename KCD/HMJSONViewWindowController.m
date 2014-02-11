@@ -50,32 +50,12 @@
 		[self willChangeValueForKey:@"json"];
 		self.json = [self.apis valueForKeyPath:@"selection.json"];
 		[self didChangeValueForKey:@"json"];
-		
-//		[self.argumentsView reloadData];
-//		[self.jsonView reloadData];
-		
+				
 		return;
 	}
 	
 	[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }
 
-
-- (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item
-{
-	return 0;
-}
-- (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item
-{
-	return nil;
-}
-- (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item
-{
-	return NO;
-}
-- (id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
-{
-	return nil;
-}
 
 @end

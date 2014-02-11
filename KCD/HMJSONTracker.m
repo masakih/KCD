@@ -10,7 +10,6 @@
 
 #import "HMQueue.h"
 #import "HMJSONCommand.h"
-#import "HMJSONNode.h"
 
 
 
@@ -46,11 +45,12 @@
 					//
 					HMJSONCommand *command = [HMJSONCommand commandForAPI:[item objectForKey:@"api"]];
 					command.argumentsString = [item objectForKey:@"argument"];
-					[command doCommand:@[[HMJSONNode nodeWithJSON:[item objectForKey:@"json"]]]];
+					command.jsonData = [item objectForKey:@"json"];
+					[command execute];
 				});
 			}
 			@catch (id e) {
-				NSLog(@"Cought Exception -> %@", e);
+				NSLog(@"HMJSONTracker Cought Exception -> %@", e);
 			}
 		}
 	});
