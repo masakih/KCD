@@ -64,6 +64,9 @@ static FILE* logFileP = NULL;
 	
 	
 	self.tracker = [HMJSONTracker new];
+	
+	self.jsonViewWindowController = [HMJSONViewWindowController new];
+	[self.jsonViewWindowController showWindow:nil];
 }
 
 @end

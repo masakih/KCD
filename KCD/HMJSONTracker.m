@@ -38,11 +38,18 @@
 	dispatch_queue_t queue = dispatch_queue_create("HMJSONTracker", 0);
 	dispatch_async(queue, ^{
 		while(YES) {
-			NSDictionary *item = [self.queue dequeue];
-			HMJSONCommand *command = [HMJSONCommand commandForAPI:[item objectForKey:@"api"]];
-			command.argumentsString = [item objectForKey:@"arg"];
-			[command doCommand:[item objectForKey:@"json"]];
-			
+			@try {
+				NSDictionary *item = [self.queue dequeue];
+				dispatch_sync(dispatch_get_main_queue(), ^{
+					//
+					HMJSONCommand *command = [HMJSONCommand commandForAPI:[item objectForKey:@"api"]];
+					command.argumentsString = [item objectForKey:@"argument"];
+					[command doCommand:[item objectForKey:@"json"]];
+				});
+			}
+			@catch (id e) {
+				NSLog(@"Cought Exception -> %@", e);
+			}
 		}
 	});
 }

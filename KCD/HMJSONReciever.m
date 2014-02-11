@@ -87,14 +87,14 @@
 	NSData *JSONData = [elements[1] dataUsingEncoding:NSUTF8StringEncoding];
 	NSError *error = nil;
 	id json = [NSJSONSerialization JSONObjectWithData:JSONData
-														 options:NSJSONReadingAllowFragments
-														   error:&error];
+											  options:NSJSONReadingAllowFragments
+												error:&error];
 	if(error) {
 		[[NSApp delegate] logLineReturn:@"\e[1m\e[31mFail decode JSON data\e[39m\e[22m %@", error];
 	} else {
 		NSData *requestBodyData = [protocol.request HTTPBody];
 		NSString *requestBodyString = [[NSString alloc] initWithData:requestBodyData encoding:NSUTF8StringEncoding];
-		[self.queueu enqueue:@{@"api" : protocol.request.URL.path, @"arg": requestBodyString, @"json" : json}];
+		[self.queueu enqueue:@{@"api" : protocol.request.URL.path, @"argument": requestBodyString, @"json" : json}];
 	}
 #endif
 	

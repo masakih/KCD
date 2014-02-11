@@ -10,6 +10,9 @@
 
 #import <WebKit/WebKit.h>
 
+#import "HMJSONViewWindowController.h"
+
+
 @interface HMAppDelegate : NSObject <NSApplicationDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
@@ -18,6 +21,9 @@
 
 - (void)logLineReturn:(NSString *)format, ... NS_FORMAT_FUNCTION(1,2);
 - (void)log:(NSString *)format, ... NS_FORMAT_FUNCTION(1,2);
+
+
+@property (retain) HMJSONViewWindowController *jsonViewWindowController;
 
 
 @end
