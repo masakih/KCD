@@ -28,16 +28,6 @@
 	return YES;// [api isEqualToString:@"/kcsapi/api_req_member/get_incentive"];
 }
 
-- (id)init
-{
-	self = [super init];
-	if(self) {
-		
-	}
-	
-	return self;
-}
-
 - (void)execute
 {
 	HMAppDelegate *appDelegate = [NSApp delegate];
