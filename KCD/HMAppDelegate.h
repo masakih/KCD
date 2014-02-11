@@ -8,22 +8,15 @@
 
 #import <Cocoa/Cocoa.h>
 
-#import <WebKit/WebKit.h>
-
 #import "HMJSONViewWindowController.h"
 
 
 @interface HMAppDelegate : NSObject <NSApplicationDelegate>
-
-@property (assign) IBOutlet NSWindow *window;
-@property (assign) IBOutlet WebView *webView;
-
 
 - (void)logLineReturn:(NSString *)format, ... NS_FORMAT_FUNCTION(1,2);
 - (void)log:(NSString *)format, ... NS_FORMAT_FUNCTION(1,2);
 
 
 @property (retain) HMJSONViewWindowController *jsonViewWindowController;
-
 
 @end

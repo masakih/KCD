@@ -3,7 +3,6 @@
     <dependencies>
         <deployment defaultVersion="1080" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4514"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="3338"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -648,42 +647,7 @@
                 </menuItem>
             </items>
         </menu>
-        <window title="KCD" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" frameAutosaveName="BrowserWindow" animationBehavior="default" id="371">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="480" height="360"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
-            <view key="contentView" id="372">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
-                <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <webView translatesAutoresizingMaskIntoConstraints="NO" id="S7p-Uo-mVE">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12">
-                            <nil key="identifier"/>
-                        </webPreferences>
-                        <connections>
-                            <outlet property="downloadDelegate" destination="494" id="V9a-Lh-AgB"/>
-                            <outlet property="frameLoadDelegate" destination="494" id="n1G-iN-rjW"/>
-                            <outlet property="resourceLoadDelegate" destination="494" id="g2w-k9-Zww"/>
-                        </connections>
-                    </webView>
-                </subviews>
-                <constraints>
-                    <constraint firstItem="S7p-Uo-mVE" firstAttribute="leading" secondItem="372" secondAttribute="leading" id="0Nf-9W-mtw"/>
-                    <constraint firstItem="S7p-Uo-mVE" firstAttribute="top" secondItem="372" secondAttribute="top" id="FS5-Z0-p95"/>
-                    <constraint firstAttribute="trailing" secondItem="S7p-Uo-mVE" secondAttribute="trailing" id="hlh-wH-UNo"/>
-                    <constraint firstAttribute="bottom" secondItem="S7p-Uo-mVE" secondAttribute="bottom" id="m5s-XK-dOr"/>
-                </constraints>
-            </view>
-        </window>
-        <customObject id="494" customClass="HMAppDelegate">
-            <connections>
-                <outlet property="webView" destination="S7p-Uo-mVE" id="iYe-gR-VWS"/>
-                <outlet property="window" destination="371" id="532"/>
-            </connections>
-        </customObject>
+        <customObject id="494" customClass="HMAppDelegate"/>
         <customObject id="420" customClass="NSFontManager"/>
     </objects>
 </document>

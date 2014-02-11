@@ -7,14 +7,15 @@
 //
 
 #import "HMAppDelegate.h"
-#import "CustomHTTPProtocol.h"
 
 #import "HMJSONTracker.h"
+#import "HMBroserWindowController.h"
 
-#import <JavaScriptCore/JavaScriptCore.h>
 
 @interface HMAppDelegate ()
 @property (retain) HMJSONTracker *tracker;
+
+@property (retain) HMBroserWindowController *browserWindowController;
 
 @property (retain) HMJSONViewWindowController *logedJSONViewWindowController;
 @end
@@ -55,17 +56,13 @@ static FILE* logFileP = NULL;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-	// Insert code here to initialize your application
+	self.tracker = [HMJSONTracker new];
 }
 
 - (void)awakeFromNib
 {
-	[self.webView setApplicationNameForUserAgent:@"Version/6.0 Safari/536.25"];
-	[self.webView setMainFrameURL:@"http://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/"];
-//	[self.webView setMainFrameURL:@"http://www.google.com/"];
-	
-	
-	self.tracker = [HMJSONTracker new];
+	self.browserWindowController = [HMBroserWindowController new];
+	[self.browserWindowController showWindow:nil];
 	
 	self.jsonViewWindowController = [HMJSONViewWindowController new];
 	[self.jsonViewWindowController showWindow:nil];
@@ -116,7 +113,7 @@ static FILE* logFileP = NULL;
 			[self.logedJSONViewWindowController setCommandArray:array];
 			[[self.logedJSONViewWindowController window] setTitle:@"SAVED LOG FILE VIEWER"];
 			
-			[self.logedJSONViewWindowController showWindow:self];
+			[self.logedJSONViewWindowController showWindow:nil];
 		}
 	}];
 }
