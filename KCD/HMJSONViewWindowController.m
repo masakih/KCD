@@ -39,6 +39,12 @@
 	[self.commands addObject:command];
 	[self didChangeValueForKey:@"commands"];
 }
+- (void)setCommandArray:(NSArray *)commands
+{
+	[self willChangeValueForKey:@"commands"];
+	[self.commands addObjectsFromArray:commands];
+	[self didChangeValueForKey:@"commands"];
+}
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {

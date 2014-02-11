@@ -15,6 +15,8 @@
 
 @interface HMAppDelegate ()
 @property (retain) HMJSONTracker *tracker;
+
+@property (retain) HMJSONViewWindowController *logedJSONViewWindowController;
 @end
 
 @implementation HMAppDelegate
@@ -67,6 +69,56 @@ static FILE* logFileP = NULL;
 	
 	self.jsonViewWindowController = [HMJSONViewWindowController new];
 	[self.jsonViewWindowController showWindow:nil];
+}
+
+- (IBAction)saveDocument:(id)sender
+{
+	NSSavePanel *panel = [NSSavePanel savePanel];
+	[panel setAllowedFileTypes:@[@"plist"]];
+	[panel setPrompt:@"Save log"];
+	[panel setTitle:@"Sace log"];
+	[panel beginWithCompletionHandler:^(NSInteger result) {
+		if(result == NSOKButton) {
+			NSArray *array = [self.jsonViewWindowController.commands copy];
+			NSData *data = [NSKeyedArchiver archivedDataWithRootObject:array];
+			if(!data) {
+				NSLog(@"can not convert log.");
+				return;
+			}
+			NSError *error = nil;
+			[data writeToURL:panel.URL
+					 options:NSDataWritingAtomic
+					   error:&error];
+			if(error) {
+				NSLog(@"can not save property list.: %@", error);
+			}
+		}
+	}];
+}
+
+- (IBAction)openDoument:(id)sender
+{
+	NSOpenPanel *panel = [NSOpenPanel openPanel];
+	[panel setAllowedFileTypes:@[@"plist"]];
+	[panel setAllowsMultipleSelection:NO];
+	[panel setPrompt:@"Open log"];
+	[panel setTitle:@"Open log"];
+	[panel beginWithCompletionHandler:^(NSInteger result) {
+		if(result == NSOKButton) {
+			NSData *data = [NSData dataWithContentsOfURL:panel.URL];
+			id array = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+			if(!array || ![array isKindOfClass:[NSArray class]]) {
+				NSLog(@"Can not convert data to log.");
+				return;
+			}
+			
+			self.logedJSONViewWindowController = [HMJSONViewWindowController new];
+			[self.logedJSONViewWindowController setCommandArray:array];
+			[[self.logedJSONViewWindowController window] setTitle:@"SAVED LOG FILE VIEWER"];
+			
+			[self.logedJSONViewWindowController showWindow:self];
+		}
+	}];
 }
 
 @end

@@ -21,5 +21,7 @@
 
 - (void)setCommand:(NSDictionary *)command;
 
+- (void)setCommandArray:(NSArray *)commands;
+
 
 @end

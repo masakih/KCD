@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface HMJSONNode : NSObject
+@interface HMJSONNode : NSObject <NSCoding, NSCopying>
 
 @property (copy, readonly) NSString *key;
 @property (copy, readonly) NSString *value;

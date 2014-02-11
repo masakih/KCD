@@ -67,6 +67,27 @@
 	return json;
 }
 
+- (id)copyWithZone:(NSZone *)zone
+{
+	@throw [NSException exceptionWithName:@"Subclass MUST implement method."
+								   reason:@"Subclass MUST implement method."
+								 userInfo:nil];
+	return nil;
+}
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+	@throw [NSException exceptionWithName:@"Subclass MUST implement method."
+								   reason:@"Subclass MUST implement method."
+								 userInfo:nil];
+	return nil;
+}
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+	@throw [NSException exceptionWithName:@"Subclass MUST implement method."
+								   reason:@"Subclass MUST implement method."
+								 userInfo:nil];
+}
+
 @end
 
 
@@ -79,6 +100,20 @@
 	res.childrenArray = self.childrenArray;
 	
 	return res;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+	HMJSONContainerNode *node = [HMJSONContainerNode new];
+	node.childrenArray = [aDecoder decodeObjectForKey:@"children"];
+	node.key = [aDecoder decodeObjectForKey:@"key"];
+	
+	return node;
+}
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+	[aCoder encodeObject:self.children forKey:@"children"];
+	[aCoder encodeObject:self.key forKey:@"key"];
 }
 
 
@@ -109,6 +144,19 @@
 	res.value = self.value;
 	
 	return res;
+}
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+	HMJSONLeafNode *node = [HMJSONLeafNode new];
+	node.value = [aDecoder decodeObjectForKey:@"value"];
+	node.key = [aDecoder decodeObjectForKey:@"key"];
+	
+	return node;
+}
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+	[aCoder encodeObject:self.value forKey:@"value"];
+	[aCoder encodeObject:self.key forKey:@"key"];
 }
 
 - (NSArray *)children
