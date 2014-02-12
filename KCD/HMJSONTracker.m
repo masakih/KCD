@@ -47,11 +47,13 @@ static HMJSONTracker *sTracker = nil;
 		while(YES) {
 			@try {
 				NSDictionary *item = [self.queue dequeue];
+				HMJSONCommand *command = [HMJSONCommand commandForAPI:[item objectForKey:@"api"]];
+				command.argumentsString = [item objectForKey:@"argument"];
+				command.jsonData = [item objectForKey:@"json"];
+				
 				dispatch_sync(dispatch_get_main_queue(), ^{
 					//
-					HMJSONCommand *command = [HMJSONCommand commandForAPI:[item objectForKey:@"api"]];
-					command.argumentsString = [item objectForKey:@"argument"];
-					command.jsonData = [item objectForKey:@"json"];
+					[command prepaierOnMainThread];
 					[command execute];
 				});
 			}

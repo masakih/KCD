@@ -28,4 +28,7 @@
 + (BOOL)canExcuteAPI:(NSString *)api;
 + (void)registerClass:(Class)commandClass;
 
+// メインスレッド上での準備が必要な場合は実装する
+- (void)prepaierOnMainThread;
+
 @end

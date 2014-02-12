@@ -107,5 +107,6 @@ static NSMutableArray *registerdCommands = nil;
 {
 	return NO;
 }
+- (void)prepaierOnMainThread {}
 
 @end
