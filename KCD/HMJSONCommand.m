@@ -11,7 +11,12 @@
 #import "HMAppDelegate.h"
 #import "HMJSONNode.h"
 
-static NSMutableArray *registerdCommands = nil;
+#ifdef DEBUG
+#import "HMCompositCommand.h"
+#import "HMJSONViewCommand.h"
+#endif
+
+static NSMutableArray *registeredCommands = nil;
 
 
 @interface HMJSONCommand ()
@@ -19,6 +24,8 @@ static NSMutableArray *registerdCommands = nil;
 @property (copy, readwrite) NSString *api;
 @property (retain, readwrite) id json;
 @property (retain, readwrite) NSArray *jsonTree;
+
+
 
 @end
 
@@ -30,20 +37,29 @@ static NSMutableArray *registerdCommands = nil;
 {
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
-		registerdCommands = [NSMutableArray new];
+		registeredCommands = [NSMutableArray new];
 	});
 }
 
 + (HMJSONCommand *)commandForAPI:(NSString *)api
 {
-	for(Class commandClass in registerdCommands) {
+	for(Class commandClass in registeredCommands) {
 		if([commandClass canExcuteAPI:api]) {
 			HMJSONCommand *command =  [commandClass new];
 			command.api = api;
-			
+#ifdef DEBUG
+			HMJSONViewCommand *viewCommand = [HMJSONViewCommand new];
+			viewCommand.api = api;
+			command = [HMCompositCommand compositCommandWithCommands:viewCommand, command, nil];
+#endif
 			return command;
 		}
 	}
+#ifdef DEBUG
+	HMJSONViewCommand *viewCommand = [HMJSONViewCommand new];
+	viewCommand.api = api;
+	return viewCommand;
+#endif
 	
 	return nil;
 }
@@ -51,8 +67,8 @@ static NSMutableArray *registerdCommands = nil;
 + (void)registerClass:(Class)commandClass
 {
 	if(!commandClass) return;
-	if([registerdCommands containsObject:commandClass]) return;
-	[registerdCommands addObject:commandClass];
+	if([registeredCommands containsObject:commandClass]) return;
+	[registeredCommands addObject:commandClass];
 }
 
 
@@ -86,15 +102,46 @@ static NSMutableArray *registerdCommands = nil;
 												error:&error];
 	if(error) {
 		[[NSApp delegate] logLineReturn:@"\e[1m\e[31mFail decode JSON data\e[39m\e[22m %@", error];
-	} else {
-		self.json = json;
-		self.jsonTree = @[[HMJSONNode nodeWithJSON:json]];
+		return;
 	}
+	if(![json isKindOfClass:[NSDictionary class]]) {
+		[self log:@"JSON is NOR NSDictionary."];
+		return;
+	}
+	if(![[json objectForKey:@"api_result"] isEqual:@1]) {
+		[self log:@"API result is fail."];
+		return;
+	}
+	self.json = json;
+	self.jsonTree = @[[HMJSONNode nodeWithJSON:json]];
 }
 - (NSData *)jsonData
 {
 	return _jsonData;
 }
+
+NSString *mainAPI(NSString *api)
+{
+	NSString *path = [api stringByDeletingLastPathComponent];
+	return [path lastPathComponent];
+}
+NSString *subAPI(NSString *api)
+{
+	return [api lastPathComponent];
+}
+NSString *keyByDeletingPrefix(NSString *key)
+{
+	return [key substringFromIndex:4];
+}
+- (void)log:(NSString *)format, ...
+{
+	va_list ap;
+	va_start(ap, format);
+	NSString *str = [[NSString alloc] initWithFormat:format arguments:ap];
+	NSLog(@"API: %@, Arguments: %@.\nA%@", self.api, self.arguments, str);
+	va_end(ap);
+}
+
 
 // abstruct
 - (void)execute
@@ -108,5 +155,7 @@ static NSMutableArray *registerdCommands = nil;
 	return NO;
 }
 - (void)prepaierOnMainThread {}
+
+
 
 @end

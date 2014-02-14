@@ -19,16 +19,23 @@
 
 
 // for subclass
-@property (copy, readonly) NSString *api;
++ (void)registerClass:(Class)commandClass;
+
+@property (copy, readonly) NSString *api;	// api is /kcsapi/mainAPI/subAPI
+NSString *mainAPI(NSString *api);
+NSString *subAPI(NSString *api);
 @property (retain, readonly) NSArray *arguments;
 @property (retain, readonly) id json;		// NSArray or NSDictionary
 @property (retain, readonly) NSArray *jsonTree;	// for NSTreeController
 
-
 + (BOOL)canExcuteAPI:(NSString *)api;
-+ (void)registerClass:(Class)commandClass;
 
 // メインスレッド上での準備が必要な場合は実装する
 - (void)prepaierOnMainThread;
+
+
+NSString *keyByDeletingPrefix(NSString *key);
+
+- (void)log:(NSString *)format, ... NS_FORMAT_FUNCTION(1,2);
 
 @end

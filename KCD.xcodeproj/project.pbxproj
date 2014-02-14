@@ -11,6 +11,7 @@
 		F46F104118A9B85E0063E503 /* HMJSONNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F46F104018A9B85E0063E503 /* HMJSONNode.m */; };
 		F46F104518AA50730063E503 /* HMBroserWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F46F104318AA50730063E503 /* HMBroserWindowController.m */; };
 		F46F104618AA50730063E503 /* HMBroserWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F46F104418AA50730063E503 /* HMBroserWindowController.xib */; };
+		F46F104918ABAC910063E503 /* KCD.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F46F104718ABAC910063E503 /* KCD.xcdatamodeld */; };
 		F47B78B218A7B42B0011386E /* HMJSONViewWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F47B78B018A7B42B0011386E /* HMJSONViewWindowController.m */; };
 		F47B78B318A7B42B0011386E /* HMJSONViewWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F47B78B118A7B42B0011386E /* HMJSONViewWindowController.xib */; };
 		F4BDEB47187252F30069D0CE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4BDEB46187252F30069D0CE /* Cocoa.framework */; };
@@ -33,6 +34,8 @@
 		F4C1190518A71AEA005D5B25 /* HMJSONReciever.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C1190418A71AEA005D5B25 /* HMJSONReciever.m */; };
 		F4C1190818A746EB005D5B25 /* HMJSONTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C1190718A746EB005D5B25 /* HMJSONTracker.m */; };
 		F4C1190B18A74DF0005D5B25 /* HMJSONCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C1190A18A74DF0005D5B25 /* HMJSONCommand.m */; };
+		F4D2CBC218AD0E1A000EBC59 /* HMMasterSTypeCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D2CBC118AD0E1A000EBC59 /* HMMasterSTypeCommand.m */; };
+		F4D2CBC518AE2AE2000EBC59 /* HMCompositCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D2CBC418AE2AE2000EBC59 /* HMCompositCommand.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,7 @@
 		F46F104218AA50730063E503 /* HMBroserWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMBroserWindowController.h; sourceTree = "<group>"; };
 		F46F104318AA50730063E503 /* HMBroserWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMBroserWindowController.m; sourceTree = "<group>"; };
 		F46F104418AA50730063E503 /* HMBroserWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMBroserWindowController.xib; sourceTree = "<group>"; };
+		F46F104818ABAC910063E503 /* KCD.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KCD.xcdatamodel; sourceTree = "<group>"; };
 		F47B78AF18A7B42B0011386E /* HMJSONViewWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMJSONViewWindowController.h; sourceTree = "<group>"; };
 		F47B78B018A7B42B0011386E /* HMJSONViewWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMJSONViewWindowController.m; sourceTree = "<group>"; };
 		F47B78B118A7B42B0011386E /* HMJSONViewWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMJSONViewWindowController.xib; sourceTree = "<group>"; };
@@ -91,6 +95,10 @@
 		F4C1190718A746EB005D5B25 /* HMJSONTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMJSONTracker.m; sourceTree = "<group>"; };
 		F4C1190918A74DF0005D5B25 /* HMJSONCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMJSONCommand.h; sourceTree = "<group>"; };
 		F4C1190A18A74DF0005D5B25 /* HMJSONCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMJSONCommand.m; sourceTree = "<group>"; };
+		F4D2CBC018AD0E1A000EBC59 /* HMMasterSTypeCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMasterSTypeCommand.h; sourceTree = "<group>"; };
+		F4D2CBC118AD0E1A000EBC59 /* HMMasterSTypeCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMasterSTypeCommand.m; sourceTree = "<group>"; };
+		F4D2CBC318AE2AE2000EBC59 /* HMCompositCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMCompositCommand.h; sourceTree = "<group>"; };
+		F4D2CBC418AE2AE2000EBC59 /* HMCompositCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMCompositCommand.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,17 +168,14 @@
 		F4BDEB4C187252F30069D0CE /* KCD */ = {
 			isa = PBXGroup;
 			children = (
-				F4C118F318A67B05005D5B25 /* New Group */,
+				F4C118F318A67B05005D5B25 /* CustomHTTPProtocol */,
 				F4BDEB58187252F30069D0CE /* HMAppDelegate.h */,
 				F4BDEB59187252F30069D0CE /* HMAppDelegate.m */,
 				F4C1190318A71AEA005D5B25 /* HMJSONReciever.h */,
 				F4C1190418A71AEA005D5B25 /* HMJSONReciever.m */,
 				F4C1190618A746EB005D5B25 /* HMJSONTracker.h */,
 				F4C1190718A746EB005D5B25 /* HMJSONTracker.m */,
-				F4C1190918A74DF0005D5B25 /* HMJSONCommand.h */,
-				F4C1190A18A74DF0005D5B25 /* HMJSONCommand.m */,
-				F46F103418A7CE310063E503 /* HMJSONViewCommand.h */,
-				F46F103518A7CE310063E503 /* HMJSONViewCommand.m */,
+				F4D2CBBF18ACE7D7000EBC59 /* Command */,
 				F46F103F18A9B85E0063E503 /* HMJSONNode.h */,
 				F46F104018A9B85E0063E503 /* HMJSONNode.m */,
 				F4C1190018A6FFC2005D5B25 /* HMQueue.h */,
@@ -184,6 +189,7 @@
 				F47B78AF18A7B42B0011386E /* HMJSONViewWindowController.h */,
 				F47B78B018A7B42B0011386E /* HMJSONViewWindowController.m */,
 				F47B78B118A7B42B0011386E /* HMJSONViewWindowController.xib */,
+				F46F104718ABAC910063E503 /* KCD.xcdatamodeld */,
 			);
 			path = KCD;
 			sourceTree = "<group>";
@@ -218,7 +224,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		F4C118F318A67B05005D5B25 /* New Group */ = {
+		F4C118F318A67B05005D5B25 /* CustomHTTPProtocol */ = {
 			isa = PBXGroup;
 			children = (
 				F4C118F418A67B1C005D5B25 /* CacheStoragePolicy.h */,
@@ -228,7 +234,22 @@
 				F4C118F818A67B1C005D5B25 /* CustomHTTPProtocol.h */,
 				F4C118F918A67B1C005D5B25 /* CustomHTTPProtocol.m */,
 			);
-			name = "New Group";
+			name = CustomHTTPProtocol;
+			sourceTree = "<group>";
+		};
+		F4D2CBBF18ACE7D7000EBC59 /* Command */ = {
+			isa = PBXGroup;
+			children = (
+				F4C1190918A74DF0005D5B25 /* HMJSONCommand.h */,
+				F4C1190A18A74DF0005D5B25 /* HMJSONCommand.m */,
+				F4D2CBC318AE2AE2000EBC59 /* HMCompositCommand.h */,
+				F4D2CBC418AE2AE2000EBC59 /* HMCompositCommand.m */,
+				F46F103418A7CE310063E503 /* HMJSONViewCommand.h */,
+				F46F103518A7CE310063E503 /* HMJSONViewCommand.m */,
+				F4D2CBC018AD0E1A000EBC59 /* HMMasterSTypeCommand.h */,
+				F4D2CBC118AD0E1A000EBC59 /* HMMasterSTypeCommand.m */,
+			);
+			name = Command;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -332,6 +353,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4D2CBC518AE2AE2000EBC59 /* HMCompositCommand.m in Sources */,
 				F4C1190218A6FFC2005D5B25 /* HMQueue.m in Sources */,
 				F46F103618A7CE310063E503 /* HMJSONViewCommand.m in Sources */,
 				F4C118FA18A67B1C005D5B25 /* CacheStoragePolicy.m in Sources */,
@@ -344,6 +366,8 @@
 				F4C1190818A746EB005D5B25 /* HMJSONTracker.m in Sources */,
 				F4C118FB18A67B1C005D5B25 /* CanonicalRequest.m in Sources */,
 				F4BDEB5A187252F30069D0CE /* HMAppDelegate.m in Sources */,
+				F46F104918ABAC910063E503 /* KCD.xcdatamodeld in Sources */,
+				F4D2CBC218AD0E1A000EBC59 /* HMMasterSTypeCommand.m in Sources */,
 				F46F104518AA50730063E503 /* HMBroserWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -567,6 +591,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F46F104718ABAC910063E503 /* KCD.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F46F104818ABAC910063E503 /* KCD.xcdatamodel */,
+			);
+			currentVersion = F46F104818ABAC910063E503 /* KCD.xcdatamodel */;
+			path = KCD.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F4BDEB3B187252F30069D0CE /* Project object */;
 }
