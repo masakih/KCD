@@ -66,9 +66,19 @@
         <attribute name="sortno" attributeType="Integer 32" indexed="YES" syncable="YES"/>
         <relationship name="ships" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MasterShip" inverseName="stype" inverseEntity="MasterShip" syncable="YES"/>
     </entity>
+    <entity name="MasterUseItem" representedClassName="HMKCManagedObject" syncable="YES">
+        <attribute name="category" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="description0" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="description1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="usetype" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+    </entity>
     <elements>
         <element name="MasterShip" positionX="0" positionY="0" width="0" height="0"/>
         <element name="MasterSType" positionX="0" positionY="0" width="0" height="0"/>
         <element name="MasterMapArea" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="MasterUseItem" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>
