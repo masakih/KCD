@@ -10,6 +10,13 @@
         <attribute name="afterfuel" attributeType="Integer 32" syncable="YES"/>
         <attribute name="afterlv" attributeType="Integer 32" syncable="YES"/>
         <attribute name="aftershipid" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="atap0" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="atap1" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="backs" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="bakk0" optional="YES" transient="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="bakk1" optional="YES" transient="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="baku0" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="baku1" optional="YES" attributeType="Integer 32" syncable="YES"/>
         <attribute name="broken0" attributeType="Integer 32" syncable="YES"/>
         <attribute name="broken1" attributeType="Integer 32" syncable="YES"/>
         <attribute name="broken2" attributeType="Integer 32" syncable="YES"/>
@@ -18,9 +25,34 @@
         <attribute name="bull_max" attributeType="Integer 32" syncable="YES"/>
         <attribute name="cnum" attributeType="Integer 32" syncable="YES"/>
         <attribute name="ctype" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="defeq0" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="defeq1" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="defeq2" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="defeq3" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="enqflg" optional="YES" attributeType="Integer 32" syncable="YES"/>
         <attribute name="fuel_max" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="getmes" attributeType="String" syncable="YES"/>
+        <attribute name="gomes" optional="YES" transient="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="gomes2" optional="YES" transient="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="grow0" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="grow1" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="grow2" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="grow3" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="grow4" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="grow5" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="grow6" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="grow7" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="gumax0" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="gumax1" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="gumax2" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="gumax3" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="homemes" optional="YES" transient="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="houg0" attributeType="Integer 32" syncable="YES"/>
         <attribute name="houg1" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="houk0" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="houk1" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="houm0" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="houm1" optional="YES" attributeType="Integer 32" syncable="YES"/>
         <attribute name="id" attributeType="Integer 32" indexed="YES" syncable="YES"/>
         <attribute name="kaih0" attributeType="Integer 32" syncable="YES"/>
         <attribute name="kaih1" attributeType="Integer 32" syncable="YES"/>
@@ -32,6 +64,7 @@
         <attribute name="maxeq2" attributeType="Integer 32" syncable="YES"/>
         <attribute name="maxeq3" attributeType="Integer 32" syncable="YES"/>
         <attribute name="maxeq4" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="missions" optional="YES" transient="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="name" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="powup0" attributeType="Integer 32" syncable="YES"/>
         <attribute name="powup1" attributeType="Integer 32" syncable="YES"/>
@@ -39,22 +72,35 @@
         <attribute name="powup3" attributeType="Integer 32" syncable="YES"/>
         <attribute name="raig0" attributeType="Integer 32" syncable="YES"/>
         <attribute name="raig1" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="raik0" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="raik1" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="raim0" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="raim1" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="sakb0" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="sakb1" optional="YES" attributeType="Integer 32" syncable="YES"/>
         <attribute name="saku0" attributeType="Integer 32" syncable="YES"/>
         <attribute name="saku1" attributeType="Integer 32" syncable="YES"/>
         <attribute name="shokh" attributeType="Integer 32" syncable="YES"/>
         <attribute name="sinfo" attributeType="String" syncable="YES"/>
         <attribute name="slot_num" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="soku" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="sokuh" optional="YES" attributeType="Integer 32" syncable="YES"/>
         <attribute name="sortno" attributeType="Integer 32" indexed="YES" syncable="YES"/>
         <attribute name="souk0" attributeType="Integer 32" syncable="YES"/>
         <attribute name="souk1" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="systems" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="taik0" attributeType="Integer 32" syncable="YES"/>
         <attribute name="taik1" attributeType="Integer 32" syncable="YES"/>
         <attribute name="tais0" attributeType="Integer 32" syncable="YES"/>
         <attribute name="tais1" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="touchs0" optional="YES" transient="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="touchs1" optional="YES" transient="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="touchs2" optional="YES" transient="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="tous0" attributeType="Integer 32" syncable="YES"/>
         <attribute name="tous1" attributeType="Integer 32" syncable="YES"/>
         <attribute name="tyku0" attributeType="Integer 32" syncable="YES"/>
         <attribute name="tyku1" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="voicef" optional="YES" transient="YES" attributeType="Integer 32" syncable="YES"/>
         <attribute name="yomi" attributeType="String" indexed="YES" syncable="YES"/>
         <relationship name="stype" maxCount="1" deletionRule="Nullify" destinationEntity="MasterSType" inverseName="ships" inverseEntity="MasterSType" syncable="YES"/>
     </entity>

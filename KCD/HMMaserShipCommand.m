@@ -101,10 +101,12 @@ static NSCondition *sCondition = nil;
 				continue;
 			}
 			if([value isKindOfClass:[NSArray class]]) {
-				//
 				NSUInteger i = 0;
 				for(id element in value) {
-					[object setValue:value[i] forKey:[NSString stringWithFormat:@"%@%ld", key, i]];
+					id hoge =element;
+					if([object validateValue:&hoge forKey:key error:NULL]) {
+						[object setValue:hoge forKey:[NSString stringWithFormat:@"%@%ld", key, i]];
+					}
 					i++;
 				}
 			} else {

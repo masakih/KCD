@@ -16,7 +16,8 @@
 
 - (BOOL)validateValue:(inout id *)ioValue forKey:(NSString *)inKey error:(out NSError **)outError
 {
-	if([inKey isEqualToString:@"api_aftershipid"]) {
+	NSArray *t = @[@"api_enqflg", @"api_aftershipid"];
+	if([t containsObject:inKey]) {
 		if(![*ioValue isKindOfClass:[NSNumber class]]) {
 			id newValue = @([*ioValue integerValue]);
 			if(newValue) {
@@ -25,6 +26,10 @@
 			}
 			return NO;
 		}
+	}
+	if([*ioValue isKindOfClass:[NSNull class]]) {
+		*ioValue = nil;
+		return YES;
 	}
 	
 	return YES;
