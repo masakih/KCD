@@ -61,7 +61,7 @@
         <attribute name="yomi" attributeType="String" indexed="YES" syncable="YES"/>
         <relationship name="ship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MasterShip" inverseName="spec" inverseEntity="MasterShip" syncable="YES"/>
     </entity>
-    <entity name="MasterSType" syncable="YES">
+    <entity name="MasterSType" representedClassName="HMKCManagedObject" syncable="YES">
         <attribute name="id" attributeType="Integer 32" indexed="YES" syncable="YES"/>
         <attribute name="kcnt" optional="YES" attributeType="Integer 32" syncable="YES"/>
         <attribute name="name" attributeType="String" indexed="YES" syncable="YES"/>

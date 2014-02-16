@@ -36,6 +36,7 @@
 		F4C1190B18A74DF0005D5B25 /* HMJSONCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C1190A18A74DF0005D5B25 /* HMJSONCommand.m */; };
 		F4D2CBC218AD0E1A000EBC59 /* HMMasterSTypeCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D2CBC118AD0E1A000EBC59 /* HMMasterSTypeCommand.m */; };
 		F4D2CBC518AE2AE2000EBC59 /* HMCompositCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D2CBC418AE2AE2000EBC59 /* HMCompositCommand.m */; };
+		F4D2CBC818B0555A000EBC59 /* HMKCManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D2CBC718B0555A000EBC59 /* HMKCManagedObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,8 @@
 		F4D2CBC118AD0E1A000EBC59 /* HMMasterSTypeCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMasterSTypeCommand.m; sourceTree = "<group>"; };
 		F4D2CBC318AE2AE2000EBC59 /* HMCompositCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMCompositCommand.h; sourceTree = "<group>"; };
 		F4D2CBC418AE2AE2000EBC59 /* HMCompositCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMCompositCommand.m; sourceTree = "<group>"; };
+		F4D2CBC618B0555A000EBC59 /* HMKCManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMKCManagedObject.h; sourceTree = "<group>"; };
+		F4D2CBC718B0555A000EBC59 /* HMKCManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKCManagedObject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +178,8 @@
 				F4C1190418A71AEA005D5B25 /* HMJSONReciever.m */,
 				F4C1190618A746EB005D5B25 /* HMJSONTracker.h */,
 				F4C1190718A746EB005D5B25 /* HMJSONTracker.m */,
+				F4D2CBC618B0555A000EBC59 /* HMKCManagedObject.h */,
+				F4D2CBC718B0555A000EBC59 /* HMKCManagedObject.m */,
 				F4D2CBBF18ACE7D7000EBC59 /* Command */,
 				F46F103F18A9B85E0063E503 /* HMJSONNode.h */,
 				F46F104018A9B85E0063E503 /* HMJSONNode.m */,
@@ -367,6 +372,7 @@
 				F4C118FB18A67B1C005D5B25 /* CanonicalRequest.m in Sources */,
 				F4BDEB5A187252F30069D0CE /* HMAppDelegate.m in Sources */,
 				F46F104918ABAC910063E503 /* KCD.xcdatamodeld in Sources */,
+				F4D2CBC818B0555A000EBC59 /* HMKCManagedObject.m in Sources */,
 				F4D2CBC218AD0E1A000EBC59 /* HMMasterSTypeCommand.m in Sources */,
 				F46F104518AA50730063E503 /* HMBroserWindowController.m in Sources */,
 			);

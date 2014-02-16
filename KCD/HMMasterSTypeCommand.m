@@ -55,9 +55,8 @@
 			object = result[0];
 		}
 		
-		for(NSString *originalKey in type) {
-			NSString *key = keyByDeletingPrefix(originalKey);
-			[object setValue:type[originalKey] forKey:key];
+		for(NSString *key in type) {
+			[object setValue:type[key] forKey:key];
 		}
 	}
 }
