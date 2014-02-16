@@ -16,7 +16,7 @@
 
 - (BOOL)validateValue:(inout id *)ioValue forKey:(NSString *)inKey error:(out NSError **)outError
 {
-	NSArray *t = @[@"api_enqflg", @"api_aftershipid"];
+	NSArray *t = @[@"api_enqflg", @"api_aftershipid", @"api_progress"];
 	if([t containsObject:inKey]) {
 		if(![*ioValue isKindOfClass:[NSNumber class]]) {
 			id newValue = @([*ioValue integerValue]);
@@ -51,7 +51,7 @@
 		return;
 	}
 #ifdef DEBUG
-	NSLog(@"self dose not have key %@", key);
+	NSLog(@"self dose not have key %@, value class is %@", key, NSStringFromClass([value class]));
 	return;
 #endif
 	[super setValue:value forUndefinedKey:key];

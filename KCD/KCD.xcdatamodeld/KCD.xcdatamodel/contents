@@ -5,6 +5,26 @@
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="Integer 32" syncable="YES"/>
     </entity>
+    <entity name="MasterMapInfo" representedClassName="HMKCManagedObject" syncable="YES">
+        <attribute name="active" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="cleared" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="exboss_D_defeat_count" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="exboss_D_required_defeat_count" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="exboss_flag" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="id" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="infotext" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="item0" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="item1" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="item2" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="item3" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="level" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="maparea_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="maxcell" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="no" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="opetext" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="progress" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+    </entity>
     <entity name="MasterShip" representedClassName="HMKCManagedObject" syncable="YES">
         <attribute name="afterbull" attributeType="Integer 32" syncable="YES"/>
         <attribute name="afterfuel" attributeType="Integer 32" syncable="YES"/>
@@ -126,5 +146,6 @@
         <element name="MasterSType" positionX="0" positionY="0" width="0" height="0"/>
         <element name="MasterMapArea" positionX="0" positionY="0" width="0" height="0"/>
         <element name="MasterUseItem" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="MasterMapInfo" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>
