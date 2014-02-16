@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13B42" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="MasterMapArea" representedClassName="HMKCManagedObject" syncable="YES">
+        <attribute name="id" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 32" syncable="YES"/>
+    </entity>
     <entity name="MasterShip" representedClassName="HMKCManagedObject" syncable="YES">
         <attribute name="afterbull" attributeType="Integer 32" syncable="YES"/>
         <attribute name="afterfuel" attributeType="Integer 32" syncable="YES"/>
@@ -62,7 +67,8 @@
         <relationship name="ships" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MasterShip" inverseName="stype" inverseEntity="MasterShip" syncable="YES"/>
     </entity>
     <elements>
-        <element name="MasterSType" positionX="0" positionY="0" width="0" height="0"/>
         <element name="MasterShip" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="MasterSType" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="MasterMapArea" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>
