@@ -37,6 +37,7 @@
 		F4D2CBC218AD0E1A000EBC59 /* HMMasterSTypeCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D2CBC118AD0E1A000EBC59 /* HMMasterSTypeCommand.m */; };
 		F4D2CBC518AE2AE2000EBC59 /* HMCompositCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D2CBC418AE2AE2000EBC59 /* HMCompositCommand.m */; };
 		F4D2CBC818B0555A000EBC59 /* HMKCManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D2CBC718B0555A000EBC59 /* HMKCManagedObject.m */; };
+		F4D2CBCB18B05E58000EBC59 /* HMMaserShipCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D2CBCA18B05E58000EBC59 /* HMMaserShipCommand.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +103,8 @@
 		F4D2CBC418AE2AE2000EBC59 /* HMCompositCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMCompositCommand.m; sourceTree = "<group>"; };
 		F4D2CBC618B0555A000EBC59 /* HMKCManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMKCManagedObject.h; sourceTree = "<group>"; };
 		F4D2CBC718B0555A000EBC59 /* HMKCManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKCManagedObject.m; sourceTree = "<group>"; };
+		F4D2CBC918B05E58000EBC59 /* HMMaserShipCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMaserShipCommand.h; sourceTree = "<group>"; };
+		F4D2CBCA18B05E58000EBC59 /* HMMaserShipCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMaserShipCommand.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +256,8 @@
 				F46F103518A7CE310063E503 /* HMJSONViewCommand.m */,
 				F4D2CBC018AD0E1A000EBC59 /* HMMasterSTypeCommand.h */,
 				F4D2CBC118AD0E1A000EBC59 /* HMMasterSTypeCommand.m */,
+				F4D2CBC918B05E58000EBC59 /* HMMaserShipCommand.h */,
+				F4D2CBCA18B05E58000EBC59 /* HMMaserShipCommand.m */,
 			);
 			name = Command;
 			sourceTree = "<group>";
@@ -367,6 +372,7 @@
 				F4BDEB53187252F30069D0CE /* main.m in Sources */,
 				F47B78B218A7B42B0011386E /* HMJSONViewWindowController.m in Sources */,
 				F4C118FC18A67B1C005D5B25 /* CustomHTTPProtocol.m in Sources */,
+				F4D2CBCB18B05E58000EBC59 /* HMMaserShipCommand.m in Sources */,
 				F46F104118A9B85E0063E503 /* HMJSONNode.m in Sources */,
 				F4C1190818A746EB005D5B25 /* HMJSONTracker.m in Sources */,
 				F4C118FB18A67B1C005D5B25 /* CanonicalRequest.m in Sources */,

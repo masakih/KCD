@@ -8,6 +8,8 @@
 
 #import "HMMasterSTypeCommand.h"
 
+#import "HMMaserShipCommand.h"
+
 #import "HMAppDelegate.h"
 
 
@@ -59,5 +61,11 @@
 			[object setValue:type[key] forKey:key];
 		}
 	}
+	[managedObjectContext save:NULL];
+	
+	NSCondition *lock = [HMMaserShipCommand condition];
+	[lock lock];
+	[lock broadcast];
+	[lock unlock];
 }
 @end

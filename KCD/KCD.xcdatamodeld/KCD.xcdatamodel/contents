@@ -1,38 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13B42" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="MasterShip" syncable="YES">
-        <attribute name="houg0" attributeType="Integer 32" syncable="YES"/>
-        <attribute name="houg1" attributeType="Integer 32" syncable="YES"/>
-        <attribute name="kaih0" attributeType="Integer 32" syncable="YES"/>
-        <attribute name="kaih1" attributeType="Integer 32" syncable="YES"/>
-        <attribute name="luck0" attributeType="Integer 32" syncable="YES"/>
-        <attribute name="luck1" attributeType="Integer 32" syncable="YES"/>
-        <attribute name="raig0" attributeType="Integer 32" syncable="YES"/>
-        <attribute name="raig1" attributeType="Integer 32" syncable="YES"/>
-        <attribute name="saku0" attributeType="Integer 32" syncable="YES"/>
-        <attribute name="saku1" attributeType="Integer 32" syncable="YES"/>
-        <attribute name="souk0" attributeType="Integer 32" syncable="YES"/>
-        <attribute name="souk1" attributeType="Integer 32" syncable="YES"/>
-        <attribute name="taik0" attributeType="Integer 32" syncable="YES"/>
-        <attribute name="taik1" attributeType="Integer 32" syncable="YES"/>
-        <attribute name="tais0" attributeType="Integer 32" syncable="YES"/>
-        <attribute name="tais1" attributeType="Integer 32" syncable="YES"/>
-        <attribute name="tous0" attributeType="Integer 32" syncable="YES"/>
-        <attribute name="tous1" attributeType="Integer 32" syncable="YES"/>
-        <attribute name="tyku0" attributeType="Integer 32" syncable="YES"/>
-        <attribute name="tyku1" attributeType="Integer 32" syncable="YES"/>
-        <relationship name="after" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MasterShipAfter" inverseName="ship" inverseEntity="MasterShipAfter" syncable="YES"/>
-        <relationship name="spec" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MasterShipSpec" inverseName="ship" inverseEntity="MasterShipSpec" syncable="YES"/>
-        <relationship name="stype" maxCount="1" deletionRule="Nullify" destinationEntity="MasterSType" inverseName="ships" inverseEntity="MasterSType" syncable="YES"/>
-    </entity>
-    <entity name="MasterShipAfter" syncable="YES">
+    <entity name="MasterShip" representedClassName="HMKCManagedObject" syncable="YES">
         <attribute name="afterbull" attributeType="Integer 32" syncable="YES"/>
         <attribute name="afterfuel" attributeType="Integer 32" syncable="YES"/>
         <attribute name="afterlv" attributeType="Integer 32" syncable="YES"/>
         <attribute name="aftershipid" attributeType="Integer 32" syncable="YES"/>
-        <relationship name="ship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MasterShip" inverseName="after" inverseEntity="MasterShip" syncable="YES"/>
-    </entity>
-    <entity name="MasterShipSpec" syncable="YES">
         <attribute name="broken0" attributeType="Integer 32" syncable="YES"/>
         <attribute name="broken1" attributeType="Integer 32" syncable="YES"/>
         <attribute name="broken2" attributeType="Integer 32" syncable="YES"/>
@@ -42,8 +14,14 @@
         <attribute name="cnum" attributeType="Integer 32" syncable="YES"/>
         <attribute name="ctype" attributeType="Integer 32" syncable="YES"/>
         <attribute name="fuel_max" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="houg0" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="houg1" attributeType="Integer 32" syncable="YES"/>
         <attribute name="id" attributeType="Integer 32" indexed="YES" syncable="YES"/>
+        <attribute name="kaih0" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="kaih1" attributeType="Integer 32" syncable="YES"/>
         <attribute name="leng" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="luck0" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="luck1" attributeType="Integer 32" syncable="YES"/>
         <attribute name="maxeq0" attributeType="Integer 32" syncable="YES"/>
         <attribute name="maxeq1" attributeType="Integer 32" syncable="YES"/>
         <attribute name="maxeq2" attributeType="Integer 32" syncable="YES"/>
@@ -54,12 +32,26 @@
         <attribute name="powup1" attributeType="Integer 32" syncable="YES"/>
         <attribute name="powup2" attributeType="Integer 32" syncable="YES"/>
         <attribute name="powup3" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="raig0" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="raig1" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="saku0" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="saku1" attributeType="Integer 32" syncable="YES"/>
         <attribute name="shokh" attributeType="Integer 32" syncable="YES"/>
         <attribute name="sinfo" attributeType="String" syncable="YES"/>
         <attribute name="slot_num" attributeType="Integer 32" syncable="YES"/>
         <attribute name="sortno" attributeType="Integer 32" indexed="YES" syncable="YES"/>
+        <attribute name="souk0" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="souk1" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="taik0" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="taik1" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="tais0" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="tais1" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="tous0" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="tous1" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="tyku0" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="tyku1" attributeType="Integer 32" syncable="YES"/>
         <attribute name="yomi" attributeType="String" indexed="YES" syncable="YES"/>
-        <relationship name="ship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MasterShip" inverseName="spec" inverseEntity="MasterShip" syncable="YES"/>
+        <relationship name="stype" maxCount="1" deletionRule="Nullify" destinationEntity="MasterSType" inverseName="ships" inverseEntity="MasterSType" syncable="YES"/>
     </entity>
     <entity name="MasterSType" representedClassName="HMKCManagedObject" syncable="YES">
         <attribute name="id" attributeType="Integer 32" indexed="YES" syncable="YES"/>
@@ -72,7 +64,5 @@
     <elements>
         <element name="MasterSType" positionX="0" positionY="0" width="0" height="0"/>
         <element name="MasterShip" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="MasterShipAfter" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="MasterShipSpec" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>
