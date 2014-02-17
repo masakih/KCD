@@ -17,7 +17,12 @@
 - (BOOL)validateValue:(inout id *)ioValue forKey:(NSString *)inKey error:(out NSError **)outError
 {
 	
-	NSArray *t = @[@"api_enqflg", @"api_aftershipid", @"api_progress", @"api_usebull"];
+	NSArray *t = @[@"api_enqflg", @"api_aftershipid", @"api_progress",
+				   @"api_usebull",
+				   @"api_next_rate0", @"api_next_rate1", @"api_next_rate2",
+				   @"api_req_shiptype0", @"api_req_shiptype1", @"api_req_shiptype2", @"api_req_shiptype3", @"api_req_shiptype4", @"api_req_shiptype5",
+				   @"api_next_rate_req0", @"api_next_rate_req1", @"api_next_rate_req2",
+				   @"api_link_no0"];
 	if([t containsObject:inKey]) {
 		if(![*ioValue isKindOfClass:[NSNumber class]]) {
 			id newValue = @([*ioValue integerValue]);
