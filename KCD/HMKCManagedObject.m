@@ -16,6 +16,7 @@
 
 - (BOOL)validateValue:(inout id *)ioValue forKey:(NSString *)inKey error:(out NSError **)outError
 {
+	
 	NSArray *t = @[@"api_enqflg", @"api_aftershipid", @"api_progress", @"api_usebull"];
 	if([t containsObject:inKey]) {
 		if(![*ioValue isKindOfClass:[NSNumber class]]) {
@@ -37,6 +38,9 @@
 
 - (id)valueForUndefinedKey:(NSString *)key
 {
+	if([key isEqualToString:@"description"]) {
+		return [self valueForKey:@"description_"];
+	}
 	if([key hasPrefix:@"api_"]) {
 		return [self valueForKey:keyByDeletingPrefix(key)];
 	}
@@ -48,6 +52,10 @@
 {
 	if([key hasPrefix:@"api_"]) {
 		[self setValue:value forKey:keyByDeletingPrefix(key)];
+		return;
+	}
+	if([key isEqualToString:@"description"]) {
+		[self setValue:value forKey:@"description_"];
 		return;
 	}
 #ifdef DEBUG
