@@ -64,59 +64,17 @@ static NSCondition *sCondition = nil;
 	
 	[object setValue:result[0] forKey:@"api_stype"];
 }
+- (BOOL)handleExtraValue:(id)value forKey:(NSString *)key toObject:(NSManagedObject *)object
+{
+	if([key isEqualToString:@"api_stype"]) {
+		[self setStype:value toObject:object];
+		return YES;
+	}
+	return NO;
+}
 - (void)realExecute
 {
-	NSArray *api_data = [self.json objectForKey:@"api_data"];
-	if(![api_data isKindOfClass:[NSArray class]]) {
-		[self log:@"api_data is NOT NSArray."];
-		return;
-	}
-	
-	NSManagedObjectContext *managedObjectContext = [[NSApp delegate] managedObjectContext];
-	
-	for(NSDictionary *type in api_data) {
-		NSString *stypeID = type[@"api_id"];
-		NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"MasterShip"];
-		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id = %@", stypeID];
-		[req setPredicate:predicate];
-		NSError *error = nil;
-		id result = [managedObjectContext executeFetchRequest:req
-														error:&error];
-		if(error) {
-			[self log:@"Fetch error: %@", error];
-			continue;
-		}
-		NSManagedObject *object = nil;
-		if(!result || [result count] == 0) {
-			object = [NSEntityDescription insertNewObjectForEntityForName:@"MasterShip"
-												   inManagedObjectContext:managedObjectContext];
-		} else {
-			object = result[0];
-		}
-		
-		for(NSString *key in type) {
-			id value = type[key];
-			if([key isEqualToString:@"api_stype"]) {
-				[self setStype:value toObject:object];
-				continue;
-			}
-			if([value isKindOfClass:[NSArray class]]) {
-				NSUInteger i = 0;
-				for(id element in value) {
-					id hoge =element;
-					if([object validateValue:&hoge forKey:key error:NULL]) {
-						[object setValue:hoge forKey:[NSString stringWithFormat:@"%@%ld", key, i]];
-					}
-					i++;
-				}
-			} else {
-				if([object validateValue:&value forKey:key error:NULL]) {
-					[object setValue:value forKey:key];
-				}
-			}
-		}
-	}
+	[self commitJSONToEntityNamed:@"MasterShip"];
 }
-
 
 @end

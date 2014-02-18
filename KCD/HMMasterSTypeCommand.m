@@ -29,38 +29,9 @@
 
 - (void)execute
 {
-	NSArray *api_data = [self.json objectForKey:@"api_data"];
-	if(![api_data isKindOfClass:[NSArray class]]) {
-		[self log:@"api_data is NOT NSArray."];
-		return;
-	}
+	[self commitJSONToEntityNamed:@"MasterSType"];
 	
 	NSManagedObjectContext *managedObjectContext = [[NSApp delegate] managedObjectContext];
-	
-	for(NSDictionary *type in api_data) {
-		NSString *stypeID = type[@"api_id"];
-		NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"MasterSType"];
-		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id = %@", stypeID];
-		[req setPredicate:predicate];
-		NSError *error = nil;
-		id result = [managedObjectContext executeFetchRequest:req
-											error:&error];
-		if(error) {
-			[self log:@"Fetch error: %@", error];
-			continue;
-		}
-		NSManagedObject *object = nil;
-		if(!result || [result count] == 0) {
-			object = [NSEntityDescription insertNewObjectForEntityForName:@"MasterSType"
-												   inManagedObjectContext:managedObjectContext];
-		} else {
-			object = result[0];
-		}
-		
-		for(NSString *key in type) {
-			[object setValue:type[key] forKey:key];
-		}
-	}
 	[managedObjectContext save:NULL];
 	
 	NSCondition *lock = [HMMaserShipCommand condition];

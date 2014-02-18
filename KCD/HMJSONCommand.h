@@ -31,6 +31,8 @@ NSString *subAPI(NSString *api);
 + (BOOL)canExcuteAPI:(NSString *)api;
 
 
+- (void)commitJSONToEntityNamed:(NSString *)entityName;
+
 // default return NO
 - (BOOL)handleExtraValue:(id)value forKey:(NSString *)key toObject:(NSManagedObject *)object;
 
