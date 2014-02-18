@@ -41,12 +41,6 @@
 		[command execute];
 	}
 }
-- (void)prepaierOnMainThread
-{
-	for(id command in self.commands) {
-		[command prepaierOnMainThread];
-	}
-}
 
 - (void)setArgumentsString:(NSString *)argumentsString
 {

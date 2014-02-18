@@ -51,11 +51,10 @@ static HMJSONTracker *sTracker = nil;
 				command.argumentsString = [item objectForKey:@"argument"];
 				command.jsonData = [item objectForKey:@"json"];
 				
-				dispatch_sync(dispatch_get_main_queue(), ^{
+//				dispatch_sync(dispatch_get_main_queue(), ^{
 					//
-					[command prepaierOnMainThread];
 					[command execute];
-				});
+//				});
 			}
 			@catch (id e) {
 				NSLog(@"HMJSONTracker Cought Exception -> %@", e);

@@ -30,8 +30,6 @@ NSString *subAPI(NSString *api);
 
 + (BOOL)canExcuteAPI:(NSString *)api;
 
-// メインスレッド上での準備が必要な場合は実装する
-- (void)prepaierOnMainThread;
 
 // default return NO
 - (BOOL)handleExtraValue:(id)value forKey:(NSString *)key toObject:(NSManagedObject *)object;

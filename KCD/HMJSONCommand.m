@@ -154,7 +154,6 @@ NSString *keyByDeletingPrefix(NSString *key)
 {
 	return NO;
 }
-- (void)prepaierOnMainThread {}
 
 - (BOOL)handleExtraValue:(id)value forKey:(NSString *)key toObject:(NSManagedObject *)object
 {
