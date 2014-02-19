@@ -14,5 +14,6 @@
 @interface HMBroserWindowController : NSWindowController
 
 @property (assign) IBOutlet WebView *webView;
+@property (assign) IBOutlet NSView *placeholder;
 
 @end
