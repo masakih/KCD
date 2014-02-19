@@ -181,7 +181,7 @@ NSString *keyByDeletingPrefix(NSString *key)
 				NSUInteger i = 0;
 				for(id element in value) {
 					id hoge = element;
-					NSString *newKey = [NSString stringWithFormat:@"%@%ld", key, i];
+					NSString *newKey = [NSString stringWithFormat:@"%@_%ld", key, i];
 					if([object validateValue:&hoge forKey:newKey error:NULL]) {
 						[object setValue:hoge forKey:newKey];
 					}
