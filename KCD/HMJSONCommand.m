@@ -9,6 +9,7 @@
 #import "HMJSONCommand.h"
 
 #import "HMAppDelegate.h"
+#import "HMCoreDataManager.h"
 #import "HMJSONNode.h"
 
 #ifdef DEBUG
@@ -150,7 +151,8 @@ NSString *keyByDeletingPrefix(NSString *key)
 		return;
 	}
 	
-	NSManagedObjectContext *managedObjectContext = [[NSApp delegate] managedObjectContext];
+	HMCoreDataManager *dm = [HMCoreDataManager oneTimeEditor];
+	NSManagedObjectContext *managedObjectContext = [dm managedObjectContext];
 	
 	for(NSDictionary *type in api_data) {
 		NSString *stypeID = type[@"api_id"];
@@ -202,6 +204,8 @@ NSString *keyByDeletingPrefix(NSString *key)
 			}
 		}
 	}
+	
+	[managedObjectContext save:NULL];
 }
 
 // abstruct

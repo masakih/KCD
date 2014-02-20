@@ -7,6 +7,7 @@
 //
 
 #import "HMMaserShipCommand.h"
+#import "HMCoreDataManager.h"
 
 static NSCondition *sCondition = nil;
 
@@ -36,16 +37,16 @@ static NSCondition *sCondition = nil;
 		[sCondition lock];
 		[sCondition wait];
 		[sCondition unlock];
-		dispatch_async(dispatch_get_main_queue(), ^{
-			[self realExecute];
-		});
+		
+		[self realExecute];
+		
 		sCondition = nil;
 	});
 }
 
-- (void)setStype:(id)value toObject:(id)object
+- (void)setStype:(id)value toObject:(NSManagedObject *)object
 {
-	NSManagedObjectContext *managedObjectContext = [[NSApp delegate] managedObjectContext];
+	NSManagedObjectContext *managedObjectContext = [object managedObjectContext];
 	
 	NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"MasterSType"];
 	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id = %@", value];

@@ -30,10 +30,7 @@
 - (void)execute
 {
 	[self commitJSONToEntityNamed:@"MasterSType"];
-	
-	NSManagedObjectContext *managedObjectContext = [[NSApp delegate] managedObjectContext];
-	[managedObjectContext save:NULL];
-	
+		
 	NSCondition *lock = [HMMaserShipCommand condition];
 	[lock lock];
 	[lock broadcast];
