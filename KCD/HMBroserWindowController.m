@@ -8,7 +8,12 @@
 
 #import "HMBroserWindowController.h"
 
+#import "HMDocksViewController.h"
+
+
 @interface HMBroserWindowController ()
+
+@property (strong) HMDocksViewController *dockViewController;
 
 @end
 
@@ -28,6 +33,12 @@
 	[[self.placeholder superview] replaceSubview:self.placeholder with:clip];
 	[clip setDocumentView:self.webView];
 	[clip scrollToPoint:NSMakePoint(70, 425)];
+	
+	self.dockViewController = [HMDocksViewController new];
+	[self.dockViewController.view setFrame:[self.docksPlaceholder frame]];
+	[self.dockViewController.view setAutoresizingMask:[self.docksPlaceholder autoresizingMask]];
+	[[self.docksPlaceholder superview] replaceSubview:self.docksPlaceholder with:self.dockViewController.view];
+	
 	
 	[[[self.webView mainFrame] frameView] setAllowsScrolling:NO];
 	

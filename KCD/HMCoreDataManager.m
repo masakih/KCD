@@ -10,18 +10,21 @@
 
 @implementation HMCoreDataManager
 
-@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
-@synthesize managedObjectModel = _managedObjectModel;
+//@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+//@synthesize managedObjectModel = _managedObjectModel;
 @synthesize managedObjectContext = _managedObjectContext;
 
 static HMCoreDataManager *defaultManager = nil;
 
+static NSPersistentStoreCoordinator *_persistentStoreCoordinator = nil;
+static NSManagedObjectModel *_managedObjectModel = nil;
 
 + (HMCoreDataManager *)defaultManager
 {
 	if(defaultManager) return defaultManager;
 	
 	defaultManager = [self new];
+	[defaultManager.managedObjectContext setMergePolicy:NSRollbackMergePolicy];
 	
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	[nc addObserver:defaultManager
@@ -41,7 +44,9 @@ static HMCoreDataManager *defaultManager = nil;
 	// we need default manager.
 	[self defaultManager];
 	
-	return [self new];
+	HMCoreDataManager *result = [self new];
+	[result.managedObjectContext setMergePolicy:NSOverwriteMergePolicy];
+	return result;
 }
 
 - (void)dealloc
@@ -144,6 +149,8 @@ static HMCoreDataManager *defaultManager = nil;
     }
     _managedObjectContext = [[NSManagedObjectContext alloc] init];
     [_managedObjectContext setPersistentStoreCoordinator:coordinator];
+	
+	
 	
     return _managedObjectContext;
 }

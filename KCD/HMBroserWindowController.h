@@ -16,4 +16,6 @@
 @property (assign) IBOutlet WebView *webView;
 @property (assign) IBOutlet NSView *placeholder;
 
+@property (nonatomic, weak) IBOutlet NSView *docksPlaceholder;
+
 @end
