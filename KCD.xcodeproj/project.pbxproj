@@ -10,6 +10,7 @@
 		F4513EDD18B619B600073552 /* HMCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4513EDC18B619B600073552 /* HMCoreDataManager.m */; };
 		F4513EE418B635EA00073552 /* HMDocksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4513EE218B635EA00073552 /* HMDocksViewController.m */; };
 		F4513EE518B635EA00073552 /* HMDocksViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4513EE318B635EA00073552 /* HMDocksViewController.xib */; };
+		F4513EE818B77A5300073552 /* HMMemberKDockCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4513EE718B77A5300073552 /* HMMemberKDockCommand.m */; };
 		F46F103618A7CE310063E503 /* HMJSONViewCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F46F103518A7CE310063E503 /* HMJSONViewCommand.m */; };
 		F46F104118A9B85E0063E503 /* HMJSONNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F46F104018A9B85E0063E503 /* HMJSONNode.m */; };
 		F46F104518AA50730063E503 /* HMBroserWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F46F104318AA50730063E503 /* HMBroserWindowController.m */; };
@@ -67,6 +68,8 @@
 		F4513EE118B635EA00073552 /* HMDocksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDocksViewController.h; sourceTree = "<group>"; };
 		F4513EE218B635EA00073552 /* HMDocksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDocksViewController.m; sourceTree = "<group>"; };
 		F4513EE318B635EA00073552 /* HMDocksViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMDocksViewController.xib; sourceTree = "<group>"; };
+		F4513EE618B77A5300073552 /* HMMemberKDockCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMemberKDockCommand.h; sourceTree = "<group>"; };
+		F4513EE718B77A5300073552 /* HMMemberKDockCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMemberKDockCommand.m; sourceTree = "<group>"; };
 		F46F103418A7CE310063E503 /* HMJSONViewCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMJSONViewCommand.h; sourceTree = "<group>"; };
 		F46F103518A7CE310063E503 /* HMJSONViewCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMJSONViewCommand.m; sourceTree = "<group>"; };
 		F46F103F18A9B85E0063E503 /* HMJSONNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMJSONNode.h; sourceTree = "<group>"; };
@@ -311,6 +314,8 @@
 				F4B414FA18B1FB6C00468DAF /* HMMasterMapCellCommand.m */,
 				F4B414FC18B3A66200468DAF /* HMMemberNDockCommand.h */,
 				F4B414FD18B3A66200468DAF /* HMMemberNDockCommand.m */,
+				F4513EE618B77A5300073552 /* HMMemberKDockCommand.h */,
+				F4513EE718B77A5300073552 /* HMMemberKDockCommand.m */,
 			);
 			name = Command;
 			sourceTree = "<group>";
@@ -417,6 +422,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4513EE818B77A5300073552 /* HMMemberKDockCommand.m in Sources */,
 				F4D2CBC518AE2AE2000EBC59 /* HMCompositCommand.m in Sources */,
 				F4C1190218A6FFC2005D5B25 /* HMQueue.m in Sources */,
 				F46F103618A7CE310063E503 /* HMJSONViewCommand.m in Sources */,

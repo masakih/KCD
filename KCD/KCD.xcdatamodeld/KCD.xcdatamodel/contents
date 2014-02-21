@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13B42" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="KenzoDock" representedClassName="HMKCManagedObject" syncable="YES">
+        <attribute name="complete_time" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="complete_time_str" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="created_ship_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="item1" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="item2" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="item3" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="item4" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="item5" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="member_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+    </entity>
     <entity name="MasterFurniture" representedClassName="HMKCManagedObject" syncable="YES">
         <attribute name="description_" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -23,6 +36,7 @@
         <attribute name="event_point_1" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="link_no_0" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="link_no_1" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="map_no" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="maparea_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="mapinfo_no" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -250,5 +264,6 @@
         <element name="MasterSType" positionX="0" positionY="0" width="0" height="0"/>
         <element name="MasterUseItem" positionX="0" positionY="0" width="0" height="0"/>
         <element name="NyukyoDock" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="KenzoDock" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>
