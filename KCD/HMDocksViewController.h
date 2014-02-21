@@ -23,4 +23,16 @@
 @property (nonatomic, strong) NSNumber *nDock4Time;
 
 
+@property (nonatomic, strong) IBOutlet NSObjectController *kDock1;
+@property (nonatomic, strong) IBOutlet NSObjectController *kDock2;
+@property (nonatomic, strong) IBOutlet NSObjectController *kDock3;
+@property (nonatomic, strong) IBOutlet NSObjectController *kDock4;
+
+@property (nonatomic, strong) NSNumber *kDock1Time;
+@property (nonatomic, strong) NSNumber *kDock2Time;
+@property (nonatomic, strong) NSNumber *kDock3Time;
+@property (nonatomic, strong) NSNumber *kDock4Time;
+
+
+
 @end
