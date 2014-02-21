@@ -39,7 +39,6 @@
 
 - (NSNumber *)nDockTimeForNDock:(NSObjectController *)nDock
 {
-//	[nDock prepareContent];
 	NSNumber *item1 =[nDock valueForKeyPath:@"selection.item1"];
 	if(![item1 isKindOfClass:[NSNumber class]]) return nil;
 	if([item1 isEqualToNumber:@0]) return nil;

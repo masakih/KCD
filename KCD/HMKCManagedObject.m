@@ -22,7 +22,8 @@
 				   @"api_next_rate_0", @"api_next_rate_1", @"api_next_rate_2",
 				   @"api_req_shiptype_0", @"api_req_shiptype_1", @"api_req_shiptype_2", @"api_req_shiptype_3", @"api_req_shiptype_4", @"api_req_shiptype_5",
 				   @"api_next_rate_req_0", @"api_next_rate_req_1", @"api_next_rate_req_2",
-				   @"api_link_no_0", @"api_link_no_1"];
+				   @"api_link_no_0", @"api_link_no_1",
+				   @"api_flagship", @"api_name_id"];
 	if([t containsObject:inKey]) {
 		if(![*ioValue isKindOfClass:[NSNumber class]]) {
 			id newValue = @([*ioValue integerValue]);
