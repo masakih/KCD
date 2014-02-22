@@ -261,6 +261,15 @@
         <attribute name="price" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="usetype" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
+    <entity name="Material" representedClassName="HMKCManagedObject" syncable="YES">
+        <attribute name="bauxite" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="bull" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="fuel" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="kaihatusizai" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="kousokukenzo" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="kousokushuhuku" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="steel" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+    </entity>
     <entity name="NyukyoDock" representedClassName="HMKCManagedObject" syncable="YES">
         <attribute name="complete_time" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="complete_time_str" optional="YES" attributeType="String" syncable="YES"/>
@@ -286,5 +295,6 @@
         <element name="NyukyoDock" positionX="0" positionY="0" width="0" height="0"/>
         <element name="KenzoDock" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Deck" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Material" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>
