@@ -17,7 +17,7 @@
         <attribute name="ship_4" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="ship_5" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <fetchedProperty name="missionName" optional="YES" syncable="YES">
-            <fetchRequest name="fetchedPropertyFetchRequest" entity="MasterMission" predicateString="id = $FETCH_SOURCE.mission_1 AND maparea_id = $FETCH_SOURCE.mission_0"/>
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="MasterMission" predicateString="id = $FETCH_SOURCE.mission_1"/>
         </fetchedProperty>
     </entity>
     <entity name="KenzoDock" representedClassName="HMKCManagedObject" syncable="YES">
@@ -283,6 +283,8 @@
         <attribute name="state" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Deck" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="KenzoDock" positionX="0" positionY="0" width="0" height="0"/>
         <element name="MasterFurniture" positionX="0" positionY="0" width="0" height="0"/>
         <element name="MasterMapArea" positionX="0" positionY="0" width="0" height="0"/>
         <element name="MasterMapCell" positionX="0" positionY="0" width="0" height="0"/>
@@ -292,9 +294,7 @@
         <element name="MasterSlotItem" positionX="0" positionY="0" width="0" height="0"/>
         <element name="MasterSType" positionX="0" positionY="0" width="0" height="0"/>
         <element name="MasterUseItem" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="NyukyoDock" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="KenzoDock" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Deck" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Material" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="NyukyoDock" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>
