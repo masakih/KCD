@@ -16,6 +16,9 @@
         <attribute name="ship_3" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="ship_4" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="ship_5" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <fetchedProperty name="missionName" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="MasterMission" predicateString="id = $FETCH_SOURCE.mission_1 AND maparea_id = $FETCH_SOURCE.mission_0"/>
+        </fetchedProperty>
     </entity>
     <entity name="KenzoDock" representedClassName="HMKCManagedObject" syncable="YES">
         <attribute name="complete_time" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
