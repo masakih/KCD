@@ -73,7 +73,7 @@
                         </scroller>
                     </scrollView>
                     <customView id="nmN-e7-a1k">
-                        <rect key="frame" x="810" y="108" width="298" height="94"/>
+                        <rect key="frame" x="810" y="116" width="298" height="94"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="a6e-RR-7BC">
