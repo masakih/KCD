@@ -68,13 +68,13 @@
 #pragma mark - Mission
 - (void)notifyReturnFromMission:(NSUInteger)number
 {
-	NSArray *flagKeys = @[@"deck2Notified", @"deck3Notified", @"deck4Notified"];
+	NSArray *notifiedKeys = @[@"deck2Notified", @"deck3Notified", @"deck4Notified"];
 	NSArray *timeKeys = @[@"deck2Time", @"deck3Time", @"deck4Time"];
 	NSArray *nameKeys = @[@"mission2Name", @"mission3Name", @"mission4Name"];
 	NSArray *fleetNameKeys = @[@"deck2.selection.name", @"deck3.selection.name", @"deck4.selection.name"];
 	
 	NSTimeInterval time = [[self valueForKey:timeKeys[number - 2]] doubleValue];
-	BOOL didNotified = [[self valueForKey:flagKeys[number - 2]] boolValue];
+	BOOL didNotified = [[self valueForKey:notifiedKeys[number - 2]] boolValue];
 	
 	if(!didNotified && time < 1 * 60 - [[NSTimeZone systemTimeZone] secondsFromGMT]) {
 		NSString *missionName = [self valueForKey:nameKeys[number - 2]];
@@ -85,29 +85,32 @@
 		notification.informativeText = [NSString stringWithFormat:@"%@ Will Return From %@.", fleetName, missionName];
 		[[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
 		
-		[self setValue:@YES forKey:flagKeys[number - 2]];
+		[self setValue:@YES forKey:notifiedKeys[number - 2]];
 	}
 }
 
 - (NSString *)missionNameForDeckNumber:(NSUInteger)number
 {
-	NSArray *nameKeys = @[@"deck2.selection.missionName.name", @"deck3.selection.MissionName.name", @"deck4.selection.MissionName.name"];
-	NSArray *flagKeys = @[@"deck2Flag", @"deck3Flag", @"deck4Flag"];
+	NSArray *areaIdKeys = @[@"deck2.selection.mission_1", @"deck3.selection.mission_1", @"deck4.selection.mission_1"];
 	NSArray *notifiedKeys = @[@"deck2Notified", @"deck3Notified", @"deck4Notified"];
-	
-	BOOL flag = [[self valueForKey:flagKeys[number - 2]] boolValue];
-	
-	NSArray *array = [self valueForKeyPath:nameKeys[number - 2]];
-	if(![array isKindOfClass:[NSArray class]] || [array count] == 0) {
-		[self setValue:@NO forKey:flagKeys[number - 2]];
+
+	NSNumber *areaId = [self valueForKeyPath:areaIdKeys[number - 2]];
+	if(![areaId isKindOfClass:[NSNumber class]]) {
 		[self setValue:@NO forKey:notifiedKeys[number - 2]];
 		return nil;
 	}
 	
-	NSString *name = array[0];
-	if(name && !flag) {
-		[self setValue:@YES forKey:flagKeys[number - 2]];
+	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"MasterMission"];
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id = %@", areaId];
+	[request setPredicate:predicate];
+	
+	NSArray *array = [self.managedObjectContext executeFetchRequest:request error:NULL];
+	if([array count] == 0) {
+		[self setValue:@NO forKey:notifiedKeys[number - 2]];
+		return nil;
 	}
+	
+	NSString *name = [array[0] valueForKey:@"name"];
 	return name;
 }
 - (NSString *)mission2Name
@@ -138,7 +141,7 @@
 		return @(diff - [[NSTimeZone systemTimeZone] secondsFromGMT]);
 	}
 }
-- (void)checkMission:(id)timeValue flagKey:(NSString *)flagKey nameKey:(NSString *)nameKey
+- (void)checkNameForKey:(NSString *)nameKey flagKey:(NSString *)flagKey timeValue:(id)timeValue
 {
 	BOOL flag = [[self valueForKey:flagKey] boolValue];
 	if(flag && !timeValue) {
@@ -155,14 +158,11 @@
 #pragma mark - Docking
 - (NSString *)shipNameForNDockNumber:(NSUInteger)number
 {
-	NSArray *nameKeys = @[@"nDock1.selection.ship_id", @"nDock2.selection.ship_id", @"nDock3.selection.ship_id", @"nDock4.selection.ship_id"];
-	NSArray *flagKeys = @[@"nDock1Flag", @"nDock2Flag", @"nDock3Flag", @"nDock4Flag"];
+	NSArray *shipIdKeys = @[@"nDock1.selection.ship_id", @"nDock2.selection.ship_id", @"nDock3.selection.ship_id", @"nDock4.selection.ship_id"];
 	
-	NSNumber *nDockShipId = [self valueForKeyPath:nameKeys[number - 1]];
+	NSNumber *nDockShipId = [self valueForKeyPath:shipIdKeys[number - 1]];
 	if(![nDockShipId isKindOfClass:[NSNumber class]]) return nil;
 	if([nDockShipId integerValue] == 0) return nil;
-	
-	BOOL flag = [[self valueForKey:flagKeys[number - 1]] boolValue];
 	
 	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Ship"];
 	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id = %@", nDockShipId];
@@ -172,10 +172,6 @@
 	if([array count] == 0) return nil;
 	
 	NSString *name = [array[0] valueForKey:@"name"];
-		
-	if(name && !flag) {
-		[self setValue:@YES forKey:flagKeys[number - 1]];
-	}
 	return name;
 }
 - (NSString *)nDock1ShipName
@@ -203,7 +199,6 @@
 	
 	NSNumber *compTimeValue = [nDock valueForKeyPath:@"selection.complete_time"];
 	if(![compTimeValue isKindOfClass:[NSNumber class]]) return nil;
-	//	if([compTimeValue isEqualToNumber:@0]) return nil;
 	
 	NSTimeInterval compTime = (NSUInteger)([compTimeValue doubleValue] / 1000.0);
 	NSDate *now = [NSDate dateWithTimeIntervalSinceNow:0];
@@ -218,41 +213,41 @@
 - (void)notifyIfNeededFinishDockingNumber:(NSUInteger)number
 {
 	NSArray *timeKeys = @[@"nDock1Time", @"nDock2Time", @"nDock3Time", @"nDock4Time"];
-	NSArray *flagKeys = @[@"nDock1Notified", @"nDock2Notified", @"nDock3Notified", @"nDock4Notified"];
+	NSArray *notifiedKeys = @[@"nDock1Notified", @"nDock2Notified", @"nDock3Notified", @"nDock4Notified"];
 	
 	NSTimeInterval time = [[self valueForKey:timeKeys[number - 1]] doubleValue];
 	
 	if(time < 1 * 60 - [[NSTimeZone systemTimeZone] secondsFromGMT]) {
-		BOOL flag = [[self valueForKey:flagKeys[number -1]] boolValue];
+		BOOL flag = [[self valueForKey:notifiedKeys[number -1]] boolValue];
 		if(!flag) {
 			NSUserNotification * notification = [NSUserNotification new];
 			notification.title = @"%@ Will Finish Docking.";
 			notification.informativeText = @"%@ Will Finish Docking.\n";
 			[[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
-			[self setValue:@YES forKey:flagKeys[number - 1]];
+			[self setValue:@YES forKey:notifiedKeys[number - 1]];
 		}
 	} else {
-		[self setValue:@NO forKey:flagKeys[number - 1]];
+		[self setValue:@NO forKey:notifiedKeys[number - 1]];
 	}
 }
 - (void)notifyIfNeededFinishBuildAtDockNumber:(NSUInteger)number
 {
 	NSArray *timeKeys = @[@"kDock1Time", @"kDock2Time", @"kDock3Time", @"kDock4Time"];
-	NSArray *flagKeys = @[@"kDock1Notified", @"kDock2Notified", @"kDock3Notified", @"kDock4Notified"];
+	NSArray *notifiedKeys = @[@"kDock1Notified", @"kDock2Notified", @"kDock3Notified", @"kDock4Notified"];
 	
 	NSTimeInterval time = [[self valueForKey:timeKeys[number - 1]] doubleValue];
 	
 	if(time < - [[NSTimeZone systemTimeZone] secondsFromGMT]) {
-		BOOL flag = [[self valueForKey:flagKeys[number -1]] boolValue];
+		BOOL flag = [[self valueForKey:notifiedKeys[number -1]] boolValue];
 		if(!flag) {
 			NSUserNotification * notification = [NSUserNotification new];
 			notification.title = @"It Will Finish Build at No.%ld.";
 			notification.informativeText = @"It Will Finish Build at No.%ld.\n";
 			[[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
-			[self setValue:@YES forKey:flagKeys[number - 1]];
+			[self setValue:@YES forKey:notifiedKeys[number - 1]];
 		}
 	} else {
-		[self setValue:@NO forKey:flagKeys[number - 1]];
+		[self setValue:@NO forKey:notifiedKeys[number - 1]];
 	}
 }
 
@@ -263,10 +258,10 @@
 	self.nDock2Time = [self nDockTimeForNDock:self.nDock2];
 	self.nDock3Time = [self nDockTimeForNDock:self.nDock3];
 	self.nDock4Time = [self nDockTimeForNDock:self.nDock4];
-	[self checkMission:self.nDock1Time flagKey:@"nDock1Flag" nameKey:@"nDock1ShipName"];
-	[self checkMission:self.nDock2Time flagKey:@"nDock2Flag" nameKey:@"nDock2ShipName"];
-	[self checkMission:self.nDock3Time flagKey:@"nDock3Flag" nameKey:@"nDock3ShipName"];
-	[self checkMission:self.nDock4Time flagKey:@"nDock4Flag" nameKey:@"nDock4ShipName"];
+	[self checkNameForKey:@"nDock1ShipName" flagKey:@"nDock1Flag" timeValue:self.nDock1Time];
+	[self checkNameForKey:@"nDock2ShipName" flagKey:@"nDock2Flag" timeValue:self.nDock2Time];
+	[self checkNameForKey:@"nDock3ShipName" flagKey:@"nDock3Flag" timeValue:self.nDock3Time];
+	[self checkNameForKey:@"nDock4ShipName" flagKey:@"nDock4Flag" timeValue:self.nDock4Time];
 	
 	[self notifyIfNeededFinishDockingNumber:1];
 	[self notifyIfNeededFinishDockingNumber:2];
@@ -288,9 +283,9 @@
 	self.deck2Time = [self missionTimeForDeck:self.deck2];
 	self.deck3Time = [self missionTimeForDeck:self.deck3];
 	self.deck4Time = [self missionTimeForDeck:self.deck4];
-	[self checkMission:self.deck2Time flagKey:@"deck2Flag" nameKey:@"mission2Name"];
-	[self checkMission:self.deck3Time flagKey:@"deck3Flag" nameKey:@"mission3Name"];
-	[self checkMission:self.deck4Time flagKey:@"deck4Flag" nameKey:@"mission4Name"];
+	[self checkNameForKey:@"mission2Name" flagKey:@"deck2Flag" timeValue:self.deck2Time];
+	[self checkNameForKey:@"mission3Name" flagKey:@"deck3Flag" timeValue:self.deck3Time];
+	[self checkNameForKey:@"mission4Name" flagKey:@"deck4Flag" timeValue:self.deck4Time];
 	
 	[self notifyReturnFromMission:2];
 	[self notifyReturnFromMission:3];
