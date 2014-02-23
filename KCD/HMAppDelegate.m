@@ -12,7 +12,7 @@
 #import "HMBroserWindowController.h"
 
 
-@interface HMAppDelegate ()
+@interface HMAppDelegate () <NSUserNotificationCenterDelegate>
 
 @property (retain) HMBroserWindowController *browserWindowController;
 @property (retain) HMJSONViewWindowController *logedJSONViewWindowController;
@@ -52,10 +52,11 @@ static FILE* logFileP = NULL;
 }
 
 
-//- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-//{
-//
-//}
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+{
+	NSUserNotificationCenter *unc = [NSUserNotificationCenter defaultUserNotificationCenter];
+	[unc setDelegate:self];
+}
 
 - (void)awakeFromNib
 {
@@ -64,6 +65,12 @@ static FILE* logFileP = NULL;
 	
 	self.jsonViewWindowController = [HMJSONViewWindowController new];
 	[self.jsonViewWindowController showWindow:nil];
+}
+
+#pragma mark - NSUserNotificationCenterDelegate
+- (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center shouldPresentNotification:(NSUserNotification *)notification
+{
+	return YES;
 }
 
 - (IBAction)saveDocument:(id)sender
