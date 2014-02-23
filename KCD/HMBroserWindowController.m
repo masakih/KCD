@@ -9,6 +9,7 @@
 #import "HMBroserWindowController.h"
 
 #import "HMDocksViewController.h"
+#import "HMCoreDataManager.h"
 
 
 @interface HMBroserWindowController ()
@@ -46,6 +47,21 @@
 	[self.webView setMainFrameURL:@"http://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/"];
 	//	[self.webView setMainFrameURL:@"http://www.google.com/"];
 	
+}
+
+
+- (NSManagedObjectContext *)managedObjectContext
+{
+	return [HMCoreDataManager defaultManager].managedObjectContext;
+}
+
+- (NSAttributedString *)linksString
+{
+	NSBundle *main = [NSBundle mainBundle];
+	NSURL *url = [main URLForResource:@"Links" withExtension:@"rtf"];
+	NSAttributedString *linksString = [[NSAttributedString alloc] initWithURL:url documentAttributes:nil];
+	
+	return linksString;
 }
 
 
