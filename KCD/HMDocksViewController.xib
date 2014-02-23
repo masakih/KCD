@@ -157,6 +157,13 @@
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="nDock1ShipName" id="hpP-QE-jQL">
+                            <dictionary key="options">
+                                <string key="NSNullPlaceholder">空いてます</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="78z-RY-MYG">
                     <rect key="frame" x="14" y="232" width="65" height="17"/>
@@ -276,6 +283,13 @@
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="nDock2ShipName" id="byn-8f-MbT">
+                            <dictionary key="options">
+                                <string key="NSNullPlaceholder">空いてます</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fkC-bB-UBd">
                     <rect key="frame" x="14" y="108" width="78" height="17"/>
@@ -311,6 +325,13 @@
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="nDock3ShipName" id="eiS-I5-Svp">
+                            <dictionary key="options">
+                                <string key="NSNullPlaceholder">空いてます</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EME-Mj-KxR">
                     <rect key="frame" x="14" y="85" width="78" height="17"/>
@@ -346,6 +367,13 @@
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="nDock4ShipName" id="8Ty-T1-YzL">
+                            <dictionary key="options">
+                                <string key="NSNullPlaceholder">空いてます</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Pw-Qt-MRs">
                     <rect key="frame" x="14" y="8" width="78" height="17"/>
@@ -425,22 +453,14 @@
                         </binding>
                     </connections>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f59-df-JTJ">
-                    <rect key="frame" x="226" y="55" width="62" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="00:00:00" id="clf-04-PMY">
-                        <dateFormatter key="formatter" formatterBehavior="custom10_4" dateStyle="short" dateFormat="HH:mm:ss" id="gTU-Dl-7zb"/>
-                        <font key="font" size="13" name="AquaKana"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bNX-Xw-FCL">
+                    <rect key="frame" x="53" y="275" width="235" height="24"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" enabled="NO" sendsActionOnEndEditing="YES" title="作戦名が表示されない場合はゲーム内の遠征で作戦名を表示した後、母港に戻ってください" id="y6S-rV-er1">
+                        <font key="font" size="9" name="AquaKana"/>
+                        <color key="textColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
-                    <connections>
-                        <binding destination="-2" name="value" keyPath="kDock1Time" id="mEZ-50-gnx">
-                            <dictionary key="options">
-                                <string key="NSNullPlaceholder">--:--:--</string>
-                            </dictionary>
-                        </binding>
-                    </connections>
                 </textField>
             </subviews>
         </customView>

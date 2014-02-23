@@ -12,6 +12,13 @@
 
 @interface HMDocksViewController ()
 
+
+// 入渠中フラグ
+@property BOOL nDock1Flag;
+@property BOOL nDock2Flag;
+@property BOOL nDock3Flag;
+@property BOOL nDock4Flag;
+
 // 遠征中フラグ
 @property BOOL deck2Flag;
 @property BOOL deck3Flag;
@@ -32,7 +39,6 @@
 @property BOOL kDock2Notified;
 @property BOOL kDock3Notified;
 @property BOOL kDock4Notified;
-
 
 @end
 
@@ -147,6 +153,48 @@
 }
 
 #pragma mark - Docking
+- (NSString *)shipNameForNDockNumber:(NSUInteger)number
+{
+	NSArray *nameKeys = @[@"nDock1.selection.ship_id", @"nDock2.selection.ship_id", @"nDock3.selection.ship_id", @"nDock4.selection.ship_id"];
+	NSArray *flagKeys = @[@"nDock1Flag", @"nDock2Flag", @"nDock3Flag", @"nDock4Flag"];
+	
+	NSNumber *nDockShipId = [self valueForKeyPath:nameKeys[number - 1]];
+	if(![nDockShipId isKindOfClass:[NSNumber class]]) return nil;
+	if([nDockShipId integerValue] == 0) return nil;
+	
+	BOOL flag = [[self valueForKey:flagKeys[number - 1]] boolValue];
+	
+	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Ship"];
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id = %@", nDockShipId];
+	[request setPredicate:predicate];
+	
+	NSArray *array = [self.managedObjectContext executeFetchRequest:request error:NULL];
+	if([array count] == 0) return nil;
+	
+	NSString *name = [array[0] valueForKey:@"name"];
+		
+	if(name && !flag) {
+		[self setValue:@YES forKey:flagKeys[number - 1]];
+	}
+	return name;
+}
+- (NSString *)nDock1ShipName
+{
+	return [self shipNameForNDockNumber:1];
+}
+- (NSString *)nDock2ShipName
+{
+	return [self shipNameForNDockNumber:2];
+}
+- (NSString *)nDock3ShipName
+{
+	return [self shipNameForNDockNumber:3];
+}
+- (NSString *)nDock4ShipName
+{
+	return [self shipNameForNDockNumber:4];
+}
+
 - (NSNumber *)nDockTimeForNDock:(NSObjectController *)nDock
 {
 	NSNumber *item1 =[nDock valueForKeyPath:@"selection.item1"];
@@ -215,6 +263,10 @@
 	self.nDock2Time = [self nDockTimeForNDock:self.nDock2];
 	self.nDock3Time = [self nDockTimeForNDock:self.nDock3];
 	self.nDock4Time = [self nDockTimeForNDock:self.nDock4];
+	[self checkMission:self.nDock1Time flagKey:@"nDock1Flag" nameKey:@"nDock1ShipName"];
+	[self checkMission:self.nDock2Time flagKey:@"nDock2Flag" nameKey:@"nDock2ShipName"];
+	[self checkMission:self.nDock3Time flagKey:@"nDock3Flag" nameKey:@"nDock3ShipName"];
+	[self checkMission:self.nDock4Time flagKey:@"nDock4Flag" nameKey:@"nDock4ShipName"];
 	
 	[self notifyIfNeededFinishDockingNumber:1];
 	[self notifyIfNeededFinishDockingNumber:2];

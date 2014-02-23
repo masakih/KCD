@@ -22,6 +22,11 @@
 @property (nonatomic, strong) NSNumber *nDock3Time;
 @property (nonatomic, strong) NSNumber *nDock4Time;
 
+@property (readonly) NSString *nDock1ShipName;
+@property (readonly) NSString *nDock2ShipName;
+@property (readonly) NSString *nDock3ShipName;
+@property (readonly) NSString *nDock4ShipName;
+
 
 @property (nonatomic, strong) IBOutlet NSObjectController *kDock1;
 @property (nonatomic, strong) IBOutlet NSObjectController *kDock2;
@@ -42,5 +47,8 @@
 @property (nonatomic, strong) NSNumber *deck3Time;
 @property (nonatomic, strong) NSNumber *deck4Time;
 
+@property (readonly) NSString *mission2Name;
+@property (readonly) NSString *mission3Name;
+@property (readonly) NSString *mission4Name;
 
 @end
