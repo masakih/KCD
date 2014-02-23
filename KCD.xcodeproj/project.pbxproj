@@ -15,6 +15,7 @@
 		F4513EEE18B8E2F600073552 /* HMMemberMaterialCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4513EED18B8E2F600073552 /* HMMemberMaterialCommand.m */; };
 		F4513EF018B96C6C00073552 /* Links.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F4513EEF18B96C6C00073552 /* Links.rtf */; };
 		F4513EF318B991F800073552 /* HMMemberBasicCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4513EF218B991F800073552 /* HMMemberBasicCommand.m */; };
+		F4513EF618B9F29800073552 /* HMMemberShipCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4513EF518B9F29800073552 /* HMMemberShipCommand.m */; };
 		F46F103618A7CE310063E503 /* HMJSONViewCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F46F103518A7CE310063E503 /* HMJSONViewCommand.m */; };
 		F46F104118A9B85E0063E503 /* HMJSONNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F46F104018A9B85E0063E503 /* HMJSONNode.m */; };
 		F46F104518AA50730063E503 /* HMBroserWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F46F104318AA50730063E503 /* HMBroserWindowController.m */; };
@@ -81,6 +82,8 @@
 		F4513EEF18B96C6C00073552 /* Links.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Links.rtf; sourceTree = "<group>"; };
 		F4513EF118B991F800073552 /* HMMemberBasicCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMemberBasicCommand.h; sourceTree = "<group>"; };
 		F4513EF218B991F800073552 /* HMMemberBasicCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMemberBasicCommand.m; sourceTree = "<group>"; };
+		F4513EF418B9F29800073552 /* HMMemberShipCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMemberShipCommand.h; sourceTree = "<group>"; };
+		F4513EF518B9F29800073552 /* HMMemberShipCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMemberShipCommand.m; sourceTree = "<group>"; };
 		F46F103418A7CE310063E503 /* HMJSONViewCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMJSONViewCommand.h; sourceTree = "<group>"; };
 		F46F103518A7CE310063E503 /* HMJSONViewCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMJSONViewCommand.m; sourceTree = "<group>"; };
 		F46F103F18A9B85E0063E503 /* HMJSONNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMJSONNode.h; sourceTree = "<group>"; };
@@ -334,6 +337,8 @@
 				F4513EED18B8E2F600073552 /* HMMemberMaterialCommand.m */,
 				F4513EF118B991F800073552 /* HMMemberBasicCommand.h */,
 				F4513EF218B991F800073552 /* HMMemberBasicCommand.m */,
+				F4513EF418B9F29800073552 /* HMMemberShipCommand.h */,
+				F4513EF518B9F29800073552 /* HMMemberShipCommand.m */,
 			);
 			name = Command;
 			sourceTree = "<group>";
@@ -460,6 +465,7 @@
 				F4C118FC18A67B1C005D5B25 /* CustomHTTPProtocol.m in Sources */,
 				F4D2CBCB18B05E58000EBC59 /* HMMaserShipCommand.m in Sources */,
 				F46F104118A9B85E0063E503 /* HMJSONNode.m in Sources */,
+				F4513EF618B9F29800073552 /* HMMemberShipCommand.m in Sources */,
 				F4C1190818A746EB005D5B25 /* HMJSONTracker.m in Sources */,
 				F4513EDD18B619B600073552 /* HMCoreDataManager.m in Sources */,
 				F4B414E918B09A4B00468DAF /* HMMasterMapAreaCommand.m in Sources */,
