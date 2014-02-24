@@ -46,6 +46,9 @@ static NSCondition *sCondition = nil;
 
 - (void)setStype:(id)value toObject:(NSManagedObject *)object
 {
+	id currentValue = [object valueForKeyPath:@"stype.name"];
+	if(currentValue && ![currentValue isEqual:[NSNull null]]) return;
+	
 	NSManagedObjectContext *managedObjectContext = [object managedObjectContext];
 	
 	NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"MasterSType"];
