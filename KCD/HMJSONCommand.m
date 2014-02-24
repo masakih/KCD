@@ -175,6 +175,8 @@ NSString *keyByDeletingPrefix(NSString *key)
 		}
 		
 		for(NSString *key in type) {
+			if([self.ignoreKeys containsObject:key]) continue;
+			
 			id value = type[key];
 			if([self handleExtraValue:value forKey:key toObject:object]) {
 				continue;

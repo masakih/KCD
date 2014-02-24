@@ -30,6 +30,7 @@ NSString *subAPI(NSString *api);
 
 + (BOOL)canExcuteAPI:(NSString *)api;
 
+@property (readonly) NSArray *ignoreKeys;
 
 - (void)commitJSONToEntityNamed:(NSString *)entityName;
 
