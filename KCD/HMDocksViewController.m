@@ -71,7 +71,7 @@
 	NSArray *notifiedKeys = @[@"deck2Notified", @"deck3Notified", @"deck4Notified"];
 	NSArray *timeKeys = @[@"deck2Time", @"deck3Time", @"deck4Time"];
 	NSArray *nameKeys = @[@"mission2Name", @"mission3Name", @"mission4Name"];
-	NSArray *fleetNameKeys = @[@"deck2.selection.name", @"deck3.selection.name", @"deck4.selection.name"];
+	NSArray *fleetNameKeys = @[@"deck2.selection.master_ship.name", @"deck3.selection.master_ship.name", @"deck4.selection.master_ship.name"];
 	
 	NSTimeInterval time = [[self valueForKey:timeKeys[number - 2]] doubleValue];
 	BOOL didNotified = [[self valueForKey:notifiedKeys[number - 2]] boolValue];
@@ -171,7 +171,7 @@
 	NSArray *array = [self.managedObjectContext executeFetchRequest:request error:NULL];
 	if([array count] == 0) return nil;
 	
-	NSString *name = [array[0] valueForKey:@"name"];
+	NSString *name = [array[0] valueForKeyPath:@"master_ship.name"];
 	return name;
 }
 - (NSString *)nDock1ShipName

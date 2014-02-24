@@ -23,7 +23,20 @@
 
 + (BOOL)canExcuteAPI:(NSString *)api
 {
-	return [api isEqualToString:@"/kcsapi/api_get_member/ship"];
+	if([api isEqualToString:@"/kcsapi/api_get_member/ship"]) return YES;
+//	if([api isEqualToString:@"/kcsapi/api_get_member/ship2"]) return YES;
+	return NO;
+}
+
+- (NSArray *)ignoreKeys
+{
+	static NSArray *ignoreKeys = nil;
+	if(ignoreKeys) return ignoreKeys;
+	
+	ignoreKeys = @[@"api_gomes", @"api_gomes2", @"api_broken", @"api_powup",
+				   @"api_voicef", @"api_afterlv", @"api_aftershipid", @"api_backs",
+				   @"api_leng", @"api_slotnum", @"api_stype", @"api_name", @"api_yomi"];
+	return ignoreKeys;
 }
 
 - (id)init
@@ -39,12 +52,44 @@
 	[self commitJSONToEntityNamed:@"Ship"];
 }
 
-// 取得後破棄した艦娘のデータを削除する
+
+- (void)setMasterShip:(id)value toObject:(NSManagedObject *)object
+{
+	id currentValue = [object valueForKeyPath:@"master_ship.name"];
+	if(currentValue && ![currentValue isEqual:[NSNull null]]) return;
+	
+	NSManagedObjectContext *managedObjectContext = [object managedObjectContext];
+	
+	NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"MasterShip"];
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id = %@", value];
+	[req setPredicate:predicate];
+	NSError *error = nil;
+	id result = [managedObjectContext executeFetchRequest:req
+													error:&error];
+	if(error) {
+		[self log:@"Fetch error: %@", error];
+		return;
+	}
+	if(!result || [result count] == 0) {
+		[self log:@"Could not find ship of id (%@)", value];
+		return;
+	}
+	
+	[object setValue:result[0] forKey:@"master_ship"];
+}
+
 - (BOOL)handleExtraValue:(id)value forKey:(NSString *)key toObject:(NSManagedObject *)object
 {
+	// 取得後破棄した艦娘のデータを削除する
 	if([key isEqualToString:@"api_id"]) {
 		[self.ids addObject:value];
 	}
+	
+	if([key isEqualToString:@"api_ship_id"]) {
+		[self setMasterShip:value toObject:object];
+		return YES;
+	}
+	
 	return NO;
 }
 
