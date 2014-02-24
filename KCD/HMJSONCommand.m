@@ -204,6 +204,7 @@ NSString *keyByDeletingPrefix(NSString *key)
 			}
 		}
 	}
+	[self finishOperating:managedObjectContext];
 	
 	[managedObjectContext save:NULL];
 }
@@ -224,6 +225,9 @@ NSString *keyByDeletingPrefix(NSString *key)
 {
 	return NO;
 }
-
+- (void)finishOperating:(NSManagedObjectContext *)moc
+{
+	
+}
 
 @end

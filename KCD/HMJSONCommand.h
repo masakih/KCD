@@ -33,9 +33,12 @@ NSString *subAPI(NSString *api);
 
 - (void)commitJSONToEntityNamed:(NSString *)entityName;
 
+// 特別な処理を行う
 // default return NO
 - (BOOL)handleExtraValue:(id)value forKey:(NSString *)key toObject:(NSManagedObject *)object;
 
+// データ登録後の処理を行う
+- (void)finishOperating:(NSManagedObjectContext *)moc;
 
 NSString *keyByDeletingPrefix(NSString *key);
 
