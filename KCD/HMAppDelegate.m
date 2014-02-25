@@ -10,11 +10,13 @@
 
 #import "HMJSONTracker.h"
 #import "HMBroserWindowController.h"
+#import "HMShipWindowController.h"
 
 
 @interface HMAppDelegate () <NSUserNotificationCenterDelegate>
 
 @property (retain) HMBroserWindowController *browserWindowController;
+@property (strong) HMShipWindowController *shipWindowController;
 @property (retain) HMJSONViewWindowController *logedJSONViewWindowController;
 @end
 
@@ -65,6 +67,9 @@ static FILE* logFileP = NULL;
 	
 	self.jsonViewWindowController = [HMJSONViewWindowController new];
 	[self.jsonViewWindowController showWindow:nil];
+	
+	self.shipWindowController = [HMShipWindowController new];
+	[self.shipWindowController showWindow:nil];
 }
 
 #pragma mark - NSUserNotificationCenterDelegate
