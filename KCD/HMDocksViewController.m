@@ -71,7 +71,7 @@
 	NSArray *notifiedKeys = @[@"deck2Notified", @"deck3Notified", @"deck4Notified"];
 	NSArray *timeKeys = @[@"deck2Time", @"deck3Time", @"deck4Time"];
 	NSArray *nameKeys = @[@"mission2Name", @"mission3Name", @"mission4Name"];
-	NSArray *fleetNameKeys = @[@"deck2.selection.master_ship.name", @"deck3.selection.master_ship.name", @"deck4.selection.master_ship.name"];
+	NSArray *fleetNameKeys = @[@"deck2.selection.name", @"deck3.selection.name", @"deck4.selection.name"];
 	
 	NSTimeInterval time = [[self valueForKey:timeKeys[number - 2]] doubleValue];
 	BOOL didNotified = [[self valueForKey:notifiedKeys[number - 2]] boolValue];
