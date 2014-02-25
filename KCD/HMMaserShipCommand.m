@@ -9,6 +9,9 @@
 #import "HMMaserShipCommand.h"
 #import "HMCoreDataManager.h"
 
+#import "HMMemberShipCommand.h"
+
+
 static NSCondition *sCondition = nil;
 
 @implementation HMMaserShipCommand
@@ -79,6 +82,11 @@ static NSCondition *sCondition = nil;
 - (void)realExecute
 {
 	[self commitJSONToEntityNamed:@"MasterShip"];
+		
+	NSCondition *lock = [HMMemberShipCommand condition];
+	[lock lock];
+	[lock broadcast];
+	[lock unlock];
 }
 
 @end
