@@ -24,7 +24,7 @@
 + (BOOL)canExcuteAPI:(NSString *)api
 {
 	if([api isEqualToString:@"/kcsapi/api_get_member/ship"]) return YES;
-//	if([api isEqualToString:@"/kcsapi/api_get_member/ship2"]) return YES;
+	if([api isEqualToString:@"/kcsapi/api_get_member/ship2"]) return YES;
 	return NO;
 }
 
@@ -35,7 +35,11 @@
 	
 	ignoreKeys = @[@"api_gomes", @"api_gomes2", @"api_broken", @"api_powup",
 				   @"api_voicef", @"api_afterlv", @"api_aftershipid", @"api_backs",
-				   @"api_leng", @"api_slotnum", @"api_stype", @"api_name", @"api_yomi"];
+				   @"api_leng", @"api_slotnum", @"api_stype", @"api_name", @"api_yomi",
+				   @"api_raig", @"api_luck", @"api_saku", @"api_raim", @"api_baku",
+				   @"api_taik", @"api_houg", @"api_souk", @"api_houm", @"api_tyku",
+				   @"api_ndock_item", @"api_soku", @"api_star",
+				   @"api_ndock_time_str", @"api_member_id", @"api_fuel_max", @"api_bull_max"];
 	return ignoreKeys;
 }
 
@@ -87,6 +91,12 @@
 	
 	if([key isEqualToString:@"api_ship_id"]) {
 		[self setMasterShip:value toObject:object];
+		return YES;
+	}
+	
+	if([key isEqualToString:@"api_exp"]) {
+		if(![value isKindOfClass:[NSArray class]]) return NO;
+		[object setValue:[value objectAtIndex:0] forKey:@"exp"];
 		return YES;
 	}
 	
