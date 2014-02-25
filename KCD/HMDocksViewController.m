@@ -93,10 +93,12 @@
 {
 	NSArray *areaIdKeys = @[@"deck2.selection.mission_1", @"deck3.selection.mission_1", @"deck4.selection.mission_1"];
 	NSArray *notifiedKeys = @[@"deck2Notified", @"deck3Notified", @"deck4Notified"];
+	NSArray *flagKeys = @[@"deck2Flag", @"deck3Flag", @"deck4Flag"];
 
 	NSNumber *areaId = [self valueForKeyPath:areaIdKeys[number - 2]];
 	if(![areaId isKindOfClass:[NSNumber class]]) {
 		[self setValue:@NO forKey:notifiedKeys[number - 2]];
+		[self setValue:@NO forKey:flagKeys[number - 2]]; 
 		return nil;
 	}
 	
@@ -107,6 +109,7 @@
 	NSArray *array = [self.managedObjectContext executeFetchRequest:request error:NULL];
 	if([array count] == 0) {
 		[self setValue:@NO forKey:notifiedKeys[number - 2]];
+		[self setValue:@NO forKey:flagKeys[number - 2]];
 		return nil;
 	}
 	
