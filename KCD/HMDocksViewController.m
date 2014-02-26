@@ -240,7 +240,7 @@
 	
 	NSTimeInterval time = [[self valueForKey:timeKeys[number - 1]] doubleValue];
 	
-	if(time < - [[NSTimeZone systemTimeZone] secondsFromGMT]) {
+	if(time <= - [[NSTimeZone systemTimeZone] secondsFromGMT]) {
 		BOOL flag = [[self valueForKey:notifiedKeys[number -1]] boolValue];
 		if(!flag) {
 			NSUserNotification * notification = [NSUserNotification new];
