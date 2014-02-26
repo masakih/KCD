@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F43E67B718BE02A10087E5B6 /* STypeShortName.plist in Resources */ = {isa = PBXBuildFile; fileRef = F43E67B618BE02A10087E5B6 /* STypeShortName.plist */; };
+		F43E67B918BE060E0087E5B6 /* LevelUpExp.plist in Resources */ = {isa = PBXBuildFile; fileRef = F43E67B818BE060E0087E5B6 /* LevelUpExp.plist */; };
 		F4513EDD18B619B600073552 /* HMCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4513EDC18B619B600073552 /* HMCoreDataManager.m */; };
 		F4513EE418B635EA00073552 /* HMDocksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4513EE218B635EA00073552 /* HMDocksViewController.m */; };
 		F4513EE518B635EA00073552 /* HMDocksViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4513EE318B635EA00073552 /* HMDocksViewController.xib */; };
@@ -71,6 +73,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F43E67B618BE02A10087E5B6 /* STypeShortName.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = STypeShortName.plist; sourceTree = "<group>"; };
+		F43E67B818BE060E0087E5B6 /* LevelUpExp.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LevelUpExp.plist; sourceTree = "<group>"; };
 		F4513EDB18B619B600073552 /* HMCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMCoreDataManager.h; sourceTree = "<group>"; };
 		F4513EDC18B619B600073552 /* HMCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMCoreDataManager.m; sourceTree = "<group>"; };
 		F4513EE118B635EA00073552 /* HMDocksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDocksViewController.h; sourceTree = "<group>"; };
@@ -278,6 +282,8 @@
 				F4BDEB52187252F30069D0CE /* main.m */,
 				F4BDEB54187252F30069D0CE /* KCD-Prefix.pch */,
 				F4BDEB55187252F30069D0CE /* Credits.rtf */,
+				F43E67B618BE02A10087E5B6 /* STypeShortName.plist */,
+				F43E67B818BE060E0087E5B6 /* LevelUpExp.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -434,9 +440,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4BDEB51187252F30069D0CE /* InfoPlist.strings in Resources */,
+				F43E67B918BE060E0087E5B6 /* LevelUpExp.plist in Resources */,
 				F4513EFB18BB699700073552 /* HMShipWindowController.xib in Resources */,
 				F4513EE518B635EA00073552 /* HMDocksViewController.xib in Resources */,
 				F47B78B318A7B42B0011386E /* HMJSONViewWindowController.xib in Resources */,
+				F43E67B718BE02A10087E5B6 /* STypeShortName.plist in Resources */,
 				F4BDEB5F187252F30069D0CE /* Images.xcassets in Resources */,
 				F4513EF018B96C6C00073552 /* Links.rtf in Resources */,
 				F4BDEB57187252F30069D0CE /* Credits.rtf in Resources */,

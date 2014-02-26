@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<string>海防</string>
+	<string>駆逐</string>
+	<string>軽巡</string>
+	<string>雷巡</string>
+	<string>重巡</string>
+	<string>航巡</string>
+	<string>軽母</string>
+	<string>戦艦</string>
+	<string>戦艦</string>
+	<string>航戦</string>
+	<string>空母</string>
+	<string>超弩</string>
+	<string>潜水</string>
+	<string>潜母</string>
+	<string>補給</string>
+	<string>水母</string>
+	<string>揚陸</string>
+	<string>装母</string>
+</array>
+</plist>
