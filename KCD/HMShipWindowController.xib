@@ -23,14 +23,14 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="dpi-Py-Bq7">
-                        <rect key="frame" x="20" y="20" width="341" height="512"/>
+                        <rect key="frame" x="20" y="20" width="306" height="512"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                         <clipView key="contentView" id="UyL-Go-zzL">
-                            <rect key="frame" x="1" y="17" width="339" height="494"/>
+                            <rect key="frame" x="1" y="17" width="304" height="494"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="cUI-v4-UOE" id="K2J-6I-3Ix">
-                                    <rect key="frame" x="0.0" y="0.0" width="339" height="494"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="304" height="494"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -42,7 +42,7 @@
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
                                             </tableHeaderCell>
-                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="123" id="FDu-fT-gG0">
+                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="right" title="123" id="FDu-fT-gG0">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -68,7 +68,7 @@
                                                 <binding destination="ir1-ad-0Fn" name="value" keyPath="arrangedObjects.master_ship.name" id="TbH-ck-uSt"/>
                                             </connections>
                                         </tableColumn>
-                                        <tableColumn width="39.51953125" minWidth="10" maxWidth="3.4028234663852886e+38" id="6rr-gO-4fh">
+                                        <tableColumn width="31" minWidth="10" maxWidth="3.4028234663852886e+38" id="6rr-gO-4fh">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="艦種">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -81,16 +81,16 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
-                                                <binding destination="ir1-ad-0Fn" name="value" keyPath="arrangedObjects.master_ship.stype.name" id="zUZ-MQ-FYF"/>
+                                                <binding destination="ir1-ad-0Fn" name="value" keyPath="arrangedObjects.shortTypeName" id="FsJ-ch-PvW"/>
                                             </connections>
                                         </tableColumn>
-                                        <tableColumn width="33" minWidth="33" maxWidth="3.4028234663852886e+38" id="ZeO-Lh-OEu">
-                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Lv.">
+                                        <tableColumn width="29" minWidth="22" maxWidth="3.4028234663852886e+38" id="ZeO-Lh-OEu">
+                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="Lv.">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                             </tableHeaderCell>
-                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="ELA-k5-txK">
+                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="right" title="Text Cell" id="ELA-k5-txK">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -106,7 +106,7 @@
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                             </tableHeaderCell>
-                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="0mw-Zw-SbO">
+                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="right" title="Text Cell" id="0mw-Zw-SbO">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -116,13 +116,13 @@
                                                 <binding destination="ir1-ad-0Fn" name="value" keyPath="arrangedObjects.exp" id="64O-sw-6Hm"/>
                                             </connections>
                                         </tableColumn>
-                                        <tableColumn width="71" minWidth="10" maxWidth="3.4028234663852886e+38" id="i5A-no-zlc">
+                                        <tableColumn width="49" minWidth="10" maxWidth="3.4028234663852886e+38" id="i5A-no-zlc">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Next">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                             </tableHeaderCell>
-                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="9cS-xT-n0Q">
+                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="right" title="Text Cell" id="9cS-xT-n0Q">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -146,7 +146,7 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <tableHeaderView key="headerView" id="cUI-v4-UOE">
-                            <rect key="frame" x="0.0" y="0.0" width="339" height="17"/>
+                            <rect key="frame" x="0.0" y="0.0" width="304" height="17"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </tableHeaderView>
                     </scrollView>
@@ -279,19 +279,19 @@
                         </tableHeaderView>
                     </scrollView>
                     <segmentedControl verticalHuggingPriority="750" id="ndg-tM-7TO">
-                        <rect key="frame" x="18" y="538" width="345" height="24"/>
+                        <rect key="frame" x="18" y="541" width="310" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <segmentedCell key="cell" alignment="left" style="rounded" trackingMode="selectOne" id="zQb-uR-Nce">
                             <font key="font" metaFont="system"/>
                             <segments>
-                                <segment label="All" width="35" selected="YES"/>
-                                <segment label="駆逐" width="44" tag="1"/>
-                                <segment label="軽巡" width="44" tag="2"/>
-                                <segment label="重巡" width="44" tag="3"/>
-                                <segment label="空母" width="44" tag="4"/>
-                                <segment label="戦艦" width="44" tag="5"/>
-                                <segment label="潜水" width="43" tag="6"/>
-                                <segment label="他" width="34" tag="7"/>
+                                <segment label="All" width="34" selected="YES"/>
+                                <segment label="駆逐" width="38" tag="1"/>
+                                <segment label="軽巡" width="38" tag="2"/>
+                                <segment label="重巡" width="38" tag="3"/>
+                                <segment label="空母" width="38" tag="4"/>
+                                <segment label="戦艦" width="38" tag="5"/>
+                                <segment label="潜水" width="38" tag="6"/>
+                                <segment label="他" width="35" tag="7"/>
                             </segments>
                         </segmentedCell>
                         <connections>
