@@ -63,7 +63,7 @@
 		return;
 	}
 	
-	[object setValue:result[0] forKey:@"master_SlotItem"];
+	[object setValue:result[0] forKey:@"master_slotItem"];
 }
 - (BOOL)handleExtraValue:(id)value forKey:(NSString *)key toObject:(NSManagedObject *)object
 {
