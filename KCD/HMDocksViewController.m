@@ -81,8 +81,10 @@
 		NSString *fleetName = [self valueForKeyPath:fleetNameKeys[number - 2]];
 		
 		NSUserNotification * notification = [NSUserNotification new];
-		notification.title = [NSString stringWithFormat:@"%@ Will Return From Mission.", fleetName];
-		notification.informativeText = [NSString stringWithFormat:@"%@ Will Return From %@.", fleetName, missionName];
+		NSString *format = NSLocalizedString(@"%@ Will Return From Mission.", @"%@ Will Return From Mission.");
+		notification.title = [NSString stringWithFormat:format, fleetName];
+		format = NSLocalizedString(@"%@ Will Return From %@.", @"%@ Will Return From %@.");
+		notification.informativeText = [NSString stringWithFormat:format, fleetName, missionName];
 		[[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
 		
 		[self setValue:@YES forKey:notifiedKeys[number - 2]];
@@ -224,8 +226,9 @@
 		BOOL flag = [[self valueForKey:notifiedKeys[number -1]] boolValue];
 		if(!flag) {
 			NSUserNotification * notification = [NSUserNotification new];
-			notification.title = @"%@ Will Finish Docking.";
-			notification.informativeText = @"%@ Will Finish Docking.\n";
+			NSString *format = NSLocalizedString(@"%@ Will Finish Docking.", @"%@ Will Finish Docking.");
+			notification.title = [NSString stringWithFormat:format, [self shipNameForNDockNumber:number]];
+			notification.informativeText = [NSString stringWithFormat:format, [self shipNameForNDockNumber:number]];
 			[[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
 			[self setValue:@YES forKey:notifiedKeys[number - 1]];
 		}
@@ -244,8 +247,9 @@
 		BOOL flag = [[self valueForKey:notifiedKeys[number -1]] boolValue];
 		if(!flag) {
 			NSUserNotification * notification = [NSUserNotification new];
-			notification.title = @"It Will Finish Build at No.%ld.";
-			notification.informativeText = @"It Will Finish Build at No.%ld.\n";
+			NSString *format = NSLocalizedString(@"It Will Finish Build at No.%ld.", @"It Will Finish Build at No.%ld.");
+			notification.title = [NSString stringWithFormat:format, number];
+			notification.informativeText = [NSString stringWithFormat:format, number];
 			[[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
 			[self setValue:@YES forKey:notifiedKeys[number - 1]];
 		}
