@@ -55,7 +55,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Z4-bD-0N0">
-                    <rect key="frame" x="87" y="267" width="124" height="17"/>
+                    <rect key="frame" x="153" y="267" width="155" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="遠征場所０００００" id="EIG-mO-Bl7">
                         <font key="font" size="13" name="AquaKana"/>
@@ -71,7 +71,7 @@
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sTn-uJ-Phx">
-                    <rect key="frame" x="215" y="267" width="62" height="17"/>
+                    <rect key="frame" x="87" y="267" width="62" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="00:00:00" id="BJE-Ig-1at">
                         <dateFormatter key="formatter" formatterBehavior="custom10_4" dateStyle="short" dateFormat="HH:mm:ss" id="MUu-id-yAZ"/>
@@ -97,7 +97,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U7b-9S-sWb">
-                    <rect key="frame" x="186" y="166" width="62" height="17"/>
+                    <rect key="frame" x="100" y="166" width="62" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="00:00:00" id="iv8-oM-0Fo">
                         <dateFormatter key="formatter" formatterBehavior="custom10_4" dateStyle="short" dateFormat="HH:mm:ss" id="SFs-FI-wPI"/>
@@ -150,7 +150,7 @@
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k1d-jn-V0r">
-                    <rect key="frame" x="100" y="166" width="82" height="17"/>
+                    <rect key="frame" x="166" y="166" width="82" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="阿賀野航改二" id="00K-BC-hE3">
                         <font key="font" size="13" name="AquaKana"/>
@@ -175,7 +175,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ozB-6d-jdP">
-                    <rect key="frame" x="87" y="244" width="124" height="17"/>
+                    <rect key="frame" x="153" y="244" width="155" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="遠征場所０００００" id="hsi-5v-SGu">
                         <font key="font" size="13" name="AquaKana"/>
@@ -191,7 +191,7 @@
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YPL-iZ-5QI">
-                    <rect key="frame" x="215" y="244" width="62" height="17"/>
+                    <rect key="frame" x="87" y="244" width="62" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="00:00:00" id="uZ7-H0-10h">
                         <dateFormatter key="formatter" formatterBehavior="custom10_4" dateStyle="short" dateFormat="HH:mm:ss" id="2GZ-Uz-iAI"/>
@@ -217,7 +217,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HMF-e4-15i">
-                    <rect key="frame" x="87" y="221" width="124" height="17"/>
+                    <rect key="frame" x="153" y="221" width="155" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="遠征場所０００００" id="aSL-uz-w7C">
                         <font key="font" size="13" name="AquaKana"/>
@@ -233,7 +233,7 @@
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aaL-Hq-rXW">
-                    <rect key="frame" x="215" y="221" width="62" height="17"/>
+                    <rect key="frame" x="87" y="221" width="62" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="00:00:00" id="KdJ-xQ-eVC">
                         <dateFormatter key="formatter" formatterBehavior="custom10_4" dateStyle="short" dateFormat="HH:mm:ss" id="86I-wZ-ZEB"/>
@@ -259,7 +259,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mAQ-lg-uXF">
-                    <rect key="frame" x="186" y="143" width="62" height="17"/>
+                    <rect key="frame" x="100" y="143" width="62" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="00:00:00" id="oco-u5-uot">
                         <dateFormatter key="formatter" formatterBehavior="custom10_4" dateStyle="short" dateFormat="HH:mm:ss" id="fPR-NA-TxP"/>
@@ -276,7 +276,7 @@
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TaR-MT-gwt">
-                    <rect key="frame" x="100" y="143" width="82" height="17"/>
+                    <rect key="frame" x="166" y="143" width="82" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="阿賀野航改二" id="fPQ-pb-CKr">
                         <font key="font" size="13" name="AquaKana"/>
@@ -301,7 +301,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Ep-sM-xII">
-                    <rect key="frame" x="186" y="120" width="62" height="17"/>
+                    <rect key="frame" x="100" y="120" width="62" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="00:00:00" id="YbO-M6-FUI">
                         <dateFormatter key="formatter" formatterBehavior="custom10_4" dateStyle="short" dateFormat="HH:mm:ss" id="w5f-eG-6gx"/>
@@ -318,7 +318,7 @@
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TFq-Xl-orn">
-                    <rect key="frame" x="100" y="120" width="82" height="17"/>
+                    <rect key="frame" x="166" y="120" width="82" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="阿賀野航改二" id="Jjl-TA-ODo">
                         <font key="font" size="13" name="AquaKana"/>
@@ -343,7 +343,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zee-D4-ZGG">
-                    <rect key="frame" x="186" y="97" width="62" height="17"/>
+                    <rect key="frame" x="100" y="97" width="62" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="00:00:00" id="rFg-0M-tbw">
                         <dateFormatter key="formatter" formatterBehavior="custom10_4" dateStyle="short" dateFormat="HH:mm:ss" id="nDW-Qt-yEs"/>
@@ -360,7 +360,7 @@
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U2e-ln-Ord">
-                    <rect key="frame" x="100" y="97" width="82" height="17"/>
+                    <rect key="frame" x="166" y="97" width="82" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="阿賀野航改二" id="jas-Ub-XVx">
                         <font key="font" size="13" name="AquaKana"/>
