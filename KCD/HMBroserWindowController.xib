@@ -268,12 +268,12 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
-                                    <binding destination="VIO-ns-NM0" name="displayPatternValue1" keyPath="arrangedObjects.@count" id="GU8-j6-0tU">
+                                    <binding destination="gB0-9x-Jgy" name="displayPatternValue1" keyPath="arrangedObjects.@count" id="Cgj-14-UG2">
                                         <dictionary key="options">
                                             <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
                                         </dictionary>
                                     </binding>
-                                    <binding destination="1lk-ii-37p" name="displayPatternValue2" keyPath="selection.max_slotitem" previousBinding="GU8-j6-0tU" id="BuX-ZD-M9k">
+                                    <binding destination="1lk-ii-37p" name="displayPatternValue2" keyPath="selection.max_slotitem" previousBinding="Cgj-14-UG2" id="hv9-gn-2jA">
                                         <dictionary key="options">
                                             <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
                                         </dictionary>
@@ -338,6 +338,11 @@
         <arrayController mode="entity" entityName="Basic" editable="NO" automaticallyPreparesContent="YES" id="1lk-ii-37p" userLabel="Basic">
             <connections>
                 <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="UIj-nm-9om"/>
+            </connections>
+        </arrayController>
+        <arrayController mode="entity" entityName="SlotItem" editable="NO" automaticallyPreparesContent="YES" id="gB0-9x-Jgy" userLabel="SlotItem">
+            <connections>
+                <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="3iY-Vz-z2R"/>
             </connections>
         </arrayController>
     </objects>
