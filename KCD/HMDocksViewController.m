@@ -74,33 +74,35 @@
 	NSArray *fleetNameKeys = @[@"deck2.selection.name", @"deck3.selection.name", @"deck4.selection.name"];
 	
 	NSTimeInterval time = [[self valueForKey:timeKeys[number - 2]] doubleValue];
-	BOOL didNotified = [[self valueForKey:notifiedKeys[number - 2]] boolValue];
 	
-	if(!didNotified && time < 1 * 60 - [[NSTimeZone systemTimeZone] secondsFromGMT]) {
-		NSString *missionName = [self valueForKey:nameKeys[number - 2]];
-		NSString *fleetName = [self valueForKeyPath:fleetNameKeys[number - 2]];
-		
-		NSUserNotification * notification = [NSUserNotification new];
-		NSString *format = NSLocalizedString(@"%@ Will Return From Mission.", @"%@ Will Return From Mission.");
-		notification.title = [NSString stringWithFormat:format, fleetName];
-		format = NSLocalizedString(@"%@ Will Return From %@.", @"%@ Will Return From %@.");
-		notification.informativeText = [NSString stringWithFormat:format, fleetName, missionName];
-		[[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
-		
-		[self setValue:@YES forKey:notifiedKeys[number - 2]];
+	if(time < 1 * 60 - [[NSTimeZone systemTimeZone] secondsFromGMT]) {
+		BOOL didNotified = [[self valueForKey:notifiedKeys[number - 2]] boolValue];
+		if(!didNotified) {
+			NSString *missionName = [self valueForKey:nameKeys[number - 2]];
+			NSString *fleetName = [self valueForKeyPath:fleetNameKeys[number - 2]];
+			
+			NSUserNotification * notification = [NSUserNotification new];
+			NSString *format = NSLocalizedString(@"%@ Will Return From Mission.", @"%@ Will Return From Mission.");
+			notification.title = [NSString stringWithFormat:format, fleetName];
+			format = NSLocalizedString(@"%@ Will Return From %@.", @"%@ Will Return From %@.");
+			notification.informativeText = [NSString stringWithFormat:format, fleetName, missionName];
+			[[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+			
+			[self setValue:@YES forKey:notifiedKeys[number - 2]];
+		}
+	} else {
+		[self setValue:@NO forKey:notifiedKeys[number - 2]];
 	}
 }
 
 - (NSString *)missionNameForDeckNumber:(NSUInteger)number
 {
 	NSArray *areaIdKeys = @[@"deck2.selection.mission_1", @"deck3.selection.mission_1", @"deck4.selection.mission_1"];
-	NSArray *notifiedKeys = @[@"deck2Notified", @"deck3Notified", @"deck4Notified"];
 	NSArray *flagKeys = @[@"deck2Flag", @"deck3Flag", @"deck4Flag"];
 
 	NSNumber *areaId = [self valueForKeyPath:areaIdKeys[number - 2]];
-	if(![areaId isKindOfClass:[NSNumber class]]) {
-		[self setValue:@NO forKey:notifiedKeys[number - 2]];
-		[self setValue:@NO forKey:flagKeys[number - 2]]; 
+	if(![areaId isKindOfClass:[NSNumber class]] || [areaId integerValue] == 0) {
+		[self setValue:@NO forKey:flagKeys[number - 2]];
 		return nil;
 	}
 	
@@ -110,9 +112,8 @@
 	
 	NSArray *array = [self.managedObjectContext executeFetchRequest:request error:NULL];
 	if([array count] == 0) {
-		[self setValue:@NO forKey:notifiedKeys[number - 2]];
 		[self setValue:@NO forKey:flagKeys[number - 2]];
-		return nil;
+		return @"Unknown";
 	}
 	
 	NSString *name = [array[0] valueForKey:@"name"];
@@ -174,7 +175,7 @@
 	[request setPredicate:predicate];
 	
 	NSArray *array = [self.managedObjectContext executeFetchRequest:request error:NULL];
-	if([array count] == 0) return nil;
+	if([array count] == 0) return @"Unknown";
 	
 	NSString *name = [array[0] valueForKeyPath:@"master_ship.name"];
 	return name;
