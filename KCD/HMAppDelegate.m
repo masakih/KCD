@@ -8,16 +8,22 @@
 
 #import "HMAppDelegate.h"
 
-#import "HMJSONTracker.h"
 #import "HMBroserWindowController.h"
-#import "HMShipWindowController.h"
 
+#ifdef DEBUG
+#import "HMShipWindowController.h"
+#endif
 
 @interface HMAppDelegate () <NSUserNotificationCenterDelegate>
 
 @property (retain) HMBroserWindowController *browserWindowController;
+
+#ifdef DEBUG
 @property (strong) HMShipWindowController *shipWindowController;
+#endif
+#ifdef ENABLE_JSON_LOG
 @property (retain) HMJSONViewWindowController *logedJSONViewWindowController;
+#endif
 @end
 
 @implementation HMAppDelegate
@@ -65,11 +71,15 @@ static FILE* logFileP = NULL;
 	self.browserWindowController = [HMBroserWindowController new];
 	[self.browserWindowController showWindow:nil];
 	
+#ifdef ENABLE_JSON_LOG
 	self.jsonViewWindowController = [HMJSONViewWindowController new];
 	[self.jsonViewWindowController showWindow:nil];
-	
+#endif
+#ifdef DEBUG
 	self.shipWindowController = [HMShipWindowController new];
 	[self.shipWindowController showWindow:nil];
+#endif
+	
 }
 
 #pragma mark - NSUserNotificationCenterDelegate
@@ -78,6 +88,7 @@ static FILE* logFileP = NULL;
 	return YES;
 }
 
+#ifdef ENABLE_JSON_LOG
 - (IBAction)saveDocument:(id)sender
 {
 	NSSavePanel *panel = [NSSavePanel savePanel];
@@ -127,5 +138,6 @@ static FILE* logFileP = NULL;
 		}
 	}];
 }
+#endif
 
 @end

@@ -122,7 +122,11 @@ static NSManagedObjectModel *_managedObjectModel = nil;
 							  NSInferMappingModelAutomaticallyOption : @YES
 							  };
     NSPersistentStoreCoordinator *coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:mom];
+#ifdef DEBUG
     if (![coordinator addPersistentStoreWithType:NSXMLStoreType configuration:nil URL:url options:options error:&error]) {
+#else
+	if (![coordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:url options:options error:&error]) {
+#endif
         [[NSApplication sharedApplication] presentError:error];
         return nil;
     }

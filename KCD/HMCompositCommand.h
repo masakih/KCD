@@ -8,7 +8,7 @@
 
 #import "HMJSONCommand.h"
 
-#ifdef DEBUG
+#ifdef ENABLE_JSON_LOG
 @interface HMCompositCommand : HMJSONCommand
 
 + (id)compositCommandWithCommands:(HMJSONCommand *)cmd1, ...;

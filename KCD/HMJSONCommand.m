@@ -12,7 +12,7 @@
 #import "HMCoreDataManager.h"
 #import "HMJSONNode.h"
 
-#ifdef DEBUG
+#ifdef ENABLE_JSON_LOG
 #import "HMCompositCommand.h"
 #import "HMJSONViewCommand.h"
 #endif
@@ -48,7 +48,7 @@ static NSMutableArray *registeredCommands = nil;
 		if([commandClass canExcuteAPI:api]) {
 			HMJSONCommand *command =  [commandClass new];
 			command.api = api;
-#ifdef DEBUG
+#ifdef ENABLE_JSON_LOG
 			HMJSONViewCommand *viewCommand = [HMJSONViewCommand new];
 			viewCommand.api = api;
 			command = [HMCompositCommand compositCommandWithCommands:viewCommand, command, nil];
@@ -56,7 +56,7 @@ static NSMutableArray *registeredCommands = nil;
 			return command;
 		}
 	}
-#ifdef DEBUG
+#ifdef ENABLE_JSON_LOG
 	HMJSONViewCommand *viewCommand = [HMJSONViewCommand new];
 	viewCommand.api = api;
 	return viewCommand;

@@ -8,7 +8,7 @@
 
 #import "HMCompositCommand.h"
 
-#ifdef DEBUG
+#ifdef ENABLE_JSON_LOG
 
 @interface HMCompositCommand ()
 @property (retain) NSMutableArray *commands;
