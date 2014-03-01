@@ -111,10 +111,7 @@
 	[request setPredicate:predicate];
 	
 	NSArray *array = [self.managedObjectContext executeFetchRequest:request error:NULL];
-	if([array count] == 0) {
-		[self setValue:@NO forKey:flagKeys[number - 2]];
-		return @"Unknown";
-	}
+	if([array count] == 0) return @"Unknown";
 	
 	NSString *name = [array[0] valueForKey:@"name"];
 	return name;
