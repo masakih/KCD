@@ -199,9 +199,10 @@
 
 - (NSNumber *)nDockTimeForNDock:(NSObjectController *)nDock
 {
-	NSNumber *item1 =[nDock valueForKeyPath:@"selection.item1"];
-	if(![item1 isKindOfClass:[NSNumber class]]) return nil;
-	if([item1 isEqualToNumber:@0]) return nil;
+	NSNumber *state =[nDock valueForKeyPath:@"selection.state"];
+	if(![state isKindOfClass:[NSNumber class]]) return nil;
+	if([state isEqualToNumber:@0]) return nil;
+	if([state isEqualToNumber:@(-1)]) return nil;
 	
 	NSNumber *compTimeValue = [nDock valueForKeyPath:@"selection.complete_time"];
 	if(![compTimeValue isKindOfClass:[NSNumber class]]) return nil;
