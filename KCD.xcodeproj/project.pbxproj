@@ -108,6 +108,10 @@
 		F47B78AF18A7B42B0011386E /* HMJSONViewWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMJSONViewWindowController.h; sourceTree = "<group>"; };
 		F47B78B018A7B42B0011386E /* HMJSONViewWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMJSONViewWindowController.m; sourceTree = "<group>"; };
 		F47B78B118A7B42B0011386E /* HMJSONViewWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMJSONViewWindowController.xib; sourceTree = "<group>"; };
+		F494DC5618C23E4300AE97E4 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		F494DC5718C23E4300AE97E4 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F494DC5818C23E4300AE97E4 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = ja; path = ja.lproj/Credits.rtf; sourceTree = "<group>"; };
+		F494DC5918C23E4400AE97E4 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F4B414E718B09A4B00468DAF /* HMMasterMapAreaCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMasterMapAreaCommand.h; sourceTree = "<group>"; };
 		F4B414E818B09A4B00468DAF /* HMMasterMapAreaCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMasterMapAreaCommand.m; sourceTree = "<group>"; };
 		F4B414EA18B0A7D600468DAF /* HMMasterUseItemCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMasterUseItemCommand.h; sourceTree = "<group>"; };
@@ -130,10 +134,8 @@
 		F4BDEB4A187252F30069D0CE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		F4BDEB4B187252F30069D0CE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F4BDEB4E187252F30069D0CE /* KCD-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KCD-Info.plist"; sourceTree = "<group>"; };
-		F4BDEB50187252F30069D0CE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F4BDEB52187252F30069D0CE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F4BDEB54187252F30069D0CE /* KCD-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KCD-Prefix.pch"; sourceTree = "<group>"; };
-		F4BDEB56187252F30069D0CE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		F4BDEB58187252F30069D0CE /* HMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMAppDelegate.h; sourceTree = "<group>"; };
 		F4BDEB59187252F30069D0CE /* HMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMAppDelegate.m; sourceTree = "<group>"; };
 		F4BDEB5C187252F30069D0CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -141,7 +143,6 @@
 		F4BDEB64187252F30069D0CE /* KCDTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KCDTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4BDEB65187252F30069D0CE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		F4BDEB6C187252F30069D0CE /* KCDTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KCDTests-Info.plist"; sourceTree = "<group>"; };
-		F4BDEB6E187252F30069D0CE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F4BDEB70187252F30069D0CE /* KCDTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KCDTests.m; sourceTree = "<group>"; };
 		F4BDEB7A187253130069D0CE /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		F4C041B91875CAF5009273EB /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -427,6 +428,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = F4BDEB3A187252F30069D0CE;
 			productRefGroup = F4BDEB44187252F30069D0CE /* Products */;
@@ -534,7 +536,7 @@
 		F4BDEB4F187252F30069D0CE /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				F4BDEB50187252F30069D0CE /* en */,
+				F494DC5718C23E4300AE97E4 /* ja */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -542,7 +544,7 @@
 		F4BDEB55187252F30069D0CE /* Credits.rtf */ = {
 			isa = PBXVariantGroup;
 			children = (
-				F4BDEB56187252F30069D0CE /* en */,
+				F494DC5818C23E4300AE97E4 /* ja */,
 			);
 			name = Credits.rtf;
 			sourceTree = "<group>";
@@ -551,6 +553,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F4BDEB5C187252F30069D0CE /* Base */,
+				F494DC5618C23E4300AE97E4 /* ja */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -558,7 +561,7 @@
 		F4BDEB6D187252F30069D0CE /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				F4BDEB6E187252F30069D0CE /* en */,
+				F494DC5918C23E4400AE97E4 /* ja */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
