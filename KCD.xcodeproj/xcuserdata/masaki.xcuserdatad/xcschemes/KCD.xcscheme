@@ -71,7 +71,7 @@
          <EnvironmentVariable
             key = "ENABLE_JSON_LOG"
             value = ""
-            isEnabled = "NO">
+            isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>
       <AdditionalOptions>
