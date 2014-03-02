@@ -8,6 +8,17 @@
 
 #import "HMMemberDeckCommand.h"
 
+/* 
+ mission_0:	status
+	0:ミッション無し
+	1:ミッション中
+	2:帰投 (おそらく帰投時のデータ確認用か帰投表示を出すため）
+ 
+ mission_1: maparea_id
+ mission_2: 帰投時間
+ mission_3: 未使用？
+ */
+
 @implementation HMMemberDeckCommand
 + (void)load
 {
