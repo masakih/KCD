@@ -68,11 +68,26 @@
 #pragma mark - Mission
 - (void)notifyReturnFromMission:(NSUInteger)number
 {
-	NSArray *notifiedKeys = @[@"deck2Notified", @"deck3Notified", @"deck4Notified"];
-	NSArray *timeKeys = @[@"deck2Time", @"deck3Time", @"deck4Time"];
-	NSArray *nameKeys = @[@"mission2Name", @"mission3Name", @"mission4Name"];
-	NSArray *fleetNameKeys = @[@"deck2.selection.name", @"deck3.selection.name", @"deck4.selection.name"];
-	NSArray *missionStatus = @[@"deck2.selection.mission_0", @"deck3.selection.mission_0", @"deck4.selection.mission_0"];
+	static NSArray *notifiedKeys = nil;
+	if(!notifiedKeys) {
+		notifiedKeys = @[@"deck2Notified", @"deck3Notified", @"deck4Notified"];
+	}
+	static NSArray *timeKeys = nil;
+	if(!timeKeys) {
+		timeKeys = @[@"deck2Time", @"deck3Time", @"deck4Time"];
+	}
+	static NSArray *nameKeys = nil;
+	if(!nameKeys) {
+		nameKeys = @[@"mission2Name", @"mission3Name", @"mission4Name"];
+	}
+	static NSArray *fleetNameKeys = nil;
+	if(!fleetNameKeys) {
+		fleetNameKeys = @[@"deck2.selection.name", @"deck3.selection.name", @"deck4.selection.name"];
+	}
+	static NSArray *missionStatus = nil;
+	if(!missionStatus) {
+		missionStatus = @[@"deck2.selection.mission_0", @"deck3.selection.mission_0", @"deck4.selection.mission_0"];
+	}
 	
 	NSNumber *status = [self valueForKeyPath:missionStatus[number - 2]];
 	if([status isKindOfClass:[NSNumber class]] && [status isEqualToNumber:@2]) return;
@@ -101,9 +116,18 @@
 
 - (NSString *)missionNameForDeckNumber:(NSUInteger)number
 {
-	NSArray *areaIdKeys = @[@"deck2.selection.mission_1", @"deck3.selection.mission_1", @"deck4.selection.mission_1"];
-	NSArray *flagKeys = @[@"deck2Flag", @"deck3Flag", @"deck4Flag"];
-	NSArray *missionStatus = @[@"deck2.selection.mission_0", @"deck3.selection.mission_0", @"deck4.selection.mission_0"];
+	static NSArray *areaIdKeys = nil;
+	if(!areaIdKeys) {
+		areaIdKeys = @[@"deck2.selection.mission_1", @"deck3.selection.mission_1", @"deck4.selection.mission_1"];
+	}
+	static NSArray *flagKeys = nil;
+	if(!flagKeys) {
+		flagKeys = @[@"deck2Flag", @"deck3Flag", @"deck4Flag"];
+	}
+	static NSArray *missionStatus = nil;
+	if(!missionStatus) {
+		missionStatus = @[@"deck2.selection.mission_0", @"deck3.selection.mission_0", @"deck4.selection.mission_0"];
+	}
 	
 	NSNumber *status = [self valueForKeyPath:missionStatus[number - 2]];
 	if([status isKindOfClass:[NSNumber class]] && [status isEqualToNumber:@2]) return nil;
@@ -172,7 +196,10 @@
 #pragma mark - Docking
 - (NSString *)shipNameForNDockNumber:(NSUInteger)number
 {
-	NSArray *shipIdKeys = @[@"nDock1.selection.ship_id", @"nDock2.selection.ship_id", @"nDock3.selection.ship_id", @"nDock4.selection.ship_id"];
+	static NSArray *shipIdKeys = nil;
+	if(!shipIdKeys) {
+		shipIdKeys = @[@"nDock1.selection.ship_id", @"nDock2.selection.ship_id", @"nDock3.selection.ship_id", @"nDock4.selection.ship_id"];
+	}
 	
 	NSNumber *nDockShipId = [self valueForKeyPath:shipIdKeys[number - 1]];
 	if(![nDockShipId isKindOfClass:[NSNumber class]]) return nil;
@@ -227,8 +254,14 @@
 }
 - (void)notifyIfNeededFinishDockingNumber:(NSUInteger)number
 {
-	NSArray *timeKeys = @[@"nDock1Time", @"nDock2Time", @"nDock3Time", @"nDock4Time"];
-	NSArray *notifiedKeys = @[@"nDock1Notified", @"nDock2Notified", @"nDock3Notified", @"nDock4Notified"];
+	static NSArray *timeKeys = nil;
+	if(!timeKeys) {
+		timeKeys = @[@"nDock1Time", @"nDock2Time", @"nDock3Time", @"nDock4Time"];
+	}
+	static NSArray *notifiedKeys = nil;
+	if(!notifiedKeys) {
+		notifiedKeys = @[@"nDock1Notified", @"nDock2Notified", @"nDock3Notified", @"nDock4Notified"];
+	}
 	
 	NSTimeInterval time = [[self valueForKey:timeKeys[number - 1]] doubleValue];
 	
@@ -248,8 +281,14 @@
 }
 - (void)notifyIfNeededFinishBuildAtDockNumber:(NSUInteger)number
 {
-	NSArray *timeKeys = @[@"kDock1Time", @"kDock2Time", @"kDock3Time", @"kDock4Time"];
-	NSArray *notifiedKeys = @[@"kDock1Notified", @"kDock2Notified", @"kDock3Notified", @"kDock4Notified"];
+	static NSArray *timeKeys = nil;
+	if(!timeKeys) {
+		timeKeys = @[@"kDock1Time", @"kDock2Time", @"kDock3Time", @"kDock4Time"];
+	}
+	static NSArray *notifiedKeys = nil;
+	if(!notifiedKeys) {
+		notifiedKeys = @[@"kDock1Notified", @"kDock2Notified", @"kDock3Notified", @"kDock4Notified"];
+	}
 	
 	NSTimeInterval time = [[self valueForKey:timeKeys[number - 1]] doubleValue];
 	
