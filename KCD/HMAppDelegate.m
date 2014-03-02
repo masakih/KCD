@@ -82,6 +82,12 @@ static FILE* logFileP = NULL;
 	
 }
 
+#pragma mark - NSApplicationDelegate
+- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender
+{
+	return YES;
+}
+
 #pragma mark - NSUserNotificationCenterDelegate
 - (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center shouldPresentNotification:(NSUserNotification *)notification
 {
@@ -114,7 +120,7 @@ static FILE* logFileP = NULL;
 	}];
 }
 
-- (IBAction)openDoument:(id)sender
+- (IBAction)openDocument:(id)sender
 {
 	NSOpenPanel *panel = [NSOpenPanel openPanel];
 	[panel setAllowedFileTypes:@[@"plist"]];
