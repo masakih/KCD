@@ -72,6 +72,10 @@
 	NSArray *timeKeys = @[@"deck2Time", @"deck3Time", @"deck4Time"];
 	NSArray *nameKeys = @[@"mission2Name", @"mission3Name", @"mission4Name"];
 	NSArray *fleetNameKeys = @[@"deck2.selection.name", @"deck3.selection.name", @"deck4.selection.name"];
+	NSArray *missionStatus = @[@"deck2.selection.mission_0", @"deck3.selection.mission_0", @"deck4.selection.mission_0"];
+	
+	NSNumber *status = [self valueForKeyPath:missionStatus[number - 2]];
+	if([status isKindOfClass:[NSNumber class]] && [status isEqualToNumber:@2]) return;
 	
 	NSTimeInterval time = [[self valueForKey:timeKeys[number - 2]] doubleValue];
 	
@@ -99,6 +103,10 @@
 {
 	NSArray *areaIdKeys = @[@"deck2.selection.mission_1", @"deck3.selection.mission_1", @"deck4.selection.mission_1"];
 	NSArray *flagKeys = @[@"deck2Flag", @"deck3Flag", @"deck4Flag"];
+	NSArray *missionStatus = @[@"deck2.selection.mission_0", @"deck3.selection.mission_0", @"deck4.selection.mission_0"];
+	
+	NSNumber *status = [self valueForKeyPath:missionStatus[number - 2]];
+	if([status isKindOfClass:[NSNumber class]] && [status isEqualToNumber:@2]) return nil;
 
 	NSNumber *areaId = [self valueForKeyPath:areaIdKeys[number - 2]];
 	if(![areaId isKindOfClass:[NSNumber class]] || [areaId integerValue] == 0) {
@@ -133,6 +141,9 @@
 	NSNumber *compTimeValue = [deck valueForKeyPath:@"selection.mission_2"];
 	if(![compTimeValue isKindOfClass:[NSNumber class]]) return nil;
 	if([compTimeValue isEqualToNumber:@0]) return nil;
+		
+	NSNumber *status = [deck valueForKeyPath: @"selection.mission_0"];
+	if([status isKindOfClass:[NSNumber class]] && [status isEqualToNumber:@2]) return nil;
 	
 	NSTimeInterval compTime = (NSUInteger)([compTimeValue doubleValue] / 1000.0);
 	NSDate *now = [NSDate dateWithTimeIntervalSinceNow:0];
