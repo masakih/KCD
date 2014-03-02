@@ -24,6 +24,10 @@
 @property BOOL deck3Flag;
 @property BOOL deck4Flag;
 
+@property BOOL deck2PrevStatusIs2;
+@property BOOL deck3PrevStatusIs2;
+@property BOOL deck4PrevStatusIs2;
+
 
 // NSUserNotifyを行ったか
 @property BOOL deck2Notified;
@@ -165,9 +169,29 @@
 	NSNumber *compTimeValue = [deck valueForKeyPath:@"selection.mission_2"];
 	if(![compTimeValue isKindOfClass:[NSNumber class]]) return nil;
 	if([compTimeValue isEqualToNumber:@0]) return nil;
+	
+	
+	// 前回のステータスが2の場合、終了したミッションが再びセットされる場合がある
+	NSUInteger deckNumber = [[deck valueForKeyPath:@"selection.id"] integerValue];
+	NSArray *prevStatKey = @[@"deck2PrevStatusIs2", @"deck3PrevStatusIs2", @"deck4PrevStatusIs2"];
+	BOOL prevStatus = [[self valueForKey:prevStatKey[deckNumber - 2]] boolValue];
+	if(prevStatus) {
+		[self setValue:@NO forKey:prevStatKey[deckNumber - 2]];
 		
+		[deck setValue:@0 forKeyPath:@"selection.mission_0"];
+		[deck setValue:@0 forKeyPath:@"selection.mission_1"];
+		[deck setValue:@0 forKeyPath:@"selection.mission_2"];
+		[deck setValue:@0 forKeyPath:@"selection.mission_3"];
+		
+		return nil;
+	}
+	
+	// ミッションステータスチェック
 	NSNumber *status = [deck valueForKeyPath: @"selection.mission_0"];
-	if([status isKindOfClass:[NSNumber class]] && [status isEqualToNumber:@2]) return nil;
+	if([status isKindOfClass:[NSNumber class]] && [status isEqualToNumber:@2]) {
+		[self setValue:@YES forKey:prevStatKey[deckNumber - 2]];
+		return nil;
+	}
 	
 	NSTimeInterval compTime = (NSUInteger)([compTimeValue doubleValue] / 1000.0);
 	NSDate *now = [NSDate dateWithTimeIntervalSinceNow:0];
