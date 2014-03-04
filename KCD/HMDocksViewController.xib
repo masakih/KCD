@@ -7,9 +7,6 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="HMDocksViewController">
             <connections>
-                <outlet property="deck2" destination="JD2-Is-0N3" id="wQh-E9-nRq"/>
-                <outlet property="deck3" destination="fW3-eV-iD2" id="lQi-zP-O6b"/>
-                <outlet property="deck4" destination="mcD-xj-hLm" id="ruP-jL-rGm"/>
                 <outlet property="kDock1" destination="3jk-7x-v7s" id="mZw-i1-5SC"/>
                 <outlet property="kDock2" destination="aXv-ob-wVw" id="I5h-NB-KNj"/>
                 <outlet property="kDock3" destination="ZCV-fJ-s2q" id="2Kk-bO-cMO"/>
@@ -493,21 +490,6 @@
         <objectController mode="entity" entityName="KenzoDock" fetchPredicateFormat="id = 4" editable="NO" automaticallyPreparesContent="YES" id="9Kn-yL-osX" userLabel="kDock4">
             <connections>
                 <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="Mv1-18-kk6"/>
-            </connections>
-        </objectController>
-        <objectController mode="entity" entityName="Deck" fetchPredicateFormat="id = 2" editable="NO" automaticallyPreparesContent="YES" id="JD2-Is-0N3" userLabel="deck2">
-            <connections>
-                <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="Cyf-Be-eNZ"/>
-            </connections>
-        </objectController>
-        <objectController mode="entity" entityName="Deck" fetchPredicateFormat="id = 3" editable="NO" automaticallyPreparesContent="YES" id="fW3-eV-iD2" userLabel="deck3">
-            <connections>
-                <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="rM9-jv-lrc"/>
-            </connections>
-        </objectController>
-        <objectController mode="entity" entityName="Deck" fetchPredicateFormat="id = 4" editable="NO" automaticallyPreparesContent="YES" id="mcD-xj-hLm" userLabel="deck4">
-            <connections>
-                <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="ZGl-49-2A3"/>
             </connections>
         </objectController>
     </objects>

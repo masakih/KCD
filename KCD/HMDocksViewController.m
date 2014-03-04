@@ -10,6 +10,9 @@
 
 #import "HMCoreDataManager.h"
 
+#import "HMMissionStatus.h"
+
+
 @interface HMDocksViewController ()
 
 
@@ -19,21 +22,8 @@
 @property BOOL nDock3Flag;
 @property BOOL nDock4Flag;
 
-// 遠征中フラグ
-@property BOOL deck2Flag;
-@property BOOL deck3Flag;
-@property BOOL deck4Flag;
-
-@property BOOL deck2PrevStatusIs2;
-@property BOOL deck3PrevStatusIs2;
-@property BOOL deck4PrevStatusIs2;
-
 
 // NSUserNotifyを行ったか
-@property BOOL deck2Notified;
-@property BOOL deck3Notified;
-@property BOOL deck4Notified;
-
 @property BOOL nDock1Notified;
 @property BOOL nDock2Notified;
 @property BOOL nDock3Notified;
@@ -43,6 +33,12 @@
 @property BOOL kDock2Notified;
 @property BOOL kDock3Notified;
 @property BOOL kDock4Notified;
+
+
+
+@property (strong) HMMissionStatus *mission2Status;
+@property (strong) HMMissionStatus *mission3Status;
+@property (strong) HMMissionStatus *mission4Status;
 
 @end
 
@@ -54,9 +50,44 @@
 	return [HMCoreDataManager defaultManager].managedObjectContext;
 }
 
++ (NSSet *)keyPathsForValuesAffectingMission2Name
+{
+	return [NSSet setWithObjects:@"mission2Status.name", nil];
+}
++ (NSSet *)keyPathsForValuesAffectingMission3Name
+{
+	return [NSSet setWithObjects:@"mission3Status.name", nil];
+}
++ (NSSet *)keyPathsForValuesAffectingMission4Name
+{
+	return [NSSet setWithObjects:@"mission4Status.name", nil];
+}
++ (NSSet *)keyPathsForValuesAffectingDeck2Time
+{
+	return [NSSet setWithObjects:@"mission2Status.time", nil];
+}
++ (NSSet *)keyPathsForValuesAffectingDeck3Time
+{
+	return [NSSet setWithObjects:@"mission3Status.time", nil];
+}
++ (NSSet *)keyPathsForValuesAffectingDeck4Time
+{
+	return [NSSet setWithObjects:@"mission4Status.time", nil];
+}
+
 - (id)init
 {
 	self = [super initWithNibName:NSStringFromClass([self class]) bundle:nil];
+	if(self) {
+		_mission2Status = [[HMMissionStatus alloc] initWithDeckNumber:2];
+		_mission2Status.managedObjectContext = self.managedObjectContext;
+		
+		_mission3Status = [[HMMissionStatus alloc] initWithDeckNumber:3];
+		_mission3Status.managedObjectContext = self.managedObjectContext;
+		
+		_mission4Status = [[HMMissionStatus alloc] initWithDeckNumber:4];
+		_mission4Status.managedObjectContext = self.managedObjectContext;
+	}
 	return self;
 }
 
@@ -70,138 +101,29 @@
 }
 
 #pragma mark - Mission
-- (void)notifyReturnFromMission:(NSUInteger)number
-{
-	static NSArray *notifiedKeys = nil;
-	if(!notifiedKeys) {
-		notifiedKeys = @[@"deck2Notified", @"deck3Notified", @"deck4Notified"];
-	}
-	static NSArray *timeKeys = nil;
-	if(!timeKeys) {
-		timeKeys = @[@"deck2Time", @"deck3Time", @"deck4Time"];
-	}
-	static NSArray *nameKeys = nil;
-	if(!nameKeys) {
-		nameKeys = @[@"mission2Name", @"mission3Name", @"mission4Name"];
-	}
-	static NSArray *fleetNameKeys = nil;
-	if(!fleetNameKeys) {
-		fleetNameKeys = @[@"deck2.selection.name", @"deck3.selection.name", @"deck4.selection.name"];
-	}
-	static NSArray *missionStatus = nil;
-	if(!missionStatus) {
-		missionStatus = @[@"deck2.selection.mission_0", @"deck3.selection.mission_0", @"deck4.selection.mission_0"];
-	}
-	
-	NSNumber *status = [self valueForKeyPath:missionStatus[number - 2]];
-	if([status isKindOfClass:[NSNumber class]] && [status isEqualToNumber:@2]) return;
-	
-	NSTimeInterval time = [[self valueForKey:timeKeys[number - 2]] doubleValue];
-	
-	if(time < 1 * 60 - [[NSTimeZone systemTimeZone] secondsFromGMT]) {
-		BOOL didNotified = [[self valueForKey:notifiedKeys[number - 2]] boolValue];
-		if(!didNotified) {
-			NSString *missionName = [self valueForKey:nameKeys[number - 2]];
-			NSString *fleetName = [self valueForKeyPath:fleetNameKeys[number - 2]];
-			
-			NSUserNotification * notification = [NSUserNotification new];
-			NSString *format = NSLocalizedString(@"%@ Will Return From Mission.", @"%@ Will Return From Mission.");
-			notification.title = [NSString stringWithFormat:format, fleetName];
-			format = NSLocalizedString(@"%@ Will Return From %@.", @"%@ Will Return From %@.");
-			notification.informativeText = [NSString stringWithFormat:format, fleetName, missionName];
-			[[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
-			
-			[self setValue:@YES forKey:notifiedKeys[number - 2]];
-		}
-	} else {
-		[self setValue:@NO forKey:notifiedKeys[number - 2]];
-	}
-}
-
-- (NSString *)missionNameForDeckNumber:(NSUInteger)number
-{
-	static NSArray *areaIdKeys = nil;
-	if(!areaIdKeys) {
-		areaIdKeys = @[@"deck2.selection.mission_1", @"deck3.selection.mission_1", @"deck4.selection.mission_1"];
-	}
-	static NSArray *flagKeys = nil;
-	if(!flagKeys) {
-		flagKeys = @[@"deck2Flag", @"deck3Flag", @"deck4Flag"];
-	}
-	static NSArray *missionStatus = nil;
-	if(!missionStatus) {
-		missionStatus = @[@"deck2.selection.mission_0", @"deck3.selection.mission_0", @"deck4.selection.mission_0"];
-	}
-	
-	NSNumber *status = [self valueForKeyPath:missionStatus[number - 2]];
-	if([status isKindOfClass:[NSNumber class]] && [status isEqualToNumber:@2]) return nil;
-
-	NSNumber *areaId = [self valueForKeyPath:areaIdKeys[number - 2]];
-	if(![areaId isKindOfClass:[NSNumber class]] || [areaId integerValue] == 0) {
-		[self setValue:@NO forKey:flagKeys[number - 2]];
-		return nil;
-	}
-	
-	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"MasterMission"];
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id = %@", areaId];
-	[request setPredicate:predicate];
-	
-	NSArray *array = [self.managedObjectContext executeFetchRequest:request error:NULL];
-	if([array count] == 0) return @"Unknown";
-	
-	NSString *name = [array[0] valueForKey:@"name"];
-	return name;
-}
 - (NSString *)mission2Name
 {
-	return [self missionNameForDeckNumber:2];
+	return self.mission2Status.name;
 }
 - (NSString *)mission3Name
 {
-	return [self missionNameForDeckNumber:3];
+	return self.mission3Status.name;
 }
 - (NSString *)mission4Name
 {
-	return [self missionNameForDeckNumber:4];
+	return self.mission4Status.name;
 }
-- (NSNumber *)missionTimeForDeck:(NSObjectController *)deck
+- (NSNumber *)deck2Time
 {
-	NSNumber *compTimeValue = [deck valueForKeyPath:@"selection.mission_2"];
-	if(![compTimeValue isKindOfClass:[NSNumber class]]) return nil;
-	if([compTimeValue isEqualToNumber:@0]) return nil;
-	
-	
-	// 前回のステータスが2の場合、終了したミッションが再びセットされる場合がある
-	NSUInteger deckNumber = [[deck valueForKeyPath:@"selection.id"] integerValue];
-	NSArray *prevStatKey = @[@"deck2PrevStatusIs2", @"deck3PrevStatusIs2", @"deck4PrevStatusIs2"];
-	BOOL prevStatus = [[self valueForKey:prevStatKey[deckNumber - 2]] boolValue];
-	if(prevStatus) {
-		[self setValue:@NO forKey:prevStatKey[deckNumber - 2]];
-		
-		[deck setValue:@0 forKeyPath:@"selection.mission_0"];
-		[deck setValue:@0 forKeyPath:@"selection.mission_1"];
-		[deck setValue:@0 forKeyPath:@"selection.mission_2"];
-		[deck setValue:@0 forKeyPath:@"selection.mission_3"];
-		
-		return nil;
-	}
-	
-	// ミッションステータスチェック
-	NSNumber *status = [deck valueForKeyPath: @"selection.mission_0"];
-	if([status isKindOfClass:[NSNumber class]] && [status isEqualToNumber:@2]) {
-		[self setValue:@YES forKey:prevStatKey[deckNumber - 2]];
-		return nil;
-	}
-	
-	NSTimeInterval compTime = (NSUInteger)([compTimeValue doubleValue] / 1000.0);
-	NSDate *now = [NSDate dateWithTimeIntervalSinceNow:0];
-	NSTimeInterval diff = compTime - [now timeIntervalSince1970];
-	
-	if(diff < 0) {
-		return @( - [[NSTimeZone systemTimeZone] secondsFromGMT]);
-	} else {
-		return @(diff - [[NSTimeZone systemTimeZone] secondsFromGMT]);
-	}
+	return self.mission2Status.time;
+}
+- (NSNumber *)deck3Time
+{
+	return self.mission3Status.time;
+}
+- (NSNumber *)deck4Time
+{
+	return self.mission4Status.time;
 }
 - (void)checkNameForKey:(NSString *)nameKey flagKey:(NSString *)flagKey timeValue:(id)timeValue
 {
@@ -360,16 +282,9 @@
 	[self notifyIfNeededFinishBuildAtDockNumber:4];
 	
 	// 遠征
-	self.deck2Time = [self missionTimeForDeck:self.deck2];
-	self.deck3Time = [self missionTimeForDeck:self.deck3];
-	self.deck4Time = [self missionTimeForDeck:self.deck4];
-	[self checkNameForKey:@"mission2Name" flagKey:@"deck2Flag" timeValue:self.deck2Time];
-	[self checkNameForKey:@"mission3Name" flagKey:@"deck3Flag" timeValue:self.deck3Time];
-	[self checkNameForKey:@"mission4Name" flagKey:@"deck4Flag" timeValue:self.deck4Time];
-	
-	[self notifyReturnFromMission:2];
-	[self notifyReturnFromMission:3];
-	[self notifyReturnFromMission:4];
+	[self.mission2Status update];
+	[self.mission3Status update];
+	[self.mission4Status update];
 }
 
 @end
