@@ -71,17 +71,6 @@
                                     <action selector="openDocument:" target="-1" id="1Ka-E8-NEN"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Open Recent" id="124">
-                                <menu key="submenu" title="Open Recent" systemMenu="recentDocuments" id="125">
-                                    <items>
-                                        <menuItem title="Clear Menu" id="126">
-                                            <connections>
-                                                <action selector="clearRecentDocuments:" target="-1" id="127"/>
-                                            </connections>
-                                        </menuItem>
-                                    </items>
-                                </menu>
-                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="79">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
@@ -172,6 +161,29 @@
                                         </menuItem>
                                     </items>
                                 </menu>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="View" id="tAR-BV-xdI">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="View" id="Vz8-ph-AM1">
+                        <items>
+                            <menuItem title="Reload" keyEquivalent="r" id="gZf-9I-jGv">
+                                <connections>
+                                    <action selector="reloadContent:" target="-1" id="vXX-Pt-rJE"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="FOc-xH-bVq"/>
+                            <menuItem title="Time" keyEquivalent="1" id="Yem-aw-cnP">
+                                <connections>
+                                    <action selector="selectView:" target="-1" id="TSA-uS-UTr"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Ship 1" tag="1" keyEquivalent="2" id="qeT-8e-gvB">
+                                <connections>
+                                    <action selector="selectView:" target="-1" id="bmZ-W7-wzw"/>
+                                </connections>
                             </menuItem>
                         </items>
                     </menu>

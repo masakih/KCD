@@ -9,12 +9,15 @@
 #import "HMBroserWindowController.h"
 
 #import "HMDocksViewController.h"
+#import "HMShipViewController.h"
+
 #import "HMCoreDataManager.h"
 
 
 @interface HMBroserWindowController ()
 
-@property (strong) HMDocksViewController *dockViewController;
+@property (strong) NSViewController *selectedViewController;
+@property (strong) NSMutableDictionary *controllers;
 
 @end
 
@@ -23,6 +26,9 @@
 - (id)init
 {
 	self = [super initWithWindowNibName:NSStringFromClass([self class])];
+	if(self) {
+		_controllers = [NSMutableDictionary new];
+	}
 	return self;
 }
 
@@ -35,10 +41,11 @@
 	[clip setDocumentView:self.webView];
 	[clip scrollToPoint:NSMakePoint(70, 425)];
 	
-	self.dockViewController = [HMDocksViewController new];
-	[self.dockViewController.view setFrame:[self.docksPlaceholder frame]];
-	[self.dockViewController.view setAutoresizingMask:[self.docksPlaceholder autoresizingMask]];
-	[[self.docksPlaceholder superview] replaceSubview:self.docksPlaceholder with:self.dockViewController.view];
+	self.selectedViewController = [HMDocksViewController new];
+	[self.selectedViewController.view setFrame:[self.docksPlaceholder frame]];
+	[self.selectedViewController.view setAutoresizingMask:[self.docksPlaceholder autoresizingMask]];
+	[[self.docksPlaceholder superview] replaceSubview:self.docksPlaceholder with:self.selectedViewController.view];
+	[self.controllers setObject:self.selectedViewController forKey:@0];
 	
 	
 	[[[self.webView mainFrame] frameView] setAllowsScrolling:NO];
@@ -64,5 +71,56 @@
 	return linksString;
 }
 
+- (void)showViewWithNumber:(NSInteger)number
+{
+	Class controllerClass = Nil;
+
+	switch (number) {
+		case 0:
+			controllerClass = [HMDocksViewController class];
+			break;
+		case 1:
+			controllerClass = [HMShipViewController class];
+			break;
+		default:
+			break;
+	}
+	
+	if(!controllerClass) return;
+	if([self.selectedViewController isMemberOfClass:controllerClass]) return;
+	
+	NSViewController *newContoller = [self.controllers objectForKey:@(number)];
+	if(!newContoller) {
+		newContoller = [controllerClass new];
+		[self.controllers setObject:newContoller forKey:@(number)];
+	}
+	[newContoller.view setFrame:[self.selectedViewController.view frame]];
+	[newContoller.view setAutoresizingMask:[self.selectedViewController.view autoresizingMask]];
+	[[self.selectedViewController.view superview] replaceSubview:self.selectedViewController.view with:newContoller.view];
+	self.selectedViewController = newContoller;
+	
+	self.selectedViewsSegment = number;
+}
+
+- (IBAction)reloadContent:(id)sender
+{
+	id /*NSClipView * */ clip = [self.webView superview];
+	[clip scrollToPoint:NSMakePoint(70, 425)];
+	[self.webView reload:sender];
+}
+
+
+- (IBAction)selectView:(id)sender
+{
+	NSInteger tag = -1;
+	if([sender respondsToSelector:@selector(selectedSegment)]) {
+		NSSegmentedCell *cell = [sender cell];
+		NSUInteger index = [sender selectedSegment];
+		tag = [cell tagForSegment:index];
+	} else {
+		tag = [sender tag];
+	}
+	[self showViewWithNumber:tag];
+}
 
 @end

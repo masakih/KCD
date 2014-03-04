@@ -22,6 +22,11 @@
 
 @property (readonly) NSAttributedString *linksString;
 
+@property NSInteger selectedViewsSegment;
+
+
+- (IBAction)reloadContent:(id)sender;
+- (IBAction)selectView:(id)sender;
 
 
 @end
