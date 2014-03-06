@@ -8,6 +8,10 @@
 
 #import "HMMemberSlotItemCommand.h"
 
+@interface HMMemberSlotItemCommand ()
+@property (strong) NSMutableArray *ids;
+@end
+
 @implementation HMMemberSlotItemCommand
 + (void)load
 {
@@ -34,6 +38,15 @@
 				   @"api_saku", @"api_member_id", @"api_houg", @"api_atap",
 				   @"api_name"];
 	return ignoreKeys;
+}
+
+- (id)init
+{
+	self = [super init];
+	if(self) {
+		_ids = [NSMutableArray new];
+	}
+	return self;
 }
 
 - (void)execute
@@ -67,10 +80,35 @@
 }
 - (BOOL)handleExtraValue:(id)value forKey:(NSString *)key toObject:(NSManagedObject *)object
 {
+	// 取得後破棄した艦娘のデータを削除する
+	if([key isEqualToString:@"api_id"]) {
+		[self.ids addObject:value];
+		return NO;
+	}
+	
 	if([key isEqualToString:@"api_slotitem_id"]) {
 		[self setMasterSlotItem:value toObject:object];
 		return YES;
 	}
 	return NO;
 }
+
+- (void)finishOperating:(NSManagedObjectContext *)moc
+{
+	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"SlotItem"];
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"NOT id IN %@", self.ids];
+	[request setPredicate:predicate];
+	
+	NSError *error = nil;
+	NSArray *array = [moc executeFetchRequest:request error:&error];
+	if(error) {
+		NSLog(@"HOGEEEEE");
+		return;
+	}
+	
+	for(id obj in array) {
+		[moc deleteObject:obj];
+	}
+}
+
 @end
