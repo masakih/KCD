@@ -83,7 +83,11 @@ static NSCondition *sCondition = nil;
 - (void)setMasterShip:(id)value toObject:(NSManagedObject *)object
 {
 	id currentValue = [object valueForKeyPath:@"master_ship.name"];
-	if(currentValue && ![currentValue isEqual:[NSNull null]]) return;
+	if(currentValue && ![currentValue isEqual:[NSNull null]]) {
+		NSNumber *masterShipId = [object valueForKeyPath:@"master_ship.id"];
+		NSNumber *shipId = [object valueForKey:@"ship_id"];
+		if([masterShipId isEqual:shipId]) return;
+	}
 	
 	NSManagedObjectContext *managedObjectContext = [object managedObjectContext];
 	
