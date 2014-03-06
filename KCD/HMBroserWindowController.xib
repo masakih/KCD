@@ -26,7 +26,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <customView id="jkX-gl-a14">
-                        <rect key="frame" x="807" y="129" width="346" height="424"/>
+                        <rect key="frame" x="807" y="123" width="346" height="430"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                     </customView>
                     <customView id="raX-C4-fMW">
@@ -34,20 +34,20 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" id="hy2-T8-sUp">
-                        <rect key="frame" x="8" y="3" width="800" height="52"/>
+                        <rect key="frame" x="20" y="3" width="788" height="42"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="rGC-re-IS2">
-                            <rect key="frame" x="0.0" y="0.0" width="800" height="52"/>
+                            <rect key="frame" x="0.0" y="0.0" width="788" height="42"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" verticallyResizable="YES" allowsNonContiguousLayout="YES" id="XsL-WO-et2">
-                                    <rect key="frame" x="0.0" y="0.0" width="800" height="52"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="788" height="42"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="800" height="52"/>
+                                    <size key="minSize" width="788" height="42"/>
                                     <size key="maxSize" width="806" height="10000000"/>
                                     <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="800" height="52"/>
+                                    <size key="minSize" width="788" height="42"/>
                                     <size key="maxSize" width="806" height="10000000"/>
                                     <connections>
                                         <binding destination="-2" name="attributedString" keyPath="linksString" id="Zq5-KB-a2U">
@@ -302,16 +302,14 @@
                         <font key="titleFont" metaFont="system"/>
                     </box>
                     <segmentedControl verticalHuggingPriority="750" id="DzQ-d1-fzE">
-                        <rect key="frame" x="818" y="555" width="151" height="24"/>
+                        <rect key="frame" x="818" y="555" width="179" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <segmentedCell key="cell" alignment="left" style="rounded" trackingMode="selectOne" id="sDP-iK-20N">
                             <font key="font" metaFont="system"/>
                             <segments>
                                 <segment label="Time" selected="YES"/>
                                 <segment label="Ship 1" tag="1"/>
-                                <segment width="32">
-                                    <nil key="label"/>
-                                </segment>
+                                <segment label="Ship 2" tag="2"/>
                             </segments>
                         </segmentedCell>
                         <connections>

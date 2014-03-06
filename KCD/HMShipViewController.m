@@ -17,14 +17,6 @@
 
 @implementation HMShipViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Initialization code here.
-    }
-    return self;
-}
 - (id)init
 {
 	self = [super initWithNibName:NSStringFromClass([self class]) bundle:nil];

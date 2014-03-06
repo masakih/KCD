@@ -312,24 +312,8 @@
                                                 <binding destination="ir1-ad-0Fn" name="value" keyPath="arrangedObjects.taiku_1" id="VYP-nk-wum"/>
                                             </connections>
                                         </tableColumn>
-                                        <tableColumn width="34" minWidth="10" maxWidth="3.4028234663852886e+38" id="VfL-3t-Yek">
-                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="taisen">
-                                                <font key="font" metaFont="smallSystem"/>
-                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
-                                            </tableHeaderCell>
-                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="UEG-UO-Pqj">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                            <connections>
-                                                <binding destination="ir1-ad-0Fn" name="value" keyPath="arrangedObjects.taisen_0" id="xDa-Gv-i7n"/>
-                                            </connections>
-                                        </tableColumn>
-                                        <tableColumn width="42" minWidth="10" maxWidth="3.4028234663852886e+38" id="CWL-aN-Wyk">
-                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="kaihi">
+                                        <tableColumn width="47" minWidth="10" maxWidth="3.4028234663852886e+38" id="CWL-aN-Wyk">
+                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="kyouka">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -341,7 +325,7 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
-                                                <binding destination="ir1-ad-0Fn" name="value" keyPath="arrangedObjects.kaihi_0" id="KSN-4I-qCk"/>
+                                                <binding destination="ir1-ad-0Fn" name="value" keyPath="arrangedObjects.master_ship.luck_0" id="8wp-3c-WBL"/>
                                             </connections>
                                         </tableColumn>
                                         <tableColumn width="36" minWidth="10" maxWidth="3.4028234663852886e+38" id="ZDk-5v-PYw">
@@ -357,55 +341,82 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
-                                                <binding destination="ir1-ad-0Fn" name="value" keyPath="arrangedObjects.sakuteki_0" id="Ppo-Bs-aid"/>
+                                                <binding destination="ir1-ad-0Fn" name="value" keyPath="arrangedObjects.master_ship.luck_1" id="8De-ba-AnQ"/>
                                             </connections>
                                         </tableColumn>
                                         <tableColumn width="32" minWidth="10" maxWidth="3.4028234663852886e+38" id="EhE-xn-FFB">
-                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="srate">
+                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="0">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                             </tableHeaderCell>
-                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="byN-3n-mDV">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
+                                            <buttonCell key="dataCell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="only" controlSize="small" inset="2" id="1vW-7o-owS">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="smallSystem"/>
+                                            </buttonCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
-                                                <binding destination="ir1-ad-0Fn" name="value" keyPath="arrangedObjects.srate" id="U0l-Pr-AiN"/>
+                                                <binding destination="ir1-ad-0Fn" name="value" keyPath="arrangedObjects.isMaxKaryoku" id="87n-im-03O"/>
                                             </connections>
                                         </tableColumn>
                                         <tableColumn width="35" minWidth="10" maxWidth="3.4028234663852886e+38" id="UB3-Cw-Mmz">
-                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="bull">
+                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="1">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                             </tableHeaderCell>
-                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="2ax-Tk-Oh8">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
+                                            <buttonCell key="dataCell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="only" controlSize="small" inset="2" id="kMk-4y-K4Y">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="smallSystem"/>
+                                            </buttonCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
-                                                <binding destination="ir1-ad-0Fn" name="value" keyPath="arrangedObjects.use_bull" id="POP-iZ-Lll"/>
+                                                <binding destination="ir1-ad-0Fn" name="value" keyPath="arrangedObjects.isMaxRaisou" id="efA-WQ-RkU"/>
                                             </connections>
                                         </tableColumn>
                                         <tableColumn width="37" minWidth="32" maxWidth="1000" id="Yuf-Q1-Lh5">
-                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="fue">
+                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="2">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
                                             </tableHeaderCell>
-                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="j7a-fQ-KSY">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
+                                            <buttonCell key="dataCell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="only" controlSize="small" inset="2" id="YPo-U6-KIQ">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="smallSystem"/>
+                                            </buttonCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
-                                                <binding destination="ir1-ad-0Fn" name="value" keyPath="arrangedObjects.use_fuel" id="ofe-xf-S8e"/>
+                                                <binding destination="ir1-ad-0Fn" name="value" keyPath="arrangedObjects.isMaxTaiku" id="Q2v-WV-BUW"/>
+                                            </connections>
+                                        </tableColumn>
+                                        <tableColumn width="34" minWidth="10" maxWidth="3.4028234663852886e+38" id="VfL-3t-Yek">
+                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="3">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                            </tableHeaderCell>
+                                            <buttonCell key="dataCell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="only" controlSize="small" inset="2" id="1X6-9U-iWy">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="smallSystem"/>
+                                            </buttonCell>
+                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                            <connections>
+                                                <binding destination="ir1-ad-0Fn" name="value" keyPath="arrangedObjects.isMaxSoukou" id="Cb9-LL-WdP"/>
+                                            </connections>
+                                        </tableColumn>
+                                        <tableColumn width="28.26171875" minWidth="10" maxWidth="3.4028234663852886e+38" id="iH4-Cz-Rdz">
+                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="4">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                            </tableHeaderCell>
+                                            <buttonCell key="dataCell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="only" controlSize="small" inset="2" id="t6c-mY-cAP">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="smallSystem"/>
+                                            </buttonCell>
+                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                            <connections>
+                                                <binding destination="ir1-ad-0Fn" name="value" keyPath="arrangedObjects.isMaxLucky" id="9T4-Z6-wM8"/>
                                             </connections>
                                         </tableColumn>
                                     </tableColumns>
@@ -414,7 +425,7 @@
                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </clipView>
                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="AYb-xv-ezY">
-                            <rect key="frame" x="1" y="420" width="623" height="16"/>
+                            <rect key="frame" x="1" y="498" width="972" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="cko-hf-VEf">

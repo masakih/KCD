@@ -32,10 +32,53 @@ static NSArray *levelUpExps = nil;
 		levelUpExps = [array copy];
 	});
 }
+
 - (NSNumber *)master_sortno
 {
 	return nil;
 }
+
+- (NSNumber *)isMaxKaryoku
+{
+	NSInteger defaultValue = [[self valueForKeyPath:@"master_ship.houg_0"] integerValue];
+	NSInteger maxValue = [[self valueForKey:@"karyoku_1"] integerValue];
+	NSInteger growth = [[self valueForKey:@"kyouka_0"] integerValue];
+	
+	return @(defaultValue + growth >= maxValue);
+}
+- (NSNumber *)isMaxRaisou
+{
+	NSInteger defaultValue = [[self valueForKeyPath:@"master_ship.raig_0"] integerValue];
+	NSInteger maxValue = [[self valueForKey:@"raisou_1"] integerValue];
+	NSInteger growth = [[self valueForKey:@"kyouka_1"] integerValue];
+	
+	return @(defaultValue + growth >= maxValue);
+}
+- (NSNumber *)isMaxTaiku
+{
+	NSInteger defaultValue = [[self valueForKeyPath:@"master_ship.tyku_0"] integerValue];
+	NSInteger maxValue = [[self valueForKey:@"taiku_1"] integerValue];
+	NSInteger growth = [[self valueForKey:@"kyouka_2"] integerValue];
+	
+	return @(defaultValue + growth >= maxValue);
+}
+- (NSNumber *)isMaxSoukou
+{
+	NSInteger defaultValue = [[self valueForKeyPath:@"master_ship.souk_0"] integerValue];
+	NSInteger maxValue = [[self valueForKey:@"soukou_1"] integerValue];
+	NSInteger growth = [[self valueForKey:@"kyouka_3"] integerValue];
+	
+	return @(defaultValue + growth >= maxValue);
+}
+- (NSNumber *)isMaxLucky
+{
+	NSInteger defaultValue = [[self valueForKeyPath:@"master_ship.luck_0"] integerValue];
+	NSInteger maxValue = [[self valueForKey:@"lucky_1"] integerValue];
+	NSInteger growth = [[self valueForKey:@"kyouka_4"] integerValue];
+	
+	return @(defaultValue + growth >= maxValue);
+}
+
 - (NSString *)shortTypeName
 {
 	NSNumber *idValue = [self valueForKeyPath:@"master_ship.stype.id"];

@@ -10,6 +10,7 @@
 
 #import "HMDocksViewController.h"
 #import "HMShipViewController.h"
+#import "HMPowerUpSupportViewController.h"
 
 #import "HMCoreDataManager.h"
 
@@ -81,6 +82,9 @@
 			break;
 		case 1:
 			controllerClass = [HMShipViewController class];
+			break;
+		case 2:
+			controllerClass = [HMPowerUpSupportViewController class];
 			break;
 		default:
 			break;

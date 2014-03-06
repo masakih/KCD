@@ -185,6 +185,11 @@
                                     <action selector="selectView:" target="-1" id="bmZ-W7-wzw"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Ship 2" tag="2" keyEquivalent="3" id="cVa-gh-VEf">
+                                <connections>
+                                    <action selector="selectView:" target="-1" id="F0I-LG-yq6"/>
+                                </connections>
+                            </menuItem>
                         </items>
                     </menu>
                 </menuItem>
