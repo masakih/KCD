@@ -48,7 +48,7 @@ static NSMutableArray *registeredCommands = nil;
 		if([commandClass canExcuteAPI:api]) {
 			HMJSONCommand *command =  [commandClass new];
 			command.api = api;
-#ifdef ENABLE_JSON_LOG
+#ifdef ENABLE_JSON_LOG_HANDLED_API
 			HMJSONViewCommand *viewCommand = [HMJSONViewCommand new];
 			viewCommand.api = api;
 			command = [HMCompositCommand compositCommandWithCommands:viewCommand, command, nil];
