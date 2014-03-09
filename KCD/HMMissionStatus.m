@@ -18,7 +18,7 @@ enum {
 };
 
 @interface HMMissionStatus ()
-@property (strong) NSArrayController *contoller;
+@property (strong) NSArrayController *controller;
 
 @property (strong, readwrite) NSString *name;
 @property (strong, readwrite) NSNumber *time;
@@ -41,15 +41,15 @@ enum {
 	}
 	
 	if(self) {
-		_contoller = [NSArrayController new];
-		[self.contoller setManagedObjectContext:[HMCoreDataManager defaultManager].managedObjectContext];
-		[self.contoller setEntityName:@"Deck"];
+		_controller = [NSArrayController new];
+		[self.controller setManagedObjectContext:[HMCoreDataManager defaultManager].managedObjectContext];
+		[self.controller setEntityName:@"Deck"];
 		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id = %ld", deckNumber];
-		[self.contoller setFetchPredicate:predicate];
-		[self.contoller setAutomaticallyRearrangesObjects:YES];
-		[self.contoller fetch:nil];
+		[self.controller setFetchPredicate:predicate];
+		[self.controller setAutomaticallyRearrangesObjects:YES];
+		[self.controller fetch:nil];
 		
-		[self.contoller addObserver:self
+		[self.controller addObserver:self
 						 forKeyPath:@"selection.mission_0"
 							options:0
 							context:NULL];
@@ -65,7 +65,7 @@ enum {
 		return;
 	}
 	
-	NSNumber *compTimeValue = [self.contoller valueForKeyPath:@"selection.mission_2"];
+	NSNumber *compTimeValue = [self.controller valueForKeyPath:@"selection.mission_2"];
 	if(![compTimeValue isKindOfClass:[NSNumber class]]) return;
 	if([compTimeValue isEqualToNumber:@0]) return;
 	NSTimeInterval compTime = (NSUInteger)([compTimeValue doubleValue] / 1000.0);
@@ -80,7 +80,7 @@ enum {
 	
 	if(!self.didNotify) {
 		if(diff < 1 * 60) {
-			NSString *fleetName = [self.contoller valueForKeyPath:@"selection.name"];
+			NSString *fleetName = [self.controller valueForKeyPath:@"selection.name"];
 			
 			NSUserNotification * notification = [NSUserNotification new];
 			NSString *format = NSLocalizedString(@"%@ Will Return From Mission.", @"%@ Will Return From Mission.");
@@ -99,7 +99,7 @@ enum {
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
 	if([keyPath isEqualToString:@"selection.mission_0"]) {
-		NSInteger status = [[self.contoller valueForKeyPath:@"selection.mission_0"] integerValue];
+		NSInteger status = [[self.controller valueForKeyPath:@"selection.mission_0"] integerValue];
 		switch(status) {
 			case kNoMission:
 				self.name = nil;
@@ -137,7 +137,7 @@ enum {
 		return;
 	}
 	
-	NSNumber *mission_1 = [self.contoller valueForKeyPath:@"selection.mission_1"];
+	NSNumber *mission_1 = [self.controller valueForKeyPath:@"selection.mission_1"];
 	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"MasterMission"];
 	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id = %@", mission_1];
 	[request setPredicate:predicate];
