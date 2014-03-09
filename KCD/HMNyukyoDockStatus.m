@@ -11,6 +11,11 @@
 #import "HMCoreDataManager.h"
 
 
+enum {
+	kNoShip = 0,
+	kHasShip = 1,
+};
+
 @interface HMNyukyoDockStatus ()
 @property (strong) NSArrayController *controller;
 
@@ -56,12 +61,12 @@
 	if([keyPath isEqualToString:@"selection.state"]) {
 		NSInteger status = [[self.controller valueForKeyPath:@"selection.state"] integerValue];
 		switch(status) {
-			case 0:
+			case kNoShip:
 				self.name = nil;
 				if(self.isTasking) self.isTasking = NO;
 				if(self.didNotify) self.didNotify = NO;
 				break;
-			case 1:
+			case kHasShip:
 				[self updateName:nil];
 				if(!self.isTasking) self.isTasking = NO;
 				break;
