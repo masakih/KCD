@@ -50,44 +50,27 @@
 	return [HMCoreDataManager defaultManager].managedObjectContext;
 }
 
-+ (NSSet *)keyPathsForValuesAffectingMission2Name
-{
-	return [NSSet setWithObjects:@"mission2Status.name", nil];
-}
-+ (NSSet *)keyPathsForValuesAffectingMission3Name
-{
-	return [NSSet setWithObjects:@"mission3Status.name", nil];
-}
-+ (NSSet *)keyPathsForValuesAffectingMission4Name
-{
-	return [NSSet setWithObjects:@"mission4Status.name", nil];
-}
-+ (NSSet *)keyPathsForValuesAffectingDeck2Time
-{
-	return [NSSet setWithObjects:@"mission2Status.time", nil];
-}
-+ (NSSet *)keyPathsForValuesAffectingDeck3Time
-{
-	return [NSSet setWithObjects:@"mission3Status.time", nil];
-}
-+ (NSSet *)keyPathsForValuesAffectingDeck4Time
-{
-	return [NSSet setWithObjects:@"mission4Status.time", nil];
-}
-
 - (id)init
 {
 	self = [super initWithNibName:NSStringFromClass([self class]) bundle:nil];
 	if(self) {
 		_mission2Status = [[HMMissionStatus alloc] initWithDeckNumber:2];
 		_mission2Status.managedObjectContext = self.managedObjectContext;
+		[self bind:@"deck2Time" toObject:self.mission2Status withKeyPath:@"time" options:nil];
+		[self bind:@"mission2Name" toObject:self.mission2Status withKeyPath:@"name" options:nil];
 		
 		_mission3Status = [[HMMissionStatus alloc] initWithDeckNumber:3];
 		_mission3Status.managedObjectContext = self.managedObjectContext;
+		[self bind:@"deck3Time" toObject:self.mission3Status withKeyPath:@"time" options:nil];
+		[self bind:@"mission3Name" toObject:self.mission3Status withKeyPath:@"name" options:nil];
 		
 		_mission4Status = [[HMMissionStatus alloc] initWithDeckNumber:4];
 		_mission4Status.managedObjectContext = self.managedObjectContext;
+		[self bind:@"deck4Time" toObject:self.mission4Status withKeyPath:@"time" options:nil];
+		[self bind:@"mission4Name" toObject:self.mission4Status withKeyPath:@"name" options:nil];
 		
+		
+		//
 		_ndock1Status = [[HMNyukyoDockStatus alloc] initWithDockNumber:1];
 		_ndock1Status.managedObjectContext = self.managedObjectContext;
 		[self bind:@"nDock1Time" toObject:self.ndock1Status withKeyPath:@"time" options:nil];
@@ -118,32 +101,6 @@
 								   selector:@selector(fire:)
 								   userInfo:nil
 									repeats:YES];
-}
-
-#pragma mark - Mission
-- (NSString *)mission2Name
-{
-	return self.mission2Status.name;
-}
-- (NSString *)mission3Name
-{
-	return self.mission3Status.name;
-}
-- (NSString *)mission4Name
-{
-	return self.mission4Status.name;
-}
-- (NSNumber *)deck2Time
-{
-	return self.mission2Status.time;
-}
-- (NSNumber *)deck3Time
-{
-	return self.mission3Status.time;
-}
-- (NSNumber *)deck4Time
-{
-	return self.mission4Status.time;
 }
 
 #pragma mark - Docking
