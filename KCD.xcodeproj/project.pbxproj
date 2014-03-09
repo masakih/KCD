@@ -33,6 +33,7 @@
 		F494DC6418C608C100AE97E4 /* HMShipViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F494DC6218C608C100AE97E4 /* HMShipViewController.xib */; };
 		F494DC6718C8BA6400AE97E4 /* HMPowerUpSupportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F494DC6618C8BA6400AE97E4 /* HMPowerUpSupportViewController.m */; };
 		F494DC6A18C8BAB900AE97E4 /* HMPowerUpSupportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F494DC6818C8BAB900AE97E4 /* HMPowerUpSupportViewController.xib */; };
+		F494DC6D18CC054800AE97E4 /* HMNyukyoDockStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = F494DC6C18CC054800AE97E4 /* HMNyukyoDockStatus.m */; };
 		F4B414E918B09A4B00468DAF /* HMMasterMapAreaCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B414E818B09A4B00468DAF /* HMMasterMapAreaCommand.m */; };
 		F4B414EC18B0A7D600468DAF /* HMMasterUseItemCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B414EB18B0A7D600468DAF /* HMMasterUseItemCommand.m */; };
 		F4B414EF18B0BF1A00468DAF /* HMMasterMapInfoCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B414EE18B0BF1A00468DAF /* HMMasterMapInfoCommand.m */; };
@@ -125,6 +126,8 @@
 		F494DC6518C8BA6400AE97E4 /* HMPowerUpSupportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPowerUpSupportViewController.h; sourceTree = "<group>"; };
 		F494DC6618C8BA6400AE97E4 /* HMPowerUpSupportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMPowerUpSupportViewController.m; sourceTree = "<group>"; };
 		F494DC6918C8BAB900AE97E4 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMPowerUpSupportViewController.xib; sourceTree = "<group>"; };
+		F494DC6B18CC054800AE97E4 /* HMNyukyoDockStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMNyukyoDockStatus.h; sourceTree = "<group>"; };
+		F494DC6C18CC054800AE97E4 /* HMNyukyoDockStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMNyukyoDockStatus.m; sourceTree = "<group>"; };
 		F4B414E718B09A4B00468DAF /* HMMasterMapAreaCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMasterMapAreaCommand.h; sourceTree = "<group>"; };
 		F4B414E818B09A4B00468DAF /* HMMasterMapAreaCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMasterMapAreaCommand.m; sourceTree = "<group>"; };
 		F4B414EA18B0A7D600468DAF /* HMMasterUseItemCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMasterUseItemCommand.h; sourceTree = "<group>"; };
@@ -257,6 +260,8 @@
 				F4BDEB59187252F30069D0CE /* HMAppDelegate.m */,
 				F494DC5D18C30AE100AE97E4 /* HMMissionStatus.h */,
 				F494DC5E18C30AE100AE97E4 /* HMMissionStatus.m */,
+				F494DC6B18CC054800AE97E4 /* HMNyukyoDockStatus.h */,
+				F494DC6C18CC054800AE97E4 /* HMNyukyoDockStatus.m */,
 				F4513EDB18B619B600073552 /* HMCoreDataManager.h */,
 				F4513EDC18B619B600073552 /* HMCoreDataManager.m */,
 				F4C1190318A71AEA005D5B25 /* HMJSONReciever.h */,
@@ -514,6 +519,7 @@
 				F4BDEB53187252F30069D0CE /* main.m in Sources */,
 				F494DC5F18C30AE100AE97E4 /* HMMissionStatus.m in Sources */,
 				F4513EE418B635EA00073552 /* HMDocksViewController.m in Sources */,
+				F494DC6D18CC054800AE97E4 /* HMNyukyoDockStatus.m in Sources */,
 				F47B78B218A7B42B0011386E /* HMJSONViewWindowController.m in Sources */,
 				F4B414EF18B0BF1A00468DAF /* HMMasterMapInfoCommand.m in Sources */,
 				F4C118FC18A67B1C005D5B25 /* CustomHTTPProtocol.m in Sources */,
@@ -681,6 +687,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"ENABLE_JSON_LOG=1",
+					"ENABLE_JSON_LOG_HANDLED_API=1",
 				);
 				INFOPLIST_FILE = "KCD/KCD-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
