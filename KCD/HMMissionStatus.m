@@ -117,7 +117,7 @@ enum {
 			case kFinishMission:
 				self.name = nil;
 				self.prevStatusFinish = YES;
-				if(!self.isTasking) self.isTasking = NO;
+				if(self.isTasking) self.isTasking = NO;
 				break;
 			default:
 				NSLog(@"Mission status is %ld", status);
