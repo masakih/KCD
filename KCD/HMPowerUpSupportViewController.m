@@ -112,6 +112,7 @@
 		}
 	}
 	[self.shipController setFilterPredicate:predicate];
+	[self.shipController rearrangeObjects];
 }
 
 @end

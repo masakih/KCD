@@ -271,7 +271,7 @@
                 </button>
             </subviews>
         </customView>
-        <arrayController mode="entity" entityName="Ship" editable="NO" automaticallyPreparesContent="YES" automaticallyRearrangesObjects="YES" id="b8v-Gn-JZD" userLabel="Ship">
+        <arrayController mode="entity" entityName="Ship" editable="NO" automaticallyPreparesContent="YES" id="b8v-Gn-JZD" userLabel="Ship">
             <connections>
                 <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="mMh-Jt-CpI"/>
             </connections>

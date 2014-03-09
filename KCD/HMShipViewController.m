@@ -45,7 +45,8 @@
 	if(tag != 0 && tag < 8) {
 		predicate = [NSPredicate predicateWithFormat:@"master_ship.stype.id  in %@", categories[tag - 1]];
 	}
-	[self.shipController setFilterPredicate:predicate];
+	[self.shipController setFetchPredicate:predicate];
+	[self.shipController rearrangeObjects];
 }
 
 @end
