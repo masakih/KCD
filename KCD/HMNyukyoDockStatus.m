@@ -68,7 +68,7 @@ enum {
 				break;
 			case kHasShip:
 				[self updateName:nil];
-				if(!self.isTasking) self.isTasking = NO;
+				if(!self.isTasking) self.isTasking = YES;
 				break;
 			default:
 				NSLog(@"Mission status is %ld", status);
@@ -82,6 +82,11 @@ enum {
 
 - (void)update
 {
+	if(!self.isTasking) {
+		self.time = nil;
+		return;
+	}
+	
 	NSNumber *state =[self.controller valueForKeyPath:@"selection.state"];
 	if(![state isKindOfClass:[NSNumber class]] || [state isEqualToNumber:@0] || [state isEqualToNumber:@(-1)]) {
 		self.name = nil;
