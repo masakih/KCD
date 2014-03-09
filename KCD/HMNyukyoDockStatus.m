@@ -132,8 +132,12 @@ enum {
 	if([array count] == 0) {
 		[self performSelector:_cmd withObject:nil afterDelay:0.33];
 		self.name = @"Unknown";
-	} else {
-		self.name = [array[0] valueForKeyPath:@"master_ship.name"];
+		return;
+	}
+	
+	NSString *newName = [array[0] valueForKeyPath:@"master_ship.name"];
+	if(![newName isEqualToString:self.name]) {
+		self.name = newName;
 	}
 }
 
