@@ -40,7 +40,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="788" height="42"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <textView editable="NO" selectable="NO" drawsBackground="NO" importsGraphics="NO" verticallyResizable="YES" allowsNonContiguousLayout="YES" id="XsL-WO-et2">
+                                <textView editable="NO" drawsBackground="NO" importsGraphics="NO" verticallyResizable="YES" allowsNonContiguousLayout="YES" id="XsL-WO-et2">
                                     <rect key="frame" x="0.0" y="0.0" width="788" height="42"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -50,6 +50,11 @@
                                     <size key="minSize" width="788" height="42"/>
                                     <size key="maxSize" width="806" height="10000000"/>
                                     <connections>
+                                        <binding destination="-2" name="editable" keyPath="self" id="VCO-Fg-sSL">
+                                            <dictionary key="options">
+                                                <string key="NSValueTransformerName">NSIsNil</string>
+                                            </dictionary>
+                                        </binding>
                                         <binding destination="-2" name="attributedString" keyPath="linksString" id="Zq5-KB-a2U">
                                             <dictionary key="options">
                                                 <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
