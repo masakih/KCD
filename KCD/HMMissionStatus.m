@@ -108,7 +108,7 @@ enum {
 				if(self.didNotify) self.didNotify = NO;
 				break;
 			case kHasMission:
-				[self changeProperty:nil];
+				[self updateName:nil];
 				if(!self.prevStatusFinish) {
 					if(!self.isTasking) self.isTasking = YES;
 				}
@@ -129,7 +129,7 @@ enum {
 	[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }
 
-- (void)changeProperty:(id)dummy
+- (void)updateName:(id)dummy
 {
 	if(self.prevStatusFinish) {
 		self.name = nil;
@@ -147,8 +147,8 @@ enum {
 		self.name = @"Unknown";
 		return;
 	}
-	NSString *newName = [array[0] valueForKey:@"name"];
 	
+	NSString *newName = [array[0] valueForKey:@"name"];
 	if(![newName isEqualToString:self.name]) {
 		self.name = newName;
 	}
