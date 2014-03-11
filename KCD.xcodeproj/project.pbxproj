@@ -62,6 +62,7 @@
 		F4C1190518A71AEA005D5B25 /* HMJSONReciever.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C1190418A71AEA005D5B25 /* HMJSONReciever.m */; };
 		F4C1190818A746EB005D5B25 /* HMJSONTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C1190718A746EB005D5B25 /* HMJSONTracker.m */; };
 		F4C1190B18A74DF0005D5B25 /* HMJSONCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C1190A18A74DF0005D5B25 /* HMJSONCommand.m */; };
+		F4C3957418CDDFE500A1E918 /* HMKenzoDockStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C3957318CDDFE500A1E918 /* HMKenzoDockStatus.m */; };
 		F4D2CBC218AD0E1A000EBC59 /* HMMasterSTypeCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D2CBC118AD0E1A000EBC59 /* HMMasterSTypeCommand.m */; };
 		F4D2CBC518AE2AE2000EBC59 /* HMCompositCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D2CBC418AE2AE2000EBC59 /* HMCompositCommand.m */; };
 		F4D2CBC818B0555A000EBC59 /* HMKCManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D2CBC718B0555A000EBC59 /* HMKCManagedObject.m */; };
@@ -176,6 +177,8 @@
 		F4C1190718A746EB005D5B25 /* HMJSONTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMJSONTracker.m; sourceTree = "<group>"; };
 		F4C1190918A74DF0005D5B25 /* HMJSONCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMJSONCommand.h; sourceTree = "<group>"; };
 		F4C1190A18A74DF0005D5B25 /* HMJSONCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMJSONCommand.m; sourceTree = "<group>"; };
+		F4C3957218CDDFE500A1E918 /* HMKenzoDockStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMKenzoDockStatus.h; sourceTree = "<group>"; };
+		F4C3957318CDDFE500A1E918 /* HMKenzoDockStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKenzoDockStatus.m; sourceTree = "<group>"; };
 		F4D2CBC018AD0E1A000EBC59 /* HMMasterSTypeCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMasterSTypeCommand.h; sourceTree = "<group>"; };
 		F4D2CBC118AD0E1A000EBC59 /* HMMasterSTypeCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMasterSTypeCommand.m; sourceTree = "<group>"; };
 		F4D2CBC318AE2AE2000EBC59 /* HMCompositCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMCompositCommand.h; sourceTree = "<group>"; };
@@ -262,6 +265,8 @@
 				F494DC5E18C30AE100AE97E4 /* HMMissionStatus.m */,
 				F494DC6B18CC054800AE97E4 /* HMNyukyoDockStatus.h */,
 				F494DC6C18CC054800AE97E4 /* HMNyukyoDockStatus.m */,
+				F4C3957218CDDFE500A1E918 /* HMKenzoDockStatus.h */,
+				F4C3957318CDDFE500A1E918 /* HMKenzoDockStatus.m */,
 				F4513EDB18B619B600073552 /* HMCoreDataManager.h */,
 				F4513EDC18B619B600073552 /* HMCoreDataManager.m */,
 				F4C1190318A71AEA005D5B25 /* HMJSONReciever.h */,
@@ -531,6 +536,7 @@
 				F4C1190818A746EB005D5B25 /* HMJSONTracker.m in Sources */,
 				F4513EDD18B619B600073552 /* HMCoreDataManager.m in Sources */,
 				F4B414E918B09A4B00468DAF /* HMMasterMapAreaCommand.m in Sources */,
+				F4C3957418CDDFE500A1E918 /* HMKenzoDockStatus.m in Sources */,
 				F4C118FB18A67B1C005D5B25 /* CanonicalRequest.m in Sources */,
 				F4BDEB5A187252F30069D0CE /* HMAppDelegate.m in Sources */,
 				F494DC6718C8BA6400AE97E4 /* HMPowerUpSupportViewController.m in Sources */,
@@ -687,7 +693,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"ENABLE_JSON_LOG=1",
-					"ENABLE_JSON_LOG_HANDLED_API=1",
+					"ENABLE_JSON_LOG_HANDLED_API=0",
 				);
 				INFOPLIST_FILE = "KCD/KCD-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";

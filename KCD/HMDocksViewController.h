@@ -12,11 +12,6 @@
 
 @property (readonly) NSManagedObjectContext *managedObjectContext;
 
-@property (nonatomic, strong) IBOutlet NSObjectController *nDock1;
-@property (nonatomic, strong) IBOutlet NSObjectController *nDock2;
-@property (nonatomic, strong) IBOutlet NSObjectController *nDock3;
-@property (nonatomic, strong) IBOutlet NSObjectController *nDock4;
-
 @property (nonatomic, strong) NSNumber *nDock1Time;
 @property (nonatomic, strong) NSNumber *nDock2Time;
 @property (nonatomic, strong) NSNumber *nDock3Time;
@@ -27,11 +22,6 @@
 @property (readonly) NSString *nDock3ShipName;
 @property (readonly) NSString *nDock4ShipName;
 
-
-@property (nonatomic, strong) IBOutlet NSObjectController *kDock1;
-@property (nonatomic, strong) IBOutlet NSObjectController *kDock2;
-@property (nonatomic, strong) IBOutlet NSObjectController *kDock3;
-@property (nonatomic, strong) IBOutlet NSObjectController *kDock4;
 
 @property (nonatomic, strong) NSNumber *kDock1Time;
 @property (nonatomic, strong) NSNumber *kDock2Time;

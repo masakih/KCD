@@ -7,14 +7,6 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="HMDocksViewController">
             <connections>
-                <outlet property="kDock1" destination="3jk-7x-v7s" id="mZw-i1-5SC"/>
-                <outlet property="kDock2" destination="aXv-ob-wVw" id="I5h-NB-KNj"/>
-                <outlet property="kDock3" destination="ZCV-fJ-s2q" id="2Kk-bO-cMO"/>
-                <outlet property="kDock4" destination="9Kn-yL-osX" id="fGI-Ol-mO0"/>
-                <outlet property="nDock1" destination="Eoz-aa-WDU" id="arr-oz-sdn"/>
-                <outlet property="nDock2" destination="qeQ-VS-6Oh" id="5rc-GK-DD9"/>
-                <outlet property="nDock3" destination="a2d-69-ItG" id="3qL-eH-2c0"/>
-                <outlet property="nDock4" destination="YM6-Ab-83f" id="aGw-XP-iyZ"/>
                 <outlet property="view" destination="vGg-MO-rzn" id="Z4V-4O-pqr"/>
             </connections>
         </customObject>
@@ -452,45 +444,5 @@
                 </textField>
             </subviews>
         </customView>
-        <objectController mode="entity" entityName="NyukyoDock" fetchPredicateFormat="id = 1" editable="NO" automaticallyPreparesContent="YES" id="Eoz-aa-WDU" userLabel="nDock1">
-            <connections>
-                <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="gNQ-XV-nol"/>
-            </connections>
-        </objectController>
-        <objectController mode="entity" entityName="NyukyoDock" fetchPredicateFormat="id = 2" editable="NO" automaticallyPreparesContent="YES" id="qeQ-VS-6Oh" userLabel="nDock2">
-            <connections>
-                <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="MJu-DE-oR5"/>
-            </connections>
-        </objectController>
-        <objectController mode="entity" entityName="NyukyoDock" fetchPredicateFormat="id = 3" editable="NO" automaticallyPreparesContent="YES" id="a2d-69-ItG" userLabel="nDock3">
-            <connections>
-                <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="PmQ-EZ-0vu"/>
-            </connections>
-        </objectController>
-        <objectController mode="entity" entityName="NyukyoDock" fetchPredicateFormat="id = 4" editable="NO" automaticallyPreparesContent="YES" id="YM6-Ab-83f" userLabel="nDock4">
-            <connections>
-                <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="yTN-kJ-oA6"/>
-            </connections>
-        </objectController>
-        <objectController mode="entity" entityName="KenzoDock" fetchPredicateFormat="id = 1" editable="NO" automaticallyPreparesContent="YES" id="3jk-7x-v7s" userLabel="kDock1">
-            <connections>
-                <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="MQ8-9J-rBn"/>
-            </connections>
-        </objectController>
-        <objectController mode="entity" entityName="KenzoDock" fetchPredicateFormat="id = 2" editable="NO" automaticallyPreparesContent="YES" id="aXv-ob-wVw" userLabel="kDock2">
-            <connections>
-                <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="miT-v3-5un"/>
-            </connections>
-        </objectController>
-        <objectController mode="entity" entityName="KenzoDock" fetchPredicateFormat="id = 3" editable="NO" automaticallyPreparesContent="YES" id="ZCV-fJ-s2q" userLabel="kDock3">
-            <connections>
-                <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="YDJ-Eo-GQF"/>
-            </connections>
-        </objectController>
-        <objectController mode="entity" entityName="KenzoDock" fetchPredicateFormat="id = 4" editable="NO" automaticallyPreparesContent="YES" id="9Kn-yL-osX" userLabel="kDock4">
-            <connections>
-                <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="Mv1-18-kk6"/>
-            </connections>
-        </objectController>
     </objects>
 </document>

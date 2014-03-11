@@ -12,23 +12,10 @@
 
 #import "HMMissionStatus.h"
 #import "HMNyukyoDockStatus.h"
+#import "HMKenzoDockStatus.h"
 
 
 @interface HMDocksViewController ()
-
-
-// NSUserNotifyを行ったか
-@property BOOL nDock1Notified;
-@property BOOL nDock2Notified;
-@property BOOL nDock3Notified;
-@property BOOL nDock4Notified;
-
-@property BOOL kDock1Notified;
-@property BOOL kDock2Notified;
-@property BOOL kDock3Notified;
-@property BOOL kDock4Notified;
-
-
 
 @property (strong) HMMissionStatus *mission2Status;
 @property (strong) HMMissionStatus *mission3Status;
@@ -38,6 +25,11 @@
 @property (strong) HMNyukyoDockStatus *ndock2Status;
 @property (strong) HMNyukyoDockStatus *ndock3Status;
 @property (strong) HMNyukyoDockStatus *ndock4Status;
+
+@property (strong) HMKenzoDockStatus *kdock1Status;
+@property (strong) HMKenzoDockStatus *kdock2Status;
+@property (strong) HMKenzoDockStatus *kdock3Status;
+@property (strong) HMKenzoDockStatus *kdock4Status;
 
 
 @end
@@ -90,6 +82,24 @@
 		_ndock4Status.managedObjectContext = self.managedObjectContext;
 		[self bind:@"nDock4Time" toObject:self.ndock4Status withKeyPath:@"time" options:nil];
 		[self bind:@"nDock4ShipName" toObject:self.ndock4Status withKeyPath:@"name" options:nil];
+		
+		
+		//
+		_kdock1Status = [[HMKenzoDockStatus alloc] initWithDockNumber:1];
+		_kdock1Status.managedObjectContext = self.managedObjectContext;
+		[self bind:@"kDock1Time" toObject:self.kdock1Status withKeyPath:@"time" options:nil];
+		
+		_kdock2Status = [[HMKenzoDockStatus alloc] initWithDockNumber:2];
+		_kdock2Status.managedObjectContext = self.managedObjectContext;
+		[self bind:@"kDock2Time" toObject:self.kdock2Status withKeyPath:@"time" options:nil];
+		
+		_kdock3Status = [[HMKenzoDockStatus alloc] initWithDockNumber:3];
+		_kdock3Status.managedObjectContext = self.managedObjectContext;
+		[self bind:@"kDock3Time" toObject:self.kdock3Status withKeyPath:@"time" options:nil];
+		
+		_kdock4Status = [[HMKenzoDockStatus alloc] initWithDockNumber:4];
+		_kdock4Status.managedObjectContext = self.managedObjectContext;
+		[self bind:@"kDock4Time" toObject:self.kdock4Status withKeyPath:@"time" options:nil];
 	}
 	return self;
 }
@@ -103,55 +113,6 @@
 									repeats:YES];
 }
 
-#pragma mark - Docking
-
-- (NSNumber *)nDockTimeForNDock:(NSObjectController *)nDock
-{
-	NSNumber *state =[nDock valueForKeyPath:@"selection.state"];
-	if(![state isKindOfClass:[NSNumber class]]) return nil;
-	if([state isEqualToNumber:@0]) return nil;
-	if([state isEqualToNumber:@(-1)]) return nil;
-	
-	NSNumber *compTimeValue = [nDock valueForKeyPath:@"selection.complete_time"];
-	if(![compTimeValue isKindOfClass:[NSNumber class]]) return nil;
-	
-	NSTimeInterval compTime = (NSUInteger)([compTimeValue doubleValue] / 1000.0);
-	NSDate *now = [NSDate dateWithTimeIntervalSinceNow:0];
-	NSTimeInterval diff = compTime - [now timeIntervalSince1970];
-	
-	if(diff < 0) {
-		return @( - [[NSTimeZone systemTimeZone] secondsFromGMT]);
-	} else {
-		return @(diff - [[NSTimeZone systemTimeZone] secondsFromGMT]);
-	}
-}
-- (void)notifyIfNeededFinishBuildAtDockNumber:(NSUInteger)number
-{
-	static NSArray *timeKeys = nil;
-	if(!timeKeys) {
-		timeKeys = @[@"kDock1Time", @"kDock2Time", @"kDock3Time", @"kDock4Time"];
-	}
-	static NSArray *notifiedKeys = nil;
-	if(!notifiedKeys) {
-		notifiedKeys = @[@"kDock1Notified", @"kDock2Notified", @"kDock3Notified", @"kDock4Notified"];
-	}
-	
-	NSTimeInterval time = [[self valueForKey:timeKeys[number - 1]] doubleValue];
-	
-	if(time <= - [[NSTimeZone systemTimeZone] secondsFromGMT]) {
-		BOOL flag = [[self valueForKey:notifiedKeys[number -1]] boolValue];
-		if(!flag) {
-			NSUserNotification * notification = [NSUserNotification new];
-			NSString *format = NSLocalizedString(@"It Will Finish Build at No.%ld.", @"It Will Finish Build at No.%ld.");
-			notification.title = [NSString stringWithFormat:format, number];
-			notification.informativeText = [NSString stringWithFormat:format, number];
-			[[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
-			[self setValue:@YES forKey:notifiedKeys[number - 1]];
-		}
-	} else {
-		[self setValue:@NO forKey:notifiedKeys[number - 1]];
-	}
-}
 
 - (void)fire:(id)timer
 {
@@ -162,15 +123,10 @@
 	[self.ndock4Status update];
 	
 	// 建造ドック
-	self.kDock1Time = [self nDockTimeForNDock:self.kDock1];
-	self.kDock2Time = [self nDockTimeForNDock:self.kDock2];
-	self.kDock3Time = [self nDockTimeForNDock:self.kDock3];
-	self.kDock4Time = [self nDockTimeForNDock:self.kDock4];
-	
-	[self notifyIfNeededFinishBuildAtDockNumber:1];
-	[self notifyIfNeededFinishBuildAtDockNumber:2];
-	[self notifyIfNeededFinishBuildAtDockNumber:3];
-	[self notifyIfNeededFinishBuildAtDockNumber:4];
+	[self.kdock1Status update];
+	[self.kdock2Status update];
+	[self.kdock3Status update];
+	[self.kdock4Status update];
 	
 	// 遠征
 	[self.mission2Status update];
