@@ -21,7 +21,7 @@
 #ifdef DEBUG
 @property (strong) HMShipWindowController *shipWindowController;
 #endif
-#ifdef ENABLE_JSON_LOG
+#if ENABLE_JSON_LOG
 @property (retain) HMJSONViewWindowController *logedJSONViewWindowController;
 #endif
 @end
@@ -71,7 +71,7 @@ static FILE* logFileP = NULL;
 	self.browserWindowController = [HMBroserWindowController new];
 	[self.browserWindowController showWindow:nil];
 	
-#ifdef ENABLE_JSON_LOG
+#if ENABLE_JSON_LOG
 	self.jsonViewWindowController = [HMJSONViewWindowController new];
 	[self.jsonViewWindowController showWindow:nil];
 #endif
@@ -94,7 +94,7 @@ static FILE* logFileP = NULL;
 	return YES;
 }
 
-#ifdef ENABLE_JSON_LOG
+#if ENABLE_JSON_LOG
 - (IBAction)saveDocument:(id)sender
 {
 	NSSavePanel *panel = [NSSavePanel savePanel];
