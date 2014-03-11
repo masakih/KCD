@@ -16,13 +16,13 @@
 
 @interface HMAppDelegate () <NSUserNotificationCenterDelegate>
 
-@property (retain) HMBroserWindowController *browserWindowController;
+@property (strong) HMBroserWindowController *browserWindowController;
 
 #ifdef DEBUG
 @property (strong) HMShipWindowController *shipWindowController;
 #endif
 #if ENABLE_JSON_LOG
-@property (retain) HMJSONViewWindowController *logedJSONViewWindowController;
+@property (strong) HMJSONViewWindowController *logedJSONViewWindowController;
 #endif
 @end
 

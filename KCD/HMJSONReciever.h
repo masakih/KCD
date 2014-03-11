@@ -13,6 +13,6 @@
 
 @interface HMJSONReciever : NSObject <CustomHTTPProtocolDelegate>
 
-@property (retain) HMQueue *queueu;
+@property (strong) HMQueue *queueu;
 
 @end

@@ -13,7 +13,7 @@
 
 
 @interface HMJSONReciever ()
-@property (retain) NSMutableDictionary *recievers;
+@property (strong) NSMutableDictionary *recievers;
 @end
 
 

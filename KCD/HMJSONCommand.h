@@ -13,7 +13,7 @@
 + (HMJSONCommand *)commandForAPI:(NSString *)api;
 
 @property (copy) NSString *argumentsString;
-@property (retain) NSData *jsonData;
+@property (strong) NSData *jsonData;
 
 - (void)execute;
 
@@ -24,9 +24,9 @@
 @property (copy, readonly) NSString *api;	// api is /kcsapi/mainAPI/subAPI
 NSString *mainAPI(NSString *api);
 NSString *subAPI(NSString *api);
-@property (retain, readonly) NSArray *arguments;
-@property (retain, readonly) id json;		// NSArray or NSDictionary
-@property (retain, readonly) NSArray *jsonTree;	// for NSTreeController
+@property (strong, readonly) NSArray *arguments;
+@property (strong, readonly) id json;		// NSArray or NSDictionary
+@property (strong, readonly) NSArray *jsonTree;	// for NSTreeController
 
 + (BOOL)canExcuteAPI:(NSString *)api;
 

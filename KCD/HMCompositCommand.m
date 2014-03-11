@@ -11,7 +11,7 @@
 #if ENABLE_JSON_LOG
 
 @interface HMCompositCommand ()
-@property (retain) NSMutableArray *commands;
+@property (strong) NSMutableArray *commands;
 @end
 
 

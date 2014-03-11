@@ -11,8 +11,8 @@
 @interface HMPowerUpSupportViewController : NSViewController
 @property (readonly) NSManagedObjectContext *managedObjectContext;
 
-@property (assign) IBOutlet NSArrayController *shipController;
-@property (nonatomic, retain) IBOutlet NSSegmentedControl *typeSegment;
+@property (weak) IBOutlet NSArrayController *shipController;
+@property (nonatomic, strong) IBOutlet NSSegmentedControl *typeSegment;
 
 
 - (IBAction)changeCategory:(id)sender;

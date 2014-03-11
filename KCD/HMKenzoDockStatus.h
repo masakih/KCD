@@ -12,7 +12,7 @@
 
 - (id)initWithDockNumber:(NSInteger)dockNumber;
 
-@property (assign) NSManagedObjectContext *managedObjectContext;
+@property (weak) NSManagedObjectContext *managedObjectContext;
 
 @property (readonly) NSNumber *time;
 @property (readonly) BOOL isTasking;

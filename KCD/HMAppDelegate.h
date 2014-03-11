@@ -18,6 +18,6 @@
 - (void)log:(NSString *)format, ... NS_FORMAT_FUNCTION(1,2);
 
 
-@property (retain) HMJSONViewWindowController *jsonViewWindowController;
+@property (strong) HMJSONViewWindowController *jsonViewWindowController;
 
 @end

@@ -9,9 +9,9 @@
 #import "HMJSONViewWindowController.h"
 
 @interface HMJSONViewWindowController ()
-@property (retain, readwrite) NSMutableArray *commands;
+@property (strong, readwrite) NSMutableArray *commands;
 
-@property (assign, readwrite) id json;
+@property (weak, readwrite) id json;
 @end
 
 @implementation HMJSONViewWindowController

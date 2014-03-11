@@ -15,8 +15,8 @@
 
 @property (readonly) NSManagedObjectContext *managedObjectContext;
 
-@property (assign) IBOutlet WebView *webView;
-@property (assign) IBOutlet NSView *placeholder;
+@property (weak) IBOutlet WebView *webView;
+@property (weak) IBOutlet NSView *placeholder;
 
 @property (nonatomic, weak) IBOutlet NSView *docksPlaceholder;
 

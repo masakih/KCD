@@ -12,7 +12,7 @@
 
 @property (readonly) NSManagedObjectContext *managedObjectContext;
 
-@property (assign) IBOutlet NSArrayController *shipController;
+@property (weak) IBOutlet NSArrayController *shipController;
 
 
 - (IBAction)changeCategory:(id)sender;

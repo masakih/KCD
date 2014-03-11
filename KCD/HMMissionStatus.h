@@ -12,7 +12,7 @@
 
 - (id)initWithDeckNumber:(NSUInteger)deckNumber;
 
-@property (assign) NSManagedObjectContext *managedObjectContext;
+@property (weak) NSManagedObjectContext *managedObjectContext;
 
 @property (readonly) NSString *name;
 @property (readonly) NSNumber *time;

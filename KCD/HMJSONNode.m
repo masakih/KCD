@@ -16,7 +16,7 @@
 
 
 @interface HMJSONContainerNode : HMJSONNode
-@property (retain) NSArray *childrenArray;
+@property (strong) NSArray *childrenArray;
 @end
 
 @interface HMJSONLeafNode : HMJSONNode

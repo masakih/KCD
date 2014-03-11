@@ -21,10 +21,10 @@ static NSMutableArray *registeredCommands = nil;
 
 
 @interface HMJSONCommand ()
-@property (retain, readwrite) NSArray *arguments;
+@property (strong, readwrite) NSArray *arguments;
 @property (copy, readwrite) NSString *api;
-@property (retain, readwrite) id json;
-@property (retain, readwrite) NSArray *jsonTree;
+@property (strong, readwrite) id json;
+@property (strong, readwrite) NSArray *jsonTree;
 
 
 

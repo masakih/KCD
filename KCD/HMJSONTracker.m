@@ -14,9 +14,9 @@
 static HMJSONTracker *sTracker = nil;
 
 @interface HMJSONTracker ()
-@property (retain) HMQueue *queue;
+@property (strong) HMQueue *queue;
 
-@property (retain) HMJSONReciever *reciever;
+@property (strong) HMJSONReciever *reciever;
 
 @end
 
