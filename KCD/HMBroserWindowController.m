@@ -15,6 +15,8 @@
 #import "HMCoreDataManager.h"
 
 
+static NSString *prevReloadDateStringKey = @"previousReloadDateString";
+
 @interface HMBroserWindowController ()
 
 @property (strong) NSViewController *selectedViewController;
@@ -110,7 +112,31 @@
 {
 	id /*NSClipView * */ clip = [self.webView superview];
 	[clip scrollToPoint:NSMakePoint(70, 425)];
+	
+	NSString *prevReloadDateString = [[NSUserDefaults standardUserDefaults] stringForKey:prevReloadDateStringKey];
+	if(prevReloadDateString) {
+		NSDate *prevDate = [NSDate dateWithString:prevReloadDateString];
+		NSDate *now = [NSDate dateWithTimeIntervalSinceNow:0];
+		if([now timeIntervalSinceDate:prevDate] < 1 * 60) {
+			NSDate *untilDate = [prevDate dateByAddingTimeInterval:1 * 60];
+			NSString *date = [NSDateFormatter localizedStringFromDate:untilDate
+															dateStyle:NSDateFormatterNoStyle
+															timeStyle:NSDateFormatterMediumStyle];
+			NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Reload interval is too short", @"")
+											 defaultButton:nil
+										   alternateButton:nil
+											   otherButton:nil
+								 informativeTextWithFormat:NSLocalizedString(@"Reload interval is too short.\nWait until %@.", @""), date];
+			[alert runModal];
+			
+			return;
+		}
+	}
+	
 	[self.webView reload:sender];
+	
+	[[NSUserDefaults standardUserDefaults] setValue:[[NSDate dateWithTimeIntervalSinceNow:0] description]
+											 forKey:prevReloadDateStringKey];
 }
 
 
