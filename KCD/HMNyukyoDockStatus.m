@@ -71,7 +71,7 @@ enum {
 				if(!self.isTasking) self.isTasking = YES;
 				break;
 			default:
-				NSLog(@"Mission status is %ld", status);
+				NSLog(@"Nyukyo Dock status is %ld", status);
 				break;
 		}
 		return;
@@ -87,17 +87,11 @@ enum {
 		return;
 	}
 	
-	NSNumber *state =[self.controller valueForKeyPath:@"selection.state"];
-	if(![state isKindOfClass:[NSNumber class]] || [state isEqualToNumber:@0] || [state isEqualToNumber:@(-1)]) {
-		self.name = nil;
-		self.time = nil;
-		return;
-	}
-	
 	NSNumber *compTimeValue = [self.controller valueForKeyPath:@"selection.complete_time"];
 	if(![compTimeValue isKindOfClass:[NSNumber class]]) {
 		self.name = nil;
 		self.time = nil;
+		return;
 	}
 	
 	NSTimeInterval compTime = (NSUInteger)([compTimeValue doubleValue] / 1000.0);

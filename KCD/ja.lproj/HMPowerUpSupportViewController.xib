@@ -25,14 +25,14 @@
                         <rect key="frame" x="1" y="17" width="304" height="334"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" headerView="xz8-nE-DgQ" id="HLz-Kp-DN2">
+                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveName="powerupsupportview" headerView="xz8-nE-DgQ" id="HLz-Kp-DN2">
                                 <rect key="frame" x="0.0" y="0.0" width="304" height="334"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn width="33" minWidth="33" maxWidth="1000" id="sNi-c1-2zU">
+                                    <tableColumn identifier="no" width="33" minWidth="33" maxWidth="1000" id="sNi-c1-2zU">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="No.">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -48,7 +48,7 @@
                                             <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.master_ship.sortno" id="HdN-nH-86V"/>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn width="76" minWidth="40" maxWidth="1000" id="82a-ca-AZb">
+                                    <tableColumn identifier="name" width="76" minWidth="40" maxWidth="1000" id="82a-ca-AZb">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="名前">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -64,7 +64,7 @@
                                             <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.master_ship.name" id="Oz0-gn-Mpo"/>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn width="31" minWidth="10" maxWidth="3.4028234663852886e+38" id="u6A-sR-Kyv">
+                                    <tableColumn identifier="lv" width="31" minWidth="10" maxWidth="3.4028234663852886e+38" id="u6A-sR-Kyv">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Lv.">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -80,7 +80,7 @@
                                             <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.lv" id="qEu-ub-xiv"/>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn width="28" minWidth="10" maxWidth="3.4028234663852886e+38" id="G9R-OQ-qxc">
+                                    <tableColumn identifier="karyoku" width="28" minWidth="10" maxWidth="3.4028234663852886e+38" id="G9R-OQ-qxc">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="火力">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -95,7 +95,7 @@
                                             <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.isMaxKaryoku" id="kFw-53-Ztq"/>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn width="28" minWidth="22" maxWidth="3.4028234663852886e+38" id="h1X-yX-kBd">
+                                    <tableColumn identifier="raisou" width="28" minWidth="22" maxWidth="3.4028234663852886e+38" id="h1X-yX-kBd">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="雷装">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -110,7 +110,7 @@
                                             <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.isMaxRaisou" id="4Et-xX-GBO"/>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn width="28" minWidth="10" maxWidth="3.4028234663852886e+38" id="kOg-s3-rC4">
+                                    <tableColumn identifier="taiku" width="28" minWidth="10" maxWidth="3.4028234663852886e+38" id="kOg-s3-rC4">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="対空">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -125,7 +125,7 @@
                                             <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.isMaxTaiku" id="Fbm-nQ-g0X"/>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn width="28" minWidth="10" maxWidth="3.4028234663852886e+38" id="whd-ZR-lLz">
+                                    <tableColumn identifier="soukou" width="28" minWidth="10" maxWidth="3.4028234663852886e+38" id="whd-ZR-lLz">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="装甲">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -140,7 +140,7 @@
                                             <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.isMaxSoukou" id="rId-U9-Y9l"/>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn width="28" minWidth="10" maxWidth="3.4028234663852886e+38" id="zY7-Tf-YmF">
+                                    <tableColumn identifier="lucky" width="28" minWidth="10" maxWidth="3.4028234663852886e+38" id="zY7-Tf-YmF">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="運">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -274,6 +274,11 @@
         <arrayController mode="entity" entityName="Ship" editable="NO" automaticallyPreparesContent="YES" id="b8v-Gn-JZD" userLabel="Ship">
             <connections>
                 <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="mMh-Jt-CpI"/>
+                <binding destination="O24-QT-DRL" name="sortDescriptors" keyPath="values.powerupsupportsortdecriptor" id="KVq-5k-1KQ">
+                    <dictionary key="options">
+                        <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
+                    </dictionary>
+                </binding>
             </connections>
         </arrayController>
         <userDefaultsController representsSharedInstance="YES" id="O24-QT-DRL"/>

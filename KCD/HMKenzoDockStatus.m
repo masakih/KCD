@@ -90,15 +90,10 @@ enum {
 		return;
 	}
 	
-	NSNumber *state =[self.controller valueForKeyPath:@"selection.state"];
-	if(![state isKindOfClass:[NSNumber class]] || [state isEqualToNumber:@0] || [state isEqualToNumber:@(-1)]) {
-		self.time = nil;
-		return;
-	}
-	
 	NSNumber *compTimeValue = [self.controller valueForKeyPath:@"selection.complete_time"];
 	if(![compTimeValue isKindOfClass:[NSNumber class]]) {
 		self.time = nil;
+		return;
 	}
 	
 	NSTimeInterval compTime = (NSUInteger)([compTimeValue doubleValue] / 1000.0);
