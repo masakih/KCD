@@ -17,12 +17,14 @@
 
 @property (weak) IBOutlet WebView *webView;
 @property (weak) IBOutlet NSView *placeholder;
-
 @property (nonatomic, weak) IBOutlet NSView *docksPlaceholder;
 
 @property (readonly) NSAttributedString *linksString;
 
 @property NSInteger selectedViewsSegment;
+
+@property (nonatomic, strong) IBOutlet NSArrayController *deckContoller;
+@property (nonatomic, readonly) NSString *flagShipName;
 
 
 - (IBAction)reloadContent:(id)sender;

@@ -22,9 +22,16 @@ static NSString *prevReloadDateStringKey = @"previousReloadDateString";
 @property (strong) NSViewController *selectedViewController;
 @property (strong) NSMutableDictionary *controllers;
 
+@property (strong) NSNumber *flagShipID;
+
 @end
 
 @implementation HMBroserWindowController
+
++ (NSSet *)keyPathsForValuesAffectingFlagShipName
+{
+	return [NSSet setWithObject:@"flagShipID"];
+}
 
 - (id)init
 {
@@ -57,6 +64,7 @@ static NSString *prevReloadDateStringKey = @"previousReloadDateString";
 	[self.webView setMainFrameURL:@"http://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/"];
 	//	[self.webView setMainFrameURL:@"http://www.google.com/"];
 	
+	[self bind:@"flagShipID" toObject:self.deckContoller withKeyPath:@"selection.ship_0" options:nil];
 }
 
 
@@ -137,6 +145,26 @@ static NSString *prevReloadDateStringKey = @"previousReloadDateString";
 	
 	[[NSUserDefaults standardUserDefaults] setValue:[[NSDate dateWithTimeIntervalSinceNow:0] description]
 											 forKey:prevReloadDateStringKey];
+}
+
+- (NSString *)flagShipName
+{
+	NSError *error = nil;
+	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Ship"];
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id = %@", self.flagShipID];
+	[request setPredicate:predicate];
+	NSArray *array = [self.managedObjectContext executeFetchRequest:request
+													 error:&error];
+	if([array count] == 0) {
+		return nil;
+	}
+	
+	id flagShipName = [array[0] valueForKeyPath:@"master_ship.name"];
+	if(!flagShipName || [flagShipName isKindOfClass:[NSNull class]]) {
+		return nil;
+	}
+	
+	return flagShipName;
 }
 
 
