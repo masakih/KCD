@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13C64" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5063" systemVersion="13C64" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Basic" representedClassName="HMKCManagedObject" syncable="YES">
         <attribute name="active_flag" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
@@ -56,9 +56,6 @@
         <attribute name="ship_3" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="ship_4" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="ship_5" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <fetchedProperty name="missionName" optional="YES" syncable="YES">
-            <fetchRequest name="fetchedPropertyFetchRequest" entity="MasterMission" predicateString="id = $FETCH_SOURCE.mission_1"/>
-        </fetchedProperty>
     </entity>
     <entity name="KenzoDock" representedClassName="HMKCManagedObject" syncable="YES">
         <attribute name="complete_time" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -391,21 +388,21 @@
         <relationship name="master_slotItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MasterSlotItem" inverseName="slotItems" inverseEntity="MasterSlotItem" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Basic" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Deck" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="KenzoDock" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="MasterFurniture" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="MasterMapArea" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="MasterMapCell" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="MasterMapInfo" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="MasterMission" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="MasterShip" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="MasterSlotItem" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="MasterSType" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="MasterUseItem" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Material" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="NyukyoDock" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Ship" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="SlotItem" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Basic" positionX="0" positionY="0" width="128" height="615"/>
+        <element name="Deck" positionX="0" positionY="0" width="128" height="268"/>
+        <element name="KenzoDock" positionX="0" positionY="0" width="128" height="210"/>
+        <element name="MasterFurniture" positionX="0" positionY="0" width="128" height="165"/>
+        <element name="MasterMapArea" positionX="0" positionY="0" width="128" height="90"/>
+        <element name="MasterMapCell" positionX="0" positionY="0" width="128" height="465"/>
+        <element name="MasterMapInfo" positionX="0" positionY="0" width="128" height="315"/>
+        <element name="MasterMission" positionX="0" positionY="0" width="128" height="255"/>
+        <element name="MasterShip" positionX="0" positionY="0" width="128" height="1515"/>
+        <element name="MasterSlotItem" positionX="0" positionY="0" width="128" height="540"/>
+        <element name="MasterSType" positionX="0" positionY="0" width="128" height="135"/>
+        <element name="MasterUseItem" positionX="0" positionY="0" width="128" height="150"/>
+        <element name="Material" positionX="0" positionY="0" width="128" height="150"/>
+        <element name="NyukyoDock" positionX="0" positionY="0" width="128" height="195"/>
+        <element name="Ship" positionX="0" positionY="0" width="128" height="750"/>
+        <element name="SlotItem" positionX="0" positionY="0" width="128" height="225"/>
     </elements>
 </model>
