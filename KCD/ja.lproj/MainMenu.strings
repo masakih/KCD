@@ -14,14 +14,14 @@
 /* Class = "NSMenu"; title = "AMainMenu"; ObjectID = "29"; */
 "29.title" = "AMainMenu";
 
-/* Class = "NSMenuItem"; title = "なまえはまだないベータ"; ObjectID = "56"; */
-"56.title" = "なまえはまだないベータ";
+/* Class = "NSMenuItem"; title = "KCD"; ObjectID = "56"; */
+"56.title" = "艦娘は今日も元気です。";
 
-/* Class = "NSMenu"; title = "なまえはまだないベータ"; ObjectID = "57"; */
-"57.title" = "なまえはまだないベータ";
+/* Class = "NSMenu"; title = "KCD"; ObjectID = "57"; */
+"57.title" = "艦娘は今日も元気です。";
 
-/* Class = "NSMenuItem"; title = "About なまえはまだないベータ"; ObjectID = "58"; */
-"58.title" = "About なまえはまだないベータ";
+/* Class = "NSMenuItem"; title = "About KCD"; ObjectID = "58"; */
+"58.title" = "About 艦娘は今日も元気です。";
 
 /* Class = "NSMenuItem"; title = "Open…"; ObjectID = "72"; */
 "72.title" = "Open…";
@@ -62,11 +62,11 @@
 /* Class = "NSMenuItem"; title = "Services"; ObjectID = "131"; */
 "131.title" = "Services";
 
-/* Class = "NSMenuItem"; title = "Hide なまえはまだないベータ"; ObjectID = "134"; */
-"134.title" = "Hide なまえはまだないベータ";
+/* Class = "NSMenuItem"; title = "Hide 艦娘は今日も元気です。"; ObjectID = "134"; */
+"134.title" = "Hide 艦娘は今日も元気です。";
 
-/* Class = "NSMenuItem"; title = "Quit なまえはまだないベータ"; ObjectID = "136"; */
-"136.title" = "Quit なまえはまだないベータ";
+/* Class = "NSMenuItem"; title = "Quit 艦娘は今日も元気です。"; ObjectID = "136"; */
+"136.title" = "Quit 艦娘は今日も元気です。";
 
 /* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "145"; */
 "145.title" = "Hide Others";
@@ -123,4 +123,4 @@
 "491.title" = "Help";
 
 /* Class = "NSMenuItem"; title = "KCD Help"; ObjectID = "492"; */
-"492.title" = "KCD Help";
+"492.title" = "艦娘は今日も元気です。 Help";
