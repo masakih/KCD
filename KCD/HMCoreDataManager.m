@@ -115,18 +115,19 @@ static NSManagedObjectModel *_managedObjectModel = nil;
             return nil;
         }
     }
-    
-    NSURL *url = [applicationFilesDirectory URLByAppendingPathComponent:@"KCD.storedata"];
+#ifdef DEBUG
+    NSURL *url = [applicationFilesDirectory URLByAppendingPathComponent:@"KCD.storedata.xml"];
+	NSString *storeType = NSXMLStoreType;
+#else
+	NSURL *url = [applicationFilesDirectory URLByAppendingPathComponent:@"KCD.storedata"];
+	NSString *storeType = NSSQLiteStoreType;
+#endif
 	NSDictionary *options = @{
 							  NSMigratePersistentStoresAutomaticallyOption : @YES,
 							  NSInferMappingModelAutomaticallyOption : @YES
 							  };
     NSPersistentStoreCoordinator *coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:mom];
-#ifdef DEBUG
-    if (![coordinator addPersistentStoreWithType:NSXMLStoreType configuration:nil URL:url options:options error:&error]) {
-#else
-	if (![coordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:url options:options error:&error]) {
-#endif
+    if (![coordinator addPersistentStoreWithType:storeType configuration:nil URL:url options:options error:&error]) {
         [[NSApplication sharedApplication] presentError:error];
         return nil;
     }
