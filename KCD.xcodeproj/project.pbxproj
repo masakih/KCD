@@ -45,7 +45,6 @@
 		F4BDEB47187252F30069D0CE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4BDEB46187252F30069D0CE /* Cocoa.framework */; };
 		F4BDEB51187252F30069D0CE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4BDEB4F187252F30069D0CE /* InfoPlist.strings */; };
 		F4BDEB53187252F30069D0CE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BDEB52187252F30069D0CE /* main.m */; };
-		F4BDEB57187252F30069D0CE /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F4BDEB55187252F30069D0CE /* Credits.rtf */; };
 		F4BDEB5A187252F30069D0CE /* HMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BDEB59187252F30069D0CE /* HMAppDelegate.m */; };
 		F4BDEB5D187252F30069D0CE /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BDEB5B187252F30069D0CE /* MainMenu.xib */; };
 		F4BDEB5F187252F30069D0CE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4BDEB5E187252F30069D0CE /* Images.xcassets */; };
@@ -117,7 +116,6 @@
 		F47B78B118A7B42B0011386E /* HMJSONViewWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMJSONViewWindowController.xib; sourceTree = "<group>"; };
 		F494DC5618C23E4300AE97E4 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		F494DC5718C23E4300AE97E4 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		F494DC5818C23E4300AE97E4 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = ja; path = ja.lproj/Credits.rtf; sourceTree = "<group>"; };
 		F494DC5918C23E4400AE97E4 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F494DC5D18C30AE100AE97E4 /* HMMissionStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMissionStatus.h; sourceTree = "<group>"; };
 		F494DC5E18C30AE100AE97E4 /* HMMissionStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMissionStatus.m; sourceTree = "<group>"; };
@@ -316,7 +314,6 @@
 				F4BDEB4F187252F30069D0CE /* InfoPlist.strings */,
 				F4BDEB52187252F30069D0CE /* main.m */,
 				F4BDEB54187252F30069D0CE /* KCD-Prefix.pch */,
-				F4BDEB55187252F30069D0CE /* Credits.rtf */,
 				F43E67B618BE02A10087E5B6 /* STypeShortName.plist */,
 				F43E67B818BE060E0087E5B6 /* LevelUpExp.plist */,
 			);
@@ -487,7 +484,6 @@
 				F43E67B718BE02A10087E5B6 /* STypeShortName.plist in Resources */,
 				F4BDEB5F187252F30069D0CE /* Images.xcassets in Resources */,
 				F4513EF018B96C6C00073552 /* Links.rtf in Resources */,
-				F4BDEB57187252F30069D0CE /* Credits.rtf in Resources */,
 				F4BDEB5D187252F30069D0CE /* MainMenu.xib in Resources */,
 				F46F104618AA50730063E503 /* HMBroserWindowController.xib in Resources */,
 			);
@@ -585,14 +581,6 @@
 				F494DC5718C23E4300AE97E4 /* ja */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		F4BDEB55187252F30069D0CE /* Credits.rtf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F494DC5818C23E4300AE97E4 /* ja */,
-			);
-			name = Credits.rtf;
 			sourceTree = "<group>";
 		};
 		F4BDEB5B187252F30069D0CE /* MainMenu.xib */ = {
