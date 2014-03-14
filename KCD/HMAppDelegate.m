@@ -78,8 +78,11 @@ static FILE* logFileP = NULL;
 #ifdef DEBUG
 	self.shipWindowController = [HMShipWindowController new];
 	[self.shipWindowController showWindow:nil];
+#else
+	NSMenu *mainMenu = [NSApp mainMenu];
+	NSInteger debugMenuIndex = [mainMenu indexOfItemWithTag:1000];
+	[mainMenu removeItemAtIndex:debugMenuIndex];
 #endif
-	
 }
 
 #pragma mark - NSApplicationDelegate

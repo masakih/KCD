@@ -27,7 +27,7 @@
 "72.title" = "Open…";
 
 /* Class = "NSMenuItem"; title = "Close"; ObjectID = "73"; */
-"73.title" = "Close";
+"73.title" = "閉じる";
 
 /* Class = "NSMenuItem"; title = "Save…"; ObjectID = "75"; */
 "75.title" = "Save…";
