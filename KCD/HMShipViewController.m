@@ -11,8 +11,14 @@
 #import "HMCoreDataManager.h"
 
 
-@interface HMShipViewController ()
+enum {
+	kExpView = 0,
+	kPowerView = 1,
+	kPower2View = 2,
+};
 
+@interface HMShipViewController ()
+@property (weak) NSView *currentTableView;
 @end
 
 @implementation HMShipViewController
@@ -22,9 +28,43 @@
 	self = [super initWithNibName:NSStringFromClass([self class]) bundle:nil];
 	return self;
 }
+
+- (void)awakeFromNib
+{
+	self.currentTableView = self.expTableView;
+}
 - (NSManagedObjectContext *)managedObjectContext
 {
 	return [HMCoreDataManager defaultManager].managedObjectContext;
+}
+
+- (void)showViewWithNumber:(NSInteger)number
+{
+	NSView *newSelection = nil;
+	
+	switch (number) {
+		case kExpView:
+			newSelection = self.expTableView;
+			break;
+		case kPowerView:
+			newSelection = self.powerTableView;
+			break;
+		case 2:
+			newSelection = self.power2TableView;
+			break;
+		default:
+			break;
+	}
+	
+	if(!newSelection) return;
+	if([self.currentTableView isEqual:newSelection]) return;
+	
+	[newSelection setFrame:[self.currentTableView frame]];
+	[newSelection setAutoresizingMask:[self.currentTableView autoresizingMask]];
+	[self.view replaceSubview:self.currentTableView with:newSelection];
+	self.currentTableView = newSelection;
+	
+//	self.selectedViewsSegment = number;
 }
 
 
@@ -47,6 +87,19 @@
 	}
 	[self.shipController setFetchPredicate:predicate];
 	[self.shipController rearrangeObjects];
+}
+
+- (IBAction)changeView:(id)sender
+{
+	NSInteger tag = -1;
+	if([sender respondsToSelector:@selector(selectedSegment)]) {
+		NSSegmentedCell *cell = [sender cell];
+		NSUInteger index = [sender selectedSegment];
+		tag = [cell tagForSegment:index];
+	} else {
+		tag = [sender tag];
+	}
+	[self showViewWithNumber:tag];
 }
 
 @end

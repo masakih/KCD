@@ -12,8 +12,13 @@
 @property (readonly) NSManagedObjectContext *managedObjectContext;
 
 @property (weak) IBOutlet NSArrayController *shipController;
+@property (nonatomic, strong) IBOutlet NSScrollView *expTableView;
+@property (nonatomic, strong) IBOutlet NSScrollView *powerTableView;
+@property (nonatomic, strong) IBOutlet NSScrollView *power2TableView;
 
 
 - (IBAction)changeCategory:(id)sender;
+
+- (IBAction)changeView:(id)sender;
 
 @end
