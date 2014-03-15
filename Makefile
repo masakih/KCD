@@ -15,7 +15,7 @@ KCD/HMMissionStatus.m KCD/HMNyukyoDockStatus.m
 VER_CMD=grep -A1 'CFBundleShortVersionString' $(INFO_PLIST) | tail -1 | tr -d "'\t</string>" 
 VERSION=$(shell $(VER_CMD))
 
-all: release
+all: package
 
 Localizable: $(LOCALIZE_FILES)
 	genstrings -o KCD/ja.lproj $^
@@ -28,7 +28,7 @@ checkLocalizable:
 	(cd KCD/ja.lproj; ${MAKE} $@;)
 
 release: updateRevision
-	xcodebuild -scheme $(SCHEME) -configuration $(DEPLOYMENT)
+	xcodebuild -derivedDataPath=build -configuration $(DEPLOYMENT)
 	$(MAKE) restorInfoPlist
 
 package: release
