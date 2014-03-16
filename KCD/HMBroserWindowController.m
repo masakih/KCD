@@ -17,6 +17,12 @@
 
 static NSString *prevReloadDateStringKey = @"previousReloadDateString";
 
+typedef NS_ENUM(NSInteger, ViewType) {
+	kScheduleType = 0,
+	kOrganizeType = 1,
+	kPowerUpType = 2,
+};
+
 @interface HMBroserWindowController ()
 
 @property (strong) NSViewController *selectedViewController;
@@ -82,38 +88,36 @@ static NSString *prevReloadDateStringKey = @"previousReloadDateString";
 	return linksString;
 }
 
-- (void)showViewWithNumber:(NSInteger)number
+- (void)showViewWithNumber:(ViewType)type
 {
 	Class controllerClass = Nil;
 
-	switch (number) {
-		case 0:
+	switch (type) {
+		case kScheduleType:
 			controllerClass = [HMDocksViewController class];
 			break;
-		case 1:
+		case kOrganizeType:
 			controllerClass = [HMShipViewController class];
 			break;
-		case 2:
+		case kPowerUpType:
 			controllerClass = [HMPowerUpSupportViewController class];
-			break;
-		default:
 			break;
 	}
 	
 	if(!controllerClass) return;
 	if([self.selectedViewController isMemberOfClass:controllerClass]) return;
 	
-	NSViewController *newContoller = [self.controllers objectForKey:@(number)];
+	NSViewController *newContoller = [self.controllers objectForKey:@(type)];
 	if(!newContoller) {
 		newContoller = [controllerClass new];
-		[self.controllers setObject:newContoller forKey:@(number)];
+		[self.controllers setObject:newContoller forKey:@(type)];
 	}
 	[newContoller.view setFrame:[self.selectedViewController.view frame]];
 	[newContoller.view setAutoresizingMask:[self.selectedViewController.view autoresizingMask]];
 	[[self.selectedViewController.view superview] replaceSubview:self.selectedViewController.view with:newContoller.view];
 	self.selectedViewController = newContoller;
 	
-	self.selectedViewsSegment = number;
+	self.selectedViewsSegment = type;
 }
 
 - (IBAction)reloadContent:(id)sender
