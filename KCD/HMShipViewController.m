@@ -11,7 +11,7 @@
 #import "HMCoreDataManager.h"
 
 
-enum {
+typedef NS_ENUM(NSInteger, ViewType) {
 	kExpView = 0,
 	kPowerView = 1,
 	kPower2View = 2,
@@ -38,10 +38,9 @@ enum {
 	return [HMCoreDataManager defaultManager].managedObjectContext;
 }
 
-- (void)showViewWithNumber:(NSInteger)number
+- (void)showViewWithNumber:(ViewType)number
 {
 	NSView *newSelection = nil;
-	
 	switch (number) {
 		case kExpView:
 			newSelection = self.expTableView;
@@ -49,10 +48,8 @@ enum {
 		case kPowerView:
 			newSelection = self.powerTableView;
 			break;
-		case 2:
+		case kPower2View:
 			newSelection = self.power2TableView;
-			break;
-		default:
 			break;
 	}
 	
@@ -63,8 +60,6 @@ enum {
 	[newSelection setAutoresizingMask:[self.currentTableView autoresizingMask]];
 	[self.view replaceSubview:self.currentTableView with:newSelection];
 	self.currentTableView = newSelection;
-	
-//	self.selectedViewsSegment = number;
 }
 
 
