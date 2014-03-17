@@ -20,4 +20,7 @@
 
 @property (strong) HMJSONViewWindowController *jsonViewWindowController;
 
+
+@property (readonly) NSArray *shipTypeCategories;
+
 @end

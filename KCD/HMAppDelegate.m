@@ -85,6 +85,24 @@ static FILE* logFileP = NULL;
 #endif
 }
 
+- (NSArray *)shipTypeCategories
+{
+	static NSArray *categories = nil;
+	
+	if(categories) return categories;
+	
+	categories = @[
+				   @[@2],
+				   @[@3, @4],
+				   @[@5,@6],
+				   @[@7, @11, @16, @18],
+				   @[@8, @9, @10, @12],
+				   @[@13, @14],
+				   @[@1, @15, @17]
+				   ];
+	return categories;
+}
+
 #pragma mark - NSApplicationDelegate
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender
 {
@@ -103,7 +121,7 @@ static FILE* logFileP = NULL;
 	NSSavePanel *panel = [NSSavePanel savePanel];
 	[panel setAllowedFileTypes:@[@"plist"]];
 	[panel setPrompt:@"Save log"];
-	[panel setTitle:@"Sace log"];
+	[panel setTitle:@"Save log"];
 	[panel beginWithCompletionHandler:^(NSInteger result) {
 		if(result == NSOKButton) {
 			NSArray *array = [self.jsonViewWindowController.commands copy];

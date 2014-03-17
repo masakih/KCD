@@ -8,6 +8,7 @@
 
 #import "HMShipWindowController.h"
 
+#import "HMAppDelegate.h"
 #import "HMCoreDataManager.h"
 
 
@@ -38,15 +39,7 @@
 
 - (IBAction)changeCategory:(id)sender
 {
-	NSArray *categories = @[
-							@[@2],
-							@[@3, @4],
-							@[@5,@6],
-							@[@7, @11, @16, @18],
-							@[@8, @9, @10, @12],
-							@[@13, @14],
-							@[@1, @15, @17]
-							];
+	NSArray *categories = [[NSApp delegate] shipTypeCategories];
 	
 	NSPredicate *predicate = nil;
 	NSUInteger tag = [sender selectedSegment];
