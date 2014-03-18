@@ -14,6 +14,7 @@
 
 @property (copy) NSString *argumentsString;
 @property (strong) NSData *jsonData;
+@property (strong) NSDate *recieveDate;
 
 - (void)execute;
 

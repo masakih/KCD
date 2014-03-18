@@ -32,7 +32,11 @@
 {
 	dispatch_async(dispatch_get_main_queue(), ^{
 		HMAppDelegate *appDelegate = [NSApp delegate];
-		[appDelegate.jsonViewWindowController setCommand:@{@"api":self.api, @"argument":self.arguments, @"json":self.jsonTree, @"date": [NSDate date]}];
+		[appDelegate.jsonViewWindowController setCommand:@{@"api":self.api,
+														   @"argument":self.arguments,
+														   @"json":self.jsonTree,
+														   @"recieveDate":self.recieveDate,
+														   @"date": [NSDate date]}];
 	});
 }
 

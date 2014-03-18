@@ -54,6 +54,12 @@
 		[command setJsonData:jsonData];
 	}
 }
+- (void)setRecieveDate:(NSDate *)recieveDate
+{
+	for(id command in self.commands) {
+		[command setRecieveDate:recieveDate];
+	}
+}
 
 
 @end

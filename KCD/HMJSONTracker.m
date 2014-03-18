@@ -51,6 +51,7 @@ static HMJSONTracker *sTracker = nil;
 					HMJSONCommand *command = [HMJSONCommand commandForAPI:[item objectForKey:@"api"]];
 					command.argumentsString = [item objectForKey:@"argument"];
 					command.jsonData = [item objectForKey:@"json"];
+					command.recieveDate = [item objectForKey:@"date"];
 					
 					[command execute];
 				}
