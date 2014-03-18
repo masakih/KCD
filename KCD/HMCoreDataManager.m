@@ -115,7 +115,7 @@ static NSManagedObjectModel *_managedObjectModel = nil;
             return nil;
         }
     }
-#ifdef DEBUG
+#if COREDATA_STORE_TYPE == 0
     NSURL *url = [applicationFilesDirectory URLByAppendingPathComponent:@"KCD.storedata.xml"];
 	NSString *storeType = NSXMLStoreType;
 #else
