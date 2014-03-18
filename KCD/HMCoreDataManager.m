@@ -116,11 +116,11 @@ static NSManagedObjectModel *_managedObjectModel = nil;
         }
     }
 #if COREDATA_STORE_TYPE == 0
-    NSURL *url = [applicationFilesDirectory URLByAppendingPathComponent:@"KCD.storedata.xml"];
-	NSString *storeType = NSXMLStoreType;
-#else
 	NSURL *url = [applicationFilesDirectory URLByAppendingPathComponent:@"KCD.storedata"];
 	NSString *storeType = NSSQLiteStoreType;
+#else
+	NSURL *url = [applicationFilesDirectory URLByAppendingPathComponent:@"KCD.storedata.xml"];
+	NSString *storeType = NSXMLStoreType;
 #endif
 	NSDictionary *options = @{
 							  NSMigratePersistentStoresAutomaticallyOption : @YES,
