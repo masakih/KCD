@@ -261,52 +261,28 @@
 		F4BDEB4C187252F30069D0CE /* KCD */ = {
 			isa = PBXGroup;
 			children = (
-				F4C118F318A67B05005D5B25 /* CustomHTTPProtocol */,
 				F4BDEB58187252F30069D0CE /* HMAppDelegate.h */,
 				F4BDEB59187252F30069D0CE /* HMAppDelegate.m */,
+				F4C118F318A67B05005D5B25 /* CustomHTTPProtocol */,
+				F4C1190018A6FFC2005D5B25 /* HMQueue.h */,
+				F4C1190118A6FFC2005D5B25 /* HMQueue.m */,
+				F4C1190318A71AEA005D5B25 /* HMJSONReciever.h */,
+				F4C1190418A71AEA005D5B25 /* HMJSONReciever.m */,
+				F4C1190618A746EB005D5B25 /* HMJSONTracker.h */,
+				F4C1190718A746EB005D5B25 /* HMJSONTracker.m */,
 				F494DC5D18C30AE100AE97E4 /* HMMissionStatus.h */,
 				F494DC5E18C30AE100AE97E4 /* HMMissionStatus.m */,
 				F494DC6B18CC054800AE97E4 /* HMNyukyoDockStatus.h */,
 				F494DC6C18CC054800AE97E4 /* HMNyukyoDockStatus.m */,
 				F4C3957218CDDFE500A1E918 /* HMKenzoDockStatus.h */,
 				F4C3957318CDDFE500A1E918 /* HMKenzoDockStatus.m */,
-				F4513EDB18B619B600073552 /* HMCoreDataManager.h */,
-				F4513EDC18B619B600073552 /* HMCoreDataManager.m */,
-				F4C1190318A71AEA005D5B25 /* HMJSONReciever.h */,
-				F4C1190418A71AEA005D5B25 /* HMJSONReciever.m */,
-				F4C1190618A746EB005D5B25 /* HMJSONTracker.h */,
-				F4C1190718A746EB005D5B25 /* HMJSONTracker.m */,
-				F4D2CBC618B0555A000EBC59 /* HMKCManagedObject.h */,
-				F4D2CBC718B0555A000EBC59 /* HMKCManagedObject.m */,
-				F4513EFC18BB6B0C00073552 /* HMKCShipObject.h */,
-				F4513EFD18BB6B0C00073552 /* HMKCShipObject.m */,
 				F4D2CBBF18ACE7D7000EBC59 /* Command */,
+				F4BEEEA918D890660006F70C /* UI */,
+				F4BEEEA818D88FF30006F70C /* CoreData */,
 				F46F103F18A9B85E0063E503 /* HMJSONNode.h */,
 				F46F104018A9B85E0063E503 /* HMJSONNode.m */,
-				F4C1190018A6FFC2005D5B25 /* HMQueue.h */,
-				F4C1190118A6FFC2005D5B25 /* HMQueue.m */,
-				F4BDEB5B187252F30069D0CE /* MainMenu.xib */,
 				F4BDEB5E187252F30069D0CE /* Images.xcassets */,
 				F4BDEB4D187252F30069D0CE /* Supporting Files */,
-				F46F104218AA50730063E503 /* HMBroserWindowController.h */,
-				F46F104318AA50730063E503 /* HMBroserWindowController.m */,
-				F46F104418AA50730063E503 /* HMBroserWindowController.xib */,
-				F4513EE118B635EA00073552 /* HMDocksViewController.h */,
-				F4513EE218B635EA00073552 /* HMDocksViewController.m */,
-				F4513EE318B635EA00073552 /* HMDocksViewController.xib */,
-				F47B78AF18A7B42B0011386E /* HMJSONViewWindowController.h */,
-				F47B78B018A7B42B0011386E /* HMJSONViewWindowController.m */,
-				F47B78B118A7B42B0011386E /* HMJSONViewWindowController.xib */,
-				F4513EF718BB699700073552 /* HMShipWindowController.h */,
-				F4513EF818BB699700073552 /* HMShipWindowController.m */,
-				F4513EF918BB699700073552 /* HMShipWindowController.xib */,
-				F494DC6018C608C100AE97E4 /* HMShipViewController.h */,
-				F494DC6118C608C100AE97E4 /* HMShipViewController.m */,
-				F494DC6218C608C100AE97E4 /* HMShipViewController.xib */,
-				F494DC6518C8BA6400AE97E4 /* HMPowerUpSupportViewController.h */,
-				F494DC6618C8BA6400AE97E4 /* HMPowerUpSupportViewController.m */,
-				F494DC6818C8BAB900AE97E4 /* HMPowerUpSupportViewController.xib */,
-				F46F104718ABAC910063E503 /* KCD.xcdatamodeld */,
 			);
 			path = KCD;
 			sourceTree = "<group>";
@@ -345,6 +321,46 @@
 				F4BDEB6D187252F30069D0CE /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F4BEEEA818D88FF30006F70C /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				F4513EDB18B619B600073552 /* HMCoreDataManager.h */,
+				F4513EDC18B619B600073552 /* HMCoreDataManager.m */,
+				F4D2CBC618B0555A000EBC59 /* HMKCManagedObject.h */,
+				F4D2CBC718B0555A000EBC59 /* HMKCManagedObject.m */,
+				F4513EFC18BB6B0C00073552 /* HMKCShipObject.h */,
+				F4513EFD18BB6B0C00073552 /* HMKCShipObject.m */,
+				F46F104718ABAC910063E503 /* KCD.xcdatamodeld */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
+		F4BEEEA918D890660006F70C /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				F4BDEB5B187252F30069D0CE /* MainMenu.xib */,
+				F46F104218AA50730063E503 /* HMBroserWindowController.h */,
+				F46F104318AA50730063E503 /* HMBroserWindowController.m */,
+				F46F104418AA50730063E503 /* HMBroserWindowController.xib */,
+				F4513EE118B635EA00073552 /* HMDocksViewController.h */,
+				F4513EE218B635EA00073552 /* HMDocksViewController.m */,
+				F4513EE318B635EA00073552 /* HMDocksViewController.xib */,
+				F47B78AF18A7B42B0011386E /* HMJSONViewWindowController.h */,
+				F47B78B018A7B42B0011386E /* HMJSONViewWindowController.m */,
+				F47B78B118A7B42B0011386E /* HMJSONViewWindowController.xib */,
+				F4513EF718BB699700073552 /* HMShipWindowController.h */,
+				F4513EF818BB699700073552 /* HMShipWindowController.m */,
+				F4513EF918BB699700073552 /* HMShipWindowController.xib */,
+				F494DC6018C608C100AE97E4 /* HMShipViewController.h */,
+				F494DC6118C608C100AE97E4 /* HMShipViewController.m */,
+				F494DC6218C608C100AE97E4 /* HMShipViewController.xib */,
+				F494DC6518C8BA6400AE97E4 /* HMPowerUpSupportViewController.h */,
+				F494DC6618C8BA6400AE97E4 /* HMPowerUpSupportViewController.m */,
+				F494DC6818C8BAB900AE97E4 /* HMPowerUpSupportViewController.xib */,
+			);
+			name = UI;
 			sourceTree = "<group>";
 		};
 		F4C118F318A67B05005D5B25 /* CustomHTTPProtocol */ = {
