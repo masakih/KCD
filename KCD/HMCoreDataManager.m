@@ -128,9 +128,19 @@ static NSManagedObjectModel *_managedObjectModel = nil;
 							  };
     NSPersistentStoreCoordinator *coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:mom];
     if (![coordinator addPersistentStoreWithType:storeType configuration:nil URL:url options:options error:&error]) {
-        [[NSApplication sharedApplication] presentError:error];
-        return nil;
+		// Data Modelが更新されていたらストアファイルを削除してもう一度
+		if([[error domain] isEqualToString:NSCocoaErrorDomain] && [error code] == 134130) {
+			[[NSFileManager defaultManager] removeItemAtURL:url error:&error];
+			if (![coordinator addPersistentStoreWithType:storeType configuration:nil URL:url options:options error:&error]) {
+				[[NSApplication sharedApplication] presentError:error];
+				return nil;
+			}
+		} else {
+			[[NSApplication sharedApplication] presentError:error];
+			return nil;
+		}
     }
+	
     _persistentStoreCoordinator = coordinator;
     
     return _persistentStoreCoordinator;
