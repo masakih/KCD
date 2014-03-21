@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+#if ENABLE_JSON_LOG
 @interface HMJSONNode : NSObject <NSCoding, NSCopying>
 
 @property (copy, readonly) NSString *key;
@@ -20,3 +21,4 @@
 + (id)nodeWithJSON:(id)json;
 
 @end
+#endif

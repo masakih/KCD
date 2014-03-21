@@ -8,6 +8,8 @@
 
 #import "HMJSONNode.h"
 
+#if ENABLE_JSON_LOG
+
 @interface HMJSONNode ()
 @property (copy, readwrite) NSString *key;
 @property (copy, readwrite) NSString *value;
@@ -170,3 +172,5 @@
 
 
 @end
+
+#endif

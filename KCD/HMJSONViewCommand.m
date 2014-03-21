@@ -9,6 +9,8 @@
 #import "HMJSONViewCommand.h"
 #import "HMAppDelegate.h"
 
+#if ENABLE_JSON_LOG
+
 
 @interface HMJSONViewCommand ()
 
@@ -25,7 +27,7 @@
 
 + (BOOL)canExcuteAPI:(NSString *)api
 {
-	return YES;// [api isEqualToString:@"/kcsapi/api_req_member/get_incentive"];
+	return YES;
 }
 
 - (void)execute
@@ -41,3 +43,5 @@
 }
 
 @end
+
+#endif

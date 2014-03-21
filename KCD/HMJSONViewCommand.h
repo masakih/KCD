@@ -8,6 +8,10 @@
 
 #import "HMJSONCommand.h"
 
+#if ENABLE_JSON_LOG
+
 @interface HMJSONViewCommand : HMJSONCommand
 
 @end
+
+#endif

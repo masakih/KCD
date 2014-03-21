@@ -10,24 +10,23 @@
 
 #import "HMAppDelegate.h"
 #import "HMCoreDataManager.h"
-#import "HMJSONNode.h"
 
 #if ENABLE_JSON_LOG
+#import "HMJSONNode.h"
 #import "HMCompositCommand.h"
 #import "HMJSONViewCommand.h"
 #endif
 
 static NSMutableArray *registeredCommands = nil;
 
-
 @interface HMJSONCommand ()
 @property (strong, readwrite) NSArray *arguments;
 @property (copy, readwrite) NSString *api;
 @property (strong, readwrite) id json;
+
+#if ENABLE_JSON_LOG
 @property (strong, readwrite) NSArray *jsonTree;
-
-
-
+#endif
 @end
 
 @implementation HMJSONCommand
@@ -114,7 +113,10 @@ static NSMutableArray *registeredCommands = nil;
 		return;
 	}
 	self.json = json;
+	
+#if ENABLE_JSON_LOG
 	self.jsonTree = @[[HMJSONNode nodeWithJSON:json]];
+#endif
 }
 - (NSData *)jsonData
 {

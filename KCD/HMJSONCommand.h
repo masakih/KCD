@@ -25,7 +25,10 @@
 @property (copy, readonly) NSString *api;	// api is /kcsapi/mainAPI/subAPI
 @property (strong, readonly) NSArray *arguments;
 @property (strong, readonly) id json;		// NSArray or NSDictionary
+
+#if ENABLE_JSON_LOG
 @property (strong, readonly) NSArray *jsonTree;	// for NSTreeController
+#endif
 
 + (BOOL)canExcuteAPI:(NSString *)api;
 
