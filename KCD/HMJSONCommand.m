@@ -20,12 +20,13 @@
 static NSMutableArray *registeredCommands = nil;
 
 @interface HMJSONCommand ()
-@property (strong, readwrite) NSArray *arguments;
+@property (strong, readwrite) NSDictionary *arguments;
 @property (copy, readwrite) NSString *api;
 @property (strong, readwrite) id json;
 
 #if ENABLE_JSON_LOG
 @property (strong, readwrite) NSArray *jsonTree;
+@property (strong, readwrite) NSArray *argumentArray;
 #endif
 @end
 
@@ -78,6 +79,18 @@ static NSMutableArray *registeredCommands = nil;
 	
 	NSString *unescape = [_argumentsString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 	NSArray *pair = [unescape componentsSeparatedByString:@"&"];
+	NSMutableDictionary *dict = [NSMutableDictionary new];
+	for(NSString *p in pair) {
+		NSArray *pp = [p componentsSeparatedByString:@"="];
+		if([pp count] != 2) {
+			NSLog(@"API (%@): Bad Argument: pair is odd.", self.api);
+			continue;
+		}
+		[dict setObject:pp[1] forKey:pp[0]];
+	}
+	self.arguments = dict;
+	
+#if ENABLE_JSON_LOG
 	NSMutableArray *array = [NSMutableArray new];
 	for(NSString *p in pair) {
 		NSArray *pp = [p componentsSeparatedByString:@"="];
@@ -87,7 +100,8 @@ static NSMutableArray *registeredCommands = nil;
 		}
 		[array addObject:@{@"key": pp[0], @"value": pp[1]}];
 	}
-	self.arguments = array;
+	self.argumentArray = array;
+#endif
 }
 - (NSString *)argumentsString
 {

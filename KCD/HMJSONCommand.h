@@ -23,11 +23,12 @@
 + (void)registerClass:(Class)commandClass;
 
 @property (copy, readonly) NSString *api;	// api is /kcsapi/mainAPI/subAPI
-@property (strong, readonly) NSArray *arguments;
+@property (strong, readonly) NSDictionary *arguments;
 @property (strong, readonly) id json;		// NSArray or NSDictionary
 
 #if ENABLE_JSON_LOG
 @property (strong, readonly) NSArray *jsonTree;	// for NSTreeController
+@property (strong, readonly) NSArray *argumentArray; // for NSArrayController
 #endif
 
 + (BOOL)canExcuteAPI:(NSString *)api;
