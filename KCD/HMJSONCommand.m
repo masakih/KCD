@@ -51,7 +51,6 @@ static NSMutableArray *registeredCommands = nil;
 #if ENABLE_JSON_LOG_HANDLED_API
 			HMJSONViewCommand *viewCommand = [HMJSONViewCommand new];
 			viewCommand.api = api;
-//			command = [HMCompositCommand compositCommandWithCommands:viewCommand, command, nil];
 			command = [HMCompositCommand compositCommandWithCommands:command, viewCommand, nil];
 #endif
 			return command;
@@ -84,7 +83,7 @@ static NSMutableArray *registeredCommands = nil;
 	for(NSString *p in pair) {
 		NSArray *pp = [p componentsSeparatedByString:@"="];
 		if([pp count] != 2) {
-			NSLog(@"API (%@): Bat Argument: pair is odd.", self.api);
+			NSLog(@"API (%@): Bad Argument: pair is odd.", self.api);
 			continue;
 		}
 		[array addObject:@{@"key": pp[0], @"value": pp[1]}];
@@ -107,7 +106,7 @@ static NSMutableArray *registeredCommands = nil;
 		return;
 	}
 	if(![json isKindOfClass:[NSDictionary class]]) {
-		[self log:@"JSON is NOR NSDictionary."];
+		[self log:@"JSON is NOT NSDictionary."];
 		return;
 	}
 	if(![[json objectForKey:@"api_result"] isEqual:@1]) {
@@ -122,15 +121,6 @@ static NSMutableArray *registeredCommands = nil;
 	return _jsonData;
 }
 
-NSString *mainAPI(NSString *api)
-{
-	NSString *path = [api stringByDeletingLastPathComponent];
-	return [path lastPathComponent];
-}
-NSString *subAPI(NSString *api)
-{
-	return [api lastPathComponent];
-}
 NSString *keyByDeletingPrefix(NSString *key)
 {
 	return [key substringFromIndex:4];

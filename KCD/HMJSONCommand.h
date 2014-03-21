@@ -23,8 +23,6 @@
 + (void)registerClass:(Class)commandClass;
 
 @property (copy, readonly) NSString *api;	// api is /kcsapi/mainAPI/subAPI
-NSString *mainAPI(NSString *api);
-NSString *subAPI(NSString *api);
 @property (strong, readonly) NSArray *arguments;
 @property (strong, readonly) id json;		// NSArray or NSDictionary
 @property (strong, readonly) NSArray *jsonTree;	// for NSTreeController
