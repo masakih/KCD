@@ -68,6 +68,9 @@
 		F4D2CBC818B0555A000EBC59 /* HMKCManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D2CBC718B0555A000EBC59 /* HMKCManagedObject.m */; };
 		F4D2CBCB18B05E58000EBC59 /* HMMaserShipCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D2CBCA18B05E58000EBC59 /* HMMaserShipCommand.m */; };
 		F4E33B5818BF5F67005B8C07 /* HMMemberSlotItemCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E33B5718BF5F67005B8C07 /* HMMemberSlotItemCommand.m */; };
+		F4E7802B18DC3A820011BC4C /* HMLocalDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E7802A18DC3A820011BC4C /* HMLocalDataStore.m */; };
+		F4E7802E18DC3AF00011BC4C /* LocalData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4E7802C18DC3AF00011BC4C /* LocalData.xcdatamodeld */; };
+		F4E7803118DC42680011BC4C /* HMKenzoHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E7803018DC42680011BC4C /* HMKenzoHistory.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -192,6 +195,11 @@
 		F4D2CBCA18B05E58000EBC59 /* HMMaserShipCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMaserShipCommand.m; sourceTree = "<group>"; };
 		F4E33B5618BF5F67005B8C07 /* HMMemberSlotItemCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMemberSlotItemCommand.h; sourceTree = "<group>"; };
 		F4E33B5718BF5F67005B8C07 /* HMMemberSlotItemCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMemberSlotItemCommand.m; sourceTree = "<group>"; };
+		F4E7802918DC3A820011BC4C /* HMLocalDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMLocalDataStore.h; sourceTree = "<group>"; };
+		F4E7802A18DC3A820011BC4C /* HMLocalDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMLocalDataStore.m; sourceTree = "<group>"; };
+		F4E7802D18DC3AF00011BC4C /* LocalData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocalData.xcdatamodel; sourceTree = "<group>"; };
+		F4E7802F18DC42680011BC4C /* HMKenzoHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMKenzoHistory.h; sourceTree = "<group>"; };
+		F4E7803018DC42680011BC4C /* HMKenzoHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKenzoHistory.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -328,11 +336,16 @@
 			children = (
 				F4513EDB18B619B600073552 /* HMCoreDataManager.h */,
 				F4513EDC18B619B600073552 /* HMCoreDataManager.m */,
+				F4E7802918DC3A820011BC4C /* HMLocalDataStore.h */,
+				F4E7802A18DC3A820011BC4C /* HMLocalDataStore.m */,
 				F4D2CBC618B0555A000EBC59 /* HMKCManagedObject.h */,
 				F4D2CBC718B0555A000EBC59 /* HMKCManagedObject.m */,
 				F4513EFC18BB6B0C00073552 /* HMKCShipObject.h */,
 				F4513EFD18BB6B0C00073552 /* HMKCShipObject.m */,
 				F46F104718ABAC910063E503 /* KCD.xcdatamodeld */,
+				F4E7802F18DC42680011BC4C /* HMKenzoHistory.h */,
+				F4E7803018DC42680011BC4C /* HMKenzoHistory.m */,
+				F4E7802C18DC3AF00011BC4C /* LocalData.xcdatamodeld */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -537,6 +550,7 @@
 				F46F103618A7CE310063E503 /* HMJSONViewCommand.m in Sources */,
 				F4B414FB18B1FB6C00468DAF /* HMMasterMapCellCommand.m in Sources */,
 				F4C118FA18A67B1C005D5B25 /* CacheStoragePolicy.m in Sources */,
+				F4E7802E18DC3AF00011BC4C /* LocalData.xcdatamodeld in Sources */,
 				F4C1190518A71AEA005D5B25 /* HMJSONReciever.m in Sources */,
 				F4B414F818B1D35800468DAF /* HMMasterMissionCommand.m in Sources */,
 				F4E33B5818BF5F67005B8C07 /* HMMemberSlotItemCommand.m in Sources */,
@@ -561,6 +575,8 @@
 				F4C3957418CDDFE500A1E918 /* HMKenzoDockStatus.m in Sources */,
 				F4C118FB18A67B1C005D5B25 /* CanonicalRequest.m in Sources */,
 				F4BDEB5A187252F30069D0CE /* HMAppDelegate.m in Sources */,
+				F4E7803118DC42680011BC4C /* HMKenzoHistory.m in Sources */,
+				F4E7802B18DC3A820011BC4C /* HMLocalDataStore.m in Sources */,
 				F494DC6718C8BA6400AE97E4 /* HMPowerUpSupportViewController.m in Sources */,
 				F494DC6318C608C100AE97E4 /* HMShipViewController.m in Sources */,
 				F46F104918ABAC910063E503 /* KCD.xcdatamodeld in Sources */,
@@ -834,6 +850,16 @@
 			);
 			currentVersion = F46F104818ABAC910063E503 /* KCD.xcdatamodel */;
 			path = KCD.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		F4E7802C18DC3AF00011BC4C /* LocalData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F4E7802D18DC3AF00011BC4C /* LocalData.xcdatamodel */,
+			);
+			currentVersion = F4E7802D18DC3AF00011BC4C /* LocalData.xcdatamodel */;
+			path = LocalData.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

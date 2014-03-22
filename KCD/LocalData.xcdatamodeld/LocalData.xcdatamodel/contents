@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5063" systemVersion="13C64" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="KenzoHistory" representedClassName="HMKenzoHistory" syncable="YES">
+        <attribute name="bauxite" attributeType="Integer 32" minValueString="30" syncable="YES"/>
+        <attribute name="bull" attributeType="Integer 32" minValueString="30" syncable="YES"/>
+        <attribute name="date" attributeType="Date" indexed="YES" syncable="YES"/>
+        <attribute name="fuel" attributeType="Integer 32" minValueString="30" syncable="YES"/>
+        <attribute name="isLarge" attributeType="Boolean" syncable="YES"/>
+        <attribute name="kaihatusizai" attributeType="Integer 32" minValueString="1" syncable="YES"/>
+        <attribute name="name" attributeType="String" minValueString="1" indexed="YES" syncable="YES"/>
+        <attribute name="steel" attributeType="Integer 32" minValueString="30" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="KenzoHistory" positionX="0" positionY="0" width="128" height="165"/>
+    </elements>
+</model>
