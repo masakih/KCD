@@ -15,7 +15,6 @@
 @dynamic bull;
 @dynamic date;
 @dynamic fuel;
-@dynamic isLarge;
 @dynamic kaihatusizai;
 @dynamic name;
 @dynamic steel;
@@ -23,5 +22,10 @@
 @dynamic flagShipName;
 @dynamic flagShipLv;
 @dynamic commanderLv;
+
+- (NSNumber *)isLarge
+{
+	return [self.fuel compare:@1000] == NSOrderedDescending ? @YES : @NO;
+}
 
 @end

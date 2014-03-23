@@ -20,14 +20,13 @@
         <attribute name="flagShipLv" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="flagShipName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fuel" attributeType="Integer 32" minValueString="30" syncable="YES"/>
-        <attribute name="isLarge" attributeType="Boolean" syncable="YES"/>
         <attribute name="kaihatusizai" attributeType="Integer 32" syncable="YES"/>
         <attribute name="name" attributeType="String" minValueString="1" indexed="YES" syncable="YES"/>
         <attribute name="steel" attributeType="Integer 32" minValueString="30" syncable="YES"/>
         <attribute name="sTypeId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="KenzoHistory" positionX="0" positionY="0" width="128" height="223"/>
+        <element name="KenzoHistory" positionX="0" positionY="0" width="128" height="208"/>
         <element name="KaihatuHistory" positionX="0" positionY="63" width="128" height="193"/>
     </elements>
 </model>

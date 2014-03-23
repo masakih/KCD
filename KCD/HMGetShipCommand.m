@@ -65,7 +65,6 @@
 	newObejct.steel = [kdock valueForKey:@"item3"];
 	newObejct.bauxite = [kdock valueForKey:@"item4"];
 	newObejct.kaihatusizai = [kdock valueForKey:@"item5"];
-	newObejct.isLarge = [item1 compare:@1000] == NSOrderedDescending ? @YES : @NO;
 	newObejct.date = [NSDate date];
 }
 

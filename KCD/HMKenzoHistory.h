@@ -16,7 +16,6 @@
 @property (nonatomic, retain) NSNumber * bull;
 @property (nonatomic, retain) NSDate * date;
 @property (nonatomic, retain) NSNumber * fuel;
-@property (nonatomic, retain) NSNumber * isLarge;
 @property (nonatomic, retain) NSNumber * kaihatusizai;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSNumber * steel;
@@ -24,5 +23,7 @@
 @property (nonatomic, retain) NSString * flagShipName;
 @property (nonatomic, retain) NSNumber * flagShipLv;
 @property (nonatomic, retain) NSNumber * commanderLv;
+
+@property (readonly) NSNumber *isLarge;
 
 @end
