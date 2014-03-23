@@ -12,6 +12,8 @@
 
 #ifdef DEBUG
 #import "HMShipWindowController.h"
+
+#import "HMTSVSupport.h"
 #endif
 
 @interface HMAppDelegate () <NSUserNotificationCenterDelegate>
@@ -164,6 +166,17 @@ static FILE* logFileP = NULL;
 			[self.logedJSONViewWindowController showWindow:nil];
 		}
 	}];
+}
+#endif
+
+#ifdef DEBUG
+- (IBAction)saveLocalData:(id)sender
+{
+	[[HMTSVSupport new] save:sender];
+}
+- (IBAction)loadLocalData:(id)sender
+{
+	[[HMTSVSupport new] load:sender];
 }
 #endif
 

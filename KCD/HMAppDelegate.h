@@ -23,4 +23,9 @@
 
 @property (readonly) NSArray *shipTypeCategories;
 
+
+#ifdef DEBUG
+- (IBAction)saveLocalData:(id)sender;
+- (IBAction)loadLocalData:(id)sender;
+#endif
 @end

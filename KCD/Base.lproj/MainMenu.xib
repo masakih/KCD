@@ -175,12 +175,24 @@
                                     <action selector="openDocument:" target="-1" id="1Ka-E8-NEN"/>
                                 </connections>
                             </menuItem>
-                            <menuItem isSeparatorItem="YES" id="79">
-                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
-                            </menuItem>
                             <menuItem title="Save…" keyEquivalent="s" id="75">
                                 <connections>
                                     <action selector="saveDocument:" target="-1" id="362"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="79">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </menuItem>
+                            <menuItem title="Save Local Data..." id="o9W-5J-Fwv">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="saveLocalData:" target="494" id="AsV-Ws-vF3"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Load Local Data..." id="1eX-JA-86F">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="loadLocalData:" target="494" id="f95-N3-2EJ"/>
                                 </connections>
                             </menuItem>
                         </items>

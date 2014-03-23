@@ -37,6 +37,7 @@
 		F4B3DBCA18DDB9170011B4FC /* HMCreateSlotItemCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B3DBC918DDB9170011B4FC /* HMCreateSlotItemCommand.m */; };
 		F4B3DC1B18DEAB5E0011B4FC /* HMKaihatuHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B3DC1A18DEAB5E0011B4FC /* HMKaihatuHistory.m */; };
 		F4B3DC1E18DEB8C70011B4FC /* HMKenzoHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B3DC1D18DEB8C70011B4FC /* HMKenzoHistory.m */; };
+		F4B3DC2118DECF570011B4FC /* HMTSVSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B3DC2018DECF570011B4FC /* HMTSVSupport.m */; };
 		F4B414E918B09A4B00468DAF /* HMMasterMapAreaCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B414E818B09A4B00468DAF /* HMMasterMapAreaCommand.m */; };
 		F4B414EC18B0A7D600468DAF /* HMMasterUseItemCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B414EB18B0A7D600468DAF /* HMMasterUseItemCommand.m */; };
 		F4B414EF18B0BF1A00468DAF /* HMMasterMapInfoCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B414EE18B0BF1A00468DAF /* HMMasterMapInfoCommand.m */; };
@@ -140,6 +141,8 @@
 		F4B3DC1A18DEAB5E0011B4FC /* HMKaihatuHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKaihatuHistory.m; sourceTree = "<group>"; };
 		F4B3DC1C18DEB8C70011B4FC /* HMKenzoHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMKenzoHistory.h; sourceTree = "<group>"; };
 		F4B3DC1D18DEB8C70011B4FC /* HMKenzoHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKenzoHistory.m; sourceTree = "<group>"; };
+		F4B3DC1F18DECF570011B4FC /* HMTSVSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMTSVSupport.h; sourceTree = "<group>"; };
+		F4B3DC2018DECF570011B4FC /* HMTSVSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMTSVSupport.m; sourceTree = "<group>"; };
 		F4B414E718B09A4B00468DAF /* HMMasterMapAreaCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMasterMapAreaCommand.h; sourceTree = "<group>"; };
 		F4B414E818B09A4B00468DAF /* HMMasterMapAreaCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMasterMapAreaCommand.m; sourceTree = "<group>"; };
 		F4B414EA18B0A7D600468DAF /* HMMasterUseItemCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMasterUseItemCommand.h; sourceTree = "<group>"; };
@@ -280,6 +283,8 @@
 			children = (
 				F4BDEB58187252F30069D0CE /* HMAppDelegate.h */,
 				F4BDEB59187252F30069D0CE /* HMAppDelegate.m */,
+				F4B3DC1F18DECF570011B4FC /* HMTSVSupport.h */,
+				F4B3DC2018DECF570011B4FC /* HMTSVSupport.m */,
 				F4C118F318A67B05005D5B25 /* CustomHTTPProtocol */,
 				F4C1190018A6FFC2005D5B25 /* HMQueue.h */,
 				F4C1190118A6FFC2005D5B25 /* HMQueue.m */,
@@ -566,6 +571,7 @@
 				F4B3DC1E18DEB8C70011B4FC /* HMKenzoHistory.m in Sources */,
 				F4B414FB18B1FB6C00468DAF /* HMMasterMapCellCommand.m in Sources */,
 				F4C118FA18A67B1C005D5B25 /* CacheStoragePolicy.m in Sources */,
+				F4B3DC2118DECF570011B4FC /* HMTSVSupport.m in Sources */,
 				F4E7802E18DC3AF00011BC4C /* LocalData.xcdatamodeld in Sources */,
 				F4C1190518A71AEA005D5B25 /* HMJSONReciever.m in Sources */,
 				F4B414F818B1D35800468DAF /* HMMasterMissionCommand.m in Sources */,
