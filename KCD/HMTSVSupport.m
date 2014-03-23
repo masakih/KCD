@@ -19,10 +19,6 @@
 @implementation HMTSVSupport
 
 #pragma mark## Save to Text file ##
-static inline NSString *emptyStringIsNill(NSString *inString)
-{
-	return (inString) ? inString : @"";
-}
 - (NSArray *)allObjectOfEntityName:(NSString *)entityName sortDescriptors:(NSArray *)sortDescriptors
 {
 	NSManagedObjectContext *moc = [[HMLocalDataStore defaultManager] managedObjectContext];
