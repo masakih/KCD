@@ -35,7 +35,7 @@
 		F494DC6A18C8BAB900AE97E4 /* HMPowerUpSupportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F494DC6818C8BAB900AE97E4 /* HMPowerUpSupportViewController.xib */; };
 		F494DC6D18CC054800AE97E4 /* HMNyukyoDockStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = F494DC6C18CC054800AE97E4 /* HMNyukyoDockStatus.m */; };
 		F4B3DBCA18DDB9170011B4FC /* HMCreateSlotItemCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B3DBC918DDB9170011B4FC /* HMCreateSlotItemCommand.m */; };
-		F4B3DBCD18DDBA200011B4FC /* HMKaihatuHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B3DBCC18DDBA200011B4FC /* HMKaihatuHistory.m */; };
+		F4B3DC1B18DEAB5E0011B4FC /* HMKaihatuHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B3DC1A18DEAB5E0011B4FC /* HMKaihatuHistory.m */; };
 		F4B414E918B09A4B00468DAF /* HMMasterMapAreaCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B414E818B09A4B00468DAF /* HMMasterMapAreaCommand.m */; };
 		F4B414EC18B0A7D600468DAF /* HMMasterUseItemCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B414EB18B0A7D600468DAF /* HMMasterUseItemCommand.m */; };
 		F4B414EF18B0BF1A00468DAF /* HMMasterMapInfoCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B414EE18B0BF1A00468DAF /* HMMasterMapInfoCommand.m */; };
@@ -136,8 +136,8 @@
 		F494DC6C18CC054800AE97E4 /* HMNyukyoDockStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMNyukyoDockStatus.m; sourceTree = "<group>"; };
 		F4B3DBC818DDB9170011B4FC /* HMCreateSlotItemCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMCreateSlotItemCommand.h; sourceTree = "<group>"; };
 		F4B3DBC918DDB9170011B4FC /* HMCreateSlotItemCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMCreateSlotItemCommand.m; sourceTree = "<group>"; };
-		F4B3DBCB18DDBA200011B4FC /* HMKaihatuHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMKaihatuHistory.h; sourceTree = "<group>"; };
-		F4B3DBCC18DDBA200011B4FC /* HMKaihatuHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKaihatuHistory.m; sourceTree = "<group>"; };
+		F4B3DC1918DEAB5E0011B4FC /* HMKaihatuHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMKaihatuHistory.h; sourceTree = "<group>"; };
+		F4B3DC1A18DEAB5E0011B4FC /* HMKaihatuHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKaihatuHistory.m; sourceTree = "<group>"; };
 		F4B414E718B09A4B00468DAF /* HMMasterMapAreaCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMasterMapAreaCommand.h; sourceTree = "<group>"; };
 		F4B414E818B09A4B00468DAF /* HMMasterMapAreaCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMasterMapAreaCommand.m; sourceTree = "<group>"; };
 		F4B414EA18B0A7D600468DAF /* HMMasterUseItemCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMasterUseItemCommand.h; sourceTree = "<group>"; };
@@ -354,9 +354,9 @@
 				F46F104718ABAC910063E503 /* KCD.xcdatamodeld */,
 				F4E7802F18DC42680011BC4C /* HMKenzoHistory.h */,
 				F4E7803018DC42680011BC4C /* HMKenzoHistory.m */,
-				F4B3DBCB18DDBA200011B4FC /* HMKaihatuHistory.h */,
-				F4B3DBCC18DDBA200011B4FC /* HMKaihatuHistory.m */,
 				F4E7802C18DC3AF00011BC4C /* LocalData.xcdatamodeld */,
+				F4B3DC1918DEAB5E0011B4FC /* HMKaihatuHistory.h */,
+				F4B3DC1A18DEAB5E0011B4FC /* HMKaihatuHistory.m */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -579,7 +579,7 @@
 				F47B78B218A7B42B0011386E /* HMJSONViewWindowController.m in Sources */,
 				F4B414EF18B0BF1A00468DAF /* HMMasterMapInfoCommand.m in Sources */,
 				F4C118FC18A67B1C005D5B25 /* CustomHTTPProtocol.m in Sources */,
-				F4B3DBCD18DDBA200011B4FC /* HMKaihatuHistory.m in Sources */,
+				F4B3DC1B18DEAB5E0011B4FC /* HMKaihatuHistory.m in Sources */,
 				F4D2CBCB18B05E58000EBC59 /* HMMaserShipCommand.m in Sources */,
 				F4513EFA18BB699700073552 /* HMShipWindowController.m in Sources */,
 				F46F104118A9B85E0063E503 /* HMJSONNode.m in Sources */,

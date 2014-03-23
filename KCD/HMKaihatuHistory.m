@@ -2,7 +2,7 @@
 //  HMKaihatuHistory.m
 //  KCD
 //
-//  Created by Hori,Masaki on 2014/03/22.
+//  Created by Hori,Masaki on 2014/03/23.
 //  Copyright (c) 2014年 Hori,Masaki. All rights reserved.
 //
 
@@ -18,5 +18,8 @@
 @dynamic name;
 @dynamic steel;
 @dynamic kaihatusizai;
+@dynamic flagShipName;
+@dynamic flagShipLv;
+@dynamic commanderLv;
 
 @end
