@@ -59,6 +59,7 @@
 	HMKenzoHistory *newObejct = [NSEntityDescription insertNewObjectForEntityForName:@"KenzoHistory"
 															  inManagedObjectContext:localStoreContext];
 	newObejct.name = [array[0] valueForKey:@"name"];
+	newObejct.sTypeId = [array[0] valueForKeyPath:@"stype.id"];
 	newObejct.fuel = item1;
 	newObejct.bull = [kdock valueForKey:@"item2"];
 	newObejct.steel = [kdock valueForKey:@"item3"];

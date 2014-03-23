@@ -36,6 +36,7 @@
 		F494DC6D18CC054800AE97E4 /* HMNyukyoDockStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = F494DC6C18CC054800AE97E4 /* HMNyukyoDockStatus.m */; };
 		F4B3DBCA18DDB9170011B4FC /* HMCreateSlotItemCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B3DBC918DDB9170011B4FC /* HMCreateSlotItemCommand.m */; };
 		F4B3DC1B18DEAB5E0011B4FC /* HMKaihatuHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B3DC1A18DEAB5E0011B4FC /* HMKaihatuHistory.m */; };
+		F4B3DC1E18DEB8C70011B4FC /* HMKenzoHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B3DC1D18DEB8C70011B4FC /* HMKenzoHistory.m */; };
 		F4B414E918B09A4B00468DAF /* HMMasterMapAreaCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B414E818B09A4B00468DAF /* HMMasterMapAreaCommand.m */; };
 		F4B414EC18B0A7D600468DAF /* HMMasterUseItemCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B414EB18B0A7D600468DAF /* HMMasterUseItemCommand.m */; };
 		F4B414EF18B0BF1A00468DAF /* HMMasterMapInfoCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B414EE18B0BF1A00468DAF /* HMMasterMapInfoCommand.m */; };
@@ -73,7 +74,6 @@
 		F4E7802818DBD2A00011BC4C /* HMGetShipCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E7802718DBD2A00011BC4C /* HMGetShipCommand.m */; };
 		F4E7802B18DC3A820011BC4C /* HMLocalDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E7802A18DC3A820011BC4C /* HMLocalDataStore.m */; };
 		F4E7802E18DC3AF00011BC4C /* LocalData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4E7802C18DC3AF00011BC4C /* LocalData.xcdatamodeld */; };
-		F4E7803118DC42680011BC4C /* HMKenzoHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E7803018DC42680011BC4C /* HMKenzoHistory.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +138,8 @@
 		F4B3DBC918DDB9170011B4FC /* HMCreateSlotItemCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMCreateSlotItemCommand.m; sourceTree = "<group>"; };
 		F4B3DC1918DEAB5E0011B4FC /* HMKaihatuHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMKaihatuHistory.h; sourceTree = "<group>"; };
 		F4B3DC1A18DEAB5E0011B4FC /* HMKaihatuHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKaihatuHistory.m; sourceTree = "<group>"; };
+		F4B3DC1C18DEB8C70011B4FC /* HMKenzoHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMKenzoHistory.h; sourceTree = "<group>"; };
+		F4B3DC1D18DEB8C70011B4FC /* HMKenzoHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKenzoHistory.m; sourceTree = "<group>"; };
 		F4B414E718B09A4B00468DAF /* HMMasterMapAreaCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMasterMapAreaCommand.h; sourceTree = "<group>"; };
 		F4B414E818B09A4B00468DAF /* HMMasterMapAreaCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMasterMapAreaCommand.m; sourceTree = "<group>"; };
 		F4B414EA18B0A7D600468DAF /* HMMasterUseItemCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMasterUseItemCommand.h; sourceTree = "<group>"; };
@@ -207,8 +209,6 @@
 		F4E7802918DC3A820011BC4C /* HMLocalDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMLocalDataStore.h; sourceTree = "<group>"; };
 		F4E7802A18DC3A820011BC4C /* HMLocalDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMLocalDataStore.m; sourceTree = "<group>"; };
 		F4E7802D18DC3AF00011BC4C /* LocalData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocalData.xcdatamodel; sourceTree = "<group>"; };
-		F4E7802F18DC42680011BC4C /* HMKenzoHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMKenzoHistory.h; sourceTree = "<group>"; };
-		F4E7803018DC42680011BC4C /* HMKenzoHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKenzoHistory.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -349,12 +349,12 @@
 				F4E7802A18DC3A820011BC4C /* HMLocalDataStore.m */,
 				F4D2CBC618B0555A000EBC59 /* HMKCManagedObject.h */,
 				F4D2CBC718B0555A000EBC59 /* HMKCManagedObject.m */,
+				F46F104718ABAC910063E503 /* KCD.xcdatamodeld */,
 				F4513EFC18BB6B0C00073552 /* HMKCShipObject.h */,
 				F4513EFD18BB6B0C00073552 /* HMKCShipObject.m */,
-				F46F104718ABAC910063E503 /* KCD.xcdatamodeld */,
-				F4E7802F18DC42680011BC4C /* HMKenzoHistory.h */,
-				F4E7803018DC42680011BC4C /* HMKenzoHistory.m */,
 				F4E7802C18DC3AF00011BC4C /* LocalData.xcdatamodeld */,
+				F4B3DC1C18DEB8C70011B4FC /* HMKenzoHistory.h */,
+				F4B3DC1D18DEB8C70011B4FC /* HMKenzoHistory.m */,
 				F4B3DC1918DEAB5E0011B4FC /* HMKaihatuHistory.h */,
 				F4B3DC1A18DEAB5E0011B4FC /* HMKaihatuHistory.m */,
 			);
@@ -563,6 +563,7 @@
 				F4C1190218A6FFC2005D5B25 /* HMQueue.m in Sources */,
 				F4513EEB18B7900A00073552 /* HMMemberDeckCommand.m in Sources */,
 				F46F103618A7CE310063E503 /* HMJSONViewCommand.m in Sources */,
+				F4B3DC1E18DEB8C70011B4FC /* HMKenzoHistory.m in Sources */,
 				F4B414FB18B1FB6C00468DAF /* HMMasterMapCellCommand.m in Sources */,
 				F4C118FA18A67B1C005D5B25 /* CacheStoragePolicy.m in Sources */,
 				F4E7802E18DC3AF00011BC4C /* LocalData.xcdatamodeld in Sources */,
@@ -593,7 +594,6 @@
 				F4C3957418CDDFE500A1E918 /* HMKenzoDockStatus.m in Sources */,
 				F4C118FB18A67B1C005D5B25 /* CanonicalRequest.m in Sources */,
 				F4BDEB5A187252F30069D0CE /* HMAppDelegate.m in Sources */,
-				F4E7803118DC42680011BC4C /* HMKenzoHistory.m in Sources */,
 				F4E7802B18DC3A820011BC4C /* HMLocalDataStore.m in Sources */,
 				F494DC6718C8BA6400AE97E4 /* HMPowerUpSupportViewController.m in Sources */,
 				F494DC6318C608C100AE97E4 /* HMShipViewController.m in Sources */,
