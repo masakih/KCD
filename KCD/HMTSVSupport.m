@@ -43,7 +43,7 @@
 		sort = [NSSortDescriptor sortDescriptorWithKey:propertyName ascending:ascending];
 	}
 	
-	return [self allObjectOfEntityName:entityName sortDescriptors:@[sort]];
+	return [self allObjectOfEntityName:entityName sortDescriptors:sort ? @[sort] : nil];
 }
 - (NSArray *)allObjectOfEntityName:(NSString *)entityName
 {
