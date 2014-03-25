@@ -17,13 +17,14 @@
 - (void)logLineReturn:(NSString *)format, ... NS_FORMAT_FUNCTION(1,2);
 - (void)log:(NSString *)format, ... NS_FORMAT_FUNCTION(1,2);
 
-
-@property (strong) HMJSONViewWindowController *jsonViewWindowController;
-
-
 @property (readonly) NSArray *shipTypeCategories;
 
+- (IBAction)showHideHistory:(id)sender;
 
+
+#if ENABLE_JSON_LOG
+@property (strong) HMJSONViewWindowController *jsonViewWindowController;
+#endif
 #ifdef DEBUG
 - (IBAction)saveLocalData:(id)sender;
 - (IBAction)loadLocalData:(id)sender;

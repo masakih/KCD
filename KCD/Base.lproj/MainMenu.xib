@@ -219,6 +219,12 @@
                                     <action selector="arrangeInFront:" target="-1" id="39"/>
                                 </connections>
                             </menuItem>
+                            <menuItem isSeparatorItem="YES" id="amy-So-5jo"/>
+                            <menuItem title="History" keyEquivalent="0" id="o9G-2b-cSn">
+                                <connections>
+                                    <action selector="showHideHistory:" target="494" id="0rp-Sl-bZf"/>
+                                </connections>
+                            </menuItem>
                         </items>
                     </menu>
                 </menuItem>

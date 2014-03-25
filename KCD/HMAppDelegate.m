@@ -9,6 +9,8 @@
 #import "HMAppDelegate.h"
 
 #import "HMBroserWindowController.h"
+#import "HMHistoryWindowController.h"
+
 
 #ifdef DEBUG
 #import "HMShipWindowController.h"
@@ -19,6 +21,7 @@
 @interface HMAppDelegate () <NSUserNotificationCenterDelegate>
 
 @property (strong) HMBroserWindowController *browserWindowController;
+@property (strong) HMHistoryWindowController *historyWindowController;
 
 #ifdef DEBUG
 @property (strong) HMShipWindowController *shipWindowController;
@@ -103,6 +106,20 @@ static FILE* logFileP = NULL;
 				   @[@1, @15, @17]
 				   ];
 	return categories;
+}
+
+
+- (IBAction)showHideHistory:(id)sender
+{
+	if(!self.historyWindowController) {
+		self.historyWindowController = [HMHistoryWindowController new];
+	}
+	
+	if(!self.historyWindowController.window.isVisible) {
+		[self.historyWindowController showWindow:nil];
+	} else {
+		[self.historyWindowController.window orderOut:nil];
+	}
 }
 
 #pragma mark - NSApplicationDelegate
