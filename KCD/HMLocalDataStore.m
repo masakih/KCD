@@ -122,7 +122,7 @@ static NSManagedObjectModel *_managedObjectModel = nil;
             return nil;
         }
     }
-#if 0
+#ifndef DEBUG
 	NSURL *url = [applicationFilesDirectory URLByAppendingPathComponent:@"LocalData.storedata"];
 	NSString *storeType = NSSQLiteStoreType;
 #else
