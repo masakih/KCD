@@ -123,6 +123,9 @@ static NSManagedObjectModel *_managedObjectModel = nil;
 	NSString *storeType = NSXMLStoreType;
 #endif
 	NSDictionary *options = @{
+#if COREDATA_STORE_TYPE == 0
+							  NSSQLitePragmasOption : @{@"journal_mode" : @"MEMORY"},
+#endif
 							  NSMigratePersistentStoresAutomaticallyOption : @YES,
 							  NSInferMappingModelAutomaticallyOption : @YES
 							  };
