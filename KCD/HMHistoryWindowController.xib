@@ -38,31 +38,14 @@
                                                 <rect key="frame" x="1" y="17" width="636" height="437"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" autosaveName="kaihatuHistory" headerView="S87-OC-vhS" id="aCA-Gg-AUV">
+                                                    <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="reverseSequential" alternatingRowBackgroundColors="YES" autosaveName="kaihatuHistory" headerView="S87-OC-vhS" id="aCA-Gg-AUV">
                                                         <rect key="frame" x="0.0" y="0.0" width="636" height="437"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <size key="intercellSpacing" width="3" height="2"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                         <tableColumns>
-                                                            <tableColumn identifier="date" editable="NO" width="145" minWidth="40" maxWidth="1000" id="3oz-eZ-JDf">
-                                                                <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="日付">
-                                                                    <font key="font" metaFont="smallSystem"/>
-                                                                    <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                                                    <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
-                                                                </tableHeaderCell>
-                                                                <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="ruD-3E-iB5">
-                                                                    <dateFormatter key="formatter" formatterBehavior="custom10_4" dateStyle="short" dateFormat="yyyy/MM/dd HH:ss:mm" id="c7Y-tu-l26"/>
-                                                                    <font key="font" metaFont="system"/>
-                                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                                </textFieldCell>
-                                                                <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                                                <connections>
-                                                                    <binding destination="cv5-a8-9nJ" name="value" keyPath="arrangedObjects.date" id="0ns-cn-0ij"/>
-                                                                </connections>
-                                                            </tableColumn>
-                                                            <tableColumn identifier="name" editable="NO" width="108" minWidth="40" maxWidth="1000" id="LGK-3f-aFf">
+                                                            <tableColumn identifier="name" editable="NO" width="100" minWidth="40" maxWidth="1000" id="LGK-3f-aFf">
                                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="装備">
                                                                     <font key="font" metaFont="smallSystem"/>
                                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -78,7 +61,7 @@
                                                                     <binding destination="cv5-a8-9nJ" name="value" keyPath="arrangedObjects.name" id="uLM-9Y-zfA"/>
                                                                 </connections>
                                                             </tableColumn>
-                                                            <tableColumn identifier="flagShipName" editable="NO" width="102" minWidth="10" maxWidth="3.4028234663852886e+38" id="9eS-LF-0yX">
+                                                            <tableColumn identifier="flagShipName" editable="NO" width="102" minWidth="56" maxWidth="3.4028234663852886e+38" id="9eS-LF-0yX">
                                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="秘書艦">
                                                                     <font key="font" metaFont="smallSystem"/>
                                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -94,7 +77,7 @@
                                                                     <binding destination="cv5-a8-9nJ" name="value" keyPath="arrangedObjects.flagShipName" id="aJQ-m6-ecl"/>
                                                                 </connections>
                                                             </tableColumn>
-                                                            <tableColumn identifier="flagShipLv" editable="NO" width="28" minWidth="10" maxWidth="3.4028234663852886e+38" id="LlV-sb-faL">
+                                                            <tableColumn identifier="flagShipLv" editable="NO" width="32" minWidth="32" maxWidth="3.4028234663852886e+38" id="LlV-sb-faL">
                                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Lv.">
                                                                     <font key="font" metaFont="smallSystem"/>
                                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -110,7 +93,7 @@
                                                                     <binding destination="cv5-a8-9nJ" name="value" keyPath="arrangedObjects.flagShipLv" id="Fpm-F1-YIQ"/>
                                                                 </connections>
                                                             </tableColumn>
-                                                            <tableColumn identifier="commanderLv" editable="NO" width="28" minWidth="10" maxWidth="3.4028234663852886e+38" id="WkQ-8o-mn2">
+                                                            <tableColumn identifier="commanderLv" editable="NO" width="32" minWidth="32" maxWidth="3.4028234663852886e+38" id="WkQ-8o-mn2">
                                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="司令Lv.">
                                                                     <font key="font" metaFont="smallSystem"/>
                                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -126,7 +109,7 @@
                                                                     <binding destination="cv5-a8-9nJ" name="value" keyPath="arrangedObjects.commanderLv" id="SW1-fO-VcQ"/>
                                                                 </connections>
                                                             </tableColumn>
-                                                            <tableColumn identifier="fuel" editable="NO" width="39" minWidth="10" maxWidth="3.4028234663852886e+38" id="qJR-M3-M3J">
+                                                            <tableColumn identifier="fuel" editable="NO" width="39" minWidth="32" maxWidth="3.4028234663852886e+38" id="qJR-M3-M3J">
                                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="油">
                                                                     <font key="font" metaFont="smallSystem"/>
                                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -142,7 +125,7 @@
                                                                     <binding destination="cv5-a8-9nJ" name="value" keyPath="arrangedObjects.fuel" id="lh0-vj-w09"/>
                                                                 </connections>
                                                             </tableColumn>
-                                                            <tableColumn identifier="bull" editable="NO" width="39" minWidth="10" maxWidth="3.4028234663852886e+38" id="dU8-RK-8xU">
+                                                            <tableColumn identifier="bull" editable="NO" width="39" minWidth="32" maxWidth="3.4028234663852886e+38" id="dU8-RK-8xU">
                                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="弾">
                                                                     <font key="font" metaFont="smallSystem"/>
                                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -158,7 +141,7 @@
                                                                     <binding destination="cv5-a8-9nJ" name="value" keyPath="arrangedObjects.bull" id="gHz-HM-Ghw"/>
                                                                 </connections>
                                                             </tableColumn>
-                                                            <tableColumn identifier="steel" editable="NO" width="39" minWidth="10" maxWidth="3.4028234663852886e+38" id="qQv-dW-1fG">
+                                                            <tableColumn identifier="steel" editable="NO" width="39" minWidth="32" maxWidth="3.4028234663852886e+38" id="qQv-dW-1fG">
                                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="鉄">
                                                                     <font key="font" metaFont="smallSystem"/>
                                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -174,7 +157,7 @@
                                                                     <binding destination="cv5-a8-9nJ" name="value" keyPath="arrangedObjects.steel" id="xN8-D0-VHt"/>
                                                                 </connections>
                                                             </tableColumn>
-                                                            <tableColumn identifier="bauxite" editable="NO" width="39" minWidth="10" maxWidth="3.4028234663852886e+38" id="eYp-gy-XF7">
+                                                            <tableColumn identifier="bauxite" editable="NO" width="39" minWidth="32" maxWidth="3.4028234663852886e+38" id="eYp-gy-XF7">
                                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="ボーキ">
                                                                     <font key="font" metaFont="smallSystem"/>
                                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -190,7 +173,7 @@
                                                                     <binding destination="cv5-a8-9nJ" name="value" keyPath="arrangedObjects.bauxite" id="RkV-gZ-YMY"/>
                                                                 </connections>
                                                             </tableColumn>
-                                                            <tableColumn identifier="kaihatusizai" editable="NO" width="39" minWidth="10" maxWidth="3.4028234663852886e+38" id="csP-8r-YKJ">
+                                                            <tableColumn identifier="kaihatusizai" editable="NO" width="39" minWidth="32" maxWidth="3.4028234663852886e+38" id="csP-8r-YKJ">
                                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="資材">
                                                                     <font key="font" metaFont="smallSystem"/>
                                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -204,6 +187,23 @@
                                                                 <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                 <connections>
                                                                     <binding destination="cv5-a8-9nJ" name="value" keyPath="arrangedObjects.kaihatusizai" id="CgH-Xt-N2q"/>
+                                                                </connections>
+                                                            </tableColumn>
+                                                            <tableColumn identifier="date" editable="NO" width="145" minWidth="40" maxWidth="1000" id="3oz-eZ-JDf">
+                                                                <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="日付">
+                                                                    <font key="font" metaFont="smallSystem"/>
+                                                                    <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </tableHeaderCell>
+                                                                <textFieldCell key="dataCell" lineBreakMode="truncatingHead" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="ruD-3E-iB5">
+                                                                    <dateFormatter key="formatter" dateStyle="short" timeStyle="medium" doesRelativeDateFormatting="YES" id="c7Y-tu-l26"/>
+                                                                    <font key="font" metaFont="system"/>
+                                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                                <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                                <connections>
+                                                                    <binding destination="cv5-a8-9nJ" name="value" keyPath="arrangedObjects.date" id="0ns-cn-0ij"/>
                                                                 </connections>
                                                             </tableColumn>
                                                         </tableColumns>
@@ -239,31 +239,14 @@
                                                 <rect key="frame" x="1" y="17" width="636" height="437"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" autosaveName="kenzoHistory" headerView="11L-S0-22L" id="Wyj-Am-Fha">
+                                                    <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="reverseSequential" alternatingRowBackgroundColors="YES" autosaveName="kenzoHistory" headerView="11L-S0-22L" id="Wyj-Am-Fha">
                                                         <rect key="frame" x="0.0" y="0.0" width="636" height="437"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <size key="intercellSpacing" width="3" height="2"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                         <tableColumns>
-                                                            <tableColumn identifier="date" editable="NO" width="143" minWidth="40" maxWidth="1000" id="CwC-jx-5h1">
-                                                                <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="日付">
-                                                                    <font key="font" metaFont="smallSystem"/>
-                                                                    <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                                                    <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
-                                                                </tableHeaderCell>
-                                                                <textFieldCell key="dataCell" lineBreakMode="truncatingHead" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="Zqg-x9-6gk">
-                                                                    <dateFormatter key="formatter" formatterBehavior="custom10_4" dateStyle="short" dateFormat="yyyy/MM/dd HH:ss:mm" id="8xe-Li-ygQ"/>
-                                                                    <font key="font" metaFont="system"/>
-                                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                                </textFieldCell>
-                                                                <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                                                <connections>
-                                                                    <binding destination="9pH-dt-0h6" name="value" keyPath="arrangedObjects.date" id="LuH-RP-7Ed"/>
-                                                                </connections>
-                                                            </tableColumn>
-                                                            <tableColumn identifier="name" editable="NO" width="111" minWidth="40" maxWidth="1000" id="0fT-I5-7lP">
+                                                            <tableColumn identifier="name" editable="NO" width="99" minWidth="41" maxWidth="1000" id="0fT-I5-7lP">
                                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="艦娘">
                                                                     <font key="font" metaFont="smallSystem"/>
                                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -279,7 +262,7 @@
                                                                     <binding destination="9pH-dt-0h6" name="value" keyPath="arrangedObjects.name" id="99u-nS-ZSK"/>
                                                                 </connections>
                                                             </tableColumn>
-                                                            <tableColumn identifier="flagShipName" editable="NO" width="101" minWidth="10" maxWidth="3.4028234663852886e+38" id="qUW-lA-2xb">
+                                                            <tableColumn identifier="flagShipName" editable="NO" width="101" minWidth="60" maxWidth="3.4028234663852886e+38" id="qUW-lA-2xb">
                                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="秘書艦">
                                                                     <font key="font" metaFont="smallSystem"/>
                                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -295,7 +278,7 @@
                                                                     <binding destination="9pH-dt-0h6" name="value" keyPath="arrangedObjects.flagShipName" id="cCG-PM-Ph3"/>
                                                                 </connections>
                                                             </tableColumn>
-                                                            <tableColumn identifier="flagShipLv" editable="NO" width="28" minWidth="10" maxWidth="3.4028234663852886e+38" id="e6w-fE-xxU">
+                                                            <tableColumn identifier="flagShipLv" editable="NO" width="32" minWidth="32" maxWidth="3.4028234663852886e+38" id="e6w-fE-xxU">
                                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Lv.">
                                                                     <font key="font" metaFont="smallSystem"/>
                                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -311,7 +294,7 @@
                                                                     <binding destination="9pH-dt-0h6" name="value" keyPath="arrangedObjects.flagShipLv" id="XYf-cr-m8u"/>
                                                                 </connections>
                                                             </tableColumn>
-                                                            <tableColumn identifier="commanderLv" editable="NO" width="28" minWidth="10" maxWidth="3.4028234663852886e+38" id="Hw9-4G-XxG">
+                                                            <tableColumn identifier="commanderLv" editable="NO" width="32" minWidth="32" maxWidth="3.4028234663852886e+38" id="Hw9-4G-XxG">
                                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="司令Lv.">
                                                                     <font key="font" metaFont="smallSystem"/>
                                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -327,7 +310,7 @@
                                                                     <binding destination="9pH-dt-0h6" name="value" keyPath="arrangedObjects.commanderLv" id="wDq-io-xh5"/>
                                                                 </connections>
                                                             </tableColumn>
-                                                            <tableColumn identifier="fuel" editable="NO" width="39" minWidth="10" maxWidth="3.4028234663852886e+38" id="gHD-g5-CuT">
+                                                            <tableColumn identifier="fuel" editable="NO" width="40" minWidth="40" maxWidth="3.4028234663852886e+38" id="gHD-g5-CuT">
                                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="油">
                                                                     <font key="font" metaFont="smallSystem"/>
                                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -343,7 +326,7 @@
                                                                     <binding destination="9pH-dt-0h6" name="value" keyPath="arrangedObjects.fuel" id="10Q-0t-lhq"/>
                                                                 </connections>
                                                             </tableColumn>
-                                                            <tableColumn identifier="bull" editable="NO" width="39" minWidth="10" maxWidth="3.4028234663852886e+38" id="csG-Q3-MzA">
+                                                            <tableColumn identifier="bull" editable="NO" width="40" minWidth="40" maxWidth="3.4028234663852886e+38" id="csG-Q3-MzA">
                                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="弾">
                                                                     <font key="font" metaFont="smallSystem"/>
                                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -359,7 +342,7 @@
                                                                     <binding destination="9pH-dt-0h6" name="value" keyPath="arrangedObjects.bull" id="nj5-ab-0HD"/>
                                                                 </connections>
                                                             </tableColumn>
-                                                            <tableColumn identifier="steel" editable="NO" width="39" minWidth="10" maxWidth="3.4028234663852886e+38" id="5It-r0-Gzl">
+                                                            <tableColumn identifier="steel" editable="NO" width="40" minWidth="40" maxWidth="3.4028234663852886e+38" id="5It-r0-Gzl">
                                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="鉄">
                                                                     <font key="font" metaFont="smallSystem"/>
                                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -375,7 +358,7 @@
                                                                     <binding destination="9pH-dt-0h6" name="value" keyPath="arrangedObjects.steel" id="7I8-8C-c66"/>
                                                                 </connections>
                                                             </tableColumn>
-                                                            <tableColumn identifier="bauxite" editable="NO" width="39" minWidth="10" maxWidth="3.4028234663852886e+38" id="qti-L4-GJq">
+                                                            <tableColumn identifier="bauxite" editable="NO" width="40" minWidth="40" maxWidth="3.4028234663852886e+38" id="qti-L4-GJq">
                                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="ボーキ">
                                                                     <font key="font" metaFont="smallSystem"/>
                                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -391,7 +374,7 @@
                                                                     <binding destination="9pH-dt-0h6" name="value" keyPath="arrangedObjects.bauxite" id="MQ9-lU-6ZI"/>
                                                                 </connections>
                                                             </tableColumn>
-                                                            <tableColumn identifier="kaihatusizai" editable="NO" width="39" minWidth="10" maxWidth="3.4028234663852886e+38" id="hrV-e6-bLp">
+                                                            <tableColumn identifier="kaihatusizai" editable="NO" width="39" minWidth="32" maxWidth="3.4028234663852886e+38" id="hrV-e6-bLp">
                                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="資材">
                                                                     <font key="font" metaFont="smallSystem"/>
                                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -405,6 +388,23 @@
                                                                 <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                 <connections>
                                                                     <binding destination="9pH-dt-0h6" name="value" keyPath="arrangedObjects.kaihatusizai" id="cPk-u9-hTz"/>
+                                                                </connections>
+                                                            </tableColumn>
+                                                            <tableColumn identifier="date" editable="NO" width="143" minWidth="40" maxWidth="1000" id="CwC-jx-5h1">
+                                                                <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="日付">
+                                                                    <font key="font" metaFont="smallSystem"/>
+                                                                    <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </tableHeaderCell>
+                                                                <textFieldCell key="dataCell" lineBreakMode="truncatingHead" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="Zqg-x9-6gk">
+                                                                    <dateFormatter key="formatter" dateStyle="short" timeStyle="medium" doesRelativeDateFormatting="YES" id="8xe-Li-ygQ"/>
+                                                                    <font key="font" metaFont="system"/>
+                                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                                <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                                <connections>
+                                                                    <binding destination="9pH-dt-0h6" name="value" keyPath="arrangedObjects.date" id="LuH-RP-7Ed"/>
                                                                 </connections>
                                                             </tableColumn>
                                                         </tableColumns>
