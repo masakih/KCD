@@ -38,7 +38,7 @@
 														   @"argument":self.argumentArray,
 														   @"json":self.jsonTree,
 														   @"recieveDate":self.recieveDate,
-														   @"date": [NSDate date]}];
+														   @"date": [NSDate dateWithTimeIntervalSinceNow:0]}];
 	});
 }
 

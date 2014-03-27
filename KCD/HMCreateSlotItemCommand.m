@@ -102,7 +102,7 @@
 	newObejct.flagShipLv = flagShipLv;
 	newObejct.flagShipName = flagShipName;
 	newObejct.commanderLv = [basic valueForKey:@"level"];
-	newObejct.date = [NSDate date];
+	newObejct.date = [NSDate dateWithTimeIntervalSinceNow:0];
 }
 
 @end
