@@ -18,6 +18,10 @@
 #import "HMTSVSupport.h"
 #endif
 
+//@interface NSObject (HMM_NSUserNotificationCenterPrivateMethods)
+//- (void)_removeDisplayedNotification:(id)obj;
+//@end
+
 @interface HMAppDelegate () <NSUserNotificationCenterDelegate>
 
 @property (strong) HMBroserWindowController *browserWindowController;
@@ -129,11 +133,29 @@ static FILE* logFileP = NULL;
 }
 
 #pragma mark - NSUserNotificationCenterDelegate
+//- (void)removeUserNotification:(NSDictionary *)dict
+//{
+//	NSUserNotificationCenter *center = [dict objectForKey:@"center"];
+//	NSUserNotification *notification = [dict objectForKey:@"notification"];
+//	[center removeDeliveredNotification:notification];
+//	//	[center _removeDisplayedNotification:notification];
+//}
+
 - (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center shouldPresentNotification:(NSUserNotification *)notification
 {
 	return YES;
 }
 
+//- (void)userNotificationCenter:(NSUserNotificationCenter *)center didDeliverNotification:(NSUserNotification *)notification
+//{
+//	[self performSelector:@selector(removeUserNotification:)
+//			   withObject:@{@"center":center, @"notification":notification}
+//			   afterDelay:3];
+//}
+//- (void)userNotificationCenter:(NSUserNotificationCenter *)center didActivateNotification:(NSUserNotification *)notification
+//{
+//	[center removeDeliveredNotification:notification];
+//}
 #if ENABLE_JSON_LOG
 - (IBAction)saveDocument:(id)sender
 {
