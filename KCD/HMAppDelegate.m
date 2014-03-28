@@ -119,10 +119,11 @@ static FILE* logFileP = NULL;
 		self.historyWindowController = [HMHistoryWindowController new];
 	}
 	
-	if(!self.historyWindowController.window.isVisible) {
-		[self.historyWindowController showWindow:nil];
+	NSWindow *window = self.historyWindowController.window;
+	if(!window.isVisible || !window.isMainWindow) {
+		[window makeKeyAndOrderFront:nil];
 	} else {
-		[self.historyWindowController.window orderOut:nil];
+		[window orderOut:nil];
 	}
 }
 
