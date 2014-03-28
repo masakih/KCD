@@ -6,3 +6,5 @@ s/It Will Finish Build at No\.%@\./第%@ドックでの建造が完了しまし�
 s/Reload interval is too short\.\\nWait until %@\./リロード間隔が短すぎます\\n%@までお待ちください/2
 s/Reload interval is too short/リロードしすぎ！/2
 s/fail to develop/失敗/2
+s/Hide History/履歴を隠す/2
+s/Show History/履歴を表示/2
