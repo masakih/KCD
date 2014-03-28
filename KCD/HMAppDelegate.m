@@ -112,6 +112,21 @@ static FILE* logFileP = NULL;
 	return categories;
 }
 
+- (BOOL)validateMenuItem:(NSMenuItem *)menuItem
+{
+	SEL action = [menuItem action];
+	if(action == @selector(showHideHistory:)) {
+		NSWindow *window = self.historyWindowController.window;
+		if(!window.isVisible || !window.isMainWindow) {
+			[menuItem setTitle:NSLocalizedString(@"Show History", @"")];
+		} else {
+			[menuItem setTitle:NSLocalizedString(@"Hide History", @"")];
+		}
+		return YES;
+	}
+	
+	return NO;
+}
 
 - (IBAction)showHideHistory:(id)sender
 {
