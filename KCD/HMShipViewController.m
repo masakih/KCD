@@ -9,7 +9,7 @@
 #import "HMShipViewController.h"
 
 #import "HMAppDelegate.h"
-#import "HMCoreDataManager.h"
+#import "HMServerDataStore.h"
 
 
 typedef NS_ENUM(NSInteger, ViewType) {
@@ -36,7 +36,7 @@ typedef NS_ENUM(NSInteger, ViewType) {
 }
 - (NSManagedObjectContext *)managedObjectContext
 {
-	return [HMCoreDataManager defaultManager].managedObjectContext;
+	return [HMServerDataStore defaultManager].managedObjectContext;
 }
 
 - (void)showViewWithNumber:(ViewType)number

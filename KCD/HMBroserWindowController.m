@@ -12,7 +12,7 @@
 #import "HMShipViewController.h"
 #import "HMPowerUpSupportViewController.h"
 
-#import "HMCoreDataManager.h"
+#import "HMServerDataStore.h"
 
 
 static NSString *prevReloadDateStringKey = @"previousReloadDateString";
@@ -76,7 +76,7 @@ typedef NS_ENUM(NSInteger, ViewType) {
 
 - (NSManagedObjectContext *)managedObjectContext
 {
-	return [HMCoreDataManager defaultManager].managedObjectContext;
+	return [HMServerDataStore defaultManager].managedObjectContext;
 }
 
 - (NSAttributedString *)linksString

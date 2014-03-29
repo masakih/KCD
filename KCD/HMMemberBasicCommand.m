@@ -8,7 +8,7 @@
 
 #import "HMMemberBasicCommand.h"
 
-#import "HMCoreDataManager.h"
+#import "HMServerDataStore.h"
 
 
 @implementation HMMemberBasicCommand
@@ -32,7 +32,7 @@
 		return;
 	}
 	
-	HMCoreDataManager *dm = [HMCoreDataManager oneTimeEditor];
+	HMServerDataStore *dm = [HMServerDataStore oneTimeEditor];
 	NSManagedObjectContext *managedObjectContext = [dm managedObjectContext];
 	
 	NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"Basic"];

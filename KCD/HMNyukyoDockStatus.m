@@ -8,7 +8,7 @@
 
 #import "HMNyukyoDockStatus.h"
 
-#import "HMCoreDataManager.h"
+#import "HMServerDataStore.h"
 
 
 enum {
@@ -40,7 +40,7 @@ enum {
 	
 	if(self) {
 		_controller = [NSArrayController new];
-		[self.controller setManagedObjectContext:[HMCoreDataManager defaultManager].managedObjectContext];
+		[self.controller setManagedObjectContext:[HMServerDataStore defaultManager].managedObjectContext];
 		[self.controller setEntityName:@"NyukyoDock"];
 		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id = %ld", dockNumber];
 		[self.controller setFetchPredicate:predicate];

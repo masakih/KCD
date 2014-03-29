@@ -9,7 +9,7 @@
 #import "HMJSONCommand.h"
 
 #import "HMAppDelegate.h"
-#import "HMCoreDataManager.h"
+#import "HMServerDataStore.h"
 
 #if ENABLE_JSON_LOG
 #import "HMJSONNode.h"
@@ -158,7 +158,7 @@ NSString *keyByDeletingPrefix(NSString *key)
 		return;
 	}
 	
-	HMCoreDataManager *dm = [HMCoreDataManager oneTimeEditor];
+	HMServerDataStore *dm = [HMServerDataStore oneTimeEditor];
 	NSManagedObjectContext *managedObjectContext = [dm managedObjectContext];
 	
 	for(NSDictionary *type in api_data) {

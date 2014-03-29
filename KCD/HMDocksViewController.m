@@ -8,7 +8,7 @@
 
 #import "HMDocksViewController.h"
 
-#import "HMCoreDataManager.h"
+#import "HMServerDataStore.h"
 
 #import "HMMissionStatus.h"
 #import "HMNyukyoDockStatus.h"
@@ -39,7 +39,7 @@
 
 - (NSManagedObjectContext *)managedObjectContext
 {
-	return [HMCoreDataManager defaultManager].managedObjectContext;
+	return [HMServerDataStore defaultManager].managedObjectContext;
 }
 
 - (id)init

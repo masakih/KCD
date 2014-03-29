@@ -8,7 +8,7 @@
 
 #import "HMCreateSlotItemCommand.h"
 
-#import "HMCoreDataManager.h"
+#import "HMServerDataStore.h"
 #import "HMLocalDataStore.h"
 #import "HMKaihatuHistory.h"
 
@@ -35,7 +35,7 @@
 	NSString *name = nil;
 	NSNumber *numberOfUsedKaihatuSizai = nil;
 	
-	NSManagedObjectContext *context = [[HMCoreDataManager defaultManager] managedObjectContext];
+	NSManagedObjectContext *context = [[HMServerDataStore defaultManager] managedObjectContext];
 	
 	if(created) {
 		NSNumber *slotItemID = [data valueForKey:@"api_slotitem_id"];

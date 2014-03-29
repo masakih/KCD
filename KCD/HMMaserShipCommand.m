@@ -7,7 +7,6 @@
 //
 
 #import "HMMaserShipCommand.h"
-#import "HMCoreDataManager.h"
 
 #import "HMMemberShipCommand.h"
 

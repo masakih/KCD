@@ -9,7 +9,7 @@
 #import "HMPowerUpSupportViewController.h"
 
 #import "HMAppDelegate.h"
-#import "HMCoreDataManager.h"
+#import "HMServerDataStore.h"
 
 
 @interface HMPowerUpSupportViewController ()
@@ -30,7 +30,7 @@
 
 - (NSManagedObjectContext *)managedObjectContext
 {
-	return [HMCoreDataManager defaultManager].managedObjectContext;
+	return [HMServerDataStore defaultManager].managedObjectContext;
 }
 
 - (id)valueForUndefinedKey:(NSString *)key

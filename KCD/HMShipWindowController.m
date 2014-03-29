@@ -9,7 +9,7 @@
 #import "HMShipWindowController.h"
 
 #import "HMAppDelegate.h"
-#import "HMCoreDataManager.h"
+#import "HMServerDataStore.h"
 
 
 @interface HMShipWindowController ()
@@ -33,7 +33,7 @@
 
 - (NSManagedObjectContext *)managedObjectContext
 {
-	return [HMCoreDataManager defaultManager].managedObjectContext;
+	return [HMServerDataStore defaultManager].managedObjectContext;
 }
 
 

@@ -8,7 +8,7 @@
 
 #import "HMKenzoDockStatus.h"
 
-#import "HMCoreDataManager.h"
+#import "HMServerDataStore.h"
 
 enum {
 	kNoShip = 0,
@@ -43,7 +43,7 @@ enum {
 		_number = @(dockNumber);
 		
 		_controller = [NSArrayController new];
-		[self.controller setManagedObjectContext:[HMCoreDataManager defaultManager].managedObjectContext];
+		[self.controller setManagedObjectContext:[HMServerDataStore defaultManager].managedObjectContext];
 		[self.controller setEntityName:@"KenzoDock"];
 		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id = %ld", dockNumber];
 		[self.controller setFetchPredicate:predicate];

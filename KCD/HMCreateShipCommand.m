@@ -8,7 +8,7 @@
 
 #import "HMCreateShipCommand.h"
 
-#import "HMCoreDataManager.h"
+#import "HMServerDataStore.h"
 #import "HMLocalDataStore.h"
 #import "HMKenzoMark.h"
 
@@ -30,7 +30,7 @@
 - (void)execute
 {
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-		NSManagedObjectContext *context = [[HMCoreDataManager defaultManager] managedObjectContext];
+		NSManagedObjectContext *context = [[HMServerDataStore defaultManager] managedObjectContext];
 		NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"KenzoDock"];
 		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id = %@", [self.arguments valueForKey:@"api_kdock_id"]];
 		[req setPredicate:predicate];

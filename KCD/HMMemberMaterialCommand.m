@@ -8,7 +8,7 @@
 
 #import "HMMemberMaterialCommand.h"
 
-#import "HMCoreDataManager.h"
+#import "HMServerDataStore.h"
 
 @implementation HMMemberMaterialCommand
 + (void)load
@@ -31,7 +31,7 @@
 		return;
 	}
 	
-	HMCoreDataManager *dm = [HMCoreDataManager oneTimeEditor];
+	HMServerDataStore *dm = [HMServerDataStore oneTimeEditor];
 	NSManagedObjectContext *managedObjectContext = [dm managedObjectContext];
 	
 	NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"Material"];

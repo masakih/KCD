@@ -8,7 +8,7 @@
 
 #import "HMMissionStatus.h"
 
-#import "HMCoreDataManager.h"
+#import "HMServerDataStore.h"
 
 
 enum {
@@ -42,7 +42,7 @@ enum {
 	
 	if(self) {
 		_controller = [NSArrayController new];
-		[self.controller setManagedObjectContext:[HMCoreDataManager defaultManager].managedObjectContext];
+		[self.controller setManagedObjectContext:[HMServerDataStore defaultManager].managedObjectContext];
 		[self.controller setEntityName:@"Deck"];
 		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id = %ld", deckNumber];
 		[self.controller setFetchPredicate:predicate];

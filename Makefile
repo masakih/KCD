@@ -9,7 +9,7 @@ APP_NAME=$(BUILD_PATH)/$(DEPLOYMENT)/$(PRODUCT_NAME)
 SCHEME=KCD
 INFO_PLIST=KCD/KCD-Info.plist
 
-LOCALIZE_FILES=KCD/HMBroserWindowController.m KCD/HMCoreDataManager.m KCD/HMKenzoDockStatus.m \
+LOCALIZE_FILES=KCD/HMBroserWindowController.m KCD/HMServerDataStore.m KCD/HMKenzoDockStatus.m \
 KCD/HMMissionStatus.m KCD/HMNyukyoDockStatus.m KCD/HMCreateSlotItemCommand.m KCD/HMAppDelegate.m
 
 VER_CMD=grep -A1 'CFBundleShortVersionString' $(INFO_PLIST) | tail -1 | tr -d "'\t</string>" 
