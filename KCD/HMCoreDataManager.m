@@ -14,14 +14,6 @@
 
 @synthesize managedObjectContext = _managedObjectContext;
 
-+ (void)load
-{
-	static dispatch_once_t onceToken;
-	dispatch_once(&onceToken, ^{
-		[self defaultManager];
-	});
-}
-
 + (instancetype)defaultManager
 {
 	id defaultManager = objc_getAssociatedObject(self, "defaultManager");
@@ -65,41 +57,6 @@
     return [appSupportURL URLByAppendingPathComponent:@"com.masakih.KCD"];
 }
 
-- (NSString *)modelName
-{
-	return @"KCD";
-}
-- (NSString *)storeFileName
-{
-#if COREDATA_STORE_TYPE == 0
-	return @"KCD.storedata";
-#else
-	return @"KCD.storedata.xml";
-#endif
-}
-- (NSString *)storeType
-{
-#if COREDATA_STORE_TYPE == 0
-	return NSSQLiteStoreType;
-#else
-	return NSXMLStoreType;
-#endif
-}
-- (NSDictionary *)storeOptions
-{
-	NSDictionary *options = @{
-#if COREDATA_STORE_TYPE == 0
-							  NSSQLitePragmasOption : @{@"journal_mode" : @"MEMORY"},
-#endif
-							  NSMigratePersistentStoresAutomaticallyOption : @YES,
-							  NSInferMappingModelAutomaticallyOption : @YES
-							  };
-	return options;
-}
-- (BOOL)deleteAndRetry
-{
-	return YES;
-}
 // Creates if necessary and returns the managed object model for the application.
 - (NSManagedObjectModel *)managedObjectModel
 {
@@ -243,6 +200,33 @@
 			[self.managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
 		});
 	}
+}
+
+#pragma mark - abstruct
+- (NSString *)modelName
+{
+	[NSException raise:@"Abstract method" format:@"%s is abstract.", __PRETTY_FUNCTION__];
+	return nil;
+}
+- (NSString *)storeFileName
+{
+	[NSException raise:@"Abstract method" format:@"%s is abstract.", __PRETTY_FUNCTION__];
+	return nil;
+}
+- (NSString *)storeType
+{
+	[NSException raise:@"Abstract method" format:@"%s is abstract.", __PRETTY_FUNCTION__];
+	return nil;
+}
+- (NSDictionary *)storeOptions
+{
+	[NSException raise:@"Abstract method" format:@"%s is abstract.", __PRETTY_FUNCTION__];
+	return nil;
+}
+- (BOOL)deleteAndRetry
+{
+	[NSException raise:@"Abstract method" format:@"%s is abstract.", __PRETTY_FUNCTION__];
+	return NO;
 }
 
 @end
