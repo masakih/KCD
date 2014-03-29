@@ -10,13 +10,20 @@
 
 @interface HMCoreDataManager : NSObject
 
-//@property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
-//@property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
-@property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (readonly) NSManagedObjectContext *managedObjectContext;
 
-+ (HMCoreDataManager *)defaultManager;
-+ (HMCoreDataManager *)oneTimeEditor;
++ (instancetype)defaultManager;
++ (instancetype)oneTimeEditor;
 
 - (IBAction)saveAction:(id)sender;
 
+- (NSURL *)applicationFilesDirectory;
+- (NSManagedObjectModel *)managedObjectModel;
+
+// for subclass
+- (NSString *)modelName;
+- (NSString *)storeFileName;
+- (NSString *)storeType;
+- (NSDictionary *)storeOptions;
+- (BOOL)deleteAndRetry;
 @end

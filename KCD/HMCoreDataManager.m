@@ -8,23 +8,28 @@
 
 #import "HMCoreDataManager.h"
 
+#import <objc/runtime.h>
+
 @implementation HMCoreDataManager
 
-//@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
-//@synthesize managedObjectModel = _managedObjectModel;
 @synthesize managedObjectContext = _managedObjectContext;
 
-static HMCoreDataManager *defaultManager = nil;
-
-static NSPersistentStoreCoordinator *_persistentStoreCoordinator = nil;
-static NSManagedObjectModel *_managedObjectModel = nil;
-
-+ (HMCoreDataManager *)defaultManager
++ (void)load
 {
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		[self defaultManager];
+	});
+}
+
++ (instancetype)defaultManager
+{
+	id defaultManager = objc_getAssociatedObject(self, "defaultManager");
+	
 	if(defaultManager) return defaultManager;
 	
 	defaultManager = [self new];
-	[defaultManager.managedObjectContext setMergePolicy:NSRollbackMergePolicy];
+	[[defaultManager managedObjectContext] setMergePolicy:NSRollbackMergePolicy];
 	
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	[nc addObserver:defaultManager
@@ -36,14 +41,12 @@ static NSManagedObjectModel *_managedObjectModel = nil;
 			   name:NSManagedObjectContextDidSaveNotification
 			 object:nil];
 	
+	objc_setAssociatedObject(self, "defaultManager", defaultManager, OBJC_ASSOCIATION_RETAIN);
 	return defaultManager;
 }
 
-+ (HMCoreDataManager *)oneTimeEditor
++ (instancetype)oneTimeEditor
 {
-	// we need default manager.
-	[self defaultManager];
-	
 	HMCoreDataManager *result = [self new];
 	[result.managedObjectContext setMergePolicy:NSOverwriteMergePolicy];
 	return result;
@@ -62,23 +65,61 @@ static NSManagedObjectModel *_managedObjectModel = nil;
     return [appSupportURL URLByAppendingPathComponent:@"com.masakih.KCD"];
 }
 
+- (NSString *)modelName
+{
+	return @"KCD";
+}
+- (NSString *)storeFileName
+{
+#if COREDATA_STORE_TYPE == 0
+	return @"KCD.storedata";
+#else
+	return @"KCD.storedata.xml";
+#endif
+}
+- (NSString *)storeType
+{
+#if COREDATA_STORE_TYPE == 0
+	return NSSQLiteStoreType;
+#else
+	return NSXMLStoreType;
+#endif
+}
+- (NSDictionary *)storeOptions
+{
+	NSDictionary *options = @{
+#if COREDATA_STORE_TYPE == 0
+							  NSSQLitePragmasOption : @{@"journal_mode" : @"MEMORY"},
+#endif
+							  NSMigratePersistentStoresAutomaticallyOption : @YES,
+							  NSInferMappingModelAutomaticallyOption : @YES
+							  };
+	return options;
+}
+- (BOOL)deleteAndRetry
+{
+	return YES;
+}
 // Creates if necessary and returns the managed object model for the application.
 - (NSManagedObjectModel *)managedObjectModel
 {
-    if (_managedObjectModel) {
-        return _managedObjectModel;
+	id managedObjectModel = objc_getAssociatedObject(self, "managedObjectModel");
+    if (managedObjectModel) {
+        return managedObjectModel;
     }
 	
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"KCD" withExtension:@"momd"];
-    _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
-    return _managedObjectModel;
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:self.modelName withExtension:@"momd"];
+    managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
+	objc_setAssociatedObject(self, "managedObjectModel", managedObjectModel, OBJC_ASSOCIATION_RETAIN);
+    return managedObjectModel;
 }
 
 // Returns the persistent store coordinator for the application. This implementation creates and return a coordinator, having added the store for the application to it. (The directory for the store is created, if necessary.)
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator
 {
-    if (_persistentStoreCoordinator) {
-        return _persistentStoreCoordinator;
+	id persistentStoreCoordinator = objc_getAssociatedObject([self class], "persistentStoreCoordinator");
+    if (persistentStoreCoordinator) {
+        return persistentStoreCoordinator;
     }
     
     NSManagedObjectModel *mom = [self managedObjectModel];
@@ -115,26 +156,23 @@ static NSManagedObjectModel *_managedObjectModel = nil;
             return nil;
         }
     }
-#if COREDATA_STORE_TYPE == 0
-	NSURL *url = [applicationFilesDirectory URLByAppendingPathComponent:@"KCD.storedata"];
-	NSString *storeType = NSSQLiteStoreType;
-#else
-	NSURL *url = [applicationFilesDirectory URLByAppendingPathComponent:@"KCD.storedata.xml"];
-	NSString *storeType = NSXMLStoreType;
-#endif
-	NSDictionary *options = @{
-#if COREDATA_STORE_TYPE == 0
-							  NSSQLitePragmasOption : @{@"journal_mode" : @"MEMORY"},
-#endif
-							  NSMigratePersistentStoresAutomaticallyOption : @YES,
-							  NSInferMappingModelAutomaticallyOption : @YES
-							  };
+	NSURL *url = [applicationFilesDirectory URLByAppendingPathComponent:self.storeFileName];
     NSPersistentStoreCoordinator *coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:mom];
-    if (![coordinator addPersistentStoreWithType:storeType configuration:nil URL:url options:options error:&error]) {
+	NSPersistentStore *store = [coordinator addPersistentStoreWithType:self.storeType
+														 configuration:nil
+																   URL:url
+															   options:self.storeOptions
+																 error:&error];
+    if (!store) {
 		// Data Modelが更新されていたらストアファイルを削除してもう一度
-		if([[error domain] isEqualToString:NSCocoaErrorDomain] && [error code] == 134130) {
+		if([[error domain] isEqualToString:NSCocoaErrorDomain] && [error code] == 134130 && self.deleteAndRetry) {
 			[[NSFileManager defaultManager] removeItemAtURL:url error:&error];
-			if (![coordinator addPersistentStoreWithType:storeType configuration:nil URL:url options:options error:&error]) {
+			store = [coordinator addPersistentStoreWithType:self.storeType
+											  configuration:nil
+														URL:url
+													options:self.storeOptions
+													  error:&error];
+			if (!store) {
 				[[NSApplication sharedApplication] presentError:error];
 				return nil;
 			}
@@ -144,9 +182,9 @@ static NSManagedObjectModel *_managedObjectModel = nil;
 		}
     }
 	
-    _persistentStoreCoordinator = coordinator;
+	objc_setAssociatedObject([self class], "persistentStoreCoordinator", coordinator, OBJC_ASSOCIATION_RETAIN);
     
-    return _persistentStoreCoordinator;
+    return coordinator;
 }
 
 // Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.)
@@ -196,7 +234,7 @@ static NSManagedObjectModel *_managedObjectModel = nil;
 {
 	NSManagedObjectContext *moc = [notification object];
 	NSPersistentStoreCoordinator *psc = [moc persistentStoreCoordinator];
-	if(![psc isEqual:_persistentStoreCoordinator]) return;
+	if(![psc isEqual:[self persistentStoreCoordinator]]) return;
 	
 	if([NSThread isMainThread]) {
 		[self.managedObjectContext mergeChangesFromContextDidSaveNotification:notification];

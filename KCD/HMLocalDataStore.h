@@ -6,15 +6,9 @@
 //  Copyright (c) 2014年 Hori,Masaki. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "HMCoreDataManager.h"
 
-@interface HMLocalDataStore : NSObject
+@interface HMLocalDataStore : HMCoreDataManager
 
-@property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-
-+ (instancetype)defaultManager;
-+ (instancetype)oneTimeEditor;
-
-- (IBAction)saveAction:(id)sender;
 
 @end
