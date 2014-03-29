@@ -42,6 +42,7 @@
 		F4B3DC3918E5C8700011B4FC /* HMJSONViewWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B3DC3B18E5C8700011B4FC /* HMJSONViewWindowController.xib */; };
 		F4B3DC3C18E5C87D0011B4FC /* HMDocksViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B3DC3E18E5C87D0011B4FC /* HMDocksViewController.xib */; };
 		F4B3DC3F18E5C8870011B4FC /* HMBroserWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B3DC4118E5C8870011B4FC /* HMBroserWindowController.xib */; };
+		F4B3DC4418E70B370011B4FC /* HMServerDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B3DC4318E70B370011B4FC /* HMServerDataStore.m */; };
 		F4B414E918B09A4B00468DAF /* HMMasterMapAreaCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B414E818B09A4B00468DAF /* HMMasterMapAreaCommand.m */; };
 		F4B414EC18B0A7D600468DAF /* HMMasterUseItemCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B414EB18B0A7D600468DAF /* HMMasterUseItemCommand.m */; };
 		F4B414EF18B0BF1A00468DAF /* HMMasterMapInfoCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B414EE18B0BF1A00468DAF /* HMMasterMapInfoCommand.m */; };
@@ -154,6 +155,8 @@
 		F4B3DC3A18E5C8700011B4FC /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMJSONViewWindowController.xib; sourceTree = "<group>"; };
 		F4B3DC3D18E5C87D0011B4FC /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMDocksViewController.xib; sourceTree = "<group>"; };
 		F4B3DC4018E5C8870011B4FC /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMBroserWindowController.xib; sourceTree = "<group>"; };
+		F4B3DC4218E70B370011B4FC /* HMServerDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMServerDataStore.h; sourceTree = "<group>"; };
+		F4B3DC4318E70B370011B4FC /* HMServerDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMServerDataStore.m; sourceTree = "<group>"; };
 		F4B414E718B09A4B00468DAF /* HMMasterMapAreaCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMasterMapAreaCommand.h; sourceTree = "<group>"; };
 		F4B414E818B09A4B00468DAF /* HMMasterMapAreaCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMasterMapAreaCommand.m; sourceTree = "<group>"; };
 		F4B414EA18B0A7D600468DAF /* HMMasterUseItemCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMasterUseItemCommand.h; sourceTree = "<group>"; };
@@ -361,6 +364,8 @@
 			children = (
 				F4513EDB18B619B600073552 /* HMCoreDataManager.h */,
 				F4513EDC18B619B600073552 /* HMCoreDataManager.m */,
+				F4B3DC4218E70B370011B4FC /* HMServerDataStore.h */,
+				F4B3DC4318E70B370011B4FC /* HMServerDataStore.m */,
 				F4E7802918DC3A820011BC4C /* HMLocalDataStore.h */,
 				F4E7802A18DC3A820011BC4C /* HMLocalDataStore.m */,
 				F4D2CBC618B0555A000EBC59 /* HMKCManagedObject.h */,
@@ -583,6 +588,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4513EE818B77A5300073552 /* HMMemberKDockCommand.m in Sources */,
+				F4B3DC4418E70B370011B4FC /* HMServerDataStore.m in Sources */,
 				F4D2CBC518AE2AE2000EBC59 /* HMCompositCommand.m in Sources */,
 				F4C1190218A6FFC2005D5B25 /* HMQueue.m in Sources */,
 				F4513EEB18B7900A00073552 /* HMMemberDeckCommand.m in Sources */,
