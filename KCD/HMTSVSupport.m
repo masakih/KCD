@@ -11,7 +11,7 @@
 #import "HMLocalDataStore.h"
 #import "HMKaihatuHistory.h"
 #import "HMKenzoHistory.h"
-
+#import "HMKenzoMark.h"
 
 #define PATH_KEY2(key1, key2) [NSString stringWithFormat:@"%@.%@", (key1), (key2)]
 #define PATH_KEY3(key1, key2, key3) [NSString stringWithFormat:@"%@.%@.%@", (key1), (key2), (key3)]
@@ -111,7 +111,33 @@
 							 [obj valueForKey:@"kaihatusizai"],
 							 [obj valueForKey:@"name"],
 							 [obj valueForKey:@"sTypeId"],
-							 @"", //[obj valueForKey:@"flagShipName"],
+							 [obj valueForKey:@"flagShipName"],
+							 [obj valueForKey:@"flagShipLv"],
+							 [obj valueForKey:@"commanderLv"]
+							 ];
+		[array addObject:element];
+	}
+	
+	return [self dataFromLFSeparatedArray:array];
+}
+- (NSData *)dataOfKenzoMark
+{
+	NSArray *allObject = [self allObjectOfEntityName:@"KenzoMark"
+											  sortBy:@"kDockId"
+										   ascending:YES];
+	if([allObject count] == 0) return nil;
+	
+	NSMutableArray *array = [NSMutableArray array];
+	for(id obj in allObject) {
+		NSString *element = [[NSString alloc] initWithFormat:@"%@\t%@\t%@\t%@\t%@\t%@\t%@\t%@\t%@\t%@",
+							 [obj valueForKey:@"created_ship_id"],
+							 [obj valueForKey:@"fuel"],
+							 [obj valueForKey:@"bull"],
+							 [obj valueForKey:@"steel"],
+							 [obj valueForKey:@"bauxite"],
+							 [obj valueForKey:@"kaihatusizai"],
+							 [obj valueForKey:@"kDockId"],
+							 [obj valueForKey:@"flagShipName"],
 							 [obj valueForKey:@"flagShipLv"],
 							 [obj valueForKey:@"commanderLv"]
 							 ];
@@ -136,6 +162,8 @@
 							  preferredFilename:@"kaihatu.tsv"];
 		[fileWrapper addRegularFileWithContents:[self dataOfKenzoHistory]
 							  preferredFilename:@"kenzo.tsv"];
+		[fileWrapper addRegularFileWithContents:[self dataOfKenzoMark]
+							  preferredFilename:@"kenzoMark.tsv"];
 		
 		[fileWrapper writeToFile:path atomically:YES updateFilenames:NO];
 	}];
@@ -205,7 +233,7 @@
 	}
 	
 }
-- (void)buildKenzoistoryFromData:(NSData *)data
+- (void)buildKenzoHistoryFromData:(NSData *)data
 {
 	NSString *entityName = @"KenzoHistory";
 	NSArray *contents;
@@ -236,6 +264,36 @@
 	}
 	
 }
+- (void)buildKenzoMarkFromData:(NSData *)data
+{
+	NSString *entityName = @"KenzoMark";
+	NSArray *contents;
+	if([self isEmptyEntityName:entityName]) {
+		HMLocalDataStore *lds = [HMLocalDataStore oneTimeEditor];
+		NSManagedObjectContext *moc = [lds managedObjectContext];
+		
+		contents = [self arrayFromLFSeparatedStringData:data];
+		id attribute;
+		for(attribute in contents) {
+			NSArray *attr = [self arrayFromTabSeparatedString:attribute];
+			if([attr count] < 1) continue;
+			
+			HMKenzoMark *obj = [NSEntityDescription insertNewObjectForEntityForName:entityName
+																inManagedObjectContext:moc];
+			obj.created_ship_id = @([attr[0] integerValue]);
+			obj.fuel = @([attr[1] integerValue]);
+			obj.bull = @([attr[2] integerValue]);
+			obj.steel = @([attr[3] integerValue]);
+			obj.bauxite = @([attr[4] integerValue]);
+			obj.kaihatusizai = @([attr[5] integerValue]);
+			obj.kDockId = @([attr[6] integerValue]);
+			obj.flagShipName = attr[7];
+			obj.flagShipLv = @([attr[8] integerValue]);
+			obj.commanderLv = @([attr[9] integerValue]);
+		}
+	}
+	
+}
 - (IBAction)load:(id)sender
 {
 	NSOpenPanel *panel = [NSOpenPanel openPanel];
@@ -252,7 +310,10 @@
 		[self buildKaihatuHistoryFromData:[kaihatu regularFileContents]];
 		
 		NSFileWrapper *kenzo = [children objectForKey:@"kenzo.tsv"];
-		[self buildKenzoistoryFromData:[kenzo regularFileContents]];
+		[self buildKenzoHistoryFromData:[kenzo regularFileContents]];
+		
+		NSFileWrapper *kenzoMark = [children objectForKey:@"kenzoMark.tsv"];
+		[self buildKenzoMarkFromData:[kenzoMark regularFileContents]];
 	}];
 }
 @end
