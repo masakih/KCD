@@ -10,5 +10,4 @@
 
 @interface HMLocalDataStore : HMCoreDataManager
 
-
 @end

@@ -17,9 +17,6 @@
 
 - (IBAction)saveAction:(id)sender;
 
-- (NSURL *)applicationFilesDirectory;
-- (NSManagedObjectModel *)managedObjectModel;
-
 // for subclass
 - (NSString *)modelName;
 - (NSString *)storeFileName;
