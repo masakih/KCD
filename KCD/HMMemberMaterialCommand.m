@@ -31,13 +31,11 @@
 		return;
 	}
 	
-	HMServerDataStore *dm = [HMServerDataStore oneTimeEditor];
-	NSManagedObjectContext *managedObjectContext = [dm managedObjectContext];
+	HMServerDataStore *serverDataStore = [HMServerDataStore oneTimeEditor];
+	NSManagedObjectContext *managedObjectContext = [serverDataStore managedObjectContext];
 	
-	NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"Material"];
 	NSError *error = nil;
-	id result = [managedObjectContext executeFetchRequest:req
-													error:&error];
+	id result = [serverDataStore objectsWithEntityName:@"Material" predicate:nil error:&error];
 	if(error) {
 		[self log:@"Fetch error: %@", error];
 		return;

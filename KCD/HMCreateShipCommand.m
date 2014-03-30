@@ -30,12 +30,8 @@
 - (void)execute
 {
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-		NSManagedObjectContext *context = [[HMServerDataStore defaultManager] managedObjectContext];
-		NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"KenzoDock"];
-		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id = %@", [self.arguments valueForKey:@"api_kdock_id"]];
-		[req setPredicate:predicate];
-		
-		NSArray *array = [context executeFetchRequest:req error:NULL];
+		HMServerDataStore *serverDataStore = [HMServerDataStore defaultManager];
+		NSArray *array = [serverDataStore objectsWithEntityName:@"KenzoDock" error:NULL predicateFormat:@"id = %@", [self.arguments valueForKey:@"api_kdock_id"]];
 		if([array count] == 0) {
 			NSLog(@"KenzoDock data is invalid.");
 			return;
@@ -45,21 +41,14 @@
 		NSNumber *item1 = [kdock valueForKey:@"item1"];
 		
 		// Deck -> FlagShip
-		req = [NSFetchRequest fetchRequestWithEntityName:@"Deck"];
-		predicate = [NSPredicate predicateWithFormat:@"id = 1"];
-		[req setPredicate:predicate];
-		
-		array = [context executeFetchRequest:req error:NULL];
+		array = [serverDataStore objectsWithEntityName:@"Deck" error:NULL predicateFormat:@"id = 1"];
 		if([array count] == 0) {
 			NSLog(@"Deck data is invalid.");
 			return;
 		}
 		id deck = array[0];
 		id flagShipID = [deck valueForKey:@"ship_0"];
-		req = [NSFetchRequest fetchRequestWithEntityName:@"Ship"];
-		predicate = [NSPredicate predicateWithFormat:@"id = %@", flagShipID];
-		[req setPredicate:predicate];
-		array = [context executeFetchRequest:req error:NULL];
+		array = [serverDataStore objectsWithEntityName:@"Ship" error:NULL predicateFormat:@"id = %@", flagShipID];
 		if([array count] == 0) {
 			NSLog(@"Ship data is invalid or ship_0 is invalid.");
 			return;
@@ -69,9 +58,7 @@
 		NSString *flagShipName = [flagShip valueForKeyPath:@"master_ship.name"];
 		
 		// Basic -> level
-		req = [NSFetchRequest fetchRequestWithEntityName:@"Basic"];
-		
-		array = [context executeFetchRequest:req error:NULL];
+		array = [serverDataStore objectsWithEntityName:@"Basic" predicate:nil error:NULL];
 		if([array count] == 0) {
 			NSLog(@"Basic data is invalid.");
 			return;
@@ -80,15 +67,13 @@
 		
 		//
 		HMLocalDataStore *lds = [HMLocalDataStore oneTimeEditor];
-		NSManagedObjectContext *localStoreContext = [lds managedObjectContext];
 		HMKenzoMark *newObejct = nil;
-		req = [NSFetchRequest fetchRequestWithEntityName:@"KenzoMark"];
-		predicate = [NSPredicate predicateWithFormat:@"kDockId = %@", @([[self.arguments valueForKey:@"api_kdock_id"] integerValue])];
-		[req setPredicate:predicate];
-		array = [localStoreContext executeFetchRequest:req error:NULL];
+		array = [lds objectsWithEntityName:@"KenzoMark"
+									 error:NULL
+						   predicateFormat:@"kDockId = %@", @([[self.arguments valueForKey:@"api_kdock_id"] integerValue])];
 		if([array count] == 0) {
 			newObejct = [NSEntityDescription insertNewObjectForEntityForName:@"KenzoMark"
-													  inManagedObjectContext:localStoreContext];
+													  inManagedObjectContext:[lds managedObjectContext]];
 		} else {
 			newObejct = array[0];
 		}

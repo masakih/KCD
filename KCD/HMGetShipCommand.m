@@ -30,12 +30,8 @@
 }
 - (void)execute
 {
-	NSManagedObjectContext *context = [[HMServerDataStore defaultManager] managedObjectContext];
-	NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"KenzoDock"];
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id = %@", [self.arguments valueForKey:@"api_kdock_id"]];
-	[req setPredicate:predicate];
-	
-	NSArray *array = [context executeFetchRequest:req error:NULL];
+	HMServerDataStore *serverDataStore = [HMServerDataStore defaultManager];
+	NSArray *array = [serverDataStore objectsWithEntityName:@"KenzoDock" error:NULL predicateFormat:@"id = %@", [self.arguments valueForKey:@"api_kdock_id"]];
 	if([array count] == 0) {
 		NSLog(@"KenzoDock data is invalid.");
 		return;
@@ -45,11 +41,7 @@
 	NSNumber *item1 = [kdock valueForKey:@"item1"];
 	
 	//
-	req = [NSFetchRequest fetchRequestWithEntityName:@"MasterShip"];
-	predicate = [NSPredicate predicateWithFormat:@"id = %@", [kdock valueForKey:@"created_ship_id"]];
-	[req setPredicate:predicate];
-	
-	array = [context executeFetchRequest:req error:NULL];
+	array = [serverDataStore objectsWithEntityName:@"MasterShip" error:NULL predicateFormat:@"id = %@", [kdock valueForKey:@"created_ship_id"]];
 	if([array count] == 0) {
 		NSLog(@"MasterShip data is invalid or ship_id is invalid.");
 		return;
@@ -60,15 +52,13 @@
 	NSNumber *flagShipLv = nil;
 	NSString *flafShipName = nil;
 	NSNumber *commanderLv = nil;
-	context = [[HMLocalDataStore defaultManager] managedObjectContext];
-	req = [NSFetchRequest fetchRequestWithEntityName:@"KenzoMark"];
-	predicate = [NSPredicate predicateWithFormat:@"fuel = %@ AND bull = %@ AND steel = %@ AND bauxite = %@ AND kaihatusizai = %@ AND kDockId = %@ AND created_ship_id = %@",
-				 item1, [kdock valueForKey:@"item2"], [kdock valueForKey:@"item3"], [kdock valueForKey:@"item4"], [kdock valueForKey:@"item5"],
-				 @([[self.arguments valueForKey:@"api_kdock_id"] integerValue]), [kdock valueForKey:@"created_ship_id"]
-				 ];
-	[req setPredicate:predicate];
-	
-	array = [context executeFetchRequest:req error:NULL];
+	HMLocalDataStore *localDataStore = [HMLocalDataStore defaultManager];
+	array = [localDataStore objectsWithEntityName:@"KenzoMark"
+											error:NULL
+								  predicateFormat:@"fuel = %@ AND bull = %@ AND steel = %@ AND bauxite = %@ AND kaihatusizai = %@ AND kDockId = %@ AND created_ship_id = %@",
+			 item1, [kdock valueForKey:@"item2"], [kdock valueForKey:@"item3"], [kdock valueForKey:@"item4"], [kdock valueForKey:@"item5"],
+			 @([[self.arguments valueForKey:@"api_kdock_id"] integerValue]), [kdock valueForKey:@"created_ship_id"]
+			 ];
 	if([array count] != 0) {
 		flagShipLv = [array[0] valueForKey:@"flagShipLv"];
 		flafShipName = [array[0] valueForKey:@"flagShipName"];

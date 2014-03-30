@@ -35,15 +35,13 @@
 	NSString *name = nil;
 	NSNumber *numberOfUsedKaihatuSizai = nil;
 	
-	NSManagedObjectContext *context = [[HMServerDataStore defaultManager] managedObjectContext];
+	HMServerDataStore *serverDataStore = [HMServerDataStore defaultManager];
 	
 	if(created) {
 		NSNumber *slotItemID = [data valueForKey:@"api_slotitem_id"];
-		NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"MasterSlotItem"];
-		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id = %@", slotItemID];
-		[req setPredicate:predicate];
-		
-		NSArray *array = [context executeFetchRequest:req error:NULL];
+		NSArray *array = [serverDataStore objectsWithEntityName:@"MasterSlotItem"
+														  error:NULL
+												predicateFormat:@"id = %@", slotItemID];
 		if([array count] == 0) {
 			NSLog(@"MasterSlotItem data is invalid or api_slotitem_id is invalid.");
 			return;
@@ -56,21 +54,14 @@
 	}
 	
 	// Deck -> FlagShip
-	NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"Deck"];
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id = 1"];
-	[req setPredicate:predicate];
-	
-	NSArray *array = [context executeFetchRequest:req error:NULL];
+	NSArray *array = [serverDataStore objectsWithEntityName:@"Deck" error:NULL predicateFormat:@"id = 1"];
 	if([array count] == 0) {
 		NSLog(@"Deck data is invalid.");
 		return;
 	}
 	id deck = array[0];
 	id flagShipID = [deck valueForKey:@"ship_0"];
-	req = [NSFetchRequest fetchRequestWithEntityName:@"Ship"];
-	predicate = [NSPredicate predicateWithFormat:@"id = %@", flagShipID];
-	[req setPredicate:predicate];
-	array = [context executeFetchRequest:req error:NULL];
+	array = [serverDataStore objectsWithEntityName:@"Ship" error:NULL predicateFormat:@"id = %@", flagShipID];
 	if([array count] == 0) {
 		NSLog(@"Ship data is invalid or ship_0 is invalid.");
 		return;
@@ -80,9 +71,7 @@
 	NSString *flagShipName = [flagShip valueForKeyPath:@"master_ship.name"];
 	
 	// Basic -> level
-	req = [NSFetchRequest fetchRequestWithEntityName:@"Basic"];
-	
-	array = [context executeFetchRequest:req error:NULL];
+	array = [serverDataStore objectsWithEntityName:@"Basic" predicate:nil error:NULL];
 	if([array count] == 0) {
 		NSLog(@"Basic data is invalid.");
 		return;
@@ -90,9 +79,8 @@
 	id basic = array[0];
 	
 	HMLocalDataStore *lds = [HMLocalDataStore oneTimeEditor];
-	NSManagedObjectContext *localStoreContext = [lds managedObjectContext];
 	HMKaihatuHistory *newObejct = [NSEntityDescription insertNewObjectForEntityForName:@"KaihatuHistory"
-															  inManagedObjectContext:localStoreContext];
+															  inManagedObjectContext:[lds managedObjectContext]];
 	newObejct.name = name;
 	newObejct.fuel = @([[self.arguments valueForKey:@"api_item1"] integerValue]);
 	newObejct.bull = @([[self.arguments valueForKey:@"api_item2"] integerValue]);

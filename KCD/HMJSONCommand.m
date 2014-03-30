@@ -158,17 +158,13 @@ NSString *keyByDeletingPrefix(NSString *key)
 		return;
 	}
 	
-	HMServerDataStore *dm = [HMServerDataStore oneTimeEditor];
-	NSManagedObjectContext *managedObjectContext = [dm managedObjectContext];
+	HMServerDataStore *serverDataStore = [HMServerDataStore oneTimeEditor];
+	NSManagedObjectContext *managedObjectContext = [serverDataStore managedObjectContext];
 	
 	for(NSDictionary *type in api_data) {
 		NSString *stypeID = type[@"api_id"];
-		NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:entityName];
-		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id = %@", stypeID];
-		[req setPredicate:predicate];
 		NSError *error = nil;
-		id result = [managedObjectContext executeFetchRequest:req
-														error:&error];
+		id result = [serverDataStore objectsWithEntityName:entityName error:&error predicateFormat:@"id = %@", stypeID];
 		if(error) {
 			[self log:@"Fetch error: %@", error];
 			continue;
