@@ -15,6 +15,9 @@
 + (instancetype)defaultManager;
 + (instancetype)oneTimeEditor;
 
+- (NSArray *)objectsWithEntityName:(NSString *)entityName predicate:(NSPredicate *)predicate error:(NSError **)error;
+- (NSArray *)objectsWithEntityName:(NSString *)entityName error:(NSError **)error predicateFormat:(NSString *)format, ... NS_FORMAT_FUNCTION(3,4);
+
 - (IBAction)saveAction:(id)sender;
 
 // for subclass

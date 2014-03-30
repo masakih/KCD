@@ -49,6 +49,24 @@
 	[self saveAction:nil];
 }
 
+
+- (NSArray *)objectsWithEntityName:(NSString *)entityName predicate:(NSPredicate *)predicate error:(NSError *__autoreleasing *)error
+{
+	NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:entityName];
+	[req setPredicate:predicate];
+	
+	NSArray *array = [self.managedObjectContext executeFetchRequest:req error:error];
+	return array;
+}
+- (NSArray *)objectsWithEntityName:(NSString *)entityName error:(NSError *__autoreleasing *)error predicateFormat:(NSString *)format, ...
+{
+	va_list ap;
+	va_start(ap, format);
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:format arguments:ap];
+	va_end(ap);
+	return [self objectsWithEntityName:entityName predicate:predicate error:error];
+}
+
 // Returns the directory the application uses to store the Core Data store file. This code uses a directory named "com.masakih.KanColleLevelManager" in the user's Application Support directory.
 - (NSURL *)applicationFilesDirectory
 {
