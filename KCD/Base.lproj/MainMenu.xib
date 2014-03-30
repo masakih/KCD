@@ -242,7 +242,11 @@
                 </menuItem>
             </items>
         </menu>
-        <customObject id="494" customClass="HMAppDelegate"/>
+        <customObject id="494" customClass="HMAppDelegate">
+            <connections>
+                <outlet property="debugMenuItem" destination="TRC-ZR-9HP" id="7F5-QE-93s"/>
+            </connections>
+        </customObject>
         <customObject id="420" customClass="NSFontManager"/>
     </objects>
 </document>

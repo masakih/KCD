@@ -19,14 +19,15 @@
 
 @property (readonly) NSArray *shipTypeCategories;
 
+@property (strong, nonatomic) IBOutlet NSMenuItem *debugMenuItem;
+
 - (IBAction)showHideHistory:(id)sender;
 
+- (IBAction)saveLocalData:(id)sender;
+- (IBAction)loadLocalData:(id)sender;
 
 #if ENABLE_JSON_LOG
 @property (strong) HMJSONViewWindowController *jsonViewWindowController;
 #endif
-#ifdef DEBUG
-- (IBAction)saveLocalData:(id)sender;
-- (IBAction)loadLocalData:(id)sender;
-#endif
+
 @end

@@ -11,11 +11,11 @@
 #import "HMBroserWindowController.h"
 #import "HMHistoryWindowController.h"
 
+#import "HMTSVSupport.h"
+
 
 #ifdef DEBUG
 #import "HMShipWindowController.h"
-
-#import "HMTSVSupport.h"
 #endif
 
 //@interface NSObject (HMM_NSUserNotificationCenterPrivateMethods)
@@ -87,11 +87,11 @@ static FILE* logFileP = NULL;
 #ifdef DEBUG
 	self.shipWindowController = [HMShipWindowController new];
 	[self.shipWindowController showWindow:nil];
-#else
-	NSMenu *mainMenu = [NSApp mainMenu];
-	NSInteger debugMenuIndex = [mainMenu indexOfItemWithTag:1000];
-	[mainMenu removeItemAtIndex:debugMenuIndex];
 #endif
+	BOOL showsDebugMenu = [[NSUserDefaults standardUserDefaults] boolForKey:@"ShowsDebugMenu"];
+	if(!showsDebugMenu) {
+		[self.debugMenuItem setHidden:YES];
+	}
 }
 
 - (NSArray *)shipTypeCategories
@@ -122,6 +122,8 @@ static FILE* logFileP = NULL;
 		} else {
 			[menuItem setTitle:NSLocalizedString(@"Hide History", @"")];
 		}
+		return YES;
+	} else if(action == @selector(saveLocalData:) || action == @selector(loadLocalData:)) {
 		return YES;
 	}
 	
@@ -224,7 +226,6 @@ static FILE* logFileP = NULL;
 }
 #endif
 
-#ifdef DEBUG
 - (IBAction)saveLocalData:(id)sender
 {
 	[[HMTSVSupport new] save:sender];
@@ -233,6 +234,5 @@ static FILE* logFileP = NULL;
 {
 	[[HMTSVSupport new] load:sender];
 }
-#endif
 
 @end
