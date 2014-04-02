@@ -8,6 +8,9 @@
 
 #import "HMCoreDataManager.h"
 
+/**
+ サーバーサイドには存在しないデータを保存する
+ */
 @interface HMLocalDataStore : HMCoreDataManager
 
 @end
