@@ -43,6 +43,7 @@
 		F4B3DC3C18E5C87D0011B4FC /* HMDocksViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B3DC3E18E5C87D0011B4FC /* HMDocksViewController.xib */; };
 		F4B3DC3F18E5C8870011B4FC /* HMBroserWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B3DC4118E5C8870011B4FC /* HMBroserWindowController.xib */; };
 		F4B3DC4418E70B370011B4FC /* HMServerDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B3DC4318E70B370011B4FC /* HMServerDataStore.m */; };
+		F4B3DC4718EEEB920011B4FC /* HMCompositMapCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B3DC4618EEEB920011B4FC /* HMCompositMapCommand.m */; };
 		F4B414E918B09A4B00468DAF /* HMMasterMapAreaCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B414E818B09A4B00468DAF /* HMMasterMapAreaCommand.m */; };
 		F4B414EC18B0A7D600468DAF /* HMMasterUseItemCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B414EB18B0A7D600468DAF /* HMMasterUseItemCommand.m */; };
 		F4B414EF18B0BF1A00468DAF /* HMMasterMapInfoCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B414EE18B0BF1A00468DAF /* HMMasterMapInfoCommand.m */; };
@@ -157,6 +158,8 @@
 		F4B3DC4018E5C8870011B4FC /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMBroserWindowController.xib; sourceTree = "<group>"; };
 		F4B3DC4218E70B370011B4FC /* HMServerDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMServerDataStore.h; sourceTree = "<group>"; };
 		F4B3DC4318E70B370011B4FC /* HMServerDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMServerDataStore.m; sourceTree = "<group>"; };
+		F4B3DC4518EEEB920011B4FC /* HMCompositMapCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMCompositMapCommand.h; sourceTree = "<group>"; };
+		F4B3DC4618EEEB920011B4FC /* HMCompositMapCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMCompositMapCommand.m; sourceTree = "<group>"; };
 		F4B414E718B09A4B00468DAF /* HMMasterMapAreaCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMasterMapAreaCommand.h; sourceTree = "<group>"; };
 		F4B414E818B09A4B00468DAF /* HMMasterMapAreaCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMasterMapAreaCommand.m; sourceTree = "<group>"; };
 		F4B414EA18B0A7D600468DAF /* HMMasterUseItemCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMasterUseItemCommand.h; sourceTree = "<group>"; };
@@ -439,20 +442,22 @@
 				F4D2CBC118AD0E1A000EBC59 /* HMMasterSTypeCommand.m */,
 				F4D2CBC918B05E58000EBC59 /* HMMaserShipCommand.h */,
 				F4D2CBCA18B05E58000EBC59 /* HMMaserShipCommand.m */,
+				F4B3DC4518EEEB920011B4FC /* HMCompositMapCommand.h */,
+				F4B3DC4618EEEB920011B4FC /* HMCompositMapCommand.m */,
 				F4B414E718B09A4B00468DAF /* HMMasterMapAreaCommand.h */,
 				F4B414E818B09A4B00468DAF /* HMMasterMapAreaCommand.m */,
-				F4B414EA18B0A7D600468DAF /* HMMasterUseItemCommand.h */,
-				F4B414EB18B0A7D600468DAF /* HMMasterUseItemCommand.m */,
 				F4B414ED18B0BF1A00468DAF /* HMMasterMapInfoCommand.h */,
 				F4B414EE18B0BF1A00468DAF /* HMMasterMapInfoCommand.m */,
+				F4B414F918B1FB6C00468DAF /* HMMasterMapCellCommand.h */,
+				F4B414FA18B1FB6C00468DAF /* HMMasterMapCellCommand.m */,
+				F4B414EA18B0A7D600468DAF /* HMMasterUseItemCommand.h */,
+				F4B414EB18B0A7D600468DAF /* HMMasterUseItemCommand.m */,
 				F4B414F018B1013C00468DAF /* HMMasterSlotItemCommand.h */,
 				F4B414F118B1013C00468DAF /* HMMasterSlotItemCommand.m */,
 				F4B414F318B1888800468DAF /* HMMasterFurnitureCommand.h */,
 				F4B414F418B1888800468DAF /* HMMasterFurnitureCommand.m */,
 				F4B414F618B1D35800468DAF /* HMMasterMissionCommand.h */,
 				F4B414F718B1D35800468DAF /* HMMasterMissionCommand.m */,
-				F4B414F918B1FB6C00468DAF /* HMMasterMapCellCommand.h */,
-				F4B414FA18B1FB6C00468DAF /* HMMasterMapCellCommand.m */,
 				F4B414FC18B3A66200468DAF /* HMMemberNDockCommand.h */,
 				F4B414FD18B3A66200468DAF /* HMMemberNDockCommand.m */,
 				F4513EE618B77A5300073552 /* HMMemberKDockCommand.h */,
@@ -621,6 +626,7 @@
 				F4E7802818DBD2A00011BC4C /* HMGetShipCommand.m in Sources */,
 				F4513EF618B9F29800073552 /* HMMemberShipCommand.m in Sources */,
 				F4C1190818A746EB005D5B25 /* HMJSONTracker.m in Sources */,
+				F4B3DC4718EEEB920011B4FC /* HMCompositMapCommand.m in Sources */,
 				F4513EDD18B619B600073552 /* HMCoreDataManager.m in Sources */,
 				F4B3DBCA18DDB9170011B4FC /* HMCreateSlotItemCommand.m in Sources */,
 				F4B3DC2718DF2F360011B4FC /* HMKenzoMark.m in Sources */,

@@ -87,39 +87,13 @@
     </entity>
     <entity name="MasterMapCell" representedClassName="HMKCManagedObject" syncable="YES">
         <attribute name="color_no" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="event_0" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="event_1" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="event_point_0" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="event_point_1" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="link_no_0" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="link_no_1" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="map_no" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="maparea_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="mapinfo_no" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="next_rate_0" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="next_rate_1" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="next_rate_2" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="next_rate_req_0" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="next_rate_req_1" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="next_rate_req_2" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="no" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="passed" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="req_ship_count" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="req_shiptype_0" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="req_shiptype_1" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="req_shiptype_2" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="req_shiptype_3" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="req_shiptype_4" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="req_shiptype_5" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="table_no_0" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="table_no_1" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="MasterMapInfo" representedClassName="HMKCManagedObject" syncable="YES">
-        <attribute name="active" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="cleared" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="exboss_D_defeat_count" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="exboss_D_required_defeat_count" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="exboss_flag" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="id" attributeType="Integer 32" syncable="YES"/>
         <attribute name="infotext" optional="YES" attributeType="String" syncable="YES"/>
@@ -129,11 +103,11 @@
         <attribute name="item_3" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="level" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="maparea_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="maxcell" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="max_maphp" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="no" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="opetext" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="progress" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="required_defeat_count" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="MasterMission" representedClassName="HMKCManagedObject" syncable="YES">
         <attribute name="active" optional="YES" attributeType="Boolean" defaultValueString="0" syncable="YES"/>
@@ -393,8 +367,8 @@
         <element name="KenzoDock" positionX="0" positionY="0" width="128" height="210"/>
         <element name="MasterFurniture" positionX="0" positionY="0" width="128" height="165"/>
         <element name="MasterMapArea" positionX="0" positionY="0" width="128" height="90"/>
-        <element name="MasterMapCell" positionX="0" positionY="0" width="128" height="465"/>
-        <element name="MasterMapInfo" positionX="0" positionY="0" width="128" height="315"/>
+        <element name="MasterMapCell" positionX="0" positionY="0" width="128" height="133"/>
+        <element name="MasterMapInfo" positionX="0" positionY="0" width="128" height="253"/>
         <element name="MasterMission" positionX="0" positionY="0" width="128" height="255"/>
         <element name="MasterShip" positionX="0" positionY="0" width="128" height="1515"/>
         <element name="MasterSlotItem" positionX="0" positionY="0" width="128" height="540"/>
