@@ -72,7 +72,7 @@
 #define JSON_LOG_STRING 0
 #if JSON_LOG_STRING
 	NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-	[self logLineReturn:@"body -> \n%@", string];
+	[[NSApp delegate] logLineReturn:@"body -> \n%@", string];
 #else
 	NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 	NSArray *elements = [string componentsSeparatedByString:@"="];
@@ -99,10 +99,10 @@
 	[self removeDataForProtocol:protocol];
 }
 
-
+//
 //- (void)customHTTPProtocol:(CustomHTTPProtocol *)protocol logWithFormat:(NSString *)format arguments:(va_list)argList
 //{
-//	[self logLineReturn:[[NSString alloc] initWithFormat:format arguments:argList]];
+//	[[NSApp delegate] logLineReturn:@"%@", [[NSString alloc] initWithFormat:format arguments:argList]];
 //}
 
 
