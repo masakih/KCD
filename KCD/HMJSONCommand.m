@@ -150,9 +150,13 @@ NSString *keyByDeletingPrefix(NSString *key)
 	va_end(ap);
 }
 
+- (NSString *)dataKey
+{
+	return @"api_data";
+}
 - (void)commitJSONToEntityNamed:(NSString *)entityName
 {
-	NSArray *api_data = [self.json objectForKey:@"api_data"];
+	NSArray *api_data = [self.json valueForKey:self.dataKey];
 	if(![api_data isKindOfClass:[NSArray class]]) {
 		[self log:@"api_data is NOT NSArray."];
 		return;

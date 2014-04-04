@@ -35,6 +35,8 @@
 
 @property (readonly) NSArray *ignoreKeys;
 
+@property (readonly) NSString *dataKey;
+
 - (void)commitJSONToEntityNamed:(NSString *)entityName;
 
 // 特別な処理を行う
