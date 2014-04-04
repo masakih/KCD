@@ -126,7 +126,11 @@ static FILE* logFileP = NULL;
 	} else if(action == @selector(saveLocalData:) || action == @selector(loadLocalData:)) {
 		return YES;
 	}
-	
+#if ENABLE_JSON_LOG
+	else if(action == @selector(saveDocument:) || action == @selector(openDocument:)) {
+		return YES;
+	}
+#endif
 	return NO;
 }
 
