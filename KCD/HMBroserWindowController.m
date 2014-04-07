@@ -12,6 +12,8 @@
 #import "HMShipViewController.h"
 #import "HMPowerUpSupportViewController.h"
 
+#import "HMScreenshotWindowController.h"
+
 #import "HMServerDataStore.h"
 
 
@@ -29,6 +31,8 @@ typedef NS_ENUM(NSInteger, ViewType) {
 @property (strong) NSMutableDictionary *controllers;
 
 @property (strong) NSNumber *flagShipID;
+
+@property (strong) HMScreenshotWindowController *screenshotWindowController;
 
 @end
 
@@ -184,5 +188,28 @@ typedef NS_ENUM(NSInteger, ViewType) {
 	}
 	[self showViewWithNumber:tag];
 }
+- (IBAction)screenShot:(id)sender
+{
+	if(!self.screenshotWindowController) {
+		self.screenshotWindowController = [HMScreenshotWindowController new];
+	}
+	
+	NSView *contentView = self.window.contentView;
+	
+	NSRect frame = [contentView convertRect:[self.webView visibleRect] fromView:self.webView];
+	frame = NSInsetRect(frame, -3, -3);
+	
+	NSBitmapImageRep *rep = [contentView bitmapImageRepForCachingDisplayInRect:frame];
+	[contentView cacheDisplayInRect:frame toBitmapImageRep:rep];
+	NSData *jpeg = [rep representationUsingType:NSJPEGFileType properties:nil];
+	
+	self.screenshotWindowController.snapData = jpeg;
+	
+	[self.window beginSheet:self.screenshotWindowController.window
+		  completionHandler:^(NSModalResponse returnCode) {
+			  [self.screenshotWindowController.window close];
+		  }];
+}
+
 
 @end

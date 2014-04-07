@@ -44,6 +44,10 @@
 		F4B3DC3F18E5C8870011B4FC /* HMBroserWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B3DC4118E5C8870011B4FC /* HMBroserWindowController.xib */; };
 		F4B3DC4418E70B370011B4FC /* HMServerDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B3DC4318E70B370011B4FC /* HMServerDataStore.m */; };
 		F4B3DC4718EEEB920011B4FC /* HMCompositMapCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B3DC4618EEEB920011B4FC /* HMCompositMapCommand.m */; };
+		F4B3DC4C18F0C8A90011B4FC /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4B3DC4B18F0C8A90011B4FC /* Social.framework */; };
+		F4B3DC4E18F0C8FF0011B4FC /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4B3DC4D18F0C8FF0011B4FC /* Accounts.framework */; };
+		F4B3DC5218F150CD0011B4FC /* HMScreenshotWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B3DC5018F150CD0011B4FC /* HMScreenshotWindowController.m */; };
+		F4B3DC5318F150CE0011B4FC /* HMScreenshotWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B3DC5118F150CD0011B4FC /* HMScreenshotWindowController.xib */; };
 		F4B414E918B09A4B00468DAF /* HMMasterMapAreaCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B414E818B09A4B00468DAF /* HMMasterMapAreaCommand.m */; };
 		F4B414EC18B0A7D600468DAF /* HMMasterUseItemCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B414EB18B0A7D600468DAF /* HMMasterUseItemCommand.m */; };
 		F4B414EF18B0BF1A00468DAF /* HMMasterMapInfoCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B414EE18B0BF1A00468DAF /* HMMasterMapInfoCommand.m */; };
@@ -160,6 +164,11 @@
 		F4B3DC4318E70B370011B4FC /* HMServerDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMServerDataStore.m; sourceTree = "<group>"; };
 		F4B3DC4518EEEB920011B4FC /* HMCompositMapCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMCompositMapCommand.h; sourceTree = "<group>"; };
 		F4B3DC4618EEEB920011B4FC /* HMCompositMapCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMCompositMapCommand.m; sourceTree = "<group>"; };
+		F4B3DC4B18F0C8A90011B4FC /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		F4B3DC4D18F0C8FF0011B4FC /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		F4B3DC4F18F150CD0011B4FC /* HMScreenshotWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMScreenshotWindowController.h; sourceTree = "<group>"; };
+		F4B3DC5018F150CD0011B4FC /* HMScreenshotWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMScreenshotWindowController.m; sourceTree = "<group>"; };
+		F4B3DC5118F150CD0011B4FC /* HMScreenshotWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMScreenshotWindowController.xib; sourceTree = "<group>"; };
 		F4B414E718B09A4B00468DAF /* HMMasterMapAreaCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMasterMapAreaCommand.h; sourceTree = "<group>"; };
 		F4B414E818B09A4B00468DAF /* HMMasterMapAreaCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMasterMapAreaCommand.m; sourceTree = "<group>"; };
 		F4B414EA18B0A7D600468DAF /* HMMasterUseItemCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMasterUseItemCommand.h; sourceTree = "<group>"; };
@@ -236,6 +245,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4B3DC4E18F0C8FF0011B4FC /* Accounts.framework in Frameworks */,
+				F4B3DC4C18F0C8A90011B4FC /* Social.framework in Frameworks */,
 				F4C041BA1875CAF5009273EB /* JavaScriptCore.framework in Frameworks */,
 				F4BDEB7B187253130069D0CE /* WebKit.framework in Frameworks */,
 				F4BDEB47187252F30069D0CE /* Cocoa.framework in Frameworks */,
@@ -276,6 +287,8 @@
 		F4BDEB45187252F30069D0CE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F4B3DC4D18F0C8FF0011B4FC /* Accounts.framework */,
+				F4B3DC4B18F0C8A90011B4FC /* Social.framework */,
 				F4C041B91875CAF5009273EB /* JavaScriptCore.framework */,
 				F4BDEB7A187253130069D0CE /* WebKit.framework */,
 				F4BDEB46187252F30069D0CE /* Cocoa.framework */,
@@ -302,6 +315,9 @@
 				F4BDEB59187252F30069D0CE /* HMAppDelegate.m */,
 				F4B3DC1F18DECF570011B4FC /* HMTSVSupport.h */,
 				F4B3DC2018DECF570011B4FC /* HMTSVSupport.m */,
+				F4B3DC4F18F150CD0011B4FC /* HMScreenshotWindowController.h */,
+				F4B3DC5018F150CD0011B4FC /* HMScreenshotWindowController.m */,
+				F4B3DC5118F150CD0011B4FC /* HMScreenshotWindowController.xib */,
 				F4C118F318A67B05005D5B25 /* CustomHTTPProtocol */,
 				F4C1190018A6FFC2005D5B25 /* HMQueue.h */,
 				F4C1190118A6FFC2005D5B25 /* HMQueue.m */,
@@ -566,6 +582,7 @@
 				F4B3DC3018E5C81E0011B4FC /* HMHistoryWindowController.xib in Resources */,
 				F4B3DC3618E5C8650011B4FC /* HMShipWindowController.xib in Resources */,
 				F4B3DC3C18E5C87D0011B4FC /* HMDocksViewController.xib in Resources */,
+				F4B3DC5318F150CE0011B4FC /* HMScreenshotWindowController.xib in Resources */,
 				F4B3DC3918E5C8700011B4FC /* HMJSONViewWindowController.xib in Resources */,
 				F4B3DC3318E5C8520011B4FC /* HMShipViewController.xib in Resources */,
 				F43E67B718BE02A10087E5B6 /* STypeShortName.plist in Resources */,
@@ -600,6 +617,7 @@
 				F4B3DC2A18DF31400011B4FC /* HMCreateShipCommand.m in Sources */,
 				F46F103618A7CE310063E503 /* HMJSONViewCommand.m in Sources */,
 				F4B3DC1E18DEB8C70011B4FC /* HMKenzoHistory.m in Sources */,
+				F4B3DC5218F150CD0011B4FC /* HMScreenshotWindowController.m in Sources */,
 				F4B414FB18B1FB6C00468DAF /* HMMasterMapCellCommand.m in Sources */,
 				F4B3DC2E18E07B680011B4FC /* HMHistoryWindowController.m in Sources */,
 				F4C118FA18A67B1C005D5B25 /* CacheStoragePolicy.m in Sources */,
