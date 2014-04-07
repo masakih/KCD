@@ -111,7 +111,7 @@ Gw
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <binding destination="-2" name="value" keyPath="appendKanColleTag" id="jg1-WS-pOh"/>
+                            <binding destination="-2" name="value" keyPath="appendKanColleTag" id="ukT-7z-hpV"/>
                         </connections>
                     </button>
                 </subviews>
@@ -120,5 +120,6 @@ Gw
                 <outlet property="delegate" destination="-2" id="jh0-1p-0nL"/>
             </connections>
         </window>
+        <userDefaultsController representsSharedInstance="YES" id="KEF-9h-XOk"/>
     </objects>
 </document>

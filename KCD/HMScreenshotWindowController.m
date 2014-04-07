@@ -25,6 +25,7 @@
 @implementation HMScreenshotWindowController
 @synthesize snapData = _snapData;
 @synthesize snap = _snap;
+@synthesize appendKanColleTag = _appendKanColleTag;
 
 + (NSSet *)keyPathsForValuesAffectingLeaveLength
 {
@@ -48,6 +49,7 @@
 		[self checkShortURLLength];
 #warning change this
 		_tagString = @" #艦これ";
+		_appendKanColleTag = [[NSUserDefaults standardUserDefaults] boolForKey:@"appendKanColleTag"];
 	}
 	return self;
 }
@@ -89,6 +91,15 @@
 		return [NSColor colorWithCalibratedRed:159/255.0 green:14/255.0 blue:0 alpha:1];
 	}
 	return [NSColor controlTextColor];
+}
+- (BOOL)appendKanColleTag
+{
+	return _appendKanColleTag;
+}
+- (void)setAppendKanColleTag:(BOOL)appendKanColleTag
+{
+	[[NSUserDefaults standardUserDefaults] setBool:appendKanColleTag forKey:@"appendKanColleTag"];
+	_appendKanColleTag = appendKanColleTag;
 }
 
 - (IBAction)tweet:(id)sender
