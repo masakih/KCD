@@ -39,6 +39,10 @@
 {
 	return [NSSet setWithObject:@"snapData"];
 }
++ (NSSet *)keyPathsForValuesAffectingCanTweet
+{
+	return [NSSet setWithObject:@"leaveLength"];
+}
 
 - (id)init
 {
@@ -101,6 +105,14 @@
 	[[NSUserDefaults standardUserDefaults] setBool:appendKanColleTag forKey:@"appendKanColleTag"];
 	_appendKanColleTag = appendKanColleTag;
 }
+- (BOOL)canTweet
+{
+	return self.leaveLength >= 0;
+}
+- (BOOL)canSave
+{
+	return NO;
+}
 
 - (IBAction)tweet:(id)sender
 {
@@ -147,7 +159,7 @@
 				[NSJSONSerialization JSONObjectWithData:responseData
 												options:NSJSONReadingMutableContainers
 												  error:NULL];
-				NSLog(@"[SUCCESS!] Created Tweet with ID: %@", postResponseData[@"id_str"]);
+//				NSLog(@"[SUCCESS!] Created Tweet with ID: %@", postResponseData[@"id_str"]);
 			}
 			else {
 				NSLog(@"[ERROR] Server responded: status code %ld %@", statusCode,
@@ -201,7 +213,7 @@
 				[NSJSONSerialization JSONObjectWithData:responseData
 												options:NSJSONReadingMutableContainers
 												  error:NULL];
-				NSLog(@"[SUCCESS!] characters_reserved_per_media is %@", postResponseData[@"characters_reserved_per_media"]);
+//				NSLog(@"[SUCCESS!] characters_reserved_per_media is %@", postResponseData[@"characters_reserved_per_media"]);
 				
 				self.shortURLLength = [postResponseData[@"characters_reserved_per_media"] integerValue];
 			}

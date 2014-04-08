@@ -46,17 +46,21 @@ DQ
                         </buttonCell>
                         <connections>
                             <action selector="tweet:" target="-2" id="oxu-qX-fZQ"/>
+                            <binding destination="-2" name="enabled" keyPath="canTweet" id="0PU-x5-LNS"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" id="8NF-GL-Cnh">
                         <rect key="frame" x="728" y="46" width="81" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5L4-tU-nuf">
+                        <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5L4-tU-nuf">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                             <string key="keyEquivalent">s</string>
                             <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                         </buttonCell>
+                        <connections>
+                            <binding destination="-2" name="enabled" keyPath="canSave" id="xKz-eL-SWF"/>
+                        </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Wc2-R4-iL2">
                         <rect key="frame" x="579" y="20" width="75" height="17"/>

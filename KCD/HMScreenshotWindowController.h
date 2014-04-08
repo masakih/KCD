@@ -16,6 +16,8 @@
 /// 残り文字数
 @property (readonly) NSInteger leaveLength;
 @property (readonly) NSColor *leaveLengthColor;
+@property (readonly) BOOL canTweet;
+@property (readonly) BOOL canSave;
 @property BOOL appendKanColleTag;
 @property (copy, nonatomic) NSString *tagString;
 
