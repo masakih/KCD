@@ -70,7 +70,7 @@
 	
 	NSImage *image = [[NSImage alloc] initWithData:self.snapData];
 	_snap = image;
-	self.tweetString = nil;
+	self.tweetString = @"";
 	
 	return _snap;
 }
@@ -110,12 +110,17 @@
 	}
 	
 	NSString *status = self.tweetString;
+	if(!status) status = @"";
 	if(self.appendKanColleTag) {
 		status = [status stringByAppendingString:self.tagString];
 	}
-	[self postImage:self.snapData withStatus:status];
 	
-	[self.window orderOut:nil];
+	if(self.leaveLength >= 0) {
+		[self postImage:self.snapData withStatus:status];
+		[self.window orderOut:nil];
+	} else {
+		NSBeep();
+	}
 }
 
 - (IBAction)saveSnap:(id)sender
