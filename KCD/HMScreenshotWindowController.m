@@ -11,6 +11,11 @@
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
 
+
+@interface NSFileManager (KCDExtension)
+- (NSString *)_web_pathWithUniqueFilenameForPath:(NSString *)path;
+@end
+
 @interface HMScreenshotWindowController ()
 
 @property (strong) NSImage *snap;
@@ -111,7 +116,13 @@
 }
 - (BOOL)canSave
 {
-	return NO;
+	return self.snapData ? YES : NO;
+}
+
+- (NSURL *)documentsFilesDirectory
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+	return [[fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
 - (IBAction)tweet:(id)sender
@@ -138,9 +149,21 @@
 - (IBAction)saveSnap:(id)sender
 {
 	[self.window orderOut:nil];
-	//
-	//
 	
+	if(!self.snapData) return;
+	
+	NSBundle *mainBundle = [NSBundle mainBundle];
+	NSDictionary *infoList = [mainBundle localizedInfoDictionary];
+	NSString *filename = [infoList objectForKey:@"CFBundleName"];
+	if([filename length] == 0) {
+		filename = @"KCD";
+	}
+	filename = [filename stringByAppendingPathExtension:@"jpg"];
+	NSURL *path = [[self documentsFilesDirectory] URLByAppendingPathComponent:filename];
+	
+	filename = [[NSFileManager defaultManager] _web_pathWithUniqueFilenameForPath:[path path]];
+	
+	[self.snapData writeToFile:filename atomically:YES];
 }
 - (IBAction)cancel:(id)sender
 {
@@ -155,10 +178,10 @@
 		if (responseData) {
 			NSInteger statusCode = urlResponse.statusCode;
 			if (statusCode >= 200 && statusCode < 300) {
-				NSDictionary *postResponseData =
-				[NSJSONSerialization JSONObjectWithData:responseData
-												options:NSJSONReadingMutableContainers
-												  error:NULL];
+//				NSDictionary *postResponseData =
+//				[NSJSONSerialization JSONObjectWithData:responseData
+//												options:NSJSONReadingMutableContainers
+//												  error:NULL];
 //				NSLog(@"[SUCCESS!] Created Tweet with ID: %@", postResponseData[@"id_str"]);
 			}
 			else {
