@@ -21,6 +21,7 @@
 @property (strong) NSImage *snap;
 
 @property (strong) ACAccountStore *accountStore;
+@property BOOL availableTwitter;
 @property NSInteger shortURLLength;
 
 
@@ -112,7 +113,7 @@
 }
 - (BOOL)canTweet
 {
-	return self.leaveLength >= 0;
+	return self.availableTwitter && self.leaveLength >= 0;
 }
 - (BOOL)canSave
 {
@@ -226,6 +227,12 @@
 - (void)checkShortURLLength
 {
 	ACAccountType *twitterType = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+	NSArray *accounts = [self.accountStore accountsWithAccountType:twitterType];
+	if([accounts count] == 0) {
+		NSLog(@"twitter account not avail.");
+		return;
+	}
+	self.availableTwitter = YES;
 	
 	SLRequestHandler requestHandler =
 	^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
