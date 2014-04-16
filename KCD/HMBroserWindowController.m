@@ -59,7 +59,7 @@ typedef NS_ENUM(NSInteger, ViewType) {
 	[clip setAutoresizingMask:[self.placeholder autoresizingMask]];
 	[[self.placeholder superview] replaceSubview:self.placeholder with:clip];
 	[clip setDocumentView:self.webView];
-	[clip scrollToPoint:NSMakePoint(70, 425)];
+	[clip scrollToPoint:NSMakePoint(70, 445)];
 	
 	self.selectedViewController = [HMDocksViewController new];
 	[self.selectedViewController.view setFrame:[self.docksPlaceholder frame]];
