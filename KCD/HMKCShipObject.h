@@ -10,4 +10,6 @@
 
 @interface HMKCShipObject : HMKCManagedObject
 
+@property (readonly) NSColor *statusColor;
+@property (readonly) NSColor *conditionColor;
 @end

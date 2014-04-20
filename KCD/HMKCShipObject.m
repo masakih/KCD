@@ -33,6 +33,15 @@ static NSArray *levelUpExps = nil;
 	});
 }
 
++ (NSSet *)keyPathsForValuesAffectingStatusColor
+{
+	return [NSSet setWithObjects:@"nowhp", @"maxph", nil];
+}
++ (NSSet *)keyPathsForValuesAffectingConditionColor
+{
+	return [NSSet setWithObjects:@"cond", nil];
+}
+
 - (NSNumber *)master_sortno
 {
 	return nil;
@@ -94,6 +103,28 @@ static NSArray *levelUpExps = nil;
 	NSUInteger nextExp = [[levelUpExps objectAtIndex:[[self valueForKey:@"lv"] integerValue]] integerValue];
 	
 	return [NSNumber numberWithInteger:nextExp - [[self valueForKey:@"exp"] integerValue]];
+}
+
+- (NSColor *)statusColor
+{
+	NSInteger maxhp = [[self valueForKey:@"maxhp"] integerValue];
+	CGFloat nowhp = [[self valueForKey:@"nowhp"] integerValue];
+	CGFloat status = nowhp / maxhp;
+	if(status <= 0.25) {
+		return [NSColor redColor];
+	}
+	if(status <= 0.5) {
+		return [NSColor orangeColor];
+	}
+	if(status <= 0.75) {
+		return [NSColor yellowColor];
+
+	}
+	return [NSColor controlTextColor];
+}
+- (NSColor *)conditionColor
+{
+	return [NSColor controlTextColor];
 }
 
 @end

@@ -11,6 +11,7 @@
 #import "HMDocksViewController.h"
 #import "HMShipViewController.h"
 #import "HMPowerUpSupportViewController.h"
+#import "HMDeckViewController.h"
 
 #import "HMScreenshotWindowController.h"
 
@@ -33,6 +34,8 @@ typedef NS_ENUM(NSInteger, ViewType) {
 @property (strong) NSNumber *flagShipID;
 
 @property (strong) HMScreenshotWindowController *screenshotWindowController;
+
+@property (strong) HMDeckViewController *deckViewController;
 
 @end
 
@@ -67,6 +70,10 @@ typedef NS_ENUM(NSInteger, ViewType) {
 	[[self.docksPlaceholder superview] replaceSubview:self.docksPlaceholder with:self.selectedViewController.view];
 	[self.controllers setObject:self.selectedViewController forKey:@0];
 	
+	self.deckViewController = [HMDeckViewController new];
+	[self.deckViewController.view setFrame:[self.deckPlaceholder frame]];
+	[self.deckViewController.view setAutoresizingMask:[self.deckPlaceholder autoresizingMask]];
+	[[self.deckPlaceholder superview] replaceSubview:self.deckPlaceholder with:self.deckViewController.view];
 	
 	[[[self.webView mainFrame] frameView] setAllowsScrolling:NO];
 	
@@ -127,7 +134,7 @@ typedef NS_ENUM(NSInteger, ViewType) {
 - (IBAction)reloadContent:(id)sender
 {
 	id /*NSClipView * */ clip = [self.webView superview];
-	[clip scrollToPoint:NSMakePoint(70, 425)];
+	[clip scrollToPoint:NSMakePoint(70, 445)];
 	
 	NSString *prevReloadDateString = [[NSUserDefaults standardUserDefaults] stringForKey:prevReloadDateStringKey];
 	if(prevReloadDateString) {

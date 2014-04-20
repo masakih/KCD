@@ -27,6 +27,9 @@
 @property (nonatomic, readonly) NSString *flagShipName;
 
 
+@property (nonatomic, weak) IBOutlet NSView *deckPlaceholder;
+
+
 - (IBAction)reloadContent:(id)sender;
 - (IBAction)selectView:(id)sender;
 

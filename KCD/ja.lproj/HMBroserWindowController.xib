@@ -9,6 +9,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="HMBroserWindowController">
             <connections>
                 <outlet property="deckContoller" destination="eqP-ex-UzI" id="8n5-Er-BIF"/>
+                <outlet property="deckPlaceholder" destination="tIf-gd-MhY" id="aXM-5K-Uwd"/>
                 <outlet property="docksPlaceholder" destination="jkX-gl-a14" id="dhr-oF-eq0"/>
                 <outlet property="placeholder" destination="raX-C4-fMW" id="T7y-R7-3qy"/>
                 <outlet property="webView" destination="tgB-GD-Aq9" id="3AA-N6-bnp"/>
@@ -35,20 +36,20 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" id="hy2-T8-sUp">
-                        <rect key="frame" x="20" y="3" width="788" height="42"/>
+                        <rect key="frame" x="20" y="3" width="788" height="31"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="rGC-re-IS2">
-                            <rect key="frame" x="0.0" y="0.0" width="788" height="42"/>
+                            <rect key="frame" x="0.0" y="0.0" width="788" height="31"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView editable="NO" drawsBackground="NO" importsGraphics="NO" verticallyResizable="YES" allowsNonContiguousLayout="YES" id="XsL-WO-et2">
-                                    <rect key="frame" x="0.0" y="0.0" width="788" height="42"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="788" height="31"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="788" height="42"/>
+                                    <size key="minSize" width="788" height="31"/>
                                     <size key="maxSize" width="806" height="10000000"/>
                                     <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="788" height="42"/>
+                                    <size key="minSize" width="788" height="31"/>
                                     <size key="maxSize" width="806" height="10000000"/>
                                     <connections>
                                         <binding destination="-2" name="attributedString" keyPath="linksString" id="Zq5-KB-a2U">
@@ -323,6 +324,10 @@
                             <binding destination="-2" name="selectedIndex" keyPath="selectedViewsSegment" id="Y74-mZ-YTP"/>
                         </connections>
                     </segmentedControl>
+                    <customView id="tIf-gd-MhY">
+                        <rect key="frame" x="8" y="39" width="800" height="60"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </customView>
                 </subviews>
             </view>
             <connections>
