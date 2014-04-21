@@ -57,8 +57,13 @@
 		_accountStore = [ACAccountStore new];
 		
 		[self checkShortURLLength];
-#warning change this
-		_tagString = @" #艦これ";
+		
+		NSString *tag = NSLocalizedString(@"kancolle", @"kancolle twitter hash tag");
+		if(tag) {
+			_tagString = [NSString stringWithFormat:@" #%@", tag];
+		} else {
+			_tagString = @"";
+		}
 		_appendKanColleTag = [[NSUserDefaults standardUserDefaults] boolForKey:@"appendKanColleTag"];
 	}
 	return self;

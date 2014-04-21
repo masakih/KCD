@@ -8,3 +8,4 @@ s/Reload interval is too short/リロードしすぎ！/2
 s/fail to develop/失敗/2
 s/Hide History/履歴を隠す/2
 s/Show History/履歴を表示/2
+s/kancolle/艦これ/2
