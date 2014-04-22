@@ -207,62 +207,66 @@
 {
 	NSString *entityName = @"KaihatuHistory";
 	NSArray *contents;
-	if([self isEmptyEntityName:entityName]) {
-		HMLocalDataStore *lds = [HMLocalDataStore oneTimeEditor];
-		NSManagedObjectContext *moc = [lds managedObjectContext];
-		
-		contents = [self arrayFromLFSeparatedStringData:data];
-		id attribute;
-		for(attribute in contents) {
-			NSArray *attr = [self arrayFromTabSeparatedString:attribute];
-			if([attr count] < 1) continue;
-			
-			HMKaihatuHistory *obj = [NSEntityDescription insertNewObjectForEntityForName:entityName
-												   inManagedObjectContext:moc];
-			obj.date = [NSDate dateWithString:attr[0]];
-			obj.fuel = @([attr[1] integerValue]);
-			obj.bull = @([attr[2] integerValue]);
-			obj.steel = @([attr[3] integerValue]);
-			obj.bauxite = @([attr[4] integerValue]);
-			obj.kaihatusizai = @([attr[5] integerValue]);
-			obj.name = attr[6];
-			obj.flagShipName = attr[7];
-			obj.flagShipLv = @([attr[8] integerValue]);
-			obj.commanderLv = @([attr[9] integerValue]);
-		}
-	}
+	HMLocalDataStore *lds = [HMLocalDataStore oneTimeEditor];
+	NSManagedObjectContext *moc = [lds managedObjectContext];
 	
+	contents = [self arrayFromLFSeparatedStringData:data];
+	id attribute;
+	for(attribute in contents) {
+		NSArray *attr = [self arrayFromTabSeparatedString:attribute];
+		if(attr.count == 0) continue;
+		
+		NSArray *array = [lds objectsWithEntityName:entityName
+											  error:NULL
+									predicateFormat:@"date = %@", [NSDate dateWithString:attr[0]]];
+		if(array.count != 0) continue;
+		
+		HMKaihatuHistory *obj = [NSEntityDescription insertNewObjectForEntityForName:entityName
+															  inManagedObjectContext:moc];
+		obj.date = [NSDate dateWithString:attr[0]];
+		obj.fuel = @([attr[1] integerValue]);
+		obj.bull = @([attr[2] integerValue]);
+		obj.steel = @([attr[3] integerValue]);
+		obj.bauxite = @([attr[4] integerValue]);
+		obj.kaihatusizai = @([attr[5] integerValue]);
+		obj.name = attr[6];
+		obj.flagShipName = attr[7];
+		obj.flagShipLv = @([attr[8] integerValue]);
+		obj.commanderLv = @([attr[9] integerValue]);
+	}
 }
 - (void)buildKenzoHistoryFromData:(NSData *)data
 {
 	NSString *entityName = @"KenzoHistory";
 	NSArray *contents;
-	if([self isEmptyEntityName:entityName]) {
-		HMLocalDataStore *lds = [HMLocalDataStore oneTimeEditor];
-		NSManagedObjectContext *moc = [lds managedObjectContext];
-		
-		contents = [self arrayFromLFSeparatedStringData:data];
-		id attribute;
-		for(attribute in contents) {
-			NSArray *attr = [self arrayFromTabSeparatedString:attribute];
-			if([attr count] < 1) continue;
-			
-			HMKenzoHistory *obj = [NSEntityDescription insertNewObjectForEntityForName:entityName
-																inManagedObjectContext:moc];
-			obj.date = [NSDate dateWithString:attr[0]];
-			obj.fuel = @([attr[1] integerValue]);
-			obj.bull = @([attr[2] integerValue]);
-			obj.steel = @([attr[3] integerValue]);
-			obj.bauxite = @([attr[4] integerValue]);
-			obj.kaihatusizai = @([attr[5] integerValue]);
-			obj.name = attr[6];
-			obj.sTypeId = @([attr[7] integerValue]);
-			obj.flagShipName = attr[8];
-			obj.flagShipLv = @([attr[9] integerValue]);
-			obj.commanderLv = @([attr[10] integerValue]);
-		}
-	}
+	HMLocalDataStore *lds = [HMLocalDataStore oneTimeEditor];
 	
+	contents = [self arrayFromLFSeparatedStringData:data];
+	id attribute;
+	for(attribute in contents) {
+		NSArray *attr = [self arrayFromTabSeparatedString:attribute];
+		if(attr.count == 0) continue;
+				
+		NSArray *array = [lds objectsWithEntityName:entityName
+											  error:NULL
+									predicateFormat:@"date = %@", [NSDate dateWithString:attr[0]]];
+		if(array.count != 0) continue;
+		
+		HMKenzoHistory *obj = [NSEntityDescription insertNewObjectForEntityForName:entityName
+															inManagedObjectContext:lds.managedObjectContext];
+		
+		obj.date = [NSDate dateWithString:attr[0]];
+		obj.fuel = @([attr[1] integerValue]);
+		obj.bull = @([attr[2] integerValue]);
+		obj.steel = @([attr[3] integerValue]);
+		obj.bauxite = @([attr[4] integerValue]);
+		obj.kaihatusizai = @([attr[5] integerValue]);
+		obj.name = attr[6];
+		obj.sTypeId = @([attr[7] integerValue]);
+		obj.flagShipName = attr[8];
+		obj.flagShipLv = @([attr[9] integerValue]);
+		obj.commanderLv = @([attr[10] integerValue]);
+	}
 }
 - (void)buildKenzoMarkFromData:(NSData *)data
 {
