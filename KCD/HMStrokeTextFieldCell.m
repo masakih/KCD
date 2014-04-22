@@ -39,7 +39,7 @@ const CGFloat boarderWidth = 2.0;
 		return;
 	}
 	
-	NSTextStorage *textStorage = [[NSTextStorage alloc] initWithString:attributedString.string attributes:attribute];
+	NSTextStorage *textStorage = [[NSTextStorage alloc] initWithAttributedString:attributedString];
 	[textStorage addLayoutManager:self.layoutManager];
 	
 	NSRange range = [self.layoutManager glyphRangeForTextContainer:self.textContainer];
