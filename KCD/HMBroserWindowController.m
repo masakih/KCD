@@ -17,6 +17,7 @@
 
 #import "HMServerDataStore.h"
 
+#import <JavaScriptCore/JavaScriptCore.h>
 
 static NSString *prevReloadDateStringKey = @"previousReloadDateString";
 
@@ -27,6 +28,7 @@ typedef NS_ENUM(NSInteger, ViewType) {
 };
 
 @interface HMBroserWindowController ()
+@property NSPoint flashTopLeft;
 
 @property (strong) NSViewController *selectedViewController;
 @property (strong) NSMutableDictionary *controllers;
@@ -62,7 +64,9 @@ typedef NS_ENUM(NSInteger, ViewType) {
 	[clip setAutoresizingMask:[self.placeholder autoresizingMask]];
 	[[self.placeholder superview] replaceSubview:self.placeholder with:clip];
 	[clip setDocumentView:self.webView];
-	[clip scrollToPoint:NSMakePoint(70, 445)];
+	
+	self.flashTopLeft = NSMakePoint(70, 145);
+	[self adjustFlash];
 	
 	self.selectedViewController = [HMDocksViewController new];
 	[self.selectedViewController.view setFrame:[self.docksPlaceholder frame]];
@@ -131,10 +135,15 @@ typedef NS_ENUM(NSInteger, ViewType) {
 	self.selectedViewsSegment = type;
 }
 
-- (IBAction)reloadContent:(id)sender
+- (void)adjustFlash
 {
 	id /*NSClipView * */ clip = [self.webView superview];
-	[clip scrollToPoint:NSMakePoint(70, 445)];
+	[clip scrollToPoint:self.flashTopLeft];
+}
+
+- (IBAction)reloadContent:(id)sender
+{
+	[self adjustFlash];
 	
 	NSString *prevReloadDateString = [[NSUserDefaults standardUserDefaults] stringForKey:prevReloadDateStringKey];
 	if(prevReloadDateString) {
@@ -218,5 +227,58 @@ typedef NS_ENUM(NSInteger, ViewType) {
 		  }];
 }
 
-
+#pragma mark - WebFrameLoadDelegate
+- (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame
+{
+	WebDataSource *datasource = frame.dataSource;
+	NSURLRequest *request = datasource.initialRequest;
+	NSURL *url = request.URL;
+	NSString *path = url.path;
+	
+	void (^handler)(JSContext *context, JSValue *exception) = ^(JSContext *context, JSValue *exception) {
+		NSLog(@"caught exception in evaluateScript: -> %@", exception);
+	};
+	
+	if([path hasSuffix:@"gadgets/ifr"]) {
+		JSContext *context = [frame javaScriptContext];
+		context.exceptionHandler = handler;
+		[context evaluateScript:
+		 @"var emb = document.getElementById('flashWrap');"
+		 @"var rect = emb.getBoundingClientRect();"
+		 @"var atop = rect.top;"
+		 @"var aleft = rect.left;"
+		 ];
+		JSValue *top = context[@"atop"];
+		JSValue *left = context[@"aleft"];
+		
+		self.flashTopLeft = NSMakePoint(0, self.webView.frame.size.height);
+		self.flashTopLeft = NSMakePoint(self.flashTopLeft.x + left.toDouble, self.flashTopLeft.y - top.toDouble - 480);
+	}
+	
+	if([path hasSuffix:@"app_id=854854"]) {
+		JSContext *context = [frame javaScriptContext];
+		context.exceptionHandler = handler;
+		[context evaluateScript:
+		 @"var iframe = document.getElementById('game_frame');"
+		 @"var validIframe = 0;"
+		 @"if(iframe) {"
+		 @"    validIframe = 1;"
+		 @"    var rect = iframe.getBoundingClientRect();"
+		 @"    var atop = rect.top;"
+		 @"    var aleft = rect.left;"
+		 @"}"
+		 ];
+		int32_t validIframe = context[@"validIframe"].toInt32;
+		if(validIframe == 0) {
+//			NSLog(@"game_frame is invalid");
+			return;
+		}
+		
+		JSValue *top = context[@"atop"];
+		JSValue *left = context[@"aleft"];
+		
+		self.flashTopLeft = NSMakePoint(self.flashTopLeft.x + left.toDouble, self.flashTopLeft.y - top.toDouble);
+		[self adjustFlash];
+	}
+}
 @end
