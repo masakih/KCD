@@ -8,11 +8,11 @@
 
 #import "HMPortCommand.h"
 
-#import "HMMemberShip2Command.h"
-#import "HMMemberMaterial2Command.h"
-#import "HMMemberDeck2Command.h"
+#import "HMMemberShipCommand.h"
+#import "HMMemberMaterialCommand.h"
+#import "HMMemberDeckCommand.h"
 #import "HMMemberBasicCommand.h"
-#import "HMMemberNDock2Command.h"
+#import "HMMemberNDockCommand.h"
 
 
 @implementation HMPortCommand
@@ -33,9 +33,9 @@
 {
 	self = [super init];
 	self = [[super class] compositCommandWithCommands:
-			[HMMemberShip2Command new], [HMMemberMaterial2Command new],
-			[HMMemberDeck2Command new], [HMMemberBasicCommand new],
-			[HMMemberNDock2Command new],
+			[HMMemberShipCommand new], [HMMemberMaterialCommand new],
+			[HMMemberDeckCommand new], [HMMemberBasicCommand new],
+			[HMMemberNDockCommand new],
 			nil];
 	return self;
 }

@@ -34,6 +34,14 @@
 	if([api isEqualToString:@"/kcsapi/api_get_member/deck_port"]) return YES;
 	return NO;
 }
+
+- (NSString *)dataKey
+{
+	if([self.api isEqualToString:@"/kcsapi/api_port/port"]) {
+		return @"api_data.api_deck_port";
+	}
+	return [super dataKey];
+}
 - (void)execute
 {
 	[self commitJSONToEntityNamed:@"Deck"];

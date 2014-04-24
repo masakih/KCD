@@ -25,7 +25,10 @@
 }
 - (NSString *)dataKey
 {
-	return @"api_data";
+	if([self.api isEqualToString:@"/kcsapi/api_port/port"]) {
+		return @"api_data.api_material";
+	}
+	return [super dataKey];
 }
 - (void)execute
 {

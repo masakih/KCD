@@ -21,6 +21,14 @@
 {
 	return [api isEqualToString:@"/kcsapi/api_get_member/ndock"];
 }
+
+- (NSString *)dataKey
+{
+	if([self.api isEqualToString:@"/kcsapi/api_port/port"]) {
+		return @"api_data.api_ndock";
+	}
+	return [super dataKey];
+}
 - (void)execute
 {
 	[self commitJSONToEntityNamed:@"NyukyoDock"];

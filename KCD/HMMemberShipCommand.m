@@ -79,6 +79,13 @@ static NSCondition *sCondition = nil;
 	[self commitJSONToEntityNamed:@"Ship"];
 }
 
+- (NSString *)dataKey
+{
+	if([self.api isEqualToString:@"/kcsapi/api_port/port"]) {
+		return @"api_data.api_ship";
+	}
+	return [super dataKey];
+}
 
 - (void)setMasterShip:(id)value toObject:(NSManagedObject *)object
 {

@@ -25,10 +25,6 @@
 		F46F104918ABAC910063E503 /* KCD.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F46F104718ABAC910063E503 /* KCD.xcdatamodeld */; };
 		F47B78B218A7B42B0011386E /* HMJSONViewWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F47B78B018A7B42B0011386E /* HMJSONViewWindowController.m */; };
 		F48F7B021907D7B800E78AE1 /* HMPortCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F48F7B011907D7B800E78AE1 /* HMPortCommand.m */; };
-		F48F7B051907F0B900E78AE1 /* HMMemberShip2Command.m in Sources */ = {isa = PBXBuildFile; fileRef = F48F7B041907F0B900E78AE1 /* HMMemberShip2Command.m */; };
-		F48F7B0819092D3000E78AE1 /* HMMemberNDock2Command.m in Sources */ = {isa = PBXBuildFile; fileRef = F48F7B0719092D2F00E78AE1 /* HMMemberNDock2Command.m */; };
-		F48F7B0B19092F8000E78AE1 /* HMMemberMaterial2Command.m in Sources */ = {isa = PBXBuildFile; fileRef = F48F7B0A19092F8000E78AE1 /* HMMemberMaterial2Command.m */; };
-		F48F7B0E1909312000E78AE1 /* HMMemberDeck2Command.m in Sources */ = {isa = PBXBuildFile; fileRef = F48F7B0D1909312000E78AE1 /* HMMemberDeck2Command.m */; };
 		F494DC5F18C30AE100AE97E4 /* HMMissionStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = F494DC5E18C30AE100AE97E4 /* HMMissionStatus.m */; };
 		F494DC6318C608C100AE97E4 /* HMShipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F494DC6118C608C100AE97E4 /* HMShipViewController.m */; };
 		F494DC6718C8BA6400AE97E4 /* HMPowerUpSupportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F494DC6618C8BA6400AE97E4 /* HMPowerUpSupportViewController.m */; };
@@ -138,14 +134,6 @@
 		F47B78B018A7B42B0011386E /* HMJSONViewWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMJSONViewWindowController.m; sourceTree = "<group>"; };
 		F48F7B001907D7B800E78AE1 /* HMPortCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPortCommand.h; sourceTree = "<group>"; };
 		F48F7B011907D7B800E78AE1 /* HMPortCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMPortCommand.m; sourceTree = "<group>"; };
-		F48F7B031907F0B900E78AE1 /* HMMemberShip2Command.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMemberShip2Command.h; sourceTree = "<group>"; };
-		F48F7B041907F0B900E78AE1 /* HMMemberShip2Command.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMemberShip2Command.m; sourceTree = "<group>"; };
-		F48F7B0619092D2F00E78AE1 /* HMMemberNDock2Command.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMemberNDock2Command.h; sourceTree = "<group>"; };
-		F48F7B0719092D2F00E78AE1 /* HMMemberNDock2Command.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMemberNDock2Command.m; sourceTree = "<group>"; };
-		F48F7B0919092F8000E78AE1 /* HMMemberMaterial2Command.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMemberMaterial2Command.h; sourceTree = "<group>"; };
-		F48F7B0A19092F8000E78AE1 /* HMMemberMaterial2Command.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMemberMaterial2Command.m; sourceTree = "<group>"; };
-		F48F7B0C1909312000E78AE1 /* HMMemberDeck2Command.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMemberDeck2Command.h; sourceTree = "<group>"; };
-		F48F7B0D1909312000E78AE1 /* HMMemberDeck2Command.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMemberDeck2Command.m; sourceTree = "<group>"; };
 		F494DC5618C23E4300AE97E4 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		F494DC5718C23E4300AE97E4 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F494DC5918C23E4400AE97E4 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -504,24 +492,16 @@
 				F4B414F718B1D35800468DAF /* HMMasterMissionCommand.m */,
 				F4B414FC18B3A66200468DAF /* HMMemberNDockCommand.h */,
 				F4B414FD18B3A66200468DAF /* HMMemberNDockCommand.m */,
-				F48F7B0619092D2F00E78AE1 /* HMMemberNDock2Command.h */,
-				F48F7B0719092D2F00E78AE1 /* HMMemberNDock2Command.m */,
 				F4513EE618B77A5300073552 /* HMMemberKDockCommand.h */,
 				F4513EE718B77A5300073552 /* HMMemberKDockCommand.m */,
 				F4513EE918B7900A00073552 /* HMMemberDeckCommand.h */,
 				F4513EEA18B7900A00073552 /* HMMemberDeckCommand.m */,
-				F48F7B0C1909312000E78AE1 /* HMMemberDeck2Command.h */,
-				F48F7B0D1909312000E78AE1 /* HMMemberDeck2Command.m */,
 				F4513EEC18B8E2F600073552 /* HMMemberMaterialCommand.h */,
 				F4513EED18B8E2F600073552 /* HMMemberMaterialCommand.m */,
-				F48F7B0919092F8000E78AE1 /* HMMemberMaterial2Command.h */,
-				F48F7B0A19092F8000E78AE1 /* HMMemberMaterial2Command.m */,
 				F4513EF118B991F800073552 /* HMMemberBasicCommand.h */,
 				F4513EF218B991F800073552 /* HMMemberBasicCommand.m */,
 				F4513EF418B9F29800073552 /* HMMemberShipCommand.h */,
 				F4513EF518B9F29800073552 /* HMMemberShipCommand.m */,
-				F48F7B031907F0B900E78AE1 /* HMMemberShip2Command.h */,
-				F48F7B041907F0B900E78AE1 /* HMMemberShip2Command.m */,
 				F4E33B5618BF5F67005B8C07 /* HMMemberSlotItemCommand.h */,
 				F4E33B5718BF5F67005B8C07 /* HMMemberSlotItemCommand.m */,
 				F4E7802618DBD2A00011BC4C /* HMGetShipCommand.h */,
@@ -650,7 +630,6 @@
 			files = (
 				F4513EE818B77A5300073552 /* HMMemberKDockCommand.m in Sources */,
 				F4B3DC4418E70B370011B4FC /* HMServerDataStore.m in Sources */,
-				F48F7B0E1909312000E78AE1 /* HMMemberDeck2Command.m in Sources */,
 				F4D2CBC518AE2AE2000EBC59 /* HMCompositCommand.m in Sources */,
 				F4C1190218A6FFC2005D5B25 /* HMQueue.m in Sources */,
 				F4513EEB18B7900A00073552 /* HMMemberDeckCommand.m in Sources */,
@@ -672,10 +651,8 @@
 				F4BDEB53187252F30069D0CE /* main.m in Sources */,
 				F48F7B021907D7B800E78AE1 /* HMPortCommand.m in Sources */,
 				F494DC5F18C30AE100AE97E4 /* HMMissionStatus.m in Sources */,
-				F48F7B0819092D3000E78AE1 /* HMMemberNDock2Command.m in Sources */,
 				F4513EE418B635EA00073552 /* HMDocksViewController.m in Sources */,
 				F494DC6D18CC054800AE97E4 /* HMNyukyoDockStatus.m in Sources */,
-				F48F7B0B19092F8000E78AE1 /* HMMemberMaterial2Command.m in Sources */,
 				F47B78B218A7B42B0011386E /* HMJSONViewWindowController.m in Sources */,
 				F4B414EF18B0BF1A00468DAF /* HMMasterMapInfoCommand.m in Sources */,
 				F4C118FC18A67B1C005D5B25 /* CustomHTTPProtocol.m in Sources */,
@@ -708,7 +685,6 @@
 				F46F104518AA50730063E503 /* HMBroserWindowController.m in Sources */,
 				F4B414EC18B0A7D600468DAF /* HMMasterUseItemCommand.m in Sources */,
 				F4513EF318B991F800073552 /* HMMemberBasicCommand.m in Sources */,
-				F48F7B051907F0B900E78AE1 /* HMMemberShip2Command.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

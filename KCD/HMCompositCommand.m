@@ -39,6 +39,12 @@
 	}
 }
 
+- (void)setApi:(NSString *)api
+{
+	for(id command in self.commands) {
+		[command setApi:api];
+	}
+}
 - (void)setArgumentsString:(NSString *)argumentsString
 {
 	for(id command in self.commands) {
