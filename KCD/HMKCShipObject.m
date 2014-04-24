@@ -107,6 +107,7 @@ static NSArray *levelUpExps = nil;
 
 - (NSColor *)statusColor
 {
+#if 0
 	NSInteger maxhp = [[self valueForKey:@"maxhp"] integerValue];
 	CGFloat nowhp = [[self valueForKey:@"nowhp"] integerValue];
 	CGFloat status = nowhp / maxhp;
@@ -120,6 +121,7 @@ static NSArray *levelUpExps = nil;
 		return [NSColor yellowColor];
 
 	}
+#endif
 	return [NSColor controlTextColor];
 }
 - (NSColor *)conditionColor
