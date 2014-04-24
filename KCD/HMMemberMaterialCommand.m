@@ -23,11 +23,15 @@
 {
 	return [api isEqualToString:@"/kcsapi/api_get_member/material"];
 }
+- (NSString *)dataKey
+{
+	return @"api_data";
+}
 - (void)execute
 {
-	NSArray *api_data = [self.json objectForKey:@"api_data"];
+	NSArray *api_data = [self.json valueForKeyPath:self.dataKey];
 	if(![api_data isKindOfClass:[NSArray class]]) {
-		[self log:@"api_data is NOT NSArray."];
+		[self log:@"%@ is NOT NSArray.", self.dataKey];
 		return;
 	}
 	

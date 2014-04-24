@@ -11,7 +11,7 @@
 @implementation HMMasterMapInfoCommand
 - (NSString *)dataKey
 {
-	return @"api_data_mst_mapinfo";
+	return @"api_data.api_mst_mapinfo";
 }
 - (void)execute
 {

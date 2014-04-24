@@ -11,7 +11,7 @@
 @implementation HMMasterMapCellCommand
 - (NSString *)dataKey
 {
-	return @"api_data_mst_mapcell";
+	return @"api_data.api_mst_mapcell";
 }
 - (NSArray *)ignoreKeys
 {

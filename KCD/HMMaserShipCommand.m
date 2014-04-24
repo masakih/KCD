@@ -8,42 +8,45 @@
 
 #import "HMMaserShipCommand.h"
 
-#import "HMMemberShipCommand.h"
+//#import "HMMemberShipCommand.h"
 
 
-static NSCondition *sCondition = nil;
+//static NSCondition *sCondition = nil;
 
 @implementation HMMaserShipCommand
-+ (void)load
-{
-	static dispatch_once_t onceToken;
-	dispatch_once(&onceToken, ^{
-		[HMJSONCommand registerClass:self];
-		sCondition = [NSCondition new];
-	});
-}
-+ (NSCondition *)condition
-{
-	return sCondition;
-}
+//+ (void)load
+//{
+//	static dispatch_once_t onceToken;
+//	dispatch_once(&onceToken, ^{
+//		[HMJSONCommand registerClass:self];
+//		sCondition = [NSCondition new];
+//	});
+//}
+//+ (NSCondition *)condition
+//{
+//	return sCondition;
+//}
 
-+ (BOOL)canExcuteAPI:(NSString *)api
+//+ (BOOL)canExcuteAPI:(NSString *)api
+//{
+//	return [api isEqualToString:@"/kcsapi/api_get_master/ship"];
+//}
+- (NSString *)dataKey
 {
-	return [api isEqualToString:@"/kcsapi/api_get_master/ship"];
+	return @"api_data.api_mst_ship";
 }
-
 - (void)execute
 {
-	dispatch_queue_t queue = dispatch_queue_create("HMMaserShipCommand", 0);
-	dispatch_async(queue, ^{
-		[sCondition lock];
-		[sCondition wait];
-		[sCondition unlock];
+//	dispatch_queue_t queue = dispatch_queue_create("HMMaserShipCommand", 0);
+//	dispatch_async(queue, ^{
+//		[sCondition lock];
+//		[sCondition wait];
+//		[sCondition unlock];
 		
 		[self realExecute];
 		
-		sCondition = nil;
-	});
+//		sCondition = nil;
+//	});
 }
 
 - (void)setStype:(id)value toObject:(NSManagedObject *)object
@@ -82,10 +85,10 @@ static NSCondition *sCondition = nil;
 {
 	[self commitJSONToEntityNamed:@"MasterShip"];
 		
-	NSCondition *lock = [HMMemberShipCommand condition];
-	[lock lock];
-	[lock broadcast];
-	[lock unlock];
+//	NSCondition *lock = [HMMemberShipCommand condition];
+//	[lock lock];
+//	[lock broadcast];
+//	[lock unlock];
 }
 
 @end

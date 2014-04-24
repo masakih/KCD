@@ -60,6 +60,10 @@
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key
 {
 	if([key hasPrefix:@"api_"]) {
+		if([key length] < 5) {
+			NSLog(@"????");
+			return;
+		}
 		[self setValue:value forKey:keyByDeletingPrefix(key)];
 		return;
 	}

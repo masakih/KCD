@@ -11,7 +11,7 @@
 @implementation HMMasterMapAreaCommand
 - (NSString *)dataKey
 {
-	return @"api_data_mst_maparea";
+	return @"api_data.api_mst_maparea";
 }
 - (void)execute
 {

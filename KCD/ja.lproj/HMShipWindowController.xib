@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <deployment defaultVersion="1080" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
+        <deployment defaultVersion="1090" identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="HMShipWindowController">
@@ -100,9 +100,6 @@
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                            <connections>
-                                                <binding destination="ir1-ad-0Fn" name="value" keyPath="arrangedObjects.master_ship.id" id="Mb7-J8-Hlw"/>
-                                            </connections>
                                         </tableColumn>
                                         <tableColumn width="36" minWidth="10" maxWidth="3.4028234663852886e+38" id="9zR-zz-ceL">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
@@ -117,7 +114,7 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
-                                                <binding destination="ir1-ad-0Fn" name="value" keyPath="arrangedObjects.master_ship.sortno" id="odj-Q6-MrL"/>
+                                                <binding destination="ir1-ad-0Fn" name="value" keyPath="arrangedObjects.sortno" id="Pfv-kh-hXX"/>
                                             </connections>
                                         </tableColumn>
                                         <tableColumn width="64" minWidth="10" maxWidth="3.4028234663852886e+38" id="4QL-N3-fvu">
@@ -133,7 +130,7 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
-                                                <binding destination="ir1-ad-0Fn" name="value" keyPath="arrangedObjects.master_ship.name" id="vjj-bV-fSI"/>
+                                                <binding destination="ir1-ad-0Fn" name="value" keyPath="arrangedObjects.name" id="tm1-U7-6ym"/>
                                             </connections>
                                         </tableColumn>
                                         <tableColumn width="35" minWidth="10" maxWidth="3.4028234663852886e+38" id="x1b-3b-luv">
@@ -148,9 +145,6 @@
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                            <connections>
-                                                <binding destination="ir1-ad-0Fn" name="value" keyPath="arrangedObjects.sortno" id="Bzy-ez-7Rv"/>
-                                            </connections>
                                         </tableColumn>
                                         <tableColumn width="35" minWidth="10" maxWidth="3.4028234663852886e+38" id="1YK-Dy-9BH">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="karyoku">
@@ -164,9 +158,6 @@
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                            <connections>
-                                                <binding destination="ir1-ad-0Fn" name="value" keyPath="arrangedObjects.karyoku_0" id="VFE-33-bFB"/>
-                                            </connections>
                                         </tableColumn>
                                         <tableColumn width="35" minWidth="10" maxWidth="3.4028234663852886e+38" id="wzY-Hj-F3d">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
@@ -180,9 +171,6 @@
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                            <connections>
-                                                <binding destination="ir1-ad-0Fn" name="value" keyPath="arrangedObjects.karyoku_1" id="BCG-rs-9Li"/>
-                                            </connections>
                                         </tableColumn>
                                         <tableColumn width="37" minWidth="10" maxWidth="3.4028234663852886e+38" id="cpa-Yy-2IC">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Lucky">
@@ -196,9 +184,6 @@
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                            <connections>
-                                                <binding destination="ir1-ad-0Fn" name="value" keyPath="arrangedObjects.Lucky_0" id="w9K-jk-Mhf"/>
-                                            </connections>
                                         </tableColumn>
                                         <tableColumn width="37" minWidth="10" maxWidth="3.4028234663852886e+38" id="rHh-A8-JLg">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
@@ -212,9 +197,6 @@
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                            <connections>
-                                                <binding destination="ir1-ad-0Fn" name="value" keyPath="arrangedObjects.Lucky_1" id="dyZ-qt-E4d"/>
-                                            </connections>
                                         </tableColumn>
                                         <tableColumn width="41" minWidth="10" maxWidth="3.4028234663852886e+38" id="76g-PJ-w9g">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="raisou">
@@ -228,9 +210,6 @@
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                            <connections>
-                                                <binding destination="ir1-ad-0Fn" name="value" keyPath="arrangedObjects.raisou_0" id="GMb-5z-m7z"/>
-                                            </connections>
                                         </tableColumn>
                                         <tableColumn width="41" minWidth="10" maxWidth="3.4028234663852886e+38" id="IY5-IK-SNt">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
@@ -244,9 +223,6 @@
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                            <connections>
-                                                <binding destination="ir1-ad-0Fn" name="value" keyPath="arrangedObjects.raisou_1" id="3l4-Ue-MXw"/>
-                                            </connections>
                                         </tableColumn>
                                         <tableColumn width="10" minWidth="10" maxWidth="3.4028234663852886e+38" id="otu-Eu-tGc">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="soukou">
@@ -260,9 +236,6 @@
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                            <connections>
-                                                <binding destination="ir1-ad-0Fn" name="value" keyPath="arrangedObjects.soukou_0" id="RhC-0T-iyj"/>
-                                            </connections>
                                         </tableColumn>
                                     </tableColumns>
                                 </tableView>
@@ -433,7 +406,7 @@
                             <rect key="frame" x="1" y="476" width="238" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="37" horizontal="NO" id="wJW-Qr-nXI">
+                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="wJW-Qr-nXI">
                             <rect key="frame" x="224" y="17" width="15" height="102"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
@@ -561,7 +534,7 @@
                             <rect key="frame" x="1" y="293" width="632" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="37" horizontal="NO" id="6rY-GX-6nX">
+                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="6rY-GX-6nX">
                             <rect key="frame" x="224" y="17" width="15" height="102"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
@@ -689,7 +662,7 @@
                             <rect key="frame" x="1" y="191" width="375" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="37" horizontal="NO" id="PAO-Tq-L2a">
+                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="PAO-Tq-L2a">
                             <rect key="frame" x="224" y="17" width="15" height="102"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
@@ -704,7 +677,7 @@
                 <outlet property="delegate" destination="-2" id="4"/>
             </connections>
         </window>
-        <arrayController mode="entity" entityName="Ship" editable="NO" automaticallyPreparesContent="YES" id="ir1-ad-0Fn" userLabel="Ship">
+        <arrayController mode="entity" entityName="MasterShip" editable="NO" automaticallyPreparesContent="YES" id="ir1-ad-0Fn" userLabel="Ship">
             <connections>
                 <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="f84-5u-HZe"/>
             </connections>

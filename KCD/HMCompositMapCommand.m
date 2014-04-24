@@ -11,6 +11,12 @@
 #import "HMMasterMapAreaCommand.h"
 #import "HMMasterMapInfoCommand.h"
 #import "HMMasterMapCellCommand.h"
+#import "HMMasterSTypeCommand.h"
+#import "HMMaserShipCommand.h"
+#import "HMMasterMissionCommand.h"
+#import "HMMasterFurnitureCommand.h"
+#import "HMMasterSlotItemCommand.h"
+#import "HMMasterUseItemCommand.h"
 
 
 @implementation HMCompositMapCommand
@@ -24,13 +30,19 @@
 
 + (BOOL)canExcuteAPI:(NSString *)api
 {
-	return [api isEqualToString:@"/kcsapi/api_start"];
+	return [api isEqualToString:@"/kcsapi/api_start2"];
 }
 
 - (id)init
 {
 	self = [super init];
-	self = [[super class] compositCommandWithCommands:[HMMasterMapAreaCommand new], [HMMasterMapInfoCommand new], [HMMasterMapCellCommand new], nil];
+	self = [[super class] compositCommandWithCommands:
+			[HMMasterMapAreaCommand new], [HMMasterMapInfoCommand new], [HMMasterMapCellCommand new],
+			[HMMasterSTypeCommand new], [HMMaserShipCommand new],
+			[HMMasterMissionCommand new],
+			[HMMasterFurnitureCommand new],
+			[HMMasterSlotItemCommand new], [HMMasterUseItemCommand new],
+			nil];
 	return self;
 }
 @end

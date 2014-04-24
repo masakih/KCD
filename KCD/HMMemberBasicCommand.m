@@ -12,21 +12,21 @@
 
 
 @implementation HMMemberBasicCommand
-+ (void)load
+- (NSString *)dataKey
 {
-	static dispatch_once_t onceToken;
-	dispatch_once(&onceToken, ^{
-		[HMJSONCommand registerClass:self];
-	});
+	return @"api_data.api_basic";
 }
-
-+ (BOOL)canExcuteAPI:(NSString *)api
+- (NSArray *)ignoreKeys
 {
-	return [api isEqualToString:@"/kcsapi/api_get_member/basic"];
+	static NSArray *ignoreKeys = nil;
+	if(ignoreKeys) return ignoreKeys;
+	
+	ignoreKeys = @[@"api_large_dock"];
+	return ignoreKeys;
 }
 - (void)execute
 {
-	NSDictionary *api_data = [self.json objectForKey:@"api_data"];
+	NSDictionary *api_data = [self.json valueForKeyPath:self.dataKey];
 	if(![api_data isKindOfClass:[NSDictionary class]]) {
 		[self log:@"api_data is NOT NSDictionary."];
 		return;
@@ -50,6 +50,8 @@
 	}
 	
 	for(NSString *key in api_data) {
+		if([self.ignoreKeys containsObject:key]) continue;
+		
 		id value = api_data[key];
 		if([self handleExtraValue:value forKey:key toObject:object]) {
 			continue;

@@ -139,7 +139,14 @@ static NSMutableArray *registeredCommands = nil;
 
 NSString *keyByDeletingPrefix(NSString *key)
 {
-	return [key substringFromIndex:4];
+	NSString *newKye = nil;
+	@try {
+		newKye = [key substringFromIndex:4];
+	}
+	@catch (NSException *exception) {
+		NSLog(@"key is %@", key);
+	}
+	return newKye;
 }
 - (void)log:(NSString *)format, ...
 {
@@ -156,7 +163,10 @@ NSString *keyByDeletingPrefix(NSString *key)
 }
 - (void)commitJSONToEntityNamed:(NSString *)entityName
 {
-	NSArray *api_data = [self.json valueForKey:self.dataKey];
+	NSArray *api_data = [self.json valueForKeyPath:self.dataKey];
+	if([api_data isKindOfClass:[NSDictionary class]]) {
+		api_data = @[api_data];
+	}
 	if(![api_data isKindOfClass:[NSArray class]]) {
 		[self log:@"api_data is NOT NSArray."];
 		return;

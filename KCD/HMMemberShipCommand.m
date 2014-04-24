@@ -64,9 +64,9 @@ static NSCondition *sCondition = nil;
 {
 	dispatch_queue_t queue = dispatch_queue_create("HMMemberShipCommand", 0);
 	dispatch_async(queue, ^{
-		[sCondition lock];
-		[sCondition wait];
-		[sCondition unlock];
+//		[sCondition lock];
+//		[sCondition wait];
+//		[sCondition unlock];
 		
 		[self realExecute];
 		

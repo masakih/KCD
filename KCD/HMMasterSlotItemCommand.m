@@ -9,17 +9,21 @@
 #import "HMMasterSlotItemCommand.h"
 
 @implementation HMMasterSlotItemCommand
-+ (void)load
+//+ (void)load
+//{
+//	static dispatch_once_t onceToken;
+//	dispatch_once(&onceToken, ^{
+//		[HMJSONCommand registerClass:self];
+//	});
+//}
+//
+//+ (BOOL)canExcuteAPI:(NSString *)api
+//{
+//	return [api isEqualToString:@"/kcsapi/api_get_master/slotitem"];
+//}
+- (NSString *)dataKey
 {
-	static dispatch_once_t onceToken;
-	dispatch_once(&onceToken, ^{
-		[HMJSONCommand registerClass:self];
-	});
-}
-
-+ (BOOL)canExcuteAPI:(NSString *)api
-{
-	return [api isEqualToString:@"/kcsapi/api_get_master/slotitem"];
+	return @"api_data.api_mst_slotitem";
 }
 - (void)execute
 {
