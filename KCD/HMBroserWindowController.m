@@ -81,7 +81,7 @@ typedef NS_ENUM(NSInteger, ViewType) {
 	
 	[[[self.webView mainFrame] frameView] setAllowsScrolling:NO];
 	
-	[self.webView setApplicationNameForUserAgent:@"Version/6.0 Safari/536.25"];
+	[self.webView setApplicationNameForUserAgent:@"Version/7.0.3 Safari/537.75.14"];
 	[self.webView setMainFrameURL:@"http://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/"];
 	//	[self.webView setMainFrameURL:@"http://www.google.com/"];
 	
