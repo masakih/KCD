@@ -24,11 +24,9 @@
 	NSManagedObjectContext *moc = store.managedObjectContext;
 	
 	NSError *error = nil;
-	
-	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"MasterSlotItem"];
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id = %@", data[@"api_slotitem_id"]];
-	[request setPredicate:predicate];
-	NSArray *array = [moc executeFetchRequest:request error:&error];
+	NSArray *array = [store objectsWithEntityName:@"MasterSlotItem"
+								   error:&error
+						 predicateFormat:@"id = %@", data[@"api_slotitem_id"]];
 	if([array count] == 0) {
 		NSLog(@"MasterSlotItem is invalid");
 		return;
