@@ -31,16 +31,21 @@
 	HMServerDataStore *store = [HMServerDataStore oneTimeEditor];
 	NSManagedObjectContext *moc = store.managedObjectContext;
 	
+	NSString *itemsString = self.arguments[@"api_slotitem_ids"];
+	NSArray *items = [itemsString componentsSeparatedByString:@","];
+	
+	
 	NSError *error = nil;
 	NSArray *array = [store objectsWithEntityName:@"SlotItem"
 										   error:&error
-								 predicateFormat:@"id = %@", self.arguments[@"api_slotitem_ids"]];
+								 predicateFormat:@"id IN %@", items];
 	if([array count] == 0) {
 		NSLog(@"SlotItem is invalid.");
 		return;
 	}
 	
-	id obj = array[0];
-	[moc deleteObject:obj];
+	for(id obj in array) {
+		[moc deleteObject:obj];
+	}
 }
 @end
