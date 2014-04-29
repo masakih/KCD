@@ -21,12 +21,17 @@
 
 + (BOOL)canExcuteAPI:(NSString *)api
 {
-	return [api isEqualToString:@"/kcsapi/api_get_member/material"];
+	if([api isEqualToString:@"/kcsapi/api_get_member/material"]) return YES;
+	if([api isEqualToString:@"/kcsapi/api_req_kousyou/destroyship"]) return YES;
+	if([api isEqualToString:@"/kcsapi/api_req_hokyu/charge"]) return YES;
+	return NO;
 }
 - (NSString *)dataKey
 {
 	if([self.api isEqualToString:@"/kcsapi/api_port/port"]
-	   || [self.api isEqualToString:@"/kcsapi/api_req_kousyou/createitem"]) {
+	   || [self.api isEqualToString:@"/kcsapi/api_req_kousyou/createitem"]
+	   || [self.api isEqualToString:@"/kcsapi/api_req_kousyou/destroyship"]
+	   || [self.api isEqualToString:@"/kcsapi/api_req_hokyu/charge"]) {
 		return @"api_data.api_material";
 	}
 	return [super dataKey];
