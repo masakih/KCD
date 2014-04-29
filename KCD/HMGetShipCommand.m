@@ -12,7 +12,9 @@
 #import "HMLocalDataStore.h"
 #import "HMKenzoHistory.h"
 
-
+/**
+ *  建造履歴を残す
+ */
 @implementation HMGetShipCommand
 + (void)load
 {
