@@ -23,7 +23,7 @@
 
 + (BOOL)canExcuteAPI:(NSString *)api
 {
-	return [api isEqualToString:@"/kcsapi/api_get_member/slotitem"];
+	return [api isEqualToString:@"/kcsapi/api_get_member/slot_item"];
 }
 
 - (NSArray *)ignoreKeys
