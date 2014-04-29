@@ -12,23 +12,14 @@
 @property (strong) NSMutableArray *ids;
 @end
 
-static NSCondition *sCondition = nil;
-
-
 @implementation HMMemberShipCommand
 + (void)load
 {
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
 		[HMJSONCommand registerClass:self];
-		sCondition = [NSCondition new];
 	});
 }
-+ (NSCondition *)condition
-{
-	return sCondition;
-}
-
 + (BOOL)canExcuteAPI:(NSString *)api
 {
 	if([api isEqualToString:@"/kcsapi/api_get_member/ship"]) return YES;
@@ -61,20 +52,6 @@ static NSCondition *sCondition = nil;
 }
 
 - (void)execute
-{
-	dispatch_queue_t queue = dispatch_queue_create("HMMemberShipCommand", 0);
-	dispatch_async(queue, ^{
-//		[sCondition lock];
-//		[sCondition wait];
-//		[sCondition unlock];
-		
-		[self realExecute];
-		
-		sCondition = nil;
-	});
-}
-
-- (void)realExecute
 {
 	[self commitJSONToEntityNamed:@"Ship"];
 }
