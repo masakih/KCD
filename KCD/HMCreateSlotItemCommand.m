@@ -38,7 +38,7 @@
 	HMServerDataStore *serverDataStore = [HMServerDataStore defaultManager];
 	
 	if(created) {
-		NSNumber *slotItemID = [data valueForKey:@"api_slotitem_id"];
+		NSNumber *slotItemID = [data valueForKeyPath:@"api_slot_item.api_slotitem_id"];
 		NSArray *array = [serverDataStore objectsWithEntityName:@"MasterSlotItem"
 														  error:NULL
 												predicateFormat:@"id = %@", slotItemID];
