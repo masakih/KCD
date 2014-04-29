@@ -1,5 +1,5 @@
 //
-//  HMUpdateslotItemCommand.h
+//  HMUpdateSlotItemCommand.h
 //  KCD
 //
 //  Created by Hori,Masaki on 2014/04/29.
@@ -8,6 +8,6 @@
 
 #import "HMJSONCommand.h"
 
-@interface HMUpdateslotItemCommand : HMJSONCommand
+@interface HMUpdateSlotItemCommand : HMJSONCommand
 
 @end

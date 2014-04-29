@@ -1,16 +1,16 @@
 //
-//  HMUpdateslotItemCommand.m
+//  HMUpdateSlotItemCommand.m
 //  KCD
 //
 //  Created by Hori,Masaki on 2014/04/29.
 //  Copyright (c) 2014年 Hori,Masaki. All rights reserved.
 //
 
-#import "HMUpdateslotItemCommand.h"
+#import "HMUpdateSlotItemCommand.h"
 
 #import "HMServerDataStore.h"
 
-@implementation HMUpdateslotItemCommand
+@implementation HMUpdateSlotItemCommand
 - (NSString *)dataKey
 {
 	return @"api_data.api_slot_item";

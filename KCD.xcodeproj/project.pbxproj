@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F4131ECF190F5C08004F7F9A /* HMStoreCreateSlotItemHistoryCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4131ECE190F5C08004F7F9A /* HMStoreCreateSlotItemHistoryCommand.m */; };
-		F4131ED5190F63D8004F7F9A /* HMUpdateslotItemCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4131ED4190F63D8004F7F9A /* HMUpdateslotItemCommand.m */; };
+		F4131ED5190F63D8004F7F9A /* HMUpdateSlotItemCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4131ED4190F63D8004F7F9A /* HMUpdateSlotItemCommand.m */; };
 		F4131ED8190FA08D004F7F9A /* HMDestroyItem2Command.m in Sources */ = {isa = PBXBuildFile; fileRef = F4131ED7190FA08D004F7F9A /* HMDestroyItem2Command.m */; };
 		F43E67B718BE02A10087E5B6 /* STypeShortName.plist in Resources */ = {isa = PBXBuildFile; fileRef = F43E67B618BE02A10087E5B6 /* STypeShortName.plist */; };
 		F43E67B918BE060E0087E5B6 /* LevelUpExp.plist in Resources */ = {isa = PBXBuildFile; fileRef = F43E67B818BE060E0087E5B6 /* LevelUpExp.plist */; };
@@ -107,8 +107,8 @@
 /* Begin PBXFileReference section */
 		F4131ECD190F5C08004F7F9A /* HMStoreCreateSlotItemHistoryCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMStoreCreateSlotItemHistoryCommand.h; sourceTree = "<group>"; };
 		F4131ECE190F5C08004F7F9A /* HMStoreCreateSlotItemHistoryCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMStoreCreateSlotItemHistoryCommand.m; sourceTree = "<group>"; };
-		F4131ED3190F63D8004F7F9A /* HMUpdateslotItemCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMUpdateslotItemCommand.h; sourceTree = "<group>"; };
-		F4131ED4190F63D8004F7F9A /* HMUpdateslotItemCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMUpdateslotItemCommand.m; sourceTree = "<group>"; };
+		F4131ED3190F63D8004F7F9A /* HMUpdateSlotItemCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMUpdateSlotItemCommand.h; sourceTree = "<group>"; };
+		F4131ED4190F63D8004F7F9A /* HMUpdateSlotItemCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMUpdateSlotItemCommand.m; sourceTree = "<group>"; };
 		F4131ED6190FA08D004F7F9A /* HMDestroyItem2Command.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDestroyItem2Command.h; sourceTree = "<group>"; };
 		F4131ED7190FA08D004F7F9A /* HMDestroyItem2Command.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDestroyItem2Command.m; sourceTree = "<group>"; };
 		F43E67B618BE02A10087E5B6 /* STypeShortName.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = STypeShortName.plist; sourceTree = "<group>"; };
@@ -521,8 +521,8 @@
 				F4B3DBC918DDB9170011B4FC /* HMCreateSlotItemCommand.m */,
 				F4131ECD190F5C08004F7F9A /* HMStoreCreateSlotItemHistoryCommand.h */,
 				F4131ECE190F5C08004F7F9A /* HMStoreCreateSlotItemHistoryCommand.m */,
-				F4131ED3190F63D8004F7F9A /* HMUpdateslotItemCommand.h */,
-				F4131ED4190F63D8004F7F9A /* HMUpdateslotItemCommand.m */,
+				F4131ED3190F63D8004F7F9A /* HMUpdateSlotItemCommand.h */,
+				F4131ED4190F63D8004F7F9A /* HMUpdateSlotItemCommand.m */,
 				F4131ED6190FA08D004F7F9A /* HMDestroyItem2Command.h */,
 				F4131ED7190FA08D004F7F9A /* HMDestroyItem2Command.m */,
 				F48F7B001907D7B800E78AE1 /* HMPortCommand.h */,
@@ -657,7 +657,7 @@
 				F4C118FA18A67B1C005D5B25 /* CacheStoragePolicy.m in Sources */,
 				F4B3DC2118DECF570011B4FC /* HMTSVSupport.m in Sources */,
 				F4E7802E18DC3AF00011BC4C /* LocalData.xcdatamodeld in Sources */,
-				F4131ED5190F63D8004F7F9A /* HMUpdateslotItemCommand.m in Sources */,
+				F4131ED5190F63D8004F7F9A /* HMUpdateSlotItemCommand.m in Sources */,
 				F4C1190518A71AEA005D5B25 /* HMJSONReciever.m in Sources */,
 				F4B414F818B1D35800468DAF /* HMMasterMissionCommand.m in Sources */,
 				F4E33B5818BF5F67005B8C07 /* HMMemberSlotItemCommand.m in Sources */,
