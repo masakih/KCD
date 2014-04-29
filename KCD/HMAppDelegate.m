@@ -10,6 +10,7 @@
 
 #import "HMBroserWindowController.h"
 #import "HMHistoryWindowController.h"
+#import "HMSlotItemWindowController.h"
 
 #import "HMTSVSupport.h"
 
@@ -26,6 +27,7 @@
 
 @property (strong) HMBroserWindowController *browserWindowController;
 @property (strong) HMHistoryWindowController *historyWindowController;
+@property (strong) HMSlotItemWindowController *slotItemWindowController;
 
 #ifdef DEBUG
 @property (strong) HMShipWindowController *shipWindowController;
@@ -127,6 +129,14 @@ static FILE* logFileP = NULL;
 			[menuItem setTitle:NSLocalizedString(@"Hide History", @"")];
 		}
 		return YES;
+	} else if(action == @selector(showHideSlotItemWindow:)) {
+		NSWindow *window = self.slotItemWindowController.window;
+		if(!window.isVisible || !window.isMainWindow) {
+			[menuItem setTitle:NSLocalizedString(@"Show Slot Item", @"")];
+		} else {
+			[menuItem setTitle:NSLocalizedString(@"Hide Slot Item", @"")];
+		}
+		return YES;
 	} else if(action == @selector(saveLocalData:) || action == @selector(loadLocalData:)) {
 		return YES;
 	}
@@ -145,6 +155,20 @@ static FILE* logFileP = NULL;
 	}
 	
 	NSWindow *window = self.historyWindowController.window;
+	if(!window.isVisible || !window.isMainWindow) {
+		[window makeKeyAndOrderFront:nil];
+	} else {
+		[window orderOut:nil];
+	}
+}
+
+- (IBAction)showHideSlotItemWindow:(id)sender
+{
+	if(!self.slotItemWindowController) {
+		self.slotItemWindowController = [HMSlotItemWindowController new];
+	}
+	
+	NSWindow *window = self.slotItemWindowController.window;
 	if(!window.isVisible || !window.isMainWindow) {
 		[window makeKeyAndOrderFront:nil];
 	} else {

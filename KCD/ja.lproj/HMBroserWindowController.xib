@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1090" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
@@ -246,9 +246,11 @@
                                             <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
                                         </dictionary>
                                     </binding>
-                                    <binding destination="1lk-ii-37p" name="displayPatternValue2" keyPath="selection.max_chara" previousBinding="nsa-4z-cse" id="Ack-sO-3xb">
+                                    <binding destination="1lk-ii-37p" name="displayPatternValue2" keyPath="selection.max_chara" previousBinding="nsa-4z-cse" id="IjC-s5-OEy">
                                         <dictionary key="options">
                                             <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
+                                            <string key="NSNoSelectionPlaceholder">0</string>
+                                            <string key="NSNullPlaceholder">0</string>
                                         </dictionary>
                                     </binding>
                                 </connections>
@@ -276,9 +278,11 @@
                                             <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
                                         </dictionary>
                                     </binding>
-                                    <binding destination="1lk-ii-37p" name="displayPatternValue2" keyPath="selection.max_slotitem" previousBinding="Cgj-14-UG2" id="hv9-gn-2jA">
+                                    <binding destination="1lk-ii-37p" name="displayPatternValue2" keyPath="selection.max_slotitem" previousBinding="Cgj-14-UG2" id="HBV-Ae-F3V">
                                         <dictionary key="options">
                                             <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
+                                            <string key="NSNoSelectionPlaceholder">0</string>
+                                            <string key="NSNullPlaceholder">0</string>
                                         </dictionary>
                                     </binding>
                                 </connections>

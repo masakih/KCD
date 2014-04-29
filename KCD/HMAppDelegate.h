@@ -22,6 +22,7 @@
 @property (strong, nonatomic) IBOutlet NSMenuItem *debugMenuItem;
 
 - (IBAction)showHideHistory:(id)sender;
+- (IBAction)showHideSlotItemWindow:(id)sender;
 
 - (IBAction)saveLocalData:(id)sender;
 - (IBAction)loadLocalData:(id)sender;

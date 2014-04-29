@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment defaultVersion="1080" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
+        <deployment defaultVersion="1090" identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -229,6 +229,11 @@
                             <menuItem title="History" keyEquivalent="0" id="o9G-2b-cSn">
                                 <connections>
                                     <action selector="showHideHistory:" target="494" id="0rp-Sl-bZf"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="SlotItem" keyEquivalent="e" id="1dX-yC-Onz">
+                                <connections>
+                                    <action selector="showHideSlotItemWindow:" target="-1" id="Gy1-8v-t7R"/>
                                 </connections>
                             </menuItem>
                         </items>
