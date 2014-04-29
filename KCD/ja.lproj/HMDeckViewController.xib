@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <deployment defaultVersion="1080" identifier="macosx"/>
+        <deployment defaultVersion="1090" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
@@ -24,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="F0v-3N-Xd1">
-                    <rect key="frame" x="216" y="34" width="82" height="17"/>
+                    <rect key="frame" x="215" y="34" width="82" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="千代田航改二" id="QLf-lB-0HD">
                         <font key="font" size="13" name="AquaKana"/>
@@ -42,7 +42,7 @@
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="6Or-P0-p9N">
-                    <rect key="frame" x="298" y="34" width="61" height="17"/>
+                    <rect key="frame" x="297" y="34" width="61" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="123/123" id="ddo-nt-jFg" customClass="HMStrokeTextFieldCell">
                         <font key="font" metaFont="system"/>
@@ -68,7 +68,7 @@
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="2RA-Kq-AkK">
-                    <rect key="frame" x="216" y="9" width="82" height="17"/>
+                    <rect key="frame" x="215" y="9" width="82" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="千代田航改二" id="sXE-Lc-90U">
                         <font key="font" size="13" name="AquaKana"/>
@@ -86,7 +86,7 @@
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="5AR-hJ-AeK">
-                    <rect key="frame" x="298" y="9" width="61" height="17"/>
+                    <rect key="frame" x="297" y="9" width="61" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="123/123" id="JSd-Ku-V4j" customClass="HMStrokeTextFieldCell">
                         <font key="font" metaFont="system"/>
@@ -112,7 +112,7 @@
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="TPD-dT-Iyd">
-                    <rect key="frame" x="363" y="34" width="82" height="17"/>
+                    <rect key="frame" x="362" y="34" width="82" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="千代田航改二" id="Gqz-dC-JJB">
                         <font key="font" size="13" name="AquaKana"/>
@@ -130,7 +130,7 @@
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="smn-zr-pta">
-                    <rect key="frame" x="444" y="34" width="61" height="17"/>
+                    <rect key="frame" x="443" y="34" width="61" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="123/123" id="Ocl-yu-tLk" customClass="HMStrokeTextFieldCell">
                         <font key="font" metaFont="system"/>
@@ -156,7 +156,7 @@
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Ls0-NB-eZm">
-                    <rect key="frame" x="363" y="9" width="82" height="17"/>
+                    <rect key="frame" x="362" y="9" width="82" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="千代田航改二" id="Zsr-od-lhx">
                         <font key="font" size="13" name="AquaKana"/>
@@ -174,7 +174,7 @@
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="bgm-YO-io1">
-                    <rect key="frame" x="444" y="9" width="61" height="17"/>
+                    <rect key="frame" x="443" y="9" width="61" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="123/123" id="LEg-DQ-i6o" customClass="HMStrokeTextFieldCell">
                         <font key="font" metaFont="system"/>
@@ -200,7 +200,7 @@
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="HQ0-Ve-Ftg">
-                    <rect key="frame" x="509" y="34" width="82" height="17"/>
+                    <rect key="frame" x="508" y="34" width="82" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="千代田航改二" id="cYl-Qg-XL1">
                         <font key="font" size="13" name="AquaKana"/>
@@ -218,7 +218,7 @@
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="DM5-82-U3A">
-                    <rect key="frame" x="591" y="34" width="61" height="17"/>
+                    <rect key="frame" x="590" y="34" width="61" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="123/123" id="L8K-jE-OB1" customClass="HMStrokeTextFieldCell">
                         <font key="font" metaFont="system"/>
@@ -226,14 +226,14 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <binding destination="9uZ-dp-nwH" name="displayPatternValue1" keyPath="selection.nowhp" id="ChO-5S-ew9">
+                        <binding destination="9uZ-dp-nwH" name="displayPatternValue2" keyPath="selection.maxhp" previousBinding="ChO-5S-ew9" id="Rap-xv-wRE">
                             <dictionary key="options">
                                 <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
                                 <string key="NSNoSelectionPlaceholder">-</string>
                                 <string key="NSNullPlaceholder">-</string>
                             </dictionary>
                         </binding>
-                        <binding destination="9uZ-dp-nwH" name="displayPatternValue2" keyPath="selection.maxhp" previousBinding="ChO-5S-ew9" id="Rap-xv-wRE">
+                        <binding destination="9uZ-dp-nwH" name="displayPatternValue1" keyPath="selection.nowhp" id="ChO-5S-ew9">
                             <dictionary key="options">
                                 <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
                                 <string key="NSNoSelectionPlaceholder">-</string>
@@ -244,7 +244,7 @@
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="vgG-Ld-Ux7">
-                    <rect key="frame" x="509" y="9" width="82" height="17"/>
+                    <rect key="frame" x="508" y="9" width="82" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="千代田航改二" id="h8q-YD-k0d">
                         <font key="font" size="13" name="AquaKana"/>
@@ -262,7 +262,7 @@
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="rUa-IT-pN1">
-                    <rect key="frame" x="591" y="9" width="61" height="17"/>
+                    <rect key="frame" x="590" y="9" width="61" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="123/123" id="kcC-oq-S0a" customClass="HMStrokeTextFieldCell">
                         <font key="font" metaFont="system"/>
@@ -288,7 +288,7 @@
                     </connections>
                 </textField>
                 <matrix verticalHuggingPriority="750" allowsEmptySelection="NO" autorecalculatesCellSize="YES" id="suh-Cm-FQz">
-                    <rect key="frame" x="58" y="9" width="152" height="42"/>
+                    <rect key="frame" x="57" y="9" width="152" height="42"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     <size key="cellSize" width="74" height="18"/>
@@ -323,6 +323,27 @@
                         <binding destination="-2" name="selectedTag" keyPath="selectedDeck" id="meL-mL-J2W"/>
                     </connections>
                 </matrix>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Tek-2X-Nz2">
+                    <rect key="frame" x="743" y="20" width="38" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="YR1-Zf-z2o">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="totalSakuteki" id="lfF-ET-zWC"/>
+                    </connections>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="M1a-LI-gu8">
+                    <rect key="frame" x="664" y="20" width="82" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="艦隊索敵値：" id="8vd-Ce-2wt">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
         </customView>
         <arrayController mode="entity" entityName="Deck" editable="NO" automaticallyPreparesContent="YES" id="LCL-zi-37N" userLabel="Deck">
