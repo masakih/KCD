@@ -17,6 +17,7 @@
 #import "HMMasterFurnitureCommand.h"
 #import "HMMasterSlotItemCommand.h"
 #import "HMMasterUseItemCommand.h"
+#import "HMMasterSlotItemEquipTypeCommand.h"
 
 
 @implementation HMCompositMapCommand
@@ -41,6 +42,7 @@
 			[HMMasterSTypeCommand new], [HMMaserShipCommand new],
 			[HMMasterMissionCommand new],
 			[HMMasterFurnitureCommand new],
+			[HMMasterSlotItemEquipTypeCommand new],
 			[HMMasterSlotItemCommand new], [HMMasterUseItemCommand new],
 			nil];
 	return self;

@@ -12,6 +12,7 @@
 		F4131ED8190FA08D004F7F9A /* HMDestroyItem2Command.m in Sources */ = {isa = PBXBuildFile; fileRef = F4131ED7190FA08D004F7F9A /* HMDestroyItem2Command.m */; };
 		F4131EDC190FEBCC004F7F9A /* HMSlotItemWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4131EDA190FEBCC004F7F9A /* HMSlotItemWindowController.m */; };
 		F4131EDE190FEBDB004F7F9A /* HMSlotItemWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4131EE0190FEBDB004F7F9A /* HMSlotItemWindowController.xib */; };
+		F4131EE61910318F004F7F9A /* HMMasterSlotItemEquipTypeCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4131EE51910318F004F7F9A /* HMMasterSlotItemEquipTypeCommand.m */; };
 		F43E67B718BE02A10087E5B6 /* STypeShortName.plist in Resources */ = {isa = PBXBuildFile; fileRef = F43E67B618BE02A10087E5B6 /* STypeShortName.plist */; };
 		F43E67B918BE060E0087E5B6 /* LevelUpExp.plist in Resources */ = {isa = PBXBuildFile; fileRef = F43E67B818BE060E0087E5B6 /* LevelUpExp.plist */; };
 		F4513EDD18B619B600073552 /* HMCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4513EDC18B619B600073552 /* HMCoreDataManager.m */; };
@@ -116,6 +117,8 @@
 		F4131ED9190FEBCC004F7F9A /* HMSlotItemWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSlotItemWindowController.h; sourceTree = "<group>"; };
 		F4131EDA190FEBCC004F7F9A /* HMSlotItemWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSlotItemWindowController.m; sourceTree = "<group>"; };
 		F4131EDF190FEBDB004F7F9A /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMSlotItemWindowController.xib; sourceTree = "<group>"; };
+		F4131EE41910318F004F7F9A /* HMMasterSlotItemEquipTypeCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMasterSlotItemEquipTypeCommand.h; sourceTree = "<group>"; };
+		F4131EE51910318F004F7F9A /* HMMasterSlotItemEquipTypeCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMasterSlotItemEquipTypeCommand.m; sourceTree = "<group>"; };
 		F43E67B618BE02A10087E5B6 /* STypeShortName.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = STypeShortName.plist; sourceTree = "<group>"; };
 		F43E67B818BE060E0087E5B6 /* LevelUpExp.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LevelUpExp.plist; sourceTree = "<group>"; };
 		F4513EDB18B619B600073552 /* HMCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMCoreDataManager.h; sourceTree = "<group>"; };
@@ -487,12 +490,12 @@
 				F4D2CBC418AE2AE2000EBC59 /* HMCompositCommand.m */,
 				F46F103418A7CE310063E503 /* HMJSONViewCommand.h */,
 				F46F103518A7CE310063E503 /* HMJSONViewCommand.m */,
+				F4B3DC4518EEEB920011B4FC /* HMCompositMapCommand.h */,
+				F4B3DC4618EEEB920011B4FC /* HMCompositMapCommand.m */,
 				F4D2CBC018AD0E1A000EBC59 /* HMMasterSTypeCommand.h */,
 				F4D2CBC118AD0E1A000EBC59 /* HMMasterSTypeCommand.m */,
 				F4D2CBC918B05E58000EBC59 /* HMMaserShipCommand.h */,
 				F4D2CBCA18B05E58000EBC59 /* HMMaserShipCommand.m */,
-				F4B3DC4518EEEB920011B4FC /* HMCompositMapCommand.h */,
-				F4B3DC4618EEEB920011B4FC /* HMCompositMapCommand.m */,
 				F4B414E718B09A4B00468DAF /* HMMasterMapAreaCommand.h */,
 				F4B414E818B09A4B00468DAF /* HMMasterMapAreaCommand.m */,
 				F4B414ED18B0BF1A00468DAF /* HMMasterMapInfoCommand.h */,
@@ -507,6 +510,8 @@
 				F4B414F418B1888800468DAF /* HMMasterFurnitureCommand.m */,
 				F4B414F618B1D35800468DAF /* HMMasterMissionCommand.h */,
 				F4B414F718B1D35800468DAF /* HMMasterMissionCommand.m */,
+				F4131EE41910318F004F7F9A /* HMMasterSlotItemEquipTypeCommand.h */,
+				F4131EE51910318F004F7F9A /* HMMasterSlotItemEquipTypeCommand.m */,
 				F4B414FC18B3A66200468DAF /* HMMemberNDockCommand.h */,
 				F4B414FD18B3A66200468DAF /* HMMemberNDockCommand.m */,
 				F4513EE618B77A5300073552 /* HMMemberKDockCommand.h */,
@@ -708,6 +713,7 @@
 				F46F104918ABAC910063E503 /* KCD.xcdatamodeld in Sources */,
 				F4B414FE18B3A66200468DAF /* HMMemberNDockCommand.m in Sources */,
 				F4B414F218B1013C00468DAF /* HMMasterSlotItemCommand.m in Sources */,
+				F4131EE61910318F004F7F9A /* HMMasterSlotItemEquipTypeCommand.m in Sources */,
 				F4D2CBC818B0555A000EBC59 /* HMKCManagedObject.m in Sources */,
 				F4D2CBC218AD0E1A000EBC59 /* HMMasterSTypeCommand.m in Sources */,
 				F46F104518AA50730063E503 /* HMBroserWindowController.m in Sources */,
