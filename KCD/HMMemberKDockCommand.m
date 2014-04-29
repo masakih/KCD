@@ -19,7 +19,16 @@
 
 + (BOOL)canExcuteAPI:(NSString *)api
 {
-	return [api isEqualToString:@"/kcsapi/api_get_member/kdock"];
+	if([api isEqualToString:@"/kcsapi/api_get_member/kdock"]) return YES;
+	if([api isEqualToString:@"/kcsapi/api_req_kousyou/getship"]) return YES;
+	return NO;
+}
+- (NSString *)dataKey
+{
+	if([self.api isEqualToString:@"/kcsapi/api_req_kousyou/getship"]) {
+		return @"api_data.api_kdock";
+	}
+	return [super dataKey];
 }
 - (void)execute
 {
