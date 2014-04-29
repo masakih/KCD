@@ -9,6 +9,7 @@
 #import "HMCreateSlotItemCommand.h"
 
 #import "HMMemberMaterialCommand.h"
+#import "HMUpdateslotItemCommand.h"
 #import "HMStoreCreateSlotItemHistoryCommand.h"
 
 
@@ -31,7 +32,9 @@
 {
 	self = [super init];
 	self = [[super class] compositCommandWithCommands:
-			[HMStoreCreateSlotItemHistoryCommand new], [HMMemberMaterialCommand new],
+			[HMMemberMaterialCommand new],
+			[HMUpdateslotItemCommand new],
+			[HMStoreCreateSlotItemHistoryCommand new],
 			nil];
 	return self;
 }
