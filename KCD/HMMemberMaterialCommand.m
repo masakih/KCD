@@ -25,7 +25,8 @@
 }
 - (NSString *)dataKey
 {
-	if([self.api isEqualToString:@"/kcsapi/api_port/port"]) {
+	if([self.api isEqualToString:@"/kcsapi/api_port/port"]
+	   || [self.api isEqualToString:@"/kcsapi/api_req_kousyou/createitem"]) {
 		return @"api_data.api_material";
 	}
 	return [super dataKey];
@@ -57,10 +58,15 @@
 	
 	NSArray *keys = @[@"fuel", @"bull", @"steel", @"bauxite", @"kousokukenzo", @"kousokushuhuku", @"kaihatusizai"];
 	
-	for(NSDictionary *dict in api_data) {
-		NSNumber *idValue = [dict valueForKey:@"api_id"];
-		NSString *key = keys[[idValue integerValue] - 1];
-		[object setValue:[dict valueForKey:@"api_value"] forKey:key];
+	NSInteger i = 0;
+	for(id dict in api_data) {
+		if([dict isKindOfClass:[NSDictionary class]]) {
+			NSNumber *idValue = [dict valueForKey:@"api_id"];
+			NSString *key = keys[[idValue integerValue] - 1];
+			[object setValue:[dict valueForKey:@"api_value"] forKey:key];
+		} else {
+			[object setValue:@([dict integerValue]) forKey:keys[i++]];
+		}
 	}
 }
 @end
