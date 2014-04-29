@@ -73,6 +73,10 @@ static FILE* logFileP = NULL;
 {
 	NSUserNotificationCenter *unc = [NSUserNotificationCenter defaultUserNotificationCenter];
 	[unc setDelegate:self];
+	
+	NSURLCache *cache = [NSURLCache sharedURLCache];
+	[cache setDiskCapacity:1024 * 1024 * 1024];
+//	[cache setMemoryCapacity:1024];
 }
 
 - (void)awakeFromNib
