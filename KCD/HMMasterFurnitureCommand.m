@@ -9,18 +9,6 @@
 #import "HMMasterFurnitureCommand.h"
 
 @implementation HMMasterFurnitureCommand
-//+ (void)load
-//{
-//	static dispatch_once_t onceToken;
-//	dispatch_once(&onceToken, ^{
-//		[HMJSONCommand registerClass:self];
-//	});
-//}
-//
-//+ (BOOL)canExcuteAPI:(NSString *)api
-//{
-//	return [api isEqualToString:@"/kcsapi/api_get_master/furniture"];
-//}
 - (NSString *)dataKey
 {
 	return @"api_data.api_mst_furniture";

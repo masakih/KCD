@@ -8,25 +8,7 @@
 
 #import "HMMasterSTypeCommand.h"
 
-//#import "HMMaserShipCommand.h"
-
-//#import "HMAppDelegate.h"
-
-
 @implementation HMMasterSTypeCommand
-//+ (void)load
-//{
-//	static dispatch_once_t onceToken;
-//	dispatch_once(&onceToken, ^{
-//		[HMJSONCommand registerClass:self];
-//	});
-//}
-//
-//+ (BOOL)canExcuteAPI:(NSString *)api
-//{
-//	return [api isEqualToString:@"/kcsapi/api_get_master/stype"];
-//}
-
 - (NSArray *)ignoreKeys
 {
 	static NSArray *ignoreKeys = nil;
@@ -42,10 +24,5 @@
 - (void)execute
 {
 	[self commitJSONToEntityNamed:@"MasterSType"];
-		
-//	NSCondition *lock = [HMMaserShipCommand condition];
-//	[lock lock];
-//	[lock broadcast];
-//	[lock unlock];
 }
 @end

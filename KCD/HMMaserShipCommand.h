@@ -10,6 +10,4 @@
 
 @interface HMMaserShipCommand : HMJSONCommand
 
-//+ (NSCondition *)condition;
-
 @end

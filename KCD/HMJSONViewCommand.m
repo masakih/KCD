@@ -17,14 +17,6 @@
 @end
 
 @implementation HMJSONViewCommand
-//+ (void)load
-//{
-//	static dispatch_once_t onceToken;
-//	dispatch_once(&onceToken, ^{
-//		[HMJSONCommand registerClass:self];
-//	});
-//}
-
 + (BOOL)canExcuteAPI:(NSString *)api
 {
 	return YES;

@@ -9,18 +9,6 @@
 #import "HMMasterUseItemCommand.h"
 
 @implementation HMMasterUseItemCommand
-//+ (void)load
-//{
-//	static dispatch_once_t onceToken;
-//	dispatch_once(&onceToken, ^{
-//		[HMJSONCommand registerClass:self];
-//	});
-//}
-//
-//+ (BOOL)canExcuteAPI:(NSString *)api
-//{
-//	return [api isEqualToString:@"/kcsapi/api_get_master/useitem"];
-//}
 - (NSString *)dataKey
 {
 	return @"api_data.api_mst_useitem";
