@@ -13,6 +13,7 @@
 		F4131EDC190FEBCC004F7F9A /* HMSlotItemWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4131EDA190FEBCC004F7F9A /* HMSlotItemWindowController.m */; };
 		F4131EDE190FEBDB004F7F9A /* HMSlotItemWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4131EE0190FEBDB004F7F9A /* HMSlotItemWindowController.xib */; };
 		F4131EE61910318F004F7F9A /* HMMasterSlotItemEquipTypeCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4131EE51910318F004F7F9A /* HMMasterSlotItemEquipTypeCommand.m */; };
+		F4131EE91911445F004F7F9A /* HMSlotItemEquipTypeTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4131EE81911445F004F7F9A /* HMSlotItemEquipTypeTransformer.m */; };
 		F43E67B718BE02A10087E5B6 /* STypeShortName.plist in Resources */ = {isa = PBXBuildFile; fileRef = F43E67B618BE02A10087E5B6 /* STypeShortName.plist */; };
 		F43E67B918BE060E0087E5B6 /* LevelUpExp.plist in Resources */ = {isa = PBXBuildFile; fileRef = F43E67B818BE060E0087E5B6 /* LevelUpExp.plist */; };
 		F4513EDD18B619B600073552 /* HMCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4513EDC18B619B600073552 /* HMCoreDataManager.m */; };
@@ -119,6 +120,8 @@
 		F4131EDF190FEBDB004F7F9A /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMSlotItemWindowController.xib; sourceTree = "<group>"; };
 		F4131EE41910318F004F7F9A /* HMMasterSlotItemEquipTypeCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMasterSlotItemEquipTypeCommand.h; sourceTree = "<group>"; };
 		F4131EE51910318F004F7F9A /* HMMasterSlotItemEquipTypeCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMasterSlotItemEquipTypeCommand.m; sourceTree = "<group>"; };
+		F4131EE71911445F004F7F9A /* HMSlotItemEquipTypeTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSlotItemEquipTypeTransformer.h; sourceTree = "<group>"; };
+		F4131EE81911445F004F7F9A /* HMSlotItemEquipTypeTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSlotItemEquipTypeTransformer.m; sourceTree = "<group>"; };
 		F43E67B618BE02A10087E5B6 /* STypeShortName.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = STypeShortName.plist; sourceTree = "<group>"; };
 		F43E67B818BE060E0087E5B6 /* LevelUpExp.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LevelUpExp.plist; sourceTree = "<group>"; };
 		F4513EDB18B619B600073552 /* HMCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMCoreDataManager.h; sourceTree = "<group>"; };
@@ -343,6 +346,8 @@
 				F4BDEB59187252F30069D0CE /* HMAppDelegate.m */,
 				F4B3DC1F18DECF570011B4FC /* HMTSVSupport.h */,
 				F4B3DC2018DECF570011B4FC /* HMTSVSupport.m */,
+				F4131EE71911445F004F7F9A /* HMSlotItemEquipTypeTransformer.h */,
+				F4131EE81911445F004F7F9A /* HMSlotItemEquipTypeTransformer.m */,
 				F4C118F318A67B05005D5B25 /* CustomHTTPProtocol */,
 				F4C1190018A6FFC2005D5B25 /* HMQueue.h */,
 				F4C1190118A6FFC2005D5B25 /* HMQueue.m */,
@@ -706,6 +711,7 @@
 				F4B414E918B09A4B00468DAF /* HMMasterMapAreaCommand.m in Sources */,
 				F4C3957418CDDFE500A1E918 /* HMKenzoDockStatus.m in Sources */,
 				F4C118FB18A67B1C005D5B25 /* CanonicalRequest.m in Sources */,
+				F4131EE91911445F004F7F9A /* HMSlotItemEquipTypeTransformer.m in Sources */,
 				F4BDEB5A187252F30069D0CE /* HMAppDelegate.m in Sources */,
 				F4E7802B18DC3A820011BC4C /* HMLocalDataStore.m in Sources */,
 				F494DC6718C8BA6400AE97E4 /* HMPowerUpSupportViewController.m in Sources */,
