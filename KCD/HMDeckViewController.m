@@ -12,7 +12,12 @@
 
 
 @interface HMDeckViewController ()
-
+@property (strong, nonatomic) NSNumber *sakuteki0;
+@property (strong, nonatomic) NSNumber *sakuteki1;
+@property (strong, nonatomic) NSNumber *sakuteki2;
+@property (strong, nonatomic) NSNumber *sakuteki3;
+@property (strong, nonatomic) NSNumber *sakuteki4;
+@property (strong, nonatomic) NSNumber *sakuteki5;
 @end
 
 @implementation HMDeckViewController
@@ -59,6 +64,37 @@
 							 options:0
 							 context:@"5"];
 	
+	[self bind:@"sakuteki0" toObject:self.ship1Controller withKeyPath:@"selection.sakuteki_0" options:nil];
+	[self bind:@"sakuteki1" toObject:self.ship2Controller withKeyPath:@"selection.sakuteki_0" options:nil];
+	[self bind:@"sakuteki2" toObject:self.ship3Controller withKeyPath:@"selection.sakuteki_0" options:nil];
+	[self bind:@"sakuteki3" toObject:self.ship4Controller withKeyPath:@"selection.sakuteki_0" options:nil];
+	[self bind:@"sakuteki4" toObject:self.ship5Controller withKeyPath:@"selection.sakuteki_0" options:nil];
+	[self bind:@"sakuteki5" toObject:self.ship6Controller withKeyPath:@"selection.sakuteki_0" options:nil];
+}
+
++ (NSSet *)keyPathsForValuesAffectingTotalSakuteki
+{
+	return [NSSet setWithObjects:
+			@"sakuteki0",
+			@"sakuteki1",
+			@"sakuteki2",
+			@"sakuteki3",
+			@"sakuteki4",
+			@"sakuteki5",
+			nil];
+}
+
+- (NSNumber *)totalSakuteki
+{
+	NSInteger total = 0;
+	total += [self.sakuteki0 integerValue];
+	total += [self.sakuteki1 integerValue];
+	total += [self.sakuteki2 integerValue];
+	total += [self.sakuteki3 integerValue];
+	total += [self.sakuteki4 integerValue];
+	total += [self.sakuteki5 integerValue];
+	
+	return @(total);
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
