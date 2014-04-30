@@ -26,6 +26,22 @@
 {
 	dispatch_async(dispatch_get_main_queue(), ^{
 		HMAppDelegate *appDelegate = [NSApp delegate];
+		if(!self.api) {
+			NSLog(@"api is nil.");
+			return;
+		}
+		if(!self.argumentArray) {
+			NSLog(@"argmentArray is nil.");
+			return;
+		}
+		if(!self.jsonTree) {
+			NSLog(@"jsonTree is nil");
+			return;
+		}
+		if(!self.recieveDate) {
+			NSLog(@"recieveDate is nil.");
+			return;
+		}
 		[appDelegate.jsonViewWindowController setCommand:@{@"api":self.api,
 														   @"argument":self.argumentArray,
 														   @"json":self.jsonTree,
