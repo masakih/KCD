@@ -93,6 +93,33 @@
 	[object setValue:result[0] forKey:@"master_ship"];
 }
 
+- (void)addSlotItem:(id)array toObject:(NSManagedObject *)object
+{
+	NSManagedObjectContext *managedObjectContext = [object managedObjectContext];
+	NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"SlotItem"];
+	
+	NSMutableOrderedSet *orderedSet = [object mutableOrderedSetValueForKey:@"equippedItem"];
+	[orderedSet removeAllObjects];
+	
+	NSInteger i = 0;
+	for(id value in array) {
+		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id = %@", value];
+		[req setPredicate:predicate];
+		NSError *error = nil;
+		id result = [managedObjectContext executeFetchRequest:req
+														error:&error];
+		if(error) {
+			[self log:@"Fetch error: %@", error];
+			continue;
+		}
+		if(!result || [result count] == 0) {
+			continue;
+		}
+		
+		[orderedSet insertObject:result[0] atIndex:i++];
+	}
+}
+
 - (BOOL)handleExtraValue:(id)value forKey:(NSString *)key toObject:(NSManagedObject *)object
 {
 	// 取得後破棄した艦娘のデータを削除する
@@ -108,6 +135,11 @@
 	if([key isEqualToString:@"api_exp"]) {
 		if(![value isKindOfClass:[NSArray class]]) return NO;
 		[object setValue:[value objectAtIndex:0] forKey:@"exp"];
+		return YES;
+	}
+	
+	if([key isEqualToString:@"api_slot"]) {
+		[self addSlotItem:value toObject:object];
 		return YES;
 	}
 	
