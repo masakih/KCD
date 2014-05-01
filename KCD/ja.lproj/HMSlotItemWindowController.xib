@@ -14,21 +14,22 @@
         <window title="装備一覧" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="687" height="490"/>
+            <rect key="contentRect" x="196" y="240" width="483" height="490"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
+            <value key="minSize" type="size" width="483" height="490"/>
             <view key="contentView" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="687" height="490"/>
+                <rect key="frame" x="0.0" y="0.0" width="483" height="490"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="zZm-II-t14">
-                        <rect key="frame" x="-1" y="-1" width="689" height="444"/>
+                        <rect key="frame" x="-1" y="-1" width="485" height="444"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" id="IeT-WH-NSY">
-                            <rect key="frame" x="1" y="17" width="687" height="426"/>
+                            <rect key="frame" x="1" y="17" width="483" height="426"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="7Ud-zW-skg" id="kje-ie-wKU">
-                                    <rect key="frame" x="0.0" y="0.0" width="687" height="426"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="483" height="426"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -86,7 +87,7 @@
                                                 </binding>
                                             </connections>
                                         </tableColumn>
-                                        <tableColumn width="122" minWidth="10" maxWidth="3.4028234663852886e+38" id="dQL-M5-EkN">
+                                        <tableColumn width="140" minWidth="10" maxWidth="3.4028234663852886e+38" id="dQL-M5-EkN">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="艦娘">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -100,70 +101,6 @@
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
                                                 <binding destination="ceg-Ko-EOy" name="value" keyPath="arrangedObjects.equippedShip.master_ship.name" id="kvJ-of-ajS"/>
-                                            </connections>
-                                        </tableColumn>
-                                        <tableColumn width="40" minWidth="40" maxWidth="1000" id="LBH-a2-vwX">
-                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="type0">
-                                                <font key="font" metaFont="smallSystem"/>
-                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
-                                            </tableHeaderCell>
-                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="QzF-GL-QV5">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                            <connections>
-                                                <binding destination="ceg-Ko-EOy" name="value" keyPath="arrangedObjects.master_slotItem.type_0" id="fKn-so-Ytf"/>
-                                            </connections>
-                                        </tableColumn>
-                                        <tableColumn width="43.39453125" minWidth="10" maxWidth="3.4028234663852886e+38" id="a7t-L6-Z0O">
-                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="type1">
-                                                <font key="font" metaFont="smallSystem"/>
-                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
-                                            </tableHeaderCell>
-                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="pe5-Td-YND">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                            <connections>
-                                                <binding destination="ceg-Ko-EOy" name="value" keyPath="arrangedObjects.master_slotItem.type_1" id="X9x-Gu-YUl"/>
-                                            </connections>
-                                        </tableColumn>
-                                        <tableColumn width="38.828125" minWidth="10" maxWidth="3.4028234663852886e+38" id="bXK-fc-c4Y">
-                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="type3">
-                                                <font key="font" metaFont="smallSystem"/>
-                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
-                                            </tableHeaderCell>
-                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="yNZ-cj-nDz">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                            <connections>
-                                                <binding destination="ceg-Ko-EOy" name="value" keyPath="arrangedObjects.master_slotItem.type_3" id="UgO-ie-a02"/>
-                                            </connections>
-                                        </tableColumn>
-                                        <tableColumn width="82" minWidth="10" maxWidth="3.4028234663852886e+38" id="DaO-ZM-OmX">
-                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="id">
-                                                <font key="font" metaFont="smallSystem"/>
-                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
-                                            </tableHeaderCell>
-                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="kdM-q8-odP">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                            <connections>
-                                                <binding destination="ceg-Ko-EOy" name="value" keyPath="arrangedObjects.id" id="vcx-c3-xl0"/>
                                             </connections>
                                         </tableColumn>
                                     </tableColumns>
@@ -180,12 +117,12 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <tableHeaderView key="headerView" id="7Ud-zW-skg">
-                            <rect key="frame" x="0.0" y="0.0" width="687" height="17"/>
+                            <rect key="frame" x="0.0" y="0.0" width="483" height="17"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </tableHeaderView>
                     </scrollView>
                     <searchField verticalHuggingPriority="750" id="ERr-T4-mcK">
-                        <rect key="frame" x="20" y="451" width="331" height="22"/>
+                        <rect key="frame" x="20" y="451" width="262" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="15D-be-yiw">
                             <font key="font" metaFont="system"/>
@@ -193,21 +130,37 @@
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </searchFieldCell>
                         <connections>
-                            <binding destination="ceg-Ko-EOy" name="predicate" keyPath="filterPredicate" id="KEo-nz-5si">
+                            <binding destination="ceg-Ko-EOy" name="predicate" keyPath="filterPredicate" id="f93-ot-fTl">
                                 <dictionary key="options">
                                     <string key="NSDisplayName">predicate</string>
-                                    <string key="NSPredicateFormat">master_slotItem.name contains $value</string>
+                                    <string key="NSPredicateFormat">master_slotItem.name contains $value OR equippedShip.master_ship.name contains $value</string>
                                 </dictionary>
                             </binding>
                         </connections>
                     </searchField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="BMN-dQ-Nx6">
+                        <rect key="frame" x="383" y="454" width="82" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="Php-o1-RM6">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <binding destination="ceg-Ko-EOy" name="displayPatternValue1" keyPath="arrangedObjects.@count" id="E67-in-KdZ">
+                                <dictionary key="options">
+                                    <string key="NSDisplayPattern">%{value1}@ items</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </textField>
                 </subviews>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
         </window>
-        <arrayController mode="entity" entityName="SlotItem" editable="NO" automaticallyPreparesContent="YES" id="ceg-Ko-EOy">
+        <arrayController mode="entity" entityName="SlotItem" editable="NO" automaticallyPreparesContent="YES" automaticallyRearrangesObjects="YES" id="ceg-Ko-EOy">
             <connections>
                 <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="gmN-zL-8kd"/>
                 <binding destination="zv1-TV-Khy" name="sortDescriptors" keyPath="values.slotItemSortKey" id="57p-Co-Ax4">
