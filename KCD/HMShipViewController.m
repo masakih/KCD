@@ -73,7 +73,7 @@ typedef NS_ENUM(NSInteger, ViewType) {
 	if(tag != 0 && tag < 8) {
 		predicate = [NSPredicate predicateWithFormat:@"master_ship.stype.id  in %@", categories[tag - 1]];
 	}
-	[self.shipController setFetchPredicate:predicate];
+	[self.shipController setFilterPredicate:predicate];
 	[self.shipController rearrangeObjects];
 }
 
