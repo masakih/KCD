@@ -46,6 +46,8 @@
 // データ登録後の処理を行う
 - (void)finishOperating:(NSManagedObjectContext *)moc;
 
+- (void)setValueIfNeeded:(id)value toObject:(id)object forKey:(NSString *)key;
+
 NSString *keyByDeletingPrefix(NSString *key);
 
 - (void)log:(NSString *)format, ... NS_FORMAT_FUNCTION(1,2);

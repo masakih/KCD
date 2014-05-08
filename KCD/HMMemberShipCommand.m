@@ -91,6 +91,7 @@
 	}
 	
 	[object setValue:result[0] forKey:@"master_ship"];
+	[self setValueIfNeeded:value toObject:object forKey:@"ship_id"];
 }
 
 - (void)addSlotItem:(id)array toObject:(NSManagedObject *)object
@@ -99,9 +100,9 @@
 	NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"SlotItem"];
 	
 	NSMutableOrderedSet *orderedSet = [object mutableOrderedSetValueForKey:@"equippedItem"];
-	[orderedSet removeAllObjects];
 	
 	NSInteger i = 0;
+	NSMutableOrderedSet *newOrderedSet = [NSMutableOrderedSet new];
 	for(id value in array) {
 		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id = %@", value];
 		[req setPredicate:predicate];
@@ -116,7 +117,12 @@
 			continue;
 		}
 		
-		[orderedSet insertObject:result[0] atIndex:i++];
+		[newOrderedSet insertObject:result[0] atIndex:i++];
+	}
+	if(![newOrderedSet isEqual:orderedSet]) {
+		NSLog(@"equippedItem did change.");
+		[orderedSet removeAllObjects];
+		[orderedSet intersectOrderedSet:newOrderedSet];
 	}
 }
 
@@ -134,7 +140,7 @@
 	
 	if([key isEqualToString:@"api_exp"]) {
 		if(![value isKindOfClass:[NSArray class]]) return NO;
-		[object setValue:[value objectAtIndex:0] forKey:@"exp"];
+		[self setValueIfNeeded:[value objectAtIndex:0] toObject:object forKey:@"exp"];
 		return YES;
 	}
 	
@@ -162,6 +168,12 @@
 	for(id obj in array) {
 		[moc deleteObject:obj];
 	}
+	
+	if(array.count != 0) {
+		NSLog(@"%ld Objects deleted.", array.count);
+	}
+	
+	NSLog(@"updated count -> %ld\ndeleted -> %@", [[moc updatedObjects] count], [moc deletedObjects]);
 }
 
 @end

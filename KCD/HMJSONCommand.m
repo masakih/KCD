@@ -161,6 +161,14 @@ NSString *keyByDeletingPrefix(NSString *key)
 {
 	return @"api_data";
 }
+
+- (void)setValueIfNeeded:(id)value toObject:(id)object forKey:(NSString *)key
+{
+	id oldValue = [object valueForKey:key];
+	if(![oldValue isEqual:value]) {
+		[object setValue:value forKey:key];
+	}
+}
 - (void)commitJSONToEntityNamed:(NSString *)entityName
 {
 	NSArray *api_data = [self.json valueForKeyPath:self.dataKey];
@@ -204,7 +212,7 @@ NSString *keyByDeletingPrefix(NSString *key)
 					id hoge = element;
 					NSString *newKey = [NSString stringWithFormat:@"%@_%ld", key, i];
 					if([object validateValue:&hoge forKey:newKey error:NULL]) {
-						[object setValue:hoge forKey:newKey];
+						[self setValueIfNeeded:hoge toObject:object forKey:newKey];
 					}
 					i++;
 				}
@@ -213,12 +221,12 @@ NSString *keyByDeletingPrefix(NSString *key)
 					id subValue = value[subKey];
 					NSString *newKey = [NSString stringWithFormat:@"%@_D_%@", key, keyByDeletingPrefix(subKey)];
 					if([object validateValue:&subValue forKey:newKey error:NULL]) {
-						[object setValue:subValue forKey:newKey];
+						[self setValueIfNeeded:subValue toObject:object forKey:newKey];
 					}
 				}
 			} else {
 				if([object validateValue:&value forKey:key error:NULL]) {
-					[object setValue:value forKey:key];
+					[self setValueIfNeeded:value toObject:object forKey:key];
 				}
 			}
 		}
