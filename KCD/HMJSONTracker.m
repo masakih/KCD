@@ -42,7 +42,7 @@ static HMJSONTracker *sTracker = nil;
 
 - (void)start
 {
-	dispatch_queue_t queue = dispatch_queue_create("HMJSONTracker", DISPATCH_QUEUE_CONCURRENT);
+	dispatch_queue_t queue = dispatch_queue_create("HMJSONTracker", DISPATCH_QUEUE_SERIAL);
 	dispatch_async(queue, ^{
 		while(YES) {
 			@autoreleasepool {
