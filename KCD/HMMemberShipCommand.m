@@ -90,7 +90,7 @@
 		return;
 	}
 	
-	[object setValue:result[0] forKey:@"master_ship"];
+	[self setValueIfNeeded:result[0] toObject:object forKey:@"master_ship"];
 	[self setValueIfNeeded:value toObject:object forKey:@"ship_id"];
 }
 
