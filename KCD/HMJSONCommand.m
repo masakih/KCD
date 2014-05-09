@@ -166,7 +166,10 @@ NSString *keyByDeletingPrefix(NSString *key)
 {
 	id oldValue = [object valueForKey:key];
 	if(![oldValue isEqual:value]) {
+		[object willChangeValueForKey:key];
 		[object setValue:value forKey:key];
+		[object didChangeValueForKey:key];
+		
 	}
 }
 - (void)commitJSONToEntityNamed:(NSString *)entityName

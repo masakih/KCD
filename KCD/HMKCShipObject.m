@@ -196,6 +196,7 @@ static NSArray *levelUpExps = nil;
 	return [NSSet setWithObjects:@"master_ship.stype.id", @"master_ship.stype", @"master_ship", nil];
 }
 
+#if 0
 - (void)setBull:(NSNumber *)bull
 {
 	if([self.primitiveBull isEqual:bull]) return;
@@ -442,6 +443,7 @@ static NSArray *levelUpExps = nil;
 	
 	self.primitiveUse_fuel = use_fuel;
 }
+#endif
 
 - (void)setMaster_ship:(id)value
 {
