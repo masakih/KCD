@@ -21,7 +21,7 @@
 	if(defaultManager) return defaultManager;
 	
 	defaultManager = [self new];
-	[[defaultManager managedObjectContext] setMergePolicy:NSRollbackMergePolicy];
+//	[[defaultManager managedObjectContext] setMergePolicy:NSRollbackMergePolicy];
 	[[defaultManager managedObjectContext] setStalenessInterval:0.0];
 	
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
@@ -37,7 +37,7 @@
 + (instancetype)oneTimeEditor
 {
 	HMCoreDataManager *result = [self new];
-	[result.managedObjectContext setMergePolicy:NSOverwriteMergePolicy];
+	[result.managedObjectContext setMergePolicy:NSMergeByPropertyObjectTrumpMergePolicy];
 	
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	[nc addObserver:[[self class] defaultManager]
