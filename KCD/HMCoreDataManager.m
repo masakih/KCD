@@ -22,6 +22,7 @@
 	
 	defaultManager = [self new];
 	[[defaultManager managedObjectContext] setMergePolicy:NSRollbackMergePolicy];
+	[[defaultManager managedObjectContext] setStalenessInterval:0.0];
 	
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	[nc addObserver:defaultManager
@@ -217,13 +218,17 @@
 	NSPersistentStoreCoordinator *psc = [moc persistentStoreCoordinator];
 	if(![psc isEqual:[self persistentStoreCoordinator]]) return;
 	
-	if([NSThread isMainThread]) {
-		[self.managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
-	} else {
-		dispatch_sync(dispatch_get_main_queue(), ^{
-			[self.managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
-		});
-	}
+//	if([NSThread isMainThread]) {
+//		[self.managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
+//	} else {
+//		dispatch_sync(dispatch_get_main_queue(), ^{
+//			[self.managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
+//		});
+//	}
+	
+	[self.managedObjectContext performSelectorOnMainThread:@selector(mergeChangesFromContextDidSaveNotification:)
+												withObject:notification
+											 waitUntilDone:YES];
 }
 
 #pragma mark - abstruct
