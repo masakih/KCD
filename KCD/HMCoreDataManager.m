@@ -28,10 +28,6 @@
 		   selector:@selector(applicationWillTerminate:)
 			   name:NSApplicationWillTerminateNotification
 			 object:NSApp];
-	[nc addObserver:defaultManager
-		   selector:@selector(anotherContextDidSave:)
-			   name:NSManagedObjectContextDidSaveNotification
-			 object:nil];
 	
 	objc_setAssociatedObject(self, "defaultManager", defaultManager, OBJC_ASSOCIATION_RETAIN);
 	return defaultManager;
@@ -41,12 +37,24 @@
 {
 	HMCoreDataManager *result = [self new];
 	[result.managedObjectContext setMergePolicy:NSOverwriteMergePolicy];
+	
+	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+	[nc addObserver:[[self class] defaultManager]
+		   selector:@selector(anotherContextDidSave:)
+			   name:NSManagedObjectContextDidSaveNotification
+			 object:result.managedObjectContext];
+	
 	return result;
 }
 
 - (void)dealloc
 {
 	[self saveAction:nil];
+	
+	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+	[nc removeObserver:[[self class] defaultManager]
+				  name:NSManagedObjectContextDidSaveNotification
+				object:self.managedObjectContext];
 }
 
 
@@ -78,14 +86,14 @@
 // Creates if necessary and returns the managed object model for the application.
 - (NSManagedObjectModel *)managedObjectModel
 {
-	id managedObjectModel = objc_getAssociatedObject(self, "managedObjectModel");
+	id managedObjectModel = objc_getAssociatedObject([self class], "managedObjectModel");
     if (managedObjectModel) {
         return managedObjectModel;
     }
 	
     NSURL *modelURL = [[NSBundle mainBundle] URLForResource:self.modelName withExtension:@"momd"];
     managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
-	objc_setAssociatedObject(self, "managedObjectModel", managedObjectModel, OBJC_ASSOCIATION_RETAIN);
+	objc_setAssociatedObject([self class], "managedObjectModel", managedObjectModel, OBJC_ASSOCIATION_RETAIN);
     return managedObjectModel;
 }
 
