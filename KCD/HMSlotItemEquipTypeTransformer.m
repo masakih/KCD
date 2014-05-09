@@ -19,11 +19,20 @@
 	});
 }
 
++ (Class)transformedValueClass
+{
+	return [NSString class];
+}
++ (BOOL)allowsReverseTransformation
+{
+	return NO;
+}
+
 - (id)transformedValue:(id)value
 {
 	if(![value isKindOfClass:[NSNumber class]]) return nil;
 	
-	HMServerDataStore *store = [HMServerDataStore defaultManager];
+	HMServerDataStore *store = [HMServerDataStore oneTimeEditor];
 	
 	NSError *error = nil;
 	NSArray *array = [store objectsWithEntityName:@"MasterSlotItemEquipType"
@@ -34,6 +43,6 @@
 		return nil;
 	}
 	
-	return [array[0] valueForKey:@"name"];
+	return [[array[0] valueForKey:@"name"] copy];
 }
 @end
