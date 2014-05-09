@@ -11,4 +11,6 @@
 @interface HMSlotItemWindowController : NSWindowController
 
 @property (readonly) NSManagedObjectContext *managedObjectContext;
+
+@property (nonatomic, strong) IBOutlet NSArrayController *slotItemController;
 @end

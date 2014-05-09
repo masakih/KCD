@@ -6,6 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="HMSlotItemWindowController">
             <connections>
+                <outlet property="slotItemController" destination="ceg-Ko-EOy" id="Dhw-8P-VMR"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -112,7 +113,7 @@
                             <rect key="frame" x="1" y="427" width="687" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="37" horizontal="NO" id="W9i-6l-gQT">
+                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="W9i-6l-gQT">
                             <rect key="frame" x="-15" y="17" width="16" height="0.0"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
@@ -163,11 +164,6 @@
         <arrayController mode="entity" entityName="SlotItem" editable="NO" automaticallyPreparesContent="YES" automaticallyRearrangesObjects="YES" id="ceg-Ko-EOy">
             <connections>
                 <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="gmN-zL-8kd"/>
-                <binding destination="zv1-TV-Khy" name="sortDescriptors" keyPath="values.slotItemSortKey" id="57p-Co-Ax4">
-                    <dictionary key="options">
-                        <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
-                    </dictionary>
-                </binding>
             </connections>
         </arrayController>
         <userDefaultsController representsSharedInstance="YES" id="zv1-TV-Khy"/>

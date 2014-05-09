@@ -33,6 +33,34 @@ typedef NS_ENUM(NSInteger, ViewType) {
 - (void)awakeFromNib
 {
 	self.currentTableView = self.expTableView;
+	
+	
+	[self.shipController fetchWithRequest:nil merge:YES error:NULL];
+	
+	NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+	id data = [ud objectForKey:@"shipviewsortdescriptor"];
+	id sortDescriptors = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+	if(sortDescriptors) {
+		[self.shipController setSortDescriptors:sortDescriptors];
+	}
+	
+	[self.shipController addObserver:self
+						  forKeyPath:NSSortDescriptorsBinding
+							 options:0
+							 context:NULL];
+}
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+	if([keyPath isEqualToString:NSSortDescriptorsBinding]) {
+		NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+		id sortDescriptors = [self.shipController sortDescriptors];
+		id data = [NSKeyedArchiver archivedDataWithRootObject:sortDescriptors];
+		[ud setObject:data forKey:@"shipviewsortdescriptor"];
+		
+		return;
+	}
+	
+	[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }
 - (NSManagedObjectContext *)managedObjectContext
 {
