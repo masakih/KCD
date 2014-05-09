@@ -235,8 +235,6 @@ NSString *keyByDeletingPrefix(NSString *key)
 		}
 	}
 	[self finishOperating:managedObjectContext];
-	
-	[managedObjectContext save:NULL];
 }
 
 // abstruct
