@@ -101,7 +101,7 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
-                                                <binding destination="ceg-Ko-EOy" name="value" keyPath="arrangedObjects.equippedShip.master_ship.name" id="kvJ-of-ajS"/>
+                                                <binding destination="ceg-Ko-EOy" name="value" keyPath="arrangedObjects.equippedShip.name" id="BM0-SZ-iop"/>
                                             </connections>
                                         </tableColumn>
                                     </tableColumns>

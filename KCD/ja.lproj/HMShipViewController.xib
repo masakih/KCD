@@ -63,7 +63,11 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
-                                            <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.master_ship.name" id="Oz0-gn-Mpo"/>
+                                            <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.name" id="Qrj-kt-hmd">
+                                                <dictionary key="options">
+                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                </dictionary>
+                                            </binding>
                                         </connections>
                                     </tableColumn>
                                     <tableColumn identifier="type" editable="NO" width="31" minWidth="10" maxWidth="3.4028234663852886e+38" id="G9R-OQ-qxc">
@@ -250,7 +254,11 @@
                                 </textFieldCell>
                                 <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                 <connections>
-                                    <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.master_ship.name" id="EWj-Ss-Bdz"/>
+                                    <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.name" id="b68-QG-QLZ">
+                                        <dictionary key="options">
+                                            <bool key="NSConditionallySetsEditable" value="YES"/>
+                                        </dictionary>
+                                    </binding>
                                 </connections>
                             </tableColumn>
                             <tableColumn identifier="karyoku" editable="NO" width="34" minWidth="22" maxWidth="3.4028234663852886e+38" id="HJD-3v-pYl">
@@ -394,7 +402,11 @@
                                 </textFieldCell>
                                 <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                 <connections>
-                                    <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.master_ship.name" id="BvU-PB-rdK"/>
+                                    <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.name" id="GBj-CV-fY0">
+                                        <dictionary key="options">
+                                            <bool key="NSConditionallySetsEditable" value="YES"/>
+                                        </dictionary>
+                                    </binding>
                                 </connections>
                             </tableColumn>
                             <tableColumn identifier="maxhp" editable="NO" width="34" minWidth="22" maxWidth="3.4028234663852886e+38" id="XBP-7Q-86k">
