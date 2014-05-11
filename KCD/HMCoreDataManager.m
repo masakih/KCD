@@ -30,6 +30,11 @@
 			   name:NSApplicationWillTerminateNotification
 			 object:NSApp];
 	
+	[nc addObserver:self
+		   selector:@selector(managedContextObjectDidChange:)
+			   name:NSManagedObjectContextObjectsDidChangeNotification
+			 object:[defaultManager managedObjectContext]];
+	
 	objc_setAssociatedObject(self, "defaultManager", defaultManager, OBJC_ASSOCIATION_RETAIN);
 	return defaultManager;
 }
@@ -222,17 +227,22 @@
 	NSPersistentStoreCoordinator *psc = [moc persistentStoreCoordinator];
 	if(![psc isEqual:[self persistentStoreCoordinator]]) return;
 	
-//	if([NSThread isMainThread]) {
-//		[self.managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
-//	} else {
-//		dispatch_sync(dispatch_get_main_queue(), ^{
-//			[self.managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
-//		});
-//	}
+	if([NSThread isMainThread]) {
+		[self.managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
+	} else {
+		dispatch_sync(dispatch_get_main_queue(), ^{
+			[self.managedObjectContext commitEditing];
+			[self.managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
+			[self.managedObjectContext commitEditing];
+		});
+	}
+}
+
++ (void)managedContextObjectDidChange:(NSNotification *)notification
+{
+	if([NSThread isMainThread]) return;
 	
-	[self.managedObjectContext performSelectorOnMainThread:@selector(mergeChangesFromContextDidSaveNotification:)
-												withObject:notification
-											 waitUntilDone:YES];
+	NSLog(@"Read only managed context object did change in NOT main thread. -> \n %@", [notification userInfo]);
 }
 
 #pragma mark - abstruct
