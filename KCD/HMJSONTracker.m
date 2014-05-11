@@ -54,6 +54,7 @@ static HMJSONTracker *sTracker = nil;
 					command.recieveDate = [item objectForKey:@"date"];
 					
 					[command execute];
+					[NSThread sleepForTimeInterval:0.1];
 				}
 				@catch (id e) {
 					NSLog(@"HMJSONTracker Cought Exception -> %@", e);
