@@ -120,7 +120,7 @@
 		[newOrderedSet insertObject:result[0] atIndex:i++];
 	}
 	if(![newOrderedSet isEqual:orderedSet]) {
-		NSLog(@"equippedItem did change.");
+//		NSLog(@"equippedItem did change.");
 		[orderedSet removeAllObjects];
 		[orderedSet intersectOrderedSet:newOrderedSet];
 	}
@@ -169,11 +169,11 @@
 		[moc deleteObject:obj];
 	}
 	
-	if(array.count != 0) {
-		NSLog(@"%ld Objects deleted.", array.count);
-	}
-	
-	NSLog(@"updated count -> %ld\ndeleted -> %@", [[moc updatedObjects] count], [moc deletedObjects]);
+//	if(array.count != 0) {
+//		NSLog(@"%ld Objects deleted.", array.count);
+//	}
+//	
+//	NSLog(@"updated count -> %ld\ndeleted -> %@", [[moc updatedObjects] count], [moc deletedObjects]);
 }
 
 @end

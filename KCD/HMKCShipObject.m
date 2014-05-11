@@ -459,7 +459,7 @@ static NSMutableDictionary *names = nil;
 {
 	if([self.primitiveMaster_ship isEqual:value]) return;
 	
-	NSLog(@"Ship did change master_ship.");
+//	NSLog(@"Ship did change master_ship.");
 	self.primitiveMaster_ship = value;
 }
 - (NSManagedObject *)master_ship
