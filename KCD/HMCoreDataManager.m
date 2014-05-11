@@ -205,7 +205,9 @@
     }
     
     if (![[self managedObjectContext] save:&error]) {
-        [[NSApplication sharedApplication] presentError:error];
+		dispatch_sync(dispatch_get_main_queue(), ^{
+			[[NSApplication sharedApplication] presentError:error];
+		});
     }
 }
 
