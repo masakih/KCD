@@ -13,6 +13,7 @@
 @property (readonly) NSColor *statusColor;
 @property (readonly) NSColor *conditionColor;
 
+@property (readonly) NSString *name;
 @property (readonly) NSString *shortTypeName;
 
 
