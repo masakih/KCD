@@ -76,7 +76,7 @@
 		return;
 	}
 	
-	[object setValue:result[0] forKey:@"master_slotItem"];
+	[self setValueIfNeeded:result[0] toObject:object forKey:@"master_slotItem"];
 }
 - (BOOL)handleExtraValue:(id)value forKey:(NSString *)key toObject:(NSManagedObject *)object
 {
