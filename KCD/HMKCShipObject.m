@@ -199,11 +199,11 @@ static NSMutableDictionary *names = nil;
 }
 + (NSSet *)keyPathsForValuesAffectingName
 {
-	return [NSSet setWithObjects:@"master_ship", nil];
+	return [NSSet setWithObjects:@"ship_id", nil];
 }
 + (NSSet *)keyPathsForValuesAffectingShortTypeName
 {
-	return [NSSet setWithObjects:@"master_ship.stype.id", @"master_ship.stype", @"master_ship", nil];
+	return [NSSet setWithObjects:@"ship_id", nil];
 }
 
 #if 0
