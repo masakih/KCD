@@ -96,6 +96,7 @@
 		F4E7802818DBD2A00011BC4C /* HMGetShipCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E7802718DBD2A00011BC4C /* HMGetShipCommand.m */; };
 		F4E7802B18DC3A820011BC4C /* HMLocalDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E7802A18DC3A820011BC4C /* HMLocalDataStore.m */; };
 		F4E7802E18DC3AF00011BC4C /* LocalData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4E7802C18DC3AF00011BC4C /* LocalData.xcdatamodeld */; };
+		F4FCFD44191F4C1D000640A1 /* HMKenzoMarkCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FCFD43191F4C1D000640A1 /* HMKenzoMarkCommand.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -269,6 +270,8 @@
 		F4E7802918DC3A820011BC4C /* HMLocalDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMLocalDataStore.h; sourceTree = "<group>"; };
 		F4E7802A18DC3A820011BC4C /* HMLocalDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMLocalDataStore.m; sourceTree = "<group>"; };
 		F4E7802D18DC3AF00011BC4C /* LocalData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocalData.xcdatamodel; sourceTree = "<group>"; };
+		F4FCFD42191F4C1D000640A1 /* HMKenzoMarkCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMKenzoMarkCommand.h; sourceTree = "<group>"; };
+		F4FCFD43191F4C1D000640A1 /* HMKenzoMarkCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKenzoMarkCommand.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -533,6 +536,8 @@
 				F4E33B5718BF5F67005B8C07 /* HMMemberSlotItemCommand.m */,
 				F4E7802618DBD2A00011BC4C /* HMGetShipCommand.h */,
 				F4E7802718DBD2A00011BC4C /* HMGetShipCommand.m */,
+				F4FCFD42191F4C1D000640A1 /* HMKenzoMarkCommand.h */,
+				F4FCFD43191F4C1D000640A1 /* HMKenzoMarkCommand.m */,
 				F4B3DC2818DF31400011B4FC /* HMCreateShipCommand.h */,
 				F4B3DC2918DF31400011B4FC /* HMCreateShipCommand.m */,
 				F4B3DBC818DDB9170011B4FC /* HMCreateSlotItemCommand.h */,
@@ -683,6 +688,7 @@
 				F4C1190B18A74DF0005D5B25 /* HMJSONCommand.m in Sources */,
 				F4B414F518B1888800468DAF /* HMMasterFurnitureCommand.m in Sources */,
 				F4513EEE18B8E2F600073552 /* HMMemberMaterialCommand.m in Sources */,
+				F4FCFD44191F4C1D000640A1 /* HMKenzoMarkCommand.m in Sources */,
 				F4BDEB53187252F30069D0CE /* main.m in Sources */,
 				F48F7B021907D7B800E78AE1 /* HMPortCommand.m in Sources */,
 				F494DC5F18C30AE100AE97E4 /* HMMissionStatus.m in Sources */,

@@ -20,7 +20,6 @@
 + (BOOL)canExcuteAPI:(NSString *)api
 {
 	if([api isEqualToString:@"/kcsapi/api_get_member/kdock"]) return YES;
-	if([api isEqualToString:@"/kcsapi/api_req_kousyou/getship"]) return YES;
 	return NO;
 }
 - (NSString *)dataKey
