@@ -131,10 +131,10 @@
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </searchFieldCell>
                         <connections>
-                            <binding destination="ceg-Ko-EOy" name="predicate" keyPath="filterPredicate" id="f93-ot-fTl">
+                            <binding destination="ceg-Ko-EOy" name="predicate" keyPath="filterPredicate" id="ko3-0N-lul">
                                 <dictionary key="options">
                                     <string key="NSDisplayName">predicate</string>
-                                    <string key="NSPredicateFormat">master_slotItem.name contains $value OR equippedShip.master_ship.name contains $value</string>
+                                    <string key="NSPredicateFormat">master_slotItem.name contains $value OR equippedShip.name contains $value</string>
                                 </dictionary>
                             </binding>
                         </connections>
