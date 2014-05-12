@@ -31,8 +31,7 @@
 
 - (id)init
 {
-	self = [super init];
-	self = [[super class] compositCommandWithCommands:
+	self = [super initWithCommands:
 			[HMMemberShipCommand new], [HMMemberMaterialCommand new],
 			[HMMemberDeckCommand new], [HMMemberBasicCommand new],
 			[HMMemberNDockCommand new],

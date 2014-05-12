@@ -16,17 +16,35 @@
 
 + (id)compositCommandWithCommands:(HMJSONCommand *)cmd1, ...
 {
-	HMCompositCommand *result = [HMCompositCommand new];
-	
-	result.commands = [NSMutableArray new];
-	
+	id result = nil;
 	va_list ap;
 	va_start(ap, cmd1);
-	HMJSONCommand *command = cmd1;
-	while(command) {
-		[result.commands addObject:command];
-		command = va_arg(ap, id);
+	result = [[self alloc] initWithCommand:cmd1 list:ap];
+	va_end(ap);
+	
+	return result;
+}
+
+- (id)initWithCommand:(HMJSONCommand *)cmd1 list:(va_list)argList
+{
+	self = [super init];
+	if(self) {
+		_commands = [NSMutableArray new];
+		HMJSONCommand *command = cmd1;
+		while(command) {
+			[_commands addObject:command];
+			command = va_arg(argList, id);
+		}
 	}
+	
+	return self;
+}
+
+- (id)initWithCommands:(HMJSONCommand *)cmd1, ...
+{
+	va_list ap;
+	va_start(ap, cmd1);
+	HMCompositCommand *result = [self initWithCommand:cmd1 list:ap];
 	va_end(ap);
 	
 	return result;

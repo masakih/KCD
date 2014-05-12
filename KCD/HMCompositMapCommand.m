@@ -36,8 +36,7 @@
 
 - (id)init
 {
-	self = [super init];
-	self = [[super class] compositCommandWithCommands:
+	self = [super initWithCommands:
 			[HMMasterMapAreaCommand new], [HMMasterMapInfoCommand new], [HMMasterMapCellCommand new],
 			[HMMasterSTypeCommand new], [HMMaserShipCommand new],
 			[HMMasterMissionCommand new],

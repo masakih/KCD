@@ -30,13 +30,11 @@
 }
 - (id)init
 {
-	self = [super init];
-	self = [[super class] compositCommandWithCommands:
+	self = [super initWithCommands:
 			[HMMemberMaterialCommand new],
 			[HMUpdateSlotItemCommand new],
 			[HMStoreCreateSlotItemHistoryCommand new],
 			nil];
 	return self;
 }
-
 @end

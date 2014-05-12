@@ -11,5 +11,6 @@
 @interface HMCompositCommand : HMJSONCommand
 
 + (id)compositCommandWithCommands:(HMJSONCommand *)cmd1, ...;
+- (id)initWithCommands:(HMJSONCommand *)cmd1, ...;
 
 @end

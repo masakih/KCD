@@ -27,8 +27,7 @@
 
 - (id)init
 {
-	self = [super init];
-	self = [[super class] compositCommandWithCommands:
+	self = [super initWithCommands:
 			[HMMemberKDockCommand new], [HMKenzoMarkCommand new],
 			nil];
 	return self;
