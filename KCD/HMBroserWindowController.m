@@ -281,4 +281,27 @@ typedef NS_ENUM(NSInteger, ViewType) {
 		[self adjustFlash];
 	}
 }
+
+#pragma mark - WebUIDelegate
+- (NSArray *)webView:(WebView *)sender contextMenuItemsForElement:(NSDictionary *)element defaultMenuItems:(NSArray *)defaultMenuItems
+{
+	NSMutableArray *items = [NSMutableArray new];
+	for(NSMenuItem *item in defaultMenuItems) {
+		switch([item tag]) {
+			case WebMenuItemTagOpenLinkInNewWindow:
+			case WebMenuItemTagDownloadLinkToDisk:
+			case WebMenuItemTagOpenImageInNewWindow:
+			case WebMenuItemTagOpenFrameInNewWindow:
+			case WebMenuItemTagGoBack:
+			case WebMenuItemTagGoForward:
+			case WebMenuItemTagStop:
+			case WebMenuItemTagReload:
+				break;
+			default:
+				[items addObject:item];
+				break;
+		}
+	}
+	return items;
+}
 @end

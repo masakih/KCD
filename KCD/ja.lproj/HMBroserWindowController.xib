@@ -351,6 +351,7 @@
                 <nil key="identifier"/>
             </webPreferences>
             <connections>
+                <outlet property="UIDelegate" destination="-2" id="90Y-UW-itm"/>
                 <outlet property="frameLoadDelegate" destination="-2" id="ghK-Nk-WYy"/>
             </connections>
         </webView>
