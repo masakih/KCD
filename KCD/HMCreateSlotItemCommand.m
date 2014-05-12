@@ -37,4 +37,9 @@
 			nil];
 	return self;
 }
+- (void)execute
+{
+	[NSThread sleepForTimeInterval:6.5];
+	[super execute];
+}
 @end
