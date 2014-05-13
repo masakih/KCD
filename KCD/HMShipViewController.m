@@ -48,6 +48,20 @@ typedef NS_ENUM(NSInteger, ViewType) {
 						  forKeyPath:NSSortDescriptorsBinding
 							 options:0
 							 context:NULL];
+	
+	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+	[nc addObserver:self
+		   selector:@selector(scrollViewDidEndLiveScrollNotification:)
+			   name:NSScrollViewDidEndLiveScrollNotification
+			 object:self.expTableView];
+	[nc addObserver:self
+		   selector:@selector(scrollViewDidEndLiveScrollNotification:)
+			   name:NSScrollViewDidEndLiveScrollNotification
+			 object:self.powerTableView];
+	[nc addObserver:self
+		   selector:@selector(scrollViewDidEndLiveScrollNotification:)
+			   name:NSScrollViewDidEndLiveScrollNotification
+			 object:self.power2TableView];
 }
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
@@ -118,4 +132,18 @@ typedef NS_ENUM(NSInteger, ViewType) {
 	[self showViewWithNumber:tag];
 }
 
+#pragma mark - NSScrollViewDidEndLiveScrollNotification
+- (void)scrollViewDidEndLiveScrollNotification:(NSNotification *)notification
+{
+	id object = [notification object];
+	
+	NSRect visibleRect = [object documentVisibleRect];
+	
+	for(id item in @[self.expTableView, self.powerTableView, self.power2TableView]) {
+		if(![object isEqual:item]) {
+			NSView *view = [item documentView];
+			[view scrollRectToVisible:visibleRect];
+		}
+	}
+}
 @end
