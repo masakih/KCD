@@ -16,20 +16,6 @@
  *  建造履歴を残す
  */
 @implementation HMKenzoMarkCommand
-+ (void)load
-{
-	static dispatch_once_t onceToken;
-	dispatch_once(&onceToken, ^{
-		[HMJSONCommand registerClass:self];
-	});
-}
-
-+ (BOOL)canExcuteAPI:(NSString *)api
-{
-	if([api isEqualToString:@"/kcsapi/api_req_kousyou/getship"]) return YES;
-	
-	return NO;
-}
 - (void)execute
 {
 	HMServerDataStore *serverDataStore = [HMServerDataStore defaultManager];

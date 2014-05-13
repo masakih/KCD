@@ -28,7 +28,7 @@
 - (id)init
 {
 	self = [super initWithCommands:
-			[HMMemberKDockCommand new], [HMKenzoMarkCommand new],
+			[HMKenzoMarkCommand new], [HMMemberKDockCommand new],
 			nil];
 	return self;
 }
