@@ -99,8 +99,6 @@
 	NSManagedObjectContext *managedObjectContext = [object managedObjectContext];
 	NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"SlotItem"];
 	
-	NSMutableOrderedSet *orderedSet = [object mutableOrderedSetValueForKey:@"equippedItem"];
-	
 	NSInteger i = 0;
 	NSMutableOrderedSet *newOrderedSet = [NSMutableOrderedSet new];
 	for(id value in array) {
@@ -113,16 +111,17 @@
 			[self log:@"Fetch error: %@", error];
 			continue;
 		}
-		if(!result || [result count] == 0) {
+		if([result count] == 0) {
 			continue;
 		}
 		
 		[newOrderedSet insertObject:result[0] atIndex:i++];
 	}
+	
+	NSMutableOrderedSet *orderedSet = [object mutableOrderedSetValueForKey:@"equippedItem"];
 	if(![newOrderedSet isEqual:orderedSet]) {
 //		NSLog(@"equippedItem did change.");
-		[orderedSet removeAllObjects];
-		[orderedSet intersectOrderedSet:newOrderedSet];
+		[object setValue:newOrderedSet forKey:@"equippedItem"];
 	}
 }
 
