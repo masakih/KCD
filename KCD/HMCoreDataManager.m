@@ -10,18 +10,28 @@
 
 #import <objc/runtime.h>
 
+typedef NS_ENUM(NSUInteger, HMCoreDataManagerType) {
+    readerType,
+    editorType,
+};
+
+@interface HMCoreDataManager ()
+@property HMCoreDataManagerType	type;
+@end
+
 @implementation HMCoreDataManager
 
 @synthesize managedObjectContext = _managedObjectContext;
 
 + (instancetype)defaultManager
 {
-	id defaultManager = objc_getAssociatedObject(self, "defaultManager");
+	HMCoreDataManager *defaultManager = objc_getAssociatedObject(self, "defaultManager");
 	
 	if(defaultManager) return defaultManager;
 	
 	defaultManager = [self new];
-//	[[defaultManager managedObjectContext] setMergePolicy:NSRollbackMergePolicy];
+	defaultManager.type = readerType;
+	
 	[[defaultManager managedObjectContext] setStalenessInterval:0.0];
 	
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
@@ -30,11 +40,6 @@
 			   name:NSApplicationWillTerminateNotification
 			 object:NSApp];
 	
-	[nc addObserver:self
-		   selector:@selector(managedContextObjectDidChange:)
-			   name:NSManagedObjectContextObjectsDidChangeNotification
-			 object:[defaultManager managedObjectContext]];
-	
 	objc_setAssociatedObject(self, "defaultManager", defaultManager, OBJC_ASSOCIATION_RETAIN);
 	return defaultManager;
 }
@@ -42,13 +47,7 @@
 + (instancetype)oneTimeEditor
 {
 	HMCoreDataManager *result = [self new];
-	[result.managedObjectContext setMergePolicy:NSMergeByPropertyObjectTrumpMergePolicy];
-	
-	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-	[nc addObserver:[[self class] defaultManager]
-		   selector:@selector(anotherContextDidSave:)
-			   name:NSManagedObjectContextDidSaveNotification
-			 object:result.managedObjectContext];
+	result.type = editorType;
 	
 	return result;
 }
@@ -183,17 +182,22 @@
         return _managedObjectContext;
     }
     
-    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
-    if (!coordinator) {
-        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-        [dict setValue:@"Failed to initialize the store" forKey:NSLocalizedDescriptionKey];
-        [dict setValue:@"There was an error building up the data file." forKey:NSLocalizedFailureReasonErrorKey];
-        NSError *error = [NSError errorWithDomain:@"YOUR_ERROR_DOMAIN" code:9999 userInfo:dict];
-        [[NSApplication sharedApplication] presentError:error];
-        return nil;
-    }
-    _managedObjectContext = [[NSManagedObjectContext alloc] init];
-    [_managedObjectContext setPersistentStoreCoordinator:coordinator];
+	if(self.type == readerType) {
+		NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
+		if (!coordinator) {
+			NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+			[dict setValue:@"Failed to initialize the store" forKey:NSLocalizedDescriptionKey];
+			[dict setValue:@"There was an error building up the data file." forKey:NSLocalizedFailureReasonErrorKey];
+			NSError *error = [NSError errorWithDomain:@"YOUR_ERROR_DOMAIN" code:9999 userInfo:dict];
+			[[NSApplication sharedApplication] presentError:error];
+			return nil;
+		}
+		_managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+		[_managedObjectContext setPersistentStoreCoordinator:coordinator];
+	} else {
+		_managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+		_managedObjectContext.parentContext = [[[self class] defaultManager] managedObjectContext];
+	}
 	
 	_managedObjectContext.undoManager = nil;
 	
@@ -219,30 +223,6 @@
 - (void)applicationWillTerminate:(NSNotification *)notification
 {
 	[self saveAction:nil];
-}
-
-- (void)anotherContextDidSave:(NSNotification *)notification
-{
-	NSManagedObjectContext *moc = [notification object];
-	NSPersistentStoreCoordinator *psc = [moc persistentStoreCoordinator];
-	if(![psc isEqual:[self persistentStoreCoordinator]]) return;
-	
-	if([NSThread isMainThread]) {
-		[self.managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
-	} else {
-		dispatch_sync(dispatch_get_main_queue(), ^{
-			[self.managedObjectContext commitEditing];
-			[self.managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
-			[self.managedObjectContext commitEditing];
-		});
-	}
-}
-
-+ (void)managedContextObjectDidChange:(NSNotification *)notification
-{
-	if([NSThread isMainThread]) return;
-	
-	NSLog(@"Read only managed context object did change in NOT main thread. -> \n %@", [notification userInfo]);
 }
 
 #pragma mark - abstruct
