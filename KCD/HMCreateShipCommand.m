@@ -34,7 +34,9 @@
 {
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 		HMServerDataStore *serverDataStore = [HMServerDataStore defaultManager];
-		NSArray *array = [serverDataStore objectsWithEntityName:@"KenzoDock" error:NULL predicateFormat:@"id = %@", [self.arguments valueForKey:@"api_kdock_id"]];
+		NSArray *array = [serverDataStore objectsWithEntityName:@"KenzoDock"
+														  error:NULL
+												predicateFormat:@"id = %@", @([[self.arguments valueForKey:@"api_kdock_id"] integerValue])];
 		if([array count] == 0) {
 			NSLog(@"KenzoDock data is invalid.");
 			return;

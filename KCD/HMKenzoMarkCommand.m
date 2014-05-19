@@ -19,7 +19,9 @@
 - (void)execute
 {
 	HMServerDataStore *serverDataStore = [HMServerDataStore defaultManager];
-	NSArray *array = [serverDataStore objectsWithEntityName:@"KenzoDock" error:NULL predicateFormat:@"id = %@", [self.arguments valueForKey:@"api_kdock_id"]];
+	NSArray *array = [serverDataStore objectsWithEntityName:@"KenzoDock"
+													  error:NULL
+											predicateFormat:@"id = %@", @([[self.arguments valueForKey:@"api_kdock_id"] integerValue])];
 	if([array count] == 0) {
 		NSLog(@"KenzoDock data is invalid.");
 		return;
