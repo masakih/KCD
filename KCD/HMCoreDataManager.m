@@ -214,9 +214,13 @@ typedef NS_ENUM(NSUInteger, HMCoreDataManagerType) {
     }
     
     if (![[self managedObjectContext] save:&error]) {
-		dispatch_sync(dispatch_get_main_queue(), ^{
+		if([NSThread isMainThread]) {
 			[[NSApplication sharedApplication] presentError:error];
-		});
+		} else {
+			dispatch_sync(dispatch_get_main_queue(), ^{
+				[[NSApplication sharedApplication] presentError:error];
+			});
+		}
     }
 }
 
