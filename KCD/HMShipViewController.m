@@ -39,8 +39,8 @@ typedef NS_ENUM(NSInteger, ViewType) {
 	
 	NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
 	id data = [ud objectForKey:@"shipviewsortdescriptor"];
-	id sortDescriptors = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-	if(sortDescriptors) {
+	if(data) {
+		id sortDescriptors = [NSKeyedUnarchiver unarchiveObjectWithData:data];
 		[self.shipController setSortDescriptors:sortDescriptors];
 	}
 	

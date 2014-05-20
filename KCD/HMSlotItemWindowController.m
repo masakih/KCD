@@ -28,8 +28,8 @@
 	
 	NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
 	id data = [ud objectForKey:@"slotItemSortKey"];
-	id sortDescriptors = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-	if(sortDescriptors) {
+	if(data) {
+		id sortDescriptors = [NSKeyedUnarchiver unarchiveObjectWithData:data];
 		[self.slotItemController setSortDescriptors:sortDescriptors];
 	}
 	
