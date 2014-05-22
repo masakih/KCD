@@ -32,8 +32,11 @@
 	NSManagedObjectContext *moc = store.managedObjectContext;
 	
 	NSString *itemsString = self.arguments[@"api_slotitem_ids"];
-	NSArray *items = [itemsString componentsSeparatedByString:@","];
-	
+	NSArray *itemsStrings = [itemsString componentsSeparatedByString:@","];
+	NSMutableArray *items = [NSMutableArray new];
+	for(id item in itemsStrings) {
+		[items addObject:@([item integerValue])];
+	}
 	
 	NSError *error = nil;
 	NSArray *array = [store objectsWithEntityName:@"SlotItem"
