@@ -21,7 +21,7 @@
 	NSString *name = nil;
 	NSNumber *numberOfUsedKaihatuSizai = nil;
 	
-	HMServerDataStore *serverDataStore = [HMServerDataStore defaultManager];
+	HMServerDataStore *serverDataStore = [HMServerDataStore oneTimeEditor];
 	
 	if(created) {
 		NSNumber *slotItemID = [data valueForKeyPath:@"api_slot_item.api_slotitem_id"];

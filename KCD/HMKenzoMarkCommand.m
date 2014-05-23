@@ -18,7 +18,7 @@
 @implementation HMKenzoMarkCommand
 - (void)execute
 {
-	HMServerDataStore *serverDataStore = [HMServerDataStore defaultManager];
+	HMServerDataStore *serverDataStore = [HMServerDataStore oneTimeEditor];
 	NSArray *array = [serverDataStore objectsWithEntityName:@"KenzoDock"
 													  error:NULL
 											predicateFormat:@"id = %@", @([[self.arguments valueForKey:@"api_kdock_id"] integerValue])];
@@ -42,7 +42,7 @@
 	NSNumber *flagShipLv = nil;
 	NSString *flafShipName = nil;
 	NSNumber *commanderLv = nil;
-	HMLocalDataStore *localDataStore = [HMLocalDataStore defaultManager];
+	HMLocalDataStore *localDataStore = [HMLocalDataStore oneTimeEditor];
 	array = [localDataStore objectsWithEntityName:@"KenzoMark"
 											error:NULL
 								  predicateFormat:@"fuel = %@ AND bull = %@ AND steel = %@ AND bauxite = %@ AND kaihatusizai = %@ AND kDockId = %@ AND created_ship_id = %@",

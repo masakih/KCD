@@ -21,7 +21,7 @@
 #pragma mark## Save to Text file ##
 - (NSArray *)allObjectOfEntityName:(NSString *)entityName sortDescriptors:(NSArray *)sortDescriptors
 {
-	NSManagedObjectContext *moc = [[HMLocalDataStore defaultManager] managedObjectContext];
+	NSManagedObjectContext *moc = [[HMLocalDataStore oneTimeEditor] managedObjectContext];
 	NSError *error = nil;
 	
 	NSFetchRequest *fetch = [NSFetchRequest fetchRequestWithEntityName:entityName];
@@ -184,7 +184,7 @@
 
 - (BOOL)isEmptyEntityName:(NSString *)name
 {
-	NSManagedObjectContext *moc = [[HMLocalDataStore defaultManager] managedObjectContext];
+	NSManagedObjectContext *moc = [[HMLocalDataStore oneTimeEditor] managedObjectContext];
 	NSError *error = nil;
 	NSFetchRequest *fetch;
 	NSInteger num;

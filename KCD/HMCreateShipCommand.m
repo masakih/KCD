@@ -33,7 +33,7 @@
 - (void)execute
 {
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-		HMServerDataStore *serverDataStore = [HMServerDataStore defaultManager];
+		HMServerDataStore *serverDataStore = [HMServerDataStore oneTimeEditor];
 		NSArray *array = [serverDataStore objectsWithEntityName:@"KenzoDock"
 														  error:NULL
 												predicateFormat:@"id = %@", @([[self.arguments valueForKey:@"api_kdock_id"] integerValue])];
