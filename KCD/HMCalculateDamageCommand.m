@@ -30,6 +30,8 @@
 
 - (void)resetDamage
 {
+	printf("\n");
+	
 	HMTemporaryDataStore *store = [HMTemporaryDataStore oneTimeEditor];
 	NSManagedObjectContext *moc = store.managedObjectContext;
 	
@@ -108,7 +110,7 @@
 		id openigDamage = [self.json valueForKeyPath:@"api_data.api_opening_atack.api_fdam"];
 		if(!openigDamage || [openigDamage isEqual:[NSNull null]]) break;
 		for(NSInteger i = 1; i <= 6; i++) {
-			NSInteger damage = [[openigDamage objectAtIndex:i - 1] integerValue];
+			NSInteger damage = [[openigDamage objectAtIndex:1] integerValue];
 			
 			printf("%zd,%zd    ", i, damage);
 			
@@ -229,17 +231,22 @@
 		return;
 	}
 	
-	// hougeki1
+	// hougeki
 	printf("Yasen damages-> ");
 	{
-		id targetShips = [self.json valueForKeyPath:@"api_data.api_hougeki1.api_df_list"];
-		id hougeki1Damages = [self.json valueForKeyPath:@"api_data.api_hougeki1.api_damage"];
+		id targetShips = [self.json valueForKeyPath:@"api_data.api_hougeki.api_df_list"];
+		id hougeki1Damages = [self.json valueForKeyPath:@"api_data.api_hougeki.api_damage"];
 		NSInteger i = 0;
-		NSInteger j = 0;
 		for(NSArray *array in targetShips) {
+			if(![array isKindOfClass:[NSArray class]]) {
+				i++;
+				continue;
+			}
+			
+			NSInteger j = 0;
 			for(id ship in array) {
 				NSInteger target = [ship integerValue];
-				if(target > 6) {
+				if(target < 0 || target > 6) {
 					j++;
 					continue;
 				}
