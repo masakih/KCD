@@ -600,11 +600,14 @@ static NSMutableDictionary *names = nil;
 
 - (NSColor *)statusColor
 {
-#if 0
+#if 1
 	[self willAccessValueForKey:@"maxhp"];
 	[self willAccessValueForKey:@"nowhp"];
 	NSInteger maxhp = [[self valueForKey:@"maxhp"] integerValue];
 	CGFloat nowhp = [[self valueForKey:@"nowhp"] integerValue];
+	[self didAccessValueForKey:@"nowhp"];
+	[self didAccessValueForKey:@"maxhp"];
+	
 	CGFloat status = nowhp / maxhp;
 	if(status <= 0.25) {
 		return [NSColor redColor];
@@ -616,8 +619,6 @@ static NSMutableDictionary *names = nil;
 		return [NSColor yellowColor];
 
 	}
-	[self didAccessValueForKey:@"nowhp"];
-	[self didAccessValueForKey:@"maxhp"];
 #endif
 	return [NSColor controlTextColor];
 }
