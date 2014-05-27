@@ -223,7 +223,7 @@
 	NSArray *damages = nil;
 	
 	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Damage"];
-	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:NO];
+	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
 	[request setSortDescriptors:@[sortDescriptor]];
 	damages = [moc executeFetchRequest:request error:NULL];
 	if(damages.count != 6) {
