@@ -30,8 +30,6 @@
 
 - (void)resetDamage
 {
-	printf("\n");
-	
 	HMTemporaryDataStore *store = [HMTemporaryDataStore oneTimeEditor];
 	NSManagedObjectContext *moc = store.managedObjectContext;
 	
@@ -89,40 +87,29 @@
 	}
 	
 	// koukuu
-	printf("Kouku damages-> ");
 	do {
 		id koukuDamage = [self.json valueForKeyPath:@"api_data.api_kouku.api_stage3.api_fdam"];
 		if(!koukuDamage || [koukuDamage isEqual:[NSNull null]]) break;
 		for(NSInteger i = 1; i <= 6; i++) {
 			NSInteger damage = [[koukuDamage objectAtIndex:i] integerValue];
-			
-			printf("%zd,%zd    ", i - 1, damage);
-			
 			id damageObject = [damages objectAtIndex:i - 1];
 			[damageObject setValue:@(damage) forKeyPath:@"damage"];
 		}
 	} while(NO);
-	printf("\n");
 	
 	// opening attack
-	printf("Opening attack damages-> ");
 	do {
 		id openigDamage = [self.json valueForKeyPath:@"api_data.api_opening_atack.api_fdam"];
 		if(!openigDamage || [openigDamage isEqual:[NSNull null]]) break;
 		for(NSInteger i = 1; i <= 6; i++) {
 			NSInteger damage = [[openigDamage objectAtIndex:1] integerValue];
-			
-			printf("%zd,%zd    ", i, damage);
-			
 			id damageObject = [damages objectAtIndex:i - 1];
 			damage += [[damageObject valueForKey:@"damage"] integerValue];
 			[damageObject setValue:@(damage) forKeyPath:@"damage"];
 		}
 	} while(NO);
-	printf("\n");
 	
 	// hougeki1
-	printf("Hougeki1 damages-> ");
 	{
 		id targetShips = [self.json valueForKeyPath:@"api_data.api_hougeki1.api_df_list"];
 		id hougeki1Damages = [self.json valueForKeyPath:@"api_data.api_hougeki1.api_damage"];
@@ -143,9 +130,6 @@
 				
 				id damageObject = [damages objectAtIndex:target - 1];
 				NSInteger damage = [[[hougeki1Damages objectAtIndex:i] objectAtIndex:j] integerValue];
-				
-				printf("%zd,%zd    ", target - 1, damage);
-				
 				damage += [[damageObject valueForKey:@"damage"] integerValue];
 				[damageObject setValue:@(damage) forKeyPath:@"damage"];
 				
@@ -154,10 +138,8 @@
 			i++;
 		}
 	}
-	printf("\n");
 	
 	// hougeki2
-	printf("Hougeki2 damages-> ");
 	do {
 		id hasHougeki2 = [self.json valueForKeyPath:@"api_data.api_hougeki2"];
 		if(!hasHougeki2 || [hasHougeki2 isEqual:[NSNull null]]) break;
@@ -181,9 +163,6 @@
 				
 				id damageObject = [damages objectAtIndex:target - 1];
 				NSInteger damage = [[[hougeki1Damages objectAtIndex:i] objectAtIndex:j] integerValue];
-				
-				printf("%zd,%zd    ", target - 1, damage);
-				
 				damage += [[damageObject valueForKey:@"damage"] integerValue];
 				[damageObject setValue:@(damage) forKeyPath:@"damage"];
 				
@@ -192,24 +171,18 @@
 			i++;
 		}
 	} while(NO);
-	printf("\n");
 	
 	// raigeki
-	printf("Raigeki damages-> ");
 	do {
 		id raigekiDamage = [self.json valueForKeyPath:@"api_data.api_raigeki.api_fdam"];
 		if(!raigekiDamage || [raigekiDamage isEqual:[NSNull null]]) break;
 		for(NSInteger i = 1; i <= 6; i++) {
 			NSInteger damage = [[raigekiDamage objectAtIndex:i] integerValue];
-			
-			printf("%zd,%zd    ", i - 1, damage);
-			
 			id damageObject = [damages objectAtIndex:i - 1];
 			damage += [[damageObject valueForKey:@"damage"] integerValue];
 			[damageObject setValue:@(damage) forKeyPath:@"damage"];
 		}
 	} while(NO);
-	printf("\n");
 	
 	[store saveAction:nil];
 }
@@ -232,7 +205,6 @@
 	}
 	
 	// hougeki
-	printf("Yasen damages-> ");
 	{
 		id targetShips = [self.json valueForKeyPath:@"api_data.api_hougeki.api_df_list"];
 		id hougeki1Damages = [self.json valueForKeyPath:@"api_data.api_hougeki.api_damage"];
@@ -253,9 +225,6 @@
 				
 				id damageObject = [damages objectAtIndex:target - 1];
 				NSInteger damage = [[[hougeki1Damages objectAtIndex:i] objectAtIndex:j] integerValue];
-				
-				printf("%zd,%zd    ", target - 1, damage);
-				
 				damage += [[damageObject valueForKey:@"damage"] integerValue];
 				[damageObject setValue:@(damage) forKeyPath:@"damage"];
 				
@@ -264,7 +233,6 @@
 			i++;
 		}
 	}
-	printf("\n");
 	
 	[store saveAction:nil];
 }
