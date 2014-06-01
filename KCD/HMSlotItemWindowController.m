@@ -7,6 +7,7 @@
 //
 
 #import "HMSlotItemWindowController.h"
+#import "HMUserDefaults.h"
 
 #import "HMServerDataStore.h"
 
@@ -25,14 +26,7 @@
 - (void)awakeFromNib
 {
 	[self.slotItemController fetchWithRequest:nil merge:YES error:NULL];
-	
-	NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-	id data = [ud objectForKey:@"slotItemSortKey"];
-	if(data) {
-		id sortDescriptors = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-		[self.slotItemController setSortDescriptors:sortDescriptors];
-	}
-	
+	[self.slotItemController setSortDescriptors:HMStandardDefaults.slotItemSortDescriptors];
 	[self.slotItemController addObserver:self
 						  forKeyPath:NSSortDescriptorsBinding
 							 options:0
@@ -41,11 +35,7 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
 	if([keyPath isEqualToString:NSSortDescriptorsBinding]) {
-		NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-		id sortDescriptors = [self.slotItemController sortDescriptors];
-		id data = [NSKeyedArchiver archivedDataWithRootObject:sortDescriptors];
-		[ud setObject:data forKey:@"slotItemSortKey"];
-		
+		HMStandardDefaults.slotItemSortDescriptors = [self.slotItemController sortDescriptors];
 		return;
 	}
 	

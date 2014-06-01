@@ -7,6 +7,7 @@
 //
 
 #import "HMScreenshotWindowController.h"
+#import "HMUserDefaults.h"
 
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
@@ -64,7 +65,7 @@
 		} else {
 			_tagString = @"";
 		}
-		_appendKanColleTag = [[NSUserDefaults standardUserDefaults] boolForKey:@"appendKanColleTag"];
+		_appendKanColleTag = HMStandardDefaults.appendKanColleTag;
 	}
 	return self;
 }
@@ -113,7 +114,7 @@
 }
 - (void)setAppendKanColleTag:(BOOL)appendKanColleTag
 {
-	[[NSUserDefaults standardUserDefaults] setBool:appendKanColleTag forKey:@"appendKanColleTag"];
+	HMStandardDefaults.appendKanColleTag = appendKanColleTag;
 	_appendKanColleTag = appendKanColleTag;
 }
 - (BOOL)canTweet

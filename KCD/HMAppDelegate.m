@@ -8,6 +8,7 @@
 
 #import "HMAppDelegate.h"
 
+#import "HMUserDefaults.h"
 #import "HMBroserWindowController.h"
 #import "HMHistoryWindowController.h"
 #import "HMSlotItemWindowController.h"
@@ -94,8 +95,7 @@ static FILE* logFileP = NULL;
 	self.shipWindowController = [HMShipWindowController new];
 	[self.shipWindowController showWindow:nil];
 #endif
-	BOOL showsDebugMenu = [[NSUserDefaults standardUserDefaults] boolForKey:@"ShowsDebugMenu"];
-	if(!showsDebugMenu) {
+	if(!HMStandardDefaults.showsDebugMenu) {
 		[self.debugMenuItem setHidden:YES];
 	}
 }

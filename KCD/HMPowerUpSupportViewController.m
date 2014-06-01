@@ -9,6 +9,7 @@
 #import "HMPowerUpSupportViewController.h"
 
 #import "HMAppDelegate.h"
+#import "HMUserDefaults.h"
 #import "HMServerDataStore.h"
 
 
@@ -28,14 +29,7 @@
 	[self changeCategory:nil];
 	
 	[self.shipController fetchWithRequest:nil merge:YES error:NULL];
-	
-	NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-	id data = [ud objectForKey:@"powerupsupportsortdecriptor"];
-	if(data) {
-		id sortDescriptors = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-		[self.shipController setSortDescriptors:sortDescriptors];
-	}
-	
+	[self.shipController setSortDescriptors:HMStandardDefaults.powerupSupportSortDecriptors];
 	[self.shipController addObserver:self
 							  forKeyPath:NSSortDescriptorsBinding
 								 options:0
@@ -44,11 +38,7 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
 	if([keyPath isEqualToString:NSSortDescriptorsBinding]) {
-		NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-		id sortDescriptors = [self.shipController sortDescriptors];
-		id data = [NSKeyedArchiver archivedDataWithRootObject:sortDescriptors];
-		[ud setObject:data forKey:@"powerupsupportsortdecriptor"];
-		
+		HMStandardDefaults.powerupSupportSortDecriptors = [self.shipController sortDescriptors];
 		return;
 	}
 	
@@ -61,34 +51,34 @@
 	return [HMServerDataStore defaultManager].managedObjectContext;
 }
 
-- (id)valueForUndefinedKey:(NSString *)key
-{
-	NSArray *defindeKyes = @[@"hideMaxKaryoku", @"hideMaxRaisou", @"hideMaxTaiku", @"hideMaxSoukou", @"hideMaxLucky"];
-	if([defindeKyes containsObject:key]) {
-		return [[NSUserDefaults standardUserDefaults] objectForKey:key];
-	}
-	
-	return [super valueForUndefinedKey:key];
-}
+//- (id)valueForUndefinedKey:(NSString *)key
+//{
+//	NSArray *defindeKyes = @[@"hideMaxKaryoku", @"hideMaxRaisou", @"hideMaxTaiku", @"hideMaxSoukou", @"hideMaxLucky"];
+//	if([defindeKyes containsObject:key]) {
+//		return [HMStandardDefaults valueForKey:key];
+//	}
+//	
+//	return [super valueForUndefinedKey:key];
+//}
 - (BOOL)hideMaxKaryoku
 {
-	return [[NSUserDefaults standardUserDefaults] boolForKey:@"hideMaxKaryoku"];
+	return HMStandardDefaults.hideMaxKaryoku;
 }
 - (BOOL)hideMaxRaisou
 {
-	return [[NSUserDefaults standardUserDefaults] boolForKey:@"hideMaxRaisou"];
+	return HMStandardDefaults.hideMaxRaisou;
 }
 - (BOOL)hideMaxTaiku
 {
-	return [[NSUserDefaults standardUserDefaults] boolForKey:@"hideMaxTaiku"];
+	return HMStandardDefaults.hideMaxTaiku;
 }
 - (BOOL)hideMaxSoukou
 {
-	return [[NSUserDefaults standardUserDefaults] boolForKey:@"hideMaxSoukou"];
+	return HMStandardDefaults.hideMaxSoukou;
 }
 - (BOOL)hideMaxLucky
 {
-	return [[NSUserDefaults standardUserDefaults] boolForKey:@"hideMaxLucky"];
+	return HMStandardDefaults.hideMaxLucky;
 }
 
 - (NSPredicate *)omitPredicate

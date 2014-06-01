@@ -9,6 +9,7 @@
 #import "HMShipViewController.h"
 
 #import "HMAppDelegate.h"
+#import "HMUserDefaults.h"
 #import "HMServerDataStore.h"
 
 
@@ -36,14 +37,7 @@ typedef NS_ENUM(NSInteger, ViewType) {
 	
 	
 	[self.shipController fetchWithRequest:nil merge:YES error:NULL];
-	
-	NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-	id data = [ud objectForKey:@"shipviewsortdescriptor"];
-	if(data) {
-		id sortDescriptors = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-		[self.shipController setSortDescriptors:sortDescriptors];
-	}
-	
+	[self.shipController setSortDescriptors:HMStandardDefaults.shipviewSortDescriptors];
 	[self.shipController addObserver:self
 						  forKeyPath:NSSortDescriptorsBinding
 							 options:0
@@ -66,11 +60,7 @@ typedef NS_ENUM(NSInteger, ViewType) {
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
 	if([keyPath isEqualToString:NSSortDescriptorsBinding]) {
-		NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-		id sortDescriptors = [self.shipController sortDescriptors];
-		id data = [NSKeyedArchiver archivedDataWithRootObject:sortDescriptors];
-		[ud setObject:data forKey:@"shipviewsortdescriptor"];
-		
+		HMStandardDefaults.shipviewSortDescriptors = [self.shipController sortDescriptors];
 		return;
 	}
 	

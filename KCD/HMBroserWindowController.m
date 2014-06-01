@@ -8,6 +8,7 @@
 
 #import "HMBroserWindowController.h"
 
+#import "HMUserDefaults.h"
 #import "HMDocksViewController.h"
 #import "HMShipViewController.h"
 #import "HMPowerUpSupportViewController.h"
@@ -19,7 +20,6 @@
 
 #import <JavaScriptCore/JavaScriptCore.h>
 
-static NSString *prevReloadDateStringKey = @"previousReloadDateString";
 
 typedef NS_ENUM(NSInteger, ViewType) {
 	kScheduleType = 0,
@@ -145,9 +145,8 @@ typedef NS_ENUM(NSInteger, ViewType) {
 {
 	[self adjustFlash];
 	
-	NSString *prevReloadDateString = [[NSUserDefaults standardUserDefaults] stringForKey:prevReloadDateStringKey];
-	if(prevReloadDateString) {
-		NSDate *prevDate = [NSDate dateWithString:prevReloadDateString];
+	NSDate *prevDate = HMStandardDefaults.prevReloadDate;
+	if(prevDate) {
 		NSDate *now = [NSDate dateWithTimeIntervalSinceNow:0];
 		if([now timeIntervalSinceDate:prevDate] < 1 * 60) {
 			NSDate *untilDate = [prevDate dateByAddingTimeInterval:1 * 60];
@@ -167,8 +166,7 @@ typedef NS_ENUM(NSInteger, ViewType) {
 	
 	[self.webView reload:sender];
 	
-	[[NSUserDefaults standardUserDefaults] setValue:[[NSDate dateWithTimeIntervalSinceNow:0] description]
-											 forKey:prevReloadDateStringKey];
+	HMStandardDefaults.prevReloadDate = [NSDate dateWithTimeIntervalSinceNow:0];
 }
 
 - (NSString *)flagShipName
