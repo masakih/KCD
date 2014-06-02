@@ -133,4 +133,45 @@ HMUserDefaults *HMStandardDefaults = nil;
 {
 	return [[NSUserDefaults standardUserDefaults] boolForKey:@"appendKanColleTag"];
 }
+
+- (void)setHideMaxKaryoku:(BOOL)hideMaxKaryoku
+{
+	[[NSUserDefaults standardUserDefaults] setBool:hideMaxKaryoku forKey:@"hideMaxKaryoku"];
+}
+- (BOOL)hideMaxKaryoku
+{
+	return [[NSUserDefaults standardUserDefaults] boolForKey:@"hideMaxKaryoku"];
+}
+- (void)setHideMaxLucky:(BOOL)hideMaxLucky
+{
+	[[NSUserDefaults standardUserDefaults] setBool:hideMaxLucky forKey:@"hideMaxLucky"];
+}
+- (BOOL)hideMaxLucky
+{
+	return [[NSUserDefaults standardUserDefaults] boolForKey:@"hideMaxLucky"];
+}
+- (void)setHideMaxRaisou:(BOOL)hideMaxRaisou
+{
+	[[NSUserDefaults standardUserDefaults] setBool:hideMaxRaisou forKey:@"hideMaxRaisou"];
+}
+- (BOOL)hideMaxRaisou
+{
+	return [[NSUserDefaults standardUserDefaults] boolForKey:@"hideMaxRaisou"];
+}
+- (void)setHideMaxSoukou:(BOOL)hideMaxSoukou
+{
+	[[NSUserDefaults standardUserDefaults] setBool:hideMaxSoukou forKey:@"hideMaxSoukou"];
+}
+- (BOOL)hideMaxSoukou
+{
+	return [[NSUserDefaults standardUserDefaults] boolForKey:@"hideMaxSoukou"];
+}
+- (void)setHideMaxTaiku:(BOOL)hideMaxTaiku
+{
+	[[NSUserDefaults standardUserDefaults] setBool:hideMaxTaiku forKey:@"hideMaxTaiku"];
+}
+- (BOOL)hideMaxTaiku
+{
+	return [[NSUserDefaults standardUserDefaults] boolForKey:@"hideMaxTaiku"];
+}
 @end
