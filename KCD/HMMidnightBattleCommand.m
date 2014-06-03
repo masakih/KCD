@@ -21,7 +21,10 @@
 
 + (BOOL)canExcuteAPI:(NSString *)api
 {
-	return [api isEqualToString:@"/kcsapi/api_req_battle_midnight/battle"];
+	if([api isEqualToString:@"/kcsapi/api_req_battle_midnight/battle"]) return YES;
+	if([api isEqualToString:@"/kcsapi/api_req_battle_midnight/sp_midnight"]) return YES;
+	
+	return NO;
 }
 
 - (id)init

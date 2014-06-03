@@ -11,42 +11,52 @@
 #import "HMTemporaryDataStore.h"
 #import "HMServerDataStore.h"
 
+@interface HMCalculateDamageCommand ()
+@property (nonatomic, strong) HMTemporaryDataStore *store;
+@end
+
 @implementation HMCalculateDamageCommand
+
+- (id)init
+{
+	self = [super init];
+	if(self) {
+		_store = [HMTemporaryDataStore oneTimeEditor];
+	}
+	return self;
+}
 
 - (void)resetBattle
 {
-	HMTemporaryDataStore *store = [HMTemporaryDataStore oneTimeEditor];
-	NSManagedObjectContext *moc = store.managedObjectContext;
+	NSManagedObjectContext *moc = self.store.managedObjectContext;
 	
-	NSArray *array = [store objectsWithEntityName:@"Battle"
+	NSArray *array = [self.store objectsWithEntityName:@"Battle"
 										predicate:nil
 											error:NULL];
 	for(id object in array) {
 		[moc deleteObject:object];
 	}
-	
-	[store saveAction:nil];
+		
+	[self.store saveAction:nil];
 }
 
 - (void)resetDamage
 {
-	HMTemporaryDataStore *store = [HMTemporaryDataStore oneTimeEditor];
-	NSManagedObjectContext *moc = store.managedObjectContext;
+	NSManagedObjectContext *moc = self.store.managedObjectContext;
 	
-	NSArray *array = [store objectsWithEntityName:@"Damage"
+	NSArray *array = [self.store objectsWithEntityName:@"Damage"
 							   predicate:nil
 								   error:NULL];
 	for(id object in array) {
 		[moc deleteObject:object];
 	}
-	
-	[store saveAction:nil];
+		
+	[self.store saveAction:nil];
 }
 
 - (void)startBattle
 {
-	HMTemporaryDataStore *store = [HMTemporaryDataStore oneTimeEditor];
-	NSManagedObjectContext *moc = store.managedObjectContext;
+	NSManagedObjectContext *moc = self.store.managedObjectContext;
 	
 	// Battleエンティティ作成
 	id battle = [NSEntityDescription insertNewObjectForEntityForName:@"Battle"
@@ -56,35 +66,50 @@
 	[battle setValue:@([[self.arguments valueForKey:@"api_maparea_id"] integerValue]) forKeyPath:@"mapArea"];
 	[battle setValue:@([[self.arguments valueForKey:@"api_mapinfo_no"] integerValue]) forKeyPath:@"mapInfo"];
 	
-	[store saveAction:nil];
+	[self.store saveAction:nil];
+}
+
+- (NSMutableArray *)damages
+{
+	NSManagedObjectContext *moc = self.store.managedObjectContext;
+	
+	//
+	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Damage"];
+	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
+	[request setSortDescriptors:@[sortDescriptor]];
+	NSArray *array = [moc executeFetchRequest:request error:NULL];
+	if(array.count != 6) {
+		// Battleエンティティ取得
+		NSArray *battles = [self.store objectsWithEntityName:@"Battle"
+												   predicate:nil
+													   error:NULL];
+		if(battles.count == 0) {
+			NSLog(@"Battle is invalid.");
+			return [NSMutableArray new];
+		}
+		id battle = battles[0];
+		
+		// Damage エンティティ作成6個
+		NSMutableArray *damages = [NSMutableArray new];
+		for(NSInteger i = 0; i < 6; i++) {
+			id damage = [NSEntityDescription insertNewObjectForEntityForName:@"Damage"
+													  inManagedObjectContext:moc];
+			[damage setValue:battle forKeyPath:@"battle"];
+			[damage setValue:@(i) forKeyPath:@"id"];
+			[damages addObject:damage];
+		}
+		array = damages;
+	}
+	
+	return [NSMutableArray arrayWithArray:array];
 }
 
 - (void)calculateBattle
 {
-	HMTemporaryDataStore *store = [HMTemporaryDataStore oneTimeEditor];
-	NSManagedObjectContext *moc = store.managedObjectContext;
-	
 	// 艦隊のチェック
 	
-	// Battleエンティティ取得
-	NSArray *battles = [store objectsWithEntityName:@"Battle"
-										  predicate:nil
-											  error:NULL];
-	if(battles.count == 0) {
-		NSLog(@"Battle is invalid.");
-		return;
-	}
-	id battle = battles[0];
-	
 	// Damage エンティティ作成6個
-	NSMutableArray *damages = [NSMutableArray new];
-	for(NSInteger i = 0; i < 6; i++) {
-		id damage = [NSEntityDescription insertNewObjectForEntityForName:@"Damage"
-												  inManagedObjectContext:moc];
-		[damage setValue:battle forKeyPath:@"battle"];
-		[damage setValue:@(i) forKeyPath:@"id"];
-		[damages addObject:damage];
-	}
+	NSMutableArray *damages = [self damages];
 	
 	// koukuu
 	do {
@@ -184,25 +209,13 @@
 		}
 	} while(NO);
 	
-	[store saveAction:nil];
+	[self.store saveAction:nil];
 }
 
 - (void)calculateMidnightBattle
 {
-	HMTemporaryDataStore *store = [HMTemporaryDataStore oneTimeEditor];
-	NSManagedObjectContext *moc = store.managedObjectContext;
-	
 	// Damage 取得
-	NSArray *damages = nil;
-	
-	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Damage"];
-	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
-	[request setSortDescriptors:@[sortDescriptor]];
-	damages = [moc executeFetchRequest:request error:NULL];
-	if(damages.count != 6) {
-		NSLog(@"Damage is invalid.");
-		return;
-	}
+	NSArray *damages = [self damages];
 	
 	// hougeki
 	{
@@ -234,7 +247,7 @@
 		}
 	}
 	
-	[store saveAction:nil];
+	[self.store saveAction:nil];
 }
 
 - (NSArray *)deckWithNumber:(NSNumber *)number
@@ -243,8 +256,7 @@
 }
 - (void)applyDamage
 {
-	HMTemporaryDataStore *store = [HMTemporaryDataStore oneTimeEditor];
-	NSManagedObjectContext *moc = store.managedObjectContext;
+	NSManagedObjectContext *moc = self.store.managedObjectContext;
 	
 	// Damage 取得
 	NSArray *damages = nil;
@@ -254,11 +266,11 @@
 	[request setSortDescriptors:@[sortDescriptor]];
 	damages = [moc executeFetchRequest:request error:NULL];
 	if(damages.count != 6) {
-		NSLog(@"Damage is invalid.");
+		NSLog(@"Damage is invalid. count %lxd", damages.count);
 		return;
 	}
 	
-	NSArray *array = [store objectsWithEntityName:@"Battle"
+	NSArray *array = [self.store objectsWithEntityName:@"Battle"
 										predicate:nil
 											error:NULL];
 	if(array.count == 0) {
@@ -317,7 +329,8 @@
 		[self calculateBattle];
 		return;
 	}
-	if([self.api isEqualToString:@"/kcsapi/api_req_battle_midnight/battle"]) {
+	if([self.api isEqualToString:@"/kcsapi/api_req_battle_midnight/battle"]
+	   || [self.api isEqualToString:@"/kcsapi/api_req_battle_midnight/sp_midnight"]) {
 		[self calculateMidnightBattle];
 		return;
 	}
