@@ -135,8 +135,10 @@
 	} while(NO);
 	
 	// hougeki1
-	{
+	do {
 		id targetShips = [self.json valueForKeyPath:@"api_data.api_hougeki1.api_df_list"];
+		if(!targetShips || [targetShips isKindOfClass:[NSNull class]]) break;
+		
 		id hougeki1Damages = [self.json valueForKeyPath:@"api_data.api_hougeki1.api_damage"];
 		NSInteger i = 0;
 		for(NSArray *array in targetShips) {
@@ -162,7 +164,7 @@
 			}
 			i++;
 		}
-	}
+	} while(NO);
 	
 	// hougeki2
 	do {
@@ -218,8 +220,10 @@
 	NSArray *damages = [self damages];
 	
 	// hougeki
-	{
+	do {
 		id targetShips = [self.json valueForKeyPath:@"api_data.api_hougeki.api_df_list"];
+		if(!targetShips || [targetShips isKindOfClass:[NSNull class]]) break;
+		
 		id hougeki1Damages = [self.json valueForKeyPath:@"api_data.api_hougeki.api_damage"];
 		NSInteger i = 0;
 		for(NSArray *array in targetShips) {
@@ -245,7 +249,7 @@
 			}
 			i++;
 		}
-	}
+	} while(NO);
 	
 	[self.store saveAction:nil];
 }
