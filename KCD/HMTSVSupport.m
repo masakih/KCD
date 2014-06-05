@@ -16,18 +16,31 @@
 #define PATH_KEY2(key1, key2) [NSString stringWithFormat:@"%@.%@", (key1), (key2)]
 #define PATH_KEY3(key1, key2, key3) [NSString stringWithFormat:@"%@.%@.%@", (key1), (key2), (key3)]
 
+@interface HMTSVSupport ()
+@property HMLocalDataStore *store;
+@end
 @implementation HMTSVSupport
+
+- (NSManagedObjectContext *)managedObjectContext
+{
+	if(self.store) {
+		return self.store.managedObjectContext;
+	}
+	
+	self.store = [HMLocalDataStore oneTimeEditor];
+	
+	return self.store.managedObjectContext;
+}
 
 #pragma mark## Save to Text file ##
 - (NSArray *)allObjectOfEntityName:(NSString *)entityName sortDescriptors:(NSArray *)sortDescriptors
 {
-	NSManagedObjectContext *moc = [[HMLocalDataStore oneTimeEditor] managedObjectContext];
 	NSError *error = nil;
 	
 	NSFetchRequest *fetch = [NSFetchRequest fetchRequestWithEntityName:entityName];
 	[fetch setSortDescriptors:sortDescriptors];
-	NSArray *fetchedArray = [moc executeFetchRequest:fetch
-											   error:&error];
+	NSArray *fetchedArray = [self.managedObjectContext executeFetchRequest:fetch
+																	 error:&error];
 	if(error) {
 		NSLog(@"%@", [error localizedDescription]);
 		return nil;
@@ -75,18 +88,11 @@
 	if([allObject count] == 0) return nil;
 	
 	NSMutableArray *array = [NSMutableArray array];
-	for(id obj in allObject) {
+	for(HMKaihatuHistory *obj in allObject) {
 		NSString *element = [[NSString alloc] initWithFormat:@"%@\t%@\t%@\t%@\t%@\t%@\t%@\t%@\t%@\t%@",
-							 [obj valueForKey:@"date"],
-							 [obj valueForKey:@"fuel"],
-							 [obj valueForKey:@"bull"],
-							 [obj valueForKey:@"steel"],
-							 [obj valueForKey:@"bauxite"],
-							 [obj valueForKey:@"kaihatusizai"],
-							 [obj valueForKey:@"name"],
-							 [obj valueForKey:@"flagShipName"],
-							 [obj valueForKey:@"flagShipLv"],
-							 [obj valueForKey:@"commanderLv"]
+							 obj.date, obj.fuel, obj.bull,
+							 obj.steel, obj.bauxite, obj.kaihatusizai,
+							 obj.name, obj.flagShipName, obj.flagShipLv, obj.commanderLv
 							 ];
 		[array addObject:element];
 	}
@@ -101,19 +107,12 @@
 	if([allObject count] == 0) return nil;
 	
 	NSMutableArray *array = [NSMutableArray array];
-	for(id obj in allObject) {
+	for(HMKenzoHistory *obj in allObject) {
 		NSString *element = [[NSString alloc] initWithFormat:@"%@\t%@\t%@\t%@\t%@\t%@\t%@\t%@\t%@\t%@\t%@",
-							 [obj valueForKey:@"date"],
-							 [obj valueForKey:@"fuel"],
-							 [obj valueForKey:@"bull"],
-							 [obj valueForKey:@"steel"],
-							 [obj valueForKey:@"bauxite"],
-							 [obj valueForKey:@"kaihatusizai"],
-							 [obj valueForKey:@"name"],
-							 [obj valueForKey:@"sTypeId"],
-							 [obj valueForKey:@"flagShipName"],
-							 [obj valueForKey:@"flagShipLv"],
-							 [obj valueForKey:@"commanderLv"]
+							 obj.date, obj.fuel, obj.bull,
+							 obj.steel, obj.bauxite, obj.kaihatusizai,
+							 obj.name, obj.sTypeId, obj.flagShipName,
+							 obj.flagShipLv, obj.commanderLv
 							 ];
 		[array addObject:element];
 	}
@@ -128,18 +127,11 @@
 	if([allObject count] == 0) return nil;
 	
 	NSMutableArray *array = [NSMutableArray array];
-	for(id obj in allObject) {
+	for(HMKenzoMark *obj in allObject) {
 		NSString *element = [[NSString alloc] initWithFormat:@"%@\t%@\t%@\t%@\t%@\t%@\t%@\t%@\t%@\t%@",
-							 [obj valueForKey:@"created_ship_id"],
-							 [obj valueForKey:@"fuel"],
-							 [obj valueForKey:@"bull"],
-							 [obj valueForKey:@"steel"],
-							 [obj valueForKey:@"bauxite"],
-							 [obj valueForKey:@"kaihatusizai"],
-							 [obj valueForKey:@"kDockId"],
-							 [obj valueForKey:@"flagShipName"],
-							 [obj valueForKey:@"flagShipLv"],
-							 [obj valueForKey:@"commanderLv"]
+							 obj.created_ship_id, obj.fuel, obj.bull, obj.steel,
+							 obj.bauxite, obj.kaihatusizai, obj.kDockId,
+							 obj.flagShipName, obj.flagShipLv, obj.commanderLv
 							 ];
 		[array addObject:element];
 	}
@@ -184,16 +176,15 @@
 
 - (BOOL)isEmptyEntityName:(NSString *)name
 {
-	NSManagedObjectContext *moc = [[HMLocalDataStore oneTimeEditor] managedObjectContext];
 	NSError *error = nil;
 	NSFetchRequest *fetch;
 	NSInteger num;
 	
 	fetch = [[NSFetchRequest alloc] init];
 	[fetch setEntity:[NSEntityDescription entityForName:name
-								 inManagedObjectContext:moc]];
-	num = [moc countForFetchRequest:fetch
-							  error:&error];
+								 inManagedObjectContext:self.managedObjectContext]];
+	num = [self.managedObjectContext countForFetchRequest:fetch
+													error:&error];
 	fetch = nil;
 	if(error) {
 		NSLog(@"%@", [error localizedDescription]);
@@ -215,6 +206,8 @@
 	for(attribute in contents) {
 		NSArray *attr = [self arrayFromTabSeparatedString:attribute];
 		if(attr.count == 0) continue;
+		if([attr[6] isKindOfClass:[NSNull class]]) continue;
+		if([attr[6] isEqual:@"(null)"]) continue;
 		
 		NSArray *array = [lds objectsWithEntityName:entityName
 											  error:NULL
@@ -246,6 +239,8 @@
 	for(attribute in contents) {
 		NSArray *attr = [self arrayFromTabSeparatedString:attribute];
 		if(attr.count == 0) continue;
+		if([attr[6] isKindOfClass:[NSNull class]]) continue;
+		if([attr[6] isEqual:@"(null)"]) continue;
 				
 		NSArray *array = [lds objectsWithEntityName:entityName
 											  error:NULL
