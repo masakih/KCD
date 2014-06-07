@@ -127,7 +127,7 @@
 		id openigDamage = [self.json valueForKeyPath:@"api_data.api_opening_atack.api_fdam"];
 		if(!openigDamage || [openigDamage isEqual:[NSNull null]]) break;
 		for(NSInteger i = 1; i <= 6; i++) {
-			NSInteger damage = [[openigDamage objectAtIndex:1] integerValue];
+			NSInteger damage = [[openigDamage objectAtIndex:i] integerValue];
 			id damageObject = [damages objectAtIndex:i - 1];
 			damage += [[damageObject valueForKey:@"damage"] integerValue];
 			[damageObject setValue:@(damage) forKeyPath:@"damage"];
