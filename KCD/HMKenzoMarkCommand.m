@@ -70,5 +70,7 @@
 	newObejct.flagShipName = flafShipName;
 	newObejct.commanderLv = commanderLv;
 	newObejct.date = [NSDate dateWithTimeIntervalSinceNow:0];
+	
+	[lds saveAction:nil];
 }
 @end

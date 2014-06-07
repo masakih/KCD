@@ -77,6 +77,8 @@
 	newObejct.flagShipName = flagShipName;
 	newObejct.commanderLv = [basic valueForKey:@"level"];
 	newObejct.date = [NSDate dateWithTimeIntervalSinceNow:0];
+	
+	[lds saveAction:nil];
 }
 
 @end
