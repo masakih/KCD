@@ -386,8 +386,8 @@
         <element name="MasterUseItem" positionX="0" positionY="0" width="128" height="150"/>
         <element name="Material" positionX="0" positionY="0" width="128" height="150"/>
         <element name="NyukyoDock" positionX="0" positionY="0" width="128" height="195"/>
-        <element name="Ship" positionX="0" positionY="0" width="128" height="765"/>
-        <element name="SlotItem" positionX="0" positionY="0" width="128" height="240"/>
+        <element name="Ship" positionX="0" positionY="0" width="128" height="763"/>
+        <element name="SlotItem" positionX="0" positionY="0" width="128" height="238"/>
         <element name="KCDEntity" positionX="9" positionY="153" width="128" height="43"/>
     </elements>
 </model>
