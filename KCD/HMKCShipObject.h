@@ -2,20 +2,13 @@
 //  HMKCShipObject.h
 //  KCD
 //
-//  Created by Hori,Masaki on 2014/02/24.
+//  Created by Hori,Masaki on 2014/06/08.
 //  Copyright (c) 2014年 Hori,Masaki. All rights reserved.
 //
 
 #import "HMKCManagedObject.h"
 
 @interface HMKCShipObject : HMKCManagedObject
-
-@property (readonly) NSColor *statusColor;
-@property (readonly) NSColor *conditionColor;
-
-@property (readonly) NSString *name;
-@property (readonly) NSString *shortTypeName;
-
 
 @property (nonatomic, retain) NSNumber * bull;
 @property (nonatomic, retain) NSNumber * cond;
@@ -63,6 +56,20 @@
 @property (nonatomic, retain) NSNumber * taisen_1;
 @property (nonatomic, retain) NSNumber * use_bull;
 @property (nonatomic, retain) NSNumber * use_fuel;
+@property (nonatomic, retain) NSOrderedSet *equippedItem;
 @property (nonatomic, retain) HMKCManagedObject *master_ship;
+@end
 
+@interface HMKCShipObject (CoreDataGeneratedAccessors)
+
+- (void)insertObject:(HMKCManagedObject *)value inEquippedItemAtIndex:(NSUInteger)idx;
+- (void)removeObjectFromEquippedItemAtIndex:(NSUInteger)idx;
+- (void)insertEquippedItem:(NSArray *)value atIndexes:(NSIndexSet *)indexes;
+- (void)removeEquippedItemAtIndexes:(NSIndexSet *)indexes;
+- (void)replaceObjectInEquippedItemAtIndex:(NSUInteger)idx withObject:(HMKCManagedObject *)value;
+- (void)replaceEquippedItemAtIndexes:(NSIndexSet *)indexes withEquippedItem:(NSArray *)values;
+- (void)addEquippedItemObject:(HMKCManagedObject *)value;
+- (void)removeEquippedItemObject:(HMKCManagedObject *)value;
+- (void)addEquippedItem:(NSOrderedSet *)values;
+- (void)removeEquippedItem:(NSOrderedSet *)values;
 @end
