@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13D65" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Basic" representedClassName="HMKCBasic" parentEntity="KCDEntity" syncable="YES">
+    <entity name="Basic" representedClassName="HMKCManagedObject" parentEntity="KCDEntity" syncable="YES">
         <attribute name="active_flag" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="comment_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -373,6 +373,7 @@
     <elements>
         <element name="Basic" positionX="0" positionY="0" width="128" height="613"/>
         <element name="Deck" positionX="0" positionY="0" width="128" height="268"/>
+        <element name="KCDEntity" positionX="9" positionY="153" width="128" height="45"/>
         <element name="KenzoDock" positionX="0" positionY="0" width="128" height="210"/>
         <element name="MasterFurniture" positionX="0" positionY="0" width="128" height="163"/>
         <element name="MasterMapArea" positionX="0" positionY="0" width="128" height="90"/>
@@ -388,6 +389,5 @@
         <element name="NyukyoDock" positionX="0" positionY="0" width="128" height="195"/>
         <element name="Ship" positionX="0" positionY="0" width="128" height="763"/>
         <element name="SlotItem" positionX="0" positionY="0" width="128" height="238"/>
-        <element name="KCDEntity" positionX="9" positionY="153" width="128" height="43"/>
     </elements>
 </model>
