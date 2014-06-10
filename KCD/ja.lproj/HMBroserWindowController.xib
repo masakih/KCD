@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1090" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
@@ -8,10 +8,12 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="HMBroserWindowController">
             <connections>
+                <outlet property="basicController" destination="1lk-ii-37p" id="EBc-Kc-cHP"/>
                 <outlet property="deckContoller" destination="eqP-ex-UzI" id="8n5-Er-BIF"/>
                 <outlet property="deckPlaceholder" destination="tIf-gd-MhY" id="aXM-5K-Uwd"/>
                 <outlet property="docksPlaceholder" destination="jkX-gl-a14" id="dhr-oF-eq0"/>
                 <outlet property="placeholder" destination="raX-C4-fMW" id="T7y-R7-3qy"/>
+                <outlet property="shipController" destination="VIO-ns-NM0" id="drF-cE-z3k"/>
                 <outlet property="webView" destination="tgB-GD-Aq9" id="3AA-N6-bnp"/>
                 <outlet property="window" destination="1" id="3"/>
             </connections>
@@ -233,9 +235,9 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="iuy-QP-cwC">
-                                <rect key="frame" x="109" y="8" width="61" height="17"/>
+                                <rect key="frame" x="107" y="8" width="61" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="999/999" id="Ysd-ie-6KJ">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="999/999" id="Ysd-ie-6KJ" customClass="HMStrokeTextFieldCell">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -253,10 +255,11 @@
                                             <string key="NSNullPlaceholder">0</string>
                                         </dictionary>
                                     </binding>
+                                    <binding destination="-2" name="textColor" keyPath="shipNumberColor" id="cDW-lg-qpx"/>
                                 </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="IeS-oA-anB">
-                                <rect key="frame" x="18" y="8" width="95" height="17"/>
+                                <rect key="frame" x="16" y="8" width="95" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="艦娘入居状況：" id="9q8-dO-oGH">
                                     <font key="font" metaFont="system"/>
@@ -265,7 +268,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Kaq-lg-pME">
-                                <rect key="frame" x="247" y="8" width="61" height="17"/>
+                                <rect key="frame" x="268" y="8" width="61" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="999/999" id="kuE-T2-PrK">
                                     <font key="font" metaFont="system"/>
@@ -288,13 +291,34 @@
                                 </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="6Fd-uC-k3S">
-                                <rect key="frame" x="182" y="8" width="69" height="17"/>
+                                <rect key="frame" x="203" y="8" width="69" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="倉庫状況：" id="XAa-Go-U3j">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                            </textField>
+                            <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" id="CHt-wF-HCb">
+                                <rect key="frame" x="180" y="5" width="15" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="9" id="rt4-Af-iDD"/>
+                                <connections>
+                                    <binding destination="-2" name="value" keyPath="minimumColoredShipCount" id="jz3-0U-Lqi"/>
+                                </connections>
+                            </stepper>
+                            <textField focusRingType="none" verticalHuggingPriority="750" id="mYb-X1-79h">
+                                <rect key="frame" x="169" y="7" width="15" height="19"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" focusRingType="none" alignment="right" title="9" drawsBackground="YES" id="6jC-if-UYu">
+                                    <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="309" maximumFractionDigits="3" id="Z67-ZX-FCm"/>
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <binding destination="-2" name="value" keyPath="minimumColoredShipCount" id="QAn-eC-rf8"/>
+                                </connections>
                             </textField>
                         </subviews>
                     </customView>

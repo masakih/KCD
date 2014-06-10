@@ -31,4 +31,6 @@ extern HMUserDefaults *HMStandardDefaults;
 
 @property (nonatomic, weak) NSDate *prevReloadDate;
 
+@property NSInteger minimumColoredShipCount;
+
 @end

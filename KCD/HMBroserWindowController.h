@@ -29,6 +29,13 @@
 
 @property (nonatomic, weak) IBOutlet NSView *deckPlaceholder;
 
+@property (nonatomic, strong) IBOutlet NSArrayController *shipController;
+@property (nonatomic, strong) IBOutlet NSObjectController *basicController;
+@property (nonatomic, strong) NSNumber *maxChara;
+@property (nonatomic, strong) NSNumber *shipCount;
+@property (readonly) NSColor *shipNumberColor;
+@property NSInteger minimumColoredShipCount;
+
 
 - (IBAction)reloadContent:(id)sender;
 - (IBAction)selectView:(id)sender;

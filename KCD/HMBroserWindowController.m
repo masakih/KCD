@@ -48,6 +48,11 @@ typedef NS_ENUM(NSInteger, ViewType) {
 	return [NSSet setWithObject:@"flagShipID"];
 }
 
++ (NSSet *)keyPathsForValuesAffectingShipNumberColor
+{
+	return [NSSet setWithObjects:@"maxChara", @"shipCount", @"minimumColoredShipCount", nil];
+}
+
 - (id)init
 {
 	self = [super initWithWindowNibName:NSStringFromClass([self class])];
@@ -86,6 +91,9 @@ typedef NS_ENUM(NSInteger, ViewType) {
 	//	[self.webView setMainFrameURL:@"http://www.google.com/"];
 	
 	[self bind:@"flagShipID" toObject:self.deckContoller withKeyPath:@"selection.ship_0" options:nil];
+	
+	[self bind:@"maxChara" toObject:self.basicController withKeyPath:@"selection.max_chara" options:nil];
+	[self bind:@"shipCount" toObject:self.shipController withKeyPath:@"arrangedObjects.@count" options:nil];
 }
 
 
@@ -189,6 +197,25 @@ typedef NS_ENUM(NSInteger, ViewType) {
 	return flagShipName;
 }
 
+- (NSColor *)shipNumberColor
+{
+	NSInteger max = self.maxChara.integerValue;
+	NSInteger current = self.shipCount.integerValue;
+	
+	if(current > max - self.minimumColoredShipCount) {
+		return [NSColor orangeColor];
+	}
+	
+	return [NSColor controlTextColor];
+}
+- (void)setMinimumColoredShipCount:(NSInteger)minimumColoredShipCount
+{
+	HMStandardDefaults.minimumColoredShipCount = minimumColoredShipCount;
+}
+- (NSInteger)minimumColoredShipCount
+{
+	return HMStandardDefaults.minimumColoredShipCount;
+}
 
 - (IBAction)selectView:(id)sender
 {
