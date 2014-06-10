@@ -10,6 +10,9 @@
 
 @interface HMMemberShipCommand ()
 @property (strong) NSMutableArray *ids;
+
+@property (nonatomic, strong) NSArray *masterShips;
+@property (nonatomic, strong) NSArray *slotItems;
 @end
 
 @implementation HMMemberShipCommand
@@ -68,54 +71,109 @@
 {
 	id currentValue = [object valueForKeyPath:@"master_ship.name"];
 	if(currentValue && ![currentValue isEqual:[NSNull null]]) {
-//		NSNumber *masterShipId = [object valueForKeyPath:@"master_ship.id"];
 		NSNumber *shipId = [object valueForKey:@"ship_id"];
 		if([value isEqual:shipId]) return;
 	}
 	
-	NSManagedObjectContext *managedObjectContext = [object managedObjectContext];
+	if(!self.masterShips) {
+		NSManagedObjectContext *managedObjectContext = [object managedObjectContext];
+		NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"MasterShip"];
+		NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
+		[req setSortDescriptors:@[sortDescriptor]];
+		NSError *error = nil;
+		self.masterShips = [managedObjectContext executeFetchRequest:req
+														error:&error];
+		if(error) {
+			[self log:@"Fetch error: %@", error];
+			return;
+		}
+		if(!self.masterShips || [self.masterShips count] == 0) {
+			[self log:@"Could not find ship of id (%@)", value];
+			return;
+		}
+	}
 	
-	NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"MasterShip"];
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id = %@", value];
-	[req setPredicate:predicate];
-	NSError *error = nil;
-	id result = [managedObjectContext executeFetchRequest:req
-													error:&error];
-	if(error) {
-		[self log:@"Fetch error: %@", error];
+	NSRange range = NSMakeRange(0, self.masterShips.count);
+	NSUInteger index = [self.masterShips indexOfObject:value
+										 inSortedRange:range
+											   options:NSBinarySearchingFirstEqual
+									   usingComparator:^(id obj1, id obj2) {
+										   id value1, value2;
+										   if([obj1 isKindOfClass:[NSNumber class]]) {
+											   value1 = obj1;
+										   } else {
+											   value1 = [obj1 valueForKey:@"id"];
+										   }
+										   if([obj2 isKindOfClass:[NSNumber class]]) {
+											   value2 = obj2;
+										   } else {
+											   value2 = [obj2 valueForKey:@"id"];
+										   }
+										   return [value1 compare:value2];
+									   }];
+	if(index == NSNotFound) {
+		[self log:@"Could not find ship of id (%@)", value];
 		return;
 	}
-	if(!result || [result count] == 0) {
+	id item = [self.masterShips objectAtIndex:index];
+	if(![value isEqual:[item valueForKey:@"id"]]) {
 		[self log:@"Could not find ship of id (%@)", value];
 		return;
 	}
 	
-	[self setValueIfNeeded:result[0] toObject:object forKey:@"master_ship"];
+	[self setValueIfNeeded:item toObject:object forKey:@"master_ship"];
 	[self setValueIfNeeded:value toObject:object forKey:@"ship_id"];
 }
 
 - (void)addSlotItem:(id)array toObject:(NSManagedObject *)object
 {
-	NSManagedObjectContext *managedObjectContext = [object managedObjectContext];
-	NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"SlotItem"];
-	
-	NSInteger i = 0;
-	NSMutableOrderedSet *newOrderedSet = [NSMutableOrderedSet new];
-	for(id value in array) {
-		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id = %@", value];
-		[req setPredicate:predicate];
+	if(!self.slotItems) {
 		NSError *error = nil;
-		id result = [managedObjectContext executeFetchRequest:req
-														error:&error];
+		NSManagedObjectContext *managedObjectContext = [object managedObjectContext];
+		NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"SlotItem"];
+		NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
+		[req setSortDescriptors:@[sortDescriptor]];
+		self.slotItems = [managedObjectContext executeFetchRequest:req
+															 error:&error];
 		if(error) {
 			[self log:@"Fetch error: %@", error];
+			return;
+		}
+		if([self.slotItems count] == 0) {
+			return;
+		}
+	}
+
+	NSInteger i = 0;
+	NSMutableOrderedSet *newOrderedSet = [NSMutableOrderedSet new];
+	NSRange range = NSMakeRange(0, self.slotItems.count);
+	for(id value in array) {
+		NSUInteger index = [self.slotItems indexOfObject:value
+										   inSortedRange:range
+												 options:NSBinarySearchingFirstEqual
+										 usingComparator:^(id obj1, id obj2) {
+											 id value1, value2;
+											 if([obj1 isKindOfClass:[NSNumber class]]) {
+												 value1 = obj1;
+											 } else {
+												 value1 = [obj1 valueForKey:@"id"];
+											 }
+											 if([obj2 isKindOfClass:[NSNumber class]]) {
+												 value2 = obj2;
+											 } else {
+												 value2 = [obj2 valueForKey:@"id"];
+											 }
+											 return [value1 compare:value2];
+										 }];
+		if(index == NSNotFound) {
 			continue;
 		}
-		if([result count] == 0) {
+		id item = [self.slotItems objectAtIndex:index];
+		if(![value isEqual:[item valueForKey:@"id"]]) {
 			continue;
 		}
 		
-		[newOrderedSet insertObject:result[0] atIndex:i++];
+		[newOrderedSet insertObject:item atIndex:i++];
 	}
 	
 	NSMutableOrderedSet *orderedSet = [object mutableOrderedSetValueForKey:@"equippedItem"];
