@@ -10,6 +10,8 @@
 
 @interface HMMemberSlotItemCommand ()
 @property (strong) NSMutableArray *ids;
+
+@property (nonatomic, strong) NSArray *masterSlotItems;
 @end
 
 @implementation HMMemberSlotItemCommand
@@ -24,20 +26,6 @@
 + (BOOL)canExcuteAPI:(NSString *)api
 {
 	return [api isEqualToString:@"/kcsapi/api_get_member/slot_item"];
-}
-
-- (NSArray *)ignoreKeys
-{
-	static NSArray *ignoreKeys = nil;
-	if(ignoreKeys) return ignoreKeys;
-	
-	ignoreKeys = @[@"api_tyku", @"api_raig", @"api_houk", @"api_luck",
-				   @"api_souk", @"api_baku", @"api_raik", @"api_leng",
-				   @"api_rare", @"api_soku", @"api_taik", @"api_type", @"api_tais",
-				   @"api_bakk", @"api_info", @"api_houm", @"api_raim", @"api_broken",
-				   @"api_saku", @"api_member_id", @"api_houg", @"api_atap",
-				   @"api_name"];
-	return ignoreKeys;
 }
 
 - (id)init
@@ -57,26 +45,52 @@
 - (void)setMasterSlotItem:(id)value toObject:(NSManagedObject *)object
 {
 	id currentValue = [object valueForKeyPath:@"master_slotItem.name"];
-	if(currentValue && ![currentValue isEqual:[NSNull null]]) return;
-	
-	NSManagedObjectContext *managedObjectContext = [object managedObjectContext];
-	
-	NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"MasterSlotItem"];
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id = %@", value];
-	[req setPredicate:predicate];
-	NSError *error = nil;
-	id result = [managedObjectContext executeFetchRequest:req
-													error:&error];
-	if(error) {
-		[self log:@"Fetch error: %@", error];
+	if(currentValue && ![currentValue isEqual:[NSNull null]]) {
 		return;
 	}
-	if(!result || [result count] == 0) {
+	
+	if(!self.masterSlotItems) {
+		NSManagedObjectContext *managedObjectContext = [object managedObjectContext];
+		NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"MasterSlotItem"];
+		NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
+		[req setSortDescriptors:@[sortDescriptor]];
+		NSError *error = nil;
+		self.masterSlotItems = [managedObjectContext executeFetchRequest:req
+																   error:&error];
+		if(error) {
+			[self log:@"Fetch error: %@", error];
+			return;
+		}
+		if(!self.masterSlotItems || [self.masterSlotItems count] == 0) {
+			[self log:@"MasterSlotItem is Invalidate"];
+			return;
+		}
+	}
+	
+	NSRange range = NSMakeRange(0, self.masterSlotItems.count);
+	NSUInteger index = [self.masterSlotItems indexOfObject:value
+											 inSortedRange:range
+												   options:NSBinarySearchingFirstEqual
+										   usingComparator:^(id obj1, id obj2) {
+											   id value1, value2;
+											   if([obj1 isKindOfClass:[NSNumber class]]) {
+												   value1 = obj1;
+											   } else {
+												   value1 = [obj1 valueForKey:@"id"];
+											   }
+											   if([obj2 isKindOfClass:[NSNumber class]]) {
+												   value2 = obj2;
+											   } else {
+												   value2 = [obj2 valueForKey:@"id"];
+											   }
+											   return [value1 compare:value2];
+										   }];
+	if(index == NSNotFound) {
 		[self log:@"Could not find slotItem of id (%@)", value];
 		return;
 	}
-	
-	[self setValueIfNeeded:result[0] toObject:object forKey:@"master_slotItem"];
+	id item = [self.masterSlotItems objectAtIndex:index];
+	[self setValueIfNeeded:item toObject:object forKey:@"master_slotItem"];
 }
 - (BOOL)handleExtraValue:(id)value forKey:(NSString *)key toObject:(NSManagedObject *)object
 {
@@ -94,8 +108,7 @@
 }
 
 - (void)finishOperating:(NSManagedObjectContext *)moc
-{
-	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"SlotItem"];
+{	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"SlotItem"];
 	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"NOT id IN %@", self.ids];
 	[request setPredicate:predicate];
 	

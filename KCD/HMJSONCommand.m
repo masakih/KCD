@@ -186,20 +186,42 @@ NSString *keyByDeletingPrefix(NSString *key)
 	HMServerDataStore *serverDataStore = [HMServerDataStore oneTimeEditor];
 	NSManagedObjectContext *managedObjectContext = [serverDataStore managedObjectContext];
 	
+	NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:entityName];
+	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
+	[req setSortDescriptors:@[sortDescriptor]];
+	NSError *error = nil;
+	NSArray *objects = [managedObjectContext executeFetchRequest:req
+														   error:&error];
+	if(error) {
+		[self log:@"Fetch error: %@", error];
+		return;
+	}
+	
+	NSRange range = NSMakeRange(0, objects.count);
 	for(NSDictionary *type in api_data) {
-		NSString *stypeID = type[@"api_id"];
-		NSError *error = nil;
-		id result = [serverDataStore objectsWithEntityName:entityName error:&error predicateFormat:@"id = %@", stypeID];
-		if(error) {
-			[self log:@"Fetch error: %@", error];
-			continue;
-		}
-		NSManagedObject *object = nil;
-		if(!result || [result count] == 0) {
+		id object = nil;
+		NSUInteger index = [objects indexOfObject:type[@"api_id"]
+									inSortedRange:range
+										  options:NSBinarySearchingFirstEqual
+								  usingComparator:^(id obj1, id obj2) {
+									  id value1, value2;
+									  if([obj1 isKindOfClass:[NSNumber class]]) {
+										  value1 = obj1;
+									  } else {
+										  value1 = [obj1 valueForKey:@"id"];
+									  }
+									  if([obj2 isKindOfClass:[NSNumber class]]) {
+										  value2 = obj2;
+									  } else {
+										  value2 = [obj2 valueForKey:@"id"];
+									  }
+									  return [value1 compare:value2];
+								  }];
+		if(index == NSNotFound) {
 			object = [NSEntityDescription insertNewObjectForEntityForName:entityName
 												   inManagedObjectContext:managedObjectContext];
 		} else {
-			object = result[0];
+			object = objects[index];
 		}
 		
 		for(NSString *key in type) {

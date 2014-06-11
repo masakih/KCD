@@ -88,7 +88,7 @@
 			return;
 		}
 		if(!self.masterShips || [self.masterShips count] == 0) {
-			[self log:@"Could not find ship of id (%@)", value];
+			[self log:@"MasterShip is invalidate"];
 			return;
 		}
 	}
@@ -116,10 +116,6 @@
 		return;
 	}
 	id item = [self.masterShips objectAtIndex:index];
-	if(![value isEqual:[item valueForKey:@"id"]]) {
-		[self log:@"Could not find ship of id (%@)", value];
-		return;
-	}
 	
 	[self setValueIfNeeded:item toObject:object forKey:@"master_ship"];
 	[self setValueIfNeeded:value toObject:object forKey:@"ship_id"];
@@ -169,9 +165,6 @@
 			continue;
 		}
 		id item = [self.slotItems objectAtIndex:index];
-		if(![value isEqual:[item valueForKey:@"id"]]) {
-			continue;
-		}
 		
 		[newOrderedSet insertObject:item atIndex:i++];
 	}
