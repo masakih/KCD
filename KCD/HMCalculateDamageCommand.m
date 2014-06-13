@@ -104,6 +104,49 @@
 	return [NSMutableArray arrayWithArray:array];
 }
 
+- (void)calculateHougeki:(NSMutableArray *)damages targetsKeyPath:(NSString *)targetKeyPath damageKeyPath:(NSString *)damageKeyPath
+{
+	id targetShips = [self.json valueForKeyPath:targetKeyPath];
+	if(!targetShips || [targetShips isKindOfClass:[NSNull class]]) return;
+	
+	id hougeki1Damages = [self.json valueForKeyPath:damageKeyPath];
+	NSInteger i = 0;
+	for(NSArray *array in targetShips) {
+		if(![array isKindOfClass:[NSArray class]]) {
+			i++;
+			continue;
+		}
+		
+		NSInteger j = 0;
+		for(id ship in array) {
+			NSInteger target = [ship integerValue];
+			if(target < 0 || target > 6) {
+				j++;
+				continue;
+			}
+			
+			id damageObject = [damages objectAtIndex:target - 1];
+			NSInteger damage = [[[hougeki1Damages objectAtIndex:i] objectAtIndex:j] integerValue];
+			damage += [[damageObject valueForKey:@"damage"] integerValue];
+			[damageObject setValue:@(damage) forKeyPath:@"damage"];
+			
+			j++;
+		}
+		i++;
+	}
+}
+
+- (void)calculateFDam:(NSMutableArray *)damages fdamKeyPath:(NSString *)fdamKeyPath
+{
+	id koukuDamage = [self.json valueForKeyPath:fdamKeyPath];
+	if(!koukuDamage || [koukuDamage isEqual:[NSNull null]]) return;
+	for(NSInteger i = 1; i <= 6; i++) {
+		NSInteger damage = [[koukuDamage objectAtIndex:i] integerValue];
+		id damageObject = [damages objectAtIndex:i - 1];
+		[damageObject setValue:@(damage) forKeyPath:@"damage"];
+	}
+}
+
 - (void)calculateBattle
 {
 	// 艦隊のチェック
@@ -112,104 +155,26 @@
 	NSMutableArray *damages = [self damages];
 	
 	// koukuu
-	do {
-		id koukuDamage = [self.json valueForKeyPath:@"api_data.api_kouku.api_stage3.api_fdam"];
-		if(!koukuDamage || [koukuDamage isEqual:[NSNull null]]) break;
-		for(NSInteger i = 1; i <= 6; i++) {
-			NSInteger damage = [[koukuDamage objectAtIndex:i] integerValue];
-			id damageObject = [damages objectAtIndex:i - 1];
-			[damageObject setValue:@(damage) forKeyPath:@"damage"];
-		}
-	} while(NO);
+	[self calculateFDam:damages
+			fdamKeyPath:@"api_data.api_kouku.api_stage3.api_fdam"];
 	
 	// opening attack
-	do {
-		id openigDamage = [self.json valueForKeyPath:@"api_data.api_opening_atack.api_fdam"];
-		if(!openigDamage || [openigDamage isEqual:[NSNull null]]) break;
-		for(NSInteger i = 1; i <= 6; i++) {
-			NSInteger damage = [[openigDamage objectAtIndex:i] integerValue];
-			id damageObject = [damages objectAtIndex:i - 1];
-			damage += [[damageObject valueForKey:@"damage"] integerValue];
-			[damageObject setValue:@(damage) forKeyPath:@"damage"];
-		}
-	} while(NO);
+	[self calculateFDam:damages
+			fdamKeyPath:@"api_data.api_opening_atack.api_fdam"];
 	
 	// hougeki1
-	do {
-		id targetShips = [self.json valueForKeyPath:@"api_data.api_hougeki1.api_df_list"];
-		if(!targetShips || [targetShips isKindOfClass:[NSNull class]]) break;
-		
-		id hougeki1Damages = [self.json valueForKeyPath:@"api_data.api_hougeki1.api_damage"];
-		NSInteger i = 0;
-		for(NSArray *array in targetShips) {
-			if(![array isKindOfClass:[NSArray class]]) {
-				i++;
-				continue;
-			}
-			
-			NSInteger j = 0;
-			for(id ship in array) {
-				NSInteger target = [ship integerValue];
-				if(target < 0 || target > 6) {
-					j++;
-					continue;
-				}
-				
-				id damageObject = [damages objectAtIndex:target - 1];
-				NSInteger damage = [[[hougeki1Damages objectAtIndex:i] objectAtIndex:j] integerValue];
-				damage += [[damageObject valueForKey:@"damage"] integerValue];
-				[damageObject setValue:@(damage) forKeyPath:@"damage"];
-				
-				j++;
-			}
-			i++;
-		}
-	} while(NO);
+	[self calculateHougeki:damages
+			targetsKeyPath:@"api_data.api_hougeki1.api_df_list"
+			 damageKeyPath:@"api_data.api_hougeki1.api_damage"];
 	
 	// hougeki2
-	do {
-		id hasHougeki2 = [self.json valueForKeyPath:@"api_data.api_hougeki2"];
-		if(!hasHougeki2 || [hasHougeki2 isEqual:[NSNull null]]) break;
-		
-		id targetShips = [self.json valueForKeyPath:@"api_data.api_hougeki2.api_df_list"];
-		id hougeki1Damages = [self.json valueForKeyPath:@"api_data.api_hougeki2.api_damage"];
-		NSInteger i = 0;
-		for(NSArray *array in targetShips) {
-			if(![array isKindOfClass:[NSArray class]]) {
-				i++;
-				continue;
-			}
-			
-			NSInteger j = 0;
-			for(id ship in array) {
-				NSInteger target = [ship integerValue];
-				if(target < 0 || target > 6) {
-					j++;
-					continue;
-				}
-				
-				id damageObject = [damages objectAtIndex:target - 1];
-				NSInteger damage = [[[hougeki1Damages objectAtIndex:i] objectAtIndex:j] integerValue];
-				damage += [[damageObject valueForKey:@"damage"] integerValue];
-				[damageObject setValue:@(damage) forKeyPath:@"damage"];
-				
-				j++;
-			}
-			i++;
-		}
-	} while(NO);
+	[self calculateHougeki:damages
+			targetsKeyPath:@"api_data.api_hougeki2.api_df_list"
+			 damageKeyPath:@"api_data.api_hougeki2.api_damage"];
 	
 	// raigeki
-	do {
-		id raigekiDamage = [self.json valueForKeyPath:@"api_data.api_raigeki.api_fdam"];
-		if(!raigekiDamage || [raigekiDamage isEqual:[NSNull null]]) break;
-		for(NSInteger i = 1; i <= 6; i++) {
-			NSInteger damage = [[raigekiDamage objectAtIndex:i] integerValue];
-			id damageObject = [damages objectAtIndex:i - 1];
-			damage += [[damageObject valueForKey:@"damage"] integerValue];
-			[damageObject setValue:@(damage) forKeyPath:@"damage"];
-		}
-	} while(NO);
+	[self calculateFDam:damages
+			fdamKeyPath:@"api_data.api_raigeki.api_fdam"];
 	
 	[self.store saveAction:nil];
 }
@@ -217,39 +182,12 @@
 - (void)calculateMidnightBattle
 {
 	// Damage 取得
-	NSArray *damages = [self damages];
+	NSMutableArray *damages = [self damages];
 	
 	// hougeki
-	do {
-		id targetShips = [self.json valueForKeyPath:@"api_data.api_hougeki.api_df_list"];
-		if(!targetShips || [targetShips isKindOfClass:[NSNull class]]) break;
-		
-		id hougeki1Damages = [self.json valueForKeyPath:@"api_data.api_hougeki.api_damage"];
-		NSInteger i = 0;
-		for(NSArray *array in targetShips) {
-			if(![array isKindOfClass:[NSArray class]]) {
-				i++;
-				continue;
-			}
-			
-			NSInteger j = 0;
-			for(id ship in array) {
-				NSInteger target = [ship integerValue];
-				if(target < 0 || target > 6) {
-					j++;
-					continue;
-				}
-				
-				id damageObject = [damages objectAtIndex:target - 1];
-				NSInteger damage = [[[hougeki1Damages objectAtIndex:i] objectAtIndex:j] integerValue];
-				damage += [[damageObject valueForKey:@"damage"] integerValue];
-				[damageObject setValue:@(damage) forKeyPath:@"damage"];
-				
-				j++;
-			}
-			i++;
-		}
-	} while(NO);
+	[self calculateHougeki:damages
+			targetsKeyPath:@"api_data.api_hougeki.api_df_list"
+			 damageKeyPath:@"api_data.api_hougeki.api_damage"];
 	
 	[self.store saveAction:nil];
 }
@@ -282,8 +220,8 @@
 		return;
 	}
 	
+	// 艦隊メンバーを取得
 	HMServerDataStore *serverStore = [HMServerDataStore oneTimeEditor];
-	
 	NSArray *decks = [serverStore objectsWithEntityName:@"Deck"
 												  error:NULL
 										predicateFormat:@"id = %@", [array[0] valueForKey:@"deckId"]];
