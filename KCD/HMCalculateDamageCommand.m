@@ -141,8 +141,9 @@
 	id koukuDamage = [self.json valueForKeyPath:fdamKeyPath];
 	if(!koukuDamage || [koukuDamage isEqual:[NSNull null]]) return;
 	for(NSInteger i = 1; i <= 6; i++) {
-		NSInteger damage = [[koukuDamage objectAtIndex:i] integerValue];
 		id damageObject = [damages objectAtIndex:i - 1];
+		NSInteger damage = [[koukuDamage objectAtIndex:i] integerValue];
+		damage += [[damageObject valueForKey:@"damage"] integerValue];
 		[damageObject setValue:@(damage) forKeyPath:@"damage"];
 	}
 }
