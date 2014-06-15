@@ -26,7 +26,6 @@
 + (BOOL)canExcuteAPI:(NSString *)api
 {
 	if([api isEqualToString:@"/kcsapi/api_get_member/ship"]) return YES;
-	if([api isEqualToString:@"/kcsapi/api_get_member/ship2"]) return YES;
 	return NO;
 }
 
@@ -63,6 +62,9 @@
 {
 	if([self.api isEqualToString:@"/kcsapi/api_port/port"]) {
 		return @"api_data.api_ship";
+	}
+	if([self.api isEqualToString:@"/kcsapi/api_get_member/ship3"]) {
+		return @"api_data.api_ship_data";
 	}
 	return [super dataKey];
 }

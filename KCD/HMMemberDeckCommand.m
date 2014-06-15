@@ -40,6 +40,12 @@
 	if([self.api isEqualToString:@"/kcsapi/api_port/port"]) {
 		return @"api_data.api_deck_port";
 	}
+	if([self.api isEqualToString:@"/kcsapi/api_get_member/ship2"]) {
+		return @"api_data_deck";
+	}
+	if([self.api isEqualToString:@"/kcsapi/api_get_member/ship3"]) {
+		return @"api_data.api_deck_data";
+	}
 	return [super dataKey];
 }
 - (void)execute
