@@ -117,7 +117,11 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
-                                    <binding destination="bH9-1e-fxA" name="value" keyPath="selection.fuel" id="YF5-bt-o0I"/>
+                                    <binding destination="bH9-1e-fxA" name="value" keyPath="selection.fuel" id="G9x-gz-954">
+                                        <dictionary key="options">
+                                            <string key="NSNoSelectionPlaceholder">-</string>
+                                        </dictionary>
+                                    </binding>
                                 </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="7R8-yE-6jR">
@@ -129,7 +133,11 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
-                                    <binding destination="bH9-1e-fxA" name="value" keyPath="selection.kaihatusizai" id="wbt-re-sBa"/>
+                                    <binding destination="bH9-1e-fxA" name="value" keyPath="selection.kaihatusizai" id="Wy3-Gm-kXr">
+                                        <dictionary key="options">
+                                            <string key="NSNoSelectionPlaceholder">-</string>
+                                        </dictionary>
+                                    </binding>
                                 </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="9HQ-8B-ieL">
@@ -150,7 +158,11 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
-                                    <binding destination="bH9-1e-fxA" name="value" keyPath="selection.steel" id="aYe-yA-yl6"/>
+                                    <binding destination="bH9-1e-fxA" name="value" keyPath="selection.steel" id="P5Y-44-2zu">
+                                        <dictionary key="options">
+                                            <string key="NSNoSelectionPlaceholder">-</string>
+                                        </dictionary>
+                                    </binding>
                                 </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="0Tk-ny-1i7">
@@ -171,7 +183,11 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
-                                    <binding destination="bH9-1e-fxA" name="value" keyPath="selection.bauxite" id="p07-UW-zfe"/>
+                                    <binding destination="bH9-1e-fxA" name="value" keyPath="selection.bauxite" id="JRf-PG-egg">
+                                        <dictionary key="options">
+                                            <string key="NSNoSelectionPlaceholder">-</string>
+                                        </dictionary>
+                                    </binding>
                                 </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="FCg-0H-Nvw">
@@ -192,7 +208,11 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
-                                    <binding destination="bH9-1e-fxA" name="value" keyPath="selection.kousokushuhuku" id="JuB-Uh-S0P"/>
+                                    <binding destination="bH9-1e-fxA" name="value" keyPath="selection.kousokushuhuku" id="6cz-1H-QNf">
+                                        <dictionary key="options">
+                                            <string key="NSNoSelectionPlaceholder">-</string>
+                                        </dictionary>
+                                    </binding>
                                 </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="cZg-Bw-yUE">
@@ -213,7 +233,11 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
-                                    <binding destination="bH9-1e-fxA" name="value" keyPath="selection.kousokukenzo" id="2XJ-cV-8ZY"/>
+                                    <binding destination="bH9-1e-fxA" name="value" keyPath="selection.kousokukenzo" id="nbq-WC-txL">
+                                        <dictionary key="options">
+                                            <string key="NSNoSelectionPlaceholder">-</string>
+                                        </dictionary>
+                                    </binding>
                                 </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="yaS-Ma-KLp">
@@ -225,7 +249,11 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
-                                    <binding destination="bH9-1e-fxA" name="value" keyPath="selection.bull" id="ThP-VA-llT"/>
+                                    <binding destination="bH9-1e-fxA" name="value" keyPath="selection.bull" id="DVl-rS-pS2">
+                                        <dictionary key="options">
+                                            <string key="NSNoSelectionPlaceholder">-</string>
+                                        </dictionary>
+                                    </binding>
                                 </connections>
                             </textField>
                         </subviews>
@@ -243,16 +271,17 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
-                                    <binding destination="VIO-ns-NM0" name="displayPatternValue1" keyPath="arrangedObjects.@count" id="nsa-4z-cse">
+                                    <binding destination="VIO-ns-NM0" name="displayPatternValue1" keyPath="arrangedObjects.@count" id="PPI-np-d3G">
                                         <dictionary key="options">
                                             <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
+                                            <string key="NSNoSelectionPlaceholder">-</string>
                                         </dictionary>
                                     </binding>
-                                    <binding destination="1lk-ii-37p" name="displayPatternValue2" keyPath="selection.max_chara" previousBinding="nsa-4z-cse" id="IjC-s5-OEy">
+                                    <binding destination="1lk-ii-37p" name="displayPatternValue2" keyPath="selection.max_chara" previousBinding="PPI-np-d3G" id="rY3-bG-o6R">
                                         <dictionary key="options">
                                             <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
-                                            <string key="NSNoSelectionPlaceholder">0</string>
-                                            <string key="NSNullPlaceholder">0</string>
+                                            <string key="NSNoSelectionPlaceholder">-</string>
+                                            <string key="NSNullPlaceholder">-</string>
                                         </dictionary>
                                     </binding>
                                     <binding destination="-2" name="textColor" keyPath="shipNumberColor" id="cDW-lg-qpx"/>
@@ -276,16 +305,17 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
-                                    <binding destination="gB0-9x-Jgy" name="displayPatternValue1" keyPath="arrangedObjects.@count" id="Cgj-14-UG2">
+                                    <binding destination="gB0-9x-Jgy" name="displayPatternValue1" keyPath="arrangedObjects.@count" id="qTd-Nv-Oc7">
                                         <dictionary key="options">
                                             <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
+                                            <string key="NSNoSelectionPlaceholder">-</string>
                                         </dictionary>
                                     </binding>
-                                    <binding destination="1lk-ii-37p" name="displayPatternValue2" keyPath="selection.max_slotitem" previousBinding="Cgj-14-UG2" id="HBV-Ae-F3V">
+                                    <binding destination="1lk-ii-37p" name="displayPatternValue2" keyPath="selection.max_slotitem" previousBinding="qTd-Nv-Oc7" id="zXi-zF-tgy">
                                         <dictionary key="options">
                                             <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
-                                            <string key="NSNoSelectionPlaceholder">0</string>
-                                            <string key="NSNullPlaceholder">0</string>
+                                            <string key="NSNoSelectionPlaceholder">-</string>
+                                            <string key="NSNullPlaceholder">-</string>
                                         </dictionary>
                                     </binding>
                                 </connections>
