@@ -62,22 +62,35 @@ typedef NS_ENUM(NSUInteger, HMCoreDataManagerType) {
 				object:self.managedObjectContext];
 }
 
-
-- (NSArray *)objectsWithEntityName:(NSString *)entityName predicate:(NSPredicate *)predicate error:(NSError *__autoreleasing *)error
+- (NSArray *)objectsWithEntityName:(NSString *)entityName sortDescriptors:(NSArray *)sortDescriptors predicate:(NSPredicate *)predicate error:(NSError **)error
 {
 	NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:entityName];
 	[req setPredicate:predicate];
+	[req setSortDescriptors:sortDescriptors];
 	
 	NSArray *array = [self.managedObjectContext executeFetchRequest:req error:error];
 	return array;
 }
-- (NSArray *)objectsWithEntityName:(NSString *)entityName error:(NSError *__autoreleasing *)error predicateFormat:(NSString *)format, ...
+- (NSArray *)objectsWithEntityName:(NSString *)entityName sortDescriptors:(NSArray *)sortDescriptors error:(NSError **)error predicateFormat:(NSString *)format, ...
 {
 	va_list ap;
 	va_start(ap, format);
 	NSPredicate *predicate = [NSPredicate predicateWithFormat:format arguments:ap];
 	va_end(ap);
-	return [self objectsWithEntityName:entityName predicate:predicate error:error];
+	return [self objectsWithEntityName:entityName sortDescriptors:sortDescriptors predicate:predicate error:error];
+}
+
+- (NSArray *)objectsWithEntityName:(NSString *)entityName predicate:(NSPredicate *)predicate error:(NSError **)error
+{
+	return [self objectsWithEntityName:entityName sortDescriptors:nil predicate:predicate error:error];
+}
+- (NSArray *)objectsWithEntityName:(NSString *)entityName error:(NSError **)error predicateFormat:(NSString *)format, ...
+{
+	va_list ap;
+	va_start(ap, format);
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:format arguments:ap];
+	va_end(ap);
+	return [self objectsWithEntityName:entityName sortDescriptors:nil predicate:predicate error:error];
 }
 
 // Returns the directory the application uses to store the Core Data store file. This code uses a directory named "com.masakih.KanColleLevelManager" in the user's Application Support directory.

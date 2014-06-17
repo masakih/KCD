@@ -23,6 +23,30 @@
 + (instancetype)oneTimeEditor;
 
 /**
+ *  CoreDataからデータを読み出す
+ *
+ *  @param entityName      対象エンティティ
+ *  @param sortDescriptors ソートディスクリプタ
+ *  @param predicate       読み出し条件
+ *  @param error           エラー
+ *
+ *  @return 読み出したデータ
+ */
+- (NSArray *)objectsWithEntityName:(NSString *)entityName sortDescriptors:(NSArray *)sortDescriptors predicate:(NSPredicate *)predicate error:(NSError **)error;
+
+/**
+ *  CoreDataからデータを読み出す
+ *
+ *  @param entityName      対象エンティティ
+ *  @param sortDescriptors ソートディスクリプタ
+ *  @param error           エラー
+ *  @param format          条件の書式
+ *
+ *  @return 読み出したデータ
+ */
+- (NSArray *)objectsWithEntityName:(NSString *)entityName sortDescriptors:(NSArray *)sortDescriptors error:(NSError **)error predicateFormat:(NSString *)format, ... NS_FORMAT_FUNCTION(4, 5);
+
+/**
  CoreDataからデータを読み出す
  
  @param entityName 対象エンティティ
