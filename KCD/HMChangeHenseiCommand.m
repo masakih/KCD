@@ -39,11 +39,12 @@
 - (void)printFleet
 {
 	NSError *error = nil;
-	NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"Deck"];
 	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
-	[req setSortDescriptors:@[sortDescriptor]];
-	
-	NSArray *decks = [self.store.managedObjectContext executeFetchRequest:req error:&error];
+	NSArray *decks = [self.store objectsWithEntityName:@"Deck"
+									   sortDescriptors:@[sortDescriptor]
+											 predicate:nil
+												 error:&error];
+	// TODO: error handling
 	
 	NSMutableArray *ships = [NSMutableArray new];
 	for(id deck in decks) {
@@ -116,11 +117,11 @@
 	}
 	
 	NSError *error = nil;
-	NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:@"Deck"];
 	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
-	[req setSortDescriptors:@[sortDescriptor]];
-	
-	NSArray *decks = [self.store.managedObjectContext executeFetchRequest:req error:&error];
+	NSArray *decks = [self.store objectsWithEntityName:@"Deck"
+									   sortDescriptors:@[sortDescriptor]
+											 predicate:nil
+												 error:&error];
 	// TODO: error handling
 	
 	NSMutableArray *ships = [NSMutableArray new];

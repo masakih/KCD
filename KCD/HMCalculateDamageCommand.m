@@ -73,11 +73,14 @@
 {
 	NSManagedObjectContext *moc = self.store.managedObjectContext;
 	
-	//
-	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Damage"];
+	NSError *error = nil;
 	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
-	[request setSortDescriptors:@[sortDescriptor]];
-	NSArray *array = [moc executeFetchRequest:request error:NULL];
+	NSArray *array = [self.store objectsWithEntityName:@"Damage"
+									   sortDescriptors:@[sortDescriptor]
+											 predicate:nil
+												 error:&error];
+	// TODO: error handling
+	
 	if(array.count != 6) {
 		// Battleエンティティ取得
 		NSArray *battles = [self.store objectsWithEntityName:@"Battle"
@@ -199,15 +202,17 @@
 }
 - (void)applyDamage
 {
-	NSManagedObjectContext *moc = self.store.managedObjectContext;
-	
 	// Damage 取得
 	NSArray *damages = nil;
 	
-	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Damage"];
+	NSError *error = nil;
 	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
-	[request setSortDescriptors:@[sortDescriptor]];
-	damages = [moc executeFetchRequest:request error:NULL];
+	damages = [self.store objectsWithEntityName:@"Damage"
+								sortDescriptors:@[sortDescriptor]
+									  predicate:nil
+										  error:&error];
+	// TODO: error handling
+	
 	if(damages.count != 6) {
 		NSLog(@"Damage is invalid. count %lxd", damages.count);
 		return;

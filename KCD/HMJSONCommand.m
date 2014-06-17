@@ -186,12 +186,12 @@ NSString *keyByDeletingPrefix(NSString *key)
 	HMServerDataStore *serverDataStore = [HMServerDataStore oneTimeEditor];
 	NSManagedObjectContext *managedObjectContext = [serverDataStore managedObjectContext];
 	
-	NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:entityName];
 	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
-	[req setSortDescriptors:@[sortDescriptor]];
 	NSError *error = nil;
-	NSArray *objects = [managedObjectContext executeFetchRequest:req
-														   error:&error];
+	NSArray *objects = [serverDataStore objectsWithEntityName:entityName
+											  sortDescriptors:@[sortDescriptor]
+													predicate:nil
+														error:&error];
 	if(error) {
 		[self log:@"Fetch error: %@", error];
 		return;
