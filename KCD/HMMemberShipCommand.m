@@ -206,6 +206,11 @@
 
 - (void)finishOperating:(NSManagedObjectContext *)moc
 {
+	// ship3の時は1隻のみのデータアップデートがあるため
+	if([self.api isEqualToString:@"/kcsapi/api_get_member/ship3"]) {
+		return;
+	}
+	
 	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Ship"];
 	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"NOT id IN %@", self.ids];
 	[request setPredicate:predicate];
