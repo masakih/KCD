@@ -321,6 +321,7 @@
         <attribute name="kyouka_3" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="kyouka_4" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="locked" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="locked_equip" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="lucky_0" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="lucky_1" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="lv" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -366,6 +367,7 @@
         <attribute name="flag_7" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="kaih" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="locked" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="sakb" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="equippedShip" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Ship" inverseName="equippedItem" inverseEntity="Ship" syncable="YES"/>
         <relationship name="master_slotItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MasterSlotItem" inverseName="slotItems" inverseEntity="MasterSlotItem" syncable="YES"/>
@@ -387,7 +389,7 @@
         <element name="MasterUseItem" positionX="0" positionY="0" width="128" height="150"/>
         <element name="Material" positionX="0" positionY="0" width="128" height="150"/>
         <element name="NyukyoDock" positionX="0" positionY="0" width="128" height="195"/>
-        <element name="Ship" positionX="0" positionY="0" width="128" height="765"/>
-        <element name="SlotItem" positionX="0" positionY="0" width="128" height="240"/>
+        <element name="Ship" positionX="0" positionY="0" width="128" height="780"/>
+        <element name="SlotItem" positionX="0" positionY="0" width="128" height="253"/>
     </elements>
 </model>
