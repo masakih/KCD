@@ -20,9 +20,7 @@
 		NSLog(@"obj class is %@", NSStringFromClass([obj class]));
 		return @"";
 	}
-	
-	timeInterval += [[NSTimeZone systemTimeZone] secondsFromGMT];
-	
+		
 	NSInteger hour = timeInterval / (60 * 60);
 	timeInterval -= hour * 60 * 60;
 	NSInteger minutes = timeInterval / 60;

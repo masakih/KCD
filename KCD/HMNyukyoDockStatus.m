@@ -99,9 +99,9 @@ enum {
 	NSTimeInterval diff = compTime - [now timeIntervalSince1970];
 	
 	if(diff < 0) {
-		self.time = @( - [[NSTimeZone systemTimeZone] secondsFromGMT]);
+		self.time = @(0);
 	} else {
-		self.time =  @(diff - [[NSTimeZone systemTimeZone] secondsFromGMT]);
+		self.time =  @(diff);
 	}
 	
 	if(!self.didNotify) {

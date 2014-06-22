@@ -73,9 +73,9 @@ enum {
 	NSTimeInterval diff = compTime - [now timeIntervalSince1970];
 	NSNumber *returnValue = nil;
 	if(diff < 0) {
-		returnValue = @( - [[NSTimeZone systemTimeZone] secondsFromGMT]);
+		returnValue = @(0);
 	} else {
-		returnValue = @(diff - [[NSTimeZone systemTimeZone] secondsFromGMT]);
+		returnValue = @(diff);
 	}
 	
 	if(!self.didNotify) {
