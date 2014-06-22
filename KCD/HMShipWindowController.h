@@ -12,4 +12,8 @@
 
 @property (readonly) NSManagedObjectContext *managedObjectContext;
 
+
+@property (nonatomic, strong) NSNumber *missionFleetNumber;
+@property (nonatomic, strong) NSNumber *missionTime;
+- (IBAction)changeMissionTime:(id)sender;
 @end

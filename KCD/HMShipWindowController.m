@@ -29,4 +29,22 @@
 	return [HMServerDataStore defaultManager].managedObjectContext;
 }
 
+- (IBAction)changeMissionTime:(id)sender
+{
+	HMServerDataStore *store = [HMServerDataStore oneTimeEditor];
+	NSError *error = nil;
+	
+	NSArray *decks = [store objectsWithEntityName:@"Deck"
+											error:&error
+								  predicateFormat:@"id = %@", self.missionFleetNumber];
+	if(decks.count == 0) return;
+	id deck = decks[0];
+	
+	NSInteger time = [self.missionTime doubleValue];
+	NSDate *date = [NSDate dateWithTimeIntervalSinceNow:time];
+	time = [date timeIntervalSince1970];
+	time *= 1000.0;
+	[deck setValue:@(time) forKey:@"mission_2"];
+}
+
 @end
