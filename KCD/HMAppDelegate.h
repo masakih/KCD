@@ -10,6 +10,16 @@
 
 #import "HMJSONViewWindowController.h"
 
+typedef NS_ENUM(NSUInteger, HMShipType) {
+    kHMAllType,
+    kHMDestoryer,
+    kHMLightCruiser,
+	kHMHeavyCruiser,
+	kHMAircraftCarrier,
+	kHMBattleShip,
+	kHMSubmarine,
+	kHMOtherType,
+};
 
 @interface HMAppDelegate : NSObject <NSApplicationDelegate>
 
@@ -17,7 +27,7 @@
 - (void)logLineReturn:(NSString *)format, ... NS_FORMAT_FUNCTION(1,2);
 - (void)log:(NSString *)format, ... NS_FORMAT_FUNCTION(1,2);
 
-@property (readonly) NSArray *shipTypeCategories;
+- (NSPredicate *)predicateForShipType:(HMShipType)shipType;
 
 @property (strong, nonatomic) IBOutlet NSMenuItem *debugMenuItem;
 

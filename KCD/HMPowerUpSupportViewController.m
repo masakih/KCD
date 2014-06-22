@@ -109,18 +109,14 @@
 
 - (IBAction)changeCategory:(id)sender
 {
-	NSArray *categories = [[NSApp delegate] shipTypeCategories];
-	
 	NSPredicate *predicate = [self omitPredicate];
 	NSUInteger tag = [self.typeSegment selectedSegment];
-	if(tag != 0 && tag < 8) {
-		NSPredicate *catPredicate = [NSPredicate predicateWithFormat:@"master_ship.stype.id  in %@", categories[tag - 1]];
-		if(predicate) {
-			NSArray *sub = @[predicate, catPredicate];
-			predicate = [NSCompoundPredicate andPredicateWithSubpredicates:sub];
-		} else {
-			predicate = catPredicate;
-		}
+	NSPredicate *catPredicate = [[NSApp delegate] predicateForShipType:tag];
+	if(predicate && catPredicate) {
+		NSArray *sub = @[predicate, catPredicate];
+		predicate = [NSCompoundPredicate andPredicateWithSubpredicates:sub];
+	} else if(catPredicate) {
+		predicate = catPredicate;
 	}
 	[self.shipController setFilterPredicate:predicate];
 	[self.shipController rearrangeObjects];
