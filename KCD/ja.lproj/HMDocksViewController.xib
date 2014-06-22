@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment version="1070" defaultVersion="1080" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4514"/>
+        <deployment version="1070" defaultVersion="1090" identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="HMDocksViewController">
@@ -62,8 +62,8 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sTn-uJ-Phx">
                     <rect key="frame" x="87" y="279" width="62" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="00:00:00" id="BJE-Ig-1at">
-                        <dateFormatter key="formatter" formatterBehavior="custom10_4" dateStyle="short" dateFormat="HH:mm:ss" id="MUu-id-yAZ"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="BJE-Ig-1at">
+                        <customFormatter key="formatter" id="9Rm-sQ-KzG" customClass="HMTimerCountFormatter"/>
                         <font key="font" size="13" name="AquaKana"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -88,8 +88,8 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U7b-9S-sWb">
                     <rect key="frame" x="100" y="178" width="62" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="00:00:00" id="iv8-oM-0Fo">
-                        <dateFormatter key="formatter" formatterBehavior="custom10_4" dateStyle="short" dateFormat="HH:mm:ss" id="SFs-FI-wPI"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="iv8-oM-0Fo">
+                        <customFormatter key="formatter" id="uTW-Si-vAP" customClass="HMTimerCountFormatter"/>
                         <font key="font" size="13" name="AquaKana"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -97,8 +97,8 @@
                     <connections>
                         <binding destination="-2" name="value" keyPath="nDock1Time" id="GqF-Qw-Z4Y">
                             <dictionary key="options">
-                                <string key="NSNullPlaceholder">--:--:--</string>
                                 <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                <string key="NSNullPlaceholder">--:--:--</string>
                             </dictionary>
                         </binding>
                     </connections>
@@ -124,8 +124,8 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1j4-Kg-am8">
                     <rect key="frame" x="100" y="55" width="62" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="00:00:00" id="5SQ-4h-gVc">
-                        <dateFormatter key="formatter" formatterBehavior="custom10_4" dateStyle="short" dateFormat="HH:mm:ss" id="iEU-EI-neV"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="5SQ-4h-gVc">
+                        <customFormatter key="formatter" id="fOY-bM-qRR" customClass="HMTimerCountFormatter"/>
                         <font key="font" size="13" name="AquaKana"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -182,8 +182,8 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YPL-iZ-5QI">
                     <rect key="frame" x="87" y="256" width="62" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="00:00:00" id="uZ7-H0-10h">
-                        <dateFormatter key="formatter" formatterBehavior="custom10_4" dateStyle="short" dateFormat="HH:mm:ss" id="2GZ-Uz-iAI"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="uZ7-H0-10h">
+                        <customFormatter key="formatter" id="XJq-qE-ggs" customClass="HMTimerCountFormatter"/>
                         <font key="font" size="13" name="AquaKana"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -224,8 +224,8 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aaL-Hq-rXW">
                     <rect key="frame" x="87" y="233" width="62" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="00:00:00" id="KdJ-xQ-eVC">
-                        <dateFormatter key="formatter" formatterBehavior="custom10_4" dateStyle="short" dateFormat="HH:mm:ss" id="86I-wZ-ZEB"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="KdJ-xQ-eVC">
+                        <customFormatter key="formatter" id="lcg-8G-Dru" customClass="HMTimerCountFormatter"/>
                         <font key="font" size="13" name="AquaKana"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -250,8 +250,8 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mAQ-lg-uXF">
                     <rect key="frame" x="100" y="155" width="62" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="00:00:00" id="oco-u5-uot">
-                        <dateFormatter key="formatter" formatterBehavior="custom10_4" dateStyle="short" dateFormat="HH:mm:ss" id="fPR-NA-TxP"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="oco-u5-uot">
+                        <customFormatter key="formatter" id="n6E-LC-O0m" customClass="HMTimerCountFormatter"/>
                         <font key="font" size="13" name="AquaKana"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -292,8 +292,8 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Ep-sM-xII">
                     <rect key="frame" x="100" y="132" width="62" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="00:00:00" id="YbO-M6-FUI">
-                        <dateFormatter key="formatter" formatterBehavior="custom10_4" dateStyle="short" dateFormat="HH:mm:ss" id="w5f-eG-6gx"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="YbO-M6-FUI">
+                        <customFormatter key="formatter" id="XN3-A0-NNc" customClass="HMTimerCountFormatter"/>
                         <font key="font" size="13" name="AquaKana"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -334,8 +334,8 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zee-D4-ZGG">
                     <rect key="frame" x="100" y="109" width="62" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="00:00:00" id="rFg-0M-tbw">
-                        <dateFormatter key="formatter" formatterBehavior="custom10_4" dateStyle="short" dateFormat="HH:mm:ss" id="nDW-Qt-yEs"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="rFg-0M-tbw">
+                        <customFormatter key="formatter" id="aaT-2p-6sV" customClass="HMTimerCountFormatter"/>
                         <font key="font" size="13" name="AquaKana"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -376,8 +376,8 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="txP-dd-uyL">
                     <rect key="frame" x="100" y="32" width="62" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="00:00:00" id="Bnk-cQ-3F5">
-                        <dateFormatter key="formatter" formatterBehavior="custom10_4" dateStyle="short" dateFormat="HH:mm:ss" id="Rwh-QY-sHe"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="Bnk-cQ-3F5">
+                        <customFormatter key="formatter" id="pyU-qN-RwB" customClass="HMTimerCountFormatter"/>
                         <font key="font" size="13" name="AquaKana"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -402,8 +402,8 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VoE-sV-bbn">
                     <rect key="frame" x="246" y="55" width="62" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="00:00:00" id="769-Rr-iNm">
-                        <dateFormatter key="formatter" formatterBehavior="custom10_4" dateStyle="short" dateFormat="HH:mm:ss" id="pjt-k9-PCo"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="769-Rr-iNm">
+                        <customFormatter key="formatter" id="wwc-Kj-i2T" customClass="HMTimerCountFormatter"/>
                         <font key="font" size="13" name="AquaKana"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -428,8 +428,8 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cB6-7z-cj7">
                     <rect key="frame" x="246" y="32" width="62" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="00:00:00" id="IP7-Yh-Z7X">
-                        <dateFormatter key="formatter" formatterBehavior="custom10_4" dateStyle="short" dateFormat="HH:mm:ss" id="RMH-5i-VOT"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="IP7-Yh-Z7X">
+                        <customFormatter key="formatter" id="5gk-HQ-Ks2" customClass="HMTimerCountFormatter"/>
                         <font key="font" size="13" name="AquaKana"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
