@@ -126,7 +126,7 @@ static FILE* logFileP = NULL;
 		case kHMAllType:
 			predicate = nil;
 			break;
-		case kHMDestoryer:
+		case kHMDestroyer:
 		case kHMLightCruiser:
 		case kHMHeavyCruiser:
 		case kHMAircraftCarrier:
@@ -138,7 +138,7 @@ static FILE* logFileP = NULL;
 		case kHMOtherType:
 		{
 			NSMutableArray *ommitTypes = [NSMutableArray new];
-			for(int i = kHMDestoryer; i < kHMOtherType; i++) {
+			for(int i = kHMDestroyer; i < kHMOtherType; i++) {
 				[ommitTypes addObjectsFromArray:categories[i]];
 			}
 			predicate = [NSPredicate predicateWithFormat:@"NOT master_ship.stype.id IN %@", ommitTypes];

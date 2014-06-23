@@ -12,7 +12,7 @@
 
 typedef NS_ENUM(NSUInteger, HMShipType) {
     kHMAllType,
-    kHMDestoryer,
+    kHMDestroyer,
     kHMLightCruiser,
 	kHMHeavyCruiser,
 	kHMAircraftCarrier,
