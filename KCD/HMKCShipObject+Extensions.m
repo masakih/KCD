@@ -467,7 +467,7 @@ static NSMutableDictionary *names = nil;
 	}
 	
 	NSString *name = [[array[0] valueForKey:@"name"] copy];
-	@synchronized(name) {
+	@synchronized(names) {
 		names[shipId] = name;
 	}
 	
