@@ -54,7 +54,11 @@
 		return [self valueForKey:keyByDeletingPrefix(key)];
 	}
 	
-	return [super valueForUndefinedKey:key];
+	NSEntityDescription *entity = [self entity];
+	NSLog(@"Entity %@ dose not have key %@", entity.name, key);
+	return nil;
+	
+//	return [super valueForUndefinedKey:key];
 }
 
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key
@@ -71,11 +75,11 @@
 		[self setValue:value forKey:@"description_"];
 		return;
 	}
-#ifdef DEBUG
-	NSLog(@"self dose not have key %@, value class is %@, value is '%@'", key, NSStringFromClass([value class]), value);
-	return;
-#endif
-	[super setValue:value forUndefinedKey:key];
+	
+	NSEntityDescription *entity = [self entity];
+	NSLog(@"Entity %@ dose not have key %@, value class is %@, value is '%@'", entity.name, key, NSStringFromClass([value class]), value);
+//	return;
+//	[super setValue:value forUndefinedKey:key];
 }
 
 @end
