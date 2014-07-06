@@ -28,11 +28,14 @@ checkLocalizable:
 #	(cd KCD/en.lproj; ${MAKE} $@;)
 	(cd KCD/ja.lproj; ${MAKE} $@;)
 
+deploy:
+	test -z "`git status --porcelain`"
+
 release: updateRevision
 	xcodebuild -derivedDataPath=build -configuration $(DEPLOYMENT)
-	$(MAKE) restorInfoPlist
+	$(MAKE) restoreInfoPlist
 
-package: release
+package: deploy release
 	REV=`git show | head -1 | awk '{printf("%.7s\n", $$2)}'`;	\
 	ditto -ck -rsrc --keepParent $(APP) $(APP_NAME)-$(VERSION)-$${REV}.zip
 
@@ -42,7 +45,7 @@ updateRevision:
 	sed -e "s/%%%%REVISION%%%%/$${REV}/" $(INFO_PLIST) > $(INFO_PLIST).r ;	\
 	mv -f $(INFO_PLIST).r $(INFO_PLIST) ;	\
 
-restorInfoPlist:
+restoreInfoPlist:
 	if [ -f $(INFO_PLIST).bak ] ; then mv -f $(INFO_PLIST).bak $(INFO_PLIST) ; fi
 
 
