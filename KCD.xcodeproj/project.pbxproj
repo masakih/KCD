@@ -22,6 +22,8 @@
 		F4268031194D1B1A00B2C27F /* HMChangeHenseiCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4268030194D1B1A00B2C27F /* HMChangeHenseiCommand.m */; };
 		F4268034195332A000B2C27F /* HMPowerUpCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4268033195332A000B2C27F /* HMPowerUpCommand.m */; };
 		F42680371957000200B2C27F /* HMTimerCountFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F42680361957000200B2C27F /* HMTimerCountFormatter.m */; };
+		F43BA4A1197BE22200CFF788 /* HMDestroyShipCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F43BA4A0197BE22200CFF788 /* HMDestroyShipCommand.m */; };
+		F43BA4A4197BE6C200CFF788 /* HMRealDestroyShipCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F43BA4A3197BE6C200CFF788 /* HMRealDestroyShipCommand.m */; };
 		F43E67B718BE02A10087E5B6 /* STypeShortName.plist in Resources */ = {isa = PBXBuildFile; fileRef = F43E67B618BE02A10087E5B6 /* STypeShortName.plist */; };
 		F43E67B918BE060E0087E5B6 /* LevelUpExp.plist in Resources */ = {isa = PBXBuildFile; fileRef = F43E67B818BE060E0087E5B6 /* LevelUpExp.plist */; };
 		F4513EDD18B619B600073552 /* HMCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4513EDC18B619B600073552 /* HMCoreDataManager.m */; };
@@ -153,6 +155,10 @@
 		F4268033195332A000B2C27F /* HMPowerUpCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMPowerUpCommand.m; sourceTree = "<group>"; };
 		F42680351957000200B2C27F /* HMTimerCountFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMTimerCountFormatter.h; sourceTree = "<group>"; };
 		F42680361957000200B2C27F /* HMTimerCountFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMTimerCountFormatter.m; sourceTree = "<group>"; };
+		F43BA49F197BE22200CFF788 /* HMDestroyShipCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDestroyShipCommand.h; sourceTree = "<group>"; };
+		F43BA4A0197BE22200CFF788 /* HMDestroyShipCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDestroyShipCommand.m; sourceTree = "<group>"; };
+		F43BA4A2197BE6C200CFF788 /* HMRealDestroyShipCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMRealDestroyShipCommand.h; sourceTree = "<group>"; };
+		F43BA4A3197BE6C200CFF788 /* HMRealDestroyShipCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMRealDestroyShipCommand.m; sourceTree = "<group>"; };
 		F43E67B618BE02A10087E5B6 /* STypeShortName.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = STypeShortName.plist; sourceTree = "<group>"; };
 		F43E67B818BE060E0087E5B6 /* LevelUpExp.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LevelUpExp.plist; sourceTree = "<group>"; };
 		F4513EDB18B619B600073552 /* HMCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMCoreDataManager.h; sourceTree = "<group>"; };
@@ -602,6 +608,10 @@
 				F4131ED4190F63D8004F7F9A /* HMUpdateSlotItemCommand.m */,
 				F4131ED6190FA08D004F7F9A /* HMDestroyItem2Command.h */,
 				F4131ED7190FA08D004F7F9A /* HMDestroyItem2Command.m */,
+				F43BA49F197BE22200CFF788 /* HMDestroyShipCommand.h */,
+				F43BA4A0197BE22200CFF788 /* HMDestroyShipCommand.m */,
+				F43BA4A2197BE6C200CFF788 /* HMRealDestroyShipCommand.h */,
+				F43BA4A3197BE6C200CFF788 /* HMRealDestroyShipCommand.m */,
 				F48F7B001907D7B800E78AE1 /* HMPortCommand.h */,
 				F48F7B011907D7B800E78AE1 /* HMPortCommand.m */,
 				F4AA0605192E3B6200844688 /* HMMapStartCommand.h */,
@@ -770,6 +780,7 @@
 				F4268031194D1B1A00B2C27F /* HMChangeHenseiCommand.m in Sources */,
 				F4513EE418B635EA00073552 /* HMDocksViewController.m in Sources */,
 				F494DC6D18CC054800AE97E4 /* HMNyukyoDockStatus.m in Sources */,
+				F43BA4A1197BE22200CFF788 /* HMDestroyShipCommand.m in Sources */,
 				F47B78B218A7B42B0011386E /* HMJSONViewWindowController.m in Sources */,
 				F4B414EF18B0BF1A00468DAF /* HMMasterMapInfoCommand.m in Sources */,
 				F4C118FC18A67B1C005D5B25 /* CustomHTTPProtocol.m in Sources */,
@@ -809,6 +820,7 @@
 				F4131EE61910318F004F7F9A /* HMMasterSlotItemEquipTypeCommand.m in Sources */,
 				F4D2CBC818B0555A000EBC59 /* HMKCManagedObject.m in Sources */,
 				F4D2CBC218AD0E1A000EBC59 /* HMMasterSTypeCommand.m in Sources */,
+				F43BA4A4197BE6C200CFF788 /* HMRealDestroyShipCommand.m in Sources */,
 				F46F104518AA50730063E503 /* HMBroserWindowController.m in Sources */,
 				F4B414EC18B0A7D600468DAF /* HMMasterUseItemCommand.m in Sources */,
 				F4513EF318B991F800073552 /* HMMemberBasicCommand.m in Sources */,
