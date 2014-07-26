@@ -494,7 +494,11 @@ static NSMutableDictionary *names = nil;
 	id expValue = self.exp;
 	[self didAccessValueForKey:@"exp"];
 	
-	NSUInteger nextExp = [[levelUpExps objectAtIndex:[lvValue integerValue]] integerValue];
+	NSUInteger currentLevel = [lvValue integerValue];
+	if(currentLevel >= [levelUpExps count]) {
+		return nil;
+	}
+	NSUInteger nextExp = [[levelUpExps objectAtIndex:currentLevel] integerValue];
 	
 	return @(nextExp - [expValue integerValue]);
 }
