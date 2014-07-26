@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment version="1070" defaultVersion="1090" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
@@ -99,7 +99,11 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
-                                            <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.lv" id="rQg-DP-z4O"/>
+                                            <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.lv" id="whG-ua-Xuw">
+                                                <dictionary key="options">
+                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                </dictionary>
+                                            </binding>
                                         </connections>
                                     </tableColumn>
                                     <tableColumn identifier="exp" editable="NO" width="64.43359375" minWidth="10" maxWidth="3.4028234663852886e+38" id="kOg-s3-rC4">
@@ -131,7 +135,12 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
-                                            <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.next" id="gnG-nS-Qgu"/>
+                                            <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.next" id="2A2-9K-5eY">
+                                                <dictionary key="options">
+                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                    <string key="NSNullPlaceholder">MAX</string>
+                                                </dictionary>
+                                            </binding>
                                         </connections>
                                     </tableColumn>
                                 </tableColumns>
