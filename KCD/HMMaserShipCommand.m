@@ -25,7 +25,8 @@
 - (void)setStype:(id)value toObject:(NSManagedObject *)object
 {
 	id currentValue = [object valueForKeyPath:@"stype.name"];
-	if(currentValue && ![currentValue isEqual:[NSNull null]]) return;
+	if(currentValue && ![currentValue isEqual:[NSNull null]]
+	   && [currentValue isEqual:value]) return;
 	
 	if(!self.masterSTypes) {
 		NSManagedObjectContext *managedObjectContext = [object managedObjectContext];
