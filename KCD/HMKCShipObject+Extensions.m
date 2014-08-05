@@ -498,8 +498,12 @@ static NSMutableDictionary *names = nil;
 	if(currentLevel >= [levelUpExps count]) {
 		return nil;
 	}
-	NSUInteger nextExp = [[levelUpExps objectAtIndex:currentLevel] integerValue];
+	if(currentLevel == 99) return nil;
 	
+	NSUInteger nextExp = [[levelUpExps objectAtIndex:currentLevel] integerValue];
+	if(currentLevel > 99) {
+		nextExp += 1000000;
+	}
 	return @(nextExp - [expValue integerValue]);
 }
 
