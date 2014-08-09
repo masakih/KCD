@@ -27,14 +27,14 @@
                         <rect key="frame" x="1" y="17" width="304" height="334"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnResizing="NO" multipleSelection="NO" autosaveName="shipviewtable1" headerView="xz8-nE-DgQ" id="HLz-Kp-DN2">
+                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveName="shipviewtable1" headerView="xz8-nE-DgQ" id="HLz-Kp-DN2">
                                 <rect key="frame" x="0.0" y="0.0" width="304" height="334"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn identifier="no" editable="NO" width="33" minWidth="33" maxWidth="1000" id="sNi-c1-2zU">
+                                    <tableColumn identifier="no" editable="NO" width="30" minWidth="30" maxWidth="30" id="sNi-c1-2zU">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="No.">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -50,7 +50,7 @@
                                             <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.master_ship.sortno" id="HdN-nH-86V"/>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn identifier="name" editable="NO" width="80.45703125" minWidth="40" maxWidth="1000" id="82a-ca-AZb">
+                                    <tableColumn identifier="name" editable="NO" width="83" minWidth="83" maxWidth="83" id="82a-ca-AZb">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="名前">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -151,11 +151,11 @@
                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="edk-ob-MlH">
-                        <rect key="frame" x="1" y="335" width="304" height="16"/>
+                        <rect key="frame" x="-100" y="-100" width="304" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="B9P-a1-x7u">
-                        <rect key="frame" x="-15" y="17" width="16" height="0.0"/>
+                        <rect key="frame" x="-100" y="-100" width="16" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <tableHeaderView key="headerView" id="xz8-nE-DgQ">
@@ -229,14 +229,14 @@
                 <rect key="frame" x="1" y="17" width="304" height="334"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnResizing="NO" multipleSelection="NO" autosaveName="shipviewtable2" headerView="QxO-zY-mjX" id="Ze3-Gd-1Qe">
+                    <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveName="shipviewtable2" headerView="QxO-zY-mjX" id="Ze3-Gd-1Qe">
                         <rect key="frame" x="0.0" y="0.0" width="304" height="334"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <size key="intercellSpacing" width="3" height="2"/>
                         <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
                         <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                         <tableColumns>
-                            <tableColumn identifier="no" editable="NO" width="33" minWidth="33" maxWidth="1000" id="HMW-90-z1T">
+                            <tableColumn identifier="no" editable="NO" width="30" minWidth="30" maxWidth="30" id="HMW-90-z1T">
                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="No.">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -252,7 +252,7 @@
                                     <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.master_ship.sortno" id="J3J-ts-wPe"/>
                                 </connections>
                             </tableColumn>
-                            <tableColumn identifier="name" editable="NO" width="80" minWidth="40" maxWidth="1000" id="ecf-RJ-BUc">
+                            <tableColumn identifier="name" editable="NO" width="83" minWidth="83" maxWidth="83" id="ecf-RJ-BUc">
                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="名前">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -361,7 +361,7 @@
                 <rect key="frame" x="1" y="335" width="304" height="16"/>
                 <autoresizingMask key="autoresizingMask"/>
             </scroller>
-            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="aIa-sY-bEH">
+            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="aIa-sY-bEH">
                 <rect key="frame" x="-15" y="17" width="16" height="0.0"/>
                 <autoresizingMask key="autoresizingMask"/>
             </scroller>
@@ -377,14 +377,14 @@
                 <rect key="frame" x="1" y="17" width="304" height="334"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnResizing="NO" multipleSelection="NO" autosaveName="shipviewtable3" headerView="dJx-c5-qhN" id="qaM-It-e1l">
+                    <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveName="shipviewtable3" headerView="dJx-c5-qhN" id="qaM-It-e1l">
                         <rect key="frame" x="0.0" y="0.0" width="304" height="334"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <size key="intercellSpacing" width="3" height="2"/>
                         <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
                         <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                         <tableColumns>
-                            <tableColumn identifier="no" editable="NO" width="33" minWidth="33" maxWidth="1000" id="sOu-ll-xkk">
+                            <tableColumn identifier="no" editable="NO" width="30" minWidth="30" maxWidth="30" id="sOu-ll-xkk">
                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="No.">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -400,7 +400,7 @@
                                     <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.master_ship.sortno" id="TV3-C7-RQ7"/>
                                 </connections>
                             </tableColumn>
-                            <tableColumn identifier="name" editable="NO" width="80" minWidth="40" maxWidth="1000" id="VCd-OU-K6V">
+                            <tableColumn identifier="name" editable="NO" width="83" minWidth="83" maxWidth="83" id="VCd-OU-K6V">
                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="名前">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -509,7 +509,7 @@
                 <rect key="frame" x="1" y="335" width="304" height="16"/>
                 <autoresizingMask key="autoresizingMask"/>
             </scroller>
-            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="ikf-kJ-ufE">
+            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="ikf-kJ-ufE">
                 <rect key="frame" x="-15" y="17" width="16" height="0.0"/>
                 <autoresizingMask key="autoresizingMask"/>
             </scroller>
