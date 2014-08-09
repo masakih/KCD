@@ -48,11 +48,9 @@
 {
 	NSURL *url = protocol.request.URL;
 	NSString *path = url.path;
-	while(![path isEqualToString:@"/"]) {
-		if([path hasSuffix:@"kcsapi"]) {
-			[self setProtocol:protocol];
-		}
-		path = [path stringByDeletingLastPathComponent];
+	NSArray *pathComponents = [path pathComponents];
+	if([pathComponents containsObject:@"kcsapi"]) {
+		[self setProtocol:protocol];
 	}
 }
 
