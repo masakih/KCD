@@ -535,4 +535,14 @@ static NSMutableDictionary *names = nil;
 {
 	return [NSColor controlTextColor];
 }
+
+- (NSColor *)planColor
+{
+	NSInteger planType = [[self valueForKey:@"sally_area"] integerValue];
+	if(planType == 1) return [NSColor colorWithCalibratedRed:0.800 green:0.223 blue:0.000 alpha:1.000];
+	
+	if(planType == 2) return [NSColor colorWithCalibratedRed:0.093 green:0.000 blue:0.800 alpha:1.000];
+	
+	return [NSColor controlTextColor];
+}
 @end

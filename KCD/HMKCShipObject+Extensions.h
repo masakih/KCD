@@ -17,6 +17,7 @@
 @property (readonly) NSColor *statusColor;
 @property (readonly) NSColor *conditionColor;
 
+@property (readonly) IBOutlet NSColor *planColor;
 
 
 @property (nonatomic, retain) NSNumber * primitiveBull;
