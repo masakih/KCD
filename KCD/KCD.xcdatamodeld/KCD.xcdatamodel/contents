@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13D65" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13E28" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Basic" representedClassName="HMKCManagedObject" parentEntity="KCDEntity" syncable="YES">
         <attribute name="active_flag" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
@@ -109,6 +109,8 @@
         <attribute name="no" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="opetext" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="required_defeat_count" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="sally_flag_0" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="sally_flag_1" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="MasterMission" representedClassName="HMKCManagedObject" parentEntity="KCDEntity" syncable="YES">
         <attribute name="active" optional="YES" attributeType="Boolean" defaultValueString="0" syncable="YES"/>
@@ -337,6 +339,7 @@
         <attribute name="raisou_1" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="sakuteki_0" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="sakuteki_1" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="sally_area" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="ship_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="slot_0" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="slot_1" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -380,7 +383,7 @@
         <element name="MasterFurniture" positionX="0" positionY="0" width="128" height="163"/>
         <element name="MasterMapArea" positionX="0" positionY="0" width="128" height="88"/>
         <element name="MasterMapCell" positionX="0" positionY="0" width="128" height="135"/>
-        <element name="MasterMapInfo" positionX="0" positionY="0" width="128" height="255"/>
+        <element name="MasterMapInfo" positionX="0" positionY="0" width="128" height="285"/>
         <element name="MasterMission" positionX="0" positionY="0" width="128" height="270"/>
         <element name="MasterShip" positionX="0" positionY="0" width="128" height="1513"/>
         <element name="MasterSlotItem" positionX="0" positionY="0" width="128" height="540"/>
@@ -389,7 +392,7 @@
         <element name="MasterUseItem" positionX="0" positionY="0" width="128" height="150"/>
         <element name="Material" positionX="0" positionY="0" width="128" height="150"/>
         <element name="NyukyoDock" positionX="0" positionY="0" width="128" height="195"/>
-        <element name="Ship" positionX="0" positionY="0" width="128" height="780"/>
+        <element name="Ship" positionX="0" positionY="0" width="128" height="795"/>
         <element name="SlotItem" positionX="0" positionY="0" width="128" height="253"/>
     </elements>
 </model>
