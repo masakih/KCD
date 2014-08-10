@@ -270,6 +270,8 @@
                                             <bool key="NSConditionallySetsEditable" value="YES"/>
                                         </dictionary>
                                     </binding>
+                                    <binding destination="b8v-Gn-JZD" name="fontBold" keyPath="arrangedObjects.sally_area" id="qqW-H1-0Dw"/>
+                                    <binding destination="b8v-Gn-JZD" name="textColor" keyPath="arrangedObjects.planColor" id="hUR-QS-P1G"/>
                                 </connections>
                             </tableColumn>
                             <tableColumn identifier="karyoku" editable="NO" width="34" minWidth="22" maxWidth="3.4028234663852886e+38" id="HJD-3v-pYl">
@@ -418,6 +420,8 @@
                                             <bool key="NSConditionallySetsEditable" value="YES"/>
                                         </dictionary>
                                     </binding>
+                                    <binding destination="b8v-Gn-JZD" name="fontBold" keyPath="arrangedObjects.sally_area" id="mdI-1C-Am4"/>
+                                    <binding destination="b8v-Gn-JZD" name="textColor" keyPath="arrangedObjects.planColor" id="iGe-vc-g4F"/>
                                 </connections>
                             </tableColumn>
                             <tableColumn identifier="maxhp" editable="NO" width="34" minWidth="22" maxWidth="3.4028234663852886e+38" id="XBP-7Q-86k">
