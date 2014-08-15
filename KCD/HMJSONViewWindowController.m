@@ -63,5 +63,11 @@
 	[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }
 
+- (IBAction)clearLog:(id)sender
+{
+	[self willChangeValueForKey:@"commands"];
+	[self.commands removeAllObjects];
+	[self didChangeValueForKey:@"commands"];
+}
 
 @end

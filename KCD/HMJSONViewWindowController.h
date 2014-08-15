@@ -24,4 +24,7 @@
 - (void)setCommandArray:(NSArray *)commands;
 
 
+- (IBAction)clearLog:(id)sender;
+
+
 @end
