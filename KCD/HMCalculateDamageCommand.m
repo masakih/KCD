@@ -81,7 +81,8 @@
 												 error:&error];
 	// TODO: error handling
 	
-	if(array.count != 6) {
+	NSInteger frendShipCount = 12;
+	if(array.count != frendShipCount) {
 		// Battleエンティティ取得
 		NSArray *battles = [self.store objectsWithEntityName:@"Battle"
 												   predicate:nil
@@ -94,7 +95,7 @@
 		
 		// Damage エンティティ作成6個
 		NSMutableArray *damages = [NSMutableArray new];
-		for(NSInteger i = 0; i < 6; i++) {
+		for(NSInteger i = 0; i < frendShipCount; i++) {
 			id damage = [NSEntityDescription insertNewObjectForEntityForName:@"Damage"
 													  inManagedObjectContext:moc];
 			[damage setValue:battle forKeyPath:@"battle"];
@@ -114,6 +115,7 @@
 	
 	id hougeki1Damages = [self.json valueForKeyPath:damageKeyPath];
 	NSInteger i = 0;
+	NSInteger offset = self.calcSecondFleet ? 6 : 0;
 	for(NSArray *array in targetShips) {
 		if(![array isKindOfClass:[NSArray class]]) {
 			i++;
@@ -128,7 +130,7 @@
 				continue;
 			}
 			
-			id damageObject = [damages objectAtIndex:target - 1];
+			id damageObject = [damages objectAtIndex:target - 1 + offset];
 			NSInteger damage = [[[hougeki1Damages objectAtIndex:i] objectAtIndex:j] integerValue];
 			damage += [[damageObject valueForKey:@"damage"] integerValue];
 			[damageObject setValue:@(damage) forKeyPath:@"damage"];
@@ -143,8 +145,10 @@
 {
 	id koukuDamage = [self.json valueForKeyPath:fdamKeyPath];
 	if(!koukuDamage || [koukuDamage isEqual:[NSNull null]]) return;
+	
+	NSInteger offset = self.calcSecondFleet ? 6 : 0;
 	for(NSInteger i = 1; i <= 6; i++) {
-		id damageObject = [damages objectAtIndex:i - 1];
+		id damageObject = [damages objectAtIndex:i - 1 + offset];
 		NSInteger damage = [[koukuDamage objectAtIndex:i] integerValue];
 		damage += [[damageObject valueForKey:@"damage"] integerValue];
 		[damageObject setValue:@(damage) forKeyPath:@"damage"];
@@ -213,7 +217,7 @@
 										  error:&error];
 	// TODO: error handling
 	
-	if(damages.count != 6) {
+	if(damages.count != 12) {
 		NSLog(@"Damage is invalid. count %lxd", damages.count);
 		return;
 	}
@@ -226,41 +230,54 @@
 		return;
 	}
 	
-	// 艦隊メンバーを取得
 	HMServerDataStore *serverStore = [HMServerDataStore oneTimeEditor];
-	NSArray *decks = [serverStore objectsWithEntityName:@"Deck"
-												  error:NULL
-										predicateFormat:@"id = %@", [array[0] valueForKey:@"deckId"]];
-	if(decks.count == 0) {
-		NSLog(@"Deck is invalid. %s", __PRETTY_FUNCTION__);
-		return;
-	}
-	id deck = decks[0];
-	NSMutableArray *shipIds = [NSMutableArray new];
-	[shipIds addObject:[deck valueForKey:@"ship_0"]];
-	[shipIds addObject:[deck valueForKey:@"ship_1"]];
-	[shipIds addObject:[deck valueForKey:@"ship_2"]];
-	[shipIds addObject:[deck valueForKey:@"ship_3"]];
-	[shipIds addObject:[deck valueForKey:@"ship_4"]];
-	[shipIds addObject:[deck valueForKey:@"ship_5"]];
-	
-	NSMutableArray *ships = [NSMutableArray new];
-	for(id shipId in shipIds) {
-		NSArray *ship = [serverStore objectsWithEntityName:@"Ship"
-													 error:NULL
-										   predicateFormat:@"id = %@", @([shipId integerValue])];
-		if(ship.count != 0 && ![ship[0] isEqual:[NSNull null]]) {
-			[ships addObject:ship[0]];
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id = %@", [array[0] valueForKey:@"deckId"]];
+	BOOL firstRun = YES;
+	for(NSInteger i = 0; i < 2; i++) {
+		// 艦隊メンバーを取得
+		NSArray *decks = [serverStore objectsWithEntityName:@"Deck"
+												  predicate:predicate
+													  error:NULL];
+		
+		if(decks.count == 0) {
+			NSLog(@"Deck is invalid. %s", __PRETTY_FUNCTION__);
+			return;
 		}
-	}
-	
-	NSUInteger shipCount = ships.count;
-	for(NSInteger i = 0; i < shipCount; i++) {
-		id ship = ships[i];
-		NSInteger damage = [[damages[i] valueForKey:@"damage"] integerValue];
-		NSInteger nowhp = [[ship valueForKey:@"nowhp"] integerValue];
-		nowhp -= damage;
-		[ship setValue:@(nowhp) forKeyPath:@"nowhp"];
+		id deck = decks[0];
+		NSMutableArray *shipIds = [NSMutableArray new];
+		[shipIds addObject:[deck valueForKey:@"ship_0"]];
+		[shipIds addObject:[deck valueForKey:@"ship_1"]];
+		[shipIds addObject:[deck valueForKey:@"ship_2"]];
+		[shipIds addObject:[deck valueForKey:@"ship_3"]];
+		[shipIds addObject:[deck valueForKey:@"ship_4"]];
+		[shipIds addObject:[deck valueForKey:@"ship_5"]];
+		
+		NSMutableArray *ships = [NSMutableArray new];
+		for(id shipId in shipIds) {
+			NSArray *ship = [serverStore objectsWithEntityName:@"Ship"
+														 error:NULL
+											   predicateFormat:@"id = %@", @([shipId integerValue])];
+			if(ship.count != 0 && ![ship[0] isEqual:[NSNull null]]) {
+				[ships addObject:ship[0]];
+			}
+		}
+		
+		NSUInteger shipCount = ships.count;
+		NSUInteger offset = (self.calcSecondFleet && !firstRun) ? 6 : 0;
+		for(NSInteger i = 0; i < shipCount; i++) {
+			id ship = ships[i];
+			NSInteger damage = [[damages[i + offset] valueForKey:@"damage"] integerValue];
+			NSInteger nowhp = [[ship valueForKey:@"nowhp"] integerValue];
+			nowhp -= damage;
+			[ship setValue:@(nowhp) forKeyPath:@"nowhp"];
+		}
+		if(!self.calcSecondFleet) {
+			NSLog(@"Not combined.");
+			break;
+		}
+		
+		predicate = [NSPredicate predicateWithFormat:@"id = %@", @2];
+		firstRun = NO;
 	}
 	
 	[serverStore saveAction:nil];
