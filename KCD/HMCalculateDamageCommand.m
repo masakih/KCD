@@ -116,6 +116,9 @@
 	id hougeki1Damages = [self.json valueForKeyPath:damageKeyPath];
 	NSInteger i = 0;
 	NSInteger offset = self.calcSecondFleet ? 6 : 0;
+	
+	NSLog(@"%@", self.calcSecondFleet ? @"Combined" : @"Not combined");
+	
 	for(NSArray *array in targetShips) {
 		if(![array isKindOfClass:[NSArray class]]) {
 			i++;
@@ -132,6 +135,9 @@
 			
 			id damageObject = [damages objectAtIndex:target - 1 + offset];
 			NSInteger damage = [[[hougeki1Damages objectAtIndex:i] objectAtIndex:j] integerValue];
+			
+			NSLog(@"target -> %ld, damage -> %ld.", target - 1 + offset, damage);
+			
 			damage += [[damageObject valueForKey:@"damage"] integerValue];
 			[damageObject setValue:@(damage) forKeyPath:@"damage"];
 			
@@ -155,6 +161,11 @@
 	}
 }
 
+- (BOOL)isCombinedBattle
+{
+	return [self.api hasPrefix:@"/kcsapi/api_req_combined_battle"];
+}
+
 - (void)calculateBattle
 {
 	// 艦隊のチェック
@@ -166,23 +177,45 @@
 	[self calculateFDam:damages
 			fdamKeyPath:@"api_data.api_kouku.api_stage3.api_fdam"];
 	
+	if(self.isCombinedBattle) {
+		[self calculateFDam:damages
+				fdamKeyPath:@"api_data.api_kouku2.api_stage3.api_fdam"];
+		
+		self.calcSecondFleet = YES;
+		[self calculateFDam:damages
+				fdamKeyPath:@"api_data.api_kouku.api_stage3_combined.api_fdam"];
+		[self calculateFDam:damages
+				fdamKeyPath:@"api_data.api_kouku2.api_stage3_combined.api_fdam"];
+		self.calcSecondFleet = NO;
+	}
+	
 	// opening attack
+#warning CHECK THIS
 	[self calculateFDam:damages
 			fdamKeyPath:@"api_data.api_opening_atack.api_fdam"];
 	
 	// hougeki1
+	self.calcSecondFleet = self.isCombinedBattle;
 	[self calculateHougeki:damages
 			targetsKeyPath:@"api_data.api_hougeki1.api_df_list"
 			 damageKeyPath:@"api_data.api_hougeki1.api_damage"];
+	self.calcSecondFleet = NO;
 	
 	// hougeki2
 	[self calculateHougeki:damages
 			targetsKeyPath:@"api_data.api_hougeki2.api_df_list"
 			 damageKeyPath:@"api_data.api_hougeki2.api_damage"];
 	
+	// hougeki3
+	[self calculateHougeki:damages
+			targetsKeyPath:@"api_data.api_hougeki3.api_df_list"
+			 damageKeyPath:@"api_data.api_hougeki3.api_damage"];
+	
 	// raigeki
+	self.calcSecondFleet = self.isCombinedBattle;
 	[self calculateFDam:damages
 			fdamKeyPath:@"api_data.api_raigeki.api_fdam"];
+	self.calcSecondFleet = NO;
 	
 	[self.store saveAction:nil];
 }
@@ -193,9 +226,11 @@
 	NSMutableArray *damages = [self damages];
 	
 	// hougeki
+	self.calcSecondFleet = self.isCombinedBattle;
 	[self calculateHougeki:damages
 			targetsKeyPath:@"api_data.api_hougeki.api_df_list"
 			 damageKeyPath:@"api_data.api_hougeki.api_damage"];
+	self.calcSecondFleet = NO;
 	
 	[self.store saveAction:nil];
 }
@@ -263,7 +298,7 @@
 		}
 		
 		NSUInteger shipCount = ships.count;
-		NSUInteger offset = (self.calcSecondFleet && !firstRun) ? 6 : 0;
+		NSUInteger offset = (self.isCombinedBattle && !firstRun) ? 6 : 0;
 		for(NSInteger i = 0; i < shipCount; i++) {
 			id ship = ships[i];
 			NSInteger damage = [[damages[i + offset] valueForKey:@"damage"] integerValue];
@@ -271,7 +306,7 @@
 			nowhp -= damage;
 			[ship setValue:@(nowhp) forKeyPath:@"nowhp"];
 		}
-		if(!self.calcSecondFleet) {
+		if(!self.isCombinedBattle) {
 			NSLog(@"Not combined.");
 			break;
 		}
@@ -299,7 +334,20 @@
 		[self calculateMidnightBattle];
 		return;
 	}
-	if([self.api isEqualToString:@"/kcsapi/api_req_sortie/battleresult"]) {
+	
+	// combined battle
+	if([self.api isEqualToString:@"/kcsapi/api_req_combined_battle/battle"]
+	   || [self.api isEqualToString:@"/kcsapi/api_req_combined_battle/airbattle"]) {
+		[self calculateBattle];
+		return;
+	}
+	if([self.api isEqualToString:@"/kcsapi/api_req_combined_battle/midnight_battle"]) {
+		[self calculateMidnightBattle];
+		return;
+	}
+	
+	if([self.api isEqualToString:@"/kcsapi/api_req_sortie/battleresult"]
+	   || [self.api isEqualToString:@"/kcsapi/api_req_combined_battle/battleresult"]) {
 		[self applyDamage];
 		[self resetDamage];
 		return;
