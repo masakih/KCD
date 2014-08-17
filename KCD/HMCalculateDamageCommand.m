@@ -190,9 +190,10 @@
 	}
 	
 	// opening attack
-#warning CHECK THIS
+	self.calcSecondFleet = self.isCombinedBattle;
 	[self calculateFDam:damages
 			fdamKeyPath:@"api_data.api_opening_atack.api_fdam"];
+	self.calcSecondFleet = NO;
 	
 	// hougeki1
 	self.calcSecondFleet = self.isCombinedBattle;
@@ -341,7 +342,9 @@
 		[self calculateBattle];
 		return;
 	}
-	if([self.api isEqualToString:@"/kcsapi/api_req_combined_battle/midnight_battle"]) {
+	
+	if([self.api isEqualToString:@"/kcsapi/api_req_combined_battle/midnight_battle"]
+	   || [self.api isEqualToString:@"/kcsapi/api_req_combined_battle/sp_midnight"]) {
 		[self calculateMidnightBattle];
 		return;
 	}
