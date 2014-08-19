@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
@@ -36,7 +36,7 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
-                                        <tableColumn width="30" minWidth="10" maxWidth="3.4028234663852886e+38" id="0ze-J2-3BD">
+                                        <tableColumn editable="NO" width="30" minWidth="10" maxWidth="3.4028234663852886e+38" id="0ze-J2-3BD">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="レア">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -52,7 +52,7 @@
                                                 <binding destination="ceg-Ko-EOy" name="value" keyPath="arrangedObjects.master_slotItem.rare" id="k6P-48-Oq6"/>
                                             </connections>
                                         </tableColumn>
-                                        <tableColumn width="175.9921875" minWidth="40" maxWidth="1000" id="x7R-Xy-lfl">
+                                        <tableColumn editable="NO" width="175.9921875" minWidth="40" maxWidth="1000" id="x7R-Xy-lfl">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="名前">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -68,7 +68,7 @@
                                                 <binding destination="ceg-Ko-EOy" name="value" keyPath="arrangedObjects.master_slotItem.name" id="px4-6P-EFS"/>
                                             </connections>
                                         </tableColumn>
-                                        <tableColumn width="125" minWidth="10" maxWidth="3.4028234663852886e+38" id="Bhw-0J-017">
+                                        <tableColumn editable="NO" width="125" minWidth="10" maxWidth="3.4028234663852886e+38" id="Bhw-0J-017">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="種別">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -88,7 +88,7 @@
                                                 </binding>
                                             </connections>
                                         </tableColumn>
-                                        <tableColumn width="140" minWidth="10" maxWidth="3.4028234663852886e+38" id="dQL-M5-EkN">
+                                        <tableColumn editable="NO" width="140" minWidth="10" maxWidth="3.4028234663852886e+38" id="dQL-M5-EkN">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="艦娘">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
