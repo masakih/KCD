@@ -116,9 +116,6 @@
 	id hougeki1Damages = [self.json valueForKeyPath:damageKeyPath];
 	NSInteger i = 0;
 	NSInteger offset = self.calcSecondFleet ? 6 : 0;
-	
-	NSLog(@"%@", self.calcSecondFleet ? @"Combined" : @"Not combined");
-	
 	for(NSArray *array in targetShips) {
 		if(![array isKindOfClass:[NSArray class]]) {
 			i++;
@@ -135,9 +132,6 @@
 			
 			id damageObject = [damages objectAtIndex:target - 1 + offset];
 			NSInteger damage = [[[hougeki1Damages objectAtIndex:i] objectAtIndex:j] integerValue];
-			
-			NSLog(@"target -> %ld, damage -> %ld.", target - 1 + offset, damage);
-			
 			damage += [[damageObject valueForKey:@"damage"] integerValue];
 			[damageObject setValue:@(damage) forKeyPath:@"damage"];
 			
@@ -306,10 +300,6 @@
 			NSInteger nowhp = [[ship valueForKey:@"nowhp"] integerValue];
 			nowhp -= damage;
 			[ship setValue:@(nowhp) forKeyPath:@"nowhp"];
-		}
-		if(!self.isCombinedBattle) {
-			NSLog(@"Not combined.");
-			break;
 		}
 		
 		predicate = [NSPredicate predicateWithFormat:@"id = %@", @2];
