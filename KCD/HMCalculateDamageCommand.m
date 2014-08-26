@@ -304,6 +304,8 @@
 		
 		predicate = [NSPredicate predicateWithFormat:@"id = %@", @2];
 		firstRun = NO;
+		
+		if(!self.isCombinedBattle) break;
 	}
 	
 	[serverStore saveAction:nil];
