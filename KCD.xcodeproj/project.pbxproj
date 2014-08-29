@@ -49,6 +49,7 @@
 		F494DC6D18CC054800AE97E4 /* HMNyukyoDockStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = F494DC6C18CC054800AE97E4 /* HMNyukyoDockStatus.m */; };
 		F49828FC1902A226000D6BBE /* HMStrokeTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F49828FB1902A226000D6BBE /* HMStrokeTextFieldCell.m */; };
 		F4A3AD82199F529700FDBF80 /* HMCombinedBattleCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A3AD81199F529700FDBF80 /* HMCombinedBattleCommand.m */; };
+		F4A3AD8519B0CAB700FDBF80 /* HMPlanToShowsBoldFontTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A3AD8419B0CAB700FDBF80 /* HMPlanToShowsBoldFontTransformer.m */; };
 		F4AA05FB192B92C800844688 /* Temporary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4AA05F9192B92C700844688 /* Temporary.xcdatamodeld */; };
 		F4AA05FE192B932E00844688 /* HMTemporaryDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AA05FD192B932E00844688 /* HMTemporaryDataStore.m */; };
 		F4AA0601192E1FE900844688 /* HMBattleCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AA0600192E1FE900844688 /* HMBattleCommand.m */; };
@@ -209,6 +210,8 @@
 		F49828FB1902A226000D6BBE /* HMStrokeTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMStrokeTextFieldCell.m; sourceTree = "<group>"; };
 		F4A3AD80199F529700FDBF80 /* HMCombinedBattleCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMCombinedBattleCommand.h; sourceTree = "<group>"; };
 		F4A3AD81199F529700FDBF80 /* HMCombinedBattleCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMCombinedBattleCommand.m; sourceTree = "<group>"; };
+		F4A3AD8319B0CAB700FDBF80 /* HMPlanToShowsBoldFontTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPlanToShowsBoldFontTransformer.h; sourceTree = "<group>"; };
+		F4A3AD8419B0CAB700FDBF80 /* HMPlanToShowsBoldFontTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMPlanToShowsBoldFontTransformer.m; sourceTree = "<group>"; };
 		F4AA05FA192B92C800844688 /* Temporary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Temporary.xcdatamodel; sourceTree = "<group>"; };
 		F4AA05FC192B932E00844688 /* HMTemporaryDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMTemporaryDataStore.h; sourceTree = "<group>"; };
 		F4AA05FD192B932E00844688 /* HMTemporaryDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMTemporaryDataStore.m; sourceTree = "<group>"; };
@@ -408,6 +411,8 @@
 				F4131EE81911445F004F7F9A /* HMSlotItemEquipTypeTransformer.m */,
 				F42680351957000200B2C27F /* HMTimerCountFormatter.h */,
 				F42680361957000200B2C27F /* HMTimerCountFormatter.m */,
+				F4A3AD8319B0CAB700FDBF80 /* HMPlanToShowsBoldFontTransformer.h */,
+				F4A3AD8419B0CAB700FDBF80 /* HMPlanToShowsBoldFontTransformer.m */,
 				F4C118F318A67B05005D5B25 /* CustomHTTPProtocol */,
 				F4C1190018A6FFC2005D5B25 /* HMQueue.h */,
 				F4C1190118A6FFC2005D5B25 /* HMQueue.m */,
@@ -805,6 +810,7 @@
 				F4131ECF190F5C08004F7F9A /* HMStoreCreateSlotItemHistoryCommand.m in Sources */,
 				F4AA05FB192B92C800844688 /* Temporary.xcdatamodeld in Sources */,
 				F4E7802818DBD2A00011BC4C /* HMGetShipCommand.m in Sources */,
+				F4A3AD8519B0CAB700FDBF80 /* HMPlanToShowsBoldFontTransformer.m in Sources */,
 				F4513EF618B9F29800073552 /* HMMemberShipCommand.m in Sources */,
 				F4268034195332A000B2C27F /* HMPowerUpCommand.m in Sources */,
 				F4C1190818A746EB005D5B25 /* HMJSONTracker.m in Sources */,
