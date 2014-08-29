@@ -13,6 +13,10 @@
 {
 	return @"api_data.api_mst_furniture";
 }
+- (NSArray *)ignoreKeys
+{
+	return @[@"api_season"];
+}
 - (void)execute
 {
 	[self commitJSONToEntityNamed:@"MasterFurniture"];
