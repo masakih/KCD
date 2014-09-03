@@ -8,6 +8,8 @@
 
 #import "HMPlanToShowsBoldFontTransformer.h"
 
+#import "HMUserDefaults.h"
+
 @implementation HMPlanToShowsBoldFontTransformer
 + (void)load
 {
@@ -30,8 +32,7 @@
 {
 	if(![value isKindOfClass:[NSNumber class]]) return @NO;
 	
-	NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-	if(![ud boolForKey:@"showsPlanColor"]) return @NO;
+	if(!HMStandardDefaults.showsPlanColor) return @NO;
 	
 	if([value integerValue] == 0) return @NO;
 	

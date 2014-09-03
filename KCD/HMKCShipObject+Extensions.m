@@ -9,6 +9,8 @@
 #import "HMKCShipObject+Extensions.h"
 
 #import "HMServerDataStore.h"
+#import "HMUserDefaults.h"
+
 
 static NSArray *shortSTypeNames = nil;
 static NSArray *levelUpExps = nil;
@@ -538,8 +540,7 @@ static NSMutableDictionary *names = nil;
 
 - (NSColor *)planColor
 {
-	NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-	if(![ud boolForKey:@"showsPlanColor"]) return [NSColor controlTextColor];
+	if(!HMStandardDefaults.showsPlanColor) return [NSColor controlTextColor];
 	
 	NSInteger planType = [[self valueForKey:@"sally_area"] integerValue];
 	if(planType == 1) return [NSColor colorWithCalibratedRed:0.000 green:0.043 blue:0.518 alpha:1.000];

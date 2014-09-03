@@ -33,4 +33,9 @@ extern HMUserDefaults *HMStandardDefaults;
 
 @property NSInteger minimumColoredShipCount;
 
+/**
+ *  2014年夏イベント時の出撃海域による色分けの有効／無効
+ */
+@property BOOL showsPlanColor;
+
 @end

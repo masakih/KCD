@@ -175,6 +175,16 @@ HMUserDefaults *HMStandardDefaults = nil;
 	return [[NSUserDefaults standardUserDefaults] boolForKey:@"hideMaxTaiku"];
 }
 
+- (void)setShowsPlanColor:(BOOL)showsPlanColor
+{
+	[[NSUserDefaults standardUserDefaults] setBool:showsPlanColor forKey:@"showsPlanColor"];
+}
+- (BOOL)showsPlanColor
+{
+	return [[NSUserDefaults standardUserDefaults] boolForKey:@"showsPlanColor"];
+}
+
+
 - (void)setMinimumColoredShipCount:(NSInteger)minimumColoredShipCount
 {
 	[[NSUserDefaults standardUserDefaults] setInteger:minimumColoredShipCount forKey:@"minimumColoredShipCount"];
