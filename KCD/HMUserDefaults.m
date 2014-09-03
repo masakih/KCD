@@ -27,6 +27,18 @@ HMUserDefaults *HMStandardDefaults = nil;
 	});
 }
 
++ (void)initialize
+{
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		[[NSUserDefaults standardUserDefaults] registerDefaults:
+		 @{
+		   @"screenShotBorderWidth" : @(3.0),
+		   }
+		 ];
+	});
+}
+
 
 - (void)setSlotItemSortDescriptors:(NSArray *)slotItemSortDescriptors
 {
@@ -193,4 +205,27 @@ HMUserDefaults *HMStandardDefaults = nil;
 {
 	return [[NSUserDefaults standardUserDefaults] integerForKey:@"minimumColoredShipCount"];
 }
+
+- (void)setScreenShotBorderWidth:(CGFloat)screenShotBorderWidth
+{
+	if(screenShotBorderWidth < 0 || screenShotBorderWidth > 20) return;
+	
+	[[NSUserDefaults standardUserDefaults] setDouble:screenShotBorderWidth forKey:@"screenShotBorderWidth"];
+}
+- (CGFloat)screenShotBorderWidth
+{
+	CGFloat result = [[NSUserDefaults standardUserDefaults] doubleForKey:@"screenShotBorderWidth"];
+	
+	if(result < 0) {
+		[[NSUserDefaults standardUserDefaults] setDouble:0 forKey:@"screenShotBorderWidth"];
+		return 0;
+	}
+	if(result > 20) {
+		[[NSUserDefaults standardUserDefaults] setDouble:20 forKey:@"screenShotBorderWidth"];
+		return 20;
+	}
+	
+	return result;
+}
+
 @end

@@ -38,4 +38,10 @@ extern HMUserDefaults *HMStandardDefaults;
  */
 @property BOOL showsPlanColor;
 
+
+/**
+ *  スクリーンショットの縁取りの幅
+ */
+@property CGFloat screenShotBorderWidth;
+
 @end

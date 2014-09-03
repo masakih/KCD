@@ -238,7 +238,8 @@ typedef NS_ENUM(NSInteger, ViewType) {
 	NSView *contentView = self.window.contentView;
 	
 	NSRect frame = [contentView convertRect:[self.webView visibleRect] fromView:self.webView];
-	frame = NSInsetRect(frame, -3, -3);
+	CGFloat screenShotBorderWidth = HMStandardDefaults.screenShotBorderWidth;
+	frame = NSInsetRect(frame, -screenShotBorderWidth, -screenShotBorderWidth);
 	
 	NSBitmapImageRep *rep = [contentView bitmapImageRepForCachingDisplayInRect:frame];
 	[contentView cacheDisplayInRect:frame toBitmapImageRep:rep];
