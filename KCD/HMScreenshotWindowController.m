@@ -30,6 +30,7 @@
 @end
 
 @implementation HMScreenshotWindowController
+@synthesize snapImageRep = _snapImageRep;
 @synthesize snapData = _snapData;
 @synthesize snap = _snap;
 @synthesize appendKanColleTag = _appendKanColleTag;
@@ -68,6 +69,18 @@
 		_appendKanColleTag = HMStandardDefaults.appendKanColleTag;
 	}
 	return self;
+}
+
+- (NSBitmapImageRep *)snapImageRep
+{
+	return _snapImageRep;
+}
+- (void)setSnapImageRep:(NSBitmapImageRep *)snapImageRep
+{
+	_snapImageRep = snapImageRep;
+	
+	NSData *jpeg = [snapImageRep representationUsingType:NSJPEGFileType properties:nil];
+	self.snapData = jpeg;
 }
 
 - (NSData *)snapData

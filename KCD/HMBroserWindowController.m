@@ -243,9 +243,7 @@ typedef NS_ENUM(NSInteger, ViewType) {
 	
 	NSBitmapImageRep *rep = [contentView bitmapImageRepForCachingDisplayInRect:frame];
 	[contentView cacheDisplayInRect:frame toBitmapImageRep:rep];
-	NSData *jpeg = [rep representationUsingType:NSJPEGFileType properties:nil];
-	
-	self.screenshotWindowController.snapData = jpeg;
+	self.screenshotWindowController.snapImageRep = rep;
 	
 	[self.window beginSheet:self.screenshotWindowController.window
 		  completionHandler:^(NSModalResponse returnCode) {
