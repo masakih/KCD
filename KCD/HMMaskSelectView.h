@@ -10,4 +10,8 @@
 
 @interface HMMaskSelectView : NSView
 
+@property (strong, nonatomic) NSMutableArray *masks;
+
+- (IBAction)disableAllMasks:(id)sender;
+
 @end

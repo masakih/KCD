@@ -8,6 +8,8 @@
 
 #import "HMScreenshotWindowController.h"
 #import "HMUserDefaults.h"
+#import "HMMaskSelectView.h"
+#import "HMMaskInfomation.h"
 
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
@@ -19,7 +21,9 @@
 
 @interface HMScreenshotWindowController ()
 
+@property (readonly) NSData *snapData;
 @property (strong) NSImage *snap;
+
 
 @property (strong) ACAccountStore *accountStore;
 @property BOOL availableTwitter;
@@ -31,7 +35,6 @@
 
 @implementation HMScreenshotWindowController
 @synthesize snapImageRep = _snapImageRep;
-@synthesize snapData = _snapData;
 @synthesize snap = _snap;
 @synthesize appendKanColleTag = _appendKanColleTag;
 
@@ -67,6 +70,8 @@
 			_tagString = @"";
 		}
 		_appendKanColleTag = HMStandardDefaults.appendKanColleTag;
+		
+		self.tweetString = @"";
 	}
 	return self;
 }
@@ -78,21 +83,29 @@
 - (void)setSnapImageRep:(NSBitmapImageRep *)snapImageRep
 {
 	_snapImageRep = snapImageRep;
-	
-	NSData *jpeg = [snapImageRep representationUsingType:NSJPEGFileType properties:nil];
-	self.snapData = jpeg;
+	self.snap = nil;
 }
 
 - (NSData *)snapData
 {
-	return _snapData;
+	NSImage *image = [[NSImage alloc] initWithSize:[self.snapImageRep size]];
+	[image addRepresentation:self.snapImageRep];
+	
+	[image lockFocus];
+	for(HMMaskInfomation *info in self.maskSelectView.masks) {
+		if(info.enable) {
+			NSBezierPath *path = [NSBezierPath bezierPathWithRect:info.maskRect];
+			[info.maskColor set];
+			[path fill];
+		}
+	}
+	[image unlockFocus];
+	
+	NSData *tiffData = [image TIFFRepresentation];
+	NSBitmapImageRep *rep = [NSBitmapImageRep imageRepWithData:tiffData];
+	
+	return [rep representationUsingType:NSJPEGFileType properties:nil];
 }
-- (void)setSnapData:(NSData *)snapData
-{
-	_snapData = snapData;
-	_snap = nil;
-}
-
 - (NSImage *)snap
 {
 	if(_snap) return _snap;
@@ -147,7 +160,7 @@
 
 - (IBAction)tweet:(id)sender
 {
-	if(!self.snap) {
+	if(!self.snapData) {
 		NSBeep();
 		return;
 	}
@@ -160,7 +173,7 @@
 	
 	if(self.leaveLength >= 0) {
 		[self postImage:self.snapData withStatus:status];
-		[self.window orderOut:nil];
+		[self.window.sheetParent endSheet:self.window returnCode:NSOKButton + 1];
 	} else {
 		NSBeep();
 	}
@@ -168,7 +181,7 @@
 
 - (IBAction)saveSnap:(id)sender
 {
-	[self.window orderOut:nil];
+	[self.window.sheetParent endSheet:self.window returnCode:NSOKButton + 0];
 	
 	if(!self.snapData) return;
 	
@@ -187,7 +200,7 @@
 }
 - (IBAction)cancel:(id)sender
 {
-	[self.window orderOut:nil];
+	[self.window.sheetParent endSheet:self.window returnCode:NSCancelButton];
 }
 - (void)postImage:(NSData *)jpeg withStatus:(NSString *)status
 {
@@ -314,6 +327,14 @@
         result = YES;
     }
     return result;
+}
+
+/**
+ *  NSWindow delegate
+ */
+- (void)windowWillClose:(NSNotification *)notification
+{
+	[self.maskSelectView disableAllMasks:self];
 }
 
 @end

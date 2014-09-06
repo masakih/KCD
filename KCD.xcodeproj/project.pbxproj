@@ -52,6 +52,7 @@
 		F4A3AD8519B0CAB700FDBF80 /* HMPlanToShowsBoldFontTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A3AD8419B0CAB700FDBF80 /* HMPlanToShowsBoldFontTransformer.m */; };
 		F4A3AD8819B6149D00FDBF80 /* HMNyukyoStartCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A3AD8719B6149D00FDBF80 /* HMNyukyoStartCommand.m */; };
 		F4A3AD8B19B9BE7A00FDBF80 /* HMMaskSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A3AD8A19B9BE7A00FDBF80 /* HMMaskSelectView.m */; };
+		F4A3AD8E19BB220000FDBF80 /* HMMaskInfomation.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A3AD8D19BB220000FDBF80 /* HMMaskInfomation.m */; };
 		F4AA05FB192B92C800844688 /* Temporary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4AA05F9192B92C700844688 /* Temporary.xcdatamodeld */; };
 		F4AA05FE192B932E00844688 /* HMTemporaryDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AA05FD192B932E00844688 /* HMTemporaryDataStore.m */; };
 		F4AA0601192E1FE900844688 /* HMBattleCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AA0600192E1FE900844688 /* HMBattleCommand.m */; };
@@ -218,6 +219,8 @@
 		F4A3AD8719B6149D00FDBF80 /* HMNyukyoStartCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMNyukyoStartCommand.m; sourceTree = "<group>"; };
 		F4A3AD8919B9BE7A00FDBF80 /* HMMaskSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMaskSelectView.h; sourceTree = "<group>"; };
 		F4A3AD8A19B9BE7A00FDBF80 /* HMMaskSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMaskSelectView.m; sourceTree = "<group>"; };
+		F4A3AD8C19BB220000FDBF80 /* HMMaskInfomation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMaskInfomation.h; sourceTree = "<group>"; };
+		F4A3AD8D19BB220000FDBF80 /* HMMaskInfomation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMaskInfomation.m; sourceTree = "<group>"; };
 		F4AA05FA192B92C800844688 /* Temporary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Temporary.xcdatamodel; sourceTree = "<group>"; };
 		F4AA05FC192B932E00844688 /* HMTemporaryDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMTemporaryDataStore.h; sourceTree = "<group>"; };
 		F4AA05FD192B932E00844688 /* HMTemporaryDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMTemporaryDataStore.m; sourceTree = "<group>"; };
@@ -539,6 +542,8 @@
 				F4B2D02D18F83A2F00542742 /* HMScreenshotWindowController.xib */,
 				F4A3AD8919B9BE7A00FDBF80 /* HMMaskSelectView.h */,
 				F4A3AD8A19B9BE7A00FDBF80 /* HMMaskSelectView.m */,
+				F4A3AD8C19BB220000FDBF80 /* HMMaskInfomation.h */,
+				F4A3AD8D19BB220000FDBF80 /* HMMaskInfomation.m */,
 				F4B2D02E18F83CBB00542742 /* HMDeckViewController.h */,
 				F4B2D02F18F83CBB00542742 /* HMDeckViewController.m */,
 				F4B2D03518F83CC800542742 /* HMDeckViewController.xib */,
@@ -788,6 +793,7 @@
 				F4B3DC2E18E07B680011B4FC /* HMHistoryWindowController.m in Sources */,
 				F4C118FA18A67B1C005D5B25 /* CacheStoragePolicy.m in Sources */,
 				F4B3DC2118DECF570011B4FC /* HMTSVSupport.m in Sources */,
+				F4A3AD8E19BB220000FDBF80 /* HMMaskInfomation.m in Sources */,
 				F4E7802E18DC3AF00011BC4C /* LocalData.xcdatamodeld in Sources */,
 				F4131ED5190F63D8004F7F9A /* HMUpdateSlotItemCommand.m in Sources */,
 				F4C1190518A71AEA005D5B25 /* HMJSONReciever.m in Sources */,

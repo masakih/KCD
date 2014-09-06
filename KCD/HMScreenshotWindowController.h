@@ -13,8 +13,6 @@
 @interface HMScreenshotWindowController : NSWindowController
 
 @property (strong, nonatomic) NSBitmapImageRep *snapImageRep;
-@property (strong, nonatomic) NSData *snapData;
-@property (readonly) NSImage *snap;
 @property (strong, nonatomic) NSString *tweetString;
 /// 残り文字数
 @property (readonly) NSInteger leaveLength;
