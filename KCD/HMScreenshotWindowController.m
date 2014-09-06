@@ -91,21 +91,25 @@
 
 - (NSData *)snapData
 {
-	NSImage *image = [[NSImage alloc] initWithSize:[self.snapImageRep size]];
-	[image addRepresentation:self.snapImageRep];
+	NSBitmapImageRep *rep = self.snapImageRep;
 	
-	[image lockFocus];
-	for(HMMaskInfomation *info in self.maskSelectView.masks) {
-		if(info.enable) {
-			NSBezierPath *path = [NSBezierPath bezierPathWithRect:info.maskRect];
-			[info.maskColor set];
-			[path fill];
+	if(self.useMask) {
+		NSImage *image = [[NSImage alloc] initWithSize:[self.snapImageRep size]];
+		[image addRepresentation:self.snapImageRep];
+		
+		[image lockFocus];
+		for(HMMaskInfomation *info in self.maskSelectView.masks) {
+			if(info.enable) {
+				NSBezierPath *path = [NSBezierPath bezierPathWithRect:info.maskRect];
+				[info.maskColor set];
+				[path fill];
+			}
 		}
+		[image unlockFocus];
+		
+		NSData *tiffData = [image TIFFRepresentation];
+		rep = [NSBitmapImageRep imageRepWithData:tiffData];
 	}
-	[image unlockFocus];
-	
-	NSData *tiffData = [image TIFFRepresentation];
-	NSBitmapImageRep *rep = [NSBitmapImageRep imageRepWithData:tiffData];
 	
 	return [rep representationUsingType:NSJPEGFileType properties:nil];
 }
