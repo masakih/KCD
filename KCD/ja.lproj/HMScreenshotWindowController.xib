@@ -16,14 +16,14 @@
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="eY8-6X-dvz" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="139" y="85" width="823" height="582"/>
+            <rect key="contentRect" x="139" y="85" width="824" height="573"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
             <view key="contentView" id="BdN-Ty-60O">
-                <rect key="frame" x="0.0" y="0.0" width="823" height="582"/>
+                <rect key="frame" x="0.0" y="0.0" width="824" height="573"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="bPo-Ps-Fn9">
-                        <rect key="frame" x="12" y="88" width="800" height="480"/>
+                        <rect key="frame" x="12" y="81" width="800" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="groove" id="WQ1-EF-h9K">
                             <connections>
@@ -35,7 +35,7 @@
                         </connections>
                     </imageView>
                     <button verticalHuggingPriority="750" id="QSn-nP-QM9">
-                        <rect key="frame" x="738" y="11" width="77" height="32"/>
+                        <rect key="frame" x="738" y="4" width="77" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                         <buttonCell key="cell" type="push" title="Tweet" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hKL-za-mNQ">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -51,7 +51,7 @@ DQ
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" id="8NF-GL-Cnh">
-                        <rect key="frame" x="738" y="46" width="77" height="32"/>
+                        <rect key="frame" x="738" y="39" width="77" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                         <buttonCell key="cell" type="push" title="保存" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5L4-tU-nuf">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -65,7 +65,7 @@ DQ
                         </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Wc2-R4-iL2">
-                        <rect key="frame" x="561" y="18" width="75" height="17"/>
+                        <rect key="frame" x="561" y="13" width="75" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="yEh-2d-uGy">
                             <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="Jtd-it-A4T"/>
@@ -79,7 +79,7 @@ DQ
                         </connections>
                     </textField>
                     <button verticalHuggingPriority="750" id="G3Z-2d-c9e">
-                        <rect key="frame" x="636" y="11" width="105" height="32"/>
+                        <rect key="frame" x="636" y="4" width="105" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                         <buttonCell key="cell" type="push" title="キャンセル" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8ov-TJ-6Mj">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -93,7 +93,7 @@ Gw
                         </connections>
                     </button>
                     <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="ho6-3i-FKa">
-                        <rect key="frame" x="15" y="18" width="540" height="56"/>
+                        <rect key="frame" x="15" y="11" width="540" height="56"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <textFieldCell key="cell" selectable="YES" editable="YES" continuous="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" focusRingType="none" drawsBackground="YES" id="93o-12-WAJ">
                             <font key="font" metaFont="system"/>
@@ -110,7 +110,7 @@ Gw
                         </connections>
                     </textField>
                     <button id="C66-Fp-b36">
-                        <rect key="frame" x="561" y="43" width="148" height="18"/>
+                        <rect key="frame" x="561" y="36" width="148" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="#艦これタグを付ける" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="OqJ-RP-HMQ">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -121,7 +121,7 @@ Gw
                         </connections>
                     </button>
                     <button id="vsh-0d-Ggv">
-                        <rect key="frame" x="561" y="63" width="148" height="18"/>
+                        <rect key="frame" x="561" y="56" width="148" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="提督名をマスク" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="klQ-YC-3eZ">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -132,7 +132,7 @@ Gw
                         </connections>
                     </button>
                     <customView id="Qel-rW-zMa" customClass="HMMaskSelectView">
-                        <rect key="frame" x="12" y="88" width="800" height="480"/>
+                        <rect key="frame" x="12" y="81" width="800" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <connections>
                             <binding destination="-2" name="hidden" keyPath="useMask" id="v0U-VX-l8s">
