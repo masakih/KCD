@@ -44,4 +44,8 @@ extern HMUserDefaults *HMStandardDefaults;
  */
 @property CGFloat screenShotBorderWidth;
 
+/**
+ *  スクリーンショットに提督名マスクを施すか
+ */
+@property BOOL useMask;
 @end

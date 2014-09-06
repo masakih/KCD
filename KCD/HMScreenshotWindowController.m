@@ -37,6 +37,7 @@
 @synthesize snapImageRep = _snapImageRep;
 @synthesize snap = _snap;
 @synthesize appendKanColleTag = _appendKanColleTag;
+@synthesize useMask = _useMask;
 
 + (NSSet *)keyPathsForValuesAffectingLeaveLength
 {
@@ -72,6 +73,8 @@
 		_appendKanColleTag = HMStandardDefaults.appendKanColleTag;
 		
 		self.tweetString = @"";
+		
+		_useMask = HMStandardDefaults.useMask;
 	}
 	return self;
 }
@@ -120,7 +123,15 @@
 {
 	_snap = snap;
 }
-
+- (BOOL)useMask
+{
+	return _useMask;
+}
+- (void)setUseMask:(BOOL)useMask
+{
+	HMStandardDefaults.useMask = useMask;
+	_useMask = useMask;
+}
 - (NSInteger)leaveLength
 {
 	const NSUInteger maxTweetLength = 140;

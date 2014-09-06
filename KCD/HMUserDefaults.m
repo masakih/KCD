@@ -196,6 +196,14 @@ HMUserDefaults *HMStandardDefaults = nil;
 	return [[NSUserDefaults standardUserDefaults] boolForKey:@"showsPlanColor"];
 }
 
+- (void)setUseMask:(BOOL)useMask
+{
+	[[NSUserDefaults standardUserDefaults] setBool:useMask forKey:@"useMask"];
+}
+- (BOOL)useMask
+{
+	return [[NSUserDefaults standardUserDefaults] boolForKey:@"useMask"];
+}
 
 - (void)setMinimumColoredShipCount:(NSInteger)minimumColoredShipCount
 {
