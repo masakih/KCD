@@ -83,6 +83,7 @@ static NSRect maskRects[kNumberOfMask];
 	
 	[context restoreGraphicsState];
 	
+#if 0
 	NSBezierPath *path = [NSBezierPath bezierPath];
 	for(int i = 0; i < 800; i += 50) {
 		[path moveToPoint:NSMakePoint(i, 0)];
@@ -94,6 +95,7 @@ static NSRect maskRects[kNumberOfMask];
 	}
 	[[NSColor whiteColor] set];
 	[path stroke];
+#endif
 }
 
 - (void)mouseUp:(NSEvent *)event
