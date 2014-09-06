@@ -8,6 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class HMMaskSelectView;
+
 @interface HMScreenshotWindowController : NSWindowController
 
 @property (strong, nonatomic) NSBitmapImageRep *snapImageRep;
@@ -21,6 +23,9 @@
 @property (readonly) BOOL canSave;
 @property BOOL appendKanColleTag;
 @property (copy, nonatomic) NSString *tagString;
+
+@property (strong, nonatomic) IBOutlet HMMaskSelectView *maskSelectView;
+@property BOOL useMask;
 
 - (IBAction)tweet:(id)sender;
 - (IBAction)saveSnap:(id)sender;
