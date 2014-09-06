@@ -79,6 +79,9 @@ static NSRect maskRects[kNumberOfMask];
 		[path setLineDash:dashSeed count:2 phase:0];
 		[info.borderColor set];
 		[path stroke];
+		[path setLineDash:dashSeed count:2 phase:3.0];
+		[[NSColor lightGrayColor] set];
+		[path stroke];
 	}
 	
 	[context restoreGraphicsState];
