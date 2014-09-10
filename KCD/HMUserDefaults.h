@@ -48,4 +48,9 @@ extern HMUserDefaults *HMStandardDefaults;
  *  スクリーンショットに提督名マスクを施すか
  */
 @property BOOL useMask;
+
+/**
+ *  スクリーンショットを保存する場所
+ */
+@property (nonatomic, weak) NSString *screenShotSaveDirectory;
 @end

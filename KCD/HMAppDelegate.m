@@ -12,6 +12,7 @@
 #import "HMBroserWindowController.h"
 #import "HMHistoryWindowController.h"
 #import "HMSlotItemWindowController.h"
+#import "HMPreferencePanelController.h"
 
 #import "HMTSVSupport.h"
 
@@ -29,6 +30,7 @@
 @property (strong) HMBroserWindowController *browserWindowController;
 @property (strong) HMHistoryWindowController *historyWindowController;
 @property (strong) HMSlotItemWindowController *slotItemWindowController;
+@property (strong) HMPreferencePanelController *preferencePanelController;
 
 #ifdef DEBUG
 @property (strong) HMShipWindowController *shipWindowController;
@@ -148,6 +150,26 @@ static FILE* logFileP = NULL;
 	
 	return predicate;
 }
+
+- (void)setScreenShotSaveDirectory:(NSString *)screenShotSaveDirectory
+{
+	HMStandardDefaults.screenShotSaveDirectory = screenShotSaveDirectory;
+}
+- (NSString *)screenShotSaveDirectory
+{
+	NSString *path = HMStandardDefaults.screenShotSaveDirectory;
+	if(!path) {
+		path = [[self documentsFilesDirectory] path];
+	}
+	
+	return path;
+}
+- (NSURL *)documentsFilesDirectory
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+	return [[fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+}
+
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem
 {
 	SEL action = [menuItem action];
@@ -168,6 +190,8 @@ static FILE* logFileP = NULL;
 		}
 		return YES;
 	} else if(action == @selector(saveLocalData:) || action == @selector(loadLocalData:)) {
+		return YES;
+	} else if(action == @selector(showHidePreferencePanle:)) {
 		return YES;
 	}
 #if ENABLE_JSON_LOG
@@ -199,6 +223,20 @@ static FILE* logFileP = NULL;
 	}
 	
 	NSWindow *window = self.slotItemWindowController.window;
+	if(!window.isVisible || !window.isMainWindow) {
+		[window makeKeyAndOrderFront:nil];
+	} else {
+		[window orderOut:nil];
+	}
+}
+
+- (IBAction)showHidePreferencePanle:(id)sender
+{
+	if(!self.preferencePanelController) {
+		self.preferencePanelController = [HMPreferencePanelController new];
+	}
+	
+	NSWindow *window = self.preferencePanelController.window;
 	if(!window.isVisible || !window.isMainWindow) {
 		[window makeKeyAndOrderFront:nil];
 	} else {

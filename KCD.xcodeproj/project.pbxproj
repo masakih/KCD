@@ -53,6 +53,8 @@
 		F4A3AD8819B6149D00FDBF80 /* HMNyukyoStartCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A3AD8719B6149D00FDBF80 /* HMNyukyoStartCommand.m */; };
 		F4A3AD8B19B9BE7A00FDBF80 /* HMMaskSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A3AD8A19B9BE7A00FDBF80 /* HMMaskSelectView.m */; };
 		F4A3AD8E19BB220000FDBF80 /* HMMaskInfomation.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A3AD8D19BB220000FDBF80 /* HMMaskInfomation.m */; };
+		F4A3AD9219BDDD8E00FDBF80 /* HMPreferencePanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A3AD9019BDDD8E00FDBF80 /* HMPreferencePanelController.m */; };
+		F4A3AD9419BDDE5500FDBF80 /* HMPreferencePanelController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A3AD9619BDDE5500FDBF80 /* HMPreferencePanelController.xib */; };
 		F4AA05FB192B92C800844688 /* Temporary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4AA05F9192B92C700844688 /* Temporary.xcdatamodeld */; };
 		F4AA05FE192B932E00844688 /* HMTemporaryDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AA05FD192B932E00844688 /* HMTemporaryDataStore.m */; };
 		F4AA0601192E1FE900844688 /* HMBattleCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AA0600192E1FE900844688 /* HMBattleCommand.m */; };
@@ -221,6 +223,9 @@
 		F4A3AD8A19B9BE7A00FDBF80 /* HMMaskSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMaskSelectView.m; sourceTree = "<group>"; };
 		F4A3AD8C19BB220000FDBF80 /* HMMaskInfomation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMaskInfomation.h; sourceTree = "<group>"; };
 		F4A3AD8D19BB220000FDBF80 /* HMMaskInfomation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMaskInfomation.m; sourceTree = "<group>"; };
+		F4A3AD8F19BDDD8D00FDBF80 /* HMPreferencePanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPreferencePanelController.h; sourceTree = "<group>"; };
+		F4A3AD9019BDDD8E00FDBF80 /* HMPreferencePanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMPreferencePanelController.m; sourceTree = "<group>"; };
+		F4A3AD9519BDDE5500FDBF80 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMPreferencePanelController.xib; sourceTree = "<group>"; };
 		F4AA05FA192B92C800844688 /* Temporary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Temporary.xcdatamodel; sourceTree = "<group>"; };
 		F4AA05FC192B932E00844688 /* HMTemporaryDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMTemporaryDataStore.h; sourceTree = "<group>"; };
 		F4AA05FD192B932E00844688 /* HMTemporaryDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMTemporaryDataStore.m; sourceTree = "<group>"; };
@@ -552,6 +557,9 @@
 				F4131ED9190FEBCC004F7F9A /* HMSlotItemWindowController.h */,
 				F4131EDA190FEBCC004F7F9A /* HMSlotItemWindowController.m */,
 				F4131EE0190FEBDB004F7F9A /* HMSlotItemWindowController.xib */,
+				F4A3AD8F19BDDD8D00FDBF80 /* HMPreferencePanelController.h */,
+				F4A3AD9019BDDD8E00FDBF80 /* HMPreferencePanelController.m */,
+				F4A3AD9619BDDE5500FDBF80 /* HMPreferencePanelController.xib */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -754,6 +762,7 @@
 				F4BDEB5F187252F30069D0CE /* Images.xcassets in Resources */,
 				F4BEEE9F18D211280006F70C /* Localizable.strings in Resources */,
 				F4513EF018B96C6C00073552 /* Links.rtf in Resources */,
+				F4A3AD9419BDDE5500FDBF80 /* HMPreferencePanelController.xib in Resources */,
 				F4BDEB5D187252F30069D0CE /* MainMenu.xib in Resources */,
 				F4B3DC3F18E5C8870011B4FC /* HMBroserWindowController.xib in Resources */,
 				F4131EDE190FEBDB004F7F9A /* HMSlotItemWindowController.xib in Resources */,
@@ -792,6 +801,7 @@
 				F4B414FB18B1FB6C00468DAF /* HMMasterMapCellCommand.m in Sources */,
 				F4B3DC2E18E07B680011B4FC /* HMHistoryWindowController.m in Sources */,
 				F4C118FA18A67B1C005D5B25 /* CacheStoragePolicy.m in Sources */,
+				F4A3AD9219BDDD8E00FDBF80 /* HMPreferencePanelController.m in Sources */,
 				F4B3DC2118DECF570011B4FC /* HMTSVSupport.m in Sources */,
 				F4A3AD8E19BB220000FDBF80 /* HMMaskInfomation.m in Sources */,
 				F4E7802E18DC3AF00011BC4C /* LocalData.xcdatamodeld in Sources */,
@@ -897,6 +907,14 @@
 				F494DC6918C8BAB900AE97E4 /* ja */,
 			);
 			name = HMPowerUpSupportViewController.xib;
+			sourceTree = "<group>";
+		};
+		F4A3AD9619BDDE5500FDBF80 /* HMPreferencePanelController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4A3AD9519BDDE5500FDBF80 /* ja */,
+			);
+			name = HMPreferencePanelController.xib;
 			sourceTree = "<group>";
 		};
 		F4B2D02D18F83A2F00542742 /* HMScreenshotWindowController.xib */ = {

@@ -31,8 +31,12 @@ typedef NS_ENUM(NSUInteger, HMShipType) {
 
 @property (strong, nonatomic) IBOutlet NSMenuItem *debugMenuItem;
 
+@property (nonatomic, strong) NSString *screenShotSaveDirectory;
+
 - (IBAction)showHideHistory:(id)sender;
 - (IBAction)showHideSlotItemWindow:(id)sender;
+
+- (IBAction)showHidePreferencePanle:(id)sender;
 
 - (IBAction)saveLocalData:(id)sender;
 - (IBAction)loadLocalData:(id)sender;

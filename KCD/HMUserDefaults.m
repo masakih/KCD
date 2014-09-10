@@ -236,4 +236,12 @@ HMUserDefaults *HMStandardDefaults = nil;
 	return result;
 }
 
+- (void)setScreenShotSaveDirectory:(NSURL *)screenShotSaveDirectory
+{
+	[[NSUserDefaults standardUserDefaults] setObject:screenShotSaveDirectory forKey:@"screenShotSaveDirectory"];
+}
+- (NSString *)screenShotSaveDirectory
+{
+	return [[NSUserDefaults standardUserDefaults] objectForKey:@"screenShotSaveDirectory"];
+}
 @end

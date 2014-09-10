@@ -11,6 +11,8 @@
 #import "HMMaskSelectView.h"
 #import "HMMaskInfomation.h"
 
+#import "HMAppDelegate.h"
+
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
 
@@ -167,10 +169,10 @@
 	return self.snapData ? YES : NO;
 }
 
-- (NSURL *)documentsFilesDirectory
+- (NSURL *)saveDirectoryURL
 {
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-	return [[fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    HMAppDelegate *appDelegate = [NSApp delegate];
+	return [NSURL fileURLWithPath:appDelegate.screenShotSaveDirectory];
 }
 
 - (IBAction)tweet:(id)sender
@@ -207,7 +209,7 @@
 		filename = @"KCD";
 	}
 	filename = [filename stringByAppendingPathExtension:@"jpg"];
-	NSURL *path = [[self documentsFilesDirectory] URLByAppendingPathComponent:filename];
+	NSURL *path = [[self saveDirectoryURL] URLByAppendingPathComponent:filename];
 	
 	filename = [[NSFileManager defaultManager] _web_pathWithUniqueFilenameForPath:[path path]];
 	
