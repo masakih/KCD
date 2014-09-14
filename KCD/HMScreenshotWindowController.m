@@ -162,6 +162,26 @@
 }
 - (BOOL)canTweet
 {
+	ACAccountType *twitterType = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+	if(![twitterType accessGranted]) {
+		[self.accountStore requestAccessToAccountsWithType:twitterType
+												   options:nil
+												completion:^(BOOL granted, NSError *error) {
+													if(!granted) {
+														NSLog(@"No access granted");
+													} else {
+//														NSLog(@"succsess");
+													}
+												}];
+	}
+	NSArray *accounts = [self.accountStore accountsWithAccountType:twitterType];
+	if([accounts count] == 0) {
+		NSLog(@"twitter account not avail.");
+		NSLog(@"Accounts -> %@", self.accountStore.accounts);
+		return NO;
+	}
+	self.availableTwitter = YES;
+	
 	return self.availableTwitter && self.leaveLength >= 0;
 }
 - (BOOL)canSave
@@ -276,12 +296,6 @@
 - (void)checkShortURLLength
 {
 	ACAccountType *twitterType = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-	NSArray *accounts = [self.accountStore accountsWithAccountType:twitterType];
-	if([accounts count] == 0) {
-		NSLog(@"twitter account not avail.");
-		return;
-	}
-	self.availableTwitter = YES;
 	
 	SLRequestHandler requestHandler =
 	^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
