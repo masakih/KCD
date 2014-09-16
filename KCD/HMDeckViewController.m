@@ -10,6 +10,7 @@
 
 #import "HMServerDataStore.h"
 
+#import "HMSuppliesView.h"
 
 @interface HMDeckViewController ()
 @property (strong, nonatomic) NSNumber *sakuteki0;
@@ -18,6 +19,13 @@
 @property (strong, nonatomic) NSNumber *sakuteki3;
 @property (strong, nonatomic) NSNumber *sakuteki4;
 @property (strong, nonatomic) NSNumber *sakuteki5;
+
+@property (nonatomic, weak) IBOutlet HMSuppliesView *supplies1;
+@property (nonatomic, weak) IBOutlet HMSuppliesView *supplies2;
+@property (nonatomic, weak) IBOutlet HMSuppliesView *supplies3;
+@property (nonatomic, weak) IBOutlet HMSuppliesView *supplies4;
+@property (nonatomic, weak) IBOutlet HMSuppliesView *supplies5;
+@property (nonatomic, weak) IBOutlet HMSuppliesView *supplies6;
 @end
 
 @implementation HMDeckViewController
@@ -70,6 +78,31 @@
 	[self bind:@"sakuteki3" toObject:self.ship4Controller withKeyPath:@"selection.sakuteki_0" options:nil];
 	[self bind:@"sakuteki4" toObject:self.ship5Controller withKeyPath:@"selection.sakuteki_0" options:nil];
 	[self bind:@"sakuteki5" toObject:self.ship6Controller withKeyPath:@"selection.sakuteki_0" options:nil];
+	
+	[self.supplies1 bind:@"shipStatus"
+				toObject:self.ship1Controller
+			 withKeyPath:@"selection.self"
+				 options:nil];
+	[self.supplies2 bind:@"shipStatus"
+				toObject:self.ship2Controller
+			 withKeyPath:@"selection.self"
+				 options:nil];
+	[self.supplies3 bind:@"shipStatus"
+				toObject:self.ship3Controller
+			 withKeyPath:@"selection.self"
+				 options:nil];
+	[self.supplies4 bind:@"shipStatus"
+				toObject:self.ship4Controller
+			 withKeyPath:@"selection.self"
+				 options:nil];
+	[self.supplies5 bind:@"shipStatus"
+				toObject:self.ship5Controller
+			 withKeyPath:@"selection.self"
+				 options:nil];
+	[self.supplies6 bind:@"shipStatus"
+				toObject:self.ship6Controller
+			 withKeyPath:@"selection.self"
+				 options:nil];
 }
 
 + (NSSet *)keyPathsForValuesAffectingTotalSakuteki

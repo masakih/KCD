@@ -547,4 +547,14 @@ static NSMutableDictionary *names = nil;
 	if(planType == 2) return [NSColor colorWithCalibratedRed:0.800 green:0.223 blue:0.000 alpha:1.000];
 	return [NSColor controlTextColor];
 }
+
+
+- (NSNumber *)maxFuel
+{
+	return [self.master_ship valueForKey:@"fuel_max"];
+}
+- (NSNumber *)maxBull
+{
+	return [self.master_ship valueForKey:@"bull_max"];
+}
 @end

@@ -62,6 +62,8 @@
 		F4AA0607192E3B6200844688 /* HMMapStartCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AA0606192E3B6200844688 /* HMMapStartCommand.m */; };
 		F4AA060D1930E69200844688 /* HMMidnightBattleCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AA060C1930E69200844688 /* HMMidnightBattleCommand.m */; };
 		F4AA06101931869E00844688 /* HMBattleResultCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AA060F1931869E00844688 /* HMBattleResultCommand.m */; };
+		F4B1E30819C73B6A00805879 /* HMSuppliesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B1E30419C73B6A00805879 /* HMSuppliesCell.m */; };
+		F4B1E30919C73B6A00805879 /* HMSuppliesView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B1E30619C73B6A00805879 /* HMSuppliesView.m */; };
 		F4B2D02B18F83A2F00542742 /* HMScreenshotWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B2D02D18F83A2F00542742 /* HMScreenshotWindowController.xib */; };
 		F4B2D03118F83CBB00542742 /* HMDeckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B2D02F18F83CBB00542742 /* HMDeckViewController.m */; };
 		F4B2D03318F83CC800542742 /* HMDeckViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B2D03518F83CC800542742 /* HMDeckViewController.xib */; };
@@ -239,6 +241,10 @@
 		F4AA060C1930E69200844688 /* HMMidnightBattleCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMidnightBattleCommand.m; sourceTree = "<group>"; };
 		F4AA060E1931869E00844688 /* HMBattleResultCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMBattleResultCommand.h; sourceTree = "<group>"; };
 		F4AA060F1931869E00844688 /* HMBattleResultCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMBattleResultCommand.m; sourceTree = "<group>"; };
+		F4B1E30319C73B6A00805879 /* HMSuppliesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSuppliesCell.h; sourceTree = "<group>"; };
+		F4B1E30419C73B6A00805879 /* HMSuppliesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSuppliesCell.m; sourceTree = "<group>"; };
+		F4B1E30519C73B6A00805879 /* HMSuppliesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSuppliesView.h; sourceTree = "<group>"; };
+		F4B1E30619C73B6A00805879 /* HMSuppliesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSuppliesView.m; sourceTree = "<group>"; };
 		F4B2D02C18F83A2F00542742 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMScreenshotWindowController.xib; sourceTree = "<group>"; };
 		F4B2D02E18F83CBB00542742 /* HMDeckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDeckViewController.h; sourceTree = "<group>"; };
 		F4B2D02F18F83CBB00542742 /* HMDeckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDeckViewController.m; sourceTree = "<group>"; };
@@ -552,6 +558,10 @@
 				F4B2D02E18F83CBB00542742 /* HMDeckViewController.h */,
 				F4B2D02F18F83CBB00542742 /* HMDeckViewController.m */,
 				F4B2D03518F83CC800542742 /* HMDeckViewController.xib */,
+				F4B1E30319C73B6A00805879 /* HMSuppliesCell.h */,
+				F4B1E30419C73B6A00805879 /* HMSuppliesCell.m */,
+				F4B1E30519C73B6A00805879 /* HMSuppliesView.h */,
+				F4B1E30619C73B6A00805879 /* HMSuppliesView.m */,
 				F49828FA1902A226000D6BBE /* HMStrokeTextFieldCell.h */,
 				F49828FB1902A226000D6BBE /* HMStrokeTextFieldCell.m */,
 				F4131ED9190FEBCC004F7F9A /* HMSlotItemWindowController.h */,
@@ -803,6 +813,7 @@
 				F4C118FA18A67B1C005D5B25 /* CacheStoragePolicy.m in Sources */,
 				F4A3AD9219BDDD8E00FDBF80 /* HMPreferencePanelController.m in Sources */,
 				F4B3DC2118DECF570011B4FC /* HMTSVSupport.m in Sources */,
+				F4B1E30819C73B6A00805879 /* HMSuppliesCell.m in Sources */,
 				F4A3AD8E19BB220000FDBF80 /* HMMaskInfomation.m in Sources */,
 				F4E7802E18DC3AF00011BC4C /* LocalData.xcdatamodeld in Sources */,
 				F4131ED5190F63D8004F7F9A /* HMUpdateSlotItemCommand.m in Sources */,
@@ -866,6 +877,7 @@
 				F4131EE61910318F004F7F9A /* HMMasterSlotItemEquipTypeCommand.m in Sources */,
 				F4D2CBC818B0555A000EBC59 /* HMKCManagedObject.m in Sources */,
 				F4D2CBC218AD0E1A000EBC59 /* HMMasterSTypeCommand.m in Sources */,
+				F4B1E30919C73B6A00805879 /* HMSuppliesView.m in Sources */,
 				F43BA4A4197BE6C200CFF788 /* HMRealDestroyShipCommand.m in Sources */,
 				F46F104518AA50730063E503 /* HMBroserWindowController.m in Sources */,
 				F4B414EC18B0A7D600468DAF /* HMMasterUseItemCommand.m in Sources */,

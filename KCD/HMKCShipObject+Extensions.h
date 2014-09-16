@@ -17,6 +17,9 @@
 @property (readonly) NSColor *statusColor;
 @property (readonly) NSColor *conditionColor;
 
+@property (readonly) NSNumber *maxBull;
+@property (readonly) NSNumber *maxFuel;
+
 @property (readonly) IBOutlet NSColor *planColor;
 
 
