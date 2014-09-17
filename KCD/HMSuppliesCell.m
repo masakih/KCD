@@ -14,19 +14,19 @@
 
 - (NSColor *)redColor
 {
-	return [NSColor colorWithCalibratedWhite:0.39 alpha:1.000];
+	return [NSColor colorWithCalibratedWhite:0.79 alpha:1.000];
 }
 - (NSColor *)orangeColor
 {
-	return [NSColor colorWithCalibratedWhite:0.55 alpha:1.000];
+	return [NSColor colorWithCalibratedWhite:0.7 alpha:1.000];
 }
 - (NSColor *)yellowColor
 {
-	return [NSColor colorWithCalibratedWhite:0.7 alpha:1.000];
+	return [NSColor colorWithCalibratedWhite:0.55 alpha:1.000];
 }
 - (NSColor *)greenColor
 {
-	return [NSColor colorWithCalibratedWhite:0.79 alpha:1.000];
+	return [NSColor colorWithCalibratedWhite:0.39 alpha:1.000];
 }
 
 - (void)drawBackgroundWithFrame:(NSRect)cellFrame
