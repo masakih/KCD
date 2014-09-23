@@ -22,7 +22,7 @@
 + (BOOL)canExcuteAPI:(NSString *)api
 {
 	if([api isEqualToString:@"/kcsapi/api_get_member/material"]) return YES;
-	if([api isEqualToString:@"/kcsapi/api_req_hokyu/charge"]) return YES;
+//	if([api isEqualToString:@"/kcsapi/api_req_hokyu/charge"]) return YES;
 	return NO;
 }
 - (NSString *)dataKey
