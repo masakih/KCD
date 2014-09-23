@@ -134,4 +134,17 @@
 	[self.mission4Status update];
 }
 
+- (NSString *)firstFleetName
+{
+	return @"First Fleet Name";
+}
+- (NSString *)areaName
+{
+	return @"ABCDEFGHIJKLMN";
+}
+- (NSString *)areaNumber
+{
+	return @"5-5";
+}
+
 @end
