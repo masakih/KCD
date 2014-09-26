@@ -60,16 +60,19 @@
 		object = result[0];
 	}
 	
-	NSArray *keys = @[@"fuel", @"bull", @"steel", @"bauxite", @"kousokukenzo", @"kousokushuhuku", @"kaihatusizai"];
+	NSArray *keys = @[@"fuel", @"bull", @"steel", @"bauxite", @"kousokukenzo", @"kousokushuhuku", @"kaihatusizai", @"DUMMY"];
 	
 	NSInteger i = 0;
 	for(id dict in api_data) {
 		if([dict isKindOfClass:[NSDictionary class]]) {
 			NSNumber *idValue = [dict valueForKey:@"api_id"];
 			NSString *key = keys[[idValue integerValue] - 1];
+			if([key isEqualToString:@"DUMMY"]) continue;
 			[object setValue:[dict valueForKey:@"api_value"] forKey:key];
 		} else {
-			[object setValue:@([dict integerValue]) forKey:keys[i++]];
+			NSString *key = keys[i++];
+			if([key isEqualToString:@"DUMMY"]) continue;
+			[object setValue:@([dict integerValue]) forKey:key];
 		}
 	}
 }
