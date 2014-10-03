@@ -8,19 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class HMFleetInformation;
+
 @interface HMDeckViewController : NSViewController
 
-@property (readonly) NSManagedObjectContext *manageObjectContext;
-
-@property (weak, nonatomic) IBOutlet NSArrayController *deckController;
-@property (weak, nonatomic) IBOutlet NSArrayController *shipsController;
-
-@property (weak, nonatomic) IBOutlet NSArrayController *ship1Controller;
-@property (weak, nonatomic) IBOutlet NSArrayController *ship2Controller;
-@property (weak, nonatomic) IBOutlet NSArrayController *ship3Controller;
-@property (weak, nonatomic) IBOutlet NSArrayController *ship4Controller;
-@property (weak, nonatomic) IBOutlet NSArrayController *ship5Controller;
-@property (weak, nonatomic) IBOutlet NSArrayController *ship6Controller;
-
+@property (readonly) HMFleetInformation *fleetInfo;
 @property NSInteger selectedDeck;
 @end
