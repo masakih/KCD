@@ -16,6 +16,8 @@
 
 @property (strong) NSArrayController *deckController;
 
+@property (strong) id selectedFleet;
+
 // overwrite
 @property (nonatomic, strong) NSString *name;
 
@@ -28,7 +30,7 @@
 @end
 
 @implementation HMFleetInformation
-@synthesize fleetNumber = _fleetNumber;
+@synthesize selectedFleetNumber = _selectedFleetNumber;
 
 - (id)init
 {
@@ -43,6 +45,7 @@
 		[_deckController setAvoidsEmptySelection:YES];
 		[_deckController setPreservesSelection:YES];
 		[_deckController setAutomaticallyPreparesContent:YES];
+		[_deckController setSortDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES]]];
 		NSError *error = nil;
 		[_deckController fetchWithRequest:nil merge:NO error:&error];
 		if(error) {
@@ -96,9 +99,8 @@
 	id ship = nil;
 	NSError *error = nil;
 	HMServerDataStore *store = [HMServerDataStore defaultManager];
-	id deck = [self.deckController valueForKeyPath:@"selection.self"];
 	NSString *key = [NSString stringWithFormat:@"ship_%ld", shipNumber];
-	NSNumber *shipIdNumber = [deck valueForKey:key];
+	NSNumber *shipIdNumber = [self.selectedFleet valueForKey:key];
 	NSInteger shipId = [shipIdNumber integerValue];
 	NSArray *array = nil;
 	if(shipId != -1) {
@@ -121,41 +123,35 @@
 	}
 	self.name = nil;
 	
-	NSInteger fleetId = [self.fleetNumber integerValue];
+	NSInteger fleetId = [self.selectedFleetNumber integerValue];
 	if(fleetId > 6 || fleetId < 0) {
 		return;
 	}
 	
-	id deck = [self.deckController valueForKeyPath:@"selection.self"];
-	self.name = [deck valueForKey:@"name"];
+	NSArray *decks = [self.deckController arrangedObjects];
+	self.selectedFleet = [decks objectAtIndex:fleetId-1];
+	self.name = [self.selectedFleet valueForKey:@"name"];
 	
 	for(NSInteger i = 0; i < 6; i++) {
 		[self changeShipWithNumber:i];
 	}
 }
 
-+ (NSSet *)keyPathsForValuesAffectingName
-{
-	return [NSSet setWithObject:@"deckController.selection"];
-}
-
 + (NSSet *)keyPathsForValuesAffectingTotalSakuteki
 {
-	return [NSSet setWithObjects:@"deckController.selection",
-			@"flagShip", @"secondShip", @"thirdShip", @"fourthShip", @"fifthShip", @"sixthShip",
+	return [NSSet setWithObjects:
+			@"flagShip", @"secondShip", @"thirdShip",
+			@"fourthShip", @"fifthShip", @"sixthShip",
 			nil];
 }
 
-- (NSNumber *)fleetNumber
+- (NSNumber *)selectedFleetNumber
 {
-	return _fleetNumber;
+	return _selectedFleetNumber;
 }
-- (void)setFleetNumber:(NSNumber *)fleetNumber
+- (void)setSelectedFleetNumber:(NSNumber *)fleetNumber
 {
-	_fleetNumber = fleetNumber;
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id = %ld", [fleetNumber integerValue]];
-	[self.deckController setFetchPredicate:predicate];
-	
+	_selectedFleetNumber = fleetNumber;
 	[self buildFleet];
 }
 
@@ -170,6 +166,12 @@
 	total += [self.sixthShip.sakuteki_0 integerValue];
 	
 	return @(total);
+}
+
+- (id)fleetAtIndex:(NSInteger)fleetNumner
+{
+	NSArray *decks = [self.deckController arrangedObjects];
+	return decks[fleetNumner - 1];
 }
 
 @end

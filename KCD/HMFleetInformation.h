@@ -12,8 +12,10 @@
 
 @interface HMFleetInformation : NSObject
 
-@property (nonatomic, strong) NSNumber *fleetNumber;
+@property (nonatomic, strong) NSNumber *selectedFleetNumber;
 
+
+// prpperties of Selected Fleet
 @property (readonly) NSString *name;
 
 @property (readonly) HMKCShipObject *flagShip;
@@ -24,5 +26,10 @@
 @property (readonly) HMKCShipObject *sixthShip;
 
 @property (readonly) NSNumber *totalSakuteki;
+
+
+//
+- (id)fleetAtIndex:(NSInteger)fleetNumner;
+
 
 @end

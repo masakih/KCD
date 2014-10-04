@@ -81,7 +81,7 @@
 	if(selectedDeck == _selectedDeck) return;
 	_selectedDeck = selectedDeck;
 	
-	self.fleetInfo.fleetNumber = @(selectedDeck);
+	self.fleetInfo.selectedFleetNumber = @(selectedDeck);
 }
 - (NSInteger)selectedDeck
 {
