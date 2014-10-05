@@ -41,7 +41,7 @@
         <attribute name="tutorial" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="tutorial_progress" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
-    <entity name="Deck" representedClassName="HMKCManagedObject" syncable="YES">
+    <entity name="Deck" representedClassName="HMKCDeck" parentEntity="KCDEntity" syncable="YES">
         <attribute name="flagship" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="id" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="member_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>

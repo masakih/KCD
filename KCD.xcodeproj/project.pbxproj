@@ -30,6 +30,8 @@
 		F44AB23519E805D100F217AF /* HMKaisouLockCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F44AB23419E805D100F217AF /* HMKaisouLockCommand.m */; };
 		F44AB23E19E824D700F217AF /* HMKCSlotItemObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F44AB23D19E824D700F217AF /* HMKCSlotItemObject.m */; };
 		F44AB24119E8252600F217AF /* HMKCSlotItemObject+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F44AB24019E8252600F217AF /* HMKCSlotItemObject+Extensions.m */; };
+		F44AB20019E050F600F217AF /* HMKCDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = F44AB1FF19E050F600F217AF /* HMKCDeck.m */; };
+		F44AB20619E053CB00F217AF /* HMKCDeck+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = F44AB20519E053CB00F217AF /* HMKCDeck+Extension.m */; };
 		F4513EDD18B619B600073552 /* HMCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4513EDC18B619B600073552 /* HMCoreDataManager.m */; };
 		F4513EE418B635EA00073552 /* HMDocksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4513EE218B635EA00073552 /* HMDocksViewController.m */; };
 		F4513EE818B77A5300073552 /* HMMemberKDockCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4513EE718B77A5300073552 /* HMMemberKDockCommand.m */; };
@@ -195,6 +197,10 @@
 		F44AB23D19E824D700F217AF /* HMKCSlotItemObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKCSlotItemObject.m; sourceTree = "<group>"; };
 		F44AB23F19E8252600F217AF /* HMKCSlotItemObject+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HMKCSlotItemObject+Extensions.h"; sourceTree = "<group>"; };
 		F44AB24019E8252600F217AF /* HMKCSlotItemObject+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HMKCSlotItemObject+Extensions.m"; sourceTree = "<group>"; };
+		F44AB1FE19E050F600F217AF /* HMKCDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMKCDeck.h; sourceTree = "<group>"; };
+		F44AB1FF19E050F600F217AF /* HMKCDeck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKCDeck.m; sourceTree = "<group>"; };
+		F44AB20419E053CB00F217AF /* HMKCDeck+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HMKCDeck+Extension.h"; sourceTree = "<group>"; };
+		F44AB20519E053CB00F217AF /* HMKCDeck+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HMKCDeck+Extension.m"; sourceTree = "<group>"; };
 		F4513EDB18B619B600073552 /* HMCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMCoreDataManager.h; sourceTree = "<group>"; };
 		F4513EDC18B619B600073552 /* HMCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMCoreDataManager.m; sourceTree = "<group>"; };
 		F4513EE118B635EA00073552 /* HMDocksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDocksViewController.h; sourceTree = "<group>"; };
@@ -561,6 +567,10 @@
 				F44AB23D19E824D700F217AF /* HMKCSlotItemObject.m */,
 				F44AB23F19E8252600F217AF /* HMKCSlotItemObject+Extensions.h */,
 				F44AB24019E8252600F217AF /* HMKCSlotItemObject+Extensions.m */,
+				F44AB1FE19E050F600F217AF /* HMKCDeck.h */,
+				F44AB1FF19E050F600F217AF /* HMKCDeck.m */,
+				F44AB20419E053CB00F217AF /* HMKCDeck+Extension.h */,
+				F44AB20519E053CB00F217AF /* HMKCDeck+Extension.m */,
 				F4E7802C18DC3AF00011BC4C /* LocalData.xcdatamodeld */,
 				F4B3DC2518DF2F360011B4FC /* HMKenzoMark.h */,
 				F4B3DC2618DF2F360011B4FC /* HMKenzoMark.m */,
@@ -958,6 +968,7 @@
 				F494DC6318C608C100AE97E4 /* HMShipViewController.m in Sources */,
 				F46F104918ABAC910063E503 /* KCD.xcdatamodeld in Sources */,
 				F4B414FE18B3A66200468DAF /* HMMemberNDockCommand.m in Sources */,
+				F44AB20619E053CB00F217AF /* HMKCDeck+Extension.m in Sources */,
 				F42680371957000200B2C27F /* HMTimerCountFormatter.m in Sources */,
 				F4B414F218B1013C00468DAF /* HMMasterSlotItemCommand.m in Sources */,
 				F4A2AF521A074DCF0024BD9E /* HMScreenshotListWindowController.m in Sources */,
@@ -971,6 +982,7 @@
 				F4B414EC18B0A7D600468DAF /* HMMasterUseItemCommand.m in Sources */,
 				F4513EF318B991F800073552 /* HMMemberBasicCommand.m in Sources */,
 				F4268009193AF4E000B2C27F /* HMUserDefaults.m in Sources */,
+				F44AB20019E050F600F217AF /* HMKCDeck.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
