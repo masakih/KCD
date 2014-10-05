@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class HMKCShipObject;
+@class HMKCDeck;
 
 @interface HMFleetInformation : NSObject
 
@@ -29,7 +30,7 @@
 
 
 //
-- (id)fleetAtIndex:(NSInteger)fleetNumner;
+- (HMKCDeck *)fleetAtIndex:(NSInteger)fleetNumner;
 
 
 @end

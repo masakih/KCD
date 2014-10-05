@@ -145,10 +145,6 @@
 			nil];
 }
 
-- (NSNumber *)selectedFleetNumber
-{
-	return _selectedFleetNumber;
-}
 - (void)setSelectedFleetNumber:(NSNumber *)fleetNumber
 {
 	_selectedFleetNumber = fleetNumber;
@@ -168,7 +164,7 @@
 	return @(total);
 }
 
-- (id)fleetAtIndex:(NSInteger)fleetNumner
+- (HMKCDeck *)fleetAtIndex:(NSInteger)fleetNumner
 {
 	NSArray *decks = [self.deckController arrangedObjects];
 	return decks[fleetNumner - 1];
