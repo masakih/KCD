@@ -8,10 +8,9 @@
 
 #import "HMDeckViewController.h"
 
+#import "HMAppDelegate.h"
 #import "HMFleetInformation.h"
-
 #import "HMServerDataStore.h"
-
 #import "HMSuppliesView.h"
 
 @interface HMDeckViewController ()
@@ -37,7 +36,7 @@
 
 - (void)awakeFromNib
 {
-	self.fleetInfo = [HMFleetInformation new];
+	self.fleetInfo = [[NSApp delegate] fleetInformation];
 	self.selectedDeck = 1;
 	
 	[self.supplies1 bind:@"shipStatus"

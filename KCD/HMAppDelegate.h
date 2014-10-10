@@ -10,6 +10,8 @@
 
 #import "HMJSONViewWindowController.h"
 
+@class HMFleetInformation;
+
 typedef NS_ENUM(NSUInteger, HMShipType) {
     kHMAllType,
     kHMDestroyer,
@@ -32,6 +34,8 @@ typedef NS_ENUM(NSUInteger, HMShipType) {
 
 @property (strong, nonatomic) IBOutlet NSMenuItem *debugMenuItem;
 @property (nonatomic, weak) IBOutlet NSMenuItem *billingWindowMenuItem;
+
+@property (readonly) HMFleetInformation *fleetInformation;
 
 @property (nonatomic, strong) NSString *screenShotSaveDirectory;
 @property (readonly) HMScreenshotListWindowController *screenshotListWindowController;
