@@ -44,23 +44,24 @@ HMUserDefaults *HMStandardDefaults = nil;
 {
 	if(slotItemSortDescriptors) {
 		NSData *data = [NSKeyedArchiver archivedDataWithRootObject:slotItemSortDescriptors];
-		[[NSUserDefaults standardUserDefaults] setObject:data forKey:@"slotItemSortKey"];
+		[[NSUserDefaults standardUserDefaults] setObject:data forKey:@"slotItemSortKey2"];
 	}
 }
 - (NSArray *)slotItemSortDescriptors
 {
-	NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"slotItemSortKey"];
+	NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"slotItemSortKey2"];
 	if(data) {
 		NSArray *array = [NSKeyedUnarchiver unarchiveObjectWithData:data];
 		
-		NSMutableArray *result = [NSMutableArray new];
-		for(NSSortDescriptor *item in array) {
-			if(![item.key hasPrefix:@"master_ship"]) {
-				[result addObject:item];
-			}
-		}
-		
-		return [NSArray arrayWithArray:result];
+//		NSMutableArray *result = [NSMutableArray new];
+//		for(NSSortDescriptor *item in array) {
+//			if(![item.key hasPrefix:@"master_ship"] && ![item.key hasPrefix:@"master_slotItem"]) {
+//				[result addObject:item];
+//			}
+//		}
+//		
+//		return [NSArray arrayWithArray:result];
+		return array;
 	}
 	return [NSArray new];
 }

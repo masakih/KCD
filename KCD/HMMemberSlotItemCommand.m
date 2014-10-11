@@ -91,6 +91,7 @@
 	}
 	id item = [self.masterSlotItems objectAtIndex:index];
 	[self setValueIfNeeded:item toObject:object forKey:@"master_slotItem"];
+	[self setValueIfNeeded:value toObject:object forKey:@"slotitem_id"];
 }
 - (BOOL)handleExtraValue:(id)value forKey:(NSString *)key toObject:(NSManagedObject *)object
 {
