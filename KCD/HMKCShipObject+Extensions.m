@@ -15,9 +15,6 @@
 static NSArray *shortSTypeNames = nil;
 static NSArray *levelUpExps = nil;
 
-static NSMutableDictionary *names = nil;
-
-
 @implementation HMKCShipObject (Extensions)
 
 + (void)load
@@ -38,8 +35,6 @@ static NSMutableDictionary *names = nil;
 			NSLog(@"Can not load LevelUpExp.plist.");
 		}
 		levelUpExps = [array copy];
-		
-		names = [NSMutableDictionary new];
 	});
 }
 
@@ -133,30 +128,7 @@ static NSMutableDictionary *names = nil;
 
 - (NSString *)name
 {
-	NSNumber *shipId = self.ship_id;
-	if(!shipId || [shipId isKindOfClass:[NSNull class]]) return nil;
-	
-	@synchronized(names) {
-		NSString *name = names[shipId];
-		if(name) return name;
-	}
-	
-	HMServerDataStore *store = [HMServerDataStore oneTimeEditor];
-	NSError *error = nil;
-	NSArray *array = [store objectsWithEntityName:@"MasterShip"
-											error:&error
-								  predicateFormat:@"id = %@", shipId];
-	if([array count] == 0) {
-		NSLog(@"MasterShip is invalid.");
-		return nil;
-	}
-	
-	NSString *name = [[array[0] valueForKey:@"name"] copy];
-	@synchronized(names) {
-		names[shipId] = name;
-	}
-	
-	return name;
+	return [self.master_ship valueForKey:@"name"];
 }
 - (NSString *)shortTypeName
 {

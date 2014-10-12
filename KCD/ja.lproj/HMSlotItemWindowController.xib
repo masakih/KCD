@@ -89,8 +89,9 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
-                                                <binding destination="ceg-Ko-EOy" name="value" keyPath="arrangedObjects.master_slotItem.type_2" id="vhz-DR-C1Q">
+                                                <binding destination="ceg-Ko-EOy" name="value" keyPath="arrangedObjects.typeName" id="6GS-bJ-vVX">
                                                     <dictionary key="options">
+                                                        <bool key="NSConditionallySetsEditable" value="YES"/>
                                                         <string key="NSValueTransformerName">HMSlotItemEquipTypeTransformer</string>
                                                     </dictionary>
                                                 </binding>

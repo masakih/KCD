@@ -53,15 +53,14 @@ HMUserDefaults *HMStandardDefaults = nil;
 	if(data) {
 		NSArray *array = [NSKeyedUnarchiver unarchiveObjectWithData:data];
 		
-//		NSMutableArray *result = [NSMutableArray new];
-//		for(NSSortDescriptor *item in array) {
-//			if(![item.key hasPrefix:@"master_ship"] && ![item.key hasPrefix:@"master_slotItem"]) {
-//				[result addObject:item];
-//			}
-//		}
-//		
-//		return [NSArray arrayWithArray:result];
-		return array;
+		NSMutableArray *result = [NSMutableArray new];
+		for(NSSortDescriptor *item in array) {
+			if(![item.key hasPrefix:@"master_ship"] && ![item.key hasPrefix:@"master_slotItem"]) {
+				[result addObject:item];
+			}
+		}
+		
+		return [NSArray arrayWithArray:result];
 	}
 	return [NSArray new];
 }
