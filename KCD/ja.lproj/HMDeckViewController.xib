@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <deployment defaultVersion="1090" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6245"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="HMDeckViewController">
@@ -24,7 +23,7 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY">
             <rect key="frame" x="0.0" y="0.0" width="800" height="60"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -39,7 +38,7 @@
                     </textFieldCell>
                     <connections>
                         <binding destination="ZYq-YJ-bZ2" name="textColor" keyPath="selection.conditionColor" id="Tj3-b2-Let"/>
-                        <binding destination="ZYq-YJ-bZ2" name="value" keyPath="selection.master_ship.name" id="r0K-8d-bqP">
+                        <binding destination="ZYq-YJ-bZ2" name="value" keyPath="selection.name" id="Wgi-p3-UU5">
                             <dictionary key="options">
                                 <string key="NSNoSelectionPlaceholder">空席</string>
                                 <string key="NSNullPlaceholder">空席</string>
@@ -83,7 +82,7 @@
                     </textFieldCell>
                     <connections>
                         <binding destination="kmC-dd-Ogn" name="textColor" keyPath="selection.conditionColor" id="tDb-s2-CTN"/>
-                        <binding destination="kmC-dd-Ogn" name="value" keyPath="selection.master_ship.name" id="h8A-Yy-3r9">
+                        <binding destination="kmC-dd-Ogn" name="value" keyPath="selection.name" id="tfo-Uv-EKR">
                             <dictionary key="options">
                                 <string key="NSNoSelectionPlaceholder">空席</string>
                                 <string key="NSNullPlaceholder">空席</string>
@@ -127,7 +126,7 @@
                     </textFieldCell>
                     <connections>
                         <binding destination="Is8-93-eeH" name="textColor" keyPath="selection.conditionColor" id="gQc-IC-Hfv"/>
-                        <binding destination="Is8-93-eeH" name="value" keyPath="selection.master_ship.name" id="gF3-Nw-ggJ">
+                        <binding destination="Is8-93-eeH" name="value" keyPath="selection.name" id="BJf-PK-Ck6">
                             <dictionary key="options">
                                 <string key="NSNoSelectionPlaceholder">空席</string>
                                 <string key="NSNullPlaceholder">空席</string>
@@ -171,7 +170,7 @@
                     </textFieldCell>
                     <connections>
                         <binding destination="qw8-TN-BKh" name="textColor" keyPath="selection.conditionColor" id="egq-Za-poj"/>
-                        <binding destination="qw8-TN-BKh" name="value" keyPath="selection.master_ship.name" id="Hdd-Bf-zv8">
+                        <binding destination="qw8-TN-BKh" name="value" keyPath="selection.name" id="6WI-Vw-Ya9">
                             <dictionary key="options">
                                 <string key="NSNoSelectionPlaceholder">空席</string>
                                 <string key="NSNullPlaceholder">空席</string>
@@ -215,7 +214,7 @@
                     </textFieldCell>
                     <connections>
                         <binding destination="9uZ-dp-nwH" name="textColor" keyPath="selection.conditionColor" id="CyQ-jg-8al"/>
-                        <binding destination="9uZ-dp-nwH" name="value" keyPath="selection.master_ship.name" id="OiM-yP-9uN">
+                        <binding destination="9uZ-dp-nwH" name="value" keyPath="selection.name" id="h13-7R-RKx">
                             <dictionary key="options">
                                 <string key="NSNoSelectionPlaceholder">空席</string>
                                 <string key="NSNullPlaceholder">空席</string>
@@ -259,7 +258,7 @@
                     </textFieldCell>
                     <connections>
                         <binding destination="1JX-hj-zJq" name="textColor" keyPath="selection.conditionColor" id="R0I-bn-lwT"/>
-                        <binding destination="1JX-hj-zJq" name="value" keyPath="selection.master_ship.name" id="1N5-9K-AcO">
+                        <binding destination="1JX-hj-zJq" name="value" keyPath="selection.name" id="f7a-6F-97S">
                             <dictionary key="options">
                                 <string key="NSNoSelectionPlaceholder">空席</string>
                                 <string key="NSNullPlaceholder">空席</string>
