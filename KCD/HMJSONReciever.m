@@ -75,8 +75,9 @@
 	NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 	NSArray *elements = [string componentsSeparatedByString:@"="];
 	if([elements count] != 2) {
-		[[NSApp delegate] logLineReturn:@"\e[1mwe could not compose data. api -> %@. Number of elements:\e[22m %ld", protocol.request.URL.path, [elements count]];
-		[[NSApp delegate] logLineReturn:@"Original strings -> %@", string];
+		HMAppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+		[appDelegate logLineReturn:@"\e[1mwe could not compose data. api -> %@. Number of elements:\e[22m %ld", protocol.request.URL.path, [elements count]];
+		[appDelegate logLineReturn:@"Original strings -> %@", string];
 		[self removeDataForProtocol:protocol];
 		return;
 	}

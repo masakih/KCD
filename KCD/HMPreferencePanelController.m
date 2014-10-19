@@ -30,18 +30,18 @@ typedef NS_ENUM(NSUInteger, HMScreenShotSaveDirectoryPopUpMenuItemTag) {
 
 - (void)awakeFromNib
 {
-	HMAppDelegate *appDelegate = [NSApp delegate];
+	HMAppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
 	self.screenShotSaveDirectory = appDelegate.screenShotSaveDirectory;
 }
 
 - (NSString *)screenShotSaveDirectory
 {
-	HMAppDelegate *appDelegate = [NSApp delegate];
+	HMAppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
 	return appDelegate.screenShotSaveDirectory;
 }
 - (void)setScreenShotSaveDirectory:(NSString *)screenShotSaveDirectory
 {
-	HMAppDelegate *appDelegate = [NSApp delegate];
+	HMAppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
 	appDelegate.screenShotSaveDirectory = screenShotSaveDirectory;
 	
 	NSInteger index = [self.screenShotSaveDirectoryPopUp indexOfItemWithTag:kSaveDirectoryItem];

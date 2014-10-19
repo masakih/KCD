@@ -111,7 +111,8 @@
 {
 	NSPredicate *predicate = [self omitPredicate];
 	NSUInteger tag = [self.typeSegment selectedSegment];
-	NSPredicate *catPredicate = [[NSApp delegate] predicateForShipType:tag];
+	HMAppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+	NSPredicate *catPredicate = [appDelegate predicateForShipType:tag];
 	if(predicate && catPredicate) {
 		NSArray *sub = @[predicate, catPredicate];
 		predicate = [NSCompoundPredicate andPredicateWithSubpredicates:sub];

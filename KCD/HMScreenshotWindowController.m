@@ -191,7 +191,7 @@
 
 - (NSURL *)saveDirectoryURL
 {
-    HMAppDelegate *appDelegate = [NSApp delegate];
+    HMAppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
 	return [NSURL fileURLWithPath:appDelegate.screenShotSaveDirectory];
 }
 

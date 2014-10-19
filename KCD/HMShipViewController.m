@@ -99,7 +99,8 @@ typedef NS_ENUM(NSInteger, ViewType) {
 - (IBAction)changeCategory:(id)sender
 {
 	NSUInteger tag = [sender selectedSegment];
-	NSPredicate *predicate = [[NSApp delegate] predicateForShipType:tag];
+	HMAppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+	NSPredicate *predicate = [appDelegate predicateForShipType:tag];
 	[self.shipController setFilterPredicate:predicate];
 	[self.shipController rearrangeObjects];
 }

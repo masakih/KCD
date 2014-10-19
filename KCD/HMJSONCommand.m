@@ -115,7 +115,8 @@ static NSMutableArray *registeredCommands = nil;
 											  options:NSJSONReadingAllowFragments
 												error:&error];
 	if(error) {
-		[[NSApp delegate] logLineReturn:@"\e[1m\e[31mFail decode JSON data\e[39m\e[22m %@", error];
+		HMAppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+		[appDelegate logLineReturn:@"\e[1m\e[31mFail decode JSON data\e[39m\e[22m %@", error];
 		return;
 	}
 	if(![json isKindOfClass:[NSDictionary class]]) {

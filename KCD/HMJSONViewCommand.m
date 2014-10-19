@@ -25,7 +25,7 @@
 - (void)execute
 {
 	dispatch_async(dispatch_get_main_queue(), ^{
-		HMAppDelegate *appDelegate = [NSApp delegate];
+		HMAppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
 		if(!self.api) {
 			NSLog(@"api is nil.");
 			return;
