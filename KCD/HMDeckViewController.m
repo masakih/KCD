@@ -36,7 +36,8 @@
 
 - (void)awakeFromNib
 {
-	self.fleetInfo = [[NSApp delegate] fleetInformation];
+	HMAppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+	self.fleetInfo = [appDelegate fleetInformation];
 	self.selectedDeck = 1;
 	
 	[self.supplies1 bind:@"shipStatus"
