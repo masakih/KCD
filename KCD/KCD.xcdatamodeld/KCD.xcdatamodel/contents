@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6244" systemVersion="13F34" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6252" systemVersion="13F34" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Basic" representedClassName="HMKCManagedObject" syncable="YES">
         <attribute name="active_flag" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
@@ -238,6 +238,7 @@
         <attribute name="kaihatusizai" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="kousokukenzo" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="kousokushuhuku" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="screw" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="steel" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="NyukyoDock" representedClassName="HMKCManagedObject" syncable="YES">
@@ -324,7 +325,7 @@
         <element name="MasterSlotItemEquipType" positionX="9" positionY="153" width="128" height="90"/>
         <element name="MasterSType" positionX="0" positionY="0" width="128" height="135"/>
         <element name="MasterUseItem" positionX="0" positionY="0" width="128" height="150"/>
-        <element name="Material" positionX="0" positionY="0" width="128" height="150"/>
+        <element name="Material" positionX="0" positionY="0" width="128" height="165"/>
         <element name="NyukyoDock" positionX="0" positionY="0" width="128" height="195"/>
         <element name="Ship" positionX="0" positionY="0" width="128" height="763"/>
         <element name="SlotItem" positionX="0" positionY="0" width="128" height="135"/>

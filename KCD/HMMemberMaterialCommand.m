@@ -60,7 +60,7 @@
 		object = result[0];
 	}
 	
-	NSArray *keys = @[@"fuel", @"bull", @"steel", @"bauxite", @"kousokukenzo", @"kousokushuhuku", @"kaihatusizai", @"DUMMY"];
+	NSArray *keys = @[@"fuel", @"bull", @"steel", @"bauxite", @"kousokukenzo", @"kousokushuhuku", @"kaihatusizai", @"screw"];
 	
 	NSInteger i = 0;
 	for(id dict in api_data) {
