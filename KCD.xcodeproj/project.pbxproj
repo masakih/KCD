@@ -72,6 +72,7 @@
 		F4B2D02B18F83A2F00542742 /* HMScreenshotWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B2D02D18F83A2F00542742 /* HMScreenshotWindowController.xib */; };
 		F4B2D03118F83CBB00542742 /* HMDeckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B2D02F18F83CBB00542742 /* HMDeckViewController.m */; };
 		F4B2D03318F83CC800542742 /* HMDeckViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B2D03518F83CC800542742 /* HMDeckViewController.xib */; };
+		F4B37EF019FADFC9002F371A /* HMIgnoreZeroTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B37EEF19FADFC9002F371A /* HMIgnoreZeroTransformer.m */; };
 		F4B3DBCA18DDB9170011B4FC /* HMCreateSlotItemCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B3DBC918DDB9170011B4FC /* HMCreateSlotItemCommand.m */; };
 		F4B3DC1B18DEAB5E0011B4FC /* HMKaihatuHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B3DC1A18DEAB5E0011B4FC /* HMKaihatuHistory.m */; };
 		F4B3DC1E18DEB8C70011B4FC /* HMKenzoHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B3DC1D18DEB8C70011B4FC /* HMKenzoHistory.m */; };
@@ -264,6 +265,8 @@
 		F4B2D02E18F83CBB00542742 /* HMDeckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDeckViewController.h; sourceTree = "<group>"; };
 		F4B2D02F18F83CBB00542742 /* HMDeckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDeckViewController.m; sourceTree = "<group>"; };
 		F4B2D03418F83CC800542742 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMDeckViewController.xib; sourceTree = "<group>"; };
+		F4B37EEE19FADFC9002F371A /* HMIgnoreZeroTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMIgnoreZeroTransformer.h; sourceTree = "<group>"; };
+		F4B37EEF19FADFC9002F371A /* HMIgnoreZeroTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMIgnoreZeroTransformer.m; sourceTree = "<group>"; };
 		F4B3DBC818DDB9170011B4FC /* HMCreateSlotItemCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMCreateSlotItemCommand.h; sourceTree = "<group>"; };
 		F4B3DBC918DDB9170011B4FC /* HMCreateSlotItemCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMCreateSlotItemCommand.m; sourceTree = "<group>"; };
 		F4B3DC1918DEAB5E0011B4FC /* HMKaihatuHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMKaihatuHistory.h; sourceTree = "<group>"; };
@@ -448,6 +451,8 @@
 				F42680361957000200B2C27F /* HMTimerCountFormatter.m */,
 				F4A3AD8319B0CAB700FDBF80 /* HMPlanToShowsBoldFontTransformer.h */,
 				F4A3AD8419B0CAB700FDBF80 /* HMPlanToShowsBoldFontTransformer.m */,
+				F4B37EEE19FADFC9002F371A /* HMIgnoreZeroTransformer.h */,
+				F4B37EEF19FADFC9002F371A /* HMIgnoreZeroTransformer.m */,
 				F4C118F318A67B05005D5B25 /* CustomHTTPProtocol */,
 				F4C1190018A6FFC2005D5B25 /* HMQueue.h */,
 				F4C1190118A6FFC2005D5B25 /* HMQueue.m */,
@@ -822,6 +827,7 @@
 				F4513EE818B77A5300073552 /* HMMemberKDockCommand.m in Sources */,
 				F426802B194D0F4800B2C27F /* HMMemberShip2Command.m in Sources */,
 				F4AA06101931869E00844688 /* HMBattleResultCommand.m in Sources */,
+				F4B37EF019FADFC9002F371A /* HMIgnoreZeroTransformer.m in Sources */,
 				F4B3DC4418E70B370011B4FC /* HMServerDataStore.m in Sources */,
 				F4AA0607192E3B6200844688 /* HMMapStartCommand.m in Sources */,
 				F4AA0604192E20F500844688 /* HMCalculateDamageCommand.m in Sources */,
