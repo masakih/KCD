@@ -33,6 +33,9 @@
 	   || [self.api isEqualToString:@"/kcsapi/api_req_hokyu/charge"]) {
 		return @"api_data.api_material";
 	}
+	if([self.api isEqualToString:@"/kcsapi/api_req_kousyou/remodel_slot"]) {
+		return @"api_data.api_after_material";
+	}
 	return [super dataKey];
 }
 - (void)execute
