@@ -50,5 +50,27 @@
 	for(id obj in array) {
 		[moc deleteObject:obj];
 	}
+	
+	//
+	error = nil;
+	array = [store objectsWithEntityName:@"Material" predicate:nil error:&error];
+	if(error) {
+		[self log:@"Fetch error: %@", error];
+		return;
+	}
+	if([array count] == 0) {
+		NSLog(@"SlotItem is invalid.");
+		return;
+	}
+	
+	id material = array[0];
+	NSArray *keys = @[@"fuel", @"bull", @"steel", @"bauxite", @"kousokukenzo", @"kousokushuhuku", @"kaihatusizai", @"screw"];
+	
+	NSArray *materials = [self.json valueForKeyPath:@"api_data.api_get_material"];
+	for(NSInteger i = 0; i < 4; i++) {
+		NSInteger current = [[material valueForKey:keys[i]] integerValue];
+		NSInteger increase = [materials[i] integerValue];
+		[material setValue:@(current + increase) forKey:keys[i]];
+	}
 }
 @end
