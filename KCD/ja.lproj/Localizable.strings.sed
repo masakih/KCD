@@ -11,3 +11,5 @@ s/Show History/履歴を表示/2
 s/kancolle/艦これ/2
 s/Show Slot Item/装備一覧を表示/2
 s/Hide Slot Item/装備一覧を隠す/2
+s/Show Upgradable Ships/改造可能艦リストを表示/2
+s/Hide Upgradable Ships/改造可能艦リストを隠す/2

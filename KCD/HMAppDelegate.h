@@ -35,6 +35,7 @@ typedef NS_ENUM(NSUInteger, HMShipType) {
 
 - (IBAction)showHideHistory:(id)sender;
 - (IBAction)showHideSlotItemWindow:(id)sender;
+- (IBAction)showHideUpgradableShipWindow:(id)sender;
 
 - (IBAction)showHidePreferencePanle:(id)sender;
 

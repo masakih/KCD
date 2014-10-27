@@ -13,6 +13,7 @@
 #import "HMHistoryWindowController.h"
 #import "HMSlotItemWindowController.h"
 #import "HMPreferencePanelController.h"
+#import "HMUpgradableShipsWindowController.h"
 
 #import "HMTSVSupport.h"
 
@@ -31,6 +32,7 @@
 @property (strong) HMHistoryWindowController *historyWindowController;
 @property (strong) HMSlotItemWindowController *slotItemWindowController;
 @property (strong) HMPreferencePanelController *preferencePanelController;
+@property (strong) HMUpgradableShipsWindowController *upgradableShipWindowController;
 
 #ifdef DEBUG
 @property (strong) HMShipWindowController *shipWindowController;
@@ -189,6 +191,14 @@ static FILE* logFileP = NULL;
 			[menuItem setTitle:NSLocalizedString(@"Hide Slot Item", @"")];
 		}
 		return YES;
+	} else if(action == @selector(showHideUpgradableShipWindow:)) {
+		NSWindow *window = self.upgradableShipWindowController.window;
+		if(!window.isVisible || !window.isMainWindow) {
+			[menuItem setTitle:NSLocalizedString(@"Show Upgradable Ships", @"")];
+		} else {
+			[menuItem setTitle:NSLocalizedString(@"Hide Upgradable Ships", @"")];
+		}
+		return YES;
 	} else if(action == @selector(saveLocalData:) || action == @selector(loadLocalData:)) {
 		return YES;
 	} else if(action == @selector(showHidePreferencePanle:)) {
@@ -237,6 +247,20 @@ static FILE* logFileP = NULL;
 	}
 	
 	NSWindow *window = self.preferencePanelController.window;
+	if(!window.isVisible || !window.isMainWindow) {
+		[window makeKeyAndOrderFront:nil];
+	} else {
+		[window orderOut:nil];
+	}
+}
+
+- (IBAction)showHideUpgradableShipWindow:(id)sender
+{
+	if(!self.upgradableShipWindowController) {
+		self.upgradableShipWindowController = [HMUpgradableShipsWindowController new];
+	}
+	
+	NSWindow *window = self.upgradableShipWindowController.window;
 	if(!window.isVisible || !window.isMainWindow) {
 		[window makeKeyAndOrderFront:nil];
 	} else {

@@ -23,4 +23,8 @@
 @property (readonly) IBOutlet NSColor *planColor;
 
 
+@property (readonly) NSNumber *upgradeLevel;
+@property (readonly) NSNumber *upgradeExp;
+
+
 @end

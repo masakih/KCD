@@ -210,4 +210,23 @@ static NSArray *levelUpExps = nil;
 {
 	return [self.master_ship valueForKey:@"bull_max"];
 }
+
+- (NSNumber *)upgradeLevel
+{
+	return [self.master_ship valueForKey:@"afterlv"];
+}
+- (NSNumber *)upgradeExp
+{
+	NSInteger upgradeLevtl = [self.upgradeLevel integerValue];
+	if(upgradeLevtl <= 0) return nil;
+	
+	NSInteger upgradeExp = [[levelUpExps objectAtIndex:upgradeLevtl - 1] integerValue];
+	NSInteger exp = [self.exp integerValue];
+	upgradeExp -= exp;
+	if(upgradeExp < 0) {
+		upgradeExp = 0;
+	}
+	return @(upgradeExp);
+}
+
 @end
