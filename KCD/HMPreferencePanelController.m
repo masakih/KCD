@@ -9,6 +9,7 @@
 #import "HMPreferencePanelController.h"
 
 #import "HMAppDelegate.h"
+#import "HMUserDefaults.h"
 
 typedef NS_ENUM(NSUInteger, HMScreenShotSaveDirectoryPopUpMenuItemTag) {
     kSaveDirectoryItem = 1000,
@@ -34,6 +35,7 @@ typedef NS_ENUM(NSUInteger, HMScreenShotSaveDirectoryPopUpMenuItemTag) {
 	self.screenShotSaveDirectory = appDelegate.screenShotSaveDirectory;
 }
 
+#pragma mark - Screen Shot
 - (NSString *)screenShotSaveDirectory
 {
 	HMAppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];

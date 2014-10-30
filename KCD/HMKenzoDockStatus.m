@@ -9,6 +9,7 @@
 #import "HMKenzoDockStatus.h"
 
 #import "HMServerDataStore.h"
+#import "HMUserDefaults.h"
 
 enum {
 	kNoShip = 0,
@@ -112,6 +113,9 @@ enum {
 			NSString *format = NSLocalizedString(@"It Will Finish Build at No.%@.", @"It Will Finish Build at No.%@.");
 			notification.title = [NSString stringWithFormat:format, self.number];
 			notification.informativeText = notification.title;
+			if(HMStandardDefaults.playFinishKenzoSound) {
+				notification.soundName = NSUserNotificationDefaultSoundName;
+			}
 			[[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
 			
 			self.didNotify = YES;

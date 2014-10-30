@@ -196,15 +196,6 @@ HMUserDefaults *HMStandardDefaults = nil;
 	return [[NSUserDefaults standardUserDefaults] boolForKey:@"showsPlanColor"];
 }
 
-- (void)setUseMask:(BOOL)useMask
-{
-	[[NSUserDefaults standardUserDefaults] setBool:useMask forKey:@"useMask"];
-}
-- (BOOL)useMask
-{
-	return [[NSUserDefaults standardUserDefaults] boolForKey:@"useMask"];
-}
-
 - (void)setMinimumColoredShipCount:(NSInteger)minimumColoredShipCount
 {
 	[[NSUserDefaults standardUserDefaults] setInteger:minimumColoredShipCount forKey:@"minimumColoredShipCount"];
@@ -212,6 +203,16 @@ HMUserDefaults *HMStandardDefaults = nil;
 - (NSInteger)minimumColoredShipCount
 {
 	return [[NSUserDefaults standardUserDefaults] integerForKey:@"minimumColoredShipCount"];
+}
+
+#pragma mark - Screenshot
+- (void)setUseMask:(BOOL)useMask
+{
+	[[NSUserDefaults standardUserDefaults] setBool:useMask forKey:@"useMask"];
+}
+- (BOOL)useMask
+{
+	return [[NSUserDefaults standardUserDefaults] boolForKey:@"useMask"];
 }
 
 - (void)setScreenShotBorderWidth:(CGFloat)screenShotBorderWidth
@@ -244,4 +245,31 @@ HMUserDefaults *HMStandardDefaults = nil;
 {
 	return [[NSUserDefaults standardUserDefaults] objectForKey:@"screenShotSaveDirectory"];
 }
+
+#pragma mark - Notify Sound
+- (void)setPlayFinishMissionSound:(BOOL)playFinishMissionSound
+{
+	[[NSUserDefaults standardUserDefaults] setBool:playFinishMissionSound forKey:@"playFinishMissionSound"];
+}
+- (BOOL)playFinishMissionSound
+{
+	return [[NSUserDefaults standardUserDefaults] boolForKey:@"playFinishMissionSound"];
+}
+- (void)setPlayFinishNyukyoSound:(BOOL)playFinishNyukyoSound
+{
+	[[NSUserDefaults standardUserDefaults] setBool:playFinishNyukyoSound forKey:@"playFinishNyukyoSound"];
+}
+- (BOOL)playFinishNyukyoSound
+{
+	return [[NSUserDefaults standardUserDefaults] boolForKey:@"playFinishNyukyoSound"];
+}
+- (void)setPlayFinishKenzoSound:(BOOL)playFinishKenzoSound
+{
+	[[NSUserDefaults standardUserDefaults] setBool:playFinishKenzoSound forKey:@"playFinishKenzoSound"];
+}
+- (BOOL)playFinishKenzoSound
+{
+	return [[NSUserDefaults standardUserDefaults] boolForKey:@"playFinishKenzoSound"];
+}
+
 @end

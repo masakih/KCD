@@ -9,6 +9,7 @@
 #import "HMNyukyoDockStatus.h"
 
 #import "HMServerDataStore.h"
+#import "HMUserDefaults.h"
 
 
 enum {
@@ -110,6 +111,9 @@ enum {
 			NSString *format = NSLocalizedString(@"%@ Will Finish Docking.", @"%@ Will Finish Docking.");
 			notification.title = [NSString stringWithFormat:format, self.name];
 			notification.informativeText = notification.title;
+			if(HMStandardDefaults.playFinishNyukyoSound) {
+				notification.soundName = NSUserNotificationDefaultSoundName;
+			}
 			[[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
 			
 			self.didNotify = YES;

@@ -53,4 +53,20 @@ extern HMUserDefaults *HMStandardDefaults;
  *  スクリーンショットを保存する場所
  */
 @property (nonatomic, weak) NSString *screenShotSaveDirectory;
+
+/**
+ *  遠征帰還時の通知音を鳴らす
+ */
+@property BOOL playFinishMissionSound;
+
+/**
+ *  入渠完了時の通知音を鳴らす
+ */
+@property BOOL playFinishNyukyoSound;
+
+/**
+ *  建造完了時の通知音を鳴らす
+ */
+@property BOOL playFinishKenzoSound;
+
 @end

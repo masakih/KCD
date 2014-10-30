@@ -9,7 +9,7 @@
 #import "HMMissionStatus.h"
 
 #import "HMServerDataStore.h"
-
+#import "HMUserDefaults.h"
 
 enum {
 	kNoMission = 0,
@@ -87,6 +87,9 @@ enum {
 			notification.title = [NSString stringWithFormat:format, fleetName];
 			format = NSLocalizedString(@"%@ Will Return From %@.", @"%@ Will Return From %@.");
 			notification.informativeText = [NSString stringWithFormat:format, fleetName, self.name];
+			if(HMStandardDefaults.playFinishMissionSound) {
+				notification.soundName = NSUserNotificationDefaultSoundName;
+			}
 			[[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
 			
 			self.didNotify = YES;
