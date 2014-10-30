@@ -9,6 +9,7 @@
 #import "HMUpgradableShipsWindowController.h"
 
 #import "HMServerDataStore.h"
+#import "HMUserDefaults.h"
 
 @interface HMUpgradableShipsWindowController ()
 
@@ -25,6 +26,28 @@
 - (NSManagedObjectContext *)managedObjectContext
 {
 	return [HMServerDataStore defaultManager].managedObjectContext;
+}
+
+
++ (NSSet *)keyPathsForValuesAffectingFilterPredicate
+{
+	return [NSSet setWithObject:@"showLevelOneShipInUpgradableList"];
+}
+- (void)setShowLevelOneShipInUpgradableList:(BOOL)showLevelOneShipInUpgradableList
+{
+	HMStandardDefaults.showLevelOneShipInUpgradableList = showLevelOneShipInUpgradableList;
+}
+- (BOOL)showLevelOneShipInUpgradableList
+{
+	return HMStandardDefaults.showLevelOneShipInUpgradableList;
+}
+
+- (NSPredicate *)filterPredicate
+{
+	if(!HMStandardDefaults.showLevelOneShipInUpgradableList) {
+		return [NSPredicate predicateWithFormat:@"lv != 1"];
+	}
+	return nil;
 }
 
 @end

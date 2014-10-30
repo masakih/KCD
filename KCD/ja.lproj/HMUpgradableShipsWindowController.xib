@@ -22,14 +22,14 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="5qP-oa-ez4">
-                        <rect key="frame" x="-1" y="0.0" width="236" height="315"/>
+                        <rect key="frame" x="-1" y="0.0" width="236" height="284"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                         <clipView key="contentView" id="4jY-Av-DhN">
                             <rect key="frame" x="1" y="17" width="238" height="117"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveName="upgradableships" headerView="ElI-vy-vtb" id="PIl-CA-2e4">
-                                    <rect key="frame" x="0.0" y="0.0" width="238" height="117"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="234" height="19"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -117,15 +117,27 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </tableHeaderView>
                     </scrollView>
+                    <button id="XXE-k5-Chh">
+                        <rect key="frame" x="6" y="289" width="152" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Lv.1の艦娘も表示する" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="olb-1a-MRn">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="-2" name="value" keyPath="showLevelOneShipInUpgradableList" id="aNr-is-cTd"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="339" y="264.5"/>
+            <point key="canvasLocation" x="337" y="298.5"/>
         </window>
         <arrayController mode="entity" entityName="Ship" fetchPredicateFormat="master_ship.afterlv != 0" editable="NO" automaticallyPreparesContent="YES" id="F7b-g4-Ndz" userLabel="Ship">
             <connections>
+                <binding destination="-2" name="filterPredicate" keyPath="filterPredicate" id="o5A-sR-TMc"/>
                 <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="BKt-Ba-unr"/>
             </connections>
         </arrayController>

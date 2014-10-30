@@ -31,6 +31,10 @@ extern HMUserDefaults *HMStandardDefaults;
 
 @property (nonatomic, weak) NSDate *prevReloadDate;
 
+
+/**
+ *  取得可能艦娘数
+ */
 @property NSInteger minimumColoredShipCount;
 
 /**
@@ -68,5 +72,10 @@ extern HMUserDefaults *HMStandardDefaults;
  *  建造完了時の通知音を鳴らす
  */
 @property BOOL playFinishKenzoSound;
+
+/**
+ * Lv.1の艦娘を改造可能艦リストに表示するか
+ */
+@property BOOL showLevelOneShipInUpgradableList;
 
 @end

@@ -196,6 +196,7 @@ HMUserDefaults *HMStandardDefaults = nil;
 	return [[NSUserDefaults standardUserDefaults] boolForKey:@"showsPlanColor"];
 }
 
+
 - (void)setMinimumColoredShipCount:(NSInteger)minimumColoredShipCount
 {
 	[[NSUserDefaults standardUserDefaults] setInteger:minimumColoredShipCount forKey:@"minimumColoredShipCount"];
@@ -270,6 +271,17 @@ HMUserDefaults *HMStandardDefaults = nil;
 - (BOOL)playFinishKenzoSound
 {
 	return [[NSUserDefaults standardUserDefaults] boolForKey:@"playFinishKenzoSound"];
+}
+
+
+#pragma mark -
+- (void)setShowLevelOneShipInUpgradableList:(BOOL)showLevelOneShipInUpgradableList
+{
+	[[NSUserDefaults standardUserDefaults] setBool:showLevelOneShipInUpgradableList forKey:@"showLevelOneShipInUpgradableList"];
+}
+- (BOOL)showLevelOneShipInUpgradableList
+{
+	return [[NSUserDefaults standardUserDefaults] boolForKey:@"showLevelOneShipInUpgradableList"];
 }
 
 @end

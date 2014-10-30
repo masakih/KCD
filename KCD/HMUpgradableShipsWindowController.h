@@ -10,4 +10,7 @@
 
 @interface HMUpgradableShipsWindowController : NSWindowController
 
+@property BOOL showLevelOneShipInUpgradableList;
+@property (readonly) NSPredicate *filterPredicate;
+
 @end
