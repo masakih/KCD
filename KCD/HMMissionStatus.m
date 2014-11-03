@@ -15,6 +15,7 @@ enum {
 	kNoMission = 0,
 	kHasMission = 1,
 	kFinishMission = 2,
+	kEarlyReturnMission = 3,
 };
 
 @interface HMMissionStatus ()
@@ -121,6 +122,9 @@ enum {
 				self.name = nil;
 				self.prevStatusFinish = YES;
 				if(self.isTasking) self.isTasking = NO;
+				break;
+			case kEarlyReturnMission:
+				// do nothing
 				break;
 			default:
 				NSLog(@"Mission status is %ld", status);
