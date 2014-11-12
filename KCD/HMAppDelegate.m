@@ -14,6 +14,8 @@
 #import "HMSlotItemWindowController.h"
 #import "HMPreferencePanelController.h"
 #import "HMUpgradableShipsWindowController.h"
+#import "HMScreenshotListWindowController.h"
+
 
 #import "HMTSVSupport.h"
 
@@ -43,6 +45,8 @@
 @end
 
 @implementation HMAppDelegate
+
+@synthesize screenshotListWindowController = _screenshotListWindowController;
 
 static FILE* logFileP = NULL;
 
@@ -122,6 +126,13 @@ static FILE* logFileP = NULL;
 	}
 }
 
+- (HMScreenshotListWindowController *)screenshotListWindowController
+{
+	if(_screenshotListWindowController) return _screenshotListWindowController;
+	_screenshotListWindowController = [HMScreenshotListWindowController new];
+	return _screenshotListWindowController;
+}
+
 - (NSArray *)shipTypeCategories
 {
 	static NSArray *categories = nil;
@@ -179,7 +190,7 @@ static FILE* logFileP = NULL;
 {
 	NSString *path = HMStandardDefaults.screenShotSaveDirectory;
 	if(!path) {
-		path = [[self documentsFilesDirectory] path];
+		path = [[self picturesDirectory] path];
 	}
 	
 	return path;
@@ -188,6 +199,11 @@ static FILE* logFileP = NULL;
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
 	return [[fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+}
+- (NSURL *)picturesDirectory
+{
+	NSFileManager *fileManager = [NSFileManager defaultManager];
+	return [[fileManager URLsForDirectory:NSPicturesDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem
@@ -215,6 +231,14 @@ static FILE* logFileP = NULL;
 			[menuItem setTitle:NSLocalizedString(@"Show Upgradable Ships", @"")];
 		} else {
 			[menuItem setTitle:NSLocalizedString(@"Hide Upgradable Ships", @"")];
+		}
+		return YES;
+	} else if(action == @selector(showHideScreenshotListWindow:)) {
+		NSWindow *window = self.screenshotListWindowController.window;
+		if(!window.isVisible || !window.isMainWindow) {
+			[menuItem setTitle:NSLocalizedString(@"Show Screenshot List", @"")];
+		} else {
+			[menuItem setTitle:NSLocalizedString(@"Hide Screenshot List", @"")];
 		}
 		return YES;
 	} else if(action == @selector(saveLocalData:) || action == @selector(loadLocalData:)) {
@@ -279,6 +303,16 @@ static FILE* logFileP = NULL;
 	}
 	
 	NSWindow *window = self.upgradableShipWindowController.window;
+	if(!window.isVisible || !window.isMainWindow) {
+		[window makeKeyAndOrderFront:nil];
+	} else {
+		[window orderOut:nil];
+	}
+}
+
+- (IBAction)showHideScreenshotListWindow:(id)sender
+{
+	NSWindow *window = self.screenshotListWindowController.window;
 	if(!window.isVisible || !window.isMainWindow) {
 		[window makeKeyAndOrderFront:nil];
 	} else {

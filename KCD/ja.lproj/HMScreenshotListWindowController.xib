@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
+        <plugIn identifier="com.apple.imagekit.ibplugin" version="6250"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="HMScreenshotListWindowController">
+            <connections>
+                <outlet property="browser" destination="FPI-Ma-X6H" id="1Jw-Ae-EMa"/>
+                <outlet property="maskSelectView" destination="tQA-8E-MmO" id="v5E-DG-8ll"/>
+                <outlet property="screenshotsController" destination="mrq-7Y-mHG" id="4az-ad-cjx"/>
+                <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Screenshot List" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="F0z-JX-Cv5">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="853" height="430"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
+            <view key="contentView" id="se5-gp-TjO">
+                <rect key="frame" x="0.0" y="1" width="853" height="430"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <scrollView horizontalLineScroll="132.75" horizontalPageScroll="10" verticalLineScroll="153" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="uRf-6p-n0n">
+                        <rect key="frame" x="-1" y="-1" width="461" height="432"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <clipView key="contentView" copiesOnScroll="NO" id="xHE-4e-HA7">
+                            <rect key="frame" x="1" y="1" width="166" height="79"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <ikImageBrowserView autoresizesSubviews="NO" zoomValue="0.38769415020942688" allowsMultipleSelection="NO" id="FPI-Ma-X6H">
+                                    <rect key="frame" x="0.0" y="0.0" width="459" height="430"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                    <ikCellsStyle key="cellsStyleMask" none="YES" shadowed="YES" titled="YES" subtitled="YES"/>
+                                    <autoresizingMask key="contentResizingMask" heightSizable="YES"/>
+                                    <size key="cellSize" width="93" height="93"/>
+                                    <connections>
+                                        <binding destination="mrq-7Y-mHG" name="content" keyPath="arrangedObjects" id="G8W-hO-lU3"/>
+                                        <binding destination="mrq-7Y-mHG" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="G8W-hO-lU3" id="22W-ek-2gd"/>
+                                    </connections>
+                                </ikImageBrowserView>
+                            </subviews>
+                        </clipView>
+                        <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="ERx-3X-cLg">
+                            <rect key="frame" x="1" y="80" width="166" height="15"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="dbh-Xn-LMm">
+                            <rect key="frame" x="167" y="1" width="15" height="79"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                    </scrollView>
+                    <button hidden="YES" verticalHuggingPriority="750" id="PMW-hb-KWl">
+                        <rect key="frame" x="756" y="137" width="83" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="push" title="Reload" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6mr-Lg-0ls">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="reloadData:" target="-2" id="FSz-KD-FmB"/>
+                        </connections>
+                    </button>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="ddV-E9-TbE">
+                        <rect key="frame" x="479" y="200" width="354" height="210"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="1sl-UL-0SI"/>
+                        <connections>
+                            <binding destination="mrq-7Y-mHG" name="valuePath" keyPath="selection.path" id="P3O-fQ-1jp"/>
+                        </connections>
+                    </imageView>
+                    <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="5WC-WS-ctC">
+                        <rect key="frame" x="479" y="177" width="354" height="5"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <font key="titleFont" metaFont="system"/>
+                    </box>
+                    <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="D9w-O7-T4q">
+                        <rect key="frame" x="479" y="47" width="354" height="56"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <textFieldCell key="cell" selectable="YES" editable="YES" continuous="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" focusRingType="none" drawsBackground="YES" id="JIq-hu-jii">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <binding destination="-2" name="value" keyPath="tweetString" id="nMP-cL-2to">
+                                <dictionary key="options">
+                                    <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                </dictionary>
+                            </binding>
+                            <outlet property="delegate" destination="-2" id="lEq-Vh-l9Y"/>
+                        </connections>
+                    </textField>
+                    <button toolTip="⌘TでTweet" verticalHuggingPriority="750" id="3E8-VI-ErH">
+                        <rect key="frame" x="760" y="11" width="77" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="push" title="Tweet" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Rta-ce-KOM">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent">t</string>
+                            <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="tweet:" target="-2" id="Qb5-xY-KMM"/>
+                            <binding destination="-2" name="enabled" keyPath="canTweet" id="xc1-m4-EZQ"/>
+                        </connections>
+                    </button>
+                    <button id="ze5-Nt-vNQ">
+                        <rect key="frame" x="477" y="19" width="96" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="check" title="#艦これタグ" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="fqr-r3-ygh">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="-2" name="value" keyPath="appendKanColleTag" id="COG-Sp-61P"/>
+                        </connections>
+                    </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="0j6-tu-Knk">
+                        <rect key="frame" x="722" y="20" width="38" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="140" id="zjG-cX-w9u">
+                            <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="bZb-gp-mmg"/>
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <binding destination="-2" name="textColor" keyPath="leaveLengthColor" id="QZV-AV-RAI"/>
+                            <binding destination="-2" name="value" keyPath="leaveLength" id="EgP-Y2-7Ii"/>
+                        </connections>
+                    </textField>
+                    <button id="fwg-yH-Hna">
+                        <rect key="frame" x="577" y="19" width="100" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="check" title="提督名マスク" bezelStyle="regularSquare" imagePosition="left" enabled="NO" state="on" inset="2" id="iVa-6D-NwM">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" size="13" name="AquaKana"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="-2" name="value" keyPath="useMask" id="hny-GP-Iyu"/>
+                        </connections>
+                    </button>
+                    <customView id="tQA-8E-MmO" customClass="HMMaskSelectView">
+                        <rect key="frame" x="479" y="200" width="354" height="210"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                    </customView>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="IIP-M3-j7Y">
+                        <rect key="frame" x="477" y="154" width="61" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="作成日：" id="fua-jo-vVS">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="JME-sW-jta">
+                        <rect key="frame" x="477" y="129" width="61" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="作成日：" id="XDE-BS-Suc">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="OBh-55-MFZ">
+                        <rect key="frame" x="533" y="154" width="146" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="2014/09/09 24:24:55" id="oX7-SP-ZZp">
+                            <dateFormatter key="formatter" dateStyle="short" timeStyle="medium" doesRelativeDateFormatting="YES" id="5XJ-gT-eto"/>
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <binding destination="mrq-7Y-mHG" name="value" keyPath="selection.creationDate" id="hCL-y2-DDn"/>
+                        </connections>
+                    </textField>
+                </subviews>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
+            </connections>
+            <point key="canvasLocation" x="339.5" y="296"/>
+        </window>
+        <arrayController objectClassName="HMScreenshotInformation" automaticallyRearrangesObjects="YES" id="mrq-7Y-mHG">
+            <connections>
+                <binding destination="-2" name="contentArray" keyPath="screenshots" id="yiA-Bf-4WO"/>
+                <binding destination="-2" name="selectionIndexes" keyPath="selectedIndexes" id="jhe-Sj-w7g"/>
+            </connections>
+        </arrayController>
+    </objects>
+</document>

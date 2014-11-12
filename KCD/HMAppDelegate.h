@@ -21,8 +21,9 @@ typedef NS_ENUM(NSUInteger, HMShipType) {
 	kHMOtherType,
 };
 
-@interface HMAppDelegate : NSObject <NSApplicationDelegate>
+@class HMScreenshotListWindowController;
 
+@interface HMAppDelegate : NSObject <NSApplicationDelegate>
 
 - (void)logLineReturn:(NSString *)format, ... NS_FORMAT_FUNCTION(1,2);
 - (void)log:(NSString *)format, ... NS_FORMAT_FUNCTION(1,2);
@@ -32,10 +33,12 @@ typedef NS_ENUM(NSUInteger, HMShipType) {
 @property (strong, nonatomic) IBOutlet NSMenuItem *debugMenuItem;
 
 @property (nonatomic, strong) NSString *screenShotSaveDirectory;
+@property (readonly) HMScreenshotListWindowController *screenshotListWindowController;
 
 - (IBAction)showHideHistory:(id)sender;
 - (IBAction)showHideSlotItemWindow:(id)sender;
 - (IBAction)showHideUpgradableShipWindow:(id)sender;
+- (IBAction)showHideScreenshotListWindow:(id)sender;
 
 - (IBAction)showHidePreferencePanle:(id)sender;
 

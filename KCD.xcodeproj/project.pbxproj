@@ -51,6 +51,10 @@
 		F494DC6A18C8BAB900AE97E4 /* HMPowerUpSupportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F494DC6818C8BAB900AE97E4 /* HMPowerUpSupportViewController.xib */; };
 		F494DC6D18CC054800AE97E4 /* HMNyukyoDockStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = F494DC6C18CC054800AE97E4 /* HMNyukyoDockStatus.m */; };
 		F49828FC1902A226000D6BBE /* HMStrokeTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F49828FB1902A226000D6BBE /* HMStrokeTextFieldCell.m */; };
+		F4A2AF521A074DCF0024BD9E /* HMScreenshotListWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A2AF501A074DCF0024BD9E /* HMScreenshotListWindowController.m */; };
+		F4A2AF541A074DE40024BD9E /* HMScreenshotListWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A2AF561A074DE40024BD9E /* HMScreenshotListWindowController.xib */; };
+		F4A2AF581A0930160024BD9E /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A2AF571A0930160024BD9E /* Quartz.framework */; };
+		F4A2AF5B1A0F9B490024BD9E /* HMScreenshotInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A2AF5A1A0F9B490024BD9E /* HMScreenshotInformation.m */; };
 		F4A3AD82199F529700FDBF80 /* HMCombinedBattleCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A3AD81199F529700FDBF80 /* HMCombinedBattleCommand.m */; };
 		F4A3AD8519B0CAB700FDBF80 /* HMPlanToShowsBoldFontTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A3AD8419B0CAB700FDBF80 /* HMPlanToShowsBoldFontTransformer.m */; };
 		F4A3AD8819B6149D00FDBF80 /* HMNyukyoStartCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A3AD8719B6149D00FDBF80 /* HMNyukyoStartCommand.m */; };
@@ -231,6 +235,12 @@
 		F494DC6C18CC054800AE97E4 /* HMNyukyoDockStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMNyukyoDockStatus.m; sourceTree = "<group>"; };
 		F49828FA1902A226000D6BBE /* HMStrokeTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMStrokeTextFieldCell.h; sourceTree = "<group>"; };
 		F49828FB1902A226000D6BBE /* HMStrokeTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMStrokeTextFieldCell.m; sourceTree = "<group>"; };
+		F4A2AF4F1A074DCF0024BD9E /* HMScreenshotListWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMScreenshotListWindowController.h; sourceTree = "<group>"; };
+		F4A2AF501A074DCF0024BD9E /* HMScreenshotListWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMScreenshotListWindowController.m; sourceTree = "<group>"; };
+		F4A2AF551A074DE40024BD9E /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMScreenshotListWindowController.xib; sourceTree = "<group>"; };
+		F4A2AF571A0930160024BD9E /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
+		F4A2AF591A0F9B490024BD9E /* HMScreenshotInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMScreenshotInformation.h; sourceTree = "<group>"; };
+		F4A2AF5A1A0F9B490024BD9E /* HMScreenshotInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMScreenshotInformation.m; sourceTree = "<group>"; };
 		F4A3AD80199F529700FDBF80 /* HMCombinedBattleCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMCombinedBattleCommand.h; sourceTree = "<group>"; };
 		F4A3AD81199F529700FDBF80 /* HMCombinedBattleCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMCombinedBattleCommand.m; sourceTree = "<group>"; };
 		F4A3AD8319B0CAB700FDBF80 /* HMPlanToShowsBoldFontTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPlanToShowsBoldFontTransformer.h; sourceTree = "<group>"; };
@@ -384,6 +394,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4A2AF581A0930160024BD9E /* Quartz.framework in Frameworks */,
 				F4B3DC4E18F0C8FF0011B4FC /* Accounts.framework in Frameworks */,
 				F4B3DC4C18F0C8A90011B4FC /* Social.framework in Frameworks */,
 				F4C041BA1875CAF5009273EB /* JavaScriptCore.framework in Frameworks */,
@@ -426,6 +437,7 @@
 		F4BDEB45187252F30069D0CE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F4A2AF571A0930160024BD9E /* Quartz.framework */,
 				F4B3DC4D18F0C8FF0011B4FC /* Accounts.framework */,
 				F4B3DC4B18F0C8A90011B4FC /* Social.framework */,
 				F4C041B91875CAF5009273EB /* JavaScriptCore.framework */,
@@ -608,6 +620,11 @@
 				F4B37EFA19FC8D98002F371A /* HMUpgradableShipsWindowController.h */,
 				F4B37EFB19FC8D98002F371A /* HMUpgradableShipsWindowController.m */,
 				F4B37F0119FC8DCC002F371A /* HMUpgradableShipsWindowController.xib */,
+				F4A2AF4F1A074DCF0024BD9E /* HMScreenshotListWindowController.h */,
+				F4A2AF501A074DCF0024BD9E /* HMScreenshotListWindowController.m */,
+				F4A2AF561A074DE40024BD9E /* HMScreenshotListWindowController.xib */,
+				F4A2AF591A0F9B490024BD9E /* HMScreenshotInformation.h */,
+				F4A2AF5A1A0F9B490024BD9E /* HMScreenshotInformation.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -818,6 +835,7 @@
 				F4B3DC3918E5C8700011B4FC /* HMJSONViewWindowController.xib in Resources */,
 				F4B3DC3318E5C8520011B4FC /* HMShipViewController.xib in Resources */,
 				F43E67B718BE02A10087E5B6 /* STypeShortName.plist in Resources */,
+				F4A2AF541A074DE40024BD9E /* HMScreenshotListWindowController.xib in Resources */,
 				F4BDEB5F187252F30069D0CE /* Images.xcassets in Resources */,
 				F4BEEE9F18D211280006F70C /* Localizable.strings in Resources */,
 				F4513EF018B96C6C00073552 /* Links.rtf in Resources */,
@@ -856,6 +874,7 @@
 				F4B3DC2A18DF31400011B4FC /* HMCreateShipCommand.m in Sources */,
 				F46F103618A7CE310063E503 /* HMJSONViewCommand.m in Sources */,
 				F4B3DC1E18DEB8C70011B4FC /* HMKenzoHistory.m in Sources */,
+				F4A2AF5B1A0F9B490024BD9E /* HMScreenshotInformation.m in Sources */,
 				F4B3DC5218F150CD0011B4FC /* HMScreenshotWindowController.m in Sources */,
 				F426802E194D0FFD00B2C27F /* HMMemberShip3Command.m in Sources */,
 				F4B37EF319FBBBED002F371A /* HMRemodelSlotCommand.m in Sources */,
@@ -931,6 +950,7 @@
 				F4B414FE18B3A66200468DAF /* HMMemberNDockCommand.m in Sources */,
 				F42680371957000200B2C27F /* HMTimerCountFormatter.m in Sources */,
 				F4B414F218B1013C00468DAF /* HMMasterSlotItemCommand.m in Sources */,
+				F4A2AF521A074DCF0024BD9E /* HMScreenshotListWindowController.m in Sources */,
 				F4131EE61910318F004F7F9A /* HMMasterSlotItemEquipTypeCommand.m in Sources */,
 				F4D2CBC818B0555A000EBC59 /* HMKCManagedObject.m in Sources */,
 				F4D2CBC218AD0E1A000EBC59 /* HMMasterSTypeCommand.m in Sources */,
@@ -977,6 +997,14 @@
 				F494DC6918C8BAB900AE97E4 /* ja */,
 			);
 			name = HMPowerUpSupportViewController.xib;
+			sourceTree = "<group>";
+		};
+		F4A2AF561A074DE40024BD9E /* HMScreenshotListWindowController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4A2AF551A074DE40024BD9E /* ja */,
+			);
+			name = HMScreenshotListWindowController.xib;
 			sourceTree = "<group>";
 		};
 		F4A3AD9619BDDE5500FDBF80 /* HMPreferencePanelController.xib */ = {

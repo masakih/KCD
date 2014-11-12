@@ -8,6 +8,7 @@
 
 #import "HMBroserWindowController.h"
 
+#import "HMAppDelegate.h"
 #import "HMUserDefaults.h"
 #import "HMDocksViewController.h"
 #import "HMShipViewController.h"
@@ -15,6 +16,7 @@
 #import "HMDeckViewController.h"
 
 #import "HMScreenshotWindowController.h"
+#import "HMScreenshotListWindowController.h"
 
 #import "HMServerDataStore.h"
 
@@ -231,9 +233,9 @@ typedef NS_ENUM(NSInteger, ViewType) {
 }
 - (IBAction)screenShot:(id)sender
 {
-	if(!self.screenshotWindowController) {
-		self.screenshotWindowController = [HMScreenshotWindowController new];
-	}
+//	if(!self.screenshotWindowController) {
+//		self.screenshotWindowController = [HMScreenshotWindowController new];
+//	}
 	
 	NSView *contentView = self.window.contentView;
 	
@@ -243,12 +245,16 @@ typedef NS_ENUM(NSInteger, ViewType) {
 	
 	NSBitmapImageRep *rep = [contentView bitmapImageRepForCachingDisplayInRect:frame];
 	[contentView cacheDisplayInRect:frame toBitmapImageRep:rep];
-	self.screenshotWindowController.snapImageRep = rep;
+//	self.screenshotWindowController.snapImageRep = rep;
+//
+//	[self.window beginSheet:self.screenshotWindowController.window
+//		  completionHandler:^(NSModalResponse returnCode) {
+//			  [self.screenshotWindowController.window close];
+//		  }];
+	HMAppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+	HMScreenshotListWindowController *slwController = appDelegate.screenshotListWindowController;
+	[slwController registerScreenshot:rep fromOnScreen:[contentView convertRect:frame toView:nil]];
 	
-	[self.window beginSheet:self.screenshotWindowController.window
-		  completionHandler:^(NSModalResponse returnCode) {
-			  [self.screenshotWindowController.window close];
-		  }];
 }
 
 #pragma mark - WebFrameLoadDelegate
