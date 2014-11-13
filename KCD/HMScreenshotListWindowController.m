@@ -26,7 +26,7 @@
 @property (weak, nonatomic) IBOutlet NSArrayController *screenshotsController;
 @property (readonly) NSMutableArray *screenshots;
 
-@property (weak) NSSet *selectedIndexes;
+@property (weak) NSIndexSet *selectedIndexes;
 
 @property NSMutableArray *savedScreenshots;
 
@@ -164,6 +164,7 @@
 	}
 	[self didChangeValueForKey:@"screenshots"];
 	
+	self.selectedIndexes = [NSIndexSet indexSetWithIndex:0];
 }
 
 - (IBAction)reloadData:(id)sender
