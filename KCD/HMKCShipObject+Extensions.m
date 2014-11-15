@@ -197,7 +197,8 @@ static NSArray *levelUpExps = nil;
 	
 	NSInteger planType = [[self valueForKey:@"sally_area"] integerValue];
 	if(planType == 1) return [NSColor colorWithCalibratedRed:0.000 green:0.043 blue:0.518 alpha:1.000];
-	if(planType == 2) return [NSColor colorWithCalibratedRed:0.800 green:0.223 blue:0.000 alpha:1.000];
+	if(planType == 2) return [NSColor colorWithCalibratedRed:0.539 green:0.012 blue:0.046 alpha:1.000];
+	if(planType == 3) return [NSColor colorWithCalibratedRed:0.800 green:0.223 blue:0.000 alpha:1.000];
 	return [NSColor controlTextColor];
 }
 
