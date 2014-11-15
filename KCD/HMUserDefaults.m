@@ -27,19 +27,6 @@ HMUserDefaults *HMStandardDefaults = nil;
 	});
 }
 
-+ (void)initialize
-{
-	static dispatch_once_t onceToken;
-	dispatch_once(&onceToken, ^{
-		[[NSUserDefaults standardUserDefaults] registerDefaults:
-		 @{
-		   @"screenShotBorderWidth" : @(3.0),
-		   }
-		 ];
-	});
-}
-
-
 - (void)setSlotItemSortDescriptors:(NSArray *)slotItemSortDescriptors
 {
 	if(slotItemSortDescriptors) {
@@ -195,7 +182,36 @@ HMUserDefaults *HMStandardDefaults = nil;
 {
 	return [[NSUserDefaults standardUserDefaults] boolForKey:@"showsPlanColor"];
 }
-
+- (void)setPlan01Color:(NSColor *)plan01Color
+{
+	NSData *data = [NSKeyedArchiver archivedDataWithRootObject:plan01Color];
+	[[NSUserDefaults standardUserDefaults] setObject:data forKey:@"plan01Color"];
+}
+- (NSColor *)plan01Color
+{
+	NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"plan01Color"];
+	return [NSKeyedUnarchiver unarchiveObjectWithData:data];
+}
+- (void)setPlan02Color:(NSColor *)plan02Color
+{
+	NSData *data = [NSKeyedArchiver archivedDataWithRootObject:plan02Color];
+	[[NSUserDefaults standardUserDefaults] setObject:data forKey:@"plan02Color"];
+}
+- (NSColor *)plan02Color
+{
+	NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"plan02Color"];
+	return [NSKeyedUnarchiver unarchiveObjectWithData:data];
+}
+- (void)setPlan03Color:(NSColor *)plan03Color
+{
+	NSData *data = [NSKeyedArchiver archivedDataWithRootObject:plan03Color];
+	[[NSUserDefaults standardUserDefaults] setObject:data forKey:@"plan03Color"];
+}
+- (NSColor *)plan03Color
+{
+	NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"plan03Color"];
+	return [NSKeyedUnarchiver unarchiveObjectWithData:data];
+}
 
 - (void)setMinimumColoredShipCount:(NSInteger)minimumColoredShipCount
 {

@@ -41,6 +41,18 @@ extern HMUserDefaults *HMStandardDefaults;
  *  2014年夏イベント時の出撃海域による色分けの有効／無効
  */
 @property BOOL showsPlanColor;
+/**
+ *  作戦０１の色
+ */
+@property (nonatomic, weak) NSColor *plan01Color;
+/**
+ *  作戦０２の色
+ */
+@property (nonatomic, weak) NSColor *plan02Color;
+/**
+ * 作戦０３の色
+ */
+@property (nonatomic, weak) NSColor *plan03Color;
 
 
 /**
