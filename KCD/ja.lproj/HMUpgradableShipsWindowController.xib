@@ -35,7 +35,7 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
-                                        <tableColumn identifier="name" width="93" minWidth="40" maxWidth="1000" id="nha-5d-E70">
+                                        <tableColumn identifier="name" editable="NO" width="93" minWidth="40" maxWidth="1000" id="nha-5d-E70">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="艦名">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -48,10 +48,14 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
-                                                <binding destination="F7b-g4-Ndz" name="value" keyPath="arrangedObjects.name" id="G2h-pQ-Y26"/>
+                                                <binding destination="F7b-g4-Ndz" name="value" keyPath="arrangedObjects.name" id="j7Y-gN-xY4">
+                                                    <dictionary key="options">
+                                                        <bool key="NSConditionallySetsEditable" value="NO"/>
+                                                    </dictionary>
+                                                </binding>
                                             </connections>
                                         </tableColumn>
-                                        <tableColumn identifier="level" width="34" minWidth="34" maxWidth="1000" id="zB4-Ma-3L9">
+                                        <tableColumn identifier="level" editable="NO" width="34" minWidth="34" maxWidth="1000" id="zB4-Ma-3L9">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Lv.">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -64,10 +68,14 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
-                                                <binding destination="F7b-g4-Ndz" name="value" keyPath="arrangedObjects.lv" id="NJt-di-j0p"/>
+                                                <binding destination="F7b-g4-Ndz" name="value" keyPath="arrangedObjects.lv" id="GG4-Jw-sdN">
+                                                    <dictionary key="options">
+                                                        <bool key="NSConditionallySetsEditable" value="NO"/>
+                                                    </dictionary>
+                                                </binding>
                                             </connections>
                                         </tableColumn>
-                                        <tableColumn identifier="nextLevel" width="34" minWidth="34" maxWidth="3.4028234663852886e+38" id="CCG-zQ-cTI">
+                                        <tableColumn identifier="nextLevel" editable="NO" width="34" minWidth="34" maxWidth="3.4028234663852886e+38" id="CCG-zQ-cTI">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Next Lv.">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -80,10 +88,14 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
-                                                <binding destination="F7b-g4-Ndz" name="value" keyPath="arrangedObjects.upgradeLevel" id="yLP-lk-h6n"/>
+                                                <binding destination="F7b-g4-Ndz" name="value" keyPath="arrangedObjects.upgradeLevel" id="V85-yJ-0vP">
+                                                    <dictionary key="options">
+                                                        <bool key="NSConditionallySetsEditable" value="NO"/>
+                                                    </dictionary>
+                                                </binding>
                                             </connections>
                                         </tableColumn>
-                                        <tableColumn identifier="nextEpx" width="61" minWidth="22" maxWidth="3.4028234663852886e+38" id="SUR-qF-Wcc">
+                                        <tableColumn identifier="nextEpx" editable="NO" width="61" minWidth="22" maxWidth="3.4028234663852886e+38" id="SUR-qF-Wcc">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Next Exp.">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -96,7 +108,11 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
-                                                <binding destination="F7b-g4-Ndz" name="value" keyPath="arrangedObjects.upgradeExp" id="DCs-e4-RUZ"/>
+                                                <binding destination="F7b-g4-Ndz" name="value" keyPath="arrangedObjects.upgradeExp" id="U3b-BW-Nri">
+                                                    <dictionary key="options">
+                                                        <bool key="NSConditionallySetsEditable" value="NO"/>
+                                                    </dictionary>
+                                                </binding>
                                             </connections>
                                         </tableColumn>
                                     </tableColumns>
