@@ -96,7 +96,7 @@
                     </textField>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5vm-EO-1Eg">
                         <rect key="frame" x="208" y="19" width="87" height="18"/>
-                        <buttonCell key="cell" type="check" title="色分けする" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Z4X-Rv-dnI">
+                        <buttonCell key="cell" type="check" title="色付けする" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Z4X-Rv-dnI">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" size="13" name="AquaKana"/>
                         </buttonCell>
