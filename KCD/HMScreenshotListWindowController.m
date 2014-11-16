@@ -8,6 +8,7 @@
 
 #import "HMScreenshotListWindowController.h"
 #import "HMScreenshotInformation.h"
+#import "HMMaskSelectView.h"
 
 #import <Quartz/Quartz.h>
 
@@ -32,10 +33,9 @@
 
 @property (weak, nonatomic) IBOutlet IKImageBrowserView *browser;
 
-// Tweet
-@property (strong) ACAccountStore *accountStore;
-@property BOOL availableTwitter;
-@property NSInteger shortURLLength;
+@end
+
+@interface HMScreenshotListWindowController (HMSharingService) <NSSharingServiceDelegate, NSSharingServicePickerDelegate>
 
 @end
 
@@ -48,10 +48,6 @@
 	if(self) {
 		_savedScreenshots = [NSMutableArray new];
 		
-		// Tweet
-		_accountStore = [ACAccountStore new];
-		
-		[self checkShortURLLength];
 		
 		NSString *tag = NSLocalizedString(@"kancolle", @"kancolle twitter hash tag");
 		if(tag) {
@@ -60,8 +56,6 @@
 			_tagString = @"";
 		}
 		_appendKanColleTag = HMStandardDefaults.appendKanColleTag;
-		
-		self.tweetString = @"";
 		
 		_useMask = HMStandardDefaults.useMask;
 	}
@@ -75,7 +69,17 @@
 	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO];
 	self.screenshotsController.sortDescriptors = @[sortDescriptor];
 	
-	[self performSelector:@selector(reloadData:) withObject:nil afterDelay:0.0];
+	[self performSelector:@selector(prepareScreenshot:) withObject:nil afterDelay:0.0];
+	
+}
+- (void)prepareScreenshot:(id)dummy
+{
+	[self reloadData];
+	[self.screenshotsController rearrangeObjects];
+	[self.browser reloadData];
+	
+//	self.selectedIndexes = [NSIndexSet indexSetWithIndex:0];
+	[self performSelector:@selector(setSelectedIndexes:) withObject:[NSIndexSet indexSetWithIndex:0] afterDelay:0.0];
 }
 
 - (NSString *)screenshotSaveDirectoryPath
@@ -163,8 +167,6 @@
 		}
 	}
 	[self didChangeValueForKey:@"screenshots"];
-	
-	self.selectedIndexes = [NSIndexSet indexSetWithIndex:0];
 }
 
 - (IBAction)reloadData:(id)sender
@@ -199,18 +201,6 @@
 @synthesize useMask = _useMask;
 @synthesize appendKanColleTag = _appendKanColleTag;
 
-+ (NSSet *)keyPathsForValuesAffectingLeaveLength
-{
-	return [NSSet setWithObjects:@"tweetString", @"appendKanColleTag", nil];
-}
-+ (NSSet *)keyPathsForValuesAffectingLeaveLengthColor
-{
-	return [NSSet setWithObject:@"leaveLength"];
-}
-+ (NSSet *)keyPathsForValuesAffectingCanTweet
-{
-	return [NSSet setWithObjects:@"leaveLength", @"selectedIndexes", nil];
-}
 
 - (BOOL)useMask
 {
@@ -221,19 +211,7 @@
 	HMStandardDefaults.useMask = useMask;
 	_useMask = useMask;
 }
-- (NSInteger)leaveLength
-{
-	const NSUInteger maxTweetLength = 140;
-	if(self.appendKanColleTag) return maxTweetLength - self.tagString.length - self.shortURLLength - self.tweetString.length;
-	return maxTweetLength - self.shortURLLength - self.tweetString.length;
-}
-- (NSColor *)leaveLengthColor
-{
-	if(self.leaveLength < 0) {
-		return [NSColor colorWithCalibratedRed:159/255.0 green:14/255.0 blue:0 alpha:1];
-	}
-	return [NSColor controlTextColor];
-}
+
 - (BOOL)appendKanColleTag
 {
 	return _appendKanColleTag;
@@ -243,185 +221,53 @@
 	HMStandardDefaults.appendKanColleTag = appendKanColleTag;
 	_appendKanColleTag = appendKanColleTag;
 }
-- (BOOL)canTweet
-{
-	if(self.selectedIndexes.count == 0) {
-		return NO;
-	}
-	
-	ACAccountType *twitterType = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-	if(![twitterType accessGranted]) {
-		[self.accountStore requestAccessToAccountsWithType:twitterType
-												   options:nil
-												completion:^(BOOL granted, NSError *error) {
-													if(!granted) {
-														NSLog(@"No access granted");
-													} else {
-														//	NSLog(@"succsess");
-													}
-												}];
-	}
-	NSArray *accounts = [self.accountStore accountsWithAccountType:twitterType];
-	if([accounts count] == 0) {
-		NSLog(@"twitter account not avail.");
-		NSLog(@"Accounts -> %@", self.accountStore.accounts);
-		return NO;
-	}
-	self.availableTwitter = YES;
-	
-	return self.availableTwitter && self.leaveLength >= 0;
-}
 
-- (IBAction)tweet:(id)sender
+- (IBAction)share:(id)sender
 {
-	if(self.selectedIndexes.count == 0) {
-		NSBeep();
-		return;
-	}
-	NSString *selectionPath = [self.screenshotsController valueForKeyPath:@"selection.path"];
-	if(!selectionPath || [selectionPath isEqual:[NSNull null]]) {
-		NSBeep();
-		return;
-	}
+	[sender sendActionOn:NSLeftMouseDownMask];
 	
-	NSData *imageData = [NSData dataWithContentsOfFile:selectionPath];
-	if(!imageData) {
-		NSBeep();
-		return;
-	}
+	NSString *imagePath = [self.screenshotsController valueForKeyPath:@"selection.path"];
+	NSImage *image = [[NSImage alloc] initWithContentsOfFile:imagePath];
 	
-	NSString *status = self.tweetString;
-	if(!status) status = @"";
+	NSString *tags = nil;
 	if(self.appendKanColleTag) {
-		status = [status stringByAppendingString:self.tagString];
+		tags = self.tagString;
+		tags = [@" \n" stringByAppendingString:tags];
 	}
-	
-	if(self.leaveLength >= 0) {
-		[self postImage:imageData withStatus:status];
-		self.tweetString = @"";
-	} else {
-		NSBeep();
-	}
+	NSArray *items = [NSArray arrayWithObjects:image, tags, nil];
+	NSSharingServicePicker *picker = [[NSSharingServicePicker alloc] initWithItems:items];
+	picker.delegate = self;
+	[picker showRelativeToRect:[sender bounds]
+						ofView:sender
+				 preferredEdge:NSMinXEdge];
 }
 
-- (void)postImage:(NSData *)jpeg withStatus:(NSString *)status
+
+#pragma mark-## NSSharingServiceDelegate NSSharingServicePickerDelegate
+- (id <NSSharingServiceDelegate>)sharingServicePicker:(NSSharingServicePicker *)sharingServicePicker delegateForSharingService:(NSSharingService *)sharingService
 {
-	ACAccountType *twitterType = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-	
-	SLRequestHandler requestHandler =
-	^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-		if (responseData) {
-			NSInteger statusCode = urlResponse.statusCode;
-			if (statusCode >= 200 && statusCode < 300) {
-				//	NSDictionary *postResponseData =
-				//	[NSJSONSerialization JSONObjectWithData:responseData
-				//									options:NSJSONReadingMutableContainers
-				//									  error:NULL];
-				//	NSLog(@"[SUCCESS!] Created Tweet with ID: %@", postResponseData[@"id_str"]);
-			}
-			else {
-				NSLog(@"[ERROR] Server responded: status code %ld %@", statusCode,
-					  [NSHTTPURLResponse localizedStringForStatusCode:statusCode]);
-			}
-		}
-		else {
-			NSLog(@"[ERROR] An error occurred while posting: %@", [error localizedDescription]);
-		}
-	};
-	
-	ACAccountStoreRequestAccessCompletionHandler accountStoreHandler =
-	^(BOOL granted, NSError *error) {
-		if (granted) {
-			NSArray *accounts = [self.accountStore accountsWithAccountType:twitterType];
-			NSURL *url = [NSURL URLWithString:@"https://api.twitter.com"
-						  @"/1.1/statuses/update_with_media.json"];
-			NSDictionary *params = @{@"status" : status};
-			SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeTwitter
-													requestMethod:SLRequestMethodPOST
-															  URL:url
-													   parameters:params];
-			[request addMultipartData:jpeg
-							 withName:@"media[]"
-								 type:@"image/jpeg"
-							 filename:@"image.jpg"];
-			[request setAccount:[accounts lastObject]];
-			[request performRequestWithHandler:requestHandler];
-		}
-		else {
-			NSLog(@"[ERROR] An error occurred while asking for user authorization: %@",
-				  [error localizedDescription]);
-		}
-	};
-	
-	[self.accountStore requestAccessToAccountsWithType:twitterType
-											   options:NULL
-											completion:accountStoreHandler];
+	return self;
 }
 
-- (void)checkShortURLLength
+- (NSRect)sharingService:(NSSharingService *)sharingService sourceFrameOnScreenForShareItem:(id<NSPasteboardWriting>)item
 {
-	ACAccountType *twitterType = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-	
-	SLRequestHandler requestHandler =
-	^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-		if (responseData) {
-			NSInteger statusCode = urlResponse.statusCode;
-			if (statusCode >= 200 && statusCode < 300) {
-				NSDictionary *postResponseData =
-				[NSJSONSerialization JSONObjectWithData:responseData
-												options:NSJSONReadingMutableContainers
-												  error:NULL];
-				//				NSLog(@"[SUCCESS!] characters_reserved_per_media is %@", postResponseData[@"characters_reserved_per_media"]);
-				
-				self.shortURLLength = [postResponseData[@"characters_reserved_per_media"] integerValue];
-			}
-			else {
-				NSLog(@"[ERROR] Server responded: status code %ld %@", statusCode,
-					  [NSHTTPURLResponse localizedStringForStatusCode:statusCode]);
-			}
-		}
-		else {
-			NSLog(@"[ERROR] An error occurred while posting: %@", [error localizedDescription]);
-		}
-	};
-	
-	ACAccountStoreRequestAccessCompletionHandler accountStoreHandler =
-	^(BOOL granted, NSError *error) {
-		if (granted) {
-			NSArray *accounts = [self.accountStore accountsWithAccountType:twitterType];
-			NSURL *url = [NSURL URLWithString:@"https://api.twitter.com"
-						  @"/1.1/help/configuration.json"];
-			SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeTwitter
-													requestMethod:SLRequestMethodGET
-															  URL:url
-													   parameters:nil];
-			[request setAccount:[accounts lastObject]];
-			[request performRequestWithHandler:requestHandler];
-		}
-		else {
-			NSLog(@"[ERROR] An error occurred while asking for user authorization: %@",
-				  [error localizedDescription]);
-		}
-	};
-	
-	[self.accountStore requestAccessToAccountsWithType:twitterType
-											   options:NULL
-											completion:accountStoreHandler];
-	
+	NSRect frame = self.maskSelectView.frame;
+	return [self.window convertRectToScreen:frame];
+}
+//- (NSImage *)sharingService:(NSSharingService *)sharingService transitionImageForShareItem:(id<NSPasteboardWriting>)item contentRect:(NSRect *)contentRect
+//{
+//	NSString *imagePath = [self.screenshotsController valueForKeyPath:@"selection.path"];
+//	NSLog(@"Path -> %@ (%@)", imagePath, NSStringFromClass([imagePath class]));
+//	NSLog(@"item -> %@ (%@)", item, NSStringFromClass([item class]));
+//	NSImage *image = [[NSImage alloc] initWithContentsOfFile:item];
+//	
+//	return image;
+//	return nil;
+//}
+- (NSWindow *)sharingService:(NSSharingService *)sharingService sourceWindowForShareItems:(NSArray *)items sharingContentScope:(NSSharingContentScope *)sharingContentScope
+{
+	return self.window;
 }
 
-/**
- NSControl delegate
- */
-- (BOOL)control:(NSControl*)control textView:(NSTextView*)textView doCommandBySelector:(SEL)commandSelector
-{
-	BOOL result = NO;
-	if (commandSelector == @selector(insertNewline:))
-	{
-		[textView insertNewlineIgnoringFieldEditor:self];
-		result = YES;
-	}
-	return result;
-}
 
 @end

@@ -21,17 +21,12 @@
 
 
 // Tweet
-@property (strong, nonatomic) NSString *tweetString;
-/// 残り文字数
-@property (readonly) NSInteger leaveLength;
-@property (readonly) NSColor *leaveLengthColor;
-@property (readonly) BOOL canTweet;
 @property BOOL appendKanColleTag;
 @property (copy, nonatomic) NSString *tagString;
 
 @property (strong, nonatomic) IBOutlet HMMaskSelectView *maskSelectView;
 @property BOOL useMask;
 
-- (IBAction)tweet:(id)sender;
+- (IBAction)share:(id)sender;
 
 @end
