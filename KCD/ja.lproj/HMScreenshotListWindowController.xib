@@ -11,6 +11,7 @@
                 <outlet property="browser" destination="FPI-Ma-X6H" id="1Jw-Ae-EMa"/>
                 <outlet property="maskSelectView" destination="tQA-8E-MmO" id="v5E-DG-8ll"/>
                 <outlet property="screenshotsController" destination="mrq-7Y-mHG" id="4az-ad-cjx"/>
+                <outlet property="shareButton" destination="ODx-UD-3c2" id="6XI-nc-Vtj"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>

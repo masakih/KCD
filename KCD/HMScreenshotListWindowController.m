@@ -32,6 +32,7 @@
 @property NSMutableArray *savedScreenshots;
 
 @property (weak, nonatomic) IBOutlet IKImageBrowserView *browser;
+@property (weak, nonatomic) IBOutlet NSButton *shareButton;
 
 @end
 
@@ -58,6 +59,8 @@
 		_appendKanColleTag = HMStandardDefaults.appendKanColleTag;
 		
 		_useMask = HMStandardDefaults.useMask;
+		
+		[self reloadData];
 	}
 	return self;
 }
@@ -65,11 +68,13 @@
 - (void)awakeFromNib
 {
 	[self.browser setCanControlQuickLookPanel:YES];
+	[self.shareButton sendActionOn:NSLeftMouseDownMask];
 	
 	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO];
 	self.screenshotsController.sortDescriptors = @[sortDescriptor];
 	
-	[self performSelector:@selector(prepareScreenshot:) withObject:nil afterDelay:0.0];
+	[self prepareScreenshot:nil];
+//	[self performSelector:@selector(prepareScreenshot:) withObject:nil afterDelay:0.0];
 	
 }
 - (void)prepareScreenshot:(id)dummy
@@ -78,8 +83,8 @@
 	[self.screenshotsController rearrangeObjects];
 	[self.browser reloadData];
 	
-//	self.selectedIndexes = [NSIndexSet indexSetWithIndex:0];
-	[self performSelector:@selector(setSelectedIndexes:) withObject:[NSIndexSet indexSetWithIndex:0] afterDelay:0.0];
+	self.selectedIndexes = [NSIndexSet indexSetWithIndex:0];
+//	[self performSelector:@selector(setSelectedIndexes:) withObject:[NSIndexSet indexSetWithIndex:0] afterDelay:0.0];
 }
 
 - (NSString *)screenshotSaveDirectoryPath
@@ -227,8 +232,6 @@
 
 - (IBAction)share:(id)sender
 {
-	[sender sendActionOn:NSLeftMouseDownMask];
-	
 	NSString *imagePath = [self.screenshotsController valueForKeyPath:@"selection.path"];
 	NSImage *image = [[NSImage alloc] initWithContentsOfFile:imagePath];
 	
