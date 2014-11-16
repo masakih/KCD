@@ -21,6 +21,7 @@
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="853" height="430"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
+            <value key="minSize" type="size" width="600" height="430"/>
             <view key="contentView" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="1" width="853" height="430"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -54,6 +55,17 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
+                    <button hidden="YES" verticalHuggingPriority="750" id="PMW-hb-KWl">
+                        <rect key="frame" x="756" y="13" width="83" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="push" title="Reload" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6mr-Lg-0ls">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="reloadData:" target="-2" id="FSz-KD-FmB"/>
+                        </connections>
+                    </button>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="ddV-E9-TbE">
                         <rect key="frame" x="479" y="200" width="354" height="210"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
@@ -69,23 +81,12 @@
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <font key="titleFont" metaFont="system"/>
                     </box>
-                    <button id="ze5-Nt-vNQ">
-                        <rect key="frame" x="477" y="151" width="96" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="check" title="#艦これタグ" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="fqr-r3-ygh">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <binding destination="-2" name="value" keyPath="appendKanColleTag" id="COG-Sp-61P"/>
-                        </connections>
-                    </button>
                     <button id="fwg-yH-Hna">
-                        <rect key="frame" x="577" y="151" width="100" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="check" title="提督名マスク" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="iVa-6D-NwM">
+                        <rect key="frame" x="697" y="151" width="88" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="提督名マスク" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="iVa-6D-NwM">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" size="13" name="AquaKana"/>
+                            <font key="font" metaFont="smallSystem"/>
                         </buttonCell>
                         <connections>
                             <binding destination="-2" name="value" keyPath="useMask" id="hny-GP-Iyu"/>
@@ -144,15 +145,15 @@
                             <action selector="share:" target="-2" id="NZ9-z8-oOX"/>
                         </connections>
                     </button>
-                    <button hidden="YES" verticalHuggingPriority="750" id="PMW-hb-KWl">
-                        <rect key="frame" x="756" y="13" width="83" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="push" title="Reload" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6mr-Lg-0ls">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
+                    <button id="ze5-Nt-vNQ">
+                        <rect key="frame" x="610" y="151" width="84" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="#艦これタグ" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="fqr-r3-ygh">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
                         </buttonCell>
                         <connections>
-                            <action selector="reloadData:" target="-2" id="FSz-KD-FmB"/>
+                            <binding destination="-2" name="value" keyPath="appendKanColleTag" id="COG-Sp-61P"/>
                         </connections>
                     </button>
                 </subviews>
