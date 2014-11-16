@@ -162,7 +162,7 @@
                         </connections>
                     </button>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P0h-6y-57H">
-                        <rect key="frame" x="225" y="114" width="204" height="18"/>
+                        <rect key="frame" x="229" y="114" width="204" height="18"/>
                         <buttonCell key="cell" type="check" title="撮影後リストウインドウを表示" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="fvW-fR-dOk">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" size="13" name="AquaKana"/>
