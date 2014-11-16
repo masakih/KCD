@@ -16,14 +16,14 @@
         <window title="環境設定" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" frameAutosaveName="preferencewindow" animationBehavior="default" id="F0z-JX-Cv5" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="486" height="154"/>
+            <rect key="contentRect" x="196" y="240" width="486" height="176"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
             <view key="contentView" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="-3" width="486" height="154"/>
+                <rect key="frame" x="0.0" y="-3" width="486" height="176"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KN7-sy-a0j">
-                        <rect key="frame" x="18" y="117" width="186" height="17"/>
+                        <rect key="frame" x="18" y="139" width="186" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="スクリーンショットの保存先：" id="nxM-71-Zg6">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -31,7 +31,7 @@
                         </textFieldCell>
                     </textField>
                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bu3-qp-Qbv">
-                        <rect key="frame" x="208" y="112" width="180" height="26"/>
+                        <rect key="frame" x="208" y="134" width="180" height="26"/>
                         <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="1000" inset="2" selectedItem="HeK-3M-4cT" id="Y49-eY-VPt">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="menu"/>
@@ -49,7 +49,7 @@
                         </popUpButtonCell>
                     </popUpButton>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tlH-Nm-il8">
-                        <rect key="frame" x="18" y="84" width="186" height="17"/>
+                        <rect key="frame" x="18" y="85" width="186" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="通知音を鳴らす：" id="KUF-ch-Mbw">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -161,12 +161,22 @@
                             <binding destination="DTu-dT-pUA" name="value" keyPath="values.playFinishKenzoSound" id="pd6-Xj-i6f"/>
                         </connections>
                     </button>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P0h-6y-57H">
+                        <rect key="frame" x="225" y="114" width="204" height="18"/>
+                        <buttonCell key="cell" type="check" title="撮影後リストウインドウを表示" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="fvW-fR-dOk">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" size="13" name="AquaKana"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="DTu-dT-pUA" name="value" keyPath="values.showsListWindowAtScreenshot" id="nJS-rt-E6w"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="591" y="342"/>
+            <point key="canvasLocation" x="591" y="353"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="DTu-dT-pUA"/>
     </objects>

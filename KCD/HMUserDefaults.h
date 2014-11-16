@@ -71,6 +71,11 @@ extern HMUserDefaults *HMStandardDefaults;
 @property (nonatomic, weak) NSString *screenShotSaveDirectory;
 
 /**
+ * スクリーンショットを撮ったときリストウインドウを最前面にするか
+ */
+@property BOOL showsListWindowAtScreenshot;
+
+/**
  *  遠征帰還時の通知音を鳴らす
  */
 @property BOOL playFinishMissionSound;

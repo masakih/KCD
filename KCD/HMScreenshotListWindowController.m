@@ -193,7 +193,10 @@
 	info.path = path;
 	[self.screenshotsController insertObject:info atArrangedObjectIndex:0];
 	self.screenshotsController.selectedObjects = @[info];
-	[self.window makeKeyAndOrderFront:nil];
+	
+	if(HMStandardDefaults.showsListWindowAtScreenshot) {
+		[self.window makeKeyAndOrderFront:nil];
+	}
 }
 
 

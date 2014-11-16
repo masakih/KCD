@@ -263,6 +263,15 @@ HMUserDefaults *HMStandardDefaults = nil;
 	return [[NSUserDefaults standardUserDefaults] objectForKey:@"screenShotSaveDirectory"];
 }
 
+- (void)setShowsListWindowAtScreenshot:(BOOL)showsListWindowAtScreenshot
+{
+	[[NSUserDefaults standardUserDefaults] setBool:showsListWindowAtScreenshot forKey:@"showsListWindowAtScreenshot"];
+}
+- (BOOL)showsListWindowAtScreenshot
+{
+	return [[NSUserDefaults standardUserDefaults] boolForKey:@"showsListWindowAtScreenshot"];
+}
+
 #pragma mark - Notify Sound
 - (void)setPlayFinishMissionSound:(BOOL)playFinishMissionSound
 {
