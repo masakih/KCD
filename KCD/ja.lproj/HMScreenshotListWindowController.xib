@@ -82,15 +82,15 @@
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <font key="titleFont" metaFont="system"/>
                     </box>
-                    <button id="fwg-yH-Hna">
-                        <rect key="frame" x="697" y="151" width="88" height="18"/>
+                    <button id="ze5-Nt-vNQ">
+                        <rect key="frame" x="689" y="151" width="96" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="提督名マスク" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="iVa-6D-NwM">
+                        <buttonCell key="cell" type="check" title="#艦これタグ" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="fqr-r3-ygh">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="smallSystem"/>
+                            <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <binding destination="-2" name="value" keyPath="useMask" id="hny-GP-Iyu"/>
+                            <binding destination="-2" name="value" keyPath="appendKanColleTag" id="COG-Sp-61P"/>
                         </connections>
                     </button>
                     <customView id="tQA-8E-MmO" customClass="HMMaskSelectView">
@@ -144,17 +144,22 @@
                         </buttonCell>
                         <connections>
                             <action selector="share:" target="-2" id="NZ9-z8-oOX"/>
+                            <binding destination="mrq-7Y-mHG" name="enabled" keyPath="selection.@count" id="gj1-HH-OtG"/>
                         </connections>
                     </button>
-                    <button id="ze5-Nt-vNQ">
-                        <rect key="frame" x="610" y="151" width="84" height="18"/>
+                    <button id="fwg-yH-Hna">
+                        <rect key="frame" x="585" y="151" width="100" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="#艦これタグ" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="fqr-r3-ygh">
+                        <buttonCell key="cell" type="check" title="提督名マスク" bezelStyle="regularSquare" imagePosition="left" enabled="NO" state="on" inset="2" id="iVa-6D-NwM">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="smallSystem"/>
+                            <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <binding destination="-2" name="value" keyPath="appendKanColleTag" id="COG-Sp-61P"/>
+                            <binding destination="-2" name="value" keyPath="useMask" id="vvH-b0-N18">
+                                <dictionary key="options">
+                                    <bool key="NSConditionallySetsEnabled" value="NO"/>
+                                </dictionary>
+                            </binding>
                         </connections>
                     </button>
                 </subviews>
