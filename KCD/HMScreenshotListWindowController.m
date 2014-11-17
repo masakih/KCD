@@ -257,19 +257,17 @@
 
 - (NSRect)sharingService:(NSSharingService *)sharingService sourceFrameOnScreenForShareItem:(id<NSPasteboardWriting>)item
 {
+	if([item isKindOfClass:[NSString class]]) return NSZeroRect;
+	
 	NSRect frame = self.maskSelectView.frame;
 	return [self.window convertRectToScreen:frame];
 }
-//- (NSImage *)sharingService:(NSSharingService *)sharingService transitionImageForShareItem:(id<NSPasteboardWriting>)item contentRect:(NSRect *)contentRect
-//{
-//	NSString *imagePath = [self.screenshotsController valueForKeyPath:@"selection.path"];
-//	NSLog(@"Path -> %@ (%@)", imagePath, NSStringFromClass([imagePath class]));
-//	NSLog(@"item -> %@ (%@)", item, NSStringFromClass([item class]));
-//	NSImage *image = [[NSImage alloc] initWithContentsOfFile:item];
-//	
-//	return image;
-//	return nil;
-//}
+- (NSImage *)sharingService:(NSSharingService *)sharingService transitionImageForShareItem:(id<NSPasteboardWriting>)item contentRect:(NSRect *)contentRect
+{
+	if([item isKindOfClass:[NSImage class]]) return (NSImage *)item;
+	
+	return nil;
+}
 - (NSWindow *)sharingService:(NSSharingService *)sharingService sourceWindowForShareItems:(NSArray *)items sharingContentScope:(NSSharingContentScope *)sharingContentScope
 {
 	return self.window;
