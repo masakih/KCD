@@ -255,6 +255,11 @@ CA
                                     <action selector="showHideUpgradableShipWindow:" target="-1" id="cHX-Zr-QBT"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Screenshot List" keyEquivalent="l" id="5DA-g9-eCS">
+                                <connections>
+                                    <action selector="showHideScreenshotListWindow:" target="-1" id="Ynz-Sq-TRj"/>
+                                </connections>
+                            </menuItem>
                         </items>
                     </menu>
                 </menuItem>

@@ -14,7 +14,7 @@
 const NSInteger kNumberOfMask = 4;
 static NSRect maskRects[kNumberOfMask];
 
-
+static NSSize originalSize;
 
 @implementation HMMaskSelectView
 
@@ -26,6 +26,8 @@ static NSRect maskRects[kNumberOfMask];
 		maskRects[1] = NSMakeRect(203, 330, 200, 25);
 		maskRects[2] = NSMakeRect(95, 378, 100, 18);
 		maskRects[3] = NSMakeRect(60, 378, 100, 18);
+		
+		originalSize = NSMakeSize(800, 480);
 	});
 }
 
@@ -50,9 +52,19 @@ static NSRect maskRects[kNumberOfMask];
 - (void)buildMask
 {
 	self.masks = [NSMutableArray new];
+	NSRect frame = self.frame;
+	CGFloat widthRatio = frame.size.width / originalSize.width;
+	CGFloat heightRatio = frame.size.height / originalSize.height;
+	
 	for(NSInteger i = 0; i < kNumberOfMask; i++ ) {
 		HMMaskInfomation *info = [HMMaskInfomation new];
-		info.maskRect = maskRects[i];
+		NSRect maskRect = NSMakeRect(
+									 maskRects[i].origin.x * widthRatio,
+									 maskRects[i].origin.y * heightRatio,
+									 maskRects[i].size.width * widthRatio,
+									 maskRects[i].size.height * heightRatio
+									 );
+		info.maskRect = maskRect;
 		[self.masks addObject:info];
 		if(i == 3) {
 			info.borderColor = [NSColor colorWithCalibratedRed:0.000 green:0.011 blue:1.000 alpha:1.000];
