@@ -9,6 +9,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="HMScreenshotListWindowController">
             <connections>
                 <outlet property="browser" destination="FPI-Ma-X6H" id="1Jw-Ae-EMa"/>
+                <outlet property="contextMenu" destination="jCv-QN-9O1" id="BjD-Nc-kNQ"/>
                 <outlet property="maskSelectView" destination="tQA-8E-MmO" id="v5E-DG-8ll"/>
                 <outlet property="screenshotsController" destination="mrq-7Y-mHG" id="4az-ad-cjx"/>
                 <outlet property="shareButton" destination="ODx-UD-3c2" id="6XI-nc-Vtj"/>
@@ -43,6 +44,7 @@
                                     <connections>
                                         <binding destination="mrq-7Y-mHG" name="content" keyPath="arrangedObjects" id="G8W-hO-lU3"/>
                                         <binding destination="mrq-7Y-mHG" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="G8W-hO-lU3" id="22W-ek-2gd"/>
+                                        <outlet property="delegate" destination="-2" id="eec-et-XgG"/>
                                     </connections>
                                 </ikImageBrowserView>
                             </subviews>
@@ -175,6 +177,26 @@
                 <binding destination="-2" name="selectionIndexes" keyPath="selectedIndexes" id="jhe-Sj-w7g"/>
             </connections>
         </arrayController>
+        <menu id="jCv-QN-9O1">
+            <items>
+                <menuItem title="Finderに表示" id="5xb-ov-zke">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="revealInFinder:" target="-2" id="UpB-gR-JLU"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="削除" id="PvK-OR-rrs">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="delete:" target="-2" id="mci-QY-gRW"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Item 3" id="kLT-PB-WjA">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="26" y="-87.5"/>
+        </menu>
     </objects>
     <resources>
         <image name="NSShareTemplate" width="18" height="16"/>

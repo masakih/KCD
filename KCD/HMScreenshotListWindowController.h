@@ -29,4 +29,7 @@
 
 - (IBAction)share:(id)sender;
 
+- (IBAction)delete:(id)sender;
+- (IBAction)revealInFinder:(id)sender;
+
 @end

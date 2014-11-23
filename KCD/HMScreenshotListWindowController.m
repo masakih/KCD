@@ -32,6 +32,7 @@
 @property NSMutableArray *savedScreenshots;
 
 @property (weak, nonatomic) IBOutlet IKImageBrowserView *browser;
+@property (weak, nonatomic) IBOutlet NSMenu *contextMenu;
 @property (weak, nonatomic) IBOutlet NSButton *shareButton;
 
 @end
@@ -178,6 +179,26 @@
 {
 	[self reloadData];
 }
+- (IBAction)delete:(id)sender
+{
+	NSString *imagePath = [self.screenshotsController valueForKeyPath:@"selection.path"];	
+	NSString *scriptTmplate =
+	@"tell application \"Finder\"\n"
+	@"	move ( \"%@\" as POSIX file) to trash\n"
+	@"end tell";
+	NSString *script = [NSString stringWithFormat:scriptTmplate, imagePath];
+	NSAppleScript *appleScript = [[NSAppleScript alloc] initWithSource:script];
+	if(!appleScript) NSBeep();
+	[appleScript executeAndReturnError:nil];
+	
+	[self reloadData:nil];
+}
+- (IBAction)revealInFinder:(id)sender
+{
+	NSString *imagePath = [self.screenshotsController valueForKeyPath:@"selection.path"];
+	NSWorkspace *ws = [NSWorkspace sharedWorkspace];
+	[ws selectFile:imagePath inFileViewerRootedAtPath:@""];
+}
 
 - (void)registerScreenshot:(NSBitmapImageRep *)image fromOnScreen:(NSRect)screenRect
 {
@@ -246,6 +267,13 @@
 	[picker showRelativeToRect:[sender bounds]
 						ofView:sender
 				 preferredEdge:NSMinXEdge];
+}
+
+
+#pragma mark-## IKImageBrowserDelegate
+- (void) imageBrowser:(IKImageBrowserView *) aBrowser cellWasRightClickedAtIndex:(NSUInteger) index withEvent:(NSEvent *) event
+{
+	[NSMenu popUpContextMenu:self.contextMenu withEvent:event forView:aBrowser];
 }
 
 
