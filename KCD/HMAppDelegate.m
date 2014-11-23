@@ -51,30 +51,24 @@
 
 @synthesize screenshotListWindowController = _screenshotListWindowController;
 
-static FILE* logFileP = NULL;
-
 + (void)initialize
 {
-	NSString *fullpath = [NSHomeDirectory() stringByAppendingPathComponent:@"kcd.log"];
-	logFileP = fopen([fullpath fileSystemRepresentation], "a");
 	
-	{
-		static dispatch_once_t onceToken;
-		dispatch_once(&onceToken, ^{
-			NSColor *plan01Color = [NSColor colorWithCalibratedRed:0.000 green:0.043 blue:0.518 alpha:1.000];
-			NSColor *plan02Color = [NSColor colorWithCalibratedRed:0.800 green:0.223 blue:0.000 alpha:1.000];
-			NSColor *plan03Color = [NSColor colorWithCalibratedRed:0.539 green:0.012 blue:0.046 alpha:1.000];
-			
-			[[NSUserDefaults standardUserDefaults] registerDefaults:
-			 @{
-			   @"screenShotBorderWidth" : @(3.0),
-			   @"plan01Color" : [NSKeyedArchiver archivedDataWithRootObject:plan01Color],
-			   @"plan02Color" : [NSKeyedArchiver archivedDataWithRootObject:plan02Color],
-			   @"plan03Color" : [NSKeyedArchiver archivedDataWithRootObject:plan03Color],
-			   }
-			 ];
-		});
-	}
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		NSColor *plan01Color = [NSColor colorWithCalibratedRed:0.000 green:0.043 blue:0.518 alpha:1.000];
+		NSColor *plan02Color = [NSColor colorWithCalibratedRed:0.800 green:0.223 blue:0.000 alpha:1.000];
+		NSColor *plan03Color = [NSColor colorWithCalibratedRed:0.539 green:0.012 blue:0.046 alpha:1.000];
+		
+		[[NSUserDefaults standardUserDefaults] registerDefaults:
+		 @{
+		   @"screenShotBorderWidth" : @(3.0),
+		   @"plan01Color" : [NSKeyedArchiver archivedDataWithRootObject:plan01Color],
+		   @"plan02Color" : [NSKeyedArchiver archivedDataWithRootObject:plan02Color],
+		   @"plan03Color" : [NSKeyedArchiver archivedDataWithRootObject:plan03Color],
+		   }
+		 ];
+	});
 }
 
 - (void)logLineReturn:(NSString *)format, ...
@@ -83,8 +77,7 @@ static FILE* logFileP = NULL;
 		va_list ap;
 		va_start(ap, format);
 		NSString *str = [[NSString alloc] initWithFormat:format arguments:ap];
-		fprintf(logFileP, "%s\n", [str UTF8String]);
-		fflush(logFileP);
+		fprintf(stderr, "%s\n", [str UTF8String]);
 		va_end(ap);
 	}
 }
@@ -94,8 +87,7 @@ static FILE* logFileP = NULL;
 		va_list ap;
 		va_start(ap, format);
 		NSString *str = [[NSString alloc] initWithFormat:format arguments:ap];
-		fprintf(logFileP, "%s", [str UTF8String]);
-		fflush(logFileP);
+		fprintf(stderr, "%s", [str UTF8String]);
 		va_end(ap);
 	}
 }
