@@ -27,19 +27,65 @@ HMUserDefaults *HMStandardDefaults = nil;
 	});
 }
 
+- (void)setObject:(id)value forKey:(NSString *)key
+{
+	[[NSUserDefaults standardUserDefaults] setObject:value forKey:key];
+}
+- (id)objectForKey:(NSString *)key
+{
+	return [[NSUserDefaults standardUserDefaults] objectForKey:key];
+}
+- (NSString *)stringForKey:(NSString *)key
+{
+	return [[NSUserDefaults standardUserDefaults] stringForKey:key];
+}
+- (void)setInteger:(NSInteger)value forKey:(NSString *)key
+{
+	[[NSUserDefaults standardUserDefaults] setInteger:value forKey:key];
+}
+- (NSInteger)integerForKey:(NSString *)key
+{
+	return [[NSUserDefaults standardUserDefaults] integerForKey:key];
+}
+- (void)setDouble:(double)value forKey:(NSString *)key
+{
+	[[NSUserDefaults standardUserDefaults] setDouble:value forKey:key];
+}
+- (double)doubleForKey:(NSString *)key
+{
+	return [[NSUserDefaults standardUserDefaults] doubleForKey:key];
+}
+- (void)setBool:(BOOL)value forKey:(NSString *)key
+{
+	[[NSUserDefaults standardUserDefaults] setBool:value forKey:key];
+}
+- (BOOL)boolForKey:(NSString *)key
+{
+	return [[NSUserDefaults standardUserDefaults] boolForKey:key];
+}
+- (void)setKeyedArchiveObject:(id)value forKey:(NSString *)key
+{
+	NSData *data = nil;
+	if(value) {
+		data = [NSKeyedArchiver archivedDataWithRootObject:value];
+	}
+	[[NSUserDefaults standardUserDefaults] setObject:data forKey:key];
+}
+- (id)keyedUnarchiveObject:(NSString *)key
+{
+	NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:key];
+	return data ? [NSKeyedUnarchiver unarchiveObjectWithData:data] : nil;
+}
+
+#pragma mark-Properties
 - (void)setSlotItemSortDescriptors:(NSArray *)slotItemSortDescriptors
 {
-	if(slotItemSortDescriptors) {
-		NSData *data = [NSKeyedArchiver archivedDataWithRootObject:slotItemSortDescriptors];
-		[[NSUserDefaults standardUserDefaults] setObject:data forKey:@"slotItemSortKey2"];
-	}
+	[self setKeyedArchiveObject:slotItemSortDescriptors forKey:@"slotItemSortKey2"];
 }
 - (NSArray *)slotItemSortDescriptors
 {
-	NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"slotItemSortKey2"];
-	if(data) {
-		NSArray *array = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-		
+	NSArray *array = [self keyedUnarchiveObject:@"slotItemSortKey2"];
+	if(array) {
 		NSMutableArray *result = [NSMutableArray new];
 		for(NSSortDescriptor *item in array) {
 			if(![item.key hasPrefix:@"master_ship"] && ![item.key hasPrefix:@"master_slotItem"]) {
@@ -53,17 +99,12 @@ HMUserDefaults *HMStandardDefaults = nil;
 }
 - (void)setShipviewSortDescriptors:(NSArray *)shipviewSortDescriptors
 {
-	if(shipviewSortDescriptors) {
-		NSData *data = [NSKeyedArchiver archivedDataWithRootObject:shipviewSortDescriptors];
-		[[NSUserDefaults standardUserDefaults] setObject:data forKey:@"shipviewsortdescriptor"];
-	}
+	[self setKeyedArchiveObject:shipviewSortDescriptors forKey:@"shipviewsortdescriptor"];
 }
 - (NSArray *)shipviewSortDescriptors
 {
-	NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"shipviewsortdescriptor"];
-	if(data) {
-		NSArray *array = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-		
+	NSArray *array = [self keyedUnarchiveObject:@"shipviewsortdescriptor"];
+	if(array) {
 		NSMutableArray *result = [NSMutableArray new];
 		for(NSSortDescriptor *item in array) {
 			if(![item.key hasPrefix:@"master_ship"]) {
@@ -77,17 +118,12 @@ HMUserDefaults *HMStandardDefaults = nil;
 }
 - (void)setPowerupSupportSortDecriptors:(NSArray *)powerupSupportSortDecriptors
 {
-	if(powerupSupportSortDecriptors) {
-		NSData *data = [NSKeyedArchiver archivedDataWithRootObject:powerupSupportSortDecriptors];
-		[[NSUserDefaults standardUserDefaults] setObject:data forKey:@"powerupsupportsortdecriptor"];
-	}
+	[self setKeyedArchiveObject:powerupSupportSortDecriptors forKey:@"powerupsupportsortdecriptor"];
 }
 - (NSArray *)powerupSupportSortDecriptors
 {
-	NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"powerupsupportsortdecriptor"];
-	if(data) {
-		NSArray *array = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-		
+	NSArray *array = [self keyedUnarchiveObject:@"powerupsupportsortdecriptor"];
+	if(array) {
 		NSMutableArray *result = [NSMutableArray new];
 		for(NSSortDescriptor *item in array) {
 			if(![item.key hasPrefix:@"master_ship"]) {
@@ -103,12 +139,12 @@ HMUserDefaults *HMStandardDefaults = nil;
 - (void)setPrevReloadDate:(NSDate *)prevReloadDate
 {
 	if(prevReloadDate) {
-		[[NSUserDefaults standardUserDefaults] setObject:[prevReloadDate description] forKey:@"previousReloadDateString"];
+		[self setObject:[prevReloadDate description] forKey:@"previousReloadDateString"];
 	}
 }
 - (NSDate *)prevReloadDate
 {
-	NSString *dateString = [[NSUserDefaults standardUserDefaults] stringForKey:@"previousReloadDateString"];
+	NSString *dateString = [self stringForKey:@"previousReloadDateString"];
 	if(dateString) {
 		return [NSDate dateWithString:dateString];
 	}
@@ -117,137 +153,131 @@ HMUserDefaults *HMStandardDefaults = nil;
 
 - (void)setShowsDebugMenu:(BOOL)showsDebugMenu
 {
-	[[NSUserDefaults standardUserDefaults] setBool:showsDebugMenu forKey:@"ShowsDebugMenu"];
+	[self setBool:showsDebugMenu forKey:@"ShowsDebugMenu"];
 }
 - (BOOL)showsDebugMenu
 {
-	return [[NSUserDefaults standardUserDefaults] boolForKey:@"ShowsDebugMenu"];
+	return [self boolForKey:@"ShowsDebugMenu"];
 }
 
 - (void)setAppendKanColleTag:(BOOL)appendKanColleTag
 {
-	[[NSUserDefaults standardUserDefaults] setBool:appendKanColleTag forKey:@"appendKanColleTag"];
+	[self setBool:appendKanColleTag forKey:@"appendKanColleTag"];
 }
 - (BOOL)appendKanColleTag
 {
-	return [[NSUserDefaults standardUserDefaults] boolForKey:@"appendKanColleTag"];
+	return [self boolForKey:@"appendKanColleTag"];
 }
 
 - (void)setHideMaxKaryoku:(BOOL)hideMaxKaryoku
 {
-	[[NSUserDefaults standardUserDefaults] setBool:hideMaxKaryoku forKey:@"hideMaxKaryoku"];
+	[self setBool:hideMaxKaryoku forKey:@"hideMaxKaryoku"];
 }
 - (BOOL)hideMaxKaryoku
 {
-	return [[NSUserDefaults standardUserDefaults] boolForKey:@"hideMaxKaryoku"];
+	return [self boolForKey:@"hideMaxKaryoku"];
 }
 - (void)setHideMaxLucky:(BOOL)hideMaxLucky
 {
-	[[NSUserDefaults standardUserDefaults] setBool:hideMaxLucky forKey:@"hideMaxLucky"];
+	[self setBool:hideMaxLucky forKey:@"hideMaxLucky"];
 }
 - (BOOL)hideMaxLucky
 {
-	return [[NSUserDefaults standardUserDefaults] boolForKey:@"hideMaxLucky"];
+	return [self boolForKey:@"hideMaxLucky"];
 }
 - (void)setHideMaxRaisou:(BOOL)hideMaxRaisou
 {
-	[[NSUserDefaults standardUserDefaults] setBool:hideMaxRaisou forKey:@"hideMaxRaisou"];
+	[self setBool:hideMaxRaisou forKey:@"hideMaxRaisou"];
 }
 - (BOOL)hideMaxRaisou
 {
-	return [[NSUserDefaults standardUserDefaults] boolForKey:@"hideMaxRaisou"];
+	return [self boolForKey:@"hideMaxRaisou"];
 }
 - (void)setHideMaxSoukou:(BOOL)hideMaxSoukou
 {
-	[[NSUserDefaults standardUserDefaults] setBool:hideMaxSoukou forKey:@"hideMaxSoukou"];
+	[self setBool:hideMaxSoukou forKey:@"hideMaxSoukou"];
 }
 - (BOOL)hideMaxSoukou
 {
-	return [[NSUserDefaults standardUserDefaults] boolForKey:@"hideMaxSoukou"];
+	return [self boolForKey:@"hideMaxSoukou"];
 }
 - (void)setHideMaxTaiku:(BOOL)hideMaxTaiku
 {
-	[[NSUserDefaults standardUserDefaults] setBool:hideMaxTaiku forKey:@"hideMaxTaiku"];
+	[self setBool:hideMaxTaiku forKey:@"hideMaxTaiku"];
 }
 - (BOOL)hideMaxTaiku
 {
-	return [[NSUserDefaults standardUserDefaults] boolForKey:@"hideMaxTaiku"];
+	return [self boolForKey:@"hideMaxTaiku"];
 }
 
 - (void)setShowsPlanColor:(BOOL)showsPlanColor
 {
-	[[NSUserDefaults standardUserDefaults] setBool:showsPlanColor forKey:@"showsPlanColor"];
+	[self setBool:showsPlanColor forKey:@"showsPlanColor"];
 }
 - (BOOL)showsPlanColor
 {
-	return [[NSUserDefaults standardUserDefaults] boolForKey:@"showsPlanColor"];
+	return [self boolForKey:@"showsPlanColor"];
 }
 - (void)setPlan01Color:(NSColor *)plan01Color
 {
-	NSData *data = [NSKeyedArchiver archivedDataWithRootObject:plan01Color];
-	[[NSUserDefaults standardUserDefaults] setObject:data forKey:@"plan01Color"];
+	[self setKeyedArchiveObject:plan01Color forKey:@"plan01Color"];
 }
 - (NSColor *)plan01Color
 {
-	NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"plan01Color"];
-	return [NSKeyedUnarchiver unarchiveObjectWithData:data];
+	return [self keyedUnarchiveObject:@"plan01Color"];
 }
 - (void)setPlan02Color:(NSColor *)plan02Color
 {
-	NSData *data = [NSKeyedArchiver archivedDataWithRootObject:plan02Color];
-	[[NSUserDefaults standardUserDefaults] setObject:data forKey:@"plan02Color"];
+	[self setKeyedArchiveObject:plan02Color forKey:@"plan02Color"];
 }
 - (NSColor *)plan02Color
 {
-	NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"plan02Color"];
-	return [NSKeyedUnarchiver unarchiveObjectWithData:data];
+	return [self keyedUnarchiveObject:@"plan02Color"];
 }
 - (void)setPlan03Color:(NSColor *)plan03Color
 {
-	NSData *data = [NSKeyedArchiver archivedDataWithRootObject:plan03Color];
-	[[NSUserDefaults standardUserDefaults] setObject:data forKey:@"plan03Color"];
+	[self setKeyedArchiveObject:plan03Color forKey:@"plan03Color"];
 }
 - (NSColor *)plan03Color
 {
-	NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"plan03Color"];
-	return [NSKeyedUnarchiver unarchiveObjectWithData:data];
+	return [self keyedUnarchiveObject:@"plan03Color"];
 }
 
 - (void)setMinimumColoredShipCount:(NSInteger)minimumColoredShipCount
 {
-	[[NSUserDefaults standardUserDefaults] setInteger:minimumColoredShipCount forKey:@"minimumColoredShipCount"];
+	[self setInteger:minimumColoredShipCount forKey:@"minimumColoredShipCount"];
 }
 - (NSInteger)minimumColoredShipCount
 {
-	return [[NSUserDefaults standardUserDefaults] integerForKey:@"minimumColoredShipCount"];
+	return [self integerForKey:@"minimumColoredShipCount"];
 }
 
 #pragma mark - Screenshot
 - (void)setUseMask:(BOOL)useMask
 {
-	[[NSUserDefaults standardUserDefaults] setBool:useMask forKey:@"useMask"];
+	[self setBool:useMask forKey:@"useMask"];
 }
 - (BOOL)useMask
 {
-	return [[NSUserDefaults standardUserDefaults] boolForKey:@"useMask"];
+	return [self boolForKey:@"useMask"];
 }
 
 - (void)setScreenShotBorderWidth:(CGFloat)screenShotBorderWidth
 {
 	if(screenShotBorderWidth < 0 || screenShotBorderWidth > 20) return;
 	
-	[[NSUserDefaults standardUserDefaults] setDouble:screenShotBorderWidth forKey:@"screenShotBorderWidth"];
+	[self setDouble:screenShotBorderWidth forKey:@"screenShotBorderWidth"];
 }
 - (CGFloat)screenShotBorderWidth
 {
-	CGFloat result = [[NSUserDefaults standardUserDefaults] doubleForKey:@"screenShotBorderWidth"];
+	CGFloat result = [self doubleForKey:@"screenShotBorderWidth"];
 	
 	if(result < 0) {
-		[[NSUserDefaults standardUserDefaults] setDouble:0 forKey:@"screenShotBorderWidth"];
+		[self setDouble:0 forKey:@"screenShotBorderWidth"];
 		return 0;
 	}
 	if(result > 20) {
-		[[NSUserDefaults standardUserDefaults] setDouble:20 forKey:@"screenShotBorderWidth"];
+		[self setDouble:20 forKey:@"screenShotBorderWidth"];
 		return 20;
 	}
 	
@@ -256,67 +286,67 @@ HMUserDefaults *HMStandardDefaults = nil;
 
 - (void)setScreenShotSaveDirectory:(NSURL *)screenShotSaveDirectory
 {
-	[[NSUserDefaults standardUserDefaults] setObject:screenShotSaveDirectory forKey:@"screenShotSaveDirectory"];
+	[self setObject:screenShotSaveDirectory forKey:@"screenShotSaveDirectory"];
 }
 - (NSString *)screenShotSaveDirectory
 {
-	return [[NSUserDefaults standardUserDefaults] objectForKey:@"screenShotSaveDirectory"];
+	return [self objectForKey:@"screenShotSaveDirectory"];
 }
 
 - (void)setShowsListWindowAtScreenshot:(BOOL)showsListWindowAtScreenshot
 {
-	[[NSUserDefaults standardUserDefaults] setBool:showsListWindowAtScreenshot forKey:@"showsListWindowAtScreenshot"];
+	[self setBool:showsListWindowAtScreenshot forKey:@"showsListWindowAtScreenshot"];
 }
 - (BOOL)showsListWindowAtScreenshot
 {
-	return [[NSUserDefaults standardUserDefaults] boolForKey:@"showsListWindowAtScreenshot"];
+	return [self boolForKey:@"showsListWindowAtScreenshot"];
 }
 
 #pragma mark - Notify Sound
 - (void)setPlayFinishMissionSound:(BOOL)playFinishMissionSound
 {
-	[[NSUserDefaults standardUserDefaults] setBool:playFinishMissionSound forKey:@"playFinishMissionSound"];
+	[self setBool:playFinishMissionSound forKey:@"playFinishMissionSound"];
 }
 - (BOOL)playFinishMissionSound
 {
-	return [[NSUserDefaults standardUserDefaults] boolForKey:@"playFinishMissionSound"];
+	return [self boolForKey:@"playFinishMissionSound"];
 }
 - (void)setPlayFinishNyukyoSound:(BOOL)playFinishNyukyoSound
 {
-	[[NSUserDefaults standardUserDefaults] setBool:playFinishNyukyoSound forKey:@"playFinishNyukyoSound"];
+	[self setBool:playFinishNyukyoSound forKey:@"playFinishNyukyoSound"];
 }
 - (BOOL)playFinishNyukyoSound
 {
-	return [[NSUserDefaults standardUserDefaults] boolForKey:@"playFinishNyukyoSound"];
+	return [self boolForKey:@"playFinishNyukyoSound"];
 }
 - (void)setPlayFinishKenzoSound:(BOOL)playFinishKenzoSound
 {
-	[[NSUserDefaults standardUserDefaults] setBool:playFinishKenzoSound forKey:@"playFinishKenzoSound"];
+	[self setBool:playFinishKenzoSound forKey:@"playFinishKenzoSound"];
 }
 - (BOOL)playFinishKenzoSound
 {
-	return [[NSUserDefaults standardUserDefaults] boolForKey:@"playFinishKenzoSound"];
+	return [self boolForKey:@"playFinishKenzoSound"];
 }
 
 
 #pragma mark -
 - (void)setShowLevelOneShipInUpgradableList:(BOOL)showLevelOneShipInUpgradableList
 {
-	[[NSUserDefaults standardUserDefaults] setBool:showLevelOneShipInUpgradableList forKey:@"showLevelOneShipInUpgradableList"];
+	[self setBool:showLevelOneShipInUpgradableList forKey:@"showLevelOneShipInUpgradableList"];
 }
 - (BOOL)showLevelOneShipInUpgradableList
 {
-	return [[NSUserDefaults standardUserDefaults] boolForKey:@"showLevelOneShipInUpgradableList"];
+	return [self boolForKey:@"showLevelOneShipInUpgradableList"];
 }
 
 #pragma mark- Billing Window
 - (void)setShowsBillingWindowMenu:(BOOL)showsBillingWindowMenu
 {
-	[[NSUserDefaults standardUserDefaults] setBool:showsBillingWindowMenu forKey:@"showsBillingWindowMenu"];
+	[self setBool:showsBillingWindowMenu forKey:@"showsBillingWindowMenu"];
 }
 - (BOOL)showsBillingWindowMenu
 {
-	return [[NSUserDefaults standardUserDefaults] boolForKey:@"showsBillingWindowMenu"];
+	return [self boolForKey:@"showsBillingWindowMenu"];
 }
 
 @end
