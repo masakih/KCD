@@ -16,6 +16,7 @@
 #import "HMUpgradableShipsWindowController.h"
 #import "HMScreenshotListWindowController.h"
 
+#import "HMExternalBrowserWindowController.h"
 
 #import "HMTSVSupport.h"
 
@@ -35,6 +36,8 @@
 @property (strong) HMSlotItemWindowController *slotItemWindowController;
 @property (strong) HMPreferencePanelController *preferencePanelController;
 @property (strong) HMUpgradableShipsWindowController *upgradableShipWindowController;
+
+@property (strong) HMExternalBrowserWindowController *externalBrowserWindowController;
 
 #ifdef DEBUG
 @property (strong) HMShipWindowController *shipWindowController;
@@ -123,6 +126,7 @@ static FILE* logFileP = NULL;
 #endif
 	if(!HMStandardDefaults.showsDebugMenu) {
 		[self.debugMenuItem setHidden:YES];
+		[self.billingWindowMenuItem setHidden:YES];
 	}
 }
 
@@ -241,6 +245,14 @@ static FILE* logFileP = NULL;
 			[menuItem setTitle:NSLocalizedString(@"Hide Screenshot List", @"")];
 		}
 		return YES;
+	} else if(action == @selector(showExternalBrowserWindow:)) {
+		NSWindow *window = self.externalBrowserWindowController.window;
+		if(!window.isVisible || !window.isMainWindow) {
+			[menuItem setTitle:NSLocalizedString(@"Show Billing Window", @"")];
+		} else {
+			[menuItem setTitle:NSLocalizedString(@"Hide Billing Window", @"")];
+		}
+		return YES;
 	} else if(action == @selector(saveLocalData:) || action == @selector(loadLocalData:)) {
 		return YES;
 	} else if(action == @selector(showHidePreferencePanle:)) {
@@ -313,6 +325,20 @@ static FILE* logFileP = NULL;
 - (IBAction)showHideScreenshotListWindow:(id)sender
 {
 	NSWindow *window = self.screenshotListWindowController.window;
+	if(!window.isVisible || !window.isMainWindow) {
+		[window makeKeyAndOrderFront:nil];
+	} else {
+		[window orderOut:nil];
+	}
+}
+
+- (IBAction)showExternalBrowserWindow:(id)sender
+{
+	if(!self.externalBrowserWindowController) {
+		self.externalBrowserWindowController = [HMExternalBrowserWindowController new];
+	}
+	
+	NSWindow *window = self.externalBrowserWindowController.window;
 	if(!window.isVisible || !window.isMainWindow) {
 		[window makeKeyAndOrderFront:nil];
 	} else {

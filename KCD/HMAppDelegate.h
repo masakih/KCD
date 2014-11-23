@@ -31,6 +31,7 @@ typedef NS_ENUM(NSUInteger, HMShipType) {
 - (NSPredicate *)predicateForShipType:(HMShipType)shipType;
 
 @property (strong, nonatomic) IBOutlet NSMenuItem *debugMenuItem;
+@property (nonatomic, weak) IBOutlet NSMenuItem *billingWindowMenuItem;
 
 @property (nonatomic, strong) NSString *screenShotSaveDirectory;
 @property (readonly) HMScreenshotListWindowController *screenshotListWindowController;
