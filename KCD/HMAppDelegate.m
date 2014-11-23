@@ -126,6 +126,8 @@ static FILE* logFileP = NULL;
 #endif
 	if(!HMStandardDefaults.showsDebugMenu) {
 		[self.debugMenuItem setHidden:YES];
+	}
+	if(!HMStandardDefaults.showsBillingWindowMenu) {
 		[self.billingWindowMenuItem setHidden:YES];
 	}
 }

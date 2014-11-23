@@ -309,4 +309,14 @@ HMUserDefaults *HMStandardDefaults = nil;
 	return [[NSUserDefaults standardUserDefaults] boolForKey:@"showLevelOneShipInUpgradableList"];
 }
 
+#pragma mark- Billing Window
+- (void)setShowsBillingWindowMenu:(BOOL)showsBillingWindowMenu
+{
+	[[NSUserDefaults standardUserDefaults] setBool:showsBillingWindowMenu forKey:@"showsBillingWindowMenu"];
+}
+- (BOOL)showsBillingWindowMenu
+{
+	return [[NSUserDefaults standardUserDefaults] boolForKey:@"showsBillingWindowMenu"];
+}
+
 @end
