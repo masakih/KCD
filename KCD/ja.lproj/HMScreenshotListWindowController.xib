@@ -191,9 +191,6 @@
                         <action selector="delete:" target="-2" id="mci-QY-gRW"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Item 3" id="kLT-PB-WjA">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
             </items>
             <point key="canvasLocation" x="26" y="-87.5"/>
         </menu>
