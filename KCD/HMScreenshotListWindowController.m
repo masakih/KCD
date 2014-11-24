@@ -25,11 +25,8 @@
 
 @interface HMScreenshotListWindowController ()
 @property (weak, nonatomic) IBOutlet NSArrayController *screenshotsController;
-@property (readonly) NSMutableArray *screenshots;
-
+@property (strong) NSArray *screenshots;
 @property (weak) NSIndexSet *selectedIndexes;
-
-@property NSMutableArray *savedScreenshots;
 
 @property (weak, nonatomic) IBOutlet IKImageBrowserView *browser;
 @property (weak, nonatomic) IBOutlet NSMenu *contextMenu;
@@ -42,14 +39,12 @@
 @end
 
 @implementation HMScreenshotListWindowController
-@synthesize savedScreenshots = _savedScreenshots;
 
 - (id)init
 {
 	self = [super initWithWindowNibName:NSStringFromClass([self class])];
 	if(self) {
-		_savedScreenshots = [NSMutableArray new];
-		
+		_screenshots = [NSArray new];
 		
 		NSString *tag = NSLocalizedString(@"kancolle", @"kancolle twitter hash tag");
 		if(tag) {
@@ -58,10 +53,7 @@
 			_tagString = @"";
 		}
 		_appendKanColleTag = HMStandardDefaults.appendKanColleTag;
-		
 		_useMask = HMStandardDefaults.useMask;
-		
-		[self reloadData];
 	}
 	return self;
 }
@@ -73,19 +65,8 @@
 	
 	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO];
 	self.screenshotsController.sortDescriptors = @[sortDescriptor];
-	
-	[self prepareScreenshot:nil];
-//	[self performSelector:@selector(prepareScreenshot:) withObject:nil afterDelay:0.0];
-	
-}
-- (void)prepareScreenshot:(id)dummy
-{
 	[self reloadData];
-	[self.screenshotsController rearrangeObjects];
-	[self.browser reloadData];
-	
 	self.selectedIndexes = [NSIndexSet indexSetWithIndex:0];
-//	[self performSelector:@selector(setSelectedIndexes:) withObject:[NSIndexSet indexSetWithIndex:0] afterDelay:0.0];
 }
 
 - (NSString *)screenshotSaveDirectoryPath
@@ -117,18 +98,10 @@
 	return path;
 }
 
-- (NSMutableArray *)screenshots
-{
-	return self.savedScreenshots;
-}
-- (void)setScreenshots:(NSMutableArray *)screenshots
-{
-	self.savedScreenshots = screenshots;
-}
-
 - (void)reloadData
 {
 	NSMutableArray *screenshotNames = [NSMutableArray new];
+	NSMutableArray *currentArray = [self.screenshots mutableCopy];
 	NSFileManager *fm = [NSFileManager defaultManager];
 	
 	NSError *error = nil;
@@ -147,7 +120,6 @@
 		}
 	}
 	
-	[self willChangeValueForKey:@"screenshots"];
 	// 無くなっているものを調べる
 	NSMutableArray *deleteObjects = [NSMutableArray new];
 	for(HMScreenshotInformation *info in self.screenshots) {
@@ -155,7 +127,7 @@
 			[deleteObjects addObject:info];
 		}
 	}
-	[self.savedScreenshots removeObjectsInArray:deleteObjects];
+	[currentArray removeObjectsInArray:deleteObjects];
 	
 	// 新しいものを調べる
 	for(NSString *path in screenshotNames) {
@@ -169,10 +141,10 @@
 		if(index == NSNotFound) {
 			HMScreenshotInformation *info = [HMScreenshotInformation new];
 			info.path = path;
-			[self.savedScreenshots addObject:info];
+			[currentArray addObject:info];
 		}
 	}
-	[self didChangeValueForKey:@"screenshots"];
+	self.screenshots = [currentArray copy];
 }
 
 - (IBAction)reloadData:(id)sender
