@@ -14,6 +14,8 @@
 static NSDateFormatter *formatter = nil;
 
 @implementation HMScreenshotInformation
+@synthesize creationDate = _creationDate;
+
 + (void)initialize
 {
 	static dispatch_once_t onceToken;
@@ -42,12 +44,21 @@ static NSDateFormatter *formatter = nil;
 }
 - (NSString *)imageSubtitle
 {
-	if(!self.creationDate) {
+	return [formatter stringFromDate:self.creationDate];
+}
+
+- (NSDate *)creationDate
+{
+	if(!_creationDate) {
 		NSFileManager *fm = [NSFileManager defaultManager];
 		NSDictionary *fileAttr = [fm attributesOfItemAtPath:self.path error:NULL];
-		self.creationDate = [fileAttr fileCreationDate];
+		_creationDate = [fileAttr fileCreationDate];
 	}
-	return [formatter stringFromDate:self.creationDate];
+	return _creationDate;
+}
+- (void)setCreationDate:(NSDate *)creationDate
+{
+	_creationDate = creationDate;
 }
 
 - (NSUInteger)hash
