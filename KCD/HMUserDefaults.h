@@ -76,6 +76,11 @@ extern HMUserDefaults *HMStandardDefaults;
 @property BOOL showsListWindowAtScreenshot;
 
 /**
+ * スクリーンショットのプレビューのズーム値
+ */
+@property NSNumber *screenshotPreviewZoomValue;
+
+/**
  *  遠征帰還時の通知音を鳴らす
  */
 @property BOOL playFinishMissionSound;

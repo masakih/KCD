@@ -302,6 +302,15 @@ HMUserDefaults *HMStandardDefaults = nil;
 	return [self boolForKey:@"showsListWindowAtScreenshot"];
 }
 
+- (void)setScreenshotPreviewZoomValue:(NSNumber *)screenshotPreviewZoomValue
+{
+	[self setObject:screenshotPreviewZoomValue forKey:@"screenshotPreviewZoomValue"];
+}
+- (NSNumber *)screenshotPreviewZoomValue
+{
+	return [self objectForKey:@"screenshotPreviewZoomValue"];
+}
+
 #pragma mark - Notify Sound
 - (void)setPlayFinishMissionSound:(BOOL)playFinishMissionSound
 {

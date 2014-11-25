@@ -62,10 +62,11 @@
 		
 		[[NSUserDefaults standardUserDefaults] registerDefaults:
 		 @{
-		   @"screenShotBorderWidth" : @(3.0),
+		   @"screenShotBorderWidth" : @(0.0),
 		   @"plan01Color" : [NSKeyedArchiver archivedDataWithRootObject:plan01Color],
 		   @"plan02Color" : [NSKeyedArchiver archivedDataWithRootObject:plan02Color],
 		   @"plan03Color" : [NSKeyedArchiver archivedDataWithRootObject:plan03Color],
+		   @"screenshotPreviewZoomValue" : @(0.4),
 		   }
 		 ];
 	});
