@@ -242,14 +242,14 @@
 }
 
 
-#pragma mark-## IKImageBrowserDelegate
+#pragma mark - IKImageBrowserDelegate
 - (void) imageBrowser:(IKImageBrowserView *) aBrowser cellWasRightClickedAtIndex:(NSUInteger) index withEvent:(NSEvent *) event
 {
 	[NSMenu popUpContextMenu:self.contextMenu withEvent:event forView:aBrowser];
 }
 
 
-#pragma mark-## NSSharingServiceDelegate NSSharingServicePickerDelegate
+#pragma mark - NSSharingServiceDelegate NSSharingServicePickerDelegate
 - (id <NSSharingServiceDelegate>)sharingServicePicker:(NSSharingServicePicker *)sharingServicePicker delegateForSharingService:(NSSharingService *)sharingService
 {
 	return self;
