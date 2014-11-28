@@ -163,7 +163,8 @@
 	if(!appleScript) NSBeep();
 	[appleScript executeAndReturnError:nil];
 	
-	[self reloadData:nil];
+	NSUInteger selectionIndex = self.screenshotsController.selectionIndex;
+	[self.screenshotsController removeObjectAtArrangedObjectIndex:selectionIndex];
 }
 - (IBAction)revealInFinder:(id)sender
 {
