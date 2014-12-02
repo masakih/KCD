@@ -16,6 +16,8 @@
 #import "HMUpgradableShipsWindowController.h"
 #import "HMScreenshotListWindowController.h"
 
+#import "HMFleetInformation.h"
+
 #import "HMExternalBrowserWindowController.h"
 
 #import "HMTSVSupport.h"
@@ -203,6 +205,14 @@
 {
 	NSFileManager *fileManager = [NSFileManager defaultManager];
 	return [[fileManager URLsForDirectory:NSPicturesDirectory inDomains:NSUserDomainMask] lastObject];
+}
+
+- (HMFleetInformation *)fleetInformation
+{
+	static HMFleetInformation *_fleetInformation = nil;
+	if(_fleetInformation) return _fleetInformation;
+	_fleetInformation = [HMFleetInformation new];
+	return _fleetInformation;
 }
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem
