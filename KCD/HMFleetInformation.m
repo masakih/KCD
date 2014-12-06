@@ -143,6 +143,12 @@
 	return [NSSet setWithObjects:
 			@"flagShip", @"secondShip", @"thirdShip",
 			@"fourthShip", @"fifthShip", @"sixthShip",
+			@"flagShip.sakuteki_0",
+			@"secondShip.sakuteki_0",
+			@"thirdShip.sakuteki_0",
+			@"fourthShip.sakuteki_0",
+			@"fifthShip.sakuteki_0",
+			@"sixthShip.sakuteki_0",
 			nil];
 }
 
