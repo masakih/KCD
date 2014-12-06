@@ -129,6 +129,7 @@
 	}
 	
 	NSArray *decks = [self.deckController arrangedObjects];
+	if(decks.count == 0) return;
 	self.selectedFleet = [decks objectAtIndex:fleetId-1];
 	self.name = [self.selectedFleet valueForKey:@"name"];
 	
