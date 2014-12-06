@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6245"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="HMDeckViewController">
@@ -30,13 +31,13 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
+                        <binding destination="-2" name="textColor" keyPath="fleetInfo.flagShip.conditionColor" id="yxL-sh-I7u"/>
                         <binding destination="-2" name="value" keyPath="fleetInfo.flagShip.name" id="eIz-VS-XWc">
                             <dictionary key="options">
                                 <string key="NSNoSelectionPlaceholder">空席</string>
                                 <string key="NSNullPlaceholder">空席</string>
                             </dictionary>
                         </binding>
-                        <binding destination="-2" name="textColor" keyPath="fleetInfo.flagShip.conditionColor" id="yxL-sh-I7u"/>
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="6Or-P0-p9N">
@@ -48,14 +49,14 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <binding destination="-2" name="displayPatternValue1" keyPath="fleetInfo.flagShip.nowhp" id="lsI-wj-sYz">
+                        <binding destination="-2" name="displayPatternValue2" keyPath="fleetInfo.flagShip.maxhp" previousBinding="lsI-wj-sYz" id="Eck-y6-otJ">
                             <dictionary key="options">
                                 <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
                                 <string key="NSNoSelectionPlaceholder">-</string>
                                 <string key="NSNullPlaceholder">-</string>
                             </dictionary>
                         </binding>
-                        <binding destination="-2" name="displayPatternValue2" keyPath="fleetInfo.flagShip.maxhp" previousBinding="lsI-wj-sYz" id="Eck-y6-otJ">
+                        <binding destination="-2" name="displayPatternValue1" keyPath="fleetInfo.flagShip.nowhp" id="lsI-wj-sYz">
                             <dictionary key="options">
                                 <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
                                 <string key="NSNoSelectionPlaceholder">-</string>
@@ -92,14 +93,14 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <binding destination="-2" name="displayPatternValue1" keyPath="fleetInfo.secondShip.nowhp" id="4X6-Oo-gCG">
+                        <binding destination="-2" name="displayPatternValue2" keyPath="fleetInfo.secondShip.maxhp" previousBinding="4X6-Oo-gCG" id="tE4-TR-fXn">
                             <dictionary key="options">
                                 <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
                                 <string key="NSNoSelectionPlaceholder">-</string>
                                 <string key="NSNullPlaceholder">-</string>
                             </dictionary>
                         </binding>
-                        <binding destination="-2" name="displayPatternValue2" keyPath="fleetInfo.secondShip.maxhp" previousBinding="4X6-Oo-gCG" id="tE4-TR-fXn">
+                        <binding destination="-2" name="displayPatternValue1" keyPath="fleetInfo.secondShip.nowhp" id="4X6-Oo-gCG">
                             <dictionary key="options">
                                 <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
                                 <string key="NSNoSelectionPlaceholder">-</string>
@@ -136,14 +137,14 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <binding destination="-2" name="displayPatternValue1" keyPath="fleetInfo.thirdShip.nowhp" id="Hir-3E-tYw">
+                        <binding destination="-2" name="displayPatternValue2" keyPath="fleetInfo.thirdShip.maxhp" previousBinding="Hir-3E-tYw" id="dHw-GH-X4l">
                             <dictionary key="options">
                                 <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
                                 <string key="NSNoSelectionPlaceholder">-</string>
                                 <string key="NSNullPlaceholder">-</string>
                             </dictionary>
                         </binding>
-                        <binding destination="-2" name="displayPatternValue2" keyPath="fleetInfo.thirdShip.maxhp" previousBinding="Hir-3E-tYw" id="dHw-GH-X4l">
+                        <binding destination="-2" name="displayPatternValue1" keyPath="fleetInfo.thirdShip.nowhp" id="Hir-3E-tYw">
                             <dictionary key="options">
                                 <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
                                 <string key="NSNoSelectionPlaceholder">-</string>
@@ -180,14 +181,14 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <binding destination="-2" name="displayPatternValue1" keyPath="fleetInfo.fourthShip.nowhp" id="6Yz-TO-HH5">
+                        <binding destination="-2" name="displayPatternValue2" keyPath="fleetInfo.fourthShip.maxhp" previousBinding="6Yz-TO-HH5" id="hNM-MU-ljV">
                             <dictionary key="options">
                                 <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
                                 <string key="NSNoSelectionPlaceholder">-</string>
                                 <string key="NSNullPlaceholder">-</string>
                             </dictionary>
                         </binding>
-                        <binding destination="-2" name="displayPatternValue2" keyPath="fleetInfo.fourthShip.maxhp" previousBinding="6Yz-TO-HH5" id="hNM-MU-ljV">
+                        <binding destination="-2" name="displayPatternValue1" keyPath="fleetInfo.fourthShip.nowhp" id="6Yz-TO-HH5">
                             <dictionary key="options">
                                 <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
                                 <string key="NSNoSelectionPlaceholder">-</string>
@@ -224,14 +225,14 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <binding destination="-2" name="displayPatternValue1" keyPath="fleetInfo.fifthShip.nowhp" id="NZ3-L4-O4Z">
+                        <binding destination="-2" name="displayPatternValue2" keyPath="fleetInfo.fifthShip.maxhp" previousBinding="NZ3-L4-O4Z" id="1rm-iO-ecT">
                             <dictionary key="options">
                                 <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
                                 <string key="NSNoSelectionPlaceholder">-</string>
                                 <string key="NSNullPlaceholder">-</string>
                             </dictionary>
                         </binding>
-                        <binding destination="-2" name="displayPatternValue2" keyPath="fleetInfo.fifthShip.maxhp" previousBinding="NZ3-L4-O4Z" id="1rm-iO-ecT">
+                        <binding destination="-2" name="displayPatternValue1" keyPath="fleetInfo.fifthShip.nowhp" id="NZ3-L4-O4Z">
                             <dictionary key="options">
                                 <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
                                 <string key="NSNoSelectionPlaceholder">-</string>
@@ -268,14 +269,14 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <binding destination="-2" name="displayPatternValue1" keyPath="fleetInfo.sixthShip.nowhp" id="jx5-LK-mwQ">
+                        <binding destination="-2" name="displayPatternValue2" keyPath="fleetInfo.sixthShip.maxhp" previousBinding="jx5-LK-mwQ" id="aUQ-rQ-hNT">
                             <dictionary key="options">
                                 <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
                                 <string key="NSNoSelectionPlaceholder">-</string>
                                 <string key="NSNullPlaceholder">-</string>
                             </dictionary>
                         </binding>
-                        <binding destination="-2" name="displayPatternValue2" keyPath="fleetInfo.sixthShip.maxhp" previousBinding="jx5-LK-mwQ" id="aUQ-rQ-hNT">
+                        <binding destination="-2" name="displayPatternValue1" keyPath="fleetInfo.sixthShip.nowhp" id="jx5-LK-mwQ">
                             <dictionary key="options">
                                 <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
                                 <string key="NSNoSelectionPlaceholder">-</string>
@@ -351,8 +352,8 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <binding destination="-2" name="textColor" keyPath="fleetInfo.flagShip.conditionColor" id="FkF-JD-57L"/>
                         <binding destination="-2" name="value" keyPath="fleetInfo.flagShip.cond" id="EQg-ZX-2aG"/>
+                        <binding destination="-2" name="textColor" keyPath="fleetInfo.flagShip.conditionColor" id="FkF-JD-57L"/>
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Hla-XE-mIo">
@@ -364,8 +365,8 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <binding destination="-2" name="textColor" keyPath="fleetInfo.secondShip.conditionColor" id="QE0-re-s8b"/>
                         <binding destination="-2" name="value" keyPath="fleetInfo.secondShip.cond" id="Ml5-Ug-cxf"/>
+                        <binding destination="-2" name="textColor" keyPath="fleetInfo.secondShip.conditionColor" id="QE0-re-s8b"/>
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="wsW-rS-JP0">
@@ -377,8 +378,8 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <binding destination="-2" name="textColor" keyPath="fleetInfo.thirdShip.conditionColor" id="BrA-dF-vRi"/>
                         <binding destination="-2" name="value" keyPath="fleetInfo.thirdShip.cond" id="Ef6-o9-ymS"/>
+                        <binding destination="-2" name="textColor" keyPath="fleetInfo.thirdShip.conditionColor" id="BrA-dF-vRi"/>
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="g9G-lh-Te2">
@@ -390,8 +391,8 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <binding destination="-2" name="textColor" keyPath="fleetInfo.fourthShip.conditionColor" id="0Jb-L2-uUE"/>
                         <binding destination="-2" name="value" keyPath="fleetInfo.fourthShip.cond" id="P9O-wf-b17"/>
+                        <binding destination="-2" name="textColor" keyPath="fleetInfo.fourthShip.conditionColor" id="0Jb-L2-uUE"/>
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="V0k-rS-hW4">
@@ -403,8 +404,8 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <binding destination="-2" name="textColor" keyPath="fleetInfo.fifthShip.conditionColor" id="SQ2-qC-43A"/>
                         <binding destination="-2" name="value" keyPath="fleetInfo.fifthShip.cond" id="RaM-d2-f5q"/>
+                        <binding destination="-2" name="textColor" keyPath="fleetInfo.fifthShip.conditionColor" id="SQ2-qC-43A"/>
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="m3I-Sb-hkR">
@@ -416,8 +417,8 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <binding destination="-2" name="textColor" keyPath="fleetInfo.sixthShip.conditionColor" id="OdP-Gc-fyt"/>
                         <binding destination="-2" name="value" keyPath="fleetInfo.sixthShip.cond" id="2lD-ss-PPy"/>
+                        <binding destination="-2" name="textColor" keyPath="fleetInfo.sixthShip.conditionColor" id="OdP-Gc-fyt"/>
                     </connections>
                 </textField>
                 <customView id="RPQ-X8-xc3" customClass="HMSuppliesView">
@@ -444,18 +445,6 @@
                     <rect key="frame" x="611" y="11" width="31" height="13"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </customView>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="he7-pu-GJG">
-                    <rect key="frame" x="708" y="3" width="94" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="1uN-qs-n9z">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                    <connections>
-                        <binding destination="-2" name="value" keyPath="fleetInfo.name" id="CYI-tf-eZa"/>
-                    </connections>
-                </textField>
             </subviews>
         </customView>
     </objects>
