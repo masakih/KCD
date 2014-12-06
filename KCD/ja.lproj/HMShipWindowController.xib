@@ -429,7 +429,7 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
-                                                <binding destination="AzW-Cs-1fg" name="value" keyPath="arrangedObjects.sally_flag_0" id="JwC-WQ-pK7"/>
+                                                <binding destination="AzW-Cs-1fg" name="value" keyPath="arrangedObjects.maparea_id" id="ojW-LB-pF4"/>
                                             </connections>
                                         </tableColumn>
                                         <tableColumn width="269" minWidth="10" maxWidth="3.4028234663852886e+38" id="iHO-Ms-gwT">
@@ -865,6 +865,9 @@
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                            <connections>
+                                                <binding destination="OOA-0T-5OQ" name="value" keyPath="arrangedObjects.onslot_0" id="Ztu-tw-8Ca"/>
+                                            </connections>
                                         </tableColumn>
                                         <tableColumn width="46" minWidth="10" maxWidth="3.4028234663852886e+38" id="abY-CE-Tjv">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
@@ -879,7 +882,7 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
-                                                <binding destination="OOA-0T-5OQ" name="value" keyPath="arrangedObjects.bull" id="OtN-7s-1vl"/>
+                                                <binding destination="OOA-0T-5OQ" name="value" keyPath="arrangedObjects.onslot_1" id="01s-Cm-hDg"/>
                                             </connections>
                                         </tableColumn>
                                         <tableColumn width="52" minWidth="10" maxWidth="3.4028234663852886e+38" id="Sd6-Fs-0Fa">
@@ -895,7 +898,7 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
-                                                <binding destination="OOA-0T-5OQ" name="value" keyPath="arrangedObjects.master_ship.bull_max" id="rSz-WH-MW1"/>
+                                                <binding destination="OOA-0T-5OQ" name="value" keyPath="arrangedObjects.slot_0" id="ejN-a4-o3t"/>
                                             </connections>
                                         </tableColumn>
                                         <tableColumn width="40" minWidth="10" maxWidth="3.4028234663852886e+38" id="9nU-cW-3gD">
@@ -905,14 +908,13 @@
                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                             </tableHeaderCell>
                                             <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="6Sp-6k-ePo">
-                                                <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="NsR-MD-hFI"/>
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
-                                                <binding destination="OOA-0T-5OQ" name="value" keyPath="arrangedObjects.sally_area" id="xUY-58-RKN"/>
+                                                <binding destination="OOA-0T-5OQ" name="value" keyPath="arrangedObjects.slot_1" id="veb-cU-FhS"/>
                                             </connections>
                                         </tableColumn>
                                     </tableColumns>

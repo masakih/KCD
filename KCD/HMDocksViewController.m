@@ -15,6 +15,9 @@
 #import "HMKenzoDockStatus.h"
 
 
+#import "HMTemporaryDataStore.h"
+
+
 @interface HMDocksViewController ()
 
 @property (strong) HMMissionStatus *mission2Status;
@@ -30,6 +33,11 @@
 @property (strong) HMKenzoDockStatus *kdock2Status;
 @property (strong) HMKenzoDockStatus *kdock3Status;
 @property (strong) HMKenzoDockStatus *kdock4Status;
+
+
+@property (readonly) NSManagedObjectContext *battleManagedObjectController;
+@property (nonatomic, weak) IBOutlet NSObjectController *battleContoller;
+@property (readonly) NSManagedObject *battle;
 
 
 @end
@@ -100,6 +108,7 @@
 		_kdock4Status = [[HMKenzoDockStatus alloc] initWithDockNumber:4];
 		_kdock4Status.managedObjectContext = self.managedObjectContext;
 		[self bind:@"kDock4Time" toObject:self.kdock4Status withKeyPath:@"time" options:nil];
+		
 	}
 	return self;
 }
@@ -111,6 +120,13 @@
 								   selector:@selector(fire:)
 								   userInfo:nil
 									repeats:YES];
+	
+	
+	//
+	[self.battleContoller addObserver:self
+						   forKeyPath:@"selection"
+							  options:0
+							  context:NULL];
 }
 
 
@@ -132,19 +148,74 @@
 	[self.mission2Status update];
 	[self.mission3Status update];
 	[self.mission4Status update];
+	
 }
 
-- (NSString *)firstFleetName
+- (NSManagedObjectContext *)battleManagedObjectController
 {
-	return @"First Fleet Name";
+	return [[HMTemporaryDataStore defaultManager] managedObjectContext];
 }
-- (NSString *)areaName
+- (NSManagedObject *)battle
 {
-	return @"ABCDEFGHIJKLMN";
+	HMTemporaryDataStore *store = [HMTemporaryDataStore defaultManager];
+	NSArray *array  = [store objectsWithEntityName:@"Battle" predicate:nil error:NULL];
+	return array.count > 0 ? array[0] : nil;
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+	if([keyPath isEqualToString:@"selection"]) {
+		[self willChangeValueForKey:@"fleetName"];
+		[self didChangeValueForKey:@"fleetName"];
+//		[self willChangeValueForKey:@"areaName"];
+//		[self didChangeValueForKey:@"areaName"];
+//		[self willChangeValueForKey:@"areaNumber"];
+//		[self didChangeValueForKey:@"areaNumber"];
+		
+		return;
+	}
+	
+	return [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+}
+
+- (NSString *)fleetName
+{
+	HMServerDataStore *store = [HMServerDataStore defaultManager];
+	
+	NSError *error = nil;
+	id deckId = [self.battleContoller valueForKeyPath:@"content.deckId"];
+	NSArray *array = [store objectsWithEntityName:@"Deck"
+											error:&error
+								  predicateFormat:@"id = %@", deckId];
+	if(error) {
+		NSLog(@"%s error: %@", __PRETTY_FUNCTION__, error);
+	}
+	if(array.count == 0) return @"";
+	
+	return [NSString stringWithFormat:@"%@", [array[0] valueForKey:@"name"]];
 }
 - (NSString *)areaNumber
 {
-	return @"5-5";
+	return [NSString stringWithFormat:@"%@-%@",
+			[self.battleContoller valueForKeyPath:@"content.mapArea"],
+			[self.battleContoller valueForKeyPath:@"content.mapInfo"]];
+}
+- (NSString *)areaName
+{
+	HMServerDataStore *store = [HMServerDataStore defaultManager];
+	
+	NSError *error = nil;
+	id mapAreaId = [self.battleContoller valueForKeyPath:@"content.mapArea"];
+	id mapInfoId = [self.battleContoller valueForKeyPath:@"content.mapInfo"];
+	NSArray *array = [store objectsWithEntityName:@"MasterMapInfo"
+											error:&error
+								  predicateFormat:@"maparea_id = %@ AND %K = %@", mapAreaId, @"no", mapInfoId];
+	if(error) {
+		NSLog(@"%s error: %@", __PRETTY_FUNCTION__, error);
+	}
+	if(array.count == 0) return @"";
+	
+	return [NSString stringWithFormat:@"%@", [array[0] valueForKey:@"name"]];
 }
 
 @end
