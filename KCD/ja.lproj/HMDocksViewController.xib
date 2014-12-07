@@ -433,25 +433,9 @@ ffff</string>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                             <connections>
-                                <binding destination="-2" name="displayPatternValue1" keyPath="fleetName" id="FQD-vL-yW8">
+                                <binding destination="-2" name="value" keyPath="sortieString" id="piz-Gc-TRW">
                                     <dictionary key="options">
-                                        <string key="NSDisplayPattern">%{value1}@が
-（%{value3}@）%{value2}@ 
-に出撃中</string>
-                                    </dictionary>
-                                </binding>
-                                <binding destination="-2" name="displayPatternValue2" keyPath="areaName" previousBinding="FQD-vL-yW8" id="BZg-S2-j1n">
-                                    <dictionary key="options">
-                                        <string key="NSDisplayPattern">%{value1}@が
-（%{value3}@）%{value2}@ 
-に出撃中</string>
-                                    </dictionary>
-                                </binding>
-                                <binding destination="-2" name="displayPatternValue3" keyPath="areaNumber" previousBinding="BZg-S2-j1n" id="xti-tJ-Fc2">
-                                    <dictionary key="options">
-                                        <string key="NSDisplayPattern">%{value1}@が
-（%{value3}@）%{value2}@ 
-に出撃中</string>
+                                        <string key="NSNullPlaceholder">出撃していません</string>
                                     </dictionary>
                                 </binding>
                             </connections>

@@ -158,24 +158,33 @@
 - (NSManagedObject *)battle
 {
 	HMTemporaryDataStore *store = [HMTemporaryDataStore defaultManager];
-	NSArray *array  = [store objectsWithEntityName:@"Battle" predicate:nil error:NULL];
+	NSError *error = nil;
+	NSArray *array  = [store objectsWithEntityName:@"Battle" predicate:nil error:&error];
+	if(error) {
+		NSLog(@"%s error: %@", __PRETTY_FUNCTION__, error);
+	}
 	return array.count > 0 ? array[0] : nil;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
 	if([keyPath isEqualToString:@"selection"]) {
-		[self willChangeValueForKey:@"fleetName"];
-		[self didChangeValueForKey:@"fleetName"];
-//		[self willChangeValueForKey:@"areaName"];
-//		[self didChangeValueForKey:@"areaName"];
-//		[self willChangeValueForKey:@"areaNumber"];
-//		[self didChangeValueForKey:@"areaNumber"];
-		
+		[self willChangeValueForKey:@"sortieString"];
+		[self didChangeValueForKey:@"sortieString"];
 		return;
 	}
 	
 	return [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+}
+
+- (NSString *)sortieString
+{
+	NSString *result = nil;
+	if(self.fleetName && self.areaName && self.areaNumber) {
+		NSString *format = NSLocalizedString(@"%@ in sortie into %@ (%@)", @"Sortie");
+		result = [NSString stringWithFormat:format, self.fleetName, self.areaName, self.areaNumber];
+	}
+	return result;
 }
 
 - (NSString *)fleetName
@@ -190,7 +199,7 @@
 	if(error) {
 		NSLog(@"%s error: %@", __PRETTY_FUNCTION__, error);
 	}
-	if(array.count == 0) return @"";
+	if(array.count == 0) return nil;
 	
 	return [NSString stringWithFormat:@"%@", [array[0] valueForKey:@"name"]];
 }
@@ -213,7 +222,7 @@
 	if(error) {
 		NSLog(@"%s error: %@", __PRETTY_FUNCTION__, error);
 	}
-	if(array.count == 0) return @"";
+	if(array.count == 0) return nil;
 	
 	return [NSString stringWithFormat:@"%@", [array[0] valueForKey:@"name"]];
 }
