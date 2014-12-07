@@ -44,7 +44,7 @@
  *
  *  @return 読み出したデータ
  */
-- (NSArray *)objectsWithEntityName:(NSString *)entityName sortDescriptors:(NSArray *)sortDescriptors error:(NSError **)error predicateFormat:(NSString *)format, ... NS_FORMAT_FUNCTION(4, 5);
+- (NSArray *)objectsWithEntityName:(NSString *)entityName sortDescriptors:(NSArray *)sortDescriptors error:(NSError **)error predicateFormat:(NSString *)format, ...;
 
 /**
  CoreDataからデータを読み出す
@@ -65,7 +65,7 @@
  @param ... A comma-separated list of arguments to substitute into format.
  @return 読み出したデータ
  */
-- (NSArray *)objectsWithEntityName:(NSString *)entityName error:(NSError **)error predicateFormat:(NSString *)format, ... NS_FORMAT_FUNCTION(3,4);
+- (NSArray *)objectsWithEntityName:(NSString *)entityName error:(NSError **)error predicateFormat:(NSString *)format, ...;
 
 - (IBAction)saveAction:(id)sender;
 
