@@ -13,6 +13,7 @@
 #import "HMMemberDeckCommand.h"
 #import "HMMemberBasicCommand.h"
 #import "HMMemberNDockCommand.h"
+#import "HMResetSortieCommand.h"
 
 
 @implementation HMPortCommand
@@ -35,6 +36,7 @@
 			[HMMemberShipCommand new], [HMMemberMaterialCommand new],
 			[HMMemberDeckCommand new], [HMMemberBasicCommand new],
 			[HMMemberNDockCommand new],
+			[HMResetSortieCommand new],
 			nil];
 	return self;
 }

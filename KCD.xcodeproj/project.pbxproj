@@ -27,6 +27,7 @@
 		F43BA4A7197CD59400CFF788 /* HMNyukyoSpeedChangeCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F43BA4A6197CD59400CFF788 /* HMNyukyoSpeedChangeCommand.m */; };
 		F43E67B718BE02A10087E5B6 /* STypeShortName.plist in Resources */ = {isa = PBXBuildFile; fileRef = F43E67B618BE02A10087E5B6 /* STypeShortName.plist */; };
 		F43E67B918BE060E0087E5B6 /* LevelUpExp.plist in Resources */ = {isa = PBXBuildFile; fileRef = F43E67B818BE060E0087E5B6 /* LevelUpExp.plist */; };
+		F43F3D461A33F7D400D6DAF7 /* HMResetSortieCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F43F3D451A33F7D400D6DAF7 /* HMResetSortieCommand.m */; };
 		F44AB20019E050F600F217AF /* HMKCDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = F44AB1FF19E050F600F217AF /* HMKCDeck.m */; };
 		F44AB20619E053CB00F217AF /* HMKCDeck+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = F44AB20519E053CB00F217AF /* HMKCDeck+Extension.m */; };
 		F44AB23519E805D100F217AF /* HMKaisouLockCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F44AB23419E805D100F217AF /* HMKaisouLockCommand.m */; };
@@ -192,6 +193,8 @@
 		F43BA4A6197CD59400CFF788 /* HMNyukyoSpeedChangeCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMNyukyoSpeedChangeCommand.m; sourceTree = "<group>"; };
 		F43E67B618BE02A10087E5B6 /* STypeShortName.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = STypeShortName.plist; sourceTree = "<group>"; };
 		F43E67B818BE060E0087E5B6 /* LevelUpExp.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LevelUpExp.plist; sourceTree = "<group>"; };
+		F43F3D441A33F7D400D6DAF7 /* HMResetSortieCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMResetSortieCommand.h; sourceTree = "<group>"; };
+		F43F3D451A33F7D400D6DAF7 /* HMResetSortieCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMResetSortieCommand.m; sourceTree = "<group>"; };
 		F44AB1FE19E050F600F217AF /* HMKCDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMKCDeck.h; sourceTree = "<group>"; };
 		F44AB1FF19E050F600F217AF /* HMKCDeck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKCDeck.m; sourceTree = "<group>"; };
 		F44AB20419E053CB00F217AF /* HMKCDeck+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HMKCDeck+Extension.h"; sourceTree = "<group>"; };
@@ -764,6 +767,8 @@
 				F4B37EF219FBBBED002F371A /* HMRemodelSlotCommand.m */,
 				F4B37EF419FBE801002F371A /* HMRemodelSlotItemCommand.h */,
 				F4B37EF519FBE801002F371A /* HMRemodelSlotItemCommand.m */,
+				F43F3D441A33F7D400D6DAF7 /* HMResetSortieCommand.h */,
+				F43F3D451A33F7D400D6DAF7 /* HMResetSortieCommand.m */,
 			);
 			name = Command;
 			sourceTree = "<group>";
@@ -945,6 +950,7 @@
 				F46F104118A9B85E0063E503 /* HMJSONNode.m in Sources */,
 				F454F7831A261844003042DD /* HMFleetInformation.m in Sources */,
 				F426801B1943EAE100B2C27F /* HMKCShipObject.m in Sources */,
+				F43F3D461A33F7D400D6DAF7 /* HMResetSortieCommand.m in Sources */,
 				F4131ECF190F5C08004F7F9A /* HMStoreCreateSlotItemHistoryCommand.m in Sources */,
 				F4AA05FB192B92C800844688 /* Temporary.xcdatamodeld in Sources */,
 				F4E7802818DBD2A00011BC4C /* HMGetShipCommand.m in Sources */,
