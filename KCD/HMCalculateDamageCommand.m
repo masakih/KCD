@@ -40,9 +40,14 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 {
 	NSManagedObjectContext *moc = self.store.managedObjectContext;
 	
+	NSError *error = nil;
 	NSArray *array = [self.store objectsWithEntityName:@"Battle"
 										predicate:nil
-											error:NULL];
+											error:&error];
+	if(error) {
+		[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
+		return;
+	}
 	for(id object in array) {
 		[moc deleteObject:object];
 	}
@@ -54,9 +59,14 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 {
 	NSManagedObjectContext *moc = self.store.managedObjectContext;
 	
+	NSError *error = nil;
 	NSArray *array = [self.store objectsWithEntityName:@"Damage"
 							   predicate:nil
-								   error:NULL];
+								   error:&error];
+	if(error) {
+		[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
+		return;
+	}
 	for(id object in array) {
 		[moc deleteObject:object];
 	}
@@ -89,14 +99,21 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 									   sortDescriptors:@[sortDescriptor]
 											 predicate:nil
 												 error:&error];
+	if(error) {
+		[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
+	}
 	// TODO: error handling
 	
 	NSInteger frendShipCount = 12;
 	if(array.count != frendShipCount) {
 		// Battleエンティティ取得
+		error = nil;
 		NSArray *battles = [self.store objectsWithEntityName:@"Battle"
 												   predicate:nil
-													   error:NULL];
+													   error:&error];
+		if(error) {
+			[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
+		}
 		if(battles.count == 0) {
 			NSLog(@"Battle is invalid.");
 			return [NSMutableArray new];
@@ -274,18 +291,26 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 								sortDescriptors:@[sortDescriptor]
 									  predicate:nil
 										  error:&error];
-	// TODO: error handling
-	
-	if(damages.count != 12) {
-		NSLog(@"Damage is invalid. count %lxd", damages.count);
+	if(error) {
+		[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
 		return;
 	}
 	
+	if(damages.count != 12) {
+		[self log:@"Damage is invalid. count %lxd", damages.count];
+		return;
+	}
+	
+	error = nil;
 	NSArray *array = [self.store objectsWithEntityName:@"Battle"
 										predicate:nil
-											error:NULL];
+											error:&error];
+	if(error) {
+		[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
+		return;
+	}
 	if(array.count == 0) {
-		NSLog(@"Battle is invalid. %s", __PRETTY_FUNCTION__);
+		[self log:@"Battle is invalid. %s", __PRETTY_FUNCTION__];
 		return;
 	}
 	
@@ -294,12 +319,17 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 	BOOL firstRun = YES;
 	for(NSInteger i = 0; i < 2; i++) {
 		// 艦隊メンバーを取得
+		error = nil;
 		NSArray *decks = [serverStore objectsWithEntityName:@"Deck"
 												  predicate:predicate
-													  error:NULL];
+													  error:&error];
+		if(error) {
+			[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
+			return;
+		}
 		
 		if(decks.count == 0) {
-			NSLog(@"Deck is invalid. %s", __PRETTY_FUNCTION__);
+			[self log:@"Deck is invalid. %s", __PRETTY_FUNCTION__];
 			return;
 		}
 		id deck = decks[0];
@@ -313,9 +343,13 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 		
 		NSMutableArray *ships = [NSMutableArray new];
 		for(id shipId in shipIds) {
+			error = nil;
 			NSArray *ship = [serverStore objectsWithEntityName:@"Ship"
-														 error:NULL
+														 error:&error
 											   predicateFormat:@"id = %@", @([shipId integerValue])];
+			if(error) {
+				[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
+			}
 			if(ship.count != 0 && ![ship[0] isEqual:[NSNull null]]) {
 				[ships addObject:ship[0]];
 			}
