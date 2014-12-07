@@ -156,7 +156,7 @@ CA
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="FOc-xH-bVq"/>
-                            <menuItem title="Time" keyEquivalent="1" id="Yem-aw-cnP">
+                            <menuItem title="Situation" keyEquivalent="1" id="Yem-aw-cnP">
                                 <connections>
                                     <action selector="selectView:" target="-1" id="TSA-uS-UTr"/>
                                 </connections>

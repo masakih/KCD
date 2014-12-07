@@ -397,7 +397,7 @@
                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="sDP-iK-20N">
                             <font key="font" metaFont="system"/>
                             <segments>
-                                <segment label="予定" selected="YES"/>
+                                <segment label="状況" selected="YES"/>
                                 <segment label="編成支援" tag="1"/>
                                 <segment label="近代化改修支援" tag="2"/>
                             </segments>

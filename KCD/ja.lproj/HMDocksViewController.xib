@@ -411,37 +411,32 @@
                         </binding>
                     </connections>
                 </textField>
-                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LPy-to-xN2">
-                    <rect key="frame" x="0.0" y="0.0" width="354" height="121"/>
-                    <subviews>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x0u-i0-Nnm">
-                            <rect key="frame" x="18" y="89" width="43" height="17"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="出撃：" id="qFP-DB-9fz">
-                                <font key="font" size="13" name="AquaKana"/>
-                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SDh-rD-4Hk">
-                            <rect key="frame" x="30" y="30" width="276" height="51"/>
-                            <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" id="gFh-Ud-DOy">
-                                <font key="font" metaFont="system"/>
-                                <string key="title">Multiline
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SDh-rD-4Hk">
+                    <rect key="frame" x="26" y="41" width="282" height="51"/>
+                    <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" id="gFh-Ud-DOy">
+                        <font key="font" metaFont="system"/>
+                        <string key="title">Multiline
  Label
 ffff</string>
-                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                            <connections>
-                                <binding destination="-2" name="value" keyPath="sortieString" id="piz-Gc-TRW">
-                                    <dictionary key="options">
-                                        <string key="NSNullPlaceholder">出撃していません</string>
-                                    </dictionary>
-                                </binding>
-                            </connections>
-                        </textField>
-                    </subviews>
-                </customView>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="sortieString" id="piz-Gc-TRW">
+                            <dictionary key="options">
+                                <string key="NSNullPlaceholder">出撃していません</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x0u-i0-Nnm">
+                    <rect key="frame" x="18" y="98" width="43" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="出撃：" id="qFP-DB-9fz">
+                        <font key="font" size="13" name="AquaKana"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
         </customView>
         <objectController mode="entity" entityName="Battle" automaticallyPreparesContent="YES" id="sje-58-fiD">
