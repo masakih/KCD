@@ -41,7 +41,7 @@
         <attribute name="tutorial" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="tutorial_progress" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
-    <entity name="Deck" representedClassName="HMKCDeck" parentEntity="KCDEntity" syncable="YES">
+    <entity name="Deck" representedClassName="HMKCDeck" syncable="YES">
         <attribute name="flagship" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="id" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="member_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -126,7 +126,7 @@
         <attribute name="win_item2_0" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="win_item2_1" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
-    <entity name="MasterShip" representedClassName="HMKCManagedObject" syncable="YES">
+    <entity name="MasterShip" representedClassName="HMKCMasterShipObject" syncable="YES">
         <attribute name="afterbull" attributeType="Integer 32" syncable="YES"/>
         <attribute name="afterfuel" attributeType="Integer 32" syncable="YES"/>
         <attribute name="afterlv" attributeType="Integer 32" syncable="YES"/>
@@ -320,7 +320,7 @@
         <element name="MasterMapCell" positionX="0" positionY="0" width="128" height="135"/>
         <element name="MasterMapInfo" positionX="0" positionY="0" width="128" height="270"/>
         <element name="MasterMission" positionX="0" positionY="0" width="128" height="238"/>
-        <element name="MasterShip" positionX="0" positionY="0" width="128" height="733"/>
+        <element name="MasterShip" positionX="0" positionY="0" width="128" height="735"/>
         <element name="MasterSlotItem" positionX="0" positionY="0" width="128" height="540"/>
         <element name="MasterSlotItemEquipType" positionX="9" positionY="153" width="128" height="90"/>
         <element name="MasterSType" positionX="0" positionY="0" width="128" height="135"/>

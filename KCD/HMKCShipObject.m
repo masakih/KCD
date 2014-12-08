@@ -2,12 +2,13 @@
 //  HMKCShipObject.m
 //  KCD
 //
-//  Created by Hori,Masaki on 2014/06/08.
+//  Created by Hori,Masaki on 2014/12/08.
 //  Copyright (c) 2014年 Hori,Masaki. All rights reserved.
 //
 
 #import "HMKCShipObject.h"
-#import "HMKCManagedObject.h"
+#import "HMKCMasterShipObject.h"
+#import "HMKCSlotItemObject.h"
 
 
 @implementation HMKCShipObject
@@ -27,6 +28,7 @@
 @dynamic kyouka_3;
 @dynamic kyouka_4;
 @dynamic locked;
+@dynamic locked_equip;
 @dynamic lucky_0;
 @dynamic lucky_1;
 @dynamic lv;
@@ -42,6 +44,7 @@
 @dynamic raisou_1;
 @dynamic sakuteki_0;
 @dynamic sakuteki_1;
+@dynamic sally_area;
 @dynamic ship_id;
 @dynamic slot_0;
 @dynamic slot_1;
@@ -56,8 +59,6 @@
 @dynamic taiku_1;
 @dynamic taisen_0;
 @dynamic taisen_1;
-@dynamic use_bull;
-@dynamic use_fuel;
 @dynamic equippedItem;
 @dynamic master_ship;
 
