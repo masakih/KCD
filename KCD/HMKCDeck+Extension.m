@@ -16,7 +16,9 @@
 	NSError *error = nil;
 	NSManagedObjectContext *moc = [self managedObjectContext];
 	NSString *key = [NSString stringWithFormat:@"ship_%ld", shipNumber];
+	[self willAccessValueForKey:key];
 	NSNumber *shipIdNumber = [self valueForKey:key];
+	[self didAccessValueForKey:key];
 	NSInteger shipId = [shipIdNumber integerValue];
 	NSArray *array = nil;
 	if(shipId != -1) {

@@ -16,24 +16,39 @@
 @implementation HMKCSlotItemObject (Extensions)
 - (NSString *)name
 {
-	return [self.master_slotItem valueForKey:@"name"];
+	[self willAccessValueForKey:@"master_slotItem"];
+	NSString *name = [self.master_slotItem valueForKey:@"name"];
+	[self didAccessValueForKey:@"master_slotItem"];
+	return name;
 }
 
 - (NSString *)equippedShipName
 {
-	return self.equippedShip.name;
+	[self willAccessValueForKey:@"equippedShip"];
+	NSString *equippedShipName = self.equippedShip.name;
+	[self didAccessValueForKey:@"equippedShip"];
+	return equippedShipName;
 }
 - (NSNumber *)masterSlotItemRare
 {
-	return [self.master_slotItem valueForKey:@"rare"];
+	[self willAccessValueForKey:@"master_slotItem"];
+	NSNumber *masterSlotItemRare = [self.master_slotItem valueForKey:@"rare"];
+	[self didAccessValueForKey:@"master_slotItem"];
+	return masterSlotItemRare;
 }
 - (NSString *)typeName
 {
-	return [self.master_slotItem valueForKey:@"type_2"];
+	[self willAccessValueForKey:@"master_slotItem"];
+	NSString *typeName = [self.master_slotItem valueForKey:@"type_2"];
+	[self didAccessValueForKey:@"master_slotItem"];
+	return typeName;
 }
 - (NSNumber *)isLocked
 {
-	return self.locked;
+	[self willAccessValueForKey:@"locked"];
+	NSNumber *locked = self.locked;
+	[self didAccessValueForKey:@"locked"];
+	return locked;
 }
 - (void)setIsLocked:(NSNumber *)isLocked {}
 
