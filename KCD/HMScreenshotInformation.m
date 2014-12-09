@@ -46,6 +46,10 @@ static NSDateFormatter *formatter = nil;
 {
 	return [formatter stringFromDate:self.creationDate];
 }
+- (NSUInteger)imageVersion
+{
+	return self.version;
+}
 
 - (NSDate *)creationDate
 {

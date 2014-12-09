@@ -22,11 +22,38 @@
 - (NSString *)_web_pathWithUniqueFilenameForPath:(NSString *)path;
 @end
 
+@interface HMCacheVersionInfo : NSObject <NSCopying>
+@property (strong) NSString *fullpath;
+@property (strong) NSNumber *version;
+@end
+
+@implementation HMCacheVersionInfo
+
+- (instancetype)copyWithZone:(NSZone *)zone
+{
+	HMCacheVersionInfo *result = [[self class] new];
+	result.fullpath = self.fullpath;
+	result.version = self.version;
+	return result;
+}
+- (NSUInteger)hash
+{
+	return [self.fullpath hash];
+}
+- (BOOL)isEqual:(id)object
+{
+	if([super isEqual:object]) return YES;
+	if(![object isMemberOfClass:[self class]]) return NO;
+	return [self.fullpath isEqualToString:[object fullpath]];
+}
+@end
+
 
 @interface HMScreenshotListWindowController ()
 @property (weak, nonatomic) IBOutlet NSArrayController *screenshotsController;
 @property (strong) NSArray *screenshots;
 @property (weak) NSIndexSet *selectedIndexes;
+@property (strong) NSMutableArray *deletedPaths;
 
 @property (weak, nonatomic) IBOutlet IKImageBrowserView *browser;
 @property (weak, nonatomic) IBOutlet NSMenu *contextMenu;
@@ -45,6 +72,7 @@
 	self = [super initWithWindowNibName:NSStringFromClass([self class])];
 	if(self) {
 		_screenshots = [NSArray new];
+		_deletedPaths = [NSMutableArray new];
 		
 		NSString *tag = NSLocalizedString(@"kancolle", @"kancolle twitter hash tag");
 		if(tag) {
@@ -124,6 +152,7 @@
 	NSMutableArray *deleteObjects = [NSMutableArray new];
 	for(HMScreenshotInformation *info in self.screenshots) {
 		if(![screenshotNames containsObject:info.path]) {
+			[self incrementCacheVersionForPath:info.path];
 			[deleteObjects addObject:info];
 		}
 	}
@@ -165,6 +194,8 @@
 	
 	NSUInteger selectionIndex = self.screenshotsController.selectionIndex;
 	[self.screenshotsController removeObjectAtArrangedObjectIndex:selectionIndex];
+	
+	[self incrementCacheVersionForPath:imagePath];
 }
 - (IBAction)revealInFinder:(id)sender
 {
@@ -190,6 +221,8 @@
 	[imageData writeToFile:path atomically:YES];
 	HMScreenshotInformation *info = [HMScreenshotInformation new];
 	info.path = path;
+	info.version = [self cacheVersionForPath:path];
+	
 	[self.screenshotsController insertObject:info atArrangedObjectIndex:0];
 	self.screenshotsController.selectedObjects = @[info];
 	
@@ -198,6 +231,31 @@
 	}
 }
 
+- (void)incrementCacheVersionForPath:(NSString *)fullpath
+{
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"fullpath = %@", fullpath];
+	NSArray *filteredArray = [self.deletedPaths filteredArrayUsingPredicate:predicate];
+	if(filteredArray.count == 0) {
+		HMCacheVersionInfo *info = [HMCacheVersionInfo new];
+		info.fullpath = fullpath;
+		info.version = @(1);
+		[self.deletedPaths addObject:info];
+	} else {
+		HMCacheVersionInfo *info = filteredArray[0];
+		info.version = @(info.version.unsignedIntegerValue + 1);
+	}
+}
+- (NSUInteger)cacheVersionForPath:(NSString *)fullpath
+{
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"fullpath = %@", fullpath];
+	NSArray *filteredArray = [self.deletedPaths filteredArrayUsingPredicate:predicate];
+	if(filteredArray.count == 0) {
+		return 0;
+	}
+	
+	HMCacheVersionInfo *cacheInfo = filteredArray[0];
+	return cacheInfo.version.unsignedIntegerValue;
+}
 
 #pragma mark - Tweet
 @synthesize useMask = _useMask;

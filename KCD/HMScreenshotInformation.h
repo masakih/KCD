@@ -12,4 +12,5 @@
 @property (strong) NSString *path;
 @property (readonly) NSString *name;
 @property (strong) NSDate *creationDate;
+@property NSUInteger version;
 @end
