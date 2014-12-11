@@ -9,6 +9,7 @@
 #import "HMKCSlotItemObject+Extensions.h"
 
 #import "HMKCShipObject+Extensions.h"
+#import "HMKCMasterSlotItemObject.h"
 
 #import "HMServerDataStore.h"
 

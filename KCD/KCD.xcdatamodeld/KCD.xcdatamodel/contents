@@ -174,7 +174,7 @@
         <relationship name="ships" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ship" inverseName="master_ship" inverseEntity="Ship" syncable="YES"/>
         <relationship name="stype" maxCount="1" deletionRule="Nullify" destinationEntity="MasterSType" inverseName="ships" inverseEntity="MasterSType" syncable="YES"/>
     </entity>
-    <entity name="MasterSlotItem" representedClassName="HMKCManagedObject" syncable="YES">
+    <entity name="MasterSlotItem" representedClassName="HMKCMasterSlotItemObject" syncable="YES">
         <attribute name="atap" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="bakk" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="baku" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -321,7 +321,7 @@
         <element name="MasterMapInfo" positionX="0" positionY="0" width="128" height="270"/>
         <element name="MasterMission" positionX="0" positionY="0" width="128" height="238"/>
         <element name="MasterShip" positionX="0" positionY="0" width="128" height="735"/>
-        <element name="MasterSlotItem" positionX="0" positionY="0" width="128" height="540"/>
+        <element name="MasterSlotItem" positionX="0" positionY="0" width="128" height="538"/>
         <element name="MasterSlotItemEquipType" positionX="9" positionY="153" width="128" height="90"/>
         <element name="MasterSType" positionX="0" positionY="0" width="128" height="135"/>
         <element name="MasterUseItem" positionX="0" positionY="0" width="128" height="150"/>
