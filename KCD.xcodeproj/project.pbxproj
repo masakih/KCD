@@ -442,6 +442,7 @@
 			isa = PBXGroup;
 			children = (
 				F4BDEB4C187252F30069D0CE /* KCD */,
+				F4FDF23D1A3D4A480033E0AD /* TestAndDebug */,
 				F4BDEB6A187252F30069D0CE /* KCDTests */,
 				F4BDEB45187252F30069D0CE /* Frameworks */,
 				F4BDEB44187252F30069D0CE /* Products */,
@@ -489,8 +490,6 @@
 				F4BDEB59187252F30069D0CE /* HMAppDelegate.m */,
 				F4268007193AF4E000B2C27F /* HMUserDefaults.h */,
 				F4268008193AF4E000B2C27F /* HMUserDefaults.m */,
-				F4B3DC1F18DECF570011B4FC /* HMTSVSupport.h */,
-				F4B3DC2018DECF570011B4FC /* HMTSVSupport.m */,
 				F4131EE71911445F004F7F9A /* HMSlotItemEquipTypeTransformer.h */,
 				F4131EE81911445F004F7F9A /* HMSlotItemEquipTypeTransformer.m */,
 				F42680351957000200B2C27F /* HMTimerCountFormatter.h */,
@@ -499,8 +498,6 @@
 				F4A3AD8419B0CAB700FDBF80 /* HMPlanToShowsBoldFontTransformer.m */,
 				F4B37EEE19FADFC9002F371A /* HMIgnoreZeroTransformer.h */,
 				F4B37EEF19FADFC9002F371A /* HMIgnoreZeroTransformer.m */,
-				F454F7811A261844003042DD /* HMFleetInformation.h */,
-				F454F7821A261844003042DD /* HMFleetInformation.m */,
 				F4C118F318A67B05005D5B25 /* CustomHTTPProtocol */,
 				F4C1190018A6FFC2005D5B25 /* HMQueue.h */,
 				F4C1190118A6FFC2005D5B25 /* HMQueue.m */,
@@ -514,11 +511,11 @@
 				F494DC6C18CC054800AE97E4 /* HMNyukyoDockStatus.m */,
 				F4C3957218CDDFE500A1E918 /* HMKenzoDockStatus.h */,
 				F4C3957318CDDFE500A1E918 /* HMKenzoDockStatus.m */,
+				F454F7811A261844003042DD /* HMFleetInformation.h */,
+				F454F7821A261844003042DD /* HMFleetInformation.m */,
 				F4D2CBBF18ACE7D7000EBC59 /* Command */,
 				F4BEEEA918D890660006F70C /* UI */,
 				F4BEEEA818D88FF30006F70C /* CoreData */,
-				F46F103F18A9B85E0063E503 /* HMJSONNode.h */,
-				F46F104018A9B85E0063E503 /* HMJSONNode.m */,
 				F4BDEB5E187252F30069D0CE /* Images.xcassets */,
 				F4BDEB4D187252F30069D0CE /* Supporting Files */,
 			);
@@ -613,12 +610,6 @@
 				F4513EE118B635EA00073552 /* HMDocksViewController.h */,
 				F4513EE218B635EA00073552 /* HMDocksViewController.m */,
 				F4B3DC3E18E5C87D0011B4FC /* HMDocksViewController.xib */,
-				F47B78AF18A7B42B0011386E /* HMJSONViewWindowController.h */,
-				F47B78B018A7B42B0011386E /* HMJSONViewWindowController.m */,
-				F4B3DC3B18E5C8700011B4FC /* HMJSONViewWindowController.xib */,
-				F4513EF718BB699700073552 /* HMShipWindowController.h */,
-				F4513EF818BB699700073552 /* HMShipWindowController.m */,
-				F4B3DC3818E5C8650011B4FC /* HMShipWindowController.xib */,
 				F494DC6018C608C100AE97E4 /* HMShipViewController.h */,
 				F494DC6118C608C100AE97E4 /* HMShipViewController.m */,
 				F4B3DC3518E5C8520011B4FC /* HMShipViewController.xib */,
@@ -685,8 +676,6 @@
 				F4C1190A18A74DF0005D5B25 /* HMJSONCommand.m */,
 				F4D2CBC318AE2AE2000EBC59 /* HMCompositCommand.h */,
 				F4D2CBC418AE2AE2000EBC59 /* HMCompositCommand.m */,
-				F46F103418A7CE310063E503 /* HMJSONViewCommand.h */,
-				F46F103518A7CE310063E503 /* HMJSONViewCommand.m */,
 				F4B3DC4518EEEB920011B4FC /* HMCompositMapCommand.h */,
 				F4B3DC4618EEEB920011B4FC /* HMCompositMapCommand.m */,
 				F4D2CBC018AD0E1A000EBC59 /* HMMasterSTypeCommand.h */,
@@ -781,6 +770,26 @@
 				F43F3D451A33F7D400D6DAF7 /* HMResetSortieCommand.m */,
 			);
 			name = Command;
+			sourceTree = "<group>";
+		};
+		F4FDF23D1A3D4A480033E0AD /* TestAndDebug */ = {
+			isa = PBXGroup;
+			children = (
+				F46F103418A7CE310063E503 /* HMJSONViewCommand.h */,
+				F46F103518A7CE310063E503 /* HMJSONViewCommand.m */,
+				F4B3DC1F18DECF570011B4FC /* HMTSVSupport.h */,
+				F4B3DC2018DECF570011B4FC /* HMTSVSupport.m */,
+				F46F103F18A9B85E0063E503 /* HMJSONNode.h */,
+				F46F104018A9B85E0063E503 /* HMJSONNode.m */,
+				F47B78AF18A7B42B0011386E /* HMJSONViewWindowController.h */,
+				F47B78B018A7B42B0011386E /* HMJSONViewWindowController.m */,
+				F4B3DC3B18E5C8700011B4FC /* HMJSONViewWindowController.xib */,
+				F4513EF718BB699700073552 /* HMShipWindowController.h */,
+				F4513EF818BB699700073552 /* HMShipWindowController.m */,
+				F4B3DC3818E5C8650011B4FC /* HMShipWindowController.xib */,
+			);
+			name = TestAndDebug;
+			path = KCD;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
