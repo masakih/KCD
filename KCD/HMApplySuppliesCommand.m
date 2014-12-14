@@ -8,6 +8,7 @@
 
 #import "HMApplySuppliesCommand.h"
 
+#import "HMKCShipObject+Extensions.h"
 #import "HMServerDataStore.h"
 
 
@@ -31,9 +32,15 @@
 			continue;
 		}
 		
-		id ship = array[0];
-		[ship setValue:updataInfo[@"api_bull"] forKey:@"bull"];
-		[ship setValue:updataInfo[@"api_fuel"] forKey:@"fuel"];
+		HMKCShipObject *ship = array[0];
+		ship.bull = updataInfo[@"api_bull"];
+		ship.fuel = updataInfo[@"api_fuel"];
+		NSArray *onslots = updataInfo[@"api_onslot"];
+		ship.onslot_0 = onslots[0];
+		ship.onslot_1 = onslots[1];
+		ship.onslot_2 = onslots[2];
+		ship.onslot_3 = onslots[3];
+		ship.onslot_4 = onslots[4];
 	}
 }
 @end
