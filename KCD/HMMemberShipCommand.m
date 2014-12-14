@@ -197,8 +197,13 @@
 	}
 	
 	if([key isEqualToString:@"api_slot"]) {
+		// ship2 の時のデータがおかしい？
+		if([self.api isEqualToString:@"/kcsapi/api_get_member/ship2"]) {
+			return NO;
+		}
+		
 		[self addSlotItem:value toObject:object];
-		return YES;
+		return NO;
 	}
 	
 	return NO;
