@@ -15,6 +15,7 @@
 #import "HMPreferencePanelController.h"
 #import "HMUpgradableShipsWindowController.h"
 #import "HMScreenshotListWindowController.h"
+#import "HMShipMasterDetailWindowController.h"
 
 #import "HMFleetInformation.h"
 
@@ -43,6 +44,7 @@
 
 #ifdef DEBUG
 @property (strong) HMShipWindowController *shipWindowController;
+@property (strong) HMShipMasterDetailWindowController *shipMDWindowController;
 #endif
 #if ENABLE_JSON_LOG
 @property (strong) HMJSONViewWindowController *logedJSONViewWindowController;
@@ -118,6 +120,9 @@
 #ifdef DEBUG
 	self.shipWindowController = [HMShipWindowController new];
 	[self.shipWindowController showWindow:nil];
+	
+	self.shipMDWindowController = [HMShipMasterDetailWindowController new];
+	[self.shipMDWindowController showWindow:nil];
 #endif
 	if(!HMStandardDefaults.showsDebugMenu) {
 		[self.debugMenuItem setHidden:YES];

@@ -145,6 +145,8 @@
 		F4E7802B18DC3A820011BC4C /* HMLocalDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E7802A18DC3A820011BC4C /* HMLocalDataStore.m */; };
 		F4E7802E18DC3AF00011BC4C /* LocalData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4E7802C18DC3AF00011BC4C /* LocalData.xcdatamodeld */; };
 		F4FCFD44191F4C1D000640A1 /* HMKenzoMarkCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FCFD43191F4C1D000640A1 /* HMKenzoMarkCommand.m */; };
+		F4FDF2411A3D50420033E0AD /* HMShipMasterDetailWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FDF23F1A3D50420033E0AD /* HMShipMasterDetailWindowController.m */; };
+		F4FDF2421A3D50420033E0AD /* HMShipMasterDetailWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4FDF2401A3D50420033E0AD /* HMShipMasterDetailWindowController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -410,6 +412,9 @@
 		F4E7802D18DC3AF00011BC4C /* LocalData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocalData.xcdatamodel; sourceTree = "<group>"; };
 		F4FCFD42191F4C1D000640A1 /* HMKenzoMarkCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMKenzoMarkCommand.h; sourceTree = "<group>"; };
 		F4FCFD43191F4C1D000640A1 /* HMKenzoMarkCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKenzoMarkCommand.m; sourceTree = "<group>"; };
+		F4FDF23E1A3D50420033E0AD /* HMShipMasterDetailWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMShipMasterDetailWindowController.h; sourceTree = "<group>"; };
+		F4FDF23F1A3D50420033E0AD /* HMShipMasterDetailWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMShipMasterDetailWindowController.m; sourceTree = "<group>"; };
+		F4FDF2401A3D50420033E0AD /* HMShipMasterDetailWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMShipMasterDetailWindowController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -781,6 +786,9 @@
 				F4B3DC2018DECF570011B4FC /* HMTSVSupport.m */,
 				F46F103F18A9B85E0063E503 /* HMJSONNode.h */,
 				F46F104018A9B85E0063E503 /* HMJSONNode.m */,
+				F4FDF23E1A3D50420033E0AD /* HMShipMasterDetailWindowController.h */,
+				F4FDF23F1A3D50420033E0AD /* HMShipMasterDetailWindowController.m */,
+				F4FDF2401A3D50420033E0AD /* HMShipMasterDetailWindowController.xib */,
 				F47B78AF18A7B42B0011386E /* HMJSONViewWindowController.h */,
 				F47B78B018A7B42B0011386E /* HMJSONViewWindowController.m */,
 				F4B3DC3B18E5C8700011B4FC /* HMJSONViewWindowController.xib */,
@@ -885,6 +893,7 @@
 				F4A2AF541A074DE40024BD9E /* HMScreenshotListWindowController.xib in Resources */,
 				F4B2A0901A1F9C2100D2EF12 /* HMExternalBrowserWindowController.xib in Resources */,
 				F4BDEB5F187252F30069D0CE /* Images.xcassets in Resources */,
+				F4FDF2421A3D50420033E0AD /* HMShipMasterDetailWindowController.xib in Resources */,
 				F4BEEE9F18D211280006F70C /* Localizable.strings in Resources */,
 				F4513EF018B96C6C00073552 /* Links.rtf in Resources */,
 				F4A3AD9419BDDE5500FDBF80 /* HMPreferencePanelController.xib in Resources */,
@@ -1000,6 +1009,7 @@
 				F494DC6318C608C100AE97E4 /* HMShipViewController.m in Sources */,
 				F46F104918ABAC910063E503 /* KCD.xcdatamodeld in Sources */,
 				F4B414FE18B3A66200468DAF /* HMMemberNDockCommand.m in Sources */,
+				F4FDF2411A3D50420033E0AD /* HMShipMasterDetailWindowController.m in Sources */,
 				F44AB20619E053CB00F217AF /* HMKCDeck+Extension.m in Sources */,
 				F42680371957000200B2C27F /* HMTimerCountFormatter.m in Sources */,
 				F4B414F218B1013C00468DAF /* HMMasterSlotItemCommand.m in Sources */,
