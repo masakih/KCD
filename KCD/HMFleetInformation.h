@@ -31,6 +31,7 @@
 
 //
 - (HMKCDeck *)fleetAtIndex:(NSInteger)fleetNumner;
+- (NSArray *)fleetMemberAtIndex:(NSInteger)fleetNumber;
 
 
 @end

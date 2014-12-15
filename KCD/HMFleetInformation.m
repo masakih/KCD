@@ -176,5 +176,30 @@
 	NSArray *decks = [self.deckController arrangedObjects];
 	return decks[fleetNumner - 1];
 }
-
+- (NSArray *)fleetMemberAtIndex:(NSInteger)fleetNumber
+{
+	HMKCDeck *deck = [self fleetAtIndex:fleetNumber];
+	NSMutableArray *result = [NSMutableArray arrayWithCapacity:6];
+	
+	NSError *error = nil;
+	HMServerDataStore *store = [HMServerDataStore defaultManager];
+	for(NSInteger i = 0; i < 6; i++) {
+		NSString *key = [NSString stringWithFormat:@"ship_%ld", i];
+		NSNumber *shipIdNumber = [deck valueForKey:key];
+		NSInteger shipId = [shipIdNumber integerValue];
+		if(shipId == -1) continue;
+		NSArray *array = nil;
+		if(shipId != -1) {
+			array = [store objectsWithEntityName:@"Ship"
+										   error:&error
+								 predicateFormat:@"id = %ld", shipId];
+		}
+		if(array.count == 0) {
+			NSLog(@"Could not found ship of id %@", shipIdNumber);
+		} else {
+			[result addObject:array[0]];
+		}
+	}
+	return result;
+}
 @end
