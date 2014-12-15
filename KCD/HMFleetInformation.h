@@ -27,6 +27,7 @@
 @property (readonly) HMKCShipObject *sixthShip;
 
 @property (readonly) NSNumber *totalSakuteki;
+@property (readonly) NSNumber *totalSeiku;
 
 
 //

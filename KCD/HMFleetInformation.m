@@ -10,6 +10,9 @@
 
 #import "HMServerDataStore.h"
 #import "HMKCShipObject+Extensions.h"
+#import "HMKCSlotItemObject+Extensions.h"
+#import "HMKCMasterSlotItemObject.h"
+#import "HMKCDeck+Extension.h"
 
 @interface HMFleetInformation ()
 @property (strong) NSArray *shipNameKeys;
@@ -115,7 +118,6 @@
 	}
 	[self setValue:ship forKey:self.shipNameKeys[shipNumber]];
 }
-
 - (void)buildFleet
 {
 	for(id key in self.shipNameKeys) {
@@ -151,6 +153,56 @@
 			@"sixthShip.sakuteki_0",
 			nil];
 }
++ (NSSet *)keyPathsForValuesAffectingTotalSeiku
+{
+	return [NSSet setWithObjects:
+			@"flagShip", @"secondShip", @"thirdShip",
+			@"fourthShip", @"fifthShip", @"sixthShip",
+			@"flagShip.onslot_0",
+			@"flagShip.onslot_1",
+			@"flagShip.onslot_2",
+			@"flagShip.onslot_3",
+			@"flagShip.onslot_4",
+			
+			@"secondShip.onslot_0",
+			@"secondShip.onslot_1",
+			@"secondShip.onslot_2",
+			@"secondShip.onslot_3",
+			@"secondShip.onslot_4",
+			
+			@"thirdShip.onslot_0",
+			@"thirdShip.onslot_1",
+			@"thirdShip.onslot_2",
+			@"thirdShip.onslot_3",
+			@"thirdShip.onslot_4",
+			
+			@"fourthShip.onslot_0",
+			@"fourthShip.onslot_1",
+			@"fourthShip.onslot_2",
+			@"fourthShip.onslot_3",
+			@"fourthShip.onslot_4",
+			
+			@"fifthShip.onslot_0",
+			@"fifthShip.onslot_1",
+			@"fifthShip.onslot_2",
+			@"fifthShip.onslot_3",
+			@"fifthShip.onslot_4",
+			
+			@"sixthShip.onslot_0",
+			@"sixthShip.onslot_1",
+			@"sixthShip.onslot_2",
+			@"sixthShip.onslot_3",
+			@"sixthShip.onslot_4",
+			
+			@"flagShip.equippedItem",
+			@"secondShip.equippedItem",
+			@"thirdShip.equippedItem",
+			@"fourthShip.equippedItem",
+			@"fifthShip.equippedItem",
+			@"sixthShip.equippedItem",
+			
+			nil];
+}
 
 - (void)setSelectedFleetNumber:(NSNumber *)fleetNumber
 {
@@ -169,6 +221,102 @@
 	total += [self.sixthShip.sakuteki_0 integerValue];
 	
 	return @(total);
+}
+
+- (NSUInteger)seikuAtIndex:(NSUInteger)index
+{
+	if(index > 5) {
+		return 0;
+	}
+	
+	HMKCShipObject *ship = nil;
+	NSError *error = nil;
+	HMServerDataStore *store = [HMServerDataStore defaultManager];
+	NSString *key = [NSString stringWithFormat:@"ship_%ld", index];
+	NSNumber *shipIdNumber = [self.selectedFleet valueForKey:key];
+	if(!shipIdNumber) return 0;
+	NSInteger shipId = [shipIdNumber integerValue];
+	NSArray *array = nil;
+	if(shipId != -1) {
+		array = [store objectsWithEntityName:@"Ship"
+									   error:&error
+							 predicateFormat:@"id = %ld", shipId];
+	} else {
+		return 0;
+	}
+	if(array.count == 0) {
+		NSLog(@"Could not found ship of id %@", shipIdNumber);
+	} else {
+		ship = array[0];
+	}
+	if(!ship) return 0;
+//	NSLog(@"ship name -> %@ equipped count -> %ld", ship.name, ship.equippedItem.count);
+	NSArray *effectiveTypes = @[@6, @7, @8, @11];
+	__block NSInteger totalSeiku = 0;
+#if 0
+	[ship.equippedItem enumerateObjectsUsingBlock:^(HMKCSlotItemObject *slotItem, NSUInteger idx, BOOL *stop) {
+		HMKCMasterSlotItemObject *master = slotItem.master_slotItem;
+		NSNumber *type2 = master.type_2;
+		if(![effectiveTypes containsObject:type2]) {
+			NSLog(@"Type %@ is not effective.", type2);
+			return;
+		}
+		
+		NSString *key = [NSString stringWithFormat:@"onslot_%ld", idx];
+		NSNumber *itemCountValue = [ship valueForKey:key];
+		NSNumber *taikuValue = master.tyku;
+		NSInteger itemCount = [itemCountValue integerValue];
+		NSInteger taiku = [taikuValue integerValue];
+		if(itemCount && taiku) {
+			totalSeiku += floor(taiku * sqrt(itemCount));
+			NSLog(@"slot -> %ld, name -> %@, itemCount -> %ld, taiku -> %ld, total -> %ld", idx, master.name, itemCount, taiku, totalSeiku);
+		} else {
+			NSLog(@"itemCount -> %ld, taiku -> %ld", itemCount, taiku);
+		}
+	}];
+#else
+	for(NSInteger i = 0; i < 5; i++) {
+		NSString *key = [NSString stringWithFormat:@"slot_%ld", i];
+		NSNumber *itemId = [ship valueForKey:key];
+		if(itemId.integerValue == -1) break;
+		error = nil;
+		array = [store objectsWithEntityName:@"SlotItem"
+									   error:&error
+							 predicateFormat:@"id = %@", itemId];
+		if(array.count == 0) continue;
+		HMKCSlotItemObject *slotItem = array[0];
+		HMKCMasterSlotItemObject *master = slotItem.master_slotItem;
+		NSNumber *type2 = master.type_2;
+		if(![effectiveTypes containsObject:type2]) {
+//			NSLog(@"Type %@ is not effective.", type2);
+			continue;
+		}
+		
+		key = [NSString stringWithFormat:@"onslot_%ld", i];
+		NSNumber *itemCountValue = [ship valueForKey:key];
+		NSNumber *taikuValue = master.tyku;
+		NSInteger itemCount = [itemCountValue integerValue];
+		NSInteger taiku = [taikuValue integerValue];
+		if(itemCount && taiku) {
+			totalSeiku += floor(taiku * sqrt(itemCount));
+//			NSLog(@"slot -> %ld, name -> %@, itemCount -> %ld, taiku -> %ld, total -> %ld", i, master.name, itemCount, taiku, totalSeiku);
+		} else {
+//			NSLog(@"itemCount -> %ld, taiku -> %ld", itemCount, taiku);
+		}
+	}
+#endif
+	
+	return totalSeiku;
+}
+
+- (NSNumber *)totalSeiku
+{
+	NSUInteger totalSeiku = 0;
+	for(NSUInteger i = 0; i < 6; i++) {
+		totalSeiku += [self seikuAtIndex:i];
+	}
+	
+	return @(totalSeiku);
 }
 
 - (HMKCDeck *)fleetAtIndex:(NSInteger)fleetNumner
