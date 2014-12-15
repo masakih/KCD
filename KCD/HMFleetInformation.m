@@ -174,6 +174,7 @@
 - (HMKCDeck *)fleetAtIndex:(NSInteger)fleetNumner
 {
 	NSArray *decks = [self.deckController arrangedObjects];
+	if(fleetNumner == 0 || decks.count < fleetNumner) return nil;
 	return decks[fleetNumner - 1];
 }
 - (NSArray *)fleetMemberAtIndex:(NSInteger)fleetNumber
