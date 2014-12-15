@@ -71,10 +71,17 @@
 {
 	return [NSSet setWithObject:@"fleetInfo.totalSakuteki"];
 }
-
++ (NSSet *)keyPathsForValuesAffectingTotalSeiku
+{
+	return [NSSet setWithObject:@"fleetInfo.totalSeiku"];
+}
 - (NSNumber *)totalSakuteki
 {
 	return self.fleetInfo.totalSakuteki;
+}
+- (NSNumber *)totalSeiku
+{
+	return self.fleetInfo.totalSeiku;
 }
 - (void)setSelectedDeck:(NSInteger)selectedDeck
 {
