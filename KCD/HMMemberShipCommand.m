@@ -123,7 +123,7 @@
 	[self setValueIfNeeded:value toObject:object forKey:@"ship_id"];
 }
 
-- (void)addSlotItem:(id)array toObject:(NSManagedObject *)object
+- (void)addSlotItem:(id)slotItems toObject:(NSManagedObject *)object
 {
 	if(!self.slotItems) {
 		NSError *error = nil;
@@ -142,10 +142,10 @@
 		}
 	}
 
-	NSInteger i = 0;
-	NSMutableOrderedSet *newOrderedSet = [NSMutableOrderedSet new];
+	NSMutableArray *newItems = [NSMutableArray new];
 	NSRange range = NSMakeRange(0, self.slotItems.count);
-	for(id value in array) {
+	for(id value in slotItems) {
+		if([value integerValue] == -1) continue;
 		NSUInteger index = [self.slotItems indexOfObject:value
 										   inSortedRange:range
 												 options:NSBinarySearchingFirstEqual
@@ -168,14 +168,12 @@
 		}
 		id item = [self.slotItems objectAtIndex:index];
 		
-		[newOrderedSet insertObject:item atIndex:i++];
+		[newItems addObject:item];
 	}
 	
 	NSMutableOrderedSet *orderedSet = [object mutableOrderedSetValueForKey:@"equippedItem"];
-	if(![newOrderedSet isEqual:orderedSet]) {
-//		NSLog(@"equippedItem did change.");
-		[object setValue:newOrderedSet forKey:@"equippedItem"];
-	}
+	[orderedSet removeAllObjects];
+	[orderedSet addObjectsFromArray:newItems];
 }
 
 - (BOOL)handleExtraValue:(id)value forKey:(NSString *)key toObject:(NSManagedObject *)object
