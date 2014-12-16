@@ -850,7 +850,7 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
-                                                <binding destination="OOA-0T-5OQ" name="value" keyPath="arrangedObjects.master_ship.fuel_max" id="GGA-pZ-g0q"/>
+                                                <binding destination="OOA-0T-5OQ" name="value" keyPath="arrangedObjects.slot_0" id="sGV-8J-qef"/>
                                             </connections>
                                         </tableColumn>
                                         <tableColumn width="39" minWidth="10" maxWidth="3.4028234663852886e+38" id="hg3-tV-V7W">
@@ -866,7 +866,7 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
-                                                <binding destination="OOA-0T-5OQ" name="value" keyPath="arrangedObjects.onslot_0" id="Ztu-tw-8Ca"/>
+                                                <binding destination="OOA-0T-5OQ" name="value" keyPath="arrangedObjects.slot_1" id="PPO-b9-Q7u"/>
                                             </connections>
                                         </tableColumn>
                                         <tableColumn width="46" minWidth="10" maxWidth="3.4028234663852886e+38" id="abY-CE-Tjv">
@@ -882,7 +882,7 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
-                                                <binding destination="OOA-0T-5OQ" name="value" keyPath="arrangedObjects.onslot_1" id="01s-Cm-hDg"/>
+                                                <binding destination="OOA-0T-5OQ" name="value" keyPath="arrangedObjects.slot_2" id="UbT-Nr-crd"/>
                                             </connections>
                                         </tableColumn>
                                         <tableColumn width="52" minWidth="10" maxWidth="3.4028234663852886e+38" id="Sd6-Fs-0Fa">
@@ -898,7 +898,7 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
-                                                <binding destination="OOA-0T-5OQ" name="value" keyPath="arrangedObjects.slot_0" id="ejN-a4-o3t"/>
+                                                <binding destination="OOA-0T-5OQ" name="value" keyPath="arrangedObjects.slot_3" id="Qu1-Ac-zIt"/>
                                             </connections>
                                         </tableColumn>
                                         <tableColumn width="40" minWidth="10" maxWidth="3.4028234663852886e+38" id="9nU-cW-3gD">
@@ -914,7 +914,7 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
-                                                <binding destination="OOA-0T-5OQ" name="value" keyPath="arrangedObjects.slot_1" id="veb-cU-FhS"/>
+                                                <binding destination="OOA-0T-5OQ" name="value" keyPath="arrangedObjects.slot_4" id="Eae-O0-xL8"/>
                                             </connections>
                                         </tableColumn>
                                     </tableColumns>
