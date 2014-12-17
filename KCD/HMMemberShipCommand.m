@@ -164,6 +164,15 @@
 											 return [value1 compare:value2];
 										 }];
 		if(index == NSNotFound) {
+			id lastItem = [self.slotItems lastObject];
+			NSInteger lastItemId = [[lastItem valueForKey:@"id"] integerValue];
+			if(lastItemId < [value integerValue]) {
+#if DEBUG
+				[self log:@"item is maybe unregistered, so it is new ship's equipment."];
+#endif
+			} else {
+				[self log:@"Item %@ is not found.", value];
+			}
 			continue;
 		}
 		id item = [self.slotItems objectAtIndex:index];
