@@ -139,7 +139,7 @@
 		[array addObject:dict];
 	}
 	
-	self.spec = array;
+	self.spec = [NSArray arrayWithArray:array];
 	
 	self.equipments = [self.selectedObject.equippedItem array];
 }
