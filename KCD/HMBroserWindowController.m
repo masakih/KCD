@@ -15,7 +15,6 @@
 #import "HMPowerUpSupportViewController.h"
 #import "HMDeckViewController.h"
 
-#import "HMScreenshotWindowController.h"
 #import "HMScreenshotListWindowController.h"
 
 #import "HMServerDataStore.h"
@@ -36,8 +35,6 @@ typedef NS_ENUM(NSInteger, ViewType) {
 @property (strong) NSMutableDictionary *controllers;
 
 @property (strong) NSNumber *flagShipID;
-
-@property (strong) HMScreenshotWindowController *screenshotWindowController;
 
 @property (strong) HMDeckViewController *deckViewController;
 
@@ -233,10 +230,6 @@ typedef NS_ENUM(NSInteger, ViewType) {
 }
 - (IBAction)screenShot:(id)sender
 {
-//	if(!self.screenshotWindowController) {
-//		self.screenshotWindowController = [HMScreenshotWindowController new];
-//	}
-	
 	NSView *contentView = self.window.contentView;
 	
 	NSRect frame = [contentView convertRect:[self.webView visibleRect] fromView:self.webView];
@@ -245,12 +238,6 @@ typedef NS_ENUM(NSInteger, ViewType) {
 	
 	NSBitmapImageRep *rep = [contentView bitmapImageRepForCachingDisplayInRect:frame];
 	[contentView cacheDisplayInRect:frame toBitmapImageRep:rep];
-//	self.screenshotWindowController.snapImageRep = rep;
-//
-//	[self.window beginSheet:self.screenshotWindowController.window
-//		  completionHandler:^(NSModalResponse returnCode) {
-//			  [self.screenshotWindowController.window close];
-//		  }];
 	HMAppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
 	HMScreenshotListWindowController *slwController = appDelegate.screenshotListWindowController;
 	[slwController registerScreenshot:rep fromOnScreen:[contentView convertRect:frame toView:nil]];
