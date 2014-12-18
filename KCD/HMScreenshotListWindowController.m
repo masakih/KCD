@@ -175,6 +175,10 @@
 		}
 	}
 	self.screenshots = [currentArray copy];
+	
+	if(!self.selectedIndexes) {
+		self.selectedIndexes = [NSIndexSet indexSetWithIndex:0];
+	}
 }
 
 - (IBAction)reloadData:(id)sender
