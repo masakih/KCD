@@ -93,8 +93,9 @@
 	
 	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO];
 	self.screenshotsController.sortDescriptors = @[sortDescriptor];
-	[self reloadData];
-	self.selectedIndexes = [NSIndexSet indexSetWithIndex:0];
+	[self performSelector:@selector(reloadData:)
+			   withObject:nil
+			   afterDelay:0.0];
 }
 
 - (NSString *)screenshotSaveDirectoryPath
