@@ -36,12 +36,12 @@
                             <rect key="frame" x="1" y="1" width="166" height="79"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <ikImageBrowserView autoresizesSubviews="NO" zoomValue="2.0327079296112061" allowsMultipleSelection="NO" allowsEmptySelection="NO" id="FPI-Ma-X6H">
-                                    <rect key="frame" x="0.0" y="0.0" width="10000" height="1832"/>
+                                <ikImageBrowserView autoresizesSubviews="NO" zoomValue="3.2822258472442627" allowsMultipleSelection="NO" allowsEmptySelection="NO" id="FPI-Ma-X6H">
+                                    <rect key="frame" x="0.0" y="0.0" width="10000" height="2183"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                     <ikCellsStyle key="cellsStyleMask" none="YES" shadowed="YES" titled="YES" subtitled="YES"/>
                                     <autoresizingMask key="contentResizingMask" heightSizable="YES"/>
-                                    <size key="cellSize" width="1391" height="1391"/>
+                                    <size key="cellSize" width="3556" height="3556"/>
                                     <connections>
                                         <binding destination="mrq-7Y-mHG" name="content" keyPath="arrangedObjects" id="G0M-vZ-Pyi"/>
                                         <binding destination="-2" name="selectionIndexes" keyPath="selectedIndexes" previousBinding="G0M-vZ-Pyi" id="hZm-cJ-NmG"/>
@@ -100,16 +100,16 @@
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="IIP-M3-j7Y">
                         <rect key="frame" x="477" y="121" width="61" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="作成日：" id="fua-jo-vVS">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="作成日：" id="fua-jo-vVS">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="JME-sW-jta">
-                        <rect key="frame" x="477" y="89" width="61" height="17"/>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="JME-sW-jta">
+                        <rect key="frame" x="477" y="94" width="61" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="作成日：" id="XDE-BS-Suc">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="タグ：" id="XDE-BS-Suc">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -195,8 +195,20 @@
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <font key="titleFont" metaFont="system"/>
                     </box>
+                    <tokenField verticalHuggingPriority="750" id="f17-cz-eGH">
+                        <rect key="frame" x="535" y="91" width="298" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                        <tokenFieldCell key="cell" selectable="YES" editable="YES" borderStyle="bezel" alignment="left" drawsBackground="YES" allowsEditingTextAttributes="YES" id="Jum-yI-0A9">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </tokenFieldCell>
+                        <connections>
+                            <binding destination="mrq-7Y-mHG" name="value" keyPath="selection.tags" id="QxU-VJ-jio"/>
+                        </connections>
+                    </tokenField>
                     <button hidden="YES" verticalHuggingPriority="750" id="PMW-hb-KWl">
-                        <rect key="frame" x="756" y="42" width="83" height="32"/>
+                        <rect key="frame" x="756" y="36" width="83" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                         <buttonCell key="cell" type="push" title="Reload" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6mr-Lg-0ls">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>

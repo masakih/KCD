@@ -13,4 +13,5 @@
 @property (readonly) NSString *name;
 @property (strong) NSDate *creationDate;
 @property NSUInteger version;
+@property (nonatomic, strong) NSArray *tags;
 @end

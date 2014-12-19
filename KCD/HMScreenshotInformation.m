@@ -13,8 +13,13 @@
 
 static NSDateFormatter *formatter = nil;
 
+@interface HMScreenshotInformation ()
+@property (nonatomic, strong) NSURL *url;
+@end
+
 @implementation HMScreenshotInformation
 @synthesize creationDate = _creationDate;
+@synthesize url = _url;
 
 + (void)initialize
 {
@@ -64,6 +69,34 @@ static NSDateFormatter *formatter = nil;
 {
 	_creationDate = creationDate;
 }
+- (NSURL *)url
+{
+	if(_url) return _url;
+	_url = [NSURL fileURLWithPath:self.path];
+	return _url;
+}
+
+- (NSArray *)tags
+{
+	NSError *error = nil;
+	NSArray *tags;
+	if(![self.url getResourceValue:&tags forKey:NSURLTagNamesKey error:&error]) {
+		if(error) {
+			NSLog(@"get tags error -> %@", error);
+			return @[];
+		}
+	}
+	return tags;
+}
+- (void)setTags:(NSArray *)tags
+{
+	NSError *error = nil;
+	[self.url setResourceValue:tags forKey:NSURLTagNamesKey error:&error];
+	if(error) {
+		NSLog(@"set tags error -> %@", error);
+	}
+}
+
 
 - (NSUInteger)hash
 {
@@ -73,5 +106,6 @@ static NSDateFormatter *formatter = nil;
 {
 	return [self.path isEqual:object];
 }
+
 
 @end
