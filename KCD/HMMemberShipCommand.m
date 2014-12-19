@@ -66,6 +66,9 @@
 	if([self.api isEqualToString:@"/kcsapi/api_get_member/ship3"]) {
 		return @"api_data.api_ship_data";
 	}
+	if([self.api isEqualToString:@"/kcsapi/api_req_kousyou/getship"]) {
+		return @"api_data.api_ship";
+	}
 	return [super dataKey];
 }
 
@@ -214,7 +217,9 @@
 - (void)finishOperating:(NSManagedObjectContext *)moc
 {
 	// ship3の時は1隻のみのデータアップデートがあるため
-	if([self.api isEqualToString:@"/kcsapi/api_get_member/ship3"]) {
+	// getshipの時は取得した1隻のみのデータのため
+	if([self.api isEqualToString:@"/kcsapi/api_get_member/ship3"]
+	   || [self.api isEqualToString:@"/kcsapi/api_req_kousyou/getship"]) {
 		return;
 	}
 	

@@ -10,6 +10,9 @@
 
 #import "HMMemberKDockCommand.h"
 #import "HMKenzoMarkCommand.h"
+#import "HMMemberSlotItemCommand.h"
+#import "HMMemberShipCommand.h"
+
 
 @implementation HMGetShipCommand
 + (void)load
@@ -28,6 +31,7 @@
 - (id)init
 {
 	self = [super initWithCommands:
+			[HMMemberSlotItemCommand new], [HMMemberShipCommand new],
 			[HMKenzoMarkCommand new], [HMMemberKDockCommand new],
 			nil];
 	return self;

@@ -41,6 +41,13 @@
 {
 	[self commitJSONToEntityNamed:@"SlotItem"];
 }
+- (NSString *)dataKey
+{
+	if([self.api isEqualToString:@"/kcsapi/api_req_kousyou/getship"]) {
+		return @"api_data.api_slotitem";
+	}
+	return [super dataKey];
+}
 
 - (void)setMasterSlotItem:(id)value toObject:(NSManagedObject *)object
 {
@@ -95,7 +102,7 @@
 }
 - (BOOL)handleExtraValue:(id)value forKey:(NSString *)key toObject:(NSManagedObject *)object
 {
-	// 取得後破棄した艦娘のデータを削除する
+	// 取得後破棄した装備のデータを削除する
 	if([key isEqualToString:@"api_id"]) {
 		[self.ids addObject:value];
 		return NO;
@@ -109,7 +116,13 @@
 }
 
 - (void)finishOperating:(NSManagedObjectContext *)moc
-{	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"SlotItem"];
+{
+	// getshipの時は取得した艦娘の装備のみのデータのため
+	if([self.api isEqualToString:@"/kcsapi/api_req_kousyou/getship"]) {
+		return;
+	}
+	
+	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"SlotItem"];
 	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"NOT id IN %@", self.ids];
 	[request setPredicate:predicate];
 	
