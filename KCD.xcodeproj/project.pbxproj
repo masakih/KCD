@@ -10,7 +10,6 @@
 		F4131ECF190F5C08004F7F9A /* HMStoreCreateSlotItemHistoryCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4131ECE190F5C08004F7F9A /* HMStoreCreateSlotItemHistoryCommand.m */; };
 		F4131ED5190F63D8004F7F9A /* HMUpdateSlotItemCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4131ED4190F63D8004F7F9A /* HMUpdateSlotItemCommand.m */; };
 		F4131ED8190FA08D004F7F9A /* HMDestroyItem2Command.m in Sources */ = {isa = PBXBuildFile; fileRef = F4131ED7190FA08D004F7F9A /* HMDestroyItem2Command.m */; };
-		F4131EDC190FEBCC004F7F9A /* HMSlotItemWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4131EDA190FEBCC004F7F9A /* HMSlotItemWindowController.m */; };
 		F4131EDE190FEBDB004F7F9A /* HMSlotItemWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4131EE0190FEBDB004F7F9A /* HMSlotItemWindowController.xib */; };
 		F4131EE61910318F004F7F9A /* HMMasterSlotItemEquipTypeCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4131EE51910318F004F7F9A /* HMMasterSlotItemEquipTypeCommand.m */; };
 		F4131EE91911445F004F7F9A /* HMSlotItemEquipTypeTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4131EE81911445F004F7F9A /* HMSlotItemEquipTypeTransformer.m */; };
@@ -84,6 +83,7 @@
 		F4B2D02B18F83A2F00542742 /* HMScreenshotWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B2D02D18F83A2F00542742 /* HMScreenshotWindowController.xib */; };
 		F4B2D03118F83CBB00542742 /* HMDeckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B2D02F18F83CBB00542742 /* HMDeckViewController.m */; };
 		F4B2D03318F83CC800542742 /* HMDeckViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B2D03518F83CC800542742 /* HMDeckViewController.xib */; };
+		F4B30CF31A458AF2008E3D79 /* HMSlotItemWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B30CF11A458AF2008E3D79 /* HMSlotItemWindowController.swift */; };
 		F4B37EF019FADFC9002F371A /* HMIgnoreZeroTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B37EEF19FADFC9002F371A /* HMIgnoreZeroTransformer.m */; };
 		F4B37EF319FBBBED002F371A /* HMRemodelSlotCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B37EF219FBBBED002F371A /* HMRemodelSlotCommand.m */; };
 		F4B37EF619FBE801002F371A /* HMRemodelSlotItemCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B37EF519FBE801002F371A /* HMRemodelSlotItemCommand.m */; };
@@ -166,8 +166,6 @@
 		F4131ED4190F63D8004F7F9A /* HMUpdateSlotItemCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMUpdateSlotItemCommand.m; sourceTree = "<group>"; };
 		F4131ED6190FA08D004F7F9A /* HMDestroyItem2Command.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDestroyItem2Command.h; sourceTree = "<group>"; };
 		F4131ED7190FA08D004F7F9A /* HMDestroyItem2Command.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDestroyItem2Command.m; sourceTree = "<group>"; };
-		F4131ED9190FEBCC004F7F9A /* HMSlotItemWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSlotItemWindowController.h; sourceTree = "<group>"; };
-		F4131EDA190FEBCC004F7F9A /* HMSlotItemWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSlotItemWindowController.m; sourceTree = "<group>"; };
 		F4131EDF190FEBDB004F7F9A /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMSlotItemWindowController.xib; sourceTree = "<group>"; };
 		F4131EE41910318F004F7F9A /* HMMasterSlotItemEquipTypeCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMasterSlotItemEquipTypeCommand.h; sourceTree = "<group>"; };
 		F4131EE51910318F004F7F9A /* HMMasterSlotItemEquipTypeCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMasterSlotItemEquipTypeCommand.m; sourceTree = "<group>"; };
@@ -304,6 +302,8 @@
 		F4B2D02E18F83CBB00542742 /* HMDeckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDeckViewController.h; sourceTree = "<group>"; };
 		F4B2D02F18F83CBB00542742 /* HMDeckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDeckViewController.m; sourceTree = "<group>"; };
 		F4B2D03418F83CC800542742 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMDeckViewController.xib; sourceTree = "<group>"; };
+		F4B30CF01A458AF1008E3D79 /* KCD-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KCD-Bridging-Header.h"; sourceTree = "<group>"; };
+		F4B30CF11A458AF2008E3D79 /* HMSlotItemWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMSlotItemWindowController.swift; sourceTree = "<group>"; };
 		F4B37EEE19FADFC9002F371A /* HMIgnoreZeroTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMIgnoreZeroTransformer.h; sourceTree = "<group>"; };
 		F4B37EEF19FADFC9002F371A /* HMIgnoreZeroTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMIgnoreZeroTransformer.m; sourceTree = "<group>"; };
 		F4B37EF119FBBBED002F371A /* HMRemodelSlotCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMRemodelSlotCommand.h; sourceTree = "<group>"; };
@@ -539,6 +539,7 @@
 				F4BDEB4F187252F30069D0CE /* InfoPlist.strings */,
 				F4BDEB52187252F30069D0CE /* main.m */,
 				F4BDEB54187252F30069D0CE /* KCD-Prefix.pch */,
+				F4B30CF01A458AF1008E3D79 /* KCD-Bridging-Header.h */,
 				F43E67B618BE02A10087E5B6 /* STypeShortName.plist */,
 				F43E67B818BE060E0087E5B6 /* LevelUpExp.plist */,
 			);
@@ -640,8 +641,7 @@
 				F4B1E30619C73B6A00805879 /* HMSuppliesView.m */,
 				F49828FA1902A226000D6BBE /* HMStrokeTextFieldCell.h */,
 				F49828FB1902A226000D6BBE /* HMStrokeTextFieldCell.m */,
-				F4131ED9190FEBCC004F7F9A /* HMSlotItemWindowController.h */,
-				F4131EDA190FEBCC004F7F9A /* HMSlotItemWindowController.m */,
+				F4B30CF11A458AF2008E3D79 /* HMSlotItemWindowController.swift */,
 				F4131EE0190FEBDB004F7F9A /* HMSlotItemWindowController.xib */,
 				F4A3AD8F19BDDD8D00FDBF80 /* HMPreferencePanelController.h */,
 				F4A3AD9019BDDD8E00FDBF80 /* HMPreferencePanelController.m */,
@@ -973,7 +973,6 @@
 				F4B414EF18B0BF1A00468DAF /* HMMasterMapInfoCommand.m in Sources */,
 				F4C118FC18A67B1C005D5B25 /* CustomHTTPProtocol.m in Sources */,
 				F4B3DC1B18DEAB5E0011B4FC /* HMKaihatuHistory.m in Sources */,
-				F4131EDC190FEBCC004F7F9A /* HMSlotItemWindowController.m in Sources */,
 				F4D2CBCB18B05E58000EBC59 /* HMMaserShipCommand.m in Sources */,
 				F4513EFA18BB699700073552 /* HMShipWindowController.m in Sources */,
 				F42680121943E92D00B2C27F /* HMKCShipObject+Extensions.m in Sources */,
@@ -1018,6 +1017,7 @@
 				F4D2CBC818B0555A000EBC59 /* HMKCManagedObject.m in Sources */,
 				F4D2CBC218AD0E1A000EBC59 /* HMMasterSTypeCommand.m in Sources */,
 				F4B1E30919C73B6A00805879 /* HMSuppliesView.m in Sources */,
+				F4B30CF31A458AF2008E3D79 /* HMSlotItemWindowController.swift in Sources */,
 				F43BA4A4197BE6C200CFF788 /* HMRealDestroyShipCommand.m in Sources */,
 				F46F104518AA50730063E503 /* HMBroserWindowController.m in Sources */,
 				F4B37EF619FBE801002F371A /* HMRemodelSlotItemCommand.m in Sources */,
@@ -1276,6 +1276,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KCD/KCD-Prefix.pch";
@@ -1286,8 +1287,11 @@
 					"COREDATA_STORE_TYPE=0",
 				);
 				INFOPLIST_FILE = "KCD/KCD-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "KCD/KCD-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1296,13 +1300,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KCD/KCD-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "COREDATA_STORE_TYPE=0";
 				INFOPLIST_FILE = "KCD/KCD-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "KCD/KCD-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

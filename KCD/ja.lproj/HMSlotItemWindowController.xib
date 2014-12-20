@@ -5,9 +5,9 @@
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="HMSlotItemWindowController">
+        <customObject id="-2" userLabel="File's Owner" customClass="HMSlotItemWindowController" customModule="KCD" customModuleProvider="target">
             <connections>
-                <outlet property="slotItemController" destination="ceg-Ko-EOy" id="Dhw-8P-VMR"/>
+                <outlet property="slotItemController" destination="ceg-Ko-EOy" id="rh7-p9-bfV"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -31,7 +31,7 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="7Ud-zW-skg" id="kje-ie-wKU">
-                                    <rect key="frame" x="0.0" y="0.0" width="483" height="19"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="486" height="19"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

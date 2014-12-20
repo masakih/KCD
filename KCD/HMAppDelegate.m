@@ -11,7 +11,6 @@
 #import "HMUserDefaults.h"
 #import "HMBroserWindowController.h"
 #import "HMHistoryWindowController.h"
-#import "HMSlotItemWindowController.h"
 #import "HMPreferencePanelController.h"
 #import "HMUpgradableShipsWindowController.h"
 #import "HMScreenshotListWindowController.h"
@@ -22,6 +21,8 @@
 #import "HMExternalBrowserWindowController.h"
 
 #import "HMTSVSupport.h"
+
+#import "KCD-Swift.h"
 
 
 #ifdef DEBUG
@@ -293,7 +294,7 @@
 - (IBAction)showHideSlotItemWindow:(id)sender
 {
 	if(!self.slotItemWindowController) {
-		self.slotItemWindowController = [HMSlotItemWindowController new];
+		self.slotItemWindowController = [HMSlotItemWindowController create];
 	}
 	
 	NSWindow *window = self.slotItemWindowController.window;
