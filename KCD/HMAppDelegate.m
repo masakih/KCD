@@ -322,7 +322,7 @@
 - (IBAction)showHideUpgradableShipWindow:(id)sender
 {
 	if(!self.upgradableShipWindowController) {
-		self.upgradableShipWindowController = [HMUpgradableShipsWindowController new];
+		self.upgradableShipWindowController = [HMUpgradableShipsWindowController create];
 	}
 	
 	NSWindow *window = self.upgradableShipWindowController.window;
