@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 Hori,Masaki. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <Cocoa/Cocoa.h>
 
 @class HMUserDefaults;
 
@@ -14,6 +14,8 @@ extern HMUserDefaults *HMStandardDefaults;
 
 
 @interface HMUserDefaults : NSObject
+
++ (instancetype)hmStandardDefauls;
 
 @property (nonatomic, weak) NSArray *slotItemSortDescriptors;
 @property (nonatomic, weak) NSArray *powerupSupportSortDecriptors;

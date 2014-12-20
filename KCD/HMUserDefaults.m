@@ -27,6 +27,11 @@ HMUserDefaults *HMStandardDefaults = nil;
 	});
 }
 
++ (instancetype)hmStandardDefauls
+{
+	return HMStandardDefaults;
+}
+
 - (void)setObject:(id)value forKey:(NSString *)key
 {
 	[[NSUserDefaults standardUserDefaults] setObject:value forKey:key];
