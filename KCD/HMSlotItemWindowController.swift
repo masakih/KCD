@@ -22,20 +22,14 @@ class HMSlotItemWindowController: NSWindowController
 	}
 	
 	class func create() -> HMSlotItemWindowController {
-		var hoge =  HMSlotItemWindowController.init(windowNibName:"HMSlotItemWindowController")
-		return hoge
+		return HMSlotItemWindowController.init(windowNibName:"HMSlotItemWindowController")
 	}
 	
-	
 	var managedObjectContext : NSManagedObjectContext {
-		get {
-			var store : HMServerDataStore = HMServerDataStore.defaultManager()
-			return store.managedObjectContext
-		}
+		return HMServerDataStore.defaultManager().managedObjectContext
 	}
 	
 	@IBOutlet var slotItemController : NSArrayController?
-	
 	
     override func windowDidLoad() {
         super.windowDidLoad()
