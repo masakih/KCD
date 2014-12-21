@@ -43,6 +43,7 @@ class HMSlotItemWindowController: NSWindowController
 	override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
 		if keyPath == NSSortDescriptorsBinding {
 			HMUserDefaults.hmStandardDefauls().slotItemSortDescriptors = self.slotItemController?.sortDescriptors
+			return
 		}
 		super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
 	}
