@@ -10,7 +10,6 @@
 
 #import "HMUserDefaults.h"
 #import "HMBroserWindowController.h"
-#import "HMHistoryWindowController.h"
 #import "HMPreferencePanelController.h"
 #import "HMScreenshotListWindowController.h"
 #import "HMShipMasterDetailWindowController.h"
@@ -279,7 +278,7 @@
 - (IBAction)showHideHistory:(id)sender
 {
 	if(!self.historyWindowController) {
-		self.historyWindowController = [HMHistoryWindowController new];
+		self.historyWindowController = [HMHistoryWindowController create];
 	}
 	
 	NSWindow *window = self.historyWindowController.window;
