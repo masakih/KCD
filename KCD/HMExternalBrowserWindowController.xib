@@ -6,7 +6,7 @@
         <plugIn identifier="com.apple.WebKitIBPlugin" version="6250"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="HMExternalBrowserWindowController">
+        <customObject id="-2" userLabel="File's Owner" customClass="HMExternalBrowserWindowController" customModule="KCD" customModuleProvider="target">
             <connections>
                 <outlet property="goSegment" destination="TLp-GC-eT2" id="OZi-HB-8MM"/>
                 <outlet property="webView" destination="Vpq-H1-y1B" id="wm8-wa-ayH"/>
@@ -27,7 +27,9 @@
                     <webView id="Vpq-H1-y1B">
                         <rect key="frame" x="0.0" y="0.0" width="850" height="631"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
-                        <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12"/>
+                        <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12">
+                            <nil key="identifier"/>
+                        </webPreferences>
                         <connections>
                             <outlet property="UIDelegate" destination="-2" id="Qgz-H2-GJA"/>
                         </connections>

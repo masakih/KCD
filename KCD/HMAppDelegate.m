@@ -16,8 +16,6 @@
 
 #import "HMFleetInformation.h"
 
-#import "HMExternalBrowserWindowController.h"
-
 #import "HMTSVSupport.h"
 
 #import "KCD-Swift.h"
@@ -344,7 +342,7 @@
 - (IBAction)showExternalBrowserWindow:(id)sender
 {
 	if(!self.externalBrowserWindowController) {
-		self.externalBrowserWindowController = [HMExternalBrowserWindowController new];
+		self.externalBrowserWindowController = [HMExternalBrowserWindowController create];
 	}
 	
 	NSWindow *window = self.externalBrowserWindowController.window;
