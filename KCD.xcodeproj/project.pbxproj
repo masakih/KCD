@@ -85,7 +85,7 @@
 		F4B30CF61A45BABE008E3D79 /* HMUpgradableShipsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B30CF51A45BABE008E3D79 /* HMUpgradableShipsWindowController.swift */; };
 		F4B30CF81A45DACB008E3D79 /* HMSlotItemEquipTypeTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B30CF71A45DACB008E3D79 /* HMSlotItemEquipTypeTransformer.swift */; };
 		F4B30CFA1A468216008E3D79 /* HMPlanToShowsBoldFontTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B30CF91A468216008E3D79 /* HMPlanToShowsBoldFontTransformer.swift */; };
-		F4B37EF019FADFC9002F371A /* HMIgnoreZeroTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B37EEF19FADFC9002F371A /* HMIgnoreZeroTransformer.m */; };
+		F4B30CFC1A4687E7008E3D79 /* HMIgnoreZeroTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B30CFB1A4687E7008E3D79 /* HMIgnoreZeroTransformer.swift */; };
 		F4B37EF319FBBBED002F371A /* HMRemodelSlotCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B37EF219FBBBED002F371A /* HMRemodelSlotCommand.m */; };
 		F4B37EF619FBE801002F371A /* HMRemodelSlotItemCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B37EF519FBE801002F371A /* HMRemodelSlotItemCommand.m */; };
 		F4B37EFF19FC8DCC002F371A /* HMUpgradableShipsWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B37F0119FC8DCC002F371A /* HMUpgradableShipsWindowController.xib */; };
@@ -303,8 +303,7 @@
 		F4B30CF51A45BABE008E3D79 /* HMUpgradableShipsWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMUpgradableShipsWindowController.swift; sourceTree = "<group>"; };
 		F4B30CF71A45DACB008E3D79 /* HMSlotItemEquipTypeTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMSlotItemEquipTypeTransformer.swift; sourceTree = "<group>"; };
 		F4B30CF91A468216008E3D79 /* HMPlanToShowsBoldFontTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMPlanToShowsBoldFontTransformer.swift; sourceTree = "<group>"; };
-		F4B37EEE19FADFC9002F371A /* HMIgnoreZeroTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMIgnoreZeroTransformer.h; sourceTree = "<group>"; };
-		F4B37EEF19FADFC9002F371A /* HMIgnoreZeroTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMIgnoreZeroTransformer.m; sourceTree = "<group>"; };
+		F4B30CFB1A4687E7008E3D79 /* HMIgnoreZeroTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMIgnoreZeroTransformer.swift; sourceTree = "<group>"; };
 		F4B37EF119FBBBED002F371A /* HMRemodelSlotCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMRemodelSlotCommand.h; sourceTree = "<group>"; };
 		F4B37EF219FBBBED002F371A /* HMRemodelSlotCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMRemodelSlotCommand.m; sourceTree = "<group>"; };
 		F4B37EF419FBE801002F371A /* HMRemodelSlotItemCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMRemodelSlotItemCommand.h; sourceTree = "<group>"; };
@@ -496,8 +495,7 @@
 				F42680361957000200B2C27F /* HMTimerCountFormatter.m */,
 				F4B30CF71A45DACB008E3D79 /* HMSlotItemEquipTypeTransformer.swift */,
 				F4B30CF91A468216008E3D79 /* HMPlanToShowsBoldFontTransformer.swift */,
-				F4B37EEE19FADFC9002F371A /* HMIgnoreZeroTransformer.h */,
-				F4B37EEF19FADFC9002F371A /* HMIgnoreZeroTransformer.m */,
+				F4B30CFB1A4687E7008E3D79 /* HMIgnoreZeroTransformer.swift */,
 				F4C118F318A67B05005D5B25 /* CustomHTTPProtocol */,
 				F4C1190018A6FFC2005D5B25 /* HMQueue.h */,
 				F4C1190118A6FFC2005D5B25 /* HMQueue.m */,
@@ -916,7 +914,6 @@
 				F426802B194D0F4800B2C27F /* HMMemberShip2Command.m in Sources */,
 				F4B30CFA1A468216008E3D79 /* HMPlanToShowsBoldFontTransformer.swift in Sources */,
 				F4AA06101931869E00844688 /* HMBattleResultCommand.m in Sources */,
-				F4B37EF019FADFC9002F371A /* HMIgnoreZeroTransformer.m in Sources */,
 				F4B3DC4418E70B370011B4FC /* HMServerDataStore.m in Sources */,
 				F4AA0607192E3B6200844688 /* HMMapStartCommand.m in Sources */,
 				F4AA0604192E20F500844688 /* HMCalculateDamageCommand.m in Sources */,
@@ -960,6 +957,7 @@
 				F4B1E30F19D1C9C400805879 /* HMApplySuppliesCommand.m in Sources */,
 				F48F7B021907D7B800E78AE1 /* HMPortCommand.m in Sources */,
 				F494DC5F18C30AE100AE97E4 /* HMMissionStatus.m in Sources */,
+				F4B30CFC1A4687E7008E3D79 /* HMIgnoreZeroTransformer.swift in Sources */,
 				F43F3D4C1A34AC8000D6DAF7 /* HMKCMasterShipObject.m in Sources */,
 				F4268031194D1B1A00B2C27F /* HMChangeHenseiCommand.m in Sources */,
 				F4513EE418B635EA00073552 /* HMDocksViewController.m in Sources */,
