@@ -12,7 +12,6 @@
 #import "HMBroserWindowController.h"
 #import "HMHistoryWindowController.h"
 #import "HMPreferencePanelController.h"
-#import "HMUpgradableShipsWindowController.h"
 #import "HMScreenshotListWindowController.h"
 #import "HMShipMasterDetailWindowController.h"
 
