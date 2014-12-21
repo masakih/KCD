@@ -7,10 +7,7 @@
 //
 
 import Cocoa
-import ObjectiveC
 
-
-@objc
 class HMSlotItemEquipTypeTransformer: NSValueTransformer
 {
 	override class func load() {
