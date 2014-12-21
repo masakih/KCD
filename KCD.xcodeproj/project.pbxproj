@@ -60,7 +60,6 @@
 		F4A2AF581A0930160024BD9E /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A2AF571A0930160024BD9E /* Quartz.framework */; };
 		F4A2AF5B1A0F9B490024BD9E /* HMScreenshotInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A2AF5A1A0F9B490024BD9E /* HMScreenshotInformation.m */; };
 		F4A3AD82199F529700FDBF80 /* HMCombinedBattleCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A3AD81199F529700FDBF80 /* HMCombinedBattleCommand.m */; };
-		F4A3AD8519B0CAB700FDBF80 /* HMPlanToShowsBoldFontTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A3AD8419B0CAB700FDBF80 /* HMPlanToShowsBoldFontTransformer.m */; };
 		F4A3AD8819B6149D00FDBF80 /* HMNyukyoStartCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A3AD8719B6149D00FDBF80 /* HMNyukyoStartCommand.m */; };
 		F4A3AD8B19B9BE7A00FDBF80 /* HMMaskSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A3AD8A19B9BE7A00FDBF80 /* HMMaskSelectView.m */; };
 		F4A3AD8E19BB220000FDBF80 /* HMMaskInfomation.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A3AD8D19BB220000FDBF80 /* HMMaskInfomation.m */; };
@@ -85,6 +84,7 @@
 		F4B30CF31A458AF2008E3D79 /* HMSlotItemWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B30CF11A458AF2008E3D79 /* HMSlotItemWindowController.swift */; };
 		F4B30CF61A45BABE008E3D79 /* HMUpgradableShipsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B30CF51A45BABE008E3D79 /* HMUpgradableShipsWindowController.swift */; };
 		F4B30CF81A45DACB008E3D79 /* HMSlotItemEquipTypeTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B30CF71A45DACB008E3D79 /* HMSlotItemEquipTypeTransformer.swift */; };
+		F4B30CFA1A468216008E3D79 /* HMPlanToShowsBoldFontTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B30CF91A468216008E3D79 /* HMPlanToShowsBoldFontTransformer.swift */; };
 		F4B37EF019FADFC9002F371A /* HMIgnoreZeroTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B37EEF19FADFC9002F371A /* HMIgnoreZeroTransformer.m */; };
 		F4B37EF319FBBBED002F371A /* HMRemodelSlotCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B37EF219FBBBED002F371A /* HMRemodelSlotCommand.m */; };
 		F4B37EF619FBE801002F371A /* HMRemodelSlotItemCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B37EF519FBE801002F371A /* HMRemodelSlotItemCommand.m */; };
@@ -261,8 +261,6 @@
 		F4A2AF5A1A0F9B490024BD9E /* HMScreenshotInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMScreenshotInformation.m; sourceTree = "<group>"; };
 		F4A3AD80199F529700FDBF80 /* HMCombinedBattleCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMCombinedBattleCommand.h; sourceTree = "<group>"; };
 		F4A3AD81199F529700FDBF80 /* HMCombinedBattleCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMCombinedBattleCommand.m; sourceTree = "<group>"; };
-		F4A3AD8319B0CAB700FDBF80 /* HMPlanToShowsBoldFontTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPlanToShowsBoldFontTransformer.h; sourceTree = "<group>"; };
-		F4A3AD8419B0CAB700FDBF80 /* HMPlanToShowsBoldFontTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMPlanToShowsBoldFontTransformer.m; sourceTree = "<group>"; };
 		F4A3AD8619B6149D00FDBF80 /* HMNyukyoStartCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMNyukyoStartCommand.h; sourceTree = "<group>"; };
 		F4A3AD8719B6149D00FDBF80 /* HMNyukyoStartCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMNyukyoStartCommand.m; sourceTree = "<group>"; };
 		F4A3AD8919B9BE7A00FDBF80 /* HMMaskSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMaskSelectView.h; sourceTree = "<group>"; };
@@ -304,6 +302,7 @@
 		F4B30CF11A458AF2008E3D79 /* HMSlotItemWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMSlotItemWindowController.swift; sourceTree = "<group>"; };
 		F4B30CF51A45BABE008E3D79 /* HMUpgradableShipsWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMUpgradableShipsWindowController.swift; sourceTree = "<group>"; };
 		F4B30CF71A45DACB008E3D79 /* HMSlotItemEquipTypeTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMSlotItemEquipTypeTransformer.swift; sourceTree = "<group>"; };
+		F4B30CF91A468216008E3D79 /* HMPlanToShowsBoldFontTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMPlanToShowsBoldFontTransformer.swift; sourceTree = "<group>"; };
 		F4B37EEE19FADFC9002F371A /* HMIgnoreZeroTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMIgnoreZeroTransformer.h; sourceTree = "<group>"; };
 		F4B37EEF19FADFC9002F371A /* HMIgnoreZeroTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMIgnoreZeroTransformer.m; sourceTree = "<group>"; };
 		F4B37EF119FBBBED002F371A /* HMRemodelSlotCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMRemodelSlotCommand.h; sourceTree = "<group>"; };
@@ -493,11 +492,10 @@
 				F4BDEB59187252F30069D0CE /* HMAppDelegate.m */,
 				F4268007193AF4E000B2C27F /* HMUserDefaults.h */,
 				F4268008193AF4E000B2C27F /* HMUserDefaults.m */,
-				F4B30CF71A45DACB008E3D79 /* HMSlotItemEquipTypeTransformer.swift */,
 				F42680351957000200B2C27F /* HMTimerCountFormatter.h */,
 				F42680361957000200B2C27F /* HMTimerCountFormatter.m */,
-				F4A3AD8319B0CAB700FDBF80 /* HMPlanToShowsBoldFontTransformer.h */,
-				F4A3AD8419B0CAB700FDBF80 /* HMPlanToShowsBoldFontTransformer.m */,
+				F4B30CF71A45DACB008E3D79 /* HMSlotItemEquipTypeTransformer.swift */,
+				F4B30CF91A468216008E3D79 /* HMPlanToShowsBoldFontTransformer.swift */,
 				F4B37EEE19FADFC9002F371A /* HMIgnoreZeroTransformer.h */,
 				F4B37EEF19FADFC9002F371A /* HMIgnoreZeroTransformer.m */,
 				F4C118F318A67B05005D5B25 /* CustomHTTPProtocol */,
@@ -916,6 +914,7 @@
 			files = (
 				F4513EE818B77A5300073552 /* HMMemberKDockCommand.m in Sources */,
 				F426802B194D0F4800B2C27F /* HMMemberShip2Command.m in Sources */,
+				F4B30CFA1A468216008E3D79 /* HMPlanToShowsBoldFontTransformer.swift in Sources */,
 				F4AA06101931869E00844688 /* HMBattleResultCommand.m in Sources */,
 				F4B37EF019FADFC9002F371A /* HMIgnoreZeroTransformer.m in Sources */,
 				F4B3DC4418E70B370011B4FC /* HMServerDataStore.m in Sources */,
@@ -979,7 +978,6 @@
 				F4131ECF190F5C08004F7F9A /* HMStoreCreateSlotItemHistoryCommand.m in Sources */,
 				F4AA05FB192B92C800844688 /* Temporary.xcdatamodeld in Sources */,
 				F4E7802818DBD2A00011BC4C /* HMGetShipCommand.m in Sources */,
-				F4A3AD8519B0CAB700FDBF80 /* HMPlanToShowsBoldFontTransformer.m in Sources */,
 				F4513EF618B9F29800073552 /* HMMemberShipCommand.m in Sources */,
 				F4268034195332A000B2C27F /* HMPowerUpCommand.m in Sources */,
 				F4C1190818A746EB005D5B25 /* HMJSONTracker.m in Sources */,
