@@ -126,7 +126,7 @@
 	self.name = nil;
 	
 	NSInteger fleetId = [self.selectedFleetNumber integerValue];
-	if(fleetId > 6 || fleetId < 0) {
+	if(fleetId > 6 || fleetId <= 0) {
 		return;
 	}
 	
