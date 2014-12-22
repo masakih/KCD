@@ -7,7 +7,7 @@
 //
 
 #import "HMScreenshotListWindowController.h"
-#import "HMScreenshotInformation.h"
+//#import "HMScreenshotInformation.h"
 #import "HMMaskSelectView.h"
 
 #import <Quartz/Quartz.h>
@@ -17,6 +17,9 @@
 
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
+
+#import "KCD-Swift.h"
+
 
 @interface NSFileManager (KCDExtension)
 - (NSString *)_web_pathWithUniqueFilenameForPath:(NSString *)path;
