@@ -21,39 +21,35 @@ class HMHistoryWindowController: NSWindowController
 	}
 	
 	class func create() -> HMHistoryWindowController {
-		return HMHistoryWindowController.init(windowNibName:"HMHistoryWindowController")
+		return HMHistoryWindowController(windowNibName: "HMHistoryWindowController")
 	}
 	
-	var managedObjectContext : NSManagedObjectContext {
+	var managedObjectContext: NSManagedObjectContext {
 		return HMLocalDataStore.defaultManager().managedObjectContext
 	}
 	
-	@IBOutlet var kaihatuHistoryController : NSArrayController?
-	@IBOutlet var kenzoHistoryController : NSArrayController?
+	@IBOutlet var kaihatuHistoryController: NSArrayController?
+	@IBOutlet var kenzoHistoryController: NSArrayController?
 	
-	var selectedTabIndex : Int = 0
+	var selectedTabIndex: Int = 0
 	
-	enum HMHistoryWindowTabIndex : Int {
-		case kKaihatuHistoryIndex = 0
-		case kKenzoHistoryIndex
+	enum HMHistoryWindowTabIndex: Int {
+		case kaihatu = 0
+		case kenzo
 	}
 	
-	@IBAction func delete(aSender: AnyObject?) {
-		var sender = aSender as? NSMenuItem
-		if sender == nil {
-			return
-		}
+	@IBAction func delete(sender: AnyObject?) {
+		let tag = sender?.tag?()
+		if tag == nil { return }
 		
-		let tag = HMHistoryWindowTabIndex(rawValue: sender!.tag)!
-		var target : NSArrayController? = nil
-		switch tag {
-		case .kKaihatuHistoryIndex:
+		let index = HMHistoryWindowTabIndex(rawValue: tag!)!
+		var target: NSArrayController? = nil
+		switch index {
+		case .kaihatu:
 			target = kaihatuHistoryController
-		case .kKenzoHistoryIndex:
+		case .kenzo:
 			target = kenzoHistoryController
-		}
-		
-		if target == nil {
+		default:
 			return
 		}
 		

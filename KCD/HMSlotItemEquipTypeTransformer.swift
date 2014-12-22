@@ -26,11 +26,11 @@ class HMSlotItemEquipTypeTransformer: NSValueTransformer
 			return nil
 		}
 		
-		var store = HMServerDataStore.oneTimeEditor()
-		var error : NSError? = nil
-		var array = store.objectsWithEntityName("MasterSlotItemEquipType", predicate: NSPredicate(format: "id = %@", numValue!), error: &error)
+		let store = HMServerDataStore.oneTimeEditor()
+		var error: NSError? = nil
+		let array = store.objectsWithEntityName("MasterSlotItemEquipType", predicate: NSPredicate(format: "id = %@", numValue!), error: &error)
 		if let actualError = error {
-			println("MasterSlotItemEquipType is invalid. error ->/(actualError)")
+			println("MasterSlotItemEquipType is invalid. error ->\(actualError)")
 			return nil
 		}
 		if array.count == 0 {

@@ -21,7 +21,7 @@ class HMExternalBrowserWindowController: NSWindowController
 		super.init(coder: coder)
 	}
 	class func create() -> HMExternalBrowserWindowController {
-		return HMExternalBrowserWindowController.init(windowNibName:"HMExternalBrowserWindowController")
+		return HMExternalBrowserWindowController(windowNibName: "HMExternalBrowserWindowController")
 	}
 	
     override func windowDidLoad() {

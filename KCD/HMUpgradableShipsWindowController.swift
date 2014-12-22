@@ -21,30 +21,30 @@ class HMUpgradableShipsWindowController: NSWindowController
 	}
 	
 	class func create() -> HMUpgradableShipsWindowController {
-		return HMUpgradableShipsWindowController.init(windowNibName:"HMUpgradableShipsWindowController")
+		return HMUpgradableShipsWindowController(windowNibName: "HMUpgradableShipsWindowController")
 	}
 	
-	var managedObjectContext : NSManagedObjectContext {
+	var managedObjectContext: NSManagedObjectContext {
 		return HMServerDataStore.defaultManager().managedObjectContext
 	}
 	
-	var filterPredicate : NSPredicate? {
+	var filterPredicate: NSPredicate? {
 		if !HMUserDefaults.hmStandardDefauls().showLevelOneShipInUpgradableList {
 			return NSPredicate(format: "lv != 1", argumentArray: nil)
 		}
 		return nil
 	}
 	
-	var showLevelOneShipInUpgradableList : Bool {
+	var showLevelOneShipInUpgradableList: Bool {
 		get {
 			return HMUserDefaults.hmStandardDefauls().showLevelOneShipInUpgradableList
 		}
-		set(flag) {
-			HMUserDefaults.hmStandardDefauls().showLevelOneShipInUpgradableList = flag
+		set {
+			HMUserDefaults.hmStandardDefauls().showLevelOneShipInUpgradableList = newValue
 		}
 	}
 	
-	override class func keyPathsForValuesAffectingValueForKey(key : String) -> NSSet {
+	override class func keyPathsForValuesAffectingValueForKey(key: String) -> NSSet {
 		if key == "filterPredicate" {
 			return NSSet(object: "showLevelOneShipInUpgradableList")
 		}

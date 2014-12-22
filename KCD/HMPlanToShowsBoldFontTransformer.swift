@@ -25,11 +25,10 @@ class HMPlanToShowsBoldFontTransformer: NSValueTransformer
 		if numValue == nil {
 			return false
 		}
-		
-		if !HMUserDefaults.hmStandardDefauls().showsPlanColor {
+		if numValue == 0 {
 			return false
 		}
-		if numValue == 0 {
+		if !HMUserDefaults.hmStandardDefauls().showsPlanColor {
 			return false
 		}
 		return true

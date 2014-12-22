@@ -18,15 +18,15 @@ class HMTimerCountFormatter: NSFormatter
 			timeInterval = date.timeIntervalSince1970
 		} else {
 			let className = NSStringFromClass(self.dynamicType)
-			println("HMTimerCountFormatter: obj class is /(clssName)")
+			println("HMTimerCountFormatter: obj class is \(className)")
 			return ""
 		}
 		
-		let hour : Int = Int(timeInterval / (60 * 60))
+		let hour: Int = Int(timeInterval / (60 * 60))
 		timeInterval -= Double(hour * 60 * 60)
-		let minutes : Int = Int(timeInterval / 60)
+		let minutes: Int = Int(timeInterval / 60)
 		timeInterval -= Double(minutes * 60)
-		let seconds : Int = Int(timeInterval)
+		let seconds: Int = Int(timeInterval)
 		
 		return String(format: "%02ld:%02ld:%02ld", hour, minutes, seconds)
 	}

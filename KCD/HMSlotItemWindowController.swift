@@ -22,29 +22,30 @@ class HMSlotItemWindowController: NSWindowController
 	}
 	
 	class func create() -> HMSlotItemWindowController {
-		return HMSlotItemWindowController.init(windowNibName:"HMSlotItemWindowController")
+		return HMSlotItemWindowController(windowNibName: "HMSlotItemWindowController")
 	}
 	
-	var managedObjectContext : NSManagedObjectContext {
+	var managedObjectContext: NSManagedObjectContext {
 		return HMServerDataStore.defaultManager().managedObjectContext
 	}
 	
-	@IBOutlet var slotItemController : NSArrayController?
+	@IBOutlet var slotItemController: NSArrayController?
 	
     override func windowDidLoad() {
         super.windowDidLoad()
 		
-		var error : NSErrorPointer = nil
-		self.slotItemController?.fetchWithRequest(nil, merge: true, error: error)
+		var error: NSError? = nil
+		self.slotItemController?.fetchWithRequest(nil, merge: true, error: &error)
 		self.slotItemController?.sortDescriptors = HMUserDefaults.hmStandardDefauls().slotItemSortDescriptors
 		self.slotItemController?.addObserver(self, forKeyPath: NSSortDescriptorsBinding, options: .Initial, context: nil)
     }
 	
 	override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
-		if keyPath == NSSortDescriptorsBinding {
+		switch keyPath {
+		case NSSortDescriptorsBinding:
 			HMUserDefaults.hmStandardDefauls().slotItemSortDescriptors = self.slotItemController?.sortDescriptors
-			return
+		default:
+			super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
 		}
-		super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
 	}
 }
