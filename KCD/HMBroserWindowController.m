@@ -13,13 +13,14 @@
 #import "HMDocksViewController.h"
 #import "HMShipViewController.h"
 #import "HMPowerUpSupportViewController.h"
-#import "HMDeckViewController.h"
 
 #import "HMScreenshotListWindowController.h"
 
 #import "HMServerDataStore.h"
 
 #import <JavaScriptCore/JavaScriptCore.h>
+
+#import "KCD-Swift.h"
 
 
 typedef NS_ENUM(NSInteger, ViewType) {
@@ -78,7 +79,7 @@ typedef NS_ENUM(NSInteger, ViewType) {
 	[[self.docksPlaceholder superview] replaceSubview:self.docksPlaceholder with:self.selectedViewController.view];
 	[self.controllers setObject:self.selectedViewController forKey:@0];
 	
-	self.deckViewController = [HMDeckViewController new];
+	self.deckViewController = [HMDeckViewController create];
 	[self.deckViewController.view setFrame:[self.deckPlaceholder frame]];
 	[self.deckViewController.view setAutoresizingMask:[self.deckPlaceholder autoresizingMask]];
 	[[self.deckPlaceholder superview] replaceSubview:self.deckPlaceholder with:self.deckViewController.view];

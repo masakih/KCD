@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="HMDeckViewController">
+        <customObject id="-2" userLabel="File's Owner" customClass="HMDeckViewController" customModule="KCD" customModuleProvider="target">
             <connections>
                 <outlet property="supplies1" destination="RPQ-X8-xc3" id="EYA-P7-td2"/>
                 <outlet property="supplies2" destination="XpJ-kX-rT5" id="yZL-oH-dD9"/>
