@@ -24,33 +24,6 @@
 - (NSString *)_web_pathWithUniqueFilenameForPath:(NSString *)path;
 @end
 
-@interface HMCacheVersionInfo : NSObject <NSCopying>
-@property (strong) NSString *fullpath;
-@property (strong) NSNumber *version;
-@end
-
-@implementation HMCacheVersionInfo
-
-- (instancetype)copyWithZone:(NSZone *)zone
-{
-	HMCacheVersionInfo *result = [[self class] new];
-	result.fullpath = self.fullpath;
-	result.version = self.version;
-	return result;
-}
-- (NSUInteger)hash
-{
-	return [self.fullpath hash];
-}
-- (BOOL)isEqual:(id)object
-{
-	if([super isEqual:object]) return YES;
-	if(![object isMemberOfClass:[self class]]) return NO;
-	return [self.fullpath isEqualToString:[object fullpath]];
-}
-@end
-
-
 @interface HMScreenshotListWindowController ()
 @property (weak, nonatomic) IBOutlet NSArrayController *screenshotsController;
 @property (strong) NSArray *screenshots;
@@ -241,13 +214,12 @@
 	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"fullpath = %@", fullpath];
 	NSArray *filteredArray = [self.deletedPaths filteredArrayUsingPredicate:predicate];
 	if(filteredArray.count == 0) {
-		HMCacheVersionInfo *info = [HMCacheVersionInfo new];
-		info.fullpath = fullpath;
-		info.version = @(1);
+		HMCacheVersionInfo *info = [[HMCacheVersionInfo alloc] initWithPath:fullpath];
+		info.version = 1;
 		[self.deletedPaths addObject:info];
 	} else {
 		HMCacheVersionInfo *info = filteredArray[0];
-		info.version = @(info.version.unsignedIntegerValue + 1);
+		info.version += 1;
 	}
 }
 - (NSUInteger)cacheVersionForPath:(NSString *)fullpath
@@ -259,7 +231,7 @@
 	}
 	
 	HMCacheVersionInfo *cacheInfo = filteredArray[0];
-	return cacheInfo.version.unsignedIntegerValue;
+	return cacheInfo.version;
 }
 
 #pragma mark - Tweet

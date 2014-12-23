@@ -47,6 +47,7 @@
 		F4551BE21A47044A00BB0235 /* HMExternalBrowserWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4551BE11A47044A00BB0235 /* HMExternalBrowserWindowController.swift */; };
 		F4551BE41A48379F00BB0235 /* HMDeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4551BE31A48379F00BB0235 /* HMDeckViewController.swift */; };
 		F4551BE61A48711D00BB0235 /* HMScreenshotInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4551BE51A48711D00BB0235 /* HMScreenshotInformation.swift */; };
+		F4551BEA1A48FA6000BB0235 /* HMCacheVersionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4551BE91A48FA6000BB0235 /* HMCacheVersionInfo.swift */; };
 		F46F103618A7CE310063E503 /* HMJSONViewCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F46F103518A7CE310063E503 /* HMJSONViewCommand.m */; };
 		F46F104118A9B85E0063E503 /* HMJSONNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F46F104018A9B85E0063E503 /* HMJSONNode.m */; };
 		F46F104518AA50730063E503 /* HMBroserWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F46F104318AA50730063E503 /* HMBroserWindowController.m */; };
@@ -231,6 +232,7 @@
 		F4551BE11A47044A00BB0235 /* HMExternalBrowserWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMExternalBrowserWindowController.swift; sourceTree = "<group>"; };
 		F4551BE31A48379F00BB0235 /* HMDeckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMDeckViewController.swift; sourceTree = "<group>"; };
 		F4551BE51A48711D00BB0235 /* HMScreenshotInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMScreenshotInformation.swift; sourceTree = "<group>"; };
+		F4551BE91A48FA6000BB0235 /* HMCacheVersionInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMCacheVersionInfo.swift; sourceTree = "<group>"; };
 		F46F103418A7CE310063E503 /* HMJSONViewCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMJSONViewCommand.h; sourceTree = "<group>"; };
 		F46F103518A7CE310063E503 /* HMJSONViewCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMJSONViewCommand.m; sourceTree = "<group>"; };
 		F46F103F18A9B85E0063E503 /* HMJSONNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMJSONNode.h; sourceTree = "<group>"; };
@@ -636,6 +638,7 @@
 				F4551BE51A48711D00BB0235 /* HMScreenshotInformation.swift */,
 				F4A2AF4F1A074DCF0024BD9E /* HMScreenshotListWindowController.h */,
 				F4A2AF501A074DCF0024BD9E /* HMScreenshotListWindowController.m */,
+				F4551BE91A48FA6000BB0235 /* HMCacheVersionInfo.swift */,
 				F4A2AF561A074DE40024BD9E /* HMScreenshotListWindowController.xib */,
 				F4551BE11A47044A00BB0235 /* HMExternalBrowserWindowController.swift */,
 				F4B2A08E1A1F9C2100D2EF12 /* HMExternalBrowserWindowController.xib */,
@@ -901,6 +904,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4513EE818B77A5300073552 /* HMMemberKDockCommand.m in Sources */,
+				F4551BEA1A48FA6000BB0235 /* HMCacheVersionInfo.swift in Sources */,
 				F426802B194D0F4800B2C27F /* HMMemberShip2Command.m in Sources */,
 				F4B30CFA1A468216008E3D79 /* HMPlanToShowsBoldFontTransformer.swift in Sources */,
 				F4AA06101931869E00844688 /* HMBattleResultCommand.m in Sources */,
