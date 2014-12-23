@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="HMDocksViewController">
+        <customObject id="-2" userLabel="File's Owner" customClass="HMDocksViewController" customModule="KCD" customModuleProvider="target">
             <connections>
                 <outlet property="battleContoller" destination="sje-58-fiD" id="4Qx-Ag-AL2"/>
                 <outlet property="view" destination="vGg-MO-rzn" id="Z4V-4O-pqr"/>

@@ -10,7 +10,6 @@
 
 #import "HMAppDelegate.h"
 #import "HMUserDefaults.h"
-#import "HMDocksViewController.h"
 
 #import "HMScreenshotListWindowController.h"
 
@@ -71,7 +70,7 @@ typedef NS_ENUM(NSInteger, ViewType) {
 	self.flashTopLeft = NSMakePoint(70, 145);
 	[self adjustFlash];
 	
-	self.selectedViewController = [HMDocksViewController new];
+	self.selectedViewController = [HMDocksViewController create];
 	[self.selectedViewController.view setFrame:[self.docksPlaceholder frame]];
 	[self.selectedViewController.view setAutoresizingMask:[self.docksPlaceholder autoresizingMask]];
 	[[self.docksPlaceholder superview] replaceSubview:self.docksPlaceholder with:self.selectedViewController.view];
