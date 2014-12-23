@@ -20,30 +20,38 @@ class HMScreenshotInformation: NSObject
 		formatter?.doesRelativeDateFormatting = true
 	}
 	
-	var path: String?
+	init(path aPath: String) {
+		path = aPath
+		super.init()
+	}
+	
+	var path: String
 	var version: UInt = 0
 	
-	var url: NSURL {
-		return NSURL.fileURLWithPath(path!)!
-	}
-	var creationDate: NSDate {
+	lazy var url: NSURL? = {
+		return NSURL.fileURLWithPath(self.path)
+	}()
+	lazy var creationDate: NSDate? = {
 		let fm = NSFileManager.defaultManager()
-		let fileAttr: NSDictionary = fm.attributesOfItemAtPath(path!, error: nil)!
-		return fileAttr.fileCreationDate()!
-	}
+		let fileAttr: NSDictionary = fm.attributesOfItemAtPath(self.path, error: nil)!
+		return fileAttr.fileCreationDate()
+	}()
 	
 	var imageUID: String {
-		return path!
+		return path
 	}
 	var imageRepresentationType: String = IKImageBrowserQuickLookPathRepresentationType
 	var imageRepresentation: AnyObject {
-		return path!
+		return path
 	}
 	var imageTitle: String {
-		return path!.lastPathComponent.stringByDeletingPathExtension
+		return path.lastPathComponent.stringByDeletingPathExtension
 	}
-	var imageSubtitle: String {
-		return formatter!.stringFromDate(creationDate)
+	var imageSubtitle: String? {
+		if creationDate == nil {
+			return nil
+		}
+		return formatter!.stringFromDate(creationDate!)
 	}
 	var imageVersion: UInt {
 		return version
@@ -51,20 +59,25 @@ class HMScreenshotInformation: NSObject
 	
 	var tags: [String]? {
 		get {
+			if url == nil {
+				return nil
+			}
 			var error: NSError? = nil
 			var resource: AnyObject? = nil
-			if !url.getResourceValue(&resource, forKey: NSURLTagNamesKey, error: &error) {
+			if !url!.getResourceValue(&resource, forKey: NSURLTagNamesKey, error: &error) {
 				if error != nil {
 					println("get tags error -> \(error)")
 				}
-				return []
 			}
 			
 			return resource as? [String]
 		}
 		set {
+			if url == nil {
+				return
+			}
 			var error: NSError? = nil
-			url.setResourceValue(newValue, forKey: NSURLTagNamesKey, error: &error)
+			url!.setResourceValue(newValue, forKey: NSURLTagNamesKey, error: &error)
 			if error != nil {
 				println("set tags error -> \(error)")
 			}
@@ -72,9 +85,9 @@ class HMScreenshotInformation: NSObject
 	}
 	
 	override var hash: Int {
-		return path!.hash
+		return path.hash
 	}
 	override func isEqual(object: AnyObject?) -> Bool {
-		return path!.isEqual(object)
+		return path.isEqual(object)
 	}
 }

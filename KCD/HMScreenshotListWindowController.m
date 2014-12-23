@@ -7,7 +7,6 @@
 //
 
 #import "HMScreenshotListWindowController.h"
-//#import "HMScreenshotInformation.h"
 #import "HMMaskSelectView.h"
 
 #import <Quartz/Quartz.h>
@@ -172,8 +171,7 @@
 			return NO;
 		}];
 		if(index == NSNotFound) {
-			HMScreenshotInformation *info = [HMScreenshotInformation new];
-			info.path = path;
+			HMScreenshotInformation *info = [[HMScreenshotInformation alloc] initWithPath:path];
 			[currentArray addObject:info];
 		}
 	}
@@ -227,8 +225,7 @@
 	path = [[NSFileManager defaultManager] _web_pathWithUniqueFilenameForPath:path];
 	
 	[imageData writeToFile:path atomically:YES];
-	HMScreenshotInformation *info = [HMScreenshotInformation new];
-	info.path = path;
+	HMScreenshotInformation *info = [[HMScreenshotInformation alloc] initWithPath:path];
 	info.version = [self cacheVersionForPath:path];
 	
 	[self.screenshotsController insertObject:info atArrangedObjectIndex:0];
