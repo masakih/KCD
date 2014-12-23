@@ -49,6 +49,7 @@
 		F4551BE61A48711D00BB0235 /* HMScreenshotInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4551BE51A48711D00BB0235 /* HMScreenshotInformation.swift */; };
 		F4551BEA1A48FA6000BB0235 /* HMCacheVersionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4551BE91A48FA6000BB0235 /* HMCacheVersionInfo.swift */; };
 		F4551BEE1A49186900BB0235 /* HMShipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4551BED1A49186900BB0235 /* HMShipViewController.swift */; };
+		F4551BF01A49350B00BB0235 /* HMPowerUpSupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4551BEF1A49350B00BB0235 /* HMPowerUpSupportViewController.swift */; };
 		F46F103618A7CE310063E503 /* HMJSONViewCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F46F103518A7CE310063E503 /* HMJSONViewCommand.m */; };
 		F46F104118A9B85E0063E503 /* HMJSONNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F46F104018A9B85E0063E503 /* HMJSONNode.m */; };
 		F46F104518AA50730063E503 /* HMBroserWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F46F104318AA50730063E503 /* HMBroserWindowController.m */; };
@@ -56,7 +57,6 @@
 		F47B78B218A7B42B0011386E /* HMJSONViewWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F47B78B018A7B42B0011386E /* HMJSONViewWindowController.m */; };
 		F48F7B021907D7B800E78AE1 /* HMPortCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F48F7B011907D7B800E78AE1 /* HMPortCommand.m */; };
 		F494DC5F18C30AE100AE97E4 /* HMMissionStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = F494DC5E18C30AE100AE97E4 /* HMMissionStatus.m */; };
-		F494DC6718C8BA6400AE97E4 /* HMPowerUpSupportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F494DC6618C8BA6400AE97E4 /* HMPowerUpSupportViewController.m */; };
 		F494DC6A18C8BAB900AE97E4 /* HMPowerUpSupportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F494DC6818C8BAB900AE97E4 /* HMPowerUpSupportViewController.xib */; };
 		F494DC6D18CC054800AE97E4 /* HMNyukyoDockStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = F494DC6C18CC054800AE97E4 /* HMNyukyoDockStatus.m */; };
 		F49828FC1902A226000D6BBE /* HMStrokeTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F49828FB1902A226000D6BBE /* HMStrokeTextFieldCell.m */; };
@@ -234,6 +234,7 @@
 		F4551BE51A48711D00BB0235 /* HMScreenshotInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMScreenshotInformation.swift; sourceTree = "<group>"; };
 		F4551BE91A48FA6000BB0235 /* HMCacheVersionInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMCacheVersionInfo.swift; sourceTree = "<group>"; };
 		F4551BED1A49186900BB0235 /* HMShipViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMShipViewController.swift; sourceTree = "<group>"; };
+		F4551BEF1A49350B00BB0235 /* HMPowerUpSupportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMPowerUpSupportViewController.swift; sourceTree = "<group>"; };
 		F46F103418A7CE310063E503 /* HMJSONViewCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMJSONViewCommand.h; sourceTree = "<group>"; };
 		F46F103518A7CE310063E503 /* HMJSONViewCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMJSONViewCommand.m; sourceTree = "<group>"; };
 		F46F103F18A9B85E0063E503 /* HMJSONNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMJSONNode.h; sourceTree = "<group>"; };
@@ -250,8 +251,6 @@
 		F494DC5918C23E4400AE97E4 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F494DC5D18C30AE100AE97E4 /* HMMissionStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMissionStatus.h; sourceTree = "<group>"; };
 		F494DC5E18C30AE100AE97E4 /* HMMissionStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMissionStatus.m; sourceTree = "<group>"; };
-		F494DC6518C8BA6400AE97E4 /* HMPowerUpSupportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPowerUpSupportViewController.h; sourceTree = "<group>"; };
-		F494DC6618C8BA6400AE97E4 /* HMPowerUpSupportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMPowerUpSupportViewController.m; sourceTree = "<group>"; };
 		F494DC6918C8BAB900AE97E4 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMPowerUpSupportViewController.xib; sourceTree = "<group>"; };
 		F494DC6B18CC054800AE97E4 /* HMNyukyoDockStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMNyukyoDockStatus.h; sourceTree = "<group>"; };
 		F494DC6C18CC054800AE97E4 /* HMNyukyoDockStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMNyukyoDockStatus.m; sourceTree = "<group>"; };
@@ -606,8 +605,7 @@
 				F4B3DC3E18E5C87D0011B4FC /* HMDocksViewController.xib */,
 				F4551BED1A49186900BB0235 /* HMShipViewController.swift */,
 				F4B3DC3518E5C8520011B4FC /* HMShipViewController.xib */,
-				F494DC6518C8BA6400AE97E4 /* HMPowerUpSupportViewController.h */,
-				F494DC6618C8BA6400AE97E4 /* HMPowerUpSupportViewController.m */,
+				F4551BEF1A49350B00BB0235 /* HMPowerUpSupportViewController.swift */,
 				F494DC6818C8BAB900AE97E4 /* HMPowerUpSupportViewController.xib */,
 				F4551BDB1A46A9D100BB0235 /* HMHistoryWindowController.swift */,
 				F4B3DC3218E5C81E0011B4FC /* HMHistoryWindowController.xib */,
@@ -986,7 +984,6 @@
 				F4AA060D1930E69200844688 /* HMMidnightBattleCommand.m in Sources */,
 				F4BDEB5A187252F30069D0CE /* HMAppDelegate.m in Sources */,
 				F4E7802B18DC3A820011BC4C /* HMLocalDataStore.m in Sources */,
-				F494DC6718C8BA6400AE97E4 /* HMPowerUpSupportViewController.m in Sources */,
 				F43BA4A7197CD59400CFF788 /* HMNyukyoSpeedChangeCommand.m in Sources */,
 				F4A3AD8819B6149D00FDBF80 /* HMNyukyoStartCommand.m in Sources */,
 				F4B1E30C19D1C06900805879 /* HMHokyuChargeCommand.m in Sources */,
@@ -997,6 +994,7 @@
 				F4B414F218B1013C00468DAF /* HMMasterSlotItemCommand.m in Sources */,
 				F4A2AF521A074DCF0024BD9E /* HMScreenshotListWindowController.m in Sources */,
 				F4131EE61910318F004F7F9A /* HMMasterSlotItemEquipTypeCommand.m in Sources */,
+				F4551BF01A49350B00BB0235 /* HMPowerUpSupportViewController.swift in Sources */,
 				F4D2CBC818B0555A000EBC59 /* HMKCManagedObject.m in Sources */,
 				F4D2CBC218AD0E1A000EBC59 /* HMMasterSTypeCommand.m in Sources */,
 				F4B1E30919C73B6A00805879 /* HMSuppliesView.m in Sources */,

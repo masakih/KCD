@@ -11,7 +11,6 @@
 #import "HMAppDelegate.h"
 #import "HMUserDefaults.h"
 #import "HMDocksViewController.h"
-#import "HMPowerUpSupportViewController.h"
 
 #import "HMScreenshotListWindowController.h"
 
