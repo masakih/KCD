@@ -89,7 +89,6 @@ class HMShipViewController: NSViewController
 		let predicate: NSPredicate? = appDelegate.predicateForShipType(type!)
 		
 		shipController!.filterPredicate = predicate
-//		shipController!.rearrangeObjects()
 	}
 	@IBAction func changeView(sender: AnyObject?) {
 		var tag: Int? = nil
