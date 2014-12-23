@@ -25,8 +25,8 @@ class HMScreenshotInformation: NSObject
 		super.init()
 	}
 	
-	var path: String
-	var version: UInt = 0
+	let path: String
+	var version: Int = 0
 	
 	lazy var url: NSURL? = {
 		return NSURL.fileURLWithPath(self.path)
@@ -53,7 +53,7 @@ class HMScreenshotInformation: NSObject
 		}
 		return formatter!.stringFromDate(creationDate!)
 	}
-	var imageVersion: UInt {
+	var imageVersion: Int {
 		return version
 	}
 	
