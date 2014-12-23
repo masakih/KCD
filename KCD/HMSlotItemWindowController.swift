@@ -31,9 +31,7 @@ class HMSlotItemWindowController: NSWindowController
 	
 	@IBOutlet var slotItemController: NSArrayController?
 	
-    override func windowDidLoad() {
-        super.windowDidLoad()
-		
+    override func awakeFromNib() {
 		var error: NSError? = nil
 		self.slotItemController?.fetchWithRequest(nil, merge: true, error: &error)
 		self.slotItemController?.sortDescriptors = HMUserDefaults.hmStandardDefauls().slotItemSortDescriptors

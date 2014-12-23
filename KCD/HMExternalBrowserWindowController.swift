@@ -24,9 +24,7 @@ class HMExternalBrowserWindowController: NSWindowController
 		return HMExternalBrowserWindowController(windowNibName: "HMExternalBrowserWindowController")
 	}
 	
-    override func windowDidLoad() {
-        super.windowDidLoad()
-		
+    override func awakeFromNib() {
 		goHome(nil)
 		webView!.addObserver(self, forKeyPath: "canGoBack", options: .Initial, context: nil)
 		webView!.addObserver(self, forKeyPath: "canGoForward", options: .Initial, context: nil)
