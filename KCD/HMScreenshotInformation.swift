@@ -88,6 +88,9 @@ class HMScreenshotInformation: NSObject
 		return path.hash
 	}
 	override func isEqual(object: AnyObject?) -> Bool {
-		return path.isEqual(object)
+		if super.isEqual(object) { return true }
+		let info = object as? HMScreenshotInformation
+		if info == nil { return  false }
+		return path.isEqual(object!.path)
 	}
 }
