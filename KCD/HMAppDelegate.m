@@ -10,7 +10,6 @@
 
 #import "HMUserDefaults.h"
 #import "HMBroserWindowController.h"
-#import "HMPreferencePanelController.h"
 #import "HMScreenshotListWindowController.h"
 #import "HMShipMasterDetailWindowController.h"
 
@@ -304,7 +303,7 @@
 - (IBAction)showHidePreferencePanle:(id)sender
 {
 	if(!self.preferencePanelController) {
-		self.preferencePanelController = [HMPreferencePanelController new];
+		self.preferencePanelController = [HMPreferencePanelController create];
 	}
 	
 	NSWindow *window = self.preferencePanelController.window;
