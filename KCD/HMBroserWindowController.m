@@ -11,7 +11,6 @@
 #import "HMAppDelegate.h"
 #import "HMUserDefaults.h"
 #import "HMDocksViewController.h"
-#import "HMShipViewController.h"
 #import "HMPowerUpSupportViewController.h"
 
 #import "HMScreenshotListWindowController.h"
@@ -132,7 +131,11 @@ typedef NS_ENUM(NSInteger, ViewType) {
 	
 	NSViewController *newContoller = [self.controllers objectForKey:@(type)];
 	if(!newContoller) {
-		newContoller = [controllerClass new];
+		if([controllerClass respondsToSelector:@selector(create)]) {
+			newContoller = [controllerClass create];
+		} else {
+			newContoller = [controllerClass new];
+		}
 		[self.controllers setObject:newContoller forKey:@(type)];
 	}
 	[newContoller.view setFrame:[self.selectedViewController.view frame]];
