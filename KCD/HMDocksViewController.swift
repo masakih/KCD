@@ -169,7 +169,7 @@ class HMDocksViewController: NSViewController
 		var error: NSError? = nil
 		let array = store.objectsWithEntityName("Battle", predicate: nil, error: &error)
 		if error != nil {
-			println("%s error: \(error)", __FUNCTION__)
+			println(__FUNCTION__, " error: \(error)")
 			return nil
 		}
 		if array.count == 0 {
@@ -184,7 +184,7 @@ class HMDocksViewController: NSViewController
 		if deckID == nil { return nil }
 		let array = store.objectsWithEntityName("Deck", predicate: NSPredicate(format: "id = %@", deckID!), error: &error)
 		if error != nil {
-			println("%s error: \(error)", __FUNCTION__)
+			println(__FUNCTION__, " error: \(error)")
 			return nil
 		}
 		if array.count == 0 {
@@ -209,7 +209,7 @@ class HMDocksViewController: NSViewController
 		let predicate = NSPredicate(format: "maparea_id = %@ AND %K = %@", area!, "no", info!)
 		let array = store.objectsWithEntityName("MasterMapInfo", predicate: predicate, error: &error)
 		if error != nil {
-			println("%s error: \(error)", __FUNCTION__)
+			println(__FUNCTION__, " error: \(error)")
 			return nil
 		}
 		if array.count == 0 {
