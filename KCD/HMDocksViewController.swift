@@ -91,7 +91,7 @@ class HMDocksViewController: NSViewController
 		
 		NSTimer.scheduledTimerWithTimeInterval(0.33, target: self, selector: "fire:", userInfo: nil, repeats: true)
 		
-		battleContoller?.addObserver(self, forKeyPath: "selection", options: .Initial, context: nil)
+		battleContoller!.addObserver(self, forKeyPath: "selection", options: .Initial, context: nil)
 	}
 	
 	let mission2Status: HMMissionStatus
@@ -180,7 +180,7 @@ class HMDocksViewController: NSViewController
 	var fleetName: String? {
 		let store = HMServerDataStore.defaultManager()
 		var error: NSError? = nil
-		let deckID = battleContoller?.valueForKeyPath("content.deckId") as? NSNumber
+		let deckID = battleContoller!.valueForKeyPath("content.deckId") as? NSNumber
 		if deckID == nil { return nil }
 		let array = store.objectsWithEntityName("Deck", predicate: NSPredicate(format: "id = %@", deckID!), error: &error)
 		if error != nil {
@@ -195,16 +195,16 @@ class HMDocksViewController: NSViewController
 		return "\(name!)"
 	}
 	var areaNumber: String? {
-		let area = battleContoller?.valueForKeyPath("content.mapArea") as? NSNumber
-		let info = battleContoller?.valueForKeyPath("content.mapInfo") as? NSNumber
+		let area = battleContoller!.valueForKeyPath("content.mapArea") as? NSNumber
+		let info = battleContoller!.valueForKeyPath("content.mapInfo") as? NSNumber
 		if area == nil || info == nil { return nil }
 		return "\(area!)-\(info!)"
 	}
 	var areaName: String? {
 		let store = HMServerDataStore.defaultManager()
 		var error: NSError? = nil
-		let area = battleContoller?.valueForKeyPath("content.mapArea") as? NSNumber
-		let info = battleContoller?.valueForKeyPath("content.mapInfo") as? NSNumber
+		let area = battleContoller!.valueForKeyPath("content.mapArea") as? NSNumber
+		let info = battleContoller!.valueForKeyPath("content.mapInfo") as? NSNumber
 		if area == nil || info == nil { return nil }
 		let predicate = NSPredicate(format: "maparea_id = %@ AND %K = %@", area!, "no", info!)
 		let array = store.objectsWithEntityName("MasterMapInfo", predicate: predicate, error: &error)

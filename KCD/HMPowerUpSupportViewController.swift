@@ -25,15 +25,15 @@ class HMPowerUpSupportViewController: NSViewController
 	override func awakeFromNib() {
 		changeCategory(nil)
 		
-		shipController?.fetchWithRequest(nil, merge: true, error: nil)
-		shipController?.sortDescriptors = HMUserDefaults.hmStandardDefauls().powerupSupportSortDecriptors
-		shipController?.addObserver(self, forKeyPath: NSSortDescriptorsBinding, options: .Initial, context: nil)
+		shipController!.fetchWithRequest(nil, merge: true, error: nil)
+		shipController!.sortDescriptors = HMUserDefaults.hmStandardDefauls().powerupSupportSortDecriptors
+		shipController!.addObserver(self, forKeyPath: NSSortDescriptorsBinding, options: .Initial, context: nil)
 	}
 	
 	override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
 		switch keyPath {
 		case NSSortDescriptorsBinding:
-			HMUserDefaults.hmStandardDefauls().powerupSupportSortDecriptors = shipController?.sortDescriptors
+			HMUserDefaults.hmStandardDefauls().powerupSupportSortDecriptors = shipController!.sortDescriptors
 		default:
 			super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
 		}
@@ -87,10 +87,10 @@ class HMPowerUpSupportViewController: NSViewController
 	@IBOutlet var typeSegment: NSSegmentedControl?
 	
 	@IBAction func changeCategory(sender: AnyObject?) {
-		let tag = typeSegment?.selectedSegment
-		if tag == nil { return }
+		let tag = typeSegment!.selectedSegment
+		if tag == -1 { return }
 		let appDelegate = NSApplication.sharedApplication().delegate as HMAppDelegate
-		let type = HMShipType(rawValue: tag!)
+		let type = HMShipType(rawValue: tag)
 		if type == nil { return }
 		let catPredicate = appDelegate.predicateForShipType(type!)
 		var predicate = omitPredicate()
@@ -99,7 +99,7 @@ class HMPowerUpSupportViewController: NSViewController
 		} else if catPredicate != nil {
 			predicate = catPredicate
 		}
-		shipController?.filterPredicate = predicate
+		shipController!.filterPredicate = predicate
 	}
 }
 

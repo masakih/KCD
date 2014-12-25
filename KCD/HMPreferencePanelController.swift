@@ -43,9 +43,9 @@ class HMPreferencePanelController: NSWindowController
 			let appDelegate = NSApplication.sharedApplication().delegate as HMAppDelegate
 			appDelegate.screenShotSaveDirectory = newValue
 			
-			let index = screenShotSaveDirectoryPopUp?.indexOfItemWithTag(HMPopUpMenuItemTag.save.rawValue)
-			if index == nil { return }
-			let item: NSMenuItem? = screenShotSaveDirectoryPopUp?.itemAtIndex(index!)
+			let index = screenShotSaveDirectoryPopUp!.indexOfItemWithTag(HMPopUpMenuItemTag.save.rawValue)
+			if index == -1 { return }
+			let item: NSMenuItem = screenShotSaveDirectoryPopUp!.itemAtIndex(index)!
 			
 			let ws = NSWorkspace.sharedWorkspace()
 			let icon = ws.iconForFile(newValue)
@@ -56,8 +56,8 @@ class HMPreferencePanelController: NSWindowController
 			let fm = NSFileManager.defaultManager()
 			let title = fm.displayNameAtPath(newValue)
 			
-			item?.image = icon
-			item?.title = title
+			item.image = icon
+			item.title = title
 		}
 	}
 	
