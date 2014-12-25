@@ -9,7 +9,6 @@
 #import "HMAppDelegate.h"
 
 #import "HMUserDefaults.h"
-#import "HMBroserWindowController.h"
 #import "HMScreenshotListWindowController.h"
 #import "HMShipMasterDetailWindowController.h"
 
@@ -106,7 +105,7 @@
 
 - (void)awakeFromNib
 {
-	self.browserWindowController = [HMBroserWindowController new];
+	self.browserWindowController = [HMBroserWindowController create];
 	[self.browserWindowController showWindow:nil];
 	
 #if ENABLE_JSON_LOG

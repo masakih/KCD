@@ -18,5 +18,7 @@
 
 #import "HMSuppliesView.h"
 
+#import "HMScreenshotListWindowController.h"
+
 
 

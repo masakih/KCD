@@ -6,7 +6,7 @@
         <plugIn identifier="com.apple.WebKitIBPlugin" version="6250"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="HMBroserWindowController">
+        <customObject id="-2" userLabel="File's Owner" customClass="HMBroserWindowController" customModule="KCD" customModuleProvider="target">
             <connections>
                 <outlet property="basicController" destination="1lk-ii-37p" id="EBc-Kc-cHP"/>
                 <outlet property="deckContoller" destination="eqP-ex-UzI" id="8n5-Er-BIF"/>
