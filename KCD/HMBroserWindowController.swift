@@ -26,32 +26,32 @@ class HMBroserWindowController: NSWindowController
 	}
 	
 	override func awakeFromNib() {
-		let clip = NSClipView(frame: placeholder!.frame)
-		clip.autoresizingMask = placeholder!.autoresizingMask
-		placeholder!.superview?.replaceSubview(placeholder!, with: clip)
+		let clip = NSClipView(frame: placeholder.frame)
+		clip.autoresizingMask = placeholder.autoresizingMask
+		placeholder.superview?.replaceSubview(placeholder, with: clip)
 		clip.documentView = webView
 		
 		adjustFlash()
 		
 		selectedViewController = HMDocksViewController.create()
-		selectedViewController!.view.frame = docksPlaceholder!.frame
-		selectedViewController!.view.autoresizingMask = docksPlaceholder!.autoresizingMask
-		docksPlaceholder!.superview?.replaceSubview(docksPlaceholder!, with: selectedViewController!.view)
+		selectedViewController!.view.frame = docksPlaceholder.frame
+		selectedViewController!.view.autoresizingMask = docksPlaceholder.autoresizingMask
+		docksPlaceholder.superview?.replaceSubview(docksPlaceholder, with: selectedViewController!.view)
 		controllers[.schedule] = selectedViewController!
 		
 		deckViewController = HMDeckViewController.create()
-		deckViewController!.view.frame = deckPlaceholder!.frame
-		deckViewController!.view.autoresizingMask = deckPlaceholder!.autoresizingMask
-		deckPlaceholder!.superview?.replaceSubview(deckPlaceholder!, with: deckViewController!.view)
+		deckViewController!.view.frame = deckPlaceholder.frame
+		deckViewController!.view.autoresizingMask = deckPlaceholder.autoresizingMask
+		deckPlaceholder.superview?.replaceSubview(deckPlaceholder, with: deckViewController!.view)
 		
-		webView!.mainFrame.frameView.allowsScrolling = false
-		webView!.applicationNameForUserAgent = "Version/7.1 Safari/537.85.10"
-		webView!.mainFrameURL = "http://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/"
-//		webView!.mainFrameURL = "http://www.google.com/"
+		webView.mainFrame.frameView.allowsScrolling = false
+		webView.applicationNameForUserAgent = "Version/7.1 Safari/537.85.10"
+		webView.mainFrameURL = "http://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/"
+//		webView.mainFrameURL = "http://www.google.com/"
 		
-		self.bind("flagShipID", toObject: deckContoller!, withKeyPath: "selection.ship_0", options: nil)
-		self.bind("maxChara", toObject: basicController!, withKeyPath: "selection.max_chara", options: nil)
-		self.bind("shipCount", toObject: shipController!, withKeyPath: "arrangedObjects.@count", options: nil)
+		self.bind("flagShipID", toObject: deckContoller, withKeyPath: "selection.ship_0", options: nil)
+		self.bind("maxChara", toObject: basicController, withKeyPath: "selection.max_chara", options: nil)
+		self.bind("shipCount", toObject: shipController, withKeyPath: "arrangedObjects.@count", options: nil)
 	}
 	
 	
@@ -125,7 +125,7 @@ class HMBroserWindowController: NSWindowController
 	}
 	
 	func adjustFlash() {
-		let clip = webView!.superview as? NSClipView
+		let clip = webView.superview as? NSClipView
 		clip?.scrollToPoint(flashTopLeft)
 	}
 	
@@ -151,13 +151,13 @@ class HMBroserWindowController: NSWindowController
 		selectedViewsSegment = type.rawValue
 	}
 	
-	@IBOutlet var webView: WebView?
-	@IBOutlet var placeholder: NSView?
-	@IBOutlet var docksPlaceholder: NSView?
-	@IBOutlet var deckPlaceholder: NSView?
-	@IBOutlet var deckContoller: NSArrayController?
-	@IBOutlet var shipController: NSArrayController?
-	@IBOutlet var basicController: NSArrayController?
+	@IBOutlet var webView: WebView!
+	@IBOutlet var placeholder: NSView!
+	@IBOutlet var docksPlaceholder: NSView!
+	@IBOutlet var deckPlaceholder: NSView!
+	@IBOutlet var deckContoller: NSArrayController!
+	@IBOutlet var shipController: NSArrayController!
+	@IBOutlet var basicController: NSArrayController!
 	
 	@IBAction func reloadContent(sender: AnyObject?) {
 		adjustFlash()
@@ -175,7 +175,7 @@ class HMBroserWindowController: NSWindowController
 				return
 			}
 		}
-		webView!.reload(sender)
+		webView.reload(sender)
 		HMUserDefaults.hmStandardDefauls().prevReloadDate = NSDate(timeIntervalSinceNow: 0)
 	}
 	@IBAction func selectView(sender: AnyObject?) {
@@ -191,8 +191,8 @@ class HMBroserWindowController: NSWindowController
 		}
 	}
 	@IBAction func screenShot(sender: AnyObject?) {
-		if let contentView = window!.contentView? as? NSView {
-			var frame = contentView.convertRect(webView!.visibleRect, fromView: webView!)
+		if let contentView = window!.contentView as? NSView {
+			var frame = contentView.convertRect(webView.visibleRect, fromView: webView)
 			let screenShotBorderWidth = HMUserDefaults.hmStandardDefauls().screenShotBorderWidth
 			frame = NSInsetRect(frame, -screenShotBorderWidth, -screenShotBorderWidth)
 			let rep = contentView.bitmapImageRepForCachingDisplayInRect(frame)
@@ -204,7 +204,7 @@ class HMBroserWindowController: NSWindowController
 			contentView.cacheDisplayInRect(frame, toBitmapImageRep: rep!)
 			let appDelegate = NSApplication.sharedApplication().delegate as HMAppDelegate
 			let slwController = appDelegate.screenshotListWindowController
-			slwController.registerScreenshot(rep, fromOnScreen: contentView.convertRect(frame, toView: nil))
+			slwController.registerScreenshot(rep!, fromOnScreen: contentView.convertRect(frame, toView: nil))
 		}
 	}
 
@@ -232,9 +232,9 @@ class HMBroserWindowController: NSWindowController
 			context.evaluateScript("".join(lines))
 			let top = context.objectForKeyedSubscript("atop")
 			let left = context.objectForKeyedSubscript("aleft")
-			flashTopLeft = NSMakePoint(0, webView!.frame.size.height)
+			flashTopLeft = NSMakePoint(0, webView.frame.size.height)
 			let x = CGFloat(left.toDouble()) as CGFloat
-			let y = webView!.frame.size.height - CGFloat(top.toDouble()) - 480
+			let y = webView.frame.size.height - CGFloat(top.toDouble()) - 480
 			flashTopLeft = NSMakePoint(x, y)
 		}
 		
