@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
-        <plugIn identifier="com.apple.imagekit.ibplugin" version="6250"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
+        <plugIn identifier="com.apple.imagekit.ibplugin" version="6254"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="HMScreenshotListWindowController">
+        <customObject id="-2" userLabel="File's Owner" customClass="HMScreenshotListWindowController" customModule="KCD" customModuleProvider="target">
             <connections>
                 <outlet property="browser" destination="FPI-Ma-X6H" id="1Jw-Ae-EMa"/>
                 <outlet property="contextMenu" destination="jCv-QN-9O1" id="BjD-Nc-kNQ"/>
@@ -36,12 +36,12 @@
                             <rect key="frame" x="1" y="1" width="166" height="79"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <ikImageBrowserView autoresizesSubviews="NO" zoomValue="3.2822258472442627" allowsMultipleSelection="NO" allowsEmptySelection="NO" id="FPI-Ma-X6H">
-                                    <rect key="frame" x="0.0" y="0.0" width="10000" height="2183"/>
+                                <ikImageBrowserView autoresizesSubviews="NO" zoomValue="4.5748710632324219" allowsMultipleSelection="NO" allowsEmptySelection="NO" id="FPI-Ma-X6H">
+                                    <rect key="frame" x="0.0" y="0.0" width="10000" height="2534"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                     <ikCellsStyle key="cellsStyleMask" none="YES" shadowed="YES" titled="YES" subtitled="YES"/>
                                     <autoresizingMask key="contentResizingMask" heightSizable="YES"/>
-                                    <size key="cellSize" width="3556" height="3556"/>
+                                    <size key="cellSize" width="6867" height="6867"/>
                                     <connections>
                                         <binding destination="mrq-7Y-mHG" name="content" keyPath="arrangedObjects" id="G0M-vZ-Pyi"/>
                                         <binding destination="-2" name="selectionIndexes" keyPath="selectedIndexes" previousBinding="G0M-vZ-Pyi" id="hZm-cJ-NmG"/>

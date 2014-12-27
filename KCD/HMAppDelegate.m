@@ -9,7 +9,6 @@
 #import "HMAppDelegate.h"
 
 #import "HMUserDefaults.h"
-#import "HMScreenshotListWindowController.h"
 #import "HMShipMasterDetailWindowController.h"
 
 #import "HMFleetInformation.h"
@@ -130,7 +129,7 @@
 - (HMScreenshotListWindowController *)screenshotListWindowController
 {
 	if(_screenshotListWindowController) return _screenshotListWindowController;
-	_screenshotListWindowController = [HMScreenshotListWindowController new];
+	_screenshotListWindowController = [HMScreenshotListWindowController create];
 	return _screenshotListWindowController;
 }
 
