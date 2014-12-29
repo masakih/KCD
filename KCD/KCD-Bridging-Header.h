@@ -9,12 +9,13 @@
 #import "HMLocalDataStore.h"
 #import "HMTemporaryDataStore.h"
 
+#import "HMKCShipObject+Extensions.h"
+
 #import "HMMissionStatus.h"
 #import "HMNyukyoDockStatus.h"
 #import "HMKenzoDockStatus.h"
 #import "HMFleetInformation.h"
 
-#import "HMSuppliesCell.h"
 #import "HMMaskSelectView.h"
 
 
