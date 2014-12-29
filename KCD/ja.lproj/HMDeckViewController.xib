@@ -421,27 +421,27 @@
                         <binding destination="-2" name="textColor" keyPath="fleetInfo.sixthShip.conditionColor" id="OdP-Gc-fyt"/>
                     </connections>
                 </textField>
-                <customView id="RPQ-X8-xc3" customClass="HMSuppliesView">
+                <customView id="RPQ-X8-xc3" customClass="HMSuppliesView" customModule="KCD" customModuleProvider="target">
                     <rect key="frame" x="249" y="36" width="31" height="13"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </customView>
-                <customView id="XpJ-kX-rT5" customClass="HMSuppliesView">
+                <customView id="XpJ-kX-rT5" customClass="HMSuppliesView" customModule="KCD" customModuleProvider="target">
                     <rect key="frame" x="249" y="11" width="31" height="13"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </customView>
-                <customView id="Ckx-ml-RXh" customClass="HMSuppliesView">
+                <customView id="Ckx-ml-RXh" customClass="HMSuppliesView" customModule="KCD" customModuleProvider="target">
                     <rect key="frame" x="430" y="36" width="31" height="13"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </customView>
-                <customView id="iKG-xk-U7y" customClass="HMSuppliesView">
+                <customView id="iKG-xk-U7y" customClass="HMSuppliesView" customModule="KCD" customModuleProvider="target">
                     <rect key="frame" x="430" y="11" width="31" height="13"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </customView>
-                <customView id="xRY-kw-ZrR" customClass="HMSuppliesView">
+                <customView id="xRY-kw-ZrR" customClass="HMSuppliesView" customModule="KCD" customModuleProvider="target">
                     <rect key="frame" x="611" y="36" width="31" height="13"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </customView>
-                <customView id="efa-3i-7ov" customClass="HMSuppliesView">
+                <customView id="efa-3i-7ov" customClass="HMSuppliesView" customModule="KCD" customModuleProvider="target">
                     <rect key="frame" x="611" y="11" width="31" height="13"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </customView>

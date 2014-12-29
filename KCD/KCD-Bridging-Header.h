@@ -14,7 +14,7 @@
 #import "HMKenzoDockStatus.h"
 #import "HMFleetInformation.h"
 
-#import "HMSuppliesView.h"
+#import "HMSuppliesCell.h"
 #import "HMMaskSelectView.h"
 
 
