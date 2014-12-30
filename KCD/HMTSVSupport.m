@@ -11,7 +11,8 @@
 #import "HMLocalDataStore.h"
 #import "HMKaihatuHistory.h"
 #import "HMKenzoHistory.h"
-#import "HMKenzoMark.h"
+
+#import "KCD-Swift.h"
 
 #define PATH_KEY2(key1, key2) [NSString stringWithFormat:@"%@.%@", (key1), (key2)]
 #define PATH_KEY3(key1, key2, key3) [NSString stringWithFormat:@"%@.%@.%@", (key1), (key2), (key3)]

@@ -10,7 +10,8 @@
 
 #import "HMServerDataStore.h"
 #import "HMLocalDataStore.h"
-#import "HMKenzoHistory.h"
+
+#import "KCD-Swift.h"
 
 /**
  *  建造履歴を残す

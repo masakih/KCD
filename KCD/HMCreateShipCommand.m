@@ -10,7 +10,9 @@
 
 #import "HMServerDataStore.h"
 #import "HMLocalDataStore.h"
-#import "HMKenzoMark.h"
+
+#import "KCD-Swift.h"
+
 
 /**
  *  建造履歴に残すために秘書艦と司令部レベルを保存する
