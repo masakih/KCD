@@ -8,7 +8,7 @@
 
 #import "HMMaskSelectView.h"
 
-#import "HMMaskInfomation.h"
+#import "KCD-Swift.h"
 
 
 const NSInteger kNumberOfMask = 4;
@@ -57,7 +57,7 @@ static NSSize originalSize;
 	CGFloat heightRatio = frame.size.height / originalSize.height;
 	
 	for(NSInteger i = 0; i < kNumberOfMask; i++ ) {
-		HMMaskInfomation *info = [HMMaskInfomation new];
+		HMMaskInformation *info = [HMMaskInformation new];
 		NSRect maskRect = NSMakeRect(
 									 maskRects[i].origin.x * widthRatio,
 									 maskRects[i].origin.y * heightRatio,
@@ -71,7 +71,7 @@ static NSSize originalSize;
 		} else {
 			info.borderColor = [NSColor redColor];
 		}
-		info.maskColor = [NSColor blackColor];
+//		info.maskColor = [NSColor blackColor];
 	}
 }
 
@@ -82,7 +82,7 @@ static NSSize originalSize;
 	[context setShouldAntialias:NO];
 	
 	CGFloat dashSeed[] = {3.0, 3.0};
-	for(HMMaskInfomation *info in self.masks) {
+	for(HMMaskInformation *info in self.masks) {
 		NSBezierPath *path = [NSBezierPath bezierPathWithRect:info.maskRect];
 		if(info.enable) {
 			[info.maskColor set];
@@ -118,7 +118,7 @@ static NSSize originalSize;
 	NSPoint mouse = [event locationInWindow];
 	mouse = [self convertPoint:mouse fromView:nil];
 	
-	for(HMMaskInfomation *info in [self.masks reverseObjectEnumerator]) {
+	for(HMMaskInformation *info in [self.masks reverseObjectEnumerator]) {
 		if(NSMouseInRect(mouse, info.maskRect, self.isFlipped)) {
 			info.enable = !info.enable;
 			[self setNeedsDisplayInRect:NSInsetRect(info.maskRect, -5, -5)];
@@ -129,7 +129,7 @@ static NSSize originalSize;
 
 - (IBAction)disableAllMasks:(id)sender
 {
-	for(HMMaskInfomation *info in self.masks) {
+	for(HMMaskInformation *info in self.masks) {
 		info.enable = NO;
 	}
 	[self setNeedsDisplay:YES];

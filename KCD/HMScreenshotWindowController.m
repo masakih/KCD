@@ -9,12 +9,13 @@
 #import "HMScreenshotWindowController.h"
 #import "HMUserDefaults.h"
 #import "HMMaskSelectView.h"
-#import "HMMaskInfomation.h"
 
 #import "HMAppDelegate.h"
 
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
+
+#import "KCD-Swift.h"
 
 
 @interface NSFileManager (KCDExtension)
@@ -100,7 +101,7 @@
 		[image addRepresentation:self.snapImageRep];
 		
 		[image lockFocus];
-		for(HMMaskInfomation *info in self.maskSelectView.masks) {
+		for(HMMaskInformation *info in self.maskSelectView.masks) {
 			if(info.enable) {
 				NSBezierPath *path = [NSBezierPath bezierPathWithRect:info.maskRect];
 				[info.maskColor set];

@@ -65,7 +65,6 @@
 		F4A3AD82199F529700FDBF80 /* HMCombinedBattleCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A3AD81199F529700FDBF80 /* HMCombinedBattleCommand.m */; };
 		F4A3AD8819B6149D00FDBF80 /* HMNyukyoStartCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A3AD8719B6149D00FDBF80 /* HMNyukyoStartCommand.m */; };
 		F4A3AD8B19B9BE7A00FDBF80 /* HMMaskSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A3AD8A19B9BE7A00FDBF80 /* HMMaskSelectView.m */; };
-		F4A3AD8E19BB220000FDBF80 /* HMMaskInfomation.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A3AD8D19BB220000FDBF80 /* HMMaskInfomation.m */; };
 		F4A3AD9419BDDE5500FDBF80 /* HMPreferencePanelController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A3AD9619BDDE5500FDBF80 /* HMPreferencePanelController.xib */; };
 		F4AA05FB192B92C800844688 /* Temporary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4AA05F9192B92C700844688 /* Temporary.xcdatamodeld */; };
 		F4AA05FE192B932E00844688 /* HMTemporaryDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AA05FD192B932E00844688 /* HMTemporaryDataStore.m */; };
@@ -145,6 +144,7 @@
 		F4E7802E18DC3AF00011BC4C /* LocalData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4E7802C18DC3AF00011BC4C /* LocalData.xcdatamodeld */; };
 		F4E802071A50F8A100016781 /* HMSuppliesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E802061A50F8A100016781 /* HMSuppliesView.swift */; };
 		F4E802091A511F5900016781 /* HMSuppliesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E802081A511F5900016781 /* HMSuppliesCell.swift */; };
+		F4E8020B1A51954500016781 /* HMMaskInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8020A1A51954500016781 /* HMMaskInformation.swift */; };
 		F4FCFD44191F4C1D000640A1 /* HMKenzoMarkCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FCFD43191F4C1D000640A1 /* HMKenzoMarkCommand.m */; };
 		F4FDF2411A3D50420033E0AD /* HMShipMasterDetailWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FDF23F1A3D50420033E0AD /* HMShipMasterDetailWindowController.m */; };
 		F4FDF2421A3D50420033E0AD /* HMShipMasterDetailWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4FDF2401A3D50420033E0AD /* HMShipMasterDetailWindowController.xib */; };
@@ -262,8 +262,6 @@
 		F4A3AD8719B6149D00FDBF80 /* HMNyukyoStartCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMNyukyoStartCommand.m; sourceTree = "<group>"; };
 		F4A3AD8919B9BE7A00FDBF80 /* HMMaskSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMaskSelectView.h; sourceTree = "<group>"; };
 		F4A3AD8A19B9BE7A00FDBF80 /* HMMaskSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMaskSelectView.m; sourceTree = "<group>"; };
-		F4A3AD8C19BB220000FDBF80 /* HMMaskInfomation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMaskInfomation.h; sourceTree = "<group>"; };
-		F4A3AD8D19BB220000FDBF80 /* HMMaskInfomation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMaskInfomation.m; sourceTree = "<group>"; };
 		F4A3AD9519BDDE5500FDBF80 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMPreferencePanelController.xib; sourceTree = "<group>"; };
 		F4AA05FA192B92C800844688 /* Temporary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Temporary.xcdatamodel; sourceTree = "<group>"; };
 		F4AA05FC192B932E00844688 /* HMTemporaryDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMTemporaryDataStore.h; sourceTree = "<group>"; };
@@ -394,6 +392,7 @@
 		F4E7802D18DC3AF00011BC4C /* LocalData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocalData.xcdatamodel; sourceTree = "<group>"; };
 		F4E802061A50F8A100016781 /* HMSuppliesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMSuppliesView.swift; sourceTree = "<group>"; };
 		F4E802081A511F5900016781 /* HMSuppliesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMSuppliesCell.swift; sourceTree = "<group>"; };
+		F4E8020A1A51954500016781 /* HMMaskInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMMaskInformation.swift; sourceTree = "<group>"; };
 		F4FCFD42191F4C1D000640A1 /* HMKenzoMarkCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMKenzoMarkCommand.h; sourceTree = "<group>"; };
 		F4FCFD43191F4C1D000640A1 /* HMKenzoMarkCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKenzoMarkCommand.m; sourceTree = "<group>"; };
 		F4FDF23E1A3D50420033E0AD /* HMShipMasterDetailWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMShipMasterDetailWindowController.h; sourceTree = "<group>"; };
@@ -605,8 +604,7 @@
 				F4B2D02D18F83A2F00542742 /* HMScreenshotWindowController.xib */,
 				F4A3AD8919B9BE7A00FDBF80 /* HMMaskSelectView.h */,
 				F4A3AD8A19B9BE7A00FDBF80 /* HMMaskSelectView.m */,
-				F4A3AD8C19BB220000FDBF80 /* HMMaskInfomation.h */,
-				F4A3AD8D19BB220000FDBF80 /* HMMaskInfomation.m */,
+				F4E8020A1A51954500016781 /* HMMaskInformation.swift */,
 				F4551BE31A48379F00BB0235 /* HMDeckViewController.swift */,
 				F4B2D03518F83CC800542742 /* HMDeckViewController.xib */,
 				F4E802081A511F5900016781 /* HMSuppliesCell.swift */,
@@ -885,6 +883,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4E8020B1A51954500016781 /* HMMaskInformation.swift in Sources */,
 				F4E1BC081A4D9D610089A82D /* HMScreenshotListWindowController.swift in Sources */,
 				F4513EE818B77A5300073552 /* HMMemberKDockCommand.m in Sources */,
 				F4551BEA1A48FA6000BB0235 /* HMCacheVersionInfo.swift in Sources */,
@@ -910,7 +909,6 @@
 				F4B414FB18B1FB6C00468DAF /* HMMasterMapCellCommand.m in Sources */,
 				F4C118FA18A67B1C005D5B25 /* CacheStoragePolicy.m in Sources */,
 				F4B3DC2118DECF570011B4FC /* HMTSVSupport.m in Sources */,
-				F4A3AD8E19BB220000FDBF80 /* HMMaskInfomation.m in Sources */,
 				F4551BF41A49843500BB0235 /* HMPreferencePanelController.swift in Sources */,
 				F4E7802E18DC3AF00011BC4C /* LocalData.xcdatamodeld in Sources */,
 				F4551BDC1A46A9D100BB0235 /* HMHistoryWindowController.swift in Sources */,
