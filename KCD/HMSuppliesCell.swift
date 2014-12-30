@@ -40,6 +40,8 @@ class HMSuppliesCell: NSCell
 	func statusColor(value: NSNumber?, maxValue: NSNumber?) -> NSColor {
 		var color = greenColor
 		switch numberOfColoredCell(value, maxValue: maxValue) {
+		case 0:
+			break
 		case 1, 2, 3:
 			color = redColor
 		case 4, 5, 6, 7:
