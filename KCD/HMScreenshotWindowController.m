@@ -8,7 +8,6 @@
 
 #import "HMScreenshotWindowController.h"
 #import "HMUserDefaults.h"
-#import "HMMaskSelectView.h"
 
 #import "HMAppDelegate.h"
 

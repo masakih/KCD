@@ -29,19 +29,19 @@
                 <rect key="frame" x="0.0" y="1" width="853" height="430"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <scrollView horizontalLineScroll="132.75" horizontalPageScroll="10" verticalLineScroll="153" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="uRf-6p-n0n">
+                    <scrollView horizontalLineScroll="145" horizontalPageScroll="10" verticalLineScroll="145" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="uRf-6p-n0n">
                         <rect key="frame" x="-1" y="-1" width="461" height="432"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" copiesOnScroll="NO" id="xHE-4e-HA7">
                             <rect key="frame" x="1" y="1" width="166" height="79"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <ikImageBrowserView autoresizesSubviews="NO" zoomValue="4.5748710632324219" allowsMultipleSelection="NO" allowsEmptySelection="NO" id="FPI-Ma-X6H">
-                                    <rect key="frame" x="0.0" y="0.0" width="10000" height="2534"/>
+                                <ikImageBrowserView autoresizesSubviews="NO" zoomValue="0.5" allowsMultipleSelection="NO" allowsEmptySelection="NO" id="FPI-Ma-X6H">
+                                    <rect key="frame" x="0.0" y="0.0" width="10000" height="2885"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                     <ikCellsStyle key="cellsStyleMask" none="YES" shadowed="YES" titled="YES" subtitled="YES"/>
                                     <autoresizingMask key="contentResizingMask" heightSizable="YES"/>
-                                    <size key="cellSize" width="6867" height="6867"/>
+                                    <size key="cellSize" width="125" height="125"/>
                                     <connections>
                                         <binding destination="mrq-7Y-mHG" name="content" keyPath="arrangedObjects" id="G0M-vZ-Pyi"/>
                                         <binding destination="-2" name="selectionIndexes" keyPath="selectedIndexes" previousBinding="G0M-vZ-Pyi" id="hZm-cJ-NmG"/>
@@ -86,7 +86,7 @@
                             <binding destination="-2" name="value" keyPath="appendKanColleTag" id="COG-Sp-61P"/>
                         </connections>
                     </button>
-                    <customView id="tQA-8E-MmO" customClass="HMMaskSelectView">
+                    <customView id="tQA-8E-MmO" customClass="HMMaskSelectView" customModule="KCD" customModuleProvider="target">
                         <rect key="frame" x="479" y="200" width="354" height="210"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                         <connections>
