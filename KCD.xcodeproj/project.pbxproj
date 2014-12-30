@@ -27,8 +27,6 @@
 		F43F3D4C1A34AC8000D6DAF7 /* HMKCMasterShipObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F43F3D4B1A34AC8000D6DAF7 /* HMKCMasterShipObject.m */; };
 		F43F3D4F1A34ACCD00D6DAF7 /* HMKCShipObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F43F3D4E1A34ACCD00D6DAF7 /* HMKCShipObject.m */; };
 		F43F3D521A39CC7500D6DAF7 /* HMKCMasterSlotItemObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F43F3D511A39CC7500D6DAF7 /* HMKCMasterSlotItemObject.m */; };
-		F44AB20019E050F600F217AF /* HMKCDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = F44AB1FF19E050F600F217AF /* HMKCDeck.m */; };
-		F44AB20619E053CB00F217AF /* HMKCDeck+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = F44AB20519E053CB00F217AF /* HMKCDeck+Extension.m */; };
 		F44AB23519E805D100F217AF /* HMKaisouLockCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F44AB23419E805D100F217AF /* HMKaisouLockCommand.m */; };
 		F44AB23E19E824D700F217AF /* HMKCSlotItemObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F44AB23D19E824D700F217AF /* HMKCSlotItemObject.m */; };
 		F44AB24119E8252600F217AF /* HMKCSlotItemObject+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F44AB24019E8252600F217AF /* HMKCSlotItemObject+Extensions.m */; };
@@ -57,6 +55,8 @@
 		F46F104918ABAC910063E503 /* KCD.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F46F104718ABAC910063E503 /* KCD.xcdatamodeld */; };
 		F477E2371A52D70F00493198 /* HMKenzoHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F477E2361A52D70F00493198 /* HMKenzoHistory.swift */; };
 		F477E2391A52DE1600493198 /* HMKaihatuHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F477E2381A52DE1600493198 /* HMKaihatuHistory.swift */; };
+		F477E23D1A52FAE400493198 /* HMKCDeck+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F477E23C1A52FAE400493198 /* HMKCDeck+Extension.swift */; };
+		F477E23F1A530C3800493198 /* HMKCDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = F477E23E1A530C3800493198 /* HMKCDeck.swift */; };
 		F47B78B218A7B42B0011386E /* HMJSONViewWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F47B78B018A7B42B0011386E /* HMJSONViewWindowController.m */; };
 		F48F7B021907D7B800E78AE1 /* HMPortCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F48F7B011907D7B800E78AE1 /* HMPortCommand.m */; };
 		F494DC5F18C30AE100AE97E4 /* HMMissionStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = F494DC5E18C30AE100AE97E4 /* HMMissionStatus.m */; };
@@ -198,10 +198,6 @@
 		F43F3D4E1A34ACCD00D6DAF7 /* HMKCShipObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKCShipObject.m; sourceTree = "<group>"; };
 		F43F3D501A39CC7500D6DAF7 /* HMKCMasterSlotItemObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMKCMasterSlotItemObject.h; sourceTree = "<group>"; };
 		F43F3D511A39CC7500D6DAF7 /* HMKCMasterSlotItemObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKCMasterSlotItemObject.m; sourceTree = "<group>"; };
-		F44AB1FE19E050F600F217AF /* HMKCDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMKCDeck.h; sourceTree = "<group>"; };
-		F44AB1FF19E050F600F217AF /* HMKCDeck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKCDeck.m; sourceTree = "<group>"; };
-		F44AB20419E053CB00F217AF /* HMKCDeck+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HMKCDeck+Extension.h"; sourceTree = "<group>"; };
-		F44AB20519E053CB00F217AF /* HMKCDeck+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HMKCDeck+Extension.m"; sourceTree = "<group>"; };
 		F44AB23319E805D100F217AF /* HMKaisouLockCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMKaisouLockCommand.h; sourceTree = "<group>"; };
 		F44AB23419E805D100F217AF /* HMKaisouLockCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKaisouLockCommand.m; sourceTree = "<group>"; };
 		F44AB23C19E824D700F217AF /* HMKCSlotItemObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMKCSlotItemObject.h; sourceTree = "<group>"; };
@@ -243,6 +239,8 @@
 		F46F104818ABAC910063E503 /* KCD.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KCD.xcdatamodel; sourceTree = "<group>"; };
 		F477E2361A52D70F00493198 /* HMKenzoHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMKenzoHistory.swift; sourceTree = "<group>"; };
 		F477E2381A52DE1600493198 /* HMKaihatuHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMKaihatuHistory.swift; sourceTree = "<group>"; };
+		F477E23C1A52FAE400493198 /* HMKCDeck+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HMKCDeck+Extension.swift"; sourceTree = "<group>"; };
+		F477E23E1A530C3800493198 /* HMKCDeck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMKCDeck.swift; sourceTree = "<group>"; };
 		F47B78AF18A7B42B0011386E /* HMJSONViewWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMJSONViewWindowController.h; sourceTree = "<group>"; };
 		F47B78B018A7B42B0011386E /* HMJSONViewWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMJSONViewWindowController.m; sourceTree = "<group>"; };
 		F48F7B001907D7B800E78AE1 /* HMPortCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPortCommand.h; sourceTree = "<group>"; };
@@ -563,10 +561,8 @@
 				F44AB23D19E824D700F217AF /* HMKCSlotItemObject.m */,
 				F44AB23F19E8252600F217AF /* HMKCSlotItemObject+Extensions.h */,
 				F44AB24019E8252600F217AF /* HMKCSlotItemObject+Extensions.m */,
-				F44AB1FE19E050F600F217AF /* HMKCDeck.h */,
-				F44AB1FF19E050F600F217AF /* HMKCDeck.m */,
-				F44AB20419E053CB00F217AF /* HMKCDeck+Extension.h */,
-				F44AB20519E053CB00F217AF /* HMKCDeck+Extension.m */,
+				F477E23E1A530C3800493198 /* HMKCDeck.swift */,
+				F477E23C1A52FAE400493198 /* HMKCDeck+Extension.swift */,
 				F4E7802C18DC3AF00011BC4C /* LocalData.xcdatamodeld */,
 				F4E802101A52C12700016781 /* HMKenzoMark.swift */,
 				F477E2361A52D70F00493198 /* HMKenzoHistory.swift */,
@@ -958,6 +954,8 @@
 				F4B414E918B09A4B00468DAF /* HMMasterMapAreaCommand.m in Sources */,
 				F4C3957418CDDFE500A1E918 /* HMKenzoDockStatus.m in Sources */,
 				F4C118FB18A67B1C005D5B25 /* CanonicalRequest.m in Sources */,
+				F477E23F1A530C3800493198 /* HMKCDeck.swift in Sources */,
+				F477E23D1A52FAE400493198 /* HMKCDeck+Extension.swift in Sources */,
 				F4AA060D1930E69200844688 /* HMMidnightBattleCommand.m in Sources */,
 				F4BDEB5A187252F30069D0CE /* HMAppDelegate.m in Sources */,
 				F4E7802B18DC3A820011BC4C /* HMLocalDataStore.m in Sources */,
@@ -968,7 +966,6 @@
 				F4B414FE18B3A66200468DAF /* HMMemberNDockCommand.m in Sources */,
 				F4FDF2411A3D50420033E0AD /* HMShipMasterDetailWindowController.m in Sources */,
 				F4E802111A52C12700016781 /* HMKenzoMark.swift in Sources */,
-				F44AB20619E053CB00F217AF /* HMKCDeck+Extension.m in Sources */,
 				F4B414F218B1013C00468DAF /* HMMasterSlotItemCommand.m in Sources */,
 				F4131EE61910318F004F7F9A /* HMMasterSlotItemEquipTypeCommand.m in Sources */,
 				F4551BF01A49350B00BB0235 /* HMPowerUpSupportViewController.swift in Sources */,
@@ -982,7 +979,6 @@
 				F4B414EC18B0A7D600468DAF /* HMMasterUseItemCommand.m in Sources */,
 				F4513EF318B991F800073552 /* HMMemberBasicCommand.m in Sources */,
 				F4268009193AF4E000B2C27F /* HMUserDefaults.m in Sources */,
-				F44AB20019E050F600F217AF /* HMKCDeck.m in Sources */,
 				F43F3D4F1A34ACCD00D6DAF7 /* HMKCShipObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

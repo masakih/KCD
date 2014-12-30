@@ -12,7 +12,9 @@
 #import "HMKCShipObject+Extensions.h"
 #import "HMKCSlotItemObject+Extensions.h"
 #import "HMKCMasterSlotItemObject.h"
-#import "HMKCDeck+Extension.h"
+//#import "HMKCDeck+Extension.h"
+
+#import "KCD-Swift.h"
 
 @interface HMFleetInformation ()
 @property (strong) NSArray *shipNameKeys;
