@@ -10,7 +10,6 @@
 
 #import "HMLocalDataStore.h"
 #import "HMKaihatuHistory.h"
-#import "HMKenzoHistory.h"
 
 #import "KCD-Swift.h"
 

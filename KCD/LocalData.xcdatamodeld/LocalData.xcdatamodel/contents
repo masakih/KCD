@@ -12,7 +12,7 @@
         <attribute name="name" attributeType="String" minValueString="1" indexed="YES" syncable="YES"/>
         <attribute name="steel" attributeType="Integer 32" minValueString="10" syncable="YES"/>
     </entity>
-    <entity name="KenzoHistory" representedClassName="HMKenzoHistory" syncable="YES">
+    <entity name="KenzoHistory" representedClassName="KCD.HMKenzoHistory" syncable="YES">
         <attribute name="bauxite" attributeType="Integer 32" minValueString="30" syncable="YES"/>
         <attribute name="bull" attributeType="Integer 32" minValueString="30" syncable="YES"/>
         <attribute name="commanderLv" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -39,7 +39,7 @@
     </entity>
     <elements>
         <element name="KaihatuHistory" positionX="0" positionY="63" width="128" height="193"/>
-        <element name="KenzoHistory" positionX="0" positionY="0" width="128" height="208"/>
+        <element name="KenzoHistory" positionX="0" positionY="0" width="128" height="210"/>
         <element name="KenzoMark" positionX="9" positionY="117" width="128" height="193"/>
     </elements>
 </model>
