@@ -22,24 +22,22 @@ extension HMKCSlotItemObject {
 		didAccessValueForKey("equippedShip")
 		return name
 	}
-	var masterSlotItemRare: Int {
+	var masterSlotItemRare: NSNumber? {
 		willAccessValueForKey("master_slotItem")
 		let rare = master_slotItem.rare
 		didAccessValueForKey("master_slotItem")
-		if rare == nil { return 0 }
-		return rare!.integerValue
+		return rare
 	}
-	var typeName: Int {
+	var typeName: NSNumber? {
 		willAccessValueForKey("master_slotItem")
 		let name = master_slotItem.type_2
 		didAccessValueForKey("master_slotItem")
-		if name == nil { return 0 }
-		return name!.integerValue
+		return name
 	}
-	var isLocked: Bool {
+	var isLocked: NSNumber? {
 		willAccessValueForKey("locked")
-		let locked = self.locked.boolValue
+		let locked = self.locked
 		didAccessValueForKey("locked")
-		return locked ?? false
+		return locked
 	}
 }

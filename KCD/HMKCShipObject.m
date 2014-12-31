@@ -8,7 +8,6 @@
 
 #import "HMKCShipObject.h"
 #import "HMKCMasterShipObject.h"
-#import "HMKCSlotItemObject.h"
 
 
 @implementation HMKCShipObject
