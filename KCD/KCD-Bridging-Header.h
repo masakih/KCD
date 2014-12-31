@@ -11,6 +11,7 @@
 
 #import "HMKCManagedObject.h"
 #import "HMKCShipObject+Extensions.h"
+#import "HMKCMasterSlotItemObject.h"
 
 #import "HMMissionStatus.h"
 #import "HMNyukyoDockStatus.h"

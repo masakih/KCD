@@ -36,12 +36,12 @@
                             <rect key="frame" x="1" y="1" width="166" height="79"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <ikImageBrowserView autoresizesSubviews="NO" zoomValue="0.5" allowsMultipleSelection="NO" allowsEmptySelection="NO" id="FPI-Ma-X6H">
-                                    <rect key="frame" x="0.0" y="0.0" width="10000" height="2885"/>
+                                <ikImageBrowserView autoresizesSubviews="NO" zoomValue="1.4601032733917236" allowsMultipleSelection="NO" allowsEmptySelection="NO" id="FPI-Ma-X6H">
+                                    <rect key="frame" x="0.0" y="0.0" width="10000" height="3236"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                     <ikCellsStyle key="cellsStyleMask" none="YES" shadowed="YES" titled="YES" subtitled="YES"/>
                                     <autoresizingMask key="contentResizingMask" heightSizable="YES"/>
-                                    <size key="cellSize" width="125" height="125"/>
+                                    <size key="cellSize" width="739" height="739"/>
                                     <connections>
                                         <binding destination="mrq-7Y-mHG" name="content" keyPath="arrangedObjects" id="G0M-vZ-Pyi"/>
                                         <binding destination="-2" name="selectionIndexes" keyPath="selectedIndexes" previousBinding="G0M-vZ-Pyi" id="hZm-cJ-NmG"/>

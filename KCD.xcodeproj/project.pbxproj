@@ -28,8 +28,6 @@
 		F43F3D4F1A34ACCD00D6DAF7 /* HMKCShipObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F43F3D4E1A34ACCD00D6DAF7 /* HMKCShipObject.m */; };
 		F43F3D521A39CC7500D6DAF7 /* HMKCMasterSlotItemObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F43F3D511A39CC7500D6DAF7 /* HMKCMasterSlotItemObject.m */; };
 		F44AB23519E805D100F217AF /* HMKaisouLockCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F44AB23419E805D100F217AF /* HMKaisouLockCommand.m */; };
-		F44AB23E19E824D700F217AF /* HMKCSlotItemObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F44AB23D19E824D700F217AF /* HMKCSlotItemObject.m */; };
-		F44AB24119E8252600F217AF /* HMKCSlotItemObject+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F44AB24019E8252600F217AF /* HMKCSlotItemObject+Extensions.m */; };
 		F4513EDD18B619B600073552 /* HMCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4513EDC18B619B600073552 /* HMCoreDataManager.m */; };
 		F4513EE818B77A5300073552 /* HMMemberKDockCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4513EE718B77A5300073552 /* HMMemberKDockCommand.m */; };
 		F4513EEB18B7900A00073552 /* HMMemberDeckCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4513EEA18B7900A00073552 /* HMMemberDeckCommand.m */; };
@@ -57,6 +55,8 @@
 		F477E2391A52DE1600493198 /* HMKaihatuHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F477E2381A52DE1600493198 /* HMKaihatuHistory.swift */; };
 		F477E23D1A52FAE400493198 /* HMKCDeck+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F477E23C1A52FAE400493198 /* HMKCDeck+Extension.swift */; };
 		F477E23F1A530C3800493198 /* HMKCDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = F477E23E1A530C3800493198 /* HMKCDeck.swift */; };
+		F477E2411A5362C900493198 /* HMKCSlotItemObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F477E2401A5362C900493198 /* HMKCSlotItemObject+Extension.swift */; };
+		F477E2431A53836200493198 /* HMKCSlotItemObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F477E2421A53836200493198 /* HMKCSlotItemObject.swift */; };
 		F47B78B218A7B42B0011386E /* HMJSONViewWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F47B78B018A7B42B0011386E /* HMJSONViewWindowController.m */; };
 		F48F7B021907D7B800E78AE1 /* HMPortCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F48F7B011907D7B800E78AE1 /* HMPortCommand.m */; };
 		F494DC5F18C30AE100AE97E4 /* HMMissionStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = F494DC5E18C30AE100AE97E4 /* HMMissionStatus.m */; };
@@ -200,10 +200,6 @@
 		F43F3D511A39CC7500D6DAF7 /* HMKCMasterSlotItemObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKCMasterSlotItemObject.m; sourceTree = "<group>"; };
 		F44AB23319E805D100F217AF /* HMKaisouLockCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMKaisouLockCommand.h; sourceTree = "<group>"; };
 		F44AB23419E805D100F217AF /* HMKaisouLockCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKaisouLockCommand.m; sourceTree = "<group>"; };
-		F44AB23C19E824D700F217AF /* HMKCSlotItemObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMKCSlotItemObject.h; sourceTree = "<group>"; };
-		F44AB23D19E824D700F217AF /* HMKCSlotItemObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKCSlotItemObject.m; sourceTree = "<group>"; };
-		F44AB23F19E8252600F217AF /* HMKCSlotItemObject+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HMKCSlotItemObject+Extensions.h"; sourceTree = "<group>"; };
-		F44AB24019E8252600F217AF /* HMKCSlotItemObject+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HMKCSlotItemObject+Extensions.m"; sourceTree = "<group>"; };
 		F4513EDB18B619B600073552 /* HMCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMCoreDataManager.h; sourceTree = "<group>"; };
 		F4513EDC18B619B600073552 /* HMCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMCoreDataManager.m; sourceTree = "<group>"; };
 		F4513EE618B77A5300073552 /* HMMemberKDockCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMemberKDockCommand.h; sourceTree = "<group>"; };
@@ -241,6 +237,8 @@
 		F477E2381A52DE1600493198 /* HMKaihatuHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMKaihatuHistory.swift; sourceTree = "<group>"; };
 		F477E23C1A52FAE400493198 /* HMKCDeck+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HMKCDeck+Extension.swift"; sourceTree = "<group>"; };
 		F477E23E1A530C3800493198 /* HMKCDeck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMKCDeck.swift; sourceTree = "<group>"; };
+		F477E2401A5362C900493198 /* HMKCSlotItemObject+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HMKCSlotItemObject+Extension.swift"; sourceTree = "<group>"; };
+		F477E2421A53836200493198 /* HMKCSlotItemObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMKCSlotItemObject.swift; sourceTree = "<group>"; };
 		F47B78AF18A7B42B0011386E /* HMJSONViewWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMJSONViewWindowController.h; sourceTree = "<group>"; };
 		F47B78B018A7B42B0011386E /* HMJSONViewWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMJSONViewWindowController.m; sourceTree = "<group>"; };
 		F48F7B001907D7B800E78AE1 /* HMPortCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPortCommand.h; sourceTree = "<group>"; };
@@ -557,10 +555,8 @@
 				F42680111943E92D00B2C27F /* HMKCShipObject+Extensions.m */,
 				F43F3D501A39CC7500D6DAF7 /* HMKCMasterSlotItemObject.h */,
 				F43F3D511A39CC7500D6DAF7 /* HMKCMasterSlotItemObject.m */,
-				F44AB23C19E824D700F217AF /* HMKCSlotItemObject.h */,
-				F44AB23D19E824D700F217AF /* HMKCSlotItemObject.m */,
-				F44AB23F19E8252600F217AF /* HMKCSlotItemObject+Extensions.h */,
-				F44AB24019E8252600F217AF /* HMKCSlotItemObject+Extensions.m */,
+				F477E2421A53836200493198 /* HMKCSlotItemObject.swift */,
+				F477E2401A5362C900493198 /* HMKCSlotItemObject+Extension.swift */,
 				F477E23E1A530C3800493198 /* HMKCDeck.swift */,
 				F477E23C1A52FAE400493198 /* HMKCDeck+Extension.swift */,
 				F4E7802C18DC3AF00011BC4C /* LocalData.xcdatamodeld */,
@@ -904,7 +900,6 @@
 				F4131ED5190F63D8004F7F9A /* HMUpdateSlotItemCommand.m in Sources */,
 				F4C1190518A71AEA005D5B25 /* HMJSONReciever.m in Sources */,
 				F4551BDE1A46C23100BB0235 /* HMTimerCountFormatter.swift in Sources */,
-				F44AB24119E8252600F217AF /* HMKCSlotItemObject+Extensions.m in Sources */,
 				F4A3AD82199F529700FDBF80 /* HMCombinedBattleCommand.m in Sources */,
 				F4AA05FE192B932E00844688 /* HMTemporaryDataStore.m in Sources */,
 				F4B414F818B1D35800468DAF /* HMMasterMissionCommand.m in Sources */,
@@ -912,7 +907,6 @@
 				F4E802071A50F8A100016781 /* HMSuppliesView.swift in Sources */,
 				F4C1190B18A74DF0005D5B25 /* HMJSONCommand.m in Sources */,
 				F4B30CF81A45DACB008E3D79 /* HMSlotItemEquipTypeTransformer.swift in Sources */,
-				F44AB23E19E824D700F217AF /* HMKCSlotItemObject.m in Sources */,
 				F4B414F518B1888800468DAF /* HMMasterFurnitureCommand.m in Sources */,
 				F4AA0601192E1FE900844688 /* HMBattleCommand.m in Sources */,
 				F43F3D521A39CC7500D6DAF7 /* HMKCMasterSlotItemObject.m in Sources */,
@@ -927,6 +921,7 @@
 				F43F3D4C1A34AC8000D6DAF7 /* HMKCMasterShipObject.m in Sources */,
 				F4268031194D1B1A00B2C27F /* HMChangeHenseiCommand.m in Sources */,
 				F4E802091A511F5900016781 /* HMSuppliesCell.swift in Sources */,
+				F477E2411A5362C900493198 /* HMKCSlotItemObject+Extension.swift in Sources */,
 				F4551BE61A48711D00BB0235 /* HMScreenshotInformation.swift in Sources */,
 				F494DC6D18CC054800AE97E4 /* HMNyukyoDockStatus.m in Sources */,
 				F43BA4A1197BE22200CFF788 /* HMDestroyShipCommand.m in Sources */,
@@ -937,6 +932,7 @@
 				F4D2CBCB18B05E58000EBC59 /* HMMaserShipCommand.m in Sources */,
 				F477E2371A52D70F00493198 /* HMKenzoHistory.swift in Sources */,
 				F4513EFA18BB699700073552 /* HMShipWindowController.m in Sources */,
+				F477E2431A53836200493198 /* HMKCSlotItemObject.swift in Sources */,
 				F42680121943E92D00B2C27F /* HMKCShipObject+Extensions.m in Sources */,
 				F46F104118A9B85E0063E503 /* HMJSONNode.m in Sources */,
 				F454F7831A261844003042DD /* HMFleetInformation.m in Sources */,
