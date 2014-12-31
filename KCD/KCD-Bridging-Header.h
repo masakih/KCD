@@ -10,7 +10,6 @@
 #import "HMTemporaryDataStore.h"
 
 #import "HMKCManagedObject.h"
-#import "HMKCShipObject+Extensions.h"
 
 #import "HMMissionStatus.h"
 #import "HMNyukyoDockStatus.h"

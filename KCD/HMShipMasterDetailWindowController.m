@@ -11,7 +11,8 @@
 #import "HMAppDelegate.h"
 #import "HMServerDataStore.h"
 #import "HMFleetInformation.h"
-#import "HMKCShipObject+Extensions.h"
+
+#import "KCD-Swift.h"
 
 
 @interface HMShipMasterDetailWindowController ()

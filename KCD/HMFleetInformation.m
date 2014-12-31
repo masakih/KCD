@@ -9,7 +9,6 @@
 #import "HMFleetInformation.h"
 
 #import "HMServerDataStore.h"
-#import "HMKCShipObject+Extensions.h"
 
 #import "KCD-Swift.h"
 

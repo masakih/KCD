@@ -8,8 +8,9 @@
 
 #import "HMApplySuppliesCommand.h"
 
-#import "HMKCShipObject+Extensions.h"
 #import "HMServerDataStore.h"
+
+#import "KCD-Swift.h"
 
 
 @implementation HMApplySuppliesCommand

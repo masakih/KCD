@@ -126,7 +126,7 @@
         <attribute name="win_item2_0" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="win_item2_1" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
-    <entity name="MasterShip" representedClassName="HMKCMasterShipObject" syncable="YES">
+    <entity name="MasterShip" representedClassName="KCD.HMKCMasterShipObject" syncable="YES">
         <attribute name="afterbull" attributeType="Integer 32" syncable="YES"/>
         <attribute name="afterfuel" attributeType="Integer 32" syncable="YES"/>
         <attribute name="afterlv" attributeType="Integer 32" syncable="YES"/>
@@ -253,7 +253,7 @@
         <attribute name="ship_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
-    <entity name="Ship" representedClassName="HMKCShipObject" syncable="YES">
+    <entity name="Ship" representedClassName="KCD.HMKCShipObject" syncable="YES">
         <attribute name="bull" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="cond" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="exp" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -327,7 +327,7 @@
         <element name="MasterUseItem" positionX="0" positionY="0" width="128" height="150"/>
         <element name="Material" positionX="0" positionY="0" width="128" height="165"/>
         <element name="NyukyoDock" positionX="0" positionY="0" width="128" height="195"/>
-        <element name="Ship" positionX="0" positionY="0" width="128" height="763"/>
+        <element name="Ship" positionX="0" positionY="0" width="128" height="765"/>
         <element name="SlotItem" positionX="0" positionY="0" width="128" height="135"/>
     </elements>
 </model>
