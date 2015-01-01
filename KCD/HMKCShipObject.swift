@@ -58,6 +58,6 @@ class HMKCShipObject: HMKCManagedObject {
     @NSManaged var taisen_0: NSNumber
     @NSManaged var taisen_1: NSNumber
     @NSManaged var equippedItem: NSOrderedSet
-    @NSManaged var master_ship: HMKCMasterShipObject
+    @NSManaged var master_ship: HMKCMasterShipObject?
 
 }

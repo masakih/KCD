@@ -55,13 +55,13 @@ extension HMKCShipObject
 	
 	var name: String? {
 		willAccessValueForKey("master_ship")
-		let name = master_ship.name
+		let name = master_ship?.name
 		didAccessValueForKey("master_ship")
 		return name
 	}
 	var shortTypeName: String? {
 		willAccessValueForKey("master_ship")
-		let idValue = master_ship.stype.valueForKey("id") as? NSNumber
+		let idValue = master_ship?.stype.valueForKey("id") as? NSNumber
 		didAccessValueForKey("master_ship")
 		if idValue == nil { return nil }
 		let id = idValue!.integerValue
@@ -131,19 +131,19 @@ extension HMKCShipObject
 	}
 	var maxFuel: NSNumber? {
 		willAccessValueForKey("master_ship")
-		let number = master_ship.fuel_max
+		let number = master_ship?.fuel_max
 		didAccessValueForKey("master_ship")
 		return number
 	}
 	var maxBull: NSNumber? {
 		willAccessValueForKey("master_ship")
-		let number = master_ship.bull_max
+		let number = master_ship?.bull_max
 		didAccessValueForKey("master_ship")
 		return number
 	}
 	var upgradeLevel: NSNumber? {
 		willAccessValueForKey("master_ship")
-		let number = master_ship.afterlv
+		let number = master_ship?.afterlv
 		didAccessValueForKey("master_ship")
 		return number
 	}
@@ -159,7 +159,7 @@ extension HMKCShipObject
 	
 	var isMaxKaryoku: NSNumber {
 		willAccessValueForKey("master_ship")
-		let defaultValue = master_ship.houg_0?.integerValue
+		let defaultValue = master_ship?.houg_0?.integerValue
 		didAccessValueForKey("master_ship")
 		willAccessValueForKey("karyoku_1")
 		let maxValue = karyoku_1?.integerValue
@@ -173,7 +173,7 @@ extension HMKCShipObject
 	}
 	var isMaxRaisou: NSNumber {
 		willAccessValueForKey("master_ship")
-		let defaultValue = master_ship.raig_0?.integerValue
+		let defaultValue = master_ship?.raig_0?.integerValue
 		didAccessValueForKey("master_ship")
 		willAccessValueForKey("raisou_1")
 		let maxValue = raisou_1?.integerValue
@@ -187,7 +187,7 @@ extension HMKCShipObject
 	}
 	var isMaxTaiku: NSNumber {
 		willAccessValueForKey("master_ship")
-		let defaultValue = master_ship.tyku_0?.integerValue
+		let defaultValue = master_ship?.tyku_0?.integerValue
 		didAccessValueForKey("master_ship")
 		willAccessValueForKey("taiku_1")
 		let maxValue = taiku_1?.integerValue
@@ -201,7 +201,7 @@ extension HMKCShipObject
 	}
 	var isMaxSoukou: NSNumber {
 		willAccessValueForKey("master_ship")
-		let defaultValue = master_ship.souk_0?.integerValue
+		let defaultValue = master_ship?.souk_0?.integerValue
 		didAccessValueForKey("master_ship")
 		willAccessValueForKey("soukou_1")
 		let maxValue = soukou_1?.integerValue
@@ -215,7 +215,7 @@ extension HMKCShipObject
 	}
 	var isMaxLucky: NSNumber {
 		willAccessValueForKey("master_ship")
-		let defaultValue = master_ship.luck_0?.integerValue
+		let defaultValue = master_ship?.luck_0?.integerValue
 		didAccessValueForKey("master_ship")
 		willAccessValueForKey("lucky_1")
 		let maxValue = lucky_1?.integerValue
