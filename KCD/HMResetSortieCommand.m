@@ -8,8 +8,7 @@
 
 #import "HMResetSortieCommand.h"
 
-#import "HMTemporaryDataStore.h"
-
+#import "KCD-Swift.h"
 
 @implementation HMResetSortieCommand
 

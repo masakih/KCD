@@ -8,9 +8,9 @@
 
 #import "HMCalculateDamageCommand.h"
 
-#import "HMTemporaryDataStore.h"
 #import "HMServerDataStore.h"
 
+#import "KCD-Swift.h"
 
 #define DAMAGE_CHECK 0
 

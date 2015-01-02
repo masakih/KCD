@@ -5,9 +5,9 @@
 #import "HMAppDelegate.h"
 #import "HMUserDefaults.h"
 
+#import "HMCoreDataManager.h"
 #import "HMServerDataStore.h"
 #import "HMLocalDataStore.h"
-#import "HMTemporaryDataStore.h"
 
 #import "HMKCManagedObject.h"
 
