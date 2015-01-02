@@ -9,7 +9,8 @@
 #import "HMJSONCommand.h"
 
 #import "HMAppDelegate.h"
-#import "HMServerDataStore.h"
+
+#import "KCD-Swift.h"
 
 #if ENABLE_JSON_LOG
 #import "HMJSONNode.h"

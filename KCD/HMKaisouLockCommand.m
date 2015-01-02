@@ -8,7 +8,7 @@
 
 #import "HMKaisouLockCommand.h"
 
-#import "HMServerDataStore.h"
+#import "KCD-Swift.h"
 
 @implementation HMKaisouLockCommand
 + (void)load

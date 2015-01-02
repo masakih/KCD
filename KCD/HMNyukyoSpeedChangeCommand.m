@@ -8,7 +8,7 @@
 
 #import "HMNyukyoSpeedChangeCommand.h"
 
-#import "HMServerDataStore.h"
+#import "KCD-Swift.h"
 
 
 @implementation HMNyukyoSpeedChangeCommand

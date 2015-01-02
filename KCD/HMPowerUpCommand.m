@@ -8,7 +8,7 @@
 
 #import "HMPowerUpCommand.h"
 
-#import "HMServerDataStore.h"
+#import "KCD-Swift.h"
 
 @implementation HMPowerUpCommand
 + (void)load

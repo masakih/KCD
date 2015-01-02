@@ -8,8 +8,9 @@
 
 #import "HMMissionStatus.h"
 
-#import "HMServerDataStore.h"
 #import "HMUserDefaults.h"
+
+#import "KCD-Swift.h"
 
 enum {
 	kNoMission = 0,

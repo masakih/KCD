@@ -8,7 +8,7 @@
 
 #import "HMUpdateSlotItemCommand.h"
 
-#import "HMServerDataStore.h"
+#import "KCD-Swift.h"
 
 @implementation HMUpdateSlotItemCommand
 - (NSString *)dataKey

@@ -9,7 +9,8 @@
 #import "HMShipWindowController.h"
 
 #import "HMAppDelegate.h"
-#import "HMServerDataStore.h"
+
+#import "KCD-Swift.h"
 
 
 @interface HMShipWindowController ()

@@ -8,7 +8,7 @@
 
 #import "HMMemberBasicCommand.h"
 
-#import "HMServerDataStore.h"
+#import "KCD-Swift.h"
 
 
 @implementation HMMemberBasicCommand

@@ -8,7 +8,7 @@
 
 #import "HMDestroyItem2Command.h"
 
-#import "HMServerDataStore.h"
+#import "KCD-Swift.h"
 
 
 @implementation HMDestroyItem2Command

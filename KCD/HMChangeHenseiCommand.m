@@ -8,7 +8,7 @@
 
 #import "HMChangeHenseiCommand.h"
 
-#import "HMServerDataStore.h"
+#import "KCD-Swift.h"
 
 @interface HMChangeHenseiCommand ()
 @property (nonatomic, strong) HMServerDataStore *store;

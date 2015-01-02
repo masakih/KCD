@@ -8,7 +8,7 @@
 
 #import "HMNyukyoStartCommand.h"
 
-#import "HMServerDataStore.h"
+#import "KCD-Swift.h"
 
 
 @implementation HMNyukyoStartCommand

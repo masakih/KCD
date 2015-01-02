@@ -8,8 +8,6 @@
 
 #import "HMStoreCreateSlotItemHistoryCommand.h"
 
-#import "HMServerDataStore.h"
-
 #import "KCD-Swift.h"
 
 @implementation HMStoreCreateSlotItemHistoryCommand

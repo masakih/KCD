@@ -8,7 +8,7 @@
 
 #import "HMRealDestroyShipCommand.h"
 
-#import "HMServerDataStore.h"
+#import "KCD-Swift.h"
 
 @implementation HMRealDestroyShipCommand
 - (void)execute

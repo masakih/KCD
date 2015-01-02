@@ -59,6 +59,7 @@
 		F477E24D1A54570E00493198 /* HMKCMasterShipObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F477E24C1A54570E00493198 /* HMKCMasterShipObject.swift */; };
 		F477E2511A55A10800493198 /* HMTemporaryDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F477E2501A55A10800493198 /* HMTemporaryDataStore.swift */; };
 		F477E2531A566FB400493198 /* HMLocalDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F477E2521A566FB400493198 /* HMLocalDataStore.swift */; };
+		F477E2551A56CA5100493198 /* HMServerDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F477E2541A56CA5100493198 /* HMServerDataStore.swift */; };
 		F47B78B218A7B42B0011386E /* HMJSONViewWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F47B78B018A7B42B0011386E /* HMJSONViewWindowController.m */; };
 		F48F7B021907D7B800E78AE1 /* HMPortCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F48F7B011907D7B800E78AE1 /* HMPortCommand.m */; };
 		F494DC5F18C30AE100AE97E4 /* HMMissionStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = F494DC5E18C30AE100AE97E4 /* HMMissionStatus.m */; };
@@ -97,7 +98,6 @@
 		F4B3DC3918E5C8700011B4FC /* HMJSONViewWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B3DC3B18E5C8700011B4FC /* HMJSONViewWindowController.xib */; };
 		F4B3DC3C18E5C87D0011B4FC /* HMDocksViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B3DC3E18E5C87D0011B4FC /* HMDocksViewController.xib */; };
 		F4B3DC3F18E5C8870011B4FC /* HMBroserWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B3DC4118E5C8870011B4FC /* HMBroserWindowController.xib */; };
-		F4B3DC4418E70B370011B4FC /* HMServerDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B3DC4318E70B370011B4FC /* HMServerDataStore.m */; };
 		F4B3DC4718EEEB920011B4FC /* HMCompositMapCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B3DC4618EEEB920011B4FC /* HMCompositMapCommand.m */; };
 		F4B3DC4C18F0C8A90011B4FC /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4B3DC4B18F0C8A90011B4FC /* Social.framework */; };
 		F4B3DC4E18F0C8FF0011B4FC /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4B3DC4D18F0C8FF0011B4FC /* Accounts.framework */; };
@@ -237,6 +237,7 @@
 		F477E24C1A54570E00493198 /* HMKCMasterShipObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMKCMasterShipObject.swift; sourceTree = "<group>"; };
 		F477E2501A55A10800493198 /* HMTemporaryDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMTemporaryDataStore.swift; sourceTree = "<group>"; };
 		F477E2521A566FB400493198 /* HMLocalDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMLocalDataStore.swift; sourceTree = "<group>"; };
+		F477E2541A56CA5100493198 /* HMServerDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMServerDataStore.swift; sourceTree = "<group>"; };
 		F47B78AF18A7B42B0011386E /* HMJSONViewWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMJSONViewWindowController.h; sourceTree = "<group>"; };
 		F47B78B018A7B42B0011386E /* HMJSONViewWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMJSONViewWindowController.m; sourceTree = "<group>"; };
 		F48F7B001907D7B800E78AE1 /* HMPortCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPortCommand.h; sourceTree = "<group>"; };
@@ -298,8 +299,6 @@
 		F4B3DC3A18E5C8700011B4FC /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMJSONViewWindowController.xib; sourceTree = "<group>"; };
 		F4B3DC3D18E5C87D0011B4FC /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMDocksViewController.xib; sourceTree = "<group>"; };
 		F4B3DC4018E5C8870011B4FC /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMBroserWindowController.xib; sourceTree = "<group>"; };
-		F4B3DC4218E70B370011B4FC /* HMServerDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMServerDataStore.h; sourceTree = "<group>"; };
-		F4B3DC4318E70B370011B4FC /* HMServerDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMServerDataStore.m; sourceTree = "<group>"; };
 		F4B3DC4518EEEB920011B4FC /* HMCompositMapCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMCompositMapCommand.h; sourceTree = "<group>"; };
 		F4B3DC4618EEEB920011B4FC /* HMCompositMapCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMCompositMapCommand.m; sourceTree = "<group>"; };
 		F4B3DC4B18F0C8A90011B4FC /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
@@ -534,8 +533,7 @@
 			children = (
 				F4513EDB18B619B600073552 /* HMCoreDataManager.h */,
 				F4513EDC18B619B600073552 /* HMCoreDataManager.m */,
-				F4B3DC4218E70B370011B4FC /* HMServerDataStore.h */,
-				F4B3DC4318E70B370011B4FC /* HMServerDataStore.m */,
+				F477E2541A56CA5100493198 /* HMServerDataStore.swift */,
 				F477E2521A566FB400493198 /* HMLocalDataStore.swift */,
 				F477E2501A55A10800493198 /* HMTemporaryDataStore.swift */,
 				F4D2CBC618B0555A000EBC59 /* HMKCManagedObject.h */,
@@ -863,7 +861,6 @@
 				F4B30CFA1A468216008E3D79 /* HMPlanToShowsBoldFontTransformer.swift in Sources */,
 				F4AA06101931869E00844688 /* HMBattleResultCommand.m in Sources */,
 				F4551BE21A47044A00BB0235 /* HMExternalBrowserWindowController.swift in Sources */,
-				F4B3DC4418E70B370011B4FC /* HMServerDataStore.m in Sources */,
 				F4551BEE1A49186900BB0235 /* HMShipViewController.swift in Sources */,
 				F4AA0607192E3B6200844688 /* HMMapStartCommand.m in Sources */,
 				F4E1BC0A1A4FA4E20089A82D /* HMStrokeTextFieldCell.swift in Sources */,
@@ -940,6 +937,7 @@
 				F4C3957418CDDFE500A1E918 /* HMKenzoDockStatus.m in Sources */,
 				F4C118FB18A67B1C005D5B25 /* CanonicalRequest.m in Sources */,
 				F477E23F1A530C3800493198 /* HMKCDeck.swift in Sources */,
+				F477E2551A56CA5100493198 /* HMServerDataStore.swift in Sources */,
 				F477E23D1A52FAE400493198 /* HMKCDeck+Extension.swift in Sources */,
 				F4AA060D1930E69200844688 /* HMMidnightBattleCommand.m in Sources */,
 				F4BDEB5A187252F30069D0CE /* HMAppDelegate.m in Sources */,

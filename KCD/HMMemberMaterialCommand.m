@@ -8,7 +8,7 @@
 
 #import "HMMemberMaterialCommand.h"
 
-#import "HMServerDataStore.h"
+#import "KCD-Swift.h"
 
 @implementation HMMemberMaterialCommand
 + (void)load

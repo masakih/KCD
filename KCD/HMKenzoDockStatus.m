@@ -8,8 +8,9 @@
 
 #import "HMKenzoDockStatus.h"
 
-#import "HMServerDataStore.h"
 #import "HMUserDefaults.h"
+
+#import "KCD-Swift.h"
 
 enum {
 	kNoShip = 0,
