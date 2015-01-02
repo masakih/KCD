@@ -16,10 +16,11 @@
 
 #import "KCD-Swift.h"
 
-
+/*
 @interface NSFileManager (KCDExtension)
 - (NSString *)_web_pathWithUniqueFilenameForPath:(NSString *)path;
 @end
+ */
 
 @interface HMScreenshotWindowController ()
 

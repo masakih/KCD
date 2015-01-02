@@ -7,7 +7,6 @@
 
 #import "HMCoreDataManager.h"
 #import "HMServerDataStore.h"
-#import "HMLocalDataStore.h"
 
 #import "HMKCManagedObject.h"
 
