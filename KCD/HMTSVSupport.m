@@ -207,8 +207,9 @@
 		if([attr[6] isEqual:@"(null)"]) continue;
 		
 		NSArray *array = [lds objectsWithEntityName:entityName
-											  error:NULL
-									predicateFormat:@"date = %@", [NSDate dateWithString:attr[0]]];
+									sortDescriptors:nil
+										  predicate:[NSPredicate predicateWithFormat:@"date = %@", [NSDate dateWithString:attr[0]]]
+											  error:NULL];
 		if(array.count != 0) continue;
 		
 		HMKaihatuHistory *obj = [NSEntityDescription insertNewObjectForEntityForName:entityName
@@ -240,8 +241,9 @@
 		if([attr[6] isEqual:@"(null)"]) continue;
 				
 		NSArray *array = [lds objectsWithEntityName:entityName
-											  error:NULL
-									predicateFormat:@"date = %@", [NSDate dateWithString:attr[0]]];
+									sortDescriptors:nil
+										  predicate:[NSPredicate predicateWithFormat:@"date = %@", [NSDate dateWithString:attr[0]]]
+											  error:NULL];
 		if(array.count != 0) continue;
 		
 		HMKenzoHistory *obj = [NSEntityDescription insertNewObjectForEntityForName:entityName

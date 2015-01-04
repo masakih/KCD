@@ -40,8 +40,9 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 	
 	NSError *error = nil;
 	NSArray *array = [self.store objectsWithEntityName:@"Battle"
-										predicate:nil
-											error:&error];
+									   sortDescriptors:nil
+											 predicate:nil
+												 error:&error];
 	if(error) {
 		[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
 		return;
@@ -59,8 +60,9 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 	
 	NSError *error = nil;
 	NSArray *array = [self.store objectsWithEntityName:@"Damage"
-							   predicate:nil
-								   error:&error];
+									   sortDescriptors:nil
+											 predicate:nil
+												 error:&error];
 	if(error) {
 		[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
 		return;
@@ -107,6 +109,7 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 		// Battleエンティティ取得
 		error = nil;
 		NSArray *battles = [self.store objectsWithEntityName:@"Battle"
+											 sortDescriptors:nil
 												   predicate:nil
 													   error:&error];
 		if(error) {
@@ -301,8 +304,9 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 	
 	error = nil;
 	NSArray *array = [self.store objectsWithEntityName:@"Battle"
-										predicate:nil
-											error:&error];
+									   sortDescriptors:nil
+											 predicate:nil
+												 error:&error];
 	if(error) {
 		[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
 		return;
@@ -319,6 +323,7 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 		// 艦隊メンバーを取得
 		error = nil;
 		NSArray *decks = [serverStore objectsWithEntityName:@"Deck"
+											sortDescriptors:nil
 												  predicate:predicate
 													  error:&error];
 		if(error) {
@@ -343,8 +348,9 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 		for(id shipId in shipIds) {
 			error = nil;
 			NSArray *ship = [serverStore objectsWithEntityName:@"Ship"
-														 error:&error
-											   predicateFormat:@"id = %@", @([shipId integerValue])];
+											   sortDescriptors:nil
+													 predicate:[NSPredicate predicateWithFormat:@"id = %@", @([shipId integerValue])]
+														 error:&error];
 			if(error) {
 				[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
 			}

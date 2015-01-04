@@ -36,7 +36,10 @@
 	NSManagedObjectContext *managedObjectContext = [serverDataStore managedObjectContext];
 	
 	NSError *error = nil;
-	id result = [serverDataStore objectsWithEntityName:@"Basic" predicate:nil error:&error];
+	id result = [serverDataStore objectsWithEntityName:@"Basic"
+									   sortDescriptors:nil
+											 predicate:nil
+												 error:&error];
 	if(error) {
 		[self log:@"Fetch error: %@", error];
 		return;

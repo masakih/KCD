@@ -104,8 +104,9 @@
 	NSArray *array = nil;
 	if(shipId != -1) {
 		array = [store objectsWithEntityName:@"Ship"
-									   error:&error
-							 predicateFormat:@"id = %ld", shipId];
+							 sortDescriptors:nil
+								   predicate:[NSPredicate predicateWithFormat:@"id = %ld", shipId]
+									   error:&error];
 	}
 	if(shipId != -1 && array.count == 0) {
 		NSLog(@"Could not found ship of id %@", shipIdNumber);
@@ -235,8 +236,9 @@
 	NSArray *array = nil;
 	if(shipId != -1) {
 		array = [store objectsWithEntityName:@"Ship"
-									   error:&error
-							 predicateFormat:@"id = %ld", shipId];
+							 sortDescriptors:nil
+								   predicate:[NSPredicate predicateWithFormat:@"id = %ld", shipId]
+									   error:&error];
 	} else {
 		return 0;
 	}
@@ -277,8 +279,9 @@
 		if(itemId.integerValue == -1) break;
 		error = nil;
 		array = [store objectsWithEntityName:@"SlotItem"
-									   error:&error
-							 predicateFormat:@"id = %@", itemId];
+							 sortDescriptors:nil
+								   predicate:[NSPredicate predicateWithFormat:@"id = %@", itemId]
+									   error:&error];
 		if(array.count == 0) continue;
 		HMKCSlotItemObject *slotItem = array[0];
 		HMKCMasterSlotItemObject *master = slotItem.master_slotItem;
@@ -336,8 +339,9 @@
 		NSArray *array = nil;
 		if(shipId != -1) {
 			array = [store objectsWithEntityName:@"Ship"
-										   error:&error
-								 predicateFormat:@"id = %ld", shipId];
+								 sortDescriptors:nil
+									   predicate:[NSPredicate predicateWithFormat:@"id = %ld", shipId]
+										   error:&error];
 		}
 		if(array.count == 0) {
 			NSLog(@"Could not found ship of id %@", shipIdNumber);

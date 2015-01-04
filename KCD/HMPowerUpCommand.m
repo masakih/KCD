@@ -35,8 +35,9 @@
 	for(NSString *shipId in usedShipStringArray) {
 		NSError *error = nil;
 		NSArray *ships = [store objectsWithEntityName:@"Ship"
-												error:&error
-									  predicateFormat:@"id = %@", @([shipId integerValue])];
+									  sortDescriptors:nil
+											predicate:[NSPredicate predicateWithFormat:@"id = %@", @([shipId integerValue])]
+												error:&error];
 		if(ships.count == 0) {
 			continue;
 		}

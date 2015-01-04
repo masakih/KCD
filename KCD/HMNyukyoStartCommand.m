@@ -39,8 +39,9 @@
 	
 	NSError *error = nil;
 	NSArray *array = [store objectsWithEntityName:@"Ship"
-											error:&error
-								  predicateFormat:@"id = %@", @([shipId integerValue])];
+								  sortDescriptors:nil
+										predicate:[NSPredicate predicateWithFormat:@"id = %@", @([shipId integerValue])]
+											error:&error];
 	if(array.count == 0) {
 		if(error) {
 			NSLog(@"Error: at %@ : %@", NSStringFromClass([self class]), error);

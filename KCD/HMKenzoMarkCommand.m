@@ -18,8 +18,9 @@
 {
 	HMServerDataStore *serverDataStore = [HMServerDataStore oneTimeEditor];
 	NSArray *array = [serverDataStore objectsWithEntityName:@"KenzoDock"
-													  error:NULL
-											predicateFormat:@"id = %@", @([[self.arguments valueForKey:@"api_kdock_id"] integerValue])];
+											sortDescriptors:nil
+												  predicate:[NSPredicate predicateWithFormat:@"id = %@", @([[self.arguments valueForKey:@"api_kdock_id"] integerValue])]
+													  error:NULL];
 	if([array count] == 0) {
 		NSLog(@"KenzoDock data is invalid.");
 		return;
@@ -29,7 +30,10 @@
 	NSNumber *item1 = [kdock valueForKey:@"item1"];
 	
 	//
-	array = [serverDataStore objectsWithEntityName:@"MasterShip" error:NULL predicateFormat:@"id = %@", [kdock valueForKey:@"created_ship_id"]];
+	array = [serverDataStore objectsWithEntityName:@"MasterShip"
+								   sortDescriptors:nil
+										 predicate:[NSPredicate predicateWithFormat:@"id = %@", [kdock valueForKey:@"created_ship_id"]]
+											 error:NULL];
 	if([array count] == 0) {
 		NSLog(@"MasterShip data is invalid or ship_id is invalid.");
 		return;
@@ -41,12 +45,19 @@
 	NSString *flafShipName = nil;
 	NSNumber *commanderLv = nil;
 	HMLocalDataStore *localDataStore = [HMLocalDataStore oneTimeEditor];
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:
+							  @"fuel = %@ AND bull = %@ AND steel = %@ AND bauxite = %@ AND kaihatusizai = %@ AND kDockId = %@ AND created_ship_id = %@",
+							  item1,
+							  [kdock valueForKey:@"item2"],
+							  [kdock valueForKey:@"item3"],
+							  [kdock valueForKey:@"item4"],
+							  [kdock valueForKey:@"item5"],
+							  @([[self.arguments valueForKey:@"api_kdock_id"] integerValue]),
+							  [kdock valueForKey:@"created_ship_id"]];
 	array = [localDataStore objectsWithEntityName:@"KenzoMark"
-											error:NULL
-								  predicateFormat:@"fuel = %@ AND bull = %@ AND steel = %@ AND bauxite = %@ AND kaihatusizai = %@ AND kDockId = %@ AND created_ship_id = %@",
-			 item1, [kdock valueForKey:@"item2"], [kdock valueForKey:@"item3"], [kdock valueForKey:@"item4"], [kdock valueForKey:@"item5"],
-			 @([[self.arguments valueForKey:@"api_kdock_id"] integerValue]), [kdock valueForKey:@"created_ship_id"]
-			 ];
+								  sortDescriptors:nil
+										predicate:predicate
+											error:NULL];
 	if([array count] != 0) {
 		flagShipLv = [array[0] valueForKey:@"flagShipLv"];
 		flafShipName = [array[0] valueForKey:@"flagShipName"];

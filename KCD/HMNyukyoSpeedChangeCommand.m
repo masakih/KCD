@@ -34,8 +34,9 @@
 	
 	NSError *error = nil;
 	NSArray *array = [store objectsWithEntityName:@"NyukyoDock"
-											error:&error
-								  predicateFormat:@"id = %@", @([ndockId integerValue])];
+								  sortDescriptors:nil
+										predicate:[NSPredicate predicateWithFormat:@"id = %@", @([ndockId integerValue])]
+											error:&error];
 	if(array.count == 0) {
 		if(error) {
 			NSLog(@"Error: at %@ : %@", NSStringFromClass([self class]), error);
@@ -54,8 +55,9 @@
 	// 艦隊リスト更新用
 	error = nil;
 	array = [store objectsWithEntityName:@"Ship"
-								   error:&error
-						 predicateFormat:@"id = %@", @([shipId integerValue])];
+						 sortDescriptors:nil
+							   predicate:[NSPredicate predicateWithFormat:@"id = %@", @([shipId integerValue])]
+								   error:&error];
 	if(array.count == 0) {
 		if(error) {
 			NSLog(@"Error: at %@ : %@", NSStringFromClass([self class]), error);

@@ -20,8 +20,9 @@
 	
 	NSError *error = nil;
 	NSArray *ships = [store objectsWithEntityName:@"Ship"
-											error:&error
-								  predicateFormat:@"id = %@", @([destroyedShipId integerValue])];
+								  sortDescriptors:nil
+										predicate:[NSPredicate predicateWithFormat:@"id = %@", @([destroyedShipId integerValue])]
+											error:&error];
 	if(ships.count == 0) {
 		return;
 	}

@@ -66,6 +66,7 @@
 {
 	NSError *error = nil;
 	NSArray *decks = [self.store objectsWithEntityName:@"Deck"
+									   sortDescriptors:nil
 											 predicate:nil
 												 error:&error];
 	// TODO: error handling
@@ -95,8 +96,9 @@
 	
 	NSError *error = nil;
 	NSArray *decks = [self.store objectsWithEntityName:@"Deck"
-												 error:&error
-									   predicateFormat:@"id = %ld", deckNumber];
+									   sortDescriptors:nil
+											 predicate:[NSPredicate predicateWithFormat:@"id = %ld", deckNumber]
+												 error:&error];
 	// TODO: error handling
 	id deck = decks[0];
 	

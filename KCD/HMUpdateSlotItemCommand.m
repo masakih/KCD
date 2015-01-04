@@ -25,8 +25,9 @@
 	
 	NSError *error = nil;
 	NSArray *array = [store objectsWithEntityName:@"MasterSlotItem"
-								   error:&error
-						 predicateFormat:@"id = %@", data[@"api_slotitem_id"]];
+								  sortDescriptors:nil
+										predicate:[NSPredicate predicateWithFormat:@"id = %@", data[@"api_slotitem_id"]]
+											error:&error];
 	if([array count] == 0) {
 		NSLog(@"MasterSlotItem is invalid");
 		return;

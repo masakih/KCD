@@ -36,8 +36,9 @@
 	NSError *error = nil;
 	
 	NSArray *decks = [store objectsWithEntityName:@"Deck"
-											error:&error
-								  predicateFormat:@"id = %@", self.missionFleetNumber];
+								  sortDescriptors:nil
+										predicate:[NSPredicate predicateWithFormat:@"id = %@", self.missionFleetNumber]
+											error:&error];
 	if(decks.count == 0) return;
 	id deck = decks[0];
 	

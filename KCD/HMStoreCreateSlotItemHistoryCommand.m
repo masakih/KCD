@@ -24,8 +24,9 @@
 	if(created) {
 		NSNumber *slotItemID = [data valueForKeyPath:@"api_slot_item.api_slotitem_id"];
 		NSArray *array = [serverDataStore objectsWithEntityName:@"MasterSlotItem"
-														  error:NULL
-												predicateFormat:@"id = %@", slotItemID];
+												sortDescriptors:nil
+													  predicate:[NSPredicate predicateWithFormat:@"id = %@", slotItemID]
+														  error:NULL];
 		if([array count] == 0) {
 			NSLog(@"MasterSlotItem data is invalid or api_slotitem_id is invalid.");
 			return;
@@ -38,14 +39,20 @@
 	}
 	
 	// Deck -> FlagShip
-	NSArray *array = [serverDataStore objectsWithEntityName:@"Deck" error:NULL predicateFormat:@"id = 1"];
+	NSArray *array = [serverDataStore objectsWithEntityName:@"Deck"
+											sortDescriptors:nil
+												  predicate:[NSPredicate predicateWithFormat:@"id = 1"]
+													  error:NULL];
 	if([array count] == 0) {
 		NSLog(@"Deck data is invalid.");
 		return;
 	}
 	id deck = array[0];
 	id flagShipID = [deck valueForKey:@"ship_0"];
-	array = [serverDataStore objectsWithEntityName:@"Ship" error:NULL predicateFormat:@"id = %@", flagShipID];
+	array = [serverDataStore objectsWithEntityName:@"Ship"
+								   sortDescriptors:nil
+										 predicate:[NSPredicate predicateWithFormat:@"id = %@", flagShipID]
+											 error:NULL];
 	if([array count] == 0) {
 		NSLog(@"Ship data is invalid or ship_0 is invalid.");
 		return;
@@ -55,7 +62,10 @@
 	NSString *flagShipName = [flagShip valueForKeyPath:@"master_ship.name"];
 	
 	// Basic -> level
-	array = [serverDataStore objectsWithEntityName:@"Basic" predicate:nil error:NULL];
+	array = [serverDataStore objectsWithEntityName:@"Basic"
+								   sortDescriptors:nil
+										 predicate:nil
+											 error:NULL];
 	if([array count] == 0) {
 		NSLog(@"Basic data is invalid.");
 		return;

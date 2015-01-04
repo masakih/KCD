@@ -19,6 +19,7 @@
 	
 	NSError *error = nil;
 	NSArray *array = [store objectsWithEntityName:@"Battle"
+								  sortDescriptors:nil
 										predicate:nil
 											error:NULL];
 	if(error) {

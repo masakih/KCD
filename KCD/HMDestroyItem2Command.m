@@ -40,8 +40,9 @@
 	
 	NSError *error = nil;
 	NSArray *array = [store objectsWithEntityName:@"SlotItem"
-										   error:&error
-								 predicateFormat:@"id IN %@", items];
+								  sortDescriptors:nil
+										predicate:[NSPredicate predicateWithFormat:@"id IN %@", items]
+											error:&error];
 	if([array count] == 0) {
 		NSLog(@"SlotItem is invalid.");
 		return;
@@ -53,7 +54,10 @@
 	
 	//
 	error = nil;
-	array = [store objectsWithEntityName:@"Material" predicate:nil error:&error];
+	array = [store objectsWithEntityName:@"Material"
+						 sortDescriptors:nil
+							   predicate:nil
+								   error:&error];
 	if(error) {
 		[self log:@"Fetch error: %@", error];
 		return;

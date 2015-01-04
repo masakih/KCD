@@ -31,8 +31,9 @@
 	HMServerDataStore *serverDataStore = [HMServerDataStore oneTimeEditor];
 	NSError *error = nil;
 	NSArray *result = [serverDataStore objectsWithEntityName:@"SlotItem"
-													   error:&error
-											 predicateFormat:@"id = %ld", [slotitemId integerValue]];
+											 sortDescriptors:nil
+												   predicate:[NSPredicate predicateWithFormat:@"id = %ld", [slotitemId integerValue]]
+													   error:&error];
 	if(error) {
 		[self log:@"Fetch error: %@", error];
 		return;
@@ -60,8 +61,9 @@
 {
 	NSError *error = nil;
 	NSArray *result = [serverDataStore objectsWithEntityName:@"MasterSlotItem"
-													   error:&error
-											 predicateFormat:@"id = %ld", [slotItemId integerValue]];
+											  sortDescriptors:nil
+												   predicate:[NSPredicate predicateWithFormat:@"id = %ld", [slotItemId integerValue]]
+													   error:&error];
 	if(error) {
 		[self log:@"Fetch error: %@", error];
 		return;

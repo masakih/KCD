@@ -22,8 +22,9 @@
 	for(NSDictionary *updataInfo in shipInfos) {
 		NSError *error = nil;
 		NSArray *array = [store objectsWithEntityName:@"Ship"
-												error:&error
-									  predicateFormat:@"id = %@", @([updataInfo[@"api_id"] integerValue])];
+									  sortDescriptors:nil
+											predicate:[NSPredicate predicateWithFormat:@"id = %@", @([updataInfo[@"api_id"] integerValue])]
+												error:&error];
 		if(array.count == 0) {
 			if(error) {
 				NSLog(@"Error: at %@ : %@", NSStringFromClass([self class]), error);
