@@ -55,7 +55,7 @@ class HMBroserWindowController: NSWindowController
 	}
 	
 	
-	var managedObjectContext: NSManagedObjectContext {
+	var managedObjectContext: NSManagedObjectContext? {
 		return HMServerDataStore.defaultManager().managedObjectContext
 	}
 	

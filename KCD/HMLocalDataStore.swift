@@ -13,7 +13,7 @@ private var options: [NSObject : AnyObject]? = nil
 サーバーサイドには存在しないデータを保存する
 */
 class HMLocalDataStore: HMCoreDataManager {
-	override init() {
+	required init(type: HMCoreDataManagerType) {
 		if options == nil {
 			let param = NSDictionary(object: "MEMORY", forKey: "journal_mode")
 			options = [
@@ -22,7 +22,7 @@ class HMLocalDataStore: HMCoreDataManager {
 				NSInferMappingModelAutomaticallyOption : true
 			]
 		}
-		super.init()
+		super.init(type: type)
 	}
 	
 	override func modelName() -> String {

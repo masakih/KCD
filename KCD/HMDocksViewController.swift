@@ -131,7 +131,7 @@ class HMDocksViewController: NSViewController
 	var mission3Name: String?
 	var mission4Name: String?
 	
-	var managedObjectContext: NSManagedObjectContext {
+	var managedObjectContext: NSManagedObjectContext? {
 		return HMServerDataStore.defaultManager().managedObjectContext
 	}
 	
@@ -161,13 +161,15 @@ class HMDocksViewController: NSViewController
 		}
 	}
 	
-	var battleManagedObjectController: NSManagedObjectContext {
+	var battleManagedObjectController: NSManagedObjectContext? {
 		return HMTemporaryDataStore.defaultManager().managedObjectContext;
 	}
 	var battle: NSManagedObject? {
 		let store = HMTemporaryDataStore.defaultManager()
 		var error: NSError? = nil
-		let array = store.objectsWithEntityName("Battle", predicate: nil, error: &error)
+//		let array = store.objectsWithEntityName("Battle", error: &error)
+		let array = store.objectsWithEntityName("Battle", sortDescriptors: nil, predicate: nil, error: &error)
+
 		if error != nil {
 			println(__FUNCTION__, " error: \(error)")
 			return nil

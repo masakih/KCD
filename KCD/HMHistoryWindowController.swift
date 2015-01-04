@@ -24,7 +24,7 @@ class HMHistoryWindowController: NSWindowController
 		return HMHistoryWindowController(windowNibName: "HMHistoryWindowController")
 	}
 	
-	var managedObjectContext: NSManagedObjectContext {
+	var managedObjectContext: NSManagedObjectContext? {
 		return HMLocalDataStore.defaultManager().managedObjectContext
 	}
 	
@@ -63,8 +63,9 @@ class HMHistoryWindowController: NSWindowController
 		let moc = store.managedObjectContext
 		
 		for objectID in objectIds {
-			let object = moc.objectWithID(objectID as NSManagedObjectID)
-			moc.deleteObject(object)
+			if let object = moc?.objectWithID(objectID as NSManagedObjectID) {
+				moc!.deleteObject(object)
+			}
 		}
 	}
 }

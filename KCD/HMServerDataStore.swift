@@ -11,7 +11,7 @@ import Foundation
 private var options: [NSObject : AnyObject]? = nil
 
 class HMServerDataStore: HMCoreDataManager {
-	override init() {
+	required init(type: HMCoreDataManagerType) {
 		if options == nil {
 			let param = NSDictionary(object: "MEMORY", forKey: "journal_mode")
 			options = [
@@ -20,7 +20,7 @@ class HMServerDataStore: HMCoreDataManager {
 				NSInferMappingModelAutomaticallyOption : true
 			]
 		}
-		super.init()
+		super.init(type: type)
 	}
 	
 	override func modelName() -> String {

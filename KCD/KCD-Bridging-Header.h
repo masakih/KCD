@@ -5,8 +5,6 @@
 #import "HMAppDelegate.h"
 #import "HMUserDefaults.h"
 
-#import "HMCoreDataManager.h"
-
 #import "HMKCManagedObject.h"
 
 #import "HMMissionStatus.h"

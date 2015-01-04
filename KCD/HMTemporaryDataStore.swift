@@ -10,9 +10,9 @@ import Foundation
 
 
 class HMTemporaryDataStore: HMCoreDataManager {
-	override class func load() {
-		self.defaultManager()
-	}
+//	override class func load() {
+//		self.defaultManager()
+//	}
 	
 	override func modelName() -> String {
 		return "Temporary"

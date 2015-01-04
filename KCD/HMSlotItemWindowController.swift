@@ -25,7 +25,7 @@ class HMSlotItemWindowController: NSWindowController
 		return HMSlotItemWindowController(windowNibName: "HMSlotItemWindowController")
 	}
 	
-	var managedObjectContext: NSManagedObjectContext {
+	var managedObjectContext: NSManagedObjectContext? {
 		return HMServerDataStore.defaultManager().managedObjectContext
 	}
 	

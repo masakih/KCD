@@ -24,7 +24,7 @@ class HMUpgradableShipsWindowController: NSWindowController
 		return HMUpgradableShipsWindowController(windowNibName: "HMUpgradableShipsWindowController")
 	}
 	
-	var managedObjectContext: NSManagedObjectContext {
+	var managedObjectContext: NSManagedObjectContext? {
 		return HMServerDataStore.defaultManager().managedObjectContext
 	}
 	

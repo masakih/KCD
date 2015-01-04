@@ -44,7 +44,7 @@ class HMShipViewController: NSViewController
 		}
 	}
 	
-	var managedObjectContext: NSManagedObjectContext {
+	var managedObjectContext: NSManagedObjectContext? {
 		return HMServerDataStore.defaultManager().managedObjectContext
 	}
 	
