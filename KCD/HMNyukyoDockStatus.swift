@@ -43,15 +43,18 @@ class HMNyukyoDockStatus: NSObject {
 		switch keyPath {
 		case "selection.state":
 			if let state = controller.valueForKeyPath("selection.state")?.integerValue {
-				let status = NyukyoDockStatus(rawValue: state)!
-				switch status {
-				case .noShip:
-					name = nil
-					tasking = false
-					didNotify = false
-				case .hasShip:
-					updateName()
-					tasking = true
+				if let status = NyukyoDockStatus(rawValue: state) {
+					switch status {
+					case .noShip:
+						name = nil
+						tasking = false
+						didNotify = false
+					case .hasShip:
+						updateName()
+						tasking = true
+					}
+				} else {
+					NSLog("Nyukyo Dock status is %ld", state)
 				}
 			}
 		default:
@@ -69,9 +72,9 @@ class HMNyukyoDockStatus: NSObject {
 			let now = NSDate(timeIntervalSinceNow: 0)
 			let diff: NSTimeInterval = compTime - now.timeIntervalSince1970
 			if diff < 0 {
-				time = 0 //NSNumber(integer: 0)
+				time = 0
 			} else {
-				time = diff //NSNumber(integer: diff)
+				time = diff
 			}
 			
 			if !didNotify {
