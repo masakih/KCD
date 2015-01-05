@@ -8,7 +8,6 @@
 #import "HMKCManagedObject.h"
 
 #import "HMMissionStatus.h"
-#import "HMNyukyoDockStatus.h"
 #import "HMKenzoDockStatus.h"
 #import "HMFleetInformation.h"
 
