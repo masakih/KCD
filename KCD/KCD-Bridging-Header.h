@@ -7,7 +7,6 @@
 
 #import "HMKCManagedObject.h"
 
-#import "HMMissionStatus.h"
 #import "HMFleetInformation.h"
 
 
