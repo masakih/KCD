@@ -33,7 +33,9 @@ class HMPowerUpSupportViewController: NSViewController
 	override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
 		switch keyPath {
 		case NSSortDescriptorsBinding:
-			HMUserDefaults.hmStandardDefauls().powerupSupportSortDecriptors = shipController!.sortDescriptors
+			if let sortDescriptors = shipController.sortDescriptors as? [NSSortDescriptor] {
+				HMUserDefaults.hmStandardDefauls().powerupSupportSortDecriptors = sortDescriptors
+			}
 		default:
 			super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
 		}
@@ -83,8 +85,8 @@ class HMPowerUpSupportViewController: NSViewController
 	}
 	
 	
-	@IBOutlet var shipController: NSArrayController?
-	@IBOutlet var typeSegment: NSSegmentedControl?
+	@IBOutlet var shipController: NSArrayController!
+	@IBOutlet var typeSegment: NSSegmentedControl!
 	
 	@IBAction func changeCategory(sender: AnyObject?) {
 		let tag = typeSegment!.selectedSegment

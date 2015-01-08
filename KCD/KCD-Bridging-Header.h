@@ -3,7 +3,6 @@
 //
 
 #import "HMAppDelegate.h"
-#import "HMUserDefaults.h"
 
 #import "HMKCManagedObject.h"
 

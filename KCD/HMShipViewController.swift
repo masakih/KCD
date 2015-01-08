@@ -38,7 +38,9 @@ class HMShipViewController: NSViewController
 	override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
 		switch keyPath {
 		case NSSortDescriptorsBinding:
-			HMUserDefaults.hmStandardDefauls().shipviewSortDescriptors = shipController!.sortDescriptors
+			if let sortDescriptors = shipController.sortDescriptors as? [NSSortDescriptor] {
+				HMUserDefaults.hmStandardDefauls().shipviewSortDescriptors = sortDescriptors
+			}
 		default:
 			super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
 		}
@@ -75,10 +77,10 @@ class HMShipViewController: NSViewController
 	
 	weak var currentTableView: NSView?
 	
-	@IBOutlet var shipController: NSArrayController?
-	@IBOutlet var expTableView: NSScrollView?
-	@IBOutlet var powerTableView: NSScrollView?
-	@IBOutlet var power2TableView: NSScrollView?
+	@IBOutlet var shipController: NSArrayController!
+	@IBOutlet var expTableView: NSScrollView!
+	@IBOutlet var powerTableView: NSScrollView!
+	@IBOutlet var power2TableView: NSScrollView!
 	
 	@IBAction func changeCategory(sender: AnyObject?) {
 		let selectedSegment = sender?.selectedSegment?
@@ -88,7 +90,7 @@ class HMShipViewController: NSViewController
 		let appDelegate = NSApplication.sharedApplication().delegate as HMAppDelegate
 		let predicate: NSPredicate? = appDelegate.predicateForShipType(type!)
 		
-		shipController!.filterPredicate = predicate
+		shipController.filterPredicate = predicate
 	}
 	@IBAction func changeView(sender: AnyObject?) {
 		var tag: Int? = nil

@@ -8,7 +8,6 @@
 
 #import "HMAppDelegate.h"
 
-#import "HMUserDefaults.h"
 #import "HMShipMasterDetailWindowController.h"
 
 #import "HMFleetInformation.h"
@@ -118,10 +117,10 @@
 	self.shipMDWindowController = [HMShipMasterDetailWindowController new];
 	[self.shipMDWindowController showWindow:nil];
 #endif
-	if(!HMStandardDefaults.showsDebugMenu) {
+	if(![HMUserDefaults hmStandardDefauls].showsDebugMenu) {
 		[self.debugMenuItem setHidden:YES];
 	}
-	if(!HMStandardDefaults.showsBillingWindowMenu) {
+	if(![HMUserDefaults hmStandardDefauls].showsBillingWindowMenu) {
 		[self.billingWindowMenuItem setHidden:YES];
 	}
 }
@@ -184,11 +183,11 @@
 
 - (void)setScreenShotSaveDirectory:(NSString *)screenShotSaveDirectory
 {
-	HMStandardDefaults.screenShotSaveDirectory = screenShotSaveDirectory;
+	[HMUserDefaults hmStandardDefauls].screenShotSaveDirectory = screenShotSaveDirectory;
 }
 - (NSString *)screenShotSaveDirectory
 {
-	NSString *path = HMStandardDefaults.screenShotSaveDirectory;
+	NSString *path = [HMUserDefaults hmStandardDefauls].screenShotSaveDirectory;
 	if(!path) {
 		path = [[self picturesDirectory] path];
 	}

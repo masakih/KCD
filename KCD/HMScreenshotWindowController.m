@@ -7,7 +7,6 @@
 //
 
 #import "HMScreenshotWindowController.h"
-#import "HMUserDefaults.h"
 
 #import "HMAppDelegate.h"
 
@@ -73,11 +72,11 @@
 		} else {
 			_tagString = @"";
 		}
-		_appendKanColleTag = HMStandardDefaults.appendKanColleTag;
+		_appendKanColleTag = [HMUserDefaults hmStandardDefauls].appendKanColleTag;
 		
 		self.tweetString = @"";
 		
-		_useMask = HMStandardDefaults.useMask;
+		_useMask = [HMUserDefaults hmStandardDefauls].useMask;
 	}
 	return self;
 }
@@ -136,7 +135,7 @@
 }
 - (void)setUseMask:(BOOL)useMask
 {
-	HMStandardDefaults.useMask = useMask;
+	[HMUserDefaults hmStandardDefauls].useMask = useMask;
 	_useMask = useMask;
 }
 - (NSInteger)leaveLength
@@ -158,7 +157,7 @@
 }
 - (void)setAppendKanColleTag:(BOOL)appendKanColleTag
 {
-	HMStandardDefaults.appendKanColleTag = appendKanColleTag;
+	[HMUserDefaults hmStandardDefauls].appendKanColleTag = appendKanColleTag;
 	_appendKanColleTag = appendKanColleTag;
 }
 - (BOOL)canTweet

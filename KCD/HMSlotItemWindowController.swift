@@ -29,19 +29,21 @@ class HMSlotItemWindowController: NSWindowController
 		return HMServerDataStore.defaultManager().managedObjectContext
 	}
 	
-	@IBOutlet var slotItemController: NSArrayController?
+	@IBOutlet var slotItemController: NSArrayController!
 	
     override func awakeFromNib() {
 		var error: NSError? = nil
-		self.slotItemController!.fetchWithRequest(nil, merge: true, error: &error)
-		self.slotItemController!.sortDescriptors = HMUserDefaults.hmStandardDefauls().slotItemSortDescriptors
-		self.slotItemController!.addObserver(self, forKeyPath: NSSortDescriptorsBinding, options: .Initial, context: nil)
+		self.slotItemController.fetchWithRequest(nil, merge: true, error: &error)
+		self.slotItemController.sortDescriptors = HMUserDefaults.hmStandardDefauls().slotItemSortDescriptors
+		self.slotItemController.addObserver(self, forKeyPath: NSSortDescriptorsBinding, options: .Initial, context: nil)
     }
 	
 	override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
 		switch keyPath {
 		case NSSortDescriptorsBinding:
-			HMUserDefaults.hmStandardDefauls().slotItemSortDescriptors = self.slotItemController!.sortDescriptors
+			if let sortDescriptors = slotItemController.sortDescriptors as? [NSSortDescriptor] {
+				HMUserDefaults.hmStandardDefauls().slotItemSortDescriptors = sortDescriptors
+			}
 		default:
 			super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
 		}

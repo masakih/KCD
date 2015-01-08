@@ -110,7 +110,7 @@ extension HMKCShipObject
 	var conditionColor: NSColor {
 		return NSColor.controlTextColor()
 	}
-	var planColor: NSColor {
+	var planColor: NSColor? {
 		if !HMUserDefaults.hmStandardDefauls().showsPlanColor {
 			return NSColor.controlTextColor()
 		}
@@ -123,7 +123,7 @@ extension HMKCShipObject
 			return HMUserDefaults.hmStandardDefauls().plan01Color
 		case 2:
 			return HMUserDefaults.hmStandardDefauls().plan02Color
-		case 2:
+		case 3:
 			return HMUserDefaults.hmStandardDefauls().plan03Color
 		default:
 			return NSColor.controlTextColor()
