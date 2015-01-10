@@ -9,6 +9,9 @@
 #import "HMFleetInformation.h"
 
 
+#import "HMJSONCommand.h"
+
+
 @interface NSFileManager (KCDExtension)
 - (NSString *)_web_pathWithUniqueFilenameForPath:(NSString *)path;
 @end

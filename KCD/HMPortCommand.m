@@ -12,8 +12,9 @@
 #import "HMMemberMaterialCommand.h"
 #import "HMMemberDeckCommand.h"
 #import "HMMemberBasicCommand.h"
-#import "HMMemberNDockCommand.h"
 #import "HMResetSortieCommand.h"
+
+#import "KCD-Swift.h"
 
 
 @implementation HMPortCommand
