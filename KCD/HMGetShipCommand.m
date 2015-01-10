@@ -8,11 +8,11 @@
 
 #import "HMGetShipCommand.h"
 
-#import "HMMemberKDockCommand.h"
 #import "HMKenzoMarkCommand.h"
 #import "HMMemberSlotItemCommand.h"
 #import "HMMemberShipCommand.h"
 
+#import "KCD-Swift.h"
 
 @implementation HMGetShipCommand
 + (void)load

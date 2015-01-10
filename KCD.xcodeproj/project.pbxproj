@@ -24,7 +24,6 @@
 		F43E67B918BE060E0087E5B6 /* LevelUpExp.plist in Resources */ = {isa = PBXBuildFile; fileRef = F43E67B818BE060E0087E5B6 /* LevelUpExp.plist */; };
 		F43F3D461A33F7D400D6DAF7 /* HMResetSortieCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F43F3D451A33F7D400D6DAF7 /* HMResetSortieCommand.m */; };
 		F44AB23519E805D100F217AF /* HMKaisouLockCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F44AB23419E805D100F217AF /* HMKaisouLockCommand.m */; };
-		F4513EE818B77A5300073552 /* HMMemberKDockCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4513EE718B77A5300073552 /* HMMemberKDockCommand.m */; };
 		F4513EEB18B7900A00073552 /* HMMemberDeckCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4513EEA18B7900A00073552 /* HMMemberDeckCommand.m */; };
 		F4513EEE18B8E2F600073552 /* HMMemberMaterialCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4513EED18B8E2F600073552 /* HMMemberMaterialCommand.m */; };
 		F4513EF018B96C6C00073552 /* Links.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F4513EEF18B96C6C00073552 /* Links.rtf */; };
@@ -65,6 +64,7 @@
 		F47C5C001A5ADF9E00C276B5 /* HMMissionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47C5BFF1A5ADF9E00C276B5 /* HMMissionStatus.swift */; };
 		F47C5C021A5C17C400C276B5 /* HMUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47C5C011A5C17C400C276B5 /* HMUserDefaults.swift */; };
 		F47C5C041A60082000C276B5 /* HMMemberNDockCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47C5C031A60082000C276B5 /* HMMemberNDockCommand.swift */; };
+		F47C5C061A6154B800C276B5 /* HMMemberKDockCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47C5C051A6154B800C276B5 /* HMMemberKDockCommand.swift */; };
 		F48F7B021907D7B800E78AE1 /* HMPortCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F48F7B011907D7B800E78AE1 /* HMPortCommand.m */; };
 		F494DC6A18C8BAB900AE97E4 /* HMPowerUpSupportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F494DC6818C8BAB900AE97E4 /* HMPowerUpSupportViewController.xib */; };
 		F4A2AF541A074DE40024BD9E /* HMScreenshotListWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A2AF561A074DE40024BD9E /* HMScreenshotListWindowController.xib */; };
@@ -191,8 +191,6 @@
 		F43F3D451A33F7D400D6DAF7 /* HMResetSortieCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMResetSortieCommand.m; sourceTree = "<group>"; };
 		F44AB23319E805D100F217AF /* HMKaisouLockCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMKaisouLockCommand.h; sourceTree = "<group>"; };
 		F44AB23419E805D100F217AF /* HMKaisouLockCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKaisouLockCommand.m; sourceTree = "<group>"; };
-		F4513EE618B77A5300073552 /* HMMemberKDockCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMemberKDockCommand.h; sourceTree = "<group>"; };
-		F4513EE718B77A5300073552 /* HMMemberKDockCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMemberKDockCommand.m; sourceTree = "<group>"; };
 		F4513EE918B7900A00073552 /* HMMemberDeckCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMemberDeckCommand.h; sourceTree = "<group>"; };
 		F4513EEA18B7900A00073552 /* HMMemberDeckCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMemberDeckCommand.m; sourceTree = "<group>"; };
 		F4513EEC18B8E2F600073552 /* HMMemberMaterialCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMemberMaterialCommand.h; sourceTree = "<group>"; };
@@ -242,6 +240,7 @@
 		F47C5BFF1A5ADF9E00C276B5 /* HMMissionStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMMissionStatus.swift; sourceTree = "<group>"; };
 		F47C5C011A5C17C400C276B5 /* HMUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMUserDefaults.swift; sourceTree = "<group>"; };
 		F47C5C031A60082000C276B5 /* HMMemberNDockCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMMemberNDockCommand.swift; sourceTree = "<group>"; };
+		F47C5C051A6154B800C276B5 /* HMMemberKDockCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMMemberKDockCommand.swift; sourceTree = "<group>"; };
 		F48F7B001907D7B800E78AE1 /* HMPortCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPortCommand.h; sourceTree = "<group>"; };
 		F48F7B011907D7B800E78AE1 /* HMPortCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMPortCommand.m; sourceTree = "<group>"; };
 		F494DC5618C23E4300AE97E4 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MainMenu.strings; sourceTree = "<group>"; };
@@ -628,8 +627,7 @@
 				F4131EE41910318F004F7F9A /* HMMasterSlotItemEquipTypeCommand.h */,
 				F4131EE51910318F004F7F9A /* HMMasterSlotItemEquipTypeCommand.m */,
 				F47C5C031A60082000C276B5 /* HMMemberNDockCommand.swift */,
-				F4513EE618B77A5300073552 /* HMMemberKDockCommand.h */,
-				F4513EE718B77A5300073552 /* HMMemberKDockCommand.m */,
+				F47C5C051A6154B800C276B5 /* HMMemberKDockCommand.swift */,
 				F4513EE918B7900A00073552 /* HMMemberDeckCommand.h */,
 				F4513EEA18B7900A00073552 /* HMMemberDeckCommand.m */,
 				F4513EEC18B8E2F600073552 /* HMMemberMaterialCommand.h */,
@@ -843,7 +841,6 @@
 			files = (
 				F4E8020B1A51954500016781 /* HMMaskInformation.swift in Sources */,
 				F4E1BC081A4D9D610089A82D /* HMScreenshotListWindowController.swift in Sources */,
-				F4513EE818B77A5300073552 /* HMMemberKDockCommand.m in Sources */,
 				F4551BEA1A48FA6000BB0235 /* HMCacheVersionInfo.swift in Sources */,
 				F426802B194D0F4800B2C27F /* HMMemberShip2Command.m in Sources */,
 				F4B30CFA1A468216008E3D79 /* HMPlanToShowsBoldFontTransformer.swift in Sources */,
@@ -860,6 +857,7 @@
 				F4C1190218A6FFC2005D5B25 /* HMQueue.m in Sources */,
 				F4513EEB18B7900A00073552 /* HMMemberDeckCommand.m in Sources */,
 				F4E8020F1A5245F700016781 /* HMMaskSelectView.swift in Sources */,
+				F47C5C061A6154B800C276B5 /* HMMemberKDockCommand.swift in Sources */,
 				F4B3DC2A18DF31400011B4FC /* HMCreateShipCommand.m in Sources */,
 				F46F103618A7CE310063E503 /* HMJSONViewCommand.m in Sources */,
 				F4B3DC5218F150CD0011B4FC /* HMScreenshotWindowController.m in Sources */,
