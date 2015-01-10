@@ -45,9 +45,9 @@ static NSMutableArray *registeredCommands = nil;
 
 + (HMJSONCommand *)commandForAPI:(NSString *)api
 {
-	for(Class commandClass in registeredCommands) {
-		if([commandClass canExcuteAPI:api]) {
-			HMJSONCommand *command =  [commandClass new];
+	for(HMJSONCommand *c in registeredCommands) {
+		if([[c class] canExcuteAPI:api]) {
+			HMJSONCommand *command = [c copy];
 			command.api = api;
 #if ENABLE_JSON_LOG_HANDLED_API
 			HMJSONViewCommand *viewCommand = [HMJSONViewCommand new];
@@ -69,8 +69,20 @@ static NSMutableArray *registeredCommands = nil;
 + (void)registerClass:(Class)commandClass
 {
 	if(!commandClass) return;
-	if([registeredCommands containsObject:commandClass]) return;
-	[registeredCommands addObject:commandClass];
+	[self registerInstance:[commandClass new]];
+}
+
+
+// for Swift
++ (void)registerInstance:(id)command
+{
+	if(!command) return;
+	if([registeredCommands containsObject:command]) return;
+	[registeredCommands addObject:command];
+}
+- (instancetype)copyWithZone:(NSZone *)zone
+{
+	return [[self class] new];
 }
 
 
