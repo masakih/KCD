@@ -83,7 +83,7 @@ class HMMissionStatus: NSObject {
 		}
 		if let compTimeValue = controller.valueForKeyPath("selection.mission_2") as? NSNumber {
 			if compTimeValue == 0 { return }
-			let compTime: NSTimeInterval = compTimeValue.doubleValue / 1000.0
+			let compTime: NSTimeInterval = ceil(compTimeValue.doubleValue / 1000.0)
 			let now = NSDate(timeIntervalSinceNow: 0)
 			let diff: NSTimeInterval = compTime - now.timeIntervalSince1970
 			if diff < 0 {

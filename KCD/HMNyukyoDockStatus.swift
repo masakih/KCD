@@ -68,7 +68,7 @@ class HMNyukyoDockStatus: NSObject {
 			return
 		}
 		if let compTimeValue = controller.valueForKeyPath("selection.complete_time") as? NSNumber {
-			let compTime: NSTimeInterval = compTimeValue.doubleValue / 1000.0
+			let compTime: NSTimeInterval = ceil(compTimeValue.doubleValue / 1000.0)
 			let now = NSDate(timeIntervalSinceNow: 0)
 			let diff: NSTimeInterval = compTime - now.timeIntervalSince1970
 			if diff < 0 {
