@@ -8,7 +8,6 @@
 
 #import "HMCompositMapCommand.h"
 
-#import "HMMasterSTypeCommand.h"
 #import "HMMaserShipCommand.h"
 #import "HMMasterMissionCommand.h"
 #import "HMMasterSlotItemEquipTypeCommand.h"

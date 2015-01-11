@@ -71,6 +71,7 @@
 		F47C5C101A62191E00C276B5 /* HMMasterMapCellCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47C5C0F1A62191E00C276B5 /* HMMasterMapCellCommand.swift */; };
 		F47C5C121A62304F00C276B5 /* HMMasterMapInfoCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47C5C111A62304F00C276B5 /* HMMasterMapInfoCommand.swift */; };
 		F47C5C141A6282BD00C276B5 /* HMMasterMapAreaCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47C5C131A6282BD00C276B5 /* HMMasterMapAreaCommand.swift */; };
+		F47C5C161A62AAE300C276B5 /* HMMasterSTypeCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47C5C151A62AAE300C276B5 /* HMMasterSTypeCommand.swift */; };
 		F48F7B021907D7B800E78AE1 /* HMPortCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F48F7B011907D7B800E78AE1 /* HMPortCommand.m */; };
 		F494DC6A18C8BAB900AE97E4 /* HMPowerUpSupportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F494DC6818C8BAB900AE97E4 /* HMPowerUpSupportViewController.xib */; };
 		F4A2AF541A074DE40024BD9E /* HMScreenshotListWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A2AF561A074DE40024BD9E /* HMScreenshotListWindowController.xib */; };
@@ -131,7 +132,6 @@
 		F4C1190518A71AEA005D5B25 /* HMJSONReciever.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C1190418A71AEA005D5B25 /* HMJSONReciever.m */; };
 		F4C1190818A746EB005D5B25 /* HMJSONTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C1190718A746EB005D5B25 /* HMJSONTracker.m */; };
 		F4C1190B18A74DF0005D5B25 /* HMJSONCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C1190A18A74DF0005D5B25 /* HMJSONCommand.m */; };
-		F4D2CBC218AD0E1A000EBC59 /* HMMasterSTypeCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D2CBC118AD0E1A000EBC59 /* HMMasterSTypeCommand.m */; };
 		F4D2CBC518AE2AE2000EBC59 /* HMCompositCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D2CBC418AE2AE2000EBC59 /* HMCompositCommand.m */; };
 		F4D2CBC818B0555A000EBC59 /* HMKCManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D2CBC718B0555A000EBC59 /* HMKCManagedObject.m */; };
 		F4D2CBCB18B05E58000EBC59 /* HMMaserShipCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D2CBCA18B05E58000EBC59 /* HMMaserShipCommand.m */; };
@@ -246,6 +246,7 @@
 		F47C5C0F1A62191E00C276B5 /* HMMasterMapCellCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMMasterMapCellCommand.swift; sourceTree = "<group>"; };
 		F47C5C111A62304F00C276B5 /* HMMasterMapInfoCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMMasterMapInfoCommand.swift; sourceTree = "<group>"; };
 		F47C5C131A6282BD00C276B5 /* HMMasterMapAreaCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMMasterMapAreaCommand.swift; sourceTree = "<group>"; };
+		F47C5C151A62AAE300C276B5 /* HMMasterSTypeCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMMasterSTypeCommand.swift; sourceTree = "<group>"; };
 		F48F7B001907D7B800E78AE1 /* HMPortCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPortCommand.h; sourceTree = "<group>"; };
 		F48F7B011907D7B800E78AE1 /* HMPortCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMPortCommand.m; sourceTree = "<group>"; };
 		F494DC5618C23E4300AE97E4 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MainMenu.strings; sourceTree = "<group>"; };
@@ -345,8 +346,6 @@
 		F4C1190718A746EB005D5B25 /* HMJSONTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMJSONTracker.m; sourceTree = "<group>"; };
 		F4C1190918A74DF0005D5B25 /* HMJSONCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMJSONCommand.h; sourceTree = "<group>"; };
 		F4C1190A18A74DF0005D5B25 /* HMJSONCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMJSONCommand.m; sourceTree = "<group>"; };
-		F4D2CBC018AD0E1A000EBC59 /* HMMasterSTypeCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMasterSTypeCommand.h; sourceTree = "<group>"; };
-		F4D2CBC118AD0E1A000EBC59 /* HMMasterSTypeCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMasterSTypeCommand.m; sourceTree = "<group>"; };
 		F4D2CBC318AE2AE2000EBC59 /* HMCompositCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMCompositCommand.h; sourceTree = "<group>"; };
 		F4D2CBC418AE2AE2000EBC59 /* HMCompositCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMCompositCommand.m; sourceTree = "<group>"; };
 		F4D2CBC618B0555A000EBC59 /* HMKCManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMKCManagedObject.h; sourceTree = "<group>"; };
@@ -599,8 +598,7 @@
 				F4D2CBC418AE2AE2000EBC59 /* HMCompositCommand.m */,
 				F4B3DC4518EEEB920011B4FC /* HMCompositMapCommand.h */,
 				F4B3DC4618EEEB920011B4FC /* HMCompositMapCommand.m */,
-				F4D2CBC018AD0E1A000EBC59 /* HMMasterSTypeCommand.h */,
-				F4D2CBC118AD0E1A000EBC59 /* HMMasterSTypeCommand.m */,
+				F47C5C151A62AAE300C276B5 /* HMMasterSTypeCommand.swift */,
 				F4D2CBC918B05E58000EBC59 /* HMMaserShipCommand.h */,
 				F4D2CBCA18B05E58000EBC59 /* HMMaserShipCommand.m */,
 				F47C5C131A6282BD00C276B5 /* HMMasterMapAreaCommand.swift */,
@@ -867,6 +865,7 @@
 				F47C5C021A5C17C400C276B5 /* HMUserDefaults.swift in Sources */,
 				F4E802071A50F8A100016781 /* HMSuppliesView.swift in Sources */,
 				F47C5C0C1A6207E500C276B5 /* HMMasterSlotItemCommand.swift in Sources */,
+				F47C5C161A62AAE300C276B5 /* HMMasterSTypeCommand.swift in Sources */,
 				F4C1190B18A74DF0005D5B25 /* HMJSONCommand.m in Sources */,
 				F4B30CF81A45DACB008E3D79 /* HMSlotItemEquipTypeTransformer.swift in Sources */,
 				F4AA0601192E1FE900844688 /* HMBattleCommand.m in Sources */,
@@ -924,7 +923,6 @@
 				F4131EE61910318F004F7F9A /* HMMasterSlotItemEquipTypeCommand.m in Sources */,
 				F4551BF01A49350B00BB0235 /* HMPowerUpSupportViewController.swift in Sources */,
 				F4D2CBC818B0555A000EBC59 /* HMKCManagedObject.m in Sources */,
-				F4D2CBC218AD0E1A000EBC59 /* HMMasterSTypeCommand.m in Sources */,
 				F4551BE41A48379F00BB0235 /* HMDeckViewController.swift in Sources */,
 				F4551BF21A49490A00BB0235 /* HMDocksViewController.swift in Sources */,
 				F4B30CF31A458AF2008E3D79 /* HMSlotItemWindowController.swift in Sources */,
