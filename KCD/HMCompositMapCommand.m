@@ -14,8 +14,6 @@
 #import "HMMasterSTypeCommand.h"
 #import "HMMaserShipCommand.h"
 #import "HMMasterMissionCommand.h"
-#import "HMMasterSlotItemCommand.h"
-#import "HMMasterUseItemCommand.h"
 #import "HMMasterSlotItemEquipTypeCommand.h"
 
 #import "KCD-Swift.h"
