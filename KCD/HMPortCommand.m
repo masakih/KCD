@@ -10,7 +10,6 @@
 
 #import "HMMemberShipCommand.h"
 #import "HMMemberMaterialCommand.h"
-#import "HMMemberDeckCommand.h"
 #import "HMMemberBasicCommand.h"
 #import "HMResetSortieCommand.h"
 

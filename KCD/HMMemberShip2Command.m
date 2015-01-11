@@ -9,7 +9,8 @@
 #import "HMMemberShip2Command.h"
 
 #import "HMMemberShipCommand.h"
-#import "HMMemberDeckCommand.h"
+
+#import "KCD-Swift.h"
 
 @implementation HMMemberShip2Command
 + (void)load
