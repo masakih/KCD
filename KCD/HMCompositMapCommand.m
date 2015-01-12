@@ -9,7 +9,6 @@
 #import "HMCompositMapCommand.h"
 
 #import "HMMaserShipCommand.h"
-#import "HMMasterMissionCommand.h"
 #import "HMMasterSlotItemEquipTypeCommand.h"
 
 #import "KCD-Swift.h"

@@ -72,6 +72,7 @@
 		F47C5C121A62304F00C276B5 /* HMMasterMapInfoCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47C5C111A62304F00C276B5 /* HMMasterMapInfoCommand.swift */; };
 		F47C5C141A6282BD00C276B5 /* HMMasterMapAreaCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47C5C131A6282BD00C276B5 /* HMMasterMapAreaCommand.swift */; };
 		F47C5C161A62AAE300C276B5 /* HMMasterSTypeCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47C5C151A62AAE300C276B5 /* HMMasterSTypeCommand.swift */; };
+		F47C5C181A62D63700C276B5 /* HMMasterMissionCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47C5C171A62D63700C276B5 /* HMMasterMissionCommand.swift */; };
 		F48F7B021907D7B800E78AE1 /* HMPortCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F48F7B011907D7B800E78AE1 /* HMPortCommand.m */; };
 		F494DC6A18C8BAB900AE97E4 /* HMPowerUpSupportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F494DC6818C8BAB900AE97E4 /* HMPowerUpSupportViewController.xib */; };
 		F4A2AF541A074DE40024BD9E /* HMScreenshotListWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A2AF561A074DE40024BD9E /* HMScreenshotListWindowController.xib */; };
@@ -111,7 +112,6 @@
 		F4B3DC4C18F0C8A90011B4FC /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4B3DC4B18F0C8A90011B4FC /* Social.framework */; };
 		F4B3DC4E18F0C8FF0011B4FC /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4B3DC4D18F0C8FF0011B4FC /* Accounts.framework */; };
 		F4B3DC5218F150CD0011B4FC /* HMScreenshotWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B3DC5018F150CD0011B4FC /* HMScreenshotWindowController.m */; };
-		F4B414F818B1D35800468DAF /* HMMasterMissionCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B414F718B1D35800468DAF /* HMMasterMissionCommand.m */; };
 		F4BDEB47187252F30069D0CE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4BDEB46187252F30069D0CE /* Cocoa.framework */; };
 		F4BDEB51187252F30069D0CE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4BDEB4F187252F30069D0CE /* InfoPlist.strings */; };
 		F4BDEB53187252F30069D0CE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BDEB52187252F30069D0CE /* main.m */; };
@@ -247,6 +247,7 @@
 		F47C5C111A62304F00C276B5 /* HMMasterMapInfoCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMMasterMapInfoCommand.swift; sourceTree = "<group>"; };
 		F47C5C131A6282BD00C276B5 /* HMMasterMapAreaCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMMasterMapAreaCommand.swift; sourceTree = "<group>"; };
 		F47C5C151A62AAE300C276B5 /* HMMasterSTypeCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMMasterSTypeCommand.swift; sourceTree = "<group>"; };
+		F47C5C171A62D63700C276B5 /* HMMasterMissionCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMMasterMissionCommand.swift; sourceTree = "<group>"; };
 		F48F7B001907D7B800E78AE1 /* HMPortCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPortCommand.h; sourceTree = "<group>"; };
 		F48F7B011907D7B800E78AE1 /* HMPortCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMPortCommand.m; sourceTree = "<group>"; };
 		F494DC5618C23E4300AE97E4 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MainMenu.strings; sourceTree = "<group>"; };
@@ -308,8 +309,6 @@
 		F4B3DC4D18F0C8FF0011B4FC /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		F4B3DC4F18F150CD0011B4FC /* HMScreenshotWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMScreenshotWindowController.h; sourceTree = "<group>"; };
 		F4B3DC5018F150CD0011B4FC /* HMScreenshotWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMScreenshotWindowController.m; sourceTree = "<group>"; };
-		F4B414F618B1D35800468DAF /* HMMasterMissionCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMasterMissionCommand.h; sourceTree = "<group>"; };
-		F4B414F718B1D35800468DAF /* HMMasterMissionCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMasterMissionCommand.m; sourceTree = "<group>"; };
 		F4BDEB43187252F30069D0CE /* KCD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KCD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4BDEB46187252F30069D0CE /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F4BDEB49187252F30069D0CE /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -607,8 +606,7 @@
 				F47C5C0D1A620E4200C276B5 /* HMMasterUseItemCommand.swift */,
 				F47C5C0B1A6207E500C276B5 /* HMMasterSlotItemCommand.swift */,
 				F47C5C091A6202C100C276B5 /* HMMasterFurnitureCommand.swift */,
-				F4B414F618B1D35800468DAF /* HMMasterMissionCommand.h */,
-				F4B414F718B1D35800468DAF /* HMMasterMissionCommand.m */,
+				F47C5C171A62D63700C276B5 /* HMMasterMissionCommand.swift */,
 				F4131EE41910318F004F7F9A /* HMMasterSlotItemEquipTypeCommand.h */,
 				F4131EE51910318F004F7F9A /* HMMasterSlotItemEquipTypeCommand.m */,
 				F47C5C031A60082000C276B5 /* HMMemberNDockCommand.swift */,
@@ -826,6 +824,7 @@
 				F4E8020B1A51954500016781 /* HMMaskInformation.swift in Sources */,
 				F4E1BC081A4D9D610089A82D /* HMScreenshotListWindowController.swift in Sources */,
 				F4551BEA1A48FA6000BB0235 /* HMCacheVersionInfo.swift in Sources */,
+				F47C5C181A62D63700C276B5 /* HMMasterMissionCommand.swift in Sources */,
 				F426802B194D0F4800B2C27F /* HMMemberShip2Command.m in Sources */,
 				F4B30CFA1A468216008E3D79 /* HMPlanToShowsBoldFontTransformer.swift in Sources */,
 				F4AA06101931869E00844688 /* HMBattleResultCommand.m in Sources */,
@@ -859,7 +858,6 @@
 				F4551BDE1A46C23100BB0235 /* HMTimerCountFormatter.swift in Sources */,
 				F4A3AD82199F529700FDBF80 /* HMCombinedBattleCommand.m in Sources */,
 				F477E24D1A54570E00493198 /* HMKCMasterShipObject.swift in Sources */,
-				F4B414F818B1D35800468DAF /* HMMasterMissionCommand.m in Sources */,
 				F477E24B1A544EA000493198 /* HMKCShipObject.swift in Sources */,
 				F4E33B5818BF5F67005B8C07 /* HMMemberSlotItemCommand.m in Sources */,
 				F47C5C021A5C17C400C276B5 /* HMUserDefaults.swift in Sources */,
