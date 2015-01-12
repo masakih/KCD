@@ -16,16 +16,18 @@ class HMMemberShip2Command: HMCompositCommand, NSCopying {
 	override class func load() {
 		// Mavericksにおいてload()のタイミングでNSArrayを生成することが出来ないため、遅延させる
 		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_MSEC))), dispatch_get_main_queue()) {
-			let prototype = self(commandArray: [HMMemberShipCommand(), HMMemberDeckCommand()])
-			HMJSONCommand.registerInstance(prototype)
+			HMJSONCommand.registerInstance(self(commandArray: self.commands()))
 		}
 	}
 	override class func canExcuteAPI(api: String) -> Bool {
 		return api == "/kcsapi/api_get_member/ship2"
 	}
 	
-	
 	override func copyWithZone(zone: NSZone) -> AnyObject {
-		return self.dynamicType.init(commandArray: [HMMemberShipCommand(), HMMemberDeckCommand()])
+		return self.dynamicType.init(commandArray: self.dynamicType.commands())
+	}
+	
+	class func commands() -> [AnyObject] {
+		return [HMMemberShipCommand(), HMMemberDeckCommand()]
 	}
 }
