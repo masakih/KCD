@@ -19,6 +19,7 @@
 #import "HMMemberMaterialCommand.h"
 #import "HMMemberBasicCommand.h"
 #import "HMResetSortieCommand.h"
+#import "HMCalculateDamageCommand.h"
 
 
 @interface NSFileManager (KCDExtension)
