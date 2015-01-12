@@ -10,6 +10,9 @@
 
 
 #import "HMJSONCommand.h"
+#import "HMCompositCommand.h"
+
+#import "HMMemberShipCommand.h"
 
 
 @interface NSFileManager (KCDExtension)
