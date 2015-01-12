@@ -13,6 +13,8 @@
 #import "HMCompositCommand.h"
 
 #import "HMMemberShipCommand.h"
+#import "HMMemberSlotItemCommand.h"
+#import "HMKenzoMarkCommand.h"
 
 
 @interface NSFileManager (KCDExtension)
