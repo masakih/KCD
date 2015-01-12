@@ -17,6 +17,9 @@
 #import "HMKenzoMarkCommand.h"
 #import "HMRealDestroyShipCommand.h"
 #import "HMMemberMaterialCommand.h"
+#import "HMMemberBasicCommand.h"
+#import "HMResetSortieCommand.h"
+
 
 @interface NSFileManager (KCDExtension)
 - (NSString *)_web_pathWithUniqueFilenameForPath:(NSString *)path;
