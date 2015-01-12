@@ -9,7 +9,7 @@
 #import "HMCompositCommand.h"
 
 @interface HMCompositCommand ()
-@property (strong) NSMutableArray *commands;
+@property (strong) NSArray *commands;
 @end
 
 @implementation HMCompositCommand
@@ -29,12 +29,24 @@
 {
 	self = [super init];
 	if(self) {
-		_commands = [NSMutableArray new];
+		NSMutableArray *array = [NSMutableArray new];
 		HMJSONCommand *command = cmd1;
 		while(command) {
-			[_commands addObject:command];
+			[array addObject:command];
 			command = va_arg(argList, id);
 		}
+		_commands = [NSArray arrayWithArray:array];
+	}
+	
+	return self;
+}
+
+/// for Swift
+- (id)initWithCommandArray:(NSArray *)commandArray
+{
+	self = [super init];
+	if(self) {
+		_commands = [NSArray arrayWithArray:commandArray];
 	}
 	
 	return self;
