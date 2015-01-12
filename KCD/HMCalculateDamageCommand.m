@@ -19,19 +19,17 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 };
 
 @interface HMCalculateDamageCommand ()
-@property (nonatomic, strong) HMTemporaryDataStore *store;
+@property (readonly) HMTemporaryDataStore *store;
 @property HMBattleType battleType;
 @end
 
 @implementation HMCalculateDamageCommand
+@synthesize store = _store;
 
-- (id)init
-{
-	self = [super init];
-	if(self) {
-		_store = [HMTemporaryDataStore oneTimeEditor];
-	}
-	return self;
+- (HMTemporaryDataStore *)store {
+	if(_store) return _store;
+	_store = [HMTemporaryDataStore oneTimeEditor];
+	return _store;
 }
 
 - (void)resetBattle
