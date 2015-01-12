@@ -10,8 +10,6 @@
 
 @interface HMCompositCommand : HMJSONCommand
 
-@property (readonly) NSArray *commands;
-
 
 + (id)compositCommandWithCommands:(HMJSONCommand *)cmd1, ... NS_REQUIRES_NIL_TERMINATION;
 - (id)initWithCommands:(HMJSONCommand *)cmd1, ...;
