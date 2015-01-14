@@ -21,6 +21,7 @@
 #import "HMResetSortieCommand.h"
 #import "HMCalculateDamageCommand.h"
 #import "HMApplySuppliesCommand.h"
+#import "HMRemodelSlotItemCommand.h"
 
 
 @interface NSFileManager (KCDExtension)
