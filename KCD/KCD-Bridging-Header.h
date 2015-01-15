@@ -22,6 +22,8 @@
 #import "HMCalculateDamageCommand.h"
 #import "HMApplySuppliesCommand.h"
 #import "HMRemodelSlotItemCommand.h"
+#import "HMStoreCreateSlotItemHistoryCommand.h"
+#import "HMUpdateSlotItemCommand.h"
 
 
 @interface NSFileManager (KCDExtension)
