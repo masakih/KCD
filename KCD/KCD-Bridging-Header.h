@@ -18,7 +18,6 @@
 #import "HMRealDestroyShipCommand.h"
 #import "HMMemberMaterialCommand.h"
 #import "HMMemberBasicCommand.h"
-#import "HMResetSortieCommand.h"
 #import "HMCalculateDamageCommand.h"
 #import "HMApplySuppliesCommand.h"
 #import "HMRemodelSlotItemCommand.h"
