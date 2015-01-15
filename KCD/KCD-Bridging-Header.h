@@ -19,7 +19,6 @@
 #import "HMMemberMaterialCommand.h"
 #import "HMMemberBasicCommand.h"
 #import "HMCalculateDamageCommand.h"
-#import "HMApplySuppliesCommand.h"
 #import "HMRemodelSlotItemCommand.h"
 #import "HMStoreCreateSlotItemHistoryCommand.h"
 #import "HMUpdateSlotItemCommand.h"

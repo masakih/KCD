@@ -83,6 +83,7 @@
 		F4896DE91A6681DF00B09967 /* HMRemodelSlotCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4896DE81A6681DF00B09967 /* HMRemodelSlotCommand.swift */; };
 		F4896DEB1A67D11000B09967 /* HMCreateSlotItemCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4896DEA1A67D11000B09967 /* HMCreateSlotItemCommand.swift */; };
 		F4896DED1A67E8E500B09967 /* HMResetSortieCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4896DEC1A67E8E500B09967 /* HMResetSortieCommand.swift */; };
+		F4896DEF1A680E1400B09967 /* HMApplySuppliesCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4896DEE1A680E1400B09967 /* HMApplySuppliesCommand.swift */; };
 		F494DC6A18C8BAB900AE97E4 /* HMPowerUpSupportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F494DC6818C8BAB900AE97E4 /* HMPowerUpSupportViewController.xib */; };
 		F4A2AF541A074DE40024BD9E /* HMScreenshotListWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A2AF561A074DE40024BD9E /* HMScreenshotListWindowController.xib */; };
 		F4A2AF581A0930160024BD9E /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A2AF571A0930160024BD9E /* Quartz.framework */; };
@@ -90,7 +91,6 @@
 		F4A3AD9419BDDE5500FDBF80 /* HMPreferencePanelController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A3AD9619BDDE5500FDBF80 /* HMPreferencePanelController.xib */; };
 		F4AA05FB192B92C800844688 /* Temporary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4AA05F9192B92C700844688 /* Temporary.xcdatamodeld */; };
 		F4AA0604192E20F500844688 /* HMCalculateDamageCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AA0603192E20F500844688 /* HMCalculateDamageCommand.m */; };
-		F4B1E30F19D1C9C400805879 /* HMApplySuppliesCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B1E30E19D1C9C400805879 /* HMApplySuppliesCommand.m */; };
 		F4B2A0901A1F9C2100D2EF12 /* HMExternalBrowserWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B2A08E1A1F9C2100D2EF12 /* HMExternalBrowserWindowController.xib */; };
 		F4B2D02B18F83A2F00542742 /* HMScreenshotWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B2D02D18F83A2F00542742 /* HMScreenshotWindowController.xib */; };
 		F4B2D03318F83CC800542742 /* HMDeckViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B2D03518F83CC800542742 /* HMDeckViewController.xib */; };
@@ -253,6 +253,7 @@
 		F4896DE81A6681DF00B09967 /* HMRemodelSlotCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMRemodelSlotCommand.swift; sourceTree = "<group>"; };
 		F4896DEA1A67D11000B09967 /* HMCreateSlotItemCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMCreateSlotItemCommand.swift; sourceTree = "<group>"; };
 		F4896DEC1A67E8E500B09967 /* HMResetSortieCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMResetSortieCommand.swift; sourceTree = "<group>"; };
+		F4896DEE1A680E1400B09967 /* HMApplySuppliesCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMApplySuppliesCommand.swift; sourceTree = "<group>"; };
 		F494DC5618C23E4300AE97E4 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		F494DC5718C23E4300AE97E4 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F494DC5918C23E4400AE97E4 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -266,8 +267,6 @@
 		F4AA05FA192B92C800844688 /* Temporary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Temporary.xcdatamodel; sourceTree = "<group>"; };
 		F4AA0602192E20F500844688 /* HMCalculateDamageCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMCalculateDamageCommand.h; sourceTree = "<group>"; };
 		F4AA0603192E20F500844688 /* HMCalculateDamageCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMCalculateDamageCommand.m; sourceTree = "<group>"; };
-		F4B1E30D19D1C9C400805879 /* HMApplySuppliesCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMApplySuppliesCommand.h; sourceTree = "<group>"; };
-		F4B1E30E19D1C9C400805879 /* HMApplySuppliesCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMApplySuppliesCommand.m; sourceTree = "<group>"; };
 		F4B2A08E1A1F9C2100D2EF12 /* HMExternalBrowserWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMExternalBrowserWindowController.xib; sourceTree = "<group>"; };
 		F4B2D02C18F83A2F00542742 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMScreenshotWindowController.xib; sourceTree = "<group>"; };
 		F4B2D03418F83CC800542742 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMDeckViewController.xib; sourceTree = "<group>"; };
@@ -638,8 +637,7 @@
 				F4A3AD8619B6149D00FDBF80 /* HMNyukyoStartCommand.h */,
 				F4A3AD8719B6149D00FDBF80 /* HMNyukyoStartCommand.m */,
 				F4896DE61A6567AA00B09967 /* HMHokyuChargeCommand.swift */,
-				F4B1E30D19D1C9C400805879 /* HMApplySuppliesCommand.h */,
-				F4B1E30E19D1C9C400805879 /* HMApplySuppliesCommand.m */,
+				F4896DEE1A680E1400B09967 /* HMApplySuppliesCommand.swift */,
 				F44AB23319E805D100F217AF /* HMKaisouLockCommand.h */,
 				F44AB23419E805D100F217AF /* HMKaisouLockCommand.m */,
 				F4896DE81A6681DF00B09967 /* HMRemodelSlotCommand.swift */,
@@ -839,7 +837,6 @@
 				F44AB23519E805D100F217AF /* HMKaisouLockCommand.m in Sources */,
 				F4BDEB53187252F30069D0CE /* main.m in Sources */,
 				F47C5C0E1A620E4200C276B5 /* HMMasterUseItemCommand.swift in Sources */,
-				F4B1E30F19D1C9C400805879 /* HMApplySuppliesCommand.m in Sources */,
 				F477E2471A5426B600493198 /* HMKCShipObject+Extension.swift in Sources */,
 				F47C5C041A60082000C276B5 /* HMMemberNDockCommand.swift in Sources */,
 				F4B30CFC1A4687E7008E3D79 /* HMIgnoreZeroTransformer.swift in Sources */,
@@ -893,6 +890,7 @@
 				F47C5C141A6282BD00C276B5 /* HMMasterMapAreaCommand.swift in Sources */,
 				F43BA4A4197BE6C200CFF788 /* HMRealDestroyShipCommand.m in Sources */,
 				F47150351A654B8400B714F2 /* HMBattleResultCommand.swift in Sources */,
+				F4896DEF1A680E1400B09967 /* HMApplySuppliesCommand.swift in Sources */,
 				F4B37EF619FBE801002F371A /* HMRemodelSlotItemCommand.m in Sources */,
 				F4513EF318B991F800073552 /* HMMemberBasicCommand.m in Sources */,
 				F47150371A6562C800B714F2 /* HMCombinedBattleCommand.swift in Sources */,
