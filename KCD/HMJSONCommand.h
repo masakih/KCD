@@ -54,5 +54,6 @@
 NSString *keyByDeletingPrefix(NSString *key);
 
 - (void)log:(NSString *)format, ... NS_FORMAT_FUNCTION(1,2);
+- (void)log:(NSString *)format argList:(va_list)argList;
 
 @end

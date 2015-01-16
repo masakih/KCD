@@ -166,11 +166,13 @@ NSString *keyByDeletingPrefix(NSString *key)
 {
 	va_list ap;
 	va_start(ap, format);
-	NSString *str = [[NSString alloc] initWithFormat:format arguments:ap];
-	NSLog(@"API: %@, Arguments: %@.\n%@", self.api, self.arguments, str);
-	va_end(ap);
+	[self log:format argList:ap];
 }
-
+- (void)log:(NSString *)format argList:(va_list)argList
+{
+	NSString *str = [[NSString alloc] initWithFormat:format arguments:argList];
+	NSLog(@"API: %@, Arguments: %@.\n%@", self.api, self.arguments, str);
+}
 - (NSString *)dataKey
 {
 	return @"api_data";
