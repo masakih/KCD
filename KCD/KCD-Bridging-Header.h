@@ -18,7 +18,6 @@
 #import "HMMemberMaterialCommand.h"
 #import "HMMemberBasicCommand.h"
 #import "HMCalculateDamageCommand.h"
-#import "HMStoreCreateSlotItemHistoryCommand.h"
 
 
 @interface NSFileManager (KCDExtension)
