@@ -263,7 +263,18 @@ class HMBroserWindowController: NSWindowController
 			adjustFlash()
 		}
 	}
-
+	
+	override func webView(sender: WebView!, plugInFailedWithError error: NSError!, dataSource: WebDataSource!) {
+		println("Error domain -> \(error.domain), code -> \(error.code)")
+		if let info = error.userInfo {
+			println("Error userInfo -> \(info)")
+		}
+		println("localizedDescription ->\(error.localizedDescription)")
+		if let b = dataSource.initialRequest.mainDocumentURL {
+			println("initial Request URL -> \(b)")
+		}
+	}
+	
 // MARK: - WebUIDelegate
 	override func webView(sender: WebView!, contextMenuItemsForElement element: [NSObject : AnyObject]!, defaultMenuItems: [AnyObject]!) -> [AnyObject]! {
 		var items:[AnyObject] = []
