@@ -9,8 +9,7 @@
 #import "HMShipWindowController.h"
 
 #import "HMAppDelegate.h"
-
-#import "KCD-Swift.h"
+#import "HMServerDataStore.h"
 
 
 @interface HMShipWindowController ()
@@ -36,9 +35,8 @@
 	NSError *error = nil;
 	
 	NSArray *decks = [store objectsWithEntityName:@"Deck"
-								  sortDescriptors:nil
-										predicate:[NSPredicate predicateWithFormat:@"id = %@", self.missionFleetNumber]
-											error:&error];
+											error:&error
+								  predicateFormat:@"id = %@", self.missionFleetNumber];
 	if(decks.count == 0) return;
 	id deck = decks[0];
 	

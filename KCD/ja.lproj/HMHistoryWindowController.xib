@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="HMHistoryWindowController" customModule="KCD" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="HMHistoryWindowController">
             <connections>
                 <outlet property="kaihatuHistoryController" destination="cv5-a8-9nJ" id="2aT-cr-G32"/>
                 <outlet property="kenzoHistoryController" destination="9pH-dt-0h6" id="loK-C7-3pa"/>
@@ -443,7 +443,7 @@
         </window>
         <arrayController mode="entity" entityName="KaihatuHistory" editable="NO" automaticallyPreparesContent="YES" automaticallyRearrangesObjects="YES" id="cv5-a8-9nJ" userLabel="KaihatuHistory">
             <connections>
-                <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="2wx-7O-UVY"/>
+                <binding destination="-2" name="managedObjectContext" keyPath="manageObjectContext" id="REH-UB-fGs"/>
                 <binding destination="-2" name="editable" keyPath="self" id="XNG-Uh-r3e">
                     <dictionary key="options">
                         <string key="NSValueTransformerName">NSIsNil</string>
@@ -458,7 +458,7 @@
         </arrayController>
         <arrayController mode="entity" entityName="KenzoHistory" editable="NO" automaticallyPreparesContent="YES" automaticallyRearrangesObjects="YES" id="9pH-dt-0h6" userLabel="KenzoHistory">
             <connections>
-                <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="Zqx-nl-Blc"/>
+                <binding destination="-2" name="managedObjectContext" keyPath="manageObjectContext" id="Oj9-1u-97D"/>
                 <binding destination="-2" name="editable" keyPath="self" id="fwV-5V-aES">
                     <dictionary key="options">
                         <string key="NSValueTransformerName">NSIsNil</string>

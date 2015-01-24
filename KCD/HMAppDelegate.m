@@ -8,13 +8,20 @@
 
 #import "HMAppDelegate.h"
 
+#import "HMUserDefaults.h"
+#import "HMBroserWindowController.h"
+#import "HMHistoryWindowController.h"
+#import "HMSlotItemWindowController.h"
+#import "HMPreferencePanelController.h"
+#import "HMUpgradableShipsWindowController.h"
+#import "HMScreenshotListWindowController.h"
 #import "HMShipMasterDetailWindowController.h"
 
 #import "HMFleetInformation.h"
 
-#import "HMTSVSupport.h"
+#import "HMExternalBrowserWindowController.h"
 
-#import "KCD-Swift.h"
+#import "HMTSVSupport.h"
 
 
 #ifdef DEBUG
@@ -103,7 +110,7 @@
 
 - (void)awakeFromNib
 {
-	self.browserWindowController = [HMBroserWindowController create];
+	self.browserWindowController = [HMBroserWindowController new];
 	[self.browserWindowController showWindow:nil];
 	
 #if ENABLE_JSON_LOG
@@ -117,10 +124,10 @@
 	self.shipMDWindowController = [HMShipMasterDetailWindowController new];
 	[self.shipMDWindowController showWindow:nil];
 #endif
-	if(![HMUserDefaults hmStandardDefauls].showsDebugMenu) {
+	if(!HMStandardDefaults.showsDebugMenu) {
 		[self.debugMenuItem setHidden:YES];
 	}
-	if(![HMUserDefaults hmStandardDefauls].showsBillingWindowMenu) {
+	if(!HMStandardDefaults.showsBillingWindowMenu) {
 		[self.billingWindowMenuItem setHidden:YES];
 	}
 }
@@ -128,7 +135,7 @@
 - (HMScreenshotListWindowController *)screenshotListWindowController
 {
 	if(_screenshotListWindowController) return _screenshotListWindowController;
-	_screenshotListWindowController = [HMScreenshotListWindowController create];
+	_screenshotListWindowController = [HMScreenshotListWindowController new];
 	return _screenshotListWindowController;
 }
 
@@ -183,11 +190,11 @@
 
 - (void)setScreenShotSaveDirectory:(NSString *)screenShotSaveDirectory
 {
-	[HMUserDefaults hmStandardDefauls].screenShotSaveDirectory = screenShotSaveDirectory;
+	HMStandardDefaults.screenShotSaveDirectory = screenShotSaveDirectory;
 }
 - (NSString *)screenShotSaveDirectory
 {
-	NSString *path = [HMUserDefaults hmStandardDefauls].screenShotSaveDirectory;
+	NSString *path = HMStandardDefaults.screenShotSaveDirectory;
 	if(!path) {
 		path = [[self picturesDirectory] path];
 	}
@@ -272,7 +279,7 @@
 - (IBAction)showHideHistory:(id)sender
 {
 	if(!self.historyWindowController) {
-		self.historyWindowController = [HMHistoryWindowController create];
+		self.historyWindowController = [HMHistoryWindowController new];
 	}
 	
 	NSWindow *window = self.historyWindowController.window;
@@ -286,7 +293,7 @@
 - (IBAction)showHideSlotItemWindow:(id)sender
 {
 	if(!self.slotItemWindowController) {
-		self.slotItemWindowController = [HMSlotItemWindowController create];
+		self.slotItemWindowController = [HMSlotItemWindowController new];
 	}
 	
 	NSWindow *window = self.slotItemWindowController.window;
@@ -300,7 +307,7 @@
 - (IBAction)showHidePreferencePanle:(id)sender
 {
 	if(!self.preferencePanelController) {
-		self.preferencePanelController = [HMPreferencePanelController create];
+		self.preferencePanelController = [HMPreferencePanelController new];
 	}
 	
 	NSWindow *window = self.preferencePanelController.window;
@@ -314,7 +321,7 @@
 - (IBAction)showHideUpgradableShipWindow:(id)sender
 {
 	if(!self.upgradableShipWindowController) {
-		self.upgradableShipWindowController = [HMUpgradableShipsWindowController create];
+		self.upgradableShipWindowController = [HMUpgradableShipsWindowController new];
 	}
 	
 	NSWindow *window = self.upgradableShipWindowController.window;
@@ -338,7 +345,7 @@
 - (IBAction)showExternalBrowserWindow:(id)sender
 {
 	if(!self.externalBrowserWindowController) {
-		self.externalBrowserWindowController = [HMExternalBrowserWindowController create];
+		self.externalBrowserWindowController = [HMExternalBrowserWindowController new];
 	}
 	
 	NSWindow *window = self.externalBrowserWindowController.window;

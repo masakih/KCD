@@ -8,7 +8,7 @@
 
 #import "HMMemberMaterialCommand.h"
 
-#import "KCD-Swift.h"
+#import "HMServerDataStore.h"
 
 @implementation HMMemberMaterialCommand
 + (void)load
@@ -50,10 +50,7 @@
 	NSManagedObjectContext *managedObjectContext = [serverDataStore managedObjectContext];
 	
 	NSError *error = nil;
-	id result = [serverDataStore objectsWithEntityName:@"Material"
-									   sortDescriptors:nil
-											 predicate:nil
-												 error:&error];
+	id result = [serverDataStore objectsWithEntityName:@"Material" predicate:nil error:&error];
 	if(error) {
 		[self log:@"Fetch error: %@", error];
 		return;

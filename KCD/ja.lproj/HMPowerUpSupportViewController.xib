@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment version="1070" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6245"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="HMPowerUpSupportViewController" customModule="KCD" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="HMPowerUpSupportViewController">
             <connections>
                 <outlet property="shipController" destination="b8v-Gn-JZD" id="HWc-JG-I1c"/>
                 <outlet property="typeSegment" destination="oAr-IJ-cOj" id="cdh-k4-b1A"/>
@@ -61,15 +61,15 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
-                                            <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.name" id="Wdl-aY-u3L">
-                                                <dictionary key="options">
-                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
-                                                </dictionary>
-                                            </binding>
                                             <binding destination="b8v-Gn-JZD" name="textColor" keyPath="arrangedObjects.planColor" id="UHh-9X-yQ0"/>
                                             <binding destination="b8v-Gn-JZD" name="fontBold" keyPath="arrangedObjects.sally_area" id="XLY-9p-IPT">
                                                 <dictionary key="options">
                                                     <string key="NSValueTransformerName">HMPlanToShowsBoldFontTransformer</string>
+                                                </dictionary>
+                                            </binding>
+                                            <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.name" id="Wdl-aY-u3L">
+                                                <dictionary key="options">
+                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
                                                 </dictionary>
                                             </binding>
                                         </connections>

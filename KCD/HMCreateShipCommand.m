@@ -8,8 +8,9 @@
 
 #import "HMCreateShipCommand.h"
 
-#import "KCD-Swift.h"
-
+#import "HMServerDataStore.h"
+#import "HMLocalDataStore.h"
+#import "HMKenzoMark.h"
 
 /**
  *  建造履歴に残すために秘書艦と司令部レベルを保存する
@@ -34,9 +35,8 @@
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 		HMServerDataStore *serverDataStore = [HMServerDataStore oneTimeEditor];
 		NSArray *array = [serverDataStore objectsWithEntityName:@"KenzoDock"
-												sortDescriptors:nil
-													  predicate:[NSPredicate predicateWithFormat:@"id = %@", @([[self.arguments valueForKey:@"api_kdock_id"] integerValue])]
-														  error:NULL];
+														  error:NULL
+												predicateFormat:@"id = %@", @([[self.arguments valueForKey:@"api_kdock_id"] integerValue])];
 		if([array count] == 0) {
 			NSLog(@"KenzoDock data is invalid.");
 			return;
@@ -46,20 +46,14 @@
 		NSNumber *item1 = [kdock valueForKey:@"item1"];
 		
 		// Deck -> FlagShip
-		array = [serverDataStore objectsWithEntityName:@"Deck"
-									   sortDescriptors:nil
-											 predicate:[NSPredicate predicateWithFormat:@"id = 1"]
-												 error:NULL];
+		array = [serverDataStore objectsWithEntityName:@"Deck" error:NULL predicateFormat:@"id = 1"];
 		if([array count] == 0) {
 			NSLog(@"Deck data is invalid.");
 			return;
 		}
 		id deck = array[0];
 		id flagShipID = [deck valueForKey:@"ship_0"];
-		array = [serverDataStore objectsWithEntityName:@"Ship"
-									   sortDescriptors:nil
-										predicate:[NSPredicate predicateWithFormat:@"id = %@", flagShipID]
-												 error:NULL];
+		array = [serverDataStore objectsWithEntityName:@"Ship" error:NULL predicateFormat:@"id = %@", flagShipID];
 		if([array count] == 0) {
 			NSLog(@"Ship data is invalid or ship_0 is invalid.");
 			return;
@@ -69,10 +63,7 @@
 		NSString *flagShipName = [flagShip valueForKeyPath:@"master_ship.name"];
 		
 		// Basic -> level
-		array = [serverDataStore objectsWithEntityName:@"Basic"
-									   sortDescriptors:nil
-											 predicate:nil
-												 error:NULL];
+		array = [serverDataStore objectsWithEntityName:@"Basic" predicate:nil error:NULL];
 		if([array count] == 0) {
 			NSLog(@"Basic data is invalid.");
 			return;
@@ -83,9 +74,8 @@
 		HMLocalDataStore *lds = [HMLocalDataStore oneTimeEditor];
 		HMKenzoMark *newObejct = nil;
 		array = [lds objectsWithEntityName:@"KenzoMark"
-						   sortDescriptors:nil
-								 predicate:[NSPredicate predicateWithFormat:@"kDockId = %@", @([[self.arguments valueForKey:@"api_kdock_id"] integerValue])]
-									 error:NULL];
+									 error:NULL
+						   predicateFormat:@"kDockId = %@", @([[self.arguments valueForKey:@"api_kdock_id"] integerValue])];
 		if([array count] == 0) {
 			newObejct = [NSEntityDescription insertNewObjectForEntityForName:@"KenzoMark"
 													  inManagedObjectContext:[lds managedObjectContext]];

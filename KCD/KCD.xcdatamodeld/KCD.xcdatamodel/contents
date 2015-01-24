@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="13F34" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6252" systemVersion="13F34" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Basic" representedClassName="HMKCManagedObject" syncable="YES">
         <attribute name="active_flag" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
@@ -41,7 +41,7 @@
         <attribute name="tutorial" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="tutorial_progress" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
-    <entity name="Deck" representedClassName="KCD.HMKCDeck" syncable="YES">
+    <entity name="Deck" representedClassName="HMKCDeck" syncable="YES">
         <attribute name="flagship" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="id" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="member_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -126,7 +126,7 @@
         <attribute name="win_item2_0" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="win_item2_1" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
-    <entity name="MasterShip" representedClassName="KCD.HMKCMasterShipObject" syncable="YES">
+    <entity name="MasterShip" representedClassName="HMKCMasterShipObject" syncable="YES">
         <attribute name="afterbull" attributeType="Integer 32" syncable="YES"/>
         <attribute name="afterfuel" attributeType="Integer 32" syncable="YES"/>
         <attribute name="afterlv" attributeType="Integer 32" syncable="YES"/>
@@ -174,7 +174,7 @@
         <relationship name="ships" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ship" inverseName="master_ship" inverseEntity="Ship" syncable="YES"/>
         <relationship name="stype" maxCount="1" deletionRule="Nullify" destinationEntity="MasterSType" inverseName="ships" inverseEntity="MasterSType" syncable="YES"/>
     </entity>
-    <entity name="MasterSlotItem" representedClassName="KCD.HMKCMasterSlotItemObject" syncable="YES">
+    <entity name="MasterSlotItem" representedClassName="HMKCMasterSlotItemObject" syncable="YES">
         <attribute name="atap" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="bakk" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="baku" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -253,7 +253,7 @@
         <attribute name="ship_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
-    <entity name="Ship" representedClassName="KCD.HMKCShipObject" syncable="YES">
+    <entity name="Ship" representedClassName="HMKCShipObject" syncable="YES">
         <attribute name="bull" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="cond" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="exp" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -303,7 +303,7 @@
         <relationship name="equippedItem" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="SlotItem" inverseName="equippedShip" inverseEntity="SlotItem" syncable="YES"/>
         <relationship name="master_ship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MasterShip" inverseName="ships" inverseEntity="MasterShip" syncable="YES"/>
     </entity>
-    <entity name="SlotItem" representedClassName="KCD.HMKCSlotItemObject" syncable="YES">
+    <entity name="SlotItem" representedClassName="HMKCSlotItemObject" syncable="YES">
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="level" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="locked" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -321,13 +321,13 @@
         <element name="MasterMapInfo" positionX="0" positionY="0" width="128" height="270"/>
         <element name="MasterMission" positionX="0" positionY="0" width="128" height="238"/>
         <element name="MasterShip" positionX="0" positionY="0" width="128" height="735"/>
-        <element name="MasterSlotItem" positionX="0" positionY="0" width="128" height="540"/>
+        <element name="MasterSlotItem" positionX="0" positionY="0" width="128" height="538"/>
         <element name="MasterSlotItemEquipType" positionX="9" positionY="153" width="128" height="90"/>
         <element name="MasterSType" positionX="0" positionY="0" width="128" height="135"/>
         <element name="MasterUseItem" positionX="0" positionY="0" width="128" height="150"/>
         <element name="Material" positionX="0" positionY="0" width="128" height="165"/>
         <element name="NyukyoDock" positionX="0" positionY="0" width="128" height="195"/>
-        <element name="Ship" positionX="0" positionY="0" width="128" height="765"/>
+        <element name="Ship" positionX="0" positionY="0" width="128" height="763"/>
         <element name="SlotItem" positionX="0" positionY="0" width="128" height="135"/>
     </elements>
 </model>

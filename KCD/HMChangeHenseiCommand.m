@@ -8,7 +8,7 @@
 
 #import "HMChangeHenseiCommand.h"
 
-#import "KCD-Swift.h"
+#import "HMServerDataStore.h"
 
 @interface HMChangeHenseiCommand ()
 @property (nonatomic, strong) HMServerDataStore *store;
@@ -66,7 +66,6 @@
 {
 	NSError *error = nil;
 	NSArray *decks = [self.store objectsWithEntityName:@"Deck"
-									   sortDescriptors:nil
 											 predicate:nil
 												 error:&error];
 	// TODO: error handling
@@ -96,9 +95,8 @@
 	
 	NSError *error = nil;
 	NSArray *decks = [self.store objectsWithEntityName:@"Deck"
-									   sortDescriptors:nil
-											 predicate:[NSPredicate predicateWithFormat:@"id = %ld", deckNumber]
-												 error:&error];
+												 error:&error
+									   predicateFormat:@"id = %ld", deckNumber];
 	// TODO: error handling
 	id deck = decks[0];
 	

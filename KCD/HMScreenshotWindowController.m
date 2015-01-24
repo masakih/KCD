@@ -7,19 +7,19 @@
 //
 
 #import "HMScreenshotWindowController.h"
+#import "HMUserDefaults.h"
+#import "HMMaskSelectView.h"
+#import "HMMaskInfomation.h"
 
 #import "HMAppDelegate.h"
 
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
 
-#import "KCD-Swift.h"
 
-/*
 @interface NSFileManager (KCDExtension)
 - (NSString *)_web_pathWithUniqueFilenameForPath:(NSString *)path;
 @end
- */
 
 @interface HMScreenshotWindowController ()
 
@@ -72,11 +72,11 @@
 		} else {
 			_tagString = @"";
 		}
-		_appendKanColleTag = [HMUserDefaults hmStandardDefauls].appendKanColleTag;
+		_appendKanColleTag = HMStandardDefaults.appendKanColleTag;
 		
 		self.tweetString = @"";
 		
-		_useMask = [HMUserDefaults hmStandardDefauls].useMask;
+		_useMask = HMStandardDefaults.useMask;
 	}
 	return self;
 }
@@ -100,7 +100,7 @@
 		[image addRepresentation:self.snapImageRep];
 		
 		[image lockFocus];
-		for(HMMaskInformation *info in self.maskSelectView.masks) {
+		for(HMMaskInfomation *info in self.maskSelectView.masks) {
 			if(info.enable) {
 				NSBezierPath *path = [NSBezierPath bezierPathWithRect:info.maskRect];
 				[info.maskColor set];
@@ -135,7 +135,7 @@
 }
 - (void)setUseMask:(BOOL)useMask
 {
-	[HMUserDefaults hmStandardDefauls].useMask = useMask;
+	HMStandardDefaults.useMask = useMask;
 	_useMask = useMask;
 }
 - (NSInteger)leaveLength
@@ -157,7 +157,7 @@
 }
 - (void)setAppendKanColleTag:(BOOL)appendKanColleTag
 {
-	[HMUserDefaults hmStandardDefauls].appendKanColleTag = appendKanColleTag;
+	HMStandardDefaults.appendKanColleTag = appendKanColleTag;
 	_appendKanColleTag = appendKanColleTag;
 }
 - (BOOL)canTweet

@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="HMDocksViewController" customModule="KCD" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="HMDocksViewController">
             <connections>
                 <outlet property="battleContoller" destination="sje-58-fiD" id="4Qx-Ag-AL2"/>
                 <outlet property="view" destination="vGg-MO-rzn" id="Z4V-4O-pqr"/>
@@ -59,7 +59,7 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sTn-uJ-Phx">
                     <rect key="frame" x="87" y="376" width="62" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="BJE-Ig-1at">
-                        <customFormatter key="formatter" id="9Rm-sQ-KzG" customClass="HMTimerCountFormatter" customModule="KCD" customModuleProvider="target"/>
+                        <customFormatter key="formatter" id="9Rm-sQ-KzG" customClass="HMTimerCountFormatter"/>
                         <font key="font" size="13" name="AquaKana"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -83,7 +83,7 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U7b-9S-sWb">
                     <rect key="frame" x="100" y="275" width="62" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="iv8-oM-0Fo">
-                        <customFormatter key="formatter" id="uTW-Si-vAP" customClass="HMTimerCountFormatter" customModule="KCD" customModuleProvider="target"/>
+                        <customFormatter key="formatter" id="uTW-Si-vAP" customClass="HMTimerCountFormatter"/>
                         <font key="font" size="13" name="AquaKana"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -116,7 +116,7 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1j4-Kg-am8">
                     <rect key="frame" x="100" y="152" width="62" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="5SQ-4h-gVc">
-                        <customFormatter key="formatter" id="fOY-bM-qRR" customClass="HMTimerCountFormatter" customModule="KCD" customModuleProvider="target"/>
+                        <customFormatter key="formatter" id="fOY-bM-qRR" customClass="HMTimerCountFormatter"/>
                         <font key="font" size="13" name="AquaKana"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -170,7 +170,7 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YPL-iZ-5QI">
                     <rect key="frame" x="87" y="353" width="62" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="uZ7-H0-10h">
-                        <customFormatter key="formatter" id="XJq-qE-ggs" customClass="HMTimerCountFormatter" customModule="KCD" customModuleProvider="target"/>
+                        <customFormatter key="formatter" id="XJq-qE-ggs" customClass="HMTimerCountFormatter"/>
                         <font key="font" size="13" name="AquaKana"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -209,7 +209,7 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aaL-Hq-rXW">
                     <rect key="frame" x="87" y="330" width="62" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="KdJ-xQ-eVC">
-                        <customFormatter key="formatter" id="lcg-8G-Dru" customClass="HMTimerCountFormatter" customModule="KCD" customModuleProvider="target"/>
+                        <customFormatter key="formatter" id="lcg-8G-Dru" customClass="HMTimerCountFormatter"/>
                         <font key="font" size="13" name="AquaKana"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -233,7 +233,7 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mAQ-lg-uXF">
                     <rect key="frame" x="100" y="252" width="62" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="oco-u5-uot">
-                        <customFormatter key="formatter" id="n6E-LC-O0m" customClass="HMTimerCountFormatter" customModule="KCD" customModuleProvider="target"/>
+                        <customFormatter key="formatter" id="n6E-LC-O0m" customClass="HMTimerCountFormatter"/>
                         <font key="font" size="13" name="AquaKana"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -272,7 +272,7 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Ep-sM-xII">
                     <rect key="frame" x="100" y="229" width="62" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="YbO-M6-FUI">
-                        <customFormatter key="formatter" id="XN3-A0-NNc" customClass="HMTimerCountFormatter" customModule="KCD" customModuleProvider="target"/>
+                        <customFormatter key="formatter" id="XN3-A0-NNc" customClass="HMTimerCountFormatter"/>
                         <font key="font" size="13" name="AquaKana"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -311,7 +311,7 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zee-D4-ZGG">
                     <rect key="frame" x="100" y="206" width="62" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="rFg-0M-tbw">
-                        <customFormatter key="formatter" id="aaT-2p-6sV" customClass="HMTimerCountFormatter" customModule="KCD" customModuleProvider="target"/>
+                        <customFormatter key="formatter" id="aaT-2p-6sV" customClass="HMTimerCountFormatter"/>
                         <font key="font" size="13" name="AquaKana"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -350,7 +350,7 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="txP-dd-uyL">
                     <rect key="frame" x="100" y="129" width="62" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="Bnk-cQ-3F5">
-                        <customFormatter key="formatter" id="pyU-qN-RwB" customClass="HMTimerCountFormatter" customModule="KCD" customModuleProvider="target"/>
+                        <customFormatter key="formatter" id="pyU-qN-RwB" customClass="HMTimerCountFormatter"/>
                         <font key="font" size="13" name="AquaKana"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -374,7 +374,7 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VoE-sV-bbn">
                     <rect key="frame" x="246" y="152" width="62" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="769-Rr-iNm">
-                        <customFormatter key="formatter" id="wwc-Kj-i2T" customClass="HMTimerCountFormatter" customModule="KCD" customModuleProvider="target"/>
+                        <customFormatter key="formatter" id="wwc-Kj-i2T" customClass="HMTimerCountFormatter"/>
                         <font key="font" size="13" name="AquaKana"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -398,7 +398,7 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cB6-7z-cj7">
                     <rect key="frame" x="246" y="129" width="62" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="IP7-Yh-Z7X">
-                        <customFormatter key="formatter" id="5gk-HQ-Ks2" customClass="HMTimerCountFormatter" customModule="KCD" customModuleProvider="target"/>
+                        <customFormatter key="formatter" id="5gk-HQ-Ks2" customClass="HMTimerCountFormatter"/>
                         <font key="font" size="13" name="AquaKana"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>

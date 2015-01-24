@@ -12,7 +12,7 @@
 
 @class HMFleetInformation;
 
-typedef NS_ENUM(NSInteger, HMShipType) {
+typedef NS_ENUM(NSUInteger, HMShipType) {
     kHMAllType,
     kHMDestroyer,
     kHMLightCruiser,

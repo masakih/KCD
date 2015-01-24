@@ -9,8 +9,7 @@
 #import "HMJSONCommand.h"
 
 #import "HMAppDelegate.h"
-
-#import "KCD-Swift.h"
+#import "HMServerDataStore.h"
 
 #if ENABLE_JSON_LOG
 #import "HMJSONNode.h"
@@ -45,9 +44,9 @@ static NSMutableArray *registeredCommands = nil;
 
 + (HMJSONCommand *)commandForAPI:(NSString *)api
 {
-	for(HMJSONCommand *c in registeredCommands) {
-		if([[c class] canExcuteAPI:api]) {
-			HMJSONCommand *command = [c copy];
+	for(Class commandClass in registeredCommands) {
+		if([commandClass canExcuteAPI:api]) {
+			HMJSONCommand *command =  [commandClass new];
 			command.api = api;
 #if ENABLE_JSON_LOG_HANDLED_API
 			HMJSONViewCommand *viewCommand = [HMJSONViewCommand new];
@@ -69,20 +68,8 @@ static NSMutableArray *registeredCommands = nil;
 + (void)registerClass:(Class)commandClass
 {
 	if(!commandClass) return;
-	[self registerInstance:[commandClass new]];
-}
-
-
-// for Swift
-+ (void)registerInstance:(id)command
-{
-	if(!command) return;
-	if([registeredCommands containsObject:command]) return;
-	[registeredCommands addObject:command];
-}
-- (instancetype)copyWithZone:(NSZone *)zone
-{
-	return [[self class] new];
+	if([registeredCommands containsObject:commandClass]) return;
+	[registeredCommands addObject:commandClass];
 }
 
 
@@ -166,13 +153,11 @@ NSString *keyByDeletingPrefix(NSString *key)
 {
 	va_list ap;
 	va_start(ap, format);
-	[self log:format argList:ap];
-}
-- (void)log:(NSString *)format argList:(va_list)argList
-{
-	NSString *str = [[NSString alloc] initWithFormat:format arguments:argList];
+	NSString *str = [[NSString alloc] initWithFormat:format arguments:ap];
 	NSLog(@"API: %@, Arguments: %@.\n%@", self.api, self.arguments, str);
+	va_end(ap);
 }
+
 - (NSString *)dataKey
 {
 	return @"api_data";

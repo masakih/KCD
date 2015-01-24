@@ -8,7 +8,11 @@
 
 #import "HMFleetInformation.h"
 
-#import "KCD-Swift.h"
+#import "HMServerDataStore.h"
+#import "HMKCShipObject+Extensions.h"
+#import "HMKCSlotItemObject+Extensions.h"
+#import "HMKCMasterSlotItemObject.h"
+#import "HMKCDeck+Extension.h"
 
 @interface HMFleetInformation ()
 @property (strong) NSArray *shipNameKeys;
@@ -104,9 +108,8 @@
 	NSArray *array = nil;
 	if(shipId != -1) {
 		array = [store objectsWithEntityName:@"Ship"
-							 sortDescriptors:nil
-								   predicate:[NSPredicate predicateWithFormat:@"id = %ld", shipId]
-									   error:&error];
+									   error:&error
+							 predicateFormat:@"id = %ld", shipId];
 	}
 	if(shipId != -1 && array.count == 0) {
 		NSLog(@"Could not found ship of id %@", shipIdNumber);
@@ -123,7 +126,7 @@
 	self.name = nil;
 	
 	NSInteger fleetId = [self.selectedFleetNumber integerValue];
-	if(fleetId > 6 || fleetId <= 0) {
+	if(fleetId > 6 || fleetId < 0) {
 		return;
 	}
 	
@@ -236,9 +239,8 @@
 	NSArray *array = nil;
 	if(shipId != -1) {
 		array = [store objectsWithEntityName:@"Ship"
-							 sortDescriptors:nil
-								   predicate:[NSPredicate predicateWithFormat:@"id = %ld", shipId]
-									   error:&error];
+									   error:&error
+							 predicateFormat:@"id = %ld", shipId];
 	} else {
 		return 0;
 	}
@@ -279,9 +281,8 @@
 		if(itemId.integerValue == -1) break;
 		error = nil;
 		array = [store objectsWithEntityName:@"SlotItem"
-							 sortDescriptors:nil
-								   predicate:[NSPredicate predicateWithFormat:@"id = %@", itemId]
-									   error:&error];
+									   error:&error
+							 predicateFormat:@"id = %@", itemId];
 		if(array.count == 0) continue;
 		HMKCSlotItemObject *slotItem = array[0];
 		HMKCMasterSlotItemObject *master = slotItem.master_slotItem;
@@ -339,9 +340,8 @@
 		NSArray *array = nil;
 		if(shipId != -1) {
 			array = [store objectsWithEntityName:@"Ship"
-								 sortDescriptors:nil
-									   predicate:[NSPredicate predicateWithFormat:@"id = %ld", shipId]
-										   error:&error];
+										   error:&error
+								 predicateFormat:@"id = %ld", shipId];
 		}
 		if(array.count == 0) {
 			NSLog(@"Could not found ship of id %@", shipIdNumber);

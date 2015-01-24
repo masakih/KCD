@@ -8,7 +8,10 @@
 
 #import "HMTSVSupport.h"
 
-#import "KCD-Swift.h"
+#import "HMLocalDataStore.h"
+#import "HMKaihatuHistory.h"
+#import "HMKenzoHistory.h"
+#import "HMKenzoMark.h"
 
 #define PATH_KEY2(key1, key2) [NSString stringWithFormat:@"%@.%@", (key1), (key2)]
 #define PATH_KEY3(key1, key2, key3) [NSString stringWithFormat:@"%@.%@.%@", (key1), (key2), (key3)]
@@ -207,9 +210,8 @@
 		if([attr[6] isEqual:@"(null)"]) continue;
 		
 		NSArray *array = [lds objectsWithEntityName:entityName
-									sortDescriptors:nil
-										  predicate:[NSPredicate predicateWithFormat:@"date = %@", [NSDate dateWithString:attr[0]]]
-											  error:NULL];
+											  error:NULL
+									predicateFormat:@"date = %@", [NSDate dateWithString:attr[0]]];
 		if(array.count != 0) continue;
 		
 		HMKaihatuHistory *obj = [NSEntityDescription insertNewObjectForEntityForName:entityName
@@ -241,9 +243,8 @@
 		if([attr[6] isEqual:@"(null)"]) continue;
 				
 		NSArray *array = [lds objectsWithEntityName:entityName
-									sortDescriptors:nil
-										  predicate:[NSPredicate predicateWithFormat:@"date = %@", [NSDate dateWithString:attr[0]]]
-											  error:NULL];
+											  error:NULL
+									predicateFormat:@"date = %@", [NSDate dateWithString:attr[0]]];
 		if(array.count != 0) continue;
 		
 		HMKenzoHistory *obj = [NSEntityDescription insertNewObjectForEntityForName:entityName

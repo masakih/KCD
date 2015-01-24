@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="HMDeckViewController" customModule="KCD" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="HMDeckViewController">
             <connections>
                 <outlet property="supplies1" destination="RPQ-X8-xc3" id="EYA-P7-td2"/>
                 <outlet property="supplies2" destination="XpJ-kX-rT5" id="yZL-oH-dD9"/>
@@ -43,7 +43,7 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="6Or-P0-p9N">
                     <rect key="frame" x="282" y="34" width="61" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="123/123" id="ddo-nt-jFg" customClass="HMStrokeTextFieldCell" customModule="KCD" customModuleProvider="target">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="123/123" id="ddo-nt-jFg" customClass="HMStrokeTextFieldCell">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -87,7 +87,7 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="5AR-hJ-AeK">
                     <rect key="frame" x="282" y="9" width="61" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="123/123" id="JSd-Ku-V4j" customClass="HMStrokeTextFieldCell" customModule="KCD" customModuleProvider="target">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="123/123" id="JSd-Ku-V4j" customClass="HMStrokeTextFieldCell">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -131,7 +131,7 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="smn-zr-pta">
                     <rect key="frame" x="463" y="34" width="61" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="123/123" id="Ocl-yu-tLk" customClass="HMStrokeTextFieldCell" customModule="KCD" customModuleProvider="target">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="123/123" id="Ocl-yu-tLk" customClass="HMStrokeTextFieldCell">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -175,7 +175,7 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="bgm-YO-io1">
                     <rect key="frame" x="463" y="9" width="61" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="123/123" id="LEg-DQ-i6o" customClass="HMStrokeTextFieldCell" customModule="KCD" customModuleProvider="target">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="123/123" id="LEg-DQ-i6o" customClass="HMStrokeTextFieldCell">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -219,7 +219,7 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="DM5-82-U3A">
                     <rect key="frame" x="644" y="34" width="61" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="123/123" id="L8K-jE-OB1" customClass="HMStrokeTextFieldCell" customModule="KCD" customModuleProvider="target">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="123/123" id="L8K-jE-OB1" customClass="HMStrokeTextFieldCell">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -263,7 +263,7 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="rUa-IT-pN1">
                     <rect key="frame" x="644" y="9" width="61" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="123/123" id="kcC-oq-S0a" customClass="HMStrokeTextFieldCell" customModule="KCD" customModuleProvider="target">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="123/123" id="kcC-oq-S0a" customClass="HMStrokeTextFieldCell">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -346,7 +346,7 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="9US-00-gtw">
                     <rect key="frame" x="226" y="34" width="21" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="49" id="4fu-Us-dg2" customClass="HMStrokeTextFieldCell" customModule="KCD" customModuleProvider="target">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="49" id="4fu-Us-dg2" customClass="HMStrokeTextFieldCell">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -359,7 +359,7 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Hla-XE-mIo">
                     <rect key="frame" x="226" y="9" width="21" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="49" id="A79-kF-k9u" customClass="HMStrokeTextFieldCell" customModule="KCD" customModuleProvider="target">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="49" id="A79-kF-k9u" customClass="HMStrokeTextFieldCell">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -372,7 +372,7 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="wsW-rS-JP0">
                     <rect key="frame" x="407" y="34" width="21" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="49" id="L1v-L0-17U" customClass="HMStrokeTextFieldCell" customModule="KCD" customModuleProvider="target">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="49" id="L1v-L0-17U" customClass="HMStrokeTextFieldCell">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -385,7 +385,7 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="g9G-lh-Te2">
                     <rect key="frame" x="407" y="9" width="21" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="49" id="6CA-GY-gJA" customClass="HMStrokeTextFieldCell" customModule="KCD" customModuleProvider="target">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="49" id="6CA-GY-gJA" customClass="HMStrokeTextFieldCell">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -398,7 +398,7 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="V0k-rS-hW4">
                     <rect key="frame" x="588" y="34" width="21" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="49" id="yFD-Od-oEO" customClass="HMStrokeTextFieldCell" customModule="KCD" customModuleProvider="target">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="49" id="yFD-Od-oEO" customClass="HMStrokeTextFieldCell">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -411,7 +411,7 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="m3I-Sb-hkR">
                     <rect key="frame" x="588" y="9" width="21" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="49" id="6p1-JQ-iPh" customClass="HMStrokeTextFieldCell" customModule="KCD" customModuleProvider="target">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="49" id="6p1-JQ-iPh" customClass="HMStrokeTextFieldCell">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -421,27 +421,27 @@
                         <binding destination="-2" name="textColor" keyPath="fleetInfo.sixthShip.conditionColor" id="OdP-Gc-fyt"/>
                     </connections>
                 </textField>
-                <customView id="RPQ-X8-xc3" customClass="HMSuppliesView" customModule="KCD" customModuleProvider="target">
+                <customView id="RPQ-X8-xc3" customClass="HMSuppliesView">
                     <rect key="frame" x="249" y="36" width="31" height="13"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </customView>
-                <customView id="XpJ-kX-rT5" customClass="HMSuppliesView" customModule="KCD" customModuleProvider="target">
+                <customView id="XpJ-kX-rT5" customClass="HMSuppliesView">
                     <rect key="frame" x="249" y="11" width="31" height="13"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </customView>
-                <customView id="Ckx-ml-RXh" customClass="HMSuppliesView" customModule="KCD" customModuleProvider="target">
+                <customView id="Ckx-ml-RXh" customClass="HMSuppliesView">
                     <rect key="frame" x="430" y="36" width="31" height="13"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </customView>
-                <customView id="iKG-xk-U7y" customClass="HMSuppliesView" customModule="KCD" customModuleProvider="target">
+                <customView id="iKG-xk-U7y" customClass="HMSuppliesView">
                     <rect key="frame" x="430" y="11" width="31" height="13"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </customView>
-                <customView id="xRY-kw-ZrR" customClass="HMSuppliesView" customModule="KCD" customModuleProvider="target">
+                <customView id="xRY-kw-ZrR" customClass="HMSuppliesView">
                     <rect key="frame" x="611" y="36" width="31" height="13"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </customView>
-                <customView id="efa-3i-7ov" customClass="HMSuppliesView" customModule="KCD" customModuleProvider="target">
+                <customView id="efa-3i-7ov" customClass="HMSuppliesView">
                     <rect key="frame" x="611" y="11" width="31" height="13"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </customView>

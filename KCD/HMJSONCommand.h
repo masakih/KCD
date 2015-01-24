@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface HMJSONCommand : NSObject <NSCopying>
+@interface HMJSONCommand : NSObject
 
 + (HMJSONCommand *)commandForAPI:(NSString *)api;
 
@@ -21,9 +21,6 @@
 
 // for subclass
 + (void)registerClass:(Class)commandClass;
-
-// for Swift
-+ (void)registerInstance:(id)command;
 
 @property (copy, readonly) NSString *api;	// api is /kcsapi/mainAPI/subAPI
 @property (strong, readonly) NSDictionary *arguments;
@@ -54,6 +51,5 @@
 NSString *keyByDeletingPrefix(NSString *key);
 
 - (void)log:(NSString *)format, ... NS_FORMAT_FUNCTION(1,2);
-- (void)log:(NSString *)format argList:(va_list)argList;
 
 @end

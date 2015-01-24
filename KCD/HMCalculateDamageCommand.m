@@ -8,7 +8,9 @@
 
 #import "HMCalculateDamageCommand.h"
 
-#import "KCD-Swift.h"
+#import "HMTemporaryDataStore.h"
+#import "HMServerDataStore.h"
+
 
 #define DAMAGE_CHECK 0
 
@@ -19,17 +21,19 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 };
 
 @interface HMCalculateDamageCommand ()
-@property (readonly) HMTemporaryDataStore *store;
+@property (nonatomic, strong) HMTemporaryDataStore *store;
 @property HMBattleType battleType;
 @end
 
 @implementation HMCalculateDamageCommand
-@synthesize store = _store;
 
-- (HMTemporaryDataStore *)store {
-	if(_store) return _store;
-	_store = [HMTemporaryDataStore oneTimeEditor];
-	return _store;
+- (id)init
+{
+	self = [super init];
+	if(self) {
+		_store = [HMTemporaryDataStore oneTimeEditor];
+	}
+	return self;
 }
 
 - (void)resetBattle
@@ -38,9 +42,8 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 	
 	NSError *error = nil;
 	NSArray *array = [self.store objectsWithEntityName:@"Battle"
-									   sortDescriptors:nil
-											 predicate:nil
-												 error:&error];
+										predicate:nil
+											error:&error];
 	if(error) {
 		[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
 		return;
@@ -58,9 +61,8 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 	
 	NSError *error = nil;
 	NSArray *array = [self.store objectsWithEntityName:@"Damage"
-									   sortDescriptors:nil
-											 predicate:nil
-												 error:&error];
+							   predicate:nil
+								   error:&error];
 	if(error) {
 		[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
 		return;
@@ -107,7 +109,6 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 		// Battleエンティティ取得
 		error = nil;
 		NSArray *battles = [self.store objectsWithEntityName:@"Battle"
-											 sortDescriptors:nil
 												   predicate:nil
 													   error:&error];
 		if(error) {
@@ -302,9 +303,8 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 	
 	error = nil;
 	NSArray *array = [self.store objectsWithEntityName:@"Battle"
-									   sortDescriptors:nil
-											 predicate:nil
-												 error:&error];
+										predicate:nil
+											error:&error];
 	if(error) {
 		[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
 		return;
@@ -321,7 +321,6 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 		// 艦隊メンバーを取得
 		error = nil;
 		NSArray *decks = [serverStore objectsWithEntityName:@"Deck"
-											sortDescriptors:nil
 												  predicate:predicate
 													  error:&error];
 		if(error) {
@@ -346,9 +345,8 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 		for(id shipId in shipIds) {
 			error = nil;
 			NSArray *ship = [serverStore objectsWithEntityName:@"Ship"
-											   sortDescriptors:nil
-													 predicate:[NSPredicate predicateWithFormat:@"id = %@", @([shipId integerValue])]
-														 error:&error];
+														 error:&error
+											   predicateFormat:@"id = %@", @([shipId integerValue])];
 			if(error) {
 				[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
 			}

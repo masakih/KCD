@@ -8,9 +8,17 @@
 
 #import "HMCompositMapCommand.h"
 
+#import "HMMasterMapAreaCommand.h"
+#import "HMMasterMapInfoCommand.h"
+#import "HMMasterMapCellCommand.h"
+#import "HMMasterSTypeCommand.h"
 #import "HMMaserShipCommand.h"
+#import "HMMasterMissionCommand.h"
+#import "HMMasterFurnitureCommand.h"
+#import "HMMasterSlotItemCommand.h"
+#import "HMMasterUseItemCommand.h"
+#import "HMMasterSlotItemEquipTypeCommand.h"
 
-#import "KCD-Swift.h"
 
 @implementation HMCompositMapCommand
 + (void)load
