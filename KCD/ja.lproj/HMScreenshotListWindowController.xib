@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
-        <plugIn identifier="com.apple.imagekit.ibplugin" version="6250"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
+        <plugIn identifier="com.apple.imagekit.ibplugin" version="6254"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="HMScreenshotListWindowController">
@@ -12,7 +12,7 @@
                 <outlet property="contextMenu" destination="jCv-QN-9O1" id="BjD-Nc-kNQ"/>
                 <outlet property="maskSelectView" destination="tQA-8E-MmO" id="v5E-DG-8ll"/>
                 <outlet property="screenshotsController" destination="mrq-7Y-mHG" id="4az-ad-cjx"/>
-                <outlet property="shareButton" destination="ODx-UD-3c2" id="6XI-nc-Vtj"/>
+                <outlet property="shareButton" destination="Ep8-Us-GmR" id="koP-3c-hsg"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -29,37 +29,6 @@
                 <rect key="frame" x="0.0" y="1" width="853" height="430"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <scrollView horizontalLineScroll="132.75" horizontalPageScroll="10" verticalLineScroll="153" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="uRf-6p-n0n">
-                        <rect key="frame" x="-1" y="-1" width="461" height="432"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <clipView key="contentView" copiesOnScroll="NO" id="xHE-4e-HA7">
-                            <rect key="frame" x="1" y="1" width="166" height="79"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <ikImageBrowserView autoresizesSubviews="NO" zoomValue="3.2822258472442627" allowsMultipleSelection="NO" allowsEmptySelection="NO" id="FPI-Ma-X6H">
-                                    <rect key="frame" x="0.0" y="0.0" width="10000" height="2183"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
-                                    <ikCellsStyle key="cellsStyleMask" none="YES" shadowed="YES" titled="YES" subtitled="YES"/>
-                                    <autoresizingMask key="contentResizingMask" heightSizable="YES"/>
-                                    <size key="cellSize" width="3556" height="3556"/>
-                                    <connections>
-                                        <binding destination="mrq-7Y-mHG" name="content" keyPath="arrangedObjects" id="G0M-vZ-Pyi"/>
-                                        <binding destination="-2" name="selectionIndexes" keyPath="selectedIndexes" previousBinding="G0M-vZ-Pyi" id="hZm-cJ-NmG"/>
-                                        <binding destination="t6v-On-YEy" name="zoomValue" keyPath="values.screenshotPreviewZoomValue" previousBinding="hZm-cJ-NmG" id="sac-by-AaG"/>
-                                        <outlet property="delegate" destination="-2" id="eec-et-XgG"/>
-                                    </connections>
-                                </ikImageBrowserView>
-                            </subviews>
-                        </clipView>
-                        <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="ERx-3X-cLg">
-                            <rect key="frame" x="1" y="80" width="166" height="15"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="dbh-Xn-LMm">
-                            <rect key="frame" x="167" y="1" width="15" height="79"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                    </scrollView>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="ddV-E9-TbE">
                         <rect key="frame" x="479" y="200" width="354" height="210"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
@@ -76,7 +45,7 @@
                         <font key="titleFont" metaFont="system"/>
                     </box>
                     <button id="ze5-Nt-vNQ">
-                        <rect key="frame" x="689" y="151" width="96" height="18"/>
+                        <rect key="frame" x="739" y="151" width="96" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="#艦これタグ" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="fqr-r3-ygh">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -128,20 +97,8 @@
                             <binding destination="mrq-7Y-mHG" name="value" keyPath="selection.creationDate" id="hCL-y2-DDn"/>
                         </connections>
                     </textField>
-                    <button verticalHuggingPriority="750" id="ODx-UD-3c2">
-                        <rect key="frame" x="785" y="143" width="54" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" image="NSShareTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0A4-EL-ysm">
-                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="share:" target="-2" id="NZ9-z8-oOX"/>
-                            <binding destination="mrq-7Y-mHG" name="enabled" keyPath="selection.@count" id="gj1-HH-OtG"/>
-                        </connections>
-                    </button>
                     <button id="fwg-yH-Hna">
-                        <rect key="frame" x="585" y="151" width="100" height="18"/>
+                        <rect key="frame" x="635" y="151" width="100" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="提督名マスク" bezelStyle="regularSquare" imagePosition="left" enabled="NO" state="on" inset="2" id="iVa-6D-NwM">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -218,14 +175,94 @@
                             <action selector="reloadData:" target="-2" id="FSz-KD-FmB"/>
                         </connections>
                     </button>
+                    <scrollView horizontalLineScroll="132.75" horizontalPageScroll="10" verticalLineScroll="153" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="uRf-6p-n0n">
+                        <rect key="frame" x="-1" y="-1" width="461" height="432"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <clipView key="contentView" copiesOnScroll="NO" id="xHE-4e-HA7">
+                            <rect key="frame" x="1" y="1" width="166" height="79"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <ikImageBrowserView autoresizesSubviews="NO" zoomValue="4.5748710632324219" allowsMultipleSelection="NO" allowsEmptySelection="NO" id="FPI-Ma-X6H">
+                                    <rect key="frame" x="0.0" y="0.0" width="459" height="430"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                    <ikCellsStyle key="cellsStyleMask" none="YES" shadowed="YES" titled="YES" subtitled="YES"/>
+                                    <autoresizingMask key="contentResizingMask" heightSizable="YES"/>
+                                    <size key="cellSize" width="6867" height="6867"/>
+                                    <connections>
+                                        <binding destination="mrq-7Y-mHG" name="content" keyPath="arrangedObjects" id="G0M-vZ-Pyi"/>
+                                        <binding destination="-2" name="selectionIndexes" keyPath="selectedIndexes" previousBinding="G0M-vZ-Pyi" id="hZm-cJ-NmG"/>
+                                        <binding destination="t6v-On-YEy" name="zoomValue" keyPath="values.screenshotPreviewZoomValue" previousBinding="hZm-cJ-NmG" id="sac-by-AaG"/>
+                                        <outlet property="delegate" destination="-2" id="eec-et-XgG"/>
+                                    </connections>
+                                </ikImageBrowserView>
+                            </subviews>
+                        </clipView>
+                        <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="ERx-3X-cLg">
+                            <rect key="frame" x="1" y="80" width="166" height="15"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="dbh-Xn-LMm">
+                            <rect key="frame" x="167" y="1" width="15" height="79"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                    </scrollView>
                 </subviews>
             </view>
+            <toolbar key="toolbar" implicitIdentifier="8D6AED6D-FD93-466E-8D32-DD91687FCFEA" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="u73-PM-aej">
+                <allowedToolbarItems>
+                    <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="KMU-tO-Zcp"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="hLk-Kh-2HB"/>
+                    <toolbarItem implicitItemIdentifier="301085CD-5ACA-457F-9D11-A616786C0E20" label="タグで検索" paletteLabel="タグで検索" id="vFc-pP-OES">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="312" height="22"/>
+                        <size key="maxSize" width="327" height="22"/>
+                        <searchField key="view" verticalHuggingPriority="750" id="k1K-gY-Fdc">
+                            <rect key="frame" x="0.0" y="14" width="327" height="22"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="wyA-en-88A">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </searchFieldCell>
+                            <connections>
+                                <binding destination="mrq-7Y-mHG" name="predicate" keyPath="filterPredicate" id="Pgk-oo-skl">
+                                    <dictionary key="options">
+                                        <string key="NSDisplayName">predicate</string>
+                                        <string key="NSPredicateFormat">ANY tags contains[c] $value</string>
+                                    </dictionary>
+                                </binding>
+                            </connections>
+                        </searchField>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="06D07177-AAF4-439E-B42C-D7EC1451032B" label="共有" paletteLabel="共有" image="NSShareTemplate" id="gGu-Lo-Wdu">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="41" height="25"/>
+                        <size key="maxSize" width="42" height="32"/>
+                        <button key="view" verticalHuggingPriority="750" id="Ep8-Us-GmR">
+                            <rect key="frame" x="0.0" y="14" width="42" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSShareTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="guD-RD-QP9">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="share:" target="-2" id="78h-sJ-d13"/>
+                        </connections>
+                    </toolbarItem>
+                </allowedToolbarItems>
+                <defaultToolbarItems>
+                    <toolbarItem reference="hLk-Kh-2HB"/>
+                    <toolbarItem reference="gGu-Lo-Wdu"/>
+                    <toolbarItem reference="vFc-pP-OES"/>
+                </defaultToolbarItems>
+            </toolbar>
             <connections>
                 <outlet property="delegate" destination="-2" id="v6c-eq-I3d"/>
             </connections>
             <point key="canvasLocation" x="339.5" y="294"/>
         </window>
-        <arrayController objectClassName="HMScreenshotInformation" avoidsEmptySelection="NO" automaticallyRearrangesObjects="YES" id="mrq-7Y-mHG">
+        <arrayController objectClassName="HMScreenshotInformation" automaticallyRearrangesObjects="YES" id="mrq-7Y-mHG">
             <connections>
                 <binding destination="-2" name="contentArray" keyPath="screenshots" id="yiA-Bf-4WO"/>
                 <binding destination="-2" name="selectionIndexes" keyPath="selectedIndexes" id="jhe-Sj-w7g"/>
