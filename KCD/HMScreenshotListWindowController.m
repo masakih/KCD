@@ -201,6 +201,13 @@
 	[self.screenshotsController removeObjectAtArrangedObjectIndex:selectionIndex];
 	
 	[self incrementCacheVersionForPath:imagePath];
+	
+	NSUInteger count = [self.screenshotsController.arrangedObjects count];
+	if(count == 0) return;
+	if(count <= selectionIndex) {
+		selectionIndex = count - 1;
+	}
+	self.screenshotsController.selectionIndex = selectionIndex;
 }
 - (IBAction)revealInFinder:(id)sender
 {
