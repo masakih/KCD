@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6252" systemVersion="13F34" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="13F34" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Basic" representedClassName="HMKCManagedObject" syncable="YES">
         <attribute name="active_flag" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
@@ -22,6 +22,7 @@
         <attribute name="max_chara" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="max_kagu" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="max_slotitem" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="medals" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="member_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="ms_count" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="ms_success" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -312,7 +313,7 @@
         <relationship name="master_slotItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MasterSlotItem" inverseName="slotItems" inverseEntity="MasterSlotItem" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Basic" positionX="0" positionY="0" width="128" height="628"/>
+        <element name="Basic" positionX="0" positionY="0" width="128" height="645"/>
         <element name="Deck" positionX="0" positionY="0" width="128" height="268"/>
         <element name="KenzoDock" positionX="0" positionY="0" width="128" height="210"/>
         <element name="MasterFurniture" positionX="0" positionY="0" width="128" height="163"/>
