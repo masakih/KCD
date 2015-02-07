@@ -205,8 +205,12 @@
 }
 - (NSString *)areaNumber
 {
+	id mapArea = [self.battleContoller valueForKeyPath:@"content.mapArea"];
+	if([mapArea integerValue] > 10) {
+		mapArea = @"E";
+	}
 	return [NSString stringWithFormat:@"%@-%@",
-			[self.battleContoller valueForKeyPath:@"content.mapArea"],
+			mapArea,
 			[self.battleContoller valueForKeyPath:@"content.mapInfo"]];
 }
 - (NSString *)areaName
