@@ -9,6 +9,7 @@
 #import "HMCombinedBattleCommand.h"
 
 #import "HMCalculateDamageCommand.h"
+#import "HMDropShipHistoryCommand.h"
 
 @implementation HMCombinedBattleCommand
 + (void)load
@@ -34,6 +35,7 @@
 - (id)init
 {
 	self = [super initWithCommands:
+			[HMDropShipHistoryCommand new],
 			[HMCalculateDamageCommand new],
 			nil];
 	return self;

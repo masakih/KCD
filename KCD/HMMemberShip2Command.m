@@ -10,6 +10,7 @@
 
 #import "HMMemberShipCommand.h"
 #import "HMMemberDeckCommand.h"
+#import "HMDropShipHistoryCommand.h"
 
 @implementation HMMemberShip2Command
 + (void)load
@@ -29,6 +30,7 @@
 {
 	self = [super initWithCommands:
 			[HMMemberShipCommand new], [HMMemberDeckCommand new],
+			[HMDropShipHistoryCommand new],
 			nil];
 	return self;
 }

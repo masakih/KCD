@@ -12,7 +12,8 @@
 
 typedef NS_ENUM(NSUInteger, HMHistoryWindowTabIndex) {
 	kKaihatuHistoryIndex = 0,
-	kKenzoHistoryIndex = 1
+	kKenzoHistoryIndex = 1,
+	kDropHistoryIndex = 2,
 };
 
 @interface HMHistoryWindowController ()
@@ -43,6 +44,8 @@ typedef NS_ENUM(NSUInteger, HMHistoryWindowTabIndex) {
 		case kKenzoHistoryIndex:
 			target = self.kenzoHistoryController;
 			break;
+		case kDropHistoryIndex:
+			target = self.dropHistoryController;
 			
 	}
 	

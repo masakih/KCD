@@ -14,6 +14,7 @@
 #import "HMMemberBasicCommand.h"
 #import "HMMemberNDockCommand.h"
 #import "HMResetSortieCommand.h"
+#import "HMDropShipHistoryCommand.h"
 
 
 @implementation HMPortCommand
@@ -37,6 +38,7 @@
 			[HMMemberDeckCommand new], [HMMemberBasicCommand new],
 			[HMMemberNDockCommand new],
 			[HMResetSortieCommand new],
+			[HMDropShipHistoryCommand new],
 			nil];
 	return self;
 }

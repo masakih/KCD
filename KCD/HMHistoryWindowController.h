@@ -12,6 +12,7 @@
 
 @property (weak) IBOutlet NSArrayController *kaihatuHistoryController;
 @property (weak) IBOutlet NSArrayController *kenzoHistoryController;
+@property (weak) IBOutlet NSArrayController *dropHistoryController;
 
 @property (readonly) NSManagedObjectContext *manageObjectContext;
 
