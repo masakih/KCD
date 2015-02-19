@@ -102,9 +102,4 @@ extern HMUserDefaults *HMStandardDefaults;
  */
 @property BOOL showLevelOneShipInUpgradableList;
 
-/**
- * 課金用のウインドウを使用可能にする
- */
-@property BOOL showsBillingWindowMenu;
-
 @end

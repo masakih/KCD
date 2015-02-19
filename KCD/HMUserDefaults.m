@@ -353,14 +353,4 @@ HMUserDefaults *HMStandardDefaults = nil;
 	return [self boolForKey:@"showLevelOneShipInUpgradableList"];
 }
 
-#pragma mark- Billing Window
-- (void)setShowsBillingWindowMenu:(BOOL)showsBillingWindowMenu
-{
-	[self setBool:showsBillingWindowMenu forKey:@"showsBillingWindowMenu"];
-}
-- (BOOL)showsBillingWindowMenu
-{
-	return [self boolForKey:@"showsBillingWindowMenu"];
-}
-
 @end

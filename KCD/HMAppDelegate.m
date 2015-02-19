@@ -127,9 +127,6 @@
 	if(!HMStandardDefaults.showsDebugMenu) {
 		[self.debugMenuItem setHidden:YES];
 	}
-	if(!HMStandardDefaults.showsBillingWindowMenu) {
-		[self.billingWindowMenuItem setHidden:YES];
-	}
 }
 
 - (HMScreenshotListWindowController *)screenshotListWindowController
