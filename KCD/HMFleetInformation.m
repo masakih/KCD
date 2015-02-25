@@ -89,7 +89,8 @@
 	id contextObject = (__bridge id)context;
 	
 	if([contextObject isKindOfClass:[NSString class]]) {
-		[self buildFleet];
+//		[self buildFleet];
+		[self changeShipWithNumber:[contextObject integerValue]];
 		
 		return;
 	}
@@ -207,6 +208,7 @@
 - (void)setSelectedFleetNumber:(NSNumber *)fleetNumber
 {
 	_selectedFleetNumber = fleetNumber;
+	self.deckController.selectionIndex = [fleetNumber integerValue] - 1;
 	[self buildFleet];
 }
 
