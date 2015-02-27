@@ -30,6 +30,13 @@
 	[self didAccessValueForKey:@"equippedShip"];
 	return equippedShipName;
 }
+- (NSNumber *)equippedShipLv
+{
+	[self willAccessValueForKey:@"equippedShip"];
+	NSNumber *equippedShipLv = self.equippedShip.lv;
+	[self didAccessValueForKey:@"equippedShip"];
+	return equippedShipLv;
+}
 - (NSNumber *)masterSlotItemRare
 {
 	[self willAccessValueForKey:@"master_slotItem"];

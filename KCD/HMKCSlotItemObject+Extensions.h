@@ -13,6 +13,7 @@
 @property (readonly) NSString *name;
 
 @property (readonly) NSString *equippedShipName;
+@property (readonly) NSNumber *equippedShipLv;
 @property (readonly) NSNumber *masterSlotItemRare;
 @property (readonly) NSString *typeName;
 
