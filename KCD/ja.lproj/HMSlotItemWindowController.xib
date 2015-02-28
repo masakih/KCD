@@ -194,7 +194,7 @@
                         </tableHeaderView>
                     </scrollView>
                     <searchField verticalHuggingPriority="750" id="ERr-T4-mcK">
-                        <rect key="frame" x="20" y="451" width="262" height="22"/>
+                        <rect key="frame" x="20" y="451" width="263" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="15D-be-yiw">
                             <font key="font" metaFont="system"/>
@@ -213,7 +213,7 @@
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="BMN-dQ-Nx6">
                         <rect key="frame" x="383" y="454" width="82" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="Php-o1-RM6">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Label" id="Php-o1-RM6">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -226,6 +226,18 @@
                             </binding>
                         </connections>
                     </textField>
+                    <button id="i2T-rW-YOy">
+                        <rect key="frame" x="305" y="453" width="74" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="装備済み" bezelStyle="regularSquare" imagePosition="left" state="mixed" allowsMixedState="YES" inset="2" id="PYP-Zq-8M7">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="-2" name="title" keyPath="showEquipmentTypeTitle" id="UND-c4-3Ts"/>
+                            <binding destination="-2" name="value" keyPath="showEquipmentType" id="PtG-Vk-qCE"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <connections>
@@ -235,6 +247,11 @@
         <arrayController mode="entity" entityName="SlotItem" editable="NO" automaticallyPreparesContent="YES" automaticallyRearrangesObjects="YES" id="ceg-Ko-EOy">
             <connections>
                 <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="gmN-zL-8kd"/>
+                <binding destination="zv1-TV-Khy" name="sortDescriptors" keyPath="values.slotItemListSortDescriptors" id="gRE-mW-Q0B">
+                    <dictionary key="options">
+                        <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
+                    </dictionary>
+                </binding>
             </connections>
         </arrayController>
         <userDefaultsController representsSharedInstance="YES" id="zv1-TV-Khy"/>

@@ -102,4 +102,12 @@ extern HMUserDefaults *HMStandardDefaults;
  */
 @property BOOL showLevelOneShipInUpgradableList;
 
+/**
+ * 装備リストに表示する装備
+ * -1 : すべて
+ * 0 : 装備されていない
+ * 1 : 装備されている
+ */
+@property (nonatomic, weak) NSNumber *showEquipmentType;
+
 @end

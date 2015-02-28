@@ -18,3 +18,6 @@ s/Hide Screenshot List/スクリーンショットリストを隠す/2
 s/Show Billing Window/課金ウインドウを表示/2
 s/Hide Billing Window/課金ウインドウを隠す/2
 s/%1$@ in sortie into %2$@ (%3$@)/%1$@が\\n（%3$@）%2$@\\nに出撃中/
+s/All/すべて/2
+s/Equiped/装備済み/2
+s/Unequiped/未装備/2

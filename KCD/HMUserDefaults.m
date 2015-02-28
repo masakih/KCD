@@ -343,7 +343,7 @@ HMUserDefaults *HMStandardDefaults = nil;
 }
 
 
-#pragma mark -
+#pragma mark - Upgradable List
 - (void)setShowLevelOneShipInUpgradableList:(BOOL)showLevelOneShipInUpgradableList
 {
 	[self setBool:showLevelOneShipInUpgradableList forKey:@"showLevelOneShipInUpgradableList"];
@@ -353,4 +353,13 @@ HMUserDefaults *HMStandardDefaults = nil;
 	return [self boolForKey:@"showLevelOneShipInUpgradableList"];
 }
 
+#pragma mark - Equipment List
+- (void)setShowEquipmentType:(NSNumber *)showEquipmentType
+{
+	[self setObject:showEquipmentType forKey:@"showEquipmentType"];
+}
+- (NSNumber *)showEquipmentType
+{
+	return [self objectForKey:@"showEquipmentType"];
+}
 @end

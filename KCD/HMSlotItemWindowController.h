@@ -13,4 +13,8 @@
 @property (readonly) NSManagedObjectContext *managedObjectContext;
 
 @property (nonatomic, strong) IBOutlet NSArrayController *slotItemController;
+
+@property (nonatomic, strong) NSNumber *showEquipmentType;
+@property (nonatomic, readonly) NSString *showEquipmentTypeTitle;
+@property (readonly) NSPredicate *filterPredicate;
 @end

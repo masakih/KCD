@@ -71,6 +71,7 @@
 		   @"plan02Color" : [NSKeyedArchiver archivedDataWithRootObject:plan02Color],
 		   @"plan03Color" : [NSKeyedArchiver archivedDataWithRootObject:plan03Color],
 		   @"screenshotPreviewZoomValue" : @(0.4),
+		   @"showEquipmentType" : @(-1),
 		   }
 		 ];
 	});
