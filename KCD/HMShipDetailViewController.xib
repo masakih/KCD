@@ -397,6 +397,11 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                         <connections>
+                            <binding destination="LyA-xZ-gxq" name="hidden" keyPath="selection.slot_0" id="A8K-ra-Jge">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">HMHideEquipNumberTransformer</string>
+                                </dictionary>
+                            </binding>
                             <binding destination="LyA-xZ-gxq" name="value" keyPath="selection.onslot_0" id="WOA-WM-7r5"/>
                         </connections>
                     </textField>
@@ -409,6 +414,11 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                         <connections>
+                            <binding destination="LyA-xZ-gxq" name="hidden" keyPath="selection.slot_1" id="WwS-1H-zxG">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">HMHideEquipNumberTransformer</string>
+                                </dictionary>
+                            </binding>
                             <binding destination="LyA-xZ-gxq" name="value" keyPath="selection.onslot_1" id="Dab-2y-Ypf"/>
                         </connections>
                     </textField>
@@ -421,6 +431,11 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                         <connections>
+                            <binding destination="LyA-xZ-gxq" name="hidden" keyPath="selection.slot_2" id="nNB-ko-Dko">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">HMHideEquipNumberTransformer</string>
+                                </dictionary>
+                            </binding>
                             <binding destination="LyA-xZ-gxq" name="value" keyPath="selection.onslot_2" id="tsS-Kb-HR6"/>
                         </connections>
                     </textField>
@@ -433,6 +448,11 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                         <connections>
+                            <binding destination="LyA-xZ-gxq" name="hidden" keyPath="selection.slot_3" id="e5z-gA-buw">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">HMHideEquipNumberTransformer</string>
+                                </dictionary>
+                            </binding>
                             <binding destination="LyA-xZ-gxq" name="value" keyPath="selection.onslot_3" id="VLo-EN-Bfj"/>
                         </connections>
                     </textField>
