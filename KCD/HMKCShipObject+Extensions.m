@@ -242,4 +242,17 @@ static NSArray *levelUpExps = nil;
 	return @(upgradeExp);
 }
 
+- (NSNumber *)totalEquipment
+{
+	NSInteger total = 0;
+	[self willAccessValueForKey:@"master_ship"];
+	total += self.master_ship.maxeq_0.integerValue;
+	total += self.master_ship.maxeq_1.integerValue;
+	total += self.master_ship.maxeq_2.integerValue;
+	total += self.master_ship.maxeq_3.integerValue;
+	total += self.master_ship.maxeq_4.integerValue;
+	[self didAccessValueForKey:@"master_ship"];
+	return @(total);
+}
+
 @end

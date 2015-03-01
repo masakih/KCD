@@ -26,5 +26,6 @@
 @property (readonly) NSNumber *upgradeLevel;
 @property (readonly) NSNumber *upgradeExp;
 
+@property (readonly) NSNumber *totalEquipment;
 
 @end
