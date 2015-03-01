@@ -43,13 +43,13 @@
 
 - (IBAction)changeShip:(id)sender
 {
-	NSString *shipId = self.shipID.stringValue;
+	NSInteger shipId = self.shipID.integerValue;
 	
 	HMServerDataStore *store = [HMServerDataStore defaultManager];
 	
 	NSArray *array = [store objectsWithEntityName:@"Ship"
 											error:NULL
-								  predicateFormat:@"id = %@", shipId];
+								  predicateFormat:@"id = %ld", shipId];
 	if(array.count == 0) {
 		return;
 	}
