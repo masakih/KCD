@@ -150,6 +150,8 @@
 		F4D6BCB01AA2A97200742FEB /* HMLengTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D6BCAF1AA2A97200742FEB /* HMLengTransformer.m */; };
 		F4D6BCB31AA2B18100742FEB /* HMSlotitemNameTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D6BCB21AA2B18100742FEB /* HMSlotitemNameTransformer.m */; };
 		F4D6BCB61AA2C10700742FEB /* HMHideEquipNumberTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D6BCB51AA2C10700742FEB /* HMHideEquipNumberTransformer.m */; };
+		F4D6BCBA1AA32BEA00742FEB /* HMFleetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D6BCB81AA32BEA00742FEB /* HMFleetViewController.m */; };
+		F4D6BCBB1AA32BEB00742FEB /* HMFleetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D6BCB91AA32BEA00742FEB /* HMFleetViewController.xib */; };
 		F4E33B5818BF5F67005B8C07 /* HMMemberSlotItemCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E33B5718BF5F67005B8C07 /* HMMemberSlotItemCommand.m */; };
 		F4E7802818DBD2A00011BC4C /* HMGetShipCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E7802718DBD2A00011BC4C /* HMGetShipCommand.m */; };
 		F4E7802B18DC3A820011BC4C /* HMLocalDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E7802A18DC3A820011BC4C /* HMLocalDataStore.m */; };
@@ -432,6 +434,9 @@
 		F4D6BCB21AA2B18100742FEB /* HMSlotitemNameTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSlotitemNameTransformer.m; sourceTree = "<group>"; };
 		F4D6BCB41AA2C10700742FEB /* HMHideEquipNumberTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMHideEquipNumberTransformer.h; sourceTree = "<group>"; };
 		F4D6BCB51AA2C10700742FEB /* HMHideEquipNumberTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMHideEquipNumberTransformer.m; sourceTree = "<group>"; };
+		F4D6BCB71AA32BEA00742FEB /* HMFleetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMFleetViewController.h; sourceTree = "<group>"; };
+		F4D6BCB81AA32BEA00742FEB /* HMFleetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMFleetViewController.m; sourceTree = "<group>"; };
+		F4D6BCB91AA32BEA00742FEB /* HMFleetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMFleetViewController.xib; sourceTree = "<group>"; };
 		F4E33B5618BF5F67005B8C07 /* HMMemberSlotItemCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMemberSlotItemCommand.h; sourceTree = "<group>"; };
 		F4E33B5718BF5F67005B8C07 /* HMMemberSlotItemCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMemberSlotItemCommand.m; sourceTree = "<group>"; };
 		F4E7802618DBD2A00011BC4C /* HMGetShipCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGetShipCommand.h; sourceTree = "<group>"; };
@@ -842,6 +847,9 @@
 				F4D6BCB21AA2B18100742FEB /* HMSlotitemNameTransformer.m */,
 				F4D6BCB41AA2C10700742FEB /* HMHideEquipNumberTransformer.h */,
 				F4D6BCB51AA2C10700742FEB /* HMHideEquipNumberTransformer.m */,
+				F4D6BCB71AA32BEA00742FEB /* HMFleetViewController.h */,
+				F4D6BCB81AA32BEA00742FEB /* HMFleetViewController.m */,
+				F4D6BCB91AA32BEA00742FEB /* HMFleetViewController.xib */,
 			);
 			name = TestAndDebug;
 			path = KCD;
@@ -939,6 +947,7 @@
 				F4B3DC3318E5C8520011B4FC /* HMShipViewController.xib in Resources */,
 				F4D6BC9D1AA1FAC700742FEB /* HMUITestWindowController.xib in Resources */,
 				F43E67B718BE02A10087E5B6 /* STypeShortName.plist in Resources */,
+				F4D6BCBB1AA32BEB00742FEB /* HMFleetViewController.xib in Resources */,
 				F4A2AF541A074DE40024BD9E /* HMScreenshotListWindowController.xib in Resources */,
 				F4B2A0901A1F9C2100D2EF12 /* HMExternalBrowserWindowController.xib in Resources */,
 				F4BDEB5F187252F30069D0CE /* Images.xcassets in Resources */,
@@ -994,6 +1003,7 @@
 				F4B3DC2118DECF570011B4FC /* HMTSVSupport.m in Sources */,
 				F4B1E30819C73B6A00805879 /* HMSuppliesCell.m in Sources */,
 				F4A3AD8E19BB220000FDBF80 /* HMMaskInfomation.m in Sources */,
+				F4D6BCBA1AA32BEA00742FEB /* HMFleetViewController.m in Sources */,
 				F4E7802E18DC3AF00011BC4C /* LocalData.xcdatamodeld in Sources */,
 				F4D6BCAD1AA2A60900742FEB /* HMSokuTransformer.m in Sources */,
 				F4D6BCB31AA2B18100742FEB /* HMSlotitemNameTransformer.m in Sources */,
