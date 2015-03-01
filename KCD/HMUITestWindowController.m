@@ -22,7 +22,7 @@
 
 - (Class)testViewControllerClass
 {
-	return NSClassFromString(@"HMShipDetailViewController");
+	return NSClassFromString(@"HMFleetViewController");
 }
 
 - (void)windowDidLoad {
