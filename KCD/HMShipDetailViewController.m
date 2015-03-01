@@ -13,6 +13,13 @@
 
 @interface HMShipDetailViewController ()
 
+@property (readonly) NSManagedObjectContext *managedObjectContext;
+
+@property (nonatomic, weak) IBOutlet HMSuppliesView *supply;
+
+// for Debug
+@property (nonatomic, weak) IBOutlet NSTextField *shipID;
+- (IBAction)changeShip:(id)sender;
 @end
 
 @implementation HMShipDetailViewController
