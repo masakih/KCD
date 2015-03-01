@@ -142,6 +142,8 @@
 		F4D2CBCB18B05E58000EBC59 /* HMMaserShipCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D2CBCA18B05E58000EBC59 /* HMMaserShipCommand.m */; };
 		F4D6BC4F1A938EFC00742FEB /* HMDropShipHistoryCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D6BC4E1A938EFC00742FEB /* HMDropShipHistoryCommand.m */; };
 		F4D6BC551A93903E00742FEB /* HMDropShipHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D6BC541A93903E00742FEB /* HMDropShipHistory.m */; };
+		F4D6BC9C1AA1FAC700742FEB /* HMUITestWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D6BC9A1AA1FAC600742FEB /* HMUITestWindowController.m */; };
+		F4D6BC9D1AA1FAC700742FEB /* HMUITestWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D6BC9B1AA1FAC600742FEB /* HMUITestWindowController.xib */; };
 		F4E33B5818BF5F67005B8C07 /* HMMemberSlotItemCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E33B5718BF5F67005B8C07 /* HMMemberSlotItemCommand.m */; };
 		F4E7802818DBD2A00011BC4C /* HMGetShipCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E7802718DBD2A00011BC4C /* HMGetShipCommand.m */; };
 		F4E7802B18DC3A820011BC4C /* HMLocalDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E7802A18DC3A820011BC4C /* HMLocalDataStore.m */; };
@@ -410,6 +412,9 @@
 		F4D6BC4E1A938EFC00742FEB /* HMDropShipHistoryCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDropShipHistoryCommand.m; sourceTree = "<group>"; };
 		F4D6BC531A93903E00742FEB /* HMDropShipHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDropShipHistory.h; sourceTree = "<group>"; };
 		F4D6BC541A93903E00742FEB /* HMDropShipHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDropShipHistory.m; sourceTree = "<group>"; };
+		F4D6BC991AA1FAC600742FEB /* HMUITestWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMUITestWindowController.h; sourceTree = "<group>"; };
+		F4D6BC9A1AA1FAC600742FEB /* HMUITestWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMUITestWindowController.m; sourceTree = "<group>"; };
+		F4D6BC9B1AA1FAC600742FEB /* HMUITestWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMUITestWindowController.xib; sourceTree = "<group>"; };
 		F4E33B5618BF5F67005B8C07 /* HMMemberSlotItemCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMemberSlotItemCommand.h; sourceTree = "<group>"; };
 		F4E33B5718BF5F67005B8C07 /* HMMemberSlotItemCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMemberSlotItemCommand.m; sourceTree = "<group>"; };
 		F4E7802618DBD2A00011BC4C /* HMGetShipCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGetShipCommand.h; sourceTree = "<group>"; };
@@ -806,6 +811,9 @@
 				F4513EF718BB699700073552 /* HMShipWindowController.h */,
 				F4513EF818BB699700073552 /* HMShipWindowController.m */,
 				F4B3DC3818E5C8650011B4FC /* HMShipWindowController.xib */,
+				F4D6BC991AA1FAC600742FEB /* HMUITestWindowController.h */,
+				F4D6BC9A1AA1FAC600742FEB /* HMUITestWindowController.m */,
+				F4D6BC9B1AA1FAC600742FEB /* HMUITestWindowController.xib */,
 			);
 			name = TestAndDebug;
 			path = KCD;
@@ -900,6 +908,7 @@
 				F4B2D02B18F83A2F00542742 /* HMScreenshotWindowController.xib in Resources */,
 				F4B3DC3918E5C8700011B4FC /* HMJSONViewWindowController.xib in Resources */,
 				F4B3DC3318E5C8520011B4FC /* HMShipViewController.xib in Resources */,
+				F4D6BC9D1AA1FAC700742FEB /* HMUITestWindowController.xib in Resources */,
 				F43E67B718BE02A10087E5B6 /* STypeShortName.plist in Resources */,
 				F4A2AF541A074DE40024BD9E /* HMScreenshotListWindowController.xib in Resources */,
 				F4B2A0901A1F9C2100D2EF12 /* HMExternalBrowserWindowController.xib in Resources */,
@@ -1018,6 +1027,7 @@
 				F494DC6718C8BA6400AE97E4 /* HMPowerUpSupportViewController.m in Sources */,
 				F43BA4A7197CD59400CFF788 /* HMNyukyoSpeedChangeCommand.m in Sources */,
 				F4A3AD8819B6149D00FDBF80 /* HMNyukyoStartCommand.m in Sources */,
+				F4D6BC9C1AA1FAC700742FEB /* HMUITestWindowController.m in Sources */,
 				F4B1E30C19D1C06900805879 /* HMHokyuChargeCommand.m in Sources */,
 				F494DC6318C608C100AE97E4 /* HMShipViewController.m in Sources */,
 				F46F104918ABAC910063E503 /* KCD.xcdatamodeld in Sources */,

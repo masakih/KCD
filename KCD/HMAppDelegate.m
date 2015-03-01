@@ -26,6 +26,7 @@
 
 #ifdef DEBUG
 #import "HMShipWindowController.h"
+#import "HMUITestWindowController.h"
 #endif
 
 //@interface NSObject (HMM_NSUserNotificationCenterPrivateMethods)
@@ -45,6 +46,7 @@
 #ifdef DEBUG
 @property (strong) HMShipWindowController *shipWindowController;
 @property (strong) HMShipMasterDetailWindowController *shipMDWindowController;
+@property (strong) HMUITestWindowController *uiTestWindowController;
 #endif
 #if ENABLE_JSON_LOG
 @property (strong) HMJSONViewWindowController *logedJSONViewWindowController;
@@ -124,6 +126,9 @@
 	
 	self.shipMDWindowController = [HMShipMasterDetailWindowController new];
 	[self.shipMDWindowController showWindow:nil];
+	
+	self.uiTestWindowController = [HMUITestWindowController new];
+	[self.uiTestWindowController showWindow:nil];
 #endif
 	if(!HMStandardDefaults.showsDebugMenu) {
 		[self.debugMenuItem setHidden:YES];
