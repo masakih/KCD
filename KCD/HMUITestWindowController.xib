@@ -16,14 +16,14 @@
         <window title="UITestWindow" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="460" height="220"/>
+            <rect key="contentRect" x="24" y="78" width="460" height="220"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
             <view key="contentView" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="-1" width="460" height="220"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <customView id="Lxs-Lw-GIx">
-                        <rect key="frame" x="7" y="72" width="263" height="140"/>
+                        <rect key="frame" x="5" y="82" width="249" height="132"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                 </subviews>
