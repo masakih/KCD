@@ -148,6 +148,7 @@
 		F4D6BCAA1AA298FD00742FEB /* HMShipDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D6BCA81AA298FD00742FEB /* HMShipDetailViewController.xib */; };
 		F4D6BCAD1AA2A60900742FEB /* HMSokuTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D6BCAC1AA2A60900742FEB /* HMSokuTransformer.m */; };
 		F4D6BCB01AA2A97200742FEB /* HMLengTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D6BCAF1AA2A97200742FEB /* HMLengTransformer.m */; };
+		F4D6BCB31AA2B18100742FEB /* HMSlotitemNameTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D6BCB21AA2B18100742FEB /* HMSlotitemNameTransformer.m */; };
 		F4E33B5818BF5F67005B8C07 /* HMMemberSlotItemCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E33B5718BF5F67005B8C07 /* HMMemberSlotItemCommand.m */; };
 		F4E7802818DBD2A00011BC4C /* HMGetShipCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E7802718DBD2A00011BC4C /* HMGetShipCommand.m */; };
 		F4E7802B18DC3A820011BC4C /* HMLocalDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E7802A18DC3A820011BC4C /* HMLocalDataStore.m */; };
@@ -426,6 +427,8 @@
 		F4D6BCAC1AA2A60900742FEB /* HMSokuTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSokuTransformer.m; sourceTree = "<group>"; };
 		F4D6BCAE1AA2A97100742FEB /* HMLengTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMLengTransformer.h; sourceTree = "<group>"; };
 		F4D6BCAF1AA2A97200742FEB /* HMLengTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMLengTransformer.m; sourceTree = "<group>"; };
+		F4D6BCB11AA2B18100742FEB /* HMSlotitemNameTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSlotitemNameTransformer.h; sourceTree = "<group>"; };
+		F4D6BCB21AA2B18100742FEB /* HMSlotitemNameTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSlotitemNameTransformer.m; sourceTree = "<group>"; };
 		F4E33B5618BF5F67005B8C07 /* HMMemberSlotItemCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMemberSlotItemCommand.h; sourceTree = "<group>"; };
 		F4E33B5718BF5F67005B8C07 /* HMMemberSlotItemCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMemberSlotItemCommand.m; sourceTree = "<group>"; };
 		F4E7802618DBD2A00011BC4C /* HMGetShipCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGetShipCommand.h; sourceTree = "<group>"; };
@@ -832,6 +835,8 @@
 				F4D6BCAC1AA2A60900742FEB /* HMSokuTransformer.m */,
 				F4D6BCAE1AA2A97100742FEB /* HMLengTransformer.h */,
 				F4D6BCAF1AA2A97200742FEB /* HMLengTransformer.m */,
+				F4D6BCB11AA2B18100742FEB /* HMSlotitemNameTransformer.h */,
+				F4D6BCB21AA2B18100742FEB /* HMSlotitemNameTransformer.m */,
 			);
 			name = TestAndDebug;
 			path = KCD;
@@ -985,6 +990,7 @@
 				F4A3AD8E19BB220000FDBF80 /* HMMaskInfomation.m in Sources */,
 				F4E7802E18DC3AF00011BC4C /* LocalData.xcdatamodeld in Sources */,
 				F4D6BCAD1AA2A60900742FEB /* HMSokuTransformer.m in Sources */,
+				F4D6BCB31AA2B18100742FEB /* HMSlotitemNameTransformer.m in Sources */,
 				F4131ED5190F63D8004F7F9A /* HMUpdateSlotItemCommand.m in Sources */,
 				F4C1190518A71AEA005D5B25 /* HMJSONReciever.m in Sources */,
 				F44AB24119E8252600F217AF /* HMKCSlotItemObject+Extensions.m in Sources */,

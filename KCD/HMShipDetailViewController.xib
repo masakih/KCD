@@ -332,6 +332,13 @@
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
+                        <connections>
+                            <binding destination="LyA-xZ-gxq" name="value" keyPath="selection.slot_0" id="5aH-qT-krB">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">HMSlotitemNameTransformer</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="yEC-6w-mfV">
                         <rect key="frame" x="23" y="34" width="155" height="16"/>
@@ -341,6 +348,13 @@
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
+                        <connections>
+                            <binding destination="LyA-xZ-gxq" name="value" keyPath="selection.slot_1" id="Hev-N6-LHQ">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">HMSlotitemNameTransformer</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="TcK-Cm-oHt">
                         <rect key="frame" x="23" y="18" width="155" height="16"/>
@@ -350,6 +364,13 @@
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
+                        <connections>
+                            <binding destination="LyA-xZ-gxq" name="value" keyPath="selection.slot_2" id="45B-eT-Nkp">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">HMSlotitemNameTransformer</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="VcC-xJ-Zgy">
                         <rect key="frame" x="23" y="2" width="155" height="16"/>
@@ -359,6 +380,13 @@
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
+                        <connections>
+                            <binding destination="LyA-xZ-gxq" name="value" keyPath="selection.slot_3" id="3Pz-O9-ncF">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">HMSlotitemNameTransformer</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="dqM-rk-aUD">
                         <rect key="frame" x="3" y="50" width="20" height="16"/>
