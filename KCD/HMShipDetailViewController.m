@@ -17,9 +17,6 @@
 
 @property (nonatomic, weak) IBOutlet HMSuppliesView *supply;
 
-// for Debug
-@property (nonatomic, weak) IBOutlet NSTextField *shipID;
-- (IBAction)changeShip:(id)sender;
 @end
 
 @implementation HMShipDetailViewController
@@ -44,24 +41,6 @@
 - (HMKCShipObject *)ship
 {
 	return self.representedObject;
-}
-
-
-
-- (IBAction)changeShip:(id)sender
-{
-	NSInteger shipId = self.shipID.integerValue;
-	
-	HMServerDataStore *store = [HMServerDataStore defaultManager];
-	
-	NSArray *array = [store objectsWithEntityName:@"Ship"
-											error:NULL
-								  predicateFormat:@"id = %ld", shipId];
-	if(array.count == 0) {
-		return;
-	}
-	
-	self.ship = array[0];
 }
 
 @end
