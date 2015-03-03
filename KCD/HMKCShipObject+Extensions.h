@@ -28,4 +28,5 @@
 
 @property (readonly) NSNumber *totalEquipment;
 
+@property (readonly) NSNumber *seiku;
 @end

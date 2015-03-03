@@ -9,6 +9,9 @@
 #import "HMKCShipObject+Extensions.h"
 #import "HMKCMasterShipObject.h"
 
+#import "HMKCMasterSlotItemObject.h"
+#import "HMKCSlotItemObject+Extensions.h"
+
 #import "HMServerDataStore.h"
 #import "HMUserDefaults.h"
 
@@ -253,6 +256,51 @@ static NSArray *levelUpExps = nil;
 	total += self.master_ship.maxeq_4.integerValue;
 	[self didAccessValueForKey:@"master_ship"];
 	return @(total);
+}
+
++ (NSSet *)keyPathsForValuesAffectingSeiku
+{
+	return [NSSet setWithObjects:
+			@"slot_0", @"slot_1", @"slot_2", @"slot_3", @"slot_4",
+			@"onslot_0", @"onslot_1", @"onslot_2", @"onslot_3", @"onslot_4",
+			nil];
+}
+- (NSNumber *)seiku
+{
+	HMServerDataStore *store = [HMServerDataStore defaultManager];
+	NSArray *effectiveTypes = @[@6, @7, @8, @11];
+	__block NSInteger totalSeiku = 0;
+	for(NSInteger i = 0; i < 5; i++) {
+		NSString *key = [NSString stringWithFormat:@"slot_%ld", i];
+		NSNumber *itemId = [self valueForKey:key];
+		if(itemId.integerValue == -1) break;
+		NSError *error = nil;
+		NSArray *array = [store objectsWithEntityName:@"SlotItem"
+									   error:&error
+							 predicateFormat:@"id = %@", itemId];
+		if(array.count == 0) continue;
+		HMKCSlotItemObject *slotItem = array[0];
+		HMKCMasterSlotItemObject *master = slotItem.master_slotItem;
+		NSNumber *type2 = master.type_2;
+		if(![effectiveTypes containsObject:type2]) {
+//			NSLog(@"Type %@ is not effective.", type2);
+			continue;
+		}
+		
+		key = [NSString stringWithFormat:@"onslot_%ld", i];
+		NSNumber *itemCountValue = [self valueForKey:key];
+		NSNumber *taikuValue = master.tyku;
+		NSInteger itemCount = [itemCountValue integerValue];
+		NSInteger taiku = [taikuValue integerValue];
+		if(itemCount && taiku) {
+			totalSeiku += floor(taiku * sqrt(itemCount));
+//			NSLog(@"slot -> %ld, name -> %@, itemCount -> %ld, taiku -> %ld, total -> %ld", i, master.name, itemCount, taiku, totalSeiku);
+		} else {
+//			NSLog(@"itemCount -> %ld, taiku -> %ld", itemCount, taiku);
+		}
+	}
+	
+	return @(totalSeiku);
 }
 
 @end
