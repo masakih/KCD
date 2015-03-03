@@ -842,6 +842,8 @@
 				F4D6BCA61AA298FD00742FEB /* HMShipDetailViewController.h */,
 				F4D6BCA71AA298FD00742FEB /* HMShipDetailViewController.m */,
 				F4D6BCA81AA298FD00742FEB /* HMShipDetailViewController.xib */,
+				F4BEE4711AA5E34600979752 /* HMSlotItemFrameView.h */,
+				F4BEE4721AA5E34600979752 /* HMSlotItemFrameView.m */,
 				F4D6BCAB1AA2A60900742FEB /* HMSokuTransformer.h */,
 				F4D6BCAC1AA2A60900742FEB /* HMSokuTransformer.m */,
 				F4D6BCAE1AA2A97100742FEB /* HMLengTransformer.h */,
@@ -852,8 +854,6 @@
 				F4D6BCB51AA2C10700742FEB /* HMHideEquipNumberTransformer.m */,
 				F4D6BCB71AA32BEA00742FEB /* HMFleetViewController.h */,
 				F4D6BCB81AA32BEA00742FEB /* HMFleetViewController.m */,
-				F4BEE4711AA5E34600979752 /* HMSlotItemFrameView.h */,
-				F4BEE4721AA5E34600979752 /* HMSlotItemFrameView.m */,
 				F4D6BCB91AA32BEA00742FEB /* HMFleetViewController.xib */,
 			);
 			name = TestAndDebug;

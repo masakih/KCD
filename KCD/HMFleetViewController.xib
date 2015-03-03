@@ -86,8 +86,24 @@
                         <binding destination="-2" name="selectedTag" keyPath="fleetNumber" id="4gQ-71-HFy"/>
                     </connections>
                 </matrix>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="GMS-aA-S7M">
+                    <rect key="frame" x="368" y="271" width="179" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="pRI-rA-JGD">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="-2" name="displayPatternValue1" keyPath="title" id="QcF-tz-knF">
+                            <dictionary key="options">
+                                <string key="NSDisplayPattern">【 %{value1}@ 】</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="f8W-G4-mOr">
-                    <rect key="frame" x="420" y="271" width="56" height="17"/>
+                    <rect key="frame" x="542" y="271" width="56" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="索敵値：" id="vA3-9F-FLk">
                         <font key="font" size="13" name="AquaKana"/>
@@ -96,7 +112,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="mUy-1k-ALk">
-                    <rect key="frame" x="471" y="271" width="29" height="17"/>
+                    <rect key="frame" x="593" y="271" width="29" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="999" id="HeX-Wd-ikA">
                         <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="ntt-Mj-4hA"/>
@@ -109,7 +125,7 @@
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ee5-Xk-4iW">
-                    <rect key="frame" x="510" y="271" width="56" height="17"/>
+                    <rect key="frame" x="632" y="271" width="56" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="制空値：" id="dS3-tO-y1s">
                         <font key="font" size="13" name="AquaKana"/>
@@ -118,7 +134,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Jhy-EA-ust">
-                    <rect key="frame" x="561" y="271" width="29" height="17"/>
+                    <rect key="frame" x="683" y="271" width="29" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="999" id="ytq-FR-96e">
                         <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="NZH-vE-NqR"/>

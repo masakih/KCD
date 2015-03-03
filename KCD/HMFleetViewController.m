@@ -90,6 +90,7 @@
 	}
 	
 	self.representedObject = fleet;
+	self.title = fleet.name;
 	
 	for(NSInteger i = 1; i < 7; i++) {
 		NSString *shipID = [self.fleet valueForKey:[NSString stringWithFormat:@"ship_%ld", i - 1]];
