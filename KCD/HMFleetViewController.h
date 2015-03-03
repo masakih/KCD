@@ -13,5 +13,8 @@
 @interface HMFleetViewController : NSViewController
 
 @property (strong) HMKCDeck* fleet;
+@property NSInteger fleetNumber;
 
+@property (readonly) NSNumber *totalSakuteki;
+@property (readonly) NSNumber *totalSeiku;
 @end
