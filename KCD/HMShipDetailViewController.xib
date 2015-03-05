@@ -27,7 +27,7 @@
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Y34-Rg-VIJ">
-                        <rect key="frame" x="16" y="106" width="105" height="19"/>
+                        <rect key="frame" x="16" y="106" width="107" height="19"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Prinz Eugen改" id="W58-Ho-kVQ">
                             <font key="font" metaFont="system" size="15"/>
@@ -43,7 +43,7 @@
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Mgo-sm-Ba0">
-                        <rect key="frame" x="121" y="107" width="47" height="17"/>
+                        <rect key="frame" x="124" y="107" width="47" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Lv.123" id="mT8-P9-jjK">
                             <font key="font" metaFont="system"/>
@@ -87,7 +87,7 @@
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Ktf-5r-pLo">
-                        <rect key="frame" x="230" y="76" width="29" height="17"/>
+                        <rect key="frame" x="230" y="89" width="29" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="555" id="D74-dY-yKV">
                             <font key="font" metaFont="system"/>
@@ -104,7 +104,7 @@
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ugl-Cj-bSp">
-                        <rect key="frame" x="166" y="107" width="61" height="17"/>
+                        <rect key="frame" x="170" y="107" width="61" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="999/999" id="YS8-Um-wf7" customClass="HMStrokeTextFieldCell">
                             <font key="font" metaFont="system"/>
@@ -390,7 +390,7 @@
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="8el-1C-ACV">
-                        <rect key="frame" x="198" y="77" width="37" height="14"/>
+                        <rect key="frame" x="198" y="90" width="37" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="制空：" id="fvf-MP-0qU">
                             <font key="font" metaFont="smallSystem"/>
@@ -599,7 +599,7 @@
                         <color key="fillColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </box>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="qbZ-eV-gqf">
-                        <rect key="frame" x="230" y="91" width="29" height="17"/>
+                        <rect key="frame" x="230" y="107" width="29" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="555" id="JVG-Dt-axT">
                             <font key="font" metaFont="system"/>
@@ -614,15 +614,6 @@
                                 </dictionary>
                             </binding>
                         </connections>
-                    </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Nxz-9M-Ls3">
-                        <rect key="frame" x="197" y="92" width="37" height="14"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="体調：" id="6Cv-Hx-W3E">
-                            <font key="font" size="11" name="AquaKana"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="yeA-LB-gv0">
                         <rect key="frame" x="3" y="107" width="13" height="17"/>
@@ -641,7 +632,7 @@
                         </connections>
                     </textField>
                     <customView id="YLm-de-F1l" customClass="HMSuppliesView">
-                        <rect key="frame" x="227" y="110" width="30" height="11"/>
+                        <rect key="frame" x="227" y="76" width="30" height="11"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                 </subviews>
