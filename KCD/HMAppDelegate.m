@@ -46,6 +46,9 @@
 #ifdef DEBUG
 @property (strong) HMShipWindowController *shipWindowController;
 @property (strong) HMShipMasterDetailWindowController *shipMDWindowController;
+#endif
+
+#ifdef UI_TEST
 @property (strong) HMUITestWindowController *uiTestWindowController;
 #endif
 #if ENABLE_JSON_LOG
@@ -126,7 +129,8 @@
 	
 	self.shipMDWindowController = [HMShipMasterDetailWindowController new];
 	[self.shipMDWindowController showWindow:nil];
-	
+#endif
+#ifdef UI_TEST
 	self.uiTestWindowController = [HMUITestWindowController new];
 	[self.uiTestWindowController showWindow:nil];
 #endif
