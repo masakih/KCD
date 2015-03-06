@@ -74,6 +74,7 @@ typedef NS_ENUM(NSInteger, ViewType) {
 	[clip setAutoresizingMask:[self.placeholder autoresizingMask]];
 	[[self.placeholder superview] replaceSubview:self.placeholder with:clip];
 	[clip setDocumentView:self.webView];
+	self.placeholder = clip;
 	
 	self.flashTopLeft = NSMakePoint(70, 145);
 	[self adjustFlash];
@@ -253,6 +254,59 @@ typedef NS_ENUM(NSInteger, ViewType) {
 	HMScreenshotListWindowController *slwController = appDelegate.screenshotListWindowController;
 	[slwController registerScreenshot:rep fromOnScreen:[contentView convertRect:frame toView:nil]];
 	
+}
+
+const CGFloat normalFleetListHeight = 288;
+const CGFloat fleetListUpsideHeight = 159;
+const CGFloat margin = 1;
+
+- (IBAction)fleetListAbove:(id)sender
+{
+	NSSize windowContentSize = [self.window.contentView frame].size;
+	
+	NSRect flashRect = self.placeholder.frame;
+	flashRect.origin.y = windowContentSize.height - flashRect.size.height - normalFleetListHeight;
+	self.placeholder.animator.frame = flashRect;
+	
+	NSRect fleetListRect = self.fleetViewController.view.frame;
+	fleetListRect.size.height = normalFleetListHeight;
+	fleetListRect.origin.y = windowContentSize.height - fleetListRect.size.height;
+	self.fleetViewController.view.animator.frame = fleetListRect;
+}
+- (IBAction)fleetListBelow:(id)sender
+{
+	NSSize windowContentSize = [self.window.contentView frame].size;
+	
+	NSRect flashRect = self.placeholder.frame;
+	flashRect.origin.y = windowContentSize.height - flashRect.size.height;
+	self.placeholder.animator.frame = flashRect;
+	
+	NSRect fleetListRect = self.fleetViewController.view.frame;
+	fleetListRect.size.height = normalFleetListHeight;
+	fleetListRect.origin.y = windowContentSize.height - fleetListRect.size.height - flashRect.size.height - margin;
+	self.fleetViewController.view.animator.frame = fleetListRect;
+}
+- (IBAction)fleetListDivide:(id)sender
+{
+	NSSize windowContentSize = [self.window.contentView frame].size;
+	
+	NSRect flashRect = self.placeholder.frame;
+	flashRect.origin.y = windowContentSize.height - flashRect.size.height - fleetListUpsideHeight - margin;
+	self.placeholder.animator.frame = flashRect;
+	
+	NSRect fleetListRect = self.fleetViewController.view.frame;
+	fleetListRect.size.height = normalFleetListHeight + flashRect.size.height + margin + margin;
+	fleetListRect.origin.y = windowContentSize.height - fleetListRect.size.height;
+	self.fleetViewController.view.animator.frame = fleetListRect;
+}
+
+- (IBAction)reorderToDoubleLine:(id)sender
+{
+	self.fleetViewController.shipOrder = doubleLine;
+}
+- (IBAction)reorderToLeftToRight:(id)sender
+{
+	self.fleetViewController.shipOrder = leftToRight;
 }
 
 #pragma mark - WebFrameLoadDelegate
