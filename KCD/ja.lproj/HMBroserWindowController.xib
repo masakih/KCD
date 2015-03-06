@@ -30,7 +30,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <customView id="jkX-gl-a14">
-                        <rect key="frame" x="807" y="177" width="346" height="564"/>
+                        <rect key="frame" x="807" y="334" width="346" height="407"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
                     </customView>
                     <customView id="raX-C4-fMW">
@@ -399,6 +399,66 @@
                             <binding destination="-2" name="value" keyPath="minimumColoredShipCount" id="QAn-eC-rf8"/>
                         </connections>
                     </textField>
+                    <popUpButton verticalHuggingPriority="750" id="EID-0T-D9v">
+                        <rect key="frame" x="839" y="241" width="100" height="26"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <popUpButtonCell key="cell" type="push" title="並び順序" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="EZx-NN-31A" id="oO1-hh-lSe">
+                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="menu"/>
+                            <menu key="menu" id="7pg-yz-yVv">
+                                <items>
+                                    <menuItem title="Item 1" id="9qN-kb-hXl"/>
+                                    <menuItem title="艦隊リスト" state="on" id="zif-Sm-c5u">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <menu key="submenu" title="艦隊リスト" id="HIc-w6-z7U">
+                                            <items>
+                                                <menuItem title="上" id="jF4-Ws-xrD">
+                                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                                    <connections>
+                                                        <action selector="fleetListAbove:" target="-2" id="MPR-WO-r3e"/>
+                                                    </connections>
+                                                </menuItem>
+                                                <menuItem title="下" id="Ood-iV-bKX">
+                                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                                    <connections>
+                                                        <action selector="fleetListBelow:" target="-2" id="ZOs-vR-LVI"/>
+                                                    </connections>
+                                                </menuItem>
+                                                <menuItem title="上下" id="0nR-yx-1cu">
+                                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                                    <connections>
+                                                        <action selector="fleetListDivide:" target="-2" id="YeZ-aL-gh3"/>
+                                                    </connections>
+                                                </menuItem>
+                                                <menuItem title="Item" id="wtt-xq-12G">
+                                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                                </menuItem>
+                                            </items>
+                                        </menu>
+                                    </menuItem>
+                                    <menuItem title="並び順序" state="on" id="EZx-NN-31A">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <menu key="submenu" title="並び順序" id="ksj-dQ-NmJ">
+                                            <items>
+                                                <menuItem title="左向き複縦陣" id="w8m-il-bbJ">
+                                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                                    <connections>
+                                                        <action selector="reorderToDoubleLine:" target="-2" id="mUi-C2-MB3"/>
+                                                    </connections>
+                                                </menuItem>
+                                                <menuItem title="左から右" id="FCL-Nr-VJ2">
+                                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                                    <connections>
+                                                        <action selector="reorderToLeftToRight:" target="-2" id="uJy-a9-yWG"/>
+                                                    </connections>
+                                                </menuItem>
+                                            </items>
+                                        </menu>
+                                    </menuItem>
+                                </items>
+                            </menu>
+                        </popUpButtonCell>
+                    </popUpButton>
                     <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="hNz-5S-KHR">
                         <rect key="frame" x="814" y="175" width="327" height="5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>

@@ -34,6 +34,7 @@
 
 @implementation HMFleetViewController
 @synthesize fleetNumber = _fleetNumber;
+@synthesize shipOrder = _shipOrder;
 
 - (id)init
 {
@@ -126,6 +127,25 @@
 	return _fleetNumber;
 }
 
+- (void)setShipOrder:(HMFleetViewShipOrder)shipOrder
+{
+	if(_shipOrder == shipOrder) return;
+	_shipOrder = shipOrder;
+	
+	switch(shipOrder) {
+		case doubleLine:
+			[self reorderShipToDoubleLine];
+			break;
+		case leftToRight:
+			[self reorderShipToLeftToRight];
+			break;
+	}
+}
+- (HMFleetViewShipOrder)shipOrder
+{
+	return _shipOrder;
+}
+
 + (NSSet *)keyPathsForValuesAffectingTotalSakuteki
 {
 	return [NSSet setWithObjects:
@@ -198,6 +218,61 @@
 	}
 	
 	return [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+}
+
+- (void)reorderShipToDoubleLine
+{
+	NSView *view02 = self.detail02.view;
+	NSView *view03 = self.detail03.view;
+	NSView *view04 = self.detail04.view;
+	NSView *view05 = self.detail05.view;
+	
+	NSAutoresizingMaskOptions options02 = view02.autoresizingMask;
+	NSAutoresizingMaskOptions options03 = view03.autoresizingMask;
+	NSAutoresizingMaskOptions options04 = view04.autoresizingMask;
+	NSAutoresizingMaskOptions options05 = view05.autoresizingMask;
+	
+	view02.autoresizingMask = options04;
+	view03.autoresizingMask = options02;
+	view04.autoresizingMask = options05;
+	view05.autoresizingMask = options03;
+	
+	NSRect frame02 = view02.frame;
+	NSRect frame03 = view03.frame;
+	NSRect frame04 = view04.frame;
+	NSRect frame05 = view05.frame;
+	
+	view02.animator.frame = frame04;
+	view03.animator.frame = frame02;
+	view04.animator.frame = frame05;
+	view05.animator.frame = frame03;
+}
+- (void)reorderShipToLeftToRight
+{
+	NSView *view02 = self.detail02.view;
+	NSView *view03 = self.detail03.view;
+	NSView *view04 = self.detail04.view;
+	NSView *view05 = self.detail05.view;
+	
+	NSAutoresizingMaskOptions options02 = view02.autoresizingMask;
+	NSAutoresizingMaskOptions options03 = view03.autoresizingMask;
+	NSAutoresizingMaskOptions options04 = view04.autoresizingMask;
+	NSAutoresizingMaskOptions options05 = view05.autoresizingMask;
+	
+	view02.autoresizingMask = options03;
+	view03.autoresizingMask = options05;
+	view04.autoresizingMask = options02;
+	view05.autoresizingMask = options04;
+	
+	NSRect frame02 = view02.frame;
+	NSRect frame03 = view03.frame;
+	NSRect frame04 = view04.frame;
+	NSRect frame05 = view05.frame;
+	
+	view02.animator.frame = frame03;
+	view03.animator.frame = frame05;
+	view04.animator.frame = frame02;
+	view05.animator.frame = frame04;
 }
 
 @end
