@@ -127,6 +127,8 @@
 		F4BDEB71187252F30069D0CE /* KCDTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BDEB70187252F30069D0CE /* KCDTests.m */; };
 		F4BDEB7B187253130069D0CE /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4BDEB7A187253130069D0CE /* WebKit.framework */; };
 		F4BEE4731AA5E34600979752 /* HMSlotItemFrameView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BEE4721AA5E34600979752 /* HMSlotItemFrameView.m */; };
+		F4BEE4771AA9E4EF00979752 /* HMMinimumShipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BEE4751AA9E4EF00979752 /* HMMinimumShipViewController.m */; };
+		F4BEE4781AA9E4EF00979752 /* HMMinimumShipViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BEE4761AA9E4EF00979752 /* HMMinimumShipViewController.xib */; };
 		F4BEEE9F18D211280006F70C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4BEEE9D18D211280006F70C /* Localizable.strings */; };
 		F4C041BA1875CAF5009273EB /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4C041B91875CAF5009273EB /* JavaScriptCore.framework */; };
 		F4C118FA18A67B1C005D5B25 /* CacheStoragePolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C118F518A67B1C005D5B25 /* CacheStoragePolicy.m */; };
@@ -389,6 +391,9 @@
 		F4BDEB7A187253130069D0CE /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		F4BEE4711AA5E34600979752 /* HMSlotItemFrameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSlotItemFrameView.h; sourceTree = "<group>"; };
 		F4BEE4721AA5E34600979752 /* HMSlotItemFrameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSlotItemFrameView.m; sourceTree = "<group>"; };
+		F4BEE4741AA9E4EF00979752 /* HMMinimumShipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMinimumShipViewController.h; sourceTree = "<group>"; };
+		F4BEE4751AA9E4EF00979752 /* HMMinimumShipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMinimumShipViewController.m; sourceTree = "<group>"; };
+		F4BEE4761AA9E4EF00979752 /* HMMinimumShipViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMMinimumShipViewController.xib; sourceTree = "<group>"; };
 		F4BEEE9E18D211280006F70C /* ja */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F4BEEEA118D211360006F70C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text; name = ja; path = ja.lproj/Localizable.strings.sed; sourceTree = "<group>"; };
 		F4BEEEA418D211500006F70C /* ja */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; name = ja; path = ja.lproj/Makefile; sourceTree = "<group>"; };
@@ -855,6 +860,10 @@
 				F4D6BCB71AA32BEA00742FEB /* HMFleetViewController.h */,
 				F4D6BCB81AA32BEA00742FEB /* HMFleetViewController.m */,
 				F4D6BCB91AA32BEA00742FEB /* HMFleetViewController.xib */,
+				F4BEE4791AAB025400979752 /* HMFleetMinimumViewController.xib */,
+				F4BEE4741AA9E4EF00979752 /* HMMinimumShipViewController.h */,
+				F4BEE4751AA9E4EF00979752 /* HMMinimumShipViewController.m */,
+				F4BEE4761AA9E4EF00979752 /* HMMinimumShipViewController.xib */,
 			);
 			name = TestAndDebug;
 			path = KCD;
@@ -950,6 +959,7 @@
 				F4B3DC3918E5C8700011B4FC /* HMJSONViewWindowController.xib in Resources */,
 				F4D6BCAA1AA298FD00742FEB /* HMShipDetailViewController.xib in Resources */,
 				F4B3DC3318E5C8520011B4FC /* HMShipViewController.xib in Resources */,
+				F4BEE4781AA9E4EF00979752 /* HMMinimumShipViewController.xib in Resources */,
 				F4D6BC9D1AA1FAC700742FEB /* HMUITestWindowController.xib in Resources */,
 				F43E67B718BE02A10087E5B6 /* STypeShortName.plist in Resources */,
 				F4D6BCBB1AA32BEB00742FEB /* HMFleetViewController.xib in Resources */,
@@ -1004,6 +1014,7 @@
 				F4C118FA18A67B1C005D5B25 /* CacheStoragePolicy.m in Sources */,
 				F4D6BCA91AA298FD00742FEB /* HMShipDetailViewController.m in Sources */,
 				F4A3AD9219BDDD8E00FDBF80 /* HMPreferencePanelController.m in Sources */,
+				F4BEE4771AA9E4EF00979752 /* HMMinimumShipViewController.m in Sources */,
 				F4B2A08F1A1F9C2100D2EF12 /* HMExternalBrowserWindowController.m in Sources */,
 				F4B3DC2118DECF570011B4FC /* HMTSVSupport.m in Sources */,
 				F4B1E30819C73B6A00805879 /* HMSuppliesCell.m in Sources */,

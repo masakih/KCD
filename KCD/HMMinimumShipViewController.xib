@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="HMMinimumShipViewController">
+            <connections>
+                <outlet property="supply" destination="oCc-bA-TCR" id="SZm-Rf-Fuc"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="173" height="17"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="XdN-GX-9ik">
+                    <rect key="frame" x="-2" y="0.0" width="60" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="千代田航改二" id="rNp-iM-bNk">
+                        <font key="font" size="13" name="AquaKana"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="Jeh-2g-2SK" name="value" keyPath="selection.name" id="ms8-W4-ydK">
+                            <dictionary key="options">
+                                <string key="NSNoSelectionPlaceholder">空席</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="5Ds-eT-IIh">
+                    <rect key="frame" x="114" y="0.0" width="61" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="123/123" id="b4R-If-THa" customClass="HMStrokeTextFieldCell">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="Jeh-2g-2SK" name="displayPatternValue1" keyPath="selection.nowhp" id="1Ga-rJ-H5m">
+                            <dictionary key="options">
+                                <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
+                                <string key="NSNoSelectionPlaceholder">-</string>
+                                <string key="NSNullPlaceholder">-</string>
+                            </dictionary>
+                        </binding>
+                        <binding destination="Jeh-2g-2SK" name="displayPatternValue2" keyPath="selection.maxhp" previousBinding="1Ga-rJ-H5m" id="Sh6-6Q-PwI">
+                            <dictionary key="options">
+                                <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
+                                <string key="NSNoSelectionPlaceholder">-</string>
+                                <string key="NSNullPlaceholder">-</string>
+                            </dictionary>
+                        </binding>
+                        <binding destination="Jeh-2g-2SK" name="textColor" keyPath="selection.statusColor" id="K64-Ur-hA2"/>
+                    </connections>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="qit-fF-dVl">
+                    <rect key="frame" x="58" y="0.0" width="21" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="49" id="FwR-YA-3mt" customClass="HMStrokeTextFieldCell">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="Jeh-2g-2SK" name="value" keyPath="selection.cond" id="Hpf-36-exR">
+                            <dictionary key="options">
+                                <string key="NSNoSelectionPlaceholder">-</string>
+                                <string key="NSNullPlaceholder">-</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </textField>
+                <customView id="oCc-bA-TCR" customClass="HMSuppliesView">
+                    <rect key="frame" x="81" y="2" width="31" height="13"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </customView>
+            </subviews>
+            <point key="canvasLocation" x="32.5" y="138.5"/>
+        </customView>
+        <objectController mode="entity" entityName="Ship" editable="NO" automaticallyPreparesContent="YES" id="Jeh-2g-2SK">
+            <connections>
+                <binding destination="-2" name="contentObject" keyPath="representedObject" id="Ez6-dV-1BO"/>
+                <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="R4e-hh-PLo"/>
+            </connections>
+        </objectController>
+    </objects>
+</document>
