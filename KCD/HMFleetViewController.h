@@ -31,6 +31,10 @@ typedef NS_ENUM(NSInteger, HMFleetViewShipOrder) {
 @property NSInteger fleetNumber;
 @property HMFleetViewShipOrder shipOrder;
 
+@property (readonly) BOOL canDivide;
+@property (readonly) CGFloat normalHeight;
+@property (readonly) CGFloat upsideHeight;
+
 @property (readonly) NSNumber *totalSakuteki;
 @property (readonly) NSNumber *totalSeiku;
 @end

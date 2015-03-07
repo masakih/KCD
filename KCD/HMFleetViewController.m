@@ -185,6 +185,32 @@
 	return _shipOrder;
 }
 
+- (BOOL)canDivide
+{
+	return self.type == detailViewType;
+}
+- (CGFloat)normalHeight
+{
+	switch(self.type) {
+		case detailViewType:
+			return 288;
+		case minimumViewType:
+			return 60;
+	}
+	return 0;
+}
+- (CGFloat)upsideHeight
+{
+	switch(self.type) {
+		case detailViewType:
+			return 159;
+		case minimumViewType:
+			return 60;
+	}
+	return 0;
+}
+
+
 + (NSSet *)keyPathsForValuesAffectingTotalSakuteki
 {
 	return [NSSet setWithObjects:
