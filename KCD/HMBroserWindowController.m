@@ -256,20 +256,25 @@ typedef NS_ENUM(NSInteger, ViewType) {
 	
 }
 
-const CGFloat normalFleetListHeight = 288;
-const CGFloat fleetListUpsideHeight = 159;
+
+#pragma mark - FleetView position
 const CGFloat margin = 1;
+
+- (IBAction)hideFleet:(id)sender
+{
+	NSView 
+}
 
 - (IBAction)fleetListAbove:(id)sender
 {
 	NSSize windowContentSize = [self.window.contentView frame].size;
 	
 	NSRect flashRect = self.placeholder.frame;
-	flashRect.origin.y = windowContentSize.height - flashRect.size.height - normalFleetListHeight;
+	flashRect.origin.y = windowContentSize.height - flashRect.size.height - self.fleetViewController.normalHeight;
 	self.placeholder.animator.frame = flashRect;
 	
 	NSRect fleetListRect = self.fleetViewController.view.frame;
-	fleetListRect.size.height = normalFleetListHeight;
+	fleetListRect.size.height = self.fleetViewController.normalHeight;
 	fleetListRect.origin.y = windowContentSize.height - fleetListRect.size.height;
 	self.fleetViewController.view.animator.frame = fleetListRect;
 }
@@ -282,7 +287,7 @@ const CGFloat margin = 1;
 	self.placeholder.animator.frame = flashRect;
 	
 	NSRect fleetListRect = self.fleetViewController.view.frame;
-	fleetListRect.size.height = normalFleetListHeight;
+	fleetListRect.size.height = self.fleetViewController.normalHeight;
 	fleetListRect.origin.y = windowContentSize.height - fleetListRect.size.height - flashRect.size.height - margin;
 	self.fleetViewController.view.animator.frame = fleetListRect;
 }
@@ -291,11 +296,11 @@ const CGFloat margin = 1;
 	NSSize windowContentSize = [self.window.contentView frame].size;
 	
 	NSRect flashRect = self.placeholder.frame;
-	flashRect.origin.y = windowContentSize.height - flashRect.size.height - fleetListUpsideHeight - margin;
+	flashRect.origin.y = windowContentSize.height - flashRect.size.height - self.fleetViewController.upsideHeight - margin;
 	self.placeholder.animator.frame = flashRect;
 	
 	NSRect fleetListRect = self.fleetViewController.view.frame;
-	fleetListRect.size.height = normalFleetListHeight + flashRect.size.height + margin + margin;
+	fleetListRect.size.height = self.fleetViewController.normalHeight + flashRect.size.height + margin + margin;
 	fleetListRect.origin.y = windowContentSize.height - fleetListRect.size.height;
 	self.fleetViewController.view.animator.frame = fleetListRect;
 }

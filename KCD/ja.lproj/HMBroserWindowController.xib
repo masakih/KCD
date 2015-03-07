@@ -30,7 +30,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <customView id="jkX-gl-a14">
-                        <rect key="frame" x="807" y="334" width="346" height="407"/>
+                        <rect key="frame" x="807" y="235" width="346" height="506"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
                     </customView>
                     <customView id="raX-C4-fMW">
@@ -77,6 +77,13 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
+                    <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="hNz-5S-KHR">
+                        <rect key="frame" x="814" y="175" width="327" height="5"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <font key="titleFont" metaFont="system"/>
+                    </box>
                     <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="0Qm-W2-6cQ">
                         <rect key="frame" x="814" y="95" width="327" height="5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
@@ -400,14 +407,14 @@
                         </connections>
                     </textField>
                     <popUpButton verticalHuggingPriority="750" id="EID-0T-D9v">
-                        <rect key="frame" x="839" y="241" width="100" height="26"/>
+                        <rect key="frame" x="827" y="192" width="100" height="26"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <popUpButtonCell key="cell" type="push" title="並び順序" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="EZx-NN-31A" id="oO1-hh-lSe">
+                        <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="9qN-kb-hXl" id="oO1-hh-lSe">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="menu"/>
                             <menu key="menu" id="7pg-yz-yVv">
                                 <items>
-                                    <menuItem title="Item 1" id="9qN-kb-hXl"/>
+                                    <menuItem title="Item 1" state="on" id="9qN-kb-hXl"/>
                                     <menuItem title="艦隊リスト" state="on" id="zif-Sm-c5u">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <menu key="submenu" title="艦隊リスト" id="HIc-w6-z7U">
@@ -436,7 +443,7 @@
                                             </items>
                                         </menu>
                                     </menuItem>
-                                    <menuItem title="並び順序" state="on" id="EZx-NN-31A">
+                                    <menuItem title="並び順序" id="EZx-NN-31A">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <menu key="submenu" title="並び順序" id="ksj-dQ-NmJ">
                                             <items>
@@ -459,13 +466,6 @@
                             </menu>
                         </popUpButtonCell>
                     </popUpButton>
-                    <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="hNz-5S-KHR">
-                        <rect key="frame" x="814" y="175" width="327" height="5"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <font key="titleFont" metaFont="system"/>
-                    </box>
                 </subviews>
             </view>
             <connections>
