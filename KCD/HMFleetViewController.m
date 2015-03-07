@@ -8,6 +8,7 @@
 
 #import "HMFleetViewController.h"
 #import "HMShipDetailViewController.h"
+#import "HMMinimumShipViewController.h"
 
 #import "HMKCShipObject+Extensions.h"
 #import "HMKCDeck+Extension.h"
@@ -15,6 +16,10 @@
 #import "HMServerDataStore.h"
 
 @interface HMFleetViewController ()
+
+@property (weak) Class shipViewClass;
+
+@property (readwrite) HMFleetViewType type;
 
 @property (nonatomic, weak) IBOutlet NSView *placeholder01;
 @property (nonatomic, weak) IBOutlet NSView *placeholder02;
@@ -36,18 +41,52 @@
 @synthesize fleetNumber = _fleetNumber;
 @synthesize shipOrder = _shipOrder;
 
-- (id)init
++ (instancetype)new
 {
-	self = [super initWithNibName:NSStringFromClass([self class]) bundle:nil];
+	return [[[self class] alloc] initWithViewType:minimumViewType];
+}
+
+- (instancetype)initWithViewType:(HMFleetViewType)type
+{
+	Class shipViewClass = Nil;
+	NSString *nibName = nil;
+	switch (type) {
+		case detailViewType:
+			nibName = NSStringFromClass([self class]);
+			shipViewClass = [HMShipDetailViewController class];
+			break;
+		case minimumViewType:
+			nibName = @"HMFleetMinimumViewController";
+			shipViewClass = [HMMinimumShipViewController class];
+			break;
+	}
+	
+	if(!nibName) {
+		self = [super initWithNibName:@"" bundle:nil];
+		NSLog(@"UnknownType");
+		return nil;
+	}
+	
+	self = [super initWithNibName:nibName bundle:nil];
+	if(self) {
+		_type = type;
+		_shipViewClass = shipViewClass;
+	}
 	return self;
 }
+
+//- (id)init
+//{
+//	self = [super initWithNibName:NSStringFromClass([self class]) bundle:nil];
+//	return self;
+//}
 
 - (void)awakeFromNib {
 	
 	for(NSInteger i = 1; i < 7; i++) {
 		NSString *detailKey = [NSString stringWithFormat:@"detail%02ld", i];
 		NSString *placeholderKey = [NSString stringWithFormat:@"placeholder%02ld", i];
-		HMShipDetailViewController *detail = [HMShipDetailViewController new];
+		HMShipDetailViewController *detail = [self.shipViewClass new];
 		detail.title = [NSString stringWithFormat:@"%ld", i];
 		[self setValue:detail forKey:detailKey];
 		NSView *view = [self valueForKey:placeholderKey];

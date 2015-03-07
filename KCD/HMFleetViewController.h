@@ -10,6 +10,11 @@
 
 @class HMKCDeck;
 
+typedef NS_ENUM(NSUInteger, HMFleetViewType) {
+	detailViewType,
+	minimumViewType,
+};
+
 typedef NS_ENUM(NSInteger, HMFleetViewShipOrder) {
 	doubleLine = 0,
 	leftToRight = 1,
@@ -17,6 +22,10 @@ typedef NS_ENUM(NSInteger, HMFleetViewShipOrder) {
 
 
 @interface HMFleetViewController : NSViewController
+
+- (instancetype)initWithViewType:(HMFleetViewType)type;
+
+@property (readonly) HMFleetViewType type;
 
 @property (strong) HMKCDeck* fleet;
 @property NSInteger fleetNumber;

@@ -89,7 +89,7 @@ typedef NS_ENUM(NSInteger, ViewType) {
 //	[self.deckViewController.view setFrame:[self.deckPlaceholder frame]];
 //	[self.deckViewController.view setAutoresizingMask:[self.deckPlaceholder autoresizingMask]];
 //	[[self.deckPlaceholder superview] replaceSubview:self.deckPlaceholder with:self.deckViewController.view];
-	self.fleetViewController = [HMFleetViewController new];
+	self.fleetViewController = [[HMFleetViewController alloc] initWithViewType:detailViewType];
 	[self.fleetViewController.view setFrame:[self.deckPlaceholder frame]];
 	[self.fleetViewController.view setAutoresizingMask:[self.deckPlaceholder autoresizingMask]];
 	[[self.deckPlaceholder superview] replaceSubview:self.deckPlaceholder with:self.fleetViewController.view];
