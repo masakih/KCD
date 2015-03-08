@@ -262,7 +262,27 @@ const CGFloat margin = 1;
 
 - (IBAction)hideFleet:(id)sender
 {
-	NSView 
+	NSView *fleetView = self.fleetViewController.view;
+	[fleetView removeFromSuperviewWithoutNeedingDisplay];
+	[self.window.contentView addSubview:fleetView
+							 positioned:NSWindowBelow
+							 relativeTo:nil];
+	
+	NSRect windowRect = self.window.frame;
+	CGFloat fleetViewHeight = fleetView.frame.size.height;
+	windowRect.size.height -= fleetViewHeight;
+	windowRect.origin.y += fleetViewHeight;
+	[self.window.animator setFrame:windowRect display:YES animate:YES];
+}
+- (IBAction)showFleet:(id)sender
+{
+	NSView *fleetView = self.fleetViewController.view;
+	
+	NSRect windowRect = self.window.frame;
+	CGFloat fleetViewHeight = fleetView.frame.size.height;
+	windowRect.size.height += fleetViewHeight;
+	windowRect.origin.y -= fleetViewHeight;
+	[self.window.animator setFrame:windowRect display:YES animate:YES];
 }
 
 - (IBAction)fleetListAbove:(id)sender
