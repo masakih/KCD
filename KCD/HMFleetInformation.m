@@ -80,6 +80,7 @@
 								 options:0
 								 context:@"5"];
 		
+		self.selectedFleetNumber = @1;
 	}
 	return self;
 }
