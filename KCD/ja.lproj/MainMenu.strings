@@ -160,3 +160,30 @@
 
 /* Class = "NSMenuItem"; title = "Upgradable Ship"; ObjectID = "tF1-uX-NEg"; */
 "tF1-uX-NEg.title" = "Upgradable Ship";
+
+/* Class = "NSMenu"; title = "Fleet List"; ObjectID = "KtL-eg-QnH"; */
+"KtL-eg-QnH.title" = "艦隊リスト";
+
+/* Class = "NSMenuItem"; title = "Above"; ObjectID = "Ljv-Ui-lY8"; */
+"Ljv-Ui-lY8.title" = "上";
+
+/* Class = "NSMenuItem"; title = "Divided"; ObjectID = "SJK-A3-3uA"; */
+"SJK-A3-3uA.title" = "上下";
+
+/* Class = "NSMenuItem"; title = "TopToBottom"; ObjectID = "hiE-Nv-1G0"; */
+"hiE-Nv-1G0.title" = "左向き複縦陣";
+
+/* Class = "NSMenuItem"; title = "Order"; ObjectID = "mSr-GI-6Zz"; */
+"mSr-GI-6Zz.title" = "並び順序";
+
+/* Class = "NSMenu"; title = "Order"; ObjectID = "rkn-Ic-lTk"; */
+"rkn-Ic-lTk.title" = "並び順序";
+
+/* Class = "NSMenuItem"; title = "LeftToRight"; ObjectID = "sYQ-7k-VJo"; */
+"sYQ-7k-VJo.title" = "左から右";
+
+/* Class = "NSMenuItem"; title = "Fleet List"; ObjectID = "y5i-Ab-gfR"; */
+"y5i-Ab-gfR.title" = "艦隊リスト";
+
+/* Class = "NSMenuItem"; title = "Below"; ObjectID = "y9Q-QO-snI"; */
+"y9Q-QO-snI.title" = "下";
