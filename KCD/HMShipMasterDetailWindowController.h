@@ -6,8 +6,12 @@
 //  Copyright (c) 2014年 Hori,Masaki. All rights reserved.
 //
 
+#ifdef DEBUG
+
 #import <Cocoa/Cocoa.h>
 
 @interface HMShipMasterDetailWindowController : NSWindowController
 
 @end
+
+#endif

@@ -17,8 +17,6 @@
 #import "HMScreenshotListWindowController.h"
 #import "HMShipMasterDetailWindowController.h"
 
-#import "HMFleetInformation.h"
-
 #import "HMExternalBrowserWindowController.h"
 
 #import "HMTSVSupport.h"
@@ -26,7 +24,13 @@
 
 #ifdef DEBUG
 #import "HMShipWindowController.h"
+#import "HMFleetInformation.h"
+
 #import "HMUITestWindowController.h"
+#endif
+
+#ifndef UI_TEST
+#	define UI_TEST 0
 #endif
 
 //@interface NSObject (HMM_NSUserNotificationCenterPrivateMethods)
@@ -48,7 +52,7 @@
 @property (strong) HMShipMasterDetailWindowController *shipMDWindowController;
 #endif
 
-#ifdef UI_TEST
+#if UI_TEST
 @property (strong) HMUITestWindowController *uiTestWindowController;
 #endif
 #if ENABLE_JSON_LOG
@@ -130,7 +134,7 @@
 	self.shipMDWindowController = [HMShipMasterDetailWindowController new];
 	[self.shipMDWindowController showWindow:nil];
 #endif
-#ifdef UI_TEST
+#if UI_TEST
 	self.uiTestWindowController = [HMUITestWindowController new];
 	[self.uiTestWindowController showWindow:nil];
 #endif
@@ -219,6 +223,7 @@
 	return [[fileManager URLsForDirectory:NSPicturesDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
+#ifdef DEBUG
 - (HMFleetInformation *)fleetInformation
 {
 	static HMFleetInformation *_fleetInformation = nil;
@@ -226,6 +231,7 @@
 	_fleetInformation = [HMFleetInformation new];
 	return _fleetInformation;
 }
+#endif
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem
 {

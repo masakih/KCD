@@ -6,6 +6,8 @@
 //  Copyright (c) 2014年 Hori,Masaki. All rights reserved.
 //
 
+#ifdef DEBUG
+
 #import <Foundation/Foundation.h>
 
 @class HMKCShipObject;
@@ -36,3 +38,5 @@
 
 
 @end
+
+#endif

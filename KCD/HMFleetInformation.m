@@ -14,6 +14,10 @@
 #import "HMKCMasterSlotItemObject.h"
 #import "HMKCDeck+Extension.h"
 
+
+#ifdef DEBUG
+
+
 @interface HMFleetInformation ()
 @property (strong) NSArray *shipNameKeys;
 
@@ -355,3 +359,5 @@
 	return result;
 }
 @end
+
+#endif
