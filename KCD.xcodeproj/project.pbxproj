@@ -82,8 +82,6 @@
 		F4B2A08F1A1F9C2100D2EF12 /* HMExternalBrowserWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B2A08D1A1F9C2100D2EF12 /* HMExternalBrowserWindowController.m */; };
 		F4B2A0901A1F9C2100D2EF12 /* HMExternalBrowserWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B2A08E1A1F9C2100D2EF12 /* HMExternalBrowserWindowController.xib */; };
 		F4B2D02B18F83A2F00542742 /* HMScreenshotWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B2D02D18F83A2F00542742 /* HMScreenshotWindowController.xib */; };
-		F4B2D03118F83CBB00542742 /* HMDeckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B2D02F18F83CBB00542742 /* HMDeckViewController.m */; };
-		F4B2D03318F83CC800542742 /* HMDeckViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B2D03518F83CC800542742 /* HMDeckViewController.xib */; };
 		F4B37EF019FADFC9002F371A /* HMIgnoreZeroTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B37EEF19FADFC9002F371A /* HMIgnoreZeroTransformer.m */; };
 		F4B37EF319FBBBED002F371A /* HMRemodelSlotCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B37EF219FBBBED002F371A /* HMRemodelSlotCommand.m */; };
 		F4B37EF619FBE801002F371A /* HMRemodelSlotItemCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B37EF519FBE801002F371A /* HMRemodelSlotItemCommand.m */; };
@@ -317,9 +315,6 @@
 		F4B2A08D1A1F9C2100D2EF12 /* HMExternalBrowserWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMExternalBrowserWindowController.m; sourceTree = "<group>"; };
 		F4B2A08E1A1F9C2100D2EF12 /* HMExternalBrowserWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMExternalBrowserWindowController.xib; sourceTree = "<group>"; };
 		F4B2D02C18F83A2F00542742 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMScreenshotWindowController.xib; sourceTree = "<group>"; };
-		F4B2D02E18F83CBB00542742 /* HMDeckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDeckViewController.h; sourceTree = "<group>"; };
-		F4B2D02F18F83CBB00542742 /* HMDeckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDeckViewController.m; sourceTree = "<group>"; };
-		F4B2D03418F83CC800542742 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMDeckViewController.xib; sourceTree = "<group>"; };
 		F4B37EEE19FADFC9002F371A /* HMIgnoreZeroTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMIgnoreZeroTransformer.h; sourceTree = "<group>"; };
 		F4B37EEF19FADFC9002F371A /* HMIgnoreZeroTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMIgnoreZeroTransformer.m; sourceTree = "<group>"; };
 		F4B37EF119FBBBED002F371A /* HMRemodelSlotCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMRemodelSlotCommand.h; sourceTree = "<group>"; };
@@ -677,9 +672,6 @@
 				F4A3AD8A19B9BE7A00FDBF80 /* HMMaskSelectView.m */,
 				F4A3AD8C19BB220000FDBF80 /* HMMaskInfomation.h */,
 				F4A3AD8D19BB220000FDBF80 /* HMMaskInfomation.m */,
-				F4B2D02E18F83CBB00542742 /* HMDeckViewController.h */,
-				F4B2D02F18F83CBB00542742 /* HMDeckViewController.m */,
-				F4B2D03518F83CC800542742 /* HMDeckViewController.xib */,
 				F4B1E30319C73B6A00805879 /* HMSuppliesCell.h */,
 				F4B1E30419C73B6A00805879 /* HMSuppliesCell.m */,
 				F4B1E30519C73B6A00805879 /* HMSuppliesView.h */,
@@ -954,7 +946,6 @@
 				F4BDEB51187252F30069D0CE /* InfoPlist.strings in Resources */,
 				F43E67B918BE060E0087E5B6 /* LevelUpExp.plist in Resources */,
 				F4B3DC3018E5C81E0011B4FC /* HMHistoryWindowController.xib in Resources */,
-				F4B2D03318F83CC800542742 /* HMDeckViewController.xib in Resources */,
 				F4B3DC3618E5C8650011B4FC /* HMShipWindowController.xib in Resources */,
 				F4B3DC3C18E5C87D0011B4FC /* HMDocksViewController.xib in Resources */,
 				F4B2D02B18F83A2F00542742 /* HMScreenshotWindowController.xib in Resources */,
@@ -1076,7 +1067,6 @@
 				F4513EDD18B619B600073552 /* HMCoreDataManager.m in Sources */,
 				F4B3DBCA18DDB9170011B4FC /* HMCreateSlotItemCommand.m in Sources */,
 				F4131ED8190FA08D004F7F9A /* HMDestroyItem2Command.m in Sources */,
-				F4B2D03118F83CBB00542742 /* HMDeckViewController.m in Sources */,
 				F4B3DC2718DF2F360011B4FC /* HMKenzoMark.m in Sources */,
 				F49828FC1902A226000D6BBE /* HMStrokeTextFieldCell.m in Sources */,
 				F4A3AD8B19B9BE7A00FDBF80 /* HMMaskSelectView.m in Sources */,
@@ -1173,14 +1163,6 @@
 				F4B2D02C18F83A2F00542742 /* ja */,
 			);
 			name = HMScreenshotWindowController.xib;
-			sourceTree = "<group>";
-		};
-		F4B2D03518F83CC800542742 /* HMDeckViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F4B2D03418F83CC800542742 /* ja */,
-			);
-			name = HMDeckViewController.xib;
 			sourceTree = "<group>";
 		};
 		F4B37F0119FC8DCC002F371A /* HMUpgradableShipsWindowController.xib */ = {
@@ -1386,7 +1368,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KCD/KCD-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = "COREDATA_STORE_TYPE=0";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"COREDATA_STORE_TYPE=0",
+					"UI_TEST=0",
+				);
 				INFOPLIST_FILE = "KCD/KCD-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -13,7 +13,6 @@
 #import "HMDocksViewController.h"
 #import "HMShipViewController.h"
 #import "HMPowerUpSupportViewController.h"
-#import "HMDeckViewController.h"
 
 #import "HMFleetViewController.h"
 
@@ -44,9 +43,6 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 @property (strong) NSMutableDictionary *controllers;
 
 @property (strong) NSNumber *flagShipID;
-
-@property (strong) HMDeckViewController *deckViewController;
-
 
 @property (strong) HMFleetViewController *fleetViewController;
 @property FleetViewPosition fleetViewPosition;
@@ -93,10 +89,6 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 	[[self.docksPlaceholder superview] replaceSubview:self.docksPlaceholder with:self.selectedViewController.view];
 	[self.controllers setObject:self.selectedViewController forKey:@0];
 	
-//	self.deckViewController = [HMDeckViewController new];
-//	[self.deckViewController.view setFrame:[self.deckPlaceholder frame]];
-//	[self.deckViewController.view setAutoresizingMask:[self.deckPlaceholder autoresizingMask]];
-//	[[self.deckPlaceholder superview] replaceSubview:self.deckPlaceholder with:self.deckViewController.view];
 	self.fleetViewController = [[HMFleetViewController alloc] initWithViewType:detailViewType];
 	[self.fleetViewController.view setFrame:[self.deckPlaceholder frame]];
 	[self.fleetViewController.view setAutoresizingMask:[self.deckPlaceholder autoresizingMask]];
