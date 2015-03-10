@@ -103,7 +103,7 @@
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="f8W-G4-mOr">
-                    <rect key="frame" x="521" y="263" width="56" height="17"/>
+                    <rect key="frame" x="611" y="263" width="56" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="索敵値：" id="vA3-9F-FLk">
                         <font key="font" size="13" name="AquaKana"/>
@@ -112,7 +112,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="mUy-1k-ALk">
-                    <rect key="frame" x="572" y="263" width="29" height="17"/>
+                    <rect key="frame" x="662" y="263" width="29" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="999" id="HeX-Wd-ikA">
                         <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="ntt-Mj-4hA"/>
@@ -125,7 +125,7 @@
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ee5-Xk-4iW">
-                    <rect key="frame" x="611" y="263" width="56" height="17"/>
+                    <rect key="frame" x="701" y="263" width="56" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="制空値：" id="dS3-tO-y1s">
                         <font key="font" size="13" name="AquaKana"/>
@@ -134,7 +134,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Jhy-EA-ust">
-                    <rect key="frame" x="662" y="263" width="29" height="17"/>
+                    <rect key="frame" x="752" y="263" width="29" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="999" id="ytq-FR-96e">
                         <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="NZH-vE-NqR"/>
