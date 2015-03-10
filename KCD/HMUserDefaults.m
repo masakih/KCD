@@ -362,4 +362,24 @@ HMUserDefaults *HMStandardDefaults = nil;
 {
 	return [self objectForKey:@"showEquipmentType"];
 }
+
+#pragma mark - FleetView
+- (void)setFleetViewPosition:(NSInteger)fleetViewPosition
+{
+	if(fleetViewPosition < 0 || fleetViewPosition > 2) return;
+	[self setInteger:fleetViewPosition forKey:@"fleetViewPosition"];
+}
+- (NSInteger)fleetViewPosition
+{
+	return [self integerForKey:@"fleetViewPosition"];
+}
+- (void)setFleetViewShipOrder:(NSInteger)fleetViewShipOrder
+{
+	if(fleetViewShipOrder < 0 || fleetViewShipOrder > 1) return;
+	[self setInteger:fleetViewShipOrder forKey:@"fleetViewShipOrder"];
+}
+- (NSInteger)fleetViewShipOrder
+{
+	return [self integerForKey:@"fleetViewShipOrder"];
+}
 @end

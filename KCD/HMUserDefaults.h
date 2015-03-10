@@ -110,4 +110,20 @@ extern HMUserDefaults *HMStandardDefaults;
  */
 @property (nonatomic, weak) NSNumber *showEquipmentType;
 
+
+/**
+ * 艦隊リストの表示位置
+ * 0 : 上
+ * 1 : 下
+ * 2 : 上下に分割
+ */
+@property NSInteger fleetViewPosition;
+
+/**
+ * 艦隊リスト内の艦娘の並び順序
+ * 0 : 左向き複縦陣
+ * 1 : 左から右
+ */
+@property NSInteger fleetViewShipOrder;
+
 @end
