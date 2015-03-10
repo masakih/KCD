@@ -307,10 +307,17 @@
 	NSRect frame04 = view04.frame;
 	NSRect frame05 = view05.frame;
 	
-	view02.animator.frame = frame04;
-	view03.animator.frame = frame02;
-	view04.animator.frame = frame05;
-	view05.animator.frame = frame03;
+	if(self.enableAnimation) {
+		view02.animator.frame = frame04;
+		view03.animator.frame = frame02;
+		view04.animator.frame = frame05;
+		view05.animator.frame = frame03;
+	} else {
+		view02.frame = frame04;
+		view03.frame = frame02;
+		view04.frame = frame05;
+		view05.frame = frame03;
+	}
 }
 - (void)reorderShipToLeftToRight
 {
@@ -334,10 +341,17 @@
 	NSRect frame04 = view04.frame;
 	NSRect frame05 = view05.frame;
 	
-	view02.animator.frame = frame03;
-	view03.animator.frame = frame05;
-	view04.animator.frame = frame02;
-	view05.animator.frame = frame04;
+	if(self.enableAnimation) {
+		view02.animator.frame = frame03;
+		view03.animator.frame = frame05;
+		view04.animator.frame = frame02;
+		view05.animator.frame = frame04;
+	} else {
+		view02.frame = frame03;
+		view03.frame = frame05;
+		view04.frame = frame02;
+		view05.frame = frame04;
+	}
 }
 
 @end

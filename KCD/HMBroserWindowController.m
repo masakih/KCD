@@ -67,6 +67,7 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 	self = [super initWithWindowNibName:NSStringFromClass([self class])];
 	if(self) {
 		_controllers = [NSMutableDictionary new];
+		[self loadWindow];
 	}
 	return self;
 }
@@ -93,7 +94,10 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 	[self.fleetViewController.view setFrame:[self.deckPlaceholder frame]];
 	[self.fleetViewController.view setAutoresizingMask:[self.deckPlaceholder autoresizingMask]];
 	[[self.deckPlaceholder superview] replaceSubview:self.deckPlaceholder with:self.fleetViewController.view];
-	
+	[self setFleetViewPosition:HMStandardDefaults.fleetViewPosition animation:NO];
+	self.fleetViewController.enableAnimation = NO;
+	self.fleetViewController.shipOrder = HMStandardDefaults.fleetViewShipOrder;
+	self.fleetViewController.enableAnimation = YES;
 	
 	[[[self.webView mainFrame] frameView] setAllowsScrolling:NO];
 	
@@ -302,7 +306,7 @@ const CGFloat margin = 1;
 	self.placeholder.autoresizingMask  = flashViewAutoresizingMask;
 }
 
-- (void)setFleetViewPosition:(FleetViewPosition)fleetViewPosition
+- (void)setFleetViewPosition:(FleetViewPosition)fleetViewPosition animation:(BOOL)flag
 {
 	CGFloat flashY;
 	CGFloat fleetViewHeight;
@@ -334,13 +338,21 @@ const CGFloat margin = 1;
 	}
 	
 	flashRect.origin.y = flashY;
-	self.placeholder.animator.frame = flashRect;
+	NSView *flash = flag ? self.placeholder.animator : self.placeholder;
+	flash.frame = flashRect;
 	
 	fleetListRect.size.height = fleetViewHeight;
 	fleetListRect.origin.y = fleetViewY;
-	self.fleetViewController.view.animator.frame = fleetListRect;
+	NSView *fleetView = flag ? self.fleetViewController.view.animator : self.fleetViewController.view;
+	fleetView.frame = fleetListRect;
 	
 	_fleetViewPosition = fleetViewPosition;
+	HMStandardDefaults.fleetViewPosition = fleetViewPosition;
+}
+
+- (void)setFleetViewPosition:(FleetViewPosition)fleetViewPosition
+{
+	[self setFleetViewPosition:fleetViewPosition animation:YES];
 }
 - (FleetViewPosition)fleetViewPosition
 {
@@ -362,10 +374,12 @@ const CGFloat margin = 1;
 - (IBAction)reorderToDoubleLine:(id)sender
 {
 	self.fleetViewController.shipOrder = doubleLine;
+	HMStandardDefaults.fleetViewShipOrder = doubleLine;
 }
 - (IBAction)reorderToLeftToRight:(id)sender
 {
 	self.fleetViewController.shipOrder = leftToRight;
+	HMStandardDefaults.fleetViewShipOrder = leftToRight;
 }
 
 

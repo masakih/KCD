@@ -30,6 +30,7 @@ typedef NS_ENUM(NSInteger, HMFleetViewShipOrder) {
 @property (strong) HMKCDeck* fleet;
 @property NSInteger fleetNumber;
 @property HMFleetViewShipOrder shipOrder;
+@property BOOL enableAnimation;
 
 @property (readonly) BOOL canDivide;
 @property (readonly) CGFloat normalHeight;
