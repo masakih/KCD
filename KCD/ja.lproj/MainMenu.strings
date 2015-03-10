@@ -168,7 +168,7 @@
 "Ljv-Ui-lY8.title" = "上";
 
 /* Class = "NSMenuItem"; title = "Divided"; ObjectID = "SJK-A3-3uA"; */
-"SJK-A3-3uA.title" = "上下";
+"SJK-A3-3uA.title" = "上下に分割";
 
 /* Class = "NSMenuItem"; title = "TopToBottom"; ObjectID = "hiE-Nv-1G0"; */
 "hiE-Nv-1G0.title" = "左向き複縦陣";
