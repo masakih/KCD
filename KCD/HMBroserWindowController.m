@@ -132,34 +132,7 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 
 - (void)showViewWithNumber:(ViewType)type
 {
-//	Class controllerClass = Nil;
-//
-//	switch (type) {
-//		case kScheduleType:
-//			controllerClass = [HMDocksViewController class];
-//			break;
-//		case kOrganizeType:
-//			controllerClass = [HMShipViewController class];
-//			break;
-//		case kPowerUpType:
-//			controllerClass = [HMPowerUpSupportViewController class];
-//			break;
-//	}
-//	
-//	if(!controllerClass) return;
-//	if([self.selectedViewController isMemberOfClass:controllerClass]) return;
-//	
-//	NSViewController *newContoller = [self.controllers objectForKey:@(type)];
-//	if(!newContoller) {
-//		newContoller = [controllerClass new];
-//		[self.controllers setObject:newContoller forKey:@(type)];
-//	}
-//	[newContoller.view setFrame:[self.selectedViewController.view frame]];
-//	[newContoller.view setAutoresizingMask:[self.selectedViewController.view autoresizingMask]];
-//	[[self.selectedViewController.view superview] replaceSubview:self.selectedViewController.view with:newContoller.view];
-//	self.selectedViewController = newContoller;
-//	
-//	self.selectedViewsSegment = type;
+	[self.informations selectTabViewItemAtIndex:type];
 }
 
 - (void)adjustFlash
@@ -238,15 +211,7 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 
 - (IBAction)selectView:(id)sender
 {
-	NSInteger tag = -1;
-	if([sender respondsToSelector:@selector(selectedSegment)]) {
-//		NSSegmentedCell *cell = [sender cell];
-//		NSUInteger index = [sender selectedSegment];
-//		tag = [cell tagForSegment:index];
-	} else {
-		tag = [sender tag];
-	}
-	[self showViewWithNumber:tag];
+	[self showViewWithNumber:[sender tag]];
 }
 - (IBAction)screenShot:(id)sender
 {
