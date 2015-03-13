@@ -39,13 +39,15 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 @interface HMBroserWindowController ()
 @property NSPoint flashTopLeft;
 
-@property (strong) NSViewController *selectedViewController;
-@property (strong) NSMutableDictionary *controllers;
-
 @property (strong) NSNumber *flagShipID;
 
 @property (strong) HMFleetViewController *fleetViewController;
 @property FleetViewPosition fleetViewPosition;
+
+@property (weak) IBOutlet NSTabView *informations;
+@property (strong) HMDocksViewController *docksViewController;
+@property (strong) HMShipViewController *shipViewController;
+@property (strong) HMPowerUpSupportViewController *powerUpViewController;
 
 @end
 
@@ -66,7 +68,6 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 {
 	self = [super initWithWindowNibName:NSStringFromClass([self class])];
 	if(self) {
-		_controllers = [NSMutableDictionary new];
 		[self loadWindow];
 	}
 	return self;
@@ -84,11 +85,15 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 	self.flashTopLeft = NSMakePoint(70, 145);
 	[self adjustFlash];
 	
-	self.selectedViewController = [HMDocksViewController new];
-	[self.selectedViewController.view setFrame:[self.docksPlaceholder frame]];
-	[self.selectedViewController.view setAutoresizingMask:[self.docksPlaceholder autoresizingMask]];
-	[[self.docksPlaceholder superview] replaceSubview:self.docksPlaceholder with:self.selectedViewController.view];
-	[self.controllers setObject:self.selectedViewController forKey:@0];
+	self.docksViewController = [HMDocksViewController new];
+	self.shipViewController = [HMShipViewController new];
+	self.powerUpViewController = [HMPowerUpSupportViewController new];
+	NSTabViewItem *item = [self.informations tabViewItemAtIndex:0];
+	item.view = self.docksViewController.view;
+	item = [self.informations tabViewItemAtIndex:1];
+	item.view = self.shipViewController.view;
+	item = [self.informations tabViewItemAtIndex:2];
+	item.view = self.powerUpViewController.view;
 	
 	self.fleetViewController = [[HMFleetViewController alloc] initWithViewType:detailViewType];
 	[self.fleetViewController.view setFrame:[self.deckPlaceholder frame]];
@@ -111,7 +116,6 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 	[self bind:@"shipCount" toObject:self.shipController withKeyPath:@"arrangedObjects.@count" options:nil];
 }
 
-
 - (NSManagedObjectContext *)managedObjectContext
 {
 	return [HMServerDataStore defaultManager].managedObjectContext;
@@ -128,34 +132,34 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 
 - (void)showViewWithNumber:(ViewType)type
 {
-	Class controllerClass = Nil;
-
-	switch (type) {
-		case kScheduleType:
-			controllerClass = [HMDocksViewController class];
-			break;
-		case kOrganizeType:
-			controllerClass = [HMShipViewController class];
-			break;
-		case kPowerUpType:
-			controllerClass = [HMPowerUpSupportViewController class];
-			break;
-	}
-	
-	if(!controllerClass) return;
-	if([self.selectedViewController isMemberOfClass:controllerClass]) return;
-	
-	NSViewController *newContoller = [self.controllers objectForKey:@(type)];
-	if(!newContoller) {
-		newContoller = [controllerClass new];
-		[self.controllers setObject:newContoller forKey:@(type)];
-	}
-	[newContoller.view setFrame:[self.selectedViewController.view frame]];
-	[newContoller.view setAutoresizingMask:[self.selectedViewController.view autoresizingMask]];
-	[[self.selectedViewController.view superview] replaceSubview:self.selectedViewController.view with:newContoller.view];
-	self.selectedViewController = newContoller;
-	
-	self.selectedViewsSegment = type;
+//	Class controllerClass = Nil;
+//
+//	switch (type) {
+//		case kScheduleType:
+//			controllerClass = [HMDocksViewController class];
+//			break;
+//		case kOrganizeType:
+//			controllerClass = [HMShipViewController class];
+//			break;
+//		case kPowerUpType:
+//			controllerClass = [HMPowerUpSupportViewController class];
+//			break;
+//	}
+//	
+//	if(!controllerClass) return;
+//	if([self.selectedViewController isMemberOfClass:controllerClass]) return;
+//	
+//	NSViewController *newContoller = [self.controllers objectForKey:@(type)];
+//	if(!newContoller) {
+//		newContoller = [controllerClass new];
+//		[self.controllers setObject:newContoller forKey:@(type)];
+//	}
+//	[newContoller.view setFrame:[self.selectedViewController.view frame]];
+//	[newContoller.view setAutoresizingMask:[self.selectedViewController.view autoresizingMask]];
+//	[[self.selectedViewController.view superview] replaceSubview:self.selectedViewController.view with:newContoller.view];
+//	self.selectedViewController = newContoller;
+//	
+//	self.selectedViewsSegment = type;
 }
 
 - (void)adjustFlash
@@ -236,9 +240,9 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 {
 	NSInteger tag = -1;
 	if([sender respondsToSelector:@selector(selectedSegment)]) {
-		NSSegmentedCell *cell = [sender cell];
-		NSUInteger index = [sender selectedSegment];
-		tag = [cell tagForSegment:index];
+//		NSSegmentedCell *cell = [sender cell];
+//		NSUInteger index = [sender selectedSegment];
+//		tag = [cell tagForSegment:index];
 	} else {
 		tag = [sender tag];
 	}

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment version="1070" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6245"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="HMPowerUpSupportViewController">
@@ -15,24 +15,24 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="1">
-            <rect key="frame" x="0.0" y="0.0" width="346" height="424"/>
+            <rect key="frame" x="0.0" y="0.0" width="323" height="424"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="3B2-Jy-NLq">
-                    <rect key="frame" x="20" y="10" width="306" height="352"/>
+                    <rect key="frame" x="6" y="8" width="311" height="354"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="gHP-Wh-ryl">
                         <rect key="frame" x="1" y="17" width="304" height="334"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveName="powerupsupportview" headerView="xz8-nE-DgQ" id="HLz-Kp-DN2">
+                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveName="powerupsupportview" headerView="xz8-nE-DgQ" id="HLz-Kp-DN2">
                                 <rect key="frame" x="0.0" y="0.0" width="304" height="19"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn identifier="no" editable="NO" width="33" minWidth="33" maxWidth="1000" id="sNi-c1-2zU">
+                                    <tableColumn identifier="no" editable="NO" width="30" minWidth="30" maxWidth="30" id="sNi-c1-2zU">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="No.">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -48,7 +48,7 @@
                                             <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.master_ship.sortno" id="HdN-nH-86V"/>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn identifier="name" editable="NO" width="76" minWidth="40" maxWidth="1000" id="82a-ca-AZb">
+                                    <tableColumn identifier="name" editable="NO" width="83" minWidth="83" maxWidth="83" id="82a-ca-AZb">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="名前">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -61,20 +61,20 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
+                                            <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.name" id="Wdl-aY-u3L">
+                                                <dictionary key="options">
+                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                </dictionary>
+                                            </binding>
                                             <binding destination="b8v-Gn-JZD" name="textColor" keyPath="arrangedObjects.planColor" id="UHh-9X-yQ0"/>
                                             <binding destination="b8v-Gn-JZD" name="fontBold" keyPath="arrangedObjects.sally_area" id="XLY-9p-IPT">
                                                 <dictionary key="options">
                                                     <string key="NSValueTransformerName">HMPlanToShowsBoldFontTransformer</string>
                                                 </dictionary>
                                             </binding>
-                                            <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.name" id="Wdl-aY-u3L">
-                                                <dictionary key="options">
-                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
-                                                </dictionary>
-                                            </binding>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn identifier="lv" editable="NO" width="31" minWidth="10" maxWidth="3.4028234663852886e+38" id="u6A-sR-Kyv">
+                                    <tableColumn identifier="lv" editable="NO" width="38" minWidth="10" maxWidth="3.4028234663852886e+38" id="u6A-sR-Kyv">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Lv.">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -90,7 +90,7 @@
                                             <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.lv" id="qEu-ub-xiv"/>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn identifier="karyoku" editable="NO" width="28" minWidth="10" maxWidth="3.4028234663852886e+38" id="G9R-OQ-qxc">
+                                    <tableColumn identifier="karyoku" editable="NO" width="28" minWidth="28" maxWidth="3.4028234663852886e+38" id="G9R-OQ-qxc">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="火力">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -105,7 +105,7 @@
                                             <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.isMaxKaryoku" id="kFw-53-Ztq"/>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn identifier="raisou" editable="NO" width="28" minWidth="22" maxWidth="3.4028234663852886e+38" id="h1X-yX-kBd">
+                                    <tableColumn identifier="raisou" editable="NO" width="28" minWidth="28" maxWidth="3.4028234663852886e+38" id="h1X-yX-kBd">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="雷装">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -120,7 +120,7 @@
                                             <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.isMaxRaisou" id="4Et-xX-GBO"/>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn identifier="taiku" editable="NO" width="28" minWidth="10" maxWidth="3.4028234663852886e+38" id="kOg-s3-rC4">
+                                    <tableColumn identifier="taiku" editable="NO" width="28" minWidth="28" maxWidth="3.4028234663852886e+38" id="kOg-s3-rC4">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="対空">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -135,7 +135,7 @@
                                             <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.isMaxTaiku" id="Fbm-nQ-g0X"/>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn identifier="soukou" editable="NO" width="28" minWidth="10" maxWidth="3.4028234663852886e+38" id="whd-ZR-lLz">
+                                    <tableColumn identifier="soukou" editable="NO" width="28" minWidth="28" maxWidth="3.4028234663852886e+38" id="whd-ZR-lLz">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="装甲">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -150,7 +150,7 @@
                                             <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.isMaxSoukou" id="rId-U9-Y9l"/>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn identifier="lucky" editable="NO" width="28" minWidth="10" maxWidth="3.4028234663852886e+38" id="zY7-Tf-YmF">
+                                    <tableColumn identifier="lucky" editable="NO" width="28" minWidth="28" maxWidth="3.4028234663852886e+38" id="zY7-Tf-YmF">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="運">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -170,7 +170,7 @@
                         </subviews>
                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </clipView>
-                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="edk-ob-MlH">
+                    <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="edk-ob-MlH">
                         <rect key="frame" x="1" y="335" width="304" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
@@ -183,7 +183,7 @@
                     </tableHeaderView>
                 </scrollView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="FZQ-ab-vfc">
-                    <rect key="frame" x="18" y="399" width="66" height="17"/>
+                    <rect key="frame" x="4" y="399" width="66" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="999 Ships" id="TeI-HB-SYu">
                         <font key="font" metaFont="system"/>
@@ -199,16 +199,16 @@
                     </connections>
                 </textField>
                 <segmentedControl verticalHuggingPriority="750" id="oAr-IJ-cOj">
-                    <rect key="frame" x="18" y="368" width="310" height="24"/>
+                    <rect key="frame" x="4" y="368" width="315" height="24"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="b1J-je-IDl">
                         <font key="font" metaFont="system"/>
                         <segments>
-                            <segment label="All" width="34" selected="YES"/>
-                            <segment label="駆逐" width="38" tag="1"/>
-                            <segment label="軽巡" width="38" tag="2"/>
-                            <segment label="重巡" width="38" tag="3"/>
-                            <segment label="空母" width="38" tag="4"/>
+                            <segment label="All" width="35" selected="YES"/>
+                            <segment label="駆逐" width="39" tag="1"/>
+                            <segment label="軽巡" width="39" tag="2"/>
+                            <segment label="重巡" width="39" tag="3"/>
+                            <segment label="空母" width="39" tag="4"/>
                             <segment label="戦艦" width="38" tag="5"/>
                             <segment label="潜水" width="38" tag="6"/>
                             <segment label="他" width="35" tag="7"/>
@@ -219,7 +219,7 @@
                     </connections>
                 </segmentedControl>
                 <button id="1zs-Vq-5x3">
-                    <rect key="frame" x="101" y="398" width="48" height="18"/>
+                    <rect key="frame" x="90" y="398" width="48" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="火力" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="dhe-tG-3cL">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -231,7 +231,7 @@
                     </connections>
                 </button>
                 <button id="bme-k0-rWL">
-                    <rect key="frame" x="149" y="398" width="48" height="18"/>
+                    <rect key="frame" x="138" y="398" width="48" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="雷装" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="VHm-25-m9p">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -243,7 +243,7 @@
                     </connections>
                 </button>
                 <button id="6XO-ev-1Mj">
-                    <rect key="frame" x="197" y="398" width="48" height="18"/>
+                    <rect key="frame" x="186" y="398" width="48" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="対空" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="uwe-h9-3aH">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -255,7 +255,7 @@
                     </connections>
                 </button>
                 <button id="jGM-rA-FMz">
-                    <rect key="frame" x="245" y="398" width="48" height="18"/>
+                    <rect key="frame" x="234" y="398" width="48" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="装甲" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="hFv-rt-7rt">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -267,7 +267,7 @@
                     </connections>
                 </button>
                 <button id="aEI-HV-qk7">
-                    <rect key="frame" x="293" y="398" width="35" height="18"/>
+                    <rect key="frame" x="282" y="398" width="35" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="運" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Uzw-uL-ANY">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -279,6 +279,7 @@
                     </connections>
                 </button>
             </subviews>
+            <point key="canvasLocation" x="139.5" y="154"/>
         </customView>
         <arrayController mode="entity" entityName="Ship" editable="NO" automaticallyPreparesContent="YES" automaticallyRearrangesObjects="YES" id="b8v-Gn-JZD" userLabel="Ship">
             <connections>
