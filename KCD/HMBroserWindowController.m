@@ -34,6 +34,8 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 	kAbove,
 	kBelow,
 	kDivided,
+	
+	kOldStyle = 0xffffffff,
 };
 
 @interface HMBroserWindowController ()
@@ -95,10 +97,11 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 	item = [self.informations tabViewItemAtIndex:2];
 	item.view = self.powerUpViewController.view;
 	
-	self.fleetViewController = [[HMFleetViewController alloc] initWithViewType:detailViewType];
+	_fleetViewController = [[HMFleetViewController alloc] initWithViewType:detailViewType];
 	[self.fleetViewController.view setFrame:[self.deckPlaceholder frame]];
 	[self.fleetViewController.view setAutoresizingMask:[self.deckPlaceholder autoresizingMask]];
 	[[self.deckPlaceholder superview] replaceSubview:self.deckPlaceholder with:self.fleetViewController.view];
+	_fleetViewPosition = kBelow;
 	[self setFleetViewPosition:HMStandardDefaults.fleetViewPosition animation:NO];
 	self.fleetViewController.enableAnimation = NO;
 	self.fleetViewController.shipOrder = HMStandardDefaults.fleetViewShipOrder;
@@ -233,90 +236,162 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 #pragma mark - FleetView position
 const CGFloat margin = 1;
 
+// ###############################
+const CGFloat oldStyleFleetViewHeight = 128;
+const CGFloat heightDifference = 288 - oldStyleFleetViewHeight;
+const CGFloat flashTopMargin = 4;
+// ###############################
 
-- (IBAction)hideFleet:(id)sender
+
+- (void)changeFleetViewForFleetViewPositionIfNeeded:(FleetViewPosition)fleetViewPosition
 {
-	NSView *fleetView = self.fleetViewController.view;
-	[fleetView removeFromSuperviewWithoutNeedingDisplay];
-	[self.window.contentView addSubview:fleetView
-							 positioned:NSWindowBelow
-							 relativeTo:nil];
+	if(self.fleetViewPosition == fleetViewPosition) return;
+	if(self.fleetViewPosition != kOldStyle && fleetViewPosition != kOldStyle) return;
 	
-	NSAutoresizingMaskOptions fleetViewAutoresizingMask = fleetView.autoresizingMask;
-	fleetView.autoresizingMask = NSViewMinXMargin | NSViewMinYMargin;
-	NSAutoresizingMaskOptions flashViewAutoresizingMask = self.placeholder.autoresizingMask;
-	self.placeholder.autoresizingMask = NSViewMinXMargin | NSViewMaxYMargin;
+	HMFleetViewType type = fleetViewPosition == kOldStyle ? minimumViewType : detailViewType;
 	
-	NSRect windowRect = self.window.frame;
-	CGFloat fleetViewHeight = fleetView.frame.size.height;
-	windowRect.size.height -= fleetViewHeight;
-	windowRect.origin.y += fleetViewHeight;
-	[self.window.animator setFrame:windowRect display:YES animate:YES];
+	HMFleetViewController *newController = [[HMFleetViewController alloc] initWithViewType:type];
+	newController.enableAnimation = YES;
+	newController.shipOrder = self.fleetViewController.shipOrder;
 	
-	fleetView.autoresizingMask = fleetViewAutoresizingMask;
-	self.placeholder.autoresizingMask  = flashViewAutoresizingMask;
-}
-- (IBAction)showFleet:(id)sender
-{
-	NSView *fleetView = self.fleetViewController.view;
+	NSView *currentView = self.fleetViewController.view;
+	NSRect newFrame = newController.view.frame;
+	newFrame.origin = currentView.frame.origin;
+	newController.view.frame = newFrame;
+	[currentView.superview replaceSubview:currentView with:newController.view];
 	
-	NSAutoresizingMaskOptions fleetViewAutoresizingMask = fleetView.autoresizingMask;
-	fleetView.autoresizingMask = NSViewMinXMargin | NSViewMaxYMargin;
-	NSAutoresizingMaskOptions flashViewAutoresizingMask = self.placeholder.autoresizingMask;
-	self.placeholder.autoresizingMask = NSViewMinXMargin | NSViewMinYMargin;
-	
-	NSRect windowRect = self.window.frame;
-	CGFloat fleetViewHeight = fleetView.frame.size.height;
-	windowRect.size.height += fleetViewHeight;
-	windowRect.origin.y -= fleetViewHeight;
-	[self.window.animator setFrame:windowRect display:YES animate:YES];
-	
-	fleetView.autoresizingMask = fleetViewAutoresizingMask;
-	self.placeholder.autoresizingMask  = flashViewAutoresizingMask;
+	self.fleetViewController = newController;
 }
 
-- (void)setFleetViewPosition:(FleetViewPosition)fleetViewPosition animation:(BOOL)flag
+- (CGFloat)windowHeightForFleetViewPosition:(FleetViewPosition)fleetViewPosition
+{
+	CGFloat windowContentHeight = [self.window.contentView frame].size.height;
+	
+	if(self.fleetViewPosition == fleetViewPosition) return windowContentHeight;
+	
+	if(self.fleetViewPosition == kOldStyle) {
+		windowContentHeight += heightDifference;
+	}
+	if(fleetViewPosition == kOldStyle) {
+		windowContentHeight -= heightDifference;
+	}
+	
+	return windowContentHeight;
+}
+- (NSRect)windowFrameForFleetViewPosition:(FleetViewPosition)fleetViewPosition
+{
+	NSRect windowContentRect = [self.window frame];
+	
+	if(self.fleetViewPosition == fleetViewPosition) return windowContentRect;
+	
+	if(self.fleetViewPosition == kOldStyle) {
+		windowContentRect.size.height += heightDifference;
+		windowContentRect.origin.y -= heightDifference;
+	}
+	if(fleetViewPosition == kOldStyle) {
+		windowContentRect.size.height -= heightDifference;
+		windowContentRect.origin.y += heightDifference;
+	}
+	
+	return windowContentRect;
+}
+
+- (NSRect)flashFrameForFleetViewPosition:(FleetViewPosition)fleetViewPosition
 {
 	CGFloat flashY;
+	
+	CGFloat windowContentHeight = [self windowHeightForFleetViewPosition:fleetViewPosition];
+	NSRect flashRect = self.placeholder.frame;
+	
+	switch(fleetViewPosition) {
+		case kAbove:
+			flashY = windowContentHeight - flashRect.size.height - self.fleetViewController.normalHeight;
+			break;
+		case kBelow:
+			flashY = windowContentHeight - flashRect.size.height;
+			break;
+		case kDivided:
+			flashY = windowContentHeight - flashRect.size.height - self.fleetViewController.upsideHeight - margin;
+			break;
+		case kOldStyle:
+			flashY = windowContentHeight - flashRect.size.height - flashTopMargin;
+			break;
+		default:
+			NSLog(@"%s: unknown position.", __PRETTY_FUNCTION__);
+			return NSZeroRect;
+	}
+	
+	flashRect.origin.y = flashY;
+	return flashRect;
+}
+
+- (NSRect)fleetViewFrameForFleetViewPosition:(FleetViewPosition)fleetViewPosition
+{
 	CGFloat fleetViewHeight;
 	CGFloat fleetViewY;
 	
-	NSSize windowContentSize = [self.window.contentView frame].size;
+	CGFloat windowContentHeight = [self windowHeightForFleetViewPosition:fleetViewPosition];
 	NSRect flashRect = self.placeholder.frame;
 	NSRect fleetListRect = self.fleetViewController.view.frame;
 	
 	switch(fleetViewPosition) {
 		case kAbove:
-			flashY = windowContentSize.height - flashRect.size.height - self.fleetViewController.normalHeight;
 			fleetViewHeight = self.fleetViewController.normalHeight;
-			fleetViewY = windowContentSize.height - fleetViewHeight;
+			fleetViewY = windowContentHeight - fleetViewHeight;
 			break;
 		case kBelow:
-			flashY = windowContentSize.height - flashRect.size.height;
 			fleetViewHeight = self.fleetViewController.normalHeight;
-			fleetViewY = windowContentSize.height - fleetViewHeight - flashRect.size.height - margin;
+			fleetViewY = windowContentHeight - fleetViewHeight - flashRect.size.height - margin;
 			break;
 		case kDivided:
-			flashY = windowContentSize.height - flashRect.size.height - self.fleetViewController.upsideHeight - margin;
 			fleetViewHeight = self.fleetViewController.normalHeight + flashRect.size.height + margin + margin;
-			fleetViewY = windowContentSize.height - fleetViewHeight;
+			fleetViewY = windowContentHeight - fleetViewHeight;
+			break;
+		case kOldStyle:
+			fleetViewHeight = oldStyleFleetViewHeight;
+			fleetViewY = windowContentHeight - fleetViewHeight - flashRect.size.height - margin - flashTopMargin;
 			break;
 		default:
 			NSLog(@"%s: unknown position.", __PRETTY_FUNCTION__);
-			return;
+			return NSZeroRect;
 	}
-	
-	flashRect.origin.y = flashY;
-	NSView *flash = flag ? self.placeholder.animator : self.placeholder;
-	flash.frame = flashRect;
 	
 	fleetListRect.size.height = fleetViewHeight;
 	fleetListRect.origin.y = fleetViewY;
-	NSView *fleetView = flag ? self.fleetViewController.view.animator : self.fleetViewController.view;
-	fleetView.frame = fleetListRect;
+	return fleetListRect;
+}
+
+- (void)setFleetViewPosition:(FleetViewPosition)fleetViewPosition animation:(BOOL)flag
+{
+	[self changeFleetViewForFleetViewPositionIfNeeded:fleetViewPosition];
+	
+	NSRect windowFrame = [self windowFrameForFleetViewPosition:fleetViewPosition];
+	NSRect flashRect = [self flashFrameForFleetViewPosition:fleetViewPosition];
+	NSRect fleetListRect = [self fleetViewFrameForFleetViewPosition:fleetViewPosition];
 	
 	_fleetViewPosition = fleetViewPosition;
 	HMStandardDefaults.fleetViewPosition = fleetViewPosition;
+	
+	if(flag) {
+		NSDictionary *winAnime = @{
+								   NSViewAnimationTargetKey : self.window,
+								   NSViewAnimationEndFrameKey : [NSValue valueWithRect:windowFrame],
+								   };
+		NSDictionary *flashAnime = @{
+						   NSViewAnimationTargetKey : self.placeholder,
+						   NSViewAnimationEndFrameKey : [NSValue valueWithRect:flashRect],
+						   };
+		NSDictionary *fleetAnime = @{
+								 NSViewAnimationTargetKey : self.fleetViewController.view,
+								 NSViewAnimationEndFrameKey : [NSValue valueWithRect:fleetListRect],
+								 };
+		NSAnimation *anime = [[NSViewAnimation alloc] initWithViewAnimations:@[winAnime, flashAnime, fleetAnime]];
+		[anime startAnimation];
+	} else {
+		[self.window setFrame:windowFrame display:NO];
+		self.placeholder.frame = flashRect;
+		self.fleetViewController.view.frame = fleetListRect;
+	}
 }
 
 - (void)setFleetViewPosition:(FleetViewPosition)fleetViewPosition
@@ -338,6 +413,10 @@ const CGFloat margin = 1;
 - (IBAction)fleetListDivide:(id)sender
 {
 	self.fleetViewPosition = kDivided;
+}
+- (IBAction)fleetListSimple:(id)sender
+{
+	self.fleetViewPosition = kOldStyle;
 }
 
 - (IBAction)reorderToDoubleLine:(id)sender
@@ -390,6 +469,15 @@ const CGFloat margin = 1;
 		}
 		return YES;
 	}
+	if(action == @selector(fleetListSimple:)) {
+		if(self.fleetViewPosition == kOldStyle) {
+			menuItem.state = NSOnState;
+		} else {
+			menuItem.state = NSOffState;
+		}
+		return YES;
+	}
+	
 	if(action == @selector(reorderToDoubleLine:)) {
 		if(self.fleetViewController.shipOrder == doubleLine) {
 			menuItem.state = NSOnState;

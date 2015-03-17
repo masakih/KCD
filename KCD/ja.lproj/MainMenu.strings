@@ -187,3 +187,6 @@
 
 /* Class = "NSMenuItem"; title = "Below"; ObjectID = "y9Q-QO-snI"; */
 "y9Q-QO-snI.title" = "下";
+
+/* Class = "NSMenuItem"; title = "Simple"; ObjectID = "5jd-9p-Aur"; */
+"5jd-9p-Aur.title" = "簡略";
