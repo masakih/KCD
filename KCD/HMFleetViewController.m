@@ -75,11 +75,13 @@
 	return self;
 }
 
-//- (id)init
-//{
-//	self = [super initWithNibName:NSStringFromClass([self class]) bundle:nil];
-//	return self;
-//}
+- (void)dealloc
+{
+	for(NSInteger i = 0; i < 6; i++) {
+		[self.representedObject removeObserver:self
+									forKeyPath:[NSString stringWithFormat:@"ship_%ld", i]];
+	}
+}
 
 - (void)awakeFromNib {
 	
@@ -195,7 +197,7 @@
 		case detailViewType:
 			return 288;
 		case minimumViewType:
-			return 60;
+			return 128;
 	}
 	return 0;
 }
@@ -205,7 +207,7 @@
 		case detailViewType:
 			return 159;
 		case minimumViewType:
-			return 60;
+			return 128;
 	}
 	return 0;
 }

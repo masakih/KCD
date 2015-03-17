@@ -30,6 +30,14 @@
     return self;
 }
 
+- (void)dealloc
+{
+	[self.suppliesCell.shipStatus removeObserver:self forKeyPath:@"fuel"];
+	[self.suppliesCell.shipStatus removeObserver:self forKeyPath:@"maxFuel"];
+	[self.suppliesCell.shipStatus removeObserver:self forKeyPath:@"bull"];
+	[self.suppliesCell.shipStatus removeObserver:self forKeyPath:@"maxBull"];
+}
+
 - (void)setShipStatus:(HMKCShipObject *)shipStatus
 {
 	[self.suppliesCell.shipStatus removeObserver:self forKeyPath:@"fuel"];
@@ -67,7 +75,7 @@
 {
 	HMKCShipObject *status = (__bridge HMKCShipObject *)(context);
 	
-	if([status isEqual:self.suppliesCell.shipStatus]) {
+	if(status == self.suppliesCell.shipStatus) {
 		[self setNeedsDisplay];
 		return;
 	}
