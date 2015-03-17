@@ -366,7 +366,6 @@ HMUserDefaults *HMStandardDefaults = nil;
 #pragma mark - FleetView
 - (void)setFleetViewPosition:(NSInteger)fleetViewPosition
 {
-	if(fleetViewPosition < 0 || fleetViewPosition > 2) return;
 	[self setInteger:fleetViewPosition forKey:@"fleetViewPosition"];
 }
 - (NSInteger)fleetViewPosition
