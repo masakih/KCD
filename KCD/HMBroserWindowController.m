@@ -234,11 +234,8 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 
 
 #pragma mark - FleetView position
-const CGFloat margin = 1;
-
 // ###############################
-const CGFloat oldStyleFleetViewHeight = 128;
-const CGFloat heightDifference = 288 - oldStyleFleetViewHeight;
+const CGFloat margin = 1;
 const CGFloat flashTopMargin = 4;
 // ###############################
 
@@ -270,10 +267,10 @@ const CGFloat flashTopMargin = 4;
 	if(self.fleetViewPosition == fleetViewPosition) return windowContentHeight;
 	
 	if(self.fleetViewPosition == kOldStyle) {
-		windowContentHeight += heightDifference;
+		windowContentHeight += HMFleetViewController.heightDifference;
 	}
 	if(fleetViewPosition == kOldStyle) {
-		windowContentHeight -= heightDifference;
+		windowContentHeight -= HMFleetViewController.heightDifference;
 	}
 	
 	return windowContentHeight;
@@ -285,12 +282,12 @@ const CGFloat flashTopMargin = 4;
 	if(self.fleetViewPosition == fleetViewPosition) return windowContentRect;
 	
 	if(self.fleetViewPosition == kOldStyle) {
-		windowContentRect.size.height += heightDifference;
-		windowContentRect.origin.y -= heightDifference;
+		windowContentRect.size.height += HMFleetViewController.heightDifference;
+		windowContentRect.origin.y -= HMFleetViewController.heightDifference;
 	}
 	if(fleetViewPosition == kOldStyle) {
-		windowContentRect.size.height -= heightDifference;
-		windowContentRect.origin.y += heightDifference;
+		windowContentRect.size.height -= HMFleetViewController.heightDifference;
+		windowContentRect.origin.y += HMFleetViewController.heightDifference;
 	}
 	
 	return windowContentRect;
@@ -348,7 +345,7 @@ const CGFloat flashTopMargin = 4;
 			fleetViewY = windowContentHeight - fleetViewHeight;
 			break;
 		case kOldStyle:
-			fleetViewHeight = oldStyleFleetViewHeight;
+			fleetViewHeight = HMFleetViewController.oldStyleFleetViewHeight;
 			fleetViewY = windowContentHeight - fleetViewHeight - flashRect.size.height - margin - flashTopMargin;
 			break;
 		default:

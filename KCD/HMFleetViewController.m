@@ -195,9 +195,9 @@
 {
 	switch(self.type) {
 		case detailViewType:
-			return 288;
+			return HMFleetViewController.detailViewHeight;
 		case minimumViewType:
-			return 128;
+			return HMFleetViewController.oldStyleFleetViewHeight;
 	}
 	return 0;
 }
@@ -207,9 +207,22 @@
 		case detailViewType:
 			return 159;
 		case minimumViewType:
-			return 128;
+			return HMFleetViewController.oldStyleFleetViewHeight;
 	}
 	return 0;
+}
+
++ (CGFloat)oldStyleFleetViewHeight
+{
+	return 128;
+}
++ (CGFloat)detailViewHeight
+{
+	return 288;
+}
++ (CGFloat)heightDifference
+{
+	return self.detailViewHeight - self.oldStyleFleetViewHeight;
 }
 
 

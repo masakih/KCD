@@ -25,6 +25,11 @@ typedef NS_ENUM(NSInteger, HMFleetViewShipOrder) {
 
 - (instancetype)initWithViewType:(HMFleetViewType)type;
 
++ (CGFloat)oldStyleFleetViewHeight;
++ (CGFloat)detailViewHeight;
++ (CGFloat)heightDifference;
+
+
 @property (readonly) HMFleetViewType type;
 
 @property (strong) HMKCDeck* fleet;
