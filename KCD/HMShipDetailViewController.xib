@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7531"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="HMShipDetailViewController">
@@ -20,14 +20,14 @@
             </connections>
         </objectController>
         <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" id="SH2-fF-cTe">
-            <rect key="frame" x="0.0" y="0.0" width="264" height="129"/>
+            <rect key="frame" x="0.0" y="0.0" width="267" height="129"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <view key="contentView">
-                <rect key="frame" x="1" y="1" width="262" height="127"/>
+                <rect key="frame" x="1" y="1" width="265" height="127"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Y34-Rg-VIJ">
-                        <rect key="frame" x="16" y="106" width="107" height="19"/>
+                        <rect key="frame" x="17" y="106" width="109" height="19"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Prinz Eugen改" id="W58-Ho-kVQ">
                             <font key="font" metaFont="system" size="15"/>
@@ -43,7 +43,7 @@
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Mgo-sm-Ba0">
-                        <rect key="frame" x="124" y="107" width="47" height="17"/>
+                        <rect key="frame" x="126" y="107" width="47" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Lv.123" id="mT8-P9-jjK">
                             <font key="font" metaFont="system"/>
@@ -61,7 +61,7 @@
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ceM-oU-ohy">
-                        <rect key="frame" x="3" y="92" width="37" height="14"/>
+                        <rect key="frame" x="4" y="92" width="37" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="火力：" id="vfx-Mz-g7z">
                             <font key="font" metaFont="smallSystem"/>
@@ -87,7 +87,7 @@
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Ktf-5r-pLo">
-                        <rect key="frame" x="230" y="88" width="29" height="17"/>
+                        <rect key="frame" x="232" y="88" width="29" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="555" id="D74-dY-yKV">
                             <font key="font" metaFont="system"/>
@@ -104,7 +104,7 @@
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ugl-Cj-bSp">
-                        <rect key="frame" x="170" y="107" width="61" height="17"/>
+                        <rect key="frame" x="172" y="107" width="61" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="999/999" id="YS8-Um-wf7" customClass="HMStrokeTextFieldCell">
                             <font key="font" metaFont="system"/>
@@ -130,7 +130,7 @@
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="MRY-hC-9uC">
-                        <rect key="frame" x="3" y="77" width="37" height="14"/>
+                        <rect key="frame" x="4" y="77" width="37" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="装甲：" id="1bJ-In-ICf">
                             <font key="font" metaFont="smallSystem"/>
@@ -156,7 +156,7 @@
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="1eR-iS-CUN">
-                        <rect key="frame" x="3" y="62" width="37" height="14"/>
+                        <rect key="frame" x="4" y="62" width="37" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="雷装：" id="Z2k-cU-r7c">
                             <font key="font" metaFont="smallSystem"/>
@@ -182,7 +182,7 @@
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="zCj-y8-C5T">
-                        <rect key="frame" x="3" y="47" width="37" height="14"/>
+                        <rect key="frame" x="4" y="47" width="37" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="回避：" id="yD4-WS-iLS">
                             <font key="font" metaFont="smallSystem"/>
@@ -208,7 +208,7 @@
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="qU8-6G-9gY">
-                        <rect key="frame" x="3" y="32" width="37" height="14"/>
+                        <rect key="frame" x="4" y="32" width="37" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="対空：" id="Dnw-0c-eLj">
                             <font key="font" metaFont="smallSystem"/>
@@ -234,7 +234,7 @@
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="lOg-nu-f26">
-                        <rect key="frame" x="3" y="17" width="37" height="14"/>
+                        <rect key="frame" x="4" y="17" width="37" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="対潜：" id="7vx-dP-eGj">
                             <font key="font" metaFont="smallSystem"/>
@@ -260,7 +260,7 @@
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="iXP-03-yRZ">
-                        <rect key="frame" x="3" y="2" width="37" height="14"/>
+                        <rect key="frame" x="4" y="2" width="37" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="索敵：" id="vOt-zO-K4A">
                             <font key="font" metaFont="smallSystem"/>
@@ -286,7 +286,7 @@
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="McZ-6v-GDF">
-                        <rect key="frame" x="65" y="92" width="37" height="14"/>
+                        <rect key="frame" x="66" y="92" width="37" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="運：" id="DSB-48-575">
                             <font key="font" metaFont="smallSystem"/>
@@ -312,7 +312,7 @@
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="U7o-v0-l1J">
-                        <rect key="frame" x="126" y="92" width="37" height="14"/>
+                        <rect key="frame" x="128" y="92" width="37" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="速力：" id="Spz-5K-xfv">
                             <font key="font" metaFont="smallSystem"/>
@@ -321,7 +321,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="e8z-uk-5Kj">
-                        <rect key="frame" x="159" y="92" width="30" height="14"/>
+                        <rect key="frame" x="160" y="92" width="30" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="高速" id="Olc-Xu-clL">
                             <font key="font" metaFont="smallSystem"/>
@@ -338,7 +338,7 @@
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="8GG-wV-a8e">
-                        <rect key="frame" x="126" y="77" width="37" height="14"/>
+                        <rect key="frame" x="128" y="77" width="37" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="射程：" id="8HX-j5-jq0">
                             <font key="font" metaFont="smallSystem"/>
@@ -347,7 +347,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Zhh-D8-R6Y">
-                        <rect key="frame" x="159" y="77" width="30" height="14"/>
+                        <rect key="frame" x="160" y="77" width="30" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="超長" id="F1x-Yu-yre">
                             <font key="font" metaFont="smallSystem"/>
@@ -364,7 +364,7 @@
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Jiw-hE-AJM">
-                        <rect key="frame" x="65" y="77" width="37" height="14"/>
+                        <rect key="frame" x="66" y="77" width="37" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="搭載：" id="SP3-pD-Caa">
                             <font key="font" metaFont="smallSystem"/>
@@ -390,7 +390,7 @@
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="8el-1C-ACV">
-                        <rect key="frame" x="198" y="89" width="37" height="14"/>
+                        <rect key="frame" x="200" y="89" width="37" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="制空：" id="fvf-MP-0qU">
                             <font key="font" metaFont="smallSystem"/>
@@ -399,14 +399,14 @@
                         </textFieldCell>
                     </textField>
                     <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" id="6Is-2V-XYS" customClass="HMSlotItemFrameView">
-                        <rect key="frame" x="70" y="4" width="187" height="69"/>
+                        <rect key="frame" x="68" y="4" width="191" height="69"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView">
-                            <rect key="frame" x="1" y="1" width="185" height="67"/>
+                            <rect key="frame" x="1" y="1" width="189" height="67"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="9ct-MC-zEi">
-                                    <rect key="frame" x="40" y="52" width="142" height="14"/>
+                                    <rect key="frame" x="41" y="52" width="147" height="14"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="10cm連装高角砲+高射装置" id="1lW-BG-Ev2">
                                         <font key="font" metaFont="smallSystem"/>
@@ -423,7 +423,7 @@
                                     </connections>
                                 </textField>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="WPW-1R-1aV">
-                                    <rect key="frame" x="40" y="35" width="142" height="14"/>
+                                    <rect key="frame" x="41" y="35" width="147" height="14"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="12.7cm連装高角砲(後期型)" id="1uW-vl-74P">
                                         <font key="font" metaFont="smallSystem"/>
@@ -440,7 +440,7 @@
                                     </connections>
                                 </textField>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="4qS-ds-Fe5">
-                                    <rect key="frame" x="40" y="18" width="142" height="14"/>
+                                    <rect key="frame" x="41" y="18" width="147" height="14"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="35.6cm連装砲(ダズル迷彩)" id="qp5-M3-ZJi">
                                         <font key="font" metaFont="smallSystem"/>
@@ -457,7 +457,7 @@
                                     </connections>
                                 </textField>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="uE8-Fk-T3P">
-                                    <rect key="frame" x="40" y="1" width="142" height="14"/>
+                                    <rect key="frame" x="41" y="1" width="147" height="14"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="10cm連装高角砲+高射装置" id="fcc-QI-18E">
                                         <font key="font" metaFont="smallSystem"/>
@@ -474,7 +474,7 @@
                                     </connections>
                                 </textField>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Jo0-C2-Coa">
-                                    <rect key="frame" x="1" y="1" width="38" height="14"/>
+                                    <rect key="frame" x="0.0" y="1" width="38" height="14"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="99/99" id="XHs-C6-7hc">
                                         <font key="font" metaFont="smallSystem"/>
@@ -482,12 +482,12 @@
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                     <connections>
-                                        <binding destination="LyA-xZ-gxq" name="displayPatternValue1" keyPath="selection.onslot_3" id="9AA-N6-hPm">
+                                        <binding destination="LyA-xZ-gxq" name="displayPatternValue2" keyPath="selection.master_ship.maxeq_3" previousBinding="9AA-N6-hPm" id="Ydb-6S-XB4">
                                             <dictionary key="options">
                                                 <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
                                             </dictionary>
                                         </binding>
-                                        <binding destination="LyA-xZ-gxq" name="displayPatternValue2" keyPath="selection.master_ship.maxeq_3" previousBinding="9AA-N6-hPm" id="Ydb-6S-XB4">
+                                        <binding destination="LyA-xZ-gxq" name="displayPatternValue1" keyPath="selection.onslot_3" id="9AA-N6-hPm">
                                             <dictionary key="options">
                                                 <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
                                             </dictionary>
@@ -504,7 +504,7 @@
                                     </connections>
                                 </textField>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="WhO-fO-H5s">
-                                    <rect key="frame" x="1" y="18" width="38" height="14"/>
+                                    <rect key="frame" x="0.0" y="18" width="38" height="14"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="99/99" id="3nX-18-ISc">
                                         <font key="font" metaFont="smallSystem"/>
@@ -512,12 +512,12 @@
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                     <connections>
-                                        <binding destination="LyA-xZ-gxq" name="displayPatternValue1" keyPath="selection.onslot_2" id="lPy-3I-3NS">
+                                        <binding destination="LyA-xZ-gxq" name="displayPatternValue2" keyPath="selection.master_ship.maxeq_2" previousBinding="lPy-3I-3NS" id="1Zc-nX-eXl">
                                             <dictionary key="options">
                                                 <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
                                             </dictionary>
                                         </binding>
-                                        <binding destination="LyA-xZ-gxq" name="displayPatternValue2" keyPath="selection.master_ship.maxeq_2" previousBinding="lPy-3I-3NS" id="1Zc-nX-eXl">
+                                        <binding destination="LyA-xZ-gxq" name="displayPatternValue1" keyPath="selection.onslot_2" id="lPy-3I-3NS">
                                             <dictionary key="options">
                                                 <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
                                             </dictionary>
@@ -534,7 +534,7 @@
                                     </connections>
                                 </textField>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="RcS-au-uGU">
-                                    <rect key="frame" x="1" y="35" width="38" height="14"/>
+                                    <rect key="frame" x="0.0" y="35" width="38" height="14"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="99/99" id="I80-Vv-z3M">
                                         <font key="font" metaFont="smallSystem"/>
@@ -542,12 +542,12 @@
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                     <connections>
-                                        <binding destination="LyA-xZ-gxq" name="displayPatternValue1" keyPath="selection.onslot_1" id="W5y-RQ-eBZ">
+                                        <binding destination="LyA-xZ-gxq" name="displayPatternValue2" keyPath="selection.master_ship.maxeq_1" previousBinding="W5y-RQ-eBZ" id="hJv-zS-VdQ">
                                             <dictionary key="options">
                                                 <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
                                             </dictionary>
                                         </binding>
-                                        <binding destination="LyA-xZ-gxq" name="displayPatternValue2" keyPath="selection.master_ship.maxeq_1" previousBinding="W5y-RQ-eBZ" id="hJv-zS-VdQ">
+                                        <binding destination="LyA-xZ-gxq" name="displayPatternValue1" keyPath="selection.onslot_1" id="W5y-RQ-eBZ">
                                             <dictionary key="options">
                                                 <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
                                             </dictionary>
@@ -564,7 +564,7 @@
                                     </connections>
                                 </textField>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Fv0-MW-cv7">
-                                    <rect key="frame" x="1" y="52" width="38" height="14"/>
+                                    <rect key="frame" x="0.0" y="52" width="38" height="14"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="99/99" id="Fyg-Sb-gUy">
                                         <font key="font" metaFont="smallSystem"/>
@@ -572,12 +572,12 @@
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                     <connections>
-                                        <binding destination="LyA-xZ-gxq" name="displayPatternValue1" keyPath="selection.onslot_0" id="Ahn-ud-CaT">
+                                        <binding destination="LyA-xZ-gxq" name="displayPatternValue2" keyPath="selection.master_ship.maxeq_0" previousBinding="Ahn-ud-CaT" id="OoJ-cR-uSP">
                                             <dictionary key="options">
                                                 <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
                                             </dictionary>
                                         </binding>
-                                        <binding destination="LyA-xZ-gxq" name="displayPatternValue2" keyPath="selection.master_ship.maxeq_0" previousBinding="Ahn-ud-CaT" id="OoJ-cR-uSP">
+                                        <binding destination="LyA-xZ-gxq" name="displayPatternValue1" keyPath="selection.onslot_0" id="Ahn-ud-CaT">
                                             <dictionary key="options">
                                                 <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
                                             </dictionary>
@@ -599,7 +599,7 @@
                         <color key="fillColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </box>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="qbZ-eV-gqf">
-                        <rect key="frame" x="230" y="107" width="29" height="17"/>
+                        <rect key="frame" x="232" y="107" width="29" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="555" id="JVG-Dt-axT">
                             <font key="font" metaFont="system"/>
@@ -616,7 +616,7 @@
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="yeA-LB-gv0">
-                        <rect key="frame" x="3" y="107" width="13" height="17"/>
+                        <rect key="frame" x="4" y="109" width="13" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="6" id="f1f-Lx-lTx">
                             <font key="font" metaFont="system"/>
@@ -632,7 +632,7 @@
                         </connections>
                     </textField>
                     <customView id="YLm-de-F1l" customClass="HMSuppliesView">
-                        <rect key="frame" x="227" y="75" width="30" height="11"/>
+                        <rect key="frame" x="229" y="75" width="30" height="11"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                 </subviews>
