@@ -31,6 +31,9 @@
 						  forKeyPath:NSSortDescriptorsBinding
 							 options:0
 							 context:NULL];
+	
+	// refresh filter
+	self.showEquipmentType = self.showEquipmentType;
 }
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
