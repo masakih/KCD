@@ -75,6 +75,35 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 	return self;
 }
 
+- (IBAction)left:(id)sender
+{
+	NSPoint o = self.flashTopLeft;
+	o.x -= 10;
+	self.flashTopLeft = o;
+	[self adjustFlash];
+}
+- (IBAction)right:(id)sender
+{
+	NSPoint o = self.flashTopLeft;
+	o.x += 10;
+	self.flashTopLeft = o;
+	[self adjustFlash];
+}
+- (IBAction)top:(id)sender
+{
+	NSPoint o = self.flashTopLeft;
+	o.y += 10;
+	self.flashTopLeft = o;
+	[self adjustFlash];
+}
+- (IBAction)bottom:(id)sender
+{
+	NSPoint o = self.flashTopLeft;
+	o.y -= 10;
+	self.flashTopLeft = o;
+	[self adjustFlash];
+}
+
 - (void)awakeFromNib
 {
 	
@@ -84,7 +113,7 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 	[clip setDocumentView:self.webView];
 	self.placeholder = clip;
 	
-	self.flashTopLeft = NSMakePoint(70, 145);
+	self.flashTopLeft = NSMakePoint(2600, 145);
 	[self adjustFlash];
 	
 	self.docksViewController = [HMDocksViewController new];
