@@ -225,6 +225,9 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 		[self calculateFDam:damages
 				fdamKeyPath:@"api_data.api_kouku2.api_stage3_combined.api_fdam"];
 		self.calcSecondFleet = NO;
+	} else {
+		[self calculateFDam:damages
+				fdamKeyPath:@"api_data.api_kouku2.api_stage3.api_fdam"];
 	}
 	
 	// opening attack
@@ -297,7 +300,7 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 	}
 	
 	if(damages.count != 12) {
-		[self log:@"Damage is invalid. count %lxd", damages.count];
+		[self log:@"Damage is invalid. count %lx", damages.count];
 		return;
 	}
 	
@@ -382,6 +385,10 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 		return;
 	}
 	if([self.api isEqualToString:@"/kcsapi/api_req_sortie/battle"]) {
+		[self calculateBattle];
+		return;
+	}
+	if([self.api isEqualToString:@"/kcsapi/api_req_sortie/airbattle"]) {
 		[self calculateBattle];
 		return;
 	}
