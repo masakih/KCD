@@ -30,7 +30,7 @@
 #endif
 
 #ifndef UI_TEST
-#	define UI_TEST 0
+#	define UI_TEST 1
 #endif
 
 //@interface NSObject (HMM_NSUserNotificationCenterPrivateMethods)
@@ -358,8 +358,13 @@
 
 - (IBAction)showExternalBrowserWindow:(id)sender
 {
+	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	if(!self.externalBrowserWindowController) {
 		self.externalBrowserWindowController = [HMExternalBrowserWindowController new];
+		[nc addObserver:self
+			   selector:@selector(windowWillClose:)
+				   name:NSWindowWillCloseNotification
+				 object:self.externalBrowserWindowController.window];
 	}
 	
 	NSWindow *window = self.externalBrowserWindowController.window;
@@ -367,6 +372,16 @@
 		[window makeKeyAndOrderFront:nil];
 	} else {
 		[window orderOut:nil];
+	}
+}
+
+- (void)windowWillClose:(NSNotification *)notification
+{
+	id object = [notification object];
+	if([object isEqual:self.externalBrowserWindowController.window]) {
+		[[NSNotificationCenter defaultCenter] removeObserver:self name:NSWindowWillCloseNotification
+													  object:self.externalBrowserWindowController.window];
+		self.externalBrowserWindowController = nil;
 	}
 }
 
