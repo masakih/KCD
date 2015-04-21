@@ -375,13 +375,19 @@
 	}
 }
 
+- (void)releaseExternalBrowserWindowController:(id)dummy
+{
+	self.externalBrowserWindowController = nil;
+}
 - (void)windowWillClose:(NSNotification *)notification
 {
 	id object = [notification object];
 	if([object isEqual:self.externalBrowserWindowController.window]) {
 		[[NSNotificationCenter defaultCenter] removeObserver:self name:NSWindowWillCloseNotification
 													  object:self.externalBrowserWindowController.window];
-		self.externalBrowserWindowController = nil;
+		[self performSelector:@selector(releaseExternalBrowserWindowController:)
+				   withObject:nil
+				   afterDelay:0.0];
 	}
 }
 
