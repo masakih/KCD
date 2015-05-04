@@ -49,18 +49,18 @@
 	NSManagedObjectContext *managedObjectContext = [serverDataStore managedObjectContext];
 	NSError *error = nil;
 	
-	// 古いデータ変更
+	// 範囲内の任務をいったん遂行中からはずす
 	if(questList.count == 0) return;
 	NSNumber *min = @(0);
 	NSNumber *max = @(9999);
 	
 	NSNumber *pageCount = data[@"api_page_count"];
 	NSNumber *page = data[@"api_disp_page"];
-	if(![page isEqual:@(1)]) {
-		pageCount = [questList[0] valueForKey:@"api_no"];
-	}
 	if(![page isEqual:pageCount]) {
 		max = [questList.lastObject valueForKey:@"api_no"];
+	}
+	if(![page isEqual:@(1)]) {
+		min = [questList[0] valueForKey:@"api_no"];
 	}
 	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(%K >= %@) && (%K <= %@)", @"no", min, @"no", max];
 	NSArray *objects = [serverDataStore objectsWithEntityName:entityName
