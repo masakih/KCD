@@ -21,7 +21,13 @@
 		F4268031194D1B1A00B2C27F /* HMChangeHenseiCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4268030194D1B1A00B2C27F /* HMChangeHenseiCommand.m */; };
 		F4268034195332A000B2C27F /* HMPowerUpCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4268033195332A000B2C27F /* HMPowerUpCommand.m */; };
 		F42680371957000200B2C27F /* HMTimerCountFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F42680361957000200B2C27F /* HMTimerCountFormatter.m */; };
+		F43769D61ADE86B200DE6204 /* HMQuestListCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F43769D51ADE86B200DE6204 /* HMQuestListCommand.m */; };
+		F43769DA1ADE890800DE6204 /* HMQuestListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43769D81ADE890800DE6204 /* HMQuestListViewController.m */; };
+		F43769DB1ADE890800DE6204 /* HMQuestListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F43769D91ADE890800DE6204 /* HMQuestListViewController.xib */; };
 		F43769DE1AE1248800DE6204 /* HMAirBattleCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F43769DD1AE1248800DE6204 /* HMAirBattleCommand.m */; };
+		F43769E11AE7CFF800DE6204 /* HMClearItemGetComand.m in Sources */ = {isa = PBXBuildFile; fileRef = F43769E01AE7CFF800DE6204 /* HMClearItemGetComand.m */; };
+		F43769E41AE7D01D00DE6204 /* HMUpdateQuestListCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F43769E31AE7D01D00DE6204 /* HMUpdateQuestListCommand.m */; };
+		F43769E71AE7D22700DE6204 /* HMKCQuest.m in Sources */ = {isa = PBXBuildFile; fileRef = F43769E61AE7D22700DE6204 /* HMKCQuest.m */; };
 		F43BA4A1197BE22200CFF788 /* HMDestroyShipCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F43BA4A0197BE22200CFF788 /* HMDestroyShipCommand.m */; };
 		F43BA4A4197BE6C200CFF788 /* HMRealDestroyShipCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F43BA4A3197BE6C200CFF788 /* HMRealDestroyShipCommand.m */; };
 		F43BA4A7197CD59400CFF788 /* HMNyukyoSpeedChangeCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F43BA4A6197CD59400CFF788 /* HMNyukyoSpeedChangeCommand.m */; };
@@ -217,8 +223,19 @@
 		F4268033195332A000B2C27F /* HMPowerUpCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMPowerUpCommand.m; sourceTree = "<group>"; };
 		F42680351957000200B2C27F /* HMTimerCountFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMTimerCountFormatter.h; sourceTree = "<group>"; };
 		F42680361957000200B2C27F /* HMTimerCountFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMTimerCountFormatter.m; sourceTree = "<group>"; };
+		F43769D41ADE86B200DE6204 /* HMQuestListCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMQuestListCommand.h; sourceTree = "<group>"; };
+		F43769D51ADE86B200DE6204 /* HMQuestListCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMQuestListCommand.m; sourceTree = "<group>"; };
+		F43769D71ADE890800DE6204 /* HMQuestListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMQuestListViewController.h; sourceTree = "<group>"; };
+		F43769D81ADE890800DE6204 /* HMQuestListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMQuestListViewController.m; sourceTree = "<group>"; };
+		F43769D91ADE890800DE6204 /* HMQuestListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMQuestListViewController.xib; sourceTree = "<group>"; };
 		F43769DC1AE1248800DE6204 /* HMAirBattleCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMAirBattleCommand.h; sourceTree = "<group>"; };
 		F43769DD1AE1248800DE6204 /* HMAirBattleCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMAirBattleCommand.m; sourceTree = "<group>"; };
+		F43769DF1AE7CFF800DE6204 /* HMClearItemGetComand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMClearItemGetComand.h; sourceTree = "<group>"; };
+		F43769E01AE7CFF800DE6204 /* HMClearItemGetComand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMClearItemGetComand.m; sourceTree = "<group>"; };
+		F43769E21AE7D01D00DE6204 /* HMUpdateQuestListCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMUpdateQuestListCommand.h; sourceTree = "<group>"; };
+		F43769E31AE7D01D00DE6204 /* HMUpdateQuestListCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMUpdateQuestListCommand.m; sourceTree = "<group>"; };
+		F43769E51AE7D22700DE6204 /* HMKCQuest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMKCQuest.h; sourceTree = "<group>"; };
+		F43769E61AE7D22700DE6204 /* HMKCQuest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKCQuest.m; sourceTree = "<group>"; };
 		F43BA49F197BE22200CFF788 /* HMDestroyShipCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDestroyShipCommand.h; sourceTree = "<group>"; };
 		F43BA4A0197BE22200CFF788 /* HMDestroyShipCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDestroyShipCommand.m; sourceTree = "<group>"; };
 		F43BA4A2197BE6C200CFF788 /* HMRealDestroyShipCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMRealDestroyShipCommand.h; sourceTree = "<group>"; };
@@ -673,6 +690,8 @@
 				F44AB1FF19E050F600F217AF /* HMKCDeck.m */,
 				F44AB20419E053CB00F217AF /* HMKCDeck+Extension.h */,
 				F44AB20519E053CB00F217AF /* HMKCDeck+Extension.m */,
+				F43769E51AE7D22700DE6204 /* HMKCQuest.h */,
+				F43769E61AE7D22700DE6204 /* HMKCQuest.m */,
 				F4E7802C18DC3AF00011BC4C /* LocalData.xcdatamodeld */,
 				F4B3DC2518DF2F360011B4FC /* HMKenzoMark.h */,
 				F4B3DC2618DF2F360011B4FC /* HMKenzoMark.m */,
@@ -908,6 +927,12 @@
 				F43F3D451A33F7D400D6DAF7 /* HMResetSortieCommand.m */,
 				F4BEEFDF1B0B6326004702B8 /* HMDummyShipCommand.h */,
 				F4BEEFE01B0B6326004702B8 /* HMDummyShipCommand.m */,
+				F43769D41ADE86B200DE6204 /* HMQuestListCommand.h */,
+				F43769D51ADE86B200DE6204 /* HMQuestListCommand.m */,
+				F43769DF1AE7CFF800DE6204 /* HMClearItemGetComand.h */,
+				F43769E01AE7CFF800DE6204 /* HMClearItemGetComand.m */,
+				F43769E21AE7D01D00DE6204 /* HMUpdateQuestListCommand.h */,
+				F43769E31AE7D01D00DE6204 /* HMUpdateQuestListCommand.m */,
 			);
 			name = Command;
 			sourceTree = "<group>";
@@ -946,6 +971,30 @@
 				F4666C531B1E0262001840DB /* HMBookmarkEditorViewController.h */,
 				F4666C541B1E0262001840DB /* HMBookmarkEditorViewController.m */,
 				F4666C551B1E0262001840DB /* HMBookmarkEditorViewController.xib */,
+				F4D6BC9B1AA1FAC600742FEB /* HMUITestWindowController.xib */,
+				F4D6BCA61AA298FD00742FEB /* HMShipDetailViewController.h */,
+				F4D6BCA71AA298FD00742FEB /* HMShipDetailViewController.m */,
+				F4D6BCA81AA298FD00742FEB /* HMShipDetailViewController.xib */,
+				F4BEE4711AA5E34600979752 /* HMSlotItemFrameView.h */,
+				F4BEE4721AA5E34600979752 /* HMSlotItemFrameView.m */,
+				F4D6BCAB1AA2A60900742FEB /* HMSokuTransformer.h */,
+				F4D6BCAC1AA2A60900742FEB /* HMSokuTransformer.m */,
+				F4D6BCAE1AA2A97100742FEB /* HMLengTransformer.h */,
+				F4D6BCAF1AA2A97200742FEB /* HMLengTransformer.m */,
+				F4D6BCB11AA2B18100742FEB /* HMSlotitemNameTransformer.h */,
+				F4D6BCB21AA2B18100742FEB /* HMSlotitemNameTransformer.m */,
+				F4D6BCB41AA2C10700742FEB /* HMHideEquipNumberTransformer.h */,
+				F4D6BCB51AA2C10700742FEB /* HMHideEquipNumberTransformer.m */,
+				F4D6BCB71AA32BEA00742FEB /* HMFleetViewController.h */,
+				F4D6BCB81AA32BEA00742FEB /* HMFleetViewController.m */,
+				F4D6BCB91AA32BEA00742FEB /* HMFleetViewController.xib */,
+				F4BEE4791AAB025400979752 /* HMFleetMinimumViewController.xib */,
+				F4BEE4741AA9E4EF00979752 /* HMMinimumShipViewController.h */,
+				F4BEE4751AA9E4EF00979752 /* HMMinimumShipViewController.m */,
+				F4BEE4761AA9E4EF00979752 /* HMMinimumShipViewController.xib */,
+				F43769D71ADE890800DE6204 /* HMQuestListViewController.h */,
+				F43769D81ADE890800DE6204 /* HMQuestListViewController.m */,
+				F43769D91ADE890800DE6204 /* HMQuestListViewController.xib */,
 			);
 			name = TestAndDebug;
 			path = KCD;
@@ -1056,6 +1105,7 @@
 				F4A3AD9419BDDE5500FDBF80 /* HMPreferencePanelController.xib in Resources */,
 				F4BDEB5D187252F30069D0CE /* MainMenu.xib in Resources */,
 				F4B3DC3F18E5C8870011B4FC /* HMBroserWindowController.xib in Resources */,
+				F43769DB1ADE890800DE6204 /* HMQuestListViewController.xib in Resources */,
 				F4131EDE190FEBDB004F7F9A /* HMSlotItemWindowController.xib in Resources */,
 				F4666C521B1CB2CE001840DB /* HMBrowserContentAdjuster.xib in Resources */,
 			);
@@ -1116,6 +1166,7 @@
 				F4D6BCAD1AA2A60900742FEB /* HMSokuTransformer.m in Sources */,
 				F4BEE4731AA5E34600979752 /* HMSlotItemFrameView.m in Sources */,
 				F4D6BCB31AA2B18100742FEB /* HMSlotitemNameTransformer.m in Sources */,
+				F43769E11AE7CFF800DE6204 /* HMClearItemGetComand.m in Sources */,
 				F4131ED5190F63D8004F7F9A /* HMUpdateSlotItemCommand.m in Sources */,
 				F4C1190518A71AEA005D5B25 /* HMJSONReciever.m in Sources */,
 				F44AB24119E8252600F217AF /* HMKCSlotItemObject+Extensions.m in Sources */,
@@ -1164,6 +1215,8 @@
 				F4A3AD8519B0CAB700FDBF80 /* HMPlanToShowsBoldFontTransformer.m in Sources */,
 				F4513EF618B9F29800073552 /* HMMemberShipCommand.m in Sources */,
 				F4268034195332A000B2C27F /* HMPowerUpCommand.m in Sources */,
+				F43769E71AE7D22700DE6204 /* HMKCQuest.m in Sources */,
+				F43769E41AE7D01D00DE6204 /* HMUpdateQuestListCommand.m in Sources */,
 				F4C1190818A746EB005D5B25 /* HMJSONTracker.m in Sources */,
 				F4B3DC4718EEEB920011B4FC /* HMCompositMapCommand.m in Sources */,
 				F4513EDD18B619B600073552 /* HMCoreDataManager.m in Sources */,
@@ -1172,6 +1225,7 @@
 				F4B3DC2718DF2F360011B4FC /* HMKenzoMark.m in Sources */,
 				F49546261B1355EC00E0D8D0 /* HMBookmarkItem.m in Sources */,
 				F49828FC1902A226000D6BBE /* HMStrokeTextFieldCell.m in Sources */,
+				F43769D61ADE86B200DE6204 /* HMQuestListCommand.m in Sources */,
 				F4A3AD8B19B9BE7A00FDBF80 /* HMMaskSelectView.m in Sources */,
 				F4B414E918B09A4B00468DAF /* HMMasterMapAreaCommand.m in Sources */,
 				F4C3957418CDDFE500A1E918 /* HMKenzoDockStatus.m in Sources */,
@@ -1183,6 +1237,7 @@
 				F4E7802B18DC3A820011BC4C /* HMLocalDataStore.m in Sources */,
 				F494DC6718C8BA6400AE97E4 /* HMPowerUpSupportViewController.m in Sources */,
 				F43BA4A7197CD59400CFF788 /* HMNyukyoSpeedChangeCommand.m in Sources */,
+				F43769DA1ADE890800DE6204 /* HMQuestListViewController.m in Sources */,
 				F4A3AD8819B6149D00FDBF80 /* HMNyukyoStartCommand.m in Sources */,
 				F4D6BC9C1AA1FAC700742FEB /* HMUITestWindowController.m in Sources */,
 				F4B1E30C19D1C06900805879 /* HMHokyuChargeCommand.m in Sources */,

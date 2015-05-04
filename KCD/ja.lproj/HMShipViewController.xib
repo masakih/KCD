@@ -28,7 +28,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveName="shipviewtable21" headerView="xz8-nE-DgQ" id="HLz-Kp-DN2">
-                                <rect key="frame" x="0.0" y="0.0" width="309" height="336"/>
+                                <rect key="frame" x="0.0" y="0.0" width="309" height="19"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -50,7 +50,7 @@
                                             <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.shortTypeName" id="Y9U-un-2KJ"/>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn identifier="name" editable="NO" width="116" minWidth="90" maxWidth="116" id="82a-ca-AZb">
+                                    <tableColumn identifier="name" editable="NO" width="115" minWidth="90" maxWidth="116" id="82a-ca-AZb">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="名前">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -76,7 +76,7 @@
                                             </binding>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn identifier="lv" editable="NO" width="29" minWidth="22" maxWidth="3.4028234663852886e+38" id="h1X-yX-kBd">
+                                    <tableColumn identifier="lv" editable="NO" width="30" minWidth="22" maxWidth="3.4028234663852886e+38" id="h1X-yX-kBd">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="Lv.">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
