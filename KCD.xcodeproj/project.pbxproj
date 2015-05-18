@@ -130,6 +130,7 @@
 		F4BEE4781AA9E4EF00979752 /* HMMinimumShipViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BEE4761AA9E4EF00979752 /* HMMinimumShipViewController.xib */; };
 		F4BEE47A1AAB025400979752 /* HMFleetMinimumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BEE4791AAB025400979752 /* HMFleetMinimumViewController.xib */; };
 		F4BEEE9F18D211280006F70C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4BEEE9D18D211280006F70C /* Localizable.strings */; };
+		F4BEEFDB1B0A219E004702B8 /* HMShipDeckCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BEEFDA1B0A219E004702B8 /* HMShipDeckCommand.m */; };
 		F4C041BA1875CAF5009273EB /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4C041B91875CAF5009273EB /* JavaScriptCore.framework */; };
 		F4C118FA18A67B1C005D5B25 /* CacheStoragePolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C118F518A67B1C005D5B25 /* CacheStoragePolicy.m */; };
 		F4C118FB18A67B1C005D5B25 /* CanonicalRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C118F718A67B1C005D5B25 /* CanonicalRequest.m */; };
@@ -398,6 +399,8 @@
 		F4BEEEA118D211360006F70C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text; name = ja; path = ja.lproj/Localizable.strings.sed; sourceTree = "<group>"; };
 		F4BEEEA418D211500006F70C /* ja */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; name = ja; path = ja.lproj/Makefile; sourceTree = "<group>"; };
 		F4BEEEA718D323520006F70C /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = SOURCE_ROOT; };
+		F4BEEFD91B0A219E004702B8 /* HMShipDeckCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMShipDeckCommand.h; sourceTree = "<group>"; };
+		F4BEEFDA1B0A219E004702B8 /* HMShipDeckCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMShipDeckCommand.m; sourceTree = "<group>"; };
 		F4C041B91875CAF5009273EB /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F4C118F418A67B1C005D5B25 /* CacheStoragePolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheStoragePolicy.h; sourceTree = "<group>"; };
 		F4C118F518A67B1C005D5B25 /* CacheStoragePolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheStoragePolicy.m; sourceTree = "<group>"; };
@@ -760,6 +763,8 @@
 				F426802A194D0F4800B2C27F /* HMMemberShip2Command.m */,
 				F426802C194D0FFD00B2C27F /* HMMemberShip3Command.h */,
 				F426802D194D0FFD00B2C27F /* HMMemberShip3Command.m */,
+				F4BEEFD91B0A219E004702B8 /* HMShipDeckCommand.h */,
+				F4BEEFDA1B0A219E004702B8 /* HMShipDeckCommand.m */,
 				F4E33B5618BF5F67005B8C07 /* HMMemberSlotItemCommand.h */,
 				F4E33B5718BF5F67005B8C07 /* HMMemberSlotItemCommand.m */,
 				F4E7802618DBD2A00011BC4C /* HMGetShipCommand.h */,
@@ -1059,6 +1064,7 @@
 				F4513EFA18BB699700073552 /* HMShipWindowController.m in Sources */,
 				F42680121943E92D00B2C27F /* HMKCShipObject+Extensions.m in Sources */,
 				F46F104118A9B85E0063E503 /* HMJSONNode.m in Sources */,
+				F4BEEFDB1B0A219E004702B8 /* HMShipDeckCommand.m in Sources */,
 				F454F7831A261844003042DD /* HMFleetInformation.m in Sources */,
 				F43F3D461A33F7D400D6DAF7 /* HMResetSortieCommand.m in Sources */,
 				F4131ECF190F5C08004F7F9A /* HMStoreCreateSlotItemHistoryCommand.m in Sources */,

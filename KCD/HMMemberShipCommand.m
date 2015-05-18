@@ -69,6 +69,9 @@
 	if([self.api isEqualToString:@"/kcsapi/api_req_kousyou/getship"]) {
 		return @"api_data.api_ship";
 	}
+	if([self.api isEqualToString:@"/kcsapi/api_get_member/ship_deck"]) {
+		return @"api_data.api_ship_data";
+	}
 	return [super dataKey];
 }
 
@@ -214,12 +217,19 @@
 	return NO;
 }
 
+static BOOL isFewShipUpdateAPI(NSString *api)
+{
+	if([api isEqualToString:@"/kcsapi/api_get_member/ship3"]) return YES;
+	if([api isEqualToString:@"/kcsapi/api_req_kousyou/getship"]) return YES;
+	if([api isEqualToString:@"/kcsapi/api_get_member/ship_deck"]) return YES;
+	
+	return NO;
+}
 - (void)finishOperating:(NSManagedObjectContext *)moc
 {
 	// ship3の時は1隻のみのデータアップデートがあるため
 	// getshipの時は取得した1隻のみのデータのため
-	if([self.api isEqualToString:@"/kcsapi/api_get_member/ship3"]
-	   || [self.api isEqualToString:@"/kcsapi/api_req_kousyou/getship"]) {
+	if(isFewShipUpdateAPI(self.api)) {
 		return;
 	}
 	

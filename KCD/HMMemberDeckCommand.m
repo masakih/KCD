@@ -46,6 +46,10 @@
 	if([self.api isEqualToString:@"/kcsapi/api_get_member/ship3"]) {
 		return @"api_data.api_deck_data";
 	}
+	if([self.api isEqualToString:@"/kcsapi/api_get_member/ship_deck"]) {
+		return @"api_data.api_deck_data";
+	}
+	
 	return [super dataKey];
 }
 - (void)execute
