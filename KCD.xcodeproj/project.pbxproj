@@ -543,14 +543,7 @@
 				F4BDEB59187252F30069D0CE /* HMAppDelegate.m */,
 				F4268007193AF4E000B2C27F /* HMUserDefaults.h */,
 				F4268008193AF4E000B2C27F /* HMUserDefaults.m */,
-				F4131EE71911445F004F7F9A /* HMSlotItemEquipTypeTransformer.h */,
-				F4131EE81911445F004F7F9A /* HMSlotItemEquipTypeTransformer.m */,
-				F42680351957000200B2C27F /* HMTimerCountFormatter.h */,
-				F42680361957000200B2C27F /* HMTimerCountFormatter.m */,
-				F4A3AD8319B0CAB700FDBF80 /* HMPlanToShowsBoldFontTransformer.h */,
-				F4A3AD8419B0CAB700FDBF80 /* HMPlanToShowsBoldFontTransformer.m */,
-				F4B37EEE19FADFC9002F371A /* HMIgnoreZeroTransformer.h */,
-				F4B37EEF19FADFC9002F371A /* HMIgnoreZeroTransformer.m */,
+				F4BEEFE21B0CD39B004702B8 /* Transformar&Formatter */,
 				F4C118F318A67B05005D5B25 /* CustomHTTPProtocol */,
 				F4C1190018A6FFC2005D5B25 /* HMQueue.h */,
 				F4C1190118A6FFC2005D5B25 /* HMQueue.m */,
@@ -659,18 +652,7 @@
 			isa = PBXGroup;
 			children = (
 				F4BDEB5B187252F30069D0CE /* MainMenu.xib */,
-				F46F104218AA50730063E503 /* HMBroserWindowController.h */,
-				F46F104318AA50730063E503 /* HMBroserWindowController.m */,
-				F4B3DC4118E5C8870011B4FC /* HMBroserWindowController.xib */,
-				F4513EE118B635EA00073552 /* HMDocksViewController.h */,
-				F4513EE218B635EA00073552 /* HMDocksViewController.m */,
-				F4B3DC3E18E5C87D0011B4FC /* HMDocksViewController.xib */,
-				F494DC6018C608C100AE97E4 /* HMShipViewController.h */,
-				F494DC6118C608C100AE97E4 /* HMShipViewController.m */,
-				F4B3DC3518E5C8520011B4FC /* HMShipViewController.xib */,
-				F494DC6518C8BA6400AE97E4 /* HMPowerUpSupportViewController.h */,
-				F494DC6618C8BA6400AE97E4 /* HMPowerUpSupportViewController.m */,
-				F494DC6818C8BAB900AE97E4 /* HMPowerUpSupportViewController.xib */,
+				F4BEEFE31B0CD3C5004702B8 /* MainWindow */,
 				F4B3DC2B18E07B680011B4FC /* HMHistoryWindowController.h */,
 				F4B3DC2C18E07B680011B4FC /* HMHistoryWindowController.m */,
 				F4B3DC3218E5C81E0011B4FC /* HMHistoryWindowController.xib */,
@@ -681,12 +663,6 @@
 				F4A3AD8A19B9BE7A00FDBF80 /* HMMaskSelectView.m */,
 				F4A3AD8C19BB220000FDBF80 /* HMMaskInfomation.h */,
 				F4A3AD8D19BB220000FDBF80 /* HMMaskInfomation.m */,
-				F4B1E30319C73B6A00805879 /* HMSuppliesCell.h */,
-				F4B1E30419C73B6A00805879 /* HMSuppliesCell.m */,
-				F4B1E30519C73B6A00805879 /* HMSuppliesView.h */,
-				F4B1E30619C73B6A00805879 /* HMSuppliesView.m */,
-				F49828FA1902A226000D6BBE /* HMStrokeTextFieldCell.h */,
-				F49828FB1902A226000D6BBE /* HMStrokeTextFieldCell.m */,
 				F4131ED9190FEBCC004F7F9A /* HMSlotItemWindowController.h */,
 				F4131EDA190FEBCC004F7F9A /* HMSlotItemWindowController.m */,
 				F4131EE0190FEBDB004F7F9A /* HMSlotItemWindowController.xib */,
@@ -706,6 +682,66 @@
 				F4B2A08E1A1F9C2100D2EF12 /* HMExternalBrowserWindowController.xib */,
 			);
 			name = UI;
+			sourceTree = "<group>";
+		};
+		F4BEEFE21B0CD39B004702B8 /* Transformar&Formatter */ = {
+			isa = PBXGroup;
+			children = (
+				F4131EE71911445F004F7F9A /* HMSlotItemEquipTypeTransformer.h */,
+				F4131EE81911445F004F7F9A /* HMSlotItemEquipTypeTransformer.m */,
+				F42680351957000200B2C27F /* HMTimerCountFormatter.h */,
+				F42680361957000200B2C27F /* HMTimerCountFormatter.m */,
+				F4A3AD8319B0CAB700FDBF80 /* HMPlanToShowsBoldFontTransformer.h */,
+				F4A3AD8419B0CAB700FDBF80 /* HMPlanToShowsBoldFontTransformer.m */,
+				F4B37EEE19FADFC9002F371A /* HMIgnoreZeroTransformer.h */,
+				F4B37EEF19FADFC9002F371A /* HMIgnoreZeroTransformer.m */,
+				F4D6BCAB1AA2A60900742FEB /* HMSokuTransformer.h */,
+				F4D6BCAC1AA2A60900742FEB /* HMSokuTransformer.m */,
+				F4D6BCAE1AA2A97100742FEB /* HMLengTransformer.h */,
+				F4D6BCAF1AA2A97200742FEB /* HMLengTransformer.m */,
+				F4D6BCB11AA2B18100742FEB /* HMSlotitemNameTransformer.h */,
+				F4D6BCB21AA2B18100742FEB /* HMSlotitemNameTransformer.m */,
+				F4D6BCB41AA2C10700742FEB /* HMHideEquipNumberTransformer.h */,
+				F4D6BCB51AA2C10700742FEB /* HMHideEquipNumberTransformer.m */,
+			);
+			name = "Transformar&Formatter";
+			sourceTree = "<group>";
+		};
+		F4BEEFE31B0CD3C5004702B8 /* MainWindow */ = {
+			isa = PBXGroup;
+			children = (
+				F46F104218AA50730063E503 /* HMBroserWindowController.h */,
+				F46F104318AA50730063E503 /* HMBroserWindowController.m */,
+				F4B3DC4118E5C8870011B4FC /* HMBroserWindowController.xib */,
+				F4513EE118B635EA00073552 /* HMDocksViewController.h */,
+				F4513EE218B635EA00073552 /* HMDocksViewController.m */,
+				F4B3DC3E18E5C87D0011B4FC /* HMDocksViewController.xib */,
+				F494DC6018C608C100AE97E4 /* HMShipViewController.h */,
+				F494DC6118C608C100AE97E4 /* HMShipViewController.m */,
+				F4B3DC3518E5C8520011B4FC /* HMShipViewController.xib */,
+				F494DC6518C8BA6400AE97E4 /* HMPowerUpSupportViewController.h */,
+				F494DC6618C8BA6400AE97E4 /* HMPowerUpSupportViewController.m */,
+				F494DC6818C8BAB900AE97E4 /* HMPowerUpSupportViewController.xib */,
+				F4D6BCA61AA298FD00742FEB /* HMShipDetailViewController.h */,
+				F4D6BCA71AA298FD00742FEB /* HMShipDetailViewController.m */,
+				F4D6BCA81AA298FD00742FEB /* HMShipDetailViewController.xib */,
+				F4BEE4711AA5E34600979752 /* HMSlotItemFrameView.h */,
+				F4BEE4721AA5E34600979752 /* HMSlotItemFrameView.m */,
+				F4D6BCB71AA32BEA00742FEB /* HMFleetViewController.h */,
+				F4D6BCB81AA32BEA00742FEB /* HMFleetViewController.m */,
+				F4D6BCB91AA32BEA00742FEB /* HMFleetViewController.xib */,
+				F4BEE4791AAB025400979752 /* HMFleetMinimumViewController.xib */,
+				F4BEE4741AA9E4EF00979752 /* HMMinimumShipViewController.h */,
+				F4BEE4751AA9E4EF00979752 /* HMMinimumShipViewController.m */,
+				F4BEE4761AA9E4EF00979752 /* HMMinimumShipViewController.xib */,
+				F4B1E30319C73B6A00805879 /* HMSuppliesCell.h */,
+				F4B1E30419C73B6A00805879 /* HMSuppliesCell.m */,
+				F4B1E30519C73B6A00805879 /* HMSuppliesView.h */,
+				F4B1E30619C73B6A00805879 /* HMSuppliesView.m */,
+				F49828FA1902A226000D6BBE /* HMStrokeTextFieldCell.h */,
+				F49828FB1902A226000D6BBE /* HMStrokeTextFieldCell.m */,
+			);
+			name = MainWindow;
 			sourceTree = "<group>";
 		};
 		F4C118F318A67B05005D5B25 /* CustomHTTPProtocol */ = {
@@ -853,26 +889,6 @@
 				F4D6BC991AA1FAC600742FEB /* HMUITestWindowController.h */,
 				F4D6BC9A1AA1FAC600742FEB /* HMUITestWindowController.m */,
 				F4D6BC9B1AA1FAC600742FEB /* HMUITestWindowController.xib */,
-				F4D6BCA61AA298FD00742FEB /* HMShipDetailViewController.h */,
-				F4D6BCA71AA298FD00742FEB /* HMShipDetailViewController.m */,
-				F4D6BCA81AA298FD00742FEB /* HMShipDetailViewController.xib */,
-				F4BEE4711AA5E34600979752 /* HMSlotItemFrameView.h */,
-				F4BEE4721AA5E34600979752 /* HMSlotItemFrameView.m */,
-				F4D6BCAB1AA2A60900742FEB /* HMSokuTransformer.h */,
-				F4D6BCAC1AA2A60900742FEB /* HMSokuTransformer.m */,
-				F4D6BCAE1AA2A97100742FEB /* HMLengTransformer.h */,
-				F4D6BCAF1AA2A97200742FEB /* HMLengTransformer.m */,
-				F4D6BCB11AA2B18100742FEB /* HMSlotitemNameTransformer.h */,
-				F4D6BCB21AA2B18100742FEB /* HMSlotitemNameTransformer.m */,
-				F4D6BCB41AA2C10700742FEB /* HMHideEquipNumberTransformer.h */,
-				F4D6BCB51AA2C10700742FEB /* HMHideEquipNumberTransformer.m */,
-				F4D6BCB71AA32BEA00742FEB /* HMFleetViewController.h */,
-				F4D6BCB81AA32BEA00742FEB /* HMFleetViewController.m */,
-				F4D6BCB91AA32BEA00742FEB /* HMFleetViewController.xib */,
-				F4BEE4791AAB025400979752 /* HMFleetMinimumViewController.xib */,
-				F4BEE4741AA9E4EF00979752 /* HMMinimumShipViewController.h */,
-				F4BEE4751AA9E4EF00979752 /* HMMinimumShipViewController.m */,
-				F4BEE4761AA9E4EF00979752 /* HMMinimumShipViewController.xib */,
 			);
 			name = TestAndDebug;
 			path = KCD;
