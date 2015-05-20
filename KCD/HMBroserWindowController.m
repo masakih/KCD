@@ -142,6 +142,11 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 	[self.webView setMainFrameURL:@"http://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/"];
 	//	[self.webView setMainFrameURL:@"http://www.google.com/"];
 	
+	// for Maverick
+	if(floor(NSAppKitVersionNumber) == NSAppKitVersionNumber10_9) {
+		self.webView.layerUsesCoreImageFilters = YES;
+	}
+	
 	[self bind:@"flagShipID" toObject:self.deckContoller withKeyPath:@"selection.ship_0" options:nil];
 	
 	[self bind:@"maxChara" toObject:self.basicController withKeyPath:@"selection.max_chara" options:nil];

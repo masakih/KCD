@@ -24,6 +24,11 @@
 {
 	[self goHome:nil];
 	
+	// for Maverick
+	if(floor(NSAppKitVersionNumber) == NSAppKitVersionNumber10_9) {
+		self.webView.layerUsesCoreImageFilters = YES;
+	}
+	
 	[self.webView addObserver:self
 				   forKeyPath:@"canGoBack"
 					  options:0
