@@ -10,6 +10,7 @@
 
 #import "HMCalculateDamageCommand.h"
 #import "HMDropShipHistoryCommand.h"
+#import "HMDummyShipCommand.h"
 
 
 @implementation HMBattleResultCommand
@@ -31,6 +32,7 @@
 	self = [super initWithCommands:
 			[HMDropShipHistoryCommand new],
 			[HMCalculateDamageCommand new],
+			[HMDummyShipCommand new],
 			nil];
 	return self;
 }
