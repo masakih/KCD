@@ -132,6 +132,7 @@
 		F4BEEE9F18D211280006F70C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4BEEE9D18D211280006F70C /* Localizable.strings */; };
 		F4BEEFDB1B0A219E004702B8 /* HMShipDeckCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BEEFDA1B0A219E004702B8 /* HMShipDeckCommand.m */; };
 		F4BEEFE11B0B6326004702B8 /* HMDummyShipCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BEEFE01B0B6326004702B8 /* HMDummyShipCommand.m */; };
+		F4BEEFE91B0CE312004702B8 /* HMAPIResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BEEFE81B0CE312004702B8 /* HMAPIResult.m */; };
 		F4C041BA1875CAF5009273EB /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4C041B91875CAF5009273EB /* JavaScriptCore.framework */; };
 		F4C118FA18A67B1C005D5B25 /* CacheStoragePolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C118F518A67B1C005D5B25 /* CacheStoragePolicy.m */; };
 		F4C118FB18A67B1C005D5B25 /* CanonicalRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C118F718A67B1C005D5B25 /* CanonicalRequest.m */; };
@@ -404,6 +405,8 @@
 		F4BEEFDA1B0A219E004702B8 /* HMShipDeckCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMShipDeckCommand.m; sourceTree = "<group>"; };
 		F4BEEFDF1B0B6326004702B8 /* HMDummyShipCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDummyShipCommand.h; sourceTree = "<group>"; };
 		F4BEEFE01B0B6326004702B8 /* HMDummyShipCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDummyShipCommand.m; sourceTree = "<group>"; };
+		F4BEEFE71B0CE312004702B8 /* HMAPIResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMAPIResult.h; sourceTree = "<group>"; };
+		F4BEEFE81B0CE312004702B8 /* HMAPIResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMAPIResult.m; sourceTree = "<group>"; };
 		F4C041B91875CAF5009273EB /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F4C118F418A67B1C005D5B25 /* CacheStoragePolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheStoragePolicy.h; sourceTree = "<group>"; };
 		F4C118F518A67B1C005D5B25 /* CacheStoragePolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheStoragePolicy.m; sourceTree = "<group>"; };
@@ -559,6 +562,8 @@
 				F4C3957318CDDFE500A1E918 /* HMKenzoDockStatus.m */,
 				F454F7811A261844003042DD /* HMFleetInformation.h */,
 				F454F7821A261844003042DD /* HMFleetInformation.m */,
+				F4BEEFE71B0CE312004702B8 /* HMAPIResult.h */,
+				F4BEEFE81B0CE312004702B8 /* HMAPIResult.m */,
 				F4D2CBBF18ACE7D7000EBC59 /* Command */,
 				F4BEEEA918D890660006F70C /* UI */,
 				F4BEEEA818D88FF30006F70C /* CoreData */,
@@ -1020,6 +1025,7 @@
 				F426802B194D0F4800B2C27F /* HMMemberShip2Command.m in Sources */,
 				F4AA06101931869E00844688 /* HMBattleResultCommand.m in Sources */,
 				F4B37EF019FADFC9002F371A /* HMIgnoreZeroTransformer.m in Sources */,
+				F4BEEFE91B0CE312004702B8 /* HMAPIResult.m in Sources */,
 				F4B3DC4418E70B370011B4FC /* HMServerDataStore.m in Sources */,
 				F4AA0607192E3B6200844688 /* HMMapStartCommand.m in Sources */,
 				F4AA0604192E20F500844688 /* HMCalculateDamageCommand.m in Sources */,
