@@ -82,5 +82,18 @@
 	}
 }
 
+- (void)setJson:(id)json
+{
+	for(id command in self.commands) {
+		[command setJson:json];
+	}
+}
+- (void)setArguments:(NSDictionary *)arguments
+{
+	for(id command in self.commands) {
+		[command setArguments:arguments];
+	}
+}
+
 
 @end

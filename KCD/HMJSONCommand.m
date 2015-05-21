@@ -64,6 +64,42 @@ static NSMutableArray *registeredCommands = nil;
 	
 	return nil;
 }
++ (HMJSONCommand *)commandForAPIResult:(HMAPIResult *)apiResult
+{
+	for(Class commandClass in registeredCommands) {
+		if([commandClass canExcuteAPI:apiResult.api]) {
+			HMJSONCommand *command =  [commandClass new];
+			command.api = apiResult.api;
+			command.arguments = apiResult.parameter;
+			command.json = apiResult.json;
+			
+#if ENABLE_JSON_LOG_HANDLED_API
+			HMJSONViewCommand *viewCommand = [HMJSONViewCommand new];
+			viewCommand.api = apiResult.api;
+			viewCommand.arguments = apiResult.parameter;
+			viewCommand.json = apiResult.json;
+			viewCommand.argumentArray = apiResult.argumentArray;
+			viewCommand.jsonTree = @[[HMJSONNode nodeWithJSON:apiResult.json]];
+			viewCommand.recieveDate = apiResult.date;
+			
+			command = [HMCompositCommand compositCommandWithCommands:command, viewCommand, nil];
+#endif
+			return command;
+		}
+	}
+#if ENABLE_JSON_LOG
+	HMJSONViewCommand *viewCommand = [HMJSONViewCommand new];
+	viewCommand.api = apiResult.api;
+	viewCommand.arguments = apiResult.parameter;
+	viewCommand.json = apiResult.json;
+	viewCommand.argumentArray = apiResult.argumentArray;
+	viewCommand.jsonTree = @[[HMJSONNode nodeWithJSON:apiResult.json]];
+	viewCommand.recieveDate = apiResult.date;
+	return viewCommand;
+#endif
+	
+	return nil;
+}
 
 + (void)registerClass:(Class)commandClass
 {

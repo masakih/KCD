@@ -47,11 +47,13 @@ static HMJSONTracker *sTracker = nil;
 		while(YES) {
 			@autoreleasepool {
 				@try {
-					NSDictionary *item = [self.queue dequeue];
-					HMJSONCommand *command = [HMJSONCommand commandForAPI:[item objectForKey:@"api"]];
-					command.argumentsString = [item objectForKey:@"argument"];
-					command.jsonData = [item objectForKey:@"json"];
-					command.recieveDate = [item objectForKey:@"date"];
+					id item = [self.queue dequeue];
+//					HMJSONCommand *command = [HMJSONCommand commandForAPI:[item objectForKey:@"api"]];
+//					command.argumentsString = [item objectForKey:@"argument"];
+//					command.jsonData = [item objectForKey:@"json"];
+//					command.recieveDate = [item objectForKey:@"date"];
+					
+					HMJSONCommand *command = [HMJSONCommand commandForAPIResult:item];
 					
 					[command execute];
 					[NSThread sleepForTimeInterval:0.1];
