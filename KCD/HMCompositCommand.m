@@ -63,18 +63,6 @@
 		[command setApi:api];
 	}
 }
-- (void)setArgumentsString:(NSString *)argumentsString
-{
-	for(id command in self.commands) {
-		[command setArgumentsString:argumentsString];
-	}
-}
-- (void)setJsonData:(NSData *)jsonData
-{
-	for(id command in self.commands) {
-		[command setJsonData:jsonData];
-	}
-}
 - (void)setRecieveDate:(NSDate *)recieveDate
 {
 	for(id command in self.commands) {

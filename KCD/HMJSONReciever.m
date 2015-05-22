@@ -73,28 +73,7 @@
 	NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 	[[NSApp delegate] logLineReturn:@"body -> \n%@", string];
 #else
-//	NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-//	NSArray *elements = [string componentsSeparatedByString:@"="];
-//	if([elements count] != 2) {
-//		HMAppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
-//		[appDelegate logLineReturn:@"\e[1mwe could not compose data. api -> %@. Number of elements:\e[22m %ld", protocol.request.URL.path, [elements count]];
-//		[appDelegate logLineReturn:@"Original strings -> %@", string];
-//		[self removeDataForProtocol:protocol];
-//		return;
-//	}
-//	NSData *JSONData = [elements[1] dataUsingEncoding:NSUTF8StringEncoding];
-//	
-//	NSData *requestBodyData = [protocol.request HTTPBody];
-//	NSString *requestBodyString = [[NSString alloc] initWithData:requestBodyData encoding:NSUTF8StringEncoding];
 	HMAPIResult *apiResult = [[HMAPIResult alloc] initWithRequest:protocol.request data:data];
-//	NSLog(@"api -> %@", apiResult.api);
-//	NSLog(@"success -> %@", apiResult.success ? @"YES" : @"NO");
-//	if(apiResult.success) {
-//		NSLog(@"json -> %@", apiResult.json);
-//		NSLog(@"param -> %@", apiResult.parameter);
-//	}
-	
-//	[self.queueu enqueue:@{@"api" : protocol.request.URL.path, @"argument": requestBodyString, @"json" : JSONData, @"date": [NSDate dateWithTimeIntervalSinceNow:0]}];
 	[self.queueu enqueue:apiResult];
 #endif
 	

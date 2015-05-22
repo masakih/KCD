@@ -42,51 +42,10 @@ static NSMutableArray *registeredCommands = nil;
 	});
 }
 
-+ (HMJSONCommand *)commandForAPI:(NSString *)api
-{
-	for(Class commandClass in registeredCommands) {
-		if([commandClass canExcuteAPI:api]) {
-			HMJSONCommand *command =  [commandClass new];
-			command.api = api;
-#if ENABLE_JSON_LOG_HANDLED_API
-			HMJSONViewCommand *viewCommand = [HMJSONViewCommand new];
-			viewCommand.api = api;
-			command = [HMCompositCommand compositCommandWithCommands:command, viewCommand, nil];
-#endif
-			return command;
-		}
-	}
-#if ENABLE_JSON_LOG
-	HMJSONViewCommand *viewCommand = [HMJSONViewCommand new];
-	viewCommand.api = api;
-	return viewCommand;
-#endif
-	
-	return nil;
-}
 + (HMJSONCommand *)commandForAPIResult:(HMAPIResult *)apiResult
 {
-	for(Class commandClass in registeredCommands) {
-		if([commandClass canExcuteAPI:apiResult.api]) {
-			HMJSONCommand *command =  [commandClass new];
-			command.api = apiResult.api;
-			command.arguments = apiResult.parameter;
-			command.json = apiResult.json;
-			
-#if ENABLE_JSON_LOG_HANDLED_API
-			HMJSONViewCommand *viewCommand = [HMJSONViewCommand new];
-			viewCommand.api = apiResult.api;
-			viewCommand.arguments = apiResult.parameter;
-			viewCommand.json = apiResult.json;
-			viewCommand.argumentArray = apiResult.argumentArray;
-			viewCommand.jsonTree = @[[HMJSONNode nodeWithJSON:apiResult.json]];
-			viewCommand.recieveDate = apiResult.date;
-			
-			command = [HMCompositCommand compositCommandWithCommands:command, viewCommand, nil];
-#endif
-			return command;
-		}
-	}
+	HMJSONCommand *command = nil;
+	
 #if ENABLE_JSON_LOG
 	HMJSONViewCommand *viewCommand = [HMJSONViewCommand new];
 	viewCommand.api = apiResult.api;
@@ -95,10 +54,25 @@ static NSMutableArray *registeredCommands = nil;
 	viewCommand.argumentArray = apiResult.argumentArray;
 	viewCommand.jsonTree = @[[HMJSONNode nodeWithJSON:apiResult.json]];
 	viewCommand.recieveDate = apiResult.date;
-	return viewCommand;
+	
+	command = viewCommand;
 #endif
 	
-	return nil;
+	for(Class commandClass in registeredCommands) {
+		if([commandClass canExcuteAPI:apiResult.api]) {
+			command =  [commandClass new];
+			command.api = apiResult.api;
+			command.arguments = apiResult.parameter;
+			command.json = apiResult.json;
+			
+#if ENABLE_JSON_LOG_HANDLED_API
+			command = [HMCompositCommand compositCommandWithCommands:command, viewCommand, nil];
+#endif
+			return command;
+		}
+	}
+	
+	return command;
 }
 
 + (void)registerClass:(Class)commandClass
@@ -106,72 +80,6 @@ static NSMutableArray *registeredCommands = nil;
 	if(!commandClass) return;
 	if([registeredCommands containsObject:commandClass]) return;
 	[registeredCommands addObject:commandClass];
-}
-
-
-- (void)setArgumentsString:(NSString *)argumentsString
-{
-	_argumentsString = [argumentsString copy];
-	
-	NSString *unescape = [_argumentsString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-	NSArray *pair = [unescape componentsSeparatedByString:@"&"];
-	NSMutableDictionary *dict = [NSMutableDictionary new];
-	for(NSString *p in pair) {
-		NSArray *pp = [p componentsSeparatedByString:@"="];
-		if([pp count] != 2) {
-			NSLog(@"API (%@): Bad Argument: pair is odd.", self.api);
-			continue;
-		}
-		[dict setObject:pp[1] forKey:pp[0]];
-	}
-	self.arguments = dict;
-	
-#if ENABLE_JSON_LOG
-	NSMutableArray *array = [NSMutableArray new];
-	for(NSString *p in pair) {
-		NSArray *pp = [p componentsSeparatedByString:@"="];
-		if([pp count] != 2) {
-			NSLog(@"API (%@): Bad Argument: pair is odd.", self.api);
-			continue;
-		}
-		[array addObject:@{@"key": pp[0], @"value": pp[1]}];
-	}
-	self.argumentArray = array;
-#endif
-}
-- (NSString *)argumentsString
-{
-	return [_argumentsString copy];
-}
-
-- (void)setJsonData:(NSData *)jsonData
-{
-	NSError *error = nil;
-	id json = [NSJSONSerialization JSONObjectWithData:jsonData
-											  options:NSJSONReadingAllowFragments
-												error:&error];
-	if(error) {
-		HMAppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
-		[appDelegate logLineReturn:@"\e[1m\e[31mFail decode JSON data\e[39m\e[22m %@", error];
-		return;
-	}
-	if(![json isKindOfClass:[NSDictionary class]]) {
-		[self log:@"JSON is NOT NSDictionary."];
-		return;
-	}
-	if(![[json objectForKey:@"api_result"] isEqual:@1]) {
-		[self log:@"API result is fail."];
-		return;
-	}
-	self.json = json;
-	
-#if ENABLE_JSON_LOG
-	self.jsonTree = @[[HMJSONNode nodeWithJSON:json]];
-#endif
-}
-- (NSData *)jsonData
-{
-	return _jsonData;
 }
 
 NSString *keyByDeletingPrefix(NSString *key)

@@ -13,7 +13,6 @@
 
 @interface HMJSONCommand : NSObject
 
-+ (HMJSONCommand *)commandForAPI:(NSString *)api;
 + (HMJSONCommand *)commandForAPIResult:(HMAPIResult *)apiResult;
 
 @property (copy) NSString *argumentsString;
