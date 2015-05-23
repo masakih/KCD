@@ -31,14 +31,14 @@
 	self = [super init];
 	if(self) {
 		NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-		NSArray *elements = [string componentsSeparatedByString:@"="];
-		if([elements count] != 2) {
+		if(![string hasPrefix:@"svdata="]) {
 			HMAppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
-			[appDelegate logLineReturn:@"we could not compose data. api -> %@. Number of elements: %ld", request.URL.path, [elements count]];
+			[appDelegate logLineReturn:@"recive data has not prefix svdata=. api -> %@.", request.URL.path];
 			[appDelegate logLineReturn:@"Original strings -> %@", string];
 			return nil;
 		}
-		_jsonData = [elements[1] dataUsingEncoding:NSUTF8StringEncoding];
+		string = [string substringFromIndex:strlen("svdata=")];
+		_jsonData = [string dataUsingEncoding:NSUTF8StringEncoding];
 		
 		NSData *requestBodyData = [request HTTPBody];
 		_paramString = [[NSString alloc] initWithData:requestBodyData encoding:NSUTF8StringEncoding];
