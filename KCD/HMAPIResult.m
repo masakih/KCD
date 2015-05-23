@@ -34,7 +34,7 @@
 		NSArray *elements = [string componentsSeparatedByString:@"="];
 		if([elements count] != 2) {
 			HMAppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
-			[appDelegate logLineReturn:@"\e[1mwe could not compose data. api -> %@. Number of elements:\e[22m %ld", request.URL.path, [elements count]];
+			[appDelegate logLineReturn:@"we could not compose data. api -> %@. Number of elements: %ld", request.URL.path, [elements count]];
 			[appDelegate logLineReturn:@"Original strings -> %@", string];
 			return nil;
 		}
@@ -58,7 +58,7 @@
 												error:&error];
 	if(error) {
 		HMAppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
-		[appDelegate logLineReturn:@"\e[1m\e[31mFail decode JSON data\e[39m\e[22m %@", error];
+		[appDelegate logLineReturn:@"Fail decode JSON data %@", error];
 		return;
 	}
 	if(![json isKindOfClass:[NSDictionary class]]) {
