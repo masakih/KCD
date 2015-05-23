@@ -74,7 +74,9 @@
 	[[NSApp delegate] logLineReturn:@"body -> \n%@", string];
 #else
 	HMAPIResult *apiResult = [[HMAPIResult alloc] initWithRequest:protocol.request data:data];
-	[self.queueu enqueue:apiResult];
+	if(apiResult) {
+		[self.queueu enqueue:apiResult];
+	}
 #endif
 	
 	
