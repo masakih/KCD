@@ -21,3 +21,5 @@ s/%1$@ in sortie into %2$@ (%3$@)/%1$@が\\n（%3$@）%2$@\\nに出撃中/
 s/All/すべて/2
 s/Equiped/装備済み/2
 s/Unequiped/未装備/2
+s/Reload/リロード/2
+s/Back To Game/ゲームに戻る/2

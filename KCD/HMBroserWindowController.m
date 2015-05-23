@@ -38,6 +38,9 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 	kOldStyle = 0xffffffff,
 };
 
+static NSString *gamePageURL = @"http://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/";
+static NSString *loginPageURLPrefix = @"https://www.dmm.com/my/-/login/=/";
+
 @interface HMBroserWindowController ()
 @property NSPoint flashTopLeft;
 
@@ -138,9 +141,8 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 	
 	[[[self.webView mainFrame] frameView] setAllowsScrolling:NO];
 	
-	[self.webView setApplicationNameForUserAgent:@"Version/7.1 Safari/537.85.10"];
-	[self.webView setMainFrameURL:@"http://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/"];
-	//	[self.webView setMainFrameURL:@"http://www.google.com/"];
+	[self.webView setApplicationNameForUserAgent:@"Version/8.0.6 Safari/600.6.3"];
+	[self.webView setMainFrameURL:gamePageURL];
 	
 	// for Maverick
 	if(floor(NSAppKitVersionNumber) == NSAppKitVersionNumber10_9) {
@@ -180,6 +182,18 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 
 - (IBAction)reloadContent:(id)sender
 {
+	// ゲームページでない場合はゲームページを表示する
+	NSString *currentURL = self.webView.mainFrameURL;
+	if(![currentURL isEqualToString:gamePageURL]) {
+		[self.webView setMainFrameURL:gamePageURL];
+		[self adjustFlash];
+		return;
+	}
+	if([currentURL hasPrefix:loginPageURLPrefix]) {
+		[self.webView reload:sender];
+		return;
+	}
+	
 	[self adjustFlash];
 	
 	NSDate *prevDate = HMStandardDefaults.prevReloadDate;
@@ -467,6 +481,13 @@ const CGFloat flashTopMargin = 4;
 	SEL action = menuItem.action;
 	
 	if(action == @selector(reloadContent:)) {
+		if([self.webView.mainFrameURL isEqualToString:gamePageURL]) {
+			menuItem.title = NSLocalizedString(@"Reload", @"Reload menu, reload");
+		} else if ([self.webView.mainFrameURL hasPrefix:loginPageURLPrefix]) {
+			menuItem.title = NSLocalizedString(@"Reload", @"Reload menu, reload");
+		} else {
+			menuItem.title = NSLocalizedString(@"Back To Game", @"Reload menu, back to game");
+		}
 		return YES;
 	}
 	if(action == @selector(selectView:)) {
