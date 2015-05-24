@@ -37,7 +37,7 @@ HMUserDefaults *HMStandardDefaults = nil;
 		   @"plan03Color" : [NSKeyedArchiver archivedDataWithRootObject:plan03Color],
 		   @"screenshotPreviewZoomValue" : @(0.4),
 		   @"showEquipmentType" : @(-1),
-		   @"fleetViewPosition" : @(1),
+		   @"fleetViewPosition" : @(0xffffffff),
 		   }
 		 ];
 	});
