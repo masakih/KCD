@@ -224,6 +224,11 @@
 	return [[fileManager URLsForDirectory:NSPicturesDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
+- (NSString *)appNameForUserAgent
+{
+	return @"Version/8.0.6 Safari/600.6.3";
+}
+
 #ifdef DEBUG
 - (HMFleetInformation *)fleetInformation
 {

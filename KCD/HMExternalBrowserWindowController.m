@@ -8,6 +8,8 @@
 
 #import "HMExternalBrowserWindowController.h"
 
+#import "HMAppDelegate.h"
+
 @interface HMExternalBrowserWindowController ()
 
 @end
@@ -37,6 +39,9 @@
 				   forKeyPath:@"canGoForward"
 					  options:0
 					  context:(__bridge void *)(self.webView)];
+	
+	HMAppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+	[self.webView setApplicationNameForUserAgent:appDelegate.appNameForUserAgent];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context

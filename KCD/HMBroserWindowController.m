@@ -141,7 +141,8 @@ static NSString *loginPageURLPrefix = @"https://www.dmm.com/my/-/login/=/";
 	
 	[[[self.webView mainFrame] frameView] setAllowsScrolling:NO];
 	
-	[self.webView setApplicationNameForUserAgent:@"Version/8.0.6 Safari/600.6.3"];
+	HMAppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+	[self.webView setApplicationNameForUserAgent:appDelegate.appNameForUserAgent];
 	[self.webView setMainFrameURL:gamePageURL];
 	
 	// for Maverick

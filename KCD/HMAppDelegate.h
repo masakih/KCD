@@ -54,4 +54,6 @@ typedef NS_ENUM(NSUInteger, HMShipType) {
 @property (strong) HMJSONViewWindowController *jsonViewWindowController;
 #endif
 
+@property (readonly) NSString *appNameForUserAgent;
+
 @end
