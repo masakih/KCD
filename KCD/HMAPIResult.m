@@ -117,6 +117,7 @@
 	[self parseParameter];
 	return _parameter;
 }
+#if ENABLE_JSON_LOG
 - (NSArray *)argumentArray
 {
 	if(_argumentArray) return _argumentArray;
@@ -124,6 +125,7 @@
 	[self parseParameter];
 	return _argumentArray;
 }
+#endif
 
 - (BOOL)success
 {
