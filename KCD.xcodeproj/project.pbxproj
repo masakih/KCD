@@ -81,7 +81,6 @@
 		F4B1E30C19D1C06900805879 /* HMHokyuChargeCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B1E30B19D1C06900805879 /* HMHokyuChargeCommand.m */; };
 		F4B1E30F19D1C9C400805879 /* HMApplySuppliesCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B1E30E19D1C9C400805879 /* HMApplySuppliesCommand.m */; };
 		F4B2A08F1A1F9C2100D2EF12 /* HMExternalBrowserWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B2A08D1A1F9C2100D2EF12 /* HMExternalBrowserWindowController.m */; };
-		F4B2A0901A1F9C2100D2EF12 /* HMExternalBrowserWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B2A08E1A1F9C2100D2EF12 /* HMExternalBrowserWindowController.xib */; };
 		F4B2D02B18F83A2F00542742 /* HMScreenshotWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B2D02D18F83A2F00542742 /* HMScreenshotWindowController.xib */; };
 		F4B37EF019FADFC9002F371A /* HMIgnoreZeroTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B37EEF19FADFC9002F371A /* HMIgnoreZeroTransformer.m */; };
 		F4B37EF319FBBBED002F371A /* HMRemodelSlotCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B37EF219FBBBED002F371A /* HMRemodelSlotCommand.m */; };
@@ -127,12 +126,17 @@
 		F4BDEB7B187253130069D0CE /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4BDEB7A187253130069D0CE /* WebKit.framework */; };
 		F4BEE4731AA5E34600979752 /* HMSlotItemFrameView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BEE4721AA5E34600979752 /* HMSlotItemFrameView.m */; };
 		F4BEE4771AA9E4EF00979752 /* HMMinimumShipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BEE4751AA9E4EF00979752 /* HMMinimumShipViewController.m */; };
-		F4BEE4781AA9E4EF00979752 /* HMMinimumShipViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BEE4761AA9E4EF00979752 /* HMMinimumShipViewController.xib */; };
-		F4BEE47A1AAB025400979752 /* HMFleetMinimumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BEE4791AAB025400979752 /* HMFleetMinimumViewController.xib */; };
 		F4BEEE9F18D211280006F70C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4BEEE9D18D211280006F70C /* Localizable.strings */; };
 		F4BEEFDB1B0A219E004702B8 /* HMShipDeckCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BEEFDA1B0A219E004702B8 /* HMShipDeckCommand.m */; };
 		F4BEEFE11B0B6326004702B8 /* HMDummyShipCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BEEFE01B0B6326004702B8 /* HMDummyShipCommand.m */; };
 		F4BEEFE91B0CE312004702B8 /* HMAPIResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BEEFE81B0CE312004702B8 /* HMAPIResult.m */; };
+		F4BEEFFC1B11A5A7004702B8 /* HMExternalBrowserWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BEEFFE1B11A5A7004702B8 /* HMExternalBrowserWindowController.xib */; };
+		F4BEEFFF1B11A5C2004702B8 /* HMMinimumShipViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BEF0011B11A5C2004702B8 /* HMMinimumShipViewController.xib */; };
+		F4BEF0021B11A5CC004702B8 /* HMFleetMinimumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BEF0041B11A5CC004702B8 /* HMFleetMinimumViewController.xib */; };
+		F4BEF0051B11A5D3004702B8 /* HMFleetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BEF0071B11A5D3004702B8 /* HMFleetViewController.xib */; };
+		F4BEF0081B11A5DE004702B8 /* HMShipDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BEF00A1B11A5DE004702B8 /* HMShipDetailViewController.xib */; };
+		F4BEF00B1B11A628004702B8 /* HMShipMasterDetailWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BEF00D1B11A628004702B8 /* HMShipMasterDetailWindowController.xib */; };
+		F4BEF00E1B11A645004702B8 /* HMUITestWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BEF0101B11A645004702B8 /* HMUITestWindowController.xib */; };
 		F4C041BA1875CAF5009273EB /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4C041B91875CAF5009273EB /* JavaScriptCore.framework */; };
 		F4C118FA18A67B1C005D5B25 /* CacheStoragePolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C118F518A67B1C005D5B25 /* CacheStoragePolicy.m */; };
 		F4C118FB18A67B1C005D5B25 /* CanonicalRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C118F718A67B1C005D5B25 /* CanonicalRequest.m */; };
@@ -149,22 +153,18 @@
 		F4D6BC4F1A938EFC00742FEB /* HMDropShipHistoryCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D6BC4E1A938EFC00742FEB /* HMDropShipHistoryCommand.m */; };
 		F4D6BC551A93903E00742FEB /* HMDropShipHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D6BC541A93903E00742FEB /* HMDropShipHistory.m */; };
 		F4D6BC9C1AA1FAC700742FEB /* HMUITestWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D6BC9A1AA1FAC600742FEB /* HMUITestWindowController.m */; };
-		F4D6BC9D1AA1FAC700742FEB /* HMUITestWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D6BC9B1AA1FAC600742FEB /* HMUITestWindowController.xib */; };
 		F4D6BCA91AA298FD00742FEB /* HMShipDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D6BCA71AA298FD00742FEB /* HMShipDetailViewController.m */; };
-		F4D6BCAA1AA298FD00742FEB /* HMShipDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D6BCA81AA298FD00742FEB /* HMShipDetailViewController.xib */; };
 		F4D6BCAD1AA2A60900742FEB /* HMSokuTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D6BCAC1AA2A60900742FEB /* HMSokuTransformer.m */; };
 		F4D6BCB01AA2A97200742FEB /* HMLengTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D6BCAF1AA2A97200742FEB /* HMLengTransformer.m */; };
 		F4D6BCB31AA2B18100742FEB /* HMSlotitemNameTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D6BCB21AA2B18100742FEB /* HMSlotitemNameTransformer.m */; };
 		F4D6BCB61AA2C10700742FEB /* HMHideEquipNumberTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D6BCB51AA2C10700742FEB /* HMHideEquipNumberTransformer.m */; };
 		F4D6BCBA1AA32BEA00742FEB /* HMFleetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D6BCB81AA32BEA00742FEB /* HMFleetViewController.m */; };
-		F4D6BCBB1AA32BEB00742FEB /* HMFleetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D6BCB91AA32BEA00742FEB /* HMFleetViewController.xib */; };
 		F4E33B5818BF5F67005B8C07 /* HMMemberSlotItemCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E33B5718BF5F67005B8C07 /* HMMemberSlotItemCommand.m */; };
 		F4E7802818DBD2A00011BC4C /* HMGetShipCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E7802718DBD2A00011BC4C /* HMGetShipCommand.m */; };
 		F4E7802B18DC3A820011BC4C /* HMLocalDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E7802A18DC3A820011BC4C /* HMLocalDataStore.m */; };
 		F4E7802E18DC3AF00011BC4C /* LocalData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4E7802C18DC3AF00011BC4C /* LocalData.xcdatamodeld */; };
 		F4FCFD44191F4C1D000640A1 /* HMKenzoMarkCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FCFD43191F4C1D000640A1 /* HMKenzoMarkCommand.m */; };
 		F4FDF2411A3D50420033E0AD /* HMShipMasterDetailWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FDF23F1A3D50420033E0AD /* HMShipMasterDetailWindowController.m */; };
-		F4FDF2421A3D50420033E0AD /* HMShipMasterDetailWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4FDF2401A3D50420033E0AD /* HMShipMasterDetailWindowController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -319,7 +319,6 @@
 		F4B1E30E19D1C9C400805879 /* HMApplySuppliesCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMApplySuppliesCommand.m; sourceTree = "<group>"; };
 		F4B2A08C1A1F9C2100D2EF12 /* HMExternalBrowserWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMExternalBrowserWindowController.h; sourceTree = "<group>"; };
 		F4B2A08D1A1F9C2100D2EF12 /* HMExternalBrowserWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMExternalBrowserWindowController.m; sourceTree = "<group>"; };
-		F4B2A08E1A1F9C2100D2EF12 /* HMExternalBrowserWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMExternalBrowserWindowController.xib; sourceTree = "<group>"; };
 		F4B2D02C18F83A2F00542742 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMScreenshotWindowController.xib; sourceTree = "<group>"; };
 		F4B37EEE19FADFC9002F371A /* HMIgnoreZeroTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMIgnoreZeroTransformer.h; sourceTree = "<group>"; };
 		F4B37EEF19FADFC9002F371A /* HMIgnoreZeroTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMIgnoreZeroTransformer.m; sourceTree = "<group>"; };
@@ -395,8 +394,6 @@
 		F4BEE4721AA5E34600979752 /* HMSlotItemFrameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSlotItemFrameView.m; sourceTree = "<group>"; };
 		F4BEE4741AA9E4EF00979752 /* HMMinimumShipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMinimumShipViewController.h; sourceTree = "<group>"; };
 		F4BEE4751AA9E4EF00979752 /* HMMinimumShipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMinimumShipViewController.m; sourceTree = "<group>"; };
-		F4BEE4761AA9E4EF00979752 /* HMMinimumShipViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMMinimumShipViewController.xib; sourceTree = "<group>"; };
-		F4BEE4791AAB025400979752 /* HMFleetMinimumViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMFleetMinimumViewController.xib; sourceTree = "<group>"; };
 		F4BEEE9E18D211280006F70C /* ja */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F4BEEEA118D211360006F70C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text; name = ja; path = ja.lproj/Localizable.strings.sed; sourceTree = "<group>"; };
 		F4BEEEA418D211500006F70C /* ja */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; name = ja; path = ja.lproj/Makefile; sourceTree = "<group>"; };
@@ -407,6 +404,13 @@
 		F4BEEFE01B0B6326004702B8 /* HMDummyShipCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDummyShipCommand.m; sourceTree = "<group>"; };
 		F4BEEFE71B0CE312004702B8 /* HMAPIResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMAPIResult.h; sourceTree = "<group>"; };
 		F4BEEFE81B0CE312004702B8 /* HMAPIResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMAPIResult.m; sourceTree = "<group>"; };
+		F4BEEFFD1B11A5A7004702B8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMExternalBrowserWindowController.xib; sourceTree = "<group>"; };
+		F4BEF0001B11A5C2004702B8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMMinimumShipViewController.xib; sourceTree = "<group>"; };
+		F4BEF0031B11A5CC004702B8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMFleetMinimumViewController.xib; sourceTree = "<group>"; };
+		F4BEF0061B11A5D3004702B8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMFleetViewController.xib; sourceTree = "<group>"; };
+		F4BEF0091B11A5DE004702B8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMShipDetailViewController.xib; sourceTree = "<group>"; };
+		F4BEF00C1B11A628004702B8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMShipMasterDetailWindowController.xib; sourceTree = "<group>"; };
+		F4BEF00F1B11A645004702B8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMUITestWindowController.xib; sourceTree = "<group>"; };
 		F4C041B91875CAF5009273EB /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F4C118F418A67B1C005D5B25 /* CacheStoragePolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheStoragePolicy.h; sourceTree = "<group>"; };
 		F4C118F518A67B1C005D5B25 /* CacheStoragePolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheStoragePolicy.m; sourceTree = "<group>"; };
@@ -439,10 +443,8 @@
 		F4D6BC541A93903E00742FEB /* HMDropShipHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDropShipHistory.m; sourceTree = "<group>"; };
 		F4D6BC991AA1FAC600742FEB /* HMUITestWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMUITestWindowController.h; sourceTree = "<group>"; };
 		F4D6BC9A1AA1FAC600742FEB /* HMUITestWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMUITestWindowController.m; sourceTree = "<group>"; };
-		F4D6BC9B1AA1FAC600742FEB /* HMUITestWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMUITestWindowController.xib; sourceTree = "<group>"; };
 		F4D6BCA61AA298FD00742FEB /* HMShipDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMShipDetailViewController.h; sourceTree = "<group>"; };
 		F4D6BCA71AA298FD00742FEB /* HMShipDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMShipDetailViewController.m; sourceTree = "<group>"; };
-		F4D6BCA81AA298FD00742FEB /* HMShipDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMShipDetailViewController.xib; sourceTree = "<group>"; };
 		F4D6BCAB1AA2A60900742FEB /* HMSokuTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSokuTransformer.h; sourceTree = "<group>"; };
 		F4D6BCAC1AA2A60900742FEB /* HMSokuTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSokuTransformer.m; sourceTree = "<group>"; };
 		F4D6BCAE1AA2A97100742FEB /* HMLengTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMLengTransformer.h; sourceTree = "<group>"; };
@@ -453,7 +455,6 @@
 		F4D6BCB51AA2C10700742FEB /* HMHideEquipNumberTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMHideEquipNumberTransformer.m; sourceTree = "<group>"; };
 		F4D6BCB71AA32BEA00742FEB /* HMFleetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMFleetViewController.h; sourceTree = "<group>"; };
 		F4D6BCB81AA32BEA00742FEB /* HMFleetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMFleetViewController.m; sourceTree = "<group>"; };
-		F4D6BCB91AA32BEA00742FEB /* HMFleetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMFleetViewController.xib; sourceTree = "<group>"; };
 		F4E33B5618BF5F67005B8C07 /* HMMemberSlotItemCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMemberSlotItemCommand.h; sourceTree = "<group>"; };
 		F4E33B5718BF5F67005B8C07 /* HMMemberSlotItemCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMemberSlotItemCommand.m; sourceTree = "<group>"; };
 		F4E7802618DBD2A00011BC4C /* HMGetShipCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGetShipCommand.h; sourceTree = "<group>"; };
@@ -465,7 +466,6 @@
 		F4FCFD43191F4C1D000640A1 /* HMKenzoMarkCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKenzoMarkCommand.m; sourceTree = "<group>"; };
 		F4FDF23E1A3D50420033E0AD /* HMShipMasterDetailWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMShipMasterDetailWindowController.h; sourceTree = "<group>"; };
 		F4FDF23F1A3D50420033E0AD /* HMShipMasterDetailWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMShipMasterDetailWindowController.m; sourceTree = "<group>"; };
-		F4FDF2401A3D50420033E0AD /* HMShipMasterDetailWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMShipMasterDetailWindowController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -684,7 +684,7 @@
 				F4A2AF5A1A0F9B490024BD9E /* HMScreenshotInformation.m */,
 				F4B2A08C1A1F9C2100D2EF12 /* HMExternalBrowserWindowController.h */,
 				F4B2A08D1A1F9C2100D2EF12 /* HMExternalBrowserWindowController.m */,
-				F4B2A08E1A1F9C2100D2EF12 /* HMExternalBrowserWindowController.xib */,
+				F4BEEFFE1B11A5A7004702B8 /* HMExternalBrowserWindowController.xib */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -729,16 +729,16 @@
 				F494DC6818C8BAB900AE97E4 /* HMPowerUpSupportViewController.xib */,
 				F4D6BCA61AA298FD00742FEB /* HMShipDetailViewController.h */,
 				F4D6BCA71AA298FD00742FEB /* HMShipDetailViewController.m */,
-				F4D6BCA81AA298FD00742FEB /* HMShipDetailViewController.xib */,
+				F4BEF00A1B11A5DE004702B8 /* HMShipDetailViewController.xib */,
 				F4BEE4711AA5E34600979752 /* HMSlotItemFrameView.h */,
 				F4BEE4721AA5E34600979752 /* HMSlotItemFrameView.m */,
 				F4D6BCB71AA32BEA00742FEB /* HMFleetViewController.h */,
 				F4D6BCB81AA32BEA00742FEB /* HMFleetViewController.m */,
-				F4D6BCB91AA32BEA00742FEB /* HMFleetViewController.xib */,
-				F4BEE4791AAB025400979752 /* HMFleetMinimumViewController.xib */,
+				F4BEF0071B11A5D3004702B8 /* HMFleetViewController.xib */,
+				F4BEF0041B11A5CC004702B8 /* HMFleetMinimumViewController.xib */,
 				F4BEE4741AA9E4EF00979752 /* HMMinimumShipViewController.h */,
 				F4BEE4751AA9E4EF00979752 /* HMMinimumShipViewController.m */,
-				F4BEE4761AA9E4EF00979752 /* HMMinimumShipViewController.xib */,
+				F4BEF0011B11A5C2004702B8 /* HMMinimumShipViewController.xib */,
 				F4B1E30319C73B6A00805879 /* HMSuppliesCell.h */,
 				F4B1E30419C73B6A00805879 /* HMSuppliesCell.m */,
 				F4B1E30519C73B6A00805879 /* HMSuppliesView.h */,
@@ -884,7 +884,7 @@
 				F46F104018A9B85E0063E503 /* HMJSONNode.m */,
 				F4FDF23E1A3D50420033E0AD /* HMShipMasterDetailWindowController.h */,
 				F4FDF23F1A3D50420033E0AD /* HMShipMasterDetailWindowController.m */,
-				F4FDF2401A3D50420033E0AD /* HMShipMasterDetailWindowController.xib */,
+				F4BEF00D1B11A628004702B8 /* HMShipMasterDetailWindowController.xib */,
 				F47B78AF18A7B42B0011386E /* HMJSONViewWindowController.h */,
 				F47B78B018A7B42B0011386E /* HMJSONViewWindowController.m */,
 				F4B3DC3B18E5C8700011B4FC /* HMJSONViewWindowController.xib */,
@@ -893,7 +893,7 @@
 				F4B3DC3818E5C8650011B4FC /* HMShipWindowController.xib */,
 				F4D6BC991AA1FAC600742FEB /* HMUITestWindowController.h */,
 				F4D6BC9A1AA1FAC600742FEB /* HMUITestWindowController.m */,
-				F4D6BC9B1AA1FAC600742FEB /* HMUITestWindowController.xib */,
+				F4BEF0101B11A645004702B8 /* HMUITestWindowController.xib */,
 			);
 			name = TestAndDebug;
 			path = KCD;
@@ -986,17 +986,17 @@
 				F4B3DC3C18E5C87D0011B4FC /* HMDocksViewController.xib in Resources */,
 				F4B2D02B18F83A2F00542742 /* HMScreenshotWindowController.xib in Resources */,
 				F4B3DC3918E5C8700011B4FC /* HMJSONViewWindowController.xib in Resources */,
-				F4D6BCAA1AA298FD00742FEB /* HMShipDetailViewController.xib in Resources */,
+				F4BEF0081B11A5DE004702B8 /* HMShipDetailViewController.xib in Resources */,
 				F4B3DC3318E5C8520011B4FC /* HMShipViewController.xib in Resources */,
-				F4BEE4781AA9E4EF00979752 /* HMMinimumShipViewController.xib in Resources */,
-				F4D6BC9D1AA1FAC700742FEB /* HMUITestWindowController.xib in Resources */,
-				F4BEE47A1AAB025400979752 /* HMFleetMinimumViewController.xib in Resources */,
+				F4BEEFFF1B11A5C2004702B8 /* HMMinimumShipViewController.xib in Resources */,
+				F4BEF00E1B11A645004702B8 /* HMUITestWindowController.xib in Resources */,
+				F4BEF0021B11A5CC004702B8 /* HMFleetMinimumViewController.xib in Resources */,
 				F43E67B718BE02A10087E5B6 /* STypeShortName.plist in Resources */,
-				F4D6BCBB1AA32BEB00742FEB /* HMFleetViewController.xib in Resources */,
+				F4BEF0051B11A5D3004702B8 /* HMFleetViewController.xib in Resources */,
 				F4A2AF541A074DE40024BD9E /* HMScreenshotListWindowController.xib in Resources */,
-				F4B2A0901A1F9C2100D2EF12 /* HMExternalBrowserWindowController.xib in Resources */,
+				F4BEEFFC1B11A5A7004702B8 /* HMExternalBrowserWindowController.xib in Resources */,
 				F4BDEB5F187252F30069D0CE /* Images.xcassets in Resources */,
-				F4FDF2421A3D50420033E0AD /* HMShipMasterDetailWindowController.xib in Resources */,
+				F4BEF00B1B11A628004702B8 /* HMShipMasterDetailWindowController.xib in Resources */,
 				F4BEEE9F18D211280006F70C /* Localizable.strings in Resources */,
 				F4513EF018B96C6C00073552 /* Links.rtf in Resources */,
 				F4A3AD9419BDDE5500FDBF80 /* HMPreferencePanelController.xib in Resources */,
@@ -1308,6 +1308,62 @@
 				F4BEEEA418D211500006F70C /* ja */,
 			);
 			name = Makefile;
+			sourceTree = "<group>";
+		};
+		F4BEEFFE1B11A5A7004702B8 /* HMExternalBrowserWindowController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4BEEFFD1B11A5A7004702B8 /* ja */,
+			);
+			name = HMExternalBrowserWindowController.xib;
+			sourceTree = "<group>";
+		};
+		F4BEF0011B11A5C2004702B8 /* HMMinimumShipViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4BEF0001B11A5C2004702B8 /* ja */,
+			);
+			name = HMMinimumShipViewController.xib;
+			sourceTree = "<group>";
+		};
+		F4BEF0041B11A5CC004702B8 /* HMFleetMinimumViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4BEF0031B11A5CC004702B8 /* ja */,
+			);
+			name = HMFleetMinimumViewController.xib;
+			sourceTree = "<group>";
+		};
+		F4BEF0071B11A5D3004702B8 /* HMFleetViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4BEF0061B11A5D3004702B8 /* ja */,
+			);
+			name = HMFleetViewController.xib;
+			sourceTree = "<group>";
+		};
+		F4BEF00A1B11A5DE004702B8 /* HMShipDetailViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4BEF0091B11A5DE004702B8 /* ja */,
+			);
+			name = HMShipDetailViewController.xib;
+			sourceTree = "<group>";
+		};
+		F4BEF00D1B11A628004702B8 /* HMShipMasterDetailWindowController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4BEF00C1B11A628004702B8 /* ja */,
+			);
+			name = HMShipMasterDetailWindowController.xib;
+			sourceTree = "<group>";
+		};
+		F4BEF0101B11A645004702B8 /* HMUITestWindowController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4BEF00F1B11A645004702B8 /* ja */,
+			);
+			name = HMUITestWindowController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
