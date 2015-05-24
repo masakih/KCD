@@ -24,6 +24,22 @@ HMUserDefaults *HMStandardDefaults = nil;
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
 		HMStandardDefaults = [self new];
+		
+		NSColor *plan01Color = [NSColor colorWithCalibratedRed:0.000 green:0.043 blue:0.518 alpha:1.000];
+		NSColor *plan02Color = [NSColor colorWithCalibratedRed:0.800 green:0.223 blue:0.000 alpha:1.000];
+		NSColor *plan03Color = [NSColor colorWithCalibratedRed:0.539 green:0.012 blue:0.046 alpha:1.000];
+		
+		[[NSUserDefaults standardUserDefaults] registerDefaults:
+		 @{
+		   @"screenShotBorderWidth" : @(0.0),
+		   @"plan01Color" : [NSKeyedArchiver archivedDataWithRootObject:plan01Color],
+		   @"plan02Color" : [NSKeyedArchiver archivedDataWithRootObject:plan02Color],
+		   @"plan03Color" : [NSKeyedArchiver archivedDataWithRootObject:plan03Color],
+		   @"screenshotPreviewZoomValue" : @(0.4),
+		   @"showEquipmentType" : @(-1),
+		   @"fleetViewPosition" : @(1),
+		   }
+		 ];
 	});
 }
 
