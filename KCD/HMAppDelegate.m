@@ -47,6 +47,8 @@
 
 @property (strong) HMExternalBrowserWindowController *externalBrowserWindowController;
 
+@property (strong) NSMutableArray *browserWindowControllers;
+
 #ifdef DEBUG
 @property (strong) HMShipWindowController *shipWindowController;
 @property (strong) HMShipMasterDetailWindowController *shipMDWindowController;
@@ -94,6 +96,9 @@
 	NSURLCache *cache = [NSURLCache sharedURLCache];
 	[cache setDiskCapacity:1024 * 1024 * 1024];
 //	[cache setMemoryCapacity:1024];
+	
+	
+	self.browserWindowControllers = [NSMutableArray new];
 }
 
 - (void)awakeFromNib
@@ -263,6 +268,8 @@
 		return YES;
 	} else if(action == @selector(showHidePreferencePanle:)) {
 		return YES;
+	} else if(action == @selector(openNewBrowser:)) {
+		return YES;
 	}
 #if ENABLE_JSON_LOG
 	else if(action == @selector(saveDocument:) || action == @selector(openDocument:)) {
@@ -343,6 +350,7 @@
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	if(!self.externalBrowserWindowController) {
 		self.externalBrowserWindowController = [HMExternalBrowserWindowController new];
+		self.externalBrowserWindowController.webView.mainFrameURL = @"http://www.dmm.com/netgame/-/basket/";
 		[nc addObserver:self
 			   selector:@selector(windowWillClose:)
 				   name:NSWindowWillCloseNotification
@@ -357,6 +365,19 @@
 	}
 }
 
+- (IBAction)openNewBrowser:(id)sender
+{
+	HMExternalBrowserWindowController *browser = [HMExternalBrowserWindowController new];
+	[self.browserWindowControllers addObject:browser];
+	[browser.window makeKeyAndOrderFront:nil];
+	
+	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+	[nc addObserver:self
+		   selector:@selector(windowWillClose:)
+			   name:NSWindowWillCloseNotification
+			 object:browser.window];
+}
+
 - (void)releaseExternalBrowserWindowController:(id)dummy
 {
 	self.externalBrowserWindowController = nil;
@@ -365,11 +386,18 @@
 {
 	id object = [notification object];
 	if([object isEqual:self.externalBrowserWindowController.window]) {
-		[[NSNotificationCenter defaultCenter] removeObserver:self name:NSWindowWillCloseNotification
+		[[NSNotificationCenter defaultCenter] removeObserver:self
+														name:NSWindowWillCloseNotification
 													  object:self.externalBrowserWindowController.window];
 		[self performSelector:@selector(releaseExternalBrowserWindowController:)
 				   withObject:nil
 				   afterDelay:0.0];
+	}
+	if([self.browserWindowControllers containsObject:object]) {
+		[self.browserWindowControllers removeObject:object];
+		[[NSNotificationCenter defaultCenter] removeObserver:self
+														name:NSWindowWillCloseNotification
+													  object:object];
 	}
 }
 

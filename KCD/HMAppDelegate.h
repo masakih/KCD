@@ -50,6 +50,8 @@ typedef NS_ENUM(NSUInteger, HMShipType) {
 - (IBAction)saveLocalData:(id)sender;
 - (IBAction)loadLocalData:(id)sender;
 
+- (IBAction)openNewBrowser:(id)sender;
+
 #if ENABLE_JSON_LOG
 @property (strong) HMJSONViewWindowController *jsonViewWindowController;
 #endif

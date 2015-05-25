@@ -24,7 +24,7 @@
 
 - (void)awakeFromNib
 {
-	[self goHome:nil];
+//	[self goHome:nil];
 	
 	// for Maverick
 	if(floor(NSAppKitVersionNumber) == NSAppKitVersionNumber10_9) {
