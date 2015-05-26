@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7531"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="7531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="7706"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="HMExternalBrowserWindowController">
@@ -33,7 +33,7 @@
                     </webView>
                 </subviews>
             </view>
-            <toolbar key="toolbar" implicitIdentifier="5B7CBCD4-15D6-41E0-B4FD-96F089B89683" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconOnly" sizeMode="regular" id="SpO-Qb-h0u">
+            <toolbar key="toolbar" implicitIdentifier="5B7CBCD4-15D6-41E0-B4FD-96F089B89683" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="SpO-Qb-h0u">
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="D74BA0C4-BF39-447F-8B06-F4B1EF0BE5EC" label="Address" paletteLabel="Address" id="dk4-x0-fn2">
                         <nil key="toolTip"/>
@@ -91,9 +91,51 @@
                             <action selector="goHome:" target="-2" id="7WE-aZ-0yM"/>
                         </connections>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="D8C9124A-CB95-4031-BDD2-16E6A7807759" label="Scroll Lock" paletteLabel="Scroll Lock" id="QwU-Py-Vzr">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="34" height="25"/>
+                        <size key="maxSize" width="34" height="32"/>
+                        <button key="view" verticalHuggingPriority="750" id="lIn-uu-eHu">
+                            <rect key="frame" x="0.0" y="14" width="34" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" title="SC" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lE8-PW-EdX">
+                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <binding destination="-2" name="value" keyPath="canScroll" id="Ecd-cr-lwI">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                    </dictionary>
+                                </binding>
+                            </connections>
+                        </button>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="169D6888-0E3D-4A99-B657-2256D029340F" label="Resize Lock" paletteLabel="Resize Lock" id="DmT-Fb-EfY">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="34" height="25"/>
+                        <size key="maxSize" width="34" height="32"/>
+                        <button key="view" verticalHuggingPriority="750" id="5Ib-oj-x0A">
+                            <rect key="frame" x="0.0" y="14" width="34" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" title="RS" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gLF-bQ-UuT">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <binding destination="-2" name="value" keyPath="canResize" id="RPl-W7-gDI">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                    </dictionary>
+                                </binding>
+                            </connections>
+                        </button>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="yBb-7R-Qfc"/>
+                    <toolbarItem reference="QwU-Py-Vzr"/>
+                    <toolbarItem reference="DmT-Fb-EfY"/>
                     <toolbarItem reference="fQm-0j-yZH"/>
                     <toolbarItem reference="dk4-x0-fn2"/>
                 </defaultToolbarItems>

@@ -11,10 +11,13 @@
 #import "HMAppDelegate.h"
 
 @interface HMExternalBrowserWindowController ()
-
+@property (nonatomic, weak) IBOutlet NSSegmentedControl *goSegment;
 @end
 
 @implementation HMExternalBrowserWindowController
+
+@synthesize canResize = _canResize;
+@synthesize canScroll = _canScroll;
 
 - (id)init
 {
@@ -42,6 +45,9 @@
 	
 	HMAppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
 	[self.webView setApplicationNameForUserAgent:appDelegate.appNameForUserAgent];
+	
+	self.canResize = YES;
+	self.canScroll = YES;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -62,12 +68,78 @@
 	[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }
 
-/*
- 
- 
- http://www.dmm.com/netgame/-/basket/
- 
- */
+static BOOL sameState(BOOL a, BOOL b) {
+	if(a && b) {
+		return YES;
+	}
+	if(!a && !b) {
+		return YES;
+	}
+	return NO;
+}
+- (void)setCanResize:(BOOL)canResize
+{
+	if(sameState(_canResize, canResize)) return;
+	
+	_canResize = canResize;
+	
+	NSUInteger styleMaks = self.window.styleMask;
+	if(canResize) {
+		styleMaks |= NSResizableWindowMask;
+	} else {
+		styleMaks &= ~NSResizableWindowMask;
+	}
+	self.window.styleMask = styleMaks;
+}
+- (BOOL)canResize
+{
+	return _canResize;
+}
+- (void)setCanScroll:(BOOL)canScroll
+{
+	if(sameState(_canScroll, canScroll)) return;
+	
+	_canScroll = canScroll;
+	
+	if(canScroll) {
+		[[[self.webView mainFrame] frameView] setAllowsScrolling:YES];
+	} else {
+		[[[self.webView mainFrame] frameView] setAllowsScrolling:NO];
+	}
+}
+- (BOOL)canScroll
+{
+	return _canScroll;
+}
+
+- (NSString *)urlString
+{
+	return self.webView.mainFrameURL;
+}
+- (NSRect)contentVisibleRect
+{
+	return self.webView.visibleRect;
+}
+
+- (void)setWindowContentSize:(NSSize)windowContentSize
+{
+	NSRect contentRect;
+	contentRect.origin = NSZeroPoint;
+	contentRect.size = windowContentSize;
+	
+	NSRect newFrame = [self.window frameRectForContentRect:contentRect];
+	NSRect frame = self.window.frame;
+	newFrame.origin.x = NSMinX(frame);
+	newFrame.origin.y = NSMaxY(frame) - NSHeight(newFrame);
+	
+	[self.window setFrame:newFrame display:YES];
+}
+- (NSSize)windowContentSize
+{
+	NSRect frame = self.window.frame;
+	NSRect contentRect = [self.window contentRectForFrameRect:frame];
+	return contentRect.size;
+}
 
 - (IBAction)reloadContent:(id)sender
 {

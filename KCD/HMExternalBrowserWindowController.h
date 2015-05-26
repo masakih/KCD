@@ -13,9 +13,15 @@
 
 @interface HMExternalBrowserWindowController : NSWindowController
 
-
 @property (nonatomic, weak) IBOutlet WebView *webView;
-@property (nonatomic, weak) IBOutlet NSSegmentedControl *goSegment;
+
+@property (nonatomic) NSString *urlString;
+@property (nonatomic) NSSize windowContentSize;
+@property (readonly) NSRect contentVisibleRect;
+@property BOOL canResize;
+@property BOOL canScroll;
+
+
 
 - (IBAction)clickGoBackSegment:(id)sender;
 
