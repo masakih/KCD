@@ -21,8 +21,12 @@
 @property BOOL canResize;
 @property BOOL canScroll;
 
-
-
 - (IBAction)clickGoBackSegment:(id)sender;
+
+- (IBAction)addBookmark:(id)sender;
+- (IBAction)editBookmark:(id)sender;
+- (IBAction)showBookmark:(id)sender;
+
+- (IBAction)selectBookmark:(id)sender;
 
 @end

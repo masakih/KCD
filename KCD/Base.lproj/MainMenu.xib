@@ -237,6 +237,31 @@ CA
                         </items>
                     </menu>
                 </menuItem>
+                <menuItem title="Bookmark" tag="5000" id="yi1-h1-D39">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Bookmark" id="H6h-Wd-VXD">
+                        <items>
+                            <menuItem title="Show Bookmark" id="eg5-Hn-joP">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="showBookmark:" target="-1" id="qrJ-Mw-XcK"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Edit Bookmark" keyEquivalent="b" id="JFL-Uh-c4D">
+                                <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                <connections>
+                                    <action selector="editBookmark:" target="-1" id="8Em-h4-Xwo"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Add Bookmark..." keyEquivalent="d" id="7SK-TN-4tQ">
+                                <connections>
+                                    <action selector="addBookmark:" target="-1" id="0aA-tM-h8C"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="C0T-8d-m2a"/>
+                        </items>
+                    </menu>
+                </menuItem>
                 <menuItem title="Debug" tag="1000" id="TRC-ZR-9HP">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Debug" id="t7H-yt-6so">

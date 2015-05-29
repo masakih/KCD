@@ -57,6 +57,8 @@
 		F494DC6718C8BA6400AE97E4 /* HMPowerUpSupportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F494DC6618C8BA6400AE97E4 /* HMPowerUpSupportViewController.m */; };
 		F494DC6A18C8BAB900AE97E4 /* HMPowerUpSupportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F494DC6818C8BAB900AE97E4 /* HMPowerUpSupportViewController.xib */; };
 		F494DC6D18CC054800AE97E4 /* HMNyukyoDockStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = F494DC6C18CC054800AE97E4 /* HMNyukyoDockStatus.m */; };
+		F49546261B1355EC00E0D8D0 /* HMBookmarkItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F49546251B1355EC00E0D8D0 /* HMBookmarkItem.m */; };
+		F495462B1B14CBA600E0D8D0 /* HMBookmarkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F495462A1B14CBA600E0D8D0 /* HMBookmarkManager.m */; };
 		F49828FC1902A226000D6BBE /* HMStrokeTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F49828FB1902A226000D6BBE /* HMStrokeTextFieldCell.m */; };
 		F4A2AF521A074DCF0024BD9E /* HMScreenshotListWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A2AF501A074DCF0024BD9E /* HMScreenshotListWindowController.m */; };
 		F4A2AF541A074DE40024BD9E /* HMScreenshotListWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A2AF561A074DE40024BD9E /* HMScreenshotListWindowController.xib */; };
@@ -275,6 +277,10 @@
 		F494DC6918C8BAB900AE97E4 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMPowerUpSupportViewController.xib; sourceTree = "<group>"; };
 		F494DC6B18CC054800AE97E4 /* HMNyukyoDockStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMNyukyoDockStatus.h; sourceTree = "<group>"; };
 		F494DC6C18CC054800AE97E4 /* HMNyukyoDockStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMNyukyoDockStatus.m; sourceTree = "<group>"; };
+		F49546241B1355EC00E0D8D0 /* HMBookMarkItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMBookMarkItem.h; sourceTree = "<group>"; };
+		F49546251B1355EC00E0D8D0 /* HMBookmarkItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMBookmarkItem.m; sourceTree = "<group>"; };
+		F49546291B14CBA600E0D8D0 /* HMBookmarkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMBookmarkManager.h; sourceTree = "<group>"; };
+		F495462A1B14CBA600E0D8D0 /* HMBookmarkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMBookmarkManager.m; sourceTree = "<group>"; };
 		F49828FA1902A226000D6BBE /* HMStrokeTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMStrokeTextFieldCell.h; sourceTree = "<group>"; };
 		F49828FB1902A226000D6BBE /* HMStrokeTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMStrokeTextFieldCell.m; sourceTree = "<group>"; };
 		F4A2AF4F1A074DCF0024BD9E /* HMScreenshotListWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMScreenshotListWindowController.h; sourceTree = "<group>"; };
@@ -564,6 +570,10 @@
 				F454F7821A261844003042DD /* HMFleetInformation.m */,
 				F4BEEFE71B0CE312004702B8 /* HMAPIResult.h */,
 				F4BEEFE81B0CE312004702B8 /* HMAPIResult.m */,
+				F49546241B1355EC00E0D8D0 /* HMBookMarkItem.h */,
+				F49546251B1355EC00E0D8D0 /* HMBookmarkItem.m */,
+				F49546291B14CBA600E0D8D0 /* HMBookmarkManager.h */,
+				F495462A1B14CBA600E0D8D0 /* HMBookmarkManager.m */,
 				F4D2CBBF18ACE7D7000EBC59 /* Command */,
 				F4BEEEA918D890660006F70C /* UI */,
 				F4BEEEA818D88FF30006F70C /* CoreData */,
@@ -1069,6 +1079,7 @@
 				F4D6BCB01AA2A97200742FEB /* HMLengTransformer.m in Sources */,
 				F4B414F518B1888800468DAF /* HMMasterFurnitureCommand.m in Sources */,
 				F4AA0601192E1FE900844688 /* HMBattleCommand.m in Sources */,
+				F495462B1B14CBA600E0D8D0 /* HMBookmarkManager.m in Sources */,
 				F43F3D521A39CC7500D6DAF7 /* HMKCMasterSlotItemObject.m in Sources */,
 				F4513EEE18B8E2F600073552 /* HMMemberMaterialCommand.m in Sources */,
 				F4FCFD44191F4C1D000640A1 /* HMKenzoMarkCommand.m in Sources */,
@@ -1108,6 +1119,7 @@
 				F4B3DBCA18DDB9170011B4FC /* HMCreateSlotItemCommand.m in Sources */,
 				F4131ED8190FA08D004F7F9A /* HMDestroyItem2Command.m in Sources */,
 				F4B3DC2718DF2F360011B4FC /* HMKenzoMark.m in Sources */,
+				F49546261B1355EC00E0D8D0 /* HMBookmarkItem.m in Sources */,
 				F49828FC1902A226000D6BBE /* HMStrokeTextFieldCell.m in Sources */,
 				F4A3AD8B19B9BE7A00FDBF80 /* HMMaskSelectView.m in Sources */,
 				F4B414E918B09A4B00468DAF /* HMMasterMapAreaCommand.m in Sources */,

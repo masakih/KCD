@@ -268,7 +268,7 @@
 		return YES;
 	} else if(action == @selector(showHidePreferencePanle:)) {
 		return YES;
-	} else if(action == @selector(openNewBrowser:)) {
+	} else if(action == @selector(openNewBrowser:) || action == @selector(selectBookmark:)) {
 		return YES;
 	}
 #if ENABLE_JSON_LOG
@@ -367,6 +367,16 @@
 
 - (IBAction)openNewBrowser:(id)sender
 {
+	[self createNewBrowser];
+}
+- (IBAction)selectBookmark:(id)sender
+{
+	HMExternalBrowserWindowController *browser = [self createNewBrowser];
+	
+	[browser selectBookmark:sender];
+}
+- (HMExternalBrowserWindowController *)createNewBrowser
+{
 	HMExternalBrowserWindowController *browser = [HMExternalBrowserWindowController new];
 	[self.browserWindowControllers addObject:browser];
 	[browser.window makeKeyAndOrderFront:nil];
@@ -376,6 +386,8 @@
 		   selector:@selector(windowWillClose:)
 			   name:NSWindowWillCloseNotification
 			 object:browser.window];
+	
+	return browser;
 }
 
 - (void)releaseExternalBrowserWindowController:(id)dummy

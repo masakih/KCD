@@ -9,9 +9,15 @@
 #import "HMExternalBrowserWindowController.h"
 
 #import "HMAppDelegate.h"
+#import "HMBookmarkManager.h"
+
 
 @interface HMExternalBrowserWindowController ()
 @property (nonatomic, weak) IBOutlet NSSegmentedControl *goSegment;
+
+@property (readwrite) NSRect contentVisibleRect;
+
+@property (weak) HMBookmarkItem *waitingBookmarkItem;
 @end
 
 @implementation HMExternalBrowserWindowController
@@ -27,8 +33,6 @@
 
 - (void)awakeFromNib
 {
-//	[self goHome:nil];
-	
 	// for Maverick
 	if(floor(NSAppKitVersionNumber) == NSAppKitVersionNumber10_9) {
 		self.webView.layerUsesCoreImageFilters = YES;
@@ -45,6 +49,7 @@
 	
 	HMAppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
 	[self.webView setApplicationNameForUserAgent:appDelegate.appNameForUserAgent];
+	self.webView.frameLoadDelegate = self;
 	
 	self.canResize = YES;
 	self.canScroll = YES;
@@ -116,9 +121,13 @@ static BOOL sameState(BOOL a, BOOL b) {
 {
 	return self.webView.mainFrameURL;
 }
+- (void)setContentVisibleRect:(NSRect)contentVisibleRect
+{
+	[self.webView.mainFrame.frameView.documentView scrollRectToVisible:contentVisibleRect];
+}
 - (NSRect)contentVisibleRect
 {
-	return self.webView.visibleRect;
+	return self.webView.mainFrame.frameView.documentView.visibleRect;
 }
 
 - (void)setWindowContentSize:(NSSize)windowContentSize
@@ -139,6 +148,24 @@ static BOOL sameState(BOOL a, BOOL b) {
 	NSRect frame = self.window.frame;
 	NSRect contentRect = [self.window contentRectForFrameRect:frame];
 	return contentRect.size;
+}
+
+
+- (void)updateContentVisibleRect:(NSTimer *)timer
+{
+	HMBookmarkItem *item = [timer userInfo];
+	self.contentVisibleRect = item.contentVisibleRect;
+}
+- (IBAction)selectBookmark:(id)sender
+{
+	HMBookmarkItem *item = [sender representedObject];
+	if(!item) return;
+	
+	self.webView.mainFrameURL = item.urlString;
+	self.windowContentSize = item.windowContentSize;
+	self.canResize = item.canResize;
+	self.canScroll = item.canScroll;
+	self.waitingBookmarkItem = item;
 }
 
 - (IBAction)reloadContent:(id)sender
@@ -163,6 +190,65 @@ static BOOL sameState(BOOL a, BOOL b) {
 			break;
 		default:
 			break;
+	}
+}
+- (IBAction)addBookmark:(id)sender
+{
+	HMBookmarkManager *bookmarkManager = [HMBookmarkManager sharedManager];
+	HMBookmarkItem *bookmark = [HMBookmarkItem new];
+	bookmark.name = self.window.title;
+	bookmark.urlString = self.webView.mainFrameURL;
+	bookmark.windowContentSize = self.windowContentSize;
+	bookmark.contentVisibleRect = self.contentVisibleRect;
+	bookmark.canResize = self.canResize;
+	bookmark.canScroll = self.canScroll;
+	bookmark.scrollDelay = 0.5;
+	
+	[bookmarkManager addBookmark:bookmark];
+}
+- (IBAction)editBookmark:(id)sender
+{
+	
+}
+- (IBAction)showBookmark:(id)sender
+{
+	HMBookmarkManager *bookmarkManager = [HMBookmarkManager sharedManager];
+	NSLog(@"Bookmarks -> %@", bookmarkManager.bookmarks);
+}
+
+- (BOOL)validateMenuItem:(NSMenuItem *)menuItem
+{
+	SEL action = [menuItem action];
+	
+	if(action == @selector(addBookmark:)) {
+		return self.webView.mainFrameURL != nil;
+	}
+	if(action == @selector(editBookmark:)) {
+		return YES;
+	}
+	if(action == @selector(showBookmark:)) {
+		return YES;
+	}
+	if(action == @selector(selectBookmark:)) {
+		return YES;
+	}
+	if(action == @selector(reloadContent:)) {
+		return YES;
+	}
+	
+	return NO;
+}
+
+
+- (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame
+{
+	if(self.waitingBookmarkItem) {
+		[NSTimer scheduledTimerWithTimeInterval:self.waitingBookmarkItem.scrollDelay
+										 target:self
+									   selector:@selector(updateContentVisibleRect:)
+									   userInfo:self.waitingBookmarkItem
+										repeats:NO];
+		self.waitingBookmarkItem = nil;
 	}
 }
 @end
