@@ -15,6 +15,8 @@
 
 @property (nonatomic, weak) IBOutlet WebView *webView;
 
+@property (readonly) NSManagedObjectContext *managedObjectContext;
+
 @property (nonatomic) NSString *urlString;
 @property (nonatomic) NSSize windowContentSize;
 @property (readonly) NSRect contentVisibleRect;

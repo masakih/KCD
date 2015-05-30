@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface HMBookmarkItem : NSObject <NSCoding>
+@interface HMBookmarkItem : NSManagedObject
 
 @property (copy, nonatomic) NSString *identifier;
 @property (copy, nonatomic) NSString *name;
@@ -17,6 +17,8 @@
 @property NSRect contentVisibleRect;
 @property BOOL canResize;
 @property BOOL canScroll;
+
+@property (strong, nonatomic) NSNumber *order;
 
 /// contentVisibleRectに移動するまでの遅延時間
 @property NSTimeInterval scrollDelay;

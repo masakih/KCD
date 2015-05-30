@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14D136" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Bookmark" representedClassName="HMBookmarkItem" syncable="YES">
+        <attribute name="canResize" attributeType="Boolean" syncable="YES"/>
+        <attribute name="canScroll" attributeType="Boolean" syncable="YES"/>
+        <attribute name="contentVisibleRectString" attributeType="String" syncable="YES"/>
+        <attribute name="identifier" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="order" attributeType="Integer 32" defaultValueString="100000" syncable="YES"/>
+        <attribute name="scrollDelayValue" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="urlString" attributeType="String" syncable="YES"/>
+        <attribute name="windowContentSizeString" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Bookmark" positionX="-63" positionY="-18" width="128" height="180"/>
+    </elements>
+</model>

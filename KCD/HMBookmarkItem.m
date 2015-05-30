@@ -8,43 +8,50 @@
 
 #import "HMBookmarkItem.h"
 
-static NSString *HMBMIdentifireKey = @"HMBMIdentifireKey";
-static NSString *HMBMNameKey = @"HMBMNameKey";
-static NSString *HMBMURLStringKey = @"HMBMURLStringKey";
-static NSString *HMBMWindowContentSizeKey = @"HMBMWindowContentSizeKey";
-static NSString *HMBMContentVisibleRectKey = @"HMBMContentVisibleRectKey";
-static NSString *HMBMCanResizeKey = @"HMBMCanResizeKey";
-static NSString *HMBMCanScrollKey = @"HMBMCanScrollKey";
-static NSString *HMBMScrollDelay = @"HMBMScrollDelay";
+@interface HMBookmarkItem ()
+@property (strong, nonatomic) NSString *windowContentSizeString;
+@property (strong, nonatomic) NSString *contentVisibleRectString;
+@property (strong, nonatomic) NSNumber *scrollDelayValue;
+@end
 
 @implementation HMBookmarkItem
 
-- (void)encodeWithCoder:(NSCoder *)aCoder
+@dynamic identifier;
+@dynamic name;
+@dynamic urlString;
+@dynamic canScroll;
+@dynamic canResize;
+@dynamic windowContentSizeString;
+@dynamic contentVisibleRectString;
+@dynamic order;
+@dynamic scrollDelayValue;
+
+
+- (void)setWindowContentSize:(NSSize)windowContentSize
 {
-	[aCoder encodeObject:self.identifier forKey:HMBMIdentifireKey];
-	[aCoder encodeObject:self.name forKey:HMBMNameKey];
-	[aCoder encodeObject:self.urlString forKey:HMBMURLStringKey];
-	[aCoder encodeSize:self.windowContentSize forKey:HMBMWindowContentSizeKey];
-	[aCoder encodeRect:self.contentVisibleRect forKey:HMBMContentVisibleRectKey];
-	[aCoder encodeBool:self.canResize forKey:HMBMCanResizeKey];
-	[aCoder encodeBool:self.canScroll forKey:HMBMCanScrollKey];
-	[aCoder encodeDouble:self.scrollDelay forKey:HMBMScrollDelay];
+	self.windowContentSizeString = NSStringFromSize(windowContentSize);
 }
-- (id)initWithCoder:(NSCoder *)aDecoder
+- (NSSize)windowContentSize
 {
-	self = [super init];
-	if(self) {
-		_identifier = [aDecoder decodeObjectForKey:HMBMIdentifireKey];
-		_name = [aDecoder decodeObjectForKey:HMBMNameKey];
-		_urlString = [aDecoder decodeObjectForKey:HMBMURLStringKey];
-		_windowContentSize = [aDecoder decodeSizeForKey:HMBMWindowContentSizeKey];
-		_contentVisibleRect = [aDecoder decodeRectForKey:HMBMContentVisibleRectKey];
-		_canResize = [aDecoder decodeBoolForKey:HMBMCanResizeKey];
-		_canScroll = [aDecoder decodeBoolForKey:HMBMCanScrollKey];
-		_scrollDelay = [aDecoder decodeDoubleForKey:HMBMScrollDelay];
-	}
-	return self;
+	return NSSizeFromString(self.windowContentSizeString);
 }
+- (void)setContentVisibleRect:(NSRect)contentVisibleRect
+{
+	self.contentVisibleRectString = NSStringFromRect(contentVisibleRect);
+}
+- (NSRect)contentVisibleRect
+{
+	return NSRectFromString(self.contentVisibleRectString);
+}
+- (void)setScrollDelay:(NSTimeInterval)scrollDelay
+{
+	self.scrollDelayValue = [NSNumber numberWithDouble:scrollDelay];
+}
+- (NSTimeInterval)scrollDelay
+{
+	return self.scrollDelayValue.doubleValue;
+}
+
 
 - (id)description
 {
@@ -56,7 +63,8 @@ static NSString *HMBMScrollDelay = @"HMBMScrollDelay";
 			@"contentVisibleRect -> %@,\n"
 			@"canResize -> %@,\n"
 			@"canScroll -> %@,\n"
-			@"scrollDelay -> %lf}",
+			@"scrollDelay -> %lf,\n"
+			@"order -> %@}",
 			self.identifier,
 			self.name,
 			self.urlString,
@@ -64,7 +72,8 @@ static NSString *HMBMScrollDelay = @"HMBMScrollDelay";
 			NSStringFromRect(self.contentVisibleRect),
 			self.canResize ? @"YES" : @"NO",
 			self.canScroll ? @"YES" : @"NO",
-			self.scrollDelay];
+			self.scrollDelay,
+			self.order];
 }
 
 @end

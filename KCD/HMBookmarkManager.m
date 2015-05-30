@@ -8,6 +8,8 @@
 
 #import "HMBookmarkManager.h"
 
+#import "HMBookmarkDataStore.h"
+
 
 const NSUInteger kBookmarkMenuItemTag = 5000;
 
@@ -17,7 +19,10 @@ static NSMenu *bookmarkMenu = nil;
 
 
 @interface HMBookmarkManager () <NSMenuDelegate>
-@property (strong, nonatomic) NSMutableArray *realBookmarks;
+
+@property (strong, nonatomic) NSArrayController *bookmarksController;
+
+@property (readonly) HMBookmarkDataStore *editorStore;
 @end
 
 @implementation HMBookmarkManager
@@ -43,10 +48,24 @@ static NSMenu *bookmarkMenu = nil;
 {
 	self = [super init];
 	if(self) {
-		_realBookmarks = [NSMutableArray new];
+		_bookmarksController = [[NSArrayController alloc] initWithContent:nil];
+		_bookmarksController.managedObjectContext = self.manageObjectContext;
+		_bookmarksController.entityName = @"Bookmark";
+		
+		NSSortDescriptor *sortDesc = [NSSortDescriptor sortDescriptorWithKey:@"order"
+																   ascending:NO];
+		_bookmarksController.sortDescriptors = @[sortDesc];
+		
+		
+		[NSTimer scheduledTimerWithTimeInterval:0.1
+										 target:self
+									   selector:@selector(storeData:)
+									   userInfo:nil
+										repeats:YES];
 	}
 	return self;
 }
+
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
@@ -69,9 +88,10 @@ static NSMenu *bookmarkMenu = nil;
 		[bookmarkMenu removeItemAtIndex:i];
 	}
 	
-	NSInteger bookmarkNum = self.count;
+	NSArray *bookmarksArray = self.bookmarks;
+	NSInteger bookmarkNum = bookmarksArray.count;
 	for(NSInteger i = 0; i < bookmarkNum; i++) {
-		HMBookmarkItem *item = self.bookmarks[i];
+		HMBookmarkItem *item = bookmarksArray[i];
 		NSMenuItem *newItem = [[NSMenuItem alloc] initWithTitle:item.name
 														 action:@selector(selectBookmark:)
 												  keyEquivalent:@""];
@@ -80,43 +100,44 @@ static NSMenu *bookmarkMenu = nil;
 	}
 }
 
-- (NSArray *)bookmarks
+- (NSManagedObjectContext *)manageObjectContext
 {
-	return [self.realBookmarks copy];
+	return [[HMBookmarkDataStore defaultManager] managedObjectContext];
 }
-
-- (NSUInteger)count
+- (HMBookmarkDataStore *)editorStore
 {
-	return self.realBookmarks.count;
-}
-- (HMBookmarkItem *)bookmarkAtIndex:(NSUInteger)index
-{
-	return [self.realBookmarks objectAtIndex:index];
-}
-
-- (void)addBookmark:(HMBookmarkItem *)item
-{
-	[self.realBookmarks addObject:item];
+	static HMBookmarkDataStore *_store = nil;
+	if(_store) return _store;
 	
-	if(!item.identifier) {
-		item.identifier = [NSString stringWithFormat:@"hogehogheo%@", [NSDate date]];
+	_store = [HMBookmarkDataStore oneTimeEditor];
+	return _store;
+}
+- (void)storeData:(id)timer
+{
+	HMBookmarkDataStore *store = self.editorStore;
+	NSManagedObjectContext *context = store.managedObjectContext;
+	if(context.hasChanges) {
+		[store saveAction:nil];
 	}
 }
-- (void)insertBookmark:(HMBookmarkItem *)item atIndex:(NSUInteger)index
+- (HMBookmarkItem *)createNewBookmark
 {
-	[self.realBookmarks insertObject:item atIndex:index];
+	NSNumber *maxOrder = [self.bookmarksController valueForKeyPath:@"arrangedObjects.@max.order"];
+	
+	HMBookmarkItem *object = [NSEntityDescription insertNewObjectForEntityForName:@"Bookmark"
+														   inManagedObjectContext:self.editorStore.managedObjectContext];
+	object.identifier = [NSString stringWithFormat:@"HMBM%@", [NSDate date]];
+	object.order = @(maxOrder.integerValue + 1);
+
+	return object;
 }
-- (void)removeBookmark:(HMBookmarkItem *)item
+
+- (NSArray *)bookmarks
 {
-	[self.realBookmarks removeObject:item];
+	[self.bookmarksController fetch:nil];
+	NSArray *array = self.bookmarksController.arrangedObjects;
+	return array;
 }
-- (void)removeBookmarkAtIndex:(NSUInteger)index
-{
-	[self.realBookmarks removeObjectAtIndex:index];
-}
-- (void)replaceBookmarkAtIndex:(NSUInteger)index withBookmark:(HMBookmarkItem *)item
-{
-	[self.realBookmarks replaceObjectAtIndex:index withObject:item];
-}
+
 
 @end

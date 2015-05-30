@@ -16,14 +16,8 @@
 
 + (instancetype)sharedManager;
 
-@property (readonly) NSUInteger count;
-- (HMBookmarkItem *)bookmarkAtIndex:(NSUInteger)index;
-
-- (void)addBookmark:(HMBookmarkItem *)item;
-- (void)insertBookmark:(HMBookmarkItem *)item atIndex:(NSUInteger)index;
-- (void)removeBookmark:(HMBookmarkItem *)item;
-- (void)removeBookmarkAtIndex:(NSUInteger)index;
-- (void)replaceBookmarkAtIndex:(NSUInteger)index withBookmark:(HMBookmarkItem *)item;
+@property (readonly) NSManagedObjectContext *manageObjectContext;
+- (HMBookmarkItem *)createNewBookmark;
 
 @end
 

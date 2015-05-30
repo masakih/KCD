@@ -73,6 +73,11 @@
 	[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }
 
+- (NSManagedObjectContext *)managedObjectContext
+{
+	return [[HMBookmarkManager sharedManager] manageObjectContext];
+}
+
 static BOOL sameState(BOOL a, BOOL b) {
 	if(a && b) {
 		return YES;
@@ -195,7 +200,7 @@ static BOOL sameState(BOOL a, BOOL b) {
 - (IBAction)addBookmark:(id)sender
 {
 	HMBookmarkManager *bookmarkManager = [HMBookmarkManager sharedManager];
-	HMBookmarkItem *bookmark = [HMBookmarkItem new];
+	HMBookmarkItem *bookmark = [bookmarkManager createNewBookmark];
 	bookmark.name = self.window.title;
 	bookmark.urlString = self.webView.mainFrameURL;
 	bookmark.windowContentSize = self.windowContentSize;
@@ -203,8 +208,6 @@ static BOOL sameState(BOOL a, BOOL b) {
 	bookmark.canResize = self.canResize;
 	bookmark.canScroll = self.canScroll;
 	bookmark.scrollDelay = 0.5;
-	
-	[bookmarkManager addBookmark:bookmark];
 }
 - (IBAction)editBookmark:(id)sender
 {

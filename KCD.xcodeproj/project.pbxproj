@@ -59,6 +59,8 @@
 		F494DC6D18CC054800AE97E4 /* HMNyukyoDockStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = F494DC6C18CC054800AE97E4 /* HMNyukyoDockStatus.m */; };
 		F49546261B1355EC00E0D8D0 /* HMBookmarkItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F49546251B1355EC00E0D8D0 /* HMBookmarkItem.m */; };
 		F495462B1B14CBA600E0D8D0 /* HMBookmarkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F495462A1B14CBA600E0D8D0 /* HMBookmarkManager.m */; };
+		F495462E1B1894DD00E0D8D0 /* Bookmark.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F495462C1B1894DD00E0D8D0 /* Bookmark.xcdatamodeld */; };
+		F49546311B18991300E0D8D0 /* HMBookmarkDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F49546301B18991300E0D8D0 /* HMBookmarkDataStore.m */; };
 		F49828FC1902A226000D6BBE /* HMStrokeTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F49828FB1902A226000D6BBE /* HMStrokeTextFieldCell.m */; };
 		F4A2AF521A074DCF0024BD9E /* HMScreenshotListWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A2AF501A074DCF0024BD9E /* HMScreenshotListWindowController.m */; };
 		F4A2AF541A074DE40024BD9E /* HMScreenshotListWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A2AF561A074DE40024BD9E /* HMScreenshotListWindowController.xib */; };
@@ -281,6 +283,9 @@
 		F49546251B1355EC00E0D8D0 /* HMBookmarkItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMBookmarkItem.m; sourceTree = "<group>"; };
 		F49546291B14CBA600E0D8D0 /* HMBookmarkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMBookmarkManager.h; sourceTree = "<group>"; };
 		F495462A1B14CBA600E0D8D0 /* HMBookmarkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMBookmarkManager.m; sourceTree = "<group>"; };
+		F495462D1B1894DD00E0D8D0 /* Bookmark.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bookmark.xcdatamodel; sourceTree = "<group>"; };
+		F495462F1B18991300E0D8D0 /* HMBookmarkDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMBookmarkDataStore.h; sourceTree = "<group>"; };
+		F49546301B18991300E0D8D0 /* HMBookmarkDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMBookmarkDataStore.m; sourceTree = "<group>"; };
 		F49828FA1902A226000D6BBE /* HMStrokeTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMStrokeTextFieldCell.h; sourceTree = "<group>"; };
 		F49828FB1902A226000D6BBE /* HMStrokeTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMStrokeTextFieldCell.m; sourceTree = "<group>"; };
 		F4A2AF4F1A074DCF0024BD9E /* HMScreenshotListWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMScreenshotListWindowController.h; sourceTree = "<group>"; };
@@ -659,6 +664,9 @@
 				F4AA05F9192B92C700844688 /* Temporary.xcdatamodeld */,
 				F4AA05FC192B932E00844688 /* HMTemporaryDataStore.h */,
 				F4AA05FD192B932E00844688 /* HMTemporaryDataStore.m */,
+				F495462C1B1894DD00E0D8D0 /* Bookmark.xcdatamodeld */,
+				F495462F1B18991300E0D8D0 /* HMBookmarkDataStore.h */,
+				F49546301B18991300E0D8D0 /* HMBookmarkDataStore.m */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -1051,6 +1059,7 @@
 				F4B3DC5218F150CD0011B4FC /* HMScreenshotWindowController.m in Sources */,
 				F426802E194D0FFD00B2C27F /* HMMemberShip3Command.m in Sources */,
 				F4B37EF319FBBBED002F371A /* HMRemodelSlotCommand.m in Sources */,
+				F495462E1B1894DD00E0D8D0 /* Bookmark.xcdatamodeld in Sources */,
 				F4B414FB18B1FB6C00468DAF /* HMMasterMapCellCommand.m in Sources */,
 				F4B3DC2E18E07B680011B4FC /* HMHistoryWindowController.m in Sources */,
 				F4C118FA18A67B1C005D5B25 /* CacheStoragePolicy.m in Sources */,
@@ -1062,6 +1071,7 @@
 				F4B1E30819C73B6A00805879 /* HMSuppliesCell.m in Sources */,
 				F4A3AD8E19BB220000FDBF80 /* HMMaskInfomation.m in Sources */,
 				F4D6BCBA1AA32BEA00742FEB /* HMFleetViewController.m in Sources */,
+				F49546311B18991300E0D8D0 /* HMBookmarkDataStore.m in Sources */,
 				F4E7802E18DC3AF00011BC4C /* LocalData.xcdatamodeld in Sources */,
 				F4D6BCAD1AA2A60900742FEB /* HMSokuTransformer.m in Sources */,
 				F4BEE4731AA5E34600979752 /* HMSlotItemFrameView.m in Sources */,
@@ -1567,6 +1577,16 @@
 			);
 			currentVersion = F46F104818ABAC910063E503 /* KCD.xcdatamodel */;
 			path = KCD.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		F495462C1B1894DD00E0D8D0 /* Bookmark.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F495462D1B1894DD00E0D8D0 /* Bookmark.xcdatamodel */,
+			);
+			currentVersion = F495462D1B1894DD00E0D8D0 /* Bookmark.xcdatamodel */;
+			path = Bookmark.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
