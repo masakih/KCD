@@ -46,6 +46,7 @@
 		F4513EF618B9F29800073552 /* HMMemberShipCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4513EF518B9F29800073552 /* HMMemberShipCommand.m */; };
 		F4513EFA18BB699700073552 /* HMShipWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4513EF818BB699700073552 /* HMShipWindowController.m */; };
 		F454F7831A261844003042DD /* HMFleetInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = F454F7821A261844003042DD /* HMFleetInformation.m */; };
+		F4666C4D1B1B3113001840DB /* HMBookmarkListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4666C4C1B1B3113001840DB /* HMBookmarkListTableView.m */; };
 		F46F103618A7CE310063E503 /* HMJSONViewCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F46F103518A7CE310063E503 /* HMJSONViewCommand.m */; };
 		F46F104118A9B85E0063E503 /* HMJSONNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F46F104018A9B85E0063E503 /* HMJSONNode.m */; };
 		F46F104518AA50730063E503 /* HMBroserWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F46F104318AA50730063E503 /* HMBroserWindowController.m */; };
@@ -258,6 +259,8 @@
 		F4513EF818BB699700073552 /* HMShipWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMShipWindowController.m; sourceTree = "<group>"; };
 		F454F7811A261844003042DD /* HMFleetInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMFleetInformation.h; sourceTree = "<group>"; };
 		F454F7821A261844003042DD /* HMFleetInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMFleetInformation.m; sourceTree = "<group>"; };
+		F4666C4B1B1B3113001840DB /* HMBookmarkListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMBookmarkListTableView.h; sourceTree = "<group>"; };
+		F4666C4C1B1B3113001840DB /* HMBookmarkListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMBookmarkListTableView.m; sourceTree = "<group>"; };
 		F46F103418A7CE310063E503 /* HMJSONViewCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMJSONViewCommand.h; sourceTree = "<group>"; };
 		F46F103518A7CE310063E503 /* HMJSONViewCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMJSONViewCommand.m; sourceTree = "<group>"; };
 		F46F103F18A9B85E0063E503 /* HMJSONNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMJSONNode.h; sourceTree = "<group>"; };
@@ -920,6 +923,8 @@
 				F49546321B19924D00E0D8D0 /* HMBookmarkListViewController.h */,
 				F49546331B19924D00E0D8D0 /* HMBookmarkListViewController.m */,
 				F49546341B19924D00E0D8D0 /* HMBookmarkListViewController.xib */,
+				F4666C4B1B1B3113001840DB /* HMBookmarkListTableView.h */,
+				F4666C4C1B1B3113001840DB /* HMBookmarkListTableView.m */,
 			);
 			name = TestAndDebug;
 			path = KCD;
@@ -1078,6 +1083,7 @@
 				F4B2A08F1A1F9C2100D2EF12 /* HMExternalBrowserWindowController.m in Sources */,
 				F4B3DC2118DECF570011B4FC /* HMTSVSupport.m in Sources */,
 				F4B1E30819C73B6A00805879 /* HMSuppliesCell.m in Sources */,
+				F4666C4D1B1B3113001840DB /* HMBookmarkListTableView.m in Sources */,
 				F4A3AD8E19BB220000FDBF80 /* HMMaskInfomation.m in Sources */,
 				F4D6BCBA1AA32BEA00742FEB /* HMFleetViewController.m in Sources */,
 				F49546311B18991300E0D8D0 /* HMBookmarkDataStore.m in Sources */,

@@ -8,6 +8,19 @@
 
 #import <Cocoa/Cocoa.h>
 
+#import "HMBookMarkItem.h"
+
+@protocol HMBookmarkListViewControllerDelegate;
+
+
 @interface HMBookmarkListViewController : NSViewController
+
+@property (weak) id<HMBookmarkListViewControllerDelegate> delegate;
+
+@end
+
+@protocol HMBookmarkListViewControllerDelegate <NSObject>
+
+- (void)didSelectBookmark:(HMBookmarkItem *)bookmark;
 
 @end

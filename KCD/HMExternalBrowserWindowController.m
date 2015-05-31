@@ -14,7 +14,7 @@
 
 
 
-@interface HMExternalBrowserWindowController ()
+@interface HMExternalBrowserWindowController () <HMBookmarkListViewControllerDelegate>
 @property (nonatomic, weak) IBOutlet NSSegmentedControl *goSegment;
 
 @property (nonatomic, weak) IBOutlet NSView *bookmarkListView;
@@ -162,6 +162,14 @@ static BOOL sameState(BOOL a, BOOL b) {
 }
 
 
+- (void)setBookmark:(HMBookmarkItem *)bookmark
+{
+	self.webView.mainFrameURL = bookmark.urlString;
+	self.windowContentSize = bookmark.windowContentSize;
+	self.canResize = bookmark.canResize;
+	self.canScroll = bookmark.canScroll;
+	self.waitingBookmarkItem = bookmark;
+}
 - (void)updateContentVisibleRect:(NSTimer *)timer
 {
 	HMBookmarkItem *item = [timer userInfo];
@@ -172,11 +180,7 @@ static BOOL sameState(BOOL a, BOOL b) {
 	HMBookmarkItem *item = [sender representedObject];
 	if(!item) return;
 	
-	self.webView.mainFrameURL = item.urlString;
-	self.windowContentSize = item.windowContentSize;
-	self.canResize = item.canResize;
-	self.canScroll = item.canScroll;
-	self.waitingBookmarkItem = item;
+	[self setBookmark:item];
 }
 
 - (IBAction)reloadContent:(id)sender
@@ -228,6 +232,7 @@ static BOOL sameState(BOOL a, BOOL b) {
 	if(!self.bookmarkListViwController) {
 		self.bookmarkListViwController = [HMBookmarkListViewController new];
 		self.bookmarkListView = self.bookmarkListViwController.view;
+		self.bookmarkListViwController.delegate = self;
 		
 		
 		NSRect frame = self.webView.frame;
@@ -291,6 +296,22 @@ static BOOL sameState(BOOL a, BOOL b) {
 	}
 	
 	return NO;
+}
+
+- (void)swipeWithEvent:(NSEvent *)event
+{
+	NSLog(@"Swipe deltaX -> %lf, deltaY -> %lf", [event deltaX], [event deltaY]);
+	if([event deltaX] > 0 && [self showsBookmarkList]) {
+		[self showBookmark:nil];
+	}
+	if([event deltaX] < 0 && ![self showsBookmarkList]) {
+		[self showBookmark:nil];
+	}
+}
+
+- (void)didSelectBookmark:(HMBookmarkItem *)bookmark
+{
+	[self setBookmark:bookmark];
 }
 
 
