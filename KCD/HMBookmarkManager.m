@@ -53,7 +53,7 @@ static NSMenu *bookmarkMenu = nil;
 		_bookmarksController.entityName = @"Bookmark";
 		
 		NSSortDescriptor *sortDesc = [NSSortDescriptor sortDescriptorWithKey:@"order"
-																   ascending:NO];
+																   ascending:YES];
 		_bookmarksController.sortDescriptors = @[sortDesc];
 		
 		

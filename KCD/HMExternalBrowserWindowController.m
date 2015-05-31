@@ -10,10 +10,15 @@
 
 #import "HMAppDelegate.h"
 #import "HMBookmarkManager.h"
+#import "HMBookmarkListViewController.h"
+
 
 
 @interface HMExternalBrowserWindowController ()
 @property (nonatomic, weak) IBOutlet NSSegmentedControl *goSegment;
+
+@property (nonatomic, weak) IBOutlet NSView *bookmarkListView;
+@property (strong) HMBookmarkListViewController *bookmarkListViwController;
 
 @property (readwrite) NSRect contentVisibleRect;
 
@@ -37,6 +42,7 @@
 	if(floor(NSAppKitVersionNumber) == NSAppKitVersionNumber10_9) {
 		self.webView.layerUsesCoreImageFilters = YES;
 	}
+//	self.webView.wantsLayer = YES;
 	
 	[self.webView addObserver:self
 				   forKeyPath:@"canGoBack"
@@ -213,10 +219,55 @@ static BOOL sameState(BOOL a, BOOL b) {
 {
 	
 }
+- (BOOL)showsBookmarkList
+{
+	return self.webView.frame.origin.x != 0;
+}
 - (IBAction)showBookmark:(id)sender
 {
-	HMBookmarkManager *bookmarkManager = [HMBookmarkManager sharedManager];
-	NSLog(@"Bookmarks -> %@", bookmarkManager.bookmarks);
+	if(!self.bookmarkListViwController) {
+		self.bookmarkListViwController = [HMBookmarkListViewController new];
+		self.bookmarkListView = self.bookmarkListViwController.view;
+		
+		
+		NSRect frame = self.webView.frame;
+		frame.size.width = 200;
+		frame.origin.x = -200;
+		self.bookmarkListView.frame = frame;
+		NSView *view = self.webView.superview;
+		[view addSubview:self.bookmarkListView
+			  positioned:NSWindowBelow
+			  relativeTo:self.webView];
+	}
+	
+	CGFloat delta = 200;
+	if([self showsBookmarkList]) {
+		delta = -200;
+	}
+	
+	NSRect webViewFrame = self.webView.frame;
+	
+	NSRect frame = self.bookmarkListView.frame;
+	frame.size.height = webViewFrame.size.height;
+	self.bookmarkListView.frame = frame;
+	
+	frame.origin.x += delta;
+	
+	NSRect newFrame = webViewFrame;
+	newFrame.origin.x += delta;
+	newFrame.size.width -= delta;
+	
+	
+	NSDictionary *webViewAnime = @{
+							   NSViewAnimationTargetKey : self.webView,
+							   NSViewAnimationEndFrameKey : [NSValue valueWithRect:newFrame],
+							   };
+	NSDictionary *bookMarkAnime = @{
+								   NSViewAnimationTargetKey : self.bookmarkListView,
+								   NSViewAnimationEndFrameKey : [NSValue valueWithRect:frame],
+								   };
+	NSAnimation *anime = [[NSViewAnimation alloc] initWithViewAnimations:@[webViewAnime, bookMarkAnime]];
+	[anime startAnimation];
 }
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem

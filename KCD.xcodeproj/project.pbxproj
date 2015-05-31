@@ -61,6 +61,8 @@
 		F495462B1B14CBA600E0D8D0 /* HMBookmarkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F495462A1B14CBA600E0D8D0 /* HMBookmarkManager.m */; };
 		F495462E1B1894DD00E0D8D0 /* Bookmark.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F495462C1B1894DD00E0D8D0 /* Bookmark.xcdatamodeld */; };
 		F49546311B18991300E0D8D0 /* HMBookmarkDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F49546301B18991300E0D8D0 /* HMBookmarkDataStore.m */; };
+		F49546351B19924D00E0D8D0 /* HMBookmarkListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F49546331B19924D00E0D8D0 /* HMBookmarkListViewController.m */; };
+		F49546361B19924D00E0D8D0 /* HMBookmarkListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F49546341B19924D00E0D8D0 /* HMBookmarkListViewController.xib */; };
 		F49828FC1902A226000D6BBE /* HMStrokeTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F49828FB1902A226000D6BBE /* HMStrokeTextFieldCell.m */; };
 		F4A2AF521A074DCF0024BD9E /* HMScreenshotListWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A2AF501A074DCF0024BD9E /* HMScreenshotListWindowController.m */; };
 		F4A2AF541A074DE40024BD9E /* HMScreenshotListWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A2AF561A074DE40024BD9E /* HMScreenshotListWindowController.xib */; };
@@ -286,6 +288,9 @@
 		F495462D1B1894DD00E0D8D0 /* Bookmark.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bookmark.xcdatamodel; sourceTree = "<group>"; };
 		F495462F1B18991300E0D8D0 /* HMBookmarkDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMBookmarkDataStore.h; sourceTree = "<group>"; };
 		F49546301B18991300E0D8D0 /* HMBookmarkDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMBookmarkDataStore.m; sourceTree = "<group>"; };
+		F49546321B19924D00E0D8D0 /* HMBookmarkListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMBookmarkListViewController.h; sourceTree = "<group>"; };
+		F49546331B19924D00E0D8D0 /* HMBookmarkListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMBookmarkListViewController.m; sourceTree = "<group>"; };
+		F49546341B19924D00E0D8D0 /* HMBookmarkListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMBookmarkListViewController.xib; sourceTree = "<group>"; };
 		F49828FA1902A226000D6BBE /* HMStrokeTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMStrokeTextFieldCell.h; sourceTree = "<group>"; };
 		F49828FB1902A226000D6BBE /* HMStrokeTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMStrokeTextFieldCell.m; sourceTree = "<group>"; };
 		F4A2AF4F1A074DCF0024BD9E /* HMScreenshotListWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMScreenshotListWindowController.h; sourceTree = "<group>"; };
@@ -912,6 +917,9 @@
 				F4D6BC991AA1FAC600742FEB /* HMUITestWindowController.h */,
 				F4D6BC9A1AA1FAC600742FEB /* HMUITestWindowController.m */,
 				F4BEF0101B11A645004702B8 /* HMUITestWindowController.xib */,
+				F49546321B19924D00E0D8D0 /* HMBookmarkListViewController.h */,
+				F49546331B19924D00E0D8D0 /* HMBookmarkListViewController.m */,
+				F49546341B19924D00E0D8D0 /* HMBookmarkListViewController.xib */,
 			);
 			name = TestAndDebug;
 			path = KCD;
@@ -996,6 +1004,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4B37EFF19FC8DCC002F371A /* HMUpgradableShipsWindowController.xib in Resources */,
+				F49546361B19924D00E0D8D0 /* HMBookmarkListViewController.xib in Resources */,
 				F494DC6A18C8BAB900AE97E4 /* HMPowerUpSupportViewController.xib in Resources */,
 				F4BDEB51187252F30069D0CE /* InfoPlist.strings in Resources */,
 				F43E67B918BE060E0087E5B6 /* LevelUpExp.plist in Resources */,
@@ -1103,6 +1112,7 @@
 				F4BEEFE11B0B6326004702B8 /* HMDummyShipCommand.m in Sources */,
 				F4513EE418B635EA00073552 /* HMDocksViewController.m in Sources */,
 				F494DC6D18CC054800AE97E4 /* HMNyukyoDockStatus.m in Sources */,
+				F49546351B19924D00E0D8D0 /* HMBookmarkListViewController.m in Sources */,
 				F43BA4A1197BE22200CFF788 /* HMDestroyShipCommand.m in Sources */,
 				F47B78B218A7B42B0011386E /* HMJSONViewWindowController.m in Sources */,
 				F4B414EF18B0BF1A00468DAF /* HMMasterMapInfoCommand.m in Sources */,

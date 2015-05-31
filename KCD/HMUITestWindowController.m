@@ -22,7 +22,7 @@
 
 - (Class)testViewControllerClass
 {
-	return NSClassFromString(@"HMFleetViewController");
+	return NSClassFromString(@"HMBookmarkListViewController");
 }
 
 - (void)windowDidLoad {
