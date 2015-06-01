@@ -12,6 +12,7 @@
 
 
 const NSUInteger kBookmarkMenuItemTag = 5000;
+const NSUInteger kSeparatorItemTag = 9999;
 
 
 static HMBookmarkManager *sharedInstance = nil;
@@ -84,7 +85,9 @@ static NSMenu *bookmarkMenu = nil;
 - (void)buildBookmarkMenu
 {
 	NSInteger itemNum = bookmarkMenu.numberOfItems;
-	for(NSInteger i = itemNum - 1; i > 3; i--) {
+	for(NSInteger i = itemNum - 1; i > 0; i--) {
+		NSMenuItem *item = [bookmarkMenu itemAtIndex:i];
+		if([item tag] == kSeparatorItemTag) break;
 		[bookmarkMenu removeItemAtIndex:i];
 	}
 	

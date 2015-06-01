@@ -241,16 +241,9 @@ CA
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Bookmark" id="H6h-Wd-VXD">
                         <items>
-                            <menuItem title="Show Bookmark" id="eg5-Hn-joP">
-                                <modifierMask key="keyEquivalentModifierMask"/>
+                            <menuItem title="Show Bookmark" keyEquivalent="b" id="eg5-Hn-joP">
                                 <connections>
                                     <action selector="showBookmark:" target="-1" id="qrJ-Mw-XcK"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Edit Bookmark" keyEquivalent="b" id="JFL-Uh-c4D">
-                                <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
-                                <connections>
-                                    <action selector="editBookmark:" target="-1" id="8Em-h4-Xwo"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Add Bookmark..." keyEquivalent="d" id="7SK-TN-4tQ">
@@ -258,7 +251,7 @@ CA
                                     <action selector="addBookmark:" target="-1" id="0aA-tM-h8C"/>
                                 </connections>
                             </menuItem>
-                            <menuItem isSeparatorItem="YES" id="C0T-8d-m2a"/>
+                            <menuItem isSeparatorItem="YES" tag="9999" id="C0T-8d-m2a"/>
                         </items>
                     </menu>
                 </menuItem>
