@@ -219,10 +219,6 @@ static BOOL sameState(BOOL a, BOOL b) {
 	bookmark.canScroll = self.canScroll;
 	bookmark.scrollDelay = 0.5;
 }
-- (IBAction)editBookmark:(id)sender
-{
-	
-}
 - (BOOL)showsBookmarkList
 {
 	return self.webView.frame.origin.x != 0;
@@ -282,10 +278,12 @@ static BOOL sameState(BOOL a, BOOL b) {
 	if(action == @selector(addBookmark:)) {
 		return self.webView.mainFrameURL != nil;
 	}
-	if(action == @selector(editBookmark:)) {
-		return YES;
-	}
 	if(action == @selector(showBookmark:)) {
+		if([self showsBookmarkList]) {
+			menuItem.title = NSLocalizedString(@"Hide Bookmark", @"Menu item title, Hide Bookmark");
+		} else {
+			menuItem.title = NSLocalizedString(@"Show Bookmark", @"Menu item title, Show Bookmark");
+		}
 		return YES;
 	}
 	if(action == @selector(selectBookmark:)) {
@@ -300,7 +298,6 @@ static BOOL sameState(BOOL a, BOOL b) {
 
 - (void)swipeWithEvent:(NSEvent *)event
 {
-	NSLog(@"Swipe deltaX -> %lf, deltaY -> %lf", [event deltaX], [event deltaY]);
 	if([event deltaX] > 0 && [self showsBookmarkList]) {
 		[self showBookmark:nil];
 	}

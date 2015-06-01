@@ -17,8 +17,12 @@ const NSInteger kDeleteMenuItemTag = 5000;
 @interface HMBookmarkListViewController ()
 
 @property (readonly) NSManagedObjectContext *managedObjectContext;
+
+@property (weak) IBOutlet NSTableView *tableView;
 @property (weak) IBOutlet NSArrayController *bookmarkController;
 @property (weak) IBOutlet NSMenu *contextMenu;
+
+@property (weak) IBOutlet NSPopover *popover;
 
 - (IBAction)editBookmark:(id)sender;
 - (IBAction)deleteBookmark:(id)sender;
@@ -41,7 +45,16 @@ const NSInteger kDeleteMenuItemTag = 5000;
 
 - (IBAction)editBookmark:(id)sender
 {
+	if(![sender respondsToSelector:@selector(representedObject)]) return;
+	NSNumber *rowValue = [sender representedObject];
+	NSInteger row = rowValue.integerValue;
+	if(row == -1) return;
 	
+	NSRect itemRect = [self.tableView rectOfRow:row];
+	
+	[self.popover showRelativeToRect:itemRect
+							  ofView:self.tableView
+					   preferredEdge:NSMinYEdge];
 }
 - (IBAction)deleteBookmark:(id)sender
 {
@@ -71,6 +84,8 @@ const NSInteger kDeleteMenuItemTag = 5000;
 {
 	NSPoint mouse = [tableView convertPoint:[event locationInWindow] fromView:nil];
 	NSInteger row = [tableView rowAtPoint:mouse];
+	
+	if(row == -1) return nil;
 	
 	NSMenuItem *editMenuItem = [self.contextMenu itemWithTag:kEditMenuItemTag];
 	editMenuItem.representedObject = @(row);

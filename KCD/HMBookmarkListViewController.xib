@@ -9,6 +9,8 @@
             <connections>
                 <outlet property="bookmarkController" destination="k0q-xy-XXR" id="g6t-gz-0fh"/>
                 <outlet property="contextMenu" destination="Q3n-jS-n1E" id="Qcy-s3-LQL"/>
+                <outlet property="popover" destination="mDW-wJ-wBK" id="ncS-HM-vrn"/>
+                <outlet property="tableView" destination="UuT-SX-V20" id="SNP-Fe-ikv"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -90,7 +92,7 @@
                 <outlet property="view" destination="Huh-Pi-Oa3" id="MVf-g0-4Jp"/>
             </connections>
         </viewController>
-        <popover id="mDW-wJ-wBK">
+        <popover behavior="t" id="mDW-wJ-wBK">
             <connections>
                 <outlet property="contentViewController" destination="i4C-pG-Gvk" id="Iw8-kz-8wd"/>
             </connections>
