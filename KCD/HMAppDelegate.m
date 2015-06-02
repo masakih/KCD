@@ -18,6 +18,7 @@
 #import "HMShipMasterDetailWindowController.h"
 
 #import "HMExternalBrowserWindowController.h"
+#import "HMBrowserContentAdjuster.h"
 
 #import "HMTSVSupport.h"
 
@@ -46,6 +47,7 @@
 @property (strong) HMUpgradableShipsWindowController *upgradableShipWindowController;
 
 @property (strong) HMExternalBrowserWindowController *externalBrowserWindowController;
+@property (strong) HMBrowserContentAdjuster *browserContentAdjuster;
 
 @property (strong) NSMutableArray *browserWindowControllers;
 
@@ -270,6 +272,8 @@
 		return YES;
 	} else if(action == @selector(openNewBrowser:) || action == @selector(selectBookmark:)) {
 		return YES;
+	} else if(action == @selector(showWindowAduster:)) {
+		return YES;
 	}
 #if ENABLE_JSON_LOG
 	else if(action == @selector(saveDocument:) || action == @selector(openDocument:)) {
@@ -388,6 +392,13 @@
 			 object:browser.window];
 	
 	return browser;
+}
+- (IBAction)showWindowAduster:(id)sender
+{
+	if(! self.browserContentAdjuster) {
+		self.browserContentAdjuster = [HMBrowserContentAdjuster new];
+	}
+	[self.browserContentAdjuster showWindow:nil];
 }
 
 - (void)releaseExternalBrowserWindowController:(id)dummy

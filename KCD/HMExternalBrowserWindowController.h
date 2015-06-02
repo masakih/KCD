@@ -26,9 +26,17 @@
 - (IBAction)clickGoBackSegment:(id)sender;
 
 - (IBAction)addBookmark:(id)sender;
-- (IBAction)editBookmark:(id)sender;
 - (IBAction)showBookmark:(id)sender;
 
 - (IBAction)selectBookmark:(id)sender;
+
+- (IBAction)scrollLeft:(id)sender;
+- (IBAction)scrollRight:(id)sender;
+- (IBAction)scrollUp:(id)sender;
+- (IBAction)scrollDown:(id)sender;
+- (IBAction)increaseWidth:(id)sender;
+- (IBAction)decreaseWidth:(id)sender;
+- (IBAction)increaseHeight:(id)sender;
+- (IBAction)decreaseHeight:(id)sender;
 
 @end

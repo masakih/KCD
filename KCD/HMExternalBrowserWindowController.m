@@ -296,6 +296,58 @@ static BOOL sameState(BOOL a, BOOL b) {
 	return NO;
 }
 
+- (IBAction)scrollLeft:(id)sender
+{
+	NSRect rect = self.contentVisibleRect;
+	rect.origin.x += 1;
+	self.contentVisibleRect = rect;
+}
+- (IBAction)scrollRight:(id)sender
+{
+	NSRect rect = self.contentVisibleRect;
+	rect.origin.x -= 1;
+	self.contentVisibleRect = rect;
+}
+- (IBAction)scrollUp:(id)sender
+{
+	NSRect rect = self.contentVisibleRect;
+	rect.origin.y += 1;
+	self.contentVisibleRect = rect;
+}
+- (IBAction)scrollDown:(id)sender
+{
+	NSRect rect = self.contentVisibleRect;
+	rect.origin.y -= 1;
+	self.contentVisibleRect = rect;
+}
+- (IBAction)increaseWidth:(id)sender
+{
+	NSRect frame = self.window.frame;
+	frame.size.width += 1;
+	[self.window setFrame:frame display:YES];
+}
+- (IBAction)decreaseWidth:(id)sender
+{
+	NSRect frame = self.window.frame;
+	frame.size.width -= 1;
+	[self.window setFrame:frame display:YES];
+}
+- (IBAction)increaseHeight:(id)sender
+{
+	NSRect frame = self.window.frame;
+	frame.size.height += 1;
+	frame.origin.y -= 1;
+	[self.window setFrame:frame display:YES];
+}
+- (IBAction)decreaseHeight:(id)sender
+{
+	NSRect frame = self.window.frame;
+	frame.size.height -= 1;
+	frame.origin.y += 1;
+	[self.window setFrame:frame display:YES];
+}
+
+
 - (void)swipeWithEvent:(NSEvent *)event
 {
 	if([event deltaX] > 0 && [self showsBookmarkList]) {

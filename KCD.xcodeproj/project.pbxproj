@@ -47,6 +47,8 @@
 		F4513EFA18BB699700073552 /* HMShipWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4513EF818BB699700073552 /* HMShipWindowController.m */; };
 		F454F7831A261844003042DD /* HMFleetInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = F454F7821A261844003042DD /* HMFleetInformation.m */; };
 		F4666C4D1B1B3113001840DB /* HMBookmarkListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4666C4C1B1B3113001840DB /* HMBookmarkListTableView.m */; };
+		F4666C511B1CB2CE001840DB /* HMBrowserContentAdjuster.m in Sources */ = {isa = PBXBuildFile; fileRef = F4666C4F1B1CB2CE001840DB /* HMBrowserContentAdjuster.m */; };
+		F4666C521B1CB2CE001840DB /* HMBrowserContentAdjuster.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4666C501B1CB2CE001840DB /* HMBrowserContentAdjuster.xib */; };
 		F46F103618A7CE310063E503 /* HMJSONViewCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F46F103518A7CE310063E503 /* HMJSONViewCommand.m */; };
 		F46F104118A9B85E0063E503 /* HMJSONNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F46F104018A9B85E0063E503 /* HMJSONNode.m */; };
 		F46F104518AA50730063E503 /* HMBroserWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F46F104318AA50730063E503 /* HMBroserWindowController.m */; };
@@ -261,6 +263,9 @@
 		F454F7821A261844003042DD /* HMFleetInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMFleetInformation.m; sourceTree = "<group>"; };
 		F4666C4B1B1B3113001840DB /* HMBookmarkListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMBookmarkListTableView.h; sourceTree = "<group>"; };
 		F4666C4C1B1B3113001840DB /* HMBookmarkListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMBookmarkListTableView.m; sourceTree = "<group>"; };
+		F4666C4E1B1CB2CE001840DB /* HMBrowserContentAdjuster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMBrowserContentAdjuster.h; sourceTree = "<group>"; };
+		F4666C4F1B1CB2CE001840DB /* HMBrowserContentAdjuster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMBrowserContentAdjuster.m; sourceTree = "<group>"; };
+		F4666C501B1CB2CE001840DB /* HMBrowserContentAdjuster.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMBrowserContentAdjuster.xib; sourceTree = "<group>"; };
 		F46F103418A7CE310063E503 /* HMJSONViewCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMJSONViewCommand.h; sourceTree = "<group>"; };
 		F46F103518A7CE310063E503 /* HMJSONViewCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMJSONViewCommand.m; sourceTree = "<group>"; };
 		F46F103F18A9B85E0063E503 /* HMJSONNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMJSONNode.h; sourceTree = "<group>"; };
@@ -925,6 +930,9 @@
 				F49546341B19924D00E0D8D0 /* HMBookmarkListViewController.xib */,
 				F4666C4B1B1B3113001840DB /* HMBookmarkListTableView.h */,
 				F4666C4C1B1B3113001840DB /* HMBookmarkListTableView.m */,
+				F4666C4E1B1CB2CE001840DB /* HMBrowserContentAdjuster.h */,
+				F4666C4F1B1CB2CE001840DB /* HMBrowserContentAdjuster.m */,
+				F4666C501B1CB2CE001840DB /* HMBrowserContentAdjuster.xib */,
 			);
 			name = TestAndDebug;
 			path = KCD;
@@ -1035,6 +1043,7 @@
 				F4BDEB5D187252F30069D0CE /* MainMenu.xib in Resources */,
 				F4B3DC3F18E5C8870011B4FC /* HMBroserWindowController.xib in Resources */,
 				F4131EDE190FEBDB004F7F9A /* HMSlotItemWindowController.xib in Resources */,
+				F4666C521B1CB2CE001840DB /* HMBrowserContentAdjuster.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1087,6 +1096,7 @@
 				F4A3AD8E19BB220000FDBF80 /* HMMaskInfomation.m in Sources */,
 				F4D6BCBA1AA32BEA00742FEB /* HMFleetViewController.m in Sources */,
 				F49546311B18991300E0D8D0 /* HMBookmarkDataStore.m in Sources */,
+				F4666C511B1CB2CE001840DB /* HMBrowserContentAdjuster.m in Sources */,
 				F4E7802E18DC3AF00011BC4C /* LocalData.xcdatamodeld in Sources */,
 				F4D6BCAD1AA2A60900742FEB /* HMSokuTransformer.m in Sources */,
 				F4BEE4731AA5E34600979752 /* HMSlotItemFrameView.m in Sources */,

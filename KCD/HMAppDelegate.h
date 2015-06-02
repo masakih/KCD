@@ -47,6 +47,8 @@ typedef NS_ENUM(NSUInteger, HMShipType) {
 
 - (IBAction)showHidePreferencePanle:(id)sender;
 
+- (IBAction)showWindowAduster:(id)sender;
+
 - (IBAction)saveLocalData:(id)sender;
 - (IBAction)loadLocalData:(id)sender;
 
