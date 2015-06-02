@@ -9,6 +9,7 @@
 #import "HMBookmarkListViewController.h"
 
 #import "HMBookmarkManager.h"
+#import "HMBookmarkEditorViewController.h"
 
 
 const NSInteger kEditMenuItemTag = 1000;
@@ -23,6 +24,7 @@ const NSInteger kDeleteMenuItemTag = 5000;
 @property (weak) IBOutlet NSMenu *contextMenu;
 
 @property (weak) IBOutlet NSPopover *popover;
+@property (strong) HMBookmarkEditorViewController *editorController;
 
 - (IBAction)editBookmark:(id)sender;
 - (IBAction)deleteBookmark:(id)sender;
@@ -37,6 +39,11 @@ const NSInteger kDeleteMenuItemTag = 5000;
 						   bundle:nil];
 	return self;
 }
+- (void)awakeFromNib
+{
+	self.editorController = [HMBookmarkEditorViewController new];
+	self.popover.contentViewController = self.editorController;
+}
 
 - (NSManagedObjectContext *)managedObjectContext
 {
@@ -49,6 +56,9 @@ const NSInteger kDeleteMenuItemTag = 5000;
 	NSNumber *rowValue = [sender representedObject];
 	NSInteger row = rowValue.integerValue;
 	if(row == -1) return;
+	if(row < [self.bookmarkController.arrangedObjects count]) {
+		self.editorController.representedObject = [self.bookmarkController.arrangedObjects objectAtIndex:row];
+	}
 	
 	NSRect itemRect = [self.tableView rectOfRow:row];
 	

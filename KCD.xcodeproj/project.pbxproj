@@ -49,6 +49,8 @@
 		F4666C4D1B1B3113001840DB /* HMBookmarkListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4666C4C1B1B3113001840DB /* HMBookmarkListTableView.m */; };
 		F4666C511B1CB2CE001840DB /* HMBrowserContentAdjuster.m in Sources */ = {isa = PBXBuildFile; fileRef = F4666C4F1B1CB2CE001840DB /* HMBrowserContentAdjuster.m */; };
 		F4666C521B1CB2CE001840DB /* HMBrowserContentAdjuster.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4666C501B1CB2CE001840DB /* HMBrowserContentAdjuster.xib */; };
+		F4666C561B1E0262001840DB /* HMBookmarkEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4666C541B1E0262001840DB /* HMBookmarkEditorViewController.m */; };
+		F4666C571B1E0262001840DB /* HMBookmarkEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4666C551B1E0262001840DB /* HMBookmarkEditorViewController.xib */; };
 		F46F103618A7CE310063E503 /* HMJSONViewCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F46F103518A7CE310063E503 /* HMJSONViewCommand.m */; };
 		F46F104118A9B85E0063E503 /* HMJSONNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F46F104018A9B85E0063E503 /* HMJSONNode.m */; };
 		F46F104518AA50730063E503 /* HMBroserWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F46F104318AA50730063E503 /* HMBroserWindowController.m */; };
@@ -266,6 +268,9 @@
 		F4666C4E1B1CB2CE001840DB /* HMBrowserContentAdjuster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMBrowserContentAdjuster.h; sourceTree = "<group>"; };
 		F4666C4F1B1CB2CE001840DB /* HMBrowserContentAdjuster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMBrowserContentAdjuster.m; sourceTree = "<group>"; };
 		F4666C501B1CB2CE001840DB /* HMBrowserContentAdjuster.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMBrowserContentAdjuster.xib; sourceTree = "<group>"; };
+		F4666C531B1E0262001840DB /* HMBookmarkEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMBookmarkEditorViewController.h; sourceTree = "<group>"; };
+		F4666C541B1E0262001840DB /* HMBookmarkEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMBookmarkEditorViewController.m; sourceTree = "<group>"; };
+		F4666C551B1E0262001840DB /* HMBookmarkEditorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMBookmarkEditorViewController.xib; sourceTree = "<group>"; };
 		F46F103418A7CE310063E503 /* HMJSONViewCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMJSONViewCommand.h; sourceTree = "<group>"; };
 		F46F103518A7CE310063E503 /* HMJSONViewCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMJSONViewCommand.m; sourceTree = "<group>"; };
 		F46F103F18A9B85E0063E503 /* HMJSONNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMJSONNode.h; sourceTree = "<group>"; };
@@ -933,6 +938,9 @@
 				F4666C4E1B1CB2CE001840DB /* HMBrowserContentAdjuster.h */,
 				F4666C4F1B1CB2CE001840DB /* HMBrowserContentAdjuster.m */,
 				F4666C501B1CB2CE001840DB /* HMBrowserContentAdjuster.xib */,
+				F4666C531B1E0262001840DB /* HMBookmarkEditorViewController.h */,
+				F4666C541B1E0262001840DB /* HMBookmarkEditorViewController.m */,
+				F4666C551B1E0262001840DB /* HMBookmarkEditorViewController.xib */,
 			);
 			name = TestAndDebug;
 			path = KCD;
@@ -1023,6 +1031,7 @@
 				F43E67B918BE060E0087E5B6 /* LevelUpExp.plist in Resources */,
 				F4B3DC3018E5C81E0011B4FC /* HMHistoryWindowController.xib in Resources */,
 				F4B3DC3618E5C8650011B4FC /* HMShipWindowController.xib in Resources */,
+				F4666C571B1E0262001840DB /* HMBookmarkEditorViewController.xib in Resources */,
 				F4B3DC3C18E5C87D0011B4FC /* HMDocksViewController.xib in Resources */,
 				F4B2D02B18F83A2F00542742 /* HMScreenshotWindowController.xib in Resources */,
 				F4B3DC3918E5C8700011B4FC /* HMJSONViewWindowController.xib in Resources */,
@@ -1078,6 +1087,7 @@
 				F46F103618A7CE310063E503 /* HMJSONViewCommand.m in Sources */,
 				F4B3DC1E18DEB8C70011B4FC /* HMKenzoHistory.m in Sources */,
 				F4A2AF5B1A0F9B490024BD9E /* HMScreenshotInformation.m in Sources */,
+				F4666C561B1E0262001840DB /* HMBookmarkEditorViewController.m in Sources */,
 				F43769DE1AE1248800DE6204 /* HMAirBattleCommand.m in Sources */,
 				F4B3DC5218F150CD0011B4FC /* HMScreenshotWindowController.m in Sources */,
 				F426802E194D0FFD00B2C27F /* HMMemberShip3Command.m in Sources */,

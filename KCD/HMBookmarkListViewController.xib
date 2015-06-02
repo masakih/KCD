@@ -87,16 +87,7 @@
                 <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="vDA-YV-JVF"/>
             </connections>
         </arrayController>
-        <viewController id="i4C-pG-Gvk" userLabel="Popover View Controller">
-            <connections>
-                <outlet property="view" destination="Huh-Pi-Oa3" id="MVf-g0-4Jp"/>
-            </connections>
-        </viewController>
-        <popover behavior="t" id="mDW-wJ-wBK">
-            <connections>
-                <outlet property="contentViewController" destination="i4C-pG-Gvk" id="Iw8-kz-8wd"/>
-            </connections>
-        </popover>
+        <popover behavior="t" id="mDW-wJ-wBK"/>
         <customView id="Huh-Pi-Oa3">
             <rect key="frame" x="0.0" y="0.0" width="358" height="199"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
