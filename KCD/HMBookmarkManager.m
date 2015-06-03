@@ -8,9 +8,6 @@
 
 #import "HMBookmarkManager.h"
 
-#import "HMBookmarkDataStore.h"
-
-
 const NSUInteger kBookmarkMenuItemTag = 5000;
 const NSUInteger kSeparatorItemTag = 9999;
 
@@ -130,7 +127,7 @@ static NSMenu *bookmarkMenu = nil;
 	HMBookmarkItem *object = [NSEntityDescription insertNewObjectForEntityForName:@"Bookmark"
 														   inManagedObjectContext:self.editorStore.managedObjectContext];
 	object.identifier = [NSString stringWithFormat:@"HMBM%@", [NSDate date]];
-	object.order = @(maxOrder.integerValue + 1);
+	object.order = @(maxOrder.integerValue + 100);
 
 	return object;
 }

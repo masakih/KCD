@@ -15,7 +15,7 @@
 const NSInteger kEditMenuItemTag = 1000;
 const NSInteger kDeleteMenuItemTag = 5000;
 
-@interface HMBookmarkListViewController ()
+@interface HMBookmarkListViewController () <NSTableViewDataSource>
 
 @property (readonly) NSManagedObjectContext *managedObjectContext;
 
@@ -24,7 +24,10 @@ const NSInteger kDeleteMenuItemTag = 5000;
 @property (weak) IBOutlet NSMenu *contextMenu;
 
 @property (weak) IBOutlet NSPopover *popover;
-@property (strong) HMBookmarkEditorViewController *editorController;
+@property (strong, nonatomic) HMBookmarkEditorViewController *editorController;
+
+@property NSRange objectRange;
+@property (strong, nonatomic) NSArray *currentlyDraggedObjects;
 
 - (IBAction)editBookmark:(id)sender;
 - (IBAction)deleteBookmark:(id)sender;
@@ -41,8 +44,14 @@ const NSInteger kDeleteMenuItemTag = 5000;
 }
 - (void)awakeFromNib
 {
+	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"order" ascending:YES];
+	[self.bookmarkController setSortDescriptors:@[sortDescriptor]];
+	
 	self.editorController = [HMBookmarkEditorViewController new];
 	self.popover.contentViewController = self.editorController;
+	
+	[self.tableView registerForDraggedTypes:@[@"com.masakih.KCD.HMBookmarkItem"]];
+	[self.tableView setDraggingSourceOperationMask:NSDragOperationMove forLocal:YES];
 }
 
 - (NSManagedObjectContext *)managedObjectContext
@@ -76,6 +85,16 @@ const NSInteger kDeleteMenuItemTag = 5000;
 	
 	[self.bookmarkController removeObjectAtArrangedObjectIndex:row];
 }
+
+- (void)reorderingBoolmarks
+{
+	NSInteger order = 100;
+	for(HMBookmarkItem *item in self.bookmarkController.arrangedObjects) {
+		item.order = @(order);
+		order += 100;
+	}
+}
+
 - (void)tableViewSelectionDidChange:(NSNotification *)notification
 {
 	NSTableView *tableView = [notification object];
@@ -104,4 +123,61 @@ const NSInteger kDeleteMenuItemTag = 5000;
 	
 	return self.contextMenu;
 }
+
+- (id<NSPasteboardWriting>)tableView:(NSTableView *)tableView pasteboardWriterForRow:(NSInteger)row
+{
+	return [self.bookmarkController.arrangedObjects objectAtIndex:row];
+}
+
+- (void)tableView:(NSTableView *)tableView draggingSession:(NSDraggingSession *)session willBeginAtPoint:(NSPoint)screenPoint forRowIndexes:(NSIndexSet *)rowIndexes
+{
+	NSUInteger len = ([rowIndexes lastIndex]+1) - [rowIndexes firstIndex];
+	self.objectRange = NSMakeRange([rowIndexes firstIndex], len);
+	self.currentlyDraggedObjects = [self.bookmarkController.arrangedObjects objectsAtIndexes:rowIndexes];
+}
+
+- (void)tableView:(NSTableView *)tableView draggingSession:(NSDraggingSession *)session endedAtPoint:(NSPoint)screenPoint operation:(NSDragOperation)operation
+{
+	self.objectRange = NSMakeRange(0, 0);
+	self.currentlyDraggedObjects = nil;
+}
+
+- (NSDragOperation)tableView:(NSTableView *)tableView validateDrop:(id<NSDraggingInfo>)info proposedRow:(NSInteger)row proposedDropOperation:(NSTableViewDropOperation)dropOperation
+{
+	if(dropOperation == NSTableViewDropAbove && (_objectRange.location > row || _objectRange.location + _objectRange.length < row)) {
+		if([info draggingSource] == tableView) {
+			return NSDragOperationMove;
+		}
+	}
+	return NSDragOperationNone;
+}
+
+- (BOOL)tableView:(NSTableView *)tableView acceptDrop:(id<NSDraggingInfo>)info row:(NSInteger)row dropOperation:(NSTableViewDropOperation)dropOperation
+{
+	[self.tableView beginUpdates];
+	
+	HMBookmarkDataStore *store = [[HMBookmarkManager sharedManager] editorStore];
+	HMBookmarkItem *target = nil;
+	if(row != 0) {
+		target = [self.bookmarkController.arrangedObjects objectAtIndex:row - 1];
+	}
+	NSInteger targetOrder = target.order.integerValue;
+	NSArray *items = [info draggingPasteboard].pasteboardItems;
+	NSInteger i = 1;
+	for(NSPasteboardItem *item in items) {
+		id p = [item dataForType:@"com.masakih.KCD.HMBookmarkItem"];
+		NSURL *uri = [NSKeyedUnarchiver unarchiveObjectWithData:p];
+		NSManagedObjectID *oID = [self.managedObjectContext.persistentStoreCoordinator managedObjectIDForURIRepresentation:uri];
+		HMBookmarkItem *bookmark = (HMBookmarkItem *)[store.managedObjectContext objectWithID:oID];
+		bookmark.order = @(targetOrder + i);
+		i++;
+	}
+	[self.bookmarkController rearrangeObjects];
+	[self reorderingBoolmarks];
+	[self.bookmarkController rearrangeObjects];
+	
+	[self.tableView endUpdates];
+	return YES;
+}
+
 @end

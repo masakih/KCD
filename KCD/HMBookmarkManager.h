@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 #import "HMBookmarkItem.h"
+#import "HMBookmarkDataStore.h"
 
 @interface HMBookmarkManager : NSObject
 
@@ -18,6 +19,8 @@
 
 @property (readonly) NSManagedObjectContext *manageObjectContext;
 - (HMBookmarkItem *)createNewBookmark;
+
+- (HMBookmarkDataStore *)editorStore;
 
 @end
 

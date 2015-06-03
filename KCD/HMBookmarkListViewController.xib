@@ -20,21 +20,21 @@
             <rect key="frame" x="0.0" y="0.0" width="305" height="618"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView autohidesScrollers="YES" horizontalLineScroll="20" horizontalPageScroll="10" verticalLineScroll="20" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="SgB-i9-QMI">
-                    <rect key="frame" x="-1" y="28" width="305" height="591"/>
+                <scrollView autohidesScrollers="YES" horizontalLineScroll="22" horizontalPageScroll="10" verticalLineScroll="22" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="SgB-i9-QMI">
+                    <rect key="frame" x="-1" y="28" width="307" height="591"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" drawsBackground="NO" id="RRB-uC-llr">
-                        <rect key="frame" x="1" y="17" width="238" height="117"/>
+                        <rect key="frame" x="1" y="1" width="305" height="589"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView focusRingType="none" appearanceType="vibrantLight" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="18" id="UuT-SX-V20" customClass="HMBookmarkListTableView">
-                                <rect key="frame" x="0.0" y="0.0" width="303" height="589"/>
+                                <rect key="frame" x="0.0" y="0.0" width="305" height="589"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <size key="intercellSpacing" width="3" height="2"/>
+                                <size key="intercellSpacing" width="3" height="4"/>
                                 <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn width="300" minWidth="40" maxWidth="1000" id="Djw-Kz-846">
+                                    <tableColumn width="302" minWidth="40" maxWidth="1000" id="Djw-Kz-846">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>

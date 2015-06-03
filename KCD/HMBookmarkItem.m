@@ -52,6 +52,16 @@
 	return self.scrollDelayValue.doubleValue;
 }
 
+- (NSArray *)writableTypesForPasteboard:(NSPasteboard *)pasteboard
+{
+	return @[@"com.masakih.KCD.HMBookmarkItem"];
+}
+- (id)pasteboardPropertyListForType:(NSString *)type
+{
+	NSURL *uri = self.objectID.URIRepresentation;
+	NSData *data = [NSKeyedArchiver archivedDataWithRootObject:uri];
+	return data;
+}
 
 - (id)description
 {

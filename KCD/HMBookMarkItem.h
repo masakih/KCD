@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface HMBookmarkItem : NSManagedObject
+@interface HMBookmarkItem : NSManagedObject <NSPasteboardWriting>
 
 @property (copy, nonatomic) NSString *identifier;
 @property (copy, nonatomic) NSString *name;
