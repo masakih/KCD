@@ -190,7 +190,7 @@ static BOOL sameState(BOOL a, BOOL b) {
 
 - (IBAction)goHome:(id)sender
 {
-	self.webView.mainFrameURL = @"http://www.dmm.com/netgame/-/basket/";
+	self.webView.mainFrameURL = @"http://www.dmm.com/";
 }
 - (IBAction)clickGoBackSegment:(id)sender
 {
