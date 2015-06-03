@@ -15,8 +15,6 @@ s/Show Upgradable Ships/改造可能艦リストを表示/2
 s/Hide Upgradable Ships/改造可能艦リストを隠す/2
 s/Show Screenshot List/スクリーンショットリストを表示/2
 s/Hide Screenshot List/スクリーンショットリストを隠す/2
-s/Show Billing Window/課金ウインドウを表示/2
-s/Hide Billing Window/課金ウインドウを隠す/2
 s/%1$@ in sortie into %2$@ (%3$@)/%1$@が\\n（%3$@）%2$@\\nに出撃中/
 s/All/すべて/2
 s/Equiped/装備済み/2

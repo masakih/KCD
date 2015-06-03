@@ -46,7 +46,7 @@
 @property (strong) HMPreferencePanelController *preferencePanelController;
 @property (strong) HMUpgradableShipsWindowController *upgradableShipWindowController;
 
-@property (strong) HMExternalBrowserWindowController *externalBrowserWindowController;
+//@property (strong) HMExternalBrowserWindowController *externalBrowserWindowController;
 @property (strong) HMBrowserContentAdjuster *browserContentAdjuster;
 
 @property (strong) NSMutableArray *browserWindowControllers;
@@ -258,14 +258,6 @@
 			[menuItem setTitle:NSLocalizedString(@"Hide Screenshot List", @"")];
 		}
 		return YES;
-	} else if(action == @selector(showExternalBrowserWindow:)) {
-		NSWindow *window = self.externalBrowserWindowController.window;
-		if(!window.isVisible || !window.isMainWindow) {
-			[menuItem setTitle:NSLocalizedString(@"Show Billing Window", @"")];
-		} else {
-			[menuItem setTitle:NSLocalizedString(@"Hide Billing Window", @"")];
-		}
-		return YES;
 	} else if(action == @selector(saveLocalData:) || action == @selector(loadLocalData:)) {
 		return YES;
 	} else if(action == @selector(showHidePreferencePanle:)) {
@@ -349,26 +341,6 @@
 	}
 }
 
-- (IBAction)showExternalBrowserWindow:(id)sender
-{
-	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-	if(!self.externalBrowserWindowController) {
-		self.externalBrowserWindowController = [HMExternalBrowserWindowController new];
-		self.externalBrowserWindowController.webView.mainFrameURL = @"http://www.dmm.com/netgame/-/basket/";
-		[nc addObserver:self
-			   selector:@selector(windowWillClose:)
-				   name:NSWindowWillCloseNotification
-				 object:self.externalBrowserWindowController.window];
-	}
-	
-	NSWindow *window = self.externalBrowserWindowController.window;
-	if(!window.isVisible || !window.isMainWindow) {
-		[window makeKeyAndOrderFront:nil];
-	} else {
-		[window orderOut:nil];
-	}
-}
-
 - (IBAction)openNewBrowser:(id)sender
 {
 	[self createNewBrowser];
@@ -401,26 +373,15 @@
 	[self.browserContentAdjuster showWindow:nil];
 }
 
-- (void)releaseExternalBrowserWindowController:(id)dummy
-{
-	self.externalBrowserWindowController = nil;
-}
 - (void)windowWillClose:(NSNotification *)notification
 {
 	id object = [notification object];
-	if([object isEqual:self.externalBrowserWindowController.window]) {
-		[[NSNotificationCenter defaultCenter] removeObserver:self
-														name:NSWindowWillCloseNotification
-													  object:self.externalBrowserWindowController.window];
-		[self performSelector:@selector(releaseExternalBrowserWindowController:)
-				   withObject:nil
-				   afterDelay:0.0];
-	}
 	if([self.browserWindowControllers containsObject:object]) {
 		[self.browserWindowControllers removeObject:object];
 		[[NSNotificationCenter defaultCenter] removeObserver:self
 														name:NSWindowWillCloseNotification
 													  object:object];
+		[self.browserWindowControllers removeObject:object];
 	}
 }
 

@@ -342,12 +342,6 @@ CA
                                     <action selector="showHideScreenshotListWindow:" target="-1" id="Ynz-Sq-TRj"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Billing Window" id="6D0-wS-chg">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="showExternalBrowserWindow:" target="494" id="r5E-jo-i8w"/>
-                                </connections>
-                            </menuItem>
                         </items>
                     </menu>
                 </menuItem>
@@ -367,7 +361,6 @@ CA
         </menu>
         <customObject id="494" customClass="HMAppDelegate">
             <connections>
-                <outlet property="billingWindowMenuItem" destination="6D0-wS-chg" id="t7a-8y-tGR"/>
                 <outlet property="debugMenuItem" destination="TRC-ZR-9HP" id="7F5-QE-93s"/>
             </connections>
         </customObject>
