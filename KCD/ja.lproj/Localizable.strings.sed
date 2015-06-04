@@ -21,3 +21,5 @@ s/Equiped/装備済み/2
 s/Unequiped/未装備/2
 s/Reload/リロード/2
 s/Back To Game/ゲームに戻る/2
+s/Show Bookmark/ブックマークを表示/2
+s/Hide Bookmark/ブックマークを隠す/2

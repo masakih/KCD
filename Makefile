@@ -12,7 +12,8 @@ INFO_PLIST=KCD/KCD-Info.plist
 LOCALIZE_FILES=KCD/HMBroserWindowController.m KCD/HMServerDataStore.m KCD/HMKenzoDockStatus.m \
 KCD/HMMissionStatus.m KCD/HMNyukyoDockStatus.m KCD/HMCreateSlotItemCommand.m KCD/HMAppDelegate.m \
 KCD/HMScreenshotWindowController.m KCD/HMStoreCreateSlotItemHistoryCommand.m \
-KCD/HMDocksViewController.m KCD/HMSlotItemWindowController.m KCD/HMBroserWindowController.m
+KCD/HMDocksViewController.m KCD/HMSlotItemWindowController.m KCD/HMBroserWindowController.m \
+KCD/HMExternalBrowserWindowController.m
 
 VER_CMD=grep -A1 'CFBundleShortVersionString' $(INFO_PLIST) | tail -1 | tr -d "'\t</string>" 
 VERSION=$(shell $(VER_CMD))
