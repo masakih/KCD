@@ -21,14 +21,14 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView autohidesScrollers="YES" horizontalLineScroll="22" horizontalPageScroll="10" verticalLineScroll="22" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="SgB-i9-QMI">
-                    <rect key="frame" x="-1" y="28" width="307" height="591"/>
+                    <rect key="frame" x="-1" y="27" width="307" height="592"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" drawsBackground="NO" id="RRB-uC-llr">
-                        <rect key="frame" x="1" y="1" width="305" height="589"/>
+                        <rect key="frame" x="1" y="1" width="305" height="590"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView focusRingType="none" appearanceType="vibrantLight" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="18" id="UuT-SX-V20" customClass="HMBookmarkListTableView">
-                                <rect key="frame" x="0.0" y="0.0" width="305" height="589"/>
+                                <rect key="frame" x="0.0" y="0.0" width="305" height="590"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="4"/>
                                 <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -68,18 +68,25 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <button verticalHuggingPriority="750" id="7iE-xc-WDA">
-                    <rect key="frame" x="222" y="-3" width="82" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                    <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2tP-La-LYA">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="showBookmark:" target="-1" id="hgX-Af-c7v"/>
-                    </connections>
-                </button>
+                <customView id="98r-iV-QHX" customClass="HMSourceListColoredView">
+                    <rect key="frame" x="0.0" y="0.0" width="305" height="27"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button verticalHuggingPriority="750" id="7iE-xc-WDA">
+                            <rect key="frame" x="237" y="-2" width="59" height="28"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                            <buttonCell key="cell" type="push" title="閉じる" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2tP-La-LYA">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="smallSystem"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="showBookmark:" target="-1" id="hgX-Af-c7v"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </customView>
             </subviews>
+            <animations/>
             <point key="canvasLocation" x="232.5" y="356"/>
         </customView>
         <arrayController mode="entity" entityName="Bookmark" automaticallyPreparesContent="YES" avoidsEmptySelection="NO" id="k0q-xy-XXR">
@@ -88,103 +95,6 @@
             </connections>
         </arrayController>
         <popover behavior="t" id="mDW-wJ-wBK"/>
-        <customView id="Huh-Pi-Oa3">
-            <rect key="frame" x="0.0" y="0.0" width="358" height="199"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <subviews>
-                <textField verticalHuggingPriority="750" id="6cb-rB-AzE">
-                    <rect key="frame" x="92" y="126" width="35" height="19"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="9999" drawsBackground="YES" id="5uj-wn-GMt">
-                        <numberFormatter key="formatter" formatterBehavior="custom10_4" numberStyle="decimal" groupingSize="0" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="W0l-5X-TUB"/>
-                        <font key="font" metaFont="smallSystem"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" id="KL1-Ja-Q4O">
-                    <rect key="frame" x="123" y="124" width="15" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="joP-hR-6LC"/>
-                </stepper>
-                <textField verticalHuggingPriority="750" id="Km2-nl-9Ob">
-                    <rect key="frame" x="143" y="126" width="35" height="19"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="9999" drawsBackground="YES" id="StF-9V-b0f">
-                        <numberFormatter key="formatter" formatterBehavior="custom10_4" numberStyle="decimal" groupingSize="0" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="AqB-nR-Ubc"/>
-                        <font key="font" metaFont="smallSystem"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" id="Xqk-j8-rXY">
-                    <rect key="frame" x="174" y="124" width="15" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="nIK-BX-kUf"/>
-                </stepper>
-                <textField verticalHuggingPriority="750" id="3f3-hL-b3G">
-                    <rect key="frame" x="92" y="90" width="35" height="19"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="9999" drawsBackground="YES" id="Acg-ED-fF5">
-                        <numberFormatter key="formatter" formatterBehavior="custom10_4" numberStyle="decimal" groupingSize="0" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="LeK-tc-N1a"/>
-                        <font key="font" metaFont="smallSystem"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" id="lcv-ro-btY">
-                    <rect key="frame" x="123" y="88" width="15" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="mJt-5o-F4m"/>
-                </stepper>
-                <textField verticalHuggingPriority="750" id="kNi-tl-eaH">
-                    <rect key="frame" x="143" y="90" width="35" height="19"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="9999" drawsBackground="YES" id="xke-O1-Syp">
-                        <numberFormatter key="formatter" formatterBehavior="custom10_4" numberStyle="decimal" groupingSize="0" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="PwE-0w-f6D"/>
-                        <font key="font" metaFont="smallSystem"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" id="EAn-eE-Jcc">
-                    <rect key="frame" x="174" y="88" width="15" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="d5Z-tV-TSo"/>
-                </stepper>
-                <button id="3aI-pN-Fdf">
-                    <rect key="frame" x="89" y="53" width="82" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Scroll Lock" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="g0i-AC-eiI">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                    </buttonCell>
-                </button>
-                <button id="VWd-66-Yqc">
-                    <rect key="frame" x="174" y="53" width="86" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Resize Lock" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="ulc-2d-dfO">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                    </buttonCell>
-                </button>
-                <slider verticalHuggingPriority="750" id="J3A-Xz-Mh1">
-                    <rect key="frame" x="92" y="19" width="92" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <sliderCell key="cell" controlSize="small" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="6hY-IE-92c"/>
-                </slider>
-                <tokenField verticalHuggingPriority="750" id="Kb6-5P-4hP">
-                    <rect key="frame" x="92" y="163" width="198" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <tokenFieldCell key="cell" controlSize="small" selectable="YES" editable="YES" borderStyle="bezel" alignment="left" drawsBackground="YES" allowsEditingTextAttributes="YES" id="8TU-yD-brv">
-                        <font key="font" metaFont="smallSystem"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </tokenFieldCell>
-                </tokenField>
-            </subviews>
-            <point key="canvasLocation" x="600" y="429.5"/>
-        </customView>
         <menu id="Q3n-jS-n1E">
             <items>
                 <menuItem title="編集..." tag="1000" id="Onj-yS-RSu">
