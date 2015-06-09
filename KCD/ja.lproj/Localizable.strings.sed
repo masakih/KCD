@@ -23,3 +23,9 @@ s/Reload/リロード/2
 s/Back To Game/ゲームに戻る/2
 s/Show Bookmark/ブックマークを表示/2
 s/Hide Bookmark/ブックマークを隠す/2
+s/Very Long/超長/2
+s/Long/長/2
+s/Middle/中/2
+s/Short/短/2
+s/Slow/低速/2
+s/Fast/高速/2

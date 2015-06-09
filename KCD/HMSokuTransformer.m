@@ -38,10 +38,10 @@ typedef NS_ENUM(NSInteger, SokuType) {
 	SokuType soku = [value integerValue];
 	switch (soku) {
 		case kSlow:
-			result = @"低速";
+			result = NSLocalizedString(@"Slow", @"Speed, slow");
 			break;
 		case kFast:
-			result = @"高速";
+			result = NSLocalizedString(@"Fast", @"Speed, fast");
 			break;
 	}
 	

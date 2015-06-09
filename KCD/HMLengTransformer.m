@@ -40,16 +40,16 @@ typedef NS_ENUM(NSInteger, LengType) {
 	LengType leng = [value integerValue];
 	switch (leng) {
 		case kShort:
-			result = @"短";
+			result = NSLocalizedString(@"Short", @"Range, short");
 			break;
 		case kMiddle:
-			result = @"中";
+			result = NSLocalizedString(@"Middle", @"Range, middle");
 			break;
 		case kLong:
-			result = @"長";
+			result = NSLocalizedString(@"Long", @"Range, long");
 			break;
 		case kOverLong:
-			result = @"超長";
+			result = NSLocalizedString(@"Very Long", @"Range, very long");
 			break;
 	}
 	

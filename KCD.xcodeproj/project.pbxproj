@@ -795,6 +795,8 @@
 				F4D6BCB21AA2B18100742FEB /* HMSlotitemNameTransformer.m */,
 				F4D6BCB41AA2C10700742FEB /* HMHideEquipNumberTransformer.h */,
 				F4D6BCB51AA2C10700742FEB /* HMHideEquipNumberTransformer.m */,
+				F4666C5C1B242124001840DB /* HMQuestProgressTransformer.h */,
+				F4666C5D1B242124001840DB /* HMQuestProgressTransformer.m */,
 			);
 			name = "Transformar&Formatter";
 			sourceTree = "<group>";
@@ -811,8 +813,6 @@
 				F43769D71ADE890800DE6204 /* HMQuestListViewController.h */,
 				F43769D81ADE890800DE6204 /* HMQuestListViewController.m */,
 				F43769D91ADE890800DE6204 /* HMQuestListViewController.xib */,
-				F4666C5C1B242124001840DB /* HMQuestProgressTransformer.h */,
-				F4666C5D1B242124001840DB /* HMQuestProgressTransformer.m */,
 				F494DC6018C608C100AE97E4 /* HMShipViewController.h */,
 				F494DC6118C608C100AE97E4 /* HMShipViewController.m */,
 				F4B3DC3518E5C8520011B4FC /* HMShipViewController.xib */,
