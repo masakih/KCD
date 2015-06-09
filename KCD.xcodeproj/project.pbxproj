@@ -808,6 +808,11 @@
 				F4513EE118B635EA00073552 /* HMDocksViewController.h */,
 				F4513EE218B635EA00073552 /* HMDocksViewController.m */,
 				F4B3DC3E18E5C87D0011B4FC /* HMDocksViewController.xib */,
+				F43769D71ADE890800DE6204 /* HMQuestListViewController.h */,
+				F43769D81ADE890800DE6204 /* HMQuestListViewController.m */,
+				F43769D91ADE890800DE6204 /* HMQuestListViewController.xib */,
+				F4666C5C1B242124001840DB /* HMQuestProgressTransformer.h */,
+				F4666C5D1B242124001840DB /* HMQuestProgressTransformer.m */,
 				F494DC6018C608C100AE97E4 /* HMShipViewController.h */,
 				F494DC6118C608C100AE97E4 /* HMShipViewController.m */,
 				F4B3DC3518E5C8520011B4FC /* HMShipViewController.xib */,
@@ -987,11 +992,6 @@
 				F4D6BC991AA1FAC600742FEB /* HMUITestWindowController.h */,
 				F4D6BC9A1AA1FAC600742FEB /* HMUITestWindowController.m */,
 				F4BEF0101B11A645004702B8 /* HMUITestWindowController.xib */,
-				F43769D71ADE890800DE6204 /* HMQuestListViewController.h */,
-				F43769D81ADE890800DE6204 /* HMQuestListViewController.m */,
-				F43769D91ADE890800DE6204 /* HMQuestListViewController.xib */,
-				F4666C5C1B242124001840DB /* HMQuestProgressTransformer.h */,
-				F4666C5D1B242124001840DB /* HMQuestProgressTransformer.m */,
 			);
 			name = TestAndDebug;
 			path = KCD;
