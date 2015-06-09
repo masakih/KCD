@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment version="1070" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="HMDocksViewController">
             <connections>
                 <outlet property="battleContoller" destination="sje-58-fiD" id="4Qx-Ag-AL2"/>
+                <outlet property="questListViewPlaceholder" destination="YHM-Cb-C0n" id="LSr-C9-vnR"/>
                 <outlet property="view" destination="vGg-MO-rzn" id="Z4V-4O-pqr"/>
             </connections>
         </customObject>
@@ -17,32 +18,18 @@
             <rect key="frame" x="0.0" y="-1" width="323" height="626"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qbt-Mz-eoZ">
-                    <rect key="frame" x="10" y="601" width="43" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="遠征：" id="7QQ-hS-weZ">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Uz-o8-NQM">
-                    <rect key="frame" x="10" y="500" width="82" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="入渠ドック：" id="b5U-Dj-col">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qbt-tg-Tzc">
-                    <rect key="frame" x="18" y="578" width="65" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="qbt-tg-Tzc">
+                    <rect key="frame" x="35" y="597" width="65" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="第2艦隊：" id="fFX-LQ-9is">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Z4-bD-0N0">
-                    <rect key="frame" x="145" y="578" width="155" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="1Z4-bD-0N0">
+                    <rect key="frame" x="160" y="597" width="153" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="遠征場所０００００" id="EIG-mO-Bl7">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -56,8 +43,9 @@
                         </binding>
                     </connections>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sTn-uJ-Phx">
-                    <rect key="frame" x="79" y="578" width="62" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="sTn-uJ-Phx">
+                    <rect key="frame" x="96" y="597" width="62" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="BJE-Ig-1at">
                         <customFormatter key="formatter" id="9Rm-sQ-KzG" customClass="HMTimerCountFormatter"/>
                         <font key="font" metaFont="system"/>
@@ -72,16 +60,18 @@
                         </binding>
                     </connections>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ImV-DF-NX7">
-                    <rect key="frame" x="18" y="477" width="78" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ImV-DF-NX7">
+                    <rect key="frame" x="35" y="521" width="78" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="第1ドック：" id="ax3-cD-jlq">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U7b-9S-sWb">
-                    <rect key="frame" x="92" y="477" width="62" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="U7b-9S-sWb">
+                    <rect key="frame" x="109" y="521" width="62" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="iv8-oM-0Fo">
                         <customFormatter key="formatter" id="uTW-Si-vAP" customClass="HMTimerCountFormatter"/>
                         <font key="font" metaFont="system"/>
@@ -97,24 +87,18 @@
                         </binding>
                     </connections>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ROJ-cy-pfs">
-                    <rect key="frame" x="10" y="377" width="82" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="建造ドック：" id="jJs-Zj-Eku">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fyi-lA-fL1">
-                    <rect key="frame" x="18" y="354" width="78" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="fyi-lA-fL1">
+                    <rect key="frame" x="35" y="424" width="78" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="第1ドック：" id="HCM-6h-iZC">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1j4-Kg-am8">
-                    <rect key="frame" x="92" y="354" width="62" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="1j4-Kg-am8">
+                    <rect key="frame" x="109" y="424" width="62" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="5SQ-4h-gVc">
                         <customFormatter key="formatter" id="fOY-bM-qRR" customClass="HMTimerCountFormatter"/>
                         <font key="font" metaFont="system"/>
@@ -129,8 +113,9 @@
                         </binding>
                     </connections>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k1d-jn-V0r">
-                    <rect key="frame" x="158" y="477" width="142" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="k1d-jn-V0r">
+                    <rect key="frame" x="173" y="521" width="140" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Bismarck zwei" id="00K-BC-hE3">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -144,16 +129,18 @@
                         </binding>
                     </connections>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="78z-RY-MYG">
-                    <rect key="frame" x="18" y="555" width="65" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="78z-RY-MYG">
+                    <rect key="frame" x="35" y="576" width="65" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="第3艦隊：" id="yqL-gH-ywX">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ozB-6d-jdP">
-                    <rect key="frame" x="145" y="555" width="155" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ozB-6d-jdP">
+                    <rect key="frame" x="160" y="576" width="153" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="遠征場所０００００" id="hsi-5v-SGu">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -167,8 +154,9 @@
                         </binding>
                     </connections>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YPL-iZ-5QI">
-                    <rect key="frame" x="79" y="555" width="62" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="YPL-iZ-5QI">
+                    <rect key="frame" x="96" y="576" width="62" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="uZ7-H0-10h">
                         <customFormatter key="formatter" id="XJq-qE-ggs" customClass="HMTimerCountFormatter"/>
                         <font key="font" metaFont="system"/>
@@ -183,16 +171,18 @@
                         </binding>
                     </connections>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cSE-HO-9tA">
-                    <rect key="frame" x="18" y="532" width="65" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="cSE-HO-9tA">
+                    <rect key="frame" x="35" y="555" width="65" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="第4艦隊：" id="kJb-mN-M4Q">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HMF-e4-15i">
-                    <rect key="frame" x="145" y="532" width="155" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="HMF-e4-15i">
+                    <rect key="frame" x="160" y="555" width="153" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="遠征場所０００００" id="aSL-uz-w7C">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -206,8 +196,9 @@
                         </binding>
                     </connections>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aaL-Hq-rXW">
-                    <rect key="frame" x="79" y="532" width="62" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="aaL-Hq-rXW">
+                    <rect key="frame" x="96" y="555" width="62" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="KdJ-xQ-eVC">
                         <customFormatter key="formatter" id="lcg-8G-Dru" customClass="HMTimerCountFormatter"/>
                         <font key="font" metaFont="system"/>
@@ -222,16 +213,18 @@
                         </binding>
                     </connections>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mOt-g2-cwL">
-                    <rect key="frame" x="18" y="454" width="78" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="mOt-g2-cwL">
+                    <rect key="frame" x="35" y="500" width="78" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="第2ドック：" id="n0V-Uv-9Zj">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mAQ-lg-uXF">
-                    <rect key="frame" x="92" y="454" width="62" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="mAQ-lg-uXF">
+                    <rect key="frame" x="109" y="500" width="62" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="oco-u5-uot">
                         <customFormatter key="formatter" id="n6E-LC-O0m" customClass="HMTimerCountFormatter"/>
                         <font key="font" metaFont="system"/>
@@ -246,8 +239,9 @@
                         </binding>
                     </connections>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TaR-MT-gwt">
-                    <rect key="frame" x="158" y="454" width="142" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="TaR-MT-gwt">
+                    <rect key="frame" x="173" y="500" width="140" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="阿賀野航改二" id="fPQ-pb-CKr">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -261,16 +255,18 @@
                         </binding>
                     </connections>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fkC-bB-UBd">
-                    <rect key="frame" x="18" y="431" width="78" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="fkC-bB-UBd">
+                    <rect key="frame" x="35" y="479" width="78" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="第3ドック：" id="JDi-Sd-mg3">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Ep-sM-xII">
-                    <rect key="frame" x="92" y="431" width="62" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="0Ep-sM-xII">
+                    <rect key="frame" x="109" y="479" width="62" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="YbO-M6-FUI">
                         <customFormatter key="formatter" id="XN3-A0-NNc" customClass="HMTimerCountFormatter"/>
                         <font key="font" metaFont="system"/>
@@ -285,8 +281,9 @@
                         </binding>
                     </connections>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TFq-Xl-orn">
-                    <rect key="frame" x="158" y="431" width="142" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="TFq-Xl-orn">
+                    <rect key="frame" x="173" y="479" width="140" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="阿賀野航改二" id="Jjl-TA-ODo">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -300,16 +297,18 @@
                         </binding>
                     </connections>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EME-Mj-KxR">
-                    <rect key="frame" x="18" y="408" width="78" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="EME-Mj-KxR">
+                    <rect key="frame" x="35" y="458" width="78" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="第4ドック：" id="zOe-3P-h4L">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zee-D4-ZGG">
-                    <rect key="frame" x="92" y="408" width="62" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Zee-D4-ZGG">
+                    <rect key="frame" x="109" y="458" width="62" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="rFg-0M-tbw">
                         <customFormatter key="formatter" id="aaT-2p-6sV" customClass="HMTimerCountFormatter"/>
                         <font key="font" metaFont="system"/>
@@ -324,8 +323,9 @@
                         </binding>
                     </connections>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U2e-ln-Ord">
-                    <rect key="frame" x="158" y="408" width="142" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="U2e-ln-Ord">
+                    <rect key="frame" x="173" y="458" width="140" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="阿賀野航改二" id="jas-Ub-XVx">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -339,16 +339,18 @@
                         </binding>
                     </connections>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Pw-Qt-MRs">
-                    <rect key="frame" x="18" y="331" width="78" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="8Pw-Qt-MRs">
+                    <rect key="frame" x="35" y="403" width="78" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="第2ドック：" id="gSL-UE-kuw">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="txP-dd-uyL">
-                    <rect key="frame" x="92" y="331" width="62" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="txP-dd-uyL">
+                    <rect key="frame" x="109" y="403" width="62" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="Bnk-cQ-3F5">
                         <customFormatter key="formatter" id="pyU-qN-RwB" customClass="HMTimerCountFormatter"/>
                         <font key="font" metaFont="system"/>
@@ -363,16 +365,18 @@
                         </binding>
                     </connections>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="06L-NN-Abk">
-                    <rect key="frame" x="164" y="354" width="78" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="06L-NN-Abk">
+                    <rect key="frame" x="177" y="424" width="78" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="第3ドック：" id="ubh-cI-QPF">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VoE-sV-bbn">
-                    <rect key="frame" x="238" y="354" width="62" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="VoE-sV-bbn">
+                    <rect key="frame" x="251" y="424" width="62" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="769-Rr-iNm">
                         <customFormatter key="formatter" id="wwc-Kj-i2T" customClass="HMTimerCountFormatter"/>
                         <font key="font" metaFont="system"/>
@@ -387,16 +391,18 @@
                         </binding>
                     </connections>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Hd-Hd-R3Y">
-                    <rect key="frame" x="164" y="331" width="78" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="2Hd-Hd-R3Y">
+                    <rect key="frame" x="177" y="403" width="78" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="第4ドック：" id="Nhl-yc-qQd">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cB6-7z-cj7">
-                    <rect key="frame" x="238" y="331" width="62" height="17"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="cB6-7z-cj7">
+                    <rect key="frame" x="251" y="403" width="62" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="IP7-Yh-Z7X">
                         <customFormatter key="formatter" id="5gk-HQ-Ks2" customClass="HMTimerCountFormatter"/>
                         <font key="font" metaFont="system"/>
@@ -411,8 +417,9 @@
                         </binding>
                     </connections>
                 </textField>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SDh-rD-4Hk">
-                    <rect key="frame" x="18" y="243" width="282" height="51"/>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="SDh-rD-4Hk">
+                    <rect key="frame" x="35" y="335" width="278" height="51"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" id="gFh-Ud-DOy">
                         <font key="font" metaFont="system"/>
                         <string key="title">Multiline
@@ -429,14 +436,83 @@ ffff</string>
                         </binding>
                     </connections>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x0u-i0-Nnm">
-                    <rect key="frame" x="10" y="300" width="43" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="出撃：" id="qFP-DB-9fz">
-                        <font key="font" metaFont="system"/>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="rp1-c2-hmH">
+                    <rect key="frame" x="10" y="567" width="17" height="34"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" title="遠征" id="KdS-w3-9xl">
+                        <font key="font" size="13" name="HiraKakuProN-W3"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="l1a-DB-nUk">
+                    <rect key="frame" x="10" y="405" width="17" height="34"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" title="建造" id="ZKf-O1-mu5">
+                        <font key="font" size="13" name="HiraKakuProN-W3"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="wvt-jZ-rkh">
+                    <rect key="frame" x="10" y="351" width="17" height="34"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" title="出撃" id="u2P-rj-vAk">
+                        <font key="font" size="13" name="HiraKakuProN-W3"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="d2J-6N-aim">
+                    <rect key="frame" x="12" y="544" width="299" height="5"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <font key="titleFont" metaFont="system"/>
+                </box>
+                <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="Eui-lx-0qZ">
+                    <rect key="frame" x="12" y="447" width="299" height="5"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <font key="titleFont" metaFont="system"/>
+                </box>
+                <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="eFN-Fk-0qa">
+                    <rect key="frame" x="12" y="392" width="299" height="5"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <font key="titleFont" metaFont="system"/>
+                </box>
+                <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="emV-9g-8V7">
+                    <rect key="frame" x="12" y="324" width="299" height="5"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <font key="titleFont" metaFont="system"/>
+                </box>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="d3u-Xa-5m8">
+                    <rect key="frame" x="10" y="233" width="17" height="85"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" title="遂行中任務" id="VdD-fP-dAr">
+                        <font key="font" size="13" name="HiraKakuProN-W3"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="FVs-D5-5vA">
+                    <rect key="frame" x="10" y="481" width="17" height="34"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" title="入渠" id="c35-Rl-iJE">
+                        <font key="font" size="13" name="HiraKakuProN-W3"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <customView id="YHM-Cb-C0n">
+                    <rect key="frame" x="37" y="6" width="274" height="312"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
+                </customView>
             </subviews>
             <point key="canvasLocation" x="433.5" y="493"/>
         </customView>

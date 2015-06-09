@@ -28,4 +28,13 @@
 	return [HMServerDataStore defaultManager].managedObjectContext;
 }
 
+- (NSArray *)sortDesciptors
+{
+	static NSSortDescriptor *sortDescriptor = nil;
+	if(!sortDescriptor) {
+		sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"no" ascending:YES];
+	}
+	return @[sortDescriptor];
+}
+
 @end

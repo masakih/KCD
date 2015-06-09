@@ -14,6 +14,7 @@
 #import "HMNyukyoDockStatus.h"
 #import "HMKenzoDockStatus.h"
 
+#import "HMQuestListViewController.h"
 
 #import "HMTemporaryDataStore.h"
 
@@ -39,6 +40,9 @@
 @property (nonatomic, weak) IBOutlet NSObjectController *battleContoller;
 @property (readonly) NSManagedObject *battle;
 
+@property (nonatomic, weak) IBOutlet NSView *questListViewPlaceholder;
+
+@property (nonatomic, strong) HMQuestListViewController *questListViewController;
 
 @end
 
@@ -121,6 +125,11 @@
 								   userInfo:nil
 									repeats:YES];
 	
+	_questListViewController = [HMQuestListViewController new];
+	
+	[self.questListViewController.view setFrame:[self.questListViewPlaceholder frame]];
+	[self.questListViewController.view setAutoresizingMask:[self.questListViewPlaceholder autoresizingMask]];
+	[[self.questListViewPlaceholder superview] replaceSubview:self.questListViewPlaceholder with:self.questListViewController.view];
 	
 	//
 	[self.battleContoller addObserver:self
