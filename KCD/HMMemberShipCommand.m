@@ -36,7 +36,7 @@
 	
 	ignoreKeys = @[@"api_gomes", @"api_gomes2", @"api_broken", @"api_powup",
 				   @"api_voicef", @"api_afterlv", @"api_aftershipid", @"api_backs",
-				   @"api_leng", @"api_slotnum", @"api_stype", @"api_name", @"api_yomi",
+				   @"api_slotnum", @"api_stype", @"api_name", @"api_yomi",
 				   @"api_raig", @"api_luck", @"api_saku", @"api_raim", @"api_baku",
 				   @"api_taik", @"api_houg", @"api_souk", @"api_houm", @"api_tyku",
 				   @"api_ndock_item", @"api_soku", @"api_star",

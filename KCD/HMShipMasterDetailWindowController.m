@@ -126,6 +126,7 @@
 					   @"onslot_2" : @"onslot_2",
 					   @"onslot_3" : @"onslot_3",
 					   @"onslot_4" : @"onslot_4",
+					   @"leng" : @"leng",
 					   };
 	return specDictionary;
 }
