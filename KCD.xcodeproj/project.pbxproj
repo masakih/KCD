@@ -60,6 +60,7 @@
 		F4666C5A1B2067CF001840DB /* HMSourceListColoredView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4666C591B2067CF001840DB /* HMSourceListColoredView.m */; };
 		F4666C5E1B242124001840DB /* HMQuestProgressTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4666C5D1B242124001840DB /* HMQuestProgressTransformer.m */; };
 		F4666C641B25CA3E001840DB /* HMKCQuest+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F4666C631B25CA3E001840DB /* HMKCQuest+Extensions.m */; };
+		F4666C6B1B29E974001840DB /* EquipmentStrengthen.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4666C6A1B29E974001840DB /* EquipmentStrengthen.plist */; };
 		F46F103618A7CE310063E503 /* HMJSONViewCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F46F103518A7CE310063E503 /* HMJSONViewCommand.m */; };
 		F46F104118A9B85E0063E503 /* HMJSONNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F46F104018A9B85E0063E503 /* HMJSONNode.m */; };
 		F46F104518AA50730063E503 /* HMBroserWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F46F104318AA50730063E503 /* HMBroserWindowController.m */; };
@@ -297,6 +298,7 @@
 		F4666C5D1B242124001840DB /* HMQuestProgressTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMQuestProgressTransformer.m; sourceTree = "<group>"; };
 		F4666C621B25CA3E001840DB /* HMKCQuest+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HMKCQuest+Extensions.h"; sourceTree = "<group>"; };
 		F4666C631B25CA3E001840DB /* HMKCQuest+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HMKCQuest+Extensions.m"; sourceTree = "<group>"; };
+		F4666C6A1B29E974001840DB /* EquipmentStrengthen.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EquipmentStrengthen.plist; sourceTree = "<group>"; };
 		F46F103418A7CE310063E503 /* HMJSONViewCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMJSONViewCommand.h; sourceTree = "<group>"; };
 		F46F103518A7CE310063E503 /* HMJSONViewCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMJSONViewCommand.m; sourceTree = "<group>"; };
 		F46F103F18A9B85E0063E503 /* HMJSONNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMJSONNode.h; sourceTree = "<group>"; };
@@ -666,6 +668,7 @@
 				F4BDEB54187252F30069D0CE /* KCD-Prefix.pch */,
 				F43E67B618BE02A10087E5B6 /* STypeShortName.plist */,
 				F43E67B818BE060E0087E5B6 /* LevelUpExp.plist */,
+				F4666C6A1B29E974001840DB /* EquipmentStrengthen.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1103,6 +1106,7 @@
 				F4BDEB5D187252F30069D0CE /* MainMenu.xib in Resources */,
 				F4B3DC3F18E5C8870011B4FC /* HMBroserWindowController.xib in Resources */,
 				F43769DB1ADE890800DE6204 /* HMQuestListViewController.xib in Resources */,
+				F4666C6B1B29E974001840DB /* EquipmentStrengthen.plist in Resources */,
 				F4131EDE190FEBDB004F7F9A /* HMSlotItemWindowController.xib in Resources */,
 				F4666C521B1CB2CE001840DB /* HMBrowserContentAdjuster.xib in Resources */,
 			);
