@@ -41,7 +41,7 @@ static NSArray *showsTypes = nil;
 	NSInteger slotItemID = [value integerValue];
 	if(slotItemID == -1) return @YES;
 	
-	HMServerDataStore *store = [HMServerDataStore oneTimeEditor];
+	HMServerDataStore *store = [HMServerDataStore defaultManager];
 	
 	NSError *error = nil;
 	NSArray *array = [store objectsWithEntityName:@"SlotItem"

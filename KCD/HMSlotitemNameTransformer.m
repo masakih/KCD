@@ -34,7 +34,7 @@
 	NSInteger slotItemID = [value integerValue];
 	if(slotItemID == -1) return nil;
 	
-	HMServerDataStore *store = [HMServerDataStore oneTimeEditor];
+	HMServerDataStore *store = [HMServerDataStore defaultManager];
 	
 	NSError *error = nil;
 	NSArray *array = [store objectsWithEntityName:@"SlotItem"

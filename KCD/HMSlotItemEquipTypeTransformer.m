@@ -32,7 +32,7 @@
 {
 	if(![value isKindOfClass:[NSNumber class]]) return nil;
 	
-	HMServerDataStore *store = [HMServerDataStore oneTimeEditor];
+	HMServerDataStore *store = [HMServerDataStore defaultManager];
 	
 	NSError *error = nil;
 	NSArray *array = [store objectsWithEntityName:@"MasterSlotItemEquipType"
