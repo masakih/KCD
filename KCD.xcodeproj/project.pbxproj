@@ -184,6 +184,10 @@
 		F4E7802818DBD2A00011BC4C /* HMGetShipCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E7802718DBD2A00011BC4C /* HMGetShipCommand.m */; };
 		F4E7802B18DC3A820011BC4C /* HMLocalDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E7802A18DC3A820011BC4C /* HMLocalDataStore.m */; };
 		F4E7802E18DC3AF00011BC4C /* LocalData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4E7802C18DC3AF00011BC4C /* LocalData.xcdatamodeld */; };
+		F4F6E8081B2B17E50008B66E /* HMStrengthenListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F6E8061B2B17E50008B66E /* HMStrengthenListViewController.m */; };
+		F4F6E8091B2B17E50008B66E /* HMStrengthenListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4F6E8071B2B17E50008B66E /* HMStrengthenListViewController.xib */; };
+		F4F6E80C1B2BC81C0008B66E /* HMPeriodicNotifier.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F6E80B1B2BC81C0008B66E /* HMPeriodicNotifier.m */; };
+		F4F6E80F1B2C25D20008B66E /* HMStrengthenListItemCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F6E80E1B2C25D20008B66E /* HMStrengthenListItemCellView.m */; };
 		F4FCFD44191F4C1D000640A1 /* HMKenzoMarkCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FCFD43191F4C1D000640A1 /* HMKenzoMarkCommand.m */; };
 		F4FDF2411A3D50420033E0AD /* HMShipMasterDetailWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FDF23F1A3D50420033E0AD /* HMShipMasterDetailWindowController.m */; };
 /* End PBXBuildFile section */
@@ -519,6 +523,13 @@
 		F4E7802918DC3A820011BC4C /* HMLocalDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMLocalDataStore.h; sourceTree = "<group>"; };
 		F4E7802A18DC3A820011BC4C /* HMLocalDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMLocalDataStore.m; sourceTree = "<group>"; };
 		F4E7802D18DC3AF00011BC4C /* LocalData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocalData.xcdatamodel; sourceTree = "<group>"; };
+		F4F6E8051B2B17E50008B66E /* HMStrengthenListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMStrengthenListViewController.h; sourceTree = "<group>"; };
+		F4F6E8061B2B17E50008B66E /* HMStrengthenListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMStrengthenListViewController.m; sourceTree = "<group>"; };
+		F4F6E8071B2B17E50008B66E /* HMStrengthenListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMStrengthenListViewController.xib; sourceTree = "<group>"; };
+		F4F6E80A1B2BC81C0008B66E /* HMPeriodicNotifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPeriodicNotifier.h; sourceTree = "<group>"; };
+		F4F6E80B1B2BC81C0008B66E /* HMPeriodicNotifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMPeriodicNotifier.m; sourceTree = "<group>"; };
+		F4F6E80D1B2C25D20008B66E /* HMStrengthenListItemCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMStrengthenListItemCellView.h; sourceTree = "<group>"; };
+		F4F6E80E1B2C25D20008B66E /* HMStrengthenListItemCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMStrengthenListItemCellView.m; sourceTree = "<group>"; };
 		F4FCFD42191F4C1D000640A1 /* HMKenzoMarkCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMKenzoMarkCommand.h; sourceTree = "<group>"; };
 		F4FCFD43191F4C1D000640A1 /* HMKenzoMarkCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKenzoMarkCommand.m; sourceTree = "<group>"; };
 		F4FDF23E1A3D50420033E0AD /* HMShipMasterDetailWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMShipMasterDetailWindowController.h; sourceTree = "<group>"; };
@@ -645,6 +656,8 @@
 				F49546251B1355EC00E0D8D0 /* HMBookmarkItem.m */,
 				F49546291B14CBA600E0D8D0 /* HMBookmarkManager.h */,
 				F495462A1B14CBA600E0D8D0 /* HMBookmarkManager.m */,
+				F4F6E80A1B2BC81C0008B66E /* HMPeriodicNotifier.h */,
+				F4F6E80B1B2BC81C0008B66E /* HMPeriodicNotifier.m */,
 				F4D2CBBF18ACE7D7000EBC59 /* Command */,
 				F4BEEEA918D890660006F70C /* UI */,
 				F4BEEEA818D88FF30006F70C /* CoreData */,
@@ -995,6 +1008,11 @@
 				F4D6BC991AA1FAC600742FEB /* HMUITestWindowController.h */,
 				F4D6BC9A1AA1FAC600742FEB /* HMUITestWindowController.m */,
 				F4BEF0101B11A645004702B8 /* HMUITestWindowController.xib */,
+				F4F6E8051B2B17E50008B66E /* HMStrengthenListViewController.h */,
+				F4F6E8061B2B17E50008B66E /* HMStrengthenListViewController.m */,
+				F4F6E8071B2B17E50008B66E /* HMStrengthenListViewController.xib */,
+				F4F6E80D1B2C25D20008B66E /* HMStrengthenListItemCellView.h */,
+				F4F6E80E1B2C25D20008B66E /* HMStrengthenListItemCellView.m */,
 			);
 			name = TestAndDebug;
 			path = KCD;
@@ -1103,6 +1121,7 @@
 				F4BEEE9F18D211280006F70C /* Localizable.strings in Resources */,
 				F4513EF018B96C6C00073552 /* Links.rtf in Resources */,
 				F4A3AD9419BDDE5500FDBF80 /* HMPreferencePanelController.xib in Resources */,
+				F4F6E8091B2B17E50008B66E /* HMStrengthenListViewController.xib in Resources */,
 				F4BDEB5D187252F30069D0CE /* MainMenu.xib in Resources */,
 				F4B3DC3F18E5C8870011B4FC /* HMBroserWindowController.xib in Resources */,
 				F43769DB1ADE890800DE6204 /* HMQuestListViewController.xib in Resources */,
@@ -1217,6 +1236,7 @@
 				F4D6BC4F1A938EFC00742FEB /* HMDropShipHistoryCommand.m in Sources */,
 				F4A3AD8519B0CAB700FDBF80 /* HMPlanToShowsBoldFontTransformer.m in Sources */,
 				F4513EF618B9F29800073552 /* HMMemberShipCommand.m in Sources */,
+				F4F6E8081B2B17E50008B66E /* HMStrengthenListViewController.m in Sources */,
 				F4268034195332A000B2C27F /* HMPowerUpCommand.m in Sources */,
 				F43769E71AE7D22700DE6204 /* HMKCQuest.m in Sources */,
 				F43769E41AE7D01D00DE6204 /* HMUpdateQuestListCommand.m in Sources */,
@@ -1226,6 +1246,7 @@
 				F4B3DBCA18DDB9170011B4FC /* HMCreateSlotItemCommand.m in Sources */,
 				F4131ED8190FA08D004F7F9A /* HMDestroyItem2Command.m in Sources */,
 				F4B3DC2718DF2F360011B4FC /* HMKenzoMark.m in Sources */,
+				F4F6E80F1B2C25D20008B66E /* HMStrengthenListItemCellView.m in Sources */,
 				F49546261B1355EC00E0D8D0 /* HMBookmarkItem.m in Sources */,
 				F49828FC1902A226000D6BBE /* HMStrokeTextFieldCell.m in Sources */,
 				F43769D61ADE86B200DE6204 /* HMQuestListCommand.m in Sources */,
@@ -1260,6 +1281,7 @@
 				F43BA4A4197BE6C200CFF788 /* HMRealDestroyShipCommand.m in Sources */,
 				F46F104518AA50730063E503 /* HMBroserWindowController.m in Sources */,
 				F4B37EF619FBE801002F371A /* HMRemodelSlotItemCommand.m in Sources */,
+				F4F6E80C1B2BC81C0008B66E /* HMPeriodicNotifier.m in Sources */,
 				F4B414EC18B0A7D600468DAF /* HMMasterUseItemCommand.m in Sources */,
 				F4513EF318B991F800073552 /* HMMemberBasicCommand.m in Sources */,
 				F4268009193AF4E000B2C27F /* HMUserDefaults.m in Sources */,

@@ -138,7 +138,7 @@
 "Yem-aw-cnP.title" = "状況";
 
 /* Class = "NSMenuItem"; title = "Ship 2"; ObjectID = "cVa-gh-VEf"; */
-"cVa-gh-VEf.title" = "近代化改修支援";
+"cVa-gh-VEf.title" = "近代化改修";
 
 /* Class = "NSMenuItem"; title = "Reload"; ObjectID = "gZf-9I-jGv"; */
 "gZf-9I-jGv.title" = "リロード";
@@ -200,5 +200,6 @@
 
 "jwh-yD-YWK.title" = "新規ブラウザ";
 
+"y18-nA-SS3.title" = "改修工廠";
 
 

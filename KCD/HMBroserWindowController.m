@@ -13,6 +13,7 @@
 #import "HMDocksViewController.h"
 #import "HMShipViewController.h"
 #import "HMPowerUpSupportViewController.h"
+#import "HMStrengthenListViewController.h"
 
 #import "HMFleetViewController.h"
 
@@ -53,6 +54,7 @@ static NSString *loginPageURLPrefix = @"https://www.dmm.com/my/-/login/=/";
 @property (strong) HMDocksViewController *docksViewController;
 @property (strong) HMShipViewController *shipViewController;
 @property (strong) HMPowerUpSupportViewController *powerUpViewController;
+@property (strong) HMStrengthenListViewController *strengthedListViewController;
 
 @end
 
@@ -122,12 +124,15 @@ static NSString *loginPageURLPrefix = @"https://www.dmm.com/my/-/login/=/";
 	self.docksViewController = [HMDocksViewController new];
 	self.shipViewController = [HMShipViewController new];
 	self.powerUpViewController = [HMPowerUpSupportViewController new];
+	self.strengthedListViewController = [HMStrengthenListViewController new];
 	NSTabViewItem *item = [self.informations tabViewItemAtIndex:0];
 	item.view = self.docksViewController.view;
 	item = [self.informations tabViewItemAtIndex:1];
 	item.view = self.shipViewController.view;
 	item = [self.informations tabViewItemAtIndex:2];
 	item.view = self.powerUpViewController.view;
+	item = [self.informations tabViewItemAtIndex:3];
+	item.view = self.strengthedListViewController.view;
 	
 	_fleetViewController = [[HMFleetViewController alloc] initWithViewType:detailViewType];
 	[self.fleetViewController.view setFrame:[self.deckPlaceholder frame]];

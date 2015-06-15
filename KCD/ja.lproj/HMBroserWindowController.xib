@@ -403,8 +403,14 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                             </tabViewItem>
-                            <tabViewItem label="近代化改修支援" identifier="3" id="Ops-Am-LiF">
+                            <tabViewItem label="近代化改修" identifier="3" id="Ops-Am-LiF">
                                 <view key="view" id="ytJ-Qj-RCn">
+                                    <rect key="frame" x="10" y="33" width="323" height="565"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                            </tabViewItem>
+                            <tabViewItem label="改修工廠" identifier="4" id="Ls3-Cp-5p4">
+                                <view key="view" id="6ia-4I-aBI">
                                     <rect key="frame" x="10" y="33" width="323" height="565"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>

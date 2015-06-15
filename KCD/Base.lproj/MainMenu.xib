@@ -228,6 +228,11 @@ CA
                                     <action selector="selectView:" target="-1" id="F0I-LG-yq6"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Item" tag="3" keyEquivalent="4" id="y18-nA-SS3">
+                                <connections>
+                                    <action selector="selectView:" target="-1" id="vzo-2c-Jbo"/>
+                                </connections>
+                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="k5I-au-tcW"/>
                             <menuItem title="Screen Shot" keyEquivalent="S" id="7Fq-TJ-VZE">
                                 <connections>

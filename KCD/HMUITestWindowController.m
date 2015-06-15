@@ -22,7 +22,7 @@
 
 - (Class)testViewControllerClass
 {
-	return NSClassFromString(@"HMQuestListViewController");
+	return NSClassFromString(@"HMStrengthenListViewController");
 }
 
 - (void)windowDidLoad {
