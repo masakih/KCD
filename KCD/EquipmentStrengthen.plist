@@ -4,14 +4,6 @@
 <array>
 	<dict>
 		<key>weekday</key>
-		<integer>1</integer>
-		<key>equipment</key>
-		<string>12.7cm連装砲B型改二</string>
-		<key>secondShip</key>
-		<string>夕立改二</string>
-	</dict>
-	<dict>
-		<key>weekday</key>
 		<integer>2</integer>
 		<key>equipment</key>
 		<string>12.7cm連装砲B型改二</string>
@@ -28,11 +20,11 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>1</integer>
+		<integer>4</integer>
 		<key>equipment</key>
 		<string>12.7cm連装砲B型改二</string>
 		<key>secondShip</key>
-		<string>綾波改二</string>
+		<string>夕立改二</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
@@ -52,11 +44,11 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>1</integer>
+		<integer>4</integer>
 		<key>equipment</key>
-		<string>10cm高角砲＋高射装置</string>
+		<string>12.7cm連装砲B型改二</string>
 		<key>secondShip</key>
-		<string>秋月</string>
+		<string>綾波改二</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
@@ -84,7 +76,15 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>1</integer>
+		<integer>5</integer>
+		<key>equipment</key>
+		<string>10cm高角砲＋高射装置</string>
+		<key>secondShip</key>
+		<string>秋月</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>2</integer>
 		<key>equipment</key>
 		<string>14cm連装砲</string>
 		<key>secondShip</key>
@@ -92,7 +92,7 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>4</integer>
+		<integer>5</integer>
 		<key>equipment</key>
 		<string>14cm連装砲</string>
 		<key>secondShip</key>
@@ -100,16 +100,6 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>4</integer>
-		<key>equipment</key>
-		<string>15.2cm連装砲</string>
-		<key>secondShip</key>
-		<string>阿賀野</string>
-	<key>remodelEquipment</key>
-	<string>15.2cm連装砲改</string>
-	</dict>
-	<dict>
-		<key>weekday</key>
 		<integer>5</integer>
 		<key>equipment</key>
 		<string>15.2cm連装砲</string>
@@ -130,11 +120,11 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>0</integer>
+		<integer>7</integer>
 		<key>equipment</key>
 		<string>15.2cm連装砲</string>
 		<key>secondShip</key>
-		<string>能代</string>
+		<string>阿賀野</string>
 	<key>remodelEquipment</key>
 	<string>15.2cm連装砲改</string>
 	</dict>
@@ -150,7 +140,7 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>5</integer>
+		<integer>2</integer>
 		<key>equipment</key>
 		<string>15.2cm連装砲</string>
 		<key>secondShip</key>
@@ -170,11 +160,11 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>1</integer>
+		<integer>7</integer>
 		<key>equipment</key>
 		<string>15.2cm連装砲</string>
 		<key>secondShip</key>
-		<string>矢矧</string>
+		<string>能代</string>
 	<key>remodelEquipment</key>
 	<string>15.2cm連装砲改</string>
 	</dict>
@@ -210,11 +200,13 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>3</integer>
+		<integer>5</integer>
 		<key>equipment</key>
-		<string>15.2cm連装砲改</string>
+		<string>15.2cm連装砲</string>
 		<key>secondShip</key>
 		<string>矢矧</string>
+	<key>remodelEquipment</key>
+	<string>15.2cm連装砲改</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
@@ -242,11 +234,11 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>0</integer>
+		<integer>7</integer>
 		<key>equipment</key>
 		<string>15.2cm連装砲改</string>
 		<key>secondShip</key>
-		<string>酒匂</string>
+		<string>矢矧</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
@@ -266,7 +258,7 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>6</integer>
+		<integer>3</integer>
 		<key>equipment</key>
 		<string>15.2cm連装砲改</string>
 		<key>secondShip</key>
@@ -274,11 +266,11 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>5</integer>
+		<integer>7</integer>
 		<key>equipment</key>
-		<string>15.5cm三連装砲</string>
+		<string>15.2cm連装砲改</string>
 		<key>secondShip</key>
-		<string>最上</string>
+		<string>酒匂</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
@@ -290,11 +282,11 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>0</integer>
+		<integer>7</integer>
 		<key>equipment</key>
 		<string>15.5cm三連装砲</string>
 		<key>secondShip</key>
-		<string>大淀</string>
+		<string>最上</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
@@ -303,50 +295,18 @@
 		<string>15.5cm三連装砲</string>
 		<key>secondShip</key>
 		<string>大淀</string>
-	</dict>
-	<dict>
-		<key>weekday</key>
-		<integer>0</integer>
-		<key>equipment</key>
-		<string>20.3cm連装砲</string>
-		<key>secondShip</key>
-		<string>青葉</string>
-	<key>remodelEquipment</key>
-	<string>20.3cm(2号)連装砲</string>
-	</dict>
-	<dict>
-		<key>weekday</key>
-		<integer>1</integer>
-		<key>equipment</key>
-		<string>20.3cm連装砲</string>
-		<key>secondShip</key>
-		<string>青葉</string>
-	<key>remodelEquipment</key>
-	<string>20.3cm(2号)連装砲</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
 		<integer>2</integer>
 		<key>equipment</key>
-		<string>20.3cm連装砲</string>
+		<string>15.5cm三連装砲</string>
 		<key>secondShip</key>
-		<string>青葉</string>
-	<key>remodelEquipment</key>
-	<string>20.3cm(2号)連装砲</string>
+		<string>大淀</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>3</integer>
-		<key>equipment</key>
-		<string>20.3cm連装砲</string>
-		<key>secondShip</key>
-		<string>青葉</string>
-	<key>remodelEquipment</key>
-	<string>20.3cm(2号)連装砲</string>
-	</dict>
-	<dict>
-		<key>weekday</key>
-		<integer>4</integer>
+		<integer>1</integer>
 		<key>equipment</key>
 		<string>20.3cm連装砲</string>
 		<key>secondShip</key>
@@ -376,11 +336,11 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>0</integer>
+		<integer>7</integer>
 		<key>equipment</key>
 		<string>20.3cm連装砲</string>
 		<key>secondShip</key>
-		<string>衣笠</string>
+		<string>青葉</string>
 	<key>remodelEquipment</key>
 	<string>20.3cm(2号)連装砲</string>
 	</dict>
@@ -446,13 +406,13 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>0</integer>
+		<integer>7</integer>
 		<key>equipment</key>
-		<string>20.3cm(2号)連装砲</string>
+		<string>20.3cm連装砲</string>
 		<key>secondShip</key>
-		<string>妙高</string>
+		<string>衣笠</string>
 	<key>remodelEquipment</key>
-	<string>20.3cm(3号)連装砲</string>
+	<string>20.3cm(2号)連装砲</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
@@ -476,11 +436,13 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>2</integer>
+		<integer>3</integer>
 		<key>equipment</key>
-		<string>20.3cm(3号)連装砲</string>
+		<string>20.3cm(2号)連装砲</string>
 		<key>secondShip</key>
-		<string>三隈</string>
+		<string>妙高</string>
+	<key>remodelEquipment</key>
+	<string>20.3cm(3号)連装砲</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
@@ -492,37 +454,35 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>0</integer>
-		<key>equipment</key>
-		<string>35.6cm連装砲</string>
-		<key>secondShip</key>
-		<string>扶桑</string>
-	</dict>
-	<dict>
-		<key>weekday</key>
-		<integer>5</integer>
-		<key>equipment</key>
-		<string>35.6cm連装砲</string>
-		<key>secondShip</key>
-		<string>扶桑</string>
-	</dict>
-	<dict>
-		<key>weekday</key>
-		<integer>6</integer>
-		<key>equipment</key>
-		<string>35.6cm連装砲</string>
-		<key>secondShip</key>
-		<string>扶桑</string>
-	</dict>
-	<dict>
-		<key>weekday</key>
 		<integer>4</integer>
 		<key>equipment</key>
-		<string>38cm連装砲</string>
+		<string>20.3cm(3号)連装砲</string>
 		<key>secondShip</key>
-		<string>Bismarck</string>
-	<key>remodelEquipment</key>
-	<string>38cm連装砲改</string>
+		<string>三隈</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>1</integer>
+		<key>equipment</key>
+		<string>35.6cm連装砲</string>
+		<key>secondShip</key>
+		<string>扶桑</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>6</integer>
+		<key>equipment</key>
+		<string>35.6cm連装砲</string>
+		<key>secondShip</key>
+		<string>扶桑</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>7</integer>
+		<key>equipment</key>
+		<string>35.6cm連装砲</string>
+		<key>secondShip</key>
+		<string>扶桑</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
@@ -546,11 +506,13 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>0</integer>
+		<integer>7</integer>
 		<key>equipment</key>
-		<string>38cm連装砲改</string>
+		<string>38cm連装砲</string>
 		<key>secondShip</key>
 		<string>Bismarck</string>
+	<key>remodelEquipment</key>
+	<string>38cm連装砲改</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
@@ -570,11 +532,11 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>2</integer>
+		<integer>3</integer>
 		<key>equipment</key>
-		<string>381mm／50 三連装砲</string>
+		<string>38cm連装砲改</string>
 		<key>secondShip</key>
-		<string>Littorio</string>
+		<string>Bismarck</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
@@ -602,7 +564,31 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>0</integer>
+		<integer>6</integer>
+		<key>equipment</key>
+		<string>381mm／50 三連装砲</string>
+		<key>secondShip</key>
+		<string>Littorio</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>1</integer>
+		<key>equipment</key>
+		<string>381mm／50 三連装砲</string>
+		<key>secondShip</key>
+		<string>Roma</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>2</integer>
+		<key>equipment</key>
+		<string>381mm／50 三連装砲</string>
+		<key>secondShip</key>
+		<string>Roma</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>7</integer>
 		<key>equipment</key>
 		<string>381mm／50 三連装砲</string>
 		<key>secondShip</key>
@@ -611,38 +597,6 @@
 	<dict>
 		<key>weekday</key>
 		<integer>1</integer>
-		<key>equipment</key>
-		<string>381mm／50 三連装砲</string>
-		<key>secondShip</key>
-		<string>Roma</string>
-	</dict>
-	<dict>
-		<key>weekday</key>
-		<integer>6</integer>
-		<key>equipment</key>
-		<string>381mm／50 三連装砲</string>
-		<key>secondShip</key>
-		<string>Roma</string>
-	</dict>
-	<dict>
-		<key>weekday</key>
-		<integer>0</integer>
-		<key>equipment</key>
-		<string>381mm／50 三連装砲改</string>
-		<key>secondShip</key>
-		<string>Littorio</string>
-	</dict>
-	<dict>
-		<key>weekday</key>
-		<integer>1</integer>
-		<key>equipment</key>
-		<string>381mm／50 三連装砲改</string>
-		<key>secondShip</key>
-		<string>Littorio</string>
-	</dict>
-	<dict>
-		<key>weekday</key>
-		<integer>6</integer>
 		<key>equipment</key>
 		<string>381mm／50 三連装砲改</string>
 		<key>secondShip</key>
@@ -654,7 +608,15 @@
 		<key>equipment</key>
 		<string>381mm／50 三連装砲改</string>
 		<key>secondShip</key>
-		<string>Roma</string>
+		<string>Littorio</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>7</integer>
+		<key>equipment</key>
+		<string>381mm／50 三連装砲改</string>
+		<key>secondShip</key>
+		<string>Littorio</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
@@ -682,15 +644,15 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>2</integer>
+		<integer>6</integer>
 		<key>equipment</key>
-		<string>41cm連装砲</string>
+		<string>381mm／50 三連装砲改</string>
 		<key>secondShip</key>
-		<string>長門</string>
+		<string>Roma</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>5</integer>
+		<integer>3</integer>
 		<key>equipment</key>
 		<string>41cm連装砲</string>
 		<key>secondShip</key>
@@ -706,11 +668,11 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>0</integer>
+		<integer>7</integer>
 		<key>equipment</key>
 		<string>41cm連装砲</string>
 		<key>secondShip</key>
-		<string>陸奥</string>
+		<string>長門</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
@@ -722,7 +684,7 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>4</integer>
+		<integer>2</integer>
 		<key>equipment</key>
 		<string>41cm連装砲</string>
 		<key>secondShip</key>
@@ -730,13 +692,11 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>0</integer>
+		<integer>5</integer>
 		<key>equipment</key>
-		<string>試製46cm連装砲</string>
+		<string>41cm連装砲</string>
 		<key>secondShip</key>
-		<string>大和</string>
-	<key>remodelEquipment</key>
-	<string>46cm三連装砲</string>
+		<string>陸奥</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
@@ -754,7 +714,7 @@
 		<key>equipment</key>
 		<string>試製46cm連装砲</string>
 		<key>secondShip</key>
-		<string>武蔵</string>
+		<string>大和</string>
 	<key>remodelEquipment</key>
 	<string>46cm三連装砲</string>
 	</dict>
@@ -770,11 +730,13 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>5</integer>
+		<integer>4</integer>
 		<key>equipment</key>
-		<string>46cm三連装砲</string>
+		<string>試製46cm連装砲</string>
 		<key>secondShip</key>
-		<string>大和</string>
+		<string>武蔵</string>
+	<key>remodelEquipment</key>
+	<string>46cm三連装砲</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
@@ -786,11 +748,11 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>0</integer>
+		<integer>7</integer>
 		<key>equipment</key>
 		<string>46cm三連装砲</string>
 		<key>secondShip</key>
-		<string>武蔵</string>
+		<string>大和</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
@@ -802,7 +764,23 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>1</integer>
+		<integer>2</integer>
+		<key>equipment</key>
+		<string>46cm三連装砲</string>
+		<key>secondShip</key>
+		<string>武蔵</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>2</integer>
+		<key>equipment</key>
+		<string>試製51cm連装砲</string>
+		<key>secondShip</key>
+		<string>大和改</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>3</integer>
 		<key>equipment</key>
 		<string>試製51cm連装砲</string>
 		<key>secondShip</key>
@@ -814,11 +792,11 @@
 		<key>equipment</key>
 		<string>試製51cm連装砲</string>
 		<key>secondShip</key>
-		<string>大和改</string>
+		<string>武蔵改</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>1</integer>
+		<integer>4</integer>
 		<key>equipment</key>
 		<string>試製51cm連装砲</string>
 		<key>secondShip</key>
@@ -826,22 +804,6 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>3</integer>
-		<key>equipment</key>
-		<string>試製51cm連装砲</string>
-		<key>secondShip</key>
-		<string>武蔵改</string>
-	</dict>
-	<dict>
-		<key>weekday</key>
-		<integer>1</integer>
-		<key>equipment</key>
-		<string>90mm単装高角砲</string>
-		<key>secondShip</key>
-		<string>Littorio</string>
-	</dict>
-	<dict>
-		<key>weekday</key>
 		<integer>2</integer>
 		<key>equipment</key>
 		<string>90mm単装高角砲</string>
@@ -866,15 +828,15 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>0</integer>
+		<integer>5</integer>
 		<key>equipment</key>
 		<string>90mm単装高角砲</string>
 		<key>secondShip</key>
-		<string>Roma</string>
+		<string>Littorio</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>4</integer>
+		<integer>1</integer>
 		<key>equipment</key>
 		<string>90mm単装高角砲</string>
 		<key>secondShip</key>
@@ -898,11 +860,11 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>0</integer>
+		<integer>7</integer>
 		<key>equipment</key>
-		<string>15.2cm単装砲</string>
+		<string>90mm単装高角砲</string>
 		<key>secondShip</key>
-		<string>阿賀野</string>
+		<string>Roma</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
@@ -922,11 +884,11 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>0</integer>
+		<integer>3</integer>
 		<key>equipment</key>
 		<string>15.2cm単装砲</string>
 		<key>secondShip</key>
-		<string>金剛</string>
+		<string>阿賀野</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
@@ -938,7 +900,7 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>6</integer>
+		<integer>2</integer>
 		<key>equipment</key>
 		<string>15.2cm単装砲</string>
 		<key>secondShip</key>
@@ -946,11 +908,11 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>1</integer>
+		<integer>7</integer>
 		<key>equipment</key>
 		<string>15.2cm単装砲</string>
 		<key>secondShip</key>
-		<string>山城</string>
+		<string>金剛</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
@@ -970,15 +932,15 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>0</integer>
+		<integer>4</integer>
 		<key>equipment</key>
-		<string>OTO 152mm三連装速射砲</string>
+		<string>15.2cm単装砲</string>
 		<key>secondShip</key>
-		<string>Littorio</string>
+		<string>山城</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>2</integer>
+		<integer>1</integer>
 		<key>equipment</key>
 		<string>OTO 152mm三連装速射砲</string>
 		<key>secondShip</key>
@@ -994,7 +956,7 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>6</integer>
+		<integer>4</integer>
 		<key>equipment</key>
 		<string>OTO 152mm三連装速射砲</string>
 		<key>secondShip</key>
@@ -1002,11 +964,11 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>0</integer>
+		<integer>7</integer>
 		<key>equipment</key>
 		<string>OTO 152mm三連装速射砲</string>
 		<key>secondShip</key>
-		<string>Roma</string>
+		<string>Littorio</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
@@ -1018,7 +980,7 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>4</integer>
+		<integer>2</integer>
 		<key>equipment</key>
 		<string>OTO 152mm三連装速射砲</string>
 		<key>secondShip</key>
@@ -1034,11 +996,11 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>4</integer>
+		<integer>6</integer>
 		<key>equipment</key>
-		<string>61cm三連装魚雷</string>
+		<string>OTO 152mm三連装速射砲</string>
 		<key>secondShip</key>
-		<string>吹雪</string>
+		<string>Roma</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
@@ -1058,11 +1020,11 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>0</integer>
+		<integer>7</integer>
 		<key>equipment</key>
 		<string>61cm三連装魚雷</string>
 		<key>secondShip</key>
-		<string>叢雲</string>
+		<string>吹雪</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
@@ -1082,13 +1044,11 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>4</integer>
+		<integer>3</integer>
 		<key>equipment</key>
-		<string>61cm三連装(酸素)魚雷</string>
+		<string>61cm三連装魚雷</string>
 		<key>secondShip</key>
-		<string>吹雪改二</string>
-	<key>remodelEquipment</key>
-	<string>61cm四連装(酸素)魚雷</string>
+		<string>叢雲</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
@@ -1112,13 +1072,13 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>0</integer>
+		<integer>7</integer>
 		<key>equipment</key>
-		<string>61cm四連装(酸素)魚雷</string>
+		<string>61cm三連装(酸素)魚雷</string>
 		<key>secondShip</key>
-		<string>大井</string>
+		<string>吹雪改二</string>
 	<key>remodelEquipment</key>
-	<string>61cm五連装(酸素)魚雷</string>
+	<string>61cm四連装(酸素)魚雷</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
@@ -1182,11 +1142,11 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>0</integer>
+		<integer>7</integer>
 		<key>equipment</key>
 		<string>61cm四連装(酸素)魚雷</string>
 		<key>secondShip</key>
-		<string>北上</string>
+		<string>大井</string>
 	<key>remodelEquipment</key>
 	<string>61cm五連装(酸素)魚雷</string>
 	</dict>
@@ -1252,11 +1212,13 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>3</integer>
+		<integer>7</integer>
 		<key>equipment</key>
-		<string>61cm五連装(酸素)魚雷</string>
+		<string>61cm四連装(酸素)魚雷</string>
 		<key>secondShip</key>
-		<string>島風</string>
+		<string>北上</string>
+	<key>remodelEquipment</key>
+	<string>61cm五連装(酸素)魚雷</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
@@ -1268,33 +1230,11 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>0</integer>
-		<key>equipment</key>
-		<string>九三式水中聴音機</string>
-		<key>secondShip</key>
-		<string>夕張</string>
-	<key>remodelEquipment</key>
-	<string>三式水中探信儀</string>
-	</dict>
-	<dict>
-		<key>weekday</key>
 		<integer>5</integer>
 		<key>equipment</key>
-		<string>九三式水中聴音機</string>
+		<string>61cm五連装(酸素)魚雷</string>
 		<key>secondShip</key>
-		<string>夕張</string>
-	<key>remodelEquipment</key>
-	<string>三式水中探信儀</string>
-	</dict>
-	<dict>
-		<key>weekday</key>
-		<integer>6</integer>
-		<key>equipment</key>
-		<string>九三式水中聴音機</string>
-		<key>secondShip</key>
-		<string>夕張</string>
-	<key>remodelEquipment</key>
-	<string>三式水中探信儀</string>
+		<string>島風</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
@@ -1302,13 +1242,33 @@
 		<key>equipment</key>
 		<string>九三式水中聴音機</string>
 		<key>secondShip</key>
-		<string>五十鈴改二</string>
+		<string>夕張</string>
 	<key>remodelEquipment</key>
 	<string>三式水中探信儀</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>5</integer>
+		<integer>6</integer>
+		<key>equipment</key>
+		<string>九三式水中聴音機</string>
+		<key>secondShip</key>
+		<string>夕張</string>
+	<key>remodelEquipment</key>
+	<string>三式水中探信儀</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>7</integer>
+		<key>equipment</key>
+		<string>九三式水中聴音機</string>
+		<key>secondShip</key>
+		<string>夕張</string>
+	<key>remodelEquipment</key>
+	<string>三式水中探信儀</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>2</integer>
 		<key>equipment</key>
 		<string>九三式水中聴音機</string>
 		<key>secondShip</key>
@@ -1328,53 +1288,53 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>2</integer>
+		<integer>7</integer>
 		<key>equipment</key>
-		<string>三式水中探信儀</string>
-		<key>secondShip</key>
-		<string>夕張</string>
-	</dict>
-	<dict>
-		<key>weekday</key>
-		<integer>3</integer>
-		<key>equipment</key>
-		<string>三式水中探信儀</string>
-		<key>secondShip</key>
-		<string>夕張</string>
-	</dict>
-	<dict>
-		<key>weekday</key>
-		<integer>0</integer>
-		<key>equipment</key>
-		<string>三式水中探信儀</string>
+		<string>九三式水中聴音機</string>
 		<key>secondShip</key>
 		<string>五十鈴改二</string>
-	</dict>
-	<dict>
-		<key>weekday</key>
-		<integer>2</integer>
-		<key>equipment</key>
-		<string>三式水中探信儀</string>
-		<key>secondShip</key>
-		<string>五十鈴改二</string>
-	</dict>
-	<dict>
-		<key>weekday</key>
-		<integer>3</integer>
-		<key>equipment</key>
-		<string>三式水中探信儀</string>
-		<key>secondShip</key>
-		<string>五十鈴改二</string>
-	</dict>
-	<dict>
-		<key>weekday</key>
-		<integer>3</integer>
-		<key>equipment</key>
-		<string>九四式爆雷投射機</string>
-		<key>secondShip</key>
-		<string></string>
 	<key>remodelEquipment</key>
-	<string>三式爆雷投射機</string>
+	<string>三式水中探信儀</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>3</integer>
+		<key>equipment</key>
+		<string>三式水中探信儀</string>
+		<key>secondShip</key>
+		<string>夕張</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>4</integer>
+		<key>equipment</key>
+		<string>三式水中探信儀</string>
+		<key>secondShip</key>
+		<string>夕張</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>1</integer>
+		<key>equipment</key>
+		<string>三式水中探信儀</string>
+		<key>secondShip</key>
+		<string>五十鈴改二</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>3</integer>
+		<key>equipment</key>
+		<string>三式水中探信儀</string>
+		<key>secondShip</key>
+		<string>五十鈴改二</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>4</integer>
+		<key>equipment</key>
+		<string>三式水中探信儀</string>
+		<key>secondShip</key>
+		<string>五十鈴改二</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
@@ -1388,11 +1348,13 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>3</integer>
+		<integer>5</integer>
 		<key>equipment</key>
-		<string>三式爆雷投射機</string>
+		<string>九四式爆雷投射機</string>
 		<key>secondShip</key>
-		<string>五十鈴改二</string>
+		<string></string>
+	<key>remodelEquipment</key>
+	<string>三式爆雷投射機</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
@@ -1404,13 +1366,11 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>3</integer>
+		<integer>5</integer>
 		<key>equipment</key>
-		<string>九一式徹甲弾</string>
+		<string>三式爆雷投射機</string>
 		<key>secondShip</key>
-		<string>比叡</string>
-	<key>remodelEquipment</key>
-	<string>一式徹甲弾</string>
+		<string>五十鈴改二</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
@@ -1444,11 +1404,11 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>0</integer>
+		<integer>7</integer>
 		<key>equipment</key>
 		<string>九一式徹甲弾</string>
 		<key>secondShip</key>
-		<string>霧島</string>
+		<string>比叡</string>
 	<key>remodelEquipment</key>
 	<string>一式徹甲弾</string>
 	</dict>
@@ -1464,7 +1424,7 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>5</integer>
+		<integer>2</integer>
 		<key>equipment</key>
 		<string>九一式徹甲弾</string>
 		<key>secondShip</key>
@@ -1484,15 +1444,17 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>0</integer>
+		<integer>7</integer>
 		<key>equipment</key>
-		<string>一式徹甲弾</string>
+		<string>九一式徹甲弾</string>
 		<key>secondShip</key>
-		<string>金剛</string>
+		<string>霧島</string>
+	<key>remodelEquipment</key>
+	<string>一式徹甲弾</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>5</integer>
+		<integer>1</integer>
 		<key>equipment</key>
 		<string>一式徹甲弾</string>
 		<key>secondShip</key>
@@ -1508,7 +1470,7 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>1</integer>
+		<integer>7</integer>
 		<key>equipment</key>
 		<string>一式徹甲弾</string>
 		<key>secondShip</key>
@@ -1520,7 +1482,7 @@
 		<key>equipment</key>
 		<string>一式徹甲弾</string>
 		<key>secondShip</key>
-		<string>金剛</string>
+		<string>比叡</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
@@ -1528,11 +1490,19 @@
 		<key>equipment</key>
 		<string>一式徹甲弾</string>
 		<key>secondShip</key>
-		<string>金剛</string>
+		<string>比叡</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>0</integer>
+		<integer>4</integer>
+		<key>equipment</key>
+		<string>一式徹甲弾</string>
+		<key>secondShip</key>
+		<string>比叡</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>1</integer>
 		<key>equipment</key>
 		<string>25mm連装機銃</string>
 		<key>secondShip</key>
@@ -1542,16 +1512,6 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>5</integer>
-		<key>equipment</key>
-		<string>25mm連装機銃</string>
-		<key>secondShip</key>
-		<string>五十鈴改二</string>
-	<key>remodelEquipment</key>
-	<string>25mm三連装機銃</string>
-	</dict>
-	<dict>
-		<key>weekday</key>
 		<integer>6</integer>
 		<key>equipment</key>
 		<string>25mm連装機銃</string>
@@ -1562,13 +1522,13 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>1</integer>
+		<integer>7</integer>
 		<key>equipment</key>
-		<string>25mm三連装機銃</string>
+		<string>25mm連装機銃</string>
 		<key>secondShip</key>
 		<string>五十鈴改二</string>
 	<key>remodelEquipment</key>
-	<string>25mm三連装機銃 集中配備</string>
+	<string>25mm三連装機銃</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
@@ -1592,11 +1552,13 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>2</integer>
+		<integer>4</integer>
 		<key>equipment</key>
 		<string>25mm三連装機銃</string>
 		<key>secondShip</key>
-		<string>摩耶</string>
+		<string>五十鈴改二</string>
+	<key>remodelEquipment</key>
+	<string>25mm三連装機銃 集中配備</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
@@ -1616,11 +1578,11 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>0</integer>
+		<integer>5</integer>
 		<key>equipment</key>
 		<string>25mm三連装機銃</string>
 		<key>secondShip</key>
-		<string>摩耶改二</string>
+		<string>摩耶</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
@@ -1632,7 +1594,7 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>5</integer>
+		<integer>2</integer>
 		<key>equipment</key>
 		<string>25mm三連装機銃</string>
 		<key>secondShip</key>
@@ -1648,13 +1610,11 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>0</integer>
+		<integer>7</integer>
 		<key>equipment</key>
-		<string>91式高射装置</string>
+		<string>25mm三連装機銃</string>
 		<key>secondShip</key>
-		<string>摩耶</string>
-	<key>remodelEquipment</key>
-	<string>94式高射装置</string>
+		<string>摩耶改二</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
@@ -1668,7 +1628,7 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>5</integer>
+		<integer>2</integer>
 		<key>equipment</key>
 		<string>91式高射装置</string>
 		<key>secondShip</key>
@@ -1688,13 +1648,13 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>0</integer>
+		<integer>7</integer>
 		<key>equipment</key>
-		<string>94式高射装置</string>
+		<string>91式高射装置</string>
 		<key>secondShip</key>
-		<string>秋月</string>
+		<string>摩耶</string>
 	<key>remodelEquipment</key>
-	<string>10cm高角砲＋高射装置</string>
+	<string>94式高射装置</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
@@ -1758,17 +1718,17 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>0</integer>
+		<integer>7</integer>
 		<key>equipment</key>
 		<string>94式高射装置</string>
 		<key>secondShip</key>
-		<string>吹雪改二</string>
+		<string>秋月</string>
 	<key>remodelEquipment</key>
 	<string>10cm高角砲＋高射装置</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>4</integer>
+		<integer>1</integer>
 		<key>equipment</key>
 		<string>94式高射装置</string>
 		<key>secondShip</key>
@@ -1798,17 +1758,17 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>0</integer>
+		<integer>7</integer>
 		<key>equipment</key>
 		<string>94式高射装置</string>
 		<key>secondShip</key>
-		<string>摩耶改二</string>
+		<string>吹雪改二</string>
 	<key>remodelEquipment</key>
-	<string>12.7cm高角砲＋高射装置</string>
+	<string>10cm高角砲＋高射装置</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>4</integer>
+		<integer>1</integer>
 		<key>equipment</key>
 		<string>94式高射装置</string>
 		<key>secondShip</key>
@@ -1838,7 +1798,17 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>4</integer>
+		<integer>7</integer>
+		<key>equipment</key>
+		<string>94式高射装置</string>
+		<key>secondShip</key>
+		<string>摩耶改二</string>
+	<key>remodelEquipment</key>
+	<string>12.7cm高角砲＋高射装置</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>5</integer>
 		<key>equipment</key>
 		<string>探照灯</string>
 		<key>secondShip</key>
@@ -1848,16 +1818,6 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>5</integer>
-		<key>equipment</key>
-		<string>探照灯</string>
-		<key>secondShip</key>
-		<string>暁</string>
-	<key>remodelEquipment</key>
-	<string>熟練見張員</string>
-	</dict>
-	<dict>
-		<key>weekday</key>
 		<integer>6</integer>
 		<key>equipment</key>
 		<string>探照灯</string>
@@ -1868,37 +1828,67 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>0</integer>
+		<integer>7</integer>
 		<key>equipment</key>
 		<string>探照灯</string>
 		<key>secondShip</key>
-		<string>神通</string>
-	<key>remodelEquipment</key>
-	<string>熟練見張員</string>
-	</dict>
-	<dict>
-		<key>weekday</key>
-		<integer>5</integer>
-		<key>equipment</key>
-		<string>探照灯</string>
-		<key>secondShip</key>
-		<string>神通</string>
-	<key>remodelEquipment</key>
-	<string>熟練見張員</string>
-	</dict>
-	<dict>
-		<key>weekday</key>
-		<integer>6</integer>
-		<key>equipment</key>
-		<string>探照灯</string>
-		<key>secondShip</key>
-		<string>神通</string>
+		<string>暁</string>
 	<key>remodelEquipment</key>
 	<string>熟練見張員</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
 		<integer>1</integer>
+		<key>equipment</key>
+		<string>探照灯</string>
+		<key>secondShip</key>
+		<string>神通</string>
+	<key>remodelEquipment</key>
+	<string>熟練見張員</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>6</integer>
+		<key>equipment</key>
+		<string>探照灯</string>
+		<key>secondShip</key>
+		<string>神通</string>
+	<key>remodelEquipment</key>
+	<string>熟練見張員</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>7</integer>
+		<key>equipment</key>
+		<string>探照灯</string>
+		<key>secondShip</key>
+		<string>神通</string>
+	<key>remodelEquipment</key>
+	<string>熟練見張員</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>2</integer>
+		<key>equipment</key>
+		<string>探照灯</string>
+		<key>secondShip</key>
+		<string>青葉</string>
+	<key>remodelEquipment</key>
+	<string>熟練見張員</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>3</integer>
+		<key>equipment</key>
+		<string>探照灯</string>
+		<key>secondShip</key>
+		<string>青葉</string>
+	<key>remodelEquipment</key>
+	<string>熟練見張員</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>4</integer>
 		<key>equipment</key>
 		<string>探照灯</string>
 		<key>secondShip</key>
@@ -1912,7 +1902,7 @@
 		<key>equipment</key>
 		<string>探照灯</string>
 		<key>secondShip</key>
-		<string>青葉</string>
+		<string>綾波</string>
 	<key>remodelEquipment</key>
 	<string>熟練見張員</string>
 	</dict>
@@ -1922,7 +1912,17 @@
 		<key>equipment</key>
 		<string>探照灯</string>
 		<key>secondShip</key>
-		<string>青葉</string>
+		<string>綾波</string>
+	<key>remodelEquipment</key>
+	<string>熟練見張員</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>4</integer>
+		<key>equipment</key>
+		<string>探照灯</string>
+		<key>secondShip</key>
+		<string>綾波</string>
 	<key>remodelEquipment</key>
 	<string>熟練見張員</string>
 	</dict>
@@ -1930,51 +1930,13 @@
 		<key>weekday</key>
 		<integer>1</integer>
 		<key>equipment</key>
-		<string>探照灯</string>
+		<string>96式150cm探照灯</string>
 		<key>secondShip</key>
-		<string>綾波</string>
-	<key>remodelEquipment</key>
-	<string>熟練見張員</string>
+		<string>比叡</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
 		<integer>2</integer>
-		<key>equipment</key>
-		<string>探照灯</string>
-		<key>secondShip</key>
-		<string>綾波</string>
-	<key>remodelEquipment</key>
-	<string>熟練見張員</string>
-	</dict>
-	<dict>
-		<key>weekday</key>
-		<integer>3</integer>
-		<key>equipment</key>
-		<string>探照灯</string>
-		<key>secondShip</key>
-		<string>綾波</string>
-	<key>remodelEquipment</key>
-	<string>熟練見張員</string>
-	</dict>
-	<dict>
-		<key>weekday</key>
-		<integer>0</integer>
-		<key>equipment</key>
-		<string>96式150cm探照灯</string>
-		<key>secondShip</key>
-		<string>比叡</string>
-	</dict>
-	<dict>
-		<key>weekday</key>
-		<integer>1</integer>
-		<key>equipment</key>
-		<string>96式150cm探照灯</string>
-		<key>secondShip</key>
-		<string>比叡</string>
-	</dict>
-	<dict>
-		<key>weekday</key>
-		<integer>5</integer>
 		<key>equipment</key>
 		<string>96式150cm探照灯</string>
 		<key>secondShip</key>
@@ -1990,11 +1952,11 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
-		<integer>2</integer>
+		<integer>7</integer>
 		<key>equipment</key>
 		<string>96式150cm探照灯</string>
 		<key>secondShip</key>
-		<string>霧島</string>
+		<string>比叡</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
@@ -2015,6 +1977,14 @@
 	<dict>
 		<key>weekday</key>
 		<integer>5</integer>
+		<key>equipment</key>
+		<string>96式150cm探照灯</string>
+		<key>secondShip</key>
+		<string>霧島</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>6</integer>
 		<key>equipment</key>
 		<string>96式150cm探照灯</string>
 		<key>secondShip</key>
