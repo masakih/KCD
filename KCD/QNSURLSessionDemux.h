@@ -1,6 +1,6 @@
 /*
-     File: CanonicalRequest.h
- Abstract: A function for creating canonical HTTP/HTTPS requests.
+     File: QNSURLSessionDemux.h
+ Abstract: A general class to demux NSURLSession delegate callbacks.
   Version: 1.1
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
@@ -47,18 +47,45 @@
 
 #import <Foundation/Foundation.h>
 
-/*! Returns a canonical form of the supplied request.
- *  \details The Foundation URL loading system needs to be able to canonicalize URL 
- *  requests for various reasons (for example, to look for cache hits).  The default 
- *  HTTP/HTTPS protocol has a complex chunk of code to perform this function.  Unfortunately 
- *  there's no way for third party code to access this.  Instead, we have to reimplement 
- *  it all ourselves.  This is split off into a separate file to emphasise that this 
- *  is standard boilerplate that you probably don't need to look at.
- *  
- *  IMPORTANT: While you can take most of this code as read, you might want to tweak 
- *  the handling of the "Accept-Language" in the CanonicaliseHeaders routine.
- *  \param request The request to canonicalise; must not be nil.
- *  \returns The canonical request; should never be nil.
+/*! A simple class for demultiplexing NSURLSession delegate callbacks to a per-task delegate object.
+
+    You initialise the class with a session configuration. After that you can create data tasks 
+    within that session by calling -dataTaskWithRequest:delegate:modes:.  Any delegate callbacks 
+    for that data task are redirected to the delegate on the thread that created the task in 
+    one of the specified run loop modes.  That thread must run its run loop in order to get 
+    these callbacks.
+*/
+
+@interface QNSURLSessionDemux : NSObject
+
+/*! Create a demultiplex for the specified session configuration.
+ *  \param configuration The session configuration to use; if nil, a default session is created.
+ *  \returns An initialised instance.
  */
 
-extern NSMutableURLRequest * CanonicalRequestForRequest(NSURLRequest *request);
+- (instancetype)initWithConfiguration:(NSURLSessionConfiguration *)configuration;
+
+@property (atomic, copy,   readonly ) NSURLSessionConfiguration *   configuration;  ///< A copy of the configuration passed to -initWithConfiguration:.
+@property (atomic, strong, readonly ) NSURLSession *                session;        ///< The session created from the configuration passed to -initWithConfiguration:.
+
+/*! Creates a new data task whose delegate callbacks are routed to the supplied delegate.
+ *  \details The callbacks are run on the current thread (that is, the thread that called this 
+ *  method) in the specified modes.
+ *
+ *  The delegate is retained until the task completes, that is, until after your 
+ *  -URLSession:task:didCompleteWithError: delegate callback returns.
+ *
+ *  The returned task is suspend.  You must resume the returned task for the task to 
+ *  make progress.  Furthermore, it's not safe to simply discard the returned task 
+ *  because in that case the task's delegate is never released.
+ *
+ *  \param request The request that the data task executes; must not be nil.
+ *  \param delegate The delegate to receive the data task's delegate callbacks; must not be nil.
+ *  \param modes The run loop modes in which to run the data task's delegate callbacks; if nil or 
+ *  empty, the default run loop mode (NSDefaultRunLoopMode is used).
+ *  \returns A suspended data task that you must resume.
+ */
+
+- (NSURLSessionDataTask *)dataTaskWithRequest:(NSURLRequest *)request delegate:(id<NSURLSessionDataDelegate>)delegate modes:(NSArray *)modes;
+
+@end

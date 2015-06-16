@@ -159,9 +159,6 @@
 		F4BEF00B1B11A628004702B8 /* HMShipMasterDetailWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BEF00D1B11A628004702B8 /* HMShipMasterDetailWindowController.xib */; };
 		F4BEF00E1B11A645004702B8 /* HMUITestWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BEF0101B11A645004702B8 /* HMUITestWindowController.xib */; };
 		F4C041BA1875CAF5009273EB /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4C041B91875CAF5009273EB /* JavaScriptCore.framework */; };
-		F4C118FA18A67B1C005D5B25 /* CacheStoragePolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C118F518A67B1C005D5B25 /* CacheStoragePolicy.m */; };
-		F4C118FB18A67B1C005D5B25 /* CanonicalRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C118F718A67B1C005D5B25 /* CanonicalRequest.m */; };
-		F4C118FC18A67B1C005D5B25 /* CustomHTTPProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C118F918A67B1C005D5B25 /* CustomHTTPProtocol.m */; };
 		F4C1190218A6FFC2005D5B25 /* HMQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C1190118A6FFC2005D5B25 /* HMQueue.m */; };
 		F4C1190518A71AEA005D5B25 /* HMJSONReciever.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C1190418A71AEA005D5B25 /* HMJSONReciever.m */; };
 		F4C1190818A746EB005D5B25 /* HMJSONTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C1190718A746EB005D5B25 /* HMJSONTracker.m */; };
@@ -188,6 +185,10 @@
 		F4F6E8091B2B17E50008B66E /* HMStrengthenListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4F6E8071B2B17E50008B66E /* HMStrengthenListViewController.xib */; };
 		F4F6E80C1B2BC81C0008B66E /* HMPeriodicNotifier.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F6E80B1B2BC81C0008B66E /* HMPeriodicNotifier.m */; };
 		F4F6E80F1B2C25D20008B66E /* HMStrengthenListItemCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F6E80E1B2C25D20008B66E /* HMStrengthenListItemCellView.m */; };
+		F4F6E8291B3045970008B66E /* CacheStoragePolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F6E8221B3045970008B66E /* CacheStoragePolicy.m */; };
+		F4F6E82A1B3045970008B66E /* CanonicalRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F6E8241B3045970008B66E /* CanonicalRequest.m */; };
+		F4F6E82B1B3045970008B66E /* CustomHTTPProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F6E8261B3045970008B66E /* CustomHTTPProtocol.m */; };
+		F4F6E82C1B3045970008B66E /* QNSURLSessionDemux.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F6E8281B3045970008B66E /* QNSURLSessionDemux.m */; };
 		F4FCFD44191F4C1D000640A1 /* HMKenzoMarkCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FCFD43191F4C1D000640A1 /* HMKenzoMarkCommand.m */; };
 		F4FDF2411A3D50420033E0AD /* HMShipMasterDetailWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FDF23F1A3D50420033E0AD /* HMShipMasterDetailWindowController.m */; };
 /* End PBXBuildFile section */
@@ -473,12 +474,6 @@
 		F4BEF00C1B11A628004702B8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMShipMasterDetailWindowController.xib; sourceTree = "<group>"; };
 		F4BEF00F1B11A645004702B8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMUITestWindowController.xib; sourceTree = "<group>"; };
 		F4C041B91875CAF5009273EB /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		F4C118F418A67B1C005D5B25 /* CacheStoragePolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheStoragePolicy.h; sourceTree = "<group>"; };
-		F4C118F518A67B1C005D5B25 /* CacheStoragePolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheStoragePolicy.m; sourceTree = "<group>"; };
-		F4C118F618A67B1C005D5B25 /* CanonicalRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanonicalRequest.h; sourceTree = "<group>"; };
-		F4C118F718A67B1C005D5B25 /* CanonicalRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CanonicalRequest.m; sourceTree = "<group>"; };
-		F4C118F818A67B1C005D5B25 /* CustomHTTPProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomHTTPProtocol.h; sourceTree = "<group>"; };
-		F4C118F918A67B1C005D5B25 /* CustomHTTPProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomHTTPProtocol.m; sourceTree = "<group>"; };
 		F4C1190018A6FFC2005D5B25 /* HMQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMQueue.h; sourceTree = "<group>"; };
 		F4C1190118A6FFC2005D5B25 /* HMQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMQueue.m; sourceTree = "<group>"; };
 		F4C1190318A71AEA005D5B25 /* HMJSONReciever.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMJSONReciever.h; sourceTree = "<group>"; };
@@ -530,6 +525,14 @@
 		F4F6E80B1B2BC81C0008B66E /* HMPeriodicNotifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMPeriodicNotifier.m; sourceTree = "<group>"; };
 		F4F6E80D1B2C25D20008B66E /* HMStrengthenListItemCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMStrengthenListItemCellView.h; sourceTree = "<group>"; };
 		F4F6E80E1B2C25D20008B66E /* HMStrengthenListItemCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMStrengthenListItemCellView.m; sourceTree = "<group>"; };
+		F4F6E8211B3045970008B66E /* CacheStoragePolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheStoragePolicy.h; sourceTree = "<group>"; };
+		F4F6E8221B3045970008B66E /* CacheStoragePolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheStoragePolicy.m; sourceTree = "<group>"; };
+		F4F6E8231B3045970008B66E /* CanonicalRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanonicalRequest.h; sourceTree = "<group>"; };
+		F4F6E8241B3045970008B66E /* CanonicalRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CanonicalRequest.m; sourceTree = "<group>"; };
+		F4F6E8251B3045970008B66E /* CustomHTTPProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomHTTPProtocol.h; sourceTree = "<group>"; };
+		F4F6E8261B3045970008B66E /* CustomHTTPProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomHTTPProtocol.m; sourceTree = "<group>"; };
+		F4F6E8271B3045970008B66E /* QNSURLSessionDemux.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QNSURLSessionDemux.h; sourceTree = "<group>"; };
+		F4F6E8281B3045970008B66E /* QNSURLSessionDemux.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QNSURLSessionDemux.m; sourceTree = "<group>"; };
 		F4FCFD42191F4C1D000640A1 /* HMKenzoMarkCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMKenzoMarkCommand.h; sourceTree = "<group>"; };
 		F4FCFD43191F4C1D000640A1 /* HMKenzoMarkCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKenzoMarkCommand.m; sourceTree = "<group>"; };
 		F4FDF23E1A3D50420033E0AD /* HMShipMasterDetailWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMShipMasterDetailWindowController.h; sourceTree = "<group>"; };
@@ -860,12 +863,14 @@
 		F4C118F318A67B05005D5B25 /* CustomHTTPProtocol */ = {
 			isa = PBXGroup;
 			children = (
-				F4C118F418A67B1C005D5B25 /* CacheStoragePolicy.h */,
-				F4C118F518A67B1C005D5B25 /* CacheStoragePolicy.m */,
-				F4C118F618A67B1C005D5B25 /* CanonicalRequest.h */,
-				F4C118F718A67B1C005D5B25 /* CanonicalRequest.m */,
-				F4C118F818A67B1C005D5B25 /* CustomHTTPProtocol.h */,
-				F4C118F918A67B1C005D5B25 /* CustomHTTPProtocol.m */,
+				F4F6E8211B3045970008B66E /* CacheStoragePolicy.h */,
+				F4F6E8221B3045970008B66E /* CacheStoragePolicy.m */,
+				F4F6E8231B3045970008B66E /* CanonicalRequest.h */,
+				F4F6E8241B3045970008B66E /* CanonicalRequest.m */,
+				F4F6E8251B3045970008B66E /* CustomHTTPProtocol.h */,
+				F4F6E8261B3045970008B66E /* CustomHTTPProtocol.m */,
+				F4F6E8271B3045970008B66E /* QNSURLSessionDemux.h */,
+				F4F6E8281B3045970008B66E /* QNSURLSessionDemux.m */,
 			);
 			name = CustomHTTPProtocol;
 			sourceTree = "<group>";
@@ -1157,6 +1162,7 @@
 				F4D2CBC518AE2AE2000EBC59 /* HMCompositCommand.m in Sources */,
 				F4C1190218A6FFC2005D5B25 /* HMQueue.m in Sources */,
 				F4513EEB18B7900A00073552 /* HMMemberDeckCommand.m in Sources */,
+				F4F6E82C1B3045970008B66E /* QNSURLSessionDemux.m in Sources */,
 				F4B3DC2A18DF31400011B4FC /* HMCreateShipCommand.m in Sources */,
 				F4D6BCB61AA2C10700742FEB /* HMHideEquipNumberTransformer.m in Sources */,
 				F46F103618A7CE310063E503 /* HMJSONViewCommand.m in Sources */,
@@ -1170,7 +1176,6 @@
 				F495462E1B1894DD00E0D8D0 /* Bookmark.xcdatamodeld in Sources */,
 				F4B414FB18B1FB6C00468DAF /* HMMasterMapCellCommand.m in Sources */,
 				F4B3DC2E18E07B680011B4FC /* HMHistoryWindowController.m in Sources */,
-				F4C118FA18A67B1C005D5B25 /* CacheStoragePolicy.m in Sources */,
 				F4D6BCA91AA298FD00742FEB /* HMShipDetailViewController.m in Sources */,
 				F4A3AD9219BDDD8E00FDBF80 /* HMPreferencePanelController.m in Sources */,
 				F4BEE4771AA9E4EF00979752 /* HMMinimumShipViewController.m in Sources */,
@@ -1179,6 +1184,7 @@
 				F4B1E30819C73B6A00805879 /* HMSuppliesCell.m in Sources */,
 				F4666C4D1B1B3113001840DB /* HMBookmarkListTableView.m in Sources */,
 				F4A3AD8E19BB220000FDBF80 /* HMMaskInfomation.m in Sources */,
+				F4F6E8291B3045970008B66E /* CacheStoragePolicy.m in Sources */,
 				F4D6BCBA1AA32BEA00742FEB /* HMFleetViewController.m in Sources */,
 				F49546311B18991300E0D8D0 /* HMBookmarkDataStore.m in Sources */,
 				F4666C511B1CB2CE001840DB /* HMBrowserContentAdjuster.m in Sources */,
@@ -1220,7 +1226,6 @@
 				F43BA4A1197BE22200CFF788 /* HMDestroyShipCommand.m in Sources */,
 				F47B78B218A7B42B0011386E /* HMJSONViewWindowController.m in Sources */,
 				F4B414EF18B0BF1A00468DAF /* HMMasterMapInfoCommand.m in Sources */,
-				F4C118FC18A67B1C005D5B25 /* CustomHTTPProtocol.m in Sources */,
 				F4B3DC1B18DEAB5E0011B4FC /* HMKaihatuHistory.m in Sources */,
 				F4131EDC190FEBCC004F7F9A /* HMSlotItemWindowController.m in Sources */,
 				F4D2CBCB18B05E58000EBC59 /* HMMaserShipCommand.m in Sources */,
@@ -1242,6 +1247,7 @@
 				F43769E41AE7D01D00DE6204 /* HMUpdateQuestListCommand.m in Sources */,
 				F4C1190818A746EB005D5B25 /* HMJSONTracker.m in Sources */,
 				F4B3DC4718EEEB920011B4FC /* HMCompositMapCommand.m in Sources */,
+				F4F6E82B1B3045970008B66E /* CustomHTTPProtocol.m in Sources */,
 				F4513EDD18B619B600073552 /* HMCoreDataManager.m in Sources */,
 				F4B3DBCA18DDB9170011B4FC /* HMCreateSlotItemCommand.m in Sources */,
 				F4131ED8190FA08D004F7F9A /* HMDestroyItem2Command.m in Sources */,
@@ -1253,7 +1259,6 @@
 				F4A3AD8B19B9BE7A00FDBF80 /* HMMaskSelectView.m in Sources */,
 				F4B414E918B09A4B00468DAF /* HMMasterMapAreaCommand.m in Sources */,
 				F4C3957418CDDFE500A1E918 /* HMKenzoDockStatus.m in Sources */,
-				F4C118FB18A67B1C005D5B25 /* CanonicalRequest.m in Sources */,
 				F4AA060D1930E69200844688 /* HMMidnightBattleCommand.m in Sources */,
 				F4D6BC551A93903E00742FEB /* HMDropShipHistory.m in Sources */,
 				F4131EE91911445F004F7F9A /* HMSlotItemEquipTypeTransformer.m in Sources */,
@@ -1270,6 +1275,7 @@
 				F4B414FE18B3A66200468DAF /* HMMemberNDockCommand.m in Sources */,
 				F4FDF2411A3D50420033E0AD /* HMShipMasterDetailWindowController.m in Sources */,
 				F44AB20619E053CB00F217AF /* HMKCDeck+Extension.m in Sources */,
+				F4F6E82A1B3045970008B66E /* CanonicalRequest.m in Sources */,
 				F42680371957000200B2C27F /* HMTimerCountFormatter.m in Sources */,
 				F4666C5A1B2067CF001840DB /* HMSourceListColoredView.m in Sources */,
 				F4B414F218B1013C00468DAF /* HMMasterSlotItemCommand.m in Sources */,

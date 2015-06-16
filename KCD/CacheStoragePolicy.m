@@ -1,7 +1,7 @@
 /*
      File: CacheStoragePolicy.m
  Abstract: A function to determine the cache storage policy for a request.
-  Version: 1.0
+  Version: 1.1
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following
@@ -41,17 +41,20 @@
  STRICT LIABILITY OR OTHERWISE, EVEN IF APPLE HAS BEEN ADVISED OF THE
  POSSIBILITY OF SUCH DAMAGE.
  
- Copyright (C) 2013 Apple Inc. All Rights Reserved.
+ Copyright (C) 2014 Apple Inc. All Rights Reserved.
  
  */
 
-#include "CacheStoragePolicy.h"
+#import "CacheStoragePolicy.h"
 
 extern NSURLCacheStoragePolicy CacheStoragePolicyForRequestAndResponse(NSURLRequest * request, NSHTTPURLResponse * response)
     // See comment in header.
 {
     BOOL                        cacheable;
     NSURLCacheStoragePolicy     result;
+
+    assert(request != NULL);
+    assert(response != NULL);
 
     // First determine if the request is cacheable based on its status code.
     
@@ -79,7 +82,7 @@ extern NSURLCacheStoragePolicy CacheStoragePolicyForRequestAndResponse(NSURLRequ
     if (cacheable) {
         NSString *  responseHeader;
         
-        responseHeader = [[[response allHeaderFields] objectForKey:@"Cache-Control"] lowercaseString];
+        responseHeader = [[response allHeaderFields][@"Cache-Control"] lowercaseString];
         if ( (responseHeader != nil) && [responseHeader rangeOfString:@"no-store"].location != NSNotFound) {
             cacheable = NO;
         }
@@ -91,7 +94,7 @@ extern NSURLCacheStoragePolicy CacheStoragePolicyForRequestAndResponse(NSURLRequ
     if (cacheable) {
         NSString *  requestHeader;
 
-        requestHeader = [[[request allHTTPHeaderFields] objectForKey:@"Cache-Control"] lowercaseString];
+        requestHeader = [[request allHTTPHeaderFields][@"Cache-Control"] lowercaseString];
         if ( (requestHeader != nil) 
           && ([requestHeader rangeOfString:@"no-store"].location != NSNotFound)
           && ([requestHeader rangeOfString:@"no-cache"].location != NSNotFound) ) {
@@ -102,6 +105,12 @@ extern NSURLCacheStoragePolicy CacheStoragePolicyForRequestAndResponse(NSURLRequ
     // Use the cacheable flag to determine the result.
     
     if (cacheable) {
+    
+        // This code only caches HTTPS data in memory.  This is inline with earlier versions of 
+        // iOS.  Modern versions of iOS use file protection to protect the cache, and thus are 
+        // happy to cache HTTPS on disk.  I've not made the correspondencing change because 
+        // it's nice to see all three cache policies in action.
+    
         if ([[[[request URL] scheme] lowercaseString] isEqual:@"https"]) {
             result = NSURLCacheStorageAllowedInMemoryOnly;
         } else {

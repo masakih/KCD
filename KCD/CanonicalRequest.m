@@ -1,7 +1,7 @@
 /*
      File: CanonicalRequest.m
  Abstract: A function for creating canonical HTTP/HTTPS requests.
-  Version: 1.0
+  Version: 1.1
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following
@@ -41,7 +41,7 @@
  STRICT LIABILITY OR OTHERWISE, EVEN IF APPLE HAS BEEN ADVISED OF THE
  POSSIBILITY OF SUCH DAMAGE.
  
- Copyright (C) 2013 Apple Inc. All Rights Reserved.
+ Copyright (C) 2014 Apple Inc. All Rights Reserved.
  
  */
 
@@ -51,10 +51,31 @@
 
 #pragma mark * URL canonicalization steps 
 
+/*! A step in the canonicalisation process.
+ *  \details The canonicalisation process is made up of a sequence of steps, each of which is 
+ *  implemented by a function that matches this function pointer.  The function gets a URL 
+ *  and a mutable buffer holding that URL as bytes.  The function can mutate the buffer as it 
+ *  sees fit.  It typically does this by calling CFURLGetByteRangeForComponent to find the range 
+ *  of interest in the buffer.  In that case bytesInserted is the amount to adjust that range, 
+ *  and the function should modify that to account for any bytes it inserts or deletes.  If 
+ *  the function modifies the buffer too much, it can return kCFNotFound to force the system 
+ *  to re-create the URL from the buffer.
+ *  \param url The original URL to work on.
+ *  \param urlData The URL as a mutable buffer; the routine modifies this.
+ *  \param bytesInserted The number of bytes that have been inserted so far the mutable buffer.
+ *  \returns An updated value of bytesInserted or kCFNotFound if the URL must be reparsed.
+ */
+
 typedef CFIndex (*CanonicalRequestStepFunction)(NSURL *url, NSMutableData *urlData, CFIndex bytesInserted);
 
+/*! The post-scheme separate should be "://"; if that's not the case, fix it.
+ *  \param url The original URL to work on.
+ *  \param urlData The URL as a mutable buffer; the routine modifies this.
+ *  \param bytesInserted The number of bytes that have been inserted so far the mutable buffer.
+ *  \returns An updated value of bytesInserted or kCFNotFound if the URL must be reparsed.
+ */
+
 static CFIndex FixPostSchemeSeparator(NSURL *url, NSMutableData *urlData, CFIndex bytesInserted)
-    // The separator after the scheme should be "://"; if that's not the case, fix it.
 {
     CFRange     range;
     uint8_t *   urlDataBytes;
@@ -101,8 +122,14 @@ static CFIndex FixPostSchemeSeparator(NSURL *url, NSMutableData *urlData, CFInde
     return bytesInserted;
 }
 
+/*! The scheme should be lower case; if it's not, make it so.
+ *  \param url The original URL to work on.
+ *  \param urlData The URL as a mutable buffer; the routine modifies this.
+ *  \param bytesInserted The number of bytes that have been inserted so far the mutable buffer.
+ *  \returns An updated value of bytesInserted or kCFNotFound if the URL must be reparsed.
+ */
+
 static CFIndex LowercaseScheme(NSURL *url, NSMutableData *urlData, CFIndex bytesInserted)
-    // The scheme should be lower case; if it's not, make it so.
 {
     CFRange     range;
     uint8_t *   urlDataBytes;
@@ -124,6 +151,13 @@ static CFIndex LowercaseScheme(NSURL *url, NSMutableData *urlData, CFIndex bytes
     }
     return bytesInserted;
 }
+
+/*! The host should be lower case; if it's not, make it so.
+ *  \param url The original URL to work on.
+ *  \param urlData The URL as a mutable buffer; the routine modifies this.
+ *  \param bytesInserted The number of bytes that have been inserted so far the mutable buffer.
+ *  \returns An updated value of bytesInserted or kCFNotFound if the URL must be reparsed.
+ */
 
 static CFIndex LowercaseHost(NSURL *url, NSMutableData *urlData, CFIndex bytesInserted)
     // The host should be lower case; if it's not, make it so.
@@ -149,10 +183,15 @@ static CFIndex LowercaseHost(NSURL *url, NSMutableData *urlData, CFIndex bytesIn
     return bytesInserted;
 }
 
+/*! An empty host should be treated as "localhost" case; if it's not, make it so.
+ *  \param url The original URL to work on.
+ *  \param urlData The URL as a mutable buffer; the routine modifies this.
+ *  \param bytesInserted The number of bytes that have been inserted so far the mutable buffer.
+ *  \returns An updated value of bytesInserted or kCFNotFound if the URL must be reparsed.
+ */
+
 static CFIndex FixEmptyHost(NSURL *url, NSMutableData *urlData, CFIndex bytesInserted)
-    // An empty host should be treated as "localhost" case; if it's not, make it so.
 {
-    #pragma unused(urlData)
     CFRange     range;
     CFRange     rangeWithSeparator;
     
@@ -179,10 +218,15 @@ static CFIndex FixEmptyHost(NSURL *url, NSMutableData *urlData, CFIndex bytesIns
     return bytesInserted;
 }
 
+/*! Transform an empty URL path to "/".  For example, "http://www.apple.com" becomes "http://www.apple.com/".
+ *  \param url The original URL to work on.
+ *  \param urlData The URL as a mutable buffer; the routine modifies this.
+ *  \param bytesInserted The number of bytes that have been inserted so far the mutable buffer.
+ *  \returns An updated value of bytesInserted or kCFNotFound if the URL must be reparsed.
+ */
+
 static CFIndex FixEmptyPath(NSURL *url, NSMutableData *urlData, CFIndex bytesInserted)
-    // Transform an empty URL path to "/".  For example, "http://www.apple.com" becomes "http://www.apple.com/".
 {
-    #pragma unused(urlData)
     CFRange     range;
     CFRange     rangeWithSeparator;
     
@@ -205,12 +249,17 @@ static CFIndex FixEmptyPath(NSURL *url, NSMutableData *urlData, CFIndex bytesIns
     return bytesInserted;
 }
 
+/*! If the user specified the default port (80 for HTTP, 443 for HTTPS), remove it from the URL.
+ *  \details Actually this code is disabled because the equivalent code in the default protocol  
+ *  handler has also been disabled; some setups depend on get the port number in the URL, even if it 
+ *  is the default.
+ *  \param url The original URL to work on.
+ *  \param urlData The URL as a mutable buffer; the routine modifies this.
+ *  \param bytesInserted The number of bytes that have been inserted so far the mutable buffer.
+ *  \returns An updated value of bytesInserted or kCFNotFound if the URL must be reparsed.
+ */
+
 __attribute__((unused)) static CFIndex DeleteDefaultPort(NSURL *url, NSMutableData *urlData, CFIndex bytesInserted) 
-    // If the user specified the default port (80 for HTTP, 443 for HTTPS), remove it from the URL. 
-    //
-    // Actually this code is disabled because the equivalent code in the default protocol handle 
-    // has also been disabled; some setups depend on get the port number in the URL, even if it 
-    // is the default.
 {
     NSString *  scheme;
     BOOL        isHTTP;
@@ -252,8 +301,11 @@ __attribute__((unused)) static CFIndex DeleteDefaultPort(NSURL *url, NSMutableDa
 
 #pragma mark * Other request canonicalization
 
+/*! Canonicalise the request headers.
+ *  \param request The request to canonicalise.
+ */
+
 static void CanonicaliseHeaders(NSMutableURLRequest * request)
-    // Canonicalise the request headers.
 {
     // If there's no content type and the request is a POST with a body, add a default 
     // content type of "application/x-www-form-urlencoded".
@@ -264,7 +316,7 @@ static void CanonicaliseHeaders(NSMutableURLRequest * request)
         [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     }
     
-    // If there's not "Accept" header, add a default.
+    // If there's no "Accept" header, add a default.
     
     if ([request valueForHTTPHeaderField:@"Accept"] == nil) {
         [request setValue:@"*/*" forHTTPHeaderField:@"Accept"];
@@ -295,6 +347,8 @@ extern NSMutableURLRequest * CanonicalRequestForRequest(NSURLRequest *request)
 {
     NSMutableURLRequest *   result;
     NSString *              scheme;
+
+    assert(request != nil);
 
     // Make a mutable copy of the request.
     
@@ -339,7 +393,7 @@ extern NSMutableURLRequest * CanonicalRequestForRequest(NSURLRequest *request)
             if (bytesInserted == kCFNotFound) {
                 NSData *    urlDataImmutable;
 
-                urlDataImmutable = CFBridgingRelease(CFURLCreateData(NULL, (CFURLRef) requestURL, kCFStringEncodingUTF8, true));
+                urlDataImmutable = CFBridgingRelease( CFURLCreateData(NULL, (CFURLRef) requestURL, kCFStringEncodingUTF8, true) );
                 assert(urlDataImmutable != nil);
                 
                 urlData = [urlDataImmutable mutableCopy];
@@ -353,6 +407,9 @@ extern NSMutableURLRequest * CanonicalRequestForRequest(NSURLRequest *request)
             
             bytesInserted = kStepFunctions[stepIndex](requestURL, urlData, bytesInserted);
             
+            // Note: The following logging is useful when debugging this code.  Change the 
+            // if expression to YES to enable it.
+            
             if (NO) {
                 fprintf(stderr, "  [%zu] %.*s\n", stepIndex, (int) [urlData length], (const char *) [urlData bytes]);
             }
@@ -361,7 +418,7 @@ extern NSMutableURLRequest * CanonicalRequestForRequest(NSURLRequest *request)
             // the URL outside of the loop), recreate the URL from the URL data.
             
             if ( (bytesInserted == kCFNotFound) || ((stepIndex + 1) == stepCount) ) {
-                requestURL = CFBridgingRelease(CFURLCreateWithBytes(NULL, [urlData bytes], (CFIndex) [urlData length], kCFStringEncodingUTF8, NULL));
+                requestURL = CFBridgingRelease( CFURLCreateWithBytes(NULL, [urlData bytes], (CFIndex) [urlData length], kCFStringEncodingUTF8, NULL) );
                 assert(requestURL != nil);
                 
                 urlData = nil;
