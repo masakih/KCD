@@ -86,9 +86,17 @@ typedef void (^ChallengeCompletionHandler)(NSURLSessionAuthChallengeDisposition 
 
 static id<CustomHTTPProtocolDelegate> sDelegate;
 
+
++ (NSURL *)applicationSupportDirectory
+{
+	NSFileManager *fileManager = [NSFileManager defaultManager];
+	return [[fileManager URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask] lastObject];
+}
+
+
 + (void)load
 {
-    [NSURLProtocol registerClass:self];
+	[NSURLProtocol registerClass:self];
 }
 
 + (id<CustomHTTPProtocolDelegate>)delegate
@@ -125,6 +133,14 @@ static id<CustomHTTPProtocolDelegate> sDelegate;
         // You have to explicitly configure the session to use your own protocol subclass here 
         // otherwise you don't see redirects <rdar://problem/17384498>.
         config.protocolClasses = @[ self ];
+		
+		NSURL *path = [self applicationSupportDirectory];
+		path = [path URLByAppendingPathComponent:@"com.masakih.KCD"];
+		path = [path URLByAppendingPathComponent:@"cache.db"];
+		NSURLCache *cache = [[NSURLCache alloc] initWithMemoryCapacity:1024 * 1024 * 512
+														  diskCapacity:1024 * 1024 * 1024
+															  diskPath:path.path];
+		config.URLCache = cache;
         sDemux = [[QNSURLSessionDemux alloc] initWithConfiguration:config];
     });
     return sDemux;
@@ -724,7 +740,7 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
     // We implement this delegate callback purely for the purposes of logging.
     
     [[self class] customHTTPProtocol:self logWithFormat:@"will cache response"];
-
+	
     completionHandler(proposedResponse);
 }
 
