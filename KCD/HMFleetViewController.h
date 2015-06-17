@@ -43,4 +43,8 @@ typedef NS_ENUM(NSInteger, HMFleetViewShipOrder) {
 
 @property (readonly) NSNumber *totalSakuteki;
 @property (readonly) NSNumber *totalSeiku;
+
+- (IBAction)selectNextFleet:(id)sender;
+- (IBAction)selectPreviousFleet:(id)sender;
+
 @end

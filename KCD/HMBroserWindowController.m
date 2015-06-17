@@ -481,6 +481,15 @@ const CGFloat flashTopMargin = 4;
 	HMStandardDefaults.fleetViewShipOrder = leftToRight;
 }
 
+- (IBAction)selectNextFleet:(id)sender
+{
+	[_fleetViewController selectNextFleet:sender];
+}
+- (IBAction)selectPreviousFleet:(id)sender
+{
+	[_fleetViewController selectPreviousFleet:sender];
+}
+
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem
 {
@@ -500,6 +509,9 @@ const CGFloat flashTopMargin = 4;
 		return YES;
 	}
 	if(action == @selector(screenShot:)) {
+		return YES;
+	}
+	if(action == @selector(selectNextFleet:) || action == @selector(selectPreviousFleet:)) {
 		return YES;
 	}
 	

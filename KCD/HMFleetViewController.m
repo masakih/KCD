@@ -15,6 +15,9 @@
 
 #import "HMServerDataStore.h"
 
+
+const NSInteger maxFleetNumber = 4;
+
 @interface HMFleetViewController ()
 
 @property (weak) Class shipViewClass;
@@ -299,6 +302,18 @@
 	
 	return [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }
+
+- (IBAction)selectNextFleet:(id)sender
+{
+	NSInteger next = self.fleetNumber + 1;
+	self.fleetNumber = next <= maxFleetNumber ? next : 1;
+}
+- (IBAction)selectPreviousFleet:(id)sender
+{
+	NSInteger prev = self.fleetNumber - 1;
+	self.fleetNumber = prev > 0 ? prev : 4;
+}
+
 
 - (void)reorderShipToDoubleLine
 {

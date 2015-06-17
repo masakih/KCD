@@ -234,6 +234,19 @@ CA
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="k5I-au-tcW"/>
+                            <menuItem title="Select Next Fleet" keyEquivalent="" id="zEh-tr-mhX">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="selectNextFleet:" target="-1" id="cM8-yZ-yeA"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Select Previous Fleet" keyEquivalent="" id="Q3x-8F-nJC">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="selectPreviousFleet:" target="-1" id="l4N-mw-wZP"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="pna-WT-8tJ"/>
                             <menuItem title="Screen Shot" keyEquivalent="S" id="7Fq-TJ-VZE">
                                 <connections>
                                     <action selector="screenShot:" target="-1" id="eoB-LA-pzp"/>
