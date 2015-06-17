@@ -22,6 +22,7 @@
 @property (readonly) NSRect contentVisibleRect;
 @property BOOL canResize;
 @property BOOL canScroll;
+@property BOOL canMovePage;
 
 - (IBAction)clickGoBackSegment:(id)sender;
 

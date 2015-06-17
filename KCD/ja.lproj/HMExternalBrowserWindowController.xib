@@ -48,6 +48,8 @@
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                             <connections>
+                                <binding destination="-2" name="editable" keyPath="canMovePage" id="XNO-ln-Wxl"/>
+                                <binding destination="-2" name="enabled" keyPath="canMovePage" previousBinding="XNO-ln-Wxl" id="610-oc-a1H"/>
                                 <binding destination="Bwc-hB-eRh" name="value" keyPath="selection.mainFrameURL" id="vuh-9N-P9x"/>
                             </connections>
                         </textField>
@@ -86,6 +88,9 @@
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <connections>
+                                <binding destination="-2" name="enabled" keyPath="canMovePage" id="oTe-BE-JvZ"/>
+                            </connections>
                         </button>
                         <connections>
                             <action selector="goHome:" target="-2" id="7WE-aZ-0yM"/>
@@ -131,11 +136,32 @@
                             </connections>
                         </button>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="B26F6547-1AFA-461E-8849-7049CEB3CCD5" label="URL Lock" paletteLabel="URL Lock" id="3km-dZ-tV1">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="34" height="25"/>
+                        <size key="maxSize" width="34" height="32"/>
+                        <button key="view" verticalHuggingPriority="750" id="oIU-UU-oyi">
+                            <rect key="frame" x="0.0" y="14" width="34" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" title="UR" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="EsD-AX-Gm6">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <binding destination="-2" name="value" keyPath="canMovePage" id="NNX-Bh-NfK">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                    </dictionary>
+                                </binding>
+                            </connections>
+                        </button>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="yBb-7R-Qfc"/>
                     <toolbarItem reference="QwU-Py-Vzr"/>
                     <toolbarItem reference="DmT-Fb-EfY"/>
+                    <toolbarItem reference="3km-dZ-tV1"/>
                     <toolbarItem reference="fQm-0j-yZH"/>
                     <toolbarItem reference="dk4-x0-fn2"/>
                 </defaultToolbarItems>

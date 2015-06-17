@@ -59,6 +59,7 @@
 	
 	self.canResize = YES;
 	self.canScroll = YES;
+	self.canMovePage = YES;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -164,6 +165,12 @@ static BOOL sameState(BOOL a, BOOL b) {
 
 - (void)setBookmark:(HMBookmarkItem *)bookmark
 {
+	if(!self.canMovePage) {
+		HMAppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+		HMExternalBrowserWindowController *newController = [appDelegate createNewBrowser];
+		[newController setBookmark:bookmark];
+		return;
+	}
 	self.webView.mainFrameURL = bookmark.urlString;
 	self.windowContentSize = bookmark.windowContentSize;
 	self.canResize = bookmark.canResize;

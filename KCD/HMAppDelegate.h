@@ -11,6 +11,7 @@
 #import "HMJSONViewWindowController.h"
 
 @class HMFleetInformation;
+@class HMExternalBrowserWindowController;
 
 typedef NS_ENUM(NSUInteger, HMShipType) {
     kHMAllType,
@@ -53,6 +54,8 @@ typedef NS_ENUM(NSUInteger, HMShipType) {
 - (IBAction)loadLocalData:(id)sender;
 
 - (IBAction)openNewBrowser:(id)sender;
+
+- (HMExternalBrowserWindowController *)createNewBrowser;
 
 #if ENABLE_JSON_LOG
 @property (strong) HMJSONViewWindowController *jsonViewWindowController;
