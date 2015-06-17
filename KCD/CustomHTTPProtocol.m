@@ -87,12 +87,16 @@ typedef void (^ChallengeCompletionHandler)(NSURLSessionAuthChallengeDisposition 
 static id<CustomHTTPProtocolDelegate> sDelegate;
 
 
-+ (NSURL *)applicationSupportDirectory
++ (NSURL *)cacheFileURL
 {
 	NSFileManager *fileManager = [NSFileManager defaultManager];
-	return [[fileManager URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask] lastObject];
+	NSURL *path = [[fileManager URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask] lastObject];
+	NSBundle *mainBundle = [NSBundle mainBundle];
+	NSString *bundleIdentifier = mainBundle.bundleIdentifier;
+	path = [path URLByAppendingPathComponent:bundleIdentifier];
+	path = [path URLByAppendingPathComponent:@"cache.db"];
+	return path;
 }
-
 
 + (void)load
 {
@@ -134,10 +138,8 @@ static id<CustomHTTPProtocolDelegate> sDelegate;
         // otherwise you don't see redirects <rdar://problem/17384498>.
         config.protocolClasses = @[ self ];
 		
-		NSURL *path = [self applicationSupportDirectory];
-		path = [path URLByAppendingPathComponent:@"com.masakih.KCD"];
-		path = [path URLByAppendingPathComponent:@"cache.db"];
-		NSURLCache *cache = [[NSURLCache alloc] initWithMemoryCapacity:1024 * 1024 * 512
+		NSURL *path = [self cacheFileURL];
+		NSURLCache *cache = [[NSURLCache alloc] initWithMemoryCapacity:128 * 1024 * 1024
 														  diskCapacity:1024 * 1024 * 1024
 															  diskPath:path.path];
 		config.URLCache = cache;
