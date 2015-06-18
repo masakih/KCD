@@ -1240,6 +1240,302 @@
 		<key>weekday</key>
 		<integer>1</integer>
 		<key>equipment</key>
+		<string>13号対空電探 </string>
+		<key>secondShip</key>
+		<string>五十鈴改二</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>2</integer>
+		<key>equipment</key>
+		<string>13号対空電探 </string>
+		<key>secondShip</key>
+		<string>五十鈴改二</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>6</integer>
+		<key>equipment</key>
+		<string>13号対空電探 </string>
+		<key>secondShip</key>
+		<string>五十鈴改二</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>7</integer>
+		<key>equipment</key>
+		<string>13号対空電探 </string>
+		<key>secondShip</key>
+		<string>五十鈴改二</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>1</integer>
+		<key>equipment</key>
+		<string>13号対空電探 </string>
+		<key>secondShip</key>
+		<string>時雨改二</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>5</integer>
+		<key>equipment</key>
+		<string>13号対空電探 </string>
+		<key>secondShip</key>
+		<string>時雨改二</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>6</integer>
+		<key>equipment</key>
+		<string>13号対空電探 </string>
+		<key>secondShip</key>
+		<string>時雨改二</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>7</integer>
+		<key>equipment</key>
+		<string>13号対空電探 </string>
+		<key>secondShip</key>
+		<string>時雨改二</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>3</integer>
+		<key>equipment</key>
+		<string>13号対空電探 </string>
+		<key>secondShip</key>
+		<string>秋月</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>4</integer>
+		<key>equipment</key>
+		<string>13号対空電探 </string>
+		<key>secondShip</key>
+		<string>秋月</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>5</integer>
+		<key>equipment</key>
+		<string>13号対空電探 </string>
+		<key>secondShip</key>
+		<string>秋月</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>5</integer>
+		<key>equipment</key>
+		<string>13号対空電探改 </string>
+		<key>secondShip</key>
+		<string>磯風改</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>6</integer>
+		<key>equipment</key>
+		<string>13号対空電探改 </string>
+		<key>secondShip</key>
+		<string>磯風改</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>7</integer>
+		<key>equipment</key>
+		<string>13号対空電探改 </string>
+		<key>secondShip</key>
+		<string>磯風改</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>1</integer>
+		<key>equipment</key>
+		<string>13号対空電探改 </string>
+		<key>secondShip</key>
+		<string>初霜改二</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>6</integer>
+		<key>equipment</key>
+		<string>13号対空電探改 </string>
+		<key>secondShip</key>
+		<string>初霜改二</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>7</integer>
+		<key>equipment</key>
+		<string>13号対空電探改 </string>
+		<key>secondShip</key>
+		<string>初霜改二</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>1</integer>
+		<key>equipment</key>
+		<string>13号対空電探改 </string>
+		<key>secondShip</key>
+		<string>雪風</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>2</integer>
+		<key>equipment</key>
+		<string>13号対空電探改 </string>
+		<key>secondShip</key>
+		<string>雪風</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>3</integer>
+		<key>equipment</key>
+		<string>13号対空電探改 </string>
+		<key>secondShip</key>
+		<string>雪風</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>4</integer>
+		<key>equipment</key>
+		<string>13号対空電探改 </string>
+		<key>secondShip</key>
+		<string>雪風</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>1</integer>
+		<key>equipment</key>
+		<string>21号対空電探 </string>
+		<key>secondShip</key>
+		<string>伊勢</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>2</integer>
+		<key>equipment</key>
+		<string>21号対空電探 </string>
+		<key>secondShip</key>
+		<string>伊勢</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>6</integer>
+		<key>equipment</key>
+		<string>21号対空電探 </string>
+		<key>secondShip</key>
+		<string>伊勢</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>7</integer>
+		<key>equipment</key>
+		<string>21号対空電探 </string>
+		<key>secondShip</key>
+		<string>伊勢</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>4</integer>
+		<key>equipment</key>
+		<string>21号対空電探 </string>
+		<key>secondShip</key>
+		<string>日向</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>5</integer>
+		<key>equipment</key>
+		<string>21号対空電探 </string>
+		<key>secondShip</key>
+		<string>日向</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>6</integer>
+		<key>equipment</key>
+		<string>21号対空電探 </string>
+		<key>secondShip</key>
+		<string>日向</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>7</integer>
+		<key>equipment</key>
+		<string>21号対空電探 </string>
+		<key>secondShip</key>
+		<string>日向</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>1</integer>
+		<key>equipment</key>
+		<string>21号対空電探改 </string>
+		<key>secondShip</key>
+		<string>大和</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>5</integer>
+		<key>equipment</key>
+		<string>21号対空電探改 </string>
+		<key>secondShip</key>
+		<string>大和</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>6</integer>
+		<key>equipment</key>
+		<string>21号対空電探改 </string>
+		<key>secondShip</key>
+		<string>大和</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>7</integer>
+		<key>equipment</key>
+		<string>21号対空電探改 </string>
+		<key>secondShip</key>
+		<string>大和</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>3</integer>
+		<key>equipment</key>
+		<string>21号対空電探改 </string>
+		<key>secondShip</key>
+		<string>武蔵</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>4</integer>
+		<key>equipment</key>
+		<string>21号対空電探改 </string>
+		<key>secondShip</key>
+		<string>武蔵</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>5</integer>
+		<key>equipment</key>
+		<string>21号対空電探改 </string>
+		<key>secondShip</key>
+		<string>武蔵</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>6</integer>
+		<key>equipment</key>
+		<string>21号対空電探改 </string>
+		<key>secondShip</key>
+		<string>武蔵</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>1</integer>
+		<key>equipment</key>
 		<string>九三式水中聴音機</string>
 		<key>secondShip</key>
 		<string>夕張</string>
