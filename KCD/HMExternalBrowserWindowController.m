@@ -371,6 +371,7 @@ static BOOL sameState(BOOL a, BOOL b) {
 }
 
 
+#pragma mark - WebFrameLoadDelegate
 - (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame
 {
 	if(self.waitingBookmarkItem) {
@@ -382,4 +383,21 @@ static BOOL sameState(BOOL a, BOOL b) {
 		self.waitingBookmarkItem = nil;
 	}
 }
+
+#pragma mark - WebPolicyDelegate
+- (void)webView:(WebView *)webView
+decidePolicyForNavigationAction:(NSDictionary *)actionInformation
+		request:(NSURLRequest *)request
+		  frame:(WebFrame *)frame
+decisionListener:(id<WebPolicyDecisionListener>)listener
+{
+	if(actionInformation && [actionInformation[WebActionNavigationTypeKey] integerValue] == WebNavigationTypeLinkClicked) {
+		if(self.canMovePage) {
+			[listener use];
+		}
+		return;
+	}
+	[listener use];
+}
+
 @end
