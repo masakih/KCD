@@ -161,6 +161,12 @@ CA
                                     <action selector="reloadContent:" target="-1" id="vXX-Pt-rJE"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Delete Caches and Reload" alternate="YES" keyEquivalent="r" id="aKj-J2-uzo">
+                                <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                <connections>
+                                    <action selector="deleteCacheAndReload:" target="-1" id="P63-Ur-9Hp"/>
+                                </connections>
+                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="MWH-3h-ckL"/>
                             <menuItem title="Fleet List" id="y5i-Ab-gfR">
                                 <modifierMask key="keyEquivalentModifierMask"/>

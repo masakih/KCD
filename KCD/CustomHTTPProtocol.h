@@ -60,6 +60,9 @@
 
 @interface CustomHTTPProtocol : NSURLProtocol
 
++ (void)clearCache;
+
+
 /*! Call this to start the module.  Prior to this the module is just dormant, and 
  *  all HTTP requests proceed as normal.  After this all HTTP and HTTPS requests 
  *  go through this module.

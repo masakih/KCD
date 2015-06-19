@@ -22,6 +22,8 @@
 
 #import "HMTSVSupport.h"
 
+#import "CustomHTTPProtocol.h"
+
 
 #ifdef DEBUG
 #import "HMShipWindowController.h"
@@ -121,6 +123,11 @@
 	if(!HMStandardDefaults.showsDebugMenu) {
 		[self.debugMenuItem setHidden:YES];
 	}
+}
+
+- (void)clearCache
+{
+	[CustomHTTPProtocol clearCache];
 }
 
 - (HMScreenshotListWindowController *)screenshotListWindowController

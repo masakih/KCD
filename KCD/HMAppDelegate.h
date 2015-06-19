@@ -55,6 +55,8 @@ typedef NS_ENUM(NSUInteger, HMShipType) {
 
 - (IBAction)openNewBrowser:(id)sender;
 
+- (void)clearCache;
+
 - (HMExternalBrowserWindowController *)createNewBrowser;
 
 #if ENABLE_JSON_LOG

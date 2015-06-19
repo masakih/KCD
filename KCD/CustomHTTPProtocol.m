@@ -120,6 +120,13 @@ static id<CustomHTTPProtocolDelegate> sDelegate;
     }
 }
 
++ (void)clearCache
+{
+	QNSURLSessionDemux *demux = [self sharedDemux];
+	NSURLCache *cache = demux.configuration.URLCache;
+	[cache removeAllCachedResponses];
+}
+
 /*! Returns the session demux object used by all the protocol instances.
  *  \details This object allows us to have a single NSURLSession, with a session delegate, 
  *  and have its delegate callbacks routed to the correct protocol instance on the correct 
@@ -142,6 +149,9 @@ static id<CustomHTTPProtocolDelegate> sDelegate;
 		NSURLCache *cache = [[NSURLCache alloc] initWithMemoryCapacity:128 * 1024 * 1024
 														  diskCapacity:1024 * 1024 * 1024
 															  diskPath:path.path];
+//		NSURLCache *cache = [NSURLCache sharedURLCache];
+//		cache.memoryCapacity = 128 * 1024 * 1024;
+//		cache.diskCapacity = 1024 * 1024 * 1024;
 		config.URLCache = cache;
         sDemux = [[QNSURLSessionDemux alloc] initWithConfiguration:config];
     });

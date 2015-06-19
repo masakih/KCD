@@ -226,6 +226,13 @@ static NSString *loginPageURLPrefix = @"https://www.dmm.com/my/-/login/=/";
 	HMStandardDefaults.prevReloadDate = [NSDate dateWithTimeIntervalSinceNow:0];
 }
 
+- (IBAction)deleteCacheAndReload:(id)sender
+{
+	HMAppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+	[appDelegate clearCache];
+	[self reloadContent:sender];
+}
+
 - (NSString *)flagShipName
 {
 	NSError *error = nil;
@@ -503,6 +510,9 @@ const CGFloat flashTopMargin = 4;
 		} else {
 			menuItem.title = NSLocalizedString(@"Back To Game", @"Reload menu, back to game");
 		}
+		return YES;
+	}
+	if(action == @selector(deleteCacheAndReload:)) {
 		return YES;
 	}
 	if(action == @selector(selectView:)) {
