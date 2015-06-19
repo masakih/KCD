@@ -230,6 +230,9 @@ static NSString *loginPageURLPrefix = @"https://www.dmm.com/my/-/login/=/";
 {
 	HMAppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
 	[appDelegate clearCache];
+	[NSThread sleepForTimeInterval:0.2];
+	NSSound *sound = [NSSound soundNamed:@"Submarine"];
+	[sound play];
 	[self reloadContent:sender];
 }
 
