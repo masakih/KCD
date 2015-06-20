@@ -21,6 +21,7 @@ typedef NS_ENUM(NSInteger, ViewType) {
 
 @interface HMShipViewController ()
 @property (weak) NSView *currentTableView;
+@property (weak, nonatomic) IBOutlet NSTextField *standardDeviationField;
 @end
 
 @implementation HMShipViewController
@@ -42,6 +43,10 @@ typedef NS_ENUM(NSInteger, ViewType) {
 						  forKeyPath:NSSortDescriptorsBinding
 							 options:0
 							 context:NULL];
+	[self.shipController addObserver:self
+						  forKeyPath:@"arrangedObjects"
+							 options:0
+							 context:NULL];
 	
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	[nc addObserver:self
@@ -56,11 +61,19 @@ typedef NS_ENUM(NSInteger, ViewType) {
 		   selector:@selector(scrollViewDidEndLiveScrollNotification:)
 			   name:NSScrollViewDidEndLiveScrollNotification
 			 object:self.power2TableView];
+#ifdef DEBUG
+	self.standardDeviationField.hidden = NO;
+#endif
 }
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
 	if([keyPath isEqualToString:NSSortDescriptorsBinding]) {
 		HMStandardDefaults.shipviewSortDescriptors = [self.shipController sortDescriptors];
+		return;
+	}
+	if([keyPath isEqualToString:@"arrangedObjects"]) {
+		[self willChangeValueForKey:@"standardDeviation"];
+		[self didChangeValueForKey:@"standardDeviation"];
 		return;
 	}
 	
@@ -69,6 +82,25 @@ typedef NS_ENUM(NSInteger, ViewType) {
 - (NSManagedObjectContext *)managedObjectContext
 {
 	return [HMServerDataStore defaultManager].managedObjectContext;
+}
+
+- (NSNumber *)standardDeviation
+{
+	NSArray *arrengedObjects = self.shipController.arrangedObjects;
+	double total = 0.0;
+	
+	if(arrengedObjects.count == 0) return @(0);
+	
+	NSNumber *avgValue = [self.shipController valueForKeyPath:@"arrangedObjects.@avg.lv"];
+	double avg = avgValue.doubleValue;
+	for(id ship in arrengedObjects) {
+		NSInteger lv = [[ship valueForKey:@"lv"] integerValue];
+		double delta = lv - avg;
+		total += delta * delta;
+	}
+	double variance = total / arrengedObjects.count;
+	
+	return @(sqrt(variance));
 }
 
 - (void)showViewWithNumber:(ViewType)number
