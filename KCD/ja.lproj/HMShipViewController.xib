@@ -186,7 +186,7 @@
                     </connections>
                 </segmentedControl>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="FZQ-ab-vfc">
-                    <rect key="frame" x="4" y="399" width="113" height="17"/>
+                    <rect key="frame" x="4" y="399" width="79" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="TeI-HB-SYu">
                         <font key="font" metaFont="system"/>
@@ -199,6 +199,19 @@
                                 <string key="NSDisplayPattern">%{value1}@ ships</string>
                             </dictionary>
                         </binding>
+                    </connections>
+                </textField>
+                <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="y27-Oc-ZPX">
+                    <rect key="frame" x="94" y="399" width="49" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="ZnJ-Q2-7ID">
+                        <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" maximumFractionDigits="3" id="qbi-EQ-2Ta"/>
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="standardDeviation" id="8z9-bZ-5Wk"/>
                     </connections>
                 </textField>
             </subviews>
@@ -355,7 +368,7 @@
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveName="shipviewtable23" headerView="dJx-c5-qhN" id="qaM-It-e1l">
-                        <rect key="frame" x="0.0" y="0.0" width="309" height="334"/>
+                        <rect key="frame" x="0.0" y="0.0" width="309" height="19"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <size key="intercellSpacing" width="3" height="2"/>
                         <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>

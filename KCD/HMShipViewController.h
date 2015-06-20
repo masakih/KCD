@@ -11,6 +11,9 @@
 @interface HMShipViewController : NSViewController
 @property (readonly) NSManagedObjectContext *managedObjectContext;
 
+@property (readonly) NSNumber *standardDeviation;
+
+
 @property (weak) IBOutlet NSArrayController *shipController;
 @property (nonatomic, strong) IBOutlet NSScrollView *expTableView;
 @property (nonatomic, strong) IBOutlet NSScrollView *powerTableView;
