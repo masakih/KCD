@@ -54,7 +54,7 @@
 // I use the following typedef to keep myself sane in the face of the wacky 
 // Objective-C block syntax.
 
-typedef void (^ChallengeCompletionHandler)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential * credential);
+//typedef void (^ChallengeCompletionHandler)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential * credential);
 
 @interface CustomHTTPProtocol () <NSURLSessionDataDelegate>
 
@@ -72,8 +72,8 @@ typedef void (^ChallengeCompletionHandler)(NSURLSessionAuthChallengeDisposition 
 @property (atomic, copy,   readwrite) NSArray *                         modes;
 @property (atomic, assign, readwrite) NSTimeInterval                    startTime;          ///< The start time of the request; written by client thread only; read by any thread.
 @property (atomic, strong, readwrite) NSURLSessionDataTask *            task;               ///< The NSURLSession task for that request; client thread only.
-@property (atomic, strong, readwrite) NSURLAuthenticationChallenge *    pendingChallenge;
-@property (atomic, copy,   readwrite) ChallengeCompletionHandler        pendingChallengeCompletionHandler;  ///< The completion handler that matches pendingChallenge; main thread only.
+//@property (atomic, strong, readwrite) NSURLAuthenticationChallenge *    pendingChallenge;
+//@property (atomic, copy,   readwrite) ChallengeCompletionHandler        pendingChallengeCompletionHandler;  ///< The completion handler that matches pendingChallenge; main thread only.
 
 @end
 
@@ -275,8 +275,8 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
     // can be called on any thread
     [[self class] customHTTPProtocol:self logWithFormat:@"dealloc"];
     assert(self->_task == nil);                     // we should have cleared it by now
-    assert(self->_pendingChallenge == nil);         // we should have cancelled it by now
-    assert(self->_pendingChallengeCompletionHandler == nil);    // we should have cancelled it by now
+//    assert(self->_pendingChallenge == nil);         // we should have cancelled it by now
+//    assert(self->_pendingChallengeCompletionHandler == nil);    // we should have cancelled it by now
 }
 
 - (void)startLoading
@@ -357,7 +357,7 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
     
     assert([NSThread currentThread] == self.clientThread);
     
-    [self cancelPendingChallenge];
+//    [self cancelPendingChallenge];
     if (self.task != nil) {
         [self.task cancel];
         self.task = nil;
@@ -375,31 +375,31 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
  *  \param block The block to run.
  */
 
-- (void)performOnThread:(NSThread *)thread modes:(NSArray *)modes block:(dispatch_block_t)block
-{
-    // thread may be nil
-    // modes may be nil
-    assert(block != nil);
-
-    if (thread == nil) {
-        thread = [NSThread mainThread];
-    }
-    if ([modes count] == 0) {
-        modes = @[ NSDefaultRunLoopMode ];
-    }
-    [self performSelector:@selector(onThreadPerformBlock:) onThread:thread withObject:[block copy] waitUntilDone:NO modes:modes];
-}
+//- (void)performOnThread:(NSThread *)thread modes:(NSArray *)modes block:(dispatch_block_t)block
+//{
+//    // thread may be nil
+//    // modes may be nil
+//    assert(block != nil);
+//
+//    if (thread == nil) {
+//        thread = [NSThread mainThread];
+//    }
+//    if ([modes count] == 0) {
+//        modes = @[ NSDefaultRunLoopMode ];
+//    }
+//    [self performSelector:@selector(onThreadPerformBlock:) onThread:thread withObject:[block copy] waitUntilDone:NO modes:modes];
+//}
 
 /*! A helper method used by -performOnThread:modes:block:. Runs in the specified context 
  *  and simply calls the block.
  *  \param block The block to run.
  */
 
-- (void)onThreadPerformBlock:(dispatch_block_t)block
-{
-    assert(block != nil);
-    block();
-}
+//- (void)onThreadPerformBlock:(dispatch_block_t)block
+//{
+//    assert(block != nil);
+//    block();
+//}
 
 /*! Called by our NSURLSession delegate callback to pass the challenge to our delegate.
  *  \description This simply passes the challenge over to the main thread.
@@ -420,18 +420,18 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
  *  \param completionHandler The associated completion handler; must not be nil.
  */
 
-- (void)didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(ChallengeCompletionHandler)completionHandler
-{
-    assert(challenge != nil);
-    assert(completionHandler != nil);
-    assert([NSThread currentThread] == self.clientThread);
-
-    [[self class] customHTTPProtocol:self logWithFormat:@"challenge %@ received", [[challenge protectionSpace] authenticationMethod]];
-
-    [self performOnThread:nil modes:nil block:^{
-        [self mainThreadDidReceiveAuthenticationChallenge:challenge completionHandler:completionHandler];
-    }];
-}
+//- (void)didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(ChallengeCompletionHandler)completionHandler
+//{
+//    assert(challenge != nil);
+//    assert(completionHandler != nil);
+//    assert([NSThread currentThread] == self.clientThread);
+//
+//    [[self class] customHTTPProtocol:self logWithFormat:@"challenge %@ received", [[challenge protectionSpace] authenticationMethod]];
+//
+//    [self performOnThread:nil modes:nil block:^{
+//        [self mainThreadDidReceiveAuthenticationChallenge:challenge completionHandler:completionHandler];
+//    }];
+//}
 
 /*! The main thread side of authentication challenge processing.
  *  \details If there's already a pending challenge, something has gone wrong and 
@@ -443,52 +443,52 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
  *  \param completionHandler The associated completion handler; must not be nil.
  */
 
-- (void)mainThreadDidReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(ChallengeCompletionHandler)completionHandler
-{
-    assert(challenge != nil);
-    assert(completionHandler != nil);
-    assert([NSThread isMainThread]);
-    
-    if (self.pendingChallenge != nil) {
-
-        // Our delegate is not expecting a second authentication challenge before resolving the 
-        // first.  Likewise, NSURLSession shouldn't send us a second authentication challenge 
-        // before we resolve the first.  If this happens, assert, log, and cancel the challenge.
-        //
-        // Note that we have to cancel the challenge on the thread on which we received it, 
-        // namely, the client thread.
-
-        [[self class] customHTTPProtocol:self logWithFormat:@"challenge %@ cancelled; other challenge pending", [[challenge protectionSpace] authenticationMethod]];
-        assert(NO);
-        [self clientThreadCancelAuthenticationChallenge:challenge completionHandler:completionHandler];
-    } else {
-        id<CustomHTTPProtocolDelegate>  strongDelegate;
-
-        strongDelegate = [[self class] delegate];
-
-        // Tell the delegate about it.  It would be weird if the delegate didn't support this 
-        // selector (it did return YES from -customHTTPProtocol:canAuthenticateAgainstProtectionSpace: 
-        // after all), but if it doesn't then we just cancel the challenge ourselves (or the client 
-        // thread, of course).
-        
-        if ( ! [strongDelegate respondsToSelector:@selector(customHTTPProtocol:canAuthenticateAgainstProtectionSpace:)] ) {
-            [[self class] customHTTPProtocol:self logWithFormat:@"challenge %@ cancelled; no delegate method", [[challenge protectionSpace] authenticationMethod]];
-            assert(NO);
-            [self clientThreadCancelAuthenticationChallenge:challenge completionHandler:completionHandler];
-        } else {
-
-            // Remember that this challenge is in progress. 
-            
-            self.pendingChallenge = challenge;
-            self.pendingChallengeCompletionHandler = completionHandler;
-
-            // Pass the challenge to the delegate.
-            
-            [[self class] customHTTPProtocol:self logWithFormat:@"challenge %@ passed to delegate", [[challenge protectionSpace] authenticationMethod]];
-            [strongDelegate customHTTPProtocol:self didReceiveAuthenticationChallenge:self.pendingChallenge];
-        }
-    }
-}
+//- (void)mainThreadDidReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(ChallengeCompletionHandler)completionHandler
+//{
+//    assert(challenge != nil);
+//    assert(completionHandler != nil);
+//    assert([NSThread isMainThread]);
+//    
+//    if (self.pendingChallenge != nil) {
+//
+//        // Our delegate is not expecting a second authentication challenge before resolving the 
+//        // first.  Likewise, NSURLSession shouldn't send us a second authentication challenge 
+//        // before we resolve the first.  If this happens, assert, log, and cancel the challenge.
+//        //
+//        // Note that we have to cancel the challenge on the thread on which we received it, 
+//        // namely, the client thread.
+//
+//        [[self class] customHTTPProtocol:self logWithFormat:@"challenge %@ cancelled; other challenge pending", [[challenge protectionSpace] authenticationMethod]];
+//        assert(NO);
+//        [self clientThreadCancelAuthenticationChallenge:challenge completionHandler:completionHandler];
+//    } else {
+//        id<CustomHTTPProtocolDelegate>  strongDelegate;
+//
+//        strongDelegate = [[self class] delegate];
+//
+//        // Tell the delegate about it.  It would be weird if the delegate didn't support this 
+//        // selector (it did return YES from -customHTTPProtocol:canAuthenticateAgainstProtectionSpace: 
+//        // after all), but if it doesn't then we just cancel the challenge ourselves (or the client 
+//        // thread, of course).
+//        
+//        if ( ! [strongDelegate respondsToSelector:@selector(customHTTPProtocol:canAuthenticateAgainstProtectionSpace:)] ) {
+//            [[self class] customHTTPProtocol:self logWithFormat:@"challenge %@ cancelled; no delegate method", [[challenge protectionSpace] authenticationMethod]];
+//            assert(NO);
+//            [self clientThreadCancelAuthenticationChallenge:challenge completionHandler:completionHandler];
+//        } else {
+//
+//            // Remember that this challenge is in progress. 
+//            
+//            self.pendingChallenge = challenge;
+//            self.pendingChallengeCompletionHandler = completionHandler;
+//
+//            // Pass the challenge to the delegate.
+//            
+//            [[self class] customHTTPProtocol:self logWithFormat:@"challenge %@ passed to delegate", [[challenge protectionSpace] authenticationMethod]];
+//            [strongDelegate customHTTPProtocol:self didReceiveAuthenticationChallenge:self.pendingChallenge];
+//        }
+//    }
+//}
 
 /*! Cancels an authentication challenge that hasn't made it to the pending challenge state.
  *  \details This routine is called as part of various error cases in the challenge handling 
@@ -500,17 +500,17 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
  *  \param completionHandler The associated completion handler; must not be nil.
  */
 
-- (void)clientThreadCancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(ChallengeCompletionHandler)completionHandler
-{
-    #pragma unused(challenge)
-    assert(challenge != nil);
-    assert(completionHandler != nil);
-    assert([NSThread isMainThread]);
-
-    [self performOnThread:self.clientThread modes:self.modes block:^{
-        completionHandler(NSURLSessionAuthChallengeCancelAuthenticationChallenge, nil);
-    }];
-}
+//- (void)clientThreadCancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(ChallengeCompletionHandler)completionHandler
+//{
+//    #pragma unused(challenge)
+//    assert(challenge != nil);
+//    assert(completionHandler != nil);
+//    assert([NSThread isMainThread]);
+//
+//    [self performOnThread:self.clientThread modes:self.modes block:^{
+//        completionHandler(NSURLSessionAuthChallengeCancelAuthenticationChallenge, nil);
+//    }];
+//}
 
 /*! Cancels an authentication challenge that /has/ made to the pending challenge state.
  *  \details This routine is called by -stopLoading to cancel any challenge that might be 
@@ -519,78 +519,78 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
  *  thread only value).
  */
 
-- (void)cancelPendingChallenge
-{
-    assert([NSThread currentThread] == self.clientThread);
+//- (void)cancelPendingChallenge
+//{
+//    assert([NSThread currentThread] == self.clientThread);
+//
+//    // Just pass the work off to the main thread.  We do this so that all accesses 
+//    // to pendingChallenge are done from the main thread, which avoids the need for 
+//    // extra synchronisation.
+//
+//    [self performOnThread:nil modes:nil block:^{
+//        if (self.pendingChallenge == nil) {
+//            // This is not only not unusual, it's actually very typical.  It happens every time you shut down 
+//            // the connection.  Ideally I'd like to not even call -mainThreadCancelPendingChallenge when 
+//            // there's no challenge outstanding, but the synchronisation issues are tricky.  Rather than solve 
+//            // those, I'm just not going to log in this case.
+//            //
+//            // [[self class] customHTTPProtocol:self logWithFormat:@"challenge not cancelled; no challenge pending"];
+//        } else {
+//            id<CustomHTTPProtocolDelegate>  strongeDelegate;
+//            NSURLAuthenticationChallenge *  challenge;
+//
+//            strongeDelegate = [[self class] delegate];
+//
+//            challenge = self.pendingChallenge;
+//            self.pendingChallenge = nil;
+//            self.pendingChallengeCompletionHandler = nil;
+//            
+//            if ([strongeDelegate respondsToSelector:@selector(customHTTPProtocol:didCancelAuthenticationChallenge:)]) {
+//                [[self class] customHTTPProtocol:self logWithFormat:@"challenge %@ cancellation passed to delegate", [[challenge protectionSpace] authenticationMethod]];
+//                [strongeDelegate customHTTPProtocol:self didCancelAuthenticationChallenge:challenge];
+//            } else {
+//                [[self class] customHTTPProtocol:self logWithFormat:@"challenge %@ cancellation failed; no delegate method", [[challenge protectionSpace] authenticationMethod]];
+//                // If we managed to send a challenge to the client but can't cancel it, that's bad. 
+//                // There's nothing we can do at this point except log the problem.
+//                assert(NO);
+//            }
+//        }
+//    }];
+//}
 
-    // Just pass the work off to the main thread.  We do this so that all accesses 
-    // to pendingChallenge are done from the main thread, which avoids the need for 
-    // extra synchronisation.
-
-    [self performOnThread:nil modes:nil block:^{
-        if (self.pendingChallenge == nil) {
-            // This is not only not unusual, it's actually very typical.  It happens every time you shut down 
-            // the connection.  Ideally I'd like to not even call -mainThreadCancelPendingChallenge when 
-            // there's no challenge outstanding, but the synchronisation issues are tricky.  Rather than solve 
-            // those, I'm just not going to log in this case.
-            //
-            // [[self class] customHTTPProtocol:self logWithFormat:@"challenge not cancelled; no challenge pending"];
-        } else {
-            id<CustomHTTPProtocolDelegate>  strongeDelegate;
-            NSURLAuthenticationChallenge *  challenge;
-
-            strongeDelegate = [[self class] delegate];
-
-            challenge = self.pendingChallenge;
-            self.pendingChallenge = nil;
-            self.pendingChallengeCompletionHandler = nil;
-            
-            if ([strongeDelegate respondsToSelector:@selector(customHTTPProtocol:didCancelAuthenticationChallenge:)]) {
-                [[self class] customHTTPProtocol:self logWithFormat:@"challenge %@ cancellation passed to delegate", [[challenge protectionSpace] authenticationMethod]];
-                [strongeDelegate customHTTPProtocol:self didCancelAuthenticationChallenge:challenge];
-            } else {
-                [[self class] customHTTPProtocol:self logWithFormat:@"challenge %@ cancellation failed; no delegate method", [[challenge protectionSpace] authenticationMethod]];
-                // If we managed to send a challenge to the client but can't cancel it, that's bad. 
-                // There's nothing we can do at this point except log the problem.
-                assert(NO);
-            }
-        }
-    }];
-}
-
-- (void)resolveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge withCredential:(NSURLCredential *)credential
-{
-    assert(challenge == self.pendingChallenge);
-    // credential may be nil
-    assert([NSThread isMainThread]);
-    assert(self.clientThread != nil);
-    
-    if (challenge != self.pendingChallenge) {
-        [[self class] customHTTPProtocol:self logWithFormat:@"challenge resolution mismatch (%@ / %@)", challenge, self.pendingChallenge];
-        // This should never happen, and we want to know if it does, at least in the debug build.
-        assert(NO);
-    } else {
-        ChallengeCompletionHandler  completionHandler;
-        
-        // We clear out our record of the pending challenge and then pass the real work 
-        // over to the client thread (which ensures that the challenge is resolved on 
-        // the same thread we received it on).
-        
-        completionHandler = self.pendingChallengeCompletionHandler;
-        self.pendingChallenge = nil;
-        self.pendingChallengeCompletionHandler = nil;
-        
-        [self performOnThread:self.clientThread modes:self.modes block:^{
-            if (credential == nil) {
-                [[self class] customHTTPProtocol:self logWithFormat:@"challenge %@ resolved without credential", [[challenge protectionSpace] authenticationMethod]];
-                completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
-            } else {
-                [[self class] customHTTPProtocol:self logWithFormat:@"challenge %@ resolved with <%@ %p>", [[challenge protectionSpace] authenticationMethod], [credential class], credential];
-                completionHandler(NSURLSessionAuthChallengeUseCredential, credential);
-            }
-        }];
-    }
-}
+//- (void)resolveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge withCredential:(NSURLCredential *)credential
+//{
+//    assert(challenge == self.pendingChallenge);
+//    // credential may be nil
+//    assert([NSThread isMainThread]);
+//    assert(self.clientThread != nil);
+//    
+//    if (challenge != self.pendingChallenge) {
+//        [[self class] customHTTPProtocol:self logWithFormat:@"challenge resolution mismatch (%@ / %@)", challenge, self.pendingChallenge];
+//        // This should never happen, and we want to know if it does, at least in the debug build.
+//        assert(NO);
+//    } else {
+//        ChallengeCompletionHandler  completionHandler;
+//        
+//        // We clear out our record of the pending challenge and then pass the real work 
+//        // over to the client thread (which ensures that the challenge is resolved on 
+//        // the same thread we received it on).
+//        
+//        completionHandler = self.pendingChallengeCompletionHandler;
+//        self.pendingChallenge = nil;
+//        self.pendingChallengeCompletionHandler = nil;
+//        
+//        [self performOnThread:self.clientThread modes:self.modes block:^{
+//            if (credential == nil) {
+//                [[self class] customHTTPProtocol:self logWithFormat:@"challenge %@ resolved without credential", [[challenge protectionSpace] authenticationMethod]];
+//                completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
+//            } else {
+//                [[self class] customHTTPProtocol:self logWithFormat:@"challenge %@ resolved with <%@ %p>", [[challenge protectionSpace] authenticationMethod], [credential class], credential];
+//                completionHandler(NSURLSessionAuthChallengeUseCredential, credential);
+//            }
+//        }];
+//    }
+//}
 
 #pragma mark * NSURLSession delegate callbacks
 
@@ -637,41 +637,41 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
     [[self client] URLProtocol:self didFailWithError:[NSError errorWithDomain:NSCocoaErrorDomain code:NSUserCancelledError userInfo:nil]];
 }
 
-- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential *))completionHandler
-{
-    BOOL        result;
-    id<CustomHTTPProtocolDelegate> strongeDelegate;
-
-    #pragma unused(session)
-    #pragma unused(task)
-    assert(task == self.task);
-    assert(challenge != nil);
-    assert(completionHandler != nil);
-    assert([NSThread currentThread] == self.clientThread);
-
-    // Ask our delegate whether it wants this challenge.  We do this from this thread, not the main thread, 
-    // to avoid the overload of bouncing to the main thread for challenges that aren't going to be customised 
-    // anyway.
-    
-    strongeDelegate = [[self class] delegate];
-    
-    result = NO;
-    if ([strongeDelegate respondsToSelector:@selector(customHTTPProtocol:canAuthenticateAgainstProtectionSpace:)]) {
-        result = [strongeDelegate customHTTPProtocol:self canAuthenticateAgainstProtectionSpace:[challenge protectionSpace]];
-    }
-    
-    // If the client wants the challenge, kick off that process.  If not, resolve it by doing the default thing.
-
-    if (result) {
-        [[self class] customHTTPProtocol:self logWithFormat:@"can authenticate %@", [[challenge protectionSpace] authenticationMethod]];
-
-        [self didReceiveAuthenticationChallenge:challenge completionHandler:completionHandler];
-    } else {
-        [[self class] customHTTPProtocol:self logWithFormat:@"cannot authenticate %@", [[challenge protectionSpace] authenticationMethod]];
-
-        completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
-    }
-}
+//- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential *))completionHandler
+//{
+//    BOOL        result;
+//    id<CustomHTTPProtocolDelegate> strongeDelegate;
+//
+//    #pragma unused(session)
+//    #pragma unused(task)
+//    assert(task == self.task);
+//    assert(challenge != nil);
+//    assert(completionHandler != nil);
+//    assert([NSThread currentThread] == self.clientThread);
+//
+//    // Ask our delegate whether it wants this challenge.  We do this from this thread, not the main thread, 
+//    // to avoid the overload of bouncing to the main thread for challenges that aren't going to be customised 
+//    // anyway.
+//    
+//    strongeDelegate = [[self class] delegate];
+//    
+//    result = NO;
+//    if ([strongeDelegate respondsToSelector:@selector(customHTTPProtocol:canAuthenticateAgainstProtectionSpace:)]) {
+//        result = [strongeDelegate customHTTPProtocol:self canAuthenticateAgainstProtectionSpace:[challenge protectionSpace]];
+//    }
+//    
+//    // If the client wants the challenge, kick off that process.  If not, resolve it by doing the default thing.
+//
+//    if (result) {
+//        [[self class] customHTTPProtocol:self logWithFormat:@"can authenticate %@", [[challenge protectionSpace] authenticationMethod]];
+//
+//        [self didReceiveAuthenticationChallenge:challenge completionHandler:completionHandler];
+//    } else {
+//        [[self class] customHTTPProtocol:self logWithFormat:@"cannot authenticate %@", [[challenge protectionSpace] authenticationMethod]];
+//
+//        completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
+//    }
+//}
 
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler
 {
@@ -730,21 +730,21 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
     [[self client] URLProtocol:self didLoadData:data];
 }
 
-- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask willCacheResponse:(NSCachedURLResponse *)proposedResponse completionHandler:(void (^)(NSCachedURLResponse *))completionHandler
-{
-    #pragma unused(session)
-    #pragma unused(dataTask)
-    assert(dataTask == self.task);
-    assert(proposedResponse != nil);
-    assert(completionHandler != nil);
-    assert([NSThread currentThread] == self.clientThread);
-
-    // We implement this delegate callback purely for the purposes of logging.
-    
-    [[self class] customHTTPProtocol:self logWithFormat:@"will cache response"];
-	
-    completionHandler(proposedResponse);
-}
+//- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask willCacheResponse:(NSCachedURLResponse *)proposedResponse completionHandler:(void (^)(NSCachedURLResponse *))completionHandler
+//{
+//    #pragma unused(session)
+//    #pragma unused(dataTask)
+//    assert(dataTask == self.task);
+//    assert(proposedResponse != nil);
+//    assert(completionHandler != nil);
+//    assert([NSThread currentThread] == self.clientThread);
+//
+//    // We implement this delegate callback purely for the purposes of logging.
+//    
+//    [[self class] customHTTPProtocol:self logWithFormat:@"will cache response"];
+//	
+//    completionHandler(proposedResponse);
+//}
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
     // An NSURLSession delegate callback.  We pass this on to the client.

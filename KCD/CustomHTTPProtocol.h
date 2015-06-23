@@ -83,14 +83,14 @@
 
 + (id<CustomHTTPProtocolDelegate>)delegate;
 
-@property (atomic, strong, readonly ) NSURLAuthenticationChallenge *    pendingChallenge;   ///< The current authentication challenge; it's only safe to access this from the main thread.
+//@property (atomic, strong, readonly ) NSURLAuthenticationChallenge *    pendingChallenge;   ///< The current authentication challenge; it's only safe to access this from the main thread.
 
 /*! Call this method to resolve an authentication challeng.  This must be called on the main thread.
  *  \param challenge The challenge to resolve. This must match the pendingChallenge property.
  *  \param credential The credential to use, or nil to continue without a credential.
  */
 
-- (void)resolveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge withCredential:(NSURLCredential *)credential;
+//- (void)resolveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge withCredential:(NSURLCredential *)credential;
 
 @end
 
@@ -142,7 +142,7 @@
  *  callback, or NO for the challenge to be handled in the default way.
  */
 
-- (BOOL)customHTTPProtocol:(CustomHTTPProtocol *)protocol canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace;
+//- (BOOL)customHTTPProtocol:(CustomHTTPProtocol *)protocol canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace;
 
 /*! Called by an CustomHTTPProtocol instance to request that the delegate process on authentication 
  *  challenge. Will be called on the main thread. Unless the challenge is cancelled (see below) 
@@ -151,7 +151,7 @@
  *  \param challenge The authentication challenge; will not be nil.
  */
 
-- (void)customHTTPProtocol:(CustomHTTPProtocol *)protocol didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge;
+//- (void)customHTTPProtocol:(CustomHTTPProtocol *)protocol didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge;
 
 /*! Called by an CustomHTTPProtocol instance to cancel an issued authentication challenge.
  *  Will be called on the main thread.
@@ -160,7 +160,7 @@
  *  previously issued by -customHTTPProtocol:canAuthenticateAgainstProtectionSpace:.
  */
 
-- (void)customHTTPProtocol:(CustomHTTPProtocol *)protocol didCancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge;
+//- (void)customHTTPProtocol:(CustomHTTPProtocol *)protocol didCancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge;
 
 /*! Called by the CustomHTTPProtocol to log various bits of information. 
  *  Can be called on any thread.
