@@ -60,10 +60,11 @@
 	NSMutableData *loadedData = [self dataForProtocol:protocol];
 	if(!loadedData) return;
 	
-	[data enumerateByteRangesUsingBlock:^(const void *bytes, NSRange byteRange, BOOL *stop) {
-		NSData *newData = [NSData dataWithBytes:bytes length:byteRange.length];
-		[loadedData appendData:newData];
-	}];
+	[loadedData appendData:data];
+//	[data enumerateByteRangesUsingBlock:^(const void *bytes, NSRange byteRange, BOOL *stop) {
+//		NSData *newData = [NSData dataWithBytes:bytes length:byteRange.length];
+//		[loadedData appendData:newData];
+//	}];
 }
 
 - (void)customHTTPProtocol:(CustomHTTPProtocol *)protocol didCompleteWithError:(NSError *)error
