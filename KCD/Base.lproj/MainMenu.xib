@@ -258,6 +258,13 @@ CA
                                     <action selector="screenShot:" target="-1" id="eoB-LA-pzp"/>
                                 </connections>
                             </menuItem>
+                            <menuItem isSeparatorItem="YES" id="r9R-zW-j9D"/>
+                            <menuItem title="Clear Quset List" id="HhI-qq-nGv">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="clearQuestList:" target="-1" id="qCa-Gc-fql"/>
+                                </connections>
+                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="IuT-CO-flv"/>
                             <menuItem title="Window Adjuster" id="uYj-hc-FOY">
                                 <modifierMask key="keyEquivalentModifierMask"/>

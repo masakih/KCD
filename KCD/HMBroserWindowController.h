@@ -36,4 +36,6 @@
 
 - (IBAction)reloadContent:(id)sender;
 
+- (IBAction)clearQuestList:(id)sender;
+
 @end

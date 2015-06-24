@@ -246,6 +246,18 @@ static NSString *loginPageURLPrefix = @"https://www.dmm.com/my/-/login/=/";
 	[self.window endSheet:panel.window];
 }
 
+- (IBAction)clearQuestList:(id)sender
+{
+	HMServerDataStore *store = [HMServerDataStore oneTimeEditor];
+	NSArray *objects = [store objectsWithEntityName:@"Quest"
+										  predicate:nil
+											  error:NULL];
+	NSManagedObjectContext *moc = store.managedObjectContext;
+	for(id object in objects) {
+		[moc deleteObject:object];
+	}
+}
+
 - (NSString *)flagShipName
 {
 	NSError *error = nil;
@@ -585,6 +597,9 @@ const CGFloat flashTopMargin = 4;
 		} else {
 			menuItem.state = NSOffState;
 		}
+		return YES;
+	}
+	if(action == @selector(clearQuestList:)) {
 		return YES;
 	}
 	
