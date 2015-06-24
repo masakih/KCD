@@ -846,6 +846,11 @@
 				F494DC6518C8BA6400AE97E4 /* HMPowerUpSupportViewController.h */,
 				F494DC6618C8BA6400AE97E4 /* HMPowerUpSupportViewController.m */,
 				F494DC6818C8BAB900AE97E4 /* HMPowerUpSupportViewController.xib */,
+				F4F6E8051B2B17E50008B66E /* HMStrengthenListViewController.h */,
+				F4F6E8061B2B17E50008B66E /* HMStrengthenListViewController.m */,
+				F4F6E8071B2B17E50008B66E /* HMStrengthenListViewController.xib */,
+				F4F6E80D1B2C25D20008B66E /* HMStrengthenListItemCellView.h */,
+				F4F6E80E1B2C25D20008B66E /* HMStrengthenListItemCellView.m */,
 				F4D6BCA61AA298FD00742FEB /* HMShipDetailViewController.h */,
 				F4D6BCA71AA298FD00742FEB /* HMShipDetailViewController.m */,
 				F4BEF00A1B11A5DE004702B8 /* HMShipDetailViewController.xib */,
@@ -1021,11 +1026,6 @@
 				F4D6BC991AA1FAC600742FEB /* HMUITestWindowController.h */,
 				F4D6BC9A1AA1FAC600742FEB /* HMUITestWindowController.m */,
 				F4BEF0101B11A645004702B8 /* HMUITestWindowController.xib */,
-				F4F6E8051B2B17E50008B66E /* HMStrengthenListViewController.h */,
-				F4F6E8061B2B17E50008B66E /* HMStrengthenListViewController.m */,
-				F4F6E8071B2B17E50008B66E /* HMStrengthenListViewController.xib */,
-				F4F6E80D1B2C25D20008B66E /* HMStrengthenListItemCellView.h */,
-				F4F6E80E1B2C25D20008B66E /* HMStrengthenListItemCellView.m */,
 			);
 			name = TestAndDebug;
 			path = KCD;
