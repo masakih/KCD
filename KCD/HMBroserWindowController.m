@@ -17,7 +17,7 @@
 
 #import "HMFleetViewController.h"
 
-
+#import "HMProgressPanel.h"
 #import "HMScreenshotListWindowController.h"
 
 #import "HMServerDataStore.h"
@@ -228,12 +228,22 @@ static NSString *loginPageURLPrefix = @"https://www.dmm.com/my/-/login/=/";
 
 - (IBAction)deleteCacheAndReload:(id)sender
 {
+	HMProgressPanel *panel = [HMProgressPanel new];
+	panel.title = @"";
+	panel.message = NSLocalizedString(@"Deleting caches...", @"Deleting caches...");
+	panel.animate = YES;
+	
+	[self.window beginSheet:panel.window
+				  completionHandler:^(NSModalResponse returnCode) {
+					  NSSound *sound = [NSSound soundNamed:@"Submarine"];
+					  [sound play];
+				  }];
+	
 	HMAppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
 	[appDelegate clearCache];
-	[NSThread sleepForTimeInterval:0.2];
-	NSSound *sound = [NSSound soundNamed:@"Submarine"];
-	[sound play];
 	[self reloadContent:sender];
+	
+	[self.window endSheet:panel.window];
 }
 
 - (NSString *)flagShipName

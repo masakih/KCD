@@ -29,3 +29,4 @@ s/Middle/中/2
 s/Short/短/2
 s/Slow/低速/2
 s/Fast/高速/2
+s/Deleting caches.../キャッシュを削除中.../2

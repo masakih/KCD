@@ -78,6 +78,8 @@
 		F49546311B18991300E0D8D0 /* HMBookmarkDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F49546301B18991300E0D8D0 /* HMBookmarkDataStore.m */; };
 		F49546351B19924D00E0D8D0 /* HMBookmarkListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F49546331B19924D00E0D8D0 /* HMBookmarkListViewController.m */; };
 		F49546361B19924D00E0D8D0 /* HMBookmarkListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F49546341B19924D00E0D8D0 /* HMBookmarkListViewController.xib */; };
+		F49688641B3AFE4900D3CEDE /* HMProgressPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = F49688621B3AFE4900D3CEDE /* HMProgressPanel.m */; };
+		F49688651B3AFE4900D3CEDE /* HMProgressPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = F49688631B3AFE4900D3CEDE /* HMProgressPanel.xib */; };
 		F49828FC1902A226000D6BBE /* HMStrokeTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F49828FB1902A226000D6BBE /* HMStrokeTextFieldCell.m */; };
 		F4A2AF521A074DCF0024BD9E /* HMScreenshotListWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A2AF501A074DCF0024BD9E /* HMScreenshotListWindowController.m */; };
 		F4A2AF541A074DE40024BD9E /* HMScreenshotListWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A2AF561A074DE40024BD9E /* HMScreenshotListWindowController.xib */; };
@@ -337,6 +339,9 @@
 		F49546321B19924D00E0D8D0 /* HMBookmarkListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMBookmarkListViewController.h; sourceTree = "<group>"; };
 		F49546331B19924D00E0D8D0 /* HMBookmarkListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMBookmarkListViewController.m; sourceTree = "<group>"; };
 		F49546341B19924D00E0D8D0 /* HMBookmarkListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMBookmarkListViewController.xib; sourceTree = "<group>"; };
+		F49688611B3AFE4900D3CEDE /* HMProgressPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMProgressPanel.h; sourceTree = "<group>"; };
+		F49688621B3AFE4900D3CEDE /* HMProgressPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMProgressPanel.m; sourceTree = "<group>"; };
+		F49688631B3AFE4900D3CEDE /* HMProgressPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMProgressPanel.xib; sourceTree = "<group>"; };
 		F49828FA1902A226000D6BBE /* HMStrokeTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMStrokeTextFieldCell.h; sourceTree = "<group>"; };
 		F49828FB1902A226000D6BBE /* HMStrokeTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMStrokeTextFieldCell.m; sourceTree = "<group>"; };
 		F4A2AF4F1A074DCF0024BD9E /* HMScreenshotListWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMScreenshotListWindowController.h; sourceTree = "<group>"; };
@@ -791,6 +796,9 @@
 				F4B2A08C1A1F9C2100D2EF12 /* HMExternalBrowserWindowController.h */,
 				F4B2A08D1A1F9C2100D2EF12 /* HMExternalBrowserWindowController.m */,
 				F4BEEFFE1B11A5A7004702B8 /* HMExternalBrowserWindowController.xib */,
+				F49688611B3AFE4900D3CEDE /* HMProgressPanel.h */,
+				F49688621B3AFE4900D3CEDE /* HMProgressPanel.m */,
+				F49688631B3AFE4900D3CEDE /* HMProgressPanel.xib */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -1111,6 +1119,7 @@
 				F4666C571B1E0262001840DB /* HMBookmarkEditorViewController.xib in Resources */,
 				F4B3DC3C18E5C87D0011B4FC /* HMDocksViewController.xib in Resources */,
 				F4B2D02B18F83A2F00542742 /* HMScreenshotWindowController.xib in Resources */,
+				F49688651B3AFE4900D3CEDE /* HMProgressPanel.xib in Resources */,
 				F4B3DC3918E5C8700011B4FC /* HMJSONViewWindowController.xib in Resources */,
 				F4BEF0081B11A5DE004702B8 /* HMShipDetailViewController.xib in Resources */,
 				F4B3DC3318E5C8520011B4FC /* HMShipViewController.xib in Resources */,
@@ -1155,6 +1164,7 @@
 				F426802B194D0F4800B2C27F /* HMMemberShip2Command.m in Sources */,
 				F4AA06101931869E00844688 /* HMBattleResultCommand.m in Sources */,
 				F4B37EF019FADFC9002F371A /* HMIgnoreZeroTransformer.m in Sources */,
+				F49688641B3AFE4900D3CEDE /* HMProgressPanel.m in Sources */,
 				F4BEEFE91B0CE312004702B8 /* HMAPIResult.m in Sources */,
 				F4B3DC4418E70B370011B4FC /* HMServerDataStore.m in Sources */,
 				F4AA0607192E3B6200844688 /* HMMapStartCommand.m in Sources */,
