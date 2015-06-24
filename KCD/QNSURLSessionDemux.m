@@ -196,45 +196,45 @@
     }
 }
 
-- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler
-{
-    QNSURLSessionDemuxTaskInfo *    taskInfo;
-    
-    taskInfo = [self taskInfoForTask:task];
-    if ([taskInfo.delegate respondsToSelector:@selector(URLSession:task:didReceiveChallenge:completionHandler:)]) {
-        [taskInfo performBlock:^{
-            [taskInfo.delegate URLSession:session task:task didReceiveChallenge:challenge completionHandler:completionHandler];
-        }];
-    } else {
-        completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
-    }
-}
+//- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler
+//{
+//    QNSURLSessionDemuxTaskInfo *    taskInfo;
+//    
+//    taskInfo = [self taskInfoForTask:task];
+//    if ([taskInfo.delegate respondsToSelector:@selector(URLSession:task:didReceiveChallenge:completionHandler:)]) {
+//        [taskInfo performBlock:^{
+//            [taskInfo.delegate URLSession:session task:task didReceiveChallenge:challenge completionHandler:completionHandler];
+//        }];
+//    } else {
+//        completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
+//    }
+//}
 
-- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task needNewBodyStream:(void (^)(NSInputStream *bodyStream))completionHandler
-{
-    QNSURLSessionDemuxTaskInfo *    taskInfo;
-    
-    taskInfo = [self taskInfoForTask:task];
-    if ([taskInfo.delegate respondsToSelector:@selector(URLSession:task:needNewBodyStream:)]) {
-        [taskInfo performBlock:^{
-            [taskInfo.delegate URLSession:session task:task needNewBodyStream:completionHandler];
-        }];
-    } else {
-        completionHandler(nil);
-    }
-}
+//- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task needNewBodyStream:(void (^)(NSInputStream *bodyStream))completionHandler
+//{
+//    QNSURLSessionDemuxTaskInfo *    taskInfo;
+//    
+//    taskInfo = [self taskInfoForTask:task];
+//    if ([taskInfo.delegate respondsToSelector:@selector(URLSession:task:needNewBodyStream:)]) {
+//        [taskInfo performBlock:^{
+//            [taskInfo.delegate URLSession:session task:task needNewBodyStream:completionHandler];
+//        }];
+//    } else {
+//        completionHandler(nil);
+//    }
+//}
 
-- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didSendBodyData:(int64_t)bytesSent totalBytesSent:(int64_t)totalBytesSent totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend
-{
-    QNSURLSessionDemuxTaskInfo *    taskInfo;
-    
-    taskInfo = [self taskInfoForTask:task];
-    if ([taskInfo.delegate respondsToSelector:@selector(URLSession:task:didSendBodyData:totalBytesSent:totalBytesExpectedToSend:)]) {
-        [taskInfo performBlock:^{
-            [taskInfo.delegate URLSession:session task:task didSendBodyData:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
-        }];
-    }
-}
+//- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didSendBodyData:(int64_t)bytesSent totalBytesSent:(int64_t)totalBytesSent totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend
+//{
+//    QNSURLSessionDemuxTaskInfo *    taskInfo;
+//    
+//    taskInfo = [self taskInfoForTask:task];
+//    if ([taskInfo.delegate respondsToSelector:@selector(URLSession:task:didSendBodyData:totalBytesSent:totalBytesExpectedToSend:)]) {
+//        [taskInfo performBlock:^{
+//            [taskInfo.delegate URLSession:session task:task didSendBodyData:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
+//        }];
+//    }
+//}
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
 {
@@ -276,17 +276,17 @@
     }
 }
 
-- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didBecomeDownloadTask:(NSURLSessionDownloadTask *)downloadTask
-{
-    QNSURLSessionDemuxTaskInfo *    taskInfo;
-    
-    taskInfo = [self taskInfoForTask:dataTask];
-    if ([taskInfo.delegate respondsToSelector:@selector(URLSession:dataTask:didBecomeDownloadTask:)]) {
-        [taskInfo performBlock:^{
-            [taskInfo.delegate URLSession:session dataTask:dataTask didBecomeDownloadTask:downloadTask];
-        }];
-    }
-}
+//- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didBecomeDownloadTask:(NSURLSessionDownloadTask *)downloadTask
+//{
+//    QNSURLSessionDemuxTaskInfo *    taskInfo;
+//    
+//    taskInfo = [self taskInfoForTask:dataTask];
+//    if ([taskInfo.delegate respondsToSelector:@selector(URLSession:dataTask:didBecomeDownloadTask:)]) {
+//        [taskInfo performBlock:^{
+//            [taskInfo.delegate URLSession:session dataTask:dataTask didBecomeDownloadTask:downloadTask];
+//        }];
+//    }
+//}
 
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data
 {
@@ -300,19 +300,19 @@
     }
 }
 
-- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask willCacheResponse:(NSCachedURLResponse *)proposedResponse completionHandler:(void (^)(NSCachedURLResponse *cachedResponse))completionHandler
-{
-    QNSURLSessionDemuxTaskInfo *    taskInfo;
-    
-    taskInfo = [self taskInfoForTask:dataTask];
-    if ([taskInfo.delegate respondsToSelector:@selector(URLSession:dataTask:willCacheResponse:completionHandler:)]) {
-        [taskInfo performBlock:^{
-            [taskInfo.delegate URLSession:session dataTask:dataTask willCacheResponse:proposedResponse completionHandler:completionHandler];
-        }];
-    } else {
-        completionHandler(proposedResponse);
-    }
-}
+//- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask willCacheResponse:(NSCachedURLResponse *)proposedResponse completionHandler:(void (^)(NSCachedURLResponse *cachedResponse))completionHandler
+//{
+//    QNSURLSessionDemuxTaskInfo *    taskInfo;
+//    
+//    taskInfo = [self taskInfoForTask:dataTask];
+//    if ([taskInfo.delegate respondsToSelector:@selector(URLSession:dataTask:willCacheResponse:completionHandler:)]) {
+//        [taskInfo performBlock:^{
+//            [taskInfo.delegate URLSession:session dataTask:dataTask willCacheResponse:proposedResponse completionHandler:completionHandler];
+//        }];
+//    } else {
+//        completionHandler(proposedResponse);
+//    }
+//}
 
 @end
 
