@@ -116,12 +116,13 @@
 		array = [store objectsWithEntityName:@"Ship"
 									   error:&error
 							 predicateFormat:@"id = %ld", shipId];
+		if(array.count == 0) {
+			NSLog(@"Could not found ship of id %@", shipIdNumber);
+		} else {
+			ship = array[0];
+		}
 	}
-	if(shipId != -1 && array.count == 0) {
-		NSLog(@"Could not found ship of id %@", shipIdNumber);
-	} else {
-		ship = array[0];
-	}
+	
 	[self setValue:ship forKey:self.shipNameKeys[shipNumber]];
 }
 - (void)buildFleet
@@ -248,13 +249,13 @@
 		array = [store objectsWithEntityName:@"Ship"
 									   error:&error
 							 predicateFormat:@"id = %ld", shipId];
+		if(array.count == 0) {
+			NSLog(@"Could not found ship of id %@", shipIdNumber);
+		} else {
+			ship = array[0];
+		}
 	} else {
 		return 0;
-	}
-	if(array.count == 0) {
-		NSLog(@"Could not found ship of id %@", shipIdNumber);
-	} else {
-		ship = array[0];
 	}
 	if(!ship) return 0;
 //	NSLog(@"ship name -> %@ equipped count -> %ld", ship.name, ship.equippedItem.count);
@@ -349,11 +350,11 @@
 			array = [store objectsWithEntityName:@"Ship"
 										   error:&error
 								 predicateFormat:@"id = %ld", shipId];
-		}
-		if(array.count == 0) {
-			NSLog(@"Could not found ship of id %@", shipIdNumber);
-		} else {
-			[result addObject:array[0]];
+			if(array.count == 0) {
+				NSLog(@"Could not found ship of id %@", shipIdNumber);
+			} else {
+				[result addObject:array[0]];
+			}
 		}
 	}
 	return result;
