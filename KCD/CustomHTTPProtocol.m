@@ -284,7 +284,8 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
 {
     // can be called on any thread
     [[self class] customHTTPProtocol:self logWithFormat:@"dealloc"];
-    assert(self->_task == nil);                     // we should have cleared it by now
+	self.task = nil;
+//    assert(self->_task == nil);                     // we should have cleared it by now
 //    assert(self->_pendingChallenge == nil);         // we should have cancelled it by now
 //    assert(self->_pendingChallengeCompletionHandler == nil);    // we should have cancelled it by now
 }
@@ -370,8 +371,8 @@ static NSString * kOurRecursiveRequestFlagProperty = @"com.apple.dts.CustomHTTPP
 //    [self cancelPendingChallenge];
     if (self.task != nil) {
         [self.task cancel];
-        self.task = nil;
-        // The following ends up calling -URLSession:task:didCompleteWithError: with NSURLErrorDomain / NSURLErrorCancelled, 
+//        self.task = nil;
+        // The following ends up calling -URLSession:task:didCompleteWithError: with NSURLErrorDomain / NSURLErrorCancelled,
         // which specificallys traps and ignores the error.
     }
     // Don't nil out self.modes; see property declaration comments for a a discussion of this.

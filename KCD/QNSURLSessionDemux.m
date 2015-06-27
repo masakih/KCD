@@ -177,8 +177,11 @@
     
     @synchronized (self) {
         result = self.taskInfoByTaskID[@(task.taskIdentifier)];
-        assert(result != nil);
+//        assert(result != nil);
     }
+	if(!result) {
+		NSLog(@"Could not found QNSURLSessionDemuxTaskInfo for Task(%@)", task);
+	}
     return result;
 }
 
