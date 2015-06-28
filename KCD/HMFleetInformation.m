@@ -103,25 +103,33 @@
 	[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }
 
-- (void)changeShipWithNumber:(NSInteger)shipNumber
+- (HMKCShipObject *)shipForID:(NSInteger)shipId inStore:(HMCoreDataManager *)store
 {
-	id ship = nil;
+	HMKCShipObject *ship = nil;
 	NSError *error = nil;
-	HMServerDataStore *store = [HMServerDataStore defaultManager];
-	NSString *key = [NSString stringWithFormat:@"ship_%ld", shipNumber];
-	NSNumber *shipIdNumber = [self.selectedFleet valueForKey:key];
-	NSInteger shipId = [shipIdNumber integerValue];
 	NSArray *array = nil;
 	if(shipId != -1) {
 		array = [store objectsWithEntityName:@"Ship"
 									   error:&error
 							 predicateFormat:@"id = %ld", shipId];
 		if(array.count == 0) {
-			NSLog(@"Could not found ship of id %@", shipIdNumber);
+			NSLog(@"Could not found ship of id %ld", shipId);
 		} else {
 			ship = array[0];
 		}
 	}
+	
+	return ship;
+}
+
+- (void)changeShipWithNumber:(NSInteger)shipNumber
+{
+	id ship = nil;
+	HMServerDataStore *store = [HMServerDataStore defaultManager];
+	NSString *key = [NSString stringWithFormat:@"ship_%ld", shipNumber];
+	NSNumber *shipIdNumber = [self.selectedFleet valueForKey:key];
+	NSInteger shipId = [shipIdNumber integerValue];
+	ship = [self shipForID:shipId inStore:store];
 	
 	[self setValue:ship forKey:self.shipNameKeys[shipNumber]];
 }
@@ -245,18 +253,7 @@
 	if(!shipIdNumber) return 0;
 	NSInteger shipId = [shipIdNumber integerValue];
 	NSArray *array = nil;
-	if(shipId != -1) {
-		array = [store objectsWithEntityName:@"Ship"
-									   error:&error
-							 predicateFormat:@"id = %ld", shipId];
-		if(array.count == 0) {
-			NSLog(@"Could not found ship of id %@", shipIdNumber);
-		} else {
-			ship = array[0];
-		}
-	} else {
-		return 0;
-	}
+	ship = [self shipForID:shipId inStore:store];
 	if(!ship) return 0;
 //	NSLog(@"ship name -> %@ equipped count -> %ld", ship.name, ship.equippedItem.count);
 	NSArray *effectiveTypes = @[@6, @7, @8, @11];
@@ -338,24 +335,14 @@
 	HMKCDeck *deck = [self fleetAtIndex:fleetNumber];
 	NSMutableArray *result = [NSMutableArray arrayWithCapacity:6];
 	
-	NSError *error = nil;
 	HMServerDataStore *store = [HMServerDataStore defaultManager];
 	for(NSInteger i = 0; i < 6; i++) {
 		NSString *key = [NSString stringWithFormat:@"ship_%ld", i];
 		NSNumber *shipIdNumber = [deck valueForKey:key];
 		NSInteger shipId = [shipIdNumber integerValue];
 		if(shipId == -1) continue;
-		NSArray *array = nil;
-		if(shipId != -1) {
-			array = [store objectsWithEntityName:@"Ship"
-										   error:&error
-								 predicateFormat:@"id = %ld", shipId];
-			if(array.count == 0) {
-				NSLog(@"Could not found ship of id %@", shipIdNumber);
-			} else {
-				[result addObject:array[0]];
-			}
-		}
+		HMKCShipObject *ship = [self shipForID:shipId inStore:store];
+		[result addObject:ship];
 	}
 	return result;
 }
