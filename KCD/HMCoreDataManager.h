@@ -69,6 +69,8 @@
 
 - (IBAction)saveAction:(id)sender;
 
+- (void)removeDatabaseFile;
+
 /**
  for subclass
  

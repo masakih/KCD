@@ -167,7 +167,7 @@ typedef NS_ENUM(NSUInteger, HMCoreDataManagerType) {
     if (!store) {
 		// Data Modelが更新されていたらストアファイルを削除してもう一度
 		if([[error domain] isEqualToString:NSCocoaErrorDomain] && [error code] == 134130 && self.deleteAndRetry) {
-			[[NSFileManager defaultManager] removeItemAtURL:url error:&error];
+			[self removeDatabaseFile];
 			store = [coordinator addPersistentStoreWithType:self.storeType
 											  configuration:nil
 														URL:url
@@ -240,6 +240,35 @@ typedef NS_ENUM(NSUInteger, HMCoreDataManagerType) {
 - (void)applicationWillTerminate:(NSNotification *)notification
 {
 	[self saveAction:nil];
+}
+
+
+- (void)removeDatabaseFileAtURL:(NSURL *)url
+{
+	NSFileManager *fileManager = [NSFileManager defaultManager];
+	
+	const char *filesystemRep = url.fileSystemRepresentation;
+	NSString *path = [NSString stringWithUTF8String:filesystemRep];
+	if(![fileManager fileExistsAtPath:path]) {
+		NSLog(@"Could not find file for url (%@)", url);
+		return;
+	}
+	NSError *error = nil;
+	[fileManager removeItemAtURL:url error:&error];
+	if(error) {
+		NSLog(@"Could not remove file for URL (%@)", url);
+	}
+}
+- (void)removeDatabaseFile
+{
+	NSURL *applicationFilesDirectory = [self applicationFilesDirectory];
+	NSString *baseName = self.storeFileName;
+	
+	for(NSString *suffix in @[@"", @"-wal", @"-shm"]) {
+		NSString *fileName = [baseName stringByAppendingString:suffix];
+		NSURL *url = [applicationFilesDirectory URLByAppendingPathComponent:fileName];
+		[self removeDatabaseFileAtURL:url];
+	}
 }
 
 #pragma mark - abstruct
