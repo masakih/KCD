@@ -328,6 +328,13 @@ CA
                                     <action selector="loadLocalData:" target="494" id="f95-N3-2EJ"/>
                                 </connections>
                             </menuItem>
+                            <menuItem isSeparatorItem="YES" id="nMa-jM-axc"/>
+                            <menuItem title="Remove database file" id="Ccl-EH-65g">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="removeDatabaseFile:" target="-1" id="JVZ-98-ZZc"/>
+                                </connections>
+                            </menuItem>
                         </items>
                     </menu>
                 </menuItem>

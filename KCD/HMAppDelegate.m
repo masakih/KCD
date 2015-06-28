@@ -272,6 +272,8 @@
 #if ENABLE_JSON_LOG
 	else if(action == @selector(saveDocument:) || action == @selector(openDocument:)) {
 		return YES;
+	} else if(action == @selector(removeDatabaseFile:)) {
+		return YES;
 	}
 #endif
 	return NO;
@@ -385,6 +387,17 @@
 													  object:object];
 		[self.browserWindowControllers removeObject:object];
 	}
+}
+
+- (IBAction)removeDatabaseFile:(id)sender
+{
+	NSBundle *mainBundle = [NSBundle mainBundle];
+	NSString *appleScriptPath = [mainBundle pathForResource:@"RemoveDatabaseFileAndRestart"
+													 ofType:@"app"];
+	NSTask *task = [NSTask new];
+	task.launchPath = @"/usr/bin/open";
+	task.arguments = @[appleScriptPath];
+	[task launch];
 }
 
 #pragma mark - NSApplicationDelegate
