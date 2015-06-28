@@ -14,7 +14,7 @@
 
 
 
-@interface HMExternalBrowserWindowController () <HMBookmarkListViewControllerDelegate>
+@interface HMExternalBrowserWindowController () <HMBookmarkListViewControllerDelegate, NSAnimationDelegate>
 @property (nonatomic, weak) IBOutlet NSSegmentedControl *goSegment;
 
 @property (nonatomic, weak) IBOutlet NSView *bookmarkListView;
@@ -23,6 +23,9 @@
 @property (readwrite) NSRect contentVisibleRect;
 
 @property (weak) HMBookmarkItem *waitingBookmarkItem;
+
+
+@property BOOL bookarkShowing;
 @end
 
 @implementation HMExternalBrowserWindowController
@@ -60,6 +63,7 @@
 	self.canResize = YES;
 	self.canScroll = YES;
 	self.canMovePage = YES;
+	self.bookarkShowing = NO;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -228,10 +232,13 @@ static BOOL sameState(BOOL a, BOOL b) {
 }
 - (BOOL)showsBookmarkList
 {
-	return self.webView.frame.origin.x != 0;
+	return self.webView.frame.origin.x > 0;
 }
 - (IBAction)showBookmark:(id)sender
 {
+	if(self.bookarkShowing) return;
+	self.bookarkShowing = YES;
+	
 	if(!self.bookmarkListViwController) {
 		self.bookmarkListViwController = [HMBookmarkListViewController new];
 		self.bookmarkListView = self.bookmarkListViwController.view;
@@ -248,22 +255,22 @@ static BOOL sameState(BOOL a, BOOL b) {
 			  relativeTo:self.webView];
 	}
 	
-	CGFloat delta = 200;
-	if([self showsBookmarkList]) {
-		delta = -200;
-	}
-	
 	NSRect webViewFrame = self.webView.frame;
-	
 	NSRect frame = self.bookmarkListView.frame;
 	frame.size.height = webViewFrame.size.height;
 	self.bookmarkListView.frame = frame;
 	
-	frame.origin.x += delta;
-	
 	NSRect newFrame = webViewFrame;
-	newFrame.origin.x += delta;
-	newFrame.size.width -= delta;
+	
+	if([self showsBookmarkList]) {
+		frame.origin.x = -200;
+		newFrame.origin.x = 0;
+		newFrame.size.width = self.window.frame.size.width;
+	} else {
+		frame.origin.x = 0;
+		newFrame.origin.x = 200;
+		newFrame.size.width = self.window.frame.size.width - 200;
+	}
 	
 	
 	NSDictionary *webViewAnime = @{
@@ -275,7 +282,12 @@ static BOOL sameState(BOOL a, BOOL b) {
 								   NSViewAnimationEndFrameKey : [NSValue valueWithRect:frame],
 								   };
 	NSAnimation *anime = [[NSViewAnimation alloc] initWithViewAnimations:@[webViewAnime, bookMarkAnime]];
+	anime.delegate = self;
 	[anime startAnimation];
+}
+- (void)animationDidEnd:(NSAnimation *)animation
+{
+	self.bookarkShowing = NO;
 }
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem
