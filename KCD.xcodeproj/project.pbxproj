@@ -80,6 +80,7 @@
 		F49546361B19924D00E0D8D0 /* HMBookmarkListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F49546341B19924D00E0D8D0 /* HMBookmarkListViewController.xib */; };
 		F49688641B3AFE4900D3CEDE /* HMProgressPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = F49688621B3AFE4900D3CEDE /* HMProgressPanel.m */; };
 		F49688651B3AFE4900D3CEDE /* HMProgressPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = F49688631B3AFE4900D3CEDE /* HMProgressPanel.xib */; };
+		F49688671B3EA16800D3CEDE /* RemoveDatabaseFileAndRestart.app in Resources */ = {isa = PBXBuildFile; fileRef = F49688661B3EA16800D3CEDE /* RemoveDatabaseFileAndRestart.app */; };
 		F49828FC1902A226000D6BBE /* HMStrokeTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F49828FB1902A226000D6BBE /* HMStrokeTextFieldCell.m */; };
 		F4A2AF521A074DCF0024BD9E /* HMScreenshotListWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A2AF501A074DCF0024BD9E /* HMScreenshotListWindowController.m */; };
 		F4A2AF541A074DE40024BD9E /* HMScreenshotListWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A2AF561A074DE40024BD9E /* HMScreenshotListWindowController.xib */; };
@@ -342,6 +343,7 @@
 		F49688611B3AFE4900D3CEDE /* HMProgressPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMProgressPanel.h; sourceTree = "<group>"; };
 		F49688621B3AFE4900D3CEDE /* HMProgressPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMProgressPanel.m; sourceTree = "<group>"; };
 		F49688631B3AFE4900D3CEDE /* HMProgressPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMProgressPanel.xib; sourceTree = "<group>"; };
+		F49688661B3EA16800D3CEDE /* RemoveDatabaseFileAndRestart.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = RemoveDatabaseFileAndRestart.app; sourceTree = "<group>"; };
 		F49828FA1902A226000D6BBE /* HMStrokeTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMStrokeTextFieldCell.h; sourceTree = "<group>"; };
 		F49828FB1902A226000D6BBE /* HMStrokeTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMStrokeTextFieldCell.m; sourceTree = "<group>"; };
 		F4A2AF4F1A074DCF0024BD9E /* HMScreenshotListWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMScreenshotListWindowController.h; sourceTree = "<group>"; };
@@ -678,6 +680,7 @@
 		F4BDEB4D187252F30069D0CE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F49688661B3EA16800D3CEDE /* RemoveDatabaseFileAndRestart.app */,
 				F4BEEEA718D323520006F70C /* Makefile */,
 				F4BEEEA318D211500006F70C /* Makefile */,
 				F4BEEEA018D211360006F70C /* Localizable.strings.sed */,
@@ -1111,6 +1114,7 @@
 			files = (
 				F4B37EFF19FC8DCC002F371A /* HMUpgradableShipsWindowController.xib in Resources */,
 				F49546361B19924D00E0D8D0 /* HMBookmarkListViewController.xib in Resources */,
+				F49688671B3EA16800D3CEDE /* RemoveDatabaseFileAndRestart.app in Resources */,
 				F494DC6A18C8BAB900AE97E4 /* HMPowerUpSupportViewController.xib in Resources */,
 				F4BDEB51187252F30069D0CE /* InfoPlist.strings in Resources */,
 				F43E67B918BE060E0087E5B6 /* LevelUpExp.plist in Resources */,
