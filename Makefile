@@ -51,3 +51,6 @@ restoreInfoPlist:
 	if [ -f $(INFO_PLIST).bak ] ; then mv -f $(INFO_PLIST).bak $(INFO_PLIST) ; fi
 
 
+buildEquipmentPlist: KCD/upgrade.txt
+	awk -f KCD/LtL.awk KCD/upgrade.txt > KCD/EquipmentStrengthen.plist 
+
