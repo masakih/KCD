@@ -23,7 +23,7 @@
 }
 - (NSString *)storeFileName
 {
-#ifndef DEBUG
+#if COREDATA_STORE_TYPE == 0
 	return @"LocalData.storedata";
 #else
 	return @"LocalData.storedata.xml";
@@ -31,7 +31,7 @@
 }
 - (NSString *)storeType
 {
-#ifndef DEBUG
+#if COREDATA_STORE_TYPE == 0
 	return NSSQLiteStoreType;
 #else
 	return NSXMLStoreType;
@@ -40,9 +40,6 @@
 - (NSDictionary *)storeOptions
 {
 	NSDictionary *options = @{
-#ifndef DEBUG
-							  NSSQLitePragmasOption : @{@"journal_mode" : @"MEMORY"},
-#endif
 							  NSMigratePersistentStoresAutomaticallyOption : @YES,
 							  NSInferMappingModelAutomaticallyOption : @YES
 							  };

@@ -32,7 +32,6 @@
 - (NSDictionary *)storeOptions
 {
 	NSDictionary *options = @{
-							  NSSQLitePragmasOption : @{@"journal_mode" : @"MEMORY"},
 							  NSMigratePersistentStoresAutomaticallyOption : @YES,
 							  NSInferMappingModelAutomaticallyOption : @YES
 							  };

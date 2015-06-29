@@ -40,9 +40,6 @@
 - (NSDictionary *)storeOptions
 {
 	NSDictionary *options = @{
-#if COREDATA_STORE_TYPE == 0
-							  NSSQLitePragmasOption : @{@"journal_mode" : @"MEMORY"},
-#endif
 							  NSMigratePersistentStoresAutomaticallyOption : @YES,
 							  NSInferMappingModelAutomaticallyOption : @YES
 							  };
