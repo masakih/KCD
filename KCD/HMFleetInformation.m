@@ -342,6 +342,7 @@
 		NSInteger shipId = [shipIdNumber integerValue];
 		if(shipId == -1) continue;
 		HMKCShipObject *ship = [self shipForID:shipId inStore:store];
+		if(!ship) continue;
 		[result addObject:ship];
 	}
 	return result;
