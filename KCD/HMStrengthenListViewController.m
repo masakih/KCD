@@ -14,7 +14,7 @@
 
 static NSString *groupNameKey = @"group";
 
-@interface HMStrengthenListViewController () <NSTableViewDataSource>
+@interface HMStrengthenListViewController () <NSTableViewDataSource, NSURLSessionDelegate>
 
 @property (strong) NSArray *equipmentStrengthenList;
 @property (weak, nonatomic) IBOutlet NSTableView *tableView;
@@ -23,6 +23,12 @@ static NSString *groupNameKey = @"group";
 @property (nonatomic) NSInteger offsetDay;
 
 @property (strong) HMPeriodicNotifier *notifier;
+
+
+@property (strong) NSURLSession *plistDownloadSession;
+@property (strong) NSOperationQueue *plistDownloadQueue;
+@property (strong) NSURLSessionDownloadTask *plistDownloadTask;
+@property (strong) HMPeriodicNotifier *plistDownloadNotifier;
 @end
 
 @implementation HMStrengthenListViewController
@@ -47,6 +53,13 @@ static NSString *groupNameKey = @"group";
 												 selector:@selector(buildList:)
 													 name:HMPeriodicNotification
 												   object:_notifier];
+		
+		_plistDownloadNotifier = [HMPeriodicNotifier periodicNotifierWithHour:23 minutes:55];
+		[[NSNotificationCenter defaultCenter] addObserver:self
+												 selector:@selector(downloadPlist:)
+													 name:HMPeriodicNotification
+												   object:_plistDownloadNotifier];
+		[self downloadPlist:nil];
 	}
 	return self;
 }
@@ -55,6 +68,59 @@ static NSString *groupNameKey = @"group";
 {
 	_offsetDay = offsetDay;
 	[self buildList:nil];
+}
+
+- (void)downloadPlist:(id)dummy
+{
+	NSURL *plistURL = [NSURL URLWithString:@"http://osdn.jp/users/masakih/pf/KCD/scm/blobs/master/KCD/EquipmentStrengthen.plist?export=raw"];
+	
+	if(!self.plistDownloadSession) {
+		self.plistDownloadQueue = [NSOperationQueue new];
+		self.plistDownloadQueue.name = @"HMStrengthenListViewControllerPlistDownloadQueue";
+		self.plistDownloadQueue.maxConcurrentOperationCount = 1;
+		self.plistDownloadQueue.qualityOfService = NSQualityOfServiceBackground;
+		NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+		self.plistDownloadSession = [NSURLSession sessionWithConfiguration:configuration
+																  delegate:self
+															 delegateQueue:self.plistDownloadQueue];
+	}
+	
+	if(self.plistDownloadTask) return;
+	
+	self.plistDownloadTask = [self.plistDownloadSession downloadTaskWithURL:plistURL];
+	
+	[self.plistDownloadTask resume];
+}
+
+
+- (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location
+{
+	NSError *error = nil;
+	NSString *plistString = [NSString stringWithContentsOfURL:location
+													 encoding:NSUTF8StringEncoding
+														error:&error];
+	if(!error && plistString) {
+		NSArray *plist = [plistString propertyList];
+		
+		if([self.equipmentStrengthenList isEqual:plist]) return;
+		
+		NSFileManager *fileManager = [NSFileManager defaultManager];
+		NSURL *appSupportURL = [[fileManager URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask] lastObject];
+		NSURL *ownAppSuportURL = [appSupportURL URLByAppendingPathComponent:@"com.masakih.KCD"];
+		NSURL *plistURL = [ownAppSuportURL URLByAppendingPathComponent:@"EquipmentStrengthen.plist"];
+		
+		NSArray *oldSavedPlist = [NSArray arrayWithContentsOfURL:plistURL];
+		if(![oldSavedPlist isEqual:plist]) {
+			[plist writeToURL:plistURL atomically:YES];
+		}
+		
+		self.equipmentStrengthenList = plist;
+		[self buildList:nil];
+	}
+}
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error
+{
+	self.plistDownloadTask = nil;
 }
 
 - (void)buildList:(id)dummy
