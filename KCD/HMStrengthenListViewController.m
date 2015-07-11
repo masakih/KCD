@@ -129,7 +129,9 @@ static NSString *groupNameKey = @"group";
 	NSCalendarUnit unit = NSCalendarUnitWeekday;
 	NSDateComponents *currentDay = [[NSCalendar currentCalendar] components:unit fromDate:now];
 	
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"weekday = %ld", currentDay.weekday + self.offsetDay];
+	NSInteger targetWeekday = currentDay.weekday + self.offsetDay;
+	if(targetWeekday > 7) targetWeekday = 1;
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"weekday = %ld", targetWeekday];
 	
 	NSArray *filterdItemList = [self.equipmentStrengthenList filteredArrayUsingPredicate:predicate];
 	
