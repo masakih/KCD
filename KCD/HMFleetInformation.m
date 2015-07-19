@@ -246,72 +246,15 @@
 	}
 	
 	HMKCShipObject *ship = nil;
-	NSError *error = nil;
 	HMServerDataStore *store = [HMServerDataStore defaultManager];
 	NSString *key = [NSString stringWithFormat:@"ship_%ld", index];
 	NSNumber *shipIdNumber = [self.selectedFleet valueForKey:key];
 	if(!shipIdNumber) return 0;
 	NSInteger shipId = [shipIdNumber integerValue];
-	NSArray *array = nil;
 	ship = [self shipForID:shipId inStore:store];
 	if(!ship) return 0;
-//	NSLog(@"ship name -> %@ equipped count -> %ld", ship.name, ship.equippedItem.count);
-	NSArray *effectiveTypes = @[@6, @7, @8, @11];
-	__block NSInteger totalSeiku = 0;
-#if 0
-	[ship.equippedItem enumerateObjectsUsingBlock:^(HMKCSlotItemObject *slotItem, NSUInteger idx, BOOL *stop) {
-		HMKCMasterSlotItemObject *master = slotItem.master_slotItem;
-		NSNumber *type2 = master.type_2;
-		if(![effectiveTypes containsObject:type2]) {
-			NSLog(@"Type %@ is not effective.", type2);
-			return;
-		}
-		
-		NSString *key = [NSString stringWithFormat:@"onslot_%ld", idx];
-		NSNumber *itemCountValue = [ship valueForKey:key];
-		NSNumber *taikuValue = master.tyku;
-		NSInteger itemCount = [itemCountValue integerValue];
-		NSInteger taiku = [taikuValue integerValue];
-		if(itemCount && taiku) {
-			totalSeiku += floor(taiku * sqrt(itemCount));
-			NSLog(@"slot -> %ld, name -> %@, itemCount -> %ld, taiku -> %ld, total -> %ld", idx, master.name, itemCount, taiku, totalSeiku);
-		} else {
-			NSLog(@"itemCount -> %ld, taiku -> %ld", itemCount, taiku);
-		}
-	}];
-#else
-	for(NSInteger i = 0; i < 5; i++) {
-		NSString *key = [NSString stringWithFormat:@"slot_%ld", i];
-		NSNumber *itemId = [ship valueForKey:key];
-		if(itemId.integerValue == -1) break;
-		error = nil;
-		array = [store objectsWithEntityName:@"SlotItem"
-									   error:&error
-							 predicateFormat:@"id = %@", itemId];
-		if(array.count == 0) continue;
-		HMKCSlotItemObject *slotItem = array[0];
-		HMKCMasterSlotItemObject *master = slotItem.master_slotItem;
-		NSNumber *type2 = master.type_2;
-		if(![effectiveTypes containsObject:type2]) {
-//			NSLog(@"Type %@ is not effective.", type2);
-			continue;
-		}
-		
-		key = [NSString stringWithFormat:@"onslot_%ld", i];
-		NSNumber *itemCountValue = [ship valueForKey:key];
-		NSNumber *taikuValue = master.tyku;
-		NSInteger itemCount = [itemCountValue integerValue];
-		NSInteger taiku = [taikuValue integerValue];
-		if(itemCount && taiku) {
-			totalSeiku += floor(taiku * sqrt(itemCount));
-//			NSLog(@"slot -> %ld, name -> %@, itemCount -> %ld, taiku -> %ld, total -> %ld", i, master.name, itemCount, taiku, totalSeiku);
-		} else {
-//			NSLog(@"itemCount -> %ld, taiku -> %ld", itemCount, taiku);
-		}
-	}
-#endif
 	
-	return totalSeiku;
+	return ship.seiku.integerValue;
 }
 
 - (NSNumber *)totalSeiku
