@@ -18,4 +18,6 @@
 @property (readonly) HMKCShipObject *fifthShip;
 @property (readonly) HMKCShipObject *sixthShip;
 
+- (HMKCShipObject *)objectAtIndexedSubscript:(NSUInteger)idx;
+
 @end

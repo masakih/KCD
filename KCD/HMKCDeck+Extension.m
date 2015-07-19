@@ -60,6 +60,9 @@
 	return [self shipOfShipNumber:5];
 }
 
-	
+- (HMKCShipObject *)objectAtIndexedSubscript:(NSUInteger)idx
+{
+	return [self shipOfShipNumber:idx];
+}	
 
 @end
