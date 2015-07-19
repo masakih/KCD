@@ -1752,6 +1752,60 @@
 		<key>weekday</key>
 		<integer>1</integer>
 		<key>equipment</key>
+		<string>32号対水上電探</string>
+		<key>secondShip</key>
+		<string>伊勢</string>
+	<key>remodelEquipment</key>
+	<string>32号対水上電探改</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>6</integer>
+		<key>equipment</key>
+		<string>32号対水上電探</string>
+		<key>secondShip</key>
+		<string>伊勢</string>
+	<key>remodelEquipment</key>
+	<string>32号対水上電探改</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>7</integer>
+		<key>equipment</key>
+		<string>32号対水上電探</string>
+		<key>secondShip</key>
+		<string>伊勢</string>
+	<key>remodelEquipment</key>
+	<string>32号対水上電探改</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>1</integer>
+		<key>equipment</key>
+		<string>32号対水上電探改</string>
+		<key>secondShip</key>
+		<string>日向</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>6</integer>
+		<key>equipment</key>
+		<string>32号対水上電探改</string>
+		<key>secondShip</key>
+		<string>日向</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>7</integer>
+		<key>equipment</key>
+		<string>32号対水上電探改</string>
+		<key>secondShip</key>
+		<string>日向</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>1</integer>
+		<key>equipment</key>
 		<string>九三式水中聴音機</string>
 		<key>secondShip</key>
 		<string>夕張</string>
