@@ -37,6 +37,9 @@ const NSInteger maxFleetNumber = 4;
 @property (strong) HMShipDetailViewController *detail04;
 @property (strong) HMShipDetailViewController *detail05;
 @property (strong) HMShipDetailViewController *detail06;
+@property (strong) NSArray *details;
+
+@property (readonly) NSArray *shipKeys;
 
 @end
 
@@ -80,28 +83,54 @@ const NSInteger maxFleetNumber = 4;
 
 - (void)dealloc
 {
-	for(NSInteger i = 0; i < 6; i++) {
+	for(NSString *key in self.shipKeys) {
 		[self.representedObject removeObserver:self
-									forKeyPath:[NSString stringWithFormat:@"ship_%ld", i]];
+									forKeyPath:key];
 	}
 }
 
-- (void)awakeFromNib {
-	
-	for(NSInteger i = 1; i < 7; i++) {
-		NSString *detailKey = [NSString stringWithFormat:@"detail%02ld", i];
-		NSString *placeholderKey = [NSString stringWithFormat:@"placeholder%02ld", i];
+- (void)awakeFromNib
+{
+	NSMutableArray *details = [NSMutableArray new];
+	NSArray *detailKeys = @[@"detail01", @"detail02", @"detail03", @"detail04", @"detail05", @"detail06"];
+	[detailKeys enumerateObjectsUsingBlock:^(id detailKey, NSUInteger idx, BOOL *stop) {
 		HMShipDetailViewController *detail = [self.shipViewClass new];
-		detail.title = [NSString stringWithFormat:@"%ld", i];
+		detail.title = [NSString stringWithFormat:@"%ld", idx + 1];
 		[self setValue:detail forKey:detailKey];
-		NSView *view = [self valueForKey:placeholderKey];
 		
+		[details addObject:detail];
+	}];
+	self.details = details;
+	
+	NSArray *placeholderKeys = @[@"placeholder01", @"placeholder02", @"placeholder03", @"placeholder04", @"placeholder05", @"placeholder06"];
+	[placeholderKeys enumerateObjectsUsingBlock:^(id placeholderKey, NSUInteger idx, BOOL *stop) {
+		NSView *view = [self valueForKey:placeholderKey];
+		HMShipDetailViewController *detail = self.details[idx];
 		[detail.view setFrame:[view frame]];
 		[detail.view setAutoresizingMask:[view autoresizingMask]];
 		[[view superview] replaceSubview:view with:detail.view];
-	}
+	}];
 	
 	self.fleetNumber = 1;
+}
+
+- (NSArray *)shipKeys
+{
+	static NSArray *shipKeys = nil;
+	if(shipKeys) return shipKeys;
+	
+	shipKeys = @[@"ship_0", @"ship_1", @"ship_2", @"ship_3", @"ship_4", @"ship_5"];
+	return shipKeys;
+}
+
+- (void)setShipOfViewForKey:(NSString *)key
+{
+	NSUInteger index = [self.shipKeys indexOfObject:key];
+	if(index != NSNotFound) {
+		NSUInteger shipID = [[self.fleet valueForKey:key] integerValue];
+		[self setShipID:shipID
+			   toDetail:self.details[index]];
+	}
 }
 
 - (void)setShipID:(NSInteger)shipId toDetail:(HMShipDetailViewController *)detail
@@ -122,14 +151,12 @@ const NSInteger maxFleetNumber = 4;
 }
 - (void)setFleet:(HMKCDeck *)fleet
 {
-	for(NSInteger i = 0; i < 6; i++) {
+	for(NSString *key in self.shipKeys) {
 		[self.representedObject removeObserver:self
-									forKeyPath:[NSString stringWithFormat:@"ship_%ld", i]];
-	}
-	
-	for(NSInteger i = 0; i < 6; i++) {
+									forKeyPath:key];
+		
 		[fleet addObserver:self
-				forKeyPath:[NSString stringWithFormat:@"ship_%ld", i]
+				forKeyPath:key
 				   options:0
 				   context:NULL];
 	}
@@ -137,10 +164,8 @@ const NSInteger maxFleetNumber = 4;
 	self.representedObject = fleet;
 	self.title = fleet.name;
 	
-	for(NSInteger i = 1; i < 7; i++) {
-		NSString *shipID = [self.fleet valueForKey:[NSString stringWithFormat:@"ship_%ld", i - 1]];
-		HMShipDetailViewController *detail = [self valueForKey:[NSString stringWithFormat:@"detail%02ld", i]];
-		[self setShipID:shipID.integerValue toDetail:detail];
+	for(NSString *key in self.shipKeys) {
+		[self setShipOfViewForKey:key];
 	}
 }
 - (HMKCDeck *)fleet
@@ -243,8 +268,7 @@ const NSInteger maxFleetNumber = 4;
 - (NSNumber *)totalSakuteki
 {
 	NSInteger total = 0;
-	for(NSInteger i = 1; i < 7; i++) {
-		HMShipDetailViewController *detail = [self valueForKey:[NSString stringWithFormat:@"detail%02ld", i]];
+	for(HMShipDetailViewController *detail in self.details) {
 		HMKCShipObject *ship = detail.ship;
 		total += ship.sakuteki_0.integerValue;
 	}
@@ -265,8 +289,7 @@ const NSInteger maxFleetNumber = 4;
 - (NSNumber *)totalSeiku
 {
 	NSInteger total = 0;
-	for(NSInteger i = 1; i < 7; i++) {
-		HMShipDetailViewController *detail = [self valueForKey:[NSString stringWithFormat:@"detail%02ld", i]];
+	for(HMShipDetailViewController *detail in self.details) {
 		HMKCShipObject *ship = detail.ship;
 		total += ship.seiku.integerValue;
 	}
@@ -275,28 +298,8 @@ const NSInteger maxFleetNumber = 4;
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-	if([keyPath isEqualToString:@"ship_0"]) {
-		[self setShipID:[[object valueForKey:keyPath] integerValue] toDetail:self.detail01];
-		return;
-	}
-	if([keyPath isEqualToString:@"ship_1"]) {
-		[self setShipID:[[object valueForKey:keyPath] integerValue] toDetail:self.detail02];
-		return;
-	}
-	if([keyPath isEqualToString:@"ship_2"]) {
-		[self setShipID:[[object valueForKey:keyPath] integerValue] toDetail:self.detail03];
-		return;
-	}
-	if([keyPath isEqualToString:@"ship_3"]) {
-		[self setShipID:[[object valueForKey:keyPath] integerValue] toDetail:self.detail04];
-		return;
-	}
-	if([keyPath isEqualToString:@"ship_4"]) {
-		[self setShipID:[[object valueForKey:keyPath] integerValue] toDetail:self.detail05];
-		return;
-	}
-	if([keyPath isEqualToString:@"ship_5"]) {
-		[self setShipID:[[object valueForKey:keyPath] integerValue] toDetail:self.detail06];
+	if([self.shipKeys containsObject:keyPath]) {
+		[self setShipOfViewForKey:keyPath];
 		return;
 	}
 	
