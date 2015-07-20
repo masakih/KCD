@@ -10,10 +10,14 @@
 #import "HMShipDetailViewController.h"
 #import "HMMinimumShipViewController.h"
 
+#import "HMAppDelegate.h"
+
 #import "HMKCShipObject+Extensions.h"
 #import "HMKCDeck+Extension.h"
 
 #import "HMServerDataStore.h"
+
+#import "HMAnchorageRepairManager.h"
 
 
 const NSInteger maxFleetNumber = 4;
@@ -40,6 +44,11 @@ const NSInteger maxFleetNumber = 4;
 @property (strong) NSArray *details;
 
 @property (readonly) NSArray *shipKeys;
+
+
+@property (strong) NSArray *anchorageReairHolder;
+@property (strong) HMAnchorageRepairManager *anchorageRepair;
+@property (readonly) NSNumber *repairTime;
 
 @end
 
@@ -77,6 +86,8 @@ const NSInteger maxFleetNumber = 4;
 	if(self) {
 		_type = type;
 		_shipViewClass = shipViewClass;
+		
+		[self buildAnchorageRepairHolder];
 	}
 	return self;
 }
@@ -190,6 +201,8 @@ const NSInteger maxFleetNumber = 4;
 	
 	self.fleet = array[0];
 	_fleetNumber = fleetNumber;
+	
+	self.anchorageRepair = self.anchorageReairHolder[fleetNumber - 1];
 }
 - (NSInteger)fleetNumber
 {
@@ -385,6 +398,55 @@ const NSInteger maxFleetNumber = 4;
 		view04.frame = frame02;
 		view05.frame = frame04;
 	}
+}
+
+
+- (void)buildAnchorageRepairHolder
+{
+	HMServerDataStore *store = [HMServerDataStore defaultManager];
+	NSError *error = nil;
+	NSArray *array = [store objectsWithEntityName:@"Deck"
+								  sortDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES]]
+										predicate:nil
+											error:&error];
+	if(error) {
+		NSLog(@"%s error: %@", __PRETTY_FUNCTION__, error);
+		return;
+	}
+	if(array.count == 0) {
+		return;
+	}
+	if(array.count < 4) {
+		NSBeep();
+		NSLog(@"hogehoge");
+		return;
+	}
+	NSMutableArray *anchorageRepairs = [NSMutableArray new];
+	for(HMKCDeck *deck in array) {
+		id anchorageRepair = [[HMAnchorageRepairManager alloc] initWithDeck:deck];
+		[anchorageRepairs addObject:anchorageRepair];
+	}
+	self.anchorageReairHolder = anchorageRepairs;
+	
+	HMAppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+	[appDelegate addCounterUpdateBlock:^{
+		[self willChangeValueForKey:@"repairTime"];
+		[self didChangeValueForKey:@"repairTime"];
+	}];
+}
++ (NSSet *)keyPathsForValuesAffectingRepairTime
+{
+	return [NSSet setWithObjects:@"anchorageRepair.repairTime", @"anchorageRepair", nil];
+}
+- (NSNumber *)repairTime
+{
+	NSDate *compTimeValue = self.anchorageRepair.repairTime;
+	if(!compTimeValue) return nil;
+	
+	NSTimeInterval compTime = [compTimeValue timeIntervalSince1970];
+	NSDate *now = [NSDate dateWithTimeIntervalSinceNow:0];
+	NSTimeInterval diff = compTime - [now timeIntervalSince1970];
+	return @(diff + 20 * 60);
 }
 
 @end
