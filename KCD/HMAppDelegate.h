@@ -31,6 +31,8 @@ typedef NS_ENUM(NSUInteger, HMShipType) {
 - (void)logLineReturn:(NSString *)format, ... NS_FORMAT_FUNCTION(1,2);
 - (void)log:(NSString *)format, ... NS_FORMAT_FUNCTION(1,2);
 
+- (void)addCounterUpdateBlock:(void(^)())updater;
+
 - (NSPredicate *)predicateForShipType:(HMShipType)shipType;
 
 @property (strong, nonatomic) IBOutlet NSMenuItem *debugMenuItem;

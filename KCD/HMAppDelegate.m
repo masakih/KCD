@@ -53,6 +53,8 @@
 
 @property (strong) NSMutableArray *browserWindowControllers;
 
+@property (strong) NSMutableArray *updaters;
+
 #ifdef DEBUG
 @property (strong) HMShipWindowController *shipWindowController;
 @property (strong) HMShipMasterDetailWindowController *shipMDWindowController;
@@ -91,6 +93,14 @@
 	}
 }
 
+- (instancetype)init
+{
+	self = [super init];
+	if(self) {
+		self.updaters = [NSMutableArray new];
+	}
+	return self;
+}
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
@@ -98,6 +108,12 @@
 	[unc setDelegate:self];
 	
 	self.browserWindowControllers = [NSMutableArray new];
+	
+	[NSTimer scheduledTimerWithTimeInterval:0.33
+									 target:self
+								   selector:@selector(fire:)
+								   userInfo:nil
+									repeats:YES];
 }
 
 - (void)awakeFromNib
@@ -122,6 +138,18 @@
 #endif
 	if(!HMStandardDefaults.showsDebugMenu) {
 		[self.debugMenuItem setHidden:YES];
+	}
+}
+
+
+- (void)addCounterUpdateBlock:(void(^)())updater
+{
+	[self.updaters addObject:updater];
+}
+- (void)fire:(NSTimer *)timer
+{
+	for(void (^updater)() in self.updaters) {
+		updater();
 	}
 }
 
