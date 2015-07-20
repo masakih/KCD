@@ -82,6 +82,7 @@
 		F49688651B3AFE4900D3CEDE /* HMProgressPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = F49688631B3AFE4900D3CEDE /* HMProgressPanel.xib */; };
 		F49688671B3EA16800D3CEDE /* RemoveDatabaseFileAndRestart.app in Resources */ = {isa = PBXBuildFile; fileRef = F49688661B3EA16800D3CEDE /* RemoveDatabaseFileAndRestart.app */; };
 		F49828FC1902A226000D6BBE /* HMStrokeTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F49828FB1902A226000D6BBE /* HMStrokeTextFieldCell.m */; };
+		F499E88D1B5BCA7300189029 /* HMAnchorageRepairManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F499E88C1B5BCA7300189029 /* HMAnchorageRepairManager.m */; };
 		F4A2AF521A074DCF0024BD9E /* HMScreenshotListWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A2AF501A074DCF0024BD9E /* HMScreenshotListWindowController.m */; };
 		F4A2AF541A074DE40024BD9E /* HMScreenshotListWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A2AF561A074DE40024BD9E /* HMScreenshotListWindowController.xib */; };
 		F4A2AF581A0930160024BD9E /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A2AF571A0930160024BD9E /* Quartz.framework */; };
@@ -346,6 +347,8 @@
 		F49688661B3EA16800D3CEDE /* RemoveDatabaseFileAndRestart.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = RemoveDatabaseFileAndRestart.app; sourceTree = "<group>"; };
 		F49828FA1902A226000D6BBE /* HMStrokeTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMStrokeTextFieldCell.h; sourceTree = "<group>"; };
 		F49828FB1902A226000D6BBE /* HMStrokeTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMStrokeTextFieldCell.m; sourceTree = "<group>"; };
+		F499E88B1B5BCA7300189029 /* HMAnchorageRepairManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMAnchorageRepairManager.h; sourceTree = "<group>"; };
+		F499E88C1B5BCA7300189029 /* HMAnchorageRepairManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMAnchorageRepairManager.m; sourceTree = "<group>"; };
 		F4A2AF4F1A074DCF0024BD9E /* HMScreenshotListWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMScreenshotListWindowController.h; sourceTree = "<group>"; };
 		F4A2AF501A074DCF0024BD9E /* HMScreenshotListWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMScreenshotListWindowController.m; sourceTree = "<group>"; };
 		F4A2AF551A074DE40024BD9E /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMScreenshotListWindowController.xib; sourceTree = "<group>"; };
@@ -666,6 +669,8 @@
 				F495462A1B14CBA600E0D8D0 /* HMBookmarkManager.m */,
 				F4F6E80A1B2BC81C0008B66E /* HMPeriodicNotifier.h */,
 				F4F6E80B1B2BC81C0008B66E /* HMPeriodicNotifier.m */,
+				F499E88B1B5BCA7300189029 /* HMAnchorageRepairManager.h */,
+				F499E88C1B5BCA7300189029 /* HMAnchorageRepairManager.m */,
 				F4D2CBBF18ACE7D7000EBC59 /* Command */,
 				F4BEEEA918D890660006F70C /* UI */,
 				F4BEEEA818D88FF30006F70C /* CoreData */,
@@ -1164,6 +1169,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F499E88D1B5BCA7300189029 /* HMAnchorageRepairManager.m in Sources */,
 				F4513EE818B77A5300073552 /* HMMemberKDockCommand.m in Sources */,
 				F426802B194D0F4800B2C27F /* HMMemberShip2Command.m in Sources */,
 				F4AA06101931869E00844688 /* HMBattleResultCommand.m in Sources */,
