@@ -8,6 +8,8 @@
 
 #import "HMDocksViewController.h"
 
+#import "HMAppDelegate.h"
+
 #import "HMServerDataStore.h"
 
 #import "HMMissionStatus.h"
@@ -119,11 +121,25 @@
 
 - (void)awakeFromNib
 {
-	[NSTimer scheduledTimerWithTimeInterval:0.33
-									 target:self
-								   selector:@selector(fire:)
-								   userInfo:nil
-									repeats:YES];
+	HMAppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+	[appDelegate addCounterUpdateBlock:^{
+		// 入渠ドック
+		[self.ndock1Status update];
+		[self.ndock2Status update];
+		[self.ndock3Status update];
+		[self.ndock4Status update];
+		
+		// 建造ドック
+		[self.kdock1Status update];
+		[self.kdock2Status update];
+		[self.kdock3Status update];
+		[self.kdock4Status update];
+		
+		// 遠征
+		[self.mission2Status update];
+		[self.mission3Status update];
+		[self.mission4Status update];
+	}];
 	
 	_questListViewController = [HMQuestListViewController new];
 	
@@ -136,28 +152,6 @@
 						   forKeyPath:@"selection"
 							  options:0
 							  context:NULL];
-}
-
-
-- (void)fire:(id)timer
-{
-	// 入渠ドック
-	[self.ndock1Status update];
-	[self.ndock2Status update];
-	[self.ndock3Status update];
-	[self.ndock4Status update];
-	
-	// 建造ドック
-	[self.kdock1Status update];
-	[self.kdock2Status update];
-	[self.kdock3Status update];
-	[self.kdock4Status update];
-	
-	// 遠征
-	[self.mission2Status update];
-	[self.mission3Status update];
-	[self.mission4Status update];
-	
 }
 
 - (NSManagedObjectContext *)battleManagedObjectController
