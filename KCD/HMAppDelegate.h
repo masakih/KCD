@@ -68,3 +68,8 @@ typedef NS_ENUM(NSUInteger, HMShipType) {
 @property (readonly) NSString *appNameForUserAgent;
 
 @end
+
+// defined in HMPortNotifyCommand.m
+// notification have no userinfo.
+extern NSString *HMPortAPIRecieveNotification;
+
