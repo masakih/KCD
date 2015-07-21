@@ -76,7 +76,7 @@
 		
 		NSString *tag = NSLocalizedString(@"kancolle", @"kancolle twitter hash tag");
 		if(tag) {
-			_tagString = [NSString stringWithFormat:@" #%@", tag];
+			_tagString = [NSString stringWithFormat:@"#%@", tag];
 		} else {
 			_tagString = @"";
 		}
@@ -302,7 +302,7 @@
 	NSString *tags = nil;
 	if(self.appendKanColleTag) {
 		tags = self.tagString;
-		tags = [@" \n" stringByAppendingString:tags];
+		tags = [@"\n" stringByAppendingString:tags];
 	}
 	NSArray *items = [NSArray arrayWithObjects:image, tags, nil];
 	NSSharingServicePicker *picker = [[NSSharingServicePicker alloc] initWithItems:items];
