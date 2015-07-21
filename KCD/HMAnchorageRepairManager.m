@@ -8,6 +8,8 @@
 
 #import "HMAnchorageRepairManager.h"
 
+#import "HMAppDelegate.h"
+
 #import "HMServerDataStore.h"
 #import "HMKCDeck+Extension.h"
 #import "HMKCShipObject+Extensions.h"
@@ -75,6 +77,12 @@
 		[self buildMembers];
 		
 		[self resetRepairTime];
+		
+		NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+		[nc addObserver:self
+			   selector:@selector(didRecivePortAPINotification:)
+				   name:HMPortAPIRecieveNotification
+				 object:nil];
 	}
 	return self;
 }
@@ -134,6 +142,14 @@
 //							forKeyPath:observeKeyPath
 //							   options:0
 //							   context:@"members"];
+}
+
+- (void)didRecivePortAPINotification:(NSNotification *)notification
+{
+	NSDate *finishDate = [self.repairTime dateByAddingTimeInterval:20 * 60];
+	if([finishDate compare:[NSDate dateWithTimeIntervalSinceNow:0.0]] == NSOrderedAscending) {
+		[self resetRepairTime];
+	}
 }
 
 - (NSArray *)repairShipIds
