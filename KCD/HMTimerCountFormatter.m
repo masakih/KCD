@@ -20,6 +20,9 @@
 		NSLog(@"obj class is %@", NSStringFromClass([obj class]));
 		return @"";
 	}
+	
+	BOOL minus = timeInterval < 0;
+	if(minus) timeInterval *= -1;
 		
 	NSInteger hour = timeInterval / (60 * 60);
 	timeInterval -= hour * 60 * 60;
@@ -27,6 +30,6 @@
 	timeInterval -= minutes * 60;
 	NSInteger seconds = timeInterval;
 	
-	return [NSString stringWithFormat:@"%02ld:%02ld:%02ld", hour, minutes, seconds];
+	return [NSString stringWithFormat:@"%s%02ld:%02ld:%02ld", minus ? "-" : "", hour, minutes, seconds];
 }
 @end

@@ -446,10 +446,7 @@ const NSInteger maxFleetNumber = 4;
 	NSTimeInterval compTime = [compTimeValue timeIntervalSince1970];
 	NSDate *now = [NSDate dateWithTimeIntervalSinceNow:0];
 	NSTimeInterval diff = compTime - [now timeIntervalSince1970];
-	
-	NSTimeInterval repairTime = diff + 20 * 60;
-	repairTime = repairTime > 0 ? repairTime : 0;
-	return @(repairTime);
+	return @(diff + 20 * 60);
 }
 
 @end
