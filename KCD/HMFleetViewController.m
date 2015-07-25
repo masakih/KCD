@@ -46,7 +46,7 @@ const NSInteger maxFleetNumber = 4;
 @property (readonly) NSArray *shipKeys;
 
 
-@property (strong) NSArray *anchorageReairHolder;
+@property (strong) NSArray *anchorageRepairHolder;
 @property (strong) HMAnchorageRepairManager *anchorageRepair;
 @property (readonly) NSNumber *repairTime;
 
@@ -202,7 +202,7 @@ const NSInteger maxFleetNumber = 4;
 	self.fleet = array[0];
 	_fleetNumber = fleetNumber;
 	
-	self.anchorageRepair = self.anchorageReairHolder[fleetNumber - 1];
+	self.anchorageRepair = self.anchorageRepairHolder[fleetNumber - 1];
 }
 - (NSInteger)fleetNumber
 {
