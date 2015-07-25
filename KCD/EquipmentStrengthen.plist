@@ -1780,6 +1780,26 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
+		<integer>4</integer>
+		<key>equipment</key>
+		<string>32号対水上電探</string>
+		<key>secondShip</key>
+		<string>伊勢</string>
+	<key>remodelEquipment</key>
+	<string>32号対水上電探改</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>5</integer>
+		<key>equipment</key>
+		<string>32号対水上電探</string>
+		<key>secondShip</key>
+		<string>伊勢</string>
+	<key>remodelEquipment</key>
+	<string>32号対水上電探改</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
 		<integer>6</integer>
 		<key>equipment</key>
 		<string>32号対水上電探</string>
@@ -1821,6 +1841,22 @@
 		<string>32号対水上電探改</string>
 		<key>secondShip</key>
 		<string>伊勢</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>4</integer>
+		<key>equipment</key>
+		<string>32号対水上電探改</string>
+		<key>secondShip</key>
+		<string>日向</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>5</integer>
+		<key>equipment</key>
+		<string>32号対水上電探改</string>
+		<key>secondShip</key>
+		<string>日向</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
