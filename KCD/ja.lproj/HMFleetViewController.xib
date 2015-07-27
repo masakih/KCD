@@ -83,9 +83,9 @@
                     </connections>
                 </matrix>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="GMS-aA-S7M">
-                    <rect key="frame" x="350" y="263" width="179" height="17"/>
+                    <rect key="frame" x="318" y="263" width="164" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="pRI-rA-JGD">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="012345678901234567890" id="pRI-rA-JGD">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -147,9 +147,9 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </customView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="tzQ-Ab-vcB">
-                    <rect key="frame" x="533" y="263" width="83" height="17"/>
+                    <rect key="frame" x="549" y="263" width="63" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="-44:44" id="cM2-uj-Gqv">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" placeholderString="" id="cM2-uj-Gqv">
                         <customFormatter key="formatter" id="pgG-gM-Tpw" customClass="HMTimerCountFormatter"/>
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -157,6 +157,27 @@
                     </textFieldCell>
                     <connections>
                         <binding destination="-2" name="value" keyPath="repairTime" id="Rpx-gC-Nbh"/>
+                    </connections>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="uUF-rx-r0B">
+                    <rect key="frame" x="524" y="263" width="25" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="5隻" placeholderString="" id="A7x-BU-zBz">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="-2" name="displayPatternValue1" keyPath="repairableShipCount" id="CTy-Sh-kwD">
+                            <dictionary key="options">
+                                <string key="NSDisplayPattern">%{value1}@隻</string>
+                            </dictionary>
+                        </binding>
+                        <binding destination="-2" name="hidden" keyPath="repairableShipCount" id="SRM-j4-DXD">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                            </dictionary>
+                        </binding>
                     </connections>
                 </textField>
             </subviews>

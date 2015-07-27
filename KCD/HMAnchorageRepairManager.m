@@ -100,12 +100,12 @@
 {
 	id contextObject = (__bridge id)(context);
 	
-//	if([contextObject isEqual:@"members"]) {
-//		
-//		return;
-//	}
+	if([contextObject isEqual:@"members"]) {
+		[self willChangeValueForKey:@"repairableShipCount"];
+		[self didChangeValueForKey:@"repairableShipCount"];
+		return;
+	}
 	if([contextObject isKindOfClass:[NSString class]]) {
-		
 		[self resetRepairTime];
 		[self buildMembers];
 		return;
@@ -116,32 +116,32 @@
 
 - (void)buildMembers
 {
-//	NSString *observeKeyPath = @"arrangedObjects.equippedItem";
-//	
-//	[self.memberController removeObserver:self forKeyPath:observeKeyPath];
-//	
-//	NSArray *shipKeys = @[@"ship_0", @"ship_1", @"ship_2", @"ship_3", @"ship_4", @"ship_5"];
-//	HMServerDataStore *store = [HMServerDataStore defaultManager];
-//	NSMutableArray *array = [NSMutableArray new];
-//	[shipKeys enumerateObjectsUsingBlock:^(NSString *key, NSUInteger idx, BOOL *stop) {
-//		id shipID = [_fleet valueForKey:key];
-//		NSError *error = nil;
-//		NSArray *ships = [store objectsWithEntityName:@"Ship"
-//												error:&error
-//									  predicateFormat:@"id = %ld", [shipID integerValue]];
-//		if(error) {
-//			NSLog(@"%s error: %@", __PRETTY_FUNCTION__, error);
-//		}
-//		if(ships.count != 0) {
-//			[array addObject:ships[0]];
-//		}
-//	}];
-//	_members = array;
-//	_memberController = [[NSArrayController alloc] initWithContent:array];
-//	[self.memberController addObserver:self
-//							forKeyPath:observeKeyPath
-//							   options:0
-//							   context:@"members"];
+	NSString *observeKeyPath = @"arrangedObjects.equippedItem";
+	
+	[self.memberController removeObserver:self forKeyPath:observeKeyPath];
+	
+	NSArray *shipKeys = @[@"ship_0", @"ship_1", @"ship_2", @"ship_3", @"ship_4", @"ship_5"];
+	HMServerDataStore *store = [HMServerDataStore defaultManager];
+	NSMutableArray *array = [NSMutableArray new];
+	[shipKeys enumerateObjectsUsingBlock:^(NSString *key, NSUInteger idx, BOOL *stop) {
+		id shipID = [_fleet valueForKey:key];
+		NSError *error = nil;
+		NSArray *ships = [store objectsWithEntityName:@"Ship"
+												error:&error
+									  predicateFormat:@"id = %ld", [shipID integerValue]];
+		if(error) {
+			NSLog(@"%s error: %@", __PRETTY_FUNCTION__, error);
+		}
+		if(ships.count != 0) {
+			[array addObject:ships[0]];
+		}
+	}];
+	_members = array;
+	_memberController = [[NSArrayController alloc] initWithContent:array];
+	[self.memberController addObserver:self
+							forKeyPath:observeKeyPath
+							   options:0
+							   context:@"members"];
 }
 
 - (void)didRecivePortAPINotification:(NSNotification *)notification

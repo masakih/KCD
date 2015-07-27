@@ -49,6 +49,7 @@ const NSInteger maxFleetNumber = 4;
 @property (strong) NSArray *anchorageRepairHolder;
 @property (strong) HMAnchorageRepairManager *anchorageRepair;
 @property (readonly) NSNumber *repairTime;
+@property (readonly) NSNumber *repairableShipCount;
 
 @end
 
@@ -426,7 +427,7 @@ const NSInteger maxFleetNumber = 4;
 		id anchorageRepair = [[HMAnchorageRepairManager alloc] initWithDeck:deck];
 		[anchorageRepairs addObject:anchorageRepair];
 	}
-	self.anchorageReairHolder = anchorageRepairs;
+	self.anchorageRepairHolder = anchorageRepairs;
 	
 	HMAppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
 	[appDelegate addCounterUpdateBlock:^{
@@ -447,6 +448,18 @@ const NSInteger maxFleetNumber = 4;
 	NSDate *now = [NSDate dateWithTimeIntervalSinceNow:0];
 	NSTimeInterval diff = compTime - [now timeIntervalSince1970];
 	return @(diff + 20 * 60);
+}
++ (NSSet *)keyPathsForValuesAffectingRepairableShipCount
+{
+	return [NSSet setWithObjects:
+			@"anchorageRepair.repairableShipCount", @"anchorageRepair",
+			
+			
+			nil];
+}
+- (NSNumber *)repairableShipCount
+{
+	return self.anchorageRepair.repairableShipCount;
 }
 
 @end
