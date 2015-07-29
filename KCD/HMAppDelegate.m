@@ -104,6 +104,8 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+	[CustomHTTPProtocol setupCache];
+	
 	NSUserNotificationCenter *unc = [NSUserNotificationCenter defaultUserNotificationCenter];
 	[unc setDelegate:self];
 	
