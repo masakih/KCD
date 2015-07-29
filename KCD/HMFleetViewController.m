@@ -160,6 +160,9 @@ const NSInteger maxFleetNumber = 4;
 		ship = array[0];
 	}
 	detail.ship = ship;
+	
+	[self willChangeValueForKey:@"repairableShipCount"];
+	[self didChangeValueForKey:@"repairableShipCount"];
 }
 - (void)setFleet:(HMKCDeck *)fleet
 {
