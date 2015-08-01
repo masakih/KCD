@@ -18,6 +18,7 @@ HMUserDefaults *HMStandardDefaults = nil;
 @dynamic hideMaxKaryoku, hideMaxRaisou, hideMaxLucky, hideMaxSoukou, hideMaxTaiku;
 @dynamic appendKanColleTag;
 @dynamic prevReloadDate;
+@dynamic repairTime;
 
 + (void)load
 {
@@ -396,5 +397,14 @@ HMUserDefaults *HMStandardDefaults = nil;
 - (NSInteger)fleetViewShipOrder
 {
 	return [self integerForKey:@"fleetViewShipOrder"];
+}
+
+- (void)setRepairTime:(NSDate *)repairTime
+{
+	[self setKeyedArchiveObject:repairTime forKey:@"repairTime"];
+}
+- (NSDate *)repairTime
+{
+	return [self keyedUnarchiveObject:@"repairTime"];
 }
 @end

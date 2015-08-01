@@ -126,4 +126,7 @@ extern HMUserDefaults *HMStandardDefaults;
  */
 @property NSInteger fleetViewShipOrder;
 
+
+@property NSDate *repairTime;
+
 @end

@@ -9,6 +9,7 @@
 #import "HMAnchorageRepairManager.h"
 
 #import "HMAppDelegate.h"
+#import "HMUserDefaults.h"
 
 #import "HMServerDataStore.h"
 #import "HMKCDeck+Extension.h"
@@ -76,7 +77,7 @@
 		
 		[self buildMembers];
 		
-		[self resetRepairTime];
+//		[self resetRepairTime];
 		
 		NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 		[nc addObserver:self
@@ -95,6 +96,16 @@
 							  forKeyPath:[NSString stringWithFormat:@"selection.%@", key]];
 	}
 }
+
+- (NSDate *)repairTime
+{
+	return HMStandardDefaults.repairTime;;
+}
+- (void)setRepairTime:(NSDate *)repairTime
+{
+	HMStandardDefaults.repairTime = repairTime;
+}
+
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
