@@ -85,6 +85,27 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 	[battle setValue:@([[self.arguments valueForKey:@"api_deck_id"] integerValue]) forKeyPath:@"deckId"];
 	[battle setValue:@([[self.arguments valueForKey:@"api_maparea_id"] integerValue]) forKeyPath:@"mapArea"];
 	[battle setValue:@([[self.arguments valueForKey:@"api_mapinfo_no"] integerValue]) forKeyPath:@"mapInfo"];
+	[battle setValue:@([[self.json valueForKeyPath:@"api_data.api_no"] integerValue]) forKeyPath:@"no"];
+	
+	[self.store saveAction:nil];
+}
+
+- (void)nextCell
+{
+	NSError *error = nil;
+	NSArray *battles = [self.store objectsWithEntityName:@"Battle"
+											   predicate:nil
+												   error:&error];
+	if(error) {
+		[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
+	}
+	if(battles.count == 0) {
+		NSLog(@"Battle is invalid.");
+		return;
+	}
+	id battle = battles[0];
+	
+	[battle setValue:@([[self.json valueForKeyPath:@"api_data.api_no"] integerValue]) forKeyPath:@"no"];
 	
 	[self.store saveAction:nil];
 }
@@ -384,6 +405,11 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 		[self startBattle];
 		return;
 	}
+	if([self.api isEqualToString:@"/kcsapi/api_req_map/next"]) {
+		[self nextCell];
+		return;
+	}
+	
 	if([self.api isEqualToString:@"/kcsapi/api_req_sortie/battle"]) {
 		[self calculateBattle];
 		return;

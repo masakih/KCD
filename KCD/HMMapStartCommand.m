@@ -21,7 +21,10 @@
 
 + (BOOL)canExcuteAPI:(NSString *)api
 {
-	return [api isEqualToString:@"/kcsapi/api_req_map/start"];
+	if([api isEqualToString:@"/kcsapi/api_req_map/start"]) return YES;
+	if([api isEqualToString:@"/kcsapi/api_req_map/next"]) return YES;
+	
+	return NO;
 }
 
 - (id)init

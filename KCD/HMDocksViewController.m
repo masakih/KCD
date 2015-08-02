@@ -46,6 +46,10 @@
 
 @property (nonatomic, strong) HMQuestListViewController *questListViewController;
 
+
+@property (nonatomic, weak) IBOutlet NSTextField *cellNumberField;
+@property (readonly) NSNumber *cellNumber;
+
 @end
 
 @implementation HMDocksViewController
@@ -152,6 +156,14 @@
 						   forKeyPath:@"selection"
 							  options:0
 							  context:NULL];
+	[self.battleContoller addObserver:self
+						   forKeyPath:@"selection.no"
+							  options:0
+							  context:NULL];
+	
+#ifdef DEBUG
+	self.cellNumberField.hidden = NO;
+#endif
 }
 
 - (NSManagedObjectContext *)battleManagedObjectController
@@ -174,6 +186,11 @@
 	if([keyPath isEqualToString:@"selection"]) {
 		[self willChangeValueForKey:@"sortieString"];
 		[self didChangeValueForKey:@"sortieString"];
+		return;
+	}
+	if([keyPath isEqualToString:@"selection.no"]) {
+		[self willChangeValueForKey:@"cellNumber"];
+		[self didChangeValueForKey:@"cellNumber"];
 		return;
 	}
 	
@@ -232,6 +249,11 @@
 	if(array.count == 0) return nil;
 	
 	return [NSString stringWithFormat:@"%@", [array[0] valueForKey:@"name"]];
+}
+
+- (NSNumber *)cellNumber
+{
+	return [self.battleContoller valueForKeyPath:@"content.no"];
 }
 
 @end

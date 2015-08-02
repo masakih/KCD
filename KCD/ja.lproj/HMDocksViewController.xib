@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment version="1070" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
@@ -8,6 +8,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="HMDocksViewController">
             <connections>
                 <outlet property="battleContoller" destination="sje-58-fiD" id="4Qx-Ag-AL2"/>
+                <outlet property="cellNumberField" destination="XD8-hT-IOk" id="oAB-vD-dXe"/>
                 <outlet property="questListViewPlaceholder" destination="YHM-Cb-C0n" id="LSr-C9-vnR"/>
                 <outlet property="view" destination="vGg-MO-rzn" id="Z4V-4O-pqr"/>
             </connections>
@@ -418,7 +419,7 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="SDh-rD-4Hk">
-                    <rect key="frame" x="35" y="335" width="278" height="51"/>
+                    <rect key="frame" x="35" y="335" width="236" height="51"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" id="gFh-Ud-DOy">
                         <font key="font" metaFont="system"/>
@@ -513,6 +514,19 @@ ffff</string>
                     <rect key="frame" x="37" y="6" width="274" height="312"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                 </customView>
+                <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="XD8-hT-IOk">
+                    <rect key="frame" x="275" y="352" width="38" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="uRZ-Ag-BMV">
+                        <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="yCy-gA-IUU"/>
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="cellNumber" id="c0W-nP-9xV"/>
+                    </connections>
+                </textField>
             </subviews>
             <point key="canvasLocation" x="433.5" y="493"/>
         </customView>
