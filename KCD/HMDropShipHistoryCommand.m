@@ -45,6 +45,7 @@
 	
 	id mapAreaId = [battle valueForKey:@"mapArea"];
 	id mapInfoId = [battle valueForKey:@"mapInfo"];
+	id mapCellNo = [battle valueForKey:@"no"];
 	
 	HMServerDataStore *store = [HMServerDataStore defaultManager];
 	NSError *error = nil;
@@ -82,6 +83,7 @@
 	newObejct.mapAreaName = mapAreaName;
 	newObejct.mapInfo = mapInfoId;
 	newObejct.mapInfoName = mapInfoName;
+	newObejct.mapCell = mapCellNo;
 	newObejct.winRank = [data valueForKey:@"api_win_rank"];
 	newObejct.date = [NSDate dateWithTimeIntervalSinceNow:0];
 	
@@ -108,6 +110,7 @@
 		newObejct.mapAreaName = history.mapAreaName;
 		newObejct.mapInfo = history.mapInfo;
 		newObejct.mapInfoName = history.mapInfoName;
+		newObejct.mapCell = history.mapCell;
 		newObejct.winRank = history.winRank;
 		newObejct.date = history.date;
 		
