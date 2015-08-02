@@ -78,7 +78,6 @@
 																inManagedObjectContext:[lds managedObjectContext]];
 	
 	newObejct.shipName = [getShip valueForKey:@"api_ship_name"];
-	if([mapAreaId integerValue] > 10) mapAreaId = @"E";
 	newObejct.mapArea = [NSString stringWithFormat:@"%@", mapAreaId];
 	newObejct.mapAreaName = mapAreaName;
 	newObejct.mapInfo = mapInfoId;
