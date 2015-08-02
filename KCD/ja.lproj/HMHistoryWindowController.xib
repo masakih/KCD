@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="HMHistoryWindowController">
@@ -45,7 +45,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="636" height="19"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <size key="intercellSpacing" width="3" height="2"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                         <tableColumns>
                                                             <tableColumn identifier="name" editable="NO" width="100" minWidth="40" maxWidth="1000" id="LGK-3f-aFf">
@@ -246,7 +246,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="636" height="19"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <size key="intercellSpacing" width="3" height="2"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                         <tableColumns>
                                                             <tableColumn identifier="name" editable="NO" width="99" minWidth="41" maxWidth="1000" id="0fT-I5-7lP">
@@ -444,10 +444,10 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="sequential" alternatingRowBackgroundColors="YES" autosaveName="drophistory" headerView="GLB-Em-NKT" id="VIc-m5-S1Y">
-                                                        <rect key="frame" x="0.0" y="0.0" width="238" height="117"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="636" height="19"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <size key="intercellSpacing" width="3" height="2"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                         <tableColumns>
                                                             <tableColumn identifier="shipName" width="70.05078125" minWidth="40" maxWidth="1000" id="xrs-Rn-K03">
@@ -503,12 +503,13 @@
                                                                 </textFieldCell>
                                                                 <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                 <connections>
-                                                                    <binding destination="xvi-Qk-gPS" name="displayPatternValue1" keyPath="arrangedObjects.mapArea" id="Unr-T0-nmy">
+                                                                    <binding destination="xvi-Qk-gPS" name="displayPatternValue1" keyPath="arrangedObjects.mapArea" id="DCL-nw-3A5">
                                                                         <dictionary key="options">
                                                                             <string key="NSDisplayPattern">%{value1}@-%{value2}@</string>
+                                                                            <string key="NSValueTransformerName">HMMapAreaTransformaer</string>
                                                                         </dictionary>
                                                                     </binding>
-                                                                    <binding destination="xvi-Qk-gPS" name="displayPatternValue2" keyPath="arrangedObjects.mapInfo" previousBinding="Unr-T0-nmy" id="iCy-Ax-yo9">
+                                                                    <binding destination="xvi-Qk-gPS" name="displayPatternValue2" keyPath="arrangedObjects.mapInfo" previousBinding="DCL-nw-3A5" id="xLu-kX-IGy">
                                                                         <dictionary key="options">
                                                                             <string key="NSDisplayPattern">%{value1}@-%{value2}@</string>
                                                                         </dictionary>
