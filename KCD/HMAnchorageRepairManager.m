@@ -25,6 +25,7 @@
 @property (strong) NSDate *repairTime;
 
 @property (strong) HMKCDeck* fleet;
+@property (strong) NSNumber *deckID;
 @property (strong) NSArray *members;
 
 @property (strong) NSObjectController *fleetController;
@@ -34,11 +35,22 @@
 
 @implementation HMAnchorageRepairManager
 
+static NSMutableArray *sRepairableDeckIDs;
+
++ (void)initialize
+{
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		sRepairableDeckIDs = [NSMutableArray new];
+	});
+}
+
 - (instancetype)initWithDeck:(HMKCDeck *)deck
 {
 	self = [super init];
 	if(self) {
 		_fleet = deck;
+		_deckID = _fleet.id;
 		
 		_fleetController = [NSObjectController new];
 		_fleetController.managedObjectContext = deck.managedObjectContext;
@@ -52,7 +64,7 @@
 		
 		[self.fleetController addObserver:self
 							  forKeyPath:@"selection.ship_0"
-								 options:0
+								 options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
 								 context:@"0"];
 		[self.fleetController addObserver:self
 							   forKeyPath:@"selection.ship_1"
@@ -99,6 +111,8 @@
 
 - (NSDate *)repairTime
 {
+	if(!self.repairable) return nil;
+	
 	return HMStandardDefaults.repairTime;;
 }
 - (void)setRepairTime:(NSDate *)repairTime
@@ -177,7 +191,13 @@
 	HMKCMasterShipObject *flagShipMaster = flagShip.master_ship;
 	id stype = flagShipMaster.stype;
 	id stypeId = [stype valueForKey:@"id"];
-	return [self.repairShipIds containsObject:stypeId];
+	BOOL result = [self.repairShipIds containsObject:stypeId];
+	if(!result && [sRepairableDeckIDs containsObject:self.deckID]) {
+		[sRepairableDeckIDs removeObject:self.deckID];
+	} else if(result && ![sRepairableDeckIDs containsObject:self.deckID]) {
+		[sRepairableDeckIDs addObject:self.deckID];
+	}
+	return result;
 }
 
 - (NSNumber *)repairableShipCount
@@ -196,6 +216,9 @@
 
 - (void)resetRepairTime
 {
+	BOOL prevRepairable = [sRepairableDeckIDs containsObject:self.deckID];
+	if(!prevRepairable && !self.repairable) return;
+	
 	if(self.repairable) {
 		self.repairTime = [NSDate dateWithTimeIntervalSinceNow:0.0];
 	} else {
