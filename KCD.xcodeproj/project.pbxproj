@@ -37,6 +37,7 @@
 		F43F3D4C1A34AC8000D6DAF7 /* HMKCMasterShipObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F43F3D4B1A34AC8000D6DAF7 /* HMKCMasterShipObject.m */; };
 		F43F3D4F1A34ACCD00D6DAF7 /* HMKCShipObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F43F3D4E1A34ACCD00D6DAF7 /* HMKCShipObject.m */; };
 		F43F3D521A39CC7500D6DAF7 /* HMKCMasterSlotItemObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F43F3D511A39CC7500D6DAF7 /* HMKCMasterSlotItemObject.m */; };
+		F448F9951B70E9BE004901AD /* HMKCMaterial.m in Sources */ = {isa = PBXBuildFile; fileRef = F448F9941B70E9BE004901AD /* HMKCMaterial.m */; };
 		F448F9981B75A128004901AD /* HMKCBasic.m in Sources */ = {isa = PBXBuildFile; fileRef = F448F9971B75A128004901AD /* HMKCBasic.m */; };
 		F44AB20019E050F600F217AF /* HMKCDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = F44AB1FF19E050F600F217AF /* HMKCDeck.m */; };
 		F44AB20619E053CB00F217AF /* HMKCDeck+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = F44AB20519E053CB00F217AF /* HMKCDeck+Extension.m */; };
@@ -267,6 +268,8 @@
 		F43F3D4E1A34ACCD00D6DAF7 /* HMKCShipObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKCShipObject.m; sourceTree = "<group>"; };
 		F43F3D501A39CC7500D6DAF7 /* HMKCMasterSlotItemObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMKCMasterSlotItemObject.h; sourceTree = "<group>"; };
 		F43F3D511A39CC7500D6DAF7 /* HMKCMasterSlotItemObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKCMasterSlotItemObject.m; sourceTree = "<group>"; };
+		F448F9931B70E9BE004901AD /* HMKCMaterial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMKCMaterial.h; sourceTree = "<group>"; };
+		F448F9941B70E9BE004901AD /* HMKCMaterial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKCMaterial.m; sourceTree = "<group>"; };
 		F448F9961B75A128004901AD /* HMKCBasic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMKCBasic.h; sourceTree = "<group>"; };
 		F448F9971B75A128004901AD /* HMKCBasic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKCBasic.m; sourceTree = "<group>"; };
 		F44AB1FE19E050F600F217AF /* HMKCDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMKCDeck.h; sourceTree = "<group>"; };
@@ -741,6 +744,8 @@
 				F46F104718ABAC910063E503 /* KCD.xcdatamodeld */,
 				F448F9961B75A128004901AD /* HMKCBasic.h */,
 				F448F9971B75A128004901AD /* HMKCBasic.m */,
+				F448F9931B70E9BE004901AD /* HMKCMaterial.h */,
+				F448F9941B70E9BE004901AD /* HMKCMaterial.m */,
 				F43F3D4A1A34AC8000D6DAF7 /* HMKCMasterShipObject.h */,
 				F43F3D4B1A34AC8000D6DAF7 /* HMKCMasterShipObject.m */,
 				F43F3D4D1A34ACCD00D6DAF7 /* HMKCShipObject.h */,
@@ -1331,6 +1336,7 @@
 				F4268009193AF4E000B2C27F /* HMUserDefaults.m in Sources */,
 				F44AB20019E050F600F217AF /* HMKCDeck.m in Sources */,
 				F43F3D4F1A34ACCD00D6DAF7 /* HMKCShipObject.m in Sources */,
+				F448F9951B70E9BE004901AD /* HMKCMaterial.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
