@@ -42,6 +42,10 @@
 
 - (void)commitJSONToEntityNamed:(NSString *)entityName;
 
+
+- (void)registerElement:(NSDictionary *)element
+			   toObject:(NSManagedObject *)object;
+
 // 特別な処理を行う
 // default return NO
 - (BOOL)handleExtraValue:(id)value forKey:(NSString *)key toObject:(NSManagedObject *)object;

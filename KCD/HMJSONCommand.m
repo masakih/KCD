@@ -117,6 +117,42 @@ NSString *keyByDeletingPrefix(NSString *key)
 		
 	}
 }
+- (void)registerElement:(NSDictionary *)element toObject:(NSManagedObject *)object
+{
+	if(!object) return;
+	
+	for(NSString *key in element) {
+		if([self.ignoreKeys containsObject:key]) continue;
+		
+		id value = element[key];
+		if([self handleExtraValue:value forKey:key toObject:object]) {
+			continue;
+		}
+		if([value isKindOfClass:[NSArray class]]) {
+			NSUInteger i = 0;
+			for(id element in value) {
+				id hoge = element;
+				NSString *newKey = [NSString stringWithFormat:@"%@_%ld", key, i];
+				if([object validateValue:&hoge forKey:newKey error:NULL]) {
+					[self setValueIfNeeded:hoge toObject:object forKey:newKey];
+				}
+				i++;
+			}
+		} else if([value isKindOfClass:[NSDictionary class]]) {
+			for(id subKey in value) {
+				id subValue = value[subKey];
+				NSString *newKey = [NSString stringWithFormat:@"%@_D_%@", key, keyByDeletingPrefix(subKey)];
+				if([object validateValue:&subValue forKey:newKey error:NULL]) {
+					[self setValueIfNeeded:subValue toObject:object forKey:newKey];
+				}
+			}
+		} else {
+			if([object validateValue:&value forKey:key error:NULL]) {
+				[self setValueIfNeeded:value toObject:object forKey:key];
+			}
+		}
+	}
+}
 - (void)commitJSONToEntityNamed:(NSString *)entityName
 {
 	NSArray *api_data = [self.json valueForKeyPath:self.dataKey];
@@ -143,9 +179,8 @@ NSString *keyByDeletingPrefix(NSString *key)
 	}
 	
 	NSRange range = NSMakeRange(0, objects.count);
-	for(NSDictionary *type in api_data) {
-		id object = nil;
-		NSUInteger index = [objects indexOfObject:type[@"api_id"]
+	for(NSDictionary *element in api_data) {
+		NSUInteger index = [objects indexOfObject:element[@"api_id"]
 									inSortedRange:range
 										  options:NSBinarySearchingFirstEqual
 								  usingComparator:^(id obj1, id obj2) {
@@ -162,6 +197,8 @@ NSString *keyByDeletingPrefix(NSString *key)
 									  }
 									  return [value1 compare:value2];
 								  }];
+		
+		NSManagedObject *object = nil;
 		if(index == NSNotFound) {
 			object = [NSEntityDescription insertNewObjectForEntityForName:entityName
 												   inManagedObjectContext:managedObjectContext];
@@ -169,37 +206,8 @@ NSString *keyByDeletingPrefix(NSString *key)
 			object = objects[index];
 		}
 		
-		for(NSString *key in type) {
-			if([self.ignoreKeys containsObject:key]) continue;
-			
-			id value = type[key];
-			if([self handleExtraValue:value forKey:key toObject:object]) {
-				continue;
-			}
-			if([value isKindOfClass:[NSArray class]]) {
-				NSUInteger i = 0;
-				for(id element in value) {
-					id hoge = element;
-					NSString *newKey = [NSString stringWithFormat:@"%@_%ld", key, i];
-					if([object validateValue:&hoge forKey:newKey error:NULL]) {
-						[self setValueIfNeeded:hoge toObject:object forKey:newKey];
-					}
-					i++;
-				}
-			} else if([value isKindOfClass:[NSDictionary class]]) {
-				for(id subKey in value) {
-					id subValue = value[subKey];
-					NSString *newKey = [NSString stringWithFormat:@"%@_D_%@", key, keyByDeletingPrefix(subKey)];
-					if([object validateValue:&subValue forKey:newKey error:NULL]) {
-						[self setValueIfNeeded:subValue toObject:object forKey:newKey];
-					}
-				}
-			} else {
-				if([object validateValue:&value forKey:key error:NULL]) {
-					[self setValueIfNeeded:value toObject:object forKey:key];
-				}
-			}
-		}
+		[self registerElement:element
+					 toObject:object];
 	}
 	[self finishOperating:managedObjectContext];
 }
