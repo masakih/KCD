@@ -36,12 +36,11 @@
 
 + (BOOL)canExcuteAPI:(NSString *)api;
 
+@property (readonly) NSString *primaryKey;
 @property (readonly) NSArray *ignoreKeys;
-
 @property (readonly) NSString *dataKey;
 
 - (void)commitJSONToEntityNamed:(NSString *)entityName;
-
 
 - (void)registerElement:(NSDictionary *)element
 			   toObject:(NSManagedObject *)object;

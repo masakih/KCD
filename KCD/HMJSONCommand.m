@@ -106,7 +106,10 @@ NSString *keyByDeletingPrefix(NSString *key)
 {
 	return @"api_data";
 }
-
+- (NSString *)primaryKey
+{
+	return @"id";
+}
 - (void)setValueIfNeeded:(id)value toObject:(id)object forKey:(NSString *)key
 {
 	id oldValue = [object valueForKey:key];
@@ -164,10 +167,13 @@ NSString *keyByDeletingPrefix(NSString *key)
 		return;
 	}
 	
+	NSString *primaryKey = self.primaryKey;
+	NSString *primaryAPIKey = [NSString stringWithFormat:@"api_%@", primaryKey];
+	
 	HMServerDataStore *serverDataStore = [HMServerDataStore oneTimeEditor];
 	NSManagedObjectContext *managedObjectContext = [serverDataStore managedObjectContext];
 	
-	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
+	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:primaryKey ascending:YES];
 	NSError *error = nil;
 	NSArray *objects = [serverDataStore objectsWithEntityName:entityName
 											  sortDescriptors:@[sortDescriptor]
@@ -180,7 +186,7 @@ NSString *keyByDeletingPrefix(NSString *key)
 	
 	NSRange range = NSMakeRange(0, objects.count);
 	for(NSDictionary *element in api_data) {
-		NSUInteger index = [objects indexOfObject:element[@"api_id"]
+		NSUInteger index = [objects indexOfObject:element[primaryAPIKey]
 									inSortedRange:range
 										  options:NSBinarySearchingFirstEqual
 								  usingComparator:^(id obj1, id obj2) {
@@ -188,12 +194,12 @@ NSString *keyByDeletingPrefix(NSString *key)
 									  if([obj1 isKindOfClass:[NSNumber class]]) {
 										  value1 = obj1;
 									  } else {
-										  value1 = [obj1 valueForKey:@"id"];
+										  value1 = [obj1 valueForKey:primaryKey];
 									  }
 									  if([obj2 isKindOfClass:[NSNumber class]]) {
 										  value2 = obj2;
 									  } else {
-										  value2 = [obj2 valueForKey:@"id"];
+										  value2 = [obj2 valueForKey:primaryKey];
 									  }
 									  return [value1 compare:value2];
 								  }];
