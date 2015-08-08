@@ -17,7 +17,7 @@
         <attribute name="furniture_3" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="furniture_4" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="furniture_5" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="large_Dock" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="large_dock" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="level" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="max_chara" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="max_kagu" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -140,7 +140,7 @@
         <attribute name="buildtime" attributeType="Integer 32" syncable="YES"/>
         <attribute name="bull_max" attributeType="Integer 32" syncable="YES"/>
         <attribute name="fuel_max" attributeType="Integer 32" syncable="YES"/>
-        <attribute name="getmes" attributeType="String" syncable="YES"/>
+        <attribute name="getmes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="houg_0" attributeType="Integer 32" syncable="YES"/>
         <attribute name="houg_1" attributeType="Integer 32" syncable="YES"/>
         <attribute name="id" attributeType="Integer 32" indexed="YES" syncable="YES"/>
@@ -159,7 +159,6 @@
         <attribute name="powup_3" attributeType="Integer 32" syncable="YES"/>
         <attribute name="raig_0" attributeType="Integer 32" syncable="YES"/>
         <attribute name="raig_1" attributeType="Integer 32" syncable="YES"/>
-        <attribute name="sinfo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="slot_num" attributeType="Integer 32" syncable="YES"/>
         <attribute name="soku" optional="YES" attributeType="Integer 32" syncable="YES"/>
         <attribute name="sortno" attributeType="Integer 32" indexed="YES" syncable="YES"/>
@@ -337,7 +336,7 @@
         <element name="MasterMapCell" positionX="0" positionY="0" width="128" height="135"/>
         <element name="MasterMapInfo" positionX="0" positionY="0" width="128" height="270"/>
         <element name="MasterMission" positionX="0" positionY="0" width="128" height="240"/>
-        <element name="MasterShip" positionX="0" positionY="0" width="128" height="735"/>
+        <element name="MasterShip" positionX="0" positionY="0" width="128" height="720"/>
         <element name="MasterSlotItem" positionX="0" positionY="0" width="128" height="540"/>
         <element name="MasterSlotItemEquipType" positionX="0" positionY="0" width="128" height="90"/>
         <element name="MasterSType" positionX="0" positionY="0" width="128" height="135"/>
