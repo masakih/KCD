@@ -205,6 +205,9 @@ static NSArray *levelUpExps = nil;
 	if(planType == 1) return HMStandardDefaults.plan01Color;
 	if(planType == 2) return HMStandardDefaults.plan02Color;
 	if(planType == 3) return HMStandardDefaults.plan03Color;
+	if(planType == 4) return HMStandardDefaults.plan04Color;
+	if(planType == 5) return HMStandardDefaults.plan05Color;
+	if(planType == 6) return HMStandardDefaults.plan06Color;
 	return [NSColor controlTextColor];
 }
 
