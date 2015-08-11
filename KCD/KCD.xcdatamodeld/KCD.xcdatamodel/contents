@@ -308,6 +308,7 @@
         <attribute name="slot_2" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="slot_3" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="slot_4" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="slot_ex" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="sortno" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="soukou_0" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="soukou_1" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -320,6 +321,7 @@
         <relationship name="master_ship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MasterShip" inverseName="ships" inverseEntity="MasterShip" syncable="YES"/>
     </entity>
     <entity name="SlotItem" representedClassName="HMKCSlotItemObject" syncable="YES">
+        <attribute name="alv" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="level" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="locked" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -344,7 +346,7 @@
         <element name="Material" positionX="0" positionY="0" width="128" height="165"/>
         <element name="NyukyoDock" positionX="0" positionY="0" width="128" height="195"/>
         <element name="Quest" positionX="0" positionY="0" width="128" height="240"/>
-        <element name="Ship" positionX="0" positionY="0" width="128" height="780"/>
-        <element name="SlotItem" positionX="0" positionY="0" width="128" height="135"/>
+        <element name="Ship" positionX="0" positionY="0" width="128" height="795"/>
+        <element name="SlotItem" positionX="0" positionY="0" width="128" height="150"/>
     </elements>
 </model>
