@@ -17,6 +17,7 @@
 
 @property (nonatomic, weak) IBOutlet HMSuppliesView *supply;
 
+@property (nonatomic, weak) IBOutlet NSView *taihiOverlayView;
 @end
 
 @implementation HMShipDetailViewController
