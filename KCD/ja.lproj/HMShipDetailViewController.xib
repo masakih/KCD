@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
@@ -8,6 +8,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="HMShipDetailViewController">
             <connections>
                 <outlet property="supply" destination="YLm-de-F1l" id="GDV-O2-ZCQ"/>
+                <outlet property="taihiOverlayView" destination="thk-XX-zcO" id="NNj-6P-l8b"/>
                 <outlet property="view" destination="SH2-fF-cTe" id="esS-P8-0X4"/>
             </connections>
         </customObject>
@@ -87,7 +88,7 @@
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Ktf-5r-pLo">
-                        <rect key="frame" x="232" y="88" width="29" height="17"/>
+                        <rect key="frame" x="232" y="91" width="29" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="555" id="D74-dY-yKV">
                             <font key="font" metaFont="system"/>
@@ -390,7 +391,7 @@
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="8el-1C-ACV">
-                        <rect key="frame" x="200" y="89" width="37" height="14"/>
+                        <rect key="frame" x="200" y="92" width="37" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="制空：" id="fvf-MP-0qU">
                             <font key="font" metaFont="smallSystem"/>
@@ -599,7 +600,7 @@
                         <color key="fillColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </box>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="qbZ-eV-gqf">
-                        <rect key="frame" x="232" y="107" width="29" height="17"/>
+                        <rect key="frame" x="232" y="109" width="29" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="555" id="JVG-Dt-axT">
                             <font key="font" metaFont="system"/>
@@ -615,6 +616,44 @@
                             </binding>
                         </connections>
                     </textField>
+                    <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" id="49N-EY-dSN">
+                        <rect key="frame" x="229" y="74" width="30" height="16"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <view key="contentView">
+                            <rect key="frame" x="1" y="1" width="28" height="14"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="3He-Ij-QMC">
+                                    <rect key="frame" x="1" y="0.0" width="26" height="14"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="女神" id="aOL-vK-iPi">
+                                        <font key="font" size="11" name="HiraKakuProN-W3"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                    <connections>
+                                        <binding destination="LyA-xZ-gxq" name="value" keyPath="selection.slot_ex" id="FVR-cA-Iqg">
+                                            <dictionary key="options">
+                                                <string key="NSNoSelectionPlaceholder">-</string>
+                                                <string key="NSValueTransformerName">HMSlotitemNameTransformer</string>
+                                            </dictionary>
+                                        </binding>
+                                    </connections>
+                                </textField>
+                            </subviews>
+                        </view>
+                        <color key="borderColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                        <color key="fillColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        <connections>
+                            <binding destination="LyA-xZ-gxq" name="hidden" keyPath="selection.slot_ex" id="w2f-dg-NYh">
+                                <dictionary key="options">
+                                    <integer key="NSNoSelectionPlaceholder" value="1"/>
+                                    <integer key="NSNullPlaceholder" value="1"/>
+                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </box>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="yeA-LB-gv0">
                         <rect key="frame" x="4" y="109" width="13" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -632,15 +671,26 @@
                         </connections>
                     </textField>
                     <customView id="YLm-de-F1l" customClass="HMSuppliesView">
-                        <rect key="frame" x="229" y="75" width="30" height="11"/>
+                        <rect key="frame" x="196" y="77" width="30" height="11"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </customView>
+                    <customView id="thk-XX-zcO" customClass="HMHaihiView">
+                        <rect key="frame" x="0.0" y="0.0" width="267" height="129"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <connections>
+                            <binding destination="-2" name="hidden" keyPath="taihi" id="N6O-XT-A0b">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
                     </customView>
                 </subviews>
             </view>
             <color key="borderColor" name="gridColor" catalog="System" colorSpace="catalog"/>
             <color key="fillColor" name="controlHighlightColor" catalog="System" colorSpace="catalog"/>
             <font key="titleFont" metaFont="system"/>
-            <point key="canvasLocation" x="167" y="593.5"/>
+            <point key="canvasLocation" x="166.5" y="593.5"/>
         </box>
     </objects>
 </document>
