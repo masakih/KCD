@@ -56,6 +56,9 @@ extern HMUserDefaults *HMStandardDefaults;
  */
 @property (nonatomic, weak) NSColor *plan03Color;
 
+@property (nonatomic, weak) NSColor *plan04Color;
+@property (nonatomic, weak) NSColor *plan05Color;
+@property (nonatomic, weak) NSColor *plan06Color;
 
 /**
  *  スクリーンショットの縁取りの幅

@@ -29,6 +29,9 @@ HMUserDefaults *HMStandardDefaults = nil;
 		NSColor *plan01Color = [NSColor colorWithCalibratedRed:0.000 green:0.043 blue:0.518 alpha:1.000];
 		NSColor *plan02Color = [NSColor colorWithCalibratedRed:0.800 green:0.223 blue:0.000 alpha:1.000];
 		NSColor *plan03Color = [NSColor colorWithCalibratedRed:0.539 green:0.012 blue:0.046 alpha:1.000];
+		NSColor *plan04Color = [NSColor colorWithCalibratedRed:0.000 green:0.535 blue:0.535 alpha:1.000];
+		NSColor *plan05Color = [NSColor colorWithCalibratedRed:0.376 green:0.035 blue:0.535 alpha:1.000];
+		NSColor *plan06Color = [NSColor colorWithCalibratedRed:0.535 green:0.535 blue:0.000 alpha:1.000];
 		
 		[[NSUserDefaults standardUserDefaults] registerDefaults:
 		 @{
@@ -36,6 +39,9 @@ HMUserDefaults *HMStandardDefaults = nil;
 		   @"plan01Color" : [NSKeyedArchiver archivedDataWithRootObject:plan01Color],
 		   @"plan02Color" : [NSKeyedArchiver archivedDataWithRootObject:plan02Color],
 		   @"plan03Color" : [NSKeyedArchiver archivedDataWithRootObject:plan03Color],
+		   @"plan04Color" : [NSKeyedArchiver archivedDataWithRootObject:plan04Color],
+		   @"plan05Color" : [NSKeyedArchiver archivedDataWithRootObject:plan05Color],
+		   @"plan06Color" : [NSKeyedArchiver archivedDataWithRootObject:plan06Color],
 		   @"screenshotPreviewZoomValue" : @(0.4),
 		   @"showEquipmentType" : @(-1),
 		   @"fleetViewPosition" : @(1),
@@ -263,6 +269,30 @@ HMUserDefaults *HMStandardDefaults = nil;
 - (NSColor *)plan03Color
 {
 	return [self keyedUnarchiveObject:@"plan03Color"];
+}
+- (void)setPlan04Color:(NSColor *)plan04Color
+{
+	[self setKeyedArchiveObject:plan04Color forKey:@"plan04Color"];
+}
+- (NSColor *)plan04Color
+{
+	return [self keyedUnarchiveObject:@"plan04Color"];
+}
+- (void)setPlan05Color:(NSColor *)plan05Color
+{
+	[self setKeyedArchiveObject:plan05Color forKey:@"plan05Color"];
+}
+- (NSColor *)plan05Color
+{
+	return [self keyedUnarchiveObject:@"plan05Color"];
+}
+- (void)setPlan06Color:(NSColor *)plan06Color
+{
+	[self setKeyedArchiveObject:plan06Color forKey:@"plan06Color"];
+}
+- (NSColor *)plan06Color
+{
+	return [self keyedUnarchiveObject:@"plan06Color"];
 }
 
 - (void)setMinimumColoredShipCount:(NSInteger)minimumColoredShipCount
