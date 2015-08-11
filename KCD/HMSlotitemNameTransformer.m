@@ -10,6 +10,9 @@
 
 #import "HMServerDataStore.h"
 
+#import "HMKCSlotItemObject+Extensions.h"
+#import "HMKCMasterSlotItemObject.h"
+
 @implementation HMSlotitemNameTransformer
 + (void)load
 {
@@ -33,6 +36,7 @@
 	if(![value isKindOfClass:[NSNumber class]]) return nil;
 	NSInteger slotItemID = [value integerValue];
 	if(slotItemID == -1) return nil;
+	if(slotItemID == 0) return nil;
 	
 	HMServerDataStore *store = [HMServerDataStore defaultManager];
 	
@@ -45,6 +49,14 @@
 		return nil;
 	}
 	
-	return [[array[0] valueForKey:@"name"] copy];
+	HMKCSlotItemObject *slotItem = array[0];
+	
+	NSInteger mstID = [slotItem.master_slotItem.id integerValue];
+	
+	if(mstID == 42) return @"修理";
+	if(mstID == 43) return @"女神";
+	if(mstID == 145) return @"糧食";
+	
+	return [slotItem.name copy];
 }
 @end
