@@ -78,7 +78,9 @@ static NSString *groupNameKey = @"group";
 		self.plistDownloadQueue = [NSOperationQueue new];
 		self.plistDownloadQueue.name = @"HMStrengthenListViewControllerPlistDownloadQueue";
 		self.plistDownloadQueue.maxConcurrentOperationCount = 1;
-		self.plistDownloadQueue.qualityOfService = NSQualityOfServiceBackground;
+		if(floor(NSAppKitVersionNumber) > NSAppKitVersionNumber10_9) {
+			self.plistDownloadQueue.qualityOfService = NSQualityOfServiceBackground;
+		}
 		NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
 		self.plistDownloadSession = [NSURLSession sessionWithConfiguration:configuration
 																  delegate:self
