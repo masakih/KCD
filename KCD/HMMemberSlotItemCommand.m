@@ -51,10 +51,8 @@
 
 - (void)setMasterSlotItem:(id)value toObject:(NSManagedObject *)object
 {
-	id currentValue = [object valueForKeyPath:@"master_slotItem.name"];
-	if(currentValue && ![currentValue isEqual:[NSNull null]]) {
-		return;
-	}
+	id currentValue = [object valueForKey:@"api_slotitem_id"];
+	if([currentValue compare:value] == NSOrderedSame) return;
 	
 	if(!self.masterSlotItems) {
 		NSManagedObjectContext *managedObjectContext = [object managedObjectContext];
