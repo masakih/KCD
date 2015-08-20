@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
@@ -7,6 +7,11 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="HMShipDetailViewController">
             <connections>
+                <outlet property="shipController" destination="LyA-xZ-gxq" id="UUT-aV-NLA"/>
+                <outlet property="slot00Field" destination="9ct-MC-zEi" id="vKp-1J-o5D"/>
+                <outlet property="slot01Field" destination="WPW-1R-1aV" id="L2T-uv-b0G"/>
+                <outlet property="slot02Field" destination="4qS-ds-Fe5" id="ZbW-Id-7s4"/>
+                <outlet property="slot03Field" destination="uE8-Fk-T3P" id="fHj-ON-Y1w"/>
                 <outlet property="supply" destination="YLm-de-F1l" id="GDV-O2-ZCQ"/>
                 <outlet property="taihiOverlayView" destination="thk-XX-zcO" id="NNj-6P-l8b"/>
                 <outlet property="view" destination="SH2-fF-cTe" id="esS-P8-0X4"/>
@@ -406,7 +411,7 @@
                             <rect key="frame" x="1" y="1" width="189" height="67"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="9ct-MC-zEi">
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="9ct-MC-zEi" customClass="HMSlotItemLevelView">
                                     <rect key="frame" x="41" y="52" width="147" height="14"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="10cm連装高角砲+高射装置" id="1lW-BG-Ev2">
@@ -423,7 +428,7 @@
                                         </binding>
                                     </connections>
                                 </textField>
-                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="WPW-1R-1aV">
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="WPW-1R-1aV" customClass="HMSlotItemLevelView">
                                     <rect key="frame" x="41" y="35" width="147" height="14"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="12.7cm連装高角砲(後期型)" id="1uW-vl-74P">
@@ -440,7 +445,7 @@
                                         </binding>
                                     </connections>
                                 </textField>
-                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="4qS-ds-Fe5">
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="4qS-ds-Fe5" customClass="HMSlotItemLevelView">
                                     <rect key="frame" x="41" y="18" width="147" height="14"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="35.6cm連装砲(ダズル迷彩)" id="qp5-M3-ZJi">
@@ -457,7 +462,7 @@
                                         </binding>
                                     </connections>
                                 </textField>
-                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="uE8-Fk-T3P">
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="uE8-Fk-T3P" customClass="HMSlotItemLevelView">
                                     <rect key="frame" x="41" y="1" width="147" height="14"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="10cm連装高角砲+高射装置" id="fcc-QI-18E">
@@ -675,7 +680,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <customView id="thk-XX-zcO" customClass="HMHaihiView">
-                        <rect key="frame" x="0.0" y="0.0" width="267" height="129"/>
+                        <rect key="frame" x="-79" y="-88" width="267" height="129"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <connections>
                             <binding destination="-2" name="hidden" keyPath="taihi" id="N6O-XT-A0b">
