@@ -46,6 +46,8 @@
 			   toObject:(NSManagedObject *)object;
 
 // 特別な処理を行う
+// 登録前処理
+- (void)beginRegisterObject:(NSManagedObject *)object;
 // default return NO
 - (BOOL)handleExtraValue:(id)value forKey:(NSString *)key toObject:(NSManagedObject *)object;
 

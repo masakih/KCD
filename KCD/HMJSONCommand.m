@@ -124,6 +124,8 @@ NSString *keyByDeletingPrefix(NSString *key)
 {
 	if(!object) return;
 	
+	[self beginRegisterObject:object];
+	
 	for(NSString *key in element) {
 		if([self.ignoreKeys containsObject:key]) continue;
 		
@@ -230,6 +232,10 @@ NSString *keyByDeletingPrefix(NSString *key)
 	return NO;
 }
 
+- (void)beginRegisterObject:(NSManagedObject *)object
+{
+	
+}
 - (BOOL)handleExtraValue:(id)value forKey:(NSString *)key toObject:(NSManagedObject *)object
 {
 	return NO;
