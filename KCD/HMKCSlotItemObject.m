@@ -13,6 +13,7 @@
 
 @implementation HMKCSlotItemObject
 
+@dynamic alv;
 @dynamic id;
 @dynamic level;
 @dynamic locked;

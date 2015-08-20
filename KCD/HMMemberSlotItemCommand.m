@@ -98,6 +98,11 @@
 	[self setValueIfNeeded:item toObject:object forKey:@"master_slotItem"];
 	[self setValueIfNeeded:value toObject:object forKey:@"slotitem_id"];
 }
+
+- (void)beginRegisterObject:(NSManagedObject *)object
+{
+	[object setValue:nil forKey:@"alv"];
+}
 - (BOOL)handleExtraValue:(id)value forKey:(NSString *)key toObject:(NSManagedObject *)object
 {
 	// 取得後破棄した装備のデータを削除する

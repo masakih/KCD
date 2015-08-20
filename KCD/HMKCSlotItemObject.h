@@ -12,6 +12,7 @@
 
 @interface HMKCSlotItemObject : HMKCManagedObject
 
+@property (nonatomic, retain) NSNumber * alv;
 @property (nonatomic, retain) NSNumber * id;
 @property (nonatomic, retain) NSNumber * level;
 @property (nonatomic, retain) NSNumber * locked;
