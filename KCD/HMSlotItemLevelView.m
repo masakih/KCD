@@ -24,6 +24,12 @@ static NSColor *sContentColor = nil;
 
 @implementation HMSlotItemLevelView
 
+- (void)dealloc
+{
+	[self.slotItem removeObserver:self forKeyPath:@"level"];
+	[self.slotItem removeObserver:self forKeyPath:@"alv"];
+}
+
 - (void)awakeFromNib
 {
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
@@ -338,6 +344,9 @@ static NSColor *sContentColor = nil;
 
 - (void)fetchSlotItem
 {
+	[self.slotItem removeObserver:self forKeyPath:@"level"];
+	[self.slotItem removeObserver:self forKeyPath:@"alv"];
+	
 	if(!self.slotItemID || [self.slotItemID isEqual:@(-1)]) {
 		self.slotItem = nil;
 		return;
@@ -358,9 +367,6 @@ static NSColor *sContentColor = nil;
 		self.slotItem = nil;
 		return;
 	}
-	
-	[self.slotItem removeObserver:self forKeyPath:@"level"];
-	[self.slotItem removeObserver:self forKeyPath:@"alv"];
 	
 	self.slotItem = array[0];
 	
