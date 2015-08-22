@@ -11,10 +11,8 @@
 #import "HMServerDataStore.h"
 #import "HMKCSlotItemObject+Extensions.h"
 
-#import "HMPortNotifyCommand.h"
 
-
-static NSColor *sContentColor = nil;
+static CGImageRef sMaskImage = nil;
 
 @interface HMSlotItemLevelView ()
 
@@ -30,26 +28,70 @@ static NSColor *sContentColor = nil;
 	[self.slotItem removeObserver:self forKeyPath:@"alv"];
 }
 
-- (void)awakeFromNib
+- (CGImageRef)maskImage
 {
-	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-	[nc addObserver:self
-		   selector:@selector(didAlivalPort:)
-			   name:@"HMPortAPIRecieveNotification"
-			 object:nil];
+	if(sMaskImage) return sMaskImage;
+	
+	NSRect rect = self.bounds;
+	CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceGray();
+	CGContextRef maskContext =
+	CGBitmapContextCreate(
+						  NULL,
+						  rect.size.width,
+						  rect.size.height,
+						  8,
+						  rect.size.width,
+						  colorspace,
+						  0);
+	CGColorSpaceRelease(colorspace);
+	
+	// Switch to the context for drawing
+	NSGraphicsContext *maskGraphicsContext =
+	[NSGraphicsContext graphicsContextWithGraphicsPort:maskContext
+											   flipped:NO];
+	[NSGraphicsContext saveGraphicsState];
+	[NSGraphicsContext setCurrentContext:maskGraphicsContext];
+	
+	// Draw the text right-way-up (non-flipped context)
+	
+	NSGradient *gradient = [[NSGradient alloc] initWithColorsAndLocations:
+							[NSColor whiteColor], 0.0,
+							[NSColor whiteColor], 0.75,
+							[NSColor blackColor], 0.85,
+							[NSColor blackColor], 1.0,
+							nil];
+	
+	[gradient drawInRect:rect angle:0.0];
+	// Switch back to the window's context
+	[NSGraphicsContext restoreGraphicsState];
+	
+	// Create an image mask from what we've drawn so far
+	sMaskImage = CGBitmapContextCreateImage(maskContext);
+	
+	return sMaskImage;
 }
 
-- (void)calcContentColor
+- (BOOL)useMask
 {
-	NSRect rect = NSMakeRect(1, 1, 2, 2);
-	NSBitmapImageRep *rep = [[NSBitmapImageRep alloc] initWithFocusedViewRect:rect];
-	sContentColor = [rep colorAtX:1 y:1];
+	NSNumber *level = self.slotItemLevel;
+	if(!level || [level isKindOfClass:[NSNull class]]) return NO;
+	if(level.integerValue == 0) return NO;
+	
+	return YES;
 }
 - (void)drawRect:(NSRect)dirtyRect {
 	
+	BOOL useMask = self.useMask;
+	CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
+	CGContextSaveGState(context);
+	
+	if(useMask) {
+		CGContextClipToMask(context, NSRectToCGRect(self.bounds), self.maskImage);
+	}
+	
 	[super drawRect:dirtyRect];
 	
-	if(!sContentColor) [self calcContentColor];
+	CGContextRestoreGState(context);
 	
 	if(!self.slotItemID) return;
 	if(self.slotItemID.integerValue == 0) return;
@@ -63,11 +105,6 @@ static NSColor *sContentColor = nil;
 	} else {
 		[self drawLevel];
 	}
-}
-
-- (void)didAlivalPort:(NSNotification *)notification
-{
-	self.needsDisplay = YES;
 }
 
 #pragma mark - Air Level
@@ -86,25 +123,23 @@ static NSColor *sContentColor = nil;
 }
 - (NSBezierPath *)levelOneBezierPath
 {
-	NSRect frame = NSInsetRect(self.frame, 0, 1);
-	frame.origin = NSZeroPoint;
+	NSRect rect = self.bounds;
 	NSBezierPath *path = [NSBezierPath bezierPath];
-	[path moveToPoint:NSMakePoint(frame.size.width - self.offset, 0)];
-	[path lineToPoint:NSMakePoint(frame.size.width - self.offset, frame.size.height)];
+	[path moveToPoint:NSMakePoint(rect.size.width - self.offset, 0)];
+	[path lineToPoint:NSMakePoint(rect.size.width - self.offset, rect.size.height)];
 	path.lineWidth = 1;
 	
 	return path;
 }
 - (NSBezierPath *)levelTwoBezierPath
 {
-	NSRect frame = NSInsetRect(self.frame, 0, 1);
-	frame.origin = NSZeroPoint;
+	NSRect rect = self.bounds;
 	NSBezierPath *path = [NSBezierPath bezierPath];
-	[path moveToPoint:NSMakePoint(frame.size.width - self.offset, 0)];
-	[path lineToPoint:NSMakePoint(frame.size.width - self.offset, frame.size.height)];
+	[path moveToPoint:NSMakePoint(rect.size.width - self.offset, 0)];
+	[path lineToPoint:NSMakePoint(rect.size.width - self.offset, rect.size.height)];
 	
-	[path moveToPoint:NSMakePoint(frame.size.width - self.offset - 3.0, 0)];
-	[path lineToPoint:NSMakePoint(frame.size.width - self.offset - 3.0, frame.size.height)];
+	[path moveToPoint:NSMakePoint(rect.size.width - self.offset - self.padding, 0)];
+	[path lineToPoint:NSMakePoint(rect.size.width - self.offset - self.padding, rect.size.height)];
 	
 	path.lineWidth = 1;
 	
@@ -112,17 +147,16 @@ static NSColor *sContentColor = nil;
 }
 - (NSBezierPath *)levelThreeBezierPath
 {
-	NSRect frame = NSInsetRect(self.frame, 0, 1);
-	frame.origin = NSZeroPoint;
+	NSRect rect = self.bounds;
 	NSBezierPath *path = [NSBezierPath bezierPath];
-	[path moveToPoint:NSMakePoint(frame.size.width - self.offset, 0)];
-	[path lineToPoint:NSMakePoint(frame.size.width - self.offset, frame.size.height)];
+	[path moveToPoint:NSMakePoint(rect.size.width - self.offset, 0)];
+	[path lineToPoint:NSMakePoint(rect.size.width - self.offset, rect.size.height)];
 	
-	[path moveToPoint:NSMakePoint(frame.size.width - self.offset - 3.0, 0)];
-	[path lineToPoint:NSMakePoint(frame.size.width - self.offset - 3.0, frame.size.height)];
+	[path moveToPoint:NSMakePoint(rect.size.width - self.offset - self.padding, 0)];
+	[path lineToPoint:NSMakePoint(rect.size.width - self.offset - self.padding, rect.size.height)];
 	
-	[path moveToPoint:NSMakePoint(frame.size.width - self.offset - 3.0 * 2, 0)];
-	[path lineToPoint:NSMakePoint(frame.size.width - self.offset - 3.0 * 2, frame.size.height)];
+	[path moveToPoint:NSMakePoint(rect.size.width - self.offset - self.padding * 2, 0)];
+	[path lineToPoint:NSMakePoint(rect.size.width - self.offset - self.padding * 2, rect.size.height)];
 	
 	path.lineWidth = 1;
 	
@@ -130,11 +164,10 @@ static NSColor *sContentColor = nil;
 }
 - (NSBezierPath *)levelFourBezierPath
 {
-	NSRect frame = NSInsetRect(self.frame, 0, 1);
-	frame.origin = NSZeroPoint;
+	NSRect rect = self.bounds;
 	NSBezierPath *path = [NSBezierPath bezierPath];
-	[path moveToPoint:NSMakePoint(frame.size.width - self.offset - self.slideOffset, 0)];
-	[path lineToPoint:NSMakePoint(frame.size.width - self.offset, frame.size.height)];
+	[path moveToPoint:NSMakePoint(rect.size.width - self.offset - self.slideOffset, 0)];
+	[path lineToPoint:NSMakePoint(rect.size.width - self.offset, rect.size.height)];
 	
 	path.lineWidth = 2;
 	
@@ -142,14 +175,13 @@ static NSColor *sContentColor = nil;
 }
 - (NSBezierPath *)levelFiveBezierPath
 {
-	NSRect frame = NSInsetRect(self.frame, 0, 1);
-	frame.origin = NSZeroPoint;
+	NSRect rect = self.bounds;
 	NSBezierPath *path = [NSBezierPath bezierPath];
-	[path moveToPoint:NSMakePoint(frame.size.width - self.offset - self.slideOffset, 0)];
-	[path lineToPoint:NSMakePoint(frame.size.width - self.offset, frame.size.height)];
+	[path moveToPoint:NSMakePoint(rect.size.width - self.offset - self.slideOffset, 0)];
+	[path lineToPoint:NSMakePoint(rect.size.width - self.offset, rect.size.height)];
 	
-	[path moveToPoint:NSMakePoint(frame.size.width - self.offset - self.slideOffset - self.padding, 0)];
-	[path lineToPoint:NSMakePoint(frame.size.width - self.offset - self.padding, frame.size.height)];
+	[path moveToPoint:NSMakePoint(rect.size.width - self.offset - self.slideOffset - self.padding, 0)];
+	[path lineToPoint:NSMakePoint(rect.size.width - self.offset - self.padding, rect.size.height)];
 	
 	path.lineWidth = 2;
 	
@@ -157,17 +189,16 @@ static NSColor *sContentColor = nil;
 }
 - (NSBezierPath *)levelSixBezierPath
 {
-	NSRect frame = NSInsetRect(self.frame, 0, 1);
-	frame.origin = NSZeroPoint;
+	NSRect rect = self.bounds;
 	NSBezierPath *path = [NSBezierPath bezierPath];
-	[path moveToPoint:NSMakePoint(frame.size.width - self.offset - self.slideOffset, 0)];
-	[path lineToPoint:NSMakePoint(frame.size.width - self.offset, frame.size.height)];
+	[path moveToPoint:NSMakePoint(rect.size.width - self.offset - self.slideOffset, 0)];
+	[path lineToPoint:NSMakePoint(rect.size.width - self.offset, rect.size.height)];
 	
-	[path moveToPoint:NSMakePoint(frame.size.width - self.offset - self.slideOffset - self.padding, 0)];
-	[path lineToPoint:NSMakePoint(frame.size.width - self.offset - self.padding, frame.size.height)];
+	[path moveToPoint:NSMakePoint(rect.size.width - self.offset - self.slideOffset - self.padding, 0)];
+	[path lineToPoint:NSMakePoint(rect.size.width - self.offset - self.padding, rect.size.height)];
 	
-	[path moveToPoint:NSMakePoint(frame.size.width - self.offset - self.slideOffset - self.padding * 2, 0)];
-	[path lineToPoint:NSMakePoint(frame.size.width - self.offset - self.padding * 2, frame.size.height)];
+	[path moveToPoint:NSMakePoint(rect.size.width - self.offset - self.slideOffset - self.padding * 2, 0)];
+	[path lineToPoint:NSMakePoint(rect.size.width - self.offset - self.padding * 2, rect.size.height)];
 	
 	path.lineWidth = 2;
 	
@@ -175,16 +206,16 @@ static NSColor *sContentColor = nil;
 }
 - (NSBezierPath *)levelSevenBezierPath
 {
-	NSRect frame = NSInsetRect(self.frame, 0, 1);
-	frame.origin = NSZeroPoint;
+	const CGFloat anglePoint = 4.0;
+	NSRect rect = self.bounds;
 	NSBezierPath *path = [NSBezierPath bezierPath];
-	[path moveToPoint:NSMakePoint(frame.size.width - self.offset - 4.0, 0)];
-	[path lineToPoint:NSMakePoint(frame.size.width - self.offset, frame.size.height * 0.5)];
-	[path lineToPoint:NSMakePoint(frame.size.width - self.offset - 4.0, frame.size.height)];
+	[path moveToPoint:NSMakePoint(rect.size.width - self.offset - anglePoint, 0)];
+	[path lineToPoint:NSMakePoint(rect.size.width - self.offset, rect.size.height * 0.5)];
+	[path lineToPoint:NSMakePoint(rect.size.width - self.offset - anglePoint, rect.size.height)];
 	
-	[path moveToPoint:NSMakePoint(frame.size.width - self.offset - 4.0 - self.padding, 0)];
-	[path lineToPoint:NSMakePoint(frame.size.width - self.offset - self.padding, frame.size.height * 0.5)];
-	[path lineToPoint:NSMakePoint(frame.size.width - self.offset - 4.0 - self.padding, frame.size.height)];
+	[path moveToPoint:NSMakePoint(rect.size.width - self.offset - anglePoint - self.padding, 0)];
+	[path lineToPoint:NSMakePoint(rect.size.width - self.offset - self.padding, rect.size.height * 0.5)];
+	[path lineToPoint:NSMakePoint(rect.size.width - self.offset - anglePoint - self.padding, rect.size.height)];
 	
 	path.lineWidth = 2;
 	
@@ -234,7 +265,7 @@ static NSColor *sContentColor = nil;
 		case 1:
 		case 2:
 		case 3:
-			return [NSColor colorWithCalibratedRed:0.332 green:0.543 blue:0.646 alpha:1.000];
+			return [NSColor colorWithCalibratedRed:0.257 green:0.523 blue:0.643 alpha:1.000];
 		case 4:
 		case 5:
 		case 6:
@@ -254,7 +285,7 @@ static NSColor *sContentColor = nil;
 		case 1:
 		case 2:
 		case 3:
-			shadow.shadowColor = [NSColor colorWithCalibratedRed:0.152 green:0.501 blue:0.853 alpha:1.000];
+			shadow.shadowColor = [NSColor colorWithCalibratedRed:0.095 green:0.364 blue:0.917 alpha:1.000];
 			shadow.shadowBlurRadius = 4;
 			break;
 		case 4:
@@ -300,31 +331,16 @@ static NSColor *sContentColor = nil;
 	}
 	NSFont *font = [NSFont systemFontOfSize:[NSFont smallSystemFontSize]];
 	
+	NSDictionary *attr = @{
+						   NSFontAttributeName : font,
+						   NSForegroundColorAttributeName : [self levelColor],
+						   };
 	NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:string
-																	 attributes:@{
-																				  NSFontAttributeName : font,
-																				  NSForegroundColorAttributeName : [self levelColor],
-																				  }
-									  ];
+																	 attributes:attr];
 	NSRect boundingRect = [attrString boundingRectWithSize:self.frame.size options:0];
 	NSRect rect = self.frame;
-	rect.origin.x = self.frame.size.width - boundingRect.size.width * 2;
+	rect.origin.x = rect.size.width - boundingRect.size.width - 1.0;
 	rect.origin.y = 0;
-	rect.size.width = boundingRect.size.width * 2;
-	
-	
-	NSGradient *gradient = [[NSGradient alloc] initWithColorsAndLocations:
-							[NSColor colorWithCalibratedWhite:1 alpha:0.000], 0.0,
-							sContentColor, 0.5,
-							sContentColor, 1.0,
-							nil];
-	
-	[gradient drawInRect:rect angle:0.0];
-	
-	rect = self.frame;
-	rect.origin.x = self.frame.size.width - boundingRect.size.width - 1.0;
-	rect.origin.y = 0;
-	
 	
 	[attrString drawInRect:rect];
 }
