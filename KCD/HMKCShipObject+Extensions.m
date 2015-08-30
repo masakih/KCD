@@ -13,6 +13,7 @@
 #import "HMKCSlotItemObject+Extensions.h"
 
 #import "HMServerDataStore.h"
+#import "HMTemporaryDataStore.h"
 #import "HMUserDefaults.h"
 
 
@@ -304,6 +305,23 @@ static NSArray *levelUpExps = nil;
 	}
 	
 	return @(totalSeiku);
+}
+
+
+- (NSNumber *)guardEscaped
+{
+	HMTemporaryDataStore *store = [HMTemporaryDataStore defaultManager];
+	NSError *error = nil;
+	NSArray *array = [store objectsWithEntityName:@"GuardEscaped"
+											error:&error
+								  predicateFormat:@"shipID = %@ AND ensured = TRUE", self.id];
+	if(error) {
+		NSLog(@"GuardEscaped is invalid. error -> %@", error);
+		return @NO;
+	}
+	if(!array) return @NO;
+	
+	return array.count == 0 ? @NO : @YES;
 }
 
 @end

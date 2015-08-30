@@ -17,6 +17,7 @@
 #import "HMDropShipHistoryCommand.h"
 #import "HMDummyShipCommand.h"
 #import "HMPortNotifyCommand.h"
+#import "HMGuardShelterCommand.h"
 
 
 @implementation HMPortCommand
@@ -43,6 +44,7 @@
 			[HMDropShipHistoryCommand new],
 			[HMDummyShipCommand new],
 			[HMPortNotifyCommand new],
+			[HMGuardShelterCommand new],
 			nil];
 	return self;
 }

@@ -11,13 +11,17 @@
 
 #import "HMServerDataStore.h"
 
+
+#import "HMGuardEscapedView.h"
+#import "HMGuardShelterCommand.h"
+
+
 @interface HMShipDetailViewController ()
 
 @property (readonly) NSManagedObjectContext *managedObjectContext;
 
 @property (nonatomic, weak) IBOutlet HMSuppliesView *supply;
-
-@property (nonatomic, weak) IBOutlet NSView *taihiOverlayView;
+@property (nonatomic, weak) IBOutlet HMGuardEscapedView *guardEscapedView;
 
 @property (nonatomic, weak) IBOutlet NSObjectController *shipController;
 @property (nonatomic, weak) IBOutlet NSTextField *slot00Field;
@@ -32,8 +36,27 @@
 - (id)init
 {
 	self = [super initWithNibName:NSStringFromClass([self class]) bundle:nil];
+	if(self) {
+		NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+		[nc addObserver:self
+			   selector:@selector(updateStatus:)
+				   name:HMGuardShelterCommandDidUpdateGuardExcapeNotification
+				 object:nil];
+	}
 	return self;
 }
+- (void)dealloc
+{
+	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+	[nc removeObserver:self];
+}
+
+- (void)updateStatus:(NSNotification *)notification
+{
+	NSNumber *escaped = [self.shipController.content valueForKey:@"guardEscaped"];
+	self.guardEscaped = [escaped boolValue];
+}
+
 
 - (void)awakeFromNib
 {
@@ -69,6 +92,13 @@
 - (HMKCShipObject *)ship
 {
 	return self.representedObject;
+}
+
+
+- (void)setGuardEscaped:(BOOL)guardEscaped
+{
+	self.guardEscapedView.hidden = !guardEscaped;
+	_guardEscaped = guardEscaped;
 }
 
 @end

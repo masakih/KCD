@@ -194,7 +194,8 @@
 		F4E7802818DBD2A00011BC4C /* HMGetShipCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E7802718DBD2A00011BC4C /* HMGetShipCommand.m */; };
 		F4E7802B18DC3A820011BC4C /* HMLocalDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E7802A18DC3A820011BC4C /* HMLocalDataStore.m */; };
 		F4E7802E18DC3AF00011BC4C /* LocalData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4E7802C18DC3AF00011BC4C /* LocalData.xcdatamodeld */; };
-		F4ED5D2A1B78D0CA00D1BDEF /* HMHaihiView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4ED5D291B78D0CA00D1BDEF /* HMHaihiView.m */; };
+		F4ED5D2A1B78D0CA00D1BDEF /* HMGuardEscapedView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4ED5D291B78D0CA00D1BDEF /* HMGuardEscapedView.m */; };
+		F4ED5D2D1B7C677E00D1BDEF /* HMGuardShelterCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4ED5D2C1B7C677E00D1BDEF /* HMGuardShelterCommand.m */; };
 		F4F6E8081B2B17E50008B66E /* HMStrengthenListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F6E8061B2B17E50008B66E /* HMStrengthenListViewController.m */; };
 		F4F6E8091B2B17E50008B66E /* HMStrengthenListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4F6E8071B2B17E50008B66E /* HMStrengthenListViewController.xib */; };
 		F4F6E80C1B2BC81C0008B66E /* HMPeriodicNotifier.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F6E80B1B2BC81C0008B66E /* HMPeriodicNotifier.m */; };
@@ -555,8 +556,10 @@
 		F4E7802918DC3A820011BC4C /* HMLocalDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMLocalDataStore.h; sourceTree = "<group>"; };
 		F4E7802A18DC3A820011BC4C /* HMLocalDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMLocalDataStore.m; sourceTree = "<group>"; };
 		F4E7802D18DC3AF00011BC4C /* LocalData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocalData.xcdatamodel; sourceTree = "<group>"; };
-		F4ED5D281B78D0CA00D1BDEF /* HMHaihiView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMHaihiView.h; sourceTree = "<group>"; };
-		F4ED5D291B78D0CA00D1BDEF /* HMHaihiView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMHaihiView.m; sourceTree = "<group>"; };
+		F4ED5D281B78D0CA00D1BDEF /* HMGuardEscapedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGuardEscapedView.h; sourceTree = "<group>"; };
+		F4ED5D291B78D0CA00D1BDEF /* HMGuardEscapedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMGuardEscapedView.m; sourceTree = "<group>"; };
+		F4ED5D2B1B7C677E00D1BDEF /* HMGuardShelterCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGuardShelterCommand.h; sourceTree = "<group>"; };
+		F4ED5D2C1B7C677E00D1BDEF /* HMGuardShelterCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMGuardShelterCommand.m; sourceTree = "<group>"; };
 		F4F6E8051B2B17E50008B66E /* HMStrengthenListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMStrengthenListViewController.h; sourceTree = "<group>"; };
 		F4F6E8061B2B17E50008B66E /* HMStrengthenListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMStrengthenListViewController.m; sourceTree = "<group>"; };
 		F4F6E8071B2B17E50008B66E /* HMStrengthenListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMStrengthenListViewController.xib; sourceTree = "<group>"; };
@@ -902,10 +905,10 @@
 				F4D6BCA61AA298FD00742FEB /* HMShipDetailViewController.h */,
 				F4D6BCA71AA298FD00742FEB /* HMShipDetailViewController.m */,
 				F4BEF00A1B11A5DE004702B8 /* HMShipDetailViewController.xib */,
-				F4ED5D281B78D0CA00D1BDEF /* HMHaihiView.h */,
-				F4ED5D291B78D0CA00D1BDEF /* HMHaihiView.m */,
 				F47E895B1B80DB9F00B2E552 /* HMSlotItemLevelView.h */,
 				F47E895C1B80DB9F00B2E552 /* HMSlotItemLevelView.m */,
+				F4ED5D281B78D0CA00D1BDEF /* HMGuardEscapedView.h */,
+				F4ED5D291B78D0CA00D1BDEF /* HMGuardEscapedView.m */,
 				F4D6BCB71AA32BEA00742FEB /* HMFleetViewController.h */,
 				F4D6BCB81AA32BEA00742FEB /* HMFleetViewController.m */,
 				F4BEF0071B11A5D3004702B8 /* HMFleetViewController.xib */,
@@ -1027,6 +1030,8 @@
 				F43769DD1AE1248800DE6204 /* HMAirBattleCommand.m */,
 				F4AA0602192E20F500844688 /* HMCalculateDamageCommand.h */,
 				F4AA0603192E20F500844688 /* HMCalculateDamageCommand.m */,
+				F4ED5D2B1B7C677E00D1BDEF /* HMGuardShelterCommand.h */,
+				F4ED5D2C1B7C677E00D1BDEF /* HMGuardShelterCommand.m */,
 				F426802F194D1B1A00B2C27F /* HMChangeHenseiCommand.h */,
 				F4268030194D1B1A00B2C27F /* HMChangeHenseiCommand.m */,
 				F4268032195332A000B2C27F /* HMPowerUpCommand.h */,
@@ -1218,7 +1223,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F499E88D1B5BCA7300189029 /* HMAnchorageRepairManager.m in Sources */,
-				F4ED5D2A1B78D0CA00D1BDEF /* HMHaihiView.m in Sources */,
+				F4ED5D2A1B78D0CA00D1BDEF /* HMGuardEscapedView.m in Sources */,
 				F4513EE818B77A5300073552 /* HMMemberKDockCommand.m in Sources */,
 				F426802B194D0F4800B2C27F /* HMMemberShip2Command.m in Sources */,
 				F4AA06101931869E00844688 /* HMBattleResultCommand.m in Sources */,
@@ -1281,6 +1286,7 @@
 				F448F9921B6FBF80004901AD /* HMResourceHistoryManager.m in Sources */,
 				F4513EEE18B8E2F600073552 /* HMMemberMaterialCommand.m in Sources */,
 				F4FCFD44191F4C1D000640A1 /* HMKenzoMarkCommand.m in Sources */,
+				F4ED5D2D1B7C677E00D1BDEF /* HMGuardShelterCommand.m in Sources */,
 				F44AB23519E805D100F217AF /* HMKaisouLockCommand.m in Sources */,
 				F4BDEB53187252F30069D0CE /* main.m in Sources */,
 				F4B1E30F19D1C9C400805879 /* HMApplySuppliesCommand.m in Sources */,

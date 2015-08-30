@@ -29,4 +29,6 @@
 @property (readonly) NSNumber *totalEquipment;
 
 @property (readonly) NSNumber *seiku;
+
+@property (readonly) NSNumber *guardEscaped; // NSNumber of BOLL
 @end

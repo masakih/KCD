@@ -1,14 +1,46 @@
 //
-//  HMHaihiView.m
+//  HMGuardEscapedView.m
 //  KCD
 //
 //  Created by Hori,Masaki on 2015/08/10.
 //  Copyright (c) 2015年 Hori,Masaki. All rights reserved.
 //
 
-#import "HMHaihiView.h"
+#import "HMGuardEscapedView.h"
 
-@implementation HMHaihiView
+#import "HMGuardShelterCommand.h"
+
+
+@implementation HMGuardEscapedView
+
+//- (instancetype)initWithFrame:(NSRect)frameRect
+//{
+//	self = [super initWithFrame:frameRect];
+//	if(self) {
+//		NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+//		[nc addObserver:self
+//			   selector:@selector(updateStatus:)
+//				   name:HMGuardShelterCommandDidUpdateGuardExcapeNotification
+//				 object:nil];
+//	}
+//	return self;
+//}
+//- (void)dealloc
+//{
+//	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+//	[nc removeObserver:self];
+//}
+//
+//- (void)updateStatusOnMinThread:(id)dummy
+//{
+//	self.needsDisplay = YES;
+//}
+//- (void)updateStatus:(NSNotification *)notification
+//{
+//	[self performSelector:@selector(updateStatusOnMinThread:)
+//			   withObject:nil
+//			   afterDelay:0.1];
+//}
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
@@ -34,17 +66,17 @@
 	NSBezierPath *path = [NSBezierPath bezierPathWithRect:rect];
 	
 	
-	NSShadow *shadow = [NSShadow new];
-	shadow.shadowOffset = NSMakeSize(1, -3);
-	shadow.shadowColor = [NSColor darkGrayColor];
-	shadow.shadowBlurRadius = 5;
-	[shadow set];
+//	NSShadow *shadow = [NSShadow new];
+//	shadow.shadowOffset = NSMakeSize(0.5, -1.5);
+//	shadow.shadowColor = [NSColor darkGrayColor];
+//	shadow.shadowBlurRadius = 5;
+//	[shadow set];
 	
 	[[NSColor whiteColor] set];
 	[path fill];
 	
-	shadow = [NSShadow new];
-	[shadow set];
+//	shadow = [NSShadow new];
+//	[shadow set];
 	
 	[[NSColor blackColor] set];
 	[path stroke];
@@ -55,7 +87,7 @@
 	[path stroke];
 	
 	NSDictionary *taiAttr = @{
-							  NSForegroundColorAttributeName : [NSColor colorWithCalibratedRed:0 green:204 / 255.0 blue:255 / 255.0 alpha:1],
+							  NSForegroundColorAttributeName : [NSColor lightGrayColor],
 							  NSFontAttributeName : [NSFont boldSystemFontOfSize:width - 10],
 							  };
 	NSAttributedString *tai = [[NSAttributedString alloc] initWithString:@"退" attributes:taiAttr];

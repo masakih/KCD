@@ -14,6 +14,6 @@
 
 @property (strong) HMKCShipObject *ship;
 
-@property BOOL taihi;
+@property (nonatomic) BOOL guardEscaped;
 
 @end

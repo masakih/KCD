@@ -11,6 +11,7 @@
 #import "HMMemberShipCommand.h"
 #import "HMMemberDeckCommand.h"
 #import "HMDummyShipCommand.h"
+#import "HMGuardShelterCommand.h"
 
 @implementation HMShipDeckCommand
 + (void)load
@@ -32,6 +33,7 @@
 			[HMMemberShipCommand new],
 			[HMMemberDeckCommand new],
 			[HMDummyShipCommand new],
+			[HMGuardShelterCommand new],
 			nil];
 	return self;
 }

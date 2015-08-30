@@ -128,6 +128,7 @@
 					   @"onslot_4" : @"onslot_4",
 					   @"leng" : @"leng",
 					   @"slot_ex" : @"slot_ex",
+					   @"id" : @"id",
 					   };
 	return specDictionary;
 }

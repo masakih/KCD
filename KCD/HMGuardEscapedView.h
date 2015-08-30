@@ -1,5 +1,5 @@
 //
-//  HMHaihiView.h
+//  HMGuardEscapedView.h
 //  KCD
 //
 //  Created by Hori,Masaki on 2015/08/10.
@@ -8,6 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface HMHaihiView : NSView
+@interface HMGuardEscapedView : NSView
 
 @end
