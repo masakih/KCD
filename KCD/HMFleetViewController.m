@@ -312,6 +312,27 @@ const NSInteger maxFleetNumber = 4;
 	}
 	return @(total);
 }
++ (NSSet *)keyPathsForValuesAffectingTotalCalclatedSeiku
+{
+	return [NSSet setWithObjects:
+			@"detail01.ship.seiku",
+			@"detail02.ship.seiku",
+			@"detail03.ship.seiku",
+			@"detail04.ship.seiku",
+			@"detail05.ship.seiku",
+			@"detail06.ship.seiku",
+			nil];
+}
+- (NSNumber *)totalCalclatedSeiku
+{
+	NSInteger total = 0;
+	for(HMShipDetailViewController *detail in self.details) {
+		HMKCShipObject *ship = detail.ship;
+		total += ship.seiku.integerValue;
+		total += ship.extraSeiku.integerValue;
+	}
+	return @(total);
+}
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {

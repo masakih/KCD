@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
@@ -23,7 +23,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Tek-2X-Nz2">
-                    <rect key="frame" x="760" y="23" width="29" height="17"/>
+                    <rect key="frame" x="757" y="39" width="29" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="999" id="YR1-Zf-z2o">
                         <font key="font" metaFont="system"/>
@@ -35,7 +35,7 @@
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="M1a-LI-gu8">
-                    <rect key="frame" x="707" y="23" width="56" height="17"/>
+                    <rect key="frame" x="704" y="39" width="56" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="索敵値：" id="8vd-Ce-2wt">
                         <font key="font" metaFont="system"/>
@@ -44,7 +44,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="M7E-Fw-i73">
-                    <rect key="frame" x="707" y="2" width="56" height="17"/>
+                    <rect key="frame" x="704" y="18" width="56" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="制空値：" id="Qbb-Ik-rgd">
                         <font key="font" size="13" name="HiraKakuProN-W3"/>
@@ -53,7 +53,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="cTt-4n-W3p">
-                    <rect key="frame" x="760" y="2" width="29" height="17"/>
+                    <rect key="frame" x="757" y="18" width="29" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="999" id="Yci-02-wdB">
                         <font key="font" metaFont="system"/>
@@ -149,14 +149,14 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <binding destination="-2" name="displayPatternValue1" keyPath="repairableShipCount" id="jQC-B7-xag">
-                            <dictionary key="options">
-                                <string key="NSDisplayPattern">%{value1}@隻</string>
-                            </dictionary>
-                        </binding>
                         <binding destination="-2" name="hidden" keyPath="repairableShipCount" id="04h-bb-EMw">
                             <dictionary key="options">
                                 <string key="NSValueTransformerName">NSNegateBoolean</string>
+                            </dictionary>
+                        </binding>
+                        <binding destination="-2" name="displayPatternValue1" keyPath="repairableShipCount" id="jQC-B7-xag">
+                            <dictionary key="options">
+                                <string key="NSDisplayPattern">%{value1}@隻</string>
                             </dictionary>
                         </binding>
                     </connections>
@@ -186,6 +186,22 @@
                         <binding destination="-2" name="hidden" keyPath="repairableShipCount" id="XQl-cP-vX0">
                             <dictionary key="options">
                                 <string key="NSValueTransformerName">NSNegateBoolean</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="egC-s0-Spl">
+                    <rect key="frame" x="754" y="4" width="35" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="(999)" id="9jV-Tr-HbF">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="-2" name="displayPatternValue1" keyPath="totalCalclatedSeiku" id="ypd-Ik-qlQ">
+                            <dictionary key="options">
+                                <string key="NSDisplayPattern">(%{value1}@)</string>
                             </dictionary>
                         </binding>
                     </connections>

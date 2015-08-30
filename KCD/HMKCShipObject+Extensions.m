@@ -269,21 +269,28 @@ static NSArray *levelUpExps = nil;
 			@"onslot_0", @"onslot_1", @"onslot_2", @"onslot_3", @"onslot_4",
 			nil];
 }
-- (NSNumber *)seiku
+
+- (HMKCSlotItemObject *)slotItemAtIndex:(NSUInteger)index
 {
 	HMServerDataStore *store = [HMServerDataStore defaultManager];
+
+	NSString *key = [NSString stringWithFormat:@"slot_%ld", index];
+	NSNumber *itemId = [self valueForKey:key];
+	if(itemId.integerValue == -1) return nil;
+	NSError *error = nil;
+	NSArray *array = [store objectsWithEntityName:@"SlotItem"
+											error:&error
+								  predicateFormat:@"id = %@", itemId];
+	if(array.count == 0) return nil;
+	HMKCSlotItemObject *slotItem = array[0];
+	return slotItem;
+}
+- (NSNumber *)seiku
+{
 	NSArray *effectiveTypes = @[@6, @7, @8, @11];
 	__block NSInteger totalSeiku = 0;
 	for(NSInteger i = 0; i < 5; i++) {
-		NSString *key = [NSString stringWithFormat:@"slot_%ld", i];
-		NSNumber *itemId = [self valueForKey:key];
-		if(itemId.integerValue == -1) break;
-		NSError *error = nil;
-		NSArray *array = [store objectsWithEntityName:@"SlotItem"
-									   error:&error
-							 predicateFormat:@"id = %@", itemId];
-		if(array.count == 0) continue;
-		HMKCSlotItemObject *slotItem = array[0];
+		HMKCSlotItemObject *slotItem = [self slotItemAtIndex:i];
 		HMKCMasterSlotItemObject *master = slotItem.master_slotItem;
 		NSNumber *type2 = master.type_2;
 		if(![effectiveTypes containsObject:type2]) {
@@ -291,7 +298,7 @@ static NSArray *levelUpExps = nil;
 			continue;
 		}
 		
-		key = [NSString stringWithFormat:@"onslot_%ld", i];
+		NSString *key = [NSString stringWithFormat:@"onslot_%ld", i];
 		NSNumber *itemCountValue = [self valueForKey:key];
 		NSNumber *taikuValue = master.tyku;
 		NSInteger itemCount = [itemCountValue integerValue];
@@ -306,7 +313,41 @@ static NSArray *levelUpExps = nil;
 	
 	return @(totalSeiku);
 }
-
+- (NSNumber *)extraSeiku
+{
+	NSArray *fighterTypes = @[@6];
+	NSArray *bomberTypes = @[@7];
+	NSArray *attackerTypes = @[@8];
+	NSArray *floatplaneBomberTypes = @[@11];
+	__block NSInteger extraSeiku = 0;
+	for(NSInteger i = 0; i < 5; i++) {
+		HMKCSlotItemObject *slotItem = [self slotItemAtIndex:i];
+		NSNumber *airLevel = slotItem.alv;
+		if(![airLevel isEqualToNumber:@(7)]) continue;
+		
+		NSString *key = [NSString stringWithFormat:@"onslot_%ld", i];
+		NSNumber *itemCountValue = [self valueForKey:key];
+		NSInteger itemCount = [itemCountValue integerValue];
+		if(itemCount == 0) continue;
+		
+		HMKCMasterSlotItemObject *master = slotItem.master_slotItem;
+		NSNumber *type2 = master.type_2;
+		if([fighterTypes containsObject:type2]) {
+			extraSeiku += 25;
+		}
+		if([bomberTypes containsObject:type2]) {
+			extraSeiku += 3;
+		}
+		if([attackerTypes containsObject:type2]) {
+			extraSeiku += 3;
+		}
+		if([floatplaneBomberTypes containsObject:type2]) {
+			extraSeiku += 9;
+		}
+	}
+	
+	return @(extraSeiku);
+}
 
 - (NSNumber *)guardEscaped
 {
