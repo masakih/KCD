@@ -9,6 +9,7 @@
 #import "HMMapStartCommand.h"
 
 #import "HMCalculateDamageCommand.h"
+#import "HMGuardShelterCommand.h"
 
 @implementation HMMapStartCommand
 + (void)load
@@ -31,6 +32,7 @@
 {
 	self = [super initWithCommands:
 			[HMCalculateDamageCommand new],
+			[HMGuardShelterCommand new],
 			nil];
 	return self;
 }

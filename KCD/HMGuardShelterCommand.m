@@ -44,6 +44,9 @@ NSString *HMGuardShelterCommandDidUpdateGuardExcapeNotification = @"HMGuardShelt
 		[self ensureGuardShelter];
 		return;
 	}
+	if([self.api isEqualToString:@"/kcsapi/api_req_map/next"]) {
+		[self removeInvalidEntry];
+	}
 }
 
 
@@ -116,7 +119,29 @@ NSString *HMGuardShelterCommandDidUpdateGuardExcapeNotification = @"HMGuardShelt
 	[object setValue:@NO forKey:@"ensured"];
 	
 }
-
+- (void)removeInvalidEntry
+{
+	HMTemporaryDataStore *store = [HMTemporaryDataStore oneTimeEditor];
+	NSError *error = nil;
+	NSArray *array = [store objectsWithEntityName:@"GuardEscaped"
+											error:&error
+								  predicateFormat:@"ensured = FALSE"];
+	if(error) {
+		NSLog(@"GuardEscaped is invalid. -> %@", error);
+		return;
+	}
+	if(!array) {
+		NSLog(@"GuardEscaped is invalid. -> %@", error);
+		return;
+	}
+	for(NSManagedObject *object in array) {
+		[store.managedObjectContext deleteObject:object];
+	}
+	[store saveAction:nil];
+	[NSThread sleepForTimeInterval:0.1];
+	
+	[self notify];
+}
 - (void)removeAllEntry
 {
 	HMTemporaryDataStore *store = [HMTemporaryDataStore oneTimeEditor];
