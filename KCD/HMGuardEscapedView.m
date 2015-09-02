@@ -8,46 +8,15 @@
 
 #import "HMGuardEscapedView.h"
 
-#import "HMGuardShelterCommand.h"
-
 
 @implementation HMGuardEscapedView
-
-//- (instancetype)initWithFrame:(NSRect)frameRect
-//{
-//	self = [super initWithFrame:frameRect];
-//	if(self) {
-//		NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-//		[nc addObserver:self
-//			   selector:@selector(updateStatus:)
-//				   name:HMGuardShelterCommandDidUpdateGuardExcapeNotification
-//				 object:nil];
-//	}
-//	return self;
-//}
-//- (void)dealloc
-//{
-//	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-//	[nc removeObserver:self];
-//}
-//
-//- (void)updateStatusOnMinThread:(id)dummy
-//{
-//	self.needsDisplay = YES;
-//}
-//- (void)updateStatus:(NSNotification *)notification
-//{
-//	[self performSelector:@selector(updateStatusOnMinThread:)
-//			   withObject:nil
-//			   afterDelay:0.1];
-//}
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
 	
-	NSRect frame = self.frame;
+	NSRect bounds = self.bounds;
 	
-	NSBezierPath *fillPath = [NSBezierPath bezierPathWithRect:frame];
+	NSBezierPath *fillPath = [NSBezierPath bezierPathWithRect:bounds];
 	[[NSColor colorWithCalibratedWhite:0.9 alpha:0.8] set];
 	[fillPath fill];
 	
@@ -59,24 +28,14 @@
 	const CGFloat width = 50;
 	const CGFloat height = 100;
 	NSRect rect = NSMakeRect(
-							 (NSInteger)((frame.size.width - width) * 0.5),
-							 (NSInteger)((frame.size.height - height) * 0.5),
+							 (NSInteger)((bounds.size.width - width) * 0.5),
+							 (NSInteger)((bounds.size.height - height) * 0.5),
 							 width, height);
 	
 	NSBezierPath *path = [NSBezierPath bezierPathWithRect:rect];
 	
-	
-//	NSShadow *shadow = [NSShadow new];
-//	shadow.shadowOffset = NSMakeSize(0.5, -1.5);
-//	shadow.shadowColor = [NSColor darkGrayColor];
-//	shadow.shadowBlurRadius = 5;
-//	[shadow set];
-	
 	[[NSColor whiteColor] set];
 	[path fill];
-	
-//	shadow = [NSShadow new];
-//	[shadow set];
 	
 	[[NSColor blackColor] set];
 	[path stroke];
@@ -99,7 +58,6 @@
 	rect.size.height -= 2;
 	[tai drawInRect:rect];
 	rect.size.height *= 0.5;
-//	rect.size.height += 2;
 	[hi drawInRect:rect];
 }
 
