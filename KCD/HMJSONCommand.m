@@ -52,7 +52,10 @@ static NSMutableArray *registeredCommands = nil;
 	viewCommand.arguments = apiResult.parameter;
 	viewCommand.json = apiResult.json;
 	viewCommand.argumentArray = apiResult.argumentArray;
-	viewCommand.jsonTree = @[[HMJSONNode nodeWithJSON:apiResult.json]];
+	id json = [HMJSONNode nodeWithJSON:apiResult.json];
+	if(json) {
+		viewCommand.jsonTree = @[json];
+	}
 	viewCommand.recieveDate = apiResult.date;
 	
 	command = viewCommand;
