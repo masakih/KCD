@@ -124,6 +124,8 @@ const NSInteger maxFleetNumber = 4;
 	}];
 	
 	self.fleetNumber = 1;
+	
+	self.detail04.guardEscaped = YES;
 }
 
 - (NSArray *)shipKeys

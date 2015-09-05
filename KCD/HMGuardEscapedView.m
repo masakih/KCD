@@ -9,8 +9,41 @@
 #import "HMGuardEscapedView.h"
 
 
+static NSString *taiString = nil;
+static NSString *hiString = nil;
+
 @implementation HMGuardEscapedView
 
++ (void)initialize
+{
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		NSBundle *mainBundle = [NSBundle mainBundle];
+		NSString *path  = [mainBundle pathForResource:@"Taihi" ofType:@"txt"];
+		NSError *error = nil;
+		NSString *taihiString = [[NSString alloc] initWithContentsOfFile:path
+																encoding:NSUTF8StringEncoding
+																   error:&error];
+		if(!taihiString) {
+			if(error) {
+				NSLog(@"Could not find Taihi.txt. Error -> %@", error);
+				NSBeep();
+				return;
+			}
+			NSLog(@"Could not find Taihi.txt");
+			NSBeep();
+			return;
+		}
+		
+		if(taihiString.length != 2) {
+			NSLog(@"Taihi.txt length is not two.");
+			NSBeep();
+			return;
+		}
+		taiString = [taihiString substringToIndex:1];
+		hiString = [taihiString substringFromIndex:1];
+	});
+}
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
 	
@@ -19,6 +52,12 @@
 	NSBezierPath *fillPath = [NSBezierPath bezierPathWithRect:bounds];
 	[[NSColor colorWithCalibratedWhite:0.9 alpha:0.8] set];
 	[fillPath fill];
+	
+	[self drawTaihiInrect:bounds];
+}
+
+- (void)drawTaihiInrect:(NSRect)bounds
+{
 	
 	NSAffineTransform *rotate = [NSAffineTransform transform];
 	[rotate translateXBy:0.0 yBy:65.0];
@@ -49,9 +88,9 @@
 							  NSForegroundColorAttributeName : [NSColor lightGrayColor],
 							  NSFontAttributeName : [NSFont boldSystemFontOfSize:width - 10],
 							  };
-	NSAttributedString *tai = [[NSAttributedString alloc] initWithString:@"退" attributes:taiAttr];
+	NSAttributedString *tai = [[NSAttributedString alloc] initWithString:taiString attributes:taiAttr];
 	
-	NSAttributedString *hi = [[NSAttributedString alloc] initWithString:@"避" attributes:taiAttr];
+	NSAttributedString *hi = [[NSAttributedString alloc] initWithString:hiString attributes:taiAttr];
 	
 	rect = NSInsetRect(rect, 2, 2);
 	rect.origin.y += 4;

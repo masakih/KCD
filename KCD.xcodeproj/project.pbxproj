@@ -104,6 +104,7 @@
 		F4A3AD9219BDDD8E00FDBF80 /* HMPreferencePanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A3AD9019BDDD8E00FDBF80 /* HMPreferencePanelController.m */; };
 		F4A3AD9419BDDE5500FDBF80 /* HMPreferencePanelController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A3AD9619BDDE5500FDBF80 /* HMPreferencePanelController.xib */; };
 		F4A9B8D41B975029005786C2 /* SlotItemShortName.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4A9B8D21B975029005786C2 /* SlotItemShortName.plist */; };
+		F4A9B8D71B99D5B7005786C2 /* Taihi.txt in Resources */ = {isa = PBXBuildFile; fileRef = F4A9B8D51B99D5B7005786C2 /* Taihi.txt */; };
 		F4AA05FB192B92C800844688 /* Temporary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4AA05F9192B92C700844688 /* Temporary.xcdatamodeld */; };
 		F4AA05FE192B932E00844688 /* HMTemporaryDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AA05FD192B932E00844688 /* HMTemporaryDataStore.m */; };
 		F4AA0601192E1FE900844688 /* HMBattleCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AA0600192E1FE900844688 /* HMBattleCommand.m */; };
@@ -398,6 +399,7 @@
 		F4A3AD9019BDDD8E00FDBF80 /* HMPreferencePanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMPreferencePanelController.m; sourceTree = "<group>"; };
 		F4A3AD9519BDDE5500FDBF80 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMPreferencePanelController.xib; sourceTree = "<group>"; };
 		F4A9B8D31B975029005786C2 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = ja; path = ja.lproj/SlotItemShortName.plist; sourceTree = "<group>"; };
+		F4A9B8D61B99D5B7005786C2 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text; name = ja; path = ja.lproj/Taihi.txt; sourceTree = "<group>"; };
 		F4AA05FA192B92C800844688 /* Temporary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Temporary.xcdatamodel; sourceTree = "<group>"; };
 		F4AA05FC192B932E00844688 /* HMTemporaryDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMTemporaryDataStore.h; sourceTree = "<group>"; };
 		F4AA05FD192B932E00844688 /* HMTemporaryDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMTemporaryDataStore.m; sourceTree = "<group>"; };
@@ -733,6 +735,7 @@
 				F43E67B818BE060E0087E5B6 /* LevelUpExp.plist */,
 				F4666C6A1B29E974001840DB /* EquipmentStrengthen.plist */,
 				F4A9B8D21B975029005786C2 /* SlotItemShortName.plist */,
+				F4A9B8D51B99D5B7005786C2 /* Taihi.txt */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1179,6 +1182,7 @@
 				F494DC6A18C8BAB900AE97E4 /* HMPowerUpSupportViewController.xib in Resources */,
 				F4BDEB51187252F30069D0CE /* InfoPlist.strings in Resources */,
 				F43E67B918BE060E0087E5B6 /* LevelUpExp.plist in Resources */,
+				F4A9B8D71B99D5B7005786C2 /* Taihi.txt in Resources */,
 				F4B3DC3018E5C81E0011B4FC /* HMHistoryWindowController.xib in Resources */,
 				F4B3DC3618E5C8650011B4FC /* HMShipWindowController.xib in Resources */,
 				F4666C571B1E0262001840DB /* HMBookmarkEditorViewController.xib in Resources */,
@@ -1441,6 +1445,14 @@
 				F4A9B8D31B975029005786C2 /* ja */,
 			);
 			name = SlotItemShortName.plist;
+			sourceTree = "<group>";
+		};
+		F4A9B8D51B99D5B7005786C2 /* Taihi.txt */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4A9B8D61B99D5B7005786C2 /* ja */,
+			);
+			name = Taihi.txt;
 			sourceTree = "<group>";
 		};
 		F4B2D02D18F83A2F00542742 /* HMScreenshotWindowController.xib */ = {
