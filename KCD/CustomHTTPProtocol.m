@@ -52,6 +52,9 @@
 
 static BOOL kPreventOnDiskCaching = NO;
 
+static NSArray *cachedExtensions = nil;
+static NSDateFormatter *httpDateFormater = nil;
+
 @interface CustomHTTPProtocol ()
 
 @property (atomic, retain, readwrite) NSThread *                        clientThread;
@@ -60,7 +63,6 @@ static BOOL kPreventOnDiskCaching = NO;
 @property (atomic, assign, readwrite) NSTimeInterval                    startTime;          // written by client thread only, read by any thread
 @property (atomic, retain, readwrite) NSURLRequest *                    actualRequest;      // client thread only
 @property (atomic, retain, readwrite) NSURLConnection *                 connection;         // client thread only
-@property (atomic, retain, readwrite) NSURLAuthenticationChallenge *    pendingChallenge;   // main thread only
 
 // The concurrency control on .modes is too complex to explain in a short comment.  It's set up 
 // on the client thread in -startLoading and then never modified.  It is, however, read by code 
@@ -69,7 +71,10 @@ static BOOL kPreventOnDiskCaching = NO;
 // the main thread code that reads it can only be called after -startLoading has started 
 // the connection running.
 
-- (void)cancelPendingChallenge;
+
+@property (atomic, strong, readwrite) NSHTTPURLResponse *response;
+@property (atomic, strong, readwrite) NSMutableData *data;
+@property (atomic, readwrite) NSURLCacheStoragePolicy cachePolicy;
 
 @end
 
@@ -80,18 +85,25 @@ static BOOL kPreventOnDiskCaching = NO;
 @synthesize clientThread     = _clientThread;
 @synthesize actualRequest    = _actualRequest;
 @synthesize connection       = _connection;
-@synthesize pendingChallenge = _pendingChallenge;
 
 #pragma mark * Subclass specific additions
 
 static id<CustomHTTPProtocolDelegate> sDelegate;          // protected by @synchronized on the class
 
+static NSURLCache *sMyURLCache = nil;
 
 + (void)load
 {
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
 		[NSURLProtocol registerClass:self];
+		
+		cachedExtensions = @[@"swf", @"flv", @"png", @"jpg", @"jpeg", @"mp3"];
+		
+		
+		httpDateFormater = [NSDateFormatter new];
+		httpDateFormater.dateFormat = @"EEE',' dd' 'MMM' 'yyyy HH':'mm':'ss zzz";
+		httpDateFormater.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
 	});
 }
 
@@ -102,7 +114,7 @@ static id<CustomHTTPProtocolDelegate> sDelegate;          // protected by @synch
 	NSBundle *mainBundle = [NSBundle mainBundle];
 	NSString *bundleIdentifier = mainBundle.bundleIdentifier;
 	path = [path URLByAppendingPathComponent:bundleIdentifier];
-	path = [path URLByAppendingPathComponent:@"cache.db"];
+	path = [path URLByAppendingPathComponent:@"Caches"];
 	return path;
 }
 
@@ -112,12 +124,11 @@ static id<CustomHTTPProtocolDelegate> sDelegate;          // protected by @synch
 	NSURLCache *cache = [[NSURLCache alloc] initWithMemoryCapacity:128 * 1024 * 1024
 													  diskCapacity:1024 * 1024 * 1024
 														  diskPath:path.path];
-	[NSURLCache setSharedURLCache:cache];
+	sMyURLCache = cache;
 }
 + (void)clearCache
 {
-	NSURLCache *cache = [NSURLCache sharedURLCache];
-	[cache removeAllCachedResponses];
+	[sMyURLCache removeAllCachedResponses];
 }
 
 + (void)start
@@ -226,17 +237,31 @@ static NSString * kOurRequestProperty = @"com.apple.dts.CustomHTTPProtocol";
     return self;
 }
 
-//- (void)dealloc
-//    // This can be called on any thread, so we have to be careful what we touch.
-//{
-//    [[self class] customHTTPProtocol:self logWithFormat:@"dealloc"];
-//    [self->_modes release];
-//    [self->_clientThread release];
-//    assert(self->_actualRequest == nil);            // we should have cleared it by now
-//    assert(self->_connection == nil);               // we should have cancelled it by now
-//    assert(self->_pendingChallenge == nil);         // we should have cancelled it by now
-//    [super dealloc];
-//}
+static inline void useCache(NSCachedURLResponse *cache, CustomHTTPProtocol *object)
+{
+	NSData *data = cache.data;
+	id<CustomHTTPProtocolDelegate> delegate = [CustomHTTPProtocol delegate];
+	
+	if([delegate respondsToSelector:@selector(customHTTPProtocol:didRecieveResponse:)]) {
+		[delegate customHTTPProtocol:object didRecieveResponse:cache.response];
+	}
+	
+	[[object client] URLProtocol:object didReceiveResponse:cache.response cacheStoragePolicy:NSURLCacheStorageAllowed];
+	
+	//
+	if([delegate respondsToSelector:@selector(customHTTPProtocol:didRecieveData:)]) {
+		[delegate customHTTPProtocol:object didRecieveData:data];
+	}
+	
+	[[object client] URLProtocol:object didLoadData:data];
+	
+	//
+	if([delegate respondsToSelector:@selector(customHTTPProtocolDidFinishLoading:)]) {
+		[delegate customHTTPProtocolDidFinishLoading:object];
+	}
+	
+	[[object client] URLProtocolDidFinishLoading:object];
+}
 
 - (void)startLoading
     // An override of an NSURLProtocol method.   At this point we kick off the process 
@@ -296,11 +321,29 @@ static NSString * kOurRequestProperty = @"com.apple.dts.CustomHTTPProtocol";
     // a) if we start immediately our delegate can be called before -initWithRequest:xxx 
     // returns, and that confuses our asserts, and b) we want to customise the run loop modes.
 	
-//	NSLog(@"Cache policy %ld for %@", newRequest.cachePolicy, newRequest);
-//	if(newRequest.cachePolicy == NSURLRequestUseProtocolCachePolicy) {
-//		newRequest.cachePolicy = NSURLRequestReturnCacheDataElseLoad;
-//	}
-
+	
+	NSURL *URL = self.actualRequest.URL;
+	NSString *extension = [[URL path] pathExtension];
+	if([cachedExtensions containsObject:extension]) {
+//		NSLog(@"------> %@", self.actualRequest);
+	}
+	
+	NSCachedURLResponse *cache = [sMyURLCache cachedResponseForRequest:self.actualRequest];
+	if(cache) {
+		NSDictionary *userInfo = cache.userInfo;
+		if(userInfo) {
+			NSDate *expiresDate = userInfo[@"Expires"];
+//			NSLog(@"Expires -> %@", expiresDate);
+			NSDate *now = [NSDate dateWithTimeIntervalSinceNow:0.0];
+			if([now compare:expiresDate] == NSOrderedAscending) {
+//				NSLog(@"Ascending");
+				useCache(cache, self);
+//				NSLog(@"Use cache -> %@", self.request);
+				return;
+			}
+		}
+	}
+	
     self.connection = [[NSURLConnection alloc] initWithRequest:newRequest delegate:self startImmediately:NO];
     assert(self.connection != nil);
 
@@ -334,7 +377,6 @@ static NSString * kOurRequestProperty = @"com.apple.dts.CustomHTTPProtocol";
     
     assert([NSThread currentThread] == self.clientThread);
     
-    [self cancelPendingChallenge];
     if (self.connection != nil) {
         [self.connection cancel];
         self.connection = nil;
@@ -344,180 +386,6 @@ static NSString * kOurRequestProperty = @"com.apple.dts.CustomHTTPProtocol";
     // a discussion of this.
 }
 
-#pragma mark * Authentication challenge handling
-
-- (void)didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
-{
-    assert(challenge != nil);
-
-    assert([NSThread currentThread] == self.clientThread);
-
-    [[self class] customHTTPProtocol:self logWithFormat:@"challenge %@ received", challenge];
-
-    // Just pass the work off to the main thread.  We do this so that all accesses 
-    // to pendingChallenge are done from the main thread, which avoids the need for 
-    // extra synchronisation.
-    // 
-    // Note that we use the default run loop mode here, not the common modes.  We don't want 
-    // an authorisation dialog showing up on top of an active menu (-:
-    
-    [self performSelectorOnMainThread:@selector(mainThreadDidReceiveAuthenticationChallenge:) withObject:challenge waitUntilDone:NO];
-}
-
-- (void)mainThreadDidReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
-{
-    assert(challenge != nil);
-
-    assert([NSThread isMainThread]);
-    
-    if (self.pendingChallenge != nil) {
-
-        // Our delegate is not expecting a second authentication challenge before resolving the 
-        // first.  Likewise, NSURLConnection shouldn't send us a second authentication challenge 
-        // before we resolve the first.  If this happens, assert, log, and cancel the challenge.
-        //
-        // Note that we have to cancel the challenge on the thread on which we received it, 
-        // namely, the client thread.
-
-        [[self class] customHTTPProtocol:self logWithFormat:@"challenge %@ cancelled; other challenge pending", challenge];
-        assert(NO);
-        [self performSelector:@selector(clientThreadCancelAuthenticationChallenge:) onThread:self.clientThread withObject:challenge waitUntilDone:NO modes:self.modes];
-    } else {
-        id<CustomHTTPProtocolDelegate>  delegate;
-
-        delegate = [[self class] delegate];
-
-        // Remember the challenge in progress.
-        
-        self.pendingChallenge = challenge;
-
-        // Tell the delegate about it.  It would be weird if the delegate didn't support this 
-        // selector (it did return YES from -customHTTPProtocol:canAuthenticateAgainstProtectionSpace: 
-        // after all), but if it doesn't then we just cancel the challenge ourselves (or the client 
-        // thread, of course).
-        
-        if ([delegate respondsToSelector:@selector(customHTTPProtocol:canAuthenticateAgainstProtectionSpace:)]) {
-            [[self class] customHTTPProtocol:self logWithFormat:@"challenge %@ passed to delegate", challenge];
-            [delegate customHTTPProtocol:self didReceiveAuthenticationChallenge:self.pendingChallenge];
-        } else {
-            self.pendingChallenge = nil;
-            [[self class] customHTTPProtocol:self logWithFormat:@"challenge %@ cancelled; no delegate method", challenge];
-            assert(NO);
-            [self performSelector:@selector(clientThreadCancelAuthenticationChallenge:) onThread:self.clientThread withObject:challenge waitUntilDone:NO modes:self.modes];
-        }
-    }
-}
-
-- (void)clientThreadCancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
-{
-    assert(challenge != nil);
-    
-    assert([NSThread currentThread] == self.clientThread);
-
-    [[challenge sender] cancelAuthenticationChallenge:challenge];
-}
-
-- (void)cancelPendingChallenge
-{
-    assert([NSThread currentThread] == self.clientThread);
-
-    // Just pass the work off to the main thread.  We do this so that all accesses 
-    // to pendingChallenge are done from the main thread, which avoids the need for 
-    // extra synchronisation.
-
-    [self performSelectorOnMainThread:@selector(mainThreadCancelPendingChallenge) withObject:nil waitUntilDone:NO];
-}
-
-- (void)mainThreadCancelPendingChallenge
-{
-    assert([NSThread isMainThread]);
-    
-    if (self.pendingChallenge == nil) {
-        // This is not only not unusual, it's actually very typical.  It happens every time you shut down 
-        // the connection.  Ideally I'd like to not even call -mainThreadCancelPendingChallenge when 
-        // there's no challenge outstanding, but the synchronisation issues are tricky.  Rather than solve 
-        // those, I'm just not going to log in this case.
-        //
-        // [[self class] customHTTPProtocol:self logWithFormat:@"challenge not cancelled; no challenge pending"];
-    } else {
-        id<CustomHTTPProtocolDelegate>  delegate;
-        NSURLAuthenticationChallenge *  challenge;
-
-        delegate = [[self class] delegate];
-
-        challenge = self.pendingChallenge;
-        self.pendingChallenge = nil;
-        
-        if ([delegate respondsToSelector:@selector(customHTTPProtocol:didCancelAuthenticationChallenge:)]) {
-            [[self class] customHTTPProtocol:self logWithFormat:@"challenge %@ cancellation passed to delegate", challenge];
-            [delegate customHTTPProtocol:self didCancelAuthenticationChallenge:challenge];
-        } else {
-            [[self class] customHTTPProtocol:self logWithFormat:@"challenge %@ cancellation failed; no delegate method", challenge];
-            // If we managed to send a challenge to the client but can't cancel it, that's bad. 
-            // There's nothing we can do at this point except log the problem.
-            assert(NO);
-        }
-    }
-}
-
-- (void)resolveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge withCredential:(NSURLCredential *)credential
-    // See comment in header.
-{
-    assert(challenge == self.pendingChallenge);
-    // credential may be nil
-    
-    assert([NSThread isMainThread]);
-    assert(self.clientThread != nil);
-    
-    if (challenge != self.pendingChallenge) {
-        [[self class] customHTTPProtocol:self logWithFormat:@"challenge resolution mismatch (%@ / %@)", challenge, self.pendingChallenge];
-        // This should never happen, and we want to know if it does, at least in the debug build.
-        assert(NO);
-    } else {
-        NSDictionary *  parameters;
-        
-        // We have to pass two parameters to -clientThreadResolveWithParameters:, which is a pain 
-        // because -performSelector:onThread:xxx only supports one.  So pack them into a dictionary. 
-        // We can't use GCD here because we're targetting a specific thread.
-        
-        parameters = [NSDictionary dictionaryWithObjectsAndKeys:
-            challenge,  @"challenge", 
-            credential, @"credential",          // If credential is nil, it terminates the objects and keys sequence, 
-            nil                                 // resulting in a dictionary that just contains the challenge.
-        ];
-        assert(parameters != nil);
-        
-        // We clear out our record of the pending challenge and then pass the real work 
-        // over to the client thread (which ensures that the challenge is resolved on 
-        // the same thread we received it on).
-        
-        self.pendingChallenge = nil;
-        
-        [self performSelector:@selector(clientThreadResolveWithParameters:) onThread:self.clientThread withObject:parameters waitUntilDone:NO modes:self.modes];
-    }
-}
-
-- (void)clientThreadResolveWithParameters:(NSDictionary *)parameters
-{
-    NSURLAuthenticationChallenge *  challenge;
-    NSURLCredential *               credential;
-
-    assert([NSThread currentThread] == self.clientThread);
-    
-    challenge = [parameters objectForKey:@"challenge"];
-    assert([challenge isKindOfClass:[NSURLAuthenticationChallenge class]]);
-
-    credential = [parameters objectForKey:@"credential"];
-    assert( (credential == nil) || [credential isKindOfClass:[NSURLCredential class]] );
-
-    if (credential == nil) {
-        [[self class] customHTTPProtocol:self logWithFormat:@"challenge %@ resolved without credential", challenge];
-        [[challenge sender] continueWithoutCredentialForAuthenticationChallenge:challenge];
-    } else {
-        [[self class] customHTTPProtocol:self logWithFormat:@"challenge %@ resolved with %@", challenge, credential];
-        [[challenge sender] useCredential:credential forAuthenticationChallenge:challenge];
-    }
-}
 
 #pragma mark * NSURLConnection delegate callbacks
 
@@ -565,51 +433,8 @@ static NSString * kOurRequestProperty = @"com.apple.dts.CustomHTTPProtocol";
     return request;
 }
 
-- (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace
-{
-    #pragma unused(connection)
-    BOOL        result;
-    id<CustomHTTPProtocolDelegate> delegate;
 
-    assert(connection == self.connection);
-    assert(protectionSpace != nil);
-
-    assert([NSThread currentThread] == self.clientThread);
-
-    // Simple ask our delegate what to do.
-    
-    delegate = [[self class] delegate];
-    
-    result = NO;
-    if ([delegate respondsToSelector:@selector(customHTTPProtocol:canAuthenticateAgainstProtectionSpace:)]) {
-        result = [delegate customHTTPProtocol:self canAuthenticateAgainstProtectionSpace:protectionSpace];
-    }
-
-    if (result) {
-        [[self class] customHTTPProtocol:self logWithFormat:@"can authenticate %@", protectionSpace];
-    } else {
-        [[self class] customHTTPProtocol:self logWithFormat:@"cannot authenticate %@", protectionSpace];
-    }
-
-    return result;
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
-{
-    #pragma unused(connection)
-    assert(connection == self.connection);
-    assert(challenge != nil);
-
-    assert([NSThread currentThread] == self.clientThread);
-
-    [[self class] customHTTPProtocol:self logWithFormat:@"received challenge %@", challenge];
-    
-    // Call -didReceiveAuthenticationChallenge:, which passes the challenge on the delegate.
-
-    [self didReceiveAuthenticationChallenge:challenge];
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSHTTPURLResponse *)response
     // An NSURLConnection delegate callback.  We pass this on to the client.
     //
     // Runs on the client thread.
@@ -641,6 +466,9 @@ static NSString * kOurRequestProperty = @"com.apple.dts.CustomHTTPProtocol";
         }
     }
 	
+	self.response = response;
+	self.cachePolicy = cacheStoragePolicy;
+	
 	id<CustomHTTPProtocolDelegate> delegate = [[self class] delegate];
 	if([delegate respondsToSelector:@selector(customHTTPProtocol:didRecieveResponse:)]) {
 		[delegate customHTTPProtocol:self didRecieveResponse:response];
@@ -651,20 +479,20 @@ static NSString * kOurRequestProperty = @"com.apple.dts.CustomHTTPProtocol";
     [[self client] URLProtocol:self didReceiveResponse:response cacheStoragePolicy:cacheStoragePolicy];
 }
 
-//- (NSCachedURLResponse *)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse *)cachedResponse
-//{
-//    #pragma unused(connection)
-//    assert(connection == self.connection);
-//    assert(cachedResponse != nil);
-//
-//    if (kPreventOnDiskCaching) {
-//        [[self class] customHTTPProtocol:self logWithFormat:@"will not cache response"];
-//    } else {
-//        [[self class] customHTTPProtocol:self logWithFormat:@"will cache response"];
-//    }
-//
-//    return cachedResponse;
-//}
+- (NSCachedURLResponse *)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse *)cachedResponse
+{
+    #pragma unused(connection)
+    assert(connection == self.connection);
+    assert(cachedResponse != nil);
+
+    if (kPreventOnDiskCaching) {
+        [[self class] customHTTPProtocol:self logWithFormat:@"will not cache response"];
+    } else {
+        [[self class] customHTTPProtocol:self logWithFormat:@"will cache response"];
+    }
+
+    return cachedResponse;
+}
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
     // An NSURLConnection delegate callback.  We pass this on to the client.
@@ -683,6 +511,14 @@ static NSString * kOurRequestProperty = @"com.apple.dts.CustomHTTPProtocol";
         [[self class] customHTTPProtocol:self logWithFormat:@"received %zu bytes of data", (size_t) [data length]];
     }
 	
+	if(self.cachePolicy == NSURLCacheStorageAllowed) {
+		if(!self.data) {
+			self.data = [NSMutableData data];
+		}
+		[self.data appendData:data];
+	}
+	
+	
 	id<CustomHTTPProtocolDelegate> delegate = [[self class] delegate];
 	if([delegate respondsToSelector:@selector(customHTTPProtocol:didRecieveData:)]) {
 		[delegate customHTTPProtocol:self didRecieveData:data];
@@ -691,6 +527,27 @@ static NSString * kOurRequestProperty = @"com.apple.dts.CustomHTTPProtocol";
     [[self client] URLProtocol:self didLoadData:data];
 }
 
+- (NSDate *)expiresDate
+{
+	NSString *requestHeader = [[self.response allHeaderFields][@"Cache-Control"] lowercaseString];
+	if(requestHeader != nil) {
+		NSRange range = [requestHeader rangeOfString:@"max-age="];
+		if(range.location != NSNotFound) {
+			NSUInteger lastPos = NSMaxRange(range);
+			NSString *ageString = [requestHeader substringFromIndex:lastPos];
+			NSInteger age = ageString.integerValue;
+			
+			return [NSDate dateWithTimeIntervalSinceNow:age];
+		}
+	}
+	
+	requestHeader = [[self.response allHeaderFields][@"Expires"] lowercaseString];
+	if(requestHeader != nil) {
+		return [httpDateFormater dateFromString:requestHeader];
+	}
+	
+	return nil;
+}
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
     // An NSURLConnection delegate callback.  We pass this on to the client.
     //
@@ -702,6 +559,23 @@ static NSString * kOurRequestProperty = @"com.apple.dts.CustomHTTPProtocol";
     assert([NSThread currentThread] == self.clientThread);
 
     [[self class] customHTTPProtocol:self logWithFormat:@"success"];
+	
+	if(self.cachePolicy == NSURLCacheStorageAllowed) {
+		NSURL *URL = self.actualRequest.URL;
+		NSString *extension = [[URL path] pathExtension];
+		if([cachedExtensions containsObject:extension]) {
+			NSDate *expiresDate = [self expiresDate];
+			if(expiresDate) {
+				NSCachedURLResponse *cache = [[NSCachedURLResponse alloc] initWithResponse:self.response
+																					  data:self.data
+																				  userInfo:@{ @"Expires" : expiresDate }
+																			 storagePolicy:self.cachePolicy];
+				[sMyURLCache storeCachedResponse:cache forRequest:self.actualRequest];
+				
+//				NSLog(@"Store cache -> %@", self.actualRequest);
+			}
+		}
+	}
 	
 	id<CustomHTTPProtocolDelegate> delegate = [[self class] delegate];
 	if([delegate respondsToSelector:@selector(customHTTPProtocolDidFinishLoading:)]) {

@@ -66,12 +66,6 @@
 + (id<CustomHTTPProtocolDelegate>)delegate;
 + (void)setDelegate:(id<CustomHTTPProtocolDelegate>)newValue;
 
-@property (atomic, retain, readonly ) NSURLAuthenticationChallenge *    pendingChallenge;   // main thread only please
-
-- (void)resolveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge withCredential:(NSURLCredential *)credential;
-    // must be called on the main thread
-    // credential may be nil, to continue the request without a credential
-
 
 + (void)setupCache;
 + (void)clearCache;
@@ -108,20 +102,6 @@
 
 @optional
 
-- (BOOL)customHTTPProtocol:(CustomHTTPProtocol *)protocol canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace;
-    // called on an arbitrary thread
-    // protocol will not be nil
-    // protectionSpace will not be nil
-    
-- (void)customHTTPProtocol:(CustomHTTPProtocol *)protocol didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge;
-    // called on the main thread
-    // protocol will not be nil
-    // challenge will not be nil
-    
-- (void)customHTTPProtocol:(CustomHTTPProtocol *)protocol didCancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge;
-    // called on the main thread
-    // protocol will not be nil
-    // challenge will not be nil
 
 - (void)customHTTPProtocol:(CustomHTTPProtocol *)protocol didRecieveResponse:(NSURLResponse *)response;
 - (void)customHTTPProtocol:(CustomHTTPProtocol *)protocol didRecieveData:(NSData *)data;
