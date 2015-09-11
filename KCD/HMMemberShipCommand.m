@@ -75,6 +75,11 @@
 	return [super dataKey];
 }
 
+- (void)beginRegisterObject:(NSManagedObject *)object
+{
+	[object setValue:nil forKey:@"sally_area"];
+}
+
 - (void)setMasterShip:(id)value toObject:(NSManagedObject *)object
 {
 	id currentValue = [object valueForKeyPath:@"master_ship.name"];
