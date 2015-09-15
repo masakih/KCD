@@ -137,6 +137,19 @@ static HMResourceHistoryManager *sInstance;
 	
 }
 
+void reduceResourceByConditions(HMResourceHistoryDataStore *resourceStore, NSArray *target, NSDate *oneMonthAgo)
+{
+	NSError *error = nil;
+	NSManagedObjectContext *moc = resourceStore.managedObjectContext;
+	NSArray *array = [resourceStore objectsWithEntityName:@"Resource"
+													error:&error
+										  predicateFormat:@"minute IN %@ AND date < %@",
+					  target, oneMonthAgo];
+	for( NSManagedObject *object in array) {
+		[moc deleteObject:object];
+	}
+}
+
 - (void)reduce:(NSNotification *)notification
 {
 	dispatch_queue_t queue = dispatch_queue_create("HMResourceHistoryManager", DISPATCH_QUEUE_SERIAL);
@@ -145,41 +158,21 @@ static HMResourceHistoryManager *sInstance;
 		NSLog(@"Start Reduce.");
 		
 		HMResourceHistoryDataStore *resourceStore = [HMResourceHistoryDataStore oneTimeEditor];
-		NSManagedObjectContext *moc = resourceStore.managedObjectContext;
 		
-		NSError *error = nil;
 		// 1 month.
 		NSArray *target = @[@5, @10, @20, @25, @35, @40, @50, @55];
 		NSDate *oneMonthAgo = [NSDate dateWithTimeIntervalSinceNow:-1 * 30 * 24 * 60 * 60];
-		NSArray *array = [resourceStore objectsWithEntityName:@"Resource"
-														error:&error
-											  predicateFormat:@"minute IN %@ AND date < %@",
-						  target, oneMonthAgo];
-		for( NSManagedObject *object in array) {
-			[moc deleteObject:object];
-		}
+		reduceResourceByConditions(resourceStore, target, oneMonthAgo);
 		
 		// 3 month.
 		target = @[@15, @45];
 		NSDate *threeMonthAgo = [NSDate dateWithTimeIntervalSinceNow:-3 * 30 * 24 * 60 * 60];
-		array = [resourceStore objectsWithEntityName:@"Resource"
-														error:&error
-									 predicateFormat:@"minute IN %@ AND date < %@",
-				 target, threeMonthAgo];
-		for( NSManagedObject *object in array) {
-			[moc deleteObject:object];
-		}
+		reduceResourceByConditions(resourceStore, target, threeMonthAgo);
 		
 		// 6 month.
 		target = @[@30];
 		NSDate *sixMonthAgo = [NSDate dateWithTimeIntervalSinceNow:-6 * 30 * 24 * 60 * 60];
-		array = [resourceStore objectsWithEntityName:@"Resource"
-														error:&error
-									 predicateFormat:@"minute IN %@ AND date < %@",
-				 target, sixMonthAgo];
-		for( NSManagedObject *object in array) {
-			[moc deleteObject:object];
-		}
+		reduceResourceByConditions(resourceStore, target, sixMonthAgo);
 		
 		[resourceStore saveAction:nil];
 		
