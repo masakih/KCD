@@ -16,17 +16,53 @@ static CGImageRef sMaskImage = nil;
 
 @interface HMSlotItemLevelView ()
 
-@property (strong) HMKCSlotItemObject *slotItem;
+@property (strong) NSObjectController *slotItemController;
+
+@property (nonatomic, strong) NSNumber *slotItemLevel;
+@property (nonatomic, strong) NSNumber *slotItemAlv;
 
 @end
 
 @implementation HMSlotItemLevelView
 
+- (instancetype)initWithFrame:(NSRect)frameRect
+{
+	self = [super initWithFrame:frameRect];
+	if(self) {
+		_slotItemController = [NSObjectController new];
+		[self bind:@"slotItemLevel"
+		  toObject:_slotItemController
+	   withKeyPath:@"selection.level"
+		   options:nil];
+		[self bind:@"slotItemAlv"
+		  toObject:_slotItemController
+	   withKeyPath:@"selection.alv"
+		   options:nil];
+	}
+	return self;
+}
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+	self = [super initWithCoder:coder];
+	if(self) {
+		_slotItemController = [NSObjectController new];
+		[self bind:@"slotItemLevel"
+		  toObject:_slotItemController
+	   withKeyPath:@"content.level"
+		   options:nil];
+		[self bind:@"slotItemAlv"
+		  toObject:_slotItemController
+	   withKeyPath:@"content.alv"
+		   options:nil];
+	}
+	return self;
+}
 - (void)dealloc
 {
-	[self.slotItem removeObserver:self forKeyPath:@"level"];
-	[self.slotItem removeObserver:self forKeyPath:@"alv"];
+	[self unbind:@"slotItemLevel"];
+	[self unbind:@"slotItemAlv"];
 }
+
 
 - (CGImageRef)maskImage
 {
@@ -301,15 +337,10 @@ static CGImageRef sMaskImage = nil;
 	return shadow;
 }
 
-- (NSNumber *)slotItemAlv
+- (void)setSlotItemLevel:(NSNumber *)slotItemLevel
 {
-	if(!self.slotItemID) return nil;
-	
-	if(!self.slotItem) {
-		[self fetchSlotItem];
-	}
-	
-	return self.slotItem.alv;
+	_slotItemLevel = slotItemLevel;
+	self.needsDisplay = YES;
 }
 
 
@@ -345,26 +376,19 @@ static CGImageRef sMaskImage = nil;
 	[attrString drawInRect:rect];
 }
 
-- (NSNumber *)slotItemLevel
+- (void)setSlotItemAlv:(NSNumber *)slotItemAlv
 {
-	if(!self.slotItemID) return nil;
-	
-	if(!self.slotItem) {
-		[self fetchSlotItem];
-	}
-	
-	return self.slotItem.level;
+	_slotItemAlv = slotItemAlv;
+	self.needsDisplay = YES;
 }
 
 #pragma mark - property
 
 - (void)fetchSlotItem
 {
-	[self.slotItem removeObserver:self forKeyPath:@"level"];
-	[self.slotItem removeObserver:self forKeyPath:@"alv"];
+	self.slotItemController.content =  nil;
 	
 	if(!self.slotItemID || [self.slotItemID isEqual:@(-1)]) {
-		self.slotItem = nil;
 		return;
 	}
 	
@@ -375,37 +399,21 @@ static CGImageRef sMaskImage = nil;
 								  predicateFormat:@"id = %@", self.slotItemID];
 	if(error) {
 		NSLog(@"SlotItem is invalid -> %@", error);
-		self.slotItem = nil;
 		return;
 	}
 	if(array.count == 0) {
 		NSLog(@"Can not find slotItem for %@", self.slotItemID);
-		self.slotItem = nil;
 		return;
 	}
 	
-	self.slotItem = array[0];
-	
-	[self.slotItem addObserver:self forKeyPath:@"level" options:0 context:NULL];
-	[self.slotItem addObserver:self forKeyPath:@"alv" options:0 context:NULL];
+	self.slotItemController.content = array[0];
 }
 - (void)setSlotItemID:(NSNumber *)slotItemID
 {
 	if([self.slotItemID isEqual:slotItemID]) return;
-	self.slotItem = nil;
 	_slotItemID = slotItemID;
 	[self fetchSlotItem];
 	self.needsDisplay = YES;
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-	if([keyPath isEqualToString:@"level"] || [keyPath isEqualToString:@"alv"]) {
-		self.needsDisplay = YES;
-		return;
-	}
-	
-	[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }
 
 @end
