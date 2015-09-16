@@ -84,6 +84,38 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
+		<integer>1</integer>
+		<key>equipment</key>
+		<string>10cm高角砲＋高射装置</string>
+		<key>secondShip</key>
+		<string>照月</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>5</integer>
+		<key>equipment</key>
+		<string>10cm高角砲＋高射装置</string>
+		<key>secondShip</key>
+		<string>照月</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>6</integer>
+		<key>equipment</key>
+		<string>10cm高角砲＋高射装置</string>
+		<key>secondShip</key>
+		<string>照月</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>7</integer>
+		<key>equipment</key>
+		<string>10cm高角砲＋高射装置</string>
+		<key>secondShip</key>
+		<string>照月</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
 		<integer>2</integer>
 		<key>equipment</key>
 		<string>14cm連装砲</string>
@@ -1326,6 +1358,30 @@
 	</dict>
 	<dict>
 		<key>weekday</key>
+		<integer>2</integer>
+		<key>equipment</key>
+		<string>13号対空電探 </string>
+		<key>secondShip</key>
+		<string>照月</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>3</integer>
+		<key>equipment</key>
+		<string>13号対空電探 </string>
+		<key>secondShip</key>
+		<string>照月</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>4</integer>
+		<key>equipment</key>
+		<string>13号対空電探 </string>
+		<key>secondShip</key>
+		<string>照月</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
 		<integer>5</integer>
 		<key>equipment</key>
 		<string>13号対空電探改 </string>
@@ -2298,6 +2354,46 @@
 		<key>weekday</key>
 		<integer>1</integer>
 		<key>equipment</key>
+		<string>91式高射装置</string>
+		<key>secondShip</key>
+		<string>照月</string>
+	<key>remodelEquipment</key>
+	<string>94式高射装置</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>5</integer>
+		<key>equipment</key>
+		<string>91式高射装置</string>
+		<key>secondShip</key>
+		<string>照月</string>
+	<key>remodelEquipment</key>
+	<string>94式高射装置</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>6</integer>
+		<key>equipment</key>
+		<string>91式高射装置</string>
+		<key>secondShip</key>
+		<string>照月</string>
+	<key>remodelEquipment</key>
+	<string>94式高射装置</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>7</integer>
+		<key>equipment</key>
+		<string>91式高射装置</string>
+		<key>secondShip</key>
+		<string>照月</string>
+	<key>remodelEquipment</key>
+	<string>94式高射装置</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>1</integer>
+		<key>equipment</key>
 		<string>94式高射装置</string>
 		<key>secondShip</key>
 		<string>秋月</string>
@@ -2361,6 +2457,76 @@
 		<string>94式高射装置</string>
 		<key>secondShip</key>
 		<string>秋月</string>
+	<key>remodelEquipment</key>
+	<string>10cm高角砲＋高射装置</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>1</integer>
+		<key>equipment</key>
+		<string>94式高射装置</string>
+		<key>secondShip</key>
+		<string>照月</string>
+	<key>remodelEquipment</key>
+	<string>10cm高角砲＋高射装置</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>2</integer>
+		<key>equipment</key>
+		<string>94式高射装置</string>
+		<key>secondShip</key>
+		<string>照月</string>
+	<key>remodelEquipment</key>
+	<string>10cm高角砲＋高射装置</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>3</integer>
+		<key>equipment</key>
+		<string>94式高射装置</string>
+		<key>secondShip</key>
+		<string>照月</string>
+	<key>remodelEquipment</key>
+	<string>10cm高角砲＋高射装置</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>4</integer>
+		<key>equipment</key>
+		<string>94式高射装置</string>
+		<key>secondShip</key>
+		<string>照月</string>
+	<key>remodelEquipment</key>
+	<string>10cm高角砲＋高射装置</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>5</integer>
+		<key>equipment</key>
+		<string>94式高射装置</string>
+		<key>secondShip</key>
+		<string>照月</string>
+	<key>remodelEquipment</key>
+	<string>10cm高角砲＋高射装置</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>6</integer>
+		<key>equipment</key>
+		<string>94式高射装置</string>
+		<key>secondShip</key>
+		<string>照月</string>
+	<key>remodelEquipment</key>
+	<string>10cm高角砲＋高射装置</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>7</integer>
+		<key>equipment</key>
+		<string>94式高射装置</string>
+		<key>secondShip</key>
+		<string>照月</string>
 	<key>remodelEquipment</key>
 	<string>10cm高角砲＋高射装置</string>
 	</dict>
