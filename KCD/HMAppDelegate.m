@@ -242,7 +242,7 @@
 
 - (NSString *)appNameForUserAgent
 {
-	return @"Version/8.0.6 Safari/600.6.3";
+	return @"Version/8.0.8 Safari/600.8.9";
 }
 
 #ifdef DEBUG
