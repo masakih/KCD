@@ -1978,7 +1978,7 @@
 		<key>secondShip</key>
 		<string>五十鈴改二</string>
 	<key>remodelEquipment</key>
-	<string>三式水中探信儀</string>
+	<string>四式水中聴音機</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
@@ -1986,9 +1986,69 @@
 		<key>equipment</key>
 		<string>九三式水中聴音機</string>
 		<key>secondShip</key>
-		<string>五十鈴改二</string>
+		<string>五十鈴改</string>
 	<key>remodelEquipment</key>
-	<string>三式水中探信儀</string>
+	<string>四式水中聴音機</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>1</integer>
+		<key>equipment</key>
+		<string>九三式水中聴音機</string>
+		<key>secondShip</key>
+		<string>時雨改二</string>
+	<key>remodelEquipment</key>
+	<string>四式水中聴音機</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>5</integer>
+		<key>equipment</key>
+		<string>九三式水中聴音機</string>
+		<key>secondShip</key>
+		<string>時雨改二</string>
+	<key>remodelEquipment</key>
+	<string>四式水中聴音機</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>7</integer>
+		<key>equipment</key>
+		<string>九三式水中聴音機</string>
+		<key>secondShip</key>
+		<string>時雨改二</string>
+	<key>remodelEquipment</key>
+	<string>四式水中聴音機</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>1</integer>
+		<key>equipment</key>
+		<string>九三式水中聴音機</string>
+		<key>secondShip</key>
+		<string>香取改</string>
+	<key>remodelEquipment</key>
+	<string>四式水中聴音機</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>6</integer>
+		<key>equipment</key>
+		<string>九三式水中聴音機</string>
+		<key>secondShip</key>
+		<string>香取改</string>
+	<key>remodelEquipment</key>
+	<string>四式水中聴音機</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>7</integer>
+		<key>equipment</key>
+		<string>九三式水中聴音機</string>
+		<key>secondShip</key>
+		<string>香取改</string>
+	<key>remodelEquipment</key>
+	<string>四式水中聴音機</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
@@ -2029,6 +2089,62 @@
 		<string>三式水中探信儀</string>
 		<key>secondShip</key>
 		<string>五十鈴改二</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>5</integer>
+		<key>equipment</key>
+		<string>四式水中聴音機</string>
+		<key>secondShip</key>
+		<string>五十鈴改二</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>6</integer>
+		<key>equipment</key>
+		<string>四式水中聴音機</string>
+		<key>secondShip</key>
+		<string>五十鈴改二</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>7</integer>
+		<key>equipment</key>
+		<string>四式水中聴音機</string>
+		<key>secondShip</key>
+		<string>五十鈴改二</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>1</integer>
+		<key>equipment</key>
+		<string>四式水中聴音機</string>
+		<key>secondShip</key>
+		<string>秋月改</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>4</integer>
+		<key>equipment</key>
+		<string>四式水中聴音機</string>
+		<key>secondShip</key>
+		<string>照月</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>2</integer>
+		<key>equipment</key>
+		<string>四式水中聴音機</string>
+		<key>secondShip</key>
+		<string>香取改</string>
+	</dict>
+	<dict>
+		<key>weekday</key>
+		<integer>3</integer>
+		<key>equipment</key>
+		<string>四式水中聴音機</string>
+		<key>secondShip</key>
+		<string>香取改</string>
 	</dict>
 	<dict>
 		<key>weekday</key>
