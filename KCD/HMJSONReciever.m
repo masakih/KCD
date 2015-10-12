@@ -86,33 +86,11 @@
 }
 - (void)customHTTPProtocol:(CustomHTTPProtocol *)protocol didFailWithError:(NSError *)error
 {
-	[self removeDataForProtocol:protocol];
-}
-
-- (void)customHTTPProtocol:(CustomHTTPProtocol *)protocol didCompleteWithError:(NSError *)error
-{
-	if(!error) {
-		NSData  *data = [self dataForProtocol:protocol];
-		if(!data) {
-			[self removeDataForProtocol:protocol];
-			return;
-		}
-		
-#define JSON_LOG_STRING 0
-#if JSON_LOG_STRING
-		NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-		[[NSApp delegate] logLineReturn:@"body -> \n%@", string];
-#else
-		HMAPIResult *apiResult = [[HMAPIResult alloc] initWithRequest:protocol.request data:data];
-		if(apiResult) {
-			[self.queueu enqueue:apiResult];
-		}
-#endif
-	}
+	NSString *errorLog = [NSString stringWithFormat:@"Connection Error!.\nRequest: %@\nError: %@", protocol.request, error];
+	NSLog(@"%@", errorLog);
 	
 	[self removeDataForProtocol:protocol];
 }
-
 
 //- (void)customHTTPProtocol:(CustomHTTPProtocol *)protocol logWithFormat:(NSString *)format arguments:(va_list)argList
 //{
