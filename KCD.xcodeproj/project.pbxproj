@@ -14,6 +14,8 @@
 		F4131EDE190FEBDB004F7F9A /* HMSlotItemWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4131EE0190FEBDB004F7F9A /* HMSlotItemWindowController.xib */; };
 		F4131EE61910318F004F7F9A /* HMMasterSlotItemEquipTypeCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4131EE51910318F004F7F9A /* HMMasterSlotItemEquipTypeCommand.m */; };
 		F4131EE91911445F004F7F9A /* HMSlotItemEquipTypeTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4131EE81911445F004F7F9A /* HMSlotItemEquipTypeTransformer.m */; };
+		F424A6FA1BC801DE0096C431 /* HMUnknownComand.m in Sources */ = {isa = PBXBuildFile; fileRef = F424A6F91BC801DE0096C431 /* HMUnknownComand.m */; settings = {ASSET_TAGS = (); }; };
+		F424A6FD1BC809490096C431 /* HMIgnoreCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F424A6FC1BC809490096C431 /* HMIgnoreCommand.m */; settings = {ASSET_TAGS = (); }; };
 		F4268009193AF4E000B2C27F /* HMUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = F4268008193AF4E000B2C27F /* HMUserDefaults.m */; };
 		F42680121943E92D00B2C27F /* HMKCShipObject+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F42680111943E92D00B2C27F /* HMKCShipObject+Extensions.m */; };
 		F426802B194D0F4800B2C27F /* HMMemberShip2Command.m in Sources */ = {isa = PBXBuildFile; fileRef = F426802A194D0F4800B2C27F /* HMMemberShip2Command.m */; };
@@ -235,6 +237,10 @@
 		F4131EE51910318F004F7F9A /* HMMasterSlotItemEquipTypeCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMasterSlotItemEquipTypeCommand.m; sourceTree = "<group>"; };
 		F4131EE71911445F004F7F9A /* HMSlotItemEquipTypeTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSlotItemEquipTypeTransformer.h; sourceTree = "<group>"; };
 		F4131EE81911445F004F7F9A /* HMSlotItemEquipTypeTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSlotItemEquipTypeTransformer.m; sourceTree = "<group>"; };
+		F424A6F81BC801DE0096C431 /* HMUnknownComand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMUnknownComand.h; sourceTree = "<group>"; };
+		F424A6F91BC801DE0096C431 /* HMUnknownComand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMUnknownComand.m; sourceTree = "<group>"; };
+		F424A6FB1BC809490096C431 /* HMIgnoreCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMIgnoreCommand.h; sourceTree = "<group>"; };
+		F424A6FC1BC809490096C431 /* HMIgnoreCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMIgnoreCommand.m; sourceTree = "<group>"; };
 		F4268007193AF4E000B2C27F /* HMUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMUserDefaults.h; sourceTree = "<group>"; };
 		F4268008193AF4E000B2C27F /* HMUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMUserDefaults.m; sourceTree = "<group>"; };
 		F42680101943E92D00B2C27F /* HMKCShipObject+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HMKCShipObject+Extensions.h"; sourceTree = "<group>"; };
@@ -959,6 +965,10 @@
 				F4C1190A18A74DF0005D5B25 /* HMJSONCommand.m */,
 				F4D2CBC318AE2AE2000EBC59 /* HMCompositCommand.h */,
 				F4D2CBC418AE2AE2000EBC59 /* HMCompositCommand.m */,
+				F424A6FB1BC809490096C431 /* HMIgnoreCommand.h */,
+				F424A6FC1BC809490096C431 /* HMIgnoreCommand.m */,
+				F424A6F81BC801DE0096C431 /* HMUnknownComand.h */,
+				F424A6F91BC801DE0096C431 /* HMUnknownComand.m */,
 				F4B3DC4518EEEB920011B4FC /* HMCompositMapCommand.h */,
 				F4B3DC4618EEEB920011B4FC /* HMCompositMapCommand.m */,
 				F4D2CBC018AD0E1A000EBC59 /* HMMasterSTypeCommand.h */,
@@ -1327,6 +1337,7 @@
 				F4131ECF190F5C08004F7F9A /* HMStoreCreateSlotItemHistoryCommand.m in Sources */,
 				F4AA05FB192B92C800844688 /* Temporary.xcdatamodeld in Sources */,
 				F4E7802818DBD2A00011BC4C /* HMGetShipCommand.m in Sources */,
+				F424A6FD1BC809490096C431 /* HMIgnoreCommand.m in Sources */,
 				F4D6BC4F1A938EFC00742FEB /* HMDropShipHistoryCommand.m in Sources */,
 				F4A3AD8519B0CAB700FDBF80 /* HMPlanToShowsBoldFontTransformer.m in Sources */,
 				F4513EF618B9F29800073552 /* HMMemberShipCommand.m in Sources */,
@@ -1349,6 +1360,7 @@
 				F4B414E918B09A4B00468DAF /* HMMasterMapAreaCommand.m in Sources */,
 				F471784A1B6F9B5600F5E59D /* ResourceHistory.xcdatamodeld in Sources */,
 				F499E8901B5D4E7F00189029 /* HMPortNotifyCommand.m in Sources */,
+				F424A6FA1BC801DE0096C431 /* HMUnknownComand.m in Sources */,
 				F4C3957418CDDFE500A1E918 /* HMKenzoDockStatus.m in Sources */,
 				F471784D1B6FA18800F5E59D /* HMKCResource.m in Sources */,
 				F4AA060D1930E69200844688 /* HMMidnightBattleCommand.m in Sources */,

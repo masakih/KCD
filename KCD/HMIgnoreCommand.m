@@ -1,0 +1,61 @@
+//
+//  HMIgnoreCommand.m
+//  KCD
+//
+//  Created by Hori,Masaki on 2015/10/09.
+//  Copyright © 2015年 Hori,Masaki. All rights reserved.
+//
+
+#import "HMIgnoreCommand.h"
+
+static NSArray *ignoreCommands = nil;
+
+@implementation HMIgnoreCommand
+
++ (void)initialize
+{
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		ignoreCommands = @[
+						   @"/kcsapi/api_get_member/furniture",
+						   @"/kcsapi/api_get_member/mapcell",
+						   @"/kcsapi/api_get_member/mapinfo",
+						   @"/kcsapi/api_get_member/mission",
+						   @"/kcsapi/api_get_member/payitem",
+						   @"/kcsapi/api_get_member/picture_book",
+						   @"/kcsapi/api_get_member/practice",
+						   @"/kcsapi/api_get_member/record",
+						   @"/kcsapi/api_get_member/unsetslot",
+						   @"/kcsapi/api_get_member/useitem",
+						   @"/kcsapi/api_req_furniture/change",
+						   @"/kcsapi/api_req_kaisou/slotset",
+						   @"/kcsapi/api_req_kaisou/slotset",
+						   @"/kcsapi/api_req_kaisou/unsetslot_all",
+						   @"/kcsapi/api_req_kousyou/remodel_slotlist",
+						   @"/kcsapi/api_req_kousyou/remodel_slotlist_detail",
+						   @"/kcsapi/api_req_member/get_incentive",
+						   @"/kcsapi/api_req_member/get_practice_enemyinfo",
+						   @"/kcsapi/api_req_member/updatecomment",
+						   @"/kcsapi/api_req_member/updatedeckname",
+						   @"/kcsapi/api_req_mission/result",
+						   @"/kcsapi/api_req_mission/start",
+						   @"/kcsapi/api_req_practice/battle",
+						   @"/kcsapi/api_req_practice/battle_result",
+						   @"/kcsapi/api_req_practice/midnight_battle",
+						   @"/kcsapi/api_req_quest/start",
+						   @"/kcsapi/api_req_quest/stop",
+						   @"/kcsapi/api_req_ranking/getlist",
+						   ];
+	});
+}
+
++ (BOOL)canExcuteAPI:(NSString *)api
+{
+	return [ignoreCommands containsObject:api];
+}
+
+- (void)execute
+{
+	// do nothing
+}
+@end
