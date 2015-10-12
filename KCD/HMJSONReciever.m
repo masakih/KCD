@@ -116,7 +116,15 @@
 
 //- (void)customHTTPProtocol:(CustomHTTPProtocol *)protocol logWithFormat:(NSString *)format arguments:(va_list)argList
 //{
-//	[[NSApp delegate] logLineReturn:@"%@", [[NSString alloc] initWithFormat:format arguments:argList]];
+//	NSURL *url = protocol.request.URL;
+//	NSString *path = url.path;
+//	NSArray *pathComponents = [path pathComponents];
+//	if(![pathComponents containsObject:@"kcsapi"]) {
+//		return;
+//	}
+//	NSString *log = [[NSString alloc] initWithFormat:format arguments:argList];
+//	log = [NSString stringWithFormat:@"API: %@,Description: %@", path.lastPathComponent, log];
+//	[[NSApp delegate] logLineReturn:@"%@", log];
 //}
 
 
