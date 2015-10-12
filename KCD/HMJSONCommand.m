@@ -8,6 +8,10 @@
 
 #import "HMJSONCommand.h"
 
+#import "HMIgnoreCommand.h"
+#import "HMUnknownComand.h"
+#import "HMFailedCommand.h"
+
 #import "HMAppDelegate.h"
 #import "HMServerDataStore.h"
 
@@ -46,6 +50,13 @@ static NSMutableArray *registeredCommands = nil;
 {
 	HMJSONCommand *command = nil;
 	
+	if(!apiResult.json) {
+		command = [HMFailedCommand new];
+		command.api = apiResult.api;
+		command.arguments = apiResult.parameter;
+		command.json = apiResult.json;
+		return command;
+	}
 #if ENABLE_JSON_LOG
 	HMJSONViewCommand *viewCommand = [HMJSONViewCommand new];
 	viewCommand.api = apiResult.api;
@@ -73,6 +84,31 @@ static NSMutableArray *registeredCommands = nil;
 #endif
 			return command;
 		}
+	}
+#if ENABLE_JSON_LOG
+	if(command == viewCommand) command = nil;
+#endif
+	if(!command) {
+		if([HMIgnoreCommand canExcuteAPI:apiResult.api]) {
+			command =  [HMIgnoreCommand new];
+			command.api = apiResult.api;
+			command.arguments = apiResult.parameter;
+			command.json = apiResult.json;
+			
+#if ENABLE_JSON_LOG_HANDLED_API
+			command = [HMCompositCommand compositCommandWithCommands:command, viewCommand, nil];
+#endif
+		}
+	}
+	if(!command) {
+		command = [HMUnknownComand new];
+		command.api = apiResult.api;
+		command.arguments = apiResult.parameter;
+		command.json = apiResult.json;
+		
+#if ENABLE_JSON_LOG_HANDLED_API
+		command = [HMCompositCommand compositCommandWithCommands:command, viewCommand, nil];
+#endif
 	}
 	
 	return command;
