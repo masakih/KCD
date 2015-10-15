@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="HMHistoryWindowController">
@@ -10,6 +10,7 @@
                 <outlet property="dropHistoryController" destination="xvi-Qk-gPS" id="Iow-hT-qdD"/>
                 <outlet property="kaihatuHistoryController" destination="cv5-a8-9nJ" id="2aT-cr-G32"/>
                 <outlet property="kenzoHistoryController" destination="9pH-dt-0h6" id="loK-C7-3pa"/>
+                <outlet property="searchField" destination="3Mk-NG-aFR" id="tgf-JK-VhN"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -25,20 +26,20 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <tabView initialItem="Fc3-eD-ZRW" id="w1c-Mq-cf1">
-                        <rect key="frame" x="13" y="10" width="692" height="512"/>
+                        <rect key="frame" x="13" y="39" width="692" height="483"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="開発履歴" identifier="1" id="Fc3-eD-ZRW">
                                 <view key="view" id="ZTK-QL-zgF">
-                                    <rect key="frame" x="10" y="33" width="672" height="466"/>
+                                    <rect key="frame" x="10" y="33" width="672" height="437"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="e8j-V0-zb3">
-                                            <rect key="frame" x="17" y="8" width="638" height="455"/>
+                                            <rect key="frame" x="17" y="8" width="638" height="426"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <clipView key="contentView" id="fQm-u6-BcB">
-                                                <rect key="frame" x="1" y="17" width="636" height="437"/>
+                                                <rect key="frame" x="1" y="17" width="636" height="408"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="reverseSequential" alternatingRowBackgroundColors="YES" autosaveName="kaihatuHistory" headerView="S87-OC-vhS" id="aCA-Gg-AUV">
@@ -232,14 +233,14 @@
                             </tabViewItem>
                             <tabViewItem label="建造履歴" identifier="2" id="Haj-7P-LGq">
                                 <view key="view" id="mQA-6l-Pfr">
-                                    <rect key="frame" x="10" y="33" width="672" height="466"/>
+                                    <rect key="frame" x="10" y="33" width="672" height="437"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="hg2-fZ-LqB">
-                                            <rect key="frame" x="17" y="8" width="638" height="455"/>
+                                            <rect key="frame" x="17" y="8" width="638" height="426"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <clipView key="contentView" id="pnS-lB-JNx">
-                                                <rect key="frame" x="1" y="17" width="636" height="437"/>
+                                                <rect key="frame" x="1" y="17" width="636" height="408"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="reverseSequential" alternatingRowBackgroundColors="YES" autosaveName="kenzoHistory" headerView="11L-S0-22L" id="Wyj-Am-Fha">
@@ -433,14 +434,14 @@
                             </tabViewItem>
                             <tabViewItem label="ドロップ履歴" identifier="3" id="EK7-bl-OcS">
                                 <view key="view" id="dN9-Jm-nQc">
-                                    <rect key="frame" x="10" y="33" width="672" height="466"/>
+                                    <rect key="frame" x="10" y="33" width="672" height="437"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="Mco-2l-8s4">
-                                            <rect key="frame" x="17" y="8" width="638" height="455"/>
+                                            <rect key="frame" x="17" y="8" width="638" height="426"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <clipView key="contentView" id="egd-t1-HqM">
-                                                <rect key="frame" x="1" y="17" width="238" height="117"/>
+                                                <rect key="frame" x="1" y="17" width="636" height="408"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="sequential" alternatingRowBackgroundColors="YES" autosaveName="drophistory" headerView="GLB-Em-NKT" id="VIc-m5-S1Y">
@@ -591,7 +592,7 @@
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
                                             <tableHeaderView key="headerView" id="GLB-Em-NKT">
-                                                <rect key="frame" x="0.0" y="0.0" width="238" height="17"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="636" height="17"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </tableHeaderView>
                                         </scrollView>
@@ -601,13 +602,47 @@
                         </tabViewItems>
                         <connections>
                             <binding destination="-2" name="selectedIndex" keyPath="selectedTabIndex" id="YcS-1r-NT6"/>
+                            <outlet property="delegate" destination="-2" id="zjd-Y8-Lbn"/>
                         </connections>
                     </tabView>
+                    <button verticalHuggingPriority="750" id="tZj-7I-gzX">
+                        <rect key="frame" x="14" y="11" width="66" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="push" title="削除" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mIl-Pn-GLf">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" size="13" name="HiraKakuProN-W3"/>
+                        </buttonCell>
+                    </button>
                 </subviews>
             </view>
+            <toolbar key="toolbar" implicitIdentifier="9733990E-C421-4705-A287-001DC83D50F1" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="tYA-a0-fmZ">
+                <allowedToolbarItems>
+                    <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="gOU-TD-TxS"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="582-jv-fn0"/>
+                    <toolbarItem implicitItemIdentifier="1D6AD831-3D46-41A5-88C2-A4BCA253BDA8" label="検索" paletteLabel="検索" id="EQM-WJ-r6f">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="106" height="22"/>
+                        <size key="maxSize" width="300" height="22"/>
+                        <searchField key="view" wantsLayer="YES" verticalHuggingPriority="750" id="3Mk-NG-aFR">
+                            <rect key="frame" x="0.0" y="14" width="300" height="22"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="rZG-q3-ewj">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </searchFieldCell>
+                        </searchField>
+                    </toolbarItem>
+                </allowedToolbarItems>
+                <defaultToolbarItems>
+                    <toolbarItem reference="582-jv-fn0"/>
+                    <toolbarItem reference="EQM-WJ-r6f"/>
+                </defaultToolbarItems>
+            </toolbar>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
+            <point key="canvasLocation" x="631" y="320"/>
         </window>
         <arrayController mode="entity" entityName="KaihatuHistory" editable="NO" automaticallyPreparesContent="YES" automaticallyRearrangesObjects="YES" id="cv5-a8-9nJ" userLabel="KaihatuHistory">
             <connections>

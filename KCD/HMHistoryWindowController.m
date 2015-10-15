@@ -16,7 +16,9 @@ typedef NS_ENUM(NSUInteger, HMHistoryWindowTabIndex) {
 	kDropHistoryIndex = 2,
 };
 
-@interface HMHistoryWindowController ()
+@interface HMHistoryWindowController () <NSTabViewDelegate>
+
+@property (weak, nonatomic) IBOutlet NSSearchField *searchField;
 
 @end
 
@@ -27,6 +29,36 @@ typedef NS_ENUM(NSUInteger, HMHistoryWindowTabIndex) {
 	self = [super initWithWindowNibName:NSStringFromClass([self class])];
 	
 	return self;
+}
+
+- (void)awakeFromNib
+{
+	NSString *predicateFormat = @"";
+	NSArrayController *target = nil;
+	switch (self.selectedTabIndex) {
+		case kKaihatuHistoryIndex:
+			target = self.kaihatuHistoryController;
+			predicateFormat = @"name contains $value";
+			break;
+		case kKenzoHistoryIndex:
+			target = self.kenzoHistoryController;
+			predicateFormat = @"name contains $value";
+			break;
+		case kDropHistoryIndex:
+			target = self.dropHistoryController;
+			predicateFormat = @"shipName contains $value";
+			break;
+			
+	}
+	
+	if(!target) return;
+	
+	[self.searchField bind:NSPredicateBinding
+				  toObject:target
+			   withKeyPath:NSFilterPredicateBinding
+				   options:@{
+							 NSPredicateFormatBindingOption : predicateFormat,
+							 }];
 }
 
 - (NSManagedObjectContext *)manageObjectContext
@@ -46,6 +78,7 @@ typedef NS_ENUM(NSUInteger, HMHistoryWindowTabIndex) {
 			break;
 		case kDropHistoryIndex:
 			target = self.dropHistoryController;
+			break;
 			
 	}
 	
@@ -65,5 +98,39 @@ typedef NS_ENUM(NSUInteger, HMHistoryWindowTabIndex) {
 		[moc deleteObject:object];
 	}
 }
+
+#pragma mark - NSTabViewDelegate
+- (void)tabView:(NSTabView *)tabView didSelectTabViewItem:(nullable NSTabViewItem *)tabViewItem
+{
+	[self.searchField unbind:NSPredicateBinding];
+	
+	NSString *predicateFormat = @"";
+	NSArrayController *target = nil;
+	switch (self.selectedTabIndex) {
+		case kKaihatuHistoryIndex:
+			target = self.kaihatuHistoryController;
+			predicateFormat = @"name contains $value";
+			break;
+		case kKenzoHistoryIndex:
+			target = self.kenzoHistoryController;
+			predicateFormat = @"name contains $value";
+			break;
+		case kDropHistoryIndex:
+			target = self.dropHistoryController;
+			predicateFormat = @"shipName contains $value";
+			break;
+			
+	}
+	
+	if(!target) return;
+	
+	[self.searchField bind:NSPredicateBinding
+				 toObject:target
+			  withKeyPath:NSFilterPredicateBinding
+				  options:@{
+							NSPredicateFormatBindingOption : predicateFormat,
+							}];
+}
+
 
 @end
