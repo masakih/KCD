@@ -14,9 +14,9 @@
 		F4131EDE190FEBDB004F7F9A /* HMSlotItemWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4131EE0190FEBDB004F7F9A /* HMSlotItemWindowController.xib */; };
 		F4131EE61910318F004F7F9A /* HMMasterSlotItemEquipTypeCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4131EE51910318F004F7F9A /* HMMasterSlotItemEquipTypeCommand.m */; };
 		F4131EE91911445F004F7F9A /* HMSlotItemEquipTypeTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4131EE81911445F004F7F9A /* HMSlotItemEquipTypeTransformer.m */; };
-		F424A6FA1BC801DE0096C431 /* HMUnknownComand.m in Sources */ = {isa = PBXBuildFile; fileRef = F424A6F91BC801DE0096C431 /* HMUnknownComand.m */; settings = {ASSET_TAGS = (); }; };
-		F424A6FD1BC809490096C431 /* HMIgnoreCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F424A6FC1BC809490096C431 /* HMIgnoreCommand.m */; settings = {ASSET_TAGS = (); }; };
-		F424A7001BC8C10C0096C431 /* HMFailedCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F424A6FF1BC8C10C0096C431 /* HMFailedCommand.m */; settings = {ASSET_TAGS = (); }; };
+		F424A6FA1BC801DE0096C431 /* HMUnknownComand.m in Sources */ = {isa = PBXBuildFile; fileRef = F424A6F91BC801DE0096C431 /* HMUnknownComand.m */; };
+		F424A6FD1BC809490096C431 /* HMIgnoreCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F424A6FC1BC809490096C431 /* HMIgnoreCommand.m */; };
+		F424A7001BC8C10C0096C431 /* HMFailedCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F424A6FF1BC8C10C0096C431 /* HMFailedCommand.m */; };
 		F4268009193AF4E000B2C27F /* HMUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = F4268008193AF4E000B2C27F /* HMUserDefaults.m */; };
 		F42680121943E92D00B2C27F /* HMKCShipObject+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F42680111943E92D00B2C27F /* HMKCShipObject+Extensions.m */; };
 		F426802B194D0F4800B2C27F /* HMMemberShip2Command.m in Sources */ = {isa = PBXBuildFile; fileRef = F426802A194D0F4800B2C27F /* HMMemberShip2Command.m */; };
