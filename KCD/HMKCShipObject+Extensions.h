@@ -14,6 +14,7 @@
 @property (readonly) NSString *shortTypeName;
 
 
+@property (readonly) NSInteger status;
 @property (readonly) NSColor *statusColor;
 @property (readonly) NSColor *conditionColor;
 

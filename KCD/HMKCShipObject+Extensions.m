@@ -43,6 +43,10 @@ static NSArray *levelUpExps = nil;
 	});
 }
 
++ (NSSet *)keyPathsForValuesAffectingStatus
+{
+	return [NSSet setWithObjects:@"nowhp", @"maxph", nil];
+}
 + (NSSet *)keyPathsForValuesAffectingStatusColor
 {
 	return [NSSet setWithObjects:@"nowhp", @"maxph", nil];
@@ -169,6 +173,29 @@ static NSArray *levelUpExps = nil;
 	return @(nextExp - [expValue integerValue]);
 }
 
+
+- (NSInteger)status
+{
+	[self willAccessValueForKey:@"maxhp"];
+	[self willAccessValueForKey:@"nowhp"];
+	NSInteger maxhp = [self.maxhp integerValue];
+	CGFloat nowhp = [self.nowhp integerValue];
+	[self didAccessValueForKey:@"nowhp"];
+	[self didAccessValueForKey:@"maxhp"];
+	
+	CGFloat status = nowhp / maxhp;
+	if(status <= 0.25) {
+		return 3;
+	}
+	if(status <= 0.5) {
+		return 2;
+	}
+	if(status <= 0.75) {
+		return 1;
+		
+	}
+	return 0;
+}
 - (NSColor *)statusColor
 {
 	[self willAccessValueForKey:@"maxhp"];

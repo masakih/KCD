@@ -14,6 +14,7 @@
 
 #import "HMGuardEscapedView.h"
 #import "HMGuardShelterCommand.h"
+#import "HMDamageView.h"
 
 
 @interface HMShipDetailViewController ()
@@ -22,6 +23,7 @@
 
 @property (nonatomic, weak) IBOutlet HMSuppliesView *supply;
 @property (nonatomic, weak) IBOutlet HMGuardEscapedView *guardEscapedView;
+@property (nonatomic, weak) IBOutlet HMDamageView *damageView;
 
 @property (nonatomic, weak) IBOutlet NSObjectController *shipController;
 @property (nonatomic, weak) IBOutlet NSTextField *slot00Field;
@@ -49,6 +51,8 @@
 {
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	[nc removeObserver:self];
+	
+	[self.damageView unbind:@"damageType"];
 }
 
 - (void)updateStatus:(NSNotification *)notification
@@ -60,6 +64,18 @@
 
 - (void)awakeFromNib
 {
+	[self.damageView setFrameOrigin:NSZeroPoint];
+	[self.view addSubview:self.damageView];
+	[self.damageView bind:@"damageType"
+				 toObject:self.shipController
+			  withKeyPath:@"selection.status"
+				  options:@{
+							NSRaisesForNotApplicableKeysBindingOption : @YES,
+							}];
+	
+	[self.guardEscapedView setFrameOrigin:NSZeroPoint];
+	[self.view addSubview:self.guardEscapedView];
+	
 	[self.slot00Field bind:@"slotItemID"
 				  toObject:self.shipController
 			   withKeyPath:@"selection.slot_0"

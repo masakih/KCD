@@ -14,4 +14,6 @@
 
 @property (strong) HMKCShipObject *ship;
 
+@property (nonatomic) BOOL guardEscaped;
+
 @end
