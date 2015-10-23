@@ -154,9 +154,6 @@ void reduceResourceByConditions(HMResourceHistoryDataStore *resourceStore, NSArr
 {
 	dispatch_queue_t queue = dispatch_queue_create("HMResourceHistoryManager", DISPATCH_QUEUE_SERIAL);
 	dispatch_async(queue, ^{
-		
-		NSLog(@"Start Reduce.");
-		
 		HMResourceHistoryDataStore *resourceStore = [HMResourceHistoryDataStore oneTimeEditor];
 		
 		// 1 month.
@@ -175,8 +172,6 @@ void reduceResourceByConditions(HMResourceHistoryDataStore *resourceStore, NSArr
 		reduceResourceByConditions(resourceStore, target, sixMonthAgo);
 		
 		[resourceStore saveAction:nil];
-		
-		NSLog(@"End Reduce.");
 	});
 	
 }
