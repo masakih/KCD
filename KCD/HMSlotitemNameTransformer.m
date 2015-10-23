@@ -13,29 +13,12 @@
 #import "HMKCSlotItemObject+Extensions.h"
 #import "HMKCMasterSlotItemObject.h"
 
-static NSDictionary *slotItemShortName = nil;
-
 @implementation HMSlotitemNameTransformer
 + (void)load
 {
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
 		[NSValueTransformer setValueTransformer:[self new] forName:@"HMSlotitemNameTransformer"];
-		
-		NSBundle *mainBundle = [NSBundle mainBundle];
-		NSString *path = [mainBundle pathForResource:@"SlotItemShortName" ofType:@"plist"];
-		if(!path) {
-			NSLog(@"Could not find SlotItemShortName.plist");
-			NSBeep();
-			return;
-		}
-		id dict = [NSDictionary dictionaryWithContentsOfFile:path];
-		if(!dict) {
-			NSLog(@"SlotItemShortName.plist is not dictionay.");
-			NSBeep();
-			return;
-		}
-		slotItemShortName = dict;
 	});
 }
 
@@ -67,9 +50,6 @@ static NSDictionary *slotItemShortName = nil;
 	}
 	
 	HMKCSlotItemObject *slotItem = array[0];
-	NSString *mstIDString = [slotItem.master_slotItem.id stringValue];
-	NSString *shortName = slotItemShortName[mstIDString];
-	if(shortName) return shortName;
 	
 	return [slotItem.name copy];
 }
