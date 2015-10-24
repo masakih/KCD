@@ -18,5 +18,6 @@ typedef NS_ENUM(NSInteger, HMDamageType) {
 @interface HMDamageView : NSView
 
 @property (nonatomic) HMDamageType damageType;
+@property NSControlSize controlSize;
 
 @end

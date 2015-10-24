@@ -57,6 +57,7 @@
 - (void)awakeFromNib
 {
 	[self.damageView setFrameOrigin:NSZeroPoint];
+	self.damageView.controlSize = NSSmallControlSize;
 	[self.view addSubview:self.damageView];
 	[self.damageView bind:@"damageType"
 				 toObject:self.shipController
@@ -66,6 +67,7 @@
 							}];
 	
 	[self.guardEscapedView setFrameOrigin:NSZeroPoint];
+	self.guardEscapedView.controlSize = NSSmallControlSize;
 	[self.view addSubview:self.guardEscapedView];
 }
 

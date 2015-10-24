@@ -53,7 +53,15 @@ static NSString *hiString = nil;
 	[[NSColor colorWithCalibratedWhite:0.9 alpha:0.8] set];
 	[fillPath fill];
 	
-	[self drawTaihiInrect:bounds];
+	switch(self.controlSize) {
+		case NSRegularControlSize:
+			[self drawTaihiInrect:bounds];
+			break;
+		case NSSmallControlSize:
+		case NSMiniControlSize:
+			[self drawSmallTaihiInrect:bounds];
+			break;
+	}
 }
 
 - (void)drawTaihiInrect:(NSRect)bounds
@@ -97,6 +105,45 @@ static NSString *hiString = nil;
 	rect.size.height -= 2;
 	[tai drawInRect:rect];
 	rect.size.height *= 0.5;
+	[hi drawInRect:rect];
+}
+
+- (void)drawSmallTaihiInrect:(NSRect)bounds
+{
+	const CGFloat width = 100;
+	const CGFloat height = 50;
+	NSRect rect = NSMakeRect(
+							 (NSInteger)((bounds.size.width - width) * 0.5),
+							 (NSInteger)((bounds.size.height - height) * 0.5),
+							 width, height);
+	
+	NSBezierPath *path = [NSBezierPath bezierPathWithRect:rect];
+	
+	[[NSColor whiteColor] set];
+	[path fill];
+	
+	[[NSColor blackColor] set];
+	[path stroke];
+	
+	rect = NSInsetRect(rect, 3, 3);
+	path = [NSBezierPath bezierPathWithRect:rect];
+	path.lineWidth = 2;
+	[path stroke];
+	
+	NSDictionary *taiAttr = @{
+							  NSForegroundColorAttributeName : [NSColor lightGrayColor],
+							  NSFontAttributeName : [NSFont boldSystemFontOfSize:height - 14],
+							  };
+	NSAttributedString *tai = [[NSAttributedString alloc] initWithString:taiString attributes:taiAttr];
+	
+	NSAttributedString *hi = [[NSAttributedString alloc] initWithString:hiString attributes:taiAttr];
+	
+	rect = NSInsetRect(rect, 2, 2);
+	rect.origin.y += 4;
+	rect.origin.x += 4;
+	rect.size.height -= 2;
+	[tai drawInRect:rect];
+	rect.origin.x += rect.size.width * 0.5;
 	[hi drawInRect:rect];
 }
 

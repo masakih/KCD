@@ -10,4 +10,6 @@
 
 @interface HMGuardEscapedView : NSView
 
+@property NSControlSize controlSize;
+
 @end
