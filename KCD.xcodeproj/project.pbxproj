@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F402D5371BE3AFAB008D5881 /* HMSlotResetCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F402D5361BE3AFAB008D5881 /* HMSlotResetCommand.m */; };
 		F4131ECF190F5C08004F7F9A /* HMStoreCreateSlotItemHistoryCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4131ECE190F5C08004F7F9A /* HMStoreCreateSlotItemHistoryCommand.m */; };
 		F4131ED5190F63D8004F7F9A /* HMUpdateSlotItemCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4131ED4190F63D8004F7F9A /* HMUpdateSlotItemCommand.m */; };
 		F4131ED8190FA08D004F7F9A /* HMDestroyItem2Command.m in Sources */ = {isa = PBXBuildFile; fileRef = F4131ED7190FA08D004F7F9A /* HMDestroyItem2Command.m */; };
@@ -227,6 +228,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F402D5351BE3AFAB008D5881 /* HMSlotResetCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSlotResetCommand.h; sourceTree = "<group>"; };
+		F402D5361BE3AFAB008D5881 /* HMSlotResetCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSlotResetCommand.m; sourceTree = "<group>"; };
 		F4131ECD190F5C08004F7F9A /* HMStoreCreateSlotItemHistoryCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMStoreCreateSlotItemHistoryCommand.h; sourceTree = "<group>"; };
 		F4131ECE190F5C08004F7F9A /* HMStoreCreateSlotItemHistoryCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMStoreCreateSlotItemHistoryCommand.m; sourceTree = "<group>"; };
 		F4131ED3190F63D8004F7F9A /* HMUpdateSlotItemCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMUpdateSlotItemCommand.h; sourceTree = "<group>"; };
@@ -1094,6 +1097,8 @@
 				F43769E01AE7CFF800DE6204 /* HMClearItemGetComand.m */,
 				F43769E21AE7D01D00DE6204 /* HMUpdateQuestListCommand.h */,
 				F43769E31AE7D01D00DE6204 /* HMUpdateQuestListCommand.m */,
+				F402D5351BE3AFAB008D5881 /* HMSlotResetCommand.h */,
+				F402D5361BE3AFAB008D5881 /* HMSlotResetCommand.m */,
 			);
 			name = Command;
 			sourceTree = "<group>";
@@ -1384,6 +1389,7 @@
 				F4AA060D1930E69200844688 /* HMMidnightBattleCommand.m in Sources */,
 				F4D6BC551A93903E00742FEB /* HMDropShipHistory.m in Sources */,
 				F4131EE91911445F004F7F9A /* HMSlotItemEquipTypeTransformer.m in Sources */,
+				F402D5371BE3AFAB008D5881 /* HMSlotResetCommand.m in Sources */,
 				F4BDEB5A187252F30069D0CE /* HMAppDelegate.m in Sources */,
 				F4E7802B18DC3A820011BC4C /* HMLocalDataStore.m in Sources */,
 				F494DC6718C8BA6400AE97E4 /* HMPowerUpSupportViewController.m in Sources */,
