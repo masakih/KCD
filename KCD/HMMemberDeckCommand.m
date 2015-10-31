@@ -32,6 +32,7 @@
 {
 	if([api isEqualToString:@"/kcsapi/api_get_member/deck"]) return YES;
 	if([api isEqualToString:@"/kcsapi/api_get_member/deck_port"]) return YES;
+	if([api isEqualToString:@"/kcsapi/api_req_hensei/preset_select"]) return YES;
 	return NO;
 }
 
@@ -48,6 +49,9 @@
 	}
 	if([self.api isEqualToString:@"/kcsapi/api_get_member/ship_deck"]) {
 		return @"api_data.api_deck_data";
+	}
+	if([self.api isEqualToString:@"/kcsapi/api_req_hensei/preset_select"]) {
+		return [super dataKey];
 	}
 	
 	return [super dataKey];
