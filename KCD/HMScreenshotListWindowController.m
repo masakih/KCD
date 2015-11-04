@@ -239,20 +239,22 @@
 		
 //		NSDate *date02 = [NSDate dateWithTimeIntervalSinceNow:0.0];
 		
-		[imageData writeToFile:path atomically:YES];
+		[imageData writeToFile:path atomically:NO];
 		
 //		NSDate *date03 = [NSDate dateWithTimeIntervalSinceNow:0.0];
 		
-		HMScreenshotInformation *info = [HMScreenshotInformation new];
-		info.path = path;
-		info.version = [self cacheVersionForPath:path];
-		
-		[self.screenshotsController insertObject:info atArrangedObjectIndex:0];
-		self.screenshotsController.selectedObjects = @[info];
-		
-		if(HMStandardDefaults.showsListWindowAtScreenshot) {
-			[self.window makeKeyAndOrderFront:nil];
-		}
+		dispatch_async(dispatch_get_main_queue(), ^{
+			HMScreenshotInformation *info = [HMScreenshotInformation new];
+			info.path = path;
+			info.version = [self cacheVersionForPath:path];
+			
+			[self.screenshotsController insertObject:info atArrangedObjectIndex:0];
+			self.screenshotsController.selectedObjects = @[info];
+			
+			if(HMStandardDefaults.showsListWindowAtScreenshot) {
+				[self.window makeKeyAndOrderFront:nil];
+			}
+		});
 		
 //		NSDate *date04 = [NSDate dateWithTimeIntervalSinceNow:0.0];
 		
