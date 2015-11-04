@@ -333,6 +333,46 @@ const NSInteger maxFleetNumber = 4;
 	}
 	return @(total);
 }
++ (NSSet *)keyPathsForValuesAffectingTotalLevel
+{
+	return [NSSet setWithObjects:
+			@"detail01.ship.lv",
+			@"detail02.ship.lv",
+			@"detail03.ship.lv",
+			@"detail04.ship.lv",
+			@"detail05.ship.lv",
+			@"detail06.ship.lv",
+			nil];
+}
+- (NSNumber *)totalLevel
+{
+	NSInteger total = 0;
+	for(HMShipDetailViewController *detail in self.details) {
+		HMKCShipObject *ship = detail.ship;
+		total += ship.lv.integerValue;
+	}
+	return @(total);
+}
++ (NSSet *)keyPathsForValuesAffectingTotalDrums
+{
+	return [NSSet setWithObjects:
+			@"detail01.ship.totalDrums",
+			@"detail02.ship.totalDrums",
+			@"detail03.ship.totalDrums",
+			@"detail04.ship.totalDrums",
+			@"detail05.ship.totalDrums",
+			@"detail06.ship.totalDrums",
+			nil];
+}
+- (NSNumber *)totalDrums
+{
+	NSInteger total = 0;
+	for(HMShipDetailViewController *detail in self.details) {
+		HMKCShipObject *ship = detail.ship;
+		total += ship.totalDrums.integerValue;
+	}
+	return @(total);
+}
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
