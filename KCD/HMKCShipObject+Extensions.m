@@ -346,7 +346,7 @@ static NSArray *levelUpExps = nil;
 	NSArray *bomberTypes = @[@7];
 	NSArray *attackerTypes = @[@8];
 	NSArray *floatplaneBomberTypes = @[@11];
-	__block NSInteger extraSeiku = 0;
+	NSInteger extraSeiku = 0;
 	for(NSInteger i = 0; i < 5; i++) {
 		HMKCSlotItemObject *slotItem = [self slotItemAtIndex:i];
 		NSNumber *airLevel = slotItem.alv;
@@ -374,6 +374,27 @@ static NSArray *levelUpExps = nil;
 	}
 	
 	return @(extraSeiku);
+}
+
++ (NSSet *)keyPathsForValuesAffectingTotalDrums
+{
+	return [NSSet setWithObjects:
+			@"slot_0", @"slot_1", @"slot_2", @"slot_3", @"slot_4",
+			nil];
+}
+
+- (NSNumber *)totalDrums
+{
+	NSInteger totalBuckets = 0;
+	for(NSInteger i = 0; i < 5; i++) {
+		HMKCSlotItemObject *slotItem = [self slotItemAtIndex:i];
+		NSNumber *masterID = slotItem.slotitem_id;
+		if([masterID isEqualToNumber:@(75)]) {
+			totalBuckets++;
+		}
+	}
+	
+	return @(totalBuckets);
 }
 
 - (NSNumber *)guardEscaped

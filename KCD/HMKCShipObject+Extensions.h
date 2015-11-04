@@ -32,5 +32,7 @@
 @property (readonly) NSNumber *seiku;
 @property (readonly) NSNumber *extraSeiku;
 
+@property (readonly) NSNumber *totalDrums;
+
 @property (readonly) NSNumber *guardEscaped; // NSNumber of BOLL
 @end
