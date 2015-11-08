@@ -230,6 +230,7 @@
 /* Begin PBXFileReference section */
 		F402D5351BE3AFAB008D5881 /* HMSlotResetCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSlotResetCommand.h; sourceTree = "<group>"; };
 		F402D5361BE3AFAB008D5881 /* HMSlotResetCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSlotResetCommand.m; sourceTree = "<group>"; };
+		F402D5381BEF14EA008D5881 /* Bookmark 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Bookmark 2.xcdatamodel"; sourceTree = "<group>"; };
 		F4131ECD190F5C08004F7F9A /* HMStoreCreateSlotItemHistoryCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMStoreCreateSlotItemHistoryCommand.h; sourceTree = "<group>"; };
 		F4131ECE190F5C08004F7F9A /* HMStoreCreateSlotItemHistoryCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMStoreCreateSlotItemHistoryCommand.m; sourceTree = "<group>"; };
 		F4131ED3190F63D8004F7F9A /* HMUpdateSlotItemCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMUpdateSlotItemCommand.h; sourceTree = "<group>"; };
@@ -1871,9 +1872,10 @@
 		F495462C1B1894DD00E0D8D0 /* Bookmark.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				F402D5381BEF14EA008D5881 /* Bookmark 2.xcdatamodel */,
 				F495462D1B1894DD00E0D8D0 /* Bookmark.xcdatamodel */,
 			);
-			currentVersion = F495462D1B1894DD00E0D8D0 /* Bookmark.xcdatamodel */;
+			currentVersion = F402D5381BEF14EA008D5881 /* Bookmark 2.xcdatamodel */;
 			path = Bookmark.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
