@@ -13,6 +13,7 @@
 typedef NS_ENUM(NSUInteger, HMFleetViewType) {
 	detailViewType,
 	minimumViewType,
+	miniVierticalType,
 };
 
 typedef NS_ENUM(NSInteger, HMFleetViewShipOrder) {
@@ -24,6 +25,7 @@ typedef NS_ENUM(NSInteger, HMFleetViewShipOrder) {
 @interface HMFleetViewController : NSViewController
 
 - (instancetype)initWithViewType:(HMFleetViewType)type;
++ (instancetype)viewControlerWithViewType:(HMFleetViewType)type;
 
 + (CGFloat)oldStyleFleetViewHeight;
 + (CGFloat)detailViewHeight;

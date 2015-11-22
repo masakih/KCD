@@ -57,11 +57,6 @@ const NSInteger maxFleetNumber = 4;
 @synthesize fleetNumber = _fleetNumber;
 @synthesize shipOrder = _shipOrder;
 
-+ (instancetype)new
-{
-	return [[[self class] alloc] initWithViewType:minimumViewType];
-}
-
 - (instancetype)initWithViewType:(HMFleetViewType)type
 {
 	Class shipViewClass = Nil;
@@ -73,6 +68,10 @@ const NSInteger maxFleetNumber = 4;
 			break;
 		case minimumViewType:
 			nibName = @"HMFleetMinimumViewController";
+			shipViewClass = [HMMinimumShipViewController class];
+			break;
+		case miniVierticalType:
+			nibName = @"HMVerticalFleetViewController";
 			shipViewClass = [HMMinimumShipViewController class];
 			break;
 	}
@@ -91,6 +90,10 @@ const NSInteger maxFleetNumber = 4;
 		[self buildAnchorageRepairHolder];
 	}
 	return self;
+}
++ (instancetype)viewControlerWithViewType:(HMFleetViewType)type
+{
+	return [[self alloc] initWithViewType:type];
 }
 
 - (void)dealloc
@@ -243,6 +246,9 @@ const NSInteger maxFleetNumber = 4;
 			return HMFleetViewController.detailViewHeight;
 		case minimumViewType:
 			return HMFleetViewController.oldStyleFleetViewHeight;
+		case miniVierticalType:
+			//
+			break;
 	}
 	return 0;
 }
@@ -253,6 +259,9 @@ const NSInteger maxFleetNumber = 4;
 			return 159;
 		case minimumViewType:
 			return HMFleetViewController.oldStyleFleetViewHeight;
+		case miniVierticalType:
+			//
+			break;
 	}
 	return 0;
 }
