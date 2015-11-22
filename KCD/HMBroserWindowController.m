@@ -134,7 +134,7 @@ static NSString *loginPageURLPrefix = @"https://www.dmm.com/my/-/login/=/";
 	item = [self.informations tabViewItemAtIndex:3];
 	item.view = self.strengthedListViewController.view;
 	
-	_fleetViewController = [[HMFleetViewController alloc] initWithViewType:detailViewType];
+	_fleetViewController = [HMFleetViewController viewControlerWithViewType:detailViewType];
 	[self.fleetViewController.view setFrame:[self.deckPlaceholder frame]];
 	[self.fleetViewController.view setAutoresizingMask:[self.deckPlaceholder autoresizingMask]];
 	[[self.deckPlaceholder superview] replaceSubview:self.deckPlaceholder with:self.fleetViewController.view];
@@ -333,7 +333,7 @@ const CGFloat flashTopMargin = 4;
 	
 	HMFleetViewType type = fleetViewPosition == kOldStyle ? minimumViewType : detailViewType;
 	
-	HMFleetViewController *newController = [[HMFleetViewController alloc] initWithViewType:type];
+	HMFleetViewController *newController = [HMFleetViewController viewControlerWithViewType:type];
 	newController.enableAnimation = YES;
 	newController.shipOrder = self.fleetViewController.shipOrder;
 	
