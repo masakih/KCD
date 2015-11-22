@@ -22,7 +22,7 @@
 
 - (Class)testViewControllerClass
 {
-	return NSClassFromString(@"HMStrengthenListViewController");
+	return NSClassFromString(@"HMCombileViewController");
 }
 
 - (void)windowDidLoad {
