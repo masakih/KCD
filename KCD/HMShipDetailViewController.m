@@ -55,11 +55,11 @@
 		case full:
 			nibName = @"HMShipDetailViewController";
 			break;
-		case midium:
-			nibName = @"HMMinimumShipViewController";
+		case medium:
+			nibName = @"HMMediumShipViewController";
 			break;
 		case minimum:
-			nibName = @"HMMinimumShipViewController";
+			nibName = @"HMMediumShipViewController";
 			break;
 	}
 	assert(nibName);

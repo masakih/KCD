@@ -13,7 +13,7 @@
 
 typedef NS_ENUM(NSInteger, HMShipDetailViewType) {
 	full,
-	midium,
+	medium,
 	minimum,
 };
 

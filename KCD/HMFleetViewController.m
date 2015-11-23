@@ -99,7 +99,7 @@ const NSInteger maxFleetNumber = 4;
 			viewType = full;
 			break;
 		case minimumViewType:
-			viewType = midium;
+			viewType = medium;
 			break;
 		case miniVierticalType:
 			viewType = minimum;
