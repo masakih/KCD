@@ -47,6 +47,37 @@
 	}
 	return self;
 }
+
+- (instancetype)initWithType:(HMShipDetailViewType)type
+{
+	NSString *nibName = nil;
+	switch(type) {
+		case full:
+			nibName = @"HMShipDetailViewController";
+			break;
+		case midium:
+			nibName = @"HMMinimumShipViewController";
+			break;
+		case minimum:
+			nibName = @"HMMinimumShipViewController";
+			break;
+	}
+	assert(nibName);
+	
+	self = [super initWithNibName:nibName bundle:nil];
+	if(self) {
+		NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+		[nc addObserver:self
+			   selector:@selector(updateStatus:)
+				   name:HMGuardShelterCommandDidUpdateGuardExcapeNotification
+				 object:nil];
+	}
+	return self;
+}
++ (instancetype)viewControllerWithType:(HMShipDetailViewType)type
+{
+	return [[self alloc] initWithType:type];
+}
 - (void)dealloc
 {
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];

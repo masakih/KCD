@@ -8,7 +8,6 @@
 
 #import "HMFleetViewController.h"
 #import "HMShipDetailViewController.h"
-#import "HMMinimumShipViewController.h"
 
 #import "HMAppDelegate.h"
 
@@ -23,8 +22,6 @@
 const NSInteger maxFleetNumber = 4;
 
 @interface HMFleetViewController ()
-
-@property (weak) Class shipViewClass;
 
 @property (readwrite) HMFleetViewType type;
 
@@ -59,33 +56,23 @@ const NSInteger maxFleetNumber = 4;
 
 - (instancetype)initWithViewType:(HMFleetViewType)type
 {
-	Class shipViewClass = Nil;
 	NSString *nibName = nil;
 	switch (type) {
 		case detailViewType:
 			nibName = NSStringFromClass([self class]);
-			shipViewClass = [HMShipDetailViewController class];
 			break;
 		case minimumViewType:
 			nibName = @"HMFleetMinimumViewController";
-			shipViewClass = [HMMinimumShipViewController class];
 			break;
 		case miniVierticalType:
 			nibName = @"HMVerticalFleetViewController";
-			shipViewClass = [HMMinimumShipViewController class];
 			break;
 	}
-	
-	if(!nibName) {
-		self = [super initWithNibName:@"" bundle:nil];
-		NSLog(@"UnknownType");
-		return nil;
-	}
+	assert(nibName);
 	
 	self = [super initWithNibName:nibName bundle:nil];
 	if(self) {
 		_type = type;
-		_shipViewClass = shipViewClass;
 		
 		[self buildAnchorageRepairHolder];
 	}
@@ -106,10 +93,22 @@ const NSInteger maxFleetNumber = 4;
 
 - (void)awakeFromNib
 {
+	HMShipDetailViewType viewType;
+	switch(self.type) {
+		case detailViewType:
+			viewType = full;
+			break;
+		case minimumViewType:
+			viewType = midium;
+			break;
+		case miniVierticalType:
+			viewType = minimum;
+			break;
+	}
 	NSMutableArray *details = [NSMutableArray new];
 	NSArray *detailKeys = @[@"detail01", @"detail02", @"detail03", @"detail04", @"detail05", @"detail06"];
 	[detailKeys enumerateObjectsUsingBlock:^(id detailKey, NSUInteger idx, BOOL *stop) {
-		HMShipDetailViewController *detail = [self.shipViewClass new];
+		HMShipDetailViewController *detail = [HMShipDetailViewController viewControllerWithType:viewType];
 		detail.title = [NSString stringWithFormat:@"%ld", idx + 1];
 		[self setValue:detail forKey:detailKey];
 		

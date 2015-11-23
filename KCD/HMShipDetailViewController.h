@@ -10,7 +10,18 @@
 
 @class HMKCShipObject;
 
+
+typedef NS_ENUM(NSInteger, HMShipDetailViewType) {
+	full,
+	midium,
+	minimum,
+};
+
+
 @interface HMShipDetailViewController : NSViewController
+
+- (instancetype)initWithType:(HMShipDetailViewType)type;
++ (instancetype)viewControllerWithType:(HMShipDetailViewType)type;
 
 @property (strong) HMKCShipObject *ship;
 
