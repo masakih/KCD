@@ -173,7 +173,7 @@
 		F4BEEFE11B0B6326004702B8 /* HMDummyShipCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BEEFE01B0B6326004702B8 /* HMDummyShipCommand.m */; };
 		F4BEEFE91B0CE312004702B8 /* HMAPIResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BEEFE81B0CE312004702B8 /* HMAPIResult.m */; };
 		F4BEEFFC1B11A5A7004702B8 /* HMExternalBrowserWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BEEFFE1B11A5A7004702B8 /* HMExternalBrowserWindowController.xib */; };
-		F4BEEFFF1B11A5C2004702B8 /* HMMinimumShipViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BEF0011B11A5C2004702B8 /* HMMinimumShipViewController.xib */; };
+		F4BEEFFF1B11A5C2004702B8 /* HMMediumShipViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BEF0011B11A5C2004702B8 /* HMMediumShipViewController.xib */; };
 		F4BEF0021B11A5CC004702B8 /* HMFleetMinimumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BEF0041B11A5CC004702B8 /* HMFleetMinimumViewController.xib */; };
 		F4BEF0051B11A5D3004702B8 /* HMFleetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BEF0071B11A5D3004702B8 /* HMFleetViewController.xib */; };
 		F4BEF0081B11A5DE004702B8 /* HMShipDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BEF00A1B11A5DE004702B8 /* HMShipDetailViewController.xib */; };
@@ -530,7 +530,7 @@
 		F4BEEFE71B0CE312004702B8 /* HMAPIResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMAPIResult.h; sourceTree = "<group>"; };
 		F4BEEFE81B0CE312004702B8 /* HMAPIResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMAPIResult.m; sourceTree = "<group>"; };
 		F4BEEFFD1B11A5A7004702B8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMExternalBrowserWindowController.xib; sourceTree = "<group>"; };
-		F4BEF0001B11A5C2004702B8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMMinimumShipViewController.xib; sourceTree = "<group>"; };
+		F4BEF0001B11A5C2004702B8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMMediumShipViewController.xib; sourceTree = "<group>"; };
 		F4BEF0031B11A5CC004702B8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMFleetMinimumViewController.xib; sourceTree = "<group>"; };
 		F4BEF0061B11A5D3004702B8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMFleetViewController.xib; sourceTree = "<group>"; };
 		F4BEF0091B11A5DE004702B8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMShipDetailViewController.xib; sourceTree = "<group>"; };
@@ -939,7 +939,7 @@
 				F4D6BCA61AA298FD00742FEB /* HMShipDetailViewController.h */,
 				F4D6BCA71AA298FD00742FEB /* HMShipDetailViewController.m */,
 				F4BEF00A1B11A5DE004702B8 /* HMShipDetailViewController.xib */,
-				F4BEF0011B11A5C2004702B8 /* HMMinimumShipViewController.xib */,
+				F4BEF0011B11A5C2004702B8 /* HMMediumShipViewController.xib */,
 				F47E895B1B80DB9F00B2E552 /* HMSlotItemLevelView.h */,
 				F47E895C1B80DB9F00B2E552 /* HMSlotItemLevelView.m */,
 				F4ED5D281B78D0CA00D1BDEF /* HMGuardEscapedView.h */,
@@ -1234,7 +1234,7 @@
 				F4B3DC3918E5C8700011B4FC /* HMJSONViewWindowController.xib in Resources */,
 				F4BEF0081B11A5DE004702B8 /* HMShipDetailViewController.xib in Resources */,
 				F4B3DC3318E5C8520011B4FC /* HMShipViewController.xib in Resources */,
-				F4BEEFFF1B11A5C2004702B8 /* HMMinimumShipViewController.xib in Resources */,
+				F4BEEFFF1B11A5C2004702B8 /* HMMediumShipViewController.xib in Resources */,
 				F4BEF00E1B11A645004702B8 /* HMUITestWindowController.xib in Resources */,
 				F4BEF0021B11A5CC004702B8 /* HMFleetMinimumViewController.xib in Resources */,
 				F43E67B718BE02A10087E5B6 /* STypeShortName.plist in Resources */,
@@ -1625,12 +1625,12 @@
 			name = HMExternalBrowserWindowController.xib;
 			sourceTree = "<group>";
 		};
-		F4BEF0011B11A5C2004702B8 /* HMMinimumShipViewController.xib */ = {
+		F4BEF0011B11A5C2004702B8 /* HMMediumShipViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				F4BEF0001B11A5C2004702B8 /* ja */,
 			);
-			name = HMMinimumShipViewController.xib;
+			name = HMMediumShipViewController.xib;
 			sourceTree = "<group>";
 		};
 		F4BEF0041B11A5CC004702B8 /* HMFleetMinimumViewController.xib */ = {
