@@ -46,6 +46,7 @@ static NSArray *ignoreCommands = nil;
 						   @"/kcsapi/api_req_member/get_incentive",
 						   @"/kcsapi/api_req_member/get_practice_enemyinfo",
 						   @"/kcsapi/api_req_member/itemuse",
+						   @"/kcsapi/api_req_member/itemuse_cond",
 						   @"/kcsapi/api_req_member/payitemuse",
 						   @"/kcsapi/api_req_member/updatecomment",
 						   @"/kcsapi/api_req_member/updatedeckname",
