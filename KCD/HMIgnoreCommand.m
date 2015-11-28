@@ -34,7 +34,6 @@ static NSArray *ignoreCommands = nil;
 						   @"/kcsapi/api_req_furniture/music_list",
 						   @"/kcsapi/api_req_furniture/music_play",
 						   @"/kcsapi/api_req_furniture/set_portbgm",
-						   @"/kcsapi/api_req_hensei/combined",
 						   @"/kcsapi/api_req_hensei/lock",
 						   @"/kcsapi/api_req_hensei/preset_register",
 						   @"/kcsapi/api_req_kaisou/slotset",
