@@ -55,11 +55,6 @@ typedef NS_ENUM(NSUInteger, HMCoreDataManagerType) {
 - (void)dealloc
 {
 	[self saveAction:nil];
-	
-	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-	[nc removeObserver:[[self class] defaultManager]
-				  name:NSManagedObjectContextDidSaveNotification
-				object:self.managedObjectContext];
 }
 
 - (NSArray *)objectsWithEntityName:(NSString *)entityName sortDescriptors:(NSArray *)sortDescriptors predicate:(NSPredicate *)predicate error:(NSError **)error
@@ -235,6 +230,20 @@ typedef NS_ENUM(NSUInteger, HMCoreDataManagerType) {
 			});
 		}
     }
+	
+	NSManagedObjectContext *mainContext = self.managedObjectContext.parentContext;
+	[mainContext performBlock:^{  // do nothing if mainContext is nil.
+		NSError *error = nil;
+		if(![mainContext save:&error]) {
+			if([NSThread isMainThread]) {
+				[[NSApplication sharedApplication] presentError:error];
+			} else {
+				dispatch_sync(dispatch_get_main_queue(), ^{
+					[[NSApplication sharedApplication] presentError:error];
+				});
+			}
+		}
+	}];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)notification
