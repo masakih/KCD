@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14F1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
@@ -9,6 +9,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="HMBroserWindowController">
             <connections>
                 <outlet property="basicController" destination="1lk-ii-37p" id="EBc-Kc-cHP"/>
+                <outlet property="combinedViewPlaceholder" destination="ErU-NG-s3I" id="6hE-wI-Ikk"/>
                 <outlet property="deckContoller" destination="eqP-ex-UzI" id="8n5-Er-BIF"/>
                 <outlet property="deckPlaceholder" destination="tIf-gd-MhY" id="aXM-5K-Uwd"/>
                 <outlet property="informations" destination="fK1-fC-Xdm" id="why-oJ-aEb"/>
@@ -29,13 +30,17 @@
                 <rect key="frame" x="0.0" y="0.0" width="1161" height="778"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <customView id="ErU-NG-s3I" userLabel="CombinedView">
+                        <rect key="frame" x="0.0" y="0.0" width="185" height="778"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
+                    </customView>
                     <customView id="raX-C4-fMW">
                         <rect key="frame" x="8" y="298" width="800" height="480"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     </customView>
                     <customView id="tIf-gd-MhY">
-                        <rect key="frame" x="9" y="9" width="799" height="288"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <rect key="frame" x="8" y="9" width="800" height="288"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                     </customView>
                     <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" id="hy2-T8-sUp">
                         <rect key="frame" x="829" y="6" width="311" height="43"/>

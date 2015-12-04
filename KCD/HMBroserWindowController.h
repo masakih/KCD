@@ -18,6 +18,8 @@
 @property (weak) IBOutlet WebView *webView;
 @property (weak) IBOutlet NSView *placeholder;
 
+@property (weak) IBOutlet NSView *combinedViewPlaceholder;
+
 @property (readonly) NSAttributedString *linksString;
 
 @property (nonatomic, strong) IBOutlet NSArrayController *deckContoller;

@@ -24,6 +24,9 @@
 
 #import <JavaScriptCore/JavaScriptCore.h>
 
+#import "HMCombileViewController.h"
+#import "HMCombinedCommand.h"
+
 
 typedef NS_ENUM(NSInteger, ViewType) {
 	kScheduleType = 0,
@@ -55,6 +58,9 @@ static NSString *loginPageURLPrefix = @"https://www.dmm.com/my/-/login/=/";
 @property (strong) HMShipViewController *shipViewController;
 @property (strong) HMPowerUpSupportViewController *powerUpViewController;
 @property (strong) HMStrengthenListViewController *strengthedListViewController;
+
+@property (strong) HMCombileViewController *combinedViewController;
+@property BOOL isCombinedMode;
 
 @end
 
@@ -159,6 +165,22 @@ static NSString *loginPageURLPrefix = @"https://www.dmm.com/my/-/login/=/";
 	
 	[self bind:@"maxChara" toObject:self.basicController withKeyPath:@"selection.max_chara" options:nil];
 	[self bind:@"shipCount" toObject:self.shipController withKeyPath:@"arrangedObjects.@count" options:nil];
+	
+	
+	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+	[nc addObserver:self
+		   selector:@selector(didCangeCombined:)
+			   name:HMCombinedCommandCombinedDidCangeNotification
+			 object:nil];
+	
+	if(HMStandardDefaults.lastHasCombinedView) {
+		[self showCombinedView];
+	}
+}
+
+- (void)windowWillClose:(id)notification
+{
+	HMStandardDefaults.lastHasCombinedView = self.isCombinedMode;
 }
 
 - (NSManagedObjectContext *)managedObjectContext
@@ -318,6 +340,79 @@ static NSString *loginPageURLPrefix = @"https://www.dmm.com/my/-/login/=/";
 	
 }
 
+
+#pragma mark - Combined view
+- (IBAction)showHideCombinedView:(id)sender
+{
+	if(self.isCombinedMode) {
+		[self hideCombinedView];
+	} else {
+		[self showCombinedView];
+	}
+}
+- (void)showCombinedView
+{
+	if(self.isCombinedMode) return;
+	self.isCombinedMode = YES;
+	
+	if(!self.combinedViewController) {
+		self.combinedViewController = [HMCombileViewController new];
+		self.combinedViewController.view.hidden = YES;
+		
+		[self.combinedViewController.view setAutoresizingMask:[self.combinedViewPlaceholder autoresizingMask]];
+		[[self.combinedViewPlaceholder superview] replaceSubview:self.combinedViewPlaceholder with:self.combinedViewController.view];
+	}
+	
+	NSRect winFrame = self.window.frame;
+	CGFloat incrementWidth = NSMaxX(self.combinedViewController.view.frame);
+	winFrame.size.width += incrementWidth;
+	winFrame.origin.x -= incrementWidth;
+	
+	self.combinedViewController.view.hidden = NO;
+	[self.window setFrame:winFrame display:YES animate:YES];
+}
+- (void)hideCombinedView
+{
+	if(!self.isCombinedMode) return;
+	self.isCombinedMode = NO;
+	
+	NSRect winFrame = self.window.frame;
+	CGFloat incrementWidth = NSMaxX(self.combinedViewController.view.frame);
+	winFrame.size.width -= incrementWidth;
+	winFrame.origin.x += incrementWidth;
+	
+	[self.window setFrame:winFrame display:YES animate:YES];
+	self.combinedViewController.view.hidden = YES;
+}
+
+- (void)didCangeCombined:(id)notification
+{
+	if(!HMStandardDefaults.autoCombinedView) return;
+	
+	NSDictionary *info = [notification userInfo];
+	NSNumber *typeValue = info[HMCombinedType];
+	CombineType type = typeValue.integerValue;
+	if(![NSThread isMainThread]) {
+		[NSThread sleepForTimeInterval:0.1];
+	}
+	dispatch_async(dispatch_get_main_queue(),
+				   ^{
+					   switch(type) {
+						   case cancel:
+							   [self hideCombinedView];
+							   break;
+						   case maneuver:
+						   case water:
+						   case transportation:
+							   [self showCombinedView];
+							   break;
+						   default:
+							   NSLog(@"combined type is unknown type. %ld", type);
+							   [self showCombinedView];
+							   break;
+					   }
+				   });
+}
 
 #pragma mark - FleetView position
 // ###############################
@@ -600,6 +695,14 @@ const CGFloat flashTopMargin = 4;
 		return YES;
 	}
 	if(action == @selector(clearQuestList:)) {
+		return YES;
+	}
+	if(action == @selector(showHideCombinedView:)) {
+		if(self.isCombinedMode) {
+			menuItem.title = NSLocalizedString(@"Hide Combined View", @"View menu, hide combined view");
+		} else {
+			menuItem.title = NSLocalizedString(@"Show Combined View", @"View menu, show combined view");
+		}
 		return YES;
 	}
 	
