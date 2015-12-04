@@ -71,9 +71,9 @@
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="qit-fF-dVl">
-                        <rect key="frame" x="149" y="39" width="21" height="17"/>
+                        <rect key="frame" x="144" y="39" width="27" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="49" id="FwR-YA-3mt" customClass="HMStrokeTextFieldCell">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="100" id="FwR-YA-3mt" customClass="HMStrokeTextFieldCell">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -109,7 +109,7 @@
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="BMC-aB-oda">
-                        <rect key="frame" x="108" y="39" width="40" height="14"/>
+                        <rect key="frame" x="106" y="39" width="40" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Lv.999" id="xj5-NA-n7a">
                             <font key="font" metaFont="smallSystem"/>
