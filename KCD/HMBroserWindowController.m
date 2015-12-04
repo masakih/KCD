@@ -353,6 +353,8 @@ static NSString *loginPageURLPrefix = @"https://www.dmm.com/my/-/login/=/";
 - (void)showCombinedView
 {
 	if(self.isCombinedMode) return;
+	if(self.fleetViewPosition == kOldStyle) return;
+	
 	self.isCombinedMode = YES;
 	
 	if(!self.combinedViewController) {
@@ -426,6 +428,10 @@ const CGFloat flashTopMargin = 4;
 	if(self.fleetViewPosition == fleetViewPosition) return;
 	if(self.fleetViewPosition != kOldStyle && fleetViewPosition != kOldStyle) return;
 	
+	if(fleetViewPosition == kOldStyle && self.isCombinedMode) {
+		[self hideCombinedView];
+	}
+	
 	HMFleetViewType type = fleetViewPosition == kOldStyle ? minimumViewType : detailViewType;
 	
 	HMFleetViewController *newController = [HMFleetViewController viewControlerWithViewType:type];
@@ -436,6 +442,7 @@ const CGFloat flashTopMargin = 4;
 	NSRect newFrame = newController.view.frame;
 	newFrame.origin = currentView.frame.origin;
 	newController.view.frame = newFrame;
+	newController.view.autoresizingMask = currentView.autoresizingMask;
 	[currentView.superview replaceSubview:currentView with:newController.view];
 	
 	self.fleetViewController = newController;
@@ -703,6 +710,7 @@ const CGFloat flashTopMargin = 4;
 		} else {
 			menuItem.title = NSLocalizedString(@"Show Combined View", @"View menu, show combined view");
 		}
+		if(self.fleetViewPosition == kOldStyle) return NO;
 		return YES;
 	}
 	
