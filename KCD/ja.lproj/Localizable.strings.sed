@@ -30,3 +30,5 @@ s/Short/短/2
 s/Slow/低速/2
 s/Fast/高速/2
 s/Deleting caches.../キャッシュを削除中.../2
+s/Hide Combined View/連合艦隊ビューを隠す/2
+s/Show Combined View/連合艦隊ビューを表示/2
