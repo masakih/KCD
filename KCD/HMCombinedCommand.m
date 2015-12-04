@@ -27,7 +27,14 @@ NSString		*HMCombinedType = @"HMCombinedType";
 }
 - (void)execute
 {
-	id type = self.arguments[@"api_combined_type"];
+	id type = nil;
+	if([self.api isEqualToString:@"/kcsapi/api_port/port"]) {
+		NSDictionary *data = self.json[@"api_data"];
+		type = data[@"api_combined_flag"];
+	}
+	if([self.api isEqualToString:@"/kcsapi/api_req_hensei/combined"]) {
+		type = self.arguments[@"api_combined_type"];
+	}
 	if(!type) return;
 	
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
