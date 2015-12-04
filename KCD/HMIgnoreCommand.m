@@ -39,6 +39,7 @@ static NSArray *ignoreCommands = nil;
 						   @"/kcsapi/api_req_kaisou/slotset",
 						   @"/kcsapi/api_req_kaisou/slotset_ex",
 						   @"/kcsapi/api_req_kaisou/unsetslot_all",
+						   @"/kcsapi/api_req_kousyou/createship_speedchange",
 						   @"/kcsapi/api_req_kousyou/remodel_slotlist",
 						   @"/kcsapi/api_req_kousyou/remodel_slotlist_detail",
 						   @"/kcsapi/api_req_map/select_eventmap_rank",
