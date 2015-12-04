@@ -129,7 +129,19 @@ extern HMUserDefaults *HMStandardDefaults;
  */
 @property NSInteger fleetViewShipOrder;
 
-
+/**
+ * 明石さんタイマー
+ */
 @property NSDate *repairTime;
+
+/**
+ * 前回終了時に連合艦隊表示だったかどうか
+ */
+@property BOOL lastHasCombinedView;
+
+/**
+ * 自動連合艦隊表示モード
+ */
+@property BOOL autoCombinedView;
 
 @end

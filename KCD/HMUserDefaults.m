@@ -45,6 +45,7 @@ HMUserDefaults *HMStandardDefaults = nil;
 		   @"screenshotPreviewZoomValue" : @(0.4),
 		   @"showEquipmentType" : @(-1),
 		   @"fleetViewPosition" : @(1),
+		   @"autoCombinedView" : @YES,
 		   }
 		 ];
 	});
@@ -436,5 +437,23 @@ HMUserDefaults *HMStandardDefaults = nil;
 - (NSDate *)repairTime
 {
 	return [self keyedUnarchiveObject:@"repairTime"];
+}
+
+#pragma mark - combined view
+- (void)setLastHasCombinedView:(BOOL)lastHasCombinedView
+{
+	[self setBool:lastHasCombinedView forKey:@"lastHasCombinedView"];
+}
+- (BOOL)lastHasCombinedView
+{
+	return [self boolForKey:@"lastHasCombinedView"];
+}
+- (void)setAutoCombinedView:(BOOL)autoCombinedView
+{
+	[self setBool:autoCombinedView forKey:@"autoCombinedView"];
+}
+- (BOOL)autoCombinedView
+{
+	return [self boolForKey:@"autoCombinedView"];
 }
 @end
