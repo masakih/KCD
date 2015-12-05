@@ -110,5 +110,23 @@ static NSDateFormatter *formatter = nil;
 	return [self.path isEqual:obj.path];
 }
 
+#pragma mark - NSCoding
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+	[aCoder encodeObject:self.path forKey:@"HMScreenshotInformationPathKey"];
+	[aCoder encodeDouble:self.creationDate.timeIntervalSince1970 forKey:@"HMScreenshotInformationCreationDateKey"];
+	[aCoder encodeInt64:self.version forKey:@"HMScreenshotInformationVersionKey"];
+}
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+	self = [super init];
+	if(self) {
+		_path = [aDecoder decodeObjectForKey:@"HMScreenshotInformationPathKey"];
+		NSTimeInterval t = [aDecoder decodeDoubleForKey:@"HMScreenshotInformationCreationDateKey"];
+		_creationDate = [NSDate dateWithTimeIntervalSince1970:t];
+		_version = [aDecoder decodeInt64ForKey:@"HMScreenshotInformationVersionKey"];
+	}
+	return self;
+}
 
 @end

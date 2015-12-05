@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface HMScreenshotInformation : NSObject
+@interface HMScreenshotInformation : NSObject <NSCoding>
 @property (strong) NSString *path;
 @property (readonly) NSString *name;
 @property (strong) NSDate *creationDate;

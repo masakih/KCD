@@ -71,7 +71,7 @@
 {
 	self = [super initWithWindowNibName:NSStringFromClass([self class])];
 	if(self) {
-		_screenshots = [NSArray new];
+		_screenshots = [self loadCache];
 		_deletedPaths = [NSMutableArray new];
 		
 		NSString *tag = NSLocalizedString(@"kancolle", @"kancolle twitter hash tag");
@@ -93,6 +93,8 @@
 	
 	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO];
 	self.screenshotsController.sortDescriptors = @[sortDescriptor];
+	self.selectedIndexes = [NSIndexSet indexSetWithIndex:0];
+	
 	[self performSelector:@selector(reloadData:)
 			   withObject:nil
 			   afterDelay:0.0];
@@ -176,9 +178,42 @@
 	}
 	self.screenshots = [currentArray copy];
 	
-	if(!self.selectedIndexes) {
-		self.selectedIndexes = [NSIndexSet indexSetWithIndex:0];
+	[self saveCache];
+}
+
+- (void)saveCache
+{
+	NSString *path = [self screenshotSaveDirectoryPath];
+	path = [path stringByAppendingPathComponent:@"Cache.db"];
+	NSURL *url = [NSURL fileURLWithPath:path];
+	
+	NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.screenshots];
+	NSError *error = nil;
+	BOOL ok = [data writeToURL:url
+					   options:NSDataWritingAtomic
+						 error:&error];
+	if(!ok) {
+		if(error) {
+			[[NSApplication sharedApplication] presentError:error];
+		}
+		NSLog(@"Can not write error. %@", error);
 	}
+}
+- (NSArray *)loadCache
+{
+	NSString *path = [self screenshotSaveDirectoryPath];
+	path = [path stringByAppendingPathComponent:@"Cache.db"];
+	NSURL *url = [NSURL fileURLWithPath:path];
+	
+	NSData *data = [NSData dataWithContentsOfURL:url];
+	if(!data) return [NSArray new];
+	
+	id loaded = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+	if(![loaded isKindOfClass:[NSArray class]]) {
+		return [NSArray new];
+	}
+	
+	return loaded;
 }
 
 - (IBAction)reloadData:(id)sender
