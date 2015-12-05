@@ -254,9 +254,7 @@
 - (void)registerScreenshot:(NSBitmapImageRep *)image fromOnScreen:(NSRect)screenRect
 {
 	dispatch_queue_t queue = dispatch_queue_create("Screenshot queue", DISPATCH_QUEUE_SERIAL);
-	dispatch_async(queue, ^{
-//		NSDate *date00 = [NSDate dateWithTimeIntervalSinceNow:0.0];
-		
+	dispatch_async(queue, ^{		
 		NSData *imageData = [image representationUsingType:NSJPEGFileType properties:@{}];
 		
 		NSBundle *mainBundle = [NSBundle mainBundle];
@@ -267,16 +265,8 @@
 		}
 		filename = [filename stringByAppendingPathExtension:@"jpg"];
 		NSString *path = [[self screenshotSaveDirectoryPath] stringByAppendingPathComponent:filename];
-		
-//		NSDate *date01 = [NSDate dateWithTimeIntervalSinceNow:0.0];
-		
 		path = [[NSFileManager defaultManager] _web_pathWithUniqueFilenameForPath:path];
-		
-//		NSDate *date02 = [NSDate dateWithTimeIntervalSinceNow:0.0];
-		
 		[imageData writeToFile:path atomically:NO];
-		
-//		NSDate *date03 = [NSDate dateWithTimeIntervalSinceNow:0.0];
 		
 		dispatch_async(dispatch_get_main_queue(), ^{
 			HMScreenshotInformation *info = [HMScreenshotInformation new];
@@ -290,16 +280,6 @@
 				[self.window makeKeyAndOrderFront:nil];
 			}
 		});
-		
-//		NSDate *date04 = [NSDate dateWithTimeIntervalSinceNow:0.0];
-		
-//		NSLog(@"01 -> %lf\n02 -> %lf\n03 -> %lf\n04 -> %lf",
-//			  [date01 timeIntervalSinceDate:date00],
-//			  [date02 timeIntervalSinceDate:date01],
-//			  [date03 timeIntervalSinceDate:date02],
-//			  [date04 timeIntervalSinceDate:date03]
-//			  );
-		
 	});
 }
 
