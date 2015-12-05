@@ -104,7 +104,10 @@ static NSDateFormatter *formatter = nil;
 }
 - (BOOL)isEqual:(id)object
 {
-	return [self.path isEqual:object];
+	if(![object isMemberOfClass:[self class]]) return NO;
+	
+	HMScreenshotInformation *obj = object;
+	return [self.path isEqual:obj.path];
 }
 
 
