@@ -76,6 +76,9 @@ static NSDateFormatter *httpDateFormater = nil;
 @property (atomic, strong, readwrite) NSMutableData *data;
 @property (atomic, readwrite) NSURLCacheStoragePolicy cachePolicy;
 
+@property BOOL retry;
+@property BOOL dataRecieved;
+
 @end
 
 @implementation CustomHTTPProtocol
@@ -525,6 +528,8 @@ static inline void useCache(NSCachedURLResponse *cache, CustomHTTPProtocol *obje
 	}
 	
     [[self client] URLProtocol:self didLoadData:data];
+	
+	self.dataRecieved = YES;
 }
 
 - (NSDate *)expiresDate
@@ -603,6 +608,28 @@ static inline void useCache(NSCachedURLResponse *cache, CustomHTTPProtocol *obje
     assert([NSThread currentThread] == self.clientThread);
 
     [[self class] customHTTPProtocol:self logWithFormat:@"error %@ / %d", [error domain], (int) [error code]];
+	
+	
+	if(error.code == kCFURLErrorNetworkConnectionLost && !self.retry) {
+		self.retry = YES;
+		if(!self.dataRecieved) {
+			[[self class] customHTTPProtocol:self logWithFormat:@"Retry conection"];
+			
+			self.connection = [[NSURLConnection alloc] initWithRequest:self.actualRequest delegate:self startImmediately:NO];
+			assert(self.connection != nil);
+			
+			for (NSString * mode in self.modes) {
+				[self.connection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:mode];
+			}
+			
+			// Once everything is ready to go, start the request.
+			
+			[self.connection start];
+			return;
+		}
+		
+		[[self class] customHTTPProtocol:self logWithFormat:@"Already have received data !!! can not retry..."];
+	}
 	
 	id<CustomHTTPProtocolDelegate> delegate = [[self class] delegate];
 	if([delegate respondsToSelector:@selector(customHTTPProtocol:didFailWithError:)]) {
