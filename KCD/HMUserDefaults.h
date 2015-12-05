@@ -144,4 +144,9 @@ extern HMUserDefaults *HMStandardDefaults;
  */
 @property BOOL autoCombinedView;
 
+/**
+ * スワイプで連合艦隊ビューの切り替えをするか
+ */
+@property BOOL useSwipeChangeCombinedView;
+
 @end

@@ -16,14 +16,14 @@
         <window title="環境設定" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" frameAutosaveName="preferencewindow" animationBehavior="default" id="F0z-JX-Cv5" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="486" height="280"/>
+            <rect key="contentRect" x="196" y="240" width="486" height="301"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
             <view key="contentView" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="5" width="486" height="280"/>
+                <rect key="frame" x="0.0" y="-9" width="486" height="301"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KN7-sy-a0j">
-                        <rect key="frame" x="18" y="243" width="186" height="17"/>
+                        <rect key="frame" x="18" y="264" width="186" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="スクリーンショットの保存先：" id="nxM-71-Zg6">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -31,7 +31,7 @@
                         </textFieldCell>
                     </textField>
                     <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bu3-qp-Qbv">
-                        <rect key="frame" x="208" y="238" width="180" height="26"/>
+                        <rect key="frame" x="208" y="259" width="180" height="26"/>
                         <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="1000" inset="2" selectedItem="HeK-3M-4cT" id="Y49-eY-VPt">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="menu"/>
@@ -49,7 +49,7 @@
                         </popUpButtonCell>
                     </popUpButton>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tlH-Nm-il8">
-                        <rect key="frame" x="18" y="189" width="186" height="17"/>
+                        <rect key="frame" x="18" y="210" width="186" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="通知音を鳴らす：" id="KUF-ch-Mbw">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -57,7 +57,7 @@
                         </textFieldCell>
                     </textField>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HSc-Bc-B00">
-                        <rect key="frame" x="208" y="188" width="48" height="18"/>
+                        <rect key="frame" x="208" y="209" width="48" height="18"/>
                         <buttonCell key="cell" type="check" title="遠征" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="wdw-X4-3nk">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" size="13" name="AquaKana"/>
@@ -67,7 +67,7 @@
                         </connections>
                     </button>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="08f-KI-u1l">
-                        <rect key="frame" x="260" y="188" width="87" height="18"/>
+                        <rect key="frame" x="260" y="209" width="87" height="18"/>
                         <buttonCell key="cell" type="check" title="入渠ドック" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="FQU-PU-UhE">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" size="13" name="AquaKana"/>
@@ -77,7 +77,7 @@
                         </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="otX-MN-x7l">
-                        <rect key="frame" x="18" y="154" width="186" height="17"/>
+                        <rect key="frame" x="18" y="175" width="186" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="参加作戦カラー：" id="6kd-P6-Bwt">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -85,7 +85,7 @@
                         </textFieldCell>
                     </textField>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5vm-EO-1Eg">
-                        <rect key="frame" x="208" y="153" width="87" height="18"/>
+                        <rect key="frame" x="208" y="174" width="87" height="18"/>
                         <buttonCell key="cell" type="check" title="色付けする" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Z4X-Rv-dnI">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
@@ -95,7 +95,7 @@
                         </connections>
                     </button>
                     <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6ca-TN-zpl">
-                        <rect key="frame" x="260" y="124" width="44" height="23"/>
+                        <rect key="frame" x="260" y="145" width="44" height="23"/>
                         <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <connections>
                             <binding destination="DTu-dT-pUA" name="value" keyPath="values.plan01Color" id="eKF-ss-O5E">
@@ -106,7 +106,7 @@
                         </connections>
                     </colorWell>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5PE-z1-0Ij">
-                        <rect key="frame" x="229" y="127" width="30" height="17"/>
+                        <rect key="frame" x="229" y="148" width="30" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="１：" id="WNG-o8-8aW">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -114,7 +114,7 @@
                         </textFieldCell>
                     </textField>
                     <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ljj-uV-GaN">
-                        <rect key="frame" x="341" y="124" width="44" height="23"/>
+                        <rect key="frame" x="341" y="145" width="44" height="23"/>
                         <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <connections>
                             <binding destination="DTu-dT-pUA" name="value" keyPath="values.plan02Color" id="d33-aQ-aRU">
@@ -125,7 +125,7 @@
                         </connections>
                     </colorWell>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p6j-a1-mSb">
-                        <rect key="frame" x="310" y="127" width="30" height="17"/>
+                        <rect key="frame" x="310" y="148" width="30" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="２：" id="Pzg-hJ-M2Q">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -133,7 +133,7 @@
                         </textFieldCell>
                     </textField>
                     <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uAH-FY-G1V">
-                        <rect key="frame" x="422" y="124" width="44" height="23"/>
+                        <rect key="frame" x="422" y="145" width="44" height="23"/>
                         <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <connections>
                             <binding destination="DTu-dT-pUA" name="value" keyPath="values.plan03Color" id="gaf-XQ-Jjo">
@@ -144,7 +144,7 @@
                         </connections>
                     </colorWell>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h3d-pw-NLI">
-                        <rect key="frame" x="391" y="127" width="30" height="17"/>
+                        <rect key="frame" x="391" y="148" width="30" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="３：" id="yiJ-tP-64S">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -152,7 +152,7 @@
                         </textFieldCell>
                     </textField>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JH5-aR-VeH">
-                        <rect key="frame" x="351" y="187" width="87" height="18"/>
+                        <rect key="frame" x="351" y="208" width="87" height="18"/>
                         <buttonCell key="cell" type="check" title="建造ドック" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="FO7-lH-5xk">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" size="13" name="AquaKana"/>
@@ -162,7 +162,7 @@
                         </connections>
                     </button>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P0h-6y-57H">
-                        <rect key="frame" x="229" y="218" width="204" height="18"/>
+                        <rect key="frame" x="229" y="239" width="204" height="18"/>
                         <buttonCell key="cell" type="check" title="撮影後リストウインドウを表示" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="fvW-fR-dOk">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" size="13" name="AquaKana"/>
@@ -172,7 +172,7 @@
                         </connections>
                     </button>
                     <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qg1-uY-Jyo">
-                        <rect key="frame" x="260" y="95" width="44" height="23"/>
+                        <rect key="frame" x="260" y="116" width="44" height="23"/>
                         <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <connections>
                             <binding destination="DTu-dT-pUA" name="value" keyPath="values.plan04Color" id="ixe-Oo-o2e">
@@ -183,7 +183,7 @@
                         </connections>
                     </colorWell>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OSN-EO-NJW">
-                        <rect key="frame" x="229" y="98" width="30" height="17"/>
+                        <rect key="frame" x="229" y="119" width="30" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="４：" id="gvs-zZ-7bl">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -191,7 +191,7 @@
                         </textFieldCell>
                     </textField>
                     <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G6P-ks-Ttd">
-                        <rect key="frame" x="341" y="95" width="44" height="23"/>
+                        <rect key="frame" x="341" y="116" width="44" height="23"/>
                         <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <connections>
                             <binding destination="DTu-dT-pUA" name="value" keyPath="values.plan05Color" id="xHk-s3-FaE">
@@ -202,7 +202,7 @@
                         </connections>
                     </colorWell>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wrP-ky-n1g">
-                        <rect key="frame" x="310" y="98" width="30" height="17"/>
+                        <rect key="frame" x="310" y="119" width="30" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="５：" id="Qqm-cr-nBv">
                             <font key="font" size="13" name="HiraKakuProN-W3"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -210,7 +210,7 @@
                         </textFieldCell>
                     </textField>
                     <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eha-BF-mrE">
-                        <rect key="frame" x="422" y="95" width="44" height="23"/>
+                        <rect key="frame" x="422" y="116" width="44" height="23"/>
                         <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <connections>
                             <binding destination="DTu-dT-pUA" name="value" keyPath="values.plan06Color" id="VZj-5B-dSo">
@@ -221,7 +221,7 @@
                         </connections>
                     </colorWell>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oUs-l4-bGp">
-                        <rect key="frame" x="391" y="98" width="30" height="17"/>
+                        <rect key="frame" x="391" y="119" width="30" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="６：" id="heb-je-e2Z">
                             <font key="font" size="13" name="HiraKakuProN-W3"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -229,7 +229,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UVY-fV-YyH">
-                        <rect key="frame" x="18" y="60" width="186" height="17"/>
+                        <rect key="frame" x="18" y="81" width="186" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="連合艦隊表示：" id="tWu-Vc-uAA">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -237,7 +237,7 @@
                         </textFieldCell>
                     </textField>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BAL-yn-Hzt">
-                        <rect key="frame" x="208" y="59" width="139" height="18"/>
+                        <rect key="frame" x="208" y="80" width="139" height="18"/>
                         <buttonCell key="cell" type="check" title="自動的に連動させる" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Mb9-b0-Q0s">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
@@ -270,12 +270,22 @@
                             <action selector="removeDatabaseFile:" target="-1" id="awI-pe-VnN"/>
                         </connections>
                     </button>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O0m-0s-Yai">
+                        <rect key="frame" x="208" y="58" width="173" height="18"/>
+                        <buttonCell key="cell" type="check" title="3本指スワイプで切り替え" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="jWo-0e-bjf">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="DTu-dT-pUA" name="value" keyPath="values.useSwipeChangeCombinedView" id="Rp3-Kb-2iV"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="591" y="405"/>
+            <point key="canvasLocation" x="591" y="415.5"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="DTu-dT-pUA"/>
     </objects>

@@ -456,4 +456,12 @@ HMUserDefaults *HMStandardDefaults = nil;
 {
 	return [self boolForKey:@"autoCombinedView"];
 }
+- (void)setUseSwipeChangeCombinedView:(BOOL)useSwipeChangeCombinedView
+{
+	[self setBool:useSwipeChangeCombinedView forKey:@"useSwipeChangeCombinedView"];
+}
+- (BOOL)useSwipeChangeCombinedView
+{
+	return [self boolForKey:@"useSwipeChangeCombinedView"];
+}
 @end

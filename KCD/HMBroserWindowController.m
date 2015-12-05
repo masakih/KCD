@@ -342,6 +342,8 @@ static NSString *loginPageURLPrefix = @"https://www.dmm.com/my/-/login/=/";
 
 - (void)swipeWithEvent:(NSEvent *)event
 {
+	if(!HMStandardDefaults.useSwipeChangeCombinedView) return;
+	
 	if([event deltaX] > 0) {
 		[self showCombinedView];
 	}
