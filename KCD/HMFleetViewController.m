@@ -75,6 +75,7 @@ const NSInteger maxFleetNumber = 4;
 		_type = type;
 		
 		[self buildAnchorageRepairHolder];
+		[self loadView];
 	}
 	return self;
 }
