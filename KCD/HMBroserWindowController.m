@@ -340,6 +340,15 @@ static NSString *loginPageURLPrefix = @"https://www.dmm.com/my/-/login/=/";
 	
 }
 
+- (void)swipeWithEvent:(NSEvent *)event
+{
+	if([event deltaX] > 0) {
+		[self showCombinedView];
+	}
+	if([event deltaX] < 0) {
+		[self hideCombinedView];
+	}
+}
 
 #pragma mark - Combined view
 - (IBAction)showHideCombinedView:(id)sender
