@@ -18,11 +18,9 @@
 #import "HMCombileViewController.h"
 #import "HMCombinedCommand.h"
 #import "HMFleetViewController.h"
+#import "HMResourceViewController.h"
 
 #import "HMServerDataStore.h"
-
-#import <JavaScriptCore/JavaScriptCore.h>
-
 
 
 typedef NS_ENUM(NSInteger, ViewType) {
@@ -39,11 +37,11 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 	kOldStyle = 0xffffffff,
 };
 
-static NSString *gamePageURL = @"http://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/";
-static NSString *loginPageURLPrefix = @"https://www.dmm.com/my/-/login/=/";
-
 @interface HMBroserWindowController ()
 @property (strong) HMGameViewController *gameViewController;
+
+@property (weak) IBOutlet NSView *resourcePlaceholder;
+@property (strong) HMResourceViewController *resourceViewController;
 
 @property (strong) NSNumber *flagShipID;
 
@@ -69,11 +67,6 @@ static NSString *loginPageURLPrefix = @"https://www.dmm.com/my/-/login/=/";
 	return [NSSet setWithObject:@"flagShipID"];
 }
 
-+ (NSSet *)keyPathsForValuesAffectingShipNumberColor
-{
-	return [NSSet setWithObjects:@"maxChara", @"shipCount", @"minimumColoredShipCount", nil];
-}
-
 - (id)init
 {
 	self = [super initWithWindowNibName:NSStringFromClass([self class])];
@@ -90,6 +83,10 @@ static NSString *loginPageURLPrefix = @"https://www.dmm.com/my/-/login/=/";
 	[self.gameViewController.view setFrameOrigin:NSZeroPoint];
 	[self.gameViewController.view setAutoresizingMask:[self.placeholder autoresizingMask]];
 	[self.placeholder addSubview:self.gameViewController.view];
+	
+	self.resourceViewController = [HMResourceViewController new];
+	[self.resourceViewController.view setFrameOrigin:NSZeroPoint];
+	[self.resourcePlaceholder addSubview:self.resourceViewController.view];
 	
 	self.docksViewController = [HMDocksViewController new];
 	self.shipViewController = [HMShipViewController new];
@@ -115,10 +112,6 @@ static NSString *loginPageURLPrefix = @"https://www.dmm.com/my/-/login/=/";
 	self.fleetViewController.enableAnimation = YES;
 	
 	[self bind:@"flagShipID" toObject:self.deckContoller withKeyPath:@"selection.ship_0" options:nil];
-	
-	[self bind:@"maxChara" toObject:self.basicController withKeyPath:@"selection.max_chara" options:nil];
-	[self bind:@"shipCount" toObject:self.shipController withKeyPath:@"arrangedObjects.@count" options:nil];
-	
 	
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	[nc addObserver:self
@@ -195,26 +188,6 @@ static NSString *loginPageURLPrefix = @"https://www.dmm.com/my/-/login/=/";
 	}
 	
 	return flagShipName;
-}
-
-- (NSColor *)shipNumberColor
-{
-	NSInteger max = self.maxChara.integerValue;
-	NSInteger current = self.shipCount.integerValue;
-	
-	if(current > max - self.minimumColoredShipCount) {
-		return [NSColor orangeColor];
-	}
-	
-	return [NSColor controlTextColor];
-}
-- (void)setMinimumColoredShipCount:(NSInteger)minimumColoredShipCount
-{
-	HMStandardDefaults.minimumColoredShipCount = minimumColoredShipCount;
-}
-- (NSInteger)minimumColoredShipCount
-{
-	return HMStandardDefaults.minimumColoredShipCount;
 }
 
 - (IBAction)selectView:(id)sender

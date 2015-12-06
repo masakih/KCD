@@ -8,9 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-#import <WebKit/WebKit.h>
-
-
 @interface HMBroserWindowController : NSWindowController
 
 @property (readonly) NSManagedObjectContext *managedObjectContext;
@@ -24,14 +21,6 @@
 @property (nonatomic, strong) IBOutlet NSArrayController *deckContoller;
 @property (nonatomic, readonly) NSString *flagShipName;
 
-
 @property (nonatomic, weak) IBOutlet NSView *deckPlaceholder;
-
-@property (nonatomic, strong) IBOutlet NSArrayController *shipController;
-@property (nonatomic, strong) IBOutlet NSObjectController *basicController;
-@property (nonatomic, strong) NSNumber *maxChara;
-@property (nonatomic, strong) NSNumber *shipCount;
-@property (readonly) NSColor *shipNumberColor;
-@property NSInteger minimumColoredShipCount;
 
 @end

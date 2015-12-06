@@ -7,13 +7,12 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="HMBroserWindowController">
             <connections>
-                <outlet property="basicController" destination="1lk-ii-37p" id="EBc-Kc-cHP"/>
                 <outlet property="combinedViewPlaceholder" destination="ErU-NG-s3I" id="6hE-wI-Ikk"/>
                 <outlet property="deckContoller" destination="eqP-ex-UzI" id="8n5-Er-BIF"/>
                 <outlet property="deckPlaceholder" destination="tIf-gd-MhY" id="aXM-5K-Uwd"/>
                 <outlet property="informations" destination="fK1-fC-Xdm" id="why-oJ-aEb"/>
                 <outlet property="placeholder" destination="raX-C4-fMW" id="T7y-R7-3qy"/>
-                <outlet property="shipController" destination="VIO-ns-NM0" id="drF-cE-z3k"/>
+                <outlet property="resourcePlaceholder" destination="0dQ-uF-j2x" id="XA4-rf-KUI"/>
                 <outlet property="window" destination="1" id="3"/>
             </connections>
         </customObject>
@@ -87,13 +86,6 @@
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <font key="titleFont" metaFont="system"/>
                     </box>
-                    <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="0Qm-W2-6cQ">
-                        <rect key="frame" x="820" y="88" width="329" height="5"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <font key="titleFont" metaFont="system"/>
-                    </box>
                     <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="nxC-2x-83k">
                         <rect key="frame" x="820" y="58" width="329" height="5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
@@ -101,294 +93,6 @@
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <font key="titleFont" metaFont="system"/>
                     </box>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="wlE-3a-66Q">
-                        <rect key="frame" x="827" y="143" width="30" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="油：" id="2lX-Lz-EJP">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="83p-Lp-3TG">
-                        <rect key="frame" x="856" y="143" width="58" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="123,456" id="bM9-qa-rm4">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                        <connections>
-                            <binding destination="bH9-1e-fxA" name="value" keyPath="selection.fuel" id="G9x-gz-954">
-                                <dictionary key="options">
-                                    <string key="NSNoSelectionPlaceholder">-</string>
-                                </dictionary>
-                            </binding>
-                        </connections>
-                    </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="tNY-jd-hY3">
-                        <rect key="frame" x="827" y="120" width="30" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="弾：" id="Hts-4x-xuz">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="yaS-Ma-KLp">
-                        <rect key="frame" x="856" y="120" width="58" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="123,456" id="Q4N-S6-4sL">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                        <connections>
-                            <binding destination="bH9-1e-fxA" name="value" keyPath="selection.bull" id="DVl-rS-pS2">
-                                <dictionary key="options">
-                                    <string key="NSNoSelectionPlaceholder">-</string>
-                                </dictionary>
-                            </binding>
-                        </connections>
-                    </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="9HQ-8B-ieL">
-                        <rect key="frame" x="917" y="143" width="56" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="鉄：" id="hx1-zd-w7u">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="1zJ-rT-2I1">
-                        <rect key="frame" x="972" y="143" width="58" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="123,456" id="FDS-eS-Zca">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                        <connections>
-                            <binding destination="bH9-1e-fxA" name="value" keyPath="selection.steel" id="P5Y-44-2zu">
-                                <dictionary key="options">
-                                    <string key="NSNoSelectionPlaceholder">-</string>
-                                </dictionary>
-                            </binding>
-                        </connections>
-                    </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="0Tk-ny-1i7">
-                        <rect key="frame" x="917" y="120" width="56" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="ボーキ：" id="SbC-a7-1dA">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="KlT-Sx-042">
-                        <rect key="frame" x="972" y="120" width="58" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="123,456" id="nZq-Hg-c2o">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                        <connections>
-                            <binding destination="bH9-1e-fxA" name="value" keyPath="selection.bauxite" id="JRf-PG-egg">
-                                <dictionary key="options">
-                                    <string key="NSNoSelectionPlaceholder">-</string>
-                                </dictionary>
-                            </binding>
-                        </connections>
-                    </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="FCg-0H-Nvw">
-                        <rect key="frame" x="917" y="97" width="56" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="バケツ：" id="UMF-ir-SiJ">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="mhB-PE-JUV">
-                        <rect key="frame" x="972" y="97" width="50" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="12,345" id="VNf-6W-K66">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                        <connections>
-                            <binding destination="bH9-1e-fxA" name="value" keyPath="selection.kousokushuhuku" id="6cz-1H-QNf">
-                                <dictionary key="options">
-                                    <string key="NSNoSelectionPlaceholder">-</string>
-                                </dictionary>
-                            </binding>
-                        </connections>
-                    </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="a6e-RR-7BC">
-                        <rect key="frame" x="1033" y="120" width="69" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="改修資材：" id="sQJ-9J-da5">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="7R8-yE-6jR">
-                        <rect key="frame" x="1101" y="121" width="41" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="1,234" id="kNL-81-hK8">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                        <connections>
-                            <binding destination="bH9-1e-fxA" name="value" keyPath="selection.screw" id="e98-Wt-Pnc">
-                                <dictionary key="options">
-                                    <string key="NSNoSelectionPlaceholder">-</string>
-                                </dictionary>
-                            </binding>
-                        </connections>
-                    </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="cZg-Bw-yUE">
-                        <rect key="frame" x="1033" y="97" width="69" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="バーナー：" id="AsI-rq-T2u">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="mU2-vd-vlM">
-                        <rect key="frame" x="1101" y="97" width="41" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="1,234" id="L6I-0D-5bY">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                        <connections>
-                            <binding destination="bH9-1e-fxA" name="value" keyPath="selection.kousokukenzo" id="nbq-WC-txL">
-                                <dictionary key="options">
-                                    <string key="NSNoSelectionPlaceholder">-</string>
-                                </dictionary>
-                            </binding>
-                        </connections>
-                    </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Mtl-WL-S3k">
-                        <rect key="frame" x="1101" y="143" width="41" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="1,234" id="ltg-UP-epN">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                        <connections>
-                            <binding destination="bH9-1e-fxA" name="value" keyPath="selection.kaihatusizai" id="rw5-Xn-pB1">
-                                <dictionary key="options">
-                                    <string key="NSNoSelectionPlaceholder">-</string>
-                                </dictionary>
-                            </binding>
-                        </connections>
-                    </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="4BJ-pP-F69">
-                        <rect key="frame" x="1033" y="143" width="69" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="開発：" id="83W-h0-qFL">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="iuy-QP-cwC">
-                        <rect key="frame" x="918" y="67" width="61" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="999/999" id="Ysd-ie-6KJ" customClass="HMStrokeTextFieldCell">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                        <connections>
-                            <binding destination="VIO-ns-NM0" name="displayPatternValue1" keyPath="arrangedObjects.@count" id="PPI-np-d3G">
-                                <dictionary key="options">
-                                    <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
-                                    <string key="NSNoSelectionPlaceholder">-</string>
-                                </dictionary>
-                            </binding>
-                            <binding destination="1lk-ii-37p" name="displayPatternValue2" keyPath="selection.max_chara" previousBinding="PPI-np-d3G" id="rY3-bG-o6R">
-                                <dictionary key="options">
-                                    <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
-                                    <string key="NSNoSelectionPlaceholder">-</string>
-                                    <string key="NSNullPlaceholder">-</string>
-                                </dictionary>
-                            </binding>
-                            <binding destination="-2" name="textColor" keyPath="shipNumberColor" id="cDW-lg-qpx"/>
-                        </connections>
-                    </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="IeS-oA-anB">
-                        <rect key="frame" x="827" y="67" width="95" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="艦娘入居状況：" id="9q8-dO-oGH">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Kaq-lg-pME">
-                        <rect key="frame" x="1081" y="67" width="61" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="999/999" id="kuE-T2-PrK">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                        <connections>
-                            <binding destination="gB0-9x-Jgy" name="displayPatternValue1" keyPath="arrangedObjects.@count" id="qTd-Nv-Oc7">
-                                <dictionary key="options">
-                                    <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
-                                    <string key="NSNoSelectionPlaceholder">-</string>
-                                </dictionary>
-                            </binding>
-                            <binding destination="1lk-ii-37p" name="displayPatternValue2" keyPath="selection.max_slotitem" previousBinding="qTd-Nv-Oc7" id="zXi-zF-tgy">
-                                <dictionary key="options">
-                                    <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
-                                    <string key="NSNoSelectionPlaceholder">-</string>
-                                    <string key="NSNullPlaceholder">-</string>
-                                </dictionary>
-                            </binding>
-                        </connections>
-                    </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="6Fd-uC-k3S">
-                        <rect key="frame" x="1016" y="67" width="69" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="倉庫状況：" id="XAa-Go-U3j">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" id="CHt-wF-HCb">
-                        <rect key="frame" x="991" y="63" width="15" height="22"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="9" id="rt4-Af-iDD"/>
-                        <connections>
-                            <binding destination="-2" name="value" keyPath="minimumColoredShipCount" id="jz3-0U-Lqi"/>
-                        </connections>
-                    </stepper>
-                    <textField focusRingType="none" verticalHuggingPriority="750" id="mYb-X1-79h">
-                        <rect key="frame" x="980" y="65" width="15" height="19"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" focusRingType="none" alignment="right" title="9" drawsBackground="YES" id="6jC-if-UYu">
-                            <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="309" maximumFractionDigits="3" id="Z67-ZX-FCm"/>
-                            <font key="font" metaFont="smallSystem"/>
-                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                        <connections>
-                            <binding destination="-2" name="value" keyPath="minimumColoredShipCount" id="QAn-eC-rf8"/>
-                        </connections>
-                    </textField>
                     <tabView initialItem="ETl-Gs-mBL" id="fK1-fC-Xdm">
                         <rect key="frame" x="813" y="165" width="343" height="611"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
@@ -420,6 +124,10 @@
                             </tabViewItem>
                         </tabViewItems>
                     </tabView>
+                    <customView id="0dQ-uF-j2x">
+                        <rect key="frame" x="809" y="60" width="352" height="107"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                    </customView>
                 </subviews>
             </view>
             <connections>
@@ -433,26 +141,6 @@
             </connections>
             <point key="canvasLocation" x="180.5" y="-663"/>
         </window>
-        <objectController mode="entity" entityName="Material" editable="NO" automaticallyPreparesContent="YES" id="bH9-1e-fxA" userLabel="Material">
-            <connections>
-                <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="Fuq-AN-fny"/>
-            </connections>
-        </objectController>
-        <arrayController mode="entity" entityName="Ship" editable="NO" automaticallyPreparesContent="YES" id="VIO-ns-NM0" userLabel="Ship">
-            <connections>
-                <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="HiP-7G-lv8"/>
-            </connections>
-        </arrayController>
-        <arrayController mode="entity" entityName="Basic" editable="NO" automaticallyPreparesContent="YES" id="1lk-ii-37p" userLabel="Basic">
-            <connections>
-                <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="UIj-nm-9om"/>
-            </connections>
-        </arrayController>
-        <arrayController mode="entity" entityName="SlotItem" editable="NO" automaticallyPreparesContent="YES" id="gB0-9x-Jgy" userLabel="SlotItem">
-            <connections>
-                <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="3iY-Vz-z2R"/>
-            </connections>
-        </arrayController>
         <arrayController mode="entity" entityName="Deck" fetchPredicateFormat="id = 1" editable="NO" automaticallyPreparesContent="YES" id="eqP-ex-UzI" userLabel="Deck">
             <connections>
                 <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="KBd-Jr-cTq"/>
