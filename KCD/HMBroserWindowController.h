@@ -15,7 +15,6 @@
 
 @property (readonly) NSManagedObjectContext *managedObjectContext;
 
-@property (weak) IBOutlet WebView *webView;
 @property (weak) IBOutlet NSView *placeholder;
 
 @property (weak) IBOutlet NSView *combinedViewPlaceholder;
@@ -34,10 +33,5 @@
 @property (nonatomic, strong) NSNumber *shipCount;
 @property (readonly) NSColor *shipNumberColor;
 @property NSInteger minimumColoredShipCount;
-
-
-- (IBAction)reloadContent:(id)sender;
-
-- (IBAction)clearQuestList:(id)sender;
 
 @end

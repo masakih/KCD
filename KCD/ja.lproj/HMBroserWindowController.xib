@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="7706"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="HMBroserWindowController">
@@ -15,7 +14,6 @@
                 <outlet property="informations" destination="fK1-fC-Xdm" id="why-oJ-aEb"/>
                 <outlet property="placeholder" destination="raX-C4-fMW" id="T7y-R7-3qy"/>
                 <outlet property="shipController" destination="VIO-ns-NM0" id="drF-cE-z3k"/>
-                <outlet property="webView" destination="tgB-GD-Aq9" id="3AA-N6-bnp"/>
                 <outlet property="window" destination="1" id="3"/>
             </connections>
         </customObject>
@@ -422,50 +420,6 @@
                             </tabViewItem>
                         </tabViewItems>
                     </tabView>
-                    <button hidden="YES" verticalHuggingPriority="750" id="yhl-jY-C9t">
-                        <rect key="frame" x="814" y="87" width="32" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dv3-cg-JFH">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="left:" target="-2" id="Myw-d3-lnH"/>
-                        </connections>
-                    </button>
-                    <button hidden="YES" verticalHuggingPriority="750" id="LBQ-NM-8Rz">
-                        <rect key="frame" x="839" y="87" width="32" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="yHp-2b-ibg">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="right:" target="-2" id="jW3-xL-03F"/>
-                        </connections>
-                    </button>
-                    <button hidden="YES" verticalHuggingPriority="750" id="p8s-Kx-JMv">
-                        <rect key="frame" x="862" y="87" width="32" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WVK-YO-E0T">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="top:" target="-2" id="r3P-Iv-eIR"/>
-                        </connections>
-                    </button>
-                    <button hidden="YES" verticalHuggingPriority="750" id="Np8-M7-CxK">
-                        <rect key="frame" x="885" y="87" width="32" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="K7X-nf-4kr">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="bottom:" target="-2" id="fEE-Fx-QrF"/>
-                        </connections>
-                    </button>
                 </subviews>
             </view>
             <connections>
@@ -479,17 +433,6 @@
             </connections>
             <point key="canvasLocation" x="180.5" y="-663"/>
         </window>
-        <webView id="tgB-GD-Aq9">
-            <rect key="frame" x="0.0" y="0.0" width="6000" height="700"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12">
-                <nil key="identifier"/>
-            </webPreferences>
-            <connections>
-                <outlet property="UIDelegate" destination="-2" id="90Y-UW-itm"/>
-                <outlet property="frameLoadDelegate" destination="-2" id="ghK-Nk-WYy"/>
-            </connections>
-        </webView>
         <objectController mode="entity" entityName="Material" editable="NO" automaticallyPreparesContent="YES" id="bH9-1e-fxA" userLabel="Material">
             <connections>
                 <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="Fuq-AN-fny"/>

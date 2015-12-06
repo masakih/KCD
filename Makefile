@@ -13,7 +13,8 @@ LOCALIZE_FILES=KCD/HMBroserWindowController.m KCD/HMServerDataStore.m KCD/HMKenz
 KCD/HMMissionStatus.m KCD/HMNyukyoDockStatus.m KCD/HMCreateSlotItemCommand.m KCD/HMAppDelegate.m \
 KCD/HMScreenshotWindowController.m KCD/HMStoreCreateSlotItemHistoryCommand.m \
 KCD/HMDocksViewController.m KCD/HMSlotItemWindowController.m KCD/HMBroserWindowController.m \
-KCD/HMExternalBrowserWindowController.m KCD/HMLengTransformer.m KCD/HMSokuTransformer.m
+KCD/HMExternalBrowserWindowController.m KCD/HMLengTransformer.m KCD/HMSokuTransformer.m \
+KCD/HMGameViewController.m
 
 VER_CMD=grep -A1 'CFBundleShortVersionString' $(INFO_PLIST) | tail -1 | tr -d "'\t</string>" 
 VERSION=$(shell $(VER_CMD))

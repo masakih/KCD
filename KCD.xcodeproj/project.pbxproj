@@ -204,6 +204,8 @@
 		F4E7802E18DC3AF00011BC4C /* LocalData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4E7802C18DC3AF00011BC4C /* LocalData.xcdatamodeld */; };
 		F4ED5D2A1B78D0CA00D1BDEF /* HMGuardEscapedView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4ED5D291B78D0CA00D1BDEF /* HMGuardEscapedView.m */; };
 		F4ED5D2D1B7C677E00D1BDEF /* HMGuardShelterCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4ED5D2C1B7C677E00D1BDEF /* HMGuardShelterCommand.m */; };
+		F4F388BD1C13D63B00508549 /* HMGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F388BB1C13D63B00508549 /* HMGameViewController.m */; };
+		F4F388BE1C13D63B00508549 /* HMGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4F388BC1C13D63B00508549 /* HMGameViewController.xib */; };
 		F4F4791A1BFE223600D0BF69 /* HMCombileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F479181BFE223600D0BF69 /* HMCombileViewController.m */; };
 		F4F4791B1BFE223600D0BF69 /* HMCombileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4F479191BFE223600D0BF69 /* HMCombileViewController.xib */; };
 		F4F479201C01424200D0BF69 /* HMVerticalFleetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4F4791E1C01424200D0BF69 /* HMVerticalFleetViewController.xib */; };
@@ -586,6 +588,9 @@
 		F4ED5D291B78D0CA00D1BDEF /* HMGuardEscapedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMGuardEscapedView.m; sourceTree = "<group>"; };
 		F4ED5D2B1B7C677E00D1BDEF /* HMGuardShelterCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGuardShelterCommand.h; sourceTree = "<group>"; };
 		F4ED5D2C1B7C677E00D1BDEF /* HMGuardShelterCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMGuardShelterCommand.m; sourceTree = "<group>"; };
+		F4F388BA1C13D63B00508549 /* HMGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGameViewController.h; sourceTree = "<group>"; };
+		F4F388BB1C13D63B00508549 /* HMGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMGameViewController.m; sourceTree = "<group>"; };
+		F4F388BC1C13D63B00508549 /* HMGameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMGameViewController.xib; sourceTree = "<group>"; };
 		F4F479171BFE223600D0BF69 /* HMCombileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMCombileViewController.h; sourceTree = "<group>"; };
 		F4F479181BFE223600D0BF69 /* HMCombileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMCombileViewController.m; sourceTree = "<group>"; };
 		F4F479191BFE223600D0BF69 /* HMCombileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMCombileViewController.xib; sourceTree = "<group>"; };
@@ -922,6 +927,9 @@
 				F46F104218AA50730063E503 /* HMBroserWindowController.h */,
 				F46F104318AA50730063E503 /* HMBroserWindowController.m */,
 				F4B3DC4118E5C8870011B4FC /* HMBroserWindowController.xib */,
+				F4F388BA1C13D63B00508549 /* HMGameViewController.h */,
+				F4F388BB1C13D63B00508549 /* HMGameViewController.m */,
+				F4F388BC1C13D63B00508549 /* HMGameViewController.xib */,
 				F4513EE118B635EA00073552 /* HMDocksViewController.h */,
 				F4513EE218B635EA00073552 /* HMDocksViewController.m */,
 				F4B3DC3E18E5C87D0011B4FC /* HMDocksViewController.xib */,
@@ -1236,6 +1244,7 @@
 				F4B2D02B18F83A2F00542742 /* HMScreenshotWindowController.xib in Resources */,
 				F49688651B3AFE4900D3CEDE /* HMProgressPanel.xib in Resources */,
 				F4F479201C01424200D0BF69 /* HMVerticalFleetViewController.xib in Resources */,
+				F4F388BE1C13D63B00508549 /* HMGameViewController.xib in Resources */,
 				F4B3DC3918E5C8700011B4FC /* HMJSONViewWindowController.xib in Resources */,
 				F4BEF0081B11A5DE004702B8 /* HMShipDetailViewController.xib in Resources */,
 				F4B3DC3318E5C8520011B4FC /* HMShipViewController.xib in Resources */,
@@ -1416,6 +1425,7 @@
 				F494DC6318C608C100AE97E4 /* HMShipViewController.m in Sources */,
 				F46F104918ABAC910063E503 /* KCD.xcdatamodeld in Sources */,
 				F4B414FE18B3A66200468DAF /* HMMemberNDockCommand.m in Sources */,
+				F4F388BD1C13D63B00508549 /* HMGameViewController.m in Sources */,
 				F4FDF2411A3D50420033E0AD /* HMShipMasterDetailWindowController.m in Sources */,
 				F47178471B6DE9F400F5E59D /* HMMapAreaTransformaer.m in Sources */,
 				F44AB20619E053CB00F217AF /* HMKCDeck+Extension.m in Sources */,
