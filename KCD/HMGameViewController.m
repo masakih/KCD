@@ -122,15 +122,17 @@ static NSString *loginPageURLPrefix = @"https://www.dmm.com/my/-/login/=/";
 
 - (IBAction)screenShot:(id)sender
 {
-	NSRect frame = [self.view convertRect:[self.webView visibleRect] fromView:self.webView];
+	NSView *contentView = self.view.window.contentView;
+	
+	NSRect frame = [contentView convertRect:[self.webView visibleRect] fromView:self.webView];
 	CGFloat screenShotBorderWidth = HMStandardDefaults.screenShotBorderWidth;
 	frame = NSInsetRect(frame, -screenShotBorderWidth, -screenShotBorderWidth);
 	
-	NSBitmapImageRep *rep = [self.view bitmapImageRepForCachingDisplayInRect:frame];
-	[self.view cacheDisplayInRect:frame toBitmapImageRep:rep];
+	NSBitmapImageRep *rep = [contentView bitmapImageRepForCachingDisplayInRect:frame];
+	[contentView cacheDisplayInRect:frame toBitmapImageRep:rep];
 	HMAppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
 	HMScreenshotListWindowController *slwController = appDelegate.screenshotListWindowController;
-	[slwController registerScreenshot:rep fromOnScreen:[self.view convertRect:frame toView:nil]];
+	[slwController registerScreenshot:rep fromOnScreen:[contentView convertRect:frame toView:nil]];
 	
 }
 
