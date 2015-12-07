@@ -234,6 +234,7 @@
 	
 	NSUInteger selectionIndex = self.screenshotsController.selectionIndex;
 	[self.screenshotsController removeObjectAtArrangedObjectIndex:selectionIndex];
+	[self saveCache];
 	
 	[self incrementCacheVersionForPath:imagePath];
 	
