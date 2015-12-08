@@ -30,6 +30,7 @@ static NSArray *ignoreCommands = nil;
 						   @"/kcsapi/api_get_member/sortie_conditions",
 						   @"/kcsapi/api_get_member/unsetslot",
 						   @"/kcsapi/api_get_member/useitem",
+						   @"/kcsapi/api_req_furniture/buy",
 						   @"/kcsapi/api_req_furniture/change",
 						   @"/kcsapi/api_req_furniture/music_list",
 						   @"/kcsapi/api_req_furniture/music_play",
