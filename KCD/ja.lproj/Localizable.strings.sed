@@ -32,3 +32,5 @@ s/Fast/高速/2
 s/Deleting caches.../キャッシュを削除中.../2
 s/Hide Combined View/連合艦隊ビューを隠す/2
 s/Show Combined View/連合艦隊ビューを表示/2
+s/Hide Kanmusu/隠す/2
+s/Show Kanmusu/表示/2

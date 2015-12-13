@@ -163,9 +163,9 @@ BOOL isExcludeShipID(id shipID)
 		HMKCShipObject *ship = [[self.shipsController arrangedObjects] objectAtIndex:row];
 		id shipID = ship.id;
 		if([self.excludeShiIDs containsObject:shipID]) {
-			menuItem.title = @"Show";
+			menuItem.title = NSLocalizedString(@"Show Kanmusu", @"HMUpgradableShipsWindowController menu item");
 		} else {
-			menuItem.title = @"Hide";
+			menuItem.title = NSLocalizedString(@"Hide Kanmusu", @"HMUpgradableShipsWindowController menu item");
 		}
 		return YES;
 	}
