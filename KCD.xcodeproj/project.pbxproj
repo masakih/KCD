@@ -185,6 +185,7 @@
 		F4C1190818A746EB005D5B25 /* HMJSONTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C1190718A746EB005D5B25 /* HMJSONTracker.m */; };
 		F4C1190B18A74DF0005D5B25 /* HMJSONCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C1190A18A74DF0005D5B25 /* HMJSONCommand.m */; };
 		F4C3957418CDDFE500A1E918 /* HMKenzoDockStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C3957318CDDFE500A1E918 /* HMKenzoDockStatus.m */; };
+		F4C86B921C1C445D00F260FE /* HMUpgradeShipExcludeColorTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C86B911C1C445D00F260FE /* HMUpgradeShipExcludeColorTransformer.m */; };
 		F4D2CBC218AD0E1A000EBC59 /* HMMasterSTypeCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D2CBC118AD0E1A000EBC59 /* HMMasterSTypeCommand.m */; };
 		F4D2CBC518AE2AE2000EBC59 /* HMCompositCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D2CBC418AE2AE2000EBC59 /* HMCompositCommand.m */; };
 		F4D2CBC818B0555A000EBC59 /* HMKCManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D2CBC718B0555A000EBC59 /* HMKCManagedObject.m */; };
@@ -552,6 +553,8 @@
 		F4C1190A18A74DF0005D5B25 /* HMJSONCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMJSONCommand.m; sourceTree = "<group>"; };
 		F4C3957218CDDFE500A1E918 /* HMKenzoDockStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMKenzoDockStatus.h; sourceTree = "<group>"; };
 		F4C3957318CDDFE500A1E918 /* HMKenzoDockStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKenzoDockStatus.m; sourceTree = "<group>"; };
+		F4C86B901C1C445C00F260FE /* HMUpgradeShipExcludeColorTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMUpgradeShipExcludeColorTransformer.h; sourceTree = "<group>"; };
+		F4C86B911C1C445D00F260FE /* HMUpgradeShipExcludeColorTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMUpgradeShipExcludeColorTransformer.m; sourceTree = "<group>"; };
 		F4D2CBC018AD0E1A000EBC59 /* HMMasterSTypeCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMasterSTypeCommand.h; sourceTree = "<group>"; };
 		F4D2CBC118AD0E1A000EBC59 /* HMMasterSTypeCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMasterSTypeCommand.m; sourceTree = "<group>"; };
 		F4D2CBC318AE2AE2000EBC59 /* HMCompositCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMCompositCommand.h; sourceTree = "<group>"; };
@@ -922,6 +925,8 @@
 				F4666C5D1B242124001840DB /* HMQuestProgressTransformer.m */,
 				F47178451B6DE9F400F5E59D /* HMMapAreaTransformaer.h */,
 				F47178461B6DE9F400F5E59D /* HMMapAreaTransformaer.m */,
+				F4C86B901C1C445C00F260FE /* HMUpgradeShipExcludeColorTransformer.h */,
+				F4C86B911C1C445D00F260FE /* HMUpgradeShipExcludeColorTransformer.m */,
 			);
 			name = "Transformar&Formatter";
 			sourceTree = "<group>";
@@ -1346,6 +1351,7 @@
 				F4131ED5190F63D8004F7F9A /* HMUpdateSlotItemCommand.m in Sources */,
 				F4C1190518A71AEA005D5B25 /* HMJSONReciever.m in Sources */,
 				F44AB24119E8252600F217AF /* HMKCSlotItemObject+Extensions.m in Sources */,
+				F4C86B921C1C445D00F260FE /* HMUpgradeShipExcludeColorTransformer.m in Sources */,
 				F46FCB291BD933C600304DE7 /* HMSlotItemShortNameTransformer.m in Sources */,
 				F4A3AD82199F529700FDBF80 /* HMCombinedBattleCommand.m in Sources */,
 				F4AA05FE192B932E00844688 /* HMTemporaryDataStore.m in Sources */,

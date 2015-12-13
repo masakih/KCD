@@ -400,6 +400,15 @@ HMUserDefaults *HMStandardDefaults = nil;
 {
 	return [self boolForKey:@"showLevelOneShipInUpgradableList"];
 }
+- (void)setShowsExcludedShipInUpgradableList:(BOOL)showsExcludedShipInUpgradableList
+{
+	[self setBool:showsExcludedShipInUpgradableList forKey:@"showsExcludedShipInUpgradableList"];
+}
+- (BOOL)showsExcludedShipInUpgradableList
+{
+	return [self boolForKey:@"showsExcludedShipInUpgradableList"];
+}
+
 
 #pragma mark - Equipment List
 - (void)setShowEquipmentType:(NSNumber *)showEquipmentType

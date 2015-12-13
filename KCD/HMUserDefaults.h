@@ -106,6 +106,11 @@ extern HMUserDefaults *HMStandardDefaults;
 @property BOOL showLevelOneShipInUpgradableList;
 
 /**
+ * 非表示設定の艦娘を改造可能艦リストに表示するか
+ */
+@property BOOL showsExcludedShipInUpgradableList;
+
+/**
  * 装備リストに表示する装備
  * -1 : すべて
  * 0 : 装備されていない

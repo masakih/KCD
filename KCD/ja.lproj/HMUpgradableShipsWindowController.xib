@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7702"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="HMUpgradableShipsWindowController">
             <connections>
+                <outlet property="shipsController" destination="F7b-g4-Ndz" id="E1R-GG-SCC"/>
+                <outlet property="tableView" destination="PIl-CA-2e4" id="0qN-GZ-0ig"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -15,21 +17,21 @@
         <window title="改造可能艦リスト" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" frameAutosaveName="upgradableships" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="234" height="313"/>
+            <rect key="contentRect" x="196" y="240" width="234" height="351"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
             <view key="contentView" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="-1" width="234" height="313"/>
+                <rect key="frame" x="0.0" y="0.0" width="234" height="351"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="5qP-oa-ez4">
-                        <rect key="frame" x="-1" y="0.0" width="236" height="284"/>
+                        <rect key="frame" x="-1" y="0.0" width="236" height="334"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                         <clipView key="contentView" id="4jY-Av-DhN">
-                            <rect key="frame" x="1" y="17" width="238" height="117"/>
+                            <rect key="frame" x="1" y="17" width="234" height="316"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveName="upgradableships" headerView="ElI-vy-vtb" id="PIl-CA-2e4">
-                                    <rect key="frame" x="0.0" y="0.0" width="234" height="266"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="234" height="316"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -53,6 +55,11 @@
                                                         <bool key="NSConditionallySetsEditable" value="NO"/>
                                                     </dictionary>
                                                 </binding>
+                                                <binding destination="F7b-g4-Ndz" name="textColor" keyPath="arrangedObjects.id" id="eC4-zZ-hXz">
+                                                    <dictionary key="options">
+                                                        <string key="NSValueTransformerName">HMUpgradeShipExcludeColorTransformer</string>
+                                                    </dictionary>
+                                                </binding>
                                             </connections>
                                         </tableColumn>
                                         <tableColumn identifier="level" editable="NO" width="34" minWidth="34" maxWidth="1000" id="zB4-Ma-3L9">
@@ -71,6 +78,11 @@
                                                 <binding destination="F7b-g4-Ndz" name="value" keyPath="arrangedObjects.lv" id="GG4-Jw-sdN">
                                                     <dictionary key="options">
                                                         <bool key="NSConditionallySetsEditable" value="NO"/>
+                                                    </dictionary>
+                                                </binding>
+                                                <binding destination="F7b-g4-Ndz" name="textColor" keyPath="arrangedObjects.id" id="Mgr-Rr-bA5">
+                                                    <dictionary key="options">
+                                                        <string key="NSValueTransformerName">HMUpgradeShipExcludeColorTransformer</string>
                                                     </dictionary>
                                                 </binding>
                                             </connections>
@@ -93,6 +105,11 @@
                                                         <bool key="NSConditionallySetsEditable" value="NO"/>
                                                     </dictionary>
                                                 </binding>
+                                                <binding destination="F7b-g4-Ndz" name="textColor" keyPath="arrangedObjects.id" id="hrG-ZH-O4b">
+                                                    <dictionary key="options">
+                                                        <string key="NSValueTransformerName">HMUpgradeShipExcludeColorTransformer</string>
+                                                    </dictionary>
+                                                </binding>
                                             </connections>
                                         </tableColumn>
                                         <tableColumn identifier="nextEpx" editable="NO" width="61" minWidth="22" maxWidth="3.4028234663852886e+38" id="SUR-qF-Wcc">
@@ -113,9 +130,17 @@
                                                         <bool key="NSConditionallySetsEditable" value="NO"/>
                                                     </dictionary>
                                                 </binding>
+                                                <binding destination="F7b-g4-Ndz" name="textColor" keyPath="arrangedObjects.id" id="GHK-Rm-nmu">
+                                                    <dictionary key="options">
+                                                        <string key="NSValueTransformerName">HMUpgradeShipExcludeColorTransformer</string>
+                                                    </dictionary>
+                                                </binding>
                                             </connections>
                                         </tableColumn>
                                     </tableColumns>
+                                    <connections>
+                                        <outlet property="menu" destination="OdB-vZ-ESs" id="bKk-LY-lMW"/>
+                                    </connections>
                                 </tableView>
                             </subviews>
                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -129,19 +154,39 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <tableHeaderView key="headerView" id="ElI-vy-vtb">
-                            <rect key="frame" x="0.0" y="0.0" width="238" height="17"/>
+                            <rect key="frame" x="0.0" y="0.0" width="234" height="17"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </tableHeaderView>
                     </scrollView>
                     <button id="XXE-k5-Chh">
-                        <rect key="frame" x="6" y="289" width="152" height="18"/>
+                        <rect key="frame" x="35" y="335" width="68" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Lv.1の艦娘も表示する" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="olb-1a-MRn">
+                        <buttonCell key="cell" type="check" title="Lv.1の艦娘" bezelStyle="regularSquare" imagePosition="left" controlSize="mini" state="on" inset="2" id="olb-1a-MRn">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
+                            <font key="font" metaFont="miniSystem"/>
                         </buttonCell>
                         <connections>
                             <binding destination="-2" name="value" keyPath="showLevelOneShipInUpgradableList" id="aNr-is-cTd"/>
+                        </connections>
+                    </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="mQ3-e7-R9H">
+                        <rect key="frame" x="4" y="337" width="31" height="11"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="表示：" id="3Gv-8j-tdk">
+                            <font key="font" metaFont="miniSystem"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button id="VXe-fb-vYd">
+                        <rect key="frame" x="103" y="335" width="76" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="非表示の艦娘" bezelStyle="regularSquare" imagePosition="left" controlSize="mini" state="on" inset="2" id="qt2-r1-WOW">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="miniSystem"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="-2" name="value" keyPath="showsExcludedShipInUpgradableList" id="o9K-5c-Jew"/>
                         </connections>
                     </button>
                 </subviews>
@@ -149,7 +194,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="337" y="298.5"/>
+            <point key="canvasLocation" x="337" y="279.5"/>
         </window>
         <arrayController mode="entity" entityName="Ship" fetchPredicateFormat="master_ship.afterlv != 0 &amp;&amp; id != -2" editable="NO" automaticallyPreparesContent="YES" id="F7b-g4-Ndz" userLabel="Ship">
             <connections>
@@ -163,5 +208,16 @@
             </connections>
         </arrayController>
         <userDefaultsController representsSharedInstance="YES" id="V34-XA-6xl"/>
+        <menu id="OdB-vZ-ESs">
+            <items>
+                <menuItem title="表示しない" id="gqx-S9-YbM">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="showHideShip:" target="-2" id="lV2-EW-coW"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="615" y="320.5"/>
+        </menu>
     </objects>
 </document>

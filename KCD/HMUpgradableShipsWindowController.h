@@ -11,6 +11,9 @@
 @interface HMUpgradableShipsWindowController : NSWindowController
 
 @property BOOL showLevelOneShipInUpgradableList;
+@property BOOL showsExcludedShipInUpgradableList;
 @property (readonly) NSPredicate *filterPredicate;
 
 @end
+
+BOOL isExcludeShipID(id shipID);
