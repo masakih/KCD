@@ -151,6 +151,10 @@ static NSArray *levelUpExps = nil;
 	return shortSTypeNames[[idValue integerValue] - 1];
 }
 
++ (NSSet *)keyPathsForValuesAffectingNext
+{
+	return [NSSet setWithObjects:@"exp", nil];
+}
 - (NSNumber *)next
 {
 	[self willAccessValueForKey:@"lv"];
@@ -321,7 +325,6 @@ static NSArray *levelUpExps = nil;
 		HMKCMasterSlotItemObject *master = slotItem.master_slotItem;
 		NSNumber *type2 = master.type_2;
 		if(![effectiveTypes containsObject:type2]) {
-//			NSLog(@"Type %@ is not effective.", type2);
 			continue;
 		}
 		
@@ -332,9 +335,6 @@ static NSArray *levelUpExps = nil;
 		NSInteger taiku = [taikuValue integerValue];
 		if(itemCount && taiku) {
 			totalSeiku += floor(taiku * sqrt(itemCount));
-//			NSLog(@"slot -> %ld, name -> %@, itemCount -> %ld, taiku -> %ld, total -> %ld", i, master.name, itemCount, taiku, totalSeiku);
-		} else {
-//			NSLog(@"itemCount -> %ld, taiku -> %ld", itemCount, taiku);
 		}
 	}
 	

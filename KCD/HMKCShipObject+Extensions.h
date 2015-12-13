@@ -13,6 +13,7 @@
 @property (readonly) NSString *name;
 @property (readonly) NSString *shortTypeName;
 
+@property (readonly) NSNumber *next;
 
 @property (readonly) NSInteger status;
 @property (readonly) NSColor *statusColor;
