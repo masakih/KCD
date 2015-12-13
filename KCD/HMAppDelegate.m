@@ -239,6 +239,14 @@
 	NSFileManager *fileManager = [NSFileManager defaultManager];
 	return [[fileManager URLsForDirectory:NSPicturesDirectory inDomains:NSUserDomainMask] lastObject];
 }
+- (NSURL *)supportDirectory
+{
+	NSFileManager *fileManager = [NSFileManager defaultManager];
+	NSURL *appSupportURL = [[fileManager URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask] lastObject];
+	NSURL *ownAppSuportURL = [appSupportURL URLByAppendingPathComponent:@"com.masakih.KCD"];
+	return ownAppSuportURL;
+}
+
 
 - (NSString *)appNameForUserAgent
 {

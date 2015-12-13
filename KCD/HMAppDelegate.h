@@ -43,6 +43,8 @@ typedef NS_ENUM(NSUInteger, HMShipType) {
 @property (nonatomic, strong) NSString *screenShotSaveDirectory;
 @property (readonly) HMScreenshotListWindowController *screenshotListWindowController;
 
+@property (readonly) NSURL *supportDirectory;
+
 - (IBAction)showHideHistory:(id)sender;
 - (IBAction)showHideSlotItemWindow:(id)sender;
 - (IBAction)showHideUpgradableShipWindow:(id)sender;
