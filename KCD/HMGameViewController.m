@@ -30,6 +30,11 @@ static NSString *loginPageURLPrefix = @"https://www.dmm.com/my/-/login/=/";
 
 @implementation HMGameViewController
 
+- (id)init
+{
+	self = [super initWithNibName:NSStringFromClass([self class]) bundle:nil];
+	return self;
+}
 - (void)awakeFromNib
 {
 	[self.clipView setDocumentView:self.webView];

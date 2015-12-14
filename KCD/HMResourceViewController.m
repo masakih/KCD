@@ -25,6 +25,12 @@
 
 @implementation HMResourceViewController
 
+- (id)init
+{
+	self = [super initWithNibName:NSStringFromClass([self class]) bundle:nil];
+	return self;
+}
+
 - (void)awakeFromNib
 {
 	[self bind:@"maxChara" toObject:self.basicController withKeyPath:@"selection.max_chara" options:nil];
