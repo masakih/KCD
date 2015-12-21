@@ -112,6 +112,7 @@
 		F4A9B8D41B975029005786C2 /* SlotItemShortName.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4A9B8D21B975029005786C2 /* SlotItemShortName.plist */; };
 		F4A9B8D71B99D5B7005786C2 /* Taihi.txt in Resources */ = {isa = PBXBuildFile; fileRef = F4A9B8D51B99D5B7005786C2 /* Taihi.txt */; };
 		F4A9B8D91BA40ED1005786C2 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = F4A9B8D81BA40ED1005786C2 /* LICENSE */; };
+		F4A9E25A1C2700CF0006E4BC /* HMRealPowerUpCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A9E2591C2700CF0006E4BC /* HMRealPowerUpCommand.m */; };
 		F4AA05FB192B92C800844688 /* Temporary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4AA05F9192B92C700844688 /* Temporary.xcdatamodeld */; };
 		F4AA05FE192B932E00844688 /* HMTemporaryDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AA05FD192B932E00844688 /* HMTemporaryDataStore.m */; };
 		F4AA0601192E1FE900844688 /* HMBattleCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AA0600192E1FE900844688 /* HMBattleCommand.m */; };
@@ -429,6 +430,8 @@
 		F4A9B8D31B975029005786C2 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = ja; path = ja.lproj/SlotItemShortName.plist; sourceTree = "<group>"; };
 		F4A9B8D61B99D5B7005786C2 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text; name = ja; path = ja.lproj/Taihi.txt; sourceTree = "<group>"; };
 		F4A9B8D81BA40ED1005786C2 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		F4A9E2581C2700CF0006E4BC /* HMRealPowerUpCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMRealPowerUpCommand.h; sourceTree = "<group>"; };
+		F4A9E2591C2700CF0006E4BC /* HMRealPowerUpCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMRealPowerUpCommand.m; sourceTree = "<group>"; };
 		F4AA05FA192B92C800844688 /* Temporary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Temporary.xcdatamodel; sourceTree = "<group>"; };
 		F4AA05FC192B932E00844688 /* HMTemporaryDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMTemporaryDataStore.h; sourceTree = "<group>"; };
 		F4AA05FD192B932E00844688 /* HMTemporaryDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMTemporaryDataStore.m; sourceTree = "<group>"; };
@@ -1100,6 +1103,8 @@
 				F4268030194D1B1A00B2C27F /* HMChangeHenseiCommand.m */,
 				F4268032195332A000B2C27F /* HMPowerUpCommand.h */,
 				F4268033195332A000B2C27F /* HMPowerUpCommand.m */,
+				F4A9E2581C2700CF0006E4BC /* HMRealPowerUpCommand.h */,
+				F4A9E2591C2700CF0006E4BC /* HMRealPowerUpCommand.m */,
 				F43BA4A5197CD59400CFF788 /* HMNyukyoSpeedChangeCommand.h */,
 				F43BA4A6197CD59400CFF788 /* HMNyukyoSpeedChangeCommand.m */,
 				F4A3AD8619B6149D00FDBF80 /* HMNyukyoStartCommand.h */,
@@ -1366,6 +1371,7 @@
 				F4AA0601192E1FE900844688 /* HMBattleCommand.m in Sources */,
 				F495462B1B14CBA600E0D8D0 /* HMBookmarkManager.m in Sources */,
 				F43F3D521A39CC7500D6DAF7 /* HMKCMasterSlotItemObject.m in Sources */,
+				F4A9E25A1C2700CF0006E4BC /* HMRealPowerUpCommand.m in Sources */,
 				F448F9921B6FBF80004901AD /* HMResourceHistoryManager.m in Sources */,
 				F4513EEE18B8E2F600073552 /* HMMemberMaterialCommand.m in Sources */,
 				F4FCFD44191F4C1D000640A1 /* HMKenzoMarkCommand.m in Sources */,

@@ -22,6 +22,12 @@
 @property (readonly) NSNumber *maxBull;
 @property (readonly) NSNumber *maxFuel;
 
+@property (readonly) NSNumber *isMaxKaryoku;
+@property (readonly) NSNumber *isMaxRaisou;
+@property (readonly) NSNumber *isMaxTaiku;
+@property (readonly) NSNumber *isMaxSoukou;
+@property (readonly) NSNumber *isMaxLucky;
+
 @property (readonly) IBOutlet NSColor *planColor;
 
 

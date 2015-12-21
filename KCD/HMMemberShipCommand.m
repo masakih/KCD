@@ -71,6 +71,8 @@
 	}
 	if([self.api isEqualToString:@"/kcsapi/api_get_member/ship_deck"]) {
 		return @"api_data.api_ship_data";
+	}if([self.api isEqualToString:@"/kcsapi/api_req_kaisou/powerup"]) {
+		return @"api_data.api_ship";
 	}
 	return [super dataKey];
 }
@@ -227,6 +229,7 @@ static BOOL isFewShipUpdateAPI(NSString *api)
 	if([api isEqualToString:@"/kcsapi/api_get_member/ship3"]) return YES;
 	if([api isEqualToString:@"/kcsapi/api_req_kousyou/getship"]) return YES;
 	if([api isEqualToString:@"/kcsapi/api_get_member/ship_deck"]) return YES;
+	if([api isEqualToString:@"/kcsapi/api_req_kaisou/powerup"]) return YES;
 	
 	return NO;
 }

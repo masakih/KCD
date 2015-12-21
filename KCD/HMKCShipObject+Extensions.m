@@ -43,27 +43,11 @@ static NSArray *levelUpExps = nil;
 	});
 }
 
-+ (NSSet *)keyPathsForValuesAffectingStatus
-{
-	return [NSSet setWithObjects:@"nowhp", @"maxph", nil];
-}
-+ (NSSet *)keyPathsForValuesAffectingStatusColor
-{
-	return [NSSet setWithObjects:@"nowhp", @"maxph", nil];
-}
-+ (NSSet *)keyPathsForValuesAffectingConditionColor
-{
-	return [NSSet setWithObjects:@"cond", nil];
-}
-+ (NSSet *)keyPathsForValuesAffectingName
-{
-	return [NSSet setWithObjects:@"ship_id", nil];
-}
-+ (NSSet *)keyPathsForValuesAffectingShortTypeName
-{
-	return [NSSet setWithObjects:@"ship_id", nil];
-}
 
++ (NSSet *)keyPathsForValuesAffectingIsMaxKaryoku
+{
+	return [NSSet setWithObjects:@"karyoku_1", @"kyouka_0", nil];
+}
 - (NSNumber *)isMaxKaryoku
 {
 	[self willAccessValueForKey:@"master_ship"];
@@ -77,6 +61,11 @@ static NSArray *levelUpExps = nil;
 	[self didAccessValueForKey:@"master_ship"];
 	
 	return @(defaultValue + growth >= maxValue);
+}
+
++ (NSSet *)keyPathsForValuesAffectingIsMaxRaisou
+{
+	return [NSSet setWithObjects:@"raisou_1", @"kyouka_1", nil];
 }
 - (NSNumber *)isMaxRaisou
 {
@@ -92,6 +81,11 @@ static NSArray *levelUpExps = nil;
 	
 	return @(defaultValue + growth >= maxValue);
 }
+
++ (NSSet *)keyPathsForValuesAffectingIsMaxTaiku
+{
+	return [NSSet setWithObjects:@"taiku_1", @"kyouka_2", nil];
+}
 - (NSNumber *)isMaxTaiku
 {
 	[self willAccessValueForKey:@"master_ship"];
@@ -106,6 +100,11 @@ static NSArray *levelUpExps = nil;
 	
 	return @(defaultValue + growth >= maxValue);
 }
+
++ (NSSet *)keyPathsForValuesAffectingIsMaxSoukou
+{
+	return [NSSet setWithObjects:@"soukou_1", @"kyouka_3", nil];
+}
 - (NSNumber *)isMaxSoukou
 {
 	[self willAccessValueForKey:@"master_ship"];
@@ -119,6 +118,11 @@ static NSArray *levelUpExps = nil;
 	[self didAccessValueForKey:@"master_ship"];
 	
 	return @(defaultValue + growth >= maxValue);
+}
+
++ (NSSet *)keyPathsForValuesAffectingIsMaxLucky
+{
+	return [NSSet setWithObjects:@"lucky_1", @"kyouka_4", nil];
 }
 - (NSNumber *)isMaxLucky
 {
@@ -135,9 +139,18 @@ static NSArray *levelUpExps = nil;
 	return @(defaultValue + growth >= maxValue);
 }
 
++ (NSSet *)keyPathsForValuesAffectingName
+{
+	return [NSSet setWithObjects:@"ship_id", nil];
+}
 - (NSString *)name
 {
 	return [self.master_ship valueForKey:@"name"];
+}
+
++ (NSSet *)keyPathsForValuesAffectingShortTypeName
+{
+	return [NSSet setWithObjects:@"ship_id", nil];
 }
 - (NSString *)shortTypeName
 {
@@ -177,7 +190,10 @@ static NSArray *levelUpExps = nil;
 	return @(nextExp - [expValue integerValue]);
 }
 
-
++ (NSSet *)keyPathsForValuesAffectingStatus
+{
+	return [NSSet setWithObjects:@"nowhp", @"maxph", nil];
+}
 - (NSInteger)status
 {
 	[self willAccessValueForKey:@"maxhp"];
@@ -200,6 +216,11 @@ static NSArray *levelUpExps = nil;
 	}
 	return 0;
 }
+
++ (NSSet *)keyPathsForValuesAffectingStatusColor
+{
+	return [NSSet setWithObjects:@"status", nil];
+}
 - (NSColor *)statusColor
 {
 	[self willAccessValueForKey:@"maxhp"];
@@ -221,6 +242,11 @@ static NSArray *levelUpExps = nil;
 		
 	}
 	return [NSColor controlTextColor];
+}
+
++ (NSSet *)keyPathsForValuesAffectingConditionColor
+{
+	return [NSSet setWithObjects:@"cond", nil];
 }
 - (NSColor *)conditionColor
 {
@@ -265,6 +291,10 @@ static NSArray *levelUpExps = nil;
 	NSNumber *number = self.master_ship.afterlv;
 	[self didAccessValueForKey:@"master_ship"];
 	return number;
+}
++ (NSSet *)keyPathsForValuesAffectingUpgradeExp
+{
+	return [NSSet setWithObjects:@"exp", nil];
 }
 - (NSNumber *)upgradeExp
 {

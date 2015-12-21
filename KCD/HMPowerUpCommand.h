@@ -6,8 +6,8 @@
 //  Copyright (c) 2014年 Hori,Masaki. All rights reserved.
 //
 
-#import "HMJSONCommand.h"
+#import "HMCompositCommand.h"
 
-@interface HMPowerUpCommand : HMJSONCommand
+@interface HMPowerUpCommand : HMCompositCommand
 
 @end

@@ -8,7 +8,9 @@
 
 #import "HMPowerUpCommand.h"
 
-#import "HMServerDataStore.h"
+#import "HMMemberShipCommand.h"
+#import "HMMemberDeckCommand.h"
+#import "HMRealPowerUpCommand.h"
 
 @implementation HMPowerUpCommand
 + (void)load
@@ -24,24 +26,14 @@
 	if([api isEqualToString:@"/kcsapi/api_req_kaisou/powerup"]) return YES;
 	return NO;
 }
-- (void)execute
+- (id)init
 {
-	HMServerDataStore *store = [HMServerDataStore oneTimeEditor];
-	NSManagedObjectContext *moc = store.managedObjectContext;
-	
-	NSString *usedShipsStrings = [self.arguments objectForKey:@"api_id_items"];
-	NSArray *usedShipStringArray = [usedShipsStrings componentsSeparatedByString:@","];
-	
-	for(NSString *shipId in usedShipStringArray) {
-		NSError *error = nil;
-		NSArray *ships = [store objectsWithEntityName:@"Ship"
-												error:&error
-									  predicateFormat:@"id = %@", @([shipId integerValue])];
-		if(ships.count == 0) {
-			continue;
-		}
-		[moc deleteObject:ships[0]];
-	}
+	self = [super initWithCommands:
+			[HMMemberShipCommand new],
+			[HMMemberDeckCommand new],
+			[HMRealPowerUpCommand new],
+			nil];
+	return self;
 }
 
 @end

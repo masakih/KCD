@@ -53,6 +53,9 @@
 	if([self.api isEqualToString:@"/kcsapi/api_req_hensei/preset_select"]) {
 		return [super dataKey];
 	}
+	if([self.api isEqualToString:@"/kcsapi/api_req_kaisou/powerup"]) {
+		return @"api_data.api_deck";
+	}
 	
 	return [super dataKey];
 }
