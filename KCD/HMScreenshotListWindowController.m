@@ -354,6 +354,67 @@
 }
 
 
+- (IBAction)makeTrimedImage:(id)sender
+{
+	NSArray<HMScreenshotInformation *> *informations = [self.screenshotsController.selectedObjects copy];
+	
+	if(informations.count == 0) return;
+	
+	NSInteger col = informations.count == 1 ? 1 : 2;
+	NSInteger row = informations.count / 2 + informations.count % 2;
+	
+	dispatch_queue_t queue = dispatch_queue_create("Screenshot queue", DISPATCH_QUEUE_SERIAL);
+	dispatch_async(queue, ^{
+		NSImage *trimedImage = [[NSImage alloc] initWithSize:NSMakeSize(471 * col, 365 * row)];
+		
+		[trimedImage lockFocus];
+		{
+			[[NSColor lightGrayColor] setFill];
+			const NSInteger size = 10;
+			for(NSInteger i = 0; i < (471 * col) / size; i++) {
+				for(NSInteger j = 0; j < (356 * row) / size; j++) {
+					if(i % 2 == 0 && j % 2 == 1) continue;
+					if(i % 2 == 1 && j % 2 == 0) continue;
+					NSRect rect = NSMakeRect(i * size, j * size, size, size);
+					NSRectFill(rect);
+				}
+			}
+		}
+		[trimedImage unlockFocus];
+		
+		NSEnumerator *reverse = [informations reverseObjectEnumerator];
+		NSArray<HMScreenshotInformation *> *reverseInformations = reverse.allObjects;
+		for(NSInteger i = 0; i < informations.count; i++) {
+			HMScreenshotInformation *info = reverseInformations[i];
+			NSImage *originalImage = [[NSImage alloc] initWithContentsOfFile:info.path];
+			if(!originalImage) continue;
+			CGFloat x = (i % 2 == 0) ? 0 : 471;
+			CGFloat y = 365 * row - (i / 2 + 1) * 365;
+			[trimedImage lockFocus];
+			{
+				[originalImage drawAtPoint:NSMakePoint(x, y)
+								  fromRect:NSMakeRect(329, 13, 471, 365)
+								 operation:NSCompositeCopy
+								  fraction:1.0];
+			}
+			[trimedImage unlockFocus];
+		}
+		
+		HMScreenshotInformation *info = informations[0];
+		
+		NSString *filename = info.path.lastPathComponent;
+		filename = [filename stringByDeletingPathExtension];
+		filename = [filename stringByAppendingString:@"-trimed"];
+		filename = [filename stringByAppendingPathExtension:@"jpg"];
+		NSString *path = [[self screenshotSaveDirectoryPath] stringByAppendingPathComponent:filename];
+		path = [[NSFileManager defaultManager] _web_pathWithUniqueFilenameForPath:path];
+		
+		NSData *TIFFData = trimedImage.TIFFRepresentation;
+		NSBitmapImageRep *rep = [NSBitmapImageRep imageRepWithData:TIFFData];
+		[self registerScreenshot:rep fromOnScreen:NSZeroRect];
+	});
+}
+
 #pragma mark - IKImageBrowserDelegate
 - (void) imageBrowser:(IKImageBrowserView *) aBrowser cellWasRightClickedAtIndex:(NSUInteger) index withEvent:(NSEvent *) event
 {
