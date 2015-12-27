@@ -222,22 +222,36 @@
 }
 - (IBAction)delete:(id)sender
 {
-	NSString *imagePath = [self.screenshotsController valueForKeyPath:@"selection.path"];	
+	NSArray<HMScreenshotInformation *> *informations = [self.screenshotsController.selectedObjects copy];
+	NSMutableArray<NSString *> *paths = [NSMutableArray array];
+	for(HMScreenshotInformation *info in informations) {
+		[paths addObject:info.path];
+	}
+	NSMutableArray<NSString *> *opsixPathes = [NSMutableArray array];
+	for(NSString *path in paths) {
+		[opsixPathes addObject:[NSString stringWithFormat:@"(\"%@\" as POSIX file)", path]];
+	}
+	NSString *pathListString = [opsixPathes componentsJoinedByString:@" , "];
+	pathListString = [@"{ " stringByAppendingString:pathListString];
+	pathListString = [pathListString stringByAppendingString:@" }"];
+	
 	NSString *scriptTmplate =
 	@"tell application \"Finder\"\n"
-	@"	move ( \"%@\" as POSIX file) to trash\n"
+	@"	delete  %@\n"
 	@"end tell";
-	NSString *script = [NSString stringWithFormat:scriptTmplate, imagePath];
+	NSString *script = [NSString stringWithFormat:scriptTmplate, pathListString];
 	NSAppleScript *appleScript = [[NSAppleScript alloc] initWithSource:script];
 	if(!appleScript) NSBeep();
 	[appleScript executeAndReturnError:nil];
 	
-	NSUInteger selectionIndex = self.screenshotsController.selectionIndex;
-	[self.screenshotsController removeObjectAtArrangedObjectIndex:selectionIndex];
+	NSIndexSet *selectionIndexes = self.screenshotsController.selectionIndexes;
+	[self.screenshotsController removeObjectsAtArrangedObjectIndexes:selectionIndexes];
+	for(NSString *path in paths) {
+		[self incrementCacheVersionForPath:path];
+	}
 	[self saveCache];
 	
-	[self incrementCacheVersionForPath:imagePath];
-	
+	NSInteger selectionIndex = selectionIndexes.firstIndex;
 	NSUInteger count = [self.screenshotsController.arrangedObjects count];
 	if(count == 0) return;
 	if(count <= selectionIndex) {
@@ -247,9 +261,18 @@
 }
 - (IBAction)revealInFinder:(id)sender
 {
-	NSString *imagePath = [self.screenshotsController valueForKeyPath:@"selection.path"];
+	NSArray<HMScreenshotInformation *> *informations = [self.screenshotsController.selectedObjects copy];
+	NSMutableArray<NSString *> *paths = [NSMutableArray array];
+	for(HMScreenshotInformation *info in informations) {
+		[paths addObject:info.path];
+	}
+	NSMutableArray<NSURL *> *pathURLs = [NSMutableArray array];
+	for(NSString *path in paths) {
+		[pathURLs addObject:[NSURL fileURLWithPath:path]];
+	}
+	
 	NSWorkspace *ws = [NSWorkspace sharedWorkspace];
-	[ws selectFile:imagePath inFileViewerRootedAtPath:@""];
+	[ws activateFileViewerSelectingURLs:pathURLs];
 }
 
 - (void)registerScreenshot:(NSBitmapImageRep *)image fromOnScreen:(NSRect)screenRect
@@ -337,15 +360,23 @@
 
 - (IBAction)share:(id)sender
 {
-	NSString *imagePath = [self.screenshotsController valueForKeyPath:@"selection.path"];
-	NSImage *image = [[NSImage alloc] initWithContentsOfFile:imagePath];
+	NSArray<HMScreenshotInformation *> *informations = [self.screenshotsController.selectedObjects copy];
+	NSMutableArray<NSString *> *paths = [NSMutableArray array];
+	for(HMScreenshotInformation *info in informations) {
+		[paths addObject:info.path];
+	}
+	NSMutableArray *items = [NSMutableArray array];
+	for(NSString *path in paths) {
+		NSImage *image = [[NSImage alloc] initWithContentsOfFile:path];
+		if(image) [items addObject:image];
+	}
 	
 	NSString *tags = nil;
 	if(self.appendKanColleTag) {
 		tags = self.tagString;
 		tags = [@"\n" stringByAppendingString:tags];
 	}
-	NSArray *items = [NSArray arrayWithObjects:image, tags, nil];
+	[items addObject:tags];
 	NSSharingServicePicker *picker = [[NSSharingServicePicker alloc] initWithItems:items];
 	picker.delegate = self;
 	[picker showRelativeToRect:[sender bounds]
