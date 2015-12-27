@@ -391,40 +391,50 @@
 	
 	if(informations.count == 0) return;
 	
-	NSInteger col = informations.count == 1 ? 1 : 2;
-	NSInteger row = informations.count / 2 + informations.count % 2;
+	// 切り抜き位置とサイズ
+	const NSPoint origin = {329, 13};
+	const NSSize size = {471, 365};
+	
+	NSUInteger imageCount = informations.count;
+	NSInteger col = imageCount == 1 ? 1 : 2;
+	NSInteger row = imageCount / 2 + imageCount % 2;
 	
 	dispatch_queue_t queue = dispatch_queue_create("Screenshot queue", DISPATCH_QUEUE_SERIAL);
 	dispatch_async(queue, ^{
 		NSImage *trimedImage = [[NSImage alloc] initWithSize:NSMakeSize(471 * col, 365 * row)];
 		
-		[trimedImage lockFocus];
-		{
-			[[NSColor lightGrayColor] setFill];
-			const NSInteger size = 10;
-			for(NSInteger i = 0; i < (471 * col) / size; i++) {
-				for(NSInteger j = 0; j < (356 * row) / size; j++) {
-					if(i % 2 == 0 && j % 2 == 1) continue;
-					if(i % 2 == 1 && j % 2 == 0) continue;
-					NSRect rect = NSMakeRect(i * size, j * size, size, size);
-					NSRectFill(rect);
+		// 空き枠に市松模様を描画
+		if( imageCount % 2 == 1) {
+			[trimedImage lockFocus];
+			{
+				[[NSColor lightGrayColor] setFill];
+				// 市松模様のサイズ
+				const NSInteger tileSize = 10;
+				for(NSInteger i = 0; i < (size.width * col) / tileSize; i++) {
+					for(NSInteger j = 0; j < (size.height * row) / tileSize; j++) {
+						if(i % 2 == 0 && j % 2 == 1) continue;
+						if(i % 2 == 1 && j % 2 == 0) continue;
+						NSRect rect = NSMakeRect(i * tileSize, j * tileSize, tileSize, tileSize);
+						NSRectFill(rect);
+					}
 				}
 			}
+			[trimedImage unlockFocus];
 		}
-		[trimedImage unlockFocus];
 		
+		// 画像の切り取りと描画
 		NSEnumerator *reverse = [informations reverseObjectEnumerator];
 		NSArray<HMScreenshotInformation *> *reverseInformations = reverse.allObjects;
-		for(NSInteger i = 0; i < informations.count; i++) {
+		for(NSInteger i = 0; i < imageCount; i++) {
 			HMScreenshotInformation *info = reverseInformations[i];
 			NSImage *originalImage = [[NSImage alloc] initWithContentsOfFile:info.path];
 			if(!originalImage) continue;
-			CGFloat x = (i % 2 == 0) ? 0 : 471;
-			CGFloat y = 365 * row - (i / 2 + 1) * 365;
+			CGFloat x = (i % 2 == 0) ? 0 : size.width;
+			CGFloat y = size.height * row - (i / 2 + 1) * size.height;
 			[trimedImage lockFocus];
 			{
 				[originalImage drawAtPoint:NSMakePoint(x, y)
-								  fromRect:NSMakeRect(329, 13, 471, 365)
+								  fromRect:NSMakeRect(origin.x, origin.y, size.width, size.height)
 								 operation:NSCompositeCopy
 								  fraction:1.0];
 			}
