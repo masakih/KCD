@@ -229,7 +229,7 @@
                     </button>
                 </subviews>
             </view>
-            <toolbar key="toolbar" implicitIdentifier="8D6AED6D-FD93-466E-8D32-DD91687FCFEA" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="u73-PM-aej">
+            <toolbar key="toolbar" implicitIdentifier="8D6AED6D-FD93-466E-8D32-DD91687FCFEA" explicitIdentifier="ScreenshotListToolbar" displayMode="iconOnly" sizeMode="regular" id="u73-PM-aej">
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="KMU-tO-Zcp"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="hLk-Kh-2HB"/>

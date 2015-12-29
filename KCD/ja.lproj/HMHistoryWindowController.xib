@@ -634,7 +634,7 @@
                     </button>
                 </subviews>
             </view>
-            <toolbar key="toolbar" implicitIdentifier="9733990E-C421-4705-A287-001DC83D50F1" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="tYA-a0-fmZ">
+            <toolbar key="toolbar" implicitIdentifier="9733990E-C421-4705-A287-001DC83D50F1" explicitIdentifier="HistoryWindowToolbar" displayMode="iconAndLabel" sizeMode="regular" id="tYA-a0-fmZ">
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="gOU-TD-TxS"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="582-jv-fn0"/>
