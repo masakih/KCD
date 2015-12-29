@@ -376,7 +376,9 @@
 		tags = self.tagString;
 		tags = [@"\n" stringByAppendingString:tags];
 	}
-	[items addObject:tags];
+	if(tags) {
+		[items addObject:tags];
+	}
 	NSSharingServicePicker *picker = [[NSSharingServicePicker alloc] initWithItems:items];
 	picker.delegate = self;
 	[picker showRelativeToRect:[sender bounds]
