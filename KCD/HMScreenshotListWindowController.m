@@ -392,19 +392,19 @@
 	if(informations.count == 0) return;
 	
 	// 切り抜き位置とサイズ
-	const NSPoint origin = {329, 13};
-	const NSSize size = {471, 365};
+	const NSPoint origin = {328, 13};
+	const NSSize size = {470, 365};
 	
 	NSUInteger imageCount = informations.count;
 	NSInteger col = imageCount == 1 ? 1 : 2;
 	NSInteger row = imageCount / 2 + imageCount % 2;
 	
-	dispatch_queue_t queue = dispatch_queue_create("Screenshot queue", DISPATCH_QUEUE_SERIAL);
+	dispatch_queue_t queue = dispatch_queue_create("makeTrimedImage queue", DISPATCH_QUEUE_SERIAL);
 	dispatch_async(queue, ^{
-		NSImage *trimedImage = [[NSImage alloc] initWithSize:NSMakeSize(471 * col, 365 * row)];
+		NSImage *trimedImage = [[NSImage alloc] initWithSize:NSMakeSize(size.width * col, size.height * row)];
 		
 		// 空き枠に市松模様を描画
-		if( imageCount % 2 == 1) {
+		if(imageCount % 2 == 1) {
 			[trimedImage lockFocus];
 			{
 				[[NSColor lightGrayColor] setFill];
