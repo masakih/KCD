@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="HMHistoryWindowController">
@@ -445,7 +445,7 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="sequential" alternatingRowBackgroundColors="YES" autosaveName="drophistory" headerView="GLB-Em-NKT" id="VIc-m5-S1Y">
-                                                        <rect key="frame" x="0.0" y="0.0" width="636" height="19"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="636" height="408"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <size key="intercellSpacing" width="3" height="2"/>
                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -517,7 +517,23 @@
                                                                     </binding>
                                                                 </connections>
                                                             </tableColumn>
-                                                            <tableColumn identifier="mapAreaName" width="160.6484375" minWidth="40" maxWidth="1000" id="T2j-LY-kIJ">
+                                                            <tableColumn identifier="mapCell" width="37" minWidth="10" maxWidth="3.4028234663852886e+38" id="xfO-mZ-URa">
+                                                                <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Cell">
+                                                                    <font key="font" metaFont="smallSystem"/>
+                                                                    <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                                </tableHeaderCell>
+                                                                <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="flB-J5-dHR">
+                                                                    <font key="font" metaFont="system"/>
+                                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                                <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                                <connections>
+                                                                    <binding destination="xvi-Qk-gPS" name="value" keyPath="arrangedObjects.mapCell" id="AEJ-f3-MF0"/>
+                                                                </connections>
+                                                            </tableColumn>
+                                                            <tableColumn identifier="mapAreaName" width="80.6484375" minWidth="40" maxWidth="1000" id="T2j-LY-kIJ">
                                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="海域">
                                                                     <font key="font" metaFont="smallSystem"/>
                                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -537,7 +553,7 @@
                                                                     </binding>
                                                                 </connections>
                                                             </tableColumn>
-                                                            <tableColumn identifier="mapInfoName" width="138.73828125" minWidth="10" maxWidth="3.4028234663852886e+38" id="Tbw-AZ-8Nv">
+                                                            <tableColumn identifier="mapInfoName" width="179" minWidth="10" maxWidth="3.4028234663852886e+38" id="Tbw-AZ-8Nv">
                                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="領域">
                                                                     <font key="font" metaFont="smallSystem"/>
                                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -584,7 +600,7 @@
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </clipView>
                                             <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="X8L-gi-Dxc">
-                                                <rect key="frame" x="1" y="119" width="223" height="15"/>
+                                                <rect key="frame" x="1" y="409" width="636" height="16"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
                                             <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="Tg1-gg-ftQ">
