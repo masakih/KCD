@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
-        <plugIn identifier="com.apple.imagekit.ibplugin" version="6254"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+        <plugIn identifier="com.apple.imagekit.ibplugin" version="9531"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="HMScreenshotListWindowController">
@@ -26,7 +26,7 @@
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
             <value key="minSize" type="size" width="600" height="430"/>
             <view key="contentView" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="1" width="853" height="430"/>
+                <rect key="frame" x="0.0" y="0.0" width="853" height="430"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="ddV-E9-TbE">
@@ -37,7 +37,7 @@
                             <binding destination="mrq-7Y-mHG" name="valuePath" keyPath="selection.path" id="P3O-fQ-1jp"/>
                         </connections>
                     </imageView>
-                    <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="5WC-WS-ctC">
+                    <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="5WC-WS-ctC">
                         <rect key="frame" x="479" y="177" width="354" height="5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
@@ -145,7 +145,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="ZEm-iP-1u6">
+                    <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="ZEm-iP-1u6">
                         <rect key="frame" x="479" y="35" width="354" height="5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
@@ -164,30 +164,19 @@
                             <binding destination="mrq-7Y-mHG" name="value" keyPath="selection.tags" id="QxU-VJ-jio"/>
                         </connections>
                     </tokenField>
-                    <button hidden="YES" verticalHuggingPriority="750" id="PMW-hb-KWl">
-                        <rect key="frame" x="756" y="36" width="83" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="push" title="Reload" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6mr-Lg-0ls">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="reloadData:" target="-2" id="FSz-KD-FmB"/>
-                        </connections>
-                    </button>
                     <scrollView horizontalLineScroll="132.75" horizontalPageScroll="10" verticalLineScroll="153" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="uRf-6p-n0n">
                         <rect key="frame" x="-1" y="-1" width="461" height="432"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" copiesOnScroll="NO" id="xHE-4e-HA7">
-                            <rect key="frame" x="1" y="1" width="166" height="79"/>
+                            <rect key="frame" x="1" y="1" width="459" height="430"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <ikImageBrowserView autoresizesSubviews="NO" zoomValue="4.5748710632324219" allowsMultipleSelection="NO" allowsEmptySelection="NO" id="FPI-Ma-X6H">
-                                    <rect key="frame" x="0.0" y="0.0" width="459" height="430"/>
+                                <ikImageBrowserView autoresizesSubviews="NO" zoomValue="2.1386022567749023" allowsEmptySelection="NO" id="FPI-Ma-X6H">
+                                    <rect key="frame" x="0.0" y="0.0" width="1269" height="781"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
-                                    <ikCellsStyle key="cellsStyleMask" none="YES" shadowed="YES" titled="YES" subtitled="YES"/>
+                                    <ikCellsStyle key="cellsStyleMask" shadowed="YES" titled="YES" subtitled="YES"/>
                                     <autoresizingMask key="contentResizingMask" heightSizable="YES"/>
-                                    <size key="cellSize" width="6867" height="6867"/>
+                                    <size key="cellSize" width="1535" height="1535"/>
                                     <connections>
                                         <binding destination="mrq-7Y-mHG" name="content" keyPath="arrangedObjects" id="G0M-vZ-Pyi"/>
                                         <binding destination="-2" name="selectionIndexes" keyPath="selectedIndexes" previousBinding="G0M-vZ-Pyi" id="hZm-cJ-NmG"/>
@@ -198,14 +187,46 @@
                             </subviews>
                         </clipView>
                         <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="ERx-3X-cLg">
-                            <rect key="frame" x="1" y="80" width="166" height="15"/>
+                            <rect key="frame" x="1" y="415" width="459" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="dbh-Xn-LMm">
-                            <rect key="frame" x="167" y="1" width="15" height="79"/>
+                            <rect key="frame" x="444" y="1" width="16" height="430"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
+                    <button verticalHuggingPriority="750" id="s3b-Aj-EWy">
+                        <rect key="frame" x="690" y="39" width="92" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="push" title="切り抜き" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Tpy-bV-vAA">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" size="13" name="HiraKakuProN-W3"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="makeTrimedImage:" target="-2" id="9gH-NR-AbV"/>
+                            <binding destination="-2" name="title" keyPath="trimButtonTitle" id="gDw-TR-d80"/>
+                        </connections>
+                    </button>
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="0Or-2j-hfa">
+                        <rect key="frame" x="477" y="42" width="213" height="28"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="「編成」の「詳細」のスクリーンショットからステータスを切り抜き連結する" id="fGb-ex-cZu">
+                            <font key="font" size="11" name="HiraKakuProN-W3"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button hidden="YES" verticalHuggingPriority="750" id="PMW-hb-KWl">
+                        <rect key="frame" x="756" y="61" width="83" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="push" title="Reload" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6mr-Lg-0ls">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="reloadData:" target="-2" id="FSz-KD-FmB"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <toolbar key="toolbar" implicitIdentifier="8D6AED6D-FD93-466E-8D32-DD91687FCFEA" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="u73-PM-aej">
@@ -288,6 +309,6 @@
         <userDefaultsController representsSharedInstance="YES" id="t6v-On-YEy"/>
     </objects>
     <resources>
-        <image name="NSShareTemplate" width="18" height="16"/>
+        <image name="NSShareTemplate" width="11" height="16"/>
     </resources>
 </document>

@@ -385,6 +385,21 @@
 }
 
 
++ (NSSet *)keyPathsForValuesAffectingTrimButtonTitle
+{
+	return [NSSet setWithObjects:@"selectedIndexes", nil];
+}
+- (NSString *)trimButtonTitle
+{
+	NSArray *informations = self.screenshotsController.selectedObjects;
+	if(informations.count == 0) {
+		return NSLocalizedString(@"None", @"Screenshot window trim button title");
+	}
+	if(informations.count == 1) {
+		return NSLocalizedString(@"Trim", @"Screenshot window trim button title");
+	}
+	return NSLocalizedString(@"Join", @"Screenshot window trim button title");
+}
 - (IBAction)makeTrimedImage:(id)sender
 {
 	NSArray<HMScreenshotInformation *> *informations = [self.screenshotsController.selectedObjects copy];
