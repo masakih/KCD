@@ -187,6 +187,9 @@
 		F4C1190B18A74DF0005D5B25 /* HMJSONCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C1190A18A74DF0005D5B25 /* HMJSONCommand.m */; };
 		F4C3957418CDDFE500A1E918 /* HMKenzoDockStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C3957318CDDFE500A1E918 /* HMKenzoDockStatus.m */; };
 		F4C5A2231C3533E800533FB6 /* HMEnhancementListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C5A2221C3533E800533FB6 /* HMEnhancementListItem.m */; };
+		F4C5A22C1C37B8DB00533FB6 /* HMRequiredEquipmentSet.txt in Resources */ = {isa = PBXBuildFile; fileRef = F4C5A22B1C37B8DB00533FB6 /* HMRequiredEquipmentSet.txt */; };
+		F4C5A22E1C37CB5100533FB6 /* HMEnhancementListItem.txt in Resources */ = {isa = PBXBuildFile; fileRef = F4C5A22D1C37CB5100533FB6 /* HMEnhancementListItem.txt */; };
+		F4C5A23A1C37F8AC00533FB6 /* HMEnhancementListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C5A2221C3533E800533FB6 /* HMEnhancementListItem.m */; };
 		F4C86B921C1C445D00F260FE /* HMUpgradeShipExcludeColorTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C86B911C1C445D00F260FE /* HMUpgradeShipExcludeColorTransformer.m */; };
 		F4D2CBC218AD0E1A000EBC59 /* HMMasterSTypeCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D2CBC118AD0E1A000EBC59 /* HMMasterSTypeCommand.m */; };
 		F4D2CBC518AE2AE2000EBC59 /* HMCompositCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D2CBC418AE2AE2000EBC59 /* HMCompositCommand.m */; };
@@ -559,6 +562,8 @@
 		F4C3957318CDDFE500A1E918 /* HMKenzoDockStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKenzoDockStatus.m; sourceTree = "<group>"; };
 		F4C5A2211C3533E800533FB6 /* HMEnhancementListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMEnhancementListItem.h; sourceTree = "<group>"; };
 		F4C5A2221C3533E800533FB6 /* HMEnhancementListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMEnhancementListItem.m; sourceTree = "<group>"; };
+		F4C5A22B1C37B8DB00533FB6 /* HMRequiredEquipmentSet.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HMRequiredEquipmentSet.txt; sourceTree = "<group>"; };
+		F4C5A22D1C37CB5100533FB6 /* HMEnhancementListItem.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HMEnhancementListItem.txt; sourceTree = "<group>"; };
 		F4C86B901C1C445C00F260FE /* HMUpgradeShipExcludeColorTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMUpgradeShipExcludeColorTransformer.h; sourceTree = "<group>"; };
 		F4C86B911C1C445D00F260FE /* HMUpgradeShipExcludeColorTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMUpgradeShipExcludeColorTransformer.m; sourceTree = "<group>"; };
 		F4D2CBC018AD0E1A000EBC59 /* HMMasterSTypeCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMasterSTypeCommand.h; sourceTree = "<group>"; };
@@ -781,6 +786,8 @@
 				F43E67B618BE02A10087E5B6 /* STypeShortName.plist */,
 				F43E67B818BE060E0087E5B6 /* LevelUpExp.plist */,
 				F4666C6A1B29E974001840DB /* EquipmentStrengthen.plist */,
+				F4C5A22B1C37B8DB00533FB6 /* HMRequiredEquipmentSet.txt */,
+				F4C5A22D1C37CB5100533FB6 /* HMEnhancementListItem.txt */,
 				F4A9B8D21B975029005786C2 /* SlotItemShortName.plist */,
 				F4A9B8D51B99D5B7005786C2 /* Taihi.txt */,
 				F4A9B8D81BA40ED1005786C2 /* LICENSE */,
@@ -1254,12 +1261,14 @@
 			files = (
 				F4B37EFF19FC8DCC002F371A /* HMUpgradableShipsWindowController.xib in Resources */,
 				F49546361B19924D00E0D8D0 /* HMBookmarkListViewController.xib in Resources */,
+				F4C5A22C1C37B8DB00533FB6 /* HMRequiredEquipmentSet.txt in Resources */,
 				F49688671B3EA16800D3CEDE /* RemoveDatabaseFileAndRestart.app in Resources */,
 				F494DC6A18C8BAB900AE97E4 /* HMPowerUpSupportViewController.xib in Resources */,
 				F4BDEB51187252F30069D0CE /* InfoPlist.strings in Resources */,
 				F43E67B918BE060E0087E5B6 /* LevelUpExp.plist in Resources */,
 				F4A9B8D71B99D5B7005786C2 /* Taihi.txt in Resources */,
 				F4B3DC3018E5C81E0011B4FC /* HMHistoryWindowController.xib in Resources */,
+				F4C5A22E1C37CB5100533FB6 /* HMEnhancementListItem.txt in Resources */,
 				F4A9B8D91BA40ED1005786C2 /* LICENSE in Resources */,
 				F4B3DC3618E5C8650011B4FC /* HMShipWindowController.xib in Resources */,
 				F4666C571B1E0262001840DB /* HMBookmarkEditorViewController.xib in Resources */,
