@@ -9,6 +9,8 @@
 #import "HMStrengthenListViewController.h"
 #import "HMStrengthenListItemCellView.h"
 
+#import "HMEnhancementListItem.h"
+
 #import "HMPeriodicNotifier.h"
 
 
@@ -38,11 +40,12 @@ static NSString *groupNameKey = @"group";
 	self = [super initWithNibName:NSStringFromClass([self class]) bundle:nil];
 	if(self) {
 		NSBundle *mainBundle = [NSBundle mainBundle];
-		NSString *path = [mainBundle pathForResource:@"EquipmentStrengthen"
+		NSString *path = [mainBundle pathForResource:@"HMEnhancementListItem"
 											  ofType:@"plist"];
-		_equipmentStrengthenList = [[NSArray alloc] initWithContentsOfFile:path];
+		NSData *data = [NSData dataWithContentsOfFile:path];
+		_equipmentStrengthenList = [NSKeyedUnarchiver unarchiveObjectWithData:data];
 		if(!_equipmentStrengthenList) {
-			NSLog(@"EquipmentStrengthen.plist not found.");
+			NSLog(@"HMEnhancementListItem.plist not found.");
 			return nil;
 		}
 		
@@ -72,7 +75,7 @@ static NSString *groupNameKey = @"group";
 
 - (void)downloadPlist:(id)dummy
 {
-	NSURL *plistURL = [NSURL URLWithString:@"https://osdn.jp/projects/kcd/scm/git/KCD/blobs/master/KCD/EquipmentStrengthen.plist?export=raw"];
+	NSURL *plistURL = [NSURL URLWithString:@"https://osdn.jp/projects/kcd/scm/git/KCD/blobs/master/KCD/HMEnhancementListItem.plist?export=raw"];
 	
 	if(!self.plistDownloadSession) {
 		self.plistDownloadQueue = [NSOperationQueue new];
@@ -98,25 +101,25 @@ static NSString *groupNameKey = @"group";
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location
 {
 	NSError *error = nil;
-	NSString *plistString = [NSString stringWithContentsOfURL:location
-													 encoding:NSUTF8StringEncoding
-														error:&error];
-	if(!error && plistString) {
-		NSArray *plist = [plistString propertyList];
+	NSData *data = [NSData dataWithContentsOfURL:location
+												options:0
+												  error:&error];
+	if(!error && data) {
+		NSArray *dataArray = [NSKeyedUnarchiver unarchiveObjectWithData:data];
 		
-		if([self.equipmentStrengthenList isEqual:plist]) return;
+		if([self.equipmentStrengthenList isEqual:dataArray]) return;
 		
 		NSFileManager *fileManager = [NSFileManager defaultManager];
 		NSURL *appSupportURL = [[fileManager URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask] lastObject];
 		NSURL *ownAppSuportURL = [appSupportURL URLByAppendingPathComponent:@"com.masakih.KCD"];
-		NSURL *plistURL = [ownAppSuportURL URLByAppendingPathComponent:@"EquipmentStrengthen.plist"];
+		NSURL *dataURL = [ownAppSuportURL URLByAppendingPathComponent:@"HMEnhancementListItem.plist"];
 		
-		NSArray *oldSavedPlist = [NSArray arrayWithContentsOfURL:plistURL];
-		if(![oldSavedPlist isEqual:plist]) {
-			[plist writeToURL:plistURL atomically:YES];
+		NSData *oldSavedData = [NSData dataWithContentsOfURL:dataURL];
+		if(![oldSavedData isEqual:data]) {
+			[data writeToURL:dataURL atomically:YES];
 		}
 		
-		self.equipmentStrengthenList = plist;
+		self.equipmentStrengthenList = dataArray;
 		[self buildList:nil];
 	}
 }
@@ -135,23 +138,9 @@ static NSString *groupNameKey = @"group";
 	if(targetWeekday > 7) targetWeekday = 1;
 	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"weekday = %ld", targetWeekday];
 	
-	NSArray *filterdItemList = [self.equipmentStrengthenList filteredArrayUsingPredicate:predicate];
+	self.itemList = [self.equipmentStrengthenList filteredArrayUsingPredicate:predicate];
 	
-	NSMutableArray *list = [NSMutableArray new];
-	NSString *groupName = @"";
-	
-	for(NSDictionary *item in filterdItemList) {
-		NSString *equipmentName = item[@"equipment"];
-		if(![groupName isEqualToString:equipmentName]) {
-			groupName = equipmentName;
-			NSDictionary *group = @{groupNameKey : groupName };
-			[list addObject:group];
-		}
-		[list addObject:item];
-	}
-	
-	self.itemList = list;
-	[_tableView reloadData];
+	[_tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
 }
 
 #pragma mark - NSTableViewDelegate & NSTableViewDataSource
@@ -162,28 +151,10 @@ static NSString *groupNameKey = @"group";
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
-	NSDictionary *item = self.itemList[row];
-	if(item[groupNameKey]) {
-		NSTableCellView *groupLabel = [tableView makeViewWithIdentifier:@"LabelCell" owner:self];
-		groupLabel.textField.stringValue = item[groupNameKey];
-		return groupLabel;
-	} else {
-		HMStrengthenListItemCellView *itemView = [tableView makeViewWithIdentifier:@"ItemCell" owner:self];
-		itemView.textField.stringValue = item[@"secondShip"];
-		itemView.secondField.stringValue = item[@"remodelEquipment"] ?: @"";
-		return itemView;
-	}
-	return nil;
+	HMEnhancementListItem *item = self.itemList[row];
+	HMStrengthenListItemCellView *itemView = [tableView makeViewWithIdentifier:@"ItemCell" owner:self];
+	itemView.item = item;
+	return itemView;
 }
 
-- (BOOL)tableView:(NSTableView *)tableView isGroupRow:(NSInteger)row
-{
-	NSDictionary *item = self.itemList[row];
-	return item[groupNameKey] != nil;
-}
-- (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row
-{
-	NSDictionary *item = self.itemList[row];
-	return item[groupNameKey] ? 17 : [tableView rowHeight];
-}
 @end

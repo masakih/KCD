@@ -187,6 +187,7 @@
 		F4C1190B18A74DF0005D5B25 /* HMJSONCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C1190A18A74DF0005D5B25 /* HMJSONCommand.m */; };
 		F4C3957418CDDFE500A1E918 /* HMKenzoDockStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C3957318CDDFE500A1E918 /* HMKenzoDockStatus.m */; };
 		F4C5A2231C3533E800533FB6 /* HMEnhancementListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C5A2221C3533E800533FB6 /* HMEnhancementListItem.m */; };
+		F4C5A2261C36C68C00533FB6 /* HMStrengthenListItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C5A2251C36C68C00533FB6 /* HMStrengthenListItemView.m */; };
 		F4C5A22C1C37B8DB00533FB6 /* HMRequiredEquipmentSet.txt in Resources */ = {isa = PBXBuildFile; fileRef = F4C5A22B1C37B8DB00533FB6 /* HMRequiredEquipmentSet.txt */; };
 		F4C5A22E1C37CB5100533FB6 /* HMEnhancementListItem.txt in Resources */ = {isa = PBXBuildFile; fileRef = F4C5A22D1C37CB5100533FB6 /* HMEnhancementListItem.txt */; };
 		F4C5A2361C37F87600533FB6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C5A2351C37F87600533FB6 /* main.m */; };
@@ -576,6 +577,8 @@
 		F4C3957318CDDFE500A1E918 /* HMKenzoDockStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKenzoDockStatus.m; sourceTree = "<group>"; };
 		F4C5A2211C3533E800533FB6 /* HMEnhancementListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMEnhancementListItem.h; sourceTree = "<group>"; };
 		F4C5A2221C3533E800533FB6 /* HMEnhancementListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMEnhancementListItem.m; sourceTree = "<group>"; };
+		F4C5A2241C36C68C00533FB6 /* HMStrengthenListItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMStrengthenListItemView.h; sourceTree = "<group>"; };
+		F4C5A2251C36C68C00533FB6 /* HMStrengthenListItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMStrengthenListItemView.m; sourceTree = "<group>"; };
 		F4C5A22B1C37B8DB00533FB6 /* HMRequiredEquipmentSet.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HMRequiredEquipmentSet.txt; sourceTree = "<group>"; };
 		F4C5A22D1C37CB5100533FB6 /* HMEnhancementListItem.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HMEnhancementListItem.txt; sourceTree = "<group>"; };
 		F4C5A2331C37F87500533FB6 /* EquipmentEnhancementListBuilder */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = EquipmentEnhancementListBuilder; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1000,6 +1003,8 @@
 				F4F6E8071B2B17E50008B66E /* HMStrengthenListViewController.xib */,
 				F4F6E80D1B2C25D20008B66E /* HMStrengthenListItemCellView.h */,
 				F4F6E80E1B2C25D20008B66E /* HMStrengthenListItemCellView.m */,
+				F4C5A2241C36C68C00533FB6 /* HMStrengthenListItemView.h */,
+				F4C5A2251C36C68C00533FB6 /* HMStrengthenListItemView.m */,
 				F4C5A2211C3533E800533FB6 /* HMEnhancementListItem.h */,
 				F4C5A2221C3533E800533FB6 /* HMEnhancementListItem.m */,
 				F4D6BCA61AA298FD00742FEB /* HMShipDetailViewController.h */,
@@ -1427,6 +1432,7 @@
 				F4131ED5190F63D8004F7F9A /* HMUpdateSlotItemCommand.m in Sources */,
 				F4C1190518A71AEA005D5B25 /* HMJSONReciever.m in Sources */,
 				F44AB24119E8252600F217AF /* HMKCSlotItemObject+Extensions.m in Sources */,
+				F4C5A2261C36C68C00533FB6 /* HMStrengthenListItemView.m in Sources */,
 				F4C86B921C1C445D00F260FE /* HMUpgradeShipExcludeColorTransformer.m in Sources */,
 				F46FCB291BD933C600304DE7 /* HMSlotItemShortNameTransformer.m in Sources */,
 				F4A3AD82199F529700FDBF80 /* HMCombinedBattleCommand.m in Sources */,
