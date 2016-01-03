@@ -189,6 +189,7 @@
 		F4C5A2231C3533E800533FB6 /* HMEnhancementListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C5A2221C3533E800533FB6 /* HMEnhancementListItem.m */; };
 		F4C5A22C1C37B8DB00533FB6 /* HMRequiredEquipmentSet.txt in Resources */ = {isa = PBXBuildFile; fileRef = F4C5A22B1C37B8DB00533FB6 /* HMRequiredEquipmentSet.txt */; };
 		F4C5A22E1C37CB5100533FB6 /* HMEnhancementListItem.txt in Resources */ = {isa = PBXBuildFile; fileRef = F4C5A22D1C37CB5100533FB6 /* HMEnhancementListItem.txt */; };
+		F4C5A2361C37F87600533FB6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C5A2351C37F87600533FB6 /* main.m */; };
 		F4C5A23A1C37F8AC00533FB6 /* HMEnhancementListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C5A2221C3533E800533FB6 /* HMEnhancementListItem.m */; };
 		F4C86B921C1C445D00F260FE /* HMUpgradeShipExcludeColorTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C86B911C1C445D00F260FE /* HMUpgradeShipExcludeColorTransformer.m */; };
 		F4D2CBC218AD0E1A000EBC59 /* HMMasterSTypeCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D2CBC118AD0E1A000EBC59 /* HMMasterSTypeCommand.m */; };
@@ -239,6 +240,18 @@
 			remoteInfo = KCD;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F4C5A2311C37F87500533FB6 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		F402D5351BE3AFAB008D5881 /* HMSlotResetCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSlotResetCommand.h; sourceTree = "<group>"; };
@@ -564,6 +577,8 @@
 		F4C5A2221C3533E800533FB6 /* HMEnhancementListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMEnhancementListItem.m; sourceTree = "<group>"; };
 		F4C5A22B1C37B8DB00533FB6 /* HMRequiredEquipmentSet.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HMRequiredEquipmentSet.txt; sourceTree = "<group>"; };
 		F4C5A22D1C37CB5100533FB6 /* HMEnhancementListItem.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HMEnhancementListItem.txt; sourceTree = "<group>"; };
+		F4C5A2331C37F87500533FB6 /* EquipmentEnhancementListBuilder */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = EquipmentEnhancementListBuilder; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4C5A2351C37F87600533FB6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F4C86B901C1C445C00F260FE /* HMUpgradeShipExcludeColorTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMUpgradeShipExcludeColorTransformer.h; sourceTree = "<group>"; };
 		F4C86B911C1C445D00F260FE /* HMUpgradeShipExcludeColorTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMUpgradeShipExcludeColorTransformer.m; sourceTree = "<group>"; };
 		F4D2CBC018AD0E1A000EBC59 /* HMMasterSTypeCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMasterSTypeCommand.h; sourceTree = "<group>"; };
@@ -660,6 +675,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F4C5A2301C37F87500533FB6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -689,6 +711,7 @@
 				F4BDEB4C187252F30069D0CE /* KCD */,
 				F4FDF23D1A3D4A480033E0AD /* TestAndDebug */,
 				F4BDEB6A187252F30069D0CE /* KCDTests */,
+				F4C5A2341C37F87600533FB6 /* EquipmentEnhancementListBuilder */,
 				F4BDEB45187252F30069D0CE /* Frameworks */,
 				F4BDEB44187252F30069D0CE /* Products */,
 			);
@@ -699,6 +722,7 @@
 			children = (
 				F4BDEB43187252F30069D0CE /* KCD.app */,
 				F4BDEB64187252F30069D0CE /* KCDTests.xctest */,
+				F4C5A2331C37F87500533FB6 /* EquipmentEnhancementListBuilder */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1016,6 +1040,14 @@
 			name = CustomHTTPProtocol;
 			sourceTree = "<group>";
 		};
+		F4C5A2341C37F87600533FB6 /* EquipmentEnhancementListBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				F4C5A2351C37F87600533FB6 /* main.m */,
+			);
+			path = EquipmentEnhancementListBuilder;
+			sourceTree = "<group>";
+		};
 		F4D2CBBF18ACE7D7000EBC59 /* Command */ = {
 			isa = PBXGroup;
 			children = (
@@ -1219,6 +1251,23 @@
 			productReference = F4BDEB64187252F30069D0CE /* KCDTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		F4C5A2321C37F87500533FB6 /* EquipmentEnhancementListBuilder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4C5A2371C37F87600533FB6 /* Build configuration list for PBXNativeTarget "EquipmentEnhancementListBuilder" */;
+			buildPhases = (
+				F4C5A22F1C37F87500533FB6 /* Sources */,
+				F4C5A2301C37F87500533FB6 /* Frameworks */,
+				F4C5A2311C37F87500533FB6 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EquipmentEnhancementListBuilder;
+			productName = EquipmentEnhancementListBuilder;
+			productReference = F4C5A2331C37F87500533FB6 /* EquipmentEnhancementListBuilder */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1231,6 +1280,9 @@
 				TargetAttributes = {
 					F4BDEB63187252F30069D0CE = {
 						TestTargetID = F4BDEB42187252F30069D0CE;
+					};
+					F4C5A2321C37F87500533FB6 = {
+						CreatedOnToolsVersion = 7.2;
 					};
 				};
 			};
@@ -1250,6 +1302,7 @@
 			targets = (
 				F4BDEB42187252F30069D0CE /* KCD */,
 				F4BDEB63187252F30069D0CE /* KCDTests */,
+				F4C5A2321C37F87500533FB6 /* EquipmentEnhancementListBuilder */,
 			);
 		};
 /* End PBXProject section */
@@ -1495,6 +1548,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4BDEB71187252F30069D0CE /* KCDTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4C5A22F1C37F87500533FB6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4C5A2361C37F87600533FB6 /* main.m in Sources */,
+				F4C5A23A1C37F8AC00533FB6 /* HMEnhancementListItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1877,6 +1939,37 @@
 			};
 			name = Release;
 		};
+		F4C5A2381C37F87600533FB6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F4C5A2391C37F87600533FB6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1903,6 +1996,15 @@
 			buildConfigurations = (
 				F4BDEB78187252F30069D0CE /* Debug */,
 				F4BDEB79187252F30069D0CE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F4C5A2371C37F87600533FB6 /* Build configuration list for PBXNativeTarget "EquipmentEnhancementListBuilder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4C5A2381C37F87600533FB6 /* Debug */,
+				F4C5A2391C37F87600533FB6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

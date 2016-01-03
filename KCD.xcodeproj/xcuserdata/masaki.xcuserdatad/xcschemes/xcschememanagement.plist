@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>EquipmentEnhancementListBuilder.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>KCD.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -18,6 +23,11 @@
 			<true/>
 		</dict>
 		<key>F4BDEB63187252F30069D0CE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F4C5A2321C37F87500533FB6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
