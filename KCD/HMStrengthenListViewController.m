@@ -105,7 +105,15 @@ static NSString *groupNameKey = @"group";
 												options:0
 												  error:&error];
 	if(!error && data) {
-		NSArray *dataArray = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+		NSArray *dataArray = nil;
+		@try {
+			dataArray = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+		}
+		@catch (id e) {
+			NSLog(@"can not unarchive HMEnhancementListItem.plist. Reason: %@", e);
+			return;
+		}
+		if(!dataArray) return;
 		
 		if([self.equipmentStrengthenList isEqual:dataArray]) return;
 		
