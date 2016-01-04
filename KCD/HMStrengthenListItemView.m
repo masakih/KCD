@@ -16,10 +16,7 @@
 	
 	NSRect bounds = self.bounds;
 	
-//	[[NSColor controlLightHighlightColor] setFill];
 	[[NSColor gridColor] setStroke];
-	
-//	[NSBezierPath fillRect:bounds];
 	
 	[NSBezierPath setDefaultLineWidth:1.0];
 	[NSBezierPath strokeRect:bounds];

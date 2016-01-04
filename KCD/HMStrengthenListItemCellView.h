@@ -10,14 +10,7 @@
 
 #import "HMEnhancementListItem.h"
 
-typedef NS_ENUM(NSUInteger, HMStrengthenListItemBackgoudColorType) {
-	nomal,
-	alternate,
-};
-
 @interface HMStrengthenListItemCellView : NSTableCellView
-
-@property (nonatomic) HMStrengthenListItemBackgoudColorType backgroundColorType;
 
 @property (strong) HMEnhancementListItem *item;
 

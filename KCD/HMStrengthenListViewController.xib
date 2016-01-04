@@ -97,7 +97,7 @@
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="dtt-Ip-R0L">
                                                         <rect key="frame" x="0.0" y="82" width="161" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="OTO 152mm三連装速射砲" id="wH1-vC-nSw">
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="OTO 152mm三連装速射砲" id="wH1-vC-nSw">
                                                             <font key="font" metaFont="systemBold"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -109,7 +109,7 @@
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="BKP-sY-VKc">
                                                         <rect key="frame" x="160" y="82" width="146" height="14"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Label" id="jwK-Iu-KBX">
+                                                        <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="right" title="Label" id="jwK-Iu-KBX">
                                                             <font key="font" metaFont="smallSystem"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -142,7 +142,7 @@
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="4eG-2g-uyx">
                                                                     <rect key="frame" x="0.0" y="35" width="27" height="14"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="0-5" id="W3y-Ux-ymV">
+                                                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="0~5" id="W3y-Ux-ymV">
                                                                         <font key="font" metaFont="smallSystem"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -151,7 +151,7 @@
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="qpe-7O-6pL">
                                                                     <rect key="frame" x="0.0" y="18" width="27" height="14"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="6-9" id="q9l-VF-gYf">
+                                                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="6~9" id="q9l-VF-gYf">
                                                                         <font key="font" metaFont="smallSystem"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -207,7 +207,11 @@
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                     <connections>
-                                                                        <binding destination="gd9-yz-R2c" name="value" keyPath="needsScrewString01" id="U9K-BJ-kvr"/>
+                                                                        <binding destination="gd9-yz-R2c" name="value" keyPath="needsScrewString01" id="VZx-o1-e6f">
+                                                                            <dictionary key="options">
+                                                                                <string key="NSNullPlaceholder">-</string>
+                                                                            </dictionary>
+                                                                        </binding>
                                                                     </connections>
                                                                 </textField>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="cfa-SL-7c8">
@@ -251,7 +255,11 @@
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                     <connections>
-                                                                        <binding destination="gd9-yz-R2c" name="value" keyPath="needsScrewString02" id="kuq-qB-bOA"/>
+                                                                        <binding destination="gd9-yz-R2c" name="value" keyPath="needsScrewString02" id="IU4-Uw-ag6">
+                                                                            <dictionary key="options">
+                                                                                <string key="NSNullPlaceholder">-</string>
+                                                                            </dictionary>
+                                                                        </binding>
                                                                     </connections>
                                                                 </textField>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="9hA-09-RKh">
@@ -295,7 +303,11 @@
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                     <connections>
-                                                                        <binding destination="gd9-yz-R2c" name="value" keyPath="needsScrewString03" id="QMH-gt-Pf2"/>
+                                                                        <binding destination="gd9-yz-R2c" name="value" keyPath="needsScrewString03" id="y79-pS-DWD">
+                                                                            <dictionary key="options">
+                                                                                <string key="NSNullPlaceholder">-</string>
+                                                                            </dictionary>
+                                                                        </binding>
                                                                     </connections>
                                                                 </textField>
                                                             </subviews>

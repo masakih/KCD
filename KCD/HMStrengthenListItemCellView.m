@@ -17,21 +17,6 @@
 
 @implementation HMStrengthenListItemCellView
 
-- (void)setBackgroundColorType:(HMStrengthenListItemBackgoudColorType)backgroundColorType
-{
-	_backgroundColorType = backgroundColorType;
-	self.itemBox.fillColor = [NSColor whiteColor];
-	
-	NSArray<NSColor *> *colors = [NSColor controlAlternatingRowBackgroundColors];
-	if(colors.count < 2) {
-		return;
-	}
-	
-	if(_backgroundColorType == alternate) {
-		self.itemBox.fillColor = colors[1];
-	}
-}
-
 - (HMEnhancementListItem *)item
 {
 	return (HMEnhancementListItem *)self.objectValue;
