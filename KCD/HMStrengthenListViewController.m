@@ -75,7 +75,7 @@ static NSString *groupNameKey = @"group";
 
 - (void)downloadPlist:(id)dummy
 {
-	NSURL *plistURL = [NSURL URLWithString:@"https://osdn.jp/projects/kcd/scm/git/KCD/blobs/master/KCD/HMEnhancementListItem.plist?export=raw"];
+	NSURL *plistURL = [NSURL URLWithString:@"http://git.osdn.jp/view?p=kcd/KCD.git;a=blob;f=KCD/HMEnhancementListItem.plist;h=1f25dc0a198b6df97277f84a13b04b18752cbedd;hb=HEAD"];
 	
 	if(!self.plistDownloadSession) {
 		self.plistDownloadQueue = [NSOperationQueue new];
