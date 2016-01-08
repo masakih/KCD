@@ -72,7 +72,7 @@
 133A	2	3	381mm/50 三連装砲	381mm/50 三連装砲改	Roma
 133A	7	3	381mm/50 三連装砲	381mm/50 三連装砲改	Roma
 137A	1	3	381mm/50 三連装砲改		Littorio
-137A	1	3	381mm/50 三連装砲改		Littorio
+137A	2	3	381mm/50 三連装砲改		Littorio
 137A	7	3	381mm/50 三連装砲改		Littorio
 137A	3	3	381mm/50 三連装砲改		Roma
 137A	4	3	381mm/50 三連装砲改		Roma
