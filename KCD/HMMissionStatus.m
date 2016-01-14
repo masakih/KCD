@@ -23,10 +23,7 @@ enum {
 
 @property (strong, readwrite) NSString *name;
 @property (strong, readwrite) NSNumber *time;
-@property (readwrite) BOOL isTasking;
 @property (readwrite) BOOL didNotify;
-
-@property BOOL prevStatusFinish;
 
 @end
 
@@ -51,9 +48,9 @@ enum {
 		[self.controller fetch:nil];
 		
 		[self.controller addObserver:self
-						 forKeyPath:@"selection.mission_0"
-							options:0
-							context:NULL];
+						  forKeyPath:@"selection.mission_1"
+							 options:0
+							 context:NULL];
 	}
 	
 	return self;
@@ -61,7 +58,7 @@ enum {
 
 - (void)update
 {
-	if(!self.isTasking) {
+	if(!self.name) {
 		if(self.time) self.time = nil;
 		return;
 	}
@@ -102,34 +99,8 @@ enum {
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-	if([keyPath isEqualToString:@"selection.mission_0"]) {
-		NSInteger status = [[self.controller valueForKeyPath:@"selection.mission_0"] integerValue];
-		switch(status) {
-			case kNoMission:
-				self.name = nil;
-				self.prevStatusFinish = NO;
-				if(self.isTasking) self.isTasking = NO;
-				if(self.didNotify) self.didNotify = NO;
-				break;
-			case kHasMission:
-				[self updateName:nil];
-				if(!self.prevStatusFinish) {
-					if(!self.isTasking) self.isTasking = YES;
-				}
-				self.prevStatusFinish = NO;
-				break;
-			case kFinishMission:
-				self.name = nil;
-				self.prevStatusFinish = YES;
-				if(self.isTasking) self.isTasking = NO;
-				break;
-			case kEarlyReturnMission:
-				// do nothing
-				break;
-			default:
-				NSLog(@"Mission status is %ld", status);
-				break;
-		}
+	if([keyPath isEqualToString:@"selection.mission_1"]) {
+		[self updateName:nil];
 		return;
 	}
 	
@@ -138,7 +109,11 @@ enum {
 
 - (void)updateName:(id)dummy
 {
-	if(self.prevStatusFinish) {
+	NSInteger status = [[self.controller valueForKeyPath:@"selection.mission_0"] integerValue];
+	if(status == kNoMission) {
+		self.didNotify = NO;
+	}
+	if(status == kNoMission || status == kFinishMission) {
 		self.name = nil;
 		self.time = nil;
 		return;
