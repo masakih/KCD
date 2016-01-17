@@ -100,14 +100,14 @@ enum {
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
 	if([keyPath isEqualToString:@"selection.mission_1"]) {
-		[self updateName:nil];
+		[self updataStatus];
 		return;
 	}
 	
 	[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }
 
-- (void)updateName:(id)dummy
+- (void)updataStatus
 {
 	NSInteger status = [[self.controller valueForKeyPath:@"selection.mission_0"] integerValue];
 	if(status == kNoMission) {
