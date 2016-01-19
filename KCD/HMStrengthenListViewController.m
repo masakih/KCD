@@ -142,10 +142,12 @@ static NSString *groupNameKey = @"group";
 	NSCalendarUnit unit = NSCalendarUnitWeekday;
 	NSDateComponents *currentDay = [[NSCalendar currentCalendar] components:unit fromDate:now];
 	
-	NSInteger targetWeekday = currentDay.weekday + self.offsetDay;
-	if(targetWeekday > 7) targetWeekday = 1;
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"weekday = %ld", targetWeekday];
-	
+	NSPredicate *predicate = nil;
+	if(self.offsetDay != -1) {
+		NSInteger targetWeekday = currentDay.weekday + self.offsetDay;
+		if(targetWeekday > 7) targetWeekday = 1;
+		predicate = [NSPredicate predicateWithFormat:@"weekday = %ld", targetWeekday];
+	}
 	self.itemList = [self.equipmentStrengthenList filteredArrayUsingPredicate:predicate];
 	
 	[_tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];

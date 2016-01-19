@@ -19,11 +19,11 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <matrix verticalHuggingPriority="750" allowsEmptySelection="NO" autorecalculatesCellSize="YES" id="yJV-Se-HVC">
-                    <rect key="frame" x="6" y="367" width="120" height="18"/>
+                    <rect key="frame" x="6" y="367" width="148" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     <size key="cellSize" width="48" height="18"/>
-                    <size key="intercellSpacing" width="4" height="2"/>
+                    <size key="intercellSpacing" width="2" height="2"/>
                     <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" inset="2" id="9su-cb-kXx">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -37,6 +37,12 @@
                         </column>
                         <column>
                             <buttonCell type="radio" title="明日" imagePosition="left" alignment="left" tag="1" inset="2" id="4ig-3d-Zd6">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </column>
+                        <column>
+                            <buttonCell type="radio" title="全て" imagePosition="left" alignment="left" tag="-1" inset="2" id="2gA-iz-YbS">
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
