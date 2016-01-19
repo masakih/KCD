@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 Hori,Masaki. All rights reserved.
 //
 
-#import "HMCompositMapCommand.h"
+#import "HMStart2Command.h"
 
 #import "HMMasterMapAreaCommand.h"
 #import "HMMasterMapInfoCommand.h"
@@ -20,7 +20,7 @@
 #import "HMMasterSlotItemEquipTypeCommand.h"
 
 
-@implementation HMCompositMapCommand
+@implementation HMStart2Command
 + (void)load
 {
 	static dispatch_once_t onceToken;

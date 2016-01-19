@@ -8,6 +8,6 @@
 
 #import "HMCompositCommand.h"
 
-@interface HMCompositMapCommand : HMCompositCommand
+@interface HMStart2Command : HMCompositCommand
 
 @end
