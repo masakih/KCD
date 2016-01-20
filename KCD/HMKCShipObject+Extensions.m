@@ -376,31 +376,42 @@ static NSArray *levelUpExps = nil;
 	NSArray *bomberTypes = @[@7];
 	NSArray *attackerTypes = @[@8];
 	NSArray *floatplaneBomberTypes = @[@11];
+	
+	NSInteger fighterBonus[] = {0, 0, 2, 5, 9, 14, 14, 22};
+	NSInteger bomberBonus[] = {0, 0, 0, 0, 0, 0, 0, 0};
+	NSInteger attackerBonus[] = {0, 0, 0, 0, 0, 0, 0, 0};
+	NSInteger floatplaneBomberBonus[] = {0, 0, 1, 1, 1, 3, 3, 6};
+	NSInteger bonus[] = {0, 1, 1, 2, 2, 2, 2, 3};
+	
 	NSInteger extraSeiku = 0;
 	for(NSInteger i = 0; i < 5; i++) {
-		HMKCSlotItemObject *slotItem = [self slotItemAtIndex:i];
-		NSNumber *airLevel = slotItem.alv;
-		if(![airLevel isEqualToNumber:@(7)]) continue;
-		
 		NSString *key = [NSString stringWithFormat:@"onslot_%ld", i];
 		NSNumber *itemCountValue = [self valueForKey:key];
 		NSInteger itemCount = [itemCountValue integerValue];
 		if(itemCount == 0) continue;
 		
+		HMKCSlotItemObject *slotItem = [self slotItemAtIndex:i];
+		NSInteger airLevel = slotItem.alv.integerValue;
+		
+		NSInteger *typeBonus = NULL;
+		
 		HMKCMasterSlotItemObject *master = slotItem.master_slotItem;
 		NSNumber *type2 = master.type_2;
 		if([fighterTypes containsObject:type2]) {
-			extraSeiku += 25;
+			typeBonus = fighterBonus;
 		}
 		if([bomberTypes containsObject:type2]) {
-			extraSeiku += 3;
+			typeBonus = bomberBonus;
 		}
 		if([attackerTypes containsObject:type2]) {
-			extraSeiku += 3;
+			typeBonus = attackerBonus;
 		}
 		if([floatplaneBomberTypes containsObject:type2]) {
-			extraSeiku += 9;
+			typeBonus = floatplaneBomberBonus;
 		}
+		if(!typeBonus) continue;
+		
+		extraSeiku += typeBonus[airLevel] + bonus[airLevel];
 	}
 	
 	return @(extraSeiku);
