@@ -15,6 +15,10 @@
 
 
 @implementation HMKCSlotItemObject (Extensions)
++ (NSSet *)keyPathsForValuesAffectingName
+{
+	return [NSSet setWithObjects:@"master_slotItem", nil];
+}
 - (NSString *)name
 {
 	[self willAccessValueForKey:@"master_slotItem"];
@@ -23,12 +27,20 @@
 	return name;
 }
 
++ (NSSet *)keyPathsForValuesAffectingEquippedShipName
+{
+	return [NSSet setWithObjects:@"equippedShip", @"equippedShip.name", nil];
+}
 - (NSString *)equippedShipName
 {
 	[self willAccessValueForKey:@"equippedShip"];
 	NSString *equippedShipName = self.equippedShip.name;
 	[self didAccessValueForKey:@"equippedShip"];
 	return equippedShipName;
+}
++ (NSSet *)keyPathsForValuesAffectingEquippedShipLv
+{
+	return [NSSet setWithObjects:@"equippedShip", @"equippedShip.lv", nil];
 }
 - (NSNumber *)equippedShipLv
 {
@@ -37,6 +49,10 @@
 	[self didAccessValueForKey:@"equippedShip"];
 	return equippedShipLv;
 }
++ (NSSet *)keyPathsForValuesAffectingMasterSlotItemRare
+{
+	return [NSSet setWithObjects:@"master_slotItem", @"master_slotItem.rare", nil];
+}
 - (NSNumber *)masterSlotItemRare
 {
 	[self willAccessValueForKey:@"master_slotItem"];
@@ -44,12 +60,20 @@
 	[self didAccessValueForKey:@"master_slotItem"];
 	return masterSlotItemRare;
 }
++ (NSSet *)keyPathsForValuesAffectingTypeName
+{
+	return [NSSet setWithObjects:@"master_slotItem", @"master_slotItem.type_2", nil];
+}
 - (NSString *)typeName
 {
 	[self willAccessValueForKey:@"master_slotItem"];
 	NSString *typeName = [self.master_slotItem valueForKey:@"type_2"];
 	[self didAccessValueForKey:@"master_slotItem"];
 	return typeName;
+}
++ (NSSet *)keyPathsForValuesAffectingIsLocked
+{
+	return [NSSet setWithObjects:@"locked", nil];
 }
 - (NSNumber *)isLocked
 {
