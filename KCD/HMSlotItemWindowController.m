@@ -25,24 +25,8 @@
 
 - (void)awakeFromNib
 {
-	[self.slotItemController fetchWithRequest:nil merge:YES error:NULL];
-	[self.slotItemController setSortDescriptors:HMStandardDefaults.slotItemSortDescriptors];
-	[self.slotItemController addObserver:self
-						  forKeyPath:NSSortDescriptorsBinding
-							 options:0
-							 context:NULL];
-	
 	// refresh filter
 	self.showEquipmentType = self.showEquipmentType;
-}
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-	if([keyPath isEqualToString:NSSortDescriptorsBinding]) {
-		HMStandardDefaults.slotItemSortDescriptors = [self.slotItemController sortDescriptors];
-		return;
-	}
-	
-	[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }
 
 - (NSManagedObjectContext *)managedObjectContext
