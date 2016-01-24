@@ -8,6 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
+#ifdef DEBUG
+
 @interface HMShipWindowController : NSWindowController
 
 @property (readonly) NSManagedObjectContext *managedObjectContext;
@@ -17,3 +19,5 @@
 @property (nonatomic, strong) NSNumber *missionTime;
 - (IBAction)changeMissionTime:(id)sender;
 @end
+
+#endif

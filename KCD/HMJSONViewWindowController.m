@@ -6,6 +6,8 @@
 //  Copyright (c) 2014年 Hori,Masaki. All rights reserved.
 //
 
+#ifdef DEBUG
+
 #import "HMJSONViewWindowController.h"
 
 @interface HMJSONViewWindowController ()
@@ -71,3 +73,5 @@
 }
 
 @end
+
+#endif

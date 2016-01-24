@@ -8,6 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
+#ifdef DEBUG
+
 @interface HMJSONViewWindowController : NSWindowController
 @property (nonatomic, weak) IBOutlet NSTableView *argumentsView;
 @property (nonatomic, weak) IBOutlet NSOutlineView *jsonView;
@@ -28,3 +30,5 @@
 
 
 @end
+
+#endif

@@ -27,6 +27,9 @@
 
 #ifdef DEBUG
 #import "HMShipWindowController.h"
+#import "HMEquipmentWindowController.h"
+#import "HMMapWindowController.h"
+
 #import "HMFleetInformation.h"
 
 #import "HMUITestWindowController.h"
@@ -58,6 +61,8 @@
 #ifdef DEBUG
 @property (strong) HMShipWindowController *shipWindowController;
 @property (strong) HMShipMasterDetailWindowController *shipMDWindowController;
+@property (strong) HMEquipmentWindowController *equipmentWindowController;
+@property (strong) HMMapWindowController *mapWindowController;
 #endif
 
 #if UI_TEST
@@ -127,13 +132,7 @@
 	self.jsonViewWindowController = [HMJSONViewWindowController new];
 	[self.jsonViewWindowController showWindow:nil];
 #endif
-#ifdef DEBUG
-	self.shipWindowController = [HMShipWindowController new];
-	[self.shipWindowController showWindow:nil];
-	
-	self.shipMDWindowController = [HMShipMasterDetailWindowController new];
-	[self.shipMDWindowController showWindow:nil];
-#endif
+
 #if UI_TEST
 	self.uiTestWindowController = [HMUITestWindowController new];
 	[self.uiTestWindowController showWindow:nil];
@@ -314,6 +313,12 @@
 		return YES;
 	}
 #endif
+#ifdef DEBUG
+	else if(action == @selector(showShipWindow:) || action == @selector(showEquipmentWindow:)
+			|| action == @selector(showMapWindow:) || action == @selector(showOwnershipShipWindow:) ) {
+		return YES;
+	}
+#endif
 	return NO;
 }
 
@@ -437,6 +442,38 @@
 	task.arguments = @[appleScriptPath];
 	[task launch];
 }
+
+#ifdef DEBUG
+
+- (IBAction)showShipWindow:(id)sender
+{
+	if(!_shipWindowController) {
+		self.shipWindowController = [HMShipWindowController new];
+	}
+	[self.shipWindowController showWindow:nil];
+}
+- (IBAction)showEquipmentWindow:(id)sender
+{
+	if(!_equipmentWindowController) {
+		self.equipmentWindowController = [HMEquipmentWindowController new];
+	}
+	[self.equipmentWindowController showWindow:nil];
+}
+- (IBAction)showMapWindow:(id)sender
+{
+	if(!_mapWindowController) {
+		self.mapWindowController = [HMMapWindowController new];
+	}
+	[self.mapWindowController showWindow:nil];
+}
+- (IBAction)showOwnershipShipWindow:(id)sender
+{
+	if(!_shipMDWindowController) {
+		self.shipMDWindowController = [HMShipMasterDetailWindowController new];
+	}
+	[self.shipMDWindowController showWindow:nil];
+}
+#endif
 
 #pragma mark - NSApplicationDelegate
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender

@@ -6,6 +6,9 @@
 //  Copyright (c) 2014年 Hori,Masaki. All rights reserved.
 //
 
+#ifdef DEBUG
+
+
 #import "HMShipWindowController.h"
 
 #import "HMAppDelegate.h"
@@ -48,3 +51,5 @@
 }
 
 @end
+
+#endif

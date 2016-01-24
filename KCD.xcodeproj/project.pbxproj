@@ -198,6 +198,10 @@
 		F4C6686C1C5451ED00601AFB /* HMStrengthenListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C6686E1C5451ED00601AFB /* HMStrengthenListViewController.xib */; };
 		F4C6686F1C54524900601AFB /* HMVerticalFleetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C668711C54524900601AFB /* HMVerticalFleetViewController.xib */; };
 		F4C668721C54525300601AFB /* HMCombileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C668741C54525300601AFB /* HMCombileViewController.xib */; };
+		F4C668781C54592300601AFB /* HMEquipmentWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C668761C54592300601AFB /* HMEquipmentWindowController.m */; };
+		F4C668791C54592300601AFB /* HMEquipmentWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C668771C54592300601AFB /* HMEquipmentWindowController.xib */; };
+		F4C6687D1C545E3800601AFB /* HMMapWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C6687B1C545E3800601AFB /* HMMapWindowController.m */; };
+		F4C6687E1C545E3800601AFB /* HMMapWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C6687C1C545E3800601AFB /* HMMapWindowController.xib */; };
 		F4C86B921C1C445D00F260FE /* HMUpgradeShipExcludeColorTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C86B911C1C445D00F260FE /* HMUpgradeShipExcludeColorTransformer.m */; };
 		F4D2CBC218AD0E1A000EBC59 /* HMMasterSTypeCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D2CBC118AD0E1A000EBC59 /* HMMasterSTypeCommand.m */; };
 		F4D2CBC518AE2AE2000EBC59 /* HMCompositCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D2CBC418AE2AE2000EBC59 /* HMCompositCommand.m */; };
@@ -589,6 +593,12 @@
 		F4C6686D1C5451ED00601AFB /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMStrengthenListViewController.xib; sourceTree = "<group>"; };
 		F4C668701C54524900601AFB /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMVerticalFleetViewController.xib; sourceTree = "<group>"; };
 		F4C668731C54525300601AFB /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMCombileViewController.xib; sourceTree = "<group>"; };
+		F4C668751C54592300601AFB /* HMEquipmentWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMEquipmentWindowController.h; sourceTree = "<group>"; };
+		F4C668761C54592300601AFB /* HMEquipmentWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMEquipmentWindowController.m; sourceTree = "<group>"; };
+		F4C668771C54592300601AFB /* HMEquipmentWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMEquipmentWindowController.xib; sourceTree = "<group>"; };
+		F4C6687A1C545E3700601AFB /* HMMapWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMapWindowController.h; sourceTree = "<group>"; };
+		F4C6687B1C545E3800601AFB /* HMMapWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMapWindowController.m; sourceTree = "<group>"; };
+		F4C6687C1C545E3800601AFB /* HMMapWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMMapWindowController.xib; sourceTree = "<group>"; };
 		F4C86B901C1C445C00F260FE /* HMUpgradeShipExcludeColorTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMUpgradeShipExcludeColorTransformer.h; sourceTree = "<group>"; };
 		F4C86B911C1C445D00F260FE /* HMUpgradeShipExcludeColorTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMUpgradeShipExcludeColorTransformer.m; sourceTree = "<group>"; };
 		F4D2CBC018AD0E1A000EBC59 /* HMMasterSTypeCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMasterSTypeCommand.h; sourceTree = "<group>"; };
@@ -1213,6 +1223,12 @@
 				F4513EF718BB699700073552 /* HMShipWindowController.h */,
 				F4513EF818BB699700073552 /* HMShipWindowController.m */,
 				F4B3DC3818E5C8650011B4FC /* HMShipWindowController.xib */,
+				F4C668751C54592300601AFB /* HMEquipmentWindowController.h */,
+				F4C668761C54592300601AFB /* HMEquipmentWindowController.m */,
+				F4C668771C54592300601AFB /* HMEquipmentWindowController.xib */,
+				F4C6687A1C545E3700601AFB /* HMMapWindowController.h */,
+				F4C6687B1C545E3800601AFB /* HMMapWindowController.m */,
+				F4C6687C1C545E3800601AFB /* HMMapWindowController.xib */,
 				F4D6BC991AA1FAC600742FEB /* HMUITestWindowController.h */,
 				F4D6BC9A1AA1FAC600742FEB /* HMUITestWindowController.m */,
 				F4BEF0101B11A645004702B8 /* HMUITestWindowController.xib */,
@@ -1322,6 +1338,7 @@
 			files = (
 				F4B37EFF19FC8DCC002F371A /* HMUpgradableShipsWindowController.xib in Resources */,
 				F4C668571C5450EB00601AFB /* HMBookmarkListViewController.xib in Resources */,
+				F4C668791C54592300601AFB /* HMEquipmentWindowController.xib in Resources */,
 				F4C5A22C1C37B8DB00533FB6 /* HMRequiredEquipmentSet.txt in Resources */,
 				F49688671B3EA16800D3CEDE /* RemoveDatabaseFileAndRestart.app in Resources */,
 				F494DC6A18C8BAB900AE97E4 /* HMPowerUpSupportViewController.xib in Resources */,
@@ -1344,6 +1361,7 @@
 				F4C668691C5451C800601AFB /* HMResourceViewController.xib in Resources */,
 				F4BEEFFF1B11A5C2004702B8 /* HMMediumShipViewController.xib in Resources */,
 				F4BEF00E1B11A645004702B8 /* HMUITestWindowController.xib in Resources */,
+				F4C6687E1C545E3800601AFB /* HMMapWindowController.xib in Resources */,
 				F4BEF0021B11A5CC004702B8 /* HMFleetMinimumViewController.xib in Resources */,
 				F43E67B718BE02A10087E5B6 /* STypeShortName.plist in Resources */,
 				F4A9B8D41B975029005786C2 /* SlotItemShortName.plist in Resources */,
@@ -1430,6 +1448,7 @@
 				F448F9981B75A128004901AD /* HMKCBasic.m in Sources */,
 				F43769E11AE7CFF800DE6204 /* HMClearItemGetComand.m in Sources */,
 				F4131ED5190F63D8004F7F9A /* HMUpdateSlotItemCommand.m in Sources */,
+				F4C668781C54592300601AFB /* HMEquipmentWindowController.m in Sources */,
 				F4C1190518A71AEA005D5B25 /* HMJSONReciever.m in Sources */,
 				F44AB24119E8252600F217AF /* HMKCSlotItemObject+Extensions.m in Sources */,
 				F4C5A2261C36C68C00533FB6 /* HMStrengthenListItemView.m in Sources */,
@@ -1510,6 +1529,7 @@
 				F424A6FA1BC801DE0096C431 /* HMUnknownComand.m in Sources */,
 				F4C3957418CDDFE500A1E918 /* HMKenzoDockStatus.m in Sources */,
 				F471784D1B6FA18800F5E59D /* HMKCResource.m in Sources */,
+				F4C6687D1C545E3800601AFB /* HMMapWindowController.m in Sources */,
 				F4AA060D1930E69200844688 /* HMMidnightBattleCommand.m in Sources */,
 				F4D6BC551A93903E00742FEB /* HMDropShipHistory.m in Sources */,
 				F4131EE91911445F004F7F9A /* HMSlotItemEquipTypeTransformer.m in Sources */,

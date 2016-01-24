@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14F1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1605" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -339,6 +339,31 @@ CA
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="removeDatabaseFile:" target="-1" id="JVZ-98-ZZc"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="d2R-CJ-DqY"/>
+                            <menuItem title="Show Ownership Ship Window" id="b7n-c5-oSe">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="showOwnershipShipWindow:" target="494" id="VxB-mH-VrC"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Show Ship Window" id="rWo-Pp-hLc">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="showShipWindow:" target="494" id="Esn-nC-nz7"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Show Equipment Window" id="GcF-z8-Ddi">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="showEquipmentWindow:" target="494" id="2Ae-6k-YpZ"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Show Map Window" id="bQ2-OZ-YH9">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="showMapWindow:" target="494" id="OV7-gv-unh"/>
                                 </connections>
                             </menuItem>
                         </items>
