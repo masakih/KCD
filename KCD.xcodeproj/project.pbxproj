@@ -1019,6 +1019,10 @@
 				F4D6BCB81AA32BEA00742FEB /* HMFleetViewController.m */,
 				F4BEF0071B11A5D3004702B8 /* HMFleetViewController.xib */,
 				F4BEF0041B11A5CC004702B8 /* HMFleetMinimumViewController.xib */,
+				F4C668711C54524900601AFB /* HMVerticalFleetViewController.xib */,
+				F4F479171BFE223600D0BF69 /* HMCombileViewController.h */,
+				F4F479181BFE223600D0BF69 /* HMCombileViewController.m */,
+				F4C668741C54525300601AFB /* HMCombileViewController.xib */,
 				F4BEE4711AA5E34600979752 /* HMSlotItemFrameView.h */,
 				F4BEE4721AA5E34600979752 /* HMSlotItemFrameView.m */,
 				F4B1E30319C73B6A00805879 /* HMSuppliesCell.h */,
@@ -1212,10 +1216,6 @@
 				F4D6BC991AA1FAC600742FEB /* HMUITestWindowController.h */,
 				F4D6BC9A1AA1FAC600742FEB /* HMUITestWindowController.m */,
 				F4BEF0101B11A645004702B8 /* HMUITestWindowController.xib */,
-				F4C668711C54524900601AFB /* HMVerticalFleetViewController.xib */,
-				F4F479171BFE223600D0BF69 /* HMCombileViewController.h */,
-				F4F479181BFE223600D0BF69 /* HMCombileViewController.m */,
-				F4C668741C54525300601AFB /* HMCombileViewController.xib */,
 			);
 			name = TestAndDebug;
 			path = KCD;
