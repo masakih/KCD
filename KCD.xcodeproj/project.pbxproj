@@ -27,7 +27,6 @@
 		F42680371957000200B2C27F /* HMTimerCountFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F42680361957000200B2C27F /* HMTimerCountFormatter.m */; };
 		F43769D61ADE86B200DE6204 /* HMQuestListCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F43769D51ADE86B200DE6204 /* HMQuestListCommand.m */; };
 		F43769DA1ADE890800DE6204 /* HMQuestListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43769D81ADE890800DE6204 /* HMQuestListViewController.m */; };
-		F43769DB1ADE890800DE6204 /* HMQuestListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F43769D91ADE890800DE6204 /* HMQuestListViewController.xib */; };
 		F43769DE1AE1248800DE6204 /* HMAirBattleCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F43769DD1AE1248800DE6204 /* HMAirBattleCommand.m */; };
 		F43769E11AE7CFF800DE6204 /* HMClearItemGetComand.m in Sources */ = {isa = PBXBuildFile; fileRef = F43769E01AE7CFF800DE6204 /* HMClearItemGetComand.m */; };
 		F43769E41AE7D01D00DE6204 /* HMUpdateQuestListCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F43769E31AE7D01D00DE6204 /* HMUpdateQuestListCommand.m */; };
@@ -61,9 +60,7 @@
 		F454F7831A261844003042DD /* HMFleetInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = F454F7821A261844003042DD /* HMFleetInformation.m */; };
 		F4666C4D1B1B3113001840DB /* HMBookmarkListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4666C4C1B1B3113001840DB /* HMBookmarkListTableView.m */; };
 		F4666C511B1CB2CE001840DB /* HMBrowserContentAdjuster.m in Sources */ = {isa = PBXBuildFile; fileRef = F4666C4F1B1CB2CE001840DB /* HMBrowserContentAdjuster.m */; };
-		F4666C521B1CB2CE001840DB /* HMBrowserContentAdjuster.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4666C501B1CB2CE001840DB /* HMBrowserContentAdjuster.xib */; };
 		F4666C561B1E0262001840DB /* HMBookmarkEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4666C541B1E0262001840DB /* HMBookmarkEditorViewController.m */; };
-		F4666C571B1E0262001840DB /* HMBookmarkEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4666C551B1E0262001840DB /* HMBookmarkEditorViewController.xib */; };
 		F4666C5A1B2067CF001840DB /* HMSourceListColoredView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4666C591B2067CF001840DB /* HMSourceListColoredView.m */; };
 		F4666C5E1B242124001840DB /* HMQuestProgressTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4666C5D1B242124001840DB /* HMQuestProgressTransformer.m */; };
 		F4666C641B25CA3E001840DB /* HMKCQuest+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F4666C631B25CA3E001840DB /* HMKCQuest+Extensions.m */; };
@@ -91,9 +88,7 @@
 		F495462E1B1894DD00E0D8D0 /* Bookmark.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F495462C1B1894DD00E0D8D0 /* Bookmark.xcdatamodeld */; };
 		F49546311B18991300E0D8D0 /* HMBookmarkDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F49546301B18991300E0D8D0 /* HMBookmarkDataStore.m */; };
 		F49546351B19924D00E0D8D0 /* HMBookmarkListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F49546331B19924D00E0D8D0 /* HMBookmarkListViewController.m */; };
-		F49546361B19924D00E0D8D0 /* HMBookmarkListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F49546341B19924D00E0D8D0 /* HMBookmarkListViewController.xib */; };
 		F49688641B3AFE4900D3CEDE /* HMProgressPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = F49688621B3AFE4900D3CEDE /* HMProgressPanel.m */; };
-		F49688651B3AFE4900D3CEDE /* HMProgressPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = F49688631B3AFE4900D3CEDE /* HMProgressPanel.xib */; };
 		F49688671B3EA16800D3CEDE /* RemoveDatabaseFileAndRestart.app in Resources */ = {isa = PBXBuildFile; fileRef = F49688661B3EA16800D3CEDE /* RemoveDatabaseFileAndRestart.app */; };
 		F49828FC1902A226000D6BBE /* HMStrokeTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F49828FB1902A226000D6BBE /* HMStrokeTextFieldCell.m */; };
 		F499E88D1B5BCA7300189029 /* HMAnchorageRepairManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F499E88C1B5BCA7300189029 /* HMAnchorageRepairManager.m */; };
@@ -193,6 +188,16 @@
 		F4C5A2361C37F87600533FB6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C5A2351C37F87600533FB6 /* main.m */; };
 		F4C5A23A1C37F8AC00533FB6 /* HMEnhancementListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C5A2221C3533E800533FB6 /* HMEnhancementListItem.m */; };
 		F4C5A23E1C380E0400533FB6 /* HMEnhancementListItem.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4C5A23D1C380E0400533FB6 /* HMEnhancementListItem.plist */; };
+		F4C668571C5450EB00601AFB /* HMBookmarkListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C668591C5450EB00601AFB /* HMBookmarkListViewController.xib */; };
+		F4C6685A1C54510E00601AFB /* HMBookmarkEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C6685C1C54510E00601AFB /* HMBookmarkEditorViewController.xib */; };
+		F4C6685D1C54515C00601AFB /* HMBrowserContentAdjuster.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C6685F1C54515C00601AFB /* HMBrowserContentAdjuster.xib */; };
+		F4C668601C54517500601AFB /* HMGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C668621C54517500601AFB /* HMGameViewController.xib */; };
+		F4C668631C54518F00601AFB /* HMProgressPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C668651C54518F00601AFB /* HMProgressPanel.xib */; };
+		F4C668661C5451AB00601AFB /* HMQuestListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C668681C5451AB00601AFB /* HMQuestListViewController.xib */; };
+		F4C668691C5451C800601AFB /* HMResourceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C6686B1C5451C800601AFB /* HMResourceViewController.xib */; };
+		F4C6686C1C5451ED00601AFB /* HMStrengthenListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C6686E1C5451ED00601AFB /* HMStrengthenListViewController.xib */; };
+		F4C6686F1C54524900601AFB /* HMVerticalFleetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C668711C54524900601AFB /* HMVerticalFleetViewController.xib */; };
+		F4C668721C54525300601AFB /* HMCombileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C668741C54525300601AFB /* HMCombileViewController.xib */; };
 		F4C86B921C1C445D00F260FE /* HMUpgradeShipExcludeColorTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C86B911C1C445D00F260FE /* HMUpgradeShipExcludeColorTransformer.m */; };
 		F4D2CBC218AD0E1A000EBC59 /* HMMasterSTypeCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D2CBC118AD0E1A000EBC59 /* HMMasterSTypeCommand.m */; };
 		F4D2CBC518AE2AE2000EBC59 /* HMCompositCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D2CBC418AE2AE2000EBC59 /* HMCompositCommand.m */; };
@@ -214,15 +219,10 @@
 		F4ED5D2A1B78D0CA00D1BDEF /* HMGuardEscapedView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4ED5D291B78D0CA00D1BDEF /* HMGuardEscapedView.m */; };
 		F4ED5D2D1B7C677E00D1BDEF /* HMGuardShelterCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4ED5D2C1B7C677E00D1BDEF /* HMGuardShelterCommand.m */; };
 		F4F388BD1C13D63B00508549 /* HMGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F388BB1C13D63B00508549 /* HMGameViewController.m */; };
-		F4F388BE1C13D63B00508549 /* HMGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4F388BC1C13D63B00508549 /* HMGameViewController.xib */; };
 		F4F388C21C140AFB00508549 /* HMResourceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F388C01C140AFB00508549 /* HMResourceViewController.m */; };
-		F4F388C31C140AFB00508549 /* HMResourceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4F388C11C140AFB00508549 /* HMResourceViewController.xib */; };
 		F4F4791A1BFE223600D0BF69 /* HMCombileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F479181BFE223600D0BF69 /* HMCombileViewController.m */; };
-		F4F4791B1BFE223600D0BF69 /* HMCombileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4F479191BFE223600D0BF69 /* HMCombileViewController.xib */; };
-		F4F479201C01424200D0BF69 /* HMVerticalFleetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4F4791E1C01424200D0BF69 /* HMVerticalFleetViewController.xib */; };
 		F4F479261C074E9900D0BF69 /* HMCombinedCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F479251C074E9900D0BF69 /* HMCombinedCommand.m */; };
 		F4F6E8081B2B17E50008B66E /* HMStrengthenListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F6E8061B2B17E50008B66E /* HMStrengthenListViewController.m */; };
-		F4F6E8091B2B17E50008B66E /* HMStrengthenListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4F6E8071B2B17E50008B66E /* HMStrengthenListViewController.xib */; };
 		F4F6E80C1B2BC81C0008B66E /* HMPeriodicNotifier.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F6E80B1B2BC81C0008B66E /* HMPeriodicNotifier.m */; };
 		F4F6E80F1B2C25D20008B66E /* HMStrengthenListItemCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F6E80E1B2C25D20008B66E /* HMStrengthenListItemCellView.m */; };
 		F4F6E8291B3045970008B66E /* CacheStoragePolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F6E8221B3045970008B66E /* CacheStoragePolicy.m */; };
@@ -296,7 +296,6 @@
 		F43769D51ADE86B200DE6204 /* HMQuestListCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMQuestListCommand.m; sourceTree = "<group>"; };
 		F43769D71ADE890800DE6204 /* HMQuestListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMQuestListViewController.h; sourceTree = "<group>"; };
 		F43769D81ADE890800DE6204 /* HMQuestListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMQuestListViewController.m; sourceTree = "<group>"; };
-		F43769D91ADE890800DE6204 /* HMQuestListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMQuestListViewController.xib; sourceTree = "<group>"; };
 		F43769DC1AE1248800DE6204 /* HMAirBattleCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMAirBattleCommand.h; sourceTree = "<group>"; };
 		F43769DD1AE1248800DE6204 /* HMAirBattleCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMAirBattleCommand.m; sourceTree = "<group>"; };
 		F43769DF1AE7CFF800DE6204 /* HMClearItemGetComand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMClearItemGetComand.h; sourceTree = "<group>"; };
@@ -360,10 +359,8 @@
 		F4666C4C1B1B3113001840DB /* HMBookmarkListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMBookmarkListTableView.m; sourceTree = "<group>"; };
 		F4666C4E1B1CB2CE001840DB /* HMBrowserContentAdjuster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMBrowserContentAdjuster.h; sourceTree = "<group>"; };
 		F4666C4F1B1CB2CE001840DB /* HMBrowserContentAdjuster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMBrowserContentAdjuster.m; sourceTree = "<group>"; };
-		F4666C501B1CB2CE001840DB /* HMBrowserContentAdjuster.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMBrowserContentAdjuster.xib; sourceTree = "<group>"; };
 		F4666C531B1E0262001840DB /* HMBookmarkEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMBookmarkEditorViewController.h; sourceTree = "<group>"; };
 		F4666C541B1E0262001840DB /* HMBookmarkEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMBookmarkEditorViewController.m; sourceTree = "<group>"; };
-		F4666C551B1E0262001840DB /* HMBookmarkEditorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMBookmarkEditorViewController.xib; sourceTree = "<group>"; };
 		F4666C581B2067CF001840DB /* HMSourceListColoredView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSourceListColoredView.h; sourceTree = "<group>"; };
 		F4666C591B2067CF001840DB /* HMSourceListColoredView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSourceListColoredView.m; sourceTree = "<group>"; };
 		F4666C5C1B242124001840DB /* HMQuestProgressTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMQuestProgressTransformer.h; sourceTree = "<group>"; };
@@ -416,10 +413,8 @@
 		F49546301B18991300E0D8D0 /* HMBookmarkDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMBookmarkDataStore.m; sourceTree = "<group>"; };
 		F49546321B19924D00E0D8D0 /* HMBookmarkListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMBookmarkListViewController.h; sourceTree = "<group>"; };
 		F49546331B19924D00E0D8D0 /* HMBookmarkListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMBookmarkListViewController.m; sourceTree = "<group>"; };
-		F49546341B19924D00E0D8D0 /* HMBookmarkListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMBookmarkListViewController.xib; sourceTree = "<group>"; };
 		F49688611B3AFE4900D3CEDE /* HMProgressPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMProgressPanel.h; sourceTree = "<group>"; };
 		F49688621B3AFE4900D3CEDE /* HMProgressPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMProgressPanel.m; sourceTree = "<group>"; };
-		F49688631B3AFE4900D3CEDE /* HMProgressPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMProgressPanel.xib; sourceTree = "<group>"; };
 		F49688661B3EA16800D3CEDE /* RemoveDatabaseFileAndRestart.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = RemoveDatabaseFileAndRestart.app; sourceTree = "<group>"; };
 		F49828FA1902A226000D6BBE /* HMStrokeTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMStrokeTextFieldCell.h; sourceTree = "<group>"; };
 		F49828FB1902A226000D6BBE /* HMStrokeTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMStrokeTextFieldCell.m; sourceTree = "<group>"; };
@@ -584,6 +579,16 @@
 		F4C5A2331C37F87500533FB6 /* EquipmentEnhancementListBuilder */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = EquipmentEnhancementListBuilder; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4C5A2351C37F87600533FB6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F4C5A23D1C380E0400533FB6 /* HMEnhancementListItem.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = HMEnhancementListItem.plist; sourceTree = "<group>"; };
+		F4C668581C5450EB00601AFB /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMBookmarkListViewController.xib; sourceTree = "<group>"; };
+		F4C6685B1C54510E00601AFB /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMBookmarkEditorViewController.xib; sourceTree = "<group>"; };
+		F4C6685E1C54515C00601AFB /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMBrowserContentAdjuster.xib; sourceTree = "<group>"; };
+		F4C668611C54517500601AFB /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMGameViewController.xib; sourceTree = "<group>"; };
+		F4C668641C54518F00601AFB /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMProgressPanel.xib; sourceTree = "<group>"; };
+		F4C668671C5451AB00601AFB /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMQuestListViewController.xib; sourceTree = "<group>"; };
+		F4C6686A1C5451C800601AFB /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMResourceViewController.xib; sourceTree = "<group>"; };
+		F4C6686D1C5451ED00601AFB /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMStrengthenListViewController.xib; sourceTree = "<group>"; };
+		F4C668701C54524900601AFB /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMVerticalFleetViewController.xib; sourceTree = "<group>"; };
+		F4C668731C54525300601AFB /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMCombileViewController.xib; sourceTree = "<group>"; };
 		F4C86B901C1C445C00F260FE /* HMUpgradeShipExcludeColorTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMUpgradeShipExcludeColorTransformer.h; sourceTree = "<group>"; };
 		F4C86B911C1C445D00F260FE /* HMUpgradeShipExcludeColorTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMUpgradeShipExcludeColorTransformer.m; sourceTree = "<group>"; };
 		F4D2CBC018AD0E1A000EBC59 /* HMMasterSTypeCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMasterSTypeCommand.h; sourceTree = "<group>"; };
@@ -626,19 +631,14 @@
 		F4ED5D2C1B7C677E00D1BDEF /* HMGuardShelterCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMGuardShelterCommand.m; sourceTree = "<group>"; };
 		F4F388BA1C13D63B00508549 /* HMGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGameViewController.h; sourceTree = "<group>"; };
 		F4F388BB1C13D63B00508549 /* HMGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMGameViewController.m; sourceTree = "<group>"; };
-		F4F388BC1C13D63B00508549 /* HMGameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMGameViewController.xib; sourceTree = "<group>"; };
 		F4F388BF1C140AFB00508549 /* HMResourceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMResourceViewController.h; sourceTree = "<group>"; };
 		F4F388C01C140AFB00508549 /* HMResourceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMResourceViewController.m; sourceTree = "<group>"; };
-		F4F388C11C140AFB00508549 /* HMResourceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMResourceViewController.xib; sourceTree = "<group>"; };
 		F4F479171BFE223600D0BF69 /* HMCombileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMCombileViewController.h; sourceTree = "<group>"; };
 		F4F479181BFE223600D0BF69 /* HMCombileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMCombileViewController.m; sourceTree = "<group>"; };
-		F4F479191BFE223600D0BF69 /* HMCombileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMCombileViewController.xib; sourceTree = "<group>"; };
-		F4F4791E1C01424200D0BF69 /* HMVerticalFleetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMVerticalFleetViewController.xib; sourceTree = "<group>"; };
 		F4F479241C074E9900D0BF69 /* HMCombinedCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMCombinedCommand.h; sourceTree = "<group>"; };
 		F4F479251C074E9900D0BF69 /* HMCombinedCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMCombinedCommand.m; sourceTree = "<group>"; };
 		F4F6E8051B2B17E50008B66E /* HMStrengthenListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMStrengthenListViewController.h; sourceTree = "<group>"; };
 		F4F6E8061B2B17E50008B66E /* HMStrengthenListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMStrengthenListViewController.m; sourceTree = "<group>"; };
-		F4F6E8071B2B17E50008B66E /* HMStrengthenListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMStrengthenListViewController.xib; sourceTree = "<group>"; };
 		F4F6E80A1B2BC81C0008B66E /* HMPeriodicNotifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPeriodicNotifier.h; sourceTree = "<group>"; };
 		F4F6E80B1B2BC81C0008B66E /* HMPeriodicNotifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMPeriodicNotifier.m; sourceTree = "<group>"; };
 		F4F6E80D1B2C25D20008B66E /* HMStrengthenListItemCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMStrengthenListItemCellView.h; sourceTree = "<group>"; };
@@ -695,17 +695,17 @@
 			children = (
 				F49546321B19924D00E0D8D0 /* HMBookmarkListViewController.h */,
 				F49546331B19924D00E0D8D0 /* HMBookmarkListViewController.m */,
-				F49546341B19924D00E0D8D0 /* HMBookmarkListViewController.xib */,
+				F4C668591C5450EB00601AFB /* HMBookmarkListViewController.xib */,
 				F4666C581B2067CF001840DB /* HMSourceListColoredView.h */,
 				F4666C591B2067CF001840DB /* HMSourceListColoredView.m */,
 				F4666C4B1B1B3113001840DB /* HMBookmarkListTableView.h */,
 				F4666C4C1B1B3113001840DB /* HMBookmarkListTableView.m */,
 				F4666C4E1B1CB2CE001840DB /* HMBrowserContentAdjuster.h */,
 				F4666C4F1B1CB2CE001840DB /* HMBrowserContentAdjuster.m */,
-				F4666C501B1CB2CE001840DB /* HMBrowserContentAdjuster.xib */,
+				F4C6685F1C54515C00601AFB /* HMBrowserContentAdjuster.xib */,
 				F4666C531B1E0262001840DB /* HMBookmarkEditorViewController.h */,
 				F4666C541B1E0262001840DB /* HMBookmarkEditorViewController.m */,
-				F4666C551B1E0262001840DB /* HMBookmarkEditorViewController.xib */,
+				F4C6685C1C54510E00601AFB /* HMBookmarkEditorViewController.xib */,
 			);
 			name = Bookmark;
 			sourceTree = "<group>";
@@ -938,7 +938,7 @@
 				F4BEEFFE1B11A5A7004702B8 /* HMExternalBrowserWindowController.xib */,
 				F49688611B3AFE4900D3CEDE /* HMProgressPanel.h */,
 				F49688621B3AFE4900D3CEDE /* HMProgressPanel.m */,
-				F49688631B3AFE4900D3CEDE /* HMProgressPanel.xib */,
+				F4C668651C54518F00601AFB /* HMProgressPanel.xib */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -982,16 +982,16 @@
 				F4B3DC4118E5C8870011B4FC /* HMBroserWindowController.xib */,
 				F4F388BF1C140AFB00508549 /* HMResourceViewController.h */,
 				F4F388C01C140AFB00508549 /* HMResourceViewController.m */,
-				F4F388C11C140AFB00508549 /* HMResourceViewController.xib */,
+				F4C6686B1C5451C800601AFB /* HMResourceViewController.xib */,
 				F4F388BA1C13D63B00508549 /* HMGameViewController.h */,
 				F4F388BB1C13D63B00508549 /* HMGameViewController.m */,
-				F4F388BC1C13D63B00508549 /* HMGameViewController.xib */,
+				F4C668621C54517500601AFB /* HMGameViewController.xib */,
 				F4513EE118B635EA00073552 /* HMDocksViewController.h */,
 				F4513EE218B635EA00073552 /* HMDocksViewController.m */,
 				F4B3DC3E18E5C87D0011B4FC /* HMDocksViewController.xib */,
 				F43769D71ADE890800DE6204 /* HMQuestListViewController.h */,
 				F43769D81ADE890800DE6204 /* HMQuestListViewController.m */,
-				F43769D91ADE890800DE6204 /* HMQuestListViewController.xib */,
+				F4C668681C5451AB00601AFB /* HMQuestListViewController.xib */,
 				F494DC6018C608C100AE97E4 /* HMShipViewController.h */,
 				F494DC6118C608C100AE97E4 /* HMShipViewController.m */,
 				F4B3DC3518E5C8520011B4FC /* HMShipViewController.xib */,
@@ -1000,7 +1000,7 @@
 				F494DC6818C8BAB900AE97E4 /* HMPowerUpSupportViewController.xib */,
 				F4F6E8051B2B17E50008B66E /* HMStrengthenListViewController.h */,
 				F4F6E8061B2B17E50008B66E /* HMStrengthenListViewController.m */,
-				F4F6E8071B2B17E50008B66E /* HMStrengthenListViewController.xib */,
+				F4C6686E1C5451ED00601AFB /* HMStrengthenListViewController.xib */,
 				F4F6E80D1B2C25D20008B66E /* HMStrengthenListItemCellView.h */,
 				F4F6E80E1B2C25D20008B66E /* HMStrengthenListItemCellView.m */,
 				F4C5A2241C36C68C00533FB6 /* HMStrengthenListItemView.h */,
@@ -1212,10 +1212,10 @@
 				F4D6BC991AA1FAC600742FEB /* HMUITestWindowController.h */,
 				F4D6BC9A1AA1FAC600742FEB /* HMUITestWindowController.m */,
 				F4BEF0101B11A645004702B8 /* HMUITestWindowController.xib */,
-				F4F4791E1C01424200D0BF69 /* HMVerticalFleetViewController.xib */,
+				F4C668711C54524900601AFB /* HMVerticalFleetViewController.xib */,
 				F4F479171BFE223600D0BF69 /* HMCombileViewController.h */,
 				F4F479181BFE223600D0BF69 /* HMCombileViewController.m */,
-				F4F479191BFE223600D0BF69 /* HMCombileViewController.xib */,
+				F4C668741C54525300601AFB /* HMCombileViewController.xib */,
 			);
 			name = TestAndDebug;
 			path = KCD;
@@ -1321,7 +1321,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4B37EFF19FC8DCC002F371A /* HMUpgradableShipsWindowController.xib in Resources */,
-				F49546361B19924D00E0D8D0 /* HMBookmarkListViewController.xib in Resources */,
+				F4C668571C5450EB00601AFB /* HMBookmarkListViewController.xib in Resources */,
 				F4C5A22C1C37B8DB00533FB6 /* HMRequiredEquipmentSet.txt in Resources */,
 				F49688671B3EA16800D3CEDE /* RemoveDatabaseFileAndRestart.app in Resources */,
 				F494DC6A18C8BAB900AE97E4 /* HMPowerUpSupportViewController.xib in Resources */,
@@ -1332,16 +1332,16 @@
 				F4C5A22E1C37CB5100533FB6 /* HMEnhancementListItem.txt in Resources */,
 				F4A9B8D91BA40ED1005786C2 /* LICENSE in Resources */,
 				F4B3DC3618E5C8650011B4FC /* HMShipWindowController.xib in Resources */,
-				F4666C571B1E0262001840DB /* HMBookmarkEditorViewController.xib in Resources */,
+				F4C6685A1C54510E00601AFB /* HMBookmarkEditorViewController.xib in Resources */,
 				F4B3DC3C18E5C87D0011B4FC /* HMDocksViewController.xib in Resources */,
 				F4B2D02B18F83A2F00542742 /* HMScreenshotWindowController.xib in Resources */,
-				F49688651B3AFE4900D3CEDE /* HMProgressPanel.xib in Resources */,
-				F4F479201C01424200D0BF69 /* HMVerticalFleetViewController.xib in Resources */,
-				F4F388BE1C13D63B00508549 /* HMGameViewController.xib in Resources */,
+				F4C668631C54518F00601AFB /* HMProgressPanel.xib in Resources */,
+				F4C6686F1C54524900601AFB /* HMVerticalFleetViewController.xib in Resources */,
+				F4C668601C54517500601AFB /* HMGameViewController.xib in Resources */,
 				F4B3DC3918E5C8700011B4FC /* HMJSONViewWindowController.xib in Resources */,
 				F4BEF0081B11A5DE004702B8 /* HMShipDetailViewController.xib in Resources */,
 				F4B3DC3318E5C8520011B4FC /* HMShipViewController.xib in Resources */,
-				F4F388C31C140AFB00508549 /* HMResourceViewController.xib in Resources */,
+				F4C668691C5451C800601AFB /* HMResourceViewController.xib in Resources */,
 				F4BEEFFF1B11A5C2004702B8 /* HMMediumShipViewController.xib in Resources */,
 				F4BEF00E1B11A645004702B8 /* HMUITestWindowController.xib in Resources */,
 				F4BEF0021B11A5CC004702B8 /* HMFleetMinimumViewController.xib in Resources */,
@@ -1355,14 +1355,14 @@
 				F4BEEE9F18D211280006F70C /* Localizable.strings in Resources */,
 				F4513EF018B96C6C00073552 /* Links.rtf in Resources */,
 				F4A3AD9419BDDE5500FDBF80 /* HMPreferencePanelController.xib in Resources */,
-				F4F6E8091B2B17E50008B66E /* HMStrengthenListViewController.xib in Resources */,
+				F4C6686C1C5451ED00601AFB /* HMStrengthenListViewController.xib in Resources */,
 				F4BDEB5D187252F30069D0CE /* MainMenu.xib in Resources */,
 				F4B3DC3F18E5C8870011B4FC /* HMBroserWindowController.xib in Resources */,
-				F43769DB1ADE890800DE6204 /* HMQuestListViewController.xib in Resources */,
+				F4C668661C5451AB00601AFB /* HMQuestListViewController.xib in Resources */,
 				F4666C6B1B29E974001840DB /* EquipmentStrengthen.plist in Resources */,
 				F4131EDE190FEBDB004F7F9A /* HMSlotItemWindowController.xib in Resources */,
-				F4666C521B1CB2CE001840DB /* HMBrowserContentAdjuster.xib in Resources */,
-				F4F4791B1BFE223600D0BF69 /* HMCombileViewController.xib in Resources */,
+				F4C6685D1C54515C00601AFB /* HMBrowserContentAdjuster.xib in Resources */,
+				F4C668721C54525300601AFB /* HMCombileViewController.xib in Resources */,
 				F4C5A23E1C380E0400533FB6 /* HMEnhancementListItem.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1796,6 +1796,86 @@
 				F4BEF00F1B11A645004702B8 /* ja */,
 			);
 			name = HMUITestWindowController.xib;
+			sourceTree = "<group>";
+		};
+		F4C668591C5450EB00601AFB /* HMBookmarkListViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4C668581C5450EB00601AFB /* ja */,
+			);
+			name = HMBookmarkListViewController.xib;
+			sourceTree = "<group>";
+		};
+		F4C6685C1C54510E00601AFB /* HMBookmarkEditorViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4C6685B1C54510E00601AFB /* ja */,
+			);
+			name = HMBookmarkEditorViewController.xib;
+			sourceTree = "<group>";
+		};
+		F4C6685F1C54515C00601AFB /* HMBrowserContentAdjuster.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4C6685E1C54515C00601AFB /* ja */,
+			);
+			name = HMBrowserContentAdjuster.xib;
+			sourceTree = "<group>";
+		};
+		F4C668621C54517500601AFB /* HMGameViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4C668611C54517500601AFB /* ja */,
+			);
+			name = HMGameViewController.xib;
+			sourceTree = "<group>";
+		};
+		F4C668651C54518F00601AFB /* HMProgressPanel.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4C668641C54518F00601AFB /* ja */,
+			);
+			name = HMProgressPanel.xib;
+			sourceTree = "<group>";
+		};
+		F4C668681C5451AB00601AFB /* HMQuestListViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4C668671C5451AB00601AFB /* ja */,
+			);
+			name = HMQuestListViewController.xib;
+			sourceTree = "<group>";
+		};
+		F4C6686B1C5451C800601AFB /* HMResourceViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4C6686A1C5451C800601AFB /* ja */,
+			);
+			name = HMResourceViewController.xib;
+			sourceTree = "<group>";
+		};
+		F4C6686E1C5451ED00601AFB /* HMStrengthenListViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4C6686D1C5451ED00601AFB /* ja */,
+			);
+			name = HMStrengthenListViewController.xib;
+			sourceTree = "<group>";
+		};
+		F4C668711C54524900601AFB /* HMVerticalFleetViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4C668701C54524900601AFB /* ja */,
+			);
+			name = HMVerticalFleetViewController.xib;
+			sourceTree = "<group>";
+		};
+		F4C668741C54525300601AFB /* HMCombileViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4C668731C54525300601AFB /* ja */,
+			);
+			name = HMCombileViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
