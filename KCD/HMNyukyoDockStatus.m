@@ -22,7 +22,6 @@ enum {
 
 @property (strong, readwrite) NSString *name;
 @property (strong, readwrite) NSNumber *time;
-@property (readwrite) BOOL isTasking;
 @property (readwrite) BOOL didNotify;
 
 @end
@@ -60,21 +59,7 @@ enum {
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
 	if([keyPath isEqualToString:@"selection.state"]) {
-		NSInteger status = [[self.controller valueForKeyPath:@"selection.state"] integerValue];
-		switch(status) {
-			case kNoShip:
-				self.name = nil;
-				if(self.isTasking) self.isTasking = NO;
-				if(self.didNotify) self.didNotify = NO;
-				break;
-			case kHasShip:
-				[self updateName:nil];
-				if(!self.isTasking) self.isTasking = YES;
-				break;
-			default:
-				NSLog(@"Nyukyo Dock status is %ld", status);
-				break;
-		}
+		[self updataStatus];
 		return;
 	}
 	
@@ -83,7 +68,7 @@ enum {
 
 - (void)update
 {
-	if(!self.isTasking) {
+	if(!self.name) {
 		self.time = nil;
 		return;
 	}
@@ -121,8 +106,16 @@ enum {
 	}
 }
 
-- (void)updateName:(id)dummy
+- (void)updataStatus
 {
+	NSInteger status = [[self.controller valueForKeyPath:@"selection.state"] integerValue];
+	if(status == kNoShip) {
+		self.didNotify = NO;
+		self.name = nil;
+		self.time = nil;
+		return;
+	}
+	
 	NSNumber *nDockShipId = [self.controller valueForKeyPath:@"selection.ship_id"];
 	if(![nDockShipId isKindOfClass:[NSNumber class]]) return;
 	if([nDockShipId integerValue] == 0) return;
@@ -130,7 +123,6 @@ enum {
 	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Ship"];
 	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id = %@", nDockShipId];
 	[request setPredicate:predicate];
-	
 	NSArray *array = [self.managedObjectContext executeFetchRequest:request error:NULL];
 	if([array count] == 0) {
 		[self performSelector:_cmd withObject:nil afterDelay:0.33];
