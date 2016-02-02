@@ -90,6 +90,31 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 	[self.store saveAction:nil];
 }
 
+- (void)updateBattleCell
+{
+	NSError *error = nil;
+	NSArray *battles = [self.store objectsWithEntityName:@"Battle"
+											   predicate:nil
+												   error:&error];
+	if(error) {
+		[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
+	}
+	if(battles.count == 0) {
+		NSLog(@"Battle is invalid.");
+		return;
+	}
+	id battle = battles[0];
+	
+	id battleCell = [battle valueForKey:@"no"];
+	if([battleCell integerValue] == 0) {
+		battleCell = nil;
+	}
+	if([self.api hasSuffix:@"next"]) {
+		battleCell = nil;
+	}
+	[battle setValue:battleCell forKeyPath:@"battleCell"];
+}
+
 - (void)nextCell
 {
 	NSError *error = nil;
@@ -227,6 +252,8 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 
 - (void)calculateBattle
 {
+	[self updateBattleCell];
+	
 	// 艦隊のチェック
 	
 	// Damage エンティティ作成6個
@@ -287,6 +314,8 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 
 - (void)calculateMidnightBattle
 {
+	[self updateBattleCell];
+	
 	// Damage 取得
 	NSMutableArray *damages = [self damages];
 	
@@ -407,6 +436,7 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 	}
 	if([self.api isEqualToString:@"/kcsapi/api_req_map/next"]) {
 		[self nextCell];
+		[self updateBattleCell];
 		return;
 	}
 	

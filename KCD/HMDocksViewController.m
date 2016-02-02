@@ -160,6 +160,10 @@
 						   forKeyPath:@"selection.no"
 							  options:0
 							  context:NULL];
+	[self.battleContoller addObserver:self
+						   forKeyPath:@"content.battleCell"
+							  options:0
+							  context:NULL];
 	
 #ifdef DEBUG
 	self.cellNumberField.hidden = NO;
@@ -183,7 +187,7 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-	if([keyPath isEqualToString:@"selection"]) {
+	if([keyPath isEqualToString:@"selection"] || [keyPath isEqualToString:@"content.battleCell"] ) {
 		[self willChangeValueForKey:@"sortieString"];
 		[self didChangeValueForKey:@"sortieString"];
 		return;
@@ -201,8 +205,13 @@
 {
 	NSString *result = nil;
 	if(self.fleetName && self.areaName && self.areaNumber) {
-		NSString *format = NSLocalizedString(@"%@ in sortie into %@ (%@)", @"Sortie");
-		result = [NSString stringWithFormat:format, self.fleetName, self.areaName, self.areaNumber];
+		if(self.battleCellNumber.integerValue == 0) {
+			NSString *format = NSLocalizedString(@"%@ in sortie into %@ (%@)", @"Sortie");
+			result = [NSString stringWithFormat:format, self.fleetName, self.areaName, self.areaNumber];
+		} else {
+			NSString *format = NSLocalizedString(@"%@ battle at %@ war zone in %@ (%@) now", @"Sortie");
+			result = [NSString stringWithFormat:format, self.fleetName, self.battleCellNumber, self.areaName, self.areaNumber];
+		}
 	}
 	return result;
 }
@@ -254,6 +263,11 @@
 - (NSNumber *)cellNumber
 {
 	return [self.battleContoller valueForKeyPath:@"content.no"];
+}
+
+- (NSNumber *)battleCellNumber
+{
+	return [self.battleContoller valueForKeyPath:@"content.battleCell"];
 }
 
 @end

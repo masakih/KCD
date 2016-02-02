@@ -22,13 +22,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <scrollView ambiguous="YES" misplaced="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJM-nl-vPR">
-                        <rect key="frame" x="20" y="436" width="628" height="125"/>
+                        <rect key="frame" x="0.0" y="0.0" width="2" height="18"/>
                         <clipView key="contentView" ambiguous="YES" id="DKR-UD-PHi">
-                            <rect key="frame" x="1" y="17" width="626" height="107"/>
+                            <rect key="frame" x="1" y="17" width="0.0" height="0.0"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="KEz-4O-hTd" id="pLM-Yt-xar">
-                                    <rect key="frame" x="0.0" y="0.0" width="626" height="107"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="416" height="19"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -146,7 +146,7 @@
                                                 <binding destination="ekW-xg-UhN" name="value" keyPath="arrangedObjects.maparea_id" id="bRk-Yc-Bfy"/>
                                             </connections>
                                         </tableColumn>
-                                        <tableColumn width="220" minWidth="10" maxWidth="3.4028234663852886e+38" id="wD1-m2-Hih">
+                                        <tableColumn width="10" minWidth="10" maxWidth="3.4028234663852886e+38" id="wD1-m2-Hih">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="sally_flag_1">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -167,16 +167,16 @@
                             </subviews>
                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="WKd-WP-k0Y">
-                            <rect key="frame" x="1" y="96" width="626" height="16"/>
+                        <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="WKd-WP-k0Y">
+                            <rect key="frame" x="1" y="1" width="0.0" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="rIi-Eu-8mz">
-                            <rect key="frame" x="224" y="17" width="15" height="102"/>
+                        <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="rIi-Eu-8mz">
+                            <rect key="frame" x="-15" y="17" width="16" height="0.0"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <tableHeaderView key="headerView" id="KEz-4O-hTd">
-                            <rect key="frame" x="0.0" y="0.0" width="626" height="17"/>
+                            <rect key="frame" x="0.0" y="0.0" width="416" height="17"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </tableHeaderView>
                     </scrollView>

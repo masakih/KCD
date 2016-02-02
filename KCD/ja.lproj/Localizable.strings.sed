@@ -16,6 +16,7 @@ s/Hide Upgradable Ships/改造可能艦リストを隠す/2
 s/Show Screenshot List/スクリーンショットリストを表示/2
 s/Hide Screenshot List/スクリーンショットリストを隠す/2
 s/%1$@ in sortie into %2$@ (%3$@)/%1$@が\\n（%3$@）%2$@\\nに出撃中/
+s/%1$@ battle at %2$@ war zone in %3$@ (%4$@) now/%1$@が\\n（%4$@）%3$@\\n第%2$@戦闘域にて戦闘中/
 s/All/すべて/2
 s/Equiped/装備済み/2
 s/Unequiped/未装備/2
