@@ -38,43 +38,46 @@ const CGFloat boarderWidth = 2.0;
 		[super drawInteriorWithFrame:cellFrame inView:controlView];
 		return;
 	}
-//
-//	NSTextStorage *textStorage = [[NSTextStorage alloc] initWithString:attributedString.string attributes:attribute];
-//	[textStorage addLayoutManager:self.layoutManager];
-//	
-//	NSRange range = [self.layoutManager glyphRangeForTextContainer:self.textContainer];
-//	NSGlyph glyph[range.length];
-//	NSUInteger glyphLength = [self.layoutManager getGlyphs:glyph range:range];
-//	
-//	NSFont *font = [attribute objectForKey:NSFontAttributeName];
-//	NSPoint point = {boarderWidth,0};
-//	point.y -= [font descender];
-//	if([controlView isFlipped]) {
-//		point.y -= [controlView frame].size.height;
-//	}
-//	
-//	NSBezierPath *path = [NSBezierPath new];
-//	[path moveToPoint:point];
-//	[path appendBezierPathWithGlyphs:glyph count:glyphLength inFont:font];
-//	[path setLineWidth:boarderWidth];
-//	[path setLineJoinStyle:NSRoundLineJoinStyle];
-//	if([controlView isFlipped]) {
-//		NSAffineTransform *affineTransform = [NSAffineTransform transform];
-//		[affineTransform scaleXBy:1 yBy:-1];
-//		[path transformUsingAffineTransform:affineTransform];
-//	}
-//	
-//	[[NSColor blackColor] set];
-//	[path stroke];
-//	
-//	[forgroundColor set];
-//	[path fill];
+
+	NSTextStorage *textStorage = [[NSTextStorage alloc] initWithString:attributedString.string attributes:attribute];
+	[textStorage addLayoutManager:self.layoutManager];
 	
-	NSMutableDictionary *newAttr = [attribute mutableCopy];
-	newAttr[NSStrokeColorAttributeName] = [NSColor blackColor];
-	newAttr[NSStrokeWidthAttributeName] = @(-4);
+	NSRange range = [self.layoutManager glyphRangeForTextContainer:self.textContainer];
+	CGGlyph glyph[range.length];
+	NSUInteger glyphLength = [self.layoutManager getGlyphsInRange:range
+														   glyphs:glyph
+													   properties:NULL
+												 characterIndexes:NULL
+													   bidiLevels:NULL];
 	
-	[attributedString.string drawInRect:cellFrame withAttributes:newAttr];
+	NSFont *font = [attribute objectForKey:NSFontAttributeName];
+	NSPoint point = {boarderWidth,0};
+	point.y -= [font descender];
+	if([controlView isFlipped]) {
+		point.y -= [controlView frame].size.height;
+	}
+	
+	NSGlyph nsGlyph[range.length];
+	for(int i = 0; i < range.length; i++) {
+		nsGlyph[i] = glyph[i];
+	}
+	
+	NSBezierPath *path = [NSBezierPath new];
+	[path moveToPoint:point];
+	[path appendBezierPathWithGlyphs:nsGlyph count:glyphLength inFont:font];
+	[path setLineWidth:boarderWidth];
+	[path setLineJoinStyle:NSRoundLineJoinStyle];
+	if([controlView isFlipped]) {
+		NSAffineTransform *affineTransform = [NSAffineTransform transform];
+		[affineTransform scaleXBy:1 yBy:-1];
+		[path transformUsingAffineTransform:affineTransform];
+	}
+	
+	[[NSColor blackColor] set];
+	[path stroke];
+	
+	[forgroundColor set];
+	[path fill];
 	
 }
 @end
