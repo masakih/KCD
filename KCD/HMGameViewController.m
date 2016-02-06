@@ -90,11 +90,10 @@ static NSString *loginPageURLPrefix = @"https://www.dmm.com/my/-/login/=/";
 			NSString *date = [NSDateFormatter localizedStringFromDate:untilDate
 															dateStyle:NSDateFormatterNoStyle
 															timeStyle:NSDateFormatterMediumStyle];
-			NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Reload interval is too short", @"")
-											 defaultButton:nil
-										   alternateButton:nil
-											   otherButton:nil
-								 informativeTextWithFormat:NSLocalizedString(@"Reload interval is too short.\nWait until %@.", @""), date];
+			NSAlert *alert = [NSAlert new];
+			alert.messageText = NSLocalizedString(@"Reload interval is too short", @"");
+			alert.informativeText = [NSString stringWithFormat:NSLocalizedString(@"Reload interval is too short.\nWait until %@.", @""), date];
+			
 			[alert runModal];
 			
 			return;

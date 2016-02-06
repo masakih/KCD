@@ -72,7 +72,7 @@ typedef NS_ENUM(NSUInteger, HMScreenShotSaveDirectoryPopUpMenuItemTag) {
 	
 	[panel beginSheetModalForWindow:self.window
 				  completionHandler:^(NSInteger result) {
-					  if(result == NSCancelButton) return;
+					  if(result == NSModalResponseCancel) return;
 					  
 					  self.screenShotSaveDirectory = panel.URL.path;
 				  }];
@@ -92,7 +92,7 @@ typedef NS_ENUM(NSUInteger, HMScreenShotSaveDirectoryPopUpMenuItemTag) {
 				  completionHandler:^(NSInteger result) {
 					  [self.screenShotSaveDirectoryPopUp selectItemWithTag:kSaveDirectoryItem];
 					  
-					  if(result == NSCancelButton) return;
+					  if(result == NSModalResponseCancel) return;
 					  
 					  self.screenShotSaveDirectory = panel.URL.path;
 				  }];

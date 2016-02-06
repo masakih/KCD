@@ -14,7 +14,7 @@
 
 
 
-@interface HMExternalBrowserWindowController () <HMBookmarkListViewControllerDelegate, NSAnimationDelegate>
+@interface HMExternalBrowserWindowController () <HMBookmarkListViewControllerDelegate, NSAnimationDelegate, WebFrameLoadDelegate>
 @property (nonatomic, weak) IBOutlet NSSegmentedControl *goSegment;
 
 @property (nonatomic, weak) IBOutlet NSView *bookmarkListView;

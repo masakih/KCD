@@ -144,11 +144,11 @@
 	[panel setAllowedFileTypes:@[@"kcdlocaldata"]];
 	
 	[panel beginWithCompletionHandler:^(NSInteger result) {
-		if(result != NSOKButton) return;
+		if(result != NSModalResponseOK) return;
 		
 		NSString *path = [panel.URL path];
 		
-		NSFileWrapper *fileWrapper = [[NSFileWrapper alloc] initDirectoryWithFileWrappers:nil];
+		NSFileWrapper *fileWrapper = [[NSFileWrapper alloc] initDirectoryWithFileWrappers:@{}];
 		[fileWrapper setFilename:[path lastPathComponent]];
 		[fileWrapper addRegularFileWithContents:[self dataOfKaihatuHistory]
 							  preferredFilename:@"kaihatu.tsv"];
@@ -157,7 +157,10 @@
 		[fileWrapper addRegularFileWithContents:[self dataOfKenzoMark]
 							  preferredFilename:@"kenzoMark.tsv"];
 		
-		[fileWrapper writeToFile:path atomically:YES updateFilenames:NO];
+		[fileWrapper writeToURL:[NSURL fileURLWithPath:path]
+						options:NSFileWrapperWritingAtomic
+			originalContentsURL:nil
+						  error:NULL];
 	}];
 }
 
@@ -194,6 +197,18 @@
 	return num == 0;
 }
 
+- (NSDateFormatter *)dateFormatter
+{
+	NSDateFormatter *formatter = [NSDateFormatter new];
+	formatter.dateFormat = @"yyyy'-'MM'-'dd' 'HH':'mm':'ss' 'Z";
+	
+	return formatter;
+}
+- (NSDate *)dateWithString:(NSString *)string
+{
+	return [self.dateFormatter dateFromString:string];
+}
+
 - (void)buildKaihatuHistoryFromData:(NSData *)data
 {
 	NSString *entityName = @"KaihatuHistory";
@@ -211,12 +226,12 @@
 		
 		NSArray *array = [lds objectsWithEntityName:entityName
 											  error:NULL
-									predicateFormat:@"date = %@", [NSDate dateWithString:attr[0]]];
+									predicateFormat:@"date = %@", [self dateWithString:attr[0]]];
 		if(array.count != 0) continue;
 		
 		HMKaihatuHistory *obj = [NSEntityDescription insertNewObjectForEntityForName:entityName
 															  inManagedObjectContext:moc];
-		obj.date = [NSDate dateWithString:attr[0]];
+		obj.date = [self dateWithString:attr[0]];
 		obj.fuel = @([attr[1] integerValue]);
 		obj.bull = @([attr[2] integerValue]);
 		obj.steel = @([attr[3] integerValue]);
@@ -244,13 +259,13 @@
 				
 		NSArray *array = [lds objectsWithEntityName:entityName
 											  error:NULL
-									predicateFormat:@"date = %@", [NSDate dateWithString:attr[0]]];
+									predicateFormat:@"date = %@", [self dateWithString:attr[0]]];
 		if(array.count != 0) continue;
 		
 		HMKenzoHistory *obj = [NSEntityDescription insertNewObjectForEntityForName:entityName
 															inManagedObjectContext:lds.managedObjectContext];
 		
-		obj.date = [NSDate dateWithString:attr[0]];
+		obj.date = [self dateWithString:attr[0]];
 		obj.fuel = @([attr[1] integerValue]);
 		obj.bull = @([attr[2] integerValue]);
 		obj.steel = @([attr[3] integerValue]);
@@ -299,7 +314,7 @@
 	[panel setAllowedFileTypes:@[@"kcdlocaldata"]];
 	
 	[panel beginWithCompletionHandler:^(NSInteger result) {
-		if(result != NSOKButton) return;
+		if(result != NSModalResponseOK) return;
 		
 		NSFileWrapper *wrapper = [[NSFileWrapper alloc] initWithURL:panel.URL
 															options:0

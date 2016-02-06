@@ -513,7 +513,7 @@
 	[panel setPrompt:@"Save log"];
 	[panel setTitle:@"Save log"];
 	[panel beginWithCompletionHandler:^(NSInteger result) {
-		if(result == NSOKButton) {
+		if(result == NSModalResponseOK) {
 			NSArray *array = [self.jsonViewWindowController.commands copy];
 			NSData *data = [NSKeyedArchiver archivedDataWithRootObject:array];
 			if(!data) {
@@ -539,7 +539,7 @@
 	[panel setPrompt:@"Open log"];
 	[panel setTitle:@"Open log"];
 	[panel beginWithCompletionHandler:^(NSInteger result) {
-		if(result == NSOKButton) {
+		if(result == NSModalResponseOK) {
 			NSData *data = [NSData dataWithContentsOfURL:panel.URL];
 			id array = [NSKeyedUnarchiver unarchiveObjectWithData:data];
 			if(!array || ![array isKindOfClass:[NSArray class]]) {

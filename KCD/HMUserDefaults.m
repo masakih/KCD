@@ -165,19 +165,29 @@ HMUserDefaults *HMStandardDefaults = nil;
 	return [NSArray new];
 }
 
+
+- (NSDateFormatter *)dateFormatter
+{
+	NSDateFormatter *formatter = [NSDateFormatter new];
+	formatter.dateFormat = @"yyyy'-'MM'-'dd' 'HH':'mm':'ss' 'Z";
+	
+	return formatter;
+}
 - (void)setPrevReloadDate:(NSDate *)prevReloadDate
 {
 	if(prevReloadDate) {
-		[self setObject:[prevReloadDate description] forKey:@"previousReloadDateString"];
+		NSString *dateString = [self.dateFormatter stringFromDate:prevReloadDate];
+		[self setObject:dateString forKey:@"previousReloadDateString"];
 	}
 }
 - (NSDate *)prevReloadDate
 {
+	NSDate *date = nil;
 	NSString *dateString = [self stringForKey:@"previousReloadDateString"];
 	if(dateString) {
-		return [NSDate dateWithString:dateString];
+		date = [self.dateFormatter dateFromString:dateString];
 	}
-	return nil;
+	return date;
 }
 
 - (void)setShowsDebugMenu:(BOOL)showsDebugMenu
