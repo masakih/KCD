@@ -129,8 +129,12 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 		return;
 	}
 	id battle = battles[0];
+	id cellNumber = [self.json valueForKeyPath:@"api_data.api_no"];
+	id eventIDNumber = [self.json valueForKeyPath:@"api_data.api_event_id"];
+	BOOL isBossCell = [eventIDNumber integerValue] == 5;
 	
-	[battle setValue:@([[self.json valueForKeyPath:@"api_data.api_no"] integerValue]) forKeyPath:@"no"];
+	[battle setValue:@([cellNumber integerValue]) forKeyPath:@"no"];
+	[battle setValue:@(isBossCell) forKeyPath:@"isBossCell"];
 	
 	[self.store saveAction:nil];
 }

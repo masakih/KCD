@@ -208,6 +208,9 @@
 		if(self.battleCellNumber.integerValue == 0) {
 			NSString *format = NSLocalizedString(@"%@ in sortie into %@ (%@)", @"Sortie");
 			result = [NSString stringWithFormat:format, self.fleetName, self.areaName, self.areaNumber];
+		} else if(self.isBossCell) {
+			NSString *format = NSLocalizedString(@"%@ battle against the enemy main fleet at %@ war zone in %@ (%@) now", @"Sortie");
+			result = [NSString stringWithFormat:format, self.fleetName, self.battleCellNumber, self.areaName, self.areaNumber];
 		} else {
 			NSString *format = NSLocalizedString(@"%@ battle at %@ war zone in %@ (%@) now", @"Sortie");
 			result = [NSString stringWithFormat:format, self.fleetName, self.battleCellNumber, self.areaName, self.areaNumber];
@@ -269,5 +272,8 @@
 {
 	return [self.battleContoller valueForKeyPath:@"content.battleCell"];
 }
-
+- (BOOL)isBossCell
+{
+	return [[self.battleContoller valueForKeyPath:@"content.isBossCell"] boolValue];
+}
 @end
