@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9532"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="HMUpgradableShipsWindowController">
@@ -50,14 +49,14 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
-                                                <binding destination="F7b-g4-Ndz" name="value" keyPath="arrangedObjects.name" id="j7Y-gN-xY4">
-                                                    <dictionary key="options">
-                                                        <bool key="NSConditionallySetsEditable" value="NO"/>
-                                                    </dictionary>
-                                                </binding>
                                                 <binding destination="F7b-g4-Ndz" name="textColor" keyPath="arrangedObjects.id" id="eC4-zZ-hXz">
                                                     <dictionary key="options">
                                                         <string key="NSValueTransformerName">HMUpgradeShipExcludeColorTransformer</string>
+                                                    </dictionary>
+                                                </binding>
+                                                <binding destination="F7b-g4-Ndz" name="value" keyPath="arrangedObjects.name" id="j7Y-gN-xY4">
+                                                    <dictionary key="options">
+                                                        <bool key="NSConditionallySetsEditable" value="NO"/>
                                                     </dictionary>
                                                 </binding>
                                             </connections>
@@ -69,20 +68,20 @@
                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                             </tableHeaderCell>
                                             <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="right" title="Text Cell" id="9im-4V-TUH">
-                                                <font key="font" metaFont="system"/>
+                                                <font key="font" size="13" name="Helvetica"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
-                                                <binding destination="F7b-g4-Ndz" name="value" keyPath="arrangedObjects.lv" id="GG4-Jw-sdN">
-                                                    <dictionary key="options">
-                                                        <bool key="NSConditionallySetsEditable" value="NO"/>
-                                                    </dictionary>
-                                                </binding>
                                                 <binding destination="F7b-g4-Ndz" name="textColor" keyPath="arrangedObjects.id" id="Mgr-Rr-bA5">
                                                     <dictionary key="options">
                                                         <string key="NSValueTransformerName">HMUpgradeShipExcludeColorTransformer</string>
+                                                    </dictionary>
+                                                </binding>
+                                                <binding destination="F7b-g4-Ndz" name="value" keyPath="arrangedObjects.lv" id="GG4-Jw-sdN">
+                                                    <dictionary key="options">
+                                                        <bool key="NSConditionallySetsEditable" value="NO"/>
                                                     </dictionary>
                                                 </binding>
                                             </connections>
@@ -94,20 +93,20 @@
                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                             </tableHeaderCell>
                                             <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="right" title="Text Cell" id="iyA-vx-pg4">
-                                                <font key="font" metaFont="system"/>
+                                                <font key="font" size="13" name="Helvetica"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
-                                                <binding destination="F7b-g4-Ndz" name="value" keyPath="arrangedObjects.upgradeLevel" id="V85-yJ-0vP">
-                                                    <dictionary key="options">
-                                                        <bool key="NSConditionallySetsEditable" value="NO"/>
-                                                    </dictionary>
-                                                </binding>
                                                 <binding destination="F7b-g4-Ndz" name="textColor" keyPath="arrangedObjects.id" id="hrG-ZH-O4b">
                                                     <dictionary key="options">
                                                         <string key="NSValueTransformerName">HMUpgradeShipExcludeColorTransformer</string>
+                                                    </dictionary>
+                                                </binding>
+                                                <binding destination="F7b-g4-Ndz" name="value" keyPath="arrangedObjects.upgradeLevel" id="V85-yJ-0vP">
+                                                    <dictionary key="options">
+                                                        <bool key="NSConditionallySetsEditable" value="NO"/>
                                                     </dictionary>
                                                 </binding>
                                             </connections>
@@ -119,20 +118,20 @@
                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                             </tableHeaderCell>
                                             <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="right" title="Text Cell" id="lY3-vu-xLh">
-                                                <font key="font" metaFont="system"/>
+                                                <font key="font" size="13" name="Helvetica"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
-                                                <binding destination="F7b-g4-Ndz" name="value" keyPath="arrangedObjects.upgradeExp" id="U3b-BW-Nri">
-                                                    <dictionary key="options">
-                                                        <bool key="NSConditionallySetsEditable" value="NO"/>
-                                                    </dictionary>
-                                                </binding>
                                                 <binding destination="F7b-g4-Ndz" name="textColor" keyPath="arrangedObjects.id" id="GHK-Rm-nmu">
                                                     <dictionary key="options">
                                                         <string key="NSValueTransformerName">HMUpgradeShipExcludeColorTransformer</string>
+                                                    </dictionary>
+                                                </binding>
+                                                <binding destination="F7b-g4-Ndz" name="value" keyPath="arrangedObjects.upgradeExp" id="U3b-BW-Nri">
+                                                    <dictionary key="options">
+                                                        <bool key="NSConditionallySetsEditable" value="NO"/>
                                                     </dictionary>
                                                 </binding>
                                             </connections>

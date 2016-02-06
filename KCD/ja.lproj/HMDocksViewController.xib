@@ -49,7 +49,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="BJE-Ig-1at">
                         <customFormatter key="formatter" id="9Rm-sQ-KzG" customClass="HMTimerCountFormatter"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" size="13" name="Helvetica"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -75,7 +75,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="iv8-oM-0Fo">
                         <customFormatter key="formatter" id="uTW-Si-vAP" customClass="HMTimerCountFormatter"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" size="13" name="Helvetica"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -102,7 +102,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="5SQ-4h-gVc">
                         <customFormatter key="formatter" id="fOY-bM-qRR" customClass="HMTimerCountFormatter"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" size="13" name="Helvetica"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -160,7 +160,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="uZ7-H0-10h">
                         <customFormatter key="formatter" id="XJq-qE-ggs" customClass="HMTimerCountFormatter"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" size="13" name="Helvetica"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -202,7 +202,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="KdJ-xQ-eVC">
                         <customFormatter key="formatter" id="lcg-8G-Dru" customClass="HMTimerCountFormatter"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" size="13" name="Helvetica"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -228,7 +228,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="oco-u5-uot">
                         <customFormatter key="formatter" id="n6E-LC-O0m" customClass="HMTimerCountFormatter"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" size="13" name="Helvetica"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -270,7 +270,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="YbO-M6-FUI">
                         <customFormatter key="formatter" id="XN3-A0-NNc" customClass="HMTimerCountFormatter"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" size="13" name="Helvetica"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -312,7 +312,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="rFg-0M-tbw">
                         <customFormatter key="formatter" id="aaT-2p-6sV" customClass="HMTimerCountFormatter"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" size="13" name="Helvetica"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -354,7 +354,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="Bnk-cQ-3F5">
                         <customFormatter key="formatter" id="pyU-qN-RwB" customClass="HMTimerCountFormatter"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" size="13" name="Helvetica"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -380,7 +380,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="769-Rr-iNm">
                         <customFormatter key="formatter" id="wwc-Kj-i2T" customClass="HMTimerCountFormatter"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" size="13" name="Helvetica"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -406,7 +406,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="IP7-Yh-Z7X">
                         <customFormatter key="formatter" id="5gk-HQ-Ks2" customClass="HMTimerCountFormatter"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" size="13" name="Helvetica"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
