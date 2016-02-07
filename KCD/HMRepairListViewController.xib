@@ -14,6 +14,11 @@
         <arrayController mode="entity" entityName="Ship" fetchPredicateFormat="id != -2 &amp;&amp; ndock_time != 0" editable="NO" automaticallyPreparesContent="YES" automaticallyRearrangesObjects="YES" id="d8w-mz-p76" userLabel="Ship">
             <connections>
                 <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="fN9-6X-PZD"/>
+                <binding destination="4yO-Gx-S09" name="sortDescriptors" keyPath="values.repairListViewSortDesc" id="hbY-uH-jhj">
+                    <dictionary key="options">
+                        <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
+                    </dictionary>
+                </binding>
             </connections>
         </arrayController>
         <customView id="Vnt-ii-bbu">
@@ -27,14 +32,14 @@
                         <rect key="frame" x="1" y="0.0" width="309" height="384"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" autosaveName="" headerView="6cN-al-E6a" id="fYh-ug-HRe">
+                            <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveName="repairlistview" headerView="6cN-al-E6a" id="fYh-ug-HRe">
                                 <rect key="frame" x="0.0" y="0.0" width="309" height="361"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn identifier="name" editable="NO" width="116" minWidth="116" maxWidth="116" id="TUB-Oz-Ql1">
+                                    <tableColumn identifier="name" editable="NO" width="122" minWidth="100" maxWidth="20000" id="TUB-Oz-Ql1">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="名前">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -60,8 +65,8 @@
                                             </binding>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn identifier="taiku" editable="NO" width="93" minWidth="10" maxWidth="3.4028234663852886e+38" id="TM5-mx-9OE">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="修理時間">
+                                    <tableColumn identifier="time" editable="NO" width="79" minWidth="10" maxWidth="3.4028234663852886e+38" id="TM5-mx-9OE">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="right" title="修理時間">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -82,8 +87,8 @@
                                             </binding>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn identifier="" width="48" minWidth="10" maxWidth="3.4028234663852886e+38" id="AWO-9w-e21">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="鋼材">
+                                    <tableColumn identifier="steel" width="48" minWidth="10" maxWidth="3.4028234663852886e+38" id="AWO-9w-e21">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="right" title="鋼材">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -98,8 +103,8 @@
                                             <binding destination="d8w-mz-p76" name="value" keyPath="arrangedObjects.steelRequiredInRepair" id="7s7-Yg-6aG"/>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn identifier="" width="39" minWidth="10" maxWidth="3.4028234663852886e+38" id="inV-zw-QnU">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="燃焼">
+                                    <tableColumn identifier="fuel" width="48" minWidth="10" maxWidth="3.4028234663852886e+38" id="inV-zw-QnU">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="right" title="燃焼">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -120,7 +125,7 @@
                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Kfg-xX-yu7">
-                        <rect key="frame" x="1" y="335" width="309" height="16"/>
+                        <rect key="frame" x="1" y="368" width="309" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="WN3-XE-yqm">
@@ -134,5 +139,6 @@
             </subviews>
             <point key="canvasLocation" x="209.5" y="314"/>
         </customView>
+        <userDefaultsController representsSharedInstance="YES" id="4yO-Gx-S09"/>
     </objects>
 </document>
