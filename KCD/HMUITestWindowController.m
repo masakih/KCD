@@ -22,16 +22,16 @@
 
 - (Class)testViewControllerClass
 {
-	return NSClassFromString(@"HMCombileViewController");
+	return NSClassFromString(@"HMRepairListViewController");
 }
 
-- (void)windowDidLoad {
-    [super windowDidLoad];
-	
-	self.testViewController = [self.testViewControllerClass new];
-	[self.testViewController.view setFrame:[self.testViewPlaceholder frame]];
-	[self.testViewController.view setAutoresizingMask:[self.testViewPlaceholder autoresizingMask]];
-	[[self.testViewPlaceholder superview] replaceSubview:self.testViewPlaceholder with:self.testViewController.view];
-}
+//- (void)windowDidLoad {
+//    [super windowDidLoad];
+//	
+//	self.testViewController = [self.testViewControllerClass new];
+//	[self.testViewController.view setFrame:[self.testViewPlaceholder frame]];
+//	[self.testViewController.view setAutoresizingMask:[self.testViewPlaceholder autoresizingMask]];
+//	[[self.testViewPlaceholder superview] replaceSubview:self.testViewPlaceholder with:self.testViewController.view];
+//}
 
 @end

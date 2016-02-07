@@ -19,6 +19,7 @@
 #import "HMCombinedCommand.h"
 #import "HMFleetViewController.h"
 #import "HMResourceViewController.h"
+#import "HMRepairListViewController.h"
 
 #import "HMServerDataStore.h"
 
@@ -27,6 +28,7 @@ typedef NS_ENUM(NSInteger, ViewType) {
 	kScheduleType = 0,
 	kOrganizeType = 1,
 	kPowerUpType = 2,
+	kRepairListType = 3,
 };
 
 typedef NS_ENUM(NSUInteger, FleetViewPosition) {
@@ -53,6 +55,7 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 @property (strong) HMShipViewController *shipViewController;
 @property (strong) HMPowerUpSupportViewController *powerUpViewController;
 @property (strong) HMStrengthenListViewController *strengthedListViewController;
+@property (strong) HMRepairListViewController *repairListViewController;
 
 @property (strong) HMCombileViewController *combinedViewController;
 @property BOOL isCombinedMode;
@@ -92,6 +95,7 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 	self.shipViewController = [HMShipViewController new];
 	self.powerUpViewController = [HMPowerUpSupportViewController new];
 	self.strengthedListViewController = [HMStrengthenListViewController new];
+	self.repairListViewController = [HMRepairListViewController new];
 	NSTabViewItem *item = [self.informations tabViewItemAtIndex:0];
 	item.view = self.docksViewController.view;
 	item = [self.informations tabViewItemAtIndex:1];
@@ -100,6 +104,8 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 	item.view = self.powerUpViewController.view;
 	item = [self.informations tabViewItemAtIndex:3];
 	item.view = self.strengthedListViewController.view;
+	item = [self.informations tabViewItemAtIndex:4];
+	item.view = self.repairListViewController.view;
 	
 	_fleetViewController = [HMFleetViewController viewControlerWithViewType:detailViewType];
 	[self.fleetViewController.view setFrame:[self.deckPlaceholder frame]];

@@ -42,4 +42,8 @@
 @property (readonly) NSNumber *totalDrums;
 
 @property (readonly) NSNumber *guardEscaped; // NSNumber of BOLL
+
+@property (readonly) NSNumber *steelRequiredInRepair;
+@property (readonly) NSNumber *fuelRequiredInRepair;
+
 @end

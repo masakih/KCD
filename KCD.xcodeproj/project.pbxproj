@@ -200,6 +200,8 @@
 		F4C668791C54592300601AFB /* HMEquipmentWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C668771C54592300601AFB /* HMEquipmentWindowController.xib */; };
 		F4C6687D1C545E3800601AFB /* HMMapWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C6687B1C545E3800601AFB /* HMMapWindowController.m */; };
 		F4C6687E1C545E3800601AFB /* HMMapWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C6687C1C545E3800601AFB /* HMMapWindowController.xib */; };
+		F4C668881C60F5F200601AFB /* HMRepairListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C668861C60F5F200601AFB /* HMRepairListViewController.m */; };
+		F4C668891C60F5F200601AFB /* HMRepairListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C668871C60F5F200601AFB /* HMRepairListViewController.xib */; };
 		F4C86B921C1C445D00F260FE /* HMUpgradeShipExcludeColorTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C86B911C1C445D00F260FE /* HMUpgradeShipExcludeColorTransformer.m */; };
 		F4D2CBC218AD0E1A000EBC59 /* HMMasterSTypeCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D2CBC118AD0E1A000EBC59 /* HMMasterSTypeCommand.m */; };
 		F4D2CBC518AE2AE2000EBC59 /* HMCompositCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D2CBC418AE2AE2000EBC59 /* HMCompositCommand.m */; };
@@ -218,6 +220,7 @@
 		F4E7802818DBD2A00011BC4C /* HMGetShipCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E7802718DBD2A00011BC4C /* HMGetShipCommand.m */; };
 		F4E7802B18DC3A820011BC4C /* HMLocalDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E7802A18DC3A820011BC4C /* HMLocalDataStore.m */; };
 		F4E7802E18DC3AF00011BC4C /* LocalData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4E7802C18DC3AF00011BC4C /* LocalData.xcdatamodeld */; };
+		F4ECA36F1C6102FC0098AB6A /* HMMillisecondTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4ECA36E1C6102FC0098AB6A /* HMMillisecondTransformer.m */; };
 		F4ED5D2A1B78D0CA00D1BDEF /* HMGuardEscapedView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4ED5D291B78D0CA00D1BDEF /* HMGuardEscapedView.m */; };
 		F4ED5D2D1B7C677E00D1BDEF /* HMGuardShelterCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4ED5D2C1B7C677E00D1BDEF /* HMGuardShelterCommand.m */; };
 		F4F388BD1C13D63B00508549 /* HMGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F388BB1C13D63B00508549 /* HMGameViewController.m */; };
@@ -594,6 +597,9 @@
 		F4C6687A1C545E3700601AFB /* HMMapWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMapWindowController.h; sourceTree = "<group>"; };
 		F4C6687B1C545E3800601AFB /* HMMapWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMapWindowController.m; sourceTree = "<group>"; };
 		F4C6687C1C545E3800601AFB /* HMMapWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMMapWindowController.xib; sourceTree = "<group>"; };
+		F4C668851C60F5F200601AFB /* HMRepairListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMRepairListViewController.h; sourceTree = "<group>"; };
+		F4C668861C60F5F200601AFB /* HMRepairListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMRepairListViewController.m; sourceTree = "<group>"; };
+		F4C668871C60F5F200601AFB /* HMRepairListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMRepairListViewController.xib; sourceTree = "<group>"; };
 		F4C86B901C1C445C00F260FE /* HMUpgradeShipExcludeColorTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMUpgradeShipExcludeColorTransformer.h; sourceTree = "<group>"; };
 		F4C86B911C1C445D00F260FE /* HMUpgradeShipExcludeColorTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMUpgradeShipExcludeColorTransformer.m; sourceTree = "<group>"; };
 		F4D2CBC018AD0E1A000EBC59 /* HMMasterSTypeCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMasterSTypeCommand.h; sourceTree = "<group>"; };
@@ -630,6 +636,8 @@
 		F4E7802918DC3A820011BC4C /* HMLocalDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMLocalDataStore.h; sourceTree = "<group>"; };
 		F4E7802A18DC3A820011BC4C /* HMLocalDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMLocalDataStore.m; sourceTree = "<group>"; };
 		F4E7802D18DC3AF00011BC4C /* LocalData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocalData.xcdatamodel; sourceTree = "<group>"; };
+		F4ECA36D1C6102FC0098AB6A /* HMMillisecondTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMillisecondTransformer.h; sourceTree = "<group>"; };
+		F4ECA36E1C6102FC0098AB6A /* HMMillisecondTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMillisecondTransformer.m; sourceTree = "<group>"; };
 		F4ED5D281B78D0CA00D1BDEF /* HMGuardEscapedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGuardEscapedView.h; sourceTree = "<group>"; };
 		F4ED5D291B78D0CA00D1BDEF /* HMGuardEscapedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMGuardEscapedView.m; sourceTree = "<group>"; };
 		F4ED5D2B1B7C677E00D1BDEF /* HMGuardShelterCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGuardShelterCommand.h; sourceTree = "<group>"; };
@@ -972,6 +980,8 @@
 				F47178461B6DE9F400F5E59D /* HMMapAreaTransformaer.m */,
 				F4C86B901C1C445C00F260FE /* HMUpgradeShipExcludeColorTransformer.h */,
 				F4C86B911C1C445D00F260FE /* HMUpgradeShipExcludeColorTransformer.m */,
+				F4ECA36D1C6102FC0098AB6A /* HMMillisecondTransformer.h */,
+				F4ECA36E1C6102FC0098AB6A /* HMMillisecondTransformer.m */,
 			);
 			name = "Transformar&Formatter";
 			sourceTree = "<group>";
@@ -1009,6 +1019,9 @@
 				F4C5A2251C36C68C00533FB6 /* HMStrengthenListItemView.m */,
 				F4C5A2211C3533E800533FB6 /* HMEnhancementListItem.h */,
 				F4C5A2221C3533E800533FB6 /* HMEnhancementListItem.m */,
+				F4C668851C60F5F200601AFB /* HMRepairListViewController.h */,
+				F4C668861C60F5F200601AFB /* HMRepairListViewController.m */,
+				F4C668871C60F5F200601AFB /* HMRepairListViewController.xib */,
 				F4D6BCA61AA298FD00742FEB /* HMShipDetailViewController.h */,
 				F4D6BCA71AA298FD00742FEB /* HMShipDetailViewController.m */,
 				F4BEF00A1B11A5DE004702B8 /* HMShipDetailViewController.xib */,
@@ -1351,6 +1364,7 @@
 				F4B3DC3318E5C8520011B4FC /* HMShipViewController.xib in Resources */,
 				F4C668691C5451C800601AFB /* HMResourceViewController.xib in Resources */,
 				F4BEEFFF1B11A5C2004702B8 /* HMMediumShipViewController.xib in Resources */,
+				F4C668891C60F5F200601AFB /* HMRepairListViewController.xib in Resources */,
 				F4BEF00E1B11A645004702B8 /* HMUITestWindowController.xib in Resources */,
 				F4C6687E1C545E3800601AFB /* HMMapWindowController.xib in Resources */,
 				F4BEF0021B11A5CC004702B8 /* HMFleetMinimumViewController.xib in Resources */,
@@ -1498,6 +1512,7 @@
 				F4F6E8081B2B17E50008B66E /* HMStrengthenListViewController.m in Sources */,
 				F4268034195332A000B2C27F /* HMPowerUpCommand.m in Sources */,
 				F4C5A2231C3533E800533FB6 /* HMEnhancementListItem.m in Sources */,
+				F4ECA36F1C6102FC0098AB6A /* HMMillisecondTransformer.m in Sources */,
 				F43769E71AE7D22700DE6204 /* HMKCQuest.m in Sources */,
 				F43769E41AE7D01D00DE6204 /* HMUpdateQuestListCommand.m in Sources */,
 				F4C1190818A746EB005D5B25 /* HMJSONTracker.m in Sources */,
@@ -1533,6 +1548,7 @@
 				F4D6BC9C1AA1FAC700742FEB /* HMUITestWindowController.m in Sources */,
 				F4B1E30C19D1C06900805879 /* HMHokyuChargeCommand.m in Sources */,
 				F494DC6318C608C100AE97E4 /* HMShipViewController.m in Sources */,
+				F4C668881C60F5F200601AFB /* HMRepairListViewController.m in Sources */,
 				F46F104918ABAC910063E503 /* KCD.xcdatamodeld in Sources */,
 				F4B414FE18B3A66200468DAF /* HMMemberNDockCommand.m in Sources */,
 				F4F388BD1C13D63B00508549 /* HMGameViewController.m in Sources */,

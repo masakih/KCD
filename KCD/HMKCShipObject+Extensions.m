@@ -454,4 +454,24 @@ static NSArray *levelUpExps = nil;
 	return array.count == 0 ? @NO : @YES;
 }
 
++ (NSSet *)keyPathsForValuesAffectingSteelRequiredInRepair
+{
+	return [NSSet setWithObject:@"nowhp"];
+}
+- (NSNumber *)steelRequiredInRepair
+{
+	NSInteger steel = self.master_ship.fuel_max.integerValue * 0.06 * (self.maxhp.integerValue - self.nowhp.integerValue);
+	return @(steel);
+}
+
++ (NSSet *)keyPathsForValuesAffectingFuelRequiredInRepair
+{
+	return [NSSet setWithObject:@"nowhp"];
+}
+- (NSNumber *)fuelRequiredInRepair
+{
+	NSInteger fuel = self.master_ship.fuel_max.integerValue * 0.032 * (self.maxhp.integerValue - self.nowhp.integerValue);
+	return @(fuel);
+}
+
 @end
