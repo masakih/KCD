@@ -97,7 +97,6 @@ static NSString *groupNameKey = @"group";
 	[self.plistDownloadTask resume];
 }
 
-
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location
 {
 	NSError *error = nil;
@@ -136,7 +135,7 @@ static NSString *groupNameKey = @"group";
 	self.plistDownloadTask = nil;
 }
 
-- (void)buildList:(id)dummy
+- (void)refreshTableView
 {
 	NSDate *now = [NSDate dateWithTimeIntervalSinceNow:0.0];
 	NSCalendarUnit unit = NSCalendarUnitWeekday;
@@ -149,21 +148,18 @@ static NSString *groupNameKey = @"group";
 		predicate = [NSPredicate predicateWithFormat:@"weekday = %ld", targetWeekday];
 	}
 	self.itemList = [self.equipmentStrengthenList filteredArrayUsingPredicate:predicate];
-	
-	[_tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+}
+
+- (void)buildList:(id)dummy
+{
+	[self performSelectorOnMainThread:@selector(refreshTableView) withObject:nil waitUntilDone:NO];
 }
 
 #pragma mark - NSTableViewDelegate & NSTableViewDataSource
-- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
-{
-	return self.itemList.count;
-}
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
-	HMEnhancementListItem *item = self.itemList[row];
 	HMStrengthenListItemCellView *itemView = [tableView makeViewWithIdentifier:@"ItemCell" owner:self];
-	itemView.item = item;
 	return itemView;
 }
 

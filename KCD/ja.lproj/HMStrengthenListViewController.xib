@@ -330,8 +330,8 @@
                                     </tableColumn>
                                 </tableColumns>
                                 <connections>
-                                    <outlet property="dataSource" destination="-2" id="VVo-IG-TSA"/>
-                                    <outlet property="delegate" destination="-2" id="qcz-tI-JPc"/>
+                                    <binding destination="oUI-bX-Tdc" name="content" keyPath="arrangedObjects" id="0N2-69-a9Y"/>
+                                    <outlet property="delegate" destination="-2" id="GjJ-GZ-kJx"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -349,5 +349,10 @@
             </subviews>
             <point key="canvasLocation" x="211.5" y="313"/>
         </customView>
+        <arrayController editable="NO" automaticallyPreparesContent="YES" automaticallyRearrangesObjects="YES" id="oUI-bX-Tdc">
+            <connections>
+                <binding destination="-2" name="contentArray" keyPath="itemList" id="8i2-ne-ABU"/>
+            </connections>
+        </arrayController>
     </objects>
 </document>

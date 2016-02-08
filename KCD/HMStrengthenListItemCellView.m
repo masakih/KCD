@@ -21,47 +21,42 @@
 {
 	return (HMEnhancementListItem *)self.objectValue;
 }
-- (void)setItem:(HMEnhancementListItem *)item
-{
-	self.objectValue = item;
-}
-
 
 + (NSSet *)keyPathsForValuesAffectingSecondsShipList
 {
-	return [NSSet setWithObjects:@"item", nil];
+	return [NSSet setWithObjects:@"item", @"objectValue", nil];
 }
 + (NSSet *)keyPathsForValuesAffectingRequiredEquipment01
 {
-	return [NSSet setWithObjects:@"item", nil];
+	return [NSSet setWithObjects:@"item", @"objectValue", nil];
 }
 + (NSSet *)keyPathsForValuesAffectingRequiredEquipment02
 {
-	return [NSSet setWithObjects:@"item", nil];
+	return [NSSet setWithObjects:@"item", @"objectValue", nil];
 }
 + (NSSet *)keyPathsForValuesAffectingRequiredEquipment03
 {
-	return [NSSet setWithObjects:@"item", nil];
+	return [NSSet setWithObjects:@"item", @"objectValue", nil];
 }
 + (NSSet *)keyPathsForValuesAffectingTargetEquipment
 {
-	return [NSSet setWithObjects:@"item", nil];
+	return [NSSet setWithObjects:@"item", @"objectValue", nil];
 }
 + (NSSet *)keyPathsForValuesAffectingRemodelEquipment
 {
-	return [NSSet setWithObjects:@"item", nil];
+	return [NSSet setWithObjects:@"item", @"objectValue", nil];
 }
 + (NSSet *)keyPathsForValuesAffectingNeedsScrewString01
 {
-	return [NSSet setWithObjects:@"item", nil];
+	return [NSSet setWithObjects:@"item", @"objectValue", nil];
 }
 + (NSSet *)keyPathsForValuesAffectingNeedsScrewString02
 {
-	return [NSSet setWithObjects:@"item", nil];
+	return [NSSet setWithObjects:@"item", @"objectValue", nil];
 }
 + (NSSet *)keyPathsForValuesAffectingNeedsScrewString03
 {
-	return [NSSet setWithObjects:@"item", nil];
+	return [NSSet setWithObjects:@"item", @"objectValue", nil];
 }
 
 - (NSString *)secondsShipList

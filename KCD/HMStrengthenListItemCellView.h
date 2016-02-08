@@ -12,7 +12,7 @@
 
 @interface HMStrengthenListItemCellView : NSTableCellView
 
-@property (strong) HMEnhancementListItem *item;
+@property (readonly) HMEnhancementListItem *item;
 
 // for Cocoa Bindings
 @property (readonly) NSString *secondsShipList;
