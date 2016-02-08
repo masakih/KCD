@@ -103,13 +103,13 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                             </tabViewItem>
-                            <tabViewItem label="編成" identifier="2" id="vnl-eb-0bM">
+                            <tabViewItem label="編成支援" identifier="2" id="vnl-eb-0bM">
                                 <view key="view" id="HTH-7g-xfp">
                                     <rect key="frame" x="10" y="33" width="323" height="565"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                             </tabViewItem>
-                            <tabViewItem label="近代化改修" identifier="3" id="Ops-Am-LiF">
+                            <tabViewItem label="近代化" identifier="3" id="Ops-Am-LiF">
                                 <view key="view" id="ytJ-Qj-RCn">
                                     <rect key="frame" x="10" y="33" width="323" height="565"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
