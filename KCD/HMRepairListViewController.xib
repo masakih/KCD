@@ -39,7 +39,7 @@
                                 <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn identifier="name" editable="NO" width="122" minWidth="100" maxWidth="20000" id="TUB-Oz-Ql1">
+                                    <tableColumn identifier="name" editable="NO" width="107" minWidth="79" maxWidth="20000" id="TUB-Oz-Ql1">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="名前">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -65,6 +65,22 @@
                                             </binding>
                                         </connections>
                                     </tableColumn>
+                                    <tableColumn identifier="lv" width="36" minWidth="10" maxWidth="3.4028234663852886e+38" id="1tc-6T-vOf">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="right" title="Lv.">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </tableHeaderCell>
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="right" title="150" id="6yl-6A-VVx">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="d8w-mz-p76" name="value" keyPath="arrangedObjects.lv" id="wqm-NF-oR5"/>
+                                        </connections>
+                                    </tableColumn>
                                     <tableColumn identifier="time" editable="NO" width="79" minWidth="10" maxWidth="3.4028234663852886e+38" id="TM5-mx-9OE">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="right" title="修理時間">
                                             <font key="font" metaFont="smallSystem"/>
@@ -87,7 +103,7 @@
                                             </binding>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn identifier="steel" width="48" minWidth="10" maxWidth="3.4028234663852886e+38" id="AWO-9w-e21">
+                                    <tableColumn identifier="steel" width="36" minWidth="10" maxWidth="3.4028234663852886e+38" id="AWO-9w-e21">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="right" title="鋼材">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -103,7 +119,7 @@
                                             <binding destination="d8w-mz-p76" name="value" keyPath="arrangedObjects.steelRequiredInRepair" id="7s7-Yg-6aG"/>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn identifier="fuel" width="48" minWidth="10" maxWidth="3.4028234663852886e+38" id="inV-zw-QnU">
+                                    <tableColumn identifier="fuel" width="36" minWidth="10" maxWidth="3.4028234663852886e+38" id="inV-zw-QnU">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="right" title="燃焼">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
