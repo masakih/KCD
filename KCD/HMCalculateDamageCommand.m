@@ -11,9 +11,11 @@
 #import "HMTemporaryDataStore.h"
 #import "HMServerDataStore.h"
 
+#import "HMKCDamage.h"
+#import "HMKCBattle.h"
 #import "HMKCShipObject+Extensions.h"
-#import "HMKCSlotItemObject+Extensions.h"
-
+#import "HMKCSlotItemObject.h"
+#import "HMKCDeck+Extension.h"
 
 #define DAMAGE_CHECK 0
 
@@ -44,14 +46,14 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 	NSManagedObjectContext *moc = self.store.managedObjectContext;
 	
 	NSError *error = nil;
-	NSArray *array = [self.store objectsWithEntityName:@"Battle"
-										predicate:nil
-											error:&error];
+	NSArray<HMKCBattle *> *array = [self.store objectsWithEntityName:@"Battle"
+														   predicate:nil
+															   error:&error];
 	if(error) {
 		[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
 		return;
 	}
-	for(id object in array) {
+	for(HMKCBattle *object in array) {
 		[moc deleteObject:object];
 	}
 		
@@ -63,17 +65,17 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 	NSManagedObjectContext *moc = self.store.managedObjectContext;
 	
 	NSError *error = nil;
-	NSArray *array = [self.store objectsWithEntityName:@"Damage"
-							   predicate:nil
-								   error:&error];
+	NSArray<HMKCDamage *> *array = [self.store objectsWithEntityName:@"Damage"
+														   predicate:nil
+															   error:&error];
 	if(error) {
 		[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
 		return;
 	}
-	for(id object in array) {
+	for(HMKCDamage *object in array) {
 		[moc deleteObject:object];
 	}
-		
+	
 	[self.store saveAction:nil];
 }
 
@@ -82,13 +84,13 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 	NSManagedObjectContext *moc = self.store.managedObjectContext;
 	
 	// Battleエンティティ作成
-	id battle = [NSEntityDescription insertNewObjectForEntityForName:@"Battle"
-											  inManagedObjectContext:moc];
+	HMKCBattle *battle = [NSEntityDescription insertNewObjectForEntityForName:@"Battle"
+													   inManagedObjectContext:moc];
 	
-	[battle setValue:@([[self.arguments valueForKey:@"api_deck_id"] integerValue]) forKeyPath:@"deckId"];
-	[battle setValue:@([[self.arguments valueForKey:@"api_maparea_id"] integerValue]) forKeyPath:@"mapArea"];
-	[battle setValue:@([[self.arguments valueForKey:@"api_mapinfo_no"] integerValue]) forKeyPath:@"mapInfo"];
-	[battle setValue:@([[self.json valueForKeyPath:@"api_data.api_no"] integerValue]) forKeyPath:@"no"];
+	battle.deckId = @([[self.arguments valueForKey:@"api_deck_id"] integerValue]);
+	battle.mapArea = @([[self.arguments valueForKey:@"api_maparea_id"] integerValue]);
+	battle.mapInfo = @([[self.arguments valueForKey:@"api_mapinfo_no"] integerValue]);
+	battle.no = @([[self.json valueForKeyPath:@"api_data.api_no"] integerValue]);
 	
 	[self.store saveAction:nil];
 }
@@ -96,9 +98,9 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 - (void)updateBattleCell
 {
 	NSError *error = nil;
-	NSArray *battles = [self.store objectsWithEntityName:@"Battle"
-											   predicate:nil
-												   error:&error];
+	NSArray<HMKCBattle *> *battles = [self.store objectsWithEntityName:@"Battle"
+															 predicate:nil
+																 error:&error];
 	if(error) {
 		[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
 	}
@@ -106,24 +108,23 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 		NSLog(@"Battle is invalid.");
 		return;
 	}
-	id battle = battles[0];
 	
-	id battleCell = [battle valueForKey:@"no"];
-	if([battleCell integerValue] == 0) {
+	NSNumber *battleCell = battles[0].no;
+	if(battleCell.integerValue == 0) {
 		battleCell = nil;
 	}
 	if([self.api hasSuffix:@"next"]) {
 		battleCell = nil;
 	}
-	[battle setValue:battleCell forKeyPath:@"battleCell"];
+	battles[0].battleCell = battleCell;
 }
 
 - (void)nextCell
 {
 	NSError *error = nil;
-	NSArray *battles = [self.store objectsWithEntityName:@"Battle"
-											   predicate:nil
-												   error:&error];
+	NSArray<HMKCBattle *> *battles = [self.store objectsWithEntityName:@"Battle"
+															 predicate:nil
+																 error:&error];
 	if(error) {
 		[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
 	}
@@ -131,27 +132,26 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 		NSLog(@"Battle is invalid.");
 		return;
 	}
-	id battle = battles[0];
 	id cellNumber = [self.json valueForKeyPath:@"api_data.api_no"];
 	id eventIDNumber = [self.json valueForKeyPath:@"api_data.api_event_id"];
 	BOOL isBossCell = [eventIDNumber integerValue] == 5;
 	
-	[battle setValue:@([cellNumber integerValue]) forKeyPath:@"no"];
-	[battle setValue:@(isBossCell) forKeyPath:@"isBossCell"];
+	battles[0].no = @([cellNumber integerValue]);
+	battles[0].isBossCell = @(isBossCell);
 	
 	[self.store saveAction:nil];
 }
 
-- (NSMutableArray *)damages
+- (NSArray<HMKCDamage *> *)damages
 {
 	NSManagedObjectContext *moc = self.store.managedObjectContext;
 	
 	NSError *error = nil;
 	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
-	NSArray *array = [self.store objectsWithEntityName:@"Damage"
-									   sortDescriptors:@[sortDescriptor]
-											 predicate:nil
-												 error:&error];
+	NSArray<HMKCDamage *> *array = [self.store objectsWithEntityName:@"Damage"
+													 sortDescriptors:@[sortDescriptor]
+														   predicate:nil
+															   error:&error];
 	if(error) {
 		[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
 	}
@@ -161,9 +161,9 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 	if(array.count != frendShipCount) {
 		// Battleエンティティ取得
 		error = nil;
-		NSArray *battles = [self.store objectsWithEntityName:@"Battle"
-												   predicate:nil
-													   error:&error];
+		NSArray<HMKCBattle *> *battles = [self.store objectsWithEntityName:@"Battle"
+																 predicate:nil
+																	 error:&error];
 		if(error) {
 			[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
 		}
@@ -171,24 +171,23 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 			NSLog(@"Battle is invalid.");
 			return [NSMutableArray new];
 		}
-		id battle = battles[0];
 		
 		// Damage エンティティ作成6個
-		NSMutableArray *damages = [NSMutableArray new];
+		NSMutableArray<HMKCDamage *> *damages = [NSMutableArray new];
 		for(NSInteger i = 0; i < frendShipCount; i++) {
-			id damage = [NSEntityDescription insertNewObjectForEntityForName:@"Damage"
-													  inManagedObjectContext:moc];
-			[damage setValue:battle forKeyPath:@"battle"];
-			[damage setValue:@(i) forKeyPath:@"id"];
+			HMKCDamage *damage = [NSEntityDescription insertNewObjectForEntityForName:@"Damage"
+															   inManagedObjectContext:moc];
+			damage.battle = battles[0];
+			damage.id = @(i);
 			[damages addObject:damage];
 		}
 		array = damages;
 	}
 	
-	return [NSMutableArray arrayWithArray:array];
+	return [NSArray arrayWithArray:array];
 }
 
-- (void)calculateHougeki:(NSMutableArray *)damages targetsKeyPath:(NSString *)targetKeyPath damageKeyPath:(NSString *)damageKeyPath
+- (void)calculateHougeki:(NSArray<HMKCDamage *> *)damages targetsKeyPath:(NSString *)targetKeyPath damageKeyPath:(NSString *)damageKeyPath
 {
 #if DAMAGE_CHECK
 	NSLog(@"Start Hougeki %@", targetKeyPath);
@@ -196,7 +195,7 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 	id targetShips = [self.json valueForKeyPath:targetKeyPath];
 	if(!targetShips || [targetShips isKindOfClass:[NSNull class]]) return;
 	
-	id hougeki1Damages = [self.json valueForKeyPath:damageKeyPath];
+	NSArray<NSArray *> *hougeki1Damages = [self.json valueForKeyPath:damageKeyPath];
 	NSInteger i = 0;
 	NSInteger offset = self.calcSecondFleet ? 6 : 0;
 	for(NSArray *array in targetShips) {
@@ -216,10 +215,10 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 				continue;
 			}
 			
-			id damageObject = [damages objectAtIndex:target - 1 + offset];
-			NSInteger damage = [[[hougeki1Damages objectAtIndex:i] objectAtIndex:j] integerValue];
-			damage += [[damageObject valueForKey:@"damage"] integerValue];
-			[damageObject setValue:@(damage) forKeyPath:@"damage"];
+			HMKCDamage *damageObject = damages[target - 1 + offset];
+			NSInteger damage = [hougeki1Damages[i][j] integerValue];
+			damage += damageObject.damage.integerValue;
+			damageObject.damage = @(damage);
 			
 #if DAMAGE_CHECK
 			NSLog(@"Hougeki %ld -> %ld", target + offset, damage);
@@ -231,7 +230,7 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 	}
 }
 
-- (void)calculateFDam:(NSMutableArray *)damages fdamKeyPath:(NSString *)fdamKeyPath
+- (void)calculateFDam:(NSArray<HMKCDamage *> *)damages fdamKeyPath:(NSString *)fdamKeyPath
 {
 #if DAMAGE_CHECK
 	NSLog(@"Start FDam %@", fdamKeyPath);
@@ -241,10 +240,10 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 	
 	NSInteger offset = self.calcSecondFleet ? 6 : 0;
 	for(NSInteger i = 1; i <= 6; i++) {
-		id damageObject = [damages objectAtIndex:i - 1 + offset];
-		NSInteger damage = [[koukuDamage objectAtIndex:i] integerValue];
-		damage += [[damageObject valueForKey:@"damage"] integerValue];
-		[damageObject setValue:@(damage) forKeyPath:@"damage"];
+		HMKCDamage *damageObject = damages[i - 1 + offset];
+		NSInteger damage = [koukuDamage[i] integerValue];
+		damage += damageObject.damage.integerValue;
+		damageObject.damage = @(damage);
 		
 #if DAMAGE_CHECK
 		NSLog(@"FDam %ld -> %ld", i + offset, damage);
@@ -264,7 +263,7 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 	// 艦隊のチェック
 	
 	// Damage エンティティ作成6個
-	NSMutableArray *damages = [self damages];
+	NSArray<HMKCDamage *> *damages = [self damages];
 	
 	// koukuu
 	[self calculateFDam:damages
@@ -324,7 +323,7 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 	[self updateBattleCell];
 	
 	// Damage 取得
-	NSMutableArray *damages = [self damages];
+	NSArray<HMKCDamage *> *damages = [self damages];
 	
 	// hougeki
 	self.calcSecondFleet = self.isCombinedBattle;
@@ -363,7 +362,7 @@ NSInteger damageControlIfPossible(NSInteger nowhp, HMKCShipObject *ship)
 - (void)applyDamage
 {
 	// Damage 取得
-	NSArray *damages = nil;
+	NSArray<HMKCDamage *> *damages = nil;
 	
 	NSError *error = nil;
 	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
@@ -382,9 +381,9 @@ NSInteger damageControlIfPossible(NSInteger nowhp, HMKCShipObject *ship)
 	}
 	
 	error = nil;
-	NSArray *array = [self.store objectsWithEntityName:@"Battle"
-										predicate:nil
-											error:&error];
+	NSArray<HMKCBattle *> *array = [self.store objectsWithEntityName:@"Battle"
+														   predicate:nil
+															   error:&error];
 	if(error) {
 		[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
 		return;
@@ -395,14 +394,14 @@ NSInteger damageControlIfPossible(NSInteger nowhp, HMKCShipObject *ship)
 	}
 	
 	HMServerDataStore *serverStore = [HMServerDataStore oneTimeEditor];
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id = %@", [array[0] valueForKey:@"deckId"]];
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id = %@", array[0].deckId];
 	BOOL firstRun = YES;
 	for(NSInteger i = 0; i < 2; i++) {
 		// 艦隊メンバーを取得
 		error = nil;
-		NSArray *decks = [serverStore objectsWithEntityName:@"Deck"
-												  predicate:predicate
-													  error:&error];
+		NSArray<HMKCDeck *> *decks = [serverStore objectsWithEntityName:@"Deck"
+															  predicate:predicate
+																  error:&error];
 		if(error) {
 			[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
 			return;
@@ -412,21 +411,15 @@ NSInteger damageControlIfPossible(NSInteger nowhp, HMKCShipObject *ship)
 			[self log:@"Deck is invalid. %s", __PRETTY_FUNCTION__];
 			return;
 		}
-		id deck = decks[0];
-		NSMutableArray *shipIds = [NSMutableArray new];
-		[shipIds addObject:[deck valueForKey:@"ship_0"]];
-		[shipIds addObject:[deck valueForKey:@"ship_1"]];
-		[shipIds addObject:[deck valueForKey:@"ship_2"]];
-		[shipIds addObject:[deck valueForKey:@"ship_3"]];
-		[shipIds addObject:[deck valueForKey:@"ship_4"]];
-		[shipIds addObject:[deck valueForKey:@"ship_5"]];
+		HMKCDeck *deck = decks[0];
+		NSArray *shipIds = @[deck.ship_0, deck.ship_1, deck.ship_2, deck.ship_3, deck.ship_4, deck.ship_5];
 		
-		NSMutableArray *ships = [NSMutableArray new];
+		NSMutableArray<HMKCShipObject *> *ships = [NSMutableArray new];
 		for(id shipId in shipIds) {
 			error = nil;
-			NSArray *ship = [serverStore objectsWithEntityName:@"Ship"
-														 error:&error
-											   predicateFormat:@"id = %@", @([shipId integerValue])];
+			NSArray<HMKCShipObject *> *ship = [serverStore objectsWithEntityName:@"Ship"
+																		   error:&error
+																 predicateFormat:@"id = %@", @([shipId integerValue])];
 			if(error) {
 				[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
 			}
@@ -438,15 +431,13 @@ NSInteger damageControlIfPossible(NSInteger nowhp, HMKCShipObject *ship)
 		NSUInteger shipCount = ships.count;
 		NSUInteger offset = (self.isCombinedBattle && !firstRun) ? 6 : 0;
 		for(NSInteger i = 0; i < shipCount; i++) {
-			HMKCShipObject *ship = ships[i];
-			NSInteger damage = [[damages[i + offset] valueForKey:@"damage"] integerValue];
-			NSInteger nowhp = [[ship valueForKey:@"nowhp"] integerValue];
+			NSInteger damage = damages[i + offset].damage.integerValue;
+			NSInteger nowhp = ships[i].nowhp.integerValue;
 			nowhp -= damage;
-			[ship setValue:@(nowhp) forKeyPath:@"nowhp"];
 			if(nowhp <= 0) {
-				nowhp = damageControlIfPossible(nowhp, ship);
+				nowhp = damageControlIfPossible(nowhp, ships[i]);
 			}
-			ship.nowhp = @(nowhp);
+			ships[i].nowhp = @(nowhp);
 		}
 		
 		predicate = [NSPredicate predicateWithFormat:@"id = %@", @2];

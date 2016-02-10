@@ -9,6 +9,7 @@
 #import "HMRealPowerUpCommand.h"
 
 #import "HMServerDataStore.h"
+#import "HMKCShipObject+Extensions.h"
 
 
 @implementation HMRealPowerUpCommand
@@ -22,9 +23,9 @@
 	
 	for(NSString *shipId in usedShipStringArray) {
 		NSError *error = nil;
-		NSArray *ships = [store objectsWithEntityName:@"Ship"
-												error:&error
-									  predicateFormat:@"id = %@", @([shipId integerValue])];
+		NSArray<HMKCShipObject *> *ships = [store objectsWithEntityName:@"Ship"
+																  error:&error
+														predicateFormat:@"id = %@", @([shipId integerValue])];
 		if(ships.count == 0) {
 			continue;
 		}

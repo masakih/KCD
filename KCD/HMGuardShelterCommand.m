@@ -13,6 +13,7 @@
 #import "HMServerDataStore.h"
 
 #import "HMKCDeck.h"
+#import "HMKCGuardEscaped.h"
 
 
 NSString *HMGuardShelterCommandDidUpdateGuardExcapeNotification = @"HMGuardShelterCommandDidUpdateGuardExcapeNotification";
@@ -56,9 +57,9 @@ NSString *HMGuardShelterCommandDidUpdateGuardExcapeNotification = @"HMGuardShelt
 	NSError *error = nil;
 	HMServerDataStore *serverStore = [HMServerDataStore defaultManager];
 	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id = %@", feetID];
-	NSArray *decks = [serverStore objectsWithEntityName:@"Deck"
-											  predicate:predicate
-												  error:&error];
+	NSArray<HMKCDeck *> *decks = [serverStore objectsWithEntityName:@"Deck"
+														  predicate:predicate
+															  error:&error];
 	if(error) {
 		[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
 		return nil;
@@ -68,14 +69,13 @@ NSString *HMGuardShelterCommandDidUpdateGuardExcapeNotification = @"HMGuardShelt
 		[self log:@"Deck is invalid. %s", __PRETTY_FUNCTION__];
 		return nil;
 	}
-	HMKCDeck *deck = decks[0];
 	NSArray *shipIds = @[
-						 deck.ship_0,
-						 deck.ship_1,
-						 deck.ship_2,
-						 deck.ship_3,
-						 deck.ship_4,
-						 deck.ship_5,
+						 decks[0].ship_0,
+						 decks[0].ship_1,
+						 decks[0].ship_2,
+						 decks[0].ship_3,
+						 decks[0].ship_4,
+						 decks[0].ship_5,
 						 ];
 	
 	return shipIds;
@@ -108,33 +108,33 @@ NSString *HMGuardShelterCommandDidUpdateGuardExcapeNotification = @"HMGuardShelt
 	
 	
 	HMTemporaryDataStore *store = [HMTemporaryDataStore oneTimeEditor];
-	NSManagedObject *object = [NSEntityDescription insertNewObjectForEntityForName:@"GuardEscaped"
-														   inManagedObjectContext:store.managedObjectContext];
-	[object setValue:guardianID forKey:@"shipID"];
-	[object setValue:@NO forKey:@"ensured"];
+	HMKCGuardEscaped *guardian = [NSEntityDescription insertNewObjectForEntityForName:@"GuardEscaped"
+															   inManagedObjectContext:store.managedObjectContext];
+	guardian.shipID = guardianID;
+	guardian.ensured = @NO;
 	
-	object = [NSEntityDescription insertNewObjectForEntityForName:@"GuardEscaped"
+	HMKCGuardEscaped *damaged = [NSEntityDescription insertNewObjectForEntityForName:@"GuardEscaped"
 										   inManagedObjectContext:store.managedObjectContext];
-	[object setValue:damagedShipID forKey:@"shipID"];
-	[object setValue:@NO forKey:@"ensured"];
+	damaged.shipID = damagedShipID;
+	damaged.ensured = @NO;
 	
 }
 - (void)removeInvalidEntry
 {
 	HMTemporaryDataStore *store = [HMTemporaryDataStore oneTimeEditor];
 	NSError *error = nil;
-	NSArray *array = [store objectsWithEntityName:@"GuardEscaped"
-											error:&error
-								  predicateFormat:@"ensured = FALSE"];
+	NSArray<HMKCGuardEscaped *> *escapeds = [store objectsWithEntityName:@"GuardEscaped"
+																   error:&error
+													  predicateFormat:@"ensured = FALSE"];
 	if(error) {
 		NSLog(@"GuardEscaped is invalid. -> %@", error);
 		return;
 	}
-	if(!array) {
+	if(!escapeds) {
 		NSLog(@"GuardEscaped is invalid. -> %@", error);
 		return;
 	}
-	for(NSManagedObject *object in array) {
+	for(NSManagedObject *object in escapeds) {
 		[store.managedObjectContext deleteObject:object];
 	}
 	[store saveAction:nil];
@@ -146,18 +146,18 @@ NSString *HMGuardShelterCommandDidUpdateGuardExcapeNotification = @"HMGuardShelt
 {
 	HMTemporaryDataStore *store = [HMTemporaryDataStore oneTimeEditor];
 	NSError *error = nil;
-	NSArray *array = [store objectsWithEntityName:@"GuardEscaped"
-											error:&error
-								  predicateFormat:nil];
+	NSArray<HMKCGuardEscaped *> *escapeds = [store objectsWithEntityName:@"GuardEscaped"
+																   error:&error
+														 predicateFormat:nil];
 	if(error) {
 		NSLog(@"GuardEscaped is invalid. -> %@", error);
 		return;
 	}
-	if(!array) {
+	if(!escapeds) {
 		NSLog(@"GuardEscaped is invalid. -> %@", error);
 		return;
 	}
-	for(NSManagedObject *object in array) {
+	for(NSManagedObject *object in escapeds) {
 		[store.managedObjectContext deleteObject:object];
 	}
 	[store saveAction:nil];
@@ -169,9 +169,9 @@ NSString *HMGuardShelterCommandDidUpdateGuardExcapeNotification = @"HMGuardShelt
 {
 	HMTemporaryDataStore *store = [HMTemporaryDataStore oneTimeEditor];
 	NSError *error = nil;
-	NSArray *shelters = [store objectsWithEntityName:@"GuardEscaped"
-											   error:&error
-									 predicateFormat:nil];
+	NSArray<HMKCGuardEscaped *> *shelters = [store objectsWithEntityName:@"GuardEscaped"
+																   error:&error
+														 predicateFormat:nil];
 	if(error) {
 		NSLog(@"GuardEscaped is invalid. -> %@", error);
 		return;
@@ -180,8 +180,8 @@ NSString *HMGuardShelterCommandDidUpdateGuardExcapeNotification = @"HMGuardShelt
 		NSLog(@"GuardEscaped is invalid. -> %@", error);
 		return;
 	}
-	for(NSManagedObject *object in shelters) {
-		[object setValue:@YES forKey:@"ensured"];
+	for(HMKCGuardEscaped *object in shelters) {
+		object.ensured = @YES;
 	}
 	[store saveAction:nil];
 	[NSThread sleepForTimeInterval:0.1];

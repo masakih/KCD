@@ -19,9 +19,9 @@
 	NSString *destroyedShipId = [self.arguments objectForKey:@"api_ship_id"];
 	
 	NSError *error = nil;
-	NSArray *ships = [store objectsWithEntityName:@"Ship"
-											error:&error
-								  predicateFormat:@"id = %@", @([destroyedShipId integerValue])];
+	NSArray<NSManagedObject *> *ships = [store objectsWithEntityName:@"Ship"
+															   error:&error
+													 predicateFormat:@"id = %@", @([destroyedShipId integerValue])];
 	if(ships.count == 0) {
 		return;
 	}

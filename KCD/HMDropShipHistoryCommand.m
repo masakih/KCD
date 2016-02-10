@@ -12,18 +12,21 @@
 #import "HMLocalDataStore.h"
 #import "HMTemporaryDataStore.h"
 #import "HMDropShipHistory.h"
+#import "HMKCBattle.h"
+#import "HMKCMasterMapInfo.h"
+#import "HMKCMasterMapArea.h"
 
 @implementation HMDropShipHistoryCommand
 
-- (NSManagedObject *)battle
+- (HMKCBattle *)battle
 {
 	HMTemporaryDataStore *store = [HMTemporaryDataStore defaultManager];
 	NSError *error = nil;
-	NSArray *array  = [store objectsWithEntityName:@"Battle" predicate:nil error:&error];
+	NSArray<HMKCBattle *> *battles  = [store objectsWithEntityName:@"Battle" predicate:nil error:&error];
 	if(error) {
 		NSLog(@"%s error: %@", __PRETTY_FUNCTION__, error);
 	}
-	return array.count > 0 ? array[0] : nil;
+	return battles.count > 0 ? battles[0] : nil;
 }
 - (void)execute
 {
@@ -37,42 +40,42 @@
 	id getShip = [data valueForKey:@"api_get_ship"];
 	if(!getShip || [getShip isKindOfClass:[NSNull class]]) return;
 	
-	id battle = [self battle];
+	HMKCBattle *battle = [self battle];
 	if(!battle) {
 		NSLog(@"Can not get battle object");
 		return;
 	}
 	
-	id mapAreaId = [battle valueForKey:@"mapArea"];
-	id mapInfoId = [battle valueForKey:@"mapInfo"];
-	id mapCellNo = [battle valueForKey:@"no"];
+	NSNumber *mapAreaId = battle.mapArea;
+	NSNumber *mapInfoId = battle.mapInfo;
+	NSNumber *mapCellNo = battle.no;
 	
 	HMServerDataStore *store = [HMServerDataStore defaultManager];
 	NSError *error = nil;
-	NSArray *array = [store objectsWithEntityName:@"MasterMapInfo"
-											error:&error
-								  predicateFormat:@"maparea_id = %@ AND %K = %@", mapAreaId, @"no", mapInfoId];
+	NSArray<HMKCMasterMapInfo *> *mapInfos = [store objectsWithEntityName:@"MasterMapInfo"
+																	error:&error
+														  predicateFormat:@"maparea_id = %@ AND %K = %@", mapAreaId, @"no", mapInfoId];
 	if(error) {
 		NSLog(@"%s error: %@", __PRETTY_FUNCTION__, error);
 	}
-	if(array.count == 0) {
+	if(mapInfos.count == 0) {
 		NSLog(@"%s error: Can not get mapInfo", __PRETTY_FUNCTION__);
 		return;
 	}
-	id mapInfoName = [array[0] valueForKey:@"name"];
+	NSString *mapInfoName = mapInfos[0].name;
 	
 	error = nil;
-	array = [store objectsWithEntityName:@"MasterMapArea"
-								   error:&error
-						 predicateFormat:@"id = %@", mapAreaId];
+	NSArray<HMKCMasterMapArea *> *mapAreas = [store objectsWithEntityName:@"MasterMapArea"
+																 error:&error
+													   predicateFormat:@"id = %@", mapAreaId];
 	if(error) {
 		NSLog(@"%s error: %@", __PRETTY_FUNCTION__, error);
 	}
-	if(array.count == 0) {
+	if(mapAreas.count == 0) {
 		NSLog(@"%s error: Can not get mapArea", __PRETTY_FUNCTION__);
 		return;
 	}
-	id mapAreaName = [array[0] valueForKey:@"name"];
+	NSString *mapAreaName = mapAreas[0].name;
 	
 	HMLocalDataStore *lds = [HMLocalDataStore oneTimeEditor];
 	HMDropShipHistory *newObejct = [NSEntityDescription insertNewObjectForEntityForName:@"HiddenDropShipHistory"
@@ -94,14 +97,14 @@
 {
 	HMLocalDataStore *lds = [HMLocalDataStore oneTimeEditor];
 	NSError *error = nil;
-	NSArray *array = [lds objectsWithEntityName:@"HiddenDropShipHistory"
-									  predicate:nil
-										  error:&error];
+	NSArray<HMDropShipHistory *> *dropShipHistories = [lds objectsWithEntityName:@"HiddenDropShipHistory"
+																	   predicate:nil
+																		   error:&error];
 	if(error) {
 		NSLog(@"%s error: %@", __PRETTY_FUNCTION__, error);
 	}
 	NSManagedObjectContext *context = lds.managedObjectContext;
-	for(HMDropShipHistory *history in array) {
+	for(HMDropShipHistory *history in dropShipHistories) {
 		HMDropShipHistory *newObejct = [NSEntityDescription insertNewObjectForEntityForName:@"DropShipHistory"
 																	 inManagedObjectContext:[lds managedObjectContext]];
 		

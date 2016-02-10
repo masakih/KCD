@@ -9,6 +9,7 @@
 #import "HMChangeHenseiCommand.h"
 
 #import "HMServerDataStore.h"
+#import "HMKCDeck+Extension.h"
 
 @interface HMChangeHenseiCommand ()
 @property (nonatomic, strong) HMServerDataStore *store;
@@ -40,14 +41,14 @@
 {
 	NSError *error = nil;
 	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
-	NSArray *decks = [self.store objectsWithEntityName:@"Deck"
-									   sortDescriptors:@[sortDescriptor]
-											 predicate:nil
-												 error:&error];
+	NSArray<HMKCDeck *> *decks = [self.store objectsWithEntityName:@"Deck"
+												   sortDescriptors:@[sortDescriptor]
+														 predicate:nil
+															 error:&error];
 	// TODO: error handling
 	
 	NSMutableArray *ships = [NSMutableArray new];
-	for(id deck in decks) {
+	for(HMKCDeck *deck in decks) {
 		for(NSUInteger i = 0; i < 6; i++) {
 			[ships addObject:[deck valueForKey:[NSString stringWithFormat:@"ship_%ld", i]]];
 		}
@@ -65,12 +66,12 @@
 - (void)packFleet
 {
 	NSError *error = nil;
-	NSArray *decks = [self.store objectsWithEntityName:@"Deck"
-											 predicate:nil
-												 error:&error];
+	NSArray<HMKCDeck *> *decks = [self.store objectsWithEntityName:@"Deck"
+														 predicate:nil
+															 error:&error];
 	// TODO: error handling
 	
-	for(id deck in decks) {
+	for(HMKCDeck *deck in decks) {
 		BOOL needsPack = NO;
 		for(NSInteger i = 0; i < 6; i++) {
 			NSInteger shipId = [[deck valueForKey:[NSString stringWithFormat:@"ship_%ld", i]] integerValue];
@@ -94,11 +95,11 @@
 	NSInteger deckNumber = [[self.arguments valueForKey:@"api_id"] integerValue];
 	
 	NSError *error = nil;
-	NSArray *decks = [self.store objectsWithEntityName:@"Deck"
-												 error:&error
-									   predicateFormat:@"id = %ld", deckNumber];
+	NSArray<HMKCDeck *> *decks = [self.store objectsWithEntityName:@"Deck"
+															 error:&error
+												   predicateFormat:@"id = %ld", deckNumber];
 	// TODO: error handling
-	id deck = decks[0];
+	HMKCDeck *deck = decks[0];
 	
 	for(NSInteger i = 1; i < 6; i++) {
 		[deck setValue:@(-1) forKey:[NSString stringWithFormat:@"ship_%ld", i]];
@@ -118,14 +119,14 @@
 	
 	NSError *error = nil;
 	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
-	NSArray *decks = [self.store objectsWithEntityName:@"Deck"
-									   sortDescriptors:@[sortDescriptor]
-											 predicate:nil
-												 error:&error];
+	NSArray<HMKCDeck *> *decks = [self.store objectsWithEntityName:@"Deck"
+												   sortDescriptors:@[sortDescriptor]
+														 predicate:nil
+															 error:&error];
 	// TODO: error handling
 	
 	NSMutableArray *ships = [NSMutableArray new];
-	for(id deck in decks) {
+	for(HMKCDeck *deck in decks) {
 		for(NSUInteger i = 0; i < 6; i++) {
 			[ships addObject:[deck valueForKey:[NSString stringWithFormat:@"ship_%ld", i]]];
 		}
@@ -144,12 +145,12 @@
 	NSInteger replaceShipId = [ships[(deckNumber - 1) * 6 + shipIndex] integerValue];
 	
 	// 艦隊に配備
-	id deck = decks[deckNumber - 1];
+	HMKCDeck *deck = decks[deckNumber - 1];
 	[deck setValue:@(shipId) forKey:[NSString stringWithFormat:@"ship_%ld", shipIndex]];
 	
 	// 入れ替え
 	if(alreadyInFleet && shipId != -1) {
-		id deck = decks[shipDeckNumber];
+		HMKCDeck *deck = decks[shipDeckNumber];
 		[deck setValue:@(replaceShipId) forKey:[NSString stringWithFormat:@"ship_%ld", shipDeckIndex]];
 	}
 	

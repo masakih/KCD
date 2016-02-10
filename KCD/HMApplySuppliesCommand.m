@@ -22,25 +22,24 @@
 	
 	for(NSDictionary *updataInfo in shipInfos) {
 		NSError *error = nil;
-		NSArray *array = [store objectsWithEntityName:@"Ship"
-												error:&error
-									  predicateFormat:@"id = %@", @([updataInfo[@"api_id"] integerValue])];
-		if(array.count == 0) {
+		NSArray<HMKCShipObject *> *ships = [store objectsWithEntityName:@"Ship"
+																  error:&error
+														predicateFormat:@"id = %@", @([updataInfo[@"api_id"] integerValue])];
+		if(ships.count == 0) {
 			if(error) {
 				NSLog(@"Error: at %@ : %@", NSStringFromClass([self class]), error);
 			}
 			continue;
 		}
 		
-		HMKCShipObject *ship = array[0];
-		ship.bull = updataInfo[@"api_bull"];
-		ship.fuel = updataInfo[@"api_fuel"];
+		ships[0].bull = updataInfo[@"api_bull"];
+		ships[0].fuel = updataInfo[@"api_fuel"];
 		NSArray *onslots = updataInfo[@"api_onslot"];
-		ship.onslot_0 = onslots[0];
-		ship.onslot_1 = onslots[1];
-		ship.onslot_2 = onslots[2];
-		ship.onslot_3 = onslots[3];
-		ship.onslot_4 = onslots[4];
+		ships[0].onslot_0 = onslots[0];
+		ships[0].onslot_1 = onslots[1];
+		ships[0].onslot_2 = onslots[2];
+		ships[0].onslot_3 = onslots[3];
+		ships[0].onslot_4 = onslots[4];
 	}
 }
 @end

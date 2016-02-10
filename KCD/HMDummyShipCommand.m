@@ -44,10 +44,10 @@ static BOOL getShipFlag = 0;
 	NSError *error = nil;
 	HMServerDataStore *serverDataStore = [HMServerDataStore oneTimeEditor];
 	NSManagedObjectContext *managedObjectContext = [serverDataStore managedObjectContext];
-	NSArray *dummys = [serverDataStore objectsWithEntityName:@"Ship"
-													   error:&error
-											 predicateFormat:@"id = %@", @(-2)];
-	for(NSManagedObject *dummy in dummys) {
+	NSArray<HMKCShipObject *> *dummys = [serverDataStore objectsWithEntityName:@"Ship"
+																		 error:&error
+															   predicateFormat:@"id = %@", @(-2)];
+	for(HMKCShipObject *dummy in dummys) {
 		[managedObjectContext deleteObject:dummy];
 	}
 }

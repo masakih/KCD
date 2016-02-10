@@ -9,6 +9,7 @@
 #import "HMResetSortieCommand.h"
 
 #import "HMTemporaryDataStore.h"
+#import "HMKCBattle.h"
 
 
 @implementation HMResetSortieCommand
@@ -19,14 +20,14 @@
 	NSManagedObjectContext *moc = store.managedObjectContext;
 	
 	NSError *error = nil;
-	NSArray *array = [store objectsWithEntityName:@"Battle"
-										predicate:nil
-											error:NULL];
+	NSArray<HMKCBattle *> *battles = [store objectsWithEntityName:@"Battle"
+														predicate:nil
+															error:NULL];
 	if(error) {
 		[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
 		return;
 	}
-	for(id object in array) {
+	for(HMKCBattle *object in battles) {
 		[moc deleteObject:object];
 	}
 }

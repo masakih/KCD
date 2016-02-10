@@ -9,6 +9,7 @@
 #import "HMKaisouLockCommand.h"
 
 #import "HMServerDataStore.h"
+#import "HMKCSlotItemObject+Extensions.h"
 
 @implementation HMKaisouLockCommand
 + (void)load
@@ -35,20 +36,20 @@
 	
 	HMServerDataStore *serverDataStore = [HMServerDataStore oneTimeEditor];	
 	NSError *error = nil;
-	NSArray *result = [serverDataStore objectsWithEntityName:@"SlotItem"
-												 error:&error
-									   predicateFormat:@"id = %ld", [slotitemId integerValue]];
+	NSArray<HMKCSlotItemObject *> *slotItems = [serverDataStore objectsWithEntityName:@"SlotItem"
+																			 error:&error
+																   predicateFormat:@"id = %ld", [slotitemId integerValue]];
 	if(error) {
 		[self log:@"Fetch error: %@", error];
 		return;
 	}
-	if(result.count == 0) {
+	if(slotItems.count == 0) {
 		[self log:@"Could not find SlotItem number %@", slotitemId];
 		return;
 	}
 	
 	BOOL locked = [api_data[@"api_locked"] boolValue];
-	[result[0] setValue:@(locked) forKey:@"locked"];
+	slotItems[0].locked = @(locked);
 }
 
 @end

@@ -11,6 +11,11 @@
 #import "HMServerDataStore.h"
 #import "HMLocalDataStore.h"
 #import "HMKaihatuHistory.h"
+#import "HMKCMasterSlotItemObject.h"
+#import "HMKCDeck+Extension.h"
+#import "HMKCShipObject+Extensions.h"
+#import "HMKCMasterShipObject.h"
+#import "HMKCBasic.h"
 
 @implementation HMStoreCreateSlotItemHistoryCommand
 
@@ -25,14 +30,14 @@
 	
 	if(created) {
 		NSNumber *slotItemID = [data valueForKeyPath:@"api_slot_item.api_slotitem_id"];
-		NSArray *array = [serverDataStore objectsWithEntityName:@"MasterSlotItem"
-														  error:NULL
-												predicateFormat:@"id = %@", slotItemID];
-		if([array count] == 0) {
+		NSArray<HMKCMasterSlotItemObject *> *masterSlotItems = [serverDataStore objectsWithEntityName:@"MasterSlotItem"
+																								error:NULL
+																					  predicateFormat:@"id = %@", slotItemID];
+		if([masterSlotItems count] == 0) {
 			NSLog(@"MasterSlotItem data is invalid or api_slotitem_id is invalid.");
 			return;
 		}
-		name = [array[0] valueForKey:@"name"];
+		name = masterSlotItems[0].name;
 		numberOfUsedKaihatuSizai = @1;
 	} else {
 		name = NSLocalizedString(@"fail to develop", @"");
@@ -40,29 +45,29 @@
 	}
 	
 	// Deck -> FlagShip
-	NSArray *array = [serverDataStore objectsWithEntityName:@"Deck" error:NULL predicateFormat:@"id = 1"];
-	if([array count] == 0) {
+	NSArray<HMKCDeck *> *decks = [serverDataStore objectsWithEntityName:@"Deck" error:NULL predicateFormat:@"id = 1"];
+	if([decks count] == 0) {
 		NSLog(@"Deck data is invalid.");
 		return;
 	}
-	id deck = array[0];
-	id flagShipID = [deck valueForKey:@"ship_0"];
-	array = [serverDataStore objectsWithEntityName:@"Ship" error:NULL predicateFormat:@"id = %@", flagShipID];
-	if([array count] == 0) {
+	HMKCDeck *deck = decks[0];
+	NSNumber *flagShipID = deck.ship_0;
+	NSArray<HMKCShipObject *> *ships = [serverDataStore objectsWithEntityName:@"Ship" error:NULL predicateFormat:@"id = %@", flagShipID];
+	if([ships count] == 0) {
 		NSLog(@"Ship data is invalid or ship_0 is invalid.");
 		return;
 	}
-	id flagShip = array[0];
-	NSNumber *flagShipLv = [flagShip valueForKey:@"lv"];
-	NSString *flagShipName = [flagShip valueForKeyPath:@"master_ship.name"];
+	HMKCShipObject *flagShip = ships[0];
+	NSNumber *flagShipLv = flagShip.lv;
+	NSString *flagShipName = flagShip.master_ship.name;
 	
 	// Basic -> level
-	array = [serverDataStore objectsWithEntityName:@"Basic" predicate:nil error:NULL];
-	if([array count] == 0) {
+	NSArray<HMKCBasic *> *basics = [serverDataStore objectsWithEntityName:@"Basic" predicate:nil error:NULL];
+	if([basics count] == 0) {
 		NSLog(@"Basic data is invalid.");
 		return;
 	}
-	id basic = array[0];
+	HMKCBasic *basic = basics[0];
 	
 	HMLocalDataStore *lds = [HMLocalDataStore oneTimeEditor];
 	HMKaihatuHistory *newObejct = [NSEntityDescription insertNewObjectForEntityForName:@"KaihatuHistory"
@@ -75,7 +80,7 @@
 	newObejct.kaihatusizai = numberOfUsedKaihatuSizai;
 	newObejct.flagShipLv = flagShipLv;
 	newObejct.flagShipName = flagShipName;
-	newObejct.commanderLv = [basic valueForKey:@"level"];
+	newObejct.commanderLv = basic.level;
 	newObejct.date = [NSDate dateWithTimeIntervalSinceNow:0];
 	
 	[lds saveAction:nil];

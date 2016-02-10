@@ -9,6 +9,8 @@
 #import "HMUpdateSlotItemCommand.h"
 
 #import "HMServerDataStore.h"
+#import "HMKCMasterSlotItemObject.h"
+#import "HMKCSlotItemObject+Extensions.h"
 
 @implementation HMUpdateSlotItemCommand
 - (NSString *)dataKey
@@ -24,18 +26,18 @@
 	NSManagedObjectContext *moc = store.managedObjectContext;
 	
 	NSError *error = nil;
-	NSArray *array = [store objectsWithEntityName:@"MasterSlotItem"
-								   error:&error
-						 predicateFormat:@"id = %@", data[@"api_slotitem_id"]];
-	if([array count] == 0) {
+	NSArray<HMKCMasterSlotItemObject *> *masterSlotItems = [store objectsWithEntityName:@"MasterSlotItem"
+																				  error:&error
+																		predicateFormat:@"id = %@", data[@"api_slotitem_id"]];
+	if(masterSlotItems.count == 0) {
 		NSLog(@"MasterSlotItem is invalid");
 		return;
 	}
 	
-	id object = [NSEntityDescription insertNewObjectForEntityForName:@"SlotItem"
-											  inManagedObjectContext:moc];
-	[object setValue:data[@"api_id"] forKey:@"id"];
-	[object setValue:array[0] forKey:@"master_slotItem"];
+	HMKCSlotItemObject *newSlotItem = [NSEntityDescription insertNewObjectForEntityForName:@"SlotItem"
+																	inManagedObjectContext:moc];
+	newSlotItem.id =  data[@"api_id"];
+	newSlotItem.master_slotItem = masterSlotItems[0];
 }
 
 @end

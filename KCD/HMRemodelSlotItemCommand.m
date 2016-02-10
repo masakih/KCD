@@ -9,6 +9,7 @@
 #import "HMRemodelSlotItemCommand.h"
 
 #import "HMServerDataStore.h"
+#import "HMKCSlotItemObject+Extensions.h"
 
 
 @implementation HMRemodelSlotItemCommand
@@ -30,14 +31,14 @@
 	
 	HMServerDataStore *serverDataStore = [HMServerDataStore oneTimeEditor];
 	NSError *error = nil;
-	NSArray *result = [serverDataStore objectsWithEntityName:@"SlotItem"
-													   error:&error
-											 predicateFormat:@"id = %ld", [slotitemId integerValue]];
+	NSArray<HMKCSlotItemObject *> *slotItems = [serverDataStore objectsWithEntityName:@"SlotItem"
+																				error:&error
+																	  predicateFormat:@"id = %ld", [slotitemId integerValue]];
 	if(error) {
 		[self log:@"Fetch error: %@", error];
 		return;
 	}
-	if(result.count == 0) {
+	if(slotItems.count == 0) {
 		[self log:@"Could not find SlotItem number %@", slotitemId];
 		return;
 	}
@@ -45,33 +46,32 @@
 	api_data = api_data[@"api_after_slot"];
 	
 	BOOL locked = [api_data[@"api_locked"] boolValue];
-	[result[0] setValue:@(locked) forKey:@"locked"];
+	slotItems[0].locked = @(locked);
 	
 	NSNumber *masterSoltItemId = api_data[@"api_slotitem_id"];
-	if([masterSoltItemId compare:[result[0] valueForKey:@"slotitem_id"]] != NSOrderedSame) {
-		[self setMasterSlotItemForItemID:masterSoltItemId object:result[0] store:serverDataStore];
+	if([masterSoltItemId compare:slotItems[0].slotitem_id] != NSOrderedSame) {
+		[self setMasterSlotItemForItemID:masterSoltItemId object:slotItems[0] store:serverDataStore];
 	}
 	
 	NSNumber *level = api_data[@"api_level"];
-	[result[0] setValue:level forKey:@"level"];
+	slotItems[0].level = level;
 }
 
 - (void)setMasterSlotItemForItemID:(NSNumber *)slotItemId object:(id)object store:(HMServerDataStore *)serverDataStore
 {
 	NSError *error = nil;
-	NSArray *result = [serverDataStore objectsWithEntityName:@"MasterSlotItem"
-													   error:&error
-											 predicateFormat:@"id = %ld", [slotItemId integerValue]];
+	NSArray<HMKCSlotItemObject *> *slotItems = [serverDataStore objectsWithEntityName:@"MasterSlotItem"
+																				error:&error
+																	  predicateFormat:@"id = %ld", [slotItemId integerValue]];
 	if(error) {
 		[self log:@"Fetch error: %@", error];
 		return;
 	}
-	if(result.count == 0) {
+	if(slotItems.count == 0) {
 		[self log:@"Could not find MasterSlotItem number %@", slotItemId];
 		return;
 	}
-	id item = result[0];
-	[self setValueIfNeeded:item toObject:object forKey:@"master_slotItem"];
+	[self setValueIfNeeded:slotItems[0] toObject:object forKey:@"master_slotItem"];
 	[self setValueIfNeeded:slotItemId toObject:object forKey:@"slotitem_id"];
 }
 

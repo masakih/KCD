@@ -9,6 +9,8 @@
 #import "HMNyukyoSpeedChangeCommand.h"
 
 #import "HMServerDataStore.h"
+#import "HMKCNyukyoDock.h"
+#import "HMKCShipObject+Extensions.h"
 
 
 @implementation HMNyukyoSpeedChangeCommand
@@ -33,37 +35,33 @@
 	NSString *ndockId = self.arguments[@"api_ndock_id"];
 	
 	NSError *error = nil;
-	NSArray *array = [store objectsWithEntityName:@"NyukyoDock"
-											error:&error
-								  predicateFormat:@"id = %@", @([ndockId integerValue])];
-	if(array.count == 0) {
+	NSArray<HMKCNyukyoDock *> *nyukyoDocks = [store objectsWithEntityName:@"NyukyoDock"
+															  error:&error
+														  predicateFormat:@"id = %@", @([ndockId integerValue])];
+	if(nyukyoDocks.count == 0) {
 		if(error) {
 			NSLog(@"Error: at %@ : %@", NSStringFromClass([self class]), error);
 		}
 		return;
 	}
 	
-	id dock = array[0];
+	NSNumber *shipId = nyukyoDocks[0].ship_id;
 	
-	NSString *shipId = [dock valueForKey:@"ship_id"];
-	
-	[dock setValue:nil forKey:@"ship_id"];
-	[dock setValue:@(0) forKey:@"state"];
-	
+	nyukyoDocks[0].ship_id = nil;
+	nyukyoDocks[0].state = @(0);
 	
 	// 艦隊リスト更新用
 	error = nil;
-	array = [store objectsWithEntityName:@"Ship"
-								   error:&error
-						 predicateFormat:@"id = %@", @([shipId integerValue])];
-	if(array.count == 0) {
+	NSArray<HMKCShipObject *> *ships = [store objectsWithEntityName:@"Ship"
+															  error:&error
+													predicateFormat:@"id = %@", @([shipId integerValue])];
+	if(ships.count == 0) {
 		if(error) {
 			NSLog(@"Error: at %@ : %@", NSStringFromClass([self class]), error);
 		}
 		return;
 	}
 	
-	id ship = array[0];
-	[ship setValue:[ship valueForKey:@"maxhp"] forKey:@"nowhp"];
+	ships[0].nowhp = ships[0].maxhp;
 }
 @end

@@ -9,6 +9,8 @@
 #import "HMDestroyItem2Command.h"
 
 #import "HMServerDataStore.h"
+#import "HMKCSlotItemObject+Extensions.h"
+#import "HMKCMaterial.h"
 
 
 @implementation HMDestroyItem2Command
@@ -39,38 +41,37 @@
 	}
 	
 	NSError *error = nil;
-	NSArray *array = [store objectsWithEntityName:@"SlotItem"
-										   error:&error
-								 predicateFormat:@"id IN %@", items];
-	if([array count] == 0) {
+	NSArray<HMKCSlotItemObject *> *slotItems = [store objectsWithEntityName:@"SlotItem"
+																	  error:&error
+															predicateFormat:@"id IN %@", items];
+	if(slotItems.count == 0) {
 		NSLog(@"SlotItem is invalid.");
 		return;
 	}
 	
-	for(id obj in array) {
+	for(id obj in slotItems) {
 		[moc deleteObject:obj];
 	}
 	
 	//
 	error = nil;
-	array = [store objectsWithEntityName:@"Material" predicate:nil error:&error];
+	NSArray<HMKCMaterial *> *materials = [store objectsWithEntityName:@"Material" predicate:nil error:&error];
 	if(error) {
 		[self log:@"Fetch error: %@", error];
 		return;
 	}
-	if([array count] == 0) {
+	if(materials.count == 0) {
 		NSLog(@"SlotItem is invalid.");
 		return;
 	}
 	
-	id material = array[0];
 	NSArray *keys = @[@"fuel", @"bull", @"steel", @"bauxite", @"kousokukenzo", @"kousokushuhuku", @"kaihatusizai", @"screw"];
 	
-	NSArray *materials = [self.json valueForKeyPath:@"api_data.api_get_material"];
+	NSArray *gotMaterials = [self.json valueForKeyPath:@"api_data.api_get_material"];
 	for(NSInteger i = 0; i < 4; i++) {
-		NSInteger current = [[material valueForKey:keys[i]] integerValue];
-		NSInteger increase = [materials[i] integerValue];
-		[material setValue:@(current + increase) forKey:keys[i]];
+		NSInteger current = [[materials[0] valueForKey:keys[i]] integerValue];
+		NSInteger increase = [gotMaterials[i] integerValue];
+		[materials[0] setValue:@(current + increase) forKey:keys[i]];
 	}
 }
 @end

@@ -9,6 +9,7 @@
 #import "HMSlotResetCommand.h"
 
 #import "HMServerDataStore.h"
+#import "HMKCShipObject+Extensions.h"
 
 
 @interface HMSlotResetCommand ()
@@ -37,14 +38,14 @@
 	NSString *destroyedShipId = [self.arguments objectForKey:@"api_id"];
 	
 	NSError *error = nil;
-	NSArray *ships = [store objectsWithEntityName:@"Ship"
-											error:&error
-								  predicateFormat:@"id = %@", @([destroyedShipId integerValue])];
+	NSArray<HMKCShipObject *> *ships = [store objectsWithEntityName:@"Ship"
+															  error:&error
+													predicateFormat:@"id = %@", @([destroyedShipId integerValue])];
 	if(ships.count == 0) {
 		return;
 	}
 	
-	id ship = ships[0];
+	HMKCShipObject *ship = ships[0];
 	
 	NSArray *slotItems = [self.json valueForKeyPath:@"api_data.api_slot"];
 	for(NSUInteger i = 0; i < slotItems.count; i++) {
