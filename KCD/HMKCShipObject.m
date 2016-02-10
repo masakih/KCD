@@ -51,6 +51,7 @@
 @dynamic slot_2;
 @dynamic slot_3;
 @dynamic slot_4;
+@dynamic slot_ex;
 @dynamic sortno;
 @dynamic soukou_0;
 @dynamic soukou_1;

@@ -11,6 +11,9 @@
 #import "HMTemporaryDataStore.h"
 #import "HMServerDataStore.h"
 
+#import "HMKCShipObject+Extensions.h"
+#import "HMKCSlotItemObject+Extensions.h"
+
 
 #define DAMAGE_CHECK 0
 
@@ -333,9 +336,29 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 	[self.store saveAction:nil];
 }
 
-- (NSArray *)deckWithNumber:(NSNumber *)number
+NSInteger damageControlIfPossible(NSInteger nowhp, HMKCShipObject *ship)
 {
-	return [NSArray array];
+	if(nowhp < 0) nowhp = 0;
+	
+	NSInteger maxhp = ship.maxhp.integerValue;
+	
+	NSOrderedSet<HMKCSlotItemObject *> *items = ship.equippedItem;
+	for(HMKCSlotItemObject *item in items) {
+		NSInteger itemID = item.id.integerValue;
+		if(itemID == 42) {
+			return maxhp * 0.2;
+		} else if(itemID == 43) {
+			return maxhp;
+		}
+	}
+	NSInteger exItem = ship.slot_ex.integerValue;
+	if(exItem == 42) {
+		return maxhp * 0.2;
+	} else if(exItem == 43) {
+		return maxhp;
+	}
+	
+	return nowhp;
 }
 - (void)applyDamage
 {
@@ -415,11 +438,15 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 		NSUInteger shipCount = ships.count;
 		NSUInteger offset = (self.isCombinedBattle && !firstRun) ? 6 : 0;
 		for(NSInteger i = 0; i < shipCount; i++) {
-			id ship = ships[i];
+			HMKCShipObject *ship = ships[i];
 			NSInteger damage = [[damages[i + offset] valueForKey:@"damage"] integerValue];
 			NSInteger nowhp = [[ship valueForKey:@"nowhp"] integerValue];
 			nowhp -= damage;
 			[ship setValue:@(nowhp) forKeyPath:@"nowhp"];
+			if(nowhp <= 0) {
+				nowhp = damageControlIfPossible(nowhp, ship);
+			}
+			ship.nowhp = @(nowhp);
 		}
 		
 		predicate = [NSPredicate predicateWithFormat:@"id = %@", @2];

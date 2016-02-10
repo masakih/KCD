@@ -50,6 +50,7 @@
 @property (nonatomic, retain) NSNumber * slot_2;
 @property (nonatomic, retain) NSNumber * slot_3;
 @property (nonatomic, retain) NSNumber * slot_4;
+@property (nonatomic, retain) NSNumber * slot_ex;
 @property (nonatomic, retain) NSNumber * sortno;
 @property (nonatomic, retain) NSNumber * soukou_0;
 @property (nonatomic, retain) NSNumber * soukou_1;
