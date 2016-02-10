@@ -9,6 +9,7 @@
 #import "HMKCManagedObject.h"
 
 @class HMKCShipObject;
+@class HMKCMasterSType;
 
 @interface HMKCMasterShipObject : HMKCManagedObject
 
@@ -57,7 +58,7 @@
 @property (nonatomic, retain) NSNumber * voicef;
 @property (nonatomic, retain) NSString * yomi;
 @property (nonatomic, retain) NSSet *ships;
-@property (nonatomic, retain) HMKCManagedObject *stype;
+@property (nonatomic, retain) HMKCMasterSType *stype;
 @end
 
 @interface HMKCMasterShipObject (CoreDataGeneratedAccessors)

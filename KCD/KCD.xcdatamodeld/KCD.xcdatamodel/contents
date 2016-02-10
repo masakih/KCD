@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14E46" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15D21" minimumToolsVersion="Xcode 4.3">
     <entity name="Basic" representedClassName="HMKCBasic" syncable="YES">
         <attribute name="active_flag" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
@@ -59,7 +59,7 @@
         <attribute name="ship_4" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="ship_5" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
-    <entity name="KenzoDock" representedClassName="HMKCManagedObject" syncable="YES">
+    <entity name="KenzoDock" representedClassName="HMKCKenzoDock" syncable="YES">
         <attribute name="complete_time" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="complete_time_str" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="created_ship_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -82,7 +82,7 @@
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
-    <entity name="MasterMapArea" representedClassName="HMKCManagedObject" syncable="YES">
+    <entity name="MasterMapArea" representedClassName="HMKCMasterMapArea" syncable="YES">
         <attribute name="id" attributeType="Integer 32" indexed="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="Integer 32" syncable="YES"/>
@@ -95,7 +95,7 @@
         <attribute name="mapinfo_no" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="no" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
-    <entity name="MasterMapInfo" representedClassName="HMKCManagedObject" syncable="YES">
+    <entity name="MasterMapInfo" representedClassName="HMKCMasterMapInfo" syncable="YES">
         <attribute name="id" attributeType="Integer 32" syncable="YES"/>
         <attribute name="infotext" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="item_0" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -214,7 +214,7 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="show_flg" optional="YES" attributeType="Boolean" defaultValueString="0" syncable="YES"/>
     </entity>
-    <entity name="MasterSType" representedClassName="HMKCManagedObject" syncable="YES">
+    <entity name="MasterSType" representedClassName="HMKCMasterSType" syncable="YES">
         <attribute name="id" attributeType="Integer 32" indexed="YES" syncable="YES"/>
         <attribute name="kcnt" optional="YES" attributeType="Integer 32" syncable="YES"/>
         <attribute name="name" attributeType="String" indexed="YES" syncable="YES"/>
@@ -241,7 +241,7 @@
         <attribute name="screw" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="steel" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
-    <entity name="NyukyoDock" representedClassName="HMKCManagedObject" syncable="YES">
+    <entity name="NyukyoDock" representedClassName="HMKCNyukyoDock" syncable="YES">
         <attribute name="complete_time" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="complete_time_str" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
@@ -341,10 +341,10 @@
         <element name="MasterShip" positionX="0" positionY="0" width="128" height="720"/>
         <element name="MasterSlotItem" positionX="0" positionY="0" width="128" height="540"/>
         <element name="MasterSlotItemEquipType" positionX="0" positionY="0" width="128" height="90"/>
-        <element name="MasterSType" positionX="0" positionY="0" width="128" height="135"/>
+        <element name="MasterSType" positionX="0" positionY="0" width="128" height="30"/>
         <element name="MasterUseItem" positionX="0" positionY="0" width="128" height="150"/>
         <element name="Material" positionX="0" positionY="0" width="128" height="165"/>
-        <element name="NyukyoDock" positionX="0" positionY="0" width="128" height="195"/>
+        <element name="NyukyoDock" positionX="0" positionY="0" width="128" height="30"/>
         <element name="Quest" positionX="0" positionY="0" width="128" height="240"/>
         <element name="Ship" positionX="0" positionY="0" width="128" height="795"/>
         <element name="SlotItem" positionX="0" positionY="0" width="128" height="150"/>

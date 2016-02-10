@@ -8,6 +8,7 @@
 
 #import "HMKCShipObject+Extensions.h"
 #import "HMKCMasterShipObject.h"
+#import "HMKCMasterSType.h"
 
 #import "HMKCMasterSlotItemObject.h"
 #import "HMKCSlotItemObject+Extensions.h"
@@ -155,7 +156,7 @@ static NSArray *levelUpExps = nil;
 - (NSString *)shortTypeName
 {
 	[self willAccessValueForKey:@"master_ship"];
-	NSNumber *idValue = [self.master_ship.stype valueForKey:@"id"];
+	NSNumber *idValue = self.master_ship.stype.id;
 	[self didAccessValueForKey:@"master_ship"];
 	if(!idValue || [idValue isKindOfClass:[NSNull class]]) return nil;
 	
