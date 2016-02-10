@@ -6,14 +6,13 @@
 //  Copyright © 2016年 Hori,Masaki. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
+#import "HMKCManagedObject.h"
 
 @class HMKCMasterShipObject;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HMKCMasterSType : NSManagedObject
+@interface HMKCMasterSType : HMKCManagedObject
 
 // Insert code here to declare functionality of your managed object subclass
 
