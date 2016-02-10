@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="14F1605" minimumToolsVersion="Xcode 4.3">
-    <entity name="Battle" syncable="YES">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15D21" minimumToolsVersion="Xcode 4.3">
+    <entity name="Battle" representedClassName="HMKCBattle" syncable="YES">
         <attribute name="battleCell" optional="YES" attributeType="Integer 32" syncable="YES"/>
         <attribute name="deckId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="isBossCell" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -9,12 +9,12 @@
         <attribute name="no" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="damages" optional="YES" toMany="YES" maxCount="12" deletionRule="Cascade" ordered="YES" destinationEntity="Damage" inverseName="battle" inverseEntity="Damage" syncable="YES"/>
     </entity>
-    <entity name="Damage" syncable="YES">
+    <entity name="Damage" representedClassName="HMKCDamage" syncable="YES">
         <attribute name="damage" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
         <relationship name="battle" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Battle" inverseName="damages" inverseEntity="Battle" syncable="YES"/>
     </entity>
-    <entity name="GuardEscaped" syncable="YES">
+    <entity name="GuardEscaped" representedClassName="HMKCGuardEscaped" syncable="YES">
         <attribute name="ensured" optional="YES" attributeType="Boolean" defaultValueString="0" syncable="YES"/>
         <attribute name="shipID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>

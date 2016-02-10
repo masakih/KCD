@@ -234,6 +234,12 @@
 		F4F6E82A1B3045970008B66E /* CanonicalRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F6E8241B3045970008B66E /* CanonicalRequest.m */; };
 		F4F6E82B1B3045970008B66E /* CustomHTTPProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F6E8261B3045970008B66E /* CustomHTTPProtocol.m */; };
 		F4F6E82C1B3045970008B66E /* QNSURLSessionDemux.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F6E8281B3045970008B66E /* QNSURLSessionDemux.m */; };
+		F4F9F86D1C6A306A00D0EE76 /* HMKCDamage+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F9F8621C6A306A00D0EE76 /* HMKCDamage+CoreDataProperties.m */; };
+		F4F9F86E1C6A306A00D0EE76 /* HMKCDamage.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F9F8641C6A306A00D0EE76 /* HMKCDamage.m */; };
+		F4F9F86F1C6A306A00D0EE76 /* HMKCGuardEscaped+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F9F8661C6A306A00D0EE76 /* HMKCGuardEscaped+CoreDataProperties.m */; };
+		F4F9F8701C6A306A00D0EE76 /* HMKCGuardEscaped.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F9F8681C6A306A00D0EE76 /* HMKCGuardEscaped.m */; };
+		F4F9F8711C6A306A00D0EE76 /* HMKCBattle+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F9F86A1C6A306A00D0EE76 /* HMKCBattle+CoreDataProperties.m */; };
+		F4F9F8721C6A306A00D0EE76 /* HMKCBattle.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F9F86C1C6A306A00D0EE76 /* HMKCBattle.m */; };
 		F4FCFD44191F4C1D000640A1 /* HMKenzoMarkCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FCFD43191F4C1D000640A1 /* HMKenzoMarkCommand.m */; };
 		F4FDF2411A3D50420033E0AD /* HMShipMasterDetailWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FDF23F1A3D50420033E0AD /* HMShipMasterDetailWindowController.m */; };
 /* End PBXBuildFile section */
@@ -664,6 +670,18 @@
 		F4F6E8261B3045970008B66E /* CustomHTTPProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomHTTPProtocol.m; sourceTree = "<group>"; };
 		F4F6E8271B3045970008B66E /* QNSURLSessionDemux.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QNSURLSessionDemux.h; sourceTree = "<group>"; };
 		F4F6E8281B3045970008B66E /* QNSURLSessionDemux.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QNSURLSessionDemux.m; sourceTree = "<group>"; };
+		F4F9F8611C6A306A00D0EE76 /* HMKCDamage+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HMKCDamage+CoreDataProperties.h"; sourceTree = "<group>"; };
+		F4F9F8621C6A306A00D0EE76 /* HMKCDamage+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HMKCDamage+CoreDataProperties.m"; sourceTree = "<group>"; };
+		F4F9F8631C6A306A00D0EE76 /* HMKCDamage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMKCDamage.h; sourceTree = "<group>"; };
+		F4F9F8641C6A306A00D0EE76 /* HMKCDamage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKCDamage.m; sourceTree = "<group>"; };
+		F4F9F8651C6A306A00D0EE76 /* HMKCGuardEscaped+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HMKCGuardEscaped+CoreDataProperties.h"; sourceTree = "<group>"; };
+		F4F9F8661C6A306A00D0EE76 /* HMKCGuardEscaped+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HMKCGuardEscaped+CoreDataProperties.m"; sourceTree = "<group>"; };
+		F4F9F8671C6A306A00D0EE76 /* HMKCGuardEscaped.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMKCGuardEscaped.h; sourceTree = "<group>"; };
+		F4F9F8681C6A306A00D0EE76 /* HMKCGuardEscaped.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKCGuardEscaped.m; sourceTree = "<group>"; };
+		F4F9F8691C6A306A00D0EE76 /* HMKCBattle+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HMKCBattle+CoreDataProperties.h"; sourceTree = "<group>"; };
+		F4F9F86A1C6A306A00D0EE76 /* HMKCBattle+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HMKCBattle+CoreDataProperties.m"; sourceTree = "<group>"; };
+		F4F9F86B1C6A306A00D0EE76 /* HMKCBattle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMKCBattle.h; sourceTree = "<group>"; };
+		F4F9F86C1C6A306A00D0EE76 /* HMKCBattle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKCBattle.m; sourceTree = "<group>"; };
 		F4FCFD42191F4C1D000640A1 /* HMKenzoMarkCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMKenzoMarkCommand.h; sourceTree = "<group>"; };
 		F4FCFD43191F4C1D000640A1 /* HMKenzoMarkCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKenzoMarkCommand.m; sourceTree = "<group>"; };
 		F4FDF23E1A3D50420033E0AD /* HMShipMasterDetailWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMShipMasterDetailWindowController.h; sourceTree = "<group>"; };
@@ -902,6 +920,18 @@
 				F4D6BC531A93903E00742FEB /* HMDropShipHistory.h */,
 				F4D6BC541A93903E00742FEB /* HMDropShipHistory.m */,
 				F4AA05F9192B92C700844688 /* Temporary.xcdatamodeld */,
+				F4F9F8611C6A306A00D0EE76 /* HMKCDamage+CoreDataProperties.h */,
+				F4F9F8621C6A306A00D0EE76 /* HMKCDamage+CoreDataProperties.m */,
+				F4F9F8631C6A306A00D0EE76 /* HMKCDamage.h */,
+				F4F9F8641C6A306A00D0EE76 /* HMKCDamage.m */,
+				F4F9F8651C6A306A00D0EE76 /* HMKCGuardEscaped+CoreDataProperties.h */,
+				F4F9F8661C6A306A00D0EE76 /* HMKCGuardEscaped+CoreDataProperties.m */,
+				F4F9F8671C6A306A00D0EE76 /* HMKCGuardEscaped.h */,
+				F4F9F8681C6A306A00D0EE76 /* HMKCGuardEscaped.m */,
+				F4F9F8691C6A306A00D0EE76 /* HMKCBattle+CoreDataProperties.h */,
+				F4F9F86A1C6A306A00D0EE76 /* HMKCBattle+CoreDataProperties.m */,
+				F4F9F86B1C6A306A00D0EE76 /* HMKCBattle.h */,
+				F4F9F86C1C6A306A00D0EE76 /* HMKCBattle.m */,
 				F4AA05FC192B932E00844688 /* HMTemporaryDataStore.h */,
 				F4AA05FD192B932E00844688 /* HMTemporaryDataStore.m */,
 				F495462C1B1894DD00E0D8D0 /* Bookmark.xcdatamodeld */,
@@ -1423,7 +1453,9 @@
 				F4B3DC2A18DF31400011B4FC /* HMCreateShipCommand.m in Sources */,
 				F4D6BCB61AA2C10700742FEB /* HMHideEquipNumberTransformer.m in Sources */,
 				F46F103618A7CE310063E503 /* HMJSONViewCommand.m in Sources */,
+				F4F9F8701C6A306A00D0EE76 /* HMKCGuardEscaped.m in Sources */,
 				F4B3DC1E18DEB8C70011B4FC /* HMKenzoHistory.m in Sources */,
+				F4F9F86D1C6A306A00D0EE76 /* HMKCDamage+CoreDataProperties.m in Sources */,
 				F4A2AF5B1A0F9B490024BD9E /* HMScreenshotInformation.m in Sources */,
 				F4666C561B1E0262001840DB /* HMBookmarkEditorViewController.m in Sources */,
 				F43769DE1AE1248800DE6204 /* HMAirBattleCommand.m in Sources */,
@@ -1476,6 +1508,7 @@
 				F4513EEE18B8E2F600073552 /* HMMemberMaterialCommand.m in Sources */,
 				F4FCFD44191F4C1D000640A1 /* HMKenzoMarkCommand.m in Sources */,
 				F4ED5D2D1B7C677E00D1BDEF /* HMGuardShelterCommand.m in Sources */,
+				F4F9F86E1C6A306A00D0EE76 /* HMKCDamage.m in Sources */,
 				F44AB23519E805D100F217AF /* HMKaisouLockCommand.m in Sources */,
 				F4BDEB53187252F30069D0CE /* main.m in Sources */,
 				F4B1E30F19D1C9C400805879 /* HMApplySuppliesCommand.m in Sources */,
@@ -1507,6 +1540,7 @@
 				F4E7802818DBD2A00011BC4C /* HMGetShipCommand.m in Sources */,
 				F424A6FD1BC809490096C431 /* HMIgnoreCommand.m in Sources */,
 				F4D6BC4F1A938EFC00742FEB /* HMDropShipHistoryCommand.m in Sources */,
+				F4F9F86F1C6A306A00D0EE76 /* HMKCGuardEscaped+CoreDataProperties.m in Sources */,
 				F4A3AD8519B0CAB700FDBF80 /* HMPlanToShowsBoldFontTransformer.m in Sources */,
 				F4513EF618B9F29800073552 /* HMMemberShipCommand.m in Sources */,
 				F4F6E8081B2B17E50008B66E /* HMStrengthenListViewController.m in Sources */,
@@ -1561,10 +1595,12 @@
 				F4B414F218B1013C00468DAF /* HMMasterSlotItemCommand.m in Sources */,
 				F4A2AF521A074DCF0024BD9E /* HMScreenshotListWindowController.m in Sources */,
 				F4131EE61910318F004F7F9A /* HMMasterSlotItemEquipTypeCommand.m in Sources */,
+				F4F9F8721C6A306A00D0EE76 /* HMKCBattle.m in Sources */,
 				F4D2CBC818B0555A000EBC59 /* HMKCManagedObject.m in Sources */,
 				F4D2CBC218AD0E1A000EBC59 /* HMMasterSTypeCommand.m in Sources */,
 				F4B1E30919C73B6A00805879 /* HMSuppliesView.m in Sources */,
 				F43BA4A4197BE6C200CFF788 /* HMRealDestroyShipCommand.m in Sources */,
+				F4F9F8711C6A306A00D0EE76 /* HMKCBattle+CoreDataProperties.m in Sources */,
 				F46F104518AA50730063E503 /* HMBroserWindowController.m in Sources */,
 				F4B37EF619FBE801002F371A /* HMRemodelSlotItemCommand.m in Sources */,
 				F4F6E80C1B2BC81C0008B66E /* HMPeriodicNotifier.m in Sources */,
