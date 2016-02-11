@@ -22,7 +22,10 @@
 
 + (BOOL)canExcuteAPI:(NSString *)api
 {
-	return [api isEqualToString:@"/kcsapi/api_req_sortie/airbattle"];
+	if([api isEqualToString:@"/kcsapi/api_req_sortie/airbattle"]) return YES;
+	if([api isEqualToString:@"/kcsapi/api_req_sortie/ld_airbattle"]) return YES;
+	
+	return NO;
 }
 
 - (id)init

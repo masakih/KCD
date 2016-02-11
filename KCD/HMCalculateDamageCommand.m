@@ -475,6 +475,10 @@ NSInteger damageControlIfPossible(NSInteger nowhp, HMKCShipObject *ship)
 		[self calculateMidnightBattle];
 		return;
 	}
+	if([self.api isEqualToString:@"/kcsapi/api_req_sortie/ld_airbattle"]) {
+		[self calculateBattle];
+		return;
+	}
 	
 	/*
 	 /kcsapi/api_req_combined_battle/battle_water
