@@ -155,6 +155,9 @@ static NSString *loginPageURLPrefix = @"https://www.dmm.com/my/-/login/=/";
 		}
 		return YES;
 	}
+	if(action == @selector(deleteCacheAndReload:)) {
+		return YES;
+	}
 	if(action == @selector(screenShot:)) {
 		return YES;
 	}
