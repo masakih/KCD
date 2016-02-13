@@ -22,16 +22,18 @@
 
 - (Class)testViewControllerClass
 {
-	return NSClassFromString(@"HMRepairListViewController");
+	return NSClassFromString(@"HMFleetTestViewController");
 }
 
-//- (void)windowDidLoad {
-//    [super windowDidLoad];
-//	
-//	self.testViewController = [self.testViewControllerClass new];
+- (void)windowDidLoad {
+    [super windowDidLoad];
+	
+	self.testViewController = [self.testViewControllerClass new];
+	NSRect frame = self.testViewController.view.frame;
+	self.window.contentSize = frame.size;
 //	[self.testViewController.view setFrame:[self.testViewPlaceholder frame]];
-//	[self.testViewController.view setAutoresizingMask:[self.testViewPlaceholder autoresizingMask]];
-//	[[self.testViewPlaceholder superview] replaceSubview:self.testViewPlaceholder with:self.testViewController.view];
-//}
+	[self.testViewController.view setAutoresizingMask:[self.testViewPlaceholder autoresizingMask]];
+	[[self.testViewPlaceholder superview] replaceSubview:self.testViewPlaceholder with:self.testViewController.view];
+}
 
 @end
