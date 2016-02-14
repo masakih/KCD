@@ -23,8 +23,17 @@
 @property (readonly) HMKCShipObject *fifthShip;
 @property (readonly) HMKCShipObject *sixthShip;
 
+
+@property (readonly) NSNumber *totalSakuteki;
+@property (readonly) NSNumber *totalSeiku;
+@property (readonly) NSNumber *totalCalclatedSeiku;
+@property (readonly) NSNumber *totalLevel;
+@property (readonly) NSNumber *totalDrums;
+
+
 + (instancetype)fleetWithNumber:(NSNumber *)fleetNumber;
 
 
+- (HMKCShipObject *)objectAtIndexedSubscript:(NSUInteger)idx;
 
 @end

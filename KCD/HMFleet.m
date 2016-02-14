@@ -34,16 +34,19 @@
 		}
 		_fleetNumber = fleetNumber;
 		
-		_deckController = [NSObjectController new];
+		_deckController = [[NSObjectController alloc] initWithContent:nil];
 		_deckController.entityName = @"Deck";
 		_deckController.managedObjectContext = [[HMServerDataStore defaultManager] managedObjectContext];
 		_deckController.fetchPredicate = [NSPredicate predicateWithFormat:@"id = %@", fleetNumber];
-		[_deckController fetch:nil];
+		NSFetchRequest *request = [NSFetchRequest new];
+		request.entity = [NSEntityDescription entityForName:@"Deck"
+									 inManagedObjectContext:[HMServerDataStore defaultManager].managedObjectContext];
+		request.predicate = _deckController.fetchPredicate;
+		[_deckController fetchWithRequest:request
+									merge:NO
+									error:NULL];
 		
-		[self bind:@"deck"
-		  toObject:self.deckController
-	   withKeyPath:@"content"
-		   options:nil];
+		self.deck = _deckController.content;
 	}
 	
 	return self;
@@ -111,6 +114,7 @@
 + (NSSet *)keyPathsForValuesAffectingShips
 {
 	return [NSSet setWithObjects:
+			@"deck",
 			@"deck.ship_0",
 			@"deck.ship_1",
 			@"deck.ship_2",
@@ -143,4 +147,106 @@
 	return name;
 }
 
++ (NSSet *)keyPathsForValuesAffectingTotalSakuteki
+{
+	return [NSSet setWithObjects:
+			@"flagShip.sakuteki_0",
+			@"secondShip.sakuteki_0",
+			@"thirdShip.sakuteki_0",
+			@"fourthShip.sakuteki_0",
+			@"fifthShip.sakuteki_0",
+			@"sixthShip.sakuteki_0",
+			nil];
+}
+- (NSNumber *)totalSakuteki
+{
+	NSInteger total = 0;
+	for(NSInteger i = 0; i < 6; i++) {
+		HMKCShipObject *ship = self[i];
+		total += ship.sakuteki_0.integerValue;
+	}
+	return @(total);
+}
+
++ (NSSet *)keyPathsForValuesAffectingTotalSeiku
+{
+	return [NSSet setWithObjects:
+			@"flagShip.seiku",
+			@"secondShip.seiku",
+			@"thirdShip.seiku",
+			@"fourthShip.seiku",
+			@"fifthShip.seiku",
+			@"sixthShip.seiku",
+			nil];
+}
+- (NSNumber *)totalSeiku
+{
+	NSInteger total = 0;
+	for(NSInteger i = 0; i < 6; i++) {
+		HMKCShipObject *ship = self[i];
+		total += ship.seiku.integerValue;
+	}
+	return @(total);
+}
++ (NSSet *)keyPathsForValuesAffectingTotalCalclatedSeiku
+{
+	return [NSSet setWithObjects:
+			@"flagShip.seiku",
+			@"secondShip.seiku",
+			@"thirdShip.seiku",
+			@"fourthShip.seiku",
+			@"fifthShip.seiku",
+			@"sixthShip.seiku",
+			nil];
+}
+- (NSNumber *)totalCalclatedSeiku
+{
+	NSInteger total = 0;
+	for(NSInteger i = 0; i < 6; i++) {
+		HMKCShipObject *ship = self[i];
+		total += ship.seiku.integerValue;
+		total += ship.extraSeiku.integerValue;
+	}
+	return @(total);
+}
++ (NSSet *)keyPathsForValuesAffectingTotalLevel
+{
+	return [NSSet setWithObjects:
+			@"flagShip.lv",
+			@"secondShip.lv",
+			@"thirdShip.lv",
+			@"fourthShip.lv",
+			@"fifthShip.lv",
+			@"sixthShip.lv",
+			nil];
+}
+- (NSNumber *)totalLevel
+{
+	NSInteger total = 0;
+	for(NSInteger i = 0; i < 6; i++) {
+		HMKCShipObject *ship = self[i];
+		total += ship.lv.integerValue;
+	}
+	return @(total);
+}
++ (NSSet *)keyPathsForValuesAffectingTotalDrums
+{
+	return [NSSet setWithObjects:
+			@"flagShip.totalDrums",
+			@"secondShip.totalDrums",
+			@"thirdShip.totalDrums",
+			@"fourthShip.totalDrums",
+			@"fifthShip.totalDrums",
+			@"sixthShip.totalDrums",
+			nil];
+}
+- (NSNumber *)totalDrums
+{
+	NSInteger total = 0;
+	for(NSInteger i = 0; i < 6; i++) {
+		HMKCShipObject *ship = self[i];
+		total += ship.totalDrums.integerValue;
+	}
+	return @(total);
+}
 @end
