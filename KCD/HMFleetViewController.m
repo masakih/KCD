@@ -9,6 +9,8 @@
 #import "HMFleetViewController.h"
 #import "HMShipDetailViewController.h"
 
+#import "HMFleet.h"
+
 #import "HMAppDelegate.h"
 
 #import "HMKCShipObject+Extensions.h"
@@ -25,6 +27,9 @@ const NSInteger maxFleetNumber = 4;
 
 @property (readwrite) HMFleetViewType type;
 
+@property (strong) HMFleet *fleet;
+@property (strong) NSObjectController *fleetController;
+
 @property (nonatomic, weak) IBOutlet NSView *placeholder01;
 @property (nonatomic, weak) IBOutlet NSView *placeholder02;
 @property (nonatomic, weak) IBOutlet NSView *placeholder03;
@@ -38,9 +43,16 @@ const NSInteger maxFleetNumber = 4;
 @property (strong) HMShipDetailViewController *detail04;
 @property (strong) HMShipDetailViewController *detail05;
 @property (strong) HMShipDetailViewController *detail06;
-@property (strong) NSArray *details;
+@property (strong) NSArray<HMShipDetailViewController *> *details;
 
 @property (readonly) NSArray *shipKeys;
+
+
+@property (strong) NSNumber *totalSakuteki;
+@property (strong) NSNumber *totalSeiku;
+@property (strong) NSNumber *totalCalclatedSeiku;
+@property (strong) NSNumber *totalLevel;
+@property (strong) NSNumber *totalDrums;
 
 
 @property (strong) NSArray *anchorageRepairHolder;
@@ -74,7 +86,20 @@ const NSInteger maxFleetNumber = 4;
 	if(self) {
 		_type = type;
 		
+		_fleetController = [NSObjectController new];
+		[_fleetController bind:@"content" toObject:self withKeyPath:@"fleet" options:nil];
+		
+		[_fleetController addObserver:self forKeyPath:@"selection.ships" options:0 context:NULL];
+		[_fleetController addObserver:self forKeyPath:@"selection.name" options:0 context:NULL];
+		
+		[self bind:@"totalSakuteki" toObject:_fleetController withKeyPath:@"selection.totalSakuteki" options:nil];
+		[self bind:@"totalSeiku" toObject:_fleetController withKeyPath:@"selection.totalSeiku" options:nil];
+		[self bind:@"totalCalclatedSeiku" toObject:_fleetController withKeyPath:@"selection.totalCalclatedSeiku" options:nil];
+		[self bind:@"totalLevel" toObject:_fleetController withKeyPath:@"selection.totalLevel" options:nil];
+		[self bind:@"totalDrums" toObject:_fleetController withKeyPath:@"selection.totalDrums" options:nil];
+		
 		[self buildAnchorageRepairHolder];
+		
 		[self loadView];
 	}
 	return self;
@@ -90,6 +115,17 @@ const NSInteger maxFleetNumber = 4;
 		[self.representedObject removeObserver:self
 									forKeyPath:key];
 	}
+	
+	[_fleetController unbind:@"content"];
+	
+	[_fleetController removeObserver:self forKeyPath:@"selection.ships"];
+	[_fleetController removeObserver:self forKeyPath:@"selection.name"];
+	
+	[self unbind:@"totalSakuteki"];
+	[self unbind:@"totalSeiku"];
+	[self unbind:@"totalCalclatedSeiku"];
+	[self unbind:@"totalLevel"];
+	[self unbind:@"totalDrums"];
 }
 
 - (void)awakeFromNib
@@ -138,75 +174,27 @@ const NSInteger maxFleetNumber = 4;
 	return shipKeys;
 }
 
-- (void)setShipOfViewForKey:(NSString *)key
+- (void)setupShips
 {
-	NSUInteger index = [self.shipKeys indexOfObject:key];
-	if(index != NSNotFound) {
-		NSUInteger shipID = [[self.fleet valueForKey:key] integerValue];
-		[self setShipID:shipID
-			   toDetail:self.details[index]];
+	for(NSUInteger i = 0; i < self.details.count; i++) {
+		self.details[i].ship = self.fleet[i];
 	}
 }
 
-- (void)setShipID:(NSInteger)shipId toDetail:(HMShipDetailViewController *)detail
-{
-	HMServerDataStore *store = [HMServerDataStore defaultManager];
-	NSError *error = nil;
-	HMKCShipObject *ship = nil;
-	NSArray *array = [store objectsWithEntityName:@"Ship"
-											error:&error
-								  predicateFormat:@"id = %ld", shipId];
-	if(error) {
-		NSLog(@"%s error: %@", __PRETTY_FUNCTION__, error);
-	}
-	if(array.count != 0) {
-		ship = array[0];
-	}
-	detail.ship = ship;
-	
-	[self willChangeValueForKey:@"repairableShipCount"];
-	[self didChangeValueForKey:@"repairableShipCount"];
-}
-- (void)setFleet:(HMKCDeck *)fleet
-{
-	for(NSString *key in self.shipKeys) {
-		[self.representedObject removeObserver:self
-									forKeyPath:key];
-		
-		[fleet addObserver:self
-				forKeyPath:key
-				   options:0
-				   context:NULL];
-	}
-	
-	self.representedObject = fleet;
-	self.title = fleet.name;
-	
-	for(NSString *key in self.shipKeys) {
-		[self setShipOfViewForKey:key];
-	}
-}
-- (HMKCDeck *)fleet
+- (HMFleet *)fleet
 {
 	return self.representedObject;
+}
+- (void)setFleet:(HMFleet *)fleet
+{
+	self.representedObject = fleet;
+	self.title = fleet.name;
+	[self setupShips];
 }
 
 - (void)setFleetNumber:(NSInteger)fleetNumber
 {
-	HMServerDataStore *store = [HMServerDataStore defaultManager];
-	NSError *error = nil;
-	NSArray *array = [store objectsWithEntityName:@"Deck"
-											error:NULL
-								  predicateFormat:@"id = %ld", fleetNumber];
-	if(error) {
-		NSLog(@"%s error: %@", __PRETTY_FUNCTION__, error);
-		return;
-	}
-	if(array.count == 0) {
-		return;
-	}
-	
-	self.fleet = array[0];
+	self.fleet = [HMFleet fleetWithNumber:@(fleetNumber)];
 	_fleetNumber = fleetNumber;
 	
 	self.anchorageRepair = self.anchorageRepairHolder[fleetNumber - 1];
@@ -279,114 +267,14 @@ const NSInteger maxFleetNumber = 4;
 	return self.detailViewHeight - self.oldStyleFleetViewHeight;
 }
 
-
-+ (NSSet *)keyPathsForValuesAffectingTotalSakuteki
-{
-	return [NSSet setWithObjects:
-			@"detail01.ship.sakuteki_0",
-			@"detail02.ship.sakuteki_0",
-			@"detail03.ship.sakuteki_0",
-			@"detail04.ship.sakuteki_0",
-			@"detail05.ship.sakuteki_0",
-			@"detail06.ship.sakuteki_0",
-			nil];
-}
-- (NSNumber *)totalSakuteki
-{
-	NSInteger total = 0;
-	for(HMShipDetailViewController *detail in self.details) {
-		HMKCShipObject *ship = detail.ship;
-		total += ship.sakuteki_0.integerValue;
-	}
-	return @(total);
-}
-
-+ (NSSet *)keyPathsForValuesAffectingTotalSeiku
-{
-	return [NSSet setWithObjects:
-			@"detail01.ship.seiku",
-			@"detail02.ship.seiku",
-			@"detail03.ship.seiku",
-			@"detail04.ship.seiku",
-			@"detail05.ship.seiku",
-			@"detail06.ship.seiku",
-			nil];
-}
-- (NSNumber *)totalSeiku
-{
-	NSInteger total = 0;
-	for(HMShipDetailViewController *detail in self.details) {
-		HMKCShipObject *ship = detail.ship;
-		total += ship.seiku.integerValue;
-	}
-	return @(total);
-}
-+ (NSSet *)keyPathsForValuesAffectingTotalCalclatedSeiku
-{
-	return [NSSet setWithObjects:
-			@"detail01.ship.seiku",
-			@"detail02.ship.seiku",
-			@"detail03.ship.seiku",
-			@"detail04.ship.seiku",
-			@"detail05.ship.seiku",
-			@"detail06.ship.seiku",
-			nil];
-}
-- (NSNumber *)totalCalclatedSeiku
-{
-	NSInteger total = 0;
-	for(HMShipDetailViewController *detail in self.details) {
-		HMKCShipObject *ship = detail.ship;
-		total += ship.seiku.integerValue;
-		total += ship.extraSeiku.integerValue;
-	}
-	return @(total);
-}
-+ (NSSet *)keyPathsForValuesAffectingTotalLevel
-{
-	return [NSSet setWithObjects:
-			@"detail01.ship.lv",
-			@"detail02.ship.lv",
-			@"detail03.ship.lv",
-			@"detail04.ship.lv",
-			@"detail05.ship.lv",
-			@"detail06.ship.lv",
-			nil];
-}
-- (NSNumber *)totalLevel
-{
-	NSInteger total = 0;
-	for(HMShipDetailViewController *detail in self.details) {
-		HMKCShipObject *ship = detail.ship;
-		total += ship.lv.integerValue;
-	}
-	return @(total);
-}
-+ (NSSet *)keyPathsForValuesAffectingTotalDrums
-{
-	return [NSSet setWithObjects:
-			@"detail01.ship.totalDrums",
-			@"detail02.ship.totalDrums",
-			@"detail03.ship.totalDrums",
-			@"detail04.ship.totalDrums",
-			@"detail05.ship.totalDrums",
-			@"detail06.ship.totalDrums",
-			nil];
-}
-- (NSNumber *)totalDrums
-{
-	NSInteger total = 0;
-	for(HMShipDetailViewController *detail in self.details) {
-		HMKCShipObject *ship = detail.ship;
-		total += ship.totalDrums.integerValue;
-	}
-	return @(total);
-}
-
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-	if([self.shipKeys containsObject:keyPath]) {
-		[self setShipOfViewForKey:keyPath];
+	if([keyPath isEqualToString:@"selection.ships"]) {
+		[self setupShips];
+		return;
+	}
+	if([keyPath isEqualToString:@"selection.name"]) {
+		self.title = self.fleet.name;
 		return;
 	}
 	
@@ -510,7 +398,9 @@ const NSInteger maxFleetNumber = 4;
 }
 + (NSSet *)keyPathsForValuesAffectingRepairTime
 {
-	return [NSSet setWithObjects:@"anchorageRepair.repairTime", @"anchorageRepair", nil];
+	return [NSSet setWithObjects:
+			@"fleet",
+			@"anchorageRepair.repairTime", @"anchorageRepair", nil];
 }
 - (NSNumber *)repairTime
 {
@@ -525,9 +415,8 @@ const NSInteger maxFleetNumber = 4;
 + (NSSet *)keyPathsForValuesAffectingRepairableShipCount
 {
 	return [NSSet setWithObjects:
+			@"fleet",
 			@"anchorageRepair.repairableShipCount", @"anchorageRepair",
-			
-			
 			nil];
 }
 - (NSNumber *)repairableShipCount

@@ -8,7 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class HMKCDeck;
 
 typedef NS_ENUM(NSUInteger, HMFleetViewType) {
 	detailViewType,
@@ -34,7 +33,6 @@ typedef NS_ENUM(NSInteger, HMFleetViewShipOrder) {
 
 @property (readonly) HMFleetViewType type;
 
-@property (strong) HMKCDeck* fleet;
 @property NSInteger fleetNumber;
 @property HMFleetViewShipOrder shipOrder;
 @property BOOL enableAnimation;
