@@ -470,13 +470,14 @@ NSInteger damageControlIfPossible(NSInteger nowhp, HMKCShipObject *ship)
 		[self calculateBattle];
 		return;
 	}
+	if([self.api isEqualToString:@"/kcsapi/api_req_sortie/ld_airbattle"]) {
+		[self calculateBattle];
+		return;
+	}
+	
 	if([self.api isEqualToString:@"/kcsapi/api_req_battle_midnight/battle"]
 	   || [self.api isEqualToString:@"/kcsapi/api_req_battle_midnight/sp_midnight"]) {
 		[self calculateMidnightBattle];
-		return;
-	}
-	if([self.api isEqualToString:@"/kcsapi/api_req_sortie/ld_airbattle"]) {
-		[self calculateBattle];
 		return;
 	}
 	
@@ -494,6 +495,11 @@ NSInteger damageControlIfPossible(NSInteger nowhp, HMKCShipObject *ship)
 	}
 	if([self.api isEqualToString:@"/kcsapi/api_req_combined_battle/battle_water"]) {
 	   self.battleType = typeCombinedWater;
+		[self calculateBattle];
+		return;
+	}
+	if([self.api isEqualToString:@"/kcsapi/api_req_combined_battle/ld_airbattle"]) {
+		self.battleType = typeCombinedWater;
 		[self calculateBattle];
 		return;
 	}

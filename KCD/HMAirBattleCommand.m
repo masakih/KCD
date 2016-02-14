@@ -24,6 +24,7 @@
 {
 	if([api isEqualToString:@"/kcsapi/api_req_sortie/airbattle"]) return YES;
 	if([api isEqualToString:@"/kcsapi/api_req_sortie/ld_airbattle"]) return YES;
+	if([api isEqualToString:@"/kcsapi/api_req_combined_battle/ld_airbattle"]) return YES;
 	
 	return NO;
 }
