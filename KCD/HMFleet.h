@@ -13,6 +13,7 @@
 @interface HMFleet : NSObject
 
 @property (readonly) NSString *name;
+@property (readonly) NSNumber *id;
 
 @property (readonly) NSArray<HMKCShipObject *> *ships;
 

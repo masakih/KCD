@@ -147,6 +147,15 @@
 	return name;
 }
 
+ +(NSSet *)keyPathsForValuesAffectingId
+{
+	return [NSSet setWithObject:@"deck.id"];
+}
+- (NSNumber *)id
+{
+	return self.deck.id;
+}
+
 + (NSSet *)keyPathsForValuesAffectingTotalSakuteki
 {
 	return [NSSet setWithObjects:

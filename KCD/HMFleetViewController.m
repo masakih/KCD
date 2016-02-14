@@ -365,27 +365,10 @@ const NSInteger maxFleetNumber = 4;
 
 - (void)buildAnchorageRepairHolder
 {
-	HMServerDataStore *store = [HMServerDataStore defaultManager];
-	NSError *error = nil;
-	NSArray *array = [store objectsWithEntityName:@"Deck"
-								  sortDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES]]
-										predicate:nil
-											error:&error];
-	if(error) {
-		NSLog(@"%s error: %@", __PRETTY_FUNCTION__, error);
-		return;
-	}
-	if(array.count == 0) {
-		return;
-	}
-	if(array.count < 4) {
-		NSBeep();
-		NSLog(@"hogehoge");
-		return;
-	}
-	NSMutableArray *anchorageRepairs = [NSMutableArray new];
-	for(HMKCDeck *deck in array) {
-		id anchorageRepair = [[HMAnchorageRepairManager alloc] initWithDeck:deck];
+	NSMutableArray<HMAnchorageRepairManager *> *anchorageRepairs = [NSMutableArray new];
+	for(NSInteger i = 1; i <= 4; i++) {
+		HMFleet *fleet = [HMFleet fleetWithNumber:@(i)];
+		HMAnchorageRepairManager *anchorageRepair = [HMAnchorageRepairManager anchorageRepairManagerWithFleet:fleet];
 		[anchorageRepairs addObject:anchorageRepair];
 	}
 	self.anchorageRepairHolder = anchorageRepairs;

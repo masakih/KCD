@@ -9,10 +9,12 @@
 #import <Foundation/Foundation.h>
 
 @class HMKCDeck;
+@class HMFleet;
 
 @interface HMAnchorageRepairManager : NSObject
 
-- (instancetype)initWithDeck:(HMKCDeck *)deck;
++ (instancetype)anchorageRepairManagerWithFleet:(HMFleet *)fleet;
+
 @property (readonly) NSDate *repairTime;
 
 @property (readonly) NSNumber *repairableShipCount;
