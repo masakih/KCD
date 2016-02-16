@@ -253,6 +253,7 @@
 		F4F9F89B1C6CB7D400D0EE76 /* HMFleet.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F9F89A1C6CB7D400D0EE76 /* HMFleet.m */; };
 		F4F9F89F1C6CBFF400D0EE76 /* HMFleetTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F9F89D1C6CBFF400D0EE76 /* HMFleetTestViewController.m */; };
 		F4F9F8A01C6CBFF400D0EE76 /* HMFleetTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4F9F89E1C6CBFF400D0EE76 /* HMFleetTestViewController.xib */; };
+		F4F9F8A31C70AFB600D0EE76 /* HMFleetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F9F8A21C70AFB600D0EE76 /* HMFleetManager.m */; };
 		F4FCFD44191F4C1D000640A1 /* HMKenzoMarkCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FCFD43191F4C1D000640A1 /* HMKenzoMarkCommand.m */; };
 		F4FDF2411A3D50420033E0AD /* HMShipMasterDetailWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FDF23F1A3D50420033E0AD /* HMShipMasterDetailWindowController.m */; };
 /* End PBXBuildFile section */
@@ -720,6 +721,8 @@
 		F4F9F89C1C6CBFF400D0EE76 /* HMFleetTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMFleetTestViewController.h; sourceTree = "<group>"; };
 		F4F9F89D1C6CBFF400D0EE76 /* HMFleetTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMFleetTestViewController.m; sourceTree = "<group>"; };
 		F4F9F89E1C6CBFF400D0EE76 /* HMFleetTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMFleetTestViewController.xib; sourceTree = "<group>"; };
+		F4F9F8A11C70AFB600D0EE76 /* HMFleetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMFleetManager.h; sourceTree = "<group>"; };
+		F4F9F8A21C70AFB600D0EE76 /* HMFleetManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMFleetManager.m; sourceTree = "<group>"; };
 		F4FCFD42191F4C1D000640A1 /* HMKenzoMarkCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMKenzoMarkCommand.h; sourceTree = "<group>"; };
 		F4FCFD43191F4C1D000640A1 /* HMKenzoMarkCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKenzoMarkCommand.m; sourceTree = "<group>"; };
 		F4FDF23E1A3D50420033E0AD /* HMShipMasterDetailWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMShipMasterDetailWindowController.h; sourceTree = "<group>"; };
@@ -859,6 +862,8 @@
 				F499E88C1B5BCA7300189029 /* HMAnchorageRepairManager.m */,
 				F448F9901B6FBF80004901AD /* HMResourceHistoryManager.h */,
 				F448F9911B6FBF80004901AD /* HMResourceHistoryManager.m */,
+				F4F9F8A11C70AFB600D0EE76 /* HMFleetManager.h */,
+				F4F9F8A21C70AFB600D0EE76 /* HMFleetManager.m */,
 				F4D2CBBF18ACE7D7000EBC59 /* Command */,
 				F4BEEEA918D890660006F70C /* UI */,
 				F4BEEEA818D88FF30006F70C /* CoreData */,
@@ -1582,6 +1587,7 @@
 				F4666C4D1B1B3113001840DB /* HMBookmarkListTableView.m in Sources */,
 				F4A3AD8E19BB220000FDBF80 /* HMMaskInfomation.m in Sources */,
 				F4F6E8291B3045970008B66E /* CacheStoragePolicy.m in Sources */,
+				F4F9F8A31C70AFB600D0EE76 /* HMFleetManager.m in Sources */,
 				F4D6BCBA1AA32BEA00742FEB /* HMFleetViewController.m in Sources */,
 				F49546311B18991300E0D8D0 /* HMBookmarkDataStore.m in Sources */,
 				F4666C511B1CB2CE001840DB /* HMBrowserContentAdjuster.m in Sources */,

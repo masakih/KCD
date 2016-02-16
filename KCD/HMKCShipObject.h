@@ -15,6 +15,7 @@
 @property (nonatomic, retain) NSNumber * bull;
 @property (nonatomic, retain) NSNumber * cond;
 @property (nonatomic, retain) NSNumber * exp;
+@property (nonatomic, retain) NSNumber * fleet;
 @property (nonatomic, retain) NSNumber * fuel;
 @property (nonatomic, retain) NSNumber * id;
 @property (nonatomic, retain) NSNumber * kaihi_0;

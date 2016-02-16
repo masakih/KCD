@@ -272,6 +272,7 @@
         <attribute name="bull" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="cond" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="exp" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="fleet" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="fuel" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="id" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="kaihi_0" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -346,7 +347,7 @@
         <element name="Material" positionX="0" positionY="0" width="128" height="165"/>
         <element name="NyukyoDock" positionX="0" positionY="0" width="128" height="30"/>
         <element name="Quest" positionX="0" positionY="0" width="128" height="240"/>
-        <element name="Ship" positionX="0" positionY="0" width="128" height="795"/>
+        <element name="Ship" positionX="0" positionY="0" width="128" height="810"/>
         <element name="SlotItem" positionX="0" positionY="0" width="128" height="150"/>
     </elements>
 </model>

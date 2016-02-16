@@ -16,6 +16,7 @@
 @dynamic bull;
 @dynamic cond;
 @dynamic exp;
+@dynamic fleet;
 @dynamic fuel;
 @dynamic id;
 @dynamic kaihi_0;

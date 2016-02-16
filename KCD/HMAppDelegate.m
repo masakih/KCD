@@ -20,6 +20,8 @@
 #import "HMExternalBrowserWindowController.h"
 #import "HMBrowserContentAdjuster.h"
 
+#import "HMFleetManager.h"
+
 #import "HMTSVSupport.h"
 
 #import "CustomHTTPProtocol.h"
@@ -57,6 +59,8 @@
 @property (strong) NSMutableArray *browserWindowControllers;
 
 @property (strong) NSMutableArray *updaters;
+
+@property (strong) HMFleetManager *fleetManager;
 
 #ifdef DEBUG
 @property (strong) HMShipWindowController *shipWindowController;
@@ -121,6 +125,8 @@
 								   selector:@selector(fire:)
 								   userInfo:nil
 									repeats:YES];
+	
+	_fleetManager = [HMFleetManager new];
 }
 
 - (void)awakeFromNib
