@@ -16,6 +16,7 @@
 #import "HMKCShipObject+Extensions.h"
 #import "HMKCSlotItemObject.h"
 #import "HMKCDeck+Extension.h"
+#import "HMKCMasterSlotItemObject.h"
 
 #define DAMAGE_CHECK 0
 
@@ -23,6 +24,11 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 	typeNormal = 0,
 	typeCombinedAir,
 	typeCombinedWater,
+};
+
+typedef NS_ENUM(NSUInteger, HMDamageControlMasterSlotItemID) {
+	damageControl = 42,
+	goddes = 43,
 };
 
 @interface HMCalculateDamageCommand ()
@@ -335,6 +341,30 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 	[self.store saveAction:nil];
 }
 
+NSInteger masterSlotItemIDbySlotItem(NSNumber *value)
+{
+	if(![value isKindOfClass:[NSNumber class]]) return 0;
+	NSInteger slotItemID = [value integerValue];
+	if(slotItemID == -1) return 0;
+	if(slotItemID == 0) return 0;
+	
+	HMServerDataStore *store = [HMServerDataStore defaultManager];
+	
+	NSError *error = nil;
+	NSArray *array = [store objectsWithEntityName:@"SlotItem"
+											error:&error
+								  predicateFormat:@"id = %@", value];
+	if([array count] == 0) {
+		NSLog(@"SlotItem is invalid.");
+		return 0;
+	}
+	
+	HMKCSlotItemObject *slotItem = array[0];
+	NSInteger masterSlotItemID = [slotItem.master_slotItem.id integerValue];
+	
+	return masterSlotItemID;
+}
+
 NSInteger damageControlIfPossible(NSInteger nowhp, HMKCShipObject *ship)
 {
 	if(nowhp < 0) nowhp = 0;
@@ -342,19 +372,43 @@ NSInteger damageControlIfPossible(NSInteger nowhp, HMKCShipObject *ship)
 	NSInteger maxhp = ship.maxhp.integerValue;
 	
 	NSOrderedSet<HMKCSlotItemObject *> *items = ship.equippedItem;
-	for(HMKCSlotItemObject *item in items) {
-		NSInteger itemID = item.id.integerValue;
-		if(itemID == 42) {
-			return maxhp * 0.2;
-		} else if(itemID == 43) {
-			return maxhp;
+	
+	__block NSInteger newhp = nowhp;
+	__block NSMutableOrderedSet<HMKCSlotItemObject *> *newItems = [items mutableCopy];
+	[items enumerateObjectsUsingBlock:^(HMKCSlotItemObject * _Nonnull item, NSUInteger idx, BOOL * _Nonnull stop) {
+		NSInteger masterSlotItemID = masterSlotItemIDbySlotItem(item.id);
+		switch(masterSlotItemID) {
+			case damageControl:
+				newhp = maxhp * 0.2;
+				[newItems removeObject:item];
+				*stop = YES;
+				break;
+			case goddes:
+				newhp = maxhp;
+				[newItems removeObject:item];
+				ship.fuel = ship.maxFuel;
+				ship.bull = ship.maxBull;
+				*stop = YES;
+				break;
 		}
+	}];
+	if(items.count != newItems.count) {
+		ship.equippedItem = newItems;
+		return newhp;
 	}
-	NSInteger exItem = ship.slot_ex.integerValue;
-	if(exItem == 42) {
-		return maxhp * 0.2;
-	} else if(exItem == 43) {
-		return maxhp;
+	
+	NSInteger masterSlotItemID = masterSlotItemIDbySlotItem(ship.slot_ex);
+	switch(masterSlotItemID) {
+		case damageControl:
+			nowhp =  maxhp * 0.2;
+			ship.slot_ex = @(-1);
+			break;
+		case goddes:
+			nowhp =  maxhp;
+			ship.fuel = ship.maxFuel;
+			ship.bull = ship.maxBull;
+			ship.slot_ex = @(-1);
+			break;
 	}
 	
 	return nowhp;
