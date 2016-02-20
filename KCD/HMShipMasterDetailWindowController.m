@@ -12,7 +12,7 @@
 
 #import "HMAppDelegate.h"
 #import "HMServerDataStore.h"
-#import "HMFleetInformation.h"
+#import "HMFleetManager.h"
 #import "HMKCShipObject+Extensions.h"
 
 
@@ -21,36 +21,29 @@
 @property (readonly) NSManagedObjectContext *managedObjectContext;
 
 @property (nonatomic, weak) IBOutlet NSArrayController *shipController;
+@property (nonatomic, weak) IBOutlet NSArrayController *fleetMemberController;
 
-@property (strong) NSIndexSet *shipSelectedIndexes;
-@property (strong) NSIndexSet *fleetSelectedIndexes;
-@property (strong) NSIndexSet *fleetMemberSelectedIndexes;
+@property (nonatomic, weak) IBOutlet NSTableView *shipsView;
+@property (nonatomic, weak) IBOutlet NSTableView *fleetMemberView;
 
-@property (strong) HMKCShipObject *selectedObject;
+
+@property (nonatomic, strong) HMKCShipObject *selectedShip;
 @property (strong) NSArray *spec;
-@property (strong) NSMutableArray *fleetMember;
 
 @property (strong) NSArray *equipments;
 
-@property (strong) HMFleetInformation *fleetInfo;
+@property (strong) HMFleetManager *fleetManager;
 
 @end
 
 @implementation HMShipMasterDetailWindowController
-@synthesize shipSelectedIndexes = _shipSelectedIndexes;
-@synthesize fleetSelectedIndexes = _fleetSelectedIndexes;
-@synthesize fleetMemberSelectedIndexes = _fleetMemberSelectedIndexes;
-@synthesize selectedObject = _selectedObject;
-
 
 - (instancetype)init
 {
 	self = [super initWithWindowNibName:NSStringFromClass([self class])];
 	if(self) {
 		HMAppDelegate *appDelegate = [NSApplication sharedApplication].delegate;
-		_fleetInfo = appDelegate.fleetInformation;
-		_fleetMember = [NSMutableArray new];
-		[self buildFleet];
+		_fleetManager = appDelegate.fleetManager;
 	}
 	return self;
 }
@@ -60,52 +53,10 @@
 	return [HMServerDataStore defaultManager].managedObjectContext;
 }
 
-- (void)setShipSelectedIndexes:(NSIndexSet *)shipSelectedIndexes
+- (void)setSelectedShip:(HMKCShipObject *)selectedShip
 {
-	_shipSelectedIndexes = shipSelectedIndexes;
-	if(!shipSelectedIndexes) return;
-	self.selectedObject = [self.shipController.arrangedObjects objectAtIndex:shipSelectedIndexes.firstIndex];
-}
-- (NSIndexSet *)shipSelectedIndexes
-{
-	return _shipSelectedIndexes;
-}
-- (void)setFleetSelectedIndexes:(NSIndexSet *)fleetSelectedIndexes
-{
-	_fleetSelectedIndexes = fleetSelectedIndexes;
-	[self buildFleet];
-}
-- (NSIndexSet *)fleetSelectedIndexes
-{
-	return _fleetSelectedIndexes;
-}
-- (void)setFleetMemberSelectedIndexes:(NSIndexSet *)fleetMemberSelectedIndexes
-{
-	_fleetMemberSelectedIndexes = fleetMemberSelectedIndexes;
-	if(!fleetMemberSelectedIndexes) return;
-	if(fleetMemberSelectedIndexes.firstIndex > self.fleetMember.count) return;
-	self.selectedObject = [self.fleetMember objectAtIndex:fleetMemberSelectedIndexes.firstIndex];
-}
-- (NSIndexSet *)fleetMemberSelectedIndexes
-{
-	return _fleetMemberSelectedIndexes;
-}
-
-- (void)setSelectedObject:(HMKCShipObject *)selectedObject
-{
-	if([_selectedObject isEqual:selectedObject]) return;
-	_selectedObject = selectedObject;
-	[self.shipController setSelectedObjects:@[selectedObject]];
+	_selectedShip = selectedShip;
 	[self buildSpec];
-}
-- (HMKCShipObject *)selectedObject
-{
-	return _selectedObject;
-}
-
-- (void)buildFleet
-{
-	self.fleetMember = [[self.fleetInfo fleetMemberAtIndex:self.fleetSelectedIndexes.firstIndex + 1] mutableCopy];
 }
 
 - (NSDictionary *)specDictionary
@@ -134,19 +85,36 @@
 }
 - (void)buildSpec
 {
-	if(!self.selectedObject) return;
+	if(!self.selectedShip) return;
 	NSDictionary *spec = self.specDictionary;
 	NSMutableArray *array = [NSMutableArray new];
 	for(NSString *key in [self specDictionary]) {
 		NSMutableDictionary *dict = [NSMutableDictionary new];
-		[dict setObject:[self.selectedObject valueForKey:spec[key]] forKey:@"value"];
+		[dict setObject:[self.selectedShip valueForKey:spec[key]] forKey:@"value"];
 		[dict setObject:key forKey:@"name"];
 		[array addObject:dict];
 	}
 	
 	self.spec = [NSArray arrayWithArray:array];
 	
-	self.equipments = [self.selectedObject.equippedItem array];
+	self.equipments = [self.selectedShip.equippedItem array];
+}
+
+- (void)tableViewSelectionDidChange:(NSNotification *)notification
+{
+	NSTableView *tableview = [notification object];
+	NSArrayController *controller = nil;
+	if(tableview == self.shipsView) {
+		controller = self.shipController;
+	}
+	if(tableview == self.fleetMemberView) {
+		controller = self.fleetMemberController;
+	}
+	
+	NSArray *selectedObjects = controller.selectedObjects;
+	if(selectedObjects.count != 0) {
+		self.selectedShip = selectedObjects[0];
+	}
 }
 
 

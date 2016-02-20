@@ -6,7 +6,10 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="HMShipMasterDetailWindowController">
             <connections>
+                <outlet property="fleetMemberController" destination="0ea-R5-AMf" id="nDJ-1c-T3F"/>
+                <outlet property="fleetMemberView" destination="Snb-45-B3k" id="mxa-5g-9ht"/>
                 <outlet property="shipController" destination="hrb-ab-EE7" id="Jx2-V3-8Sq"/>
+                <outlet property="shipsView" destination="s4z-M5-vhI" id="DQj-jF-upA"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -69,6 +72,9 @@
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         </tableColumn>
                                     </tableColumns>
+                                    <connections>
+                                        <outlet property="delegate" destination="-2" id="VyR-dE-SKm"/>
+                                    </connections>
                                 </tableView>
                             </subviews>
                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -198,6 +204,9 @@
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         </tableColumn>
                                     </tableColumns>
+                                    <connections>
+                                        <outlet property="delegate" destination="-2" id="ZyO-GW-k6U"/>
+                                    </connections>
                                 </tableView>
                             </subviews>
                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -436,34 +445,31 @@
         <arrayController mode="entity" entityName="Ship" automaticallyPreparesContent="YES" id="hrb-ab-EE7" userLabel="Ships">
             <connections>
                 <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="fAQ-KY-pNo"/>
-                <binding destination="-2" name="selectionIndexes" keyPath="shipSelectedIndexes" id="PVY-Uj-0PT"/>
             </connections>
         </arrayController>
-        <arrayController mode="entity" entityName="Deck" automaticallyPreparesContent="YES" id="1b6-0l-LOD" userLabel="Fleets">
+        <objectController id="0Bh-Il-X7K" userLabel="SelectedShip">
             <connections>
-                <binding destination="-2" name="selectionIndexes" keyPath="fleetSelectedIndexes" id="4jU-ii-S5o"/>
-                <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="gsb-ar-ccn"/>
-            </connections>
-        </arrayController>
-        <objectController objectClassName="HMKCShipObject" editable="NO" id="bYe-aY-pUA" userLabel="Selected">
-            <connections>
-                <binding destination="-2" name="contentObject" keyPath="selectedObject" id="7rv-0m-56h"/>
+                <binding destination="-2" name="contentObject" keyPath="selectedShip" id="DX7-Tg-gNd"/>
             </connections>
         </objectController>
+        <arrayController objectClassName="HMFleet" automaticallyPreparesContent="YES" id="1b6-0l-LOD" userLabel="Fleets">
+            <connections>
+                <binding destination="-2" name="contentArray" keyPath="fleetManager.fleets" id="OIP-Oh-bSm"/>
+            </connections>
+        </arrayController>
         <arrayController id="F2c-qI-d2N" userLabel="Spec">
             <connections>
                 <binding destination="-2" name="contentArray" keyPath="spec" id="A2F-p1-hKo"/>
             </connections>
         </arrayController>
-        <arrayController editable="NO" id="0ea-R5-AMf" userLabel="FleetMember">
+        <arrayController objectClassName="HMKCShipObject" editable="NO" id="0ea-R5-AMf" userLabel="FleetMember">
             <connections>
-                <binding destination="-2" name="contentArray" keyPath="fleetMember" id="hrm-tV-cJ5"/>
-                <binding destination="-2" name="selectionIndexes" keyPath="fleetMemberSelectedIndexes" id="wTL-O4-Fjc"/>
+                <binding destination="1b6-0l-LOD" name="contentArray" keyPath="selection.ships" id="BCT-CP-GrM"/>
             </connections>
         </arrayController>
         <arrayController objectClassName="HMKCSlotItemObject" id="G2z-6Q-bHj" userLabel="Equipment">
             <connections>
-                <binding destination="-2" name="contentArray" keyPath="equipments" id="CrX-Ok-YLz"/>
+                <binding destination="-2" name="contentArray" keyPath="equipments" id="YYC-PZ-jeI"/>
             </connections>
         </arrayController>
     </objects>

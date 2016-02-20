@@ -32,8 +32,6 @@
 #import "HMEquipmentWindowController.h"
 #import "HMMapWindowController.h"
 
-#import "HMFleetInformation.h"
-
 #import "HMUITestWindowController.h"
 #endif
 
@@ -258,15 +256,6 @@
 	return @"Version/8.0.8 Safari/600.8.9";
 }
 
-#ifdef DEBUG
-- (HMFleetInformation *)fleetInformation
-{
-	static HMFleetInformation *_fleetInformation = nil;
-	if(_fleetInformation) return _fleetInformation;
-	_fleetInformation = [HMFleetInformation new];
-	return _fleetInformation;
-}
-#endif
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem
 {

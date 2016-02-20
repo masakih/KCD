@@ -10,7 +10,7 @@
 
 #import "HMJSONViewWindowController.h"
 
-@class HMFleetInformation;
+@class HMFleetManager;
 @class HMExternalBrowserWindowController;
 
 typedef NS_ENUM(NSUInteger, HMShipType) {
@@ -38,7 +38,7 @@ typedef NS_ENUM(NSUInteger, HMShipType) {
 @property (strong, nonatomic) IBOutlet NSMenuItem *debugMenuItem;
 @property (nonatomic, weak) IBOutlet NSMenuItem *billingWindowMenuItem;
 
-@property (readonly) HMFleetInformation *fleetInformation;
+@property (readonly) HMFleetManager *fleetManager;
 
 @property (nonatomic, strong) NSString *screenShotSaveDirectory;
 @property (readonly) HMScreenshotListWindowController *screenshotListWindowController;

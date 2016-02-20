@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+@class HMFleet;
 @interface HMFleetManager : NSObject
+
+@property (readonly) NSArray<HMFleet *> *fleets;
 
 @end
