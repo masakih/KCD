@@ -90,7 +90,7 @@
 		F49688641B3AFE4900D3CEDE /* HMProgressPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = F49688621B3AFE4900D3CEDE /* HMProgressPanel.m */; };
 		F49688671B3EA16800D3CEDE /* RemoveDatabaseFileAndRestart.app in Resources */ = {isa = PBXBuildFile; fileRef = F49688661B3EA16800D3CEDE /* RemoveDatabaseFileAndRestart.app */; };
 		F49828FC1902A226000D6BBE /* HMStrokeTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F49828FB1902A226000D6BBE /* HMStrokeTextFieldCell.m */; };
-		F499E88D1B5BCA7300189029 /* HMAnchorageRepairManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F499E88C1B5BCA7300189029 /* HMAnchorageRepairManager.m */; };
+		F499E88D1B5BCA7300189029 /* HMAnchorageRepairManagerObsolete.m in Sources */ = {isa = PBXBuildFile; fileRef = F499E88C1B5BCA7300189029 /* HMAnchorageRepairManagerObsolete.m */; };
 		F499E8901B5D4E7F00189029 /* HMPortNotifyCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F499E88F1B5D4E7F00189029 /* HMPortNotifyCommand.m */; };
 		F4A2AF521A074DCF0024BD9E /* HMScreenshotListWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A2AF501A074DCF0024BD9E /* HMScreenshotListWindowController.m */; };
 		F4A2AF541A074DE40024BD9E /* HMScreenshotListWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A2AF561A074DE40024BD9E /* HMScreenshotListWindowController.xib */; };
@@ -440,8 +440,8 @@
 		F49688661B3EA16800D3CEDE /* RemoveDatabaseFileAndRestart.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = RemoveDatabaseFileAndRestart.app; sourceTree = "<group>"; };
 		F49828FA1902A226000D6BBE /* HMStrokeTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMStrokeTextFieldCell.h; sourceTree = "<group>"; };
 		F49828FB1902A226000D6BBE /* HMStrokeTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMStrokeTextFieldCell.m; sourceTree = "<group>"; };
-		F499E88B1B5BCA7300189029 /* HMAnchorageRepairManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMAnchorageRepairManager.h; sourceTree = "<group>"; };
-		F499E88C1B5BCA7300189029 /* HMAnchorageRepairManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMAnchorageRepairManager.m; sourceTree = "<group>"; };
+		F499E88B1B5BCA7300189029 /* HMAnchorageRepairManagerObsolete.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMAnchorageRepairManagerObsolete.h; sourceTree = "<group>"; };
+		F499E88C1B5BCA7300189029 /* HMAnchorageRepairManagerObsolete.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMAnchorageRepairManagerObsolete.m; sourceTree = "<group>"; };
 		F499E88E1B5D4E7F00189029 /* HMPortNotifyCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPortNotifyCommand.h; sourceTree = "<group>"; };
 		F499E88F1B5D4E7F00189029 /* HMPortNotifyCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMPortNotifyCommand.m; sourceTree = "<group>"; };
 		F4A2AF4F1A074DCF0024BD9E /* HMScreenshotListWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMScreenshotListWindowController.h; sourceTree = "<group>"; };
@@ -855,8 +855,8 @@
 				F495462A1B14CBA600E0D8D0 /* HMBookmarkManager.m */,
 				F4F6E80A1B2BC81C0008B66E /* HMPeriodicNotifier.h */,
 				F4F6E80B1B2BC81C0008B66E /* HMPeriodicNotifier.m */,
-				F499E88B1B5BCA7300189029 /* HMAnchorageRepairManager.h */,
-				F499E88C1B5BCA7300189029 /* HMAnchorageRepairManager.m */,
+				F499E88B1B5BCA7300189029 /* HMAnchorageRepairManagerObsolete.h */,
+				F499E88C1B5BCA7300189029 /* HMAnchorageRepairManagerObsolete.m */,
 				F448F9901B6FBF80004901AD /* HMResourceHistoryManager.h */,
 				F448F9911B6FBF80004901AD /* HMResourceHistoryManager.m */,
 				F4F9F8A11C70AFB600D0EE76 /* HMFleetManager.h */,
@@ -1539,7 +1539,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F499E88D1B5BCA7300189029 /* HMAnchorageRepairManager.m in Sources */,
+				F499E88D1B5BCA7300189029 /* HMAnchorageRepairManagerObsolete.m in Sources */,
 				F4ED5D2A1B78D0CA00D1BDEF /* HMGuardEscapedView.m in Sources */,
 				F4513EE818B77A5300073552 /* HMMemberKDockCommand.m in Sources */,
 				F4F9F87E1C6B5E4A00D0EE76 /* HMKCMasterSType.m in Sources */,

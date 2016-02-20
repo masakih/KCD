@@ -11,7 +11,7 @@
 @class HMKCDeck;
 @class HMFleet;
 
-@interface HMAnchorageRepairManager : NSObject
+@interface HMAnchorageRepairManagerObsolete : NSObject
 
 + (instancetype)anchorageRepairManagerWithFleet:(HMFleet *)fleet;
 

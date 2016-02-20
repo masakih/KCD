@@ -18,7 +18,7 @@
 
 #import "HMServerDataStore.h"
 
-#import "HMAnchorageRepairManager.h"
+#import "HMAnchorageRepairManagerObsolete.h"
 
 
 const NSInteger maxFleetNumber = 4;
@@ -56,7 +56,7 @@ const NSInteger maxFleetNumber = 4;
 
 
 @property (strong) NSArray *anchorageRepairHolder;
-@property (strong) HMAnchorageRepairManager *anchorageRepair;
+@property (strong) HMAnchorageRepairManagerObsolete *anchorageRepair;
 @property (readonly) NSNumber *repairTime;
 @property (readonly) NSNumber *repairableShipCount;
 
@@ -365,10 +365,10 @@ const NSInteger maxFleetNumber = 4;
 
 - (void)buildAnchorageRepairHolder
 {
-	NSMutableArray<HMAnchorageRepairManager *> *anchorageRepairs = [NSMutableArray new];
+	NSMutableArray<HMAnchorageRepairManagerObsolete *> *anchorageRepairs = [NSMutableArray new];
 	for(NSInteger i = 1; i <= 4; i++) {
 		HMFleet *fleet = [HMFleet fleetWithNumber:@(i)];
-		HMAnchorageRepairManager *anchorageRepair = [HMAnchorageRepairManager anchorageRepairManagerWithFleet:fleet];
+		HMAnchorageRepairManagerObsolete *anchorageRepair = [HMAnchorageRepairManagerObsolete anchorageRepairManagerWithFleet:fleet];
 		[anchorageRepairs addObject:anchorageRepair];
 	}
 	self.anchorageRepairHolder = anchorageRepairs;

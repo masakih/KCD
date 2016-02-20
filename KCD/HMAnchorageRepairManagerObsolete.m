@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 Hori,Masaki. All rights reserved.
 //
 
-#import "HMAnchorageRepairManager.h"
+#import "HMAnchorageRepairManagerObsolete.h"
 
 #import "HMAppDelegate.h"
 #import "HMUserDefaults.h"
@@ -22,7 +22,7 @@
 #import "HMKCMasterSType.h"
 
 
-@interface HMAnchorageRepairManager ()
+@interface HMAnchorageRepairManagerObsolete ()
 
 @property (strong) NSDate *repairTime;
 
@@ -35,7 +35,7 @@
 
 @end
 
-@implementation HMAnchorageRepairManager
+@implementation HMAnchorageRepairManagerObsolete
 
 static NSMutableArray *sRepairableDeckIDs;
 
