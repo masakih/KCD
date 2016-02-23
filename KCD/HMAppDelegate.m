@@ -105,6 +105,7 @@
 	self = [super init];
 	if(self) {
 		self.updaters = [NSMutableArray new];
+		_fleetManager = [HMFleetManager new];
 	}
 	return self;
 }
@@ -123,8 +124,6 @@
 								   selector:@selector(fire:)
 								   userInfo:nil
 									repeats:YES];
-	
-	_fleetManager = [HMFleetManager new];
 }
 
 - (void)awakeFromNib
@@ -254,6 +253,40 @@
 - (NSString *)appNameForUserAgent
 {
 	return @"Version/8.0.8 Safari/600.8.9";
+}
+
+- (NSFont *)monospaceSystemFont11
+{
+	NSFont *font11 = nil;
+	if([NSFont respondsToSelector:@selector(monospacedDigitSystemFontOfSize:weight:)]) {
+		font11 = [NSFont monospacedDigitSystemFontOfSize:11 weight:NSFontWeightRegular];
+	} else {
+		font11 = [NSFont systemFontOfSize:11];
+	}
+	
+	return font11;
+}
+- (NSFont *)monospaceSystemFont12
+{
+	NSFont *font12 = nil;
+	if([NSFont respondsToSelector:@selector(monospacedDigitSystemFontOfSize:weight:)]) {
+		font12 = [NSFont monospacedDigitSystemFontOfSize:12 weight:NSFontWeightRegular];
+	} else {
+		font12 = [NSFont systemFontOfSize:12];
+	}
+	
+	return font12;
+}
+- (NSFont *)monospaceSystemFont13
+{
+	NSFont *font13 = nil;
+	if([NSFont respondsToSelector:@selector(monospacedDigitSystemFontOfSize:weight:)]) {
+		font13 = [NSFont monospacedDigitSystemFontOfSize:13 weight:NSFontWeightRegular];
+	} else {
+		font13 = [NSFont systemFontOfSize:13];
+	}
+	
+	return font13;
 }
 
 

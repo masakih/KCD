@@ -15,10 +15,12 @@
 
 #import "HMKCShipObject+Extensions.h"
 #import "HMKCDeck+Extension.h"
+#import "HMKCMasterShipObject.h"
+#import "HMKCMasterSType.h"
 
 #import "HMServerDataStore.h"
 
-#import "HMAnchorageRepairManagerObsolete.h"
+#import "HMAnchorageRepairManager.h"
 
 
 const NSInteger maxFleetNumber = 4;
@@ -55,10 +57,9 @@ const NSInteger maxFleetNumber = 4;
 @property (strong) NSNumber *totalDrums;
 
 
-@property (strong) NSArray *anchorageRepairHolder;
-@property (strong) HMAnchorageRepairManagerObsolete *anchorageRepair;
+@property (strong) HMAnchorageRepairManager *anchorageRepair;
 @property (readonly) NSNumber *repairTime;
-@property (readonly) NSNumber *repairableShipCount;
+@property (readonly) BOOL repairable;
 
 @end
 
@@ -196,8 +197,6 @@ const NSInteger maxFleetNumber = 4;
 {
 	self.fleet = [HMFleet fleetWithNumber:@(fleetNumber)];
 	_fleetNumber = fleetNumber;
-	
-	self.anchorageRepair = self.anchorageRepairHolder[fleetNumber - 1];
 }
 - (NSInteger)fleetNumber
 {
@@ -365,13 +364,7 @@ const NSInteger maxFleetNumber = 4;
 
 - (void)buildAnchorageRepairHolder
 {
-	NSMutableArray<HMAnchorageRepairManagerObsolete *> *anchorageRepairs = [NSMutableArray new];
-	for(NSInteger i = 1; i <= 4; i++) {
-		HMFleet *fleet = [HMFleet fleetWithNumber:@(i)];
-		HMAnchorageRepairManagerObsolete *anchorageRepair = [HMAnchorageRepairManagerObsolete anchorageRepairManagerWithFleet:fleet];
-		[anchorageRepairs addObject:anchorageRepair];
-	}
-	self.anchorageRepairHolder = anchorageRepairs;
+	self.anchorageRepair = [HMAnchorageRepairManager defaultManager];
 	
 	HMAppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
 	[appDelegate addCounterUpdateBlock:^{
@@ -383,7 +376,7 @@ const NSInteger maxFleetNumber = 4;
 {
 	return [NSSet setWithObjects:
 			@"fleet",
-			@"anchorageRepair.repairTime", @"anchorageRepair", nil];
+			@"anchorageRepair.repairTime", nil];
 }
 - (NSNumber *)repairTime
 {
@@ -395,16 +388,27 @@ const NSInteger maxFleetNumber = 4;
 	NSTimeInterval diff = compTime - [now timeIntervalSince1970];
 	return @(diff + 20 * 60);
 }
-+ (NSSet *)keyPathsForValuesAffectingRepairableShipCount
+
+- (NSArray *)repairShipIds
+{
+	return @[@(19)];
+}
+
++ (NSSet *)keyPathsForValuesAffectingRepairable
 {
 	return [NSSet setWithObjects:
 			@"fleet",
-			@"anchorageRepair.repairableShipCount", @"anchorageRepair",
+			@"fleet.flagShip",
 			nil];
 }
-- (NSNumber *)repairableShipCount
+- (BOOL)repairable
 {
-	return self.anchorageRepair.repairableShipCount;
+	HMKCShipObject *flagShip = self.fleet[0];
+	HMKCMasterShipObject *flagShipMaster = flagShip.master_ship;
+	HMKCMasterSType *stype = flagShipMaster.stype;
+	NSNumber *stypeId = stype.id;
+	BOOL result = [self.repairShipIds containsObject:stypeId];
+	
+	return result;
 }
-
 @end

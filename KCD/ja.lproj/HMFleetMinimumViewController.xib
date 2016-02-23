@@ -141,29 +141,8 @@
                         <binding destination="-2" name="selectedTag" keyPath="fleetNumber" id="491-wW-IIh"/>
                     </connections>
                 </matrix>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="60e-Dp-ftZ">
-                    <rect key="frame" x="64" y="60" width="22" height="14"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="5隻" id="2qX-qT-RLH">
-                        <font key="font" size="11" name="Helvetica"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                    <connections>
-                        <binding destination="-2" name="hidden" keyPath="repairableShipCount" id="04h-bb-EMw">
-                            <dictionary key="options">
-                                <string key="NSValueTransformerName">NSNegateBoolean</string>
-                            </dictionary>
-                        </binding>
-                        <binding destination="-2" name="displayPatternValue1" keyPath="repairableShipCount" id="jQC-B7-xag">
-                            <dictionary key="options">
-                                <string key="NSDisplayPattern">%{value1}@隻</string>
-                            </dictionary>
-                        </binding>
-                    </connections>
-                </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="358-6d-um3">
-                    <rect key="frame" x="88" y="60" width="55" height="14"/>
+                    <rect key="frame" x="77" y="60" width="55" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="DyV-Dv-4Er">
                         <customFormatter key="formatter" id="i9j-ed-G6M" customClass="HMTimerCountFormatter"/>
@@ -172,11 +151,16 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
+                        <binding destination="-2" name="hidden" keyPath="repairable" id="v9O-cV-MtY">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                            </dictionary>
+                        </binding>
                         <binding destination="-2" name="value" keyPath="repairTime" id="WBa-ln-wqJ"/>
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="BWI-Rq-wLq">
-                    <rect key="frame" x="12" y="60" width="48" height="14"/>
+                    <rect key="frame" x="31" y="60" width="48" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="泊地修理" id="dHl-dE-zAZ">
                         <font key="font" metaFont="smallSystem"/>
@@ -184,7 +168,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <binding destination="-2" name="hidden" keyPath="repairableShipCount" id="XQl-cP-vX0">
+                        <binding destination="-2" name="hidden" keyPath="repairable" id="0Y7-u7-l5n">
                             <dictionary key="options">
                                 <string key="NSValueTransformerName">NSNegateBoolean</string>
                             </dictionary>

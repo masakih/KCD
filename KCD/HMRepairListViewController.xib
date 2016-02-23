@@ -26,20 +26,20 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="eLM-V4-yYr">
-                    <rect key="frame" x="6" y="8" width="311" height="385"/>
+                    <rect key="frame" x="6" y="8" width="311" height="359"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="oy8-0a-QnL">
-                        <rect key="frame" x="1" y="0.0" width="309" height="384"/>
+                        <rect key="frame" x="1" y="0.0" width="309" height="358"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveName="repairlistview" headerView="6cN-al-E6a" id="fYh-ug-HRe">
-                                <rect key="frame" x="0.0" y="0.0" width="309" height="361"/>
+                                <rect key="frame" x="0.0" y="0.0" width="309" height="335"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn identifier="name" editable="NO" width="107" minWidth="79" maxWidth="20000" id="TUB-Oz-Ql1">
+                                    <tableColumn identifier="name" editable="NO" width="79" minWidth="79" maxWidth="20000" id="TUB-Oz-Ql1">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="名前">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -79,9 +79,31 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
                                             <binding destination="d8w-mz-p76" name="value" keyPath="arrangedObjects.lv" id="wqm-NF-oR5"/>
+                                            <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="KAE-Qz-e6W"/>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn identifier="time" editable="NO" width="79" minWidth="10" maxWidth="3.4028234663852886e+38" id="TM5-mx-9OE">
+                                    <tableColumn identifier="status" width="39" minWidth="10" maxWidth="3.4028234663852886e+38" id="P4y-CL-RvJ">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="損害率">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </tableHeaderCell>
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="right" title="Text Cell" id="A1v-1Z-nce">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="d8w-mz-p76" name="displayPatternValue1" keyPath="arrangedObjects.status" id="IF7-sc-Gpl">
+                                                <dictionary key="options">
+                                                    <string key="NSDisplayPattern">%{value1}@</string>
+                                                </dictionary>
+                                            </binding>
+                                            <binding destination="d8w-mz-p76" name="textColor" keyPath="arrangedObjects.statusColor" id="om4-lP-AbJ"/>
+                                        </connections>
+                                    </tableColumn>
+                                    <tableColumn identifier="time" editable="NO" width="62" minWidth="10" maxWidth="3.4028234663852886e+38" id="TM5-mx-9OE">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="right" title="修理時間">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -89,7 +111,7 @@
                                         </tableHeaderCell>
                                         <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="right" id="shQ-ai-GVc">
                                             <customFormatter key="formatter" id="zdG-Ab-PVH" customClass="HMTimerCountFormatter"/>
-                                            <font key="font" size="13" name="Helvetica"/>
+                                            <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -101,38 +123,41 @@
                                                     <string key="NSValueTransformerName">HMMillisecondTransformer</string>
                                                 </dictionary>
                                             </binding>
+                                            <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="lPb-C8-SCt"/>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn identifier="steel" width="36" minWidth="10" maxWidth="3.4028234663852886e+38" id="AWO-9w-e21">
+                                    <tableColumn identifier="steel" width="42" minWidth="10" maxWidth="3.4028234663852886e+38" id="AWO-9w-e21">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="right" title="鋼材">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableHeaderCell>
                                         <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="right" title="Text Cell" id="r4I-eK-hEB">
-                                            <font key="font" size="13" name="Helvetica"/>
+                                            <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
                                             <binding destination="d8w-mz-p76" name="value" keyPath="arrangedObjects.steelRequiredInRepair" id="7s7-Yg-6aG"/>
+                                            <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="wSZ-2a-dbX"/>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn identifier="fuel" width="36" minWidth="10" maxWidth="3.4028234663852886e+38" id="inV-zw-QnU">
+                                    <tableColumn identifier="fuel" width="33" minWidth="10" maxWidth="3.4028234663852886e+38" id="inV-zw-QnU">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="right" title="燃焼">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableHeaderCell>
                                         <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="right" title="Text Cell" id="HRb-ls-QTx">
-                                            <font key="font" size="13" name="Helvetica"/>
+                                            <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
                                             <binding destination="d8w-mz-p76" name="value" keyPath="arrangedObjects.fuelRequiredInRepair" id="3xd-BI-Mt9"/>
+                                            <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="VwT-ij-1e4"/>
                                         </connections>
                                     </tableColumn>
                                 </tableColumns>
@@ -141,7 +166,7 @@
                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Kfg-xX-yu7">
-                        <rect key="frame" x="1" y="368" width="309" height="16"/>
+                        <rect key="frame" x="1" y="341" width="309" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="WN3-XE-yqm">
@@ -152,6 +177,29 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="cuH-Vp-StM">
+                    <rect key="frame" x="138" y="375" width="101" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="泊地修理タイマー" id="pJv-bA-eml">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="hr3-q9-VLJ">
+                    <rect key="frame" x="241" y="375" width="73" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" id="POJ-kk-UFt">
+                        <customFormatter key="formatter" id="2gx-Nb-TcK" customClass="HMTimerCountFormatter"/>
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="F4e-oQ-4KI"/>
+                        <binding destination="-2" name="value" keyPath="repairTime" id="l9Z-rK-kEY"/>
+                    </connections>
+                </textField>
             </subviews>
             <point key="canvasLocation" x="209.5" y="314"/>
         </customView>

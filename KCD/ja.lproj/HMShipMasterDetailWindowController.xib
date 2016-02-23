@@ -70,6 +70,9 @@
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                            <connections>
+                                                <binding destination="hrb-ab-EE7" name="value" keyPath="arrangedObjects.id" id="XOg-WN-fnj"/>
+                                            </connections>
                                         </tableColumn>
                                     </tableColumns>
                                     <connections>
