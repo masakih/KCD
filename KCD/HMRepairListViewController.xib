@@ -11,7 +11,7 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <arrayController mode="entity" entityName="Ship" fetchPredicateFormat="id != -2 &amp;&amp; ndock_time != 0" editable="NO" automaticallyPreparesContent="YES" automaticallyRearrangesObjects="YES" id="d8w-mz-p76" userLabel="Ship">
+        <arrayController mode="entity" entityName="Ship" fetchPredicateFormat="id != -2 &amp;&amp; nowhp &lt;&gt; maxhp" editable="NO" automaticallyPreparesContent="YES" automaticallyRearrangesObjects="YES" id="d8w-mz-p76" userLabel="Ship">
             <connections>
                 <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="fN9-6X-PZD"/>
                 <binding destination="4yO-Gx-S09" name="sortDescriptors" keyPath="values.repairListViewSortDesc" id="hbY-uH-jhj">
@@ -39,7 +39,7 @@
                                 <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn identifier="name" editable="NO" width="79" minWidth="79" maxWidth="20000" id="TUB-Oz-Ql1">
+                                    <tableColumn identifier="name" editable="NO" width="99" minWidth="79" maxWidth="20000" id="TUB-Oz-Ql1">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="名前">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -65,8 +65,8 @@
                                             </binding>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn identifier="lv" width="36" minWidth="10" maxWidth="3.4028234663852886e+38" id="1tc-6T-vOf">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="right" title="Lv.">
+                                    <tableColumn identifier="lv" width="31" minWidth="10" maxWidth="3.4028234663852886e+38" id="1tc-6T-vOf">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="Lv.">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -82,25 +82,24 @@
                                             <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="KAE-Qz-e6W"/>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn identifier="status" width="39" minWidth="10" maxWidth="3.4028234663852886e+38" id="P4y-CL-RvJ">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="損害率">
+                                    <tableColumn identifier="status" width="25" minWidth="10" maxWidth="3.4028234663852886e+38" id="P4y-CL-RvJ">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="損害率">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableHeaderCell>
-                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="right" title="Text Cell" id="A1v-1Z-nce">
-                                            <font key="font" metaFont="system"/>
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="center" title="Text Cell" id="A1v-1Z-nce">
+                                            <font key="font" metaFont="systemBold" size="16"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
-                                            <binding destination="d8w-mz-p76" name="displayPatternValue1" keyPath="arrangedObjects.status" id="IF7-sc-Gpl">
+                                            <binding destination="d8w-mz-p76" name="value" keyPath="arrangedObjects.status" id="V5j-vQ-Jlv">
                                                 <dictionary key="options">
-                                                    <string key="NSDisplayPattern">%{value1}@</string>
+                                                    <string key="NSValueTransformerName">HMDamageValueTransformer</string>
                                                 </dictionary>
                                             </binding>
-                                            <binding destination="d8w-mz-p76" name="textColor" keyPath="arrangedObjects.statusColor" id="om4-lP-AbJ"/>
                                         </connections>
                                     </tableColumn>
                                     <tableColumn identifier="time" editable="NO" width="62" minWidth="10" maxWidth="3.4028234663852886e+38" id="TM5-mx-9OE">
@@ -126,8 +125,8 @@
                                             <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="lPb-C8-SCt"/>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn identifier="steel" width="42" minWidth="10" maxWidth="3.4028234663852886e+38" id="AWO-9w-e21">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="right" title="鋼材">
+                                    <tableColumn identifier="steel" width="37" minWidth="10" maxWidth="3.4028234663852886e+38" id="AWO-9w-e21">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="鋼材">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -143,8 +142,8 @@
                                             <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="wSZ-2a-dbX"/>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn identifier="fuel" width="33" minWidth="10" maxWidth="3.4028234663852886e+38" id="inV-zw-QnU">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="right" title="燃焼">
+                                    <tableColumn identifier="fuel" width="37" minWidth="10" maxWidth="3.4028234663852886e+38" id="inV-zw-QnU">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="燃焼">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -166,7 +165,7 @@
                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Kfg-xX-yu7">
-                        <rect key="frame" x="1" y="341" width="309" height="16"/>
+                        <rect key="frame" x="1" y="342" width="309" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="WN3-XE-yqm">

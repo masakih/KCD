@@ -254,6 +254,7 @@
 		F4F9F8A31C70AFB600D0EE76 /* HMFleetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F9F8A21C70AFB600D0EE76 /* HMFleetManager.m */; };
 		F4F9F8A61C78596900D0EE76 /* HMAnchorageRepairManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F9F8A51C78596900D0EE76 /* HMAnchorageRepairManager.m */; };
 		F4F9F8A91C796C2E00D0EE76 /* HMChangeHenseiNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F9F8A81C796C2E00D0EE76 /* HMChangeHenseiNotification.m */; };
+		F4F9F8AC1C7C823600D0EE76 /* HMDamageValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F9F8AB1C7C823600D0EE76 /* HMDamageValueTransformer.m */; };
 		F4FCFD44191F4C1D000640A1 /* HMKenzoMarkCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FCFD43191F4C1D000640A1 /* HMKenzoMarkCommand.m */; };
 		F4FDF2411A3D50420033E0AD /* HMShipMasterDetailWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FDF23F1A3D50420033E0AD /* HMShipMasterDetailWindowController.m */; };
 /* End PBXBuildFile section */
@@ -723,6 +724,8 @@
 		F4F9F8A51C78596900D0EE76 /* HMAnchorageRepairManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMAnchorageRepairManager.m; sourceTree = "<group>"; };
 		F4F9F8A71C796C2E00D0EE76 /* HMChangeHenseiNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMChangeHenseiNotification.h; sourceTree = "<group>"; };
 		F4F9F8A81C796C2E00D0EE76 /* HMChangeHenseiNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMChangeHenseiNotification.m; sourceTree = "<group>"; };
+		F4F9F8AA1C7C823600D0EE76 /* HMDamageValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDamageValueTransformer.h; sourceTree = "<group>"; };
+		F4F9F8AB1C7C823600D0EE76 /* HMDamageValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDamageValueTransformer.m; sourceTree = "<group>"; };
 		F4FCFD42191F4C1D000640A1 /* HMKenzoMarkCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMKenzoMarkCommand.h; sourceTree = "<group>"; };
 		F4FCFD43191F4C1D000640A1 /* HMKenzoMarkCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKenzoMarkCommand.m; sourceTree = "<group>"; };
 		F4FDF23E1A3D50420033E0AD /* HMShipMasterDetailWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMShipMasterDetailWindowController.h; sourceTree = "<group>"; };
@@ -1001,6 +1004,8 @@
 				F4C86B911C1C445D00F260FE /* HMUpgradeShipExcludeColorTransformer.m */,
 				F4ECA36D1C6102FC0098AB6A /* HMMillisecondTransformer.h */,
 				F4ECA36E1C6102FC0098AB6A /* HMMillisecondTransformer.m */,
+				F4F9F8AA1C7C823600D0EE76 /* HMDamageValueTransformer.h */,
+				F4F9F8AB1C7C823600D0EE76 /* HMDamageValueTransformer.m */,
 			);
 			name = "Transformar&Formatter";
 			sourceTree = "<group>";
@@ -1600,6 +1605,7 @@
 				F448F9981B75A128004901AD /* HMKCBasic.m in Sources */,
 				F43769E11AE7CFF800DE6204 /* HMClearItemGetComand.m in Sources */,
 				F4131ED5190F63D8004F7F9A /* HMUpdateSlotItemCommand.m in Sources */,
+				F4F9F8AC1C7C823600D0EE76 /* HMDamageValueTransformer.m in Sources */,
 				F4C668781C54592300601AFB /* HMEquipmentWindowController.m in Sources */,
 				F4C1190518A71AEA005D5B25 /* HMJSONReciever.m in Sources */,
 				F4F9F8901C6B6ACA00D0EE76 /* HMKCNyukyoDock.m in Sources */,
