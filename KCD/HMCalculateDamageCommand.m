@@ -47,18 +47,37 @@ typedef NS_ENUM(NSUInteger, HMDamageControlMasterSlotItemID) {
 	return self;
 }
 
-- (void)resetBattle
+- (nullable NSArray<HMKCBattle *> *)battles
 {
-	NSManagedObjectContext *moc = self.store.managedObjectContext;
-	
 	NSError *error = nil;
 	NSArray<HMKCBattle *> *array = [self.store objectsWithEntityName:@"Battle"
+													  predicate:nil
+														  error:&error];
+	if(error) {
+		[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
+		return nil;
+	}
+	
+	return array;
+}
+- (nullable NSArray<HMKCDamage *> *)damagesWithSortDescriptors:(nullable NSArray<NSSortDescriptor *> *)sortDescriptors
+{
+	NSError *error = nil;
+	NSArray<HMKCDamage *> *array = [self.store objectsWithEntityName:@"Damage"
+													 sortDescriptors:sortDescriptors
 														   predicate:nil
 															   error:&error];
 	if(error) {
 		[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
-		return;
+		return nil;
 	}
+	return array;
+}
+
+- (void)resetBattle
+{
+	NSManagedObjectContext *moc = self.store.managedObjectContext;
+	NSArray<HMKCBattle *> *array = [self battles];
 	for(HMKCBattle *object in array) {
 		[moc deleteObject:object];
 	}
@@ -69,15 +88,7 @@ typedef NS_ENUM(NSUInteger, HMDamageControlMasterSlotItemID) {
 - (void)resetDamage
 {
 	NSManagedObjectContext *moc = self.store.managedObjectContext;
-	
-	NSError *error = nil;
-	NSArray<HMKCDamage *> *array = [self.store objectsWithEntityName:@"Damage"
-														   predicate:nil
-															   error:&error];
-	if(error) {
-		[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
-		return;
-	}
+	NSArray<HMKCDamage *> *array = [self damagesWithSortDescriptors:nil];
 	for(HMKCDamage *object in array) {
 		[moc deleteObject:object];
 	}
@@ -103,13 +114,7 @@ typedef NS_ENUM(NSUInteger, HMDamageControlMasterSlotItemID) {
 
 - (void)updateBattleCell
 {
-	NSError *error = nil;
-	NSArray<HMKCBattle *> *battles = [self.store objectsWithEntityName:@"Battle"
-															 predicate:nil
-																 error:&error];
-	if(error) {
-		[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
-	}
+	NSArray<HMKCBattle *> *battles = [self battles];
 	if(battles.count == 0) {
 		NSLog(@"Battle is invalid.");
 		return;
@@ -127,13 +132,7 @@ typedef NS_ENUM(NSUInteger, HMDamageControlMasterSlotItemID) {
 
 - (void)nextCell
 {
-	NSError *error = nil;
-	NSArray<HMKCBattle *> *battles = [self.store objectsWithEntityName:@"Battle"
-															 predicate:nil
-																 error:&error];
-	if(error) {
-		[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
-	}
+	NSArray<HMKCBattle *> *battles = [self battles];
 	if(battles.count == 0) {
 		NSLog(@"Battle is invalid.");
 		return;
@@ -152,27 +151,13 @@ typedef NS_ENUM(NSUInteger, HMDamageControlMasterSlotItemID) {
 {
 	NSManagedObjectContext *moc = self.store.managedObjectContext;
 	
-	NSError *error = nil;
 	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
-	NSArray<HMKCDamage *> *array = [self.store objectsWithEntityName:@"Damage"
-													 sortDescriptors:@[sortDescriptor]
-														   predicate:nil
-															   error:&error];
-	if(error) {
-		[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
-	}
-	// TODO: error handling
+	NSArray<HMKCDamage *> *array = [self damagesWithSortDescriptors:@[sortDescriptor]];
 	
 	NSInteger frendShipCount = 12;
 	if(array.count != frendShipCount) {
 		// Battleエンティティ取得
-		error = nil;
-		NSArray<HMKCBattle *> *battles = [self.store objectsWithEntityName:@"Battle"
-																 predicate:nil
-																	 error:&error];
-		if(error) {
-			[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
-		}
+		NSArray<HMKCBattle *> *battles = [self battles];
 		if(battles.count == 0) {
 			NSLog(@"Battle is invalid.");
 			return [NSMutableArray new];
@@ -413,75 +398,63 @@ NSInteger damageControlIfPossible(NSInteger nowhp, HMKCShipObject *ship)
 	
 	return nowhp;
 }
+
+- (nullable NSMutableArray<HMKCShipObject *> *)shipsByDeckID:(NSNumber *)deckId store:(HMServerDataStore *)store
+{
+	NSError *error = nil;
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id = %@", deckId];
+	NSArray<HMKCDeck *> *decks = [store objectsWithEntityName:@"Deck"
+													predicate:predicate
+														error:&error];
+	if(error) {
+		[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
+		return nil;
+	}
+	
+	if(decks.count == 0) {
+		[self log:@"Deck is invalid. %s", __PRETTY_FUNCTION__];
+		return nil;
+	}
+	HMKCDeck *deck = decks[0];
+	NSArray *shipIds = @[deck.ship_0, deck.ship_1, deck.ship_2, deck.ship_3, deck.ship_4, deck.ship_5];
+	
+	NSMutableArray<HMKCShipObject *> *ships = [NSMutableArray new];
+	for(id shipId in shipIds) {
+		error = nil;
+		NSArray<HMKCShipObject *> *ship = [store objectsWithEntityName:@"Ship"
+																 error:&error
+													   predicateFormat:@"id = %@", @([shipId integerValue])];
+		if(error) {
+			[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
+		}
+		if(ship.count != 0 && ![ship[0] isEqual:[NSNull null]]) {
+			[ships addObject:ship[0]];
+		}
+	}
+	
+	return ships;
+}
 - (void)applyDamage
 {
 	// Damage 取得
-	NSArray<HMKCDamage *> *damages = nil;
-	
-	NSError *error = nil;
 	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
-	damages = [self.store objectsWithEntityName:@"Damage"
-								sortDescriptors:@[sortDescriptor]
-									  predicate:nil
-										  error:&error];
-	if(error) {
-		[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
-		return;
-	}
-	
+	NSArray<HMKCDamage *> *damages = [self damagesWithSortDescriptors:@[sortDescriptor]];
 	if(damages.count != 12) {
 		[self log:@"Damage is invalid. count %lx", damages.count];
 		return;
 	}
 	
-	error = nil;
-	NSArray<HMKCBattle *> *array = [self.store objectsWithEntityName:@"Battle"
-														   predicate:nil
-															   error:&error];
-	if(error) {
-		[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
-		return;
-	}
+	NSArray<HMKCBattle *> *array = [self battles];
 	if(array.count == 0) {
 		[self log:@"Battle is invalid. %s", __PRETTY_FUNCTION__];
 		return;
 	}
 	
 	HMServerDataStore *serverStore = [HMServerDataStore oneTimeEditor];
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id = %@", array[0].deckId];
+	NSNumber *deckId = array[0].deckId;
 	BOOL firstRun = YES;
 	for(NSInteger i = 0; i < 2; i++) {
-		// 艦隊メンバーを取得
-		error = nil;
-		NSArray<HMKCDeck *> *decks = [serverStore objectsWithEntityName:@"Deck"
-															  predicate:predicate
-																  error:&error];
-		if(error) {
-			[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
-			return;
-		}
-		
-		if(decks.count == 0) {
-			[self log:@"Deck is invalid. %s", __PRETTY_FUNCTION__];
-			return;
-		}
-		HMKCDeck *deck = decks[0];
-		NSArray *shipIds = @[deck.ship_0, deck.ship_1, deck.ship_2, deck.ship_3, deck.ship_4, deck.ship_5];
-		
-		NSMutableArray<HMKCShipObject *> *ships = [NSMutableArray new];
-		for(id shipId in shipIds) {
-			error = nil;
-			NSArray<HMKCShipObject *> *ship = [serverStore objectsWithEntityName:@"Ship"
-																		   error:&error
-																 predicateFormat:@"id = %@", @([shipId integerValue])];
-			if(error) {
-				[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
-			}
-			if(ship.count != 0 && ![ship[0] isEqual:[NSNull null]]) {
-				[ships addObject:ship[0]];
-			}
-		}
-		
+		NSMutableArray<HMKCShipObject *> *ships = [self shipsByDeckID:deckId store:serverStore];
 		NSUInteger shipCount = ships.count;
 		NSUInteger offset = (self.isCombinedBattle && !firstRun) ? 6 : 0;
 		for(NSInteger i = 0; i < shipCount; i++) {
@@ -494,13 +467,13 @@ NSInteger damageControlIfPossible(NSInteger nowhp, HMKCShipObject *ship)
 			ships[i].nowhp = @(nowhp);
 		}
 		
-		predicate = [NSPredicate predicateWithFormat:@"id = %@", @2];
+		deckId = @2;
 		firstRun = NO;
 		
 		if(!self.isCombinedBattle) break;
 	}
 	
-	[serverStore saveAction:nil];
+	[self.store saveAction:nil];
 }
 
 - (void)execute
@@ -535,11 +508,6 @@ NSInteger damageControlIfPossible(NSInteger nowhp, HMKCShipObject *ship)
 		return;
 	}
 	
-	/*
-	 /kcsapi/api_req_combined_battle/battle_water
-	 /kcsapi/api_req_combined_battle/midnight_battle
-	 /kcsapi/api_req_combined_battle/battleresult
-	 */
 	// combined battle
 	if([self.api isEqualToString:@"/kcsapi/api_req_combined_battle/battle"]
 	   || [self.api isEqualToString:@"/kcsapi/api_req_combined_battle/airbattle"]) {
