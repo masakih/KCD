@@ -345,6 +345,17 @@ static CGImageRef sMaskImage = nil;
 
 
 #pragma mark - Level
+- (NSFont *)font
+{
+	NSFont *font = nil;
+	CGFloat size = [NSFont smallSystemFontSize];
+	if([NSFont respondsToSelector:@selector(monospacedDigitSystemFontOfSize:weight:)]) {
+		font = [NSFont monospacedDigitSystemFontOfSize:size weight:NSFontWeightRegular];
+	} else {
+		font = [NSFont systemFontOfSize:size];
+	}
+	return font;
+}
 
 - (NSColor *)levelColor
 {
@@ -360,10 +371,9 @@ static CGImageRef sMaskImage = nil;
 	if(level.integerValue == 10) {
 		string = @"max";
 	}
-	NSFont *font = [NSFont systemFontOfSize:[NSFont smallSystemFontSize]];
 	
 	NSDictionary *attr = @{
-						   NSFontAttributeName : font,
+						   NSFontAttributeName : [self font],
 						   NSForegroundColorAttributeName : [self levelColor],
 						   };
 	NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:string

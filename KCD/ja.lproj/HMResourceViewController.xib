@@ -54,11 +54,12 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jSq-lq-r2A">
                     <rect key="frame" x="47" y="84" width="58" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="123,456" id="khk-Fx-0Sr">
-                        <font key="font" size="13" name="Helvetica"/>
+                        <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="I0l-mt-VHP"/>
                         <binding destination="sGD-jN-K4W" name="value" keyPath="selection.fuel" id="Ioi-d0-mHa"/>
                     </connections>
                 </textField>
@@ -73,11 +74,12 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hh9-mi-7o3">
                     <rect key="frame" x="47" y="61" width="58" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="123,456" id="UgO-e7-NJX">
-                        <font key="font" size="13" name="Helvetica"/>
+                        <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="Cjk-jy-rfK"/>
                         <binding destination="sGD-jN-K4W" name="value" keyPath="selection.bull" id="se7-3h-ga0"/>
                     </connections>
                 </textField>
@@ -92,11 +94,12 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Buq-Ef-oiE">
                     <rect key="frame" x="163" y="84" width="58" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="123,456" id="DnK-h9-LLL">
-                        <font key="font" size="13" name="Helvetica"/>
+                        <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="KT7-sw-Y6m"/>
                         <binding destination="sGD-jN-K4W" name="value" keyPath="selection.steel" id="ecP-yP-VVp"/>
                     </connections>
                 </textField>
@@ -111,11 +114,12 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dpL-F2-tIB">
                     <rect key="frame" x="163" y="61" width="58" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="123,456" id="Dgx-b3-zYf">
-                        <font key="font" size="13" name="Helvetica"/>
+                        <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="6Nm-L4-G2t"/>
                         <binding destination="sGD-jN-K4W" name="value" keyPath="selection.bauxite" id="A1p-Rj-MJt"/>
                     </connections>
                 </textField>
@@ -130,11 +134,12 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jIF-Vx-Ore">
                     <rect key="frame" x="163" y="38" width="50" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="12,345" id="eSg-2O-mMP">
-                        <font key="font" size="13" name="Helvetica"/>
+                        <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="4NE-H7-VR1"/>
                         <binding destination="sGD-jN-K4W" name="value" keyPath="selection.kousokushuhuku" id="dId-mn-rKl"/>
                     </connections>
                 </textField>
@@ -149,11 +154,12 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cDs-nw-aC8">
                     <rect key="frame" x="292" y="62" width="41" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="1,234" id="Dmc-L8-eZV">
-                        <font key="font" size="13" name="Helvetica"/>
+                        <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="CFU-yp-oRA"/>
                         <binding destination="sGD-jN-K4W" name="value" keyPath="selection.screw" id="l1y-08-6JI"/>
                     </connections>
                 </textField>
@@ -168,22 +174,24 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Yo-zp-asa">
                     <rect key="frame" x="292" y="38" width="41" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="1,234" id="iBB-VR-fGg">
-                        <font key="font" size="13" name="Helvetica"/>
+                        <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="v1b-my-GDt"/>
                         <binding destination="sGD-jN-K4W" name="value" keyPath="selection.kousokukenzo" id="MZr-qt-ttx"/>
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hxY-LT-yej">
                     <rect key="frame" x="292" y="84" width="41" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="1,234" id="UGX-sj-Mct">
-                        <font key="font" size="13" name="Helvetica"/>
+                        <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="kLw-zd-iUz"/>
                         <binding destination="sGD-jN-K4W" name="value" keyPath="selection.kaihatusizai" id="rTI-nc-t3e"/>
                     </connections>
                 </textField>
@@ -198,7 +206,7 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3LS-D9-NHl">
                     <rect key="frame" x="109" y="8" width="61" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="999/999" id="q8P-vC-JIx" customClass="HMStrokeTextFieldCell">
-                        <font key="font" size="13" name="Helvetica"/>
+                        <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -208,6 +216,7 @@
                                 <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
                             </dictionary>
                         </binding>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="YXY-k4-ibU"/>
                         <binding destination="3oV-La-Kt3" name="displayPatternValue2" keyPath="selection.max_chara" previousBinding="7xt-p3-exG" id="Lvi-EP-EVQ">
                             <dictionary key="options">
                                 <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
@@ -227,7 +236,7 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Lj-Yk-pkb">
                     <rect key="frame" x="272" y="8" width="61" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="999/999" id="y6E-Nb-6oy">
-                        <font key="font" size="13" name="Helvetica"/>
+                        <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -237,6 +246,7 @@
                                 <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
                             </dictionary>
                         </binding>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="6Uq-KG-uX9"/>
                         <binding destination="3oV-La-Kt3" name="displayPatternValue2" keyPath="selection.max_slotitem" previousBinding="4SL-65-abw" id="SJp-yX-Fqs">
                             <dictionary key="options">
                                 <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>

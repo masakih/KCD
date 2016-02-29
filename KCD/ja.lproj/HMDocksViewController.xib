@@ -27,6 +27,9 @@
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="yVL-aW-emS"/>
+                    </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="1Z4-bD-0N0">
                     <rect key="frame" x="160" y="597" width="153" height="17"/>
@@ -49,7 +52,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="BJE-Ig-1at">
                         <customFormatter key="formatter" id="9Rm-sQ-KzG" customClass="HMTimerCountFormatter"/>
-                        <font key="font" size="13" name="Helvetica"/>
+                        <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -59,6 +62,7 @@
                                 <string key="NSNullPlaceholder">--:--:--</string>
                             </dictionary>
                         </binding>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="Hhw-Op-qjO"/>
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ImV-DF-NX7">
@@ -69,17 +73,21 @@
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="i7T-Lz-x84"/>
+                    </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="U7b-9S-sWb">
                     <rect key="frame" x="109" y="521" width="62" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="iv8-oM-0Fo">
                         <customFormatter key="formatter" id="uTW-Si-vAP" customClass="HMTimerCountFormatter"/>
-                        <font key="font" size="13" name="Helvetica"/>
+                        <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="Fwt-Uv-4bw"/>
                         <binding destination="-2" name="value" keyPath="nDock1Time" id="GqF-Qw-Z4Y">
                             <dictionary key="options">
                                 <bool key="NSContinuouslyUpdatesValue" value="YES"/>
@@ -96,17 +104,21 @@
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="hTH-Sg-eMJ"/>
+                    </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="1j4-Kg-am8">
                     <rect key="frame" x="109" y="424" width="62" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="5SQ-4h-gVc">
                         <customFormatter key="formatter" id="fOY-bM-qRR" customClass="HMTimerCountFormatter"/>
-                        <font key="font" size="13" name="Helvetica"/>
+                        <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="u3U-8Q-QyS"/>
                         <binding destination="-2" name="value" keyPath="kDock1Time" id="lvA-Sn-bIo">
                             <dictionary key="options">
                                 <string key="NSNullPlaceholder">--:--:--</string>
@@ -138,6 +150,9 @@
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="0rX-Un-4jW"/>
+                    </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ozB-6d-jdP">
                     <rect key="frame" x="160" y="576" width="153" height="17"/>
@@ -160,7 +175,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="uZ7-H0-10h">
                         <customFormatter key="formatter" id="XJq-qE-ggs" customClass="HMTimerCountFormatter"/>
-                        <font key="font" size="13" name="Helvetica"/>
+                        <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -170,6 +185,7 @@
                                 <string key="NSNullPlaceholder">--:--:--</string>
                             </dictionary>
                         </binding>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="bsw-oM-wp9"/>
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="cSE-HO-9tA">
@@ -180,6 +196,9 @@
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="Q4J-cT-zvc"/>
+                    </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="HMF-e4-15i">
                     <rect key="frame" x="160" y="555" width="153" height="17"/>
@@ -202,7 +221,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="KdJ-xQ-eVC">
                         <customFormatter key="formatter" id="lcg-8G-Dru" customClass="HMTimerCountFormatter"/>
-                        <font key="font" size="13" name="Helvetica"/>
+                        <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -212,6 +231,7 @@
                                 <string key="NSNullPlaceholder">--:--:--</string>
                             </dictionary>
                         </binding>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="S99-Nl-C1z"/>
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="mOt-g2-cwL">
@@ -222,17 +242,21 @@
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="tIi-IA-Tbd"/>
+                    </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="mAQ-lg-uXF">
                     <rect key="frame" x="109" y="500" width="62" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="oco-u5-uot">
                         <customFormatter key="formatter" id="n6E-LC-O0m" customClass="HMTimerCountFormatter"/>
-                        <font key="font" size="13" name="Helvetica"/>
+                        <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="O0j-7F-0ah"/>
                         <binding destination="-2" name="value" keyPath="nDock2Time" id="XMT-NK-8Qm">
                             <dictionary key="options">
                                 <string key="NSNullPlaceholder">--:--:--</string>
@@ -264,17 +288,21 @@
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="hei-Nw-RmN"/>
+                    </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="0Ep-sM-xII">
                     <rect key="frame" x="109" y="479" width="62" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="YbO-M6-FUI">
                         <customFormatter key="formatter" id="XN3-A0-NNc" customClass="HMTimerCountFormatter"/>
-                        <font key="font" size="13" name="Helvetica"/>
+                        <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="WcM-4H-YUd"/>
                         <binding destination="-2" name="value" keyPath="nDock3Time" id="mVo-6c-L6J">
                             <dictionary key="options">
                                 <string key="NSNullPlaceholder">--:--:--</string>
@@ -306,17 +334,21 @@
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="TRh-4T-BUe"/>
+                    </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Zee-D4-ZGG">
                     <rect key="frame" x="109" y="458" width="62" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="rFg-0M-tbw">
                         <customFormatter key="formatter" id="aaT-2p-6sV" customClass="HMTimerCountFormatter"/>
-                        <font key="font" size="13" name="Helvetica"/>
+                        <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="oaO-jh-RWF"/>
                         <binding destination="-2" name="value" keyPath="nDock4Time" id="dIc-MT-n7j">
                             <dictionary key="options">
                                 <string key="NSNullPlaceholder">--:--:--</string>
@@ -348,17 +380,21 @@
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="2Cy-qP-Ztv"/>
+                    </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="txP-dd-uyL">
                     <rect key="frame" x="109" y="403" width="62" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="Bnk-cQ-3F5">
                         <customFormatter key="formatter" id="pyU-qN-RwB" customClass="HMTimerCountFormatter"/>
-                        <font key="font" size="13" name="Helvetica"/>
+                        <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="QqJ-3y-dCq"/>
                         <binding destination="-2" name="value" keyPath="kDock2Time" id="gAl-SE-XgJ">
                             <dictionary key="options">
                                 <string key="NSNullPlaceholder">--:--:--</string>
@@ -374,17 +410,21 @@
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="LOE-Nl-oYi"/>
+                    </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="VoE-sV-bbn">
                     <rect key="frame" x="251" y="424" width="62" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="769-Rr-iNm">
                         <customFormatter key="formatter" id="wwc-Kj-i2T" customClass="HMTimerCountFormatter"/>
-                        <font key="font" size="13" name="Helvetica"/>
+                        <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="pnc-pu-OOZ"/>
                         <binding destination="-2" name="value" keyPath="kDock3Time" id="lhT-NY-Azo">
                             <dictionary key="options">
                                 <string key="NSNullPlaceholder">--:--:--</string>
@@ -400,17 +440,21 @@
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="Beg-F6-jZ5"/>
+                    </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="cB6-7z-cj7">
                     <rect key="frame" x="251" y="403" width="62" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="IP7-Yh-Z7X">
                         <customFormatter key="formatter" id="5gk-HQ-Ks2" customClass="HMTimerCountFormatter"/>
-                        <font key="font" size="13" name="Helvetica"/>
+                        <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="aLj-eY-P3O"/>
                         <binding destination="-2" name="value" keyPath="kDock4Time" id="Dez-Ph-6Wq">
                             <dictionary key="options">
                                 <string key="NSNullPlaceholder">--:--:--</string>

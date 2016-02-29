@@ -88,11 +88,12 @@
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="2014/09/09 24:24:55" id="oX7-SP-ZZp">
                             <dateFormatter key="formatter" dateStyle="short" timeStyle="medium" doesRelativeDateFormatting="YES" id="5XJ-gT-eto"/>
-                            <font key="font" size="13" name="Helvetica"/>
+                            <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                         <connections>
+                            <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="ew0-zr-hLO"/>
                             <binding destination="mrq-7Y-mHG" name="value" keyPath="selection.creationDate" id="hCL-y2-DDn"/>
                         </connections>
                     </textField>
@@ -175,7 +176,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                     <ikCellsStyle key="cellsStyleMask" shadowed="YES" titled="YES" subtitled="YES"/>
                                     <autoresizingMask key="contentResizingMask" heightSizable="YES"/>
-                                    <size key="cellSize" width="1491" height="1491"/>
+                                    <size key="cellSize" width="1033" height="1033"/>
                                     <connections>
                                         <binding destination="mrq-7Y-mHG" name="content" keyPath="arrangedObjects" id="G0M-vZ-Pyi"/>
                                         <binding destination="-2" name="selectionIndexes" keyPath="selectedIndexes" previousBinding="G0M-vZ-Pyi" id="hZm-cJ-NmG"/>
@@ -190,7 +191,7 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="dbh-Xn-LMm">
-                            <rect key="frame" x="444" y="1" width="16" height="430"/>
+                            <rect key="frame" x="445" y="1" width="15" height="430"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>

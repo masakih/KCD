@@ -74,11 +74,12 @@
                         <rect key="frame" x="144" y="39" width="27" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="100" id="FwR-YA-3mt" customClass="HMStrokeTextFieldCell">
-                            <font key="font" size="13" name="Helvetica"/>
+                            <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                         <connections>
+                            <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="j2g-X5-cqL"/>
                             <binding destination="Jeh-2g-2SK" name="value" keyPath="selection.cond" id="Hpf-36-exR">
                                 <dictionary key="options">
                                     <string key="NSNoSelectionPlaceholder">-</string>
@@ -95,11 +96,12 @@
                         <rect key="frame" x="0.0" y="39" width="13" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="6" id="RCw-nV-l2W" customClass="HMStrokeTextFieldCell">
-                            <font key="font" size="13" name="Helvetica"/>
+                            <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                         <connections>
+                            <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont11" id="BUm-tj-PQI"/>
                             <binding destination="-2" name="value" keyPath="title" id="2Na-rd-nPr">
                                 <dictionary key="options">
                                     <string key="NSNoSelectionPlaceholder">-</string>
@@ -112,11 +114,12 @@
                         <rect key="frame" x="106" y="39" width="40" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Lv.999" id="xj5-NA-n7a">
-                            <font key="font" size="11" name="Helvetica"/>
+                            <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                         <connections>
+                            <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont11" id="3TZ-tO-Ykc"/>
                             <binding destination="Jeh-2g-2SK" name="displayPatternValue1" keyPath="selection.lv" id="o5l-9t-EbV">
                                 <dictionary key="options">
                                     <string key="NSDisplayPattern">Lv.%{value1}@</string>
@@ -139,11 +142,12 @@
                         <rect key="frame" x="32" y="20" width="25" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="555" id="1Dy-3D-EqA">
-                            <font key="font" size="11" name="Helvetica"/>
+                            <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                         <connections>
+                            <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont11" id="2u4-cT-i5W"/>
                             <binding destination="Jeh-2g-2SK" name="value" keyPath="selection.karyoku_0" id="PI0-bF-eUV">
                                 <dictionary key="options">
                                     <string key="NSNoSelectionPlaceholder">-</string>
@@ -165,11 +169,12 @@
                         <rect key="frame" x="32" y="2" width="25" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="555" id="PMs-mP-A5i">
-                            <font key="font" size="11" name="Helvetica"/>
+                            <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                         <connections>
+                            <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont11" id="4fk-Xq-qYj"/>
                             <binding destination="Jeh-2g-2SK" name="value" keyPath="selection.soukou_0" id="zif-Pd-9MK">
                                 <dictionary key="options">
                                     <string key="NSNoSelectionPlaceholder">-</string>
@@ -191,11 +196,12 @@
                         <rect key="frame" x="89" y="2" width="25" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="555" id="GG8-9Q-5lY">
-                            <font key="font" size="11" name="Helvetica"/>
+                            <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                         <connections>
+                            <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont11" id="Na7-7P-f3Z"/>
                             <binding destination="Jeh-2g-2SK" name="value" keyPath="selection.raisou_0" id="Iqz-hI-uBq">
                                 <dictionary key="options">
                                     <string key="NSNoSelectionPlaceholder">-</string>
@@ -217,11 +223,12 @@
                         <rect key="frame" x="145" y="2" width="25" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="555" id="tuD-se-LMf">
-                            <font key="font" size="11" name="Helvetica"/>
+                            <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                         <connections>
+                            <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont11" id="VsT-zA-vQK"/>
                             <binding destination="Jeh-2g-2SK" name="value" keyPath="selection.kaihi_0" id="8an-0U-VbD">
                                 <dictionary key="options">
                                     <string key="NSNoSelectionPlaceholder">-</string>

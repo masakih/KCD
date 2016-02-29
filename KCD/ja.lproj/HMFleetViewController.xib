@@ -97,7 +97,7 @@
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="f8W-G4-mOr">
-                    <rect key="frame" x="652" y="264" width="30" height="14"/>
+                    <rect key="frame" x="647" y="264" width="30" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="索敵:" id="vA3-9F-FLk">
                         <font key="font" metaFont="smallSystem"/>
@@ -106,20 +106,21 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="mUy-1k-ALk">
-                    <rect key="frame" x="679" y="263" width="29" height="17"/>
+                    <rect key="frame" x="674" y="263" width="29" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="999" id="HeX-Wd-ikA">
                         <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="ntt-Mj-4hA"/>
-                        <font key="font" size="13" name="Helvetica"/>
+                        <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="PF0-ou-K6v"/>
                         <binding destination="-2" name="value" keyPath="totalSakuteki" id="1H9-FR-9Aw"/>
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ee5-Xk-4iW">
-                    <rect key="frame" x="708" y="264" width="30" height="14"/>
+                    <rect key="frame" x="703" y="264" width="30" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="制空:" id="dS3-tO-y1s">
                         <font key="font" metaFont="smallSystem"/>
@@ -128,14 +129,15 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Jhy-EA-ust">
-                    <rect key="frame" x="735" y="263" width="61" height="17"/>
+                    <rect key="frame" x="730" y="263" width="66" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="999 (999)" id="ytq-FR-96e">
-                        <font key="font" size="13" name="Helvetica"/>
+                        <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="r57-yZ-zBo"/>
                         <binding destination="-2" name="displayPatternValue2" keyPath="totalCalclatedSeiku" previousBinding="ucj-A3-qBe" id="VyW-d3-E9s">
                             <dictionary key="options">
                                 <string key="NSDisplayPattern">%{value1}@ (%{value2}@)</string>
@@ -153,25 +155,26 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </customView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="tzQ-Ab-vcB">
-                    <rect key="frame" x="515" y="264" width="55" height="14"/>
+                    <rect key="frame" x="511" y="264" width="55" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" placeholderString="" id="cM2-uj-Gqv">
                         <customFormatter key="formatter" id="pgG-gM-Tpw" customClass="HMTimerCountFormatter"/>
-                        <font key="font" size="11" name="Helvetica"/>
+                        <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont11" id="D3c-11-4qp"/>
+                        <binding destination="-2" name="value" keyPath="repairTime" id="Rpx-gC-Nbh"/>
                         <binding destination="-2" name="hidden" keyPath="repairable" id="Cw6-c1-lcW">
                             <dictionary key="options">
                                 <string key="NSValueTransformerName">NSNegateBoolean</string>
                             </dictionary>
                         </binding>
-                        <binding destination="-2" name="value" keyPath="repairTime" id="Rpx-gC-Nbh"/>
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="1Fs-NZ-L8n">
-                    <rect key="frame" x="469" y="264" width="48" height="14"/>
+                    <rect key="frame" x="465" y="264" width="48" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="泊地修理" id="KSI-N3-t1H">
                         <font key="font" metaFont="smallSystem"/>
@@ -187,7 +190,7 @@
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="2jU-EL-j7s">
-                    <rect key="frame" x="574" y="264" width="19" height="14"/>
+                    <rect key="frame" x="569" y="264" width="19" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Lv." id="w4a-v0-R0W">
                         <font key="font" metaFont="smallSystem"/>
@@ -196,20 +199,21 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="UYu-21-82G">
-                    <rect key="frame" x="590" y="264" width="24" height="14"/>
+                    <rect key="frame" x="585" y="264" width="24" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="999" id="ohp-DY-8Su">
                         <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="lBM-sa-I2G"/>
-                        <font key="font" size="11" name="Helvetica"/>
+                        <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont11" id="gvk-Hk-6Vj"/>
                         <binding destination="-2" name="value" keyPath="totalLevel" id="qCE-qb-nrX"/>
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="psc-iQ-sNL">
-                    <rect key="frame" x="615" y="264" width="19" height="14"/>
+                    <rect key="frame" x="610" y="264" width="19" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Dr." id="Eso-k3-sCk">
                         <font key="font" metaFont="smallSystem"/>
@@ -218,15 +222,16 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="UWt-im-IIK">
-                    <rect key="frame" x="631" y="264" width="18" height="14"/>
+                    <rect key="frame" x="626" y="264" width="18" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="99" id="I6D-UD-3HA">
                         <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="edz-Bk-fZV"/>
-                        <font key="font" size="11" name="Helvetica"/>
+                        <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont11" id="1wd-PW-Ssy"/>
                         <binding destination="-2" name="value" keyPath="totalDrums" id="jQv-Sw-nHS"/>
                     </connections>
                 </textField>

@@ -42,6 +42,9 @@
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <connections>
+                                                <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="Tjw-gU-VAU"/>
+                                            </connections>
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
@@ -65,7 +68,7 @@
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                         </tableHeaderCell>
                                         <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="right" title="100" id="S64-3w-pbh">
-                                            <font key="font" size="13" name="Helvetica"/>
+                                            <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -170,7 +173,7 @@
                     <rect key="frame" x="4" y="399" width="66" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="999 Ships" id="TeI-HB-SYu">
-                        <font key="font" size="13" name="Helvetica"/>
+                        <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -180,6 +183,7 @@
                                 <string key="NSDisplayPattern">%{value1}@ ships</string>
                             </dictionary>
                         </binding>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="F4C-gV-FCX"/>
                     </connections>
                 </textField>
                 <segmentedControl verticalHuggingPriority="750" id="oAr-IJ-cOj">

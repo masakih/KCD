@@ -196,6 +196,7 @@
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                     <connections>
+                                                                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont11" id="64e-cR-Ufw"/>
                                                                         <binding destination="gd9-yz-R2c" name="value" keyPath="requiredEquipment01.number" id="CVm-sA-qp7">
                                                                             <dictionary key="options">
                                                                                 <string key="NSNullPlaceholder">-</string>
@@ -212,6 +213,7 @@
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                     <connections>
+                                                                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont11" id="lF0-1G-iQb"/>
                                                                         <binding destination="gd9-yz-R2c" name="value" keyPath="needsScrewString01" id="VZx-o1-e6f">
                                                                             <dictionary key="options">
                                                                                 <string key="NSNullPlaceholder">-</string>
@@ -244,6 +246,7 @@
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                     <connections>
+                                                                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont11" id="7J0-N5-uZV"/>
                                                                         <binding destination="gd9-yz-R2c" name="value" keyPath="requiredEquipment02.number" id="Kqm-rI-llf">
                                                                             <dictionary key="options">
                                                                                 <string key="NSNullPlaceholder">-</string>
@@ -260,6 +263,7 @@
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                     <connections>
+                                                                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont11" id="AOc-mE-KAb"/>
                                                                         <binding destination="gd9-yz-R2c" name="value" keyPath="needsScrewString02" id="IU4-Uw-ag6">
                                                                             <dictionary key="options">
                                                                                 <string key="NSNullPlaceholder">-</string>
@@ -292,6 +296,7 @@
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                     <connections>
+                                                                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont11" id="Yfd-F3-lyZ"/>
                                                                         <binding destination="gd9-yz-R2c" name="value" keyPath="requiredEquipment03.number" id="M09-AW-B96">
                                                                             <dictionary key="options">
                                                                                 <string key="NSNullPlaceholder">-</string>
@@ -308,6 +313,7 @@
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                     <connections>
+                                                                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont11" id="bbv-dG-rDx"/>
                                                                         <binding destination="gd9-yz-R2c" name="value" keyPath="needsScrewString03" id="y79-pS-DWD">
                                                                             <dictionary key="options">
                                                                                 <string key="NSNullPlaceholder">-</string>
