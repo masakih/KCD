@@ -204,9 +204,9 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3LS-D9-NHl">
-                    <rect key="frame" x="109" y="8" width="61" height="17"/>
+                    <rect key="frame" x="121" y="8" width="51" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="999/999" id="q8P-vC-JIx" customClass="HMStrokeTextFieldCell">
-                        <font key="font" metaFont="system"/>
+                        <font key="font" size="13" name="Helvetica"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -216,7 +216,6 @@
                                 <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
                             </dictionary>
                         </binding>
-                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="YXY-k4-ibU"/>
                         <binding destination="3oV-La-Kt3" name="displayPatternValue2" keyPath="selection.max_chara" previousBinding="7xt-p3-exG" id="Lvi-EP-EVQ">
                             <dictionary key="options">
                                 <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
@@ -226,7 +225,7 @@
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6bF-9E-LIx">
-                    <rect key="frame" x="18" y="8" width="95" height="17"/>
+                    <rect key="frame" x="30" y="8" width="95" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="艦娘入居状況：" id="Mjc-VP-2DY">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -234,9 +233,9 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Lj-Yk-pkb">
-                    <rect key="frame" x="272" y="8" width="61" height="17"/>
+                    <rect key="frame" x="272" y="8" width="51" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="999/999" id="y6E-Nb-6oy">
-                        <font key="font" metaFont="system"/>
+                        <font key="font" size="13" name="Helvetica"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -246,7 +245,6 @@
                                 <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
                             </dictionary>
                         </binding>
-                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="6Uq-KG-uX9"/>
                         <binding destination="3oV-La-Kt3" name="displayPatternValue2" keyPath="selection.max_slotitem" previousBinding="4SL-65-abw" id="SJp-yX-Fqs">
                             <dictionary key="options">
                                 <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
@@ -263,14 +261,14 @@
                     </textFieldCell>
                 </textField>
                 <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ssb-eY-F4t">
-                    <rect key="frame" x="182" y="4" width="15" height="22"/>
+                    <rect key="frame" x="184" y="4" width="15" height="22"/>
                     <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="9" id="snU-3a-0HH"/>
                     <connections>
                         <binding destination="-2" name="value" keyPath="minimumColoredShipCount" id="5Jg-wN-va8"/>
                     </connections>
                 </stepper>
                 <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JGC-t2-usB">
-                    <rect key="frame" x="171" y="6" width="15" height="19"/>
+                    <rect key="frame" x="173" y="6" width="15" height="19"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" focusRingType="none" alignment="right" title="9" drawsBackground="YES" id="69t-vj-KJ7">
                         <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="309" maximumFractionDigits="3" id="hpk-eB-Q8e"/>
                         <font key="font" metaFont="smallSystem"/>
