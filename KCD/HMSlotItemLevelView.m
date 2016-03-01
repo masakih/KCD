@@ -12,7 +12,8 @@
 #import "HMKCSlotItemObject+Extensions.h"
 
 
-static CGImageRef sMaskImage = nil;
+static CGImageRef sLevelMaskImage = nil;
+static CGImageRef sAirLevelMaskImage = nil;
 
 @interface HMSlotItemLevelView ()
 
@@ -63,11 +64,26 @@ static CGImageRef sMaskImage = nil;
 	[self unbind:@"slotItemAlv"];
 }
 
-
 - (CGImageRef)maskImage
 {
-	if(sMaskImage) return sMaskImage;
+	NSNumber *airLevel = self.slotItemAlv;
+	if(airLevel && ![airLevel isKindOfClass:[NSNull class]]) {
+		if(airLevel.integerValue != 0) {
+			return [self airLevelMaskImage];
+		}
+	}
 	
+	NSNumber *level = self.slotItemLevel;
+	if(level && ![level isKindOfClass:[NSNull class]]) {
+		if(level.integerValue != 0) {
+			return [self levelMaskImage];
+		}
+	}
+	
+	return nil;
+}
+- (CGImageRef)maskImageWith:(CGFloat)middle1 middle2:(CGFloat)middle2
+{
 	NSRect rect = self.bounds;
 	CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceGray();
 	CGContextRef maskContext =
@@ -92,8 +108,8 @@ static CGImageRef sMaskImage = nil;
 	
 	NSGradient *gradient = [[NSGradient alloc] initWithColorsAndLocations:
 							[NSColor whiteColor], 0.0,
-							[NSColor whiteColor], 0.75,
-							[NSColor blackColor], 0.85,
+							[NSColor whiteColor], middle1,
+							[NSColor blackColor], middle2,
 							[NSColor blackColor], 1.0,
 							nil];
 	
@@ -102,26 +118,37 @@ static CGImageRef sMaskImage = nil;
 	[NSGraphicsContext restoreGraphicsState];
 	
 	// Create an image mask from what we've drawn so far
-	sMaskImage = CGBitmapContextCreateImage(maskContext);
+	CGImageRef maskImage = CGBitmapContextCreateImage(maskContext);
 	
-	return sMaskImage;
+	return maskImage;
+}
+- (CGImageRef)levelMaskImage
+{
+	if(sLevelMaskImage) return sLevelMaskImage;
+	
+	sLevelMaskImage = [self maskImageWith:0.75 middle2:0.85];
+	return sLevelMaskImage;
+}
+- (CGImageRef)airLevelMaskImage
+{
+	if(sAirLevelMaskImage) return sAirLevelMaskImage;
+	
+	sAirLevelMaskImage = [self maskImageWith:0.65 middle2:0.75];
+	return sAirLevelMaskImage;
 }
 
 - (BOOL)useMask
 {
-	NSNumber *level = self.slotItemLevel;
-	if(!level || [level isKindOfClass:[NSNull class]]) return NO;
-	if(level.integerValue == 0) return NO;
+	NSInteger totalLevel = self.slotItemAlv.integerValue + self.slotItemLevel.integerValue;
 	
-	return YES;
+	return totalLevel != 0;
 }
-- (void)drawRect:(NSRect)dirtyRect {
-	
-	BOOL useMask = self.useMask;
+- (void)drawRect:(NSRect)dirtyRect
+{
 	CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
 	CGContextSaveGState(context);
 	
-	if(useMask) {
+	if(self.useMask) {
 		CGContextClipToMask(context, NSRectToCGRect(self.bounds), self.maskImage);
 	}
 	
@@ -133,13 +160,13 @@ static CGImageRef sMaskImage = nil;
 	if(self.slotItemID.integerValue == 0) return;
 	if(self.slotItemID.integerValue == -1) return;
 	
+	[self drawLevel];
+	
 	NSNumber *aLevel = [self slotItemAlv];
 	if([aLevel isKindOfClass:[NSNumber class]]) {
 		[[self colorForALevel:aLevel] set];
 		[[self shadowForALevel:aLevel] set];
 		[[self bezierPathForALevel:aLevel] stroke];
-	} else {
-		[self drawLevel];
 	}
 }
 
@@ -147,7 +174,7 @@ static CGImageRef sMaskImage = nil;
 
 - (CGFloat)offset
 {
-	return 4;
+	return 28;
 }
 - (CGFloat)padding
 {
