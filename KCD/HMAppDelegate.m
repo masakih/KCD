@@ -252,7 +252,7 @@
 
 - (NSString *)appNameForUserAgent
 {
-	return @"Version/8.0.8 Safari/600.8.9";
+	return @"Version/9.0.3 Safari/601.4.4";
 }
 
 - (NSFont *)monospaceSystemFont11
