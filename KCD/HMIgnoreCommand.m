@@ -52,6 +52,7 @@ static NSArray *ignoreCommands = nil;
 						   @"/kcsapi/api_req_member/itemuse",
 						   @"/kcsapi/api_req_member/itemuse_cond",
 						   @"/kcsapi/api_req_member/payitemuse",
+						   @"/kcsapi/api_req_member/registration_sp",
 						   @"/kcsapi/api_req_member/updatecomment",
 						   @"/kcsapi/api_req_member/updatedeckname",
 						   @"/kcsapi/api_req_mission/result",
