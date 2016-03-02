@@ -10,8 +10,10 @@
         <relationship name="damages" optional="YES" toMany="YES" maxCount="12" deletionRule="Cascade" ordered="YES" destinationEntity="Damage" inverseName="battle" inverseEntity="Damage" syncable="YES"/>
     </entity>
     <entity name="Damage" representedClassName="HMKCDamage" syncable="YES">
-        <attribute name="damage" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="hp" optional="YES" attributeType="Integer 32" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="shipID" optional="YES" attributeType="Integer 32" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="useDamageControl" optional="YES" attributeType="Boolean" syncable="YES"/>
         <relationship name="battle" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Battle" inverseName="damages" inverseEntity="Battle" syncable="YES"/>
     </entity>
     <entity name="GuardEscaped" representedClassName="HMKCGuardEscaped" syncable="YES">
@@ -20,7 +22,7 @@
     </entity>
     <elements>
         <element name="Battle" positionX="-63" positionY="-18" width="128" height="150"/>
-        <element name="Damage" positionX="-54" positionY="18" width="128" height="90"/>
+        <element name="Damage" positionX="-54" positionY="18" width="128" height="120"/>
         <element name="GuardEscaped" positionX="-54" positionY="27" width="128" height="75"/>
     </elements>
 </model>

@@ -10,5 +10,4 @@
 
 @interface HMCalculateDamageCommand : HMJSONCommand
 
-@property BOOL calcSecondFleet;
 @end

@@ -13,8 +13,10 @@
 
 @implementation HMKCDamage (CoreDataProperties)
 
-@dynamic damage;
 @dynamic id;
 @dynamic battle;
+@dynamic hp;
+@dynamic shipID;
+@dynamic useDamageControl;
 
 @end

@@ -15,9 +15,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface HMKCDamage (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSNumber *damage;
 @property (nullable, nonatomic, retain) NSNumber *id;
 @property (nullable, nonatomic, retain) HMKCBattle *battle;
+@property (nullable, nonatomic, retain) NSNumber *hp;
+@property (nullable, nonatomic, retain) NSNumber *shipID;
+@property (nullable, nonatomic, retain) NSNumber *useDamageControl;
 
 @end
 
