@@ -377,11 +377,13 @@ static NSArray *levelUpExps = nil;
 	NSArray *bomberTypes = @[@7];
 	NSArray *attackerTypes = @[@8];
 	NSArray *floatplaneBomberTypes = @[@11];
+	NSArray *floatplaneFighterTypes = @[@45];
 	
 	NSInteger fighterBonus[] = {0, 0, 2, 5, 9, 14, 14, 22};
 	NSInteger bomberBonus[] = {0, 0, 0, 0, 0, 0, 0, 0};
 	NSInteger attackerBonus[] = {0, 0, 0, 0, 0, 0, 0, 0};
 	NSInteger floatplaneBomberBonus[] = {0, 0, 1, 1, 1, 3, 3, 6};
+	NSInteger floatplaneFighterBonus[] = {0, 0, 0, 0, 0, 0, 0, 0};
 	NSInteger bonus[] = {0, 1, 1, 2, 2, 2, 2, 3};
 	
 	NSInteger extraSeiku = 0;
@@ -409,6 +411,9 @@ static NSArray *levelUpExps = nil;
 		}
 		if([floatplaneBomberTypes containsObject:type2]) {
 			typeBonus = floatplaneBomberBonus;
+		}
+		if([floatplaneFighterTypes containsObject:type2]) {
+			typeBonus = floatplaneFighterBonus;
 		}
 		if(!typeBonus) continue;
 		
