@@ -209,6 +209,7 @@
                                 <string key="NSDisplayPattern">%{value1}@ ships</string>
                             </dictionary>
                         </binding>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="qih-DP-UaC"/>
                     </connections>
                 </textField>
                 <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="y27-Oc-ZPX">

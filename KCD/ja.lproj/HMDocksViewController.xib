@@ -500,7 +500,7 @@ ffff</string>
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="wvt-jZ-rkh">
-                    <rect key="frame" x="10" y="351" width="17" height="34"/>
+                    <rect key="frame" x="10" y="343" width="17" height="34"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" title="出撃" id="u2P-rj-vAk">
                         <font key="font" size="13" name="HiraKakuProN-W3"/>
