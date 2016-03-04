@@ -121,6 +121,7 @@ int main(int argc, const char * argv[]) {
 			}
 			requiredEquipment.requiredEquipments = sets[index];
 			
+			NSLog(@"add item %@", requiredEquipment.targetEquipment);
 			
 			[enhancementLists addObject:requiredEquipment];
 		}
