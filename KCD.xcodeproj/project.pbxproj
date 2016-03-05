@@ -18,6 +18,8 @@
 		F424A6FA1BC801DE0096C431 /* HMUnknownComand.m in Sources */ = {isa = PBXBuildFile; fileRef = F424A6F91BC801DE0096C431 /* HMUnknownComand.m */; };
 		F424A6FD1BC809490096C431 /* HMIgnoreCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F424A6FC1BC809490096C431 /* HMIgnoreCommand.m */; };
 		F424A7001BC8C10C0096C431 /* HMFailedCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F424A6FF1BC8C10C0096C431 /* HMFailedCommand.m */; };
+		F4253D831C8B307800CDA2A6 /* HMAncherageRepairTimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4253D811C8B307800CDA2A6 /* HMAncherageRepairTimerViewController.m */; };
+		F4253D841C8B307800CDA2A6 /* HMAncherageRepairTimerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4253D821C8B307800CDA2A6 /* HMAncherageRepairTimerViewController.xib */; };
 		F4268009193AF4E000B2C27F /* HMUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = F4268008193AF4E000B2C27F /* HMUserDefaults.m */; };
 		F42680121943E92D00B2C27F /* HMKCShipObject+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F42680111943E92D00B2C27F /* HMKCShipObject+Extensions.m */; };
 		F426802B194D0F4800B2C27F /* HMMemberShip2Command.m in Sources */ = {isa = PBXBuildFile; fileRef = F426802A194D0F4800B2C27F /* HMMemberShip2Command.m */; };
@@ -304,6 +306,9 @@
 		F424A6FC1BC809490096C431 /* HMIgnoreCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMIgnoreCommand.m; sourceTree = "<group>"; };
 		F424A6FE1BC8C10C0096C431 /* HMFailedCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMFailedCommand.h; sourceTree = "<group>"; };
 		F424A6FF1BC8C10C0096C431 /* HMFailedCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMFailedCommand.m; sourceTree = "<group>"; };
+		F4253D801C8B307800CDA2A6 /* HMAncherageRepairTimerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMAncherageRepairTimerViewController.h; sourceTree = "<group>"; };
+		F4253D811C8B307800CDA2A6 /* HMAncherageRepairTimerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMAncherageRepairTimerViewController.m; sourceTree = "<group>"; };
+		F4253D821C8B307800CDA2A6 /* HMAncherageRepairTimerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMAncherageRepairTimerViewController.xib; sourceTree = "<group>"; };
 		F4268007193AF4E000B2C27F /* HMUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMUserDefaults.h; sourceTree = "<group>"; };
 		F4268008193AF4E000B2C27F /* HMUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMUserDefaults.m; sourceTree = "<group>"; };
 		F42680101943E92D00B2C27F /* HMKCShipObject+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HMKCShipObject+Extensions.h"; sourceTree = "<group>"; };
@@ -1019,6 +1024,9 @@
 				F4F388BF1C140AFB00508549 /* HMResourceViewController.h */,
 				F4F388C01C140AFB00508549 /* HMResourceViewController.m */,
 				F4C6686B1C5451C800601AFB /* HMResourceViewController.xib */,
+				F4253D801C8B307800CDA2A6 /* HMAncherageRepairTimerViewController.h */,
+				F4253D811C8B307800CDA2A6 /* HMAncherageRepairTimerViewController.m */,
+				F4253D821C8B307800CDA2A6 /* HMAncherageRepairTimerViewController.xib */,
 				F4F388BA1C13D63B00508549 /* HMGameViewController.h */,
 				F4F388BB1C13D63B00508549 /* HMGameViewController.m */,
 				F4C668621C54517500601AFB /* HMGameViewController.xib */,
@@ -1515,6 +1523,7 @@
 				F43E67B718BE02A10087E5B6 /* STypeShortName.plist in Resources */,
 				F4A9B8D41B975029005786C2 /* SlotItemShortName.plist in Resources */,
 				F4BEF0051B11A5D3004702B8 /* HMFleetViewController.xib in Resources */,
+				F4253D841C8B307800CDA2A6 /* HMAncherageRepairTimerViewController.xib in Resources */,
 				F4A2AF541A074DE40024BD9E /* HMScreenshotListWindowController.xib in Resources */,
 				F4BEEFFC1B11A5A7004702B8 /* HMExternalBrowserWindowController.xib in Resources */,
 				F4BDEB5F187252F30069D0CE /* Images.xcassets in Resources */,
@@ -1732,6 +1741,7 @@
 				F4B37EF619FBE801002F371A /* HMRemodelSlotItemCommand.m in Sources */,
 				F4F6E80C1B2BC81C0008B66E /* HMPeriodicNotifier.m in Sources */,
 				F4B414EC18B0A7D600468DAF /* HMMasterUseItemCommand.m in Sources */,
+				F4253D831C8B307800CDA2A6 /* HMAncherageRepairTimerViewController.m in Sources */,
 				F4F9F8A61C78596900D0EE76 /* HMAnchorageRepairManager.m in Sources */,
 				F4513EF318B991F800073552 /* HMMemberBasicCommand.m in Sources */,
 				F4268009193AF4E000B2C27F /* HMUserDefaults.m in Sources */,
