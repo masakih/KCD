@@ -50,29 +50,31 @@ int main(int argc, const char * argv[]) {
 		}
 		NSArray *requiredEquipmentSetLines = [requiredEquipmentSet componentsSeparatedByString:@"\n"];
 		NSMutableArray *sets = [NSMutableArray array];
-		for(int i = 0; i < requiredEquipmentSetLines.count; i++) {
-			NSMutableArray<HMRequiredEquipment *> *requiredEquipments = [NSMutableArray array];
-			
-			NSString *line = requiredEquipmentSetLines[i];
-			NSArray *cols = [line componentsSeparatedByString:@"\t"];
-			if(cols.count != 6) continue;
-			
-			for(int j = 0; j < 3; j++) {
-				NSString *line = requiredEquipmentSetLines[i + j];
-				NSArray *cols = [line componentsSeparatedByString:@"\t"];
-				if(cols.count != 6) continue;
-				
-				HMRequiredEquipment *requiredEquipment = [HMRequiredEquipment new];
-				
-				requiredEquipment.identifire = cols[0];
-				requiredEquipment.currentLevelString = cols[1];
-				requiredEquipment.name = cols[2];
-				requiredEquipment.number = numberOrNil(cols[3]);
-				requiredEquipment.screw = numberOrNil(cols[4]);
-				requiredEquipment.ensureScrew = numberOrNil(cols[5]);
-				
-				[requiredEquipments addObject:requiredEquipment];
+		NSMutableArray<HMRequiredEquipment *> *requiredEquipments = [NSMutableArray array];
+		NSString *currentIdentifire = nil;
+		for(NSString *line in requiredEquipmentSetLines) {
+			NSArray<NSString *> *cols = [line componentsSeparatedByString:@"\t"];
+			if(cols.count != 6) {
+				if(currentIdentifire) {
+					fprintf(stderr, "Error %s proccess is not complete\n", currentIdentifire.UTF8String);
+				}
+				currentIdentifire = nil;
+				continue;
 			}
+			
+			HMRequiredEquipment *requiredEquipment = [HMRequiredEquipment new];
+			
+			requiredEquipment.identifire = cols[0];
+			requiredEquipment.currentLevelString = cols[1];
+			requiredEquipment.name = cols[2];
+			requiredEquipment.number = numberOrNil(cols[3]);
+			requiredEquipment.screw = numberOrNil(cols[4]);
+			requiredEquipment.ensureScrew = numberOrNil(cols[5]);
+			
+			[requiredEquipments addObject:requiredEquipment];
+			
+			currentIdentifire = cols[0];
+			
 			if(requiredEquipments.count != 3) continue;
 			
 			HMRequiredEquipmentSet *set = [HMRequiredEquipmentSet new];
@@ -80,6 +82,10 @@ int main(int argc, const char * argv[]) {
 			set.requiredEquipments = requiredEquipments;
 			
 			[sets addObject:set];
+			[requiredEquipments removeAllObjects];
+			
+			fprintf(stdout, "Create item of %s\n", currentIdentifire.UTF8String);
+			currentIdentifire = nil;
 		}
 		
 		//
@@ -121,7 +127,9 @@ int main(int argc, const char * argv[]) {
 			}
 			requiredEquipment.requiredEquipments = sets[index];
 			
-			NSLog(@"add item %@", requiredEquipment.targetEquipment);
+			fprintf(stdout, "Add item %s for weekday %ld\n",
+					requiredEquipment.targetEquipment.UTF8String,
+					requiredEquipment.weekday.integerValue);
 			
 			[enhancementLists addObject:requiredEquipment];
 		}

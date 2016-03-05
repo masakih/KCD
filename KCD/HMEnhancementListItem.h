@@ -42,7 +42,7 @@ typedef NS_ENUM(NSUInteger, EquipmentType) {
 
 @property (copy, nonatomic) NSString *identifire;
 
-@property (strong, nonatomic) NSArray<HMRequiredEquipment *> *requiredEquipments;
+@property (copy, nonatomic) NSArray<HMRequiredEquipment *> *requiredEquipments;
 
 
 // for Cocoa Bindings
