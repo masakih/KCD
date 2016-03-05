@@ -20,6 +20,7 @@
 #import "HMFleetViewController.h"
 #import "HMResourceViewController.h"
 #import "HMRepairListViewController.h"
+#import "HMAncherageRepairTimerViewController.h"
 
 #import "HMServerDataStore.h"
 
@@ -45,6 +46,9 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 @property (weak) IBOutlet NSView *resourcePlaceholder;
 @property (strong) HMResourceViewController *resourceViewController;
 
+@property (weak) IBOutlet NSView *ancherageRepariTimerPlaceholder;
+@property (strong) HMAncherageRepairTimerViewController *ancherageRepariTimerViewController;
+
 @property (strong) NSNumber *flagShipID;
 
 @property (strong) HMFleetViewController *fleetViewController;
@@ -56,6 +60,7 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 @property (strong) HMPowerUpSupportViewController *powerUpViewController;
 @property (strong) HMStrengthenListViewController *strengthedListViewController;
 @property (strong) HMRepairListViewController *repairListViewController;
+
 
 @property (strong) HMCombileViewController *combinedViewController;
 @property BOOL isCombinedMode;
@@ -90,6 +95,10 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 	self.resourceViewController = [HMResourceViewController new];
 	[self.resourceViewController.view setFrameOrigin:NSZeroPoint];
 	[self.resourcePlaceholder addSubview:self.resourceViewController.view];
+	
+	self.ancherageRepariTimerViewController = [HMAncherageRepairTimerViewController new];
+	[self.ancherageRepariTimerViewController.view setFrameOrigin:NSZeroPoint];
+	[self.ancherageRepariTimerPlaceholder addSubview:self.ancherageRepariTimerViewController.view];
 	
 	self.docksViewController = [HMDocksViewController new];
 	self.shipViewController = [HMShipViewController new];

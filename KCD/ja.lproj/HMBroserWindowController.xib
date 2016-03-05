@@ -6,6 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="HMBroserWindowController">
             <connections>
+                <outlet property="ancherageRepariTimerPlaceholder" destination="JfO-nc-ymj" id="HV1-5u-fML"/>
                 <outlet property="combinedViewPlaceholder" destination="ErU-NG-s3I" id="6hE-wI-Ikk"/>
                 <outlet property="deckContoller" destination="eqP-ex-UzI" id="8n5-Er-BIF"/>
                 <outlet property="deckPlaceholder" destination="tIf-gd-MhY" id="aXM-5K-Uwd"/>
@@ -49,11 +50,11 @@
                                     <rect key="frame" x="0.0" y="0.0" width="311" height="43"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="311" height="43"/>
-                                    <size key="maxSize" width="806" height="10000000"/>
+                                    <size key="minSize" width="0.0" height="31"/>
+                                    <size key="maxSize" width="954" height="10000000"/>
                                     <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="311" height="43"/>
-                                    <size key="maxSize" width="806" height="10000000"/>
+                                    <size key="minSize" width="0.0" height="31"/>
+                                    <size key="maxSize" width="954" height="10000000"/>
                                     <connections>
                                         <binding destination="-2" name="attributedString" keyPath="linksString" id="Zq5-KB-a2U">
                                             <dictionary key="options">
@@ -93,37 +94,37 @@
                         <font key="titleFont" metaFont="system"/>
                     </box>
                     <tabView initialItem="ETl-Gs-mBL" id="fK1-fC-Xdm">
-                        <rect key="frame" x="813" y="165" width="343" height="611"/>
+                        <rect key="frame" x="813" y="188" width="343" height="588"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="状況" identifier="1" id="ETl-Gs-mBL">
                                 <view key="view" id="nff-Ek-C9h">
-                                    <rect key="frame" x="10" y="33" width="323" height="565"/>
+                                    <rect key="frame" x="10" y="33" width="323" height="542"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="編成支援" identifier="2" id="vnl-eb-0bM">
                                 <view key="view" id="HTH-7g-xfp">
-                                    <rect key="frame" x="10" y="33" width="323" height="565"/>
+                                    <rect key="frame" x="10" y="33" width="323" height="533"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="近代化" identifier="3" id="Ops-Am-LiF">
                                 <view key="view" id="ytJ-Qj-RCn">
-                                    <rect key="frame" x="10" y="33" width="323" height="565"/>
+                                    <rect key="frame" x="10" y="33" width="323" height="533"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="改修工廠" identifier="4" id="Ls3-Cp-5p4">
                                 <view key="view" id="6ia-4I-aBI">
-                                    <rect key="frame" x="10" y="33" width="323" height="565"/>
+                                    <rect key="frame" x="10" y="33" width="323" height="533"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label=" 修復" identifier="5" id="GgO-z3-Sgk">
                                 <view key="view" id="C3D-UU-4z6">
-                                    <rect key="frame" x="10" y="33" width="323" height="565"/>
+                                    <rect key="frame" x="10" y="33" width="323" height="533"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                             </tabViewItem>
@@ -131,6 +132,10 @@
                     </tabView>
                     <customView id="0dQ-uF-j2x">
                         <rect key="frame" x="809" y="60" width="352" height="107"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                    </customView>
+                    <customView id="JfO-nc-ymj">
+                        <rect key="frame" x="809" y="166" width="352" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                     </customView>
                 </subviews>

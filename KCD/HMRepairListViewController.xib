@@ -26,14 +26,14 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="eLM-V4-yYr">
-                    <rect key="frame" x="6" y="8" width="311" height="359"/>
+                    <rect key="frame" x="6" y="8" width="311" height="384"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="oy8-0a-QnL">
-                        <rect key="frame" x="1" y="0.0" width="309" height="358"/>
+                        <rect key="frame" x="1" y="0.0" width="309" height="383"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveName="repairlistview" headerView="6cN-al-E6a" id="fYh-ug-HRe">
-                                <rect key="frame" x="0.0" y="0.0" width="309" height="335"/>
+                                <rect key="frame" x="0.0" y="0.0" width="309" height="360"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -188,29 +188,6 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="cuH-Vp-StM">
-                    <rect key="frame" x="138" y="375" width="101" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="泊地修理タイマー" id="pJv-bA-eml">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="hr3-q9-VLJ">
-                    <rect key="frame" x="241" y="375" width="73" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" id="POJ-kk-UFt">
-                        <customFormatter key="formatter" id="2gx-Nb-TcK" customClass="HMTimerCountFormatter"/>
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                    <connections>
-                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="F4e-oQ-4KI"/>
-                        <binding destination="-2" name="value" keyPath="repairTime" id="l9Z-rK-kEY"/>
-                    </connections>
-                </textField>
             </subviews>
             <point key="canvasLocation" x="209.5" y="314"/>
         </customView>
