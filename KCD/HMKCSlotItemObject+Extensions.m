@@ -28,6 +28,12 @@
 	[self willAccessValueForKey:@"equippedShip"];
 	NSString *equippedShipName = self.equippedShip.name;
 	[self didAccessValueForKey:@"equippedShip"];
+	
+	if(!equippedShipName) {
+		[self willAccessValueForKey:@"extraEquippedShip"];
+		equippedShipName = self.extraEquippedShip.name;
+		[self didAccessValueForKey:@"extraEquippedShip"];
+	}
 	return equippedShipName;
 }
 - (NSNumber *)equippedShipLv
@@ -35,6 +41,12 @@
 	[self willAccessValueForKey:@"equippedShip"];
 	NSNumber *equippedShipLv = self.equippedShip.lv;
 	[self didAccessValueForKey:@"equippedShip"];
+	
+	if(!equippedShipLv) {
+		[self willAccessValueForKey:@"extraEquippedShip"];
+		equippedShipLv = self.extraEquippedShip.lv;
+		[self didAccessValueForKey:@"extraEquippedShip"];
+	}
 	return equippedShipLv;
 }
 - (NSNumber *)masterSlotItemRare
