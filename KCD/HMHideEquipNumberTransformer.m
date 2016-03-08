@@ -21,7 +21,7 @@ static NSArray *showsTypes = nil;
 	dispatch_once(&onceToken, ^{
 		[NSValueTransformer setValueTransformer:[self new] forName:@"HMHideEquipNumberTransformer"];
 		
-		showsTypes = @[@6, @7, @8, @9, @10, @11, @25, @26, @41];
+		showsTypes = @[@6, @7, @8, @9, @10, @11, @25, @26, @41, @45];
 	});
 }
 
