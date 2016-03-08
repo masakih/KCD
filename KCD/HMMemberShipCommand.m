@@ -8,11 +8,16 @@
 
 #import "HMMemberShipCommand.h"
 
+#import "HMKCShipObject+Extensions.h"
+#import "HMKCSlotItemObject+Extensions.h"
+#import "HMKCMasterShipObject.h"
+
+
 @interface HMMemberShipCommand ()
 @property (strong) NSMutableArray *ids;
 
-@property (nonatomic, strong) NSArray *masterShips;
-@property (nonatomic, strong) NSArray *slotItems;
+@property (nonatomic, strong) NSArray<HMKCMasterShipObject *> *masterShips;
+@property (nonatomic, strong) NSArray<HMKCSlotItemObject *> *slotItems;
 @end
 
 @implementation HMMemberShipCommand
@@ -77,16 +82,32 @@
 	return [super dataKey];
 }
 
-- (void)beginRegisterObject:(NSManagedObject *)object
+- (void)beginRegisterObject:(HMKCShipObject *)object
 {
-	[object setValue:nil forKey:@"sally_area"];
+	object.sally_area = nil;
 }
 
-- (void)setMasterShip:(id)value toObject:(NSManagedObject *)object
+
+NSComparator itemCompare = ^(id obj1, id obj2) {
+	id value1, value2;
+	if([obj1 isKindOfClass:[NSNumber class]]) {
+		value1 = obj1;
+	} else {
+		value1 = [obj1 valueForKey:@"id"];
+	}
+	if([obj2 isKindOfClass:[NSNumber class]]) {
+		value2 = obj2;
+	} else {
+		value2 = [obj2 valueForKey:@"id"];
+	}
+	return [value1 compare:value2];
+};
+
+- (void)setMasterShip:(id)value toObject:(HMKCShipObject *)object
 {
-	id currentValue = [object valueForKeyPath:@"master_ship.name"];
+	id currentValue = object.master_ship.name;
 	if(currentValue && ![currentValue isEqual:[NSNull null]]) {
-		NSNumber *shipId = [object valueForKey:@"ship_id"];
+		NSNumber *shipId = object.ship_id;
 		if([value isEqual:shipId]) return;
 	}
 	
@@ -97,7 +118,7 @@
 		[req setSortDescriptors:@[sortDescriptor]];
 		NSError *error = nil;
 		self.masterShips = [managedObjectContext executeFetchRequest:req
-														error:&error];
+															   error:&error];
 		if(error) {
 			[self log:@"Fetch error: %@", error];
 			return;
@@ -112,31 +133,18 @@
 	NSUInteger index = [self.masterShips indexOfObject:value
 										 inSortedRange:range
 											   options:NSBinarySearchingFirstEqual
-									   usingComparator:^(id obj1, id obj2) {
-										   id value1, value2;
-										   if([obj1 isKindOfClass:[NSNumber class]]) {
-											   value1 = obj1;
-										   } else {
-											   value1 = [obj1 valueForKey:@"id"];
-										   }
-										   if([obj2 isKindOfClass:[NSNumber class]]) {
-											   value2 = obj2;
-										   } else {
-											   value2 = [obj2 valueForKey:@"id"];
-										   }
-										   return [value1 compare:value2];
-									   }];
+									   usingComparator:itemCompare];
 	if(index == NSNotFound) {
 		[self log:@"Could not find ship of id (%@)", value];
 		return;
 	}
-	id item = [self.masterShips objectAtIndex:index];
+	HMKCMasterShipObject *item = [self.masterShips objectAtIndex:index];
 	
-	[self setValueIfNeeded:item toObject:object forKey:@"master_ship"];
-	[self setValueIfNeeded:value toObject:object forKey:@"ship_id"];
+	object.master_ship = item;
+	object.ship_id = value;
 }
 
-- (void)addSlotItem:(id)slotItems toObject:(NSManagedObject *)object
+- (void)storeSlotItemsForObject:(HMKCShipObject *)object
 {
 	if(!self.slotItems) {
 		NSError *error = nil;
@@ -154,6 +162,11 @@
 			return;
 		}
 	}
+}
+
+- (void)addSlotItem:(id)slotItems toObject:(HMKCShipObject *)object
+{
+	[self storeSlotItemsForObject:object];
 
 	NSMutableArray *newItems = [NSMutableArray new];
 	NSRange range = NSMakeRange(0, self.slotItems.count);
@@ -162,23 +175,10 @@
 		NSUInteger index = [self.slotItems indexOfObject:value
 										   inSortedRange:range
 												 options:NSBinarySearchingFirstEqual
-										 usingComparator:^(id obj1, id obj2) {
-											 id value1, value2;
-											 if([obj1 isKindOfClass:[NSNumber class]]) {
-												 value1 = obj1;
-											 } else {
-												 value1 = [obj1 valueForKey:@"id"];
-											 }
-											 if([obj2 isKindOfClass:[NSNumber class]]) {
-												 value2 = obj2;
-											 } else {
-												 value2 = [obj2 valueForKey:@"id"];
-											 }
-											 return [value1 compare:value2];
-										 }];
+										 usingComparator:itemCompare];
 		if(index == NSNotFound) {
-			id lastItem = [self.slotItems lastObject];
-			NSInteger lastItemId = [[lastItem valueForKey:@"id"] integerValue];
+			HMKCSlotItemObject *lastItem = [self.slotItems lastObject];
+			NSInteger lastItemId = [lastItem.id integerValue];
 			if(lastItemId < [value integerValue]) {
 #if DEBUG
 				[self log:@"item is maybe unregistered, so it is new ship's equipment."];
@@ -197,8 +197,36 @@
 	[orderedSet removeAllObjects];
 	[orderedSet addObjectsFromArray:newItems];
 }
+- (void)setExtraItem:(id)slotItem toObject:(HMKCShipObject *)object
+{
+	if([slotItem integerValue] == -1) return;
+	if([slotItem integerValue] == 0) return;
+	
+	[self storeSlotItemsForObject:object];
+	
+	NSRange range = NSMakeRange(0, self.slotItems.count);
+	
+	NSUInteger index = [self.slotItems indexOfObject:slotItem
+									   inSortedRange:range
+											 options:NSBinarySearchingFirstEqual
+									 usingComparator:itemCompare];
+	if(index == NSNotFound) {
+		HMKCSlotItemObject *lastItem = [self.slotItems lastObject];
+		NSInteger lastItemId = [lastItem.id integerValue];
+		if(lastItemId < [slotItem integerValue]) {
+#if DEBUG
+			[self log:@"item is maybe unregistered, so it is new ship's equipment."];
+#endif
+		} else {
+			[self log:@"Item %@ is not found.", slotItem];
+		}
+	}
+	HMKCSlotItemObject *item = [self.slotItems objectAtIndex:index];
+	
+	object.extraItem = item;
+}
 
-- (BOOL)handleExtraValue:(id)value forKey:(NSString *)key toObject:(NSManagedObject *)object
+- (BOOL)handleExtraValue:(id)value forKey:(NSString *)key toObject:(HMKCShipObject *)object
 {
 	// 取得後破棄した艦娘のデータを削除する
 	if([key isEqualToString:@"api_id"]) {
@@ -212,12 +240,17 @@
 	
 	if([key isEqualToString:@"api_exp"]) {
 		if(![value isKindOfClass:[NSArray class]]) return NO;
-		[self setValueIfNeeded:[value objectAtIndex:0] toObject:object forKey:@"exp"];
+		object.exp = [value objectAtIndex:0];
 		return YES;
 	}
 	
 	if([key isEqualToString:@"api_slot"]) {
 		[self addSlotItem:value toObject:object];
+		return NO;
+	}
+	
+	if([key isEqualToString:@"api_slot_ex"]) {
+		[self setExtraItem:value toObject:object];
 		return NO;
 	}
 	
