@@ -59,10 +59,10 @@
 		case -1:
 			break;
 		case 0:
-			return [NSPredicate predicateWithFormat:@"equippedShip.lv = NULL"];
+			return [NSPredicate predicateWithFormat:@"equippedShip.lv = NULL && extraEquippedShip.lv = NULL"];
 			break;
 		case 1:
-			return [NSPredicate predicateWithFormat:@"equippedShip.lv != NULL"];
+			return [NSPredicate predicateWithFormat:@"equippedShip.lv != NULL || extraEquippedShip.lv != NULL"];
 			break;
 		default:
 			break;
