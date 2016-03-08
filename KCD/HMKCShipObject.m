@@ -63,5 +63,6 @@
 @dynamic taisen_1;
 @dynamic equippedItem;
 @dynamic master_ship;
+@dynamic extraItem;
 
 @end

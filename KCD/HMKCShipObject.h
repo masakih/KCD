@@ -62,6 +62,7 @@
 @property (nonatomic, retain) NSNumber * taisen_1;
 @property (nonatomic, retain) NSOrderedSet *equippedItem;
 @property (nonatomic, retain) HMKCMasterShipObject *master_ship;
+@property (nonatomic, retain) HMKCSlotItemObject *extraItem;
 @end
 
 @interface HMKCShipObject (CoreDataGeneratedAccessors)

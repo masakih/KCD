@@ -20,5 +20,6 @@
 @dynamic slotitem_id;
 @dynamic equippedShip;
 @dynamic master_slotItem;
+@dynamic extraEquippedShip;
 
 @end

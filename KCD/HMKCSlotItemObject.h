@@ -19,5 +19,6 @@
 @property (nonatomic, retain) NSNumber * slotitem_id;
 @property (nonatomic, retain) HMKCShipObject *equippedShip;
 @property (nonatomic, retain) HMKCMasterSlotItemObject *master_slotItem;
+@property (nonatomic, retain) HMKCShipObject *extraEquippedShip;
 
 @end

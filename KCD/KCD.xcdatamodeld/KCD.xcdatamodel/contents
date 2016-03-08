@@ -319,6 +319,7 @@
         <attribute name="taisen_0" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="taisen_1" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="equippedItem" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="SlotItem" inverseName="equippedShip" inverseEntity="SlotItem" syncable="YES"/>
+        <relationship name="extraItem" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="SlotItem" inverseName="extraEquippedShip" inverseEntity="SlotItem" syncable="YES"/>
         <relationship name="master_ship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MasterShip" inverseName="ships" inverseEntity="MasterShip" syncable="YES"/>
     </entity>
     <entity name="SlotItem" representedClassName="HMKCSlotItemObject" syncable="YES">
@@ -328,6 +329,7 @@
         <attribute name="locked" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="slotitem_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <relationship name="equippedShip" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Ship" inverseName="equippedItem" inverseEntity="Ship" syncable="YES"/>
+        <relationship name="extraEquippedShip" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Ship" inverseName="extraItem" inverseEntity="Ship" syncable="YES"/>
         <relationship name="master_slotItem" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MasterSlotItem" inverseName="slotItems" inverseEntity="MasterSlotItem" syncable="YES"/>
     </entity>
     <elements>
@@ -347,7 +349,7 @@
         <element name="Material" positionX="0" positionY="0" width="128" height="165"/>
         <element name="NyukyoDock" positionX="0" positionY="0" width="128" height="30"/>
         <element name="Quest" positionX="0" positionY="0" width="128" height="240"/>
-        <element name="Ship" positionX="0" positionY="0" width="128" height="810"/>
-        <element name="SlotItem" positionX="0" positionY="0" width="128" height="150"/>
+        <element name="Ship" positionX="0" positionY="0" width="128" height="825"/>
+        <element name="SlotItem" positionX="0" positionY="0" width="128" height="165"/>
     </elements>
 </model>
