@@ -48,7 +48,7 @@
                         </column>
                     </cells>
                     <connections>
-                        <binding destination="-2" name="selectedIndex" keyPath="offsetDay" id="VOA-d5-TvX"/>
+                        <binding destination="-2" name="selectedTag" keyPath="offsetDay" id="44u-FC-Nab"/>
                     </connections>
                 </matrix>
                 <scrollView autohidesScrollers="YES" horizontalLineScroll="104" horizontalPageScroll="10" verticalLineScroll="104" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="0L6-8Q-wSg">

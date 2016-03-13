@@ -18,9 +18,9 @@ static NSString *groupNameKey = @"group";
 
 @interface HMStrengthenListViewController () <NSTableViewDataSource, NSURLSessionDelegate>
 
-@property (strong) NSArray *equipmentStrengthenList;
+@property (strong) NSArray<HMEnhancementListItem *> *equipmentStrengthenList;
 @property (weak, nonatomic) IBOutlet NSTableView *tableView;
-@property (strong) NSArray *itemList;
+@property (strong) NSArray<HMEnhancementListItem *> *itemList;
 
 @property (nonatomic) NSInteger offsetDay;
 
@@ -135,18 +135,48 @@ static NSString *groupNameKey = @"group";
 	self.plistDownloadTask = nil;
 }
 
+- (NSArray<HMEnhancementListItem *> *)allItemList
+{
+	NSMutableDictionary<NSString *, HMEnhancementListItem *> *dict = [NSMutableDictionary dictionary];
+	NSMutableArray<HMEnhancementListItem *> *array = [NSMutableArray array];
+	
+	for(HMEnhancementListItem *item in self.equipmentStrengthenList) {
+		HMEnhancementListItem *obj = [dict objectForKey:item.identifire];
+		if(!obj) {
+			obj = [HMEnhancementListItem new];
+			obj.identifire = item.identifire;
+			obj.weekday = @10;
+			obj.equipmentType = item.equipmentType;
+			obj.targetEquipment = item.targetEquipment;
+			obj.remodelEquipment = item.remodelEquipment;
+			obj.requiredEquipments = item.requiredEquipments;
+			obj.secondsShipNames = item.secondsShipNames;
+			[dict setObject:obj forKey:item.identifire];
+			[array addObject:obj];
+		}
+		
+		NSMutableOrderedSet<NSString *> *set = [NSMutableOrderedSet orderedSetWithArray:obj.secondsShipNames];
+		[set addObjectsFromArray:item.secondsShipNames];
+		obj.secondsShipNames = set.array;
+	}
+	
+	return array;
+}
+
 - (void)refreshTableView
 {
+	if(self.offsetDay == -1) {
+		self.itemList = [self allItemList];
+		return;
+	}
+	
 	NSDate *now = [NSDate dateWithTimeIntervalSinceNow:0.0];
 	NSCalendarUnit unit = NSCalendarUnitWeekday;
 	NSDateComponents *currentDay = [[NSCalendar currentCalendar] components:unit fromDate:now];
 	
-	NSPredicate *predicate = nil;
-	if(self.offsetDay != -1) {
-		NSInteger targetWeekday = currentDay.weekday + self.offsetDay;
-		if(targetWeekday > 7) targetWeekday = 1;
-		predicate = [NSPredicate predicateWithFormat:@"weekday = %ld", targetWeekday];
-	}
+	NSInteger targetWeekday = currentDay.weekday + self.offsetDay;
+	if(targetWeekday > 7) targetWeekday = 1;
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"weekday = %ld", targetWeekday];
 	self.itemList = [self.equipmentStrengthenList filteredArrayUsingPredicate:predicate];
 }
 
