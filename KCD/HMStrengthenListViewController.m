@@ -62,7 +62,9 @@ static NSString *groupNameKey = @"group";
 												 selector:@selector(downloadPlist:)
 													 name:HMPeriodicNotification
 												   object:_plistDownloadNotifier];
+#ifndef DEBUG
 		[self downloadPlist:nil];
+#endif
 	}
 	return self;
 }
@@ -143,14 +145,8 @@ static NSString *groupNameKey = @"group";
 	for(HMEnhancementListItem *item in self.equipmentStrengthenList) {
 		HMEnhancementListItem *obj = [dict objectForKey:item.identifire];
 		if(!obj) {
-			obj = [HMEnhancementListItem new];
-			obj.identifire = item.identifire;
+			obj = [item copy];
 			obj.weekday = @10;
-			obj.equipmentType = item.equipmentType;
-			obj.targetEquipment = item.targetEquipment;
-			obj.remodelEquipment = item.remodelEquipment;
-			obj.requiredEquipments = item.requiredEquipments;
-			obj.secondsShipNames = item.secondsShipNames;
 			[dict setObject:obj forKey:item.identifire];
 			[array addObject:obj];
 		}
