@@ -78,6 +78,15 @@
 	[aCoder encodeObject:self.requiredEquipments forKey:@"requiredEquipments"];
 }
 
+- (instancetype)copyWithZone:(NSZone *)zone
+{
+	HMRequiredEquipmentSet *obj = [HMRequiredEquipmentSet new];
+	obj.identifire = self.identifire;
+	obj.requiredEquipments = self.requiredEquipments;
+	
+	return obj;
+}
+
 - (id)description
 {
 	return [NSString stringWithFormat:@"{identifier = %@,\nrequiredEquipments = %@\n}", _identifire, _requiredEquipments];
@@ -124,6 +133,19 @@
 	[aCoder encodeObject:self.remodelEquipment forKey:@"remodelEquipment"];
 	[aCoder encodeObject:self.requiredEquipments forKey:@"requiredEquipments"];
 	[aCoder encodeObject:self.secondsShipNames forKey:@"secondsShipNames"];
+}
+- (instancetype)copyWithZone:(NSZone *)zone
+{
+	HMEnhancementListItem *obj = [HMEnhancementListItem new];
+	obj.identifire = self.identifire;
+	obj.weekday = self.weekday;
+	obj.equipmentType = self.equipmentType;
+	obj.targetEquipment = self.targetEquipment;
+	obj.remodelEquipment = self.remodelEquipment;
+	obj.requiredEquipments = [self.requiredEquipments copy];
+	obj.secondsShipNames = [self.secondsShipNames copy];
+	
+	return obj;
 }
 
 - (id)description

@@ -38,7 +38,7 @@ typedef NS_ENUM(NSUInteger, EquipmentType) {
 @end
 
 
-@interface HMRequiredEquipmentSet : NSObject <NSCoding>
+@interface HMRequiredEquipmentSet : NSObject <NSCoding, NSCopying>
 
 @property (copy, nonatomic) NSString *identifire;
 
@@ -53,7 +53,7 @@ typedef NS_ENUM(NSUInteger, EquipmentType) {
 @end
 
 
-@interface HMEnhancementListItem : NSObject <NSCoding>
+@interface HMEnhancementListItem : NSObject <NSCoding, NSCopying>
 
 @property (copy, nonatomic) NSString *identifire;
 
