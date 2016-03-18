@@ -303,6 +303,7 @@
 			if(HMStandardDefaults.showsListWindowAtScreenshot) {
 				[self.window makeKeyAndOrderFront:nil];
 			}
+			[self saveCache];
 		});
 	});
 }
@@ -457,15 +458,6 @@
 			}
 			[trimedImage unlockFocus];
 		}
-		
-		HMScreenshotInformation *info = informations[0];
-		
-		NSString *filename = info.path.lastPathComponent;
-		filename = [filename stringByDeletingPathExtension];
-		filename = [filename stringByAppendingString:@"-trimed"];
-		filename = [filename stringByAppendingPathExtension:@"jpg"];
-		NSString *path = [[self screenshotSaveDirectoryPath] stringByAppendingPathComponent:filename];
-		path = [[NSFileManager defaultManager] _web_pathWithUniqueFilenameForPath:path];
 		
 		NSData *TIFFData = trimedImage.TIFFRepresentation;
 		NSBitmapImageRep *rep = [NSBitmapImageRep imageRepWithData:TIFFData];
