@@ -47,7 +47,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <binding destination="-2" name="displayPatternValue1" keyPath="title" id="BJg-3Z-vLc">
+                        <binding destination="hh2-zf-ptT" name="displayPatternValue1" keyPath="selection.title" id="8bk-nf-7BY">
                             <dictionary key="options">
                                 <string key="NSDisplayPattern">【 %{value1}@ 】</string>
                             </dictionary>
@@ -57,5 +57,10 @@
             </subviews>
             <point key="canvasLocation" x="494.5" y="313"/>
         </customView>
+        <objectController id="hh2-zf-ptT">
+            <connections>
+                <binding destination="-2" name="contentObject" keyPath="self" id="PYZ-Cq-yCe"/>
+            </connections>
+        </objectController>
     </objects>
 </document>

@@ -77,7 +77,7 @@
                         </column>
                     </cells>
                     <connections>
-                        <binding destination="-2" name="selectedTag" keyPath="fleetNumber" id="4gQ-71-HFy"/>
+                        <binding destination="MYB-8m-P41" name="selectedTag" keyPath="selection.fleetNumber" id="M2a-NH-QOd"/>
                     </connections>
                 </matrix>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="GMS-aA-S7M">
@@ -89,7 +89,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <binding destination="-2" name="displayPatternValue1" keyPath="title" id="QcF-tz-knF">
+                        <binding destination="MYB-8m-P41" name="displayPatternValue1" keyPath="selection.title" id="gra-MV-rb1">
                             <dictionary key="options">
                                 <string key="NSDisplayPattern">【 %{value1}@ 】</string>
                             </dictionary>
@@ -116,7 +116,7 @@
                     </textFieldCell>
                     <connections>
                         <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="PF0-ou-K6v"/>
-                        <binding destination="-2" name="value" keyPath="totalSakuteki" id="1H9-FR-9Aw"/>
+                        <binding destination="MYB-8m-P41" name="value" keyPath="selection.totalSakuteki" id="JRu-FL-yUV"/>
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ee5-Xk-4iW">
@@ -138,12 +138,12 @@
                     </textFieldCell>
                     <connections>
                         <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="r57-yZ-zBo"/>
-                        <binding destination="-2" name="displayPatternValue2" keyPath="totalCalclatedSeiku" previousBinding="ucj-A3-qBe" id="VyW-d3-E9s">
+                        <binding destination="MYB-8m-P41" name="displayPatternValue1" keyPath="selection.totalSeiku" id="7Sq-iR-bBg">
                             <dictionary key="options">
                                 <string key="NSDisplayPattern">%{value1}@ (%{value2}@)</string>
                             </dictionary>
                         </binding>
-                        <binding destination="-2" name="displayPatternValue1" keyPath="totalSeiku" id="ucj-A3-qBe">
+                        <binding destination="MYB-8m-P41" name="displayPatternValue2" keyPath="selection.totalCalclatedSeiku" previousBinding="7Sq-iR-bBg" id="70Q-az-J1k">
                             <dictionary key="options">
                                 <string key="NSDisplayPattern">%{value1}@ (%{value2}@)</string>
                             </dictionary>
@@ -165,12 +165,12 @@
                     </textFieldCell>
                     <connections>
                         <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont11" id="D3c-11-4qp"/>
-                        <binding destination="-2" name="value" keyPath="repairTime" id="Rpx-gC-Nbh"/>
-                        <binding destination="-2" name="hidden" keyPath="repairable" id="Cw6-c1-lcW">
+                        <binding destination="MYB-8m-P41" name="hidden" keyPath="selection.repairable" id="6p5-99-GUi">
                             <dictionary key="options">
                                 <string key="NSValueTransformerName">NSNegateBoolean</string>
                             </dictionary>
                         </binding>
+                        <binding destination="MYB-8m-P41" name="value" keyPath="selection.repairTime" id="L7t-yF-hnS"/>
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="1Fs-NZ-L8n">
@@ -182,7 +182,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <binding destination="-2" name="hidden" keyPath="repairable" id="fmc-Sd-Loi">
+                        <binding destination="MYB-8m-P41" name="hidden" keyPath="selection.repairable" id="xl5-3h-df3">
                             <dictionary key="options">
                                 <string key="NSValueTransformerName">NSNegateBoolean</string>
                             </dictionary>
@@ -209,7 +209,7 @@
                     </textFieldCell>
                     <connections>
                         <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont11" id="gvk-Hk-6Vj"/>
-                        <binding destination="-2" name="value" keyPath="totalLevel" id="qCE-qb-nrX"/>
+                        <binding destination="MYB-8m-P41" name="value" keyPath="selection.totalLevel" id="C5N-Lk-Z6F"/>
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="psc-iQ-sNL">
@@ -232,11 +232,16 @@
                     </textFieldCell>
                     <connections>
                         <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont11" id="1wd-PW-Ssy"/>
-                        <binding destination="-2" name="value" keyPath="totalDrums" id="jQv-Sw-nHS"/>
+                        <binding destination="MYB-8m-P41" name="value" keyPath="selection.totalDrums" id="SpP-yR-CpU"/>
                     </connections>
                 </textField>
             </subviews>
             <point key="canvasLocation" x="334.5" y="485"/>
         </customView>
+        <objectController id="MYB-8m-P41">
+            <connections>
+                <binding destination="-2" name="contentObject" keyPath="self" id="Ab7-TR-6Tv"/>
+            </connections>
+        </objectController>
     </objects>
 </document>

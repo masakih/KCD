@@ -32,7 +32,7 @@
                     </textFieldCell>
                     <connections>
                         <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="YGt-l5-CEm"/>
-                        <binding destination="-2" name="value" keyPath="totalSakuteki" id="bfC-4h-Kty"/>
+                        <binding destination="gCv-EU-Vnz" name="value" keyPath="selection.totalSakuteki" id="lEf-ph-nP1"/>
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="M1a-LI-gu8">
@@ -64,7 +64,7 @@
                     </textFieldCell>
                     <connections>
                         <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="sWc-ye-BZI"/>
-                        <binding destination="-2" name="value" keyPath="totalSeiku" id="8cZ-nQ-cKa"/>
+                        <binding destination="gCv-EU-Vnz" name="value" keyPath="selection.totalSeiku" id="K0E-f6-4K6"/>
                     </connections>
                 </textField>
                 <customView id="OS9-eb-ikq">
@@ -100,7 +100,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <binding destination="-2" name="displayPatternValue1" keyPath="title" id="oKO-eH-fc6">
+                        <binding destination="gCv-EU-Vnz" name="displayPatternValue1" keyPath="selection.title" id="2HA-iK-192">
                             <dictionary key="options">
                                 <string key="NSDisplayPattern">【 %{value1}@ 】</string>
                             </dictionary>
@@ -140,7 +140,7 @@
                         </column>
                     </cells>
                     <connections>
-                        <binding destination="-2" name="selectedTag" keyPath="fleetNumber" id="491-wW-IIh"/>
+                        <binding destination="gCv-EU-Vnz" name="selectedTag" keyPath="selection.fleetNumber" id="CO4-5V-IgZ"/>
                     </connections>
                 </matrix>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="358-6d-um3">
@@ -154,12 +154,12 @@
                     </textFieldCell>
                     <connections>
                         <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont11" id="vqv-f1-c1R"/>
-                        <binding destination="-2" name="value" keyPath="repairTime" id="WBa-ln-wqJ"/>
                         <binding destination="-2" name="hidden" keyPath="repairable" id="v9O-cV-MtY">
                             <dictionary key="options">
                                 <string key="NSValueTransformerName">NSNegateBoolean</string>
                             </dictionary>
                         </binding>
+                        <binding destination="gCv-EU-Vnz" name="value" keyPath="selection.repairTime" id="ji6-MJ-aDf"/>
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="BWI-Rq-wLq">
@@ -188,7 +188,7 @@
                     </textFieldCell>
                     <connections>
                         <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="EA7-DS-uA0"/>
-                        <binding destination="-2" name="displayPatternValue1" keyPath="totalCalclatedSeiku" id="ypd-Ik-qlQ">
+                        <binding destination="gCv-EU-Vnz" name="displayPatternValue1" keyPath="selection.totalCalclatedSeiku" id="l9V-Jl-gAR">
                             <dictionary key="options">
                                 <string key="NSDisplayPattern">(%{value1}@)</string>
                             </dictionary>
@@ -206,7 +206,7 @@
                     </textFieldCell>
                     <connections>
                         <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="evB-kA-hbO"/>
-                        <binding destination="-2" name="value" keyPath="totalLevel" id="FO1-5z-GWZ"/>
+                        <binding destination="gCv-EU-Vnz" name="value" keyPath="selection.totalLevel" id="lNL-Cf-88e"/>
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Iqq-0w-7fM">
@@ -229,7 +229,7 @@
                     </textFieldCell>
                     <connections>
                         <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="hgF-tA-AMg"/>
-                        <binding destination="-2" name="value" keyPath="totalDrums" id="JOK-6g-the"/>
+                        <binding destination="gCv-EU-Vnz" name="value" keyPath="selection.totalDrums" id="vGG-2E-ugY"/>
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="6t4-zJ-l1x">
@@ -244,5 +244,10 @@
             </subviews>
             <point key="canvasLocation" x="139.5" y="169"/>
         </customView>
+        <objectController id="gCv-EU-Vnz">
+            <connections>
+                <binding destination="-2" name="contentObject" keyPath="self" id="w6d-fp-7LO"/>
+            </connections>
+        </objectController>
     </objects>
 </document>
