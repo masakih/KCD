@@ -22,6 +22,9 @@
 #import "HMRepairListViewController.h"
 #import "HMAncherageRepairTimerViewController.h"
 
+#import "HMCameraButtomView.h"
+
+
 #import "HMServerDataStore.h"
 
 
@@ -42,6 +45,7 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 
 @interface HMBroserWindowController ()
 @property (strong) HMGameViewController *gameViewController;
+@property (strong) HMCameraButtomView *cameraButtonViewController;
 
 @property (weak) IBOutlet NSView *resourcePlaceholder;
 @property (strong) HMResourceViewController *resourceViewController;
@@ -91,6 +95,13 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 	[self.gameViewController.view setFrameOrigin:NSZeroPoint];
 	[self.gameViewController.view setAutoresizingMask:[self.placeholder autoresizingMask]];
 	[self.placeholder addSubview:self.gameViewController.view];
+	
+	self.cameraButtonViewController = [HMCameraButtomView new];
+	NSRect r = self.cameraButtonViewController.view.bounds;
+	r.origin.x = [self.placeholder frame].size.width - r.size.width;
+	r.origin.y = [self.placeholder frame].size.height - r.size.height;
+	self.cameraButtonViewController.view.frame = r;
+	[self.placeholder addSubview:self.cameraButtonViewController.view];
 	
 	self.resourceViewController = [HMResourceViewController new];
 	[self.resourceViewController.view setFrameOrigin:NSZeroPoint];
