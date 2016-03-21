@@ -10,6 +10,7 @@
 #import "HMShipDetailViewController.h"
 
 #import "HMFleet.h"
+#import "HMFleetManager.h"
 
 #import "HMAppDelegate.h"
 
@@ -195,7 +196,9 @@ const NSInteger maxFleetNumber = 4;
 
 - (void)setFleetNumber:(NSInteger)fleetNumber
 {
-	self.fleet = [HMFleet fleetWithNumber:@(fleetNumber)];
+	HMAppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+	HMFleetManager *fm = appDelegate.fleetManager;
+	self.fleet = fm.fleets[fleetNumber - 1];
 	_fleetNumber = fleetNumber;
 }
 - (NSInteger)fleetNumber

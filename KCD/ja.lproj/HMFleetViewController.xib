@@ -116,7 +116,7 @@
                     </textFieldCell>
                     <connections>
                         <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="PF0-ou-K6v"/>
-                        <binding destination="MYB-8m-P41" name="value" keyPath="selection.totalSakuteki" id="JRu-FL-yUV"/>
+                        <binding destination="MYB-8m-P41" name="value" keyPath="selection.totalSakuteki" id="4Cv-OM-5Cq"/>
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ee5-Xk-4iW">
@@ -138,12 +138,12 @@
                     </textFieldCell>
                     <connections>
                         <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="r57-yZ-zBo"/>
-                        <binding destination="MYB-8m-P41" name="displayPatternValue1" keyPath="selection.totalSeiku" id="7Sq-iR-bBg">
+                        <binding destination="MYB-8m-P41" name="displayPatternValue1" keyPath="selection.totalSeiku" id="LuX-Zm-HUB">
                             <dictionary key="options">
                                 <string key="NSDisplayPattern">%{value1}@ (%{value2}@)</string>
                             </dictionary>
                         </binding>
-                        <binding destination="MYB-8m-P41" name="displayPatternValue2" keyPath="selection.totalCalclatedSeiku" previousBinding="7Sq-iR-bBg" id="70Q-az-J1k">
+                        <binding destination="MYB-8m-P41" name="displayPatternValue2" keyPath="selection.totalCalclatedSeiku" previousBinding="LuX-Zm-HUB" id="3mY-Ib-hoE">
                             <dictionary key="options">
                                 <string key="NSDisplayPattern">%{value1}@ (%{value2}@)</string>
                             </dictionary>
@@ -165,12 +165,12 @@
                     </textFieldCell>
                     <connections>
                         <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont11" id="D3c-11-4qp"/>
+                        <binding destination="MYB-8m-P41" name="value" keyPath="selection.repairTime" id="L7t-yF-hnS"/>
                         <binding destination="MYB-8m-P41" name="hidden" keyPath="selection.repairable" id="6p5-99-GUi">
                             <dictionary key="options">
                                 <string key="NSValueTransformerName">NSNegateBoolean</string>
                             </dictionary>
                         </binding>
-                        <binding destination="MYB-8m-P41" name="value" keyPath="selection.repairTime" id="L7t-yF-hnS"/>
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="1Fs-NZ-L8n">

@@ -154,7 +154,7 @@
                     </textFieldCell>
                     <connections>
                         <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont11" id="vqv-f1-c1R"/>
-                        <binding destination="-2" name="hidden" keyPath="repairable" id="v9O-cV-MtY">
+                        <binding destination="gCv-EU-Vnz" name="hidden" keyPath="selection.repairable" id="Hkp-U2-RpR">
                             <dictionary key="options">
                                 <string key="NSValueTransformerName">NSNegateBoolean</string>
                             </dictionary>
@@ -171,7 +171,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <binding destination="-2" name="hidden" keyPath="repairable" id="0Y7-u7-l5n">
+                        <binding destination="gCv-EU-Vnz" name="hidden" keyPath="selection.repairable" id="3D5-ho-PNe">
                             <dictionary key="options">
                                 <string key="NSValueTransformerName">NSNegateBoolean</string>
                             </dictionary>
