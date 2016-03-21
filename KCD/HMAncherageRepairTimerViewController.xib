@@ -6,6 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="HMAncherageRepairTimerViewController">
             <connections>
+                <outlet property="screenshotButton" destination="gW9-cX-69H" id="soW-7G-dLq"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -45,8 +46,22 @@
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <font key="titleFont" metaFont="system"/>
                 </box>
+                <button id="gW9-cX-69H">
+                    <rect key="frame" x="20" y="3" width="25" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="CameraDisabled" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Mmi-jE-o88">
+                        <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="screenShot:" target="-1" id="wJ0-nz-5vN"/>
+                    </connections>
+                </button>
             </subviews>
             <point key="canvasLocation" x="402" y="271"/>
         </customView>
     </objects>
+    <resources>
+        <image name="CameraDisabled" width="128" height="128"/>
+    </resources>
 </document>

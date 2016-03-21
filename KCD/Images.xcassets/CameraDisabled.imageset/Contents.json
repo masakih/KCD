@@ -2,12 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Camera128.png",
+      "filename" : "CameraDisabled128.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Camera512.png",
       "scale" : "2x"
     },
     {

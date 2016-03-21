@@ -15,6 +15,10 @@
 @interface HMAncherageRepairTimerViewController ()
 @property (strong) HMAnchorageRepairManager *anchorageRepairManager;
 @property (strong) NSNumber *repairTime;
+
+@property (weak) IBOutlet NSButton *screenshotButton;
+@property (strong) NSTrackingArea *trackingArea;
+
 @end
 
 @implementation HMAncherageRepairTimerViewController
@@ -32,6 +36,25 @@
 	}
 	
 	return self;
+}
+
+- (void)awakeFromNib
+{
+	NSRect frame = self.screenshotButton.frame;
+	self.trackingArea = [[NSTrackingArea alloc] initWithRect:frame
+													 options:NSTrackingMouseEnteredAndExited | NSTrackingActiveInActiveApp
+													   owner:self
+													userInfo:nil];
+	[self.view addTrackingArea:self.trackingArea];
+}
+
+- (void)mouseEntered:(NSEvent *)theEvent
+{
+	self.screenshotButton.image = [NSImage imageNamed:@"Camera"];
+}
+- (void)mouseExited:(NSEvent *)theEvent
+{
+	self.screenshotButton.image = [NSImage imageNamed:@"CameraDisabled"];
 }
 
 - (NSNumber *)calcRepairTime

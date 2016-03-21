@@ -91,8 +91,6 @@
 		F49546351B19924D00E0D8D0 /* HMBookmarkListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F49546331B19924D00E0D8D0 /* HMBookmarkListViewController.m */; };
 		F49688641B3AFE4900D3CEDE /* HMProgressPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = F49688621B3AFE4900D3CEDE /* HMProgressPanel.m */; };
 		F49688671B3EA16800D3CEDE /* RemoveDatabaseFileAndRestart.app in Resources */ = {isa = PBXBuildFile; fileRef = F49688661B3EA16800D3CEDE /* RemoveDatabaseFileAndRestart.app */; };
-		F496E2DB1C9E79B20022D4AE /* HMCameraButtomView.m in Sources */ = {isa = PBXBuildFile; fileRef = F496E2D91C9E79B20022D4AE /* HMCameraButtomView.m */; };
-		F496E2DC1C9E79B20022D4AE /* HMCameraButtomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F496E2DA1C9E79B20022D4AE /* HMCameraButtomView.xib */; };
 		F49828FC1902A226000D6BBE /* HMStrokeTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F49828FB1902A226000D6BBE /* HMStrokeTextFieldCell.m */; };
 		F499E8901B5D4E7F00189029 /* HMPortNotifyCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F499E88F1B5D4E7F00189029 /* HMPortNotifyCommand.m */; };
 		F4A2AF521A074DCF0024BD9E /* HMScreenshotListWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A2AF501A074DCF0024BD9E /* HMScreenshotListWindowController.m */; };
@@ -447,9 +445,6 @@
 		F49688611B3AFE4900D3CEDE /* HMProgressPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMProgressPanel.h; sourceTree = "<group>"; };
 		F49688621B3AFE4900D3CEDE /* HMProgressPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMProgressPanel.m; sourceTree = "<group>"; };
 		F49688661B3EA16800D3CEDE /* RemoveDatabaseFileAndRestart.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = RemoveDatabaseFileAndRestart.app; sourceTree = "<group>"; };
-		F496E2D81C9E79B20022D4AE /* HMCameraButtomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMCameraButtomView.h; sourceTree = "<group>"; };
-		F496E2D91C9E79B20022D4AE /* HMCameraButtomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMCameraButtomView.m; sourceTree = "<group>"; };
-		F496E2DA1C9E79B20022D4AE /* HMCameraButtomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMCameraButtomView.xib; sourceTree = "<group>"; };
 		F49828FA1902A226000D6BBE /* HMStrokeTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMStrokeTextFieldCell.h; sourceTree = "<group>"; };
 		F49828FB1902A226000D6BBE /* HMStrokeTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMStrokeTextFieldCell.m; sourceTree = "<group>"; };
 		F499E88E1B5D4E7F00189029 /* HMPortNotifyCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPortNotifyCommand.h; sourceTree = "<group>"; };
@@ -1393,9 +1388,6 @@
 				F4F9F89C1C6CBFF400D0EE76 /* HMFleetTestViewController.h */,
 				F4F9F89D1C6CBFF400D0EE76 /* HMFleetTestViewController.m */,
 				F4F9F89E1C6CBFF400D0EE76 /* HMFleetTestViewController.xib */,
-				F496E2D81C9E79B20022D4AE /* HMCameraButtomView.h */,
-				F496E2D91C9E79B20022D4AE /* HMCameraButtomView.m */,
-				F496E2DA1C9E79B20022D4AE /* HMCameraButtomView.xib */,
 			);
 			name = TestAndDebug;
 			path = KCD;
@@ -1516,7 +1508,6 @@
 				F4C6685A1C54510E00601AFB /* HMBookmarkEditorViewController.xib in Resources */,
 				F4B3DC3C18E5C87D0011B4FC /* HMDocksViewController.xib in Resources */,
 				F4C668631C54518F00601AFB /* HMProgressPanel.xib in Resources */,
-				F496E2DC1C9E79B20022D4AE /* HMCameraButtomView.xib in Resources */,
 				F4C6686F1C54524900601AFB /* HMVerticalFleetViewController.xib in Resources */,
 				F4C668601C54517500601AFB /* HMGameViewController.xib in Resources */,
 				F4B3DC3918E5C8700011B4FC /* HMJSONViewWindowController.xib in Resources */,
@@ -1698,7 +1689,6 @@
 				F4131ED8190FA08D004F7F9A /* HMDestroyItem2Command.m in Sources */,
 				F4B3DC2718DF2F360011B4FC /* HMKenzoMark.m in Sources */,
 				F4F6E80F1B2C25D20008B66E /* HMStrengthenListItemCellView.m in Sources */,
-				F496E2DB1C9E79B20022D4AE /* HMCameraButtomView.m in Sources */,
 				F424A7001BC8C10C0096C431 /* HMFailedCommand.m in Sources */,
 				F49546261B1355EC00E0D8D0 /* HMBookmarkItem.m in Sources */,
 				F49828FC1902A226000D6BBE /* HMStrokeTextFieldCell.m in Sources */,
