@@ -124,7 +124,20 @@
 				[result addObject:ship];
 			}
 		}
+		
+		[self willChangeValueForKey:@"totalSakuteki"];
+		[self willChangeValueForKey:@"totalSeiku"];
+		[self willChangeValueForKey:@"totalCalclatedSeiku"];
+		[self willChangeValueForKey:@"totalLevel"];
+		[self willChangeValueForKey:@"totalDrums"];
+		
 		self.ships = result;
+		
+		[self didChangeValueForKey:@"totalDrums"];
+		[self didChangeValueForKey:@"totalLevel"];
+		[self willChangeValueForKey:@"totalCalclatedSeiku"];
+		[self didChangeValueForKey:@"totalSeiku"];
+		[self didChangeValueForKey:@"totalSakuteki"];
 		
 		
 		for(HMKCShipObject *ship in _ships) {
