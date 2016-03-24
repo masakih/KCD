@@ -39,103 +39,56 @@
                         <rect key="frame" x="8" y="9" width="800" height="288"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                     </customView>
-                    <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" id="hy2-T8-sUp">
-                        <rect key="frame" x="829" y="6" width="311" height="43"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="rGC-re-IS2">
-                            <rect key="frame" x="0.0" y="0.0" width="788" height="31"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <textView editable="NO" drawsBackground="NO" importsGraphics="NO" verticallyResizable="YES" allowsNonContiguousLayout="YES" id="XsL-WO-et2">
-                                    <rect key="frame" x="0.0" y="0.0" width="311" height="43"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="0.0" height="31"/>
-                                    <size key="maxSize" width="954" height="10000000"/>
-                                    <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="0.0" height="31"/>
-                                    <size key="maxSize" width="954" height="10000000"/>
-                                    <connections>
-                                        <binding destination="-2" name="attributedString" keyPath="linksString" id="Zq5-KB-a2U">
-                                            <dictionary key="options">
-                                                <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
-                                            </dictionary>
-                                        </binding>
-                                        <binding destination="-2" name="editable" keyPath="self" id="VCO-Fg-sSL">
-                                            <dictionary key="options">
-                                                <string key="NSValueTransformerName">NSIsNil</string>
-                                            </dictionary>
-                                        </binding>
-                                    </connections>
-                                </textView>
-                            </subviews>
-                        </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="O2f-Du-vMP">
-                            <rect key="frame" x="-100" y="-100" width="87" height="18"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="xka-5j-uh3">
-                            <rect key="frame" x="-100" y="-100" width="16" height="95"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                    </scrollView>
                     <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="hNz-5S-KHR">
-                        <rect key="frame" x="820" y="164" width="329" height="5"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <font key="titleFont" metaFont="system"/>
-                    </box>
-                    <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="nxC-2x-83k">
-                        <rect key="frame" x="820" y="58" width="329" height="5"/>
+                        <rect key="frame" x="820" y="109" width="329" height="5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <font key="titleFont" metaFont="system"/>
                     </box>
                     <tabView initialItem="ETl-Gs-mBL" id="fK1-fC-Xdm">
-                        <rect key="frame" x="813" y="188" width="343" height="588"/>
+                        <rect key="frame" x="813" y="176" width="343" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="状況" identifier="1" id="ETl-Gs-mBL">
                                 <view key="view" id="nff-Ek-C9h">
-                                    <rect key="frame" x="10" y="33" width="323" height="542"/>
+                                    <rect key="frame" x="10" y="33" width="323" height="554"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="編成支援" identifier="2" id="vnl-eb-0bM">
                                 <view key="view" id="HTH-7g-xfp">
-                                    <rect key="frame" x="10" y="33" width="323" height="533"/>
+                                    <rect key="frame" x="10" y="33" width="323" height="547"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="近代化" identifier="3" id="Ops-Am-LiF">
                                 <view key="view" id="ytJ-Qj-RCn">
-                                    <rect key="frame" x="10" y="33" width="323" height="533"/>
+                                    <rect key="frame" x="10" y="33" width="323" height="547"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="改修工廠" identifier="4" id="Ls3-Cp-5p4">
                                 <view key="view" id="6ia-4I-aBI">
-                                    <rect key="frame" x="10" y="33" width="323" height="533"/>
+                                    <rect key="frame" x="10" y="33" width="323" height="547"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label=" 修復" identifier="5" id="GgO-z3-Sgk">
                                 <view key="view" id="C3D-UU-4z6">
-                                    <rect key="frame" x="10" y="33" width="323" height="533"/>
+                                    <rect key="frame" x="10" y="33" width="323" height="547"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                             </tabViewItem>
                         </tabViewItems>
                     </tabView>
                     <customView id="0dQ-uF-j2x">
-                        <rect key="frame" x="809" y="60" width="352" height="107"/>
+                        <rect key="frame" x="809" y="9" width="352" height="103"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                     </customView>
                     <customView id="JfO-nc-ymj">
-                        <rect key="frame" x="809" y="166" width="352" height="30"/>
+                        <rect key="frame" x="809" y="111" width="352" height="76"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                     </customView>
                 </subviews>

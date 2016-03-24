@@ -55,7 +55,6 @@
 		F4513EE818B77A5300073552 /* HMMemberKDockCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4513EE718B77A5300073552 /* HMMemberKDockCommand.m */; };
 		F4513EEB18B7900A00073552 /* HMMemberDeckCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4513EEA18B7900A00073552 /* HMMemberDeckCommand.m */; };
 		F4513EEE18B8E2F600073552 /* HMMemberMaterialCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4513EED18B8E2F600073552 /* HMMemberMaterialCommand.m */; };
-		F4513EF018B96C6C00073552 /* Links.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F4513EEF18B96C6C00073552 /* Links.rtf */; };
 		F4513EF318B991F800073552 /* HMMemberBasicCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4513EF218B991F800073552 /* HMMemberBasicCommand.m */; };
 		F4513EF618B9F29800073552 /* HMMemberShipCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4513EF518B9F29800073552 /* HMMemberShipCommand.m */; };
 		F4513EFA18BB699700073552 /* HMShipWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4513EF818BB699700073552 /* HMShipWindowController.m */; };
@@ -377,7 +376,6 @@
 		F4513EEA18B7900A00073552 /* HMMemberDeckCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMemberDeckCommand.m; sourceTree = "<group>"; };
 		F4513EEC18B8E2F600073552 /* HMMemberMaterialCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMemberMaterialCommand.h; sourceTree = "<group>"; };
 		F4513EED18B8E2F600073552 /* HMMemberMaterialCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMemberMaterialCommand.m; sourceTree = "<group>"; };
-		F4513EEF18B96C6C00073552 /* Links.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Links.rtf; sourceTree = "<group>"; };
 		F4513EF118B991F800073552 /* HMMemberBasicCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMemberBasicCommand.h; sourceTree = "<group>"; };
 		F4513EF218B991F800073552 /* HMMemberBasicCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMemberBasicCommand.m; sourceTree = "<group>"; };
 		F4513EF418B9F29800073552 /* HMMemberShipCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMemberShipCommand.h; sourceTree = "<group>"; };
@@ -893,7 +891,6 @@
 				F4BEEEA318D211500006F70C /* Makefile */,
 				F4BEEEA018D211360006F70C /* Localizable.strings.sed */,
 				F4BEEE9D18D211280006F70C /* Localizable.strings */,
-				F4513EEF18B96C6C00073552 /* Links.rtf */,
 				F4BDEB4E187252F30069D0CE /* KCD-Info.plist */,
 				F4BDEB4F187252F30069D0CE /* InfoPlist.strings */,
 				F4BDEB52187252F30069D0CE /* main.m */,
@@ -1529,7 +1526,6 @@
 				F4BDEB5F187252F30069D0CE /* Images.xcassets in Resources */,
 				F4BEF00B1B11A628004702B8 /* HMShipMasterDetailWindowController.xib in Resources */,
 				F4BEEE9F18D211280006F70C /* Localizable.strings in Resources */,
-				F4513EF018B96C6C00073552 /* Links.rtf in Resources */,
 				F4A3AD9419BDDE5500FDBF80 /* HMPreferencePanelController.xib in Resources */,
 				F4C6686C1C5451ED00601AFB /* HMStrengthenListViewController.xib in Resources */,
 				F4BDEB5D187252F30069D0CE /* MainMenu.xib in Resources */,

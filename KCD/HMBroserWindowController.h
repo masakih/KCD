@@ -16,8 +16,6 @@
 
 @property (weak) IBOutlet NSView *combinedViewPlaceholder;
 
-@property (readonly) NSAttributedString *linksString;
-
 @property (nonatomic, strong) IBOutlet NSArrayController *deckContoller;
 @property (nonatomic, readonly) NSString *flagShipName;
 

@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "CameraDisabled128.png",
+      "filename" : "DisableCamera128.png",
       "scale" : "1x"
     },
     {

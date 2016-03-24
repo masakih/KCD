@@ -150,15 +150,6 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 	return [HMServerDataStore defaultManager].managedObjectContext;
 }
 
-- (NSAttributedString *)linksString
-{
-	NSBundle *main = [NSBundle mainBundle];
-	NSURL *url = [main URLForResource:@"Links" withExtension:@"rtf"];
-	NSAttributedString *linksString = [[NSAttributedString alloc] initWithURL:url documentAttributes:nil];
-	
-	return linksString;
-}
-
 - (void)showViewWithNumber:(ViewType)type
 {
 	[self.informations selectTabViewItemAtIndex:type];
