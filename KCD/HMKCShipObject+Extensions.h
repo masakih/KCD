@@ -38,6 +38,7 @@
 
 @property (readonly) NSNumber *seiku;
 @property (readonly) NSNumber *extraSeiku;
+@property (readonly) NSNumber *totalSeiku;
 
 @property (readonly) NSNumber *totalDrums;
 

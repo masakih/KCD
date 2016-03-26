@@ -347,31 +347,31 @@ static NSArray *levelUpExps = nil;
 	HMKCSlotItemObject *slotItem = array[0];
 	return slotItem;
 }
-- (NSNumber *)seiku
+
+- (CGFloat)floatSeikuWithSlotIndex:(NSUInteger)index
 {
 	NSArray *effectiveTypes = @[@6, @7, @8, @11];
-	__block NSInteger totalSeiku = 0;
-	for(NSInteger i = 0; i < 5; i++) {
-		HMKCSlotItemObject *slotItem = [self slotItemAtIndex:i];
-		HMKCMasterSlotItemObject *master = slotItem.master_slotItem;
-		NSNumber *type2 = master.type_2;
-		if(![effectiveTypes containsObject:type2]) {
-			continue;
-		}
-		
-		NSString *key = [NSString stringWithFormat:@"onslot_%ld", i];
-		NSNumber *itemCountValue = [self valueForKey:key];
-		NSNumber *taikuValue = master.tyku;
-		NSInteger itemCount = [itemCountValue integerValue];
-		NSInteger taiku = [taikuValue integerValue];
-		if(itemCount && taiku) {
-			totalSeiku += floor(taiku * sqrt(itemCount));
-		}
+	
+	CGFloat totalSeiku = 0;
+	HMKCSlotItemObject *slotItem = [self slotItemAtIndex:index];
+	HMKCMasterSlotItemObject *master = slotItem.master_slotItem;
+	NSNumber *type2 = master.type_2;
+	if(![effectiveTypes containsObject:type2]) {
+		return 0.0;
 	}
 	
-	return @(totalSeiku);
+	NSString *key = [NSString stringWithFormat:@"onslot_%ld", index];
+	NSNumber *itemCountValue = [self valueForKey:key];
+	NSNumber *taikuValue = master.tyku;
+	NSInteger itemCount = [itemCountValue integerValue];
+	NSInteger taiku = [taikuValue integerValue];
+	if(itemCount && taiku) {
+		totalSeiku += taiku * sqrt(itemCount);
+	}
+	
+	return totalSeiku;
 }
-- (NSNumber *)extraSeiku
+- (CGFloat)extraSeikuWithSlotIndex:(NSUInteger)index
 {
 	NSArray *fighterTypes = @[@6];
 	NSArray *bomberTypes = @[@7];
@@ -379,48 +379,86 @@ static NSArray *levelUpExps = nil;
 	NSArray *floatplaneBomberTypes = @[@11];
 	NSArray *floatplaneFighterTypes = @[@45];
 	
-	NSInteger fighterBonus[] = {0, 0, 2, 5, 9, 14, 14, 22};
-	NSInteger bomberBonus[] = {0, 0, 0, 0, 0, 0, 0, 0};
-	NSInteger attackerBonus[] = {0, 0, 0, 0, 0, 0, 0, 0};
-	NSInteger floatplaneBomberBonus[] = {0, 0, 1, 1, 1, 3, 3, 6};
-	NSInteger floatplaneFighterBonus[] = {0, 0, 0, 0, 0, 0, 0, 0};
-	NSInteger bonus[] = {0, 1, 1, 2, 2, 2, 2, 3};
+	const CGFloat fighterBonus[] = {0, 0, 2, 5, 9, 14, 14, 22};
+	const CGFloat bomberBonus[] = {0, 0, 0, 0, 0, 0, 0, 0};
+	const CGFloat attackerBonus[] = {0, 0, 0, 0, 0, 0, 0, 0};
+	const CGFloat floatplaneBomberBonus[] = {0, 0, 1, 1, 1, 3, 3, 6};
+	const CGFloat floatplaneFighterBonus[] = {0, 0, 0, 0, 0, 0, 0, 0};
+	//            sqrt 0, 1,     2.5,   4,     5.5,   7,     8.5,   10
+	const CGFloat bonus[] = {0, 1.000, 1.581, 2.000, 2.345, 2.645, 2.915, 3.162};
 	
+	CGFloat extraSeiku = 0;
+	
+	NSString *key = [NSString stringWithFormat:@"onslot_%ld", index];
+	NSNumber *itemCountValue = [self valueForKey:key];
+	NSInteger itemCount = [itemCountValue integerValue];
+	if(itemCount == 0) return 0.0;
+	
+	HMKCSlotItemObject *slotItem = [self slotItemAtIndex:index];
+	NSInteger airLevel = slotItem.alv.integerValue;
+	
+	const CGFloat *typeBonus = NULL;
+	
+	HMKCMasterSlotItemObject *master = slotItem.master_slotItem;
+	NSNumber *type2 = master.type_2;
+	if([fighterTypes containsObject:type2]) {
+		typeBonus = fighterBonus;
+	}
+	if([bomberTypes containsObject:type2]) {
+		typeBonus = bomberBonus;
+	}
+	if([attackerTypes containsObject:type2]) {
+		typeBonus = attackerBonus;
+	}
+	if([floatplaneBomberTypes containsObject:type2]) {
+		typeBonus = floatplaneBomberBonus;
+	}
+	if([floatplaneFighterTypes containsObject:type2]) {
+		typeBonus = floatplaneFighterBonus;
+	}
+	if(!typeBonus) return 0.0;
+	
+	extraSeiku += typeBonus[airLevel] + bonus[airLevel];
+	
+	return extraSeiku;
+}
+
+- (CGFloat)seikuWithSlotIndex:(NSUInteger)index
+{
+	NSInteger seiku = [self floatSeikuWithSlotIndex:index] + [self extraSeikuWithSlotIndex:index];
+	return seiku;
+}
+
+- (NSNumber *)seiku
+{
+	NSInteger seiku = 0;
+	for(NSInteger i = 0; i < 5; i++) {
+		seiku += [self floatSeikuWithSlotIndex:i];
+	}
+	return @(seiku);
+}
+- (NSNumber *)extraSeiku
+{
 	NSInteger extraSeiku = 0;
 	for(NSInteger i = 0; i < 5; i++) {
-		NSString *key = [NSString stringWithFormat:@"onslot_%ld", i];
-		NSNumber *itemCountValue = [self valueForKey:key];
-		NSInteger itemCount = [itemCountValue integerValue];
-		if(itemCount == 0) continue;
-		
-		HMKCSlotItemObject *slotItem = [self slotItemAtIndex:i];
-		NSInteger airLevel = slotItem.alv.integerValue;
-		
-		NSInteger *typeBonus = NULL;
-		
-		HMKCMasterSlotItemObject *master = slotItem.master_slotItem;
-		NSNumber *type2 = master.type_2;
-		if([fighterTypes containsObject:type2]) {
-			typeBonus = fighterBonus;
-		}
-		if([bomberTypes containsObject:type2]) {
-			typeBonus = bomberBonus;
-		}
-		if([attackerTypes containsObject:type2]) {
-			typeBonus = attackerBonus;
-		}
-		if([floatplaneBomberTypes containsObject:type2]) {
-			typeBonus = floatplaneBomberBonus;
-		}
-		if([floatplaneFighterTypes containsObject:type2]) {
-			typeBonus = floatplaneFighterBonus;
-		}
-		if(!typeBonus) continue;
-		
-		extraSeiku += typeBonus[airLevel] + bonus[airLevel];
+		extraSeiku += [self extraSeikuWithSlotIndex:i];
 	}
 	
 	return @(extraSeiku);
+}
+
+
++ (NSSet *)keyPathsForValuesAffectingTotalSeiku
+{
+	return [NSSet setWithObjects:@"seiku", @"extraSeiku", nil];
+}
+- (NSNumber *)totalSeiku
+{
+	NSInteger totalSeiku = 0;
+	for(NSInteger i = 0; i < 5; i++) {
+		totalSeiku += [self seikuWithSlotIndex:i];
+	}
+	return @(totalSeiku);
 }
 
 + (NSSet *)keyPathsForValuesAffectingTotalDrums

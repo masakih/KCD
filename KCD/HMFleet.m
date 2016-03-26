@@ -273,8 +273,7 @@
 	NSInteger total = 0;
 	for(NSInteger i = 0; i < 6; i++) {
 		HMKCShipObject *ship = self[i];
-		total += ship.seiku.integerValue;
-		total += ship.extraSeiku.integerValue;
+		total += ship.totalSeiku.integerValue;
 	}
 	return @(total);
 }
