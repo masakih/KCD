@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F402D5371BE3AFAB008D5881 /* HMSlotResetCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F402D5361BE3AFAB008D5881 /* HMSlotResetCommand.m */; };
+		F403893E1CAEA711002A264B /* HMMemberRequireInfoCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F403893D1CAEA711002A264B /* HMMemberRequireInfoCommand.m */; };
 		F4131ECF190F5C08004F7F9A /* HMStoreCreateSlotItemHistoryCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4131ECE190F5C08004F7F9A /* HMStoreCreateSlotItemHistoryCommand.m */; };
 		F4131ED5190F63D8004F7F9A /* HMUpdateSlotItemCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4131ED4190F63D8004F7F9A /* HMUpdateSlotItemCommand.m */; };
 		F4131ED8190FA08D004F7F9A /* HMDestroyItem2Command.m in Sources */ = {isa = PBXBuildFile; fileRef = F4131ED7190FA08D004F7F9A /* HMDestroyItem2Command.m */; };
@@ -286,6 +287,8 @@
 		F402D5351BE3AFAB008D5881 /* HMSlotResetCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSlotResetCommand.h; sourceTree = "<group>"; };
 		F402D5361BE3AFAB008D5881 /* HMSlotResetCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSlotResetCommand.m; sourceTree = "<group>"; };
 		F402D5381BEF14EA008D5881 /* Bookmark 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Bookmark 2.xcdatamodel"; sourceTree = "<group>"; };
+		F403893C1CAEA711002A264B /* HMMemberRequireInfoCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMemberRequireInfoCommand.h; sourceTree = "<group>"; };
+		F403893D1CAEA711002A264B /* HMMemberRequireInfoCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMemberRequireInfoCommand.m; sourceTree = "<group>"; };
 		F4131ECD190F5C08004F7F9A /* HMStoreCreateSlotItemHistoryCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMStoreCreateSlotItemHistoryCommand.h; sourceTree = "<group>"; };
 		F4131ECE190F5C08004F7F9A /* HMStoreCreateSlotItemHistoryCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMStoreCreateSlotItemHistoryCommand.m; sourceTree = "<group>"; };
 		F4131ED3190F63D8004F7F9A /* HMUpdateSlotItemCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMUpdateSlotItemCommand.h; sourceTree = "<group>"; };
@@ -1157,6 +1160,8 @@
 				F426802A194D0F4800B2C27F /* HMMemberShip2Command.m */,
 				F426802C194D0FFD00B2C27F /* HMMemberShip3Command.h */,
 				F426802D194D0FFD00B2C27F /* HMMemberShip3Command.m */,
+				F403893C1CAEA711002A264B /* HMMemberRequireInfoCommand.h */,
+				F403893D1CAEA711002A264B /* HMMemberRequireInfoCommand.m */,
 				F4BEEFD91B0A219E004702B8 /* HMShipDeckCommand.h */,
 				F4BEEFDA1B0A219E004702B8 /* HMShipDeckCommand.m */,
 				F4E33B5618BF5F67005B8C07 /* HMMemberSlotItemCommand.h */,
@@ -1660,6 +1665,7 @@
 				F4D2CBCB18B05E58000EBC59 /* HMMaserShipCommand.m in Sources */,
 				F4513EFA18BB699700073552 /* HMShipWindowController.m in Sources */,
 				F42680121943E92D00B2C27F /* HMKCShipObject+Extensions.m in Sources */,
+				F403893E1CAEA711002A264B /* HMMemberRequireInfoCommand.m in Sources */,
 				F46F104118A9B85E0063E503 /* HMJSONNode.m in Sources */,
 				F4BEEFDB1B0A219E004702B8 /* HMShipDeckCommand.m in Sources */,
 				F43F3D461A33F7D400D6DAF7 /* HMResetSortieCommand.m in Sources */,

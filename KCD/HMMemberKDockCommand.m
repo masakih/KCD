@@ -27,6 +27,9 @@
 	if([self.api isEqualToString:@"/kcsapi/api_req_kousyou/getship"]) {
 		return @"api_data.api_kdock";
 	}
+	if([self.api isEqualToString:@"/kcsapi/api_get_member/require_info"]) {
+		return @"api_data.api_kdock";
+	}
 	return [super dataKey];
 }
 - (void)execute
