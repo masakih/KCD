@@ -11,6 +11,6 @@
 @class HMFleet;
 @interface HMFleetManager : NSObject
 
-@property (readonly) NSArray<HMFleet *> *fleets;
+@property (nonatomic, readonly) NSArray<HMFleet *> *fleets;
 
 @end

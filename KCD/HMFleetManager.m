@@ -17,7 +17,7 @@
 //static HMFleetManager *sharedInstance = nil;
 
 @interface HMFleetManager ()
-@property (strong) NSArray<HMFleet *> *fleets;
+@property (nonatomic, strong) NSArray<HMFleet *> *fleets;
 @property (strong) NSArrayController *fleetController;
 
 @end
@@ -28,18 +28,35 @@
 {
 	self = [super init];
 	if(self) {
-		NSMutableArray<HMFleet *> *array = [NSMutableArray array];
-		for(NSInteger i = 1; i <= 4; i++) {
-			HMFleet *fleet = [HMFleet fleetWithNumber:@(i)];
-			[array addObject:fleet];
-		}
-		_fleets = array;
-		
-		_fleetController = [[NSArrayController alloc] initWithContent:_fleets];
-		[_fleetController addObserver:self forKeyPath:@"arrangedObjects.ships" options:0 context:NULL];
+		[self setupFleets];
 	}
 	
 	return self;
+}
+
+- (void)setupFleets
+{
+	NSMutableArray<HMFleet *> *array = [NSMutableArray array];
+	for(NSInteger i = 1; i <= 4; i++) {
+		HMFleet *fleet = [HMFleet fleetWithNumber:@(i)];
+		[array addObject:fleet];
+	}
+	_fleets = array;
+	
+	if(_fleets[0].ships.count == 0) {
+		return;
+	}
+	
+	_fleetController = [[NSArrayController alloc] initWithContent:_fleets];
+	[_fleetController addObserver:self forKeyPath:@"arrangedObjects.ships" options:0 context:NULL];
+}
+
+- (NSArray<HMFleet *> *)fleets
+{
+	if(_fleets[0].ships.count == 0) {
+		[self setupFleets];
+	}
+	return _fleets;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
