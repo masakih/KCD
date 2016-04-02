@@ -14,3 +14,5 @@
 @property (nonatomic, readonly) NSArray<HMFleet *> *fleets;
 
 @end
+
+extern NSString *HMFleetManagerCompletePrepareFleetNotification;

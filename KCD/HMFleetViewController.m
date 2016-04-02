@@ -103,6 +103,9 @@ const NSInteger maxFleetNumber = 4;
 		[self buildAnchorageRepairHolder];
 		
 		[self loadView];
+		
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateFleet:) name:HMFleetManagerCompletePrepareFleetNotification object:nil];
 	}
 	return self;
 }
@@ -128,6 +131,8 @@ const NSInteger maxFleetNumber = 4;
 	[self unbind:@"totalCalclatedSeiku"];
 	[self unbind:@"totalLevel"];
 	[self unbind:@"totalDrums"];
+	
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)awakeFromNib
@@ -204,6 +209,11 @@ const NSInteger maxFleetNumber = 4;
 - (NSInteger)fleetNumber
 {
 	return _fleetNumber;
+}
+
+- (void)updateFleet:(NSNotification *)notification
+{
+	[self setFleetNumber:_fleetNumber];
 }
 
 - (void)setShipOrder:(HMFleetViewShipOrder)shipOrder

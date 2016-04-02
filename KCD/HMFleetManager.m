@@ -10,11 +10,15 @@
 
 #import "HMFleet.h"
 
+#import "HMPortNotifyCommand.h"
+
 #import "HMServerDataStore.h"
 #import "HMKCShipObject+Extensions.h"
 
 
 //static HMFleetManager *sharedInstance = nil;
+
+NSString *HMFleetManagerCompletePrepareFleetNotification = @"HMFleetManagerCompletePrepareFleetNotification";
 
 @interface HMFleetManager ()
 @property (nonatomic, strong) NSArray<HMFleet *> *fleets;
@@ -44,6 +48,8 @@
 	_fleets = array;
 	
 	if(_fleets[0].ships.count == 0) {
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateDeck:) name:HMPortAPIRecieveNotification object:nil];
+		
 		return;
 	}
 	
@@ -93,6 +99,15 @@
 			array[0].fleet = @(idx + 1);
 		}
 	}];
+}
+
+- (void)updateDeck:(NSNotification *)notification
+{
+	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+	
+	[nc postNotificationName:HMFleetManagerCompletePrepareFleetNotification object:self];
+	
+	[nc removeObserver:self];
 }
 
 @end
