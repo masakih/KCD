@@ -350,7 +350,7 @@ static NSArray *levelUpExps = nil;
 
 - (CGFloat)floatSeikuWithSlotIndex:(NSUInteger)index
 {
-	NSArray *effectiveTypes = @[@6, @7, @8, @11];
+	NSArray *effectiveTypes = @[@6, @7, @8, @11, @45];
 	
 	CGFloat totalSeiku = 0;
 	HMKCSlotItemObject *slotItem = [self slotItemAtIndex:index];
