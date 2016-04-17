@@ -10,7 +10,7 @@
 #import "HMSuppliesView.h"
 
 #import "HMServerDataStore.h"
-
+#import "HMKCShipObject+Extensions.h"
 
 #import "HMGuardEscapedView.h"
 #import "HMGuardShelterCommand.h"
@@ -88,7 +88,7 @@
 
 - (void)updateStatus:(NSNotification *)notification
 {
-	NSNumber *escaped = [self.shipController.content valueForKey:@"guardEscaped"];
+	NSNumber *escaped = self.ship.guardEscaped;
 	self.guardEscaped = [escaped boolValue];
 }
 
@@ -107,6 +107,8 @@
 	[self.guardEscapedView setFrameOrigin:NSZeroPoint];
 	[self.view addSubview:self.guardEscapedView];
 	
+	
+	[NSPredicate predicateWithFormat:@"id = %@", @(-1)];
 }
 
 - (NSManagedObjectContext *)managedObjectContext
@@ -114,11 +116,19 @@
 	return [HMServerDataStore defaultManager].managedObjectContext;
 }
 
+- (NSPredicate *)fetchPredicate
+{
+	NSPredicate *p = [NSPredicate predicateWithFormat:@"id = %@", self.ship.id];
+	return p;
+}
+
 - (void)setShip:(HMKCShipObject *)ship
 {
 	self.representedObject = ship;
 	
 	self.supply.shipStatus = ship;
+	
+	self.shipController.fetchPredicate = self.fetchPredicate;
 }
 - (HMKCShipObject *)ship
 {
