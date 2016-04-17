@@ -434,7 +434,6 @@
                                         <binding destination="LyA-xZ-gxq" name="value" keyPath="selection.slot_0" id="4X3-Y8-nMp">
                                             <dictionary key="options">
                                                 <string key="NSNoSelectionPlaceholder">-</string>
-                                                <string key="NSValueTransformerName">HMSlotitemNameTransformer</string>
                                             </dictionary>
                                         </binding>
                                     </connections>
@@ -451,7 +450,6 @@
                                         <binding destination="LyA-xZ-gxq" name="value" keyPath="selection.slot_1" id="0io-F0-oA1">
                                             <dictionary key="options">
                                                 <string key="NSNoSelectionPlaceholder">-</string>
-                                                <string key="NSValueTransformerName">HMSlotitemNameTransformer</string>
                                             </dictionary>
                                         </binding>
                                     </connections>
@@ -468,7 +466,6 @@
                                         <binding destination="LyA-xZ-gxq" name="value" keyPath="selection.slot_2" id="n8h-wP-F5a">
                                             <dictionary key="options">
                                                 <string key="NSNoSelectionPlaceholder">-</string>
-                                                <string key="NSValueTransformerName">HMSlotitemNameTransformer</string>
                                             </dictionary>
                                         </binding>
                                     </connections>
@@ -485,7 +482,6 @@
                                         <binding destination="LyA-xZ-gxq" name="value" keyPath="selection.slot_3" id="w0M-jX-f3G">
                                             <dictionary key="options">
                                                 <string key="NSNoSelectionPlaceholder">-</string>
-                                                <string key="NSValueTransformerName">HMSlotitemNameTransformer</string>
                                             </dictionary>
                                         </binding>
                                     </connections>

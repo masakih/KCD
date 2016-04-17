@@ -10,6 +10,4 @@
 
 @interface HMSlotItemLevelView : NSTextField
 
-@property (nonatomic, strong) NSNumber *slotItemID;
-
 @end

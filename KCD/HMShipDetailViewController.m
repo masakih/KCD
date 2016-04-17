@@ -107,22 +107,6 @@
 	[self.guardEscapedView setFrameOrigin:NSZeroPoint];
 	[self.view addSubview:self.guardEscapedView];
 	
-	[self.slot00Field bind:@"slotItemID"
-				  toObject:self.shipController
-			   withKeyPath:@"selection.slot_0"
-				   options:nil];
-	[self.slot01Field bind:@"slotItemID"
-				  toObject:self.shipController
-			   withKeyPath:@"selection.slot_1"
-				   options:nil];
-	[self.slot02Field bind:@"slotItemID"
-				  toObject:self.shipController
-			   withKeyPath:@"selection.slot_2"
-				   options:nil];
-	[self.slot03Field bind:@"slotItemID"
-				  toObject:self.shipController
-			   withKeyPath:@"selection.slot_3"
-				   options:nil];
 }
 
 - (NSManagedObjectContext *)managedObjectContext

@@ -17,6 +17,8 @@ static CGImageRef sAirLevelMaskImage = nil;
 
 @interface HMSlotItemLevelView ()
 
+@property (nonatomic, strong) NSNumber *slotItemID;
+
 @property (strong) NSObjectController *slotItemController;
 
 @property (nonatomic, strong) NSNumber *slotItemLevel;
@@ -420,6 +422,14 @@ static CGImageRef sAirLevelMaskImage = nil;
 }
 
 #pragma mark - property
+
+- (void)setObjectValue:(id)objectValue
+{
+	NSValueTransformer *f = [NSValueTransformer valueTransformerForName:@"HMSlotitemNameTransformer"];
+	NSString *name = [f transformedValue:objectValue];
+	[super setObjectValue:name];
+	[self setSlotItemID:objectValue];
+}
 
 - (void)fetchSlotItem
 {
