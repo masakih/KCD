@@ -431,9 +431,10 @@
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                     <connections>
-                                        <binding destination="LyA-xZ-gxq" name="value" keyPath="selection.slot_0" id="Ofe-dm-HLD">
+                                        <binding destination="LyA-xZ-gxq" name="value" keyPath="selection.slot_0" id="quN-xs-0yO">
                                             <dictionary key="options">
                                                 <string key="NSNoSelectionPlaceholder">-</string>
+                                                <string key="NSValueTransformerName">HMSlotitemNameTransformer</string>
                                             </dictionary>
                                         </binding>
                                     </connections>
@@ -447,9 +448,10 @@
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                     <connections>
-                                        <binding destination="LyA-xZ-gxq" name="value" keyPath="selection.slot_1" id="xHv-Px-qmu">
+                                        <binding destination="LyA-xZ-gxq" name="value" keyPath="selection.slot_1" id="b2b-Bc-oLe">
                                             <dictionary key="options">
                                                 <string key="NSNoSelectionPlaceholder">-</string>
+                                                <string key="NSValueTransformerName">HMSlotitemNameTransformer</string>
                                             </dictionary>
                                         </binding>
                                     </connections>
@@ -463,9 +465,10 @@
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                     <connections>
-                                        <binding destination="LyA-xZ-gxq" name="value" keyPath="selection.slot_2" id="vjt-Yw-lty">
+                                        <binding destination="LyA-xZ-gxq" name="value" keyPath="selection.slot_2" id="j03-JE-t5f">
                                             <dictionary key="options">
                                                 <string key="NSNoSelectionPlaceholder">-</string>
+                                                <string key="NSValueTransformerName">HMSlotitemNameTransformer</string>
                                             </dictionary>
                                         </binding>
                                     </connections>
@@ -479,9 +482,10 @@
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                     <connections>
-                                        <binding destination="LyA-xZ-gxq" name="value" keyPath="selection.slot_3" id="Fck-xD-KHw">
+                                        <binding destination="LyA-xZ-gxq" name="value" keyPath="selection.slot_3" id="rP4-0K-PuL">
                                             <dictionary key="options">
                                                 <string key="NSNoSelectionPlaceholder">-</string>
+                                                <string key="NSValueTransformerName">HMSlotitemNameTransformer</string>
                                             </dictionary>
                                         </binding>
                                     </connections>
