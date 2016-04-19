@@ -84,6 +84,7 @@
 	[nc removeObserver:self];
 	
 	[self.damageView unbind:@"damageType"];
+	[self.supply unbind:@"shipStatus"];
 }
 
 - (void)updateStatus:(NSNotification *)notification
@@ -104,37 +105,55 @@
 							NSRaisesForNotApplicableKeysBindingOption : @YES,
 							}];
 	
+	[self.supply bind:@"shipStatus"
+			 toObject:self.shipController
+		  withKeyPath:@"selection.self"
+			  options:nil];
+	
 	[self.guardEscapedView setFrameOrigin:NSZeroPoint];
 	[self.view addSubview:self.guardEscapedView];
+	
+	[self.slot00Field bind:@"slotItemID"
+				  toObject:self.shipController
+			   withKeyPath:@"selection.slot_0"
+				   options:nil];
+	[self.slot01Field bind:@"slotItemID"
+				  toObject:self.shipController
+			   withKeyPath:@"selection.slot_1"
+				   options:nil];
+	[self.slot02Field bind:@"slotItemID"
+				  toObject:self.shipController
+			   withKeyPath:@"selection.slot_2"
+				   options:nil];
+	[self.slot03Field bind:@"slotItemID"
+				  toObject:self.shipController
+			   withKeyPath:@"selection.slot_3"
+				   options:nil];
 	
 	
 	[NSPredicate predicateWithFormat:@"id = %@", @(-1)];
 }
+
 
 - (NSManagedObjectContext *)managedObjectContext
 {
 	return [HMServerDataStore defaultManager].managedObjectContext;
 }
 
-- (NSPredicate *)fetchPredicate
+- (NSPredicate *)fetchPredicateWithShipID:(NSNumber *)shipID
 {
-	NSPredicate *p = [NSPredicate predicateWithFormat:@"id = %@", self.ship.id];
+	NSPredicate *p = [NSPredicate predicateWithFormat:@"id = %@", shipID];
 	return p;
 }
 
 - (void)setShip:(HMKCShipObject *)ship
 {
-	self.representedObject = ship;
-	
-	self.supply.shipStatus = ship;
-	
-	self.shipController.fetchPredicate = self.fetchPredicate;
+	self.shipController.fetchPredicate = [self fetchPredicateWithShipID:ship.id];
 }
 - (HMKCShipObject *)ship
 {
-	return self.representedObject;
+	return self.shipController.content;
 }
-
 
 - (void)setGuardEscaped:(BOOL)guardEscaped
 {
