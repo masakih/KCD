@@ -12,6 +12,10 @@
 #import "HMKCShipObject+Extensions.h"
 
 
+
+static void *ShipStatusContext = &ShipStatusContext;
+
+
 @interface HMSuppliesView ()
 @property (nonatomic, strong) HMSuppliesCell *suppliesCell;
 @end
@@ -50,19 +54,19 @@
 	[self.suppliesCell.shipStatus addObserver:self
 								   forKeyPath:@"fuel"
 									  options:NSKeyValueObservingOptionNew
-									  context:(__bridge void *)(self.suppliesCell.shipStatus)];
+									  context:ShipStatusContext];
 	[self.suppliesCell.shipStatus addObserver:self
 								   forKeyPath:@"maxFuel"
 									  options:NSKeyValueObservingOptionNew
-									  context:(__bridge void *)(self.suppliesCell.shipStatus)];
+									  context:ShipStatusContext];
 	[self.suppliesCell.shipStatus addObserver:self
 								   forKeyPath:@"bull"
 									  options:NSKeyValueObservingOptionNew
-									  context:(__bridge void *)(self.suppliesCell.shipStatus)];
+									  context:ShipStatusContext];
 	[self.suppliesCell.shipStatus addObserver:self
 								   forKeyPath:@"maxBull"
 									  options:NSKeyValueObservingOptionNew
-									  context:(__bridge void *)(self.suppliesCell.shipStatus)];
+									  context:ShipStatusContext];
 	
 	[self setNeedsDisplay];
 }
@@ -73,9 +77,7 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-	HMKCShipObject *status = (__bridge HMKCShipObject *)(context);
-	
-	if(status == self.suppliesCell.shipStatus) {
+	if(context ==ShipStatusContext) {
 		[self setNeedsDisplay];
 		return;
 	}

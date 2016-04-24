@@ -13,6 +13,11 @@
 #import "HMKCDeck+Extension.h"
 #import "HMKCShipObject+Extensions.h"
 
+
+
+static void *DeckContext = &DeckContext;
+static void *ShipContext = &ShipContext;
+
 @interface HMFleet ()
 @property (strong) NSNumber *fleetNumber;
 @property (strong) NSObjectController *deckController;
@@ -56,7 +61,7 @@
 			[_deckController addObserver:self
 							  forKeyPath:key
 								 options:0
-								 context:(__bridge void * _Nullable)(_deck)];
+								 context:DeckContext];
 		}
 	}
 	
@@ -107,8 +112,7 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
 {
-	id obj = (__bridge id)(context);
-	if(obj == _deck) {
+	if(context == DeckContext) {
 		
 		for(HMKCShipObject *ship in _ships) {
 			for(NSString *key in self.shipObserveKeys) {
@@ -145,14 +149,14 @@
 				[ship addObserver:self
 					   forKeyPath:key
 						  options:0
-						  context:(__bridge void * _Nullable)(_ships)];
+						  context:ShipContext];
 			}
 		}
 		
 		return;
 	}
 	
-	if(obj == _ships) {
+	if(context == ShipContext) {
 		if([keyPath isEqualToString:@"sakuteki_0"]) {
 			[self willChangeValueForKey:@"totalSakuteki"];
 			[self didChangeValueForKey:@"totalSakuteki"];

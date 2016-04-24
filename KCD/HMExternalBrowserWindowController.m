@@ -12,6 +12,7 @@
 #import "HMBookmarkManager.h"
 #import "HMBookmarkListViewController.h"
 
+static void *WebViewContext = &WebViewContext;
 
 
 @interface HMExternalBrowserWindowController () <HMBookmarkListViewControllerDelegate, NSAnimationDelegate, WebFrameLoadDelegate>
@@ -50,11 +51,11 @@
 	[self.webView addObserver:self
 				   forKeyPath:@"canGoBack"
 					  options:0
-					  context:(__bridge void *)(self.webView)];
+					  context:WebViewContext];
 	[self.webView addObserver:self
 				   forKeyPath:@"canGoForward"
 					  options:0
-					  context:(__bridge void *)(self.webView)];
+					  context:WebViewContext];
 	
 	HMAppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
 	[self.webView setApplicationNameForUserAgent:appDelegate.appNameForUserAgent];
@@ -68,8 +69,7 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-	id contextObject = (__bridge id)(context);
-	if(self.webView == contextObject) {
+	if(context == WebViewContext) {
 		if([keyPath isEqualToString:@"canGoBack"]) {
 			[self.goSegment setEnabled:self.webView.canGoBack forSegment:0];
 		}
