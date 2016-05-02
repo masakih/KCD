@@ -14,7 +14,7 @@
 @property (nonatomic, weak) IBOutlet NSTableView *argumentsView;
 @property (nonatomic, weak) IBOutlet NSOutlineView *jsonView;
 
-@property (nonatomic, weak) IBOutlet NSArrayController *apis;
+@property (nonatomic, strong) IBOutlet NSArrayController *apis;
 
 
 @property (weak) NSArray *arguments;

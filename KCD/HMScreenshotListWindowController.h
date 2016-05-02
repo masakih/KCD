@@ -24,7 +24,7 @@
 @property BOOL appendKanColleTag;
 @property (copy, nonatomic) NSString *tagString;
 
-@property (strong, nonatomic) IBOutlet HMMaskSelectView *maskSelectView;
+@property (weak, nonatomic) IBOutlet HMMaskSelectView *maskSelectView;
 @property BOOL useMask;
 
 - (IBAction)share:(id)sender;

@@ -20,8 +20,8 @@
 
 @property (readonly) NSManagedObjectContext *managedObjectContext;
 
-@property (nonatomic, weak) IBOutlet NSArrayController *shipController;
-@property (nonatomic, weak) IBOutlet NSArrayController *fleetMemberController;
+@property (nonatomic, strong) IBOutlet NSArrayController *shipController;
+@property (nonatomic, strong) IBOutlet NSArrayController *fleetMemberController;
 
 @property (nonatomic, weak) IBOutlet NSTableView *shipsView;
 @property (nonatomic, weak) IBOutlet NSTableView *fleetMemberView;

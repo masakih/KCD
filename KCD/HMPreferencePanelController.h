@@ -13,7 +13,7 @@
 @property (readonly) NSString *screenShotSaveDirectory;
 
 
-@property (nonatomic, strong) IBOutlet NSPopUpButton *screenShotSaveDirectoryPopUp;
+@property (nonatomic, weak) IBOutlet NSPopUpButton *screenShotSaveDirectoryPopUp;
 
 - (IBAction)selectScreenShotSaveDirectory:(id)sender;
 

@@ -20,7 +20,7 @@ static NSArray *sExcludeShiIDs = nil;
 
 @property (nonatomic, weak) IBOutlet NSMenu *contextualMenu;
 @property (nonatomic, weak) IBOutlet NSTableView *tableView;
-@property (nonatomic, weak) IBOutlet NSArrayController *shipsController;
+@property (nonatomic, strong) IBOutlet NSArrayController *shipsController;
 
 @property (nonatomic, strong) NSArray *excludeShiIDs;
 @end

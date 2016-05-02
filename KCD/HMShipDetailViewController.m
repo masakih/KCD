@@ -25,7 +25,7 @@
 @property (nonatomic, weak) IBOutlet HMGuardEscapedView *guardEscapedView;
 @property (nonatomic, weak) IBOutlet HMDamageView *damageView;
 
-@property (nonatomic, weak) IBOutlet NSObjectController *shipController;
+@property (nonatomic, strong) IBOutlet NSObjectController *shipController;
 @property (nonatomic, weak) IBOutlet NSTextField *slot00Field;
 @property (nonatomic, weak) IBOutlet NSTextField *slot01Field;
 @property (nonatomic, weak) IBOutlet NSTextField *slot02Field;

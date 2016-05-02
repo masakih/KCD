@@ -13,7 +13,7 @@
 
 @interface HMExternalBrowserWindowController : NSWindowController
 
-@property (nonatomic, weak) IBOutlet WebView *webView;
+@property (nonatomic, strong) IBOutlet WebView *webView;
 
 @property (readonly) NSManagedObjectContext *managedObjectContext;
 

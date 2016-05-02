@@ -50,13 +50,13 @@
 
 
 @interface HMScreenshotListWindowController ()
-@property (weak, nonatomic) IBOutlet NSArrayController *screenshotsController;
+@property (strong, nonatomic) IBOutlet NSArrayController *screenshotsController;
 @property (strong) NSArray *screenshots;
 @property (weak) NSIndexSet *selectedIndexes;
 @property (strong) NSMutableArray *deletedPaths;
 
 @property (weak, nonatomic) IBOutlet IKImageBrowserView *browser;
-@property (weak, nonatomic) IBOutlet NSMenu *contextMenu;
+@property (strong, nonatomic) IBOutlet NSMenu *contextMenu;
 @property (weak, nonatomic) IBOutlet NSButton *shareButton;
 
 @end

@@ -39,7 +39,7 @@
 
 
 @property (readonly) NSManagedObjectContext *battleManagedObjectController;
-@property (nonatomic, weak) IBOutlet NSObjectController *battleContoller;
+@property (nonatomic, strong) IBOutlet NSObjectController *battleContoller;
 @property (readonly) NSManagedObject *battle;
 
 @property (nonatomic, weak) IBOutlet NSView *questListViewPlaceholder;
