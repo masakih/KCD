@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15D21" minimumToolsVersion="Xcode 4.3">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Xcode 4.3">
     <entity name="Basic" representedClassName="HMKCBasic" syncable="YES">
         <attribute name="active_flag" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
@@ -182,6 +182,8 @@
         <attribute name="broken_1" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="broken_2" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="broken_3" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="cost" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="distance" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="houg" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="houk" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="houm" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -342,7 +344,7 @@
         <element name="MasterMapInfo" positionX="0" positionY="0" width="128" height="270"/>
         <element name="MasterMission" positionX="0" positionY="0" width="128" height="240"/>
         <element name="MasterShip" positionX="0" positionY="0" width="128" height="720"/>
-        <element name="MasterSlotItem" positionX="0" positionY="0" width="128" height="540"/>
+        <element name="MasterSlotItem" positionX="0" positionY="0" width="128" height="570"/>
         <element name="MasterSlotItemEquipType" positionX="0" positionY="0" width="128" height="90"/>
         <element name="MasterSType" positionX="0" positionY="0" width="128" height="30"/>
         <element name="MasterUseItem" positionX="0" positionY="0" width="128" height="150"/>
