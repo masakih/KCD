@@ -21,6 +21,8 @@
 
 @property (readonly) NSManagedObjectContext *managedObjectContext;
 
+@property (nonatomic) HMShipDetailViewType type;
+
 @property (nonatomic, weak) IBOutlet HMSuppliesView *supply;
 @property (nonatomic, weak) IBOutlet HMGuardEscapedView *guardEscapedView;
 @property (nonatomic, weak) IBOutlet HMDamageView *damageView;
@@ -71,6 +73,7 @@
 			   selector:@selector(updateStatus:)
 				   name:HMGuardShelterCommandDidUpdateGuardExcapeNotification
 				 object:nil];
+		_type = type;
 	}
 	return self;
 }
@@ -112,6 +115,9 @@
 	
 	[self.guardEscapedView setFrameOrigin:NSZeroPoint];
 	[self.view addSubview:self.guardEscapedView];
+	if(self.type == medium || self.type == minimum) {
+		self.guardEscapedView.controlSize = NSMiniControlSize;
+	}
 	
 	[self.slot00Field bind:@"slotItemID"
 				  toObject:self.shipController
