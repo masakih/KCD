@@ -17,11 +17,28 @@ typedef NS_ENUM(NSInteger, ViewType) {
 	kExpView = 0,
 	kPowerView = 1,
 	kPower2View = 2,
+	kPower3View = 3,
 };
 
 @interface HMShipViewController ()
 @property (weak) NSView *currentTableView;
 @property (weak, nonatomic) IBOutlet NSTextField *standardDeviationField;
+
+@property (readonly) NSManagedObjectContext *managedObjectContext;
+
+@property (readonly) NSNumber *standardDeviation;
+
+
+@property (nonatomic, strong) IBOutlet NSArrayController *shipController;
+@property (nonatomic, strong) IBOutlet NSScrollView *expTableView;
+@property (nonatomic, strong) IBOutlet NSScrollView *powerTableView;
+@property (nonatomic, strong) IBOutlet NSScrollView *power2TableView;
+@property (nonatomic, strong) IBOutlet NSScrollView *power3TableView;
+
+
+- (IBAction)changeCategory:(id)sender;
+
+- (IBAction)changeView:(id)sender;
 @end
 
 @implementation HMShipViewController
@@ -35,7 +52,6 @@ typedef NS_ENUM(NSInteger, ViewType) {
 - (void)awakeFromNib
 {
 	self.currentTableView = self.expTableView;
-	
 	
 	[self.shipController fetchWithRequest:nil merge:YES error:NULL];
 	[self.shipController setSortDescriptors:HMStandardDefaults.shipviewSortDescriptors];
@@ -61,6 +77,10 @@ typedef NS_ENUM(NSInteger, ViewType) {
 		   selector:@selector(scrollViewDidEndLiveScrollNotification:)
 			   name:NSScrollViewDidEndLiveScrollNotification
 			 object:self.power2TableView];
+	[nc addObserver:self
+		   selector:@selector(scrollViewDidEndLiveScrollNotification:)
+			   name:NSScrollViewDidEndLiveScrollNotification
+			 object:self.power3TableView];
 #ifdef DEBUG
 	self.standardDeviationField.hidden = NO;
 #endif
@@ -116,15 +136,24 @@ typedef NS_ENUM(NSInteger, ViewType) {
 		case kPower2View:
 			newSelection = self.power2TableView;
 			break;
+		case kPower3View:
+			newSelection = self.power3TableView;
+			break;
 	}
 	
 	if(!newSelection) return;
 	if([self.currentTableView isEqual:newSelection]) return;
 	
+	
+//	NSRect visibleRect = [self.currentTableView.enclosingScrollView documentVisibleRect];
+	
 	[newSelection setFrame:[self.currentTableView frame]];
 	[newSelection setAutoresizingMask:[self.currentTableView autoresizingMask]];
 	[self.view replaceSubview:self.currentTableView with:newSelection];
 	self.currentTableView = newSelection;
+	
+//	[self.currentTableView scrollRectToVisible:visibleRect];
+	[self.view.window makeFirstResponder:self.currentTableView];
 }
 
 
@@ -150,6 +179,14 @@ typedef NS_ENUM(NSInteger, ViewType) {
 	[self showViewWithNumber:tag];
 }
 
+#pragma mark - NSTableViewDelegate & NSTableViewDataSource
+
+- (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
+{
+	NSView *itemView = [tableView makeViewWithIdentifier:tableColumn.identifier owner:nil];
+	return itemView;
+}
+
 #pragma mark - NSScrollViewDidEndLiveScrollNotification
 - (void)scrollViewDidEndLiveScrollNotification:(NSNotification *)notification
 {
@@ -157,7 +194,7 @@ typedef NS_ENUM(NSInteger, ViewType) {
 	
 	NSRect visibleRect = [object documentVisibleRect];
 	
-	for(id item in @[self.expTableView, self.powerTableView, self.power2TableView]) {
+	for(id item in @[self.expTableView, self.powerTableView, self.power2TableView, self.power3TableView]) {
 		if(![object isEqual:item]) {
 			NSView *view = [item documentView];
 			[view scrollRectToVisible:visibleRect];

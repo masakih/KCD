@@ -9,19 +9,6 @@
 #import <Cocoa/Cocoa.h>
 
 @interface HMShipViewController : NSViewController
-@property (readonly) NSManagedObjectContext *managedObjectContext;
 
-@property (readonly) NSNumber *standardDeviation;
-
-
-@property (nonatomic, strong) IBOutlet NSArrayController *shipController;
-@property (nonatomic, strong) IBOutlet NSScrollView *expTableView;
-@property (nonatomic, strong) IBOutlet NSScrollView *powerTableView;
-@property (nonatomic, strong) IBOutlet NSScrollView *power2TableView;
-
-
-- (IBAction)changeCategory:(id)sender;
-
-- (IBAction)changeView:(id)sender;
 
 @end
