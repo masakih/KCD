@@ -124,7 +124,7 @@ static NSURLCache *sMyURLCache = nil;
 + (void)setupCache
 {
 	NSURL *path = [self cacheFileURL];
-	NSURLCache *cache = [[NSURLCache alloc] initWithMemoryCapacity:128 * 1024 * 1024
+	NSURLCache *cache = [[NSURLCache alloc] initWithMemoryCapacity:32 * 1024 * 1024
 													  diskCapacity:1024 * 1024 * 1024
 														  diskPath:path.path];
 	sMyURLCache = cache;
