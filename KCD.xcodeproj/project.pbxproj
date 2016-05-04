@@ -104,6 +104,7 @@
 		F4A3AD8E19BB220000FDBF80 /* HMMaskInfomation.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A3AD8D19BB220000FDBF80 /* HMMaskInfomation.m */; };
 		F4A3AD9219BDDD8E00FDBF80 /* HMPreferencePanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A3AD9019BDDD8E00FDBF80 /* HMPreferencePanelController.m */; };
 		F4A3AD9419BDDE5500FDBF80 /* HMPreferencePanelController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A3AD9619BDDE5500FDBF80 /* HMPreferencePanelController.xib */; };
+		F4A5D32B1CD9CAA70024A6F0 /* HMBorderTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A5D32A1CD9CAA70024A6F0 /* HMBorderTextField.m */; };
 		F4A9B8D41B975029005786C2 /* SlotItemShortName.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4A9B8D21B975029005786C2 /* SlotItemShortName.plist */; };
 		F4A9B8D71B99D5B7005786C2 /* Taihi.txt in Resources */ = {isa = PBXBuildFile; fileRef = F4A9B8D51B99D5B7005786C2 /* Taihi.txt */; };
 		F4A9B8D91BA40ED1005786C2 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = F4A9B8D81BA40ED1005786C2 /* LICENSE */; };
@@ -469,6 +470,8 @@
 		F4A3AD8F19BDDD8D00FDBF80 /* HMPreferencePanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPreferencePanelController.h; sourceTree = "<group>"; };
 		F4A3AD9019BDDD8E00FDBF80 /* HMPreferencePanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMPreferencePanelController.m; sourceTree = "<group>"; };
 		F4A3AD9519BDDE5500FDBF80 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMPreferencePanelController.xib; sourceTree = "<group>"; };
+		F4A5D3291CD9CAA70024A6F0 /* HMBorderTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMBorderTextField.h; sourceTree = "<group>"; };
+		F4A5D32A1CD9CAA70024A6F0 /* HMBorderTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMBorderTextField.m; sourceTree = "<group>"; };
 		F4A9B8D31B975029005786C2 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = ja; path = ja.lproj/SlotItemShortName.plist; sourceTree = "<group>"; };
 		F4A9B8D61B99D5B7005786C2 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text; name = ja; path = ja.lproj/Taihi.txt; sourceTree = "<group>"; };
 		F4A9B8D81BA40ED1005786C2 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -1041,6 +1044,8 @@
 				F494DC6018C608C100AE97E4 /* HMShipViewController.h */,
 				F494DC6118C608C100AE97E4 /* HMShipViewController.m */,
 				F4B3DC3518E5C8520011B4FC /* HMShipViewController.xib */,
+				F4A5D3291CD9CAA70024A6F0 /* HMBorderTextField.h */,
+				F4A5D32A1CD9CAA70024A6F0 /* HMBorderTextField.m */,
 				F494DC6518C8BA6400AE97E4 /* HMPowerUpSupportViewController.h */,
 				F494DC6618C8BA6400AE97E4 /* HMPowerUpSupportViewController.m */,
 				F494DC6818C8BAB900AE97E4 /* HMPowerUpSupportViewController.xib */,
@@ -1659,6 +1664,7 @@
 				F4F9F8A91C796C2E00D0EE76 /* HMChangeHenseiNotification.m in Sources */,
 				F43BA4A1197BE22200CFF788 /* HMDestroyShipCommand.m in Sources */,
 				F47B78B218A7B42B0011386E /* HMJSONViewWindowController.m in Sources */,
+				F4A5D32B1CD9CAA70024A6F0 /* HMBorderTextField.m in Sources */,
 				F4B414EF18B0BF1A00468DAF /* HMMasterMapInfoCommand.m in Sources */,
 				F4B3DC1B18DEAB5E0011B4FC /* HMKaihatuHistory.m in Sources */,
 				F4131EDC190FEBCC004F7F9A /* HMSlotItemWindowController.m in Sources */,

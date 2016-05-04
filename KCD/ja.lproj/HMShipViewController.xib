@@ -71,6 +71,13 @@
                                                 </connections>
                                             </tableCellView>
                                         </prototypeCellViews>
+                                        <connections>
+                                            <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.shortTypeName" id="1vZ-kG-Pps">
+                                                <dictionary key="options">
+                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
                                     </tableColumn>
                                     <tableColumn identifier="name" editable="NO" width="90" minWidth="90" maxWidth="116" id="82a-ca-AZb">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="名前">
@@ -113,6 +120,13 @@
                                                 </connections>
                                             </tableCellView>
                                         </prototypeCellViews>
+                                        <connections>
+                                            <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.name" id="xPk-Oh-POO">
+                                                <dictionary key="options">
+                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
                                     </tableColumn>
                                     <tableColumn identifier="lv" editable="NO" width="27" minWidth="22" maxWidth="3.4028234663852886e+38" id="h1X-yX-kBd">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="Lv.">
@@ -150,6 +164,13 @@
                                                 </connections>
                                             </tableCellView>
                                         </prototypeCellViews>
+                                        <connections>
+                                            <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.lv" id="3g0-aJ-p7O">
+                                                <dictionary key="options">
+                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
                                     </tableColumn>
                                     <tableColumn identifier="exp" editable="NO" width="71" minWidth="10" maxWidth="3.4028234663852886e+38" id="kOg-s3-rC4">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Exp.">
@@ -187,6 +208,13 @@
                                                 </connections>
                                             </tableCellView>
                                         </prototypeCellViews>
+                                        <connections>
+                                            <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.exp" id="5KV-9i-fgR">
+                                                <dictionary key="options">
+                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
                                     </tableColumn>
                                     <tableColumn identifier="next" editable="NO" width="73" minWidth="10" maxWidth="3.4028234663852886e+38" id="whd-ZR-lLz">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Next">
@@ -228,10 +256,18 @@
                                                 </connections>
                                             </tableCellView>
                                         </prototypeCellViews>
+                                        <connections>
+                                            <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.next" id="UOz-OG-Ter">
+                                                <dictionary key="options">
+                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
                                     </tableColumn>
                                 </tableColumns>
                                 <connections>
                                     <binding destination="b8v-Gn-JZD" name="content" keyPath="arrangedObjects" id="DUn-9S-eQ5"/>
+                                    <binding destination="b8v-Gn-JZD" name="sortDescriptors" keyPath="sortDescriptors" previousBinding="DUn-9S-eQ5" id="BTy-CB-NX7"/>
                                     <outlet property="delegate" destination="-2" id="n0d-rD-1Vm"/>
                                 </connections>
                             </tableView>
@@ -288,7 +324,7 @@
                     </connections>
                 </textField>
                 <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="y27-Oc-ZPX">
-                    <rect key="frame" x="79" y="399" width="49" height="17"/>
+                    <rect key="frame" x="82" y="399" width="49" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="ZnJ-Q2-7ID">
                         <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" maximumFractionDigits="3" id="qbi-EQ-2Ta"/>
@@ -379,6 +415,13 @@
                                         </connections>
                                     </tableCellView>
                                 </prototypeCellViews>
+                                <connections>
+                                    <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.name" id="WjZ-So-Aen">
+                                        <dictionary key="options">
+                                            <bool key="NSConditionallySetsEditable" value="YES"/>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
                             </tableColumn>
                             <tableColumn identifier="karyoku" editable="NO" width="35" minWidth="22" maxWidth="3.4028234663852886e+38" id="HJD-3v-pYl">
                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="火力">
@@ -460,6 +503,13 @@
                                         </connections>
                                     </tableCellView>
                                 </prototypeCellViews>
+                                <connections>
+                                    <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.soukou_0" id="UoR-I5-cnL">
+                                        <dictionary key="options">
+                                            <bool key="NSConditionallySetsEditable" value="YES"/>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
                             </tableColumn>
                             <tableColumn identifier="raisou" editable="NO" width="35" minWidth="10" maxWidth="3.4028234663852886e+38" id="c2Z-Gz-ccl">
                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="雷装">
@@ -497,6 +547,13 @@
                                         </connections>
                                     </tableCellView>
                                 </prototypeCellViews>
+                                <connections>
+                                    <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.raisou_0" id="QDD-ud-3i4">
+                                        <dictionary key="options">
+                                            <bool key="NSConditionallySetsEditable" value="YES"/>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
                             </tableColumn>
                             <tableColumn identifier="kaihi" editable="NO" width="35" minWidth="10" maxWidth="3.4028234663852886e+38" id="J7e-62-cUm">
                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="回避">
@@ -534,6 +591,13 @@
                                         </connections>
                                     </tableCellView>
                                 </prototypeCellViews>
+                                <connections>
+                                    <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.kaihi_0" id="mKr-7J-crC">
+                                        <dictionary key="options">
+                                            <bool key="NSConditionallySetsEditable" value="YES"/>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
                             </tableColumn>
                             <tableColumn identifier="taiku" editable="NO" width="35" minWidth="10" maxWidth="3.4028234663852886e+38" id="3cA-40-8P3">
                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="対空">
@@ -571,10 +635,18 @@
                                         </connections>
                                     </tableCellView>
                                 </prototypeCellViews>
+                                <connections>
+                                    <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.taiku_0" id="Eiy-RU-nxV">
+                                        <dictionary key="options">
+                                            <bool key="NSConditionallySetsEditable" value="YES"/>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
                             </tableColumn>
                         </tableColumns>
                         <connections>
                             <binding destination="b8v-Gn-JZD" name="content" keyPath="arrangedObjects" id="hRu-8B-BlL"/>
+                            <binding destination="b8v-Gn-JZD" name="sortDescriptors" keyPath="sortDescriptors" previousBinding="hRu-8B-BlL" id="GOe-XZ-oZ9"/>
                             <outlet property="delegate" destination="-2" id="LyH-LL-Ov5"/>
                         </connections>
                     </tableView>
@@ -649,6 +721,13 @@
                                         </connections>
                                     </tableCellView>
                                 </prototypeCellViews>
+                                <connections>
+                                    <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.name" id="NSb-hv-ctP">
+                                        <dictionary key="options">
+                                            <bool key="NSConditionallySetsEditable" value="YES"/>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
                             </tableColumn>
                             <tableColumn identifier="maxhp" editable="NO" width="35" minWidth="22" maxWidth="3.4028234663852886e+38" id="XBP-7Q-86k">
                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="耐久">
@@ -686,6 +765,13 @@
                                         </connections>
                                     </tableCellView>
                                 </prototypeCellViews>
+                                <connections>
+                                    <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.maxhp" id="R1V-Aw-ct0">
+                                        <dictionary key="options">
+                                            <bool key="NSConditionallySetsEditable" value="YES"/>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
                             </tableColumn>
                             <tableColumn identifier="cond" editable="NO" width="35" minWidth="10" maxWidth="3.4028234663852886e+38" id="UTt-vy-S3S">
                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="体調">
@@ -723,6 +809,13 @@
                                         </connections>
                                     </tableCellView>
                                 </prototypeCellViews>
+                                <connections>
+                                    <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.cond" id="KDn-mj-trP">
+                                        <dictionary key="options">
+                                            <bool key="NSConditionallySetsEditable" value="YES"/>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
                             </tableColumn>
                             <tableColumn identifier="taisen" editable="NO" width="35" minWidth="10" maxWidth="3.4028234663852886e+38" id="aaq-4b-AS5">
                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="対潜">
@@ -760,6 +853,13 @@
                                         </connections>
                                     </tableCellView>
                                 </prototypeCellViews>
+                                <connections>
+                                    <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.taisen_0" id="T2z-Kx-Yis">
+                                        <dictionary key="options">
+                                            <bool key="NSConditionallySetsEditable" value="YES"/>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
                             </tableColumn>
                             <tableColumn identifier="sakuteki" editable="NO" width="35" minWidth="10" maxWidth="3.4028234663852886e+38" id="roP-4x-mhA">
                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="索敵">
@@ -797,6 +897,13 @@
                                         </connections>
                                     </tableCellView>
                                 </prototypeCellViews>
+                                <connections>
+                                    <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.sakuteki_0" id="xym-3I-pY4">
+                                        <dictionary key="options">
+                                            <bool key="NSConditionallySetsEditable" value="YES"/>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
                             </tableColumn>
                             <tableColumn identifier="lucky" editable="NO" width="35" minWidth="10" maxWidth="3.4028234663852886e+38" id="Ycr-qT-Abn">
                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="運">
@@ -834,10 +941,18 @@
                                         </connections>
                                     </tableCellView>
                                 </prototypeCellViews>
+                                <connections>
+                                    <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.lucky_0" id="VVi-Ch-gho">
+                                        <dictionary key="options">
+                                            <bool key="NSConditionallySetsEditable" value="YES"/>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
                             </tableColumn>
                         </tableColumns>
                         <connections>
                             <binding destination="b8v-Gn-JZD" name="content" keyPath="arrangedObjects" id="SYF-BX-xwH"/>
+                            <binding destination="b8v-Gn-JZD" name="sortDescriptors" keyPath="sortDescriptors" previousBinding="SYF-BX-xwH" id="F9y-uk-8zg"/>
                             <outlet property="delegate" destination="-2" id="do9-hX-28g"/>
                         </connections>
                     </tableView>
@@ -912,6 +1027,13 @@
                                         </connections>
                                     </tableCellView>
                                 </prototypeCellViews>
+                                <connections>
+                                    <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.name" id="Hzd-Py-exk">
+                                        <dictionary key="options">
+                                            <bool key="NSConditionallySetsEditable" value="YES"/>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
                             </tableColumn>
                             <tableColumn identifier="shatei" editable="NO" width="33" minWidth="22" maxWidth="3.4028234663852886e+38" id="6lE-dw-CML">
                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="射程">
@@ -952,6 +1074,13 @@
                                         </connections>
                                     </tableCellView>
                                 </prototypeCellViews>
+                                <connections>
+                                    <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.leng" id="D6C-hf-99c">
+                                        <dictionary key="options">
+                                            <bool key="NSConditionallySetsEditable" value="YES"/>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
                             </tableColumn>
                             <tableColumn identifier="sokuryoku" editable="NO" width="35" minWidth="10" maxWidth="3.4028234663852886e+38" id="bw6-Ox-T0t">
                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="速力">
@@ -995,6 +1124,13 @@
                                         </connections>
                                     </tableCellView>
                                 </prototypeCellViews>
+                                <connections>
+                                    <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.master_ship.soku" id="Hdo-Uz-hjD">
+                                        <dictionary key="options">
+                                            <bool key="NSConditionallySetsEditable" value="YES"/>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
                             </tableColumn>
                             <tableColumn identifier="kannsai" editable="NO" width="113" minWidth="10" maxWidth="3.4028234663852886e+38" id="Ou4-ln-GfK">
                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="艦載機搭載数">
@@ -1013,7 +1149,7 @@
                                         <rect key="frame" x="194" y="1" width="113" height="17"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="Dxo-MU-e5x">
+                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="Dxo-MU-e5x" customClass="HMBorderTextField">
                                                 <rect key="frame" x="0.0" y="0.0" width="27" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="right" title="100" id="Wmi-vP-xgv">
@@ -1030,7 +1166,7 @@
                                                     </binding>
                                                 </connections>
                                             </textField>
-                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="B9I-n0-1Ty">
+                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="B9I-n0-1Ty" customClass="HMBorderTextField">
                                                 <rect key="frame" x="26" y="0.0" width="27" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="right" title="100" id="auB-gy-eyw">
@@ -1047,7 +1183,7 @@
                                                     </binding>
                                                 </connections>
                                             </textField>
-                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="Udq-Mg-VZK">
+                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="Udq-Mg-VZK" customClass="HMBorderTextField">
                                                 <rect key="frame" x="52" y="0.0" width="27" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="right" title="100" id="853-eN-blb">
@@ -1064,7 +1200,7 @@
                                                     </binding>
                                                 </connections>
                                             </textField>
-                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="bLl-3Y-We0">
+                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="bLl-3Y-We0" customClass="HMBorderTextField">
                                                 <rect key="frame" x="78" y="0.0" width="27" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="right" title="100" id="gcn-h6-VyK">
@@ -1091,6 +1227,7 @@
                         </tableColumns>
                         <connections>
                             <binding destination="b8v-Gn-JZD" name="content" keyPath="arrangedObjects" id="ge8-Y4-mGI"/>
+                            <binding destination="b8v-Gn-JZD" name="sortDescriptors" keyPath="sortDescriptors" previousBinding="ge8-Y4-mGI" id="Ps4-b0-jN0"/>
                             <outlet property="delegate" destination="-2" id="yXB-WZ-Xs4"/>
                         </connections>
                     </tableView>

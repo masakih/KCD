@@ -144,15 +144,11 @@ typedef NS_ENUM(NSInteger, ViewType) {
 	if(!newSelection) return;
 	if([self.currentTableView isEqual:newSelection]) return;
 	
-	
-//	NSRect visibleRect = [self.currentTableView.enclosingScrollView documentVisibleRect];
-	
 	[newSelection setFrame:[self.currentTableView frame]];
 	[newSelection setAutoresizingMask:[self.currentTableView autoresizingMask]];
 	[self.view replaceSubview:self.currentTableView with:newSelection];
 	self.currentTableView = newSelection;
 	
-//	[self.currentTableView scrollRectToVisible:visibleRect];
 	[self.view.window makeFirstResponder:self.currentTableView];
 }
 
