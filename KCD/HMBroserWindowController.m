@@ -506,7 +506,7 @@ const CGFloat flashTopMargin = 4;
 {
 	SEL action = menuItem.action;
 	
-	if(action == @selector(reloadContent:) && action == @selector(screenShot:) && action == @selector(deleteCacheAndReload:)) {
+	if(action == @selector(reloadContent:) || action == @selector(screenShot:) || action == @selector(deleteCacheAndReload:)) {
 		return [self.gameViewController validateMenuItem:menuItem];
 	}
 	if(action == @selector(selectView:)) {
