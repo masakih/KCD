@@ -31,7 +31,7 @@
 - (void)execute
 {
 	if([self.api isEqualToString:@"/kcsapi/api_port/port"]
-	   || [self.api isEqualToString:@"/kcsapi/api_get_member/ship2"]) {
+	   || [self.api isEqualToString:@"/kcsapi/api_get_member/ship_deck"]) {
 		[self storeToVisible];
 	}
 	if(![self.api hasSuffix:@"battleresult"]) return;
