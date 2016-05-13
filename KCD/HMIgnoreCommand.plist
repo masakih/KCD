@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<string>/kcsapi/api_dmm_payment/paycheck</string>
+	<string>/kcsapi/api_get_member/base_air_corps</string>
+	<string>/kcsapi/api_get_member/furniture</string>
+	<string>/kcsapi/api_get_member/mapcell</string>
+	<string>/kcsapi/api_get_member/mapinfo</string>
+	<string>/kcsapi/api_get_member/mission</string>
+	<string>/kcsapi/api_get_member/payitem</string>
+	<string>/kcsapi/api_get_member/picture_book</string>
+	<string>/kcsapi/api_get_member/practice</string>
+	<string>/kcsapi/api_get_member/preset_deck</string>
+	<string>/kcsapi/api_get_member/record</string>
+	<string>/kcsapi/api_get_member/sortie_conditions</string>
+	<string>/kcsapi/api_get_member/unsetslot</string>
+	<string>/kcsapi/api_get_member/useitem</string>
+	<string>/kcsapi/api_req_air_corps/change_name</string>
+	<string>/kcsapi/api_req_air_corps/set_action</string>
+	<string>/kcsapi/api_req_air_corps/set_plane</string>
+	<string>/kcsapi/api_req_air_corps/supply</string>
+	<string>/kcsapi/api_req_furniture/buy</string>
+	<string>/kcsapi/api_req_furniture/change</string>
+	<string>/kcsapi/api_req_furniture/music_list</string>
+	<string>/kcsapi/api_req_furniture/music_play</string>
+	<string>/kcsapi/api_req_furniture/set_portbgm</string>
+	<string>/kcsapi/api_req_hensei/lock</string>
+	<string>/kcsapi/api_req_hensei/preset_delete</string>
+	<string>/kcsapi/api_req_hensei/preset_register</string>
+	<string>/kcsapi/api_req_kaisou/marriage</string>
+	<string>/kcsapi/api_req_kaisou/remodeling</string>
+	<string>/kcsapi/api_req_kaisou/slotset</string>
+	<string>/kcsapi/api_req_kaisou/slotset_ex</string>
+	<string>/kcsapi/api_req_kaisou/unsetslot_all</string>
+	<string>/kcsapi/api_req_kousyou/createship_speedchange</string>
+	<string>/kcsapi/api_req_kousyou/remodel_slotlist</string>
+	<string>/kcsapi/api_req_kousyou/remodel_slotlist_detail</string>
+	<string>/kcsapi/api_req_map/select_eventmap_rank</string>
+	<string>/kcsapi/api_req_map/start_air_base</string>
+	<string>/kcsapi/api_req_member/get_incentive</string>
+	<string>/kcsapi/api_req_member/get_practice_enemyinfo</string>
+	<string>/kcsapi/api_req_member/itemuse</string>
+	<string>/kcsapi/api_req_member/itemuse_cond</string>
+	<string>/kcsapi/api_req_member/payitemuse</string>
+	<string>/kcsapi/api_req_member/registration_sp</string>
+	<string>/kcsapi/api_req_member/updatecomment</string>
+	<string>/kcsapi/api_req_member/updatedeckname</string>
+	<string>/kcsapi/api_req_mission/result</string>
+	<string>/kcsapi/api_req_mission/return_instruction</string>
+	<string>/kcsapi/api_req_mission/start</string>
+	<string>/kcsapi/api_req_practice/battle</string>
+	<string>/kcsapi/api_req_practice/battle_result</string>
+	<string>/kcsapi/api_req_practice/midnight_battle</string>
+	<string>/kcsapi/api_req_quest/start</string>
+	<string>/kcsapi/api_req_quest/stop</string>
+	<string>/kcsapi/api_req_ranking/getlist</string>
+</array>
+</plist>

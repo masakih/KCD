@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F402D5371BE3AFAB008D5881 /* HMSlotResetCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F402D5361BE3AFAB008D5881 /* HMSlotResetCommand.m */; };
 		F403893E1CAEA711002A264B /* HMMemberRequireInfoCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F403893D1CAEA711002A264B /* HMMemberRequireInfoCommand.m */; };
+		F40ADA021CE6317500AE29B0 /* HMIgnoreCommand.plist in Resources */ = {isa = PBXBuildFile; fileRef = F40ADA011CE6317500AE29B0 /* HMIgnoreCommand.plist */; };
 		F4131ECF190F5C08004F7F9A /* HMStoreCreateSlotItemHistoryCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4131ECE190F5C08004F7F9A /* HMStoreCreateSlotItemHistoryCommand.m */; };
 		F4131ED5190F63D8004F7F9A /* HMUpdateSlotItemCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4131ED4190F63D8004F7F9A /* HMUpdateSlotItemCommand.m */; };
 		F4131ED8190FA08D004F7F9A /* HMDestroyItem2Command.m in Sources */ = {isa = PBXBuildFile; fileRef = F4131ED7190FA08D004F7F9A /* HMDestroyItem2Command.m */; };
@@ -290,6 +291,7 @@
 		F402D5381BEF14EA008D5881 /* Bookmark 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Bookmark 2.xcdatamodel"; sourceTree = "<group>"; };
 		F403893C1CAEA711002A264B /* HMMemberRequireInfoCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMemberRequireInfoCommand.h; sourceTree = "<group>"; };
 		F403893D1CAEA711002A264B /* HMMemberRequireInfoCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMemberRequireInfoCommand.m; sourceTree = "<group>"; };
+		F40ADA011CE6317500AE29B0 /* HMIgnoreCommand.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HMIgnoreCommand.plist; sourceTree = "<group>"; };
 		F4131ECD190F5C08004F7F9A /* HMStoreCreateSlotItemHistoryCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMStoreCreateSlotItemHistoryCommand.h; sourceTree = "<group>"; };
 		F4131ECE190F5C08004F7F9A /* HMStoreCreateSlotItemHistoryCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMStoreCreateSlotItemHistoryCommand.m; sourceTree = "<group>"; };
 		F4131ED3190F63D8004F7F9A /* HMUpdateSlotItemCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMUpdateSlotItemCommand.h; sourceTree = "<group>"; };
@@ -908,6 +910,7 @@
 				F4C5A22D1C37CB5100533FB6 /* HMEnhancementListItem.txt */,
 				F4C5A23D1C380E0400533FB6 /* HMEnhancementListItem.plist */,
 				F4A9B8D21B975029005786C2 /* SlotItemShortName.plist */,
+				F40ADA011CE6317500AE29B0 /* HMIgnoreCommand.plist */,
 				F4A9B8D51B99D5B7005786C2 /* Taihi.txt */,
 				F4A9B8D81BA40ED1005786C2 /* LICENSE */,
 			);
@@ -1538,6 +1541,7 @@
 				F4BEEE9F18D211280006F70C /* Localizable.strings in Resources */,
 				F4A3AD9419BDDE5500FDBF80 /* HMPreferencePanelController.xib in Resources */,
 				F4C6686C1C5451ED00601AFB /* HMStrengthenListViewController.xib in Resources */,
+				F40ADA021CE6317500AE29B0 /* HMIgnoreCommand.plist in Resources */,
 				F4BDEB5D187252F30069D0CE /* MainMenu.xib in Resources */,
 				F4B3DC3F18E5C8870011B4FC /* HMBroserWindowController.xib in Resources */,
 				F4C668661C5451AB00601AFB /* HMQuestListViewController.xib in Resources */,
