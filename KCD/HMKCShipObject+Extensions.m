@@ -383,7 +383,7 @@ static NSArray *levelUpExps = nil;
 	const CGFloat bomberBonus[] = {0, 0, 0, 0, 0, 0, 0, 0};
 	const CGFloat attackerBonus[] = {0, 0, 0, 0, 0, 0, 0, 0};
 	const CGFloat floatplaneBomberBonus[] = {0, 0, 1, 1, 1, 3, 3, 6};
-	const CGFloat floatplaneFighterBonus[] = {0, 0, 0, 0, 0, 0, 0, 0};
+	const CGFloat floatplaneFighterBonus[] = {0, 0, 2, 5, 9, 14, 14, 22};
 	//            sqrt 0, 1,     2.5,   4,     5.5,   7,     8.5,   10
 	const CGFloat bonus[] = {0, 1.000, 1.581, 2.000, 2.345, 2.645, 2.915, 3.162};
 	
