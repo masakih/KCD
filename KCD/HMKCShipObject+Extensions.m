@@ -348,7 +348,7 @@ static NSArray *levelUpExps = nil;
 	return slotItem;
 }
 
-- (CGFloat)floatSeikuWithSlotIndex:(NSUInteger)index
+- (NSInteger)floatSeikuWithSlotIndex:(NSUInteger)index
 {
 	NSArray *effectiveTypes = @[@6, @7, @8, @11, @45];
 	
@@ -371,7 +371,7 @@ static NSArray *levelUpExps = nil;
 	
 	return totalSeiku;
 }
-- (CGFloat)extraSeikuWithSlotIndex:(NSUInteger)index
+- (NSInteger)extraSeikuWithSlotIndex:(NSUInteger)index
 {
 	NSArray *fighterTypes = @[@6];
 	NSArray *bomberTypes = @[@7];
@@ -423,7 +423,7 @@ static NSArray *levelUpExps = nil;
 	return extraSeiku;
 }
 
-- (CGFloat)seikuWithSlotIndex:(NSUInteger)index
+- (NSInteger)seikuWithSlotIndex:(NSUInteger)index
 {
 	NSInteger seiku = [self floatSeikuWithSlotIndex:index] + [self extraSeikuWithSlotIndex:index];
 	return seiku;
