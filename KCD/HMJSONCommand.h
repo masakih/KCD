@@ -8,12 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-#import "HMAPIResult.h"
+#import "HMAPIResponse.h"
 
 
 @interface HMJSONCommand : NSObject
 
-+ (HMJSONCommand *)commandForAPIResult:(HMAPIResult *)apiResult;
++ (HMJSONCommand *)commandForAPIResult:(HMAPIResponse *)apiResult;
 
 @property (copy) NSString *argumentsString;
 @property (strong) NSData *jsonData;

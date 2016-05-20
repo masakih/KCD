@@ -46,7 +46,7 @@ static NSMutableArray *registeredCommands = nil;
 	});
 }
 
-+ (HMJSONCommand *)commandForAPIResult:(HMAPIResult *)apiResult
++ (HMJSONCommand *)commandForAPIResult:(HMAPIResponse *)apiResult
 {
 	HMJSONCommand *command = nil;
 	

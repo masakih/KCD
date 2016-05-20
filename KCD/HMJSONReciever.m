@@ -10,7 +10,7 @@
 
 #import "CustomHTTPProtocol.h"
 #import "HMAppDelegate.h"
-#import "HMAPIResult.h"
+#import "HMAPIResponse.h"
 
 
 @interface HMJSONReciever ()
@@ -76,7 +76,7 @@
 	NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 	[[NSApp delegate] logLineReturn:@"body -> \n%@", string];
 #else
-	HMAPIResult *apiResult = [[HMAPIResult alloc] initWithRequest:protocol.request data:data];
+	HMAPIResponse *apiResult = [[HMAPIResponse alloc] initWithRequest:protocol.request data:data];
 	if(apiResult) {
 		[self.queueu enqueue:apiResult];
 	}

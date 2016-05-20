@@ -167,7 +167,7 @@
 		F4BEEE9F18D211280006F70C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4BEEE9D18D211280006F70C /* Localizable.strings */; };
 		F4BEEFDB1B0A219E004702B8 /* HMShipDeckCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BEEFDA1B0A219E004702B8 /* HMShipDeckCommand.m */; };
 		F4BEEFE11B0B6326004702B8 /* HMDummyShipCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BEEFE01B0B6326004702B8 /* HMDummyShipCommand.m */; };
-		F4BEEFE91B0CE312004702B8 /* HMAPIResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BEEFE81B0CE312004702B8 /* HMAPIResult.m */; };
+		F4BEEFE91B0CE312004702B8 /* HMAPIResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F4BEEFE81B0CE312004702B8 /* HMAPIResponse.m */; };
 		F4BEEFFC1B11A5A7004702B8 /* HMExternalBrowserWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BEEFFE1B11A5A7004702B8 /* HMExternalBrowserWindowController.xib */; };
 		F4BEEFFF1B11A5C2004702B8 /* HMMediumShipViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BEF0011B11A5C2004702B8 /* HMMediumShipViewController.xib */; };
 		F4BEF0021B11A5CC004702B8 /* HMFleetMinimumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BEF0041B11A5CC004702B8 /* HMFleetMinimumViewController.xib */; };
@@ -580,8 +580,8 @@
 		F4BEEFDA1B0A219E004702B8 /* HMShipDeckCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMShipDeckCommand.m; sourceTree = "<group>"; };
 		F4BEEFDF1B0B6326004702B8 /* HMDummyShipCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDummyShipCommand.h; sourceTree = "<group>"; };
 		F4BEEFE01B0B6326004702B8 /* HMDummyShipCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDummyShipCommand.m; sourceTree = "<group>"; };
-		F4BEEFE71B0CE312004702B8 /* HMAPIResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMAPIResult.h; sourceTree = "<group>"; };
-		F4BEEFE81B0CE312004702B8 /* HMAPIResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMAPIResult.m; sourceTree = "<group>"; };
+		F4BEEFE71B0CE312004702B8 /* HMAPIResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMAPIResponse.h; sourceTree = "<group>"; };
+		F4BEEFE81B0CE312004702B8 /* HMAPIResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMAPIResponse.m; sourceTree = "<group>"; };
 		F4BEEFFD1B11A5A7004702B8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMExternalBrowserWindowController.xib; sourceTree = "<group>"; };
 		F4BEF0001B11A5C2004702B8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMMediumShipViewController.xib; sourceTree = "<group>"; };
 		F4BEF0031B11A5CC004702B8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMFleetMinimumViewController.xib; sourceTree = "<group>"; };
@@ -864,8 +864,8 @@
 				F494DC6C18CC054800AE97E4 /* HMNyukyoDockStatus.m */,
 				F4C3957218CDDFE500A1E918 /* HMKenzoDockStatus.h */,
 				F4C3957318CDDFE500A1E918 /* HMKenzoDockStatus.m */,
-				F4BEEFE71B0CE312004702B8 /* HMAPIResult.h */,
-				F4BEEFE81B0CE312004702B8 /* HMAPIResult.m */,
+				F4BEEFE71B0CE312004702B8 /* HMAPIResponse.h */,
+				F4BEEFE81B0CE312004702B8 /* HMAPIResponse.m */,
 				F49546241B1355EC00E0D8D0 /* HMBookMarkItem.h */,
 				F49546251B1355EC00E0D8D0 /* HMBookmarkItem.m */,
 				F49546291B14CBA600E0D8D0 /* HMBookmarkManager.h */,
@@ -1575,7 +1575,7 @@
 				F4AA06101931869E00844688 /* HMBattleResultCommand.m in Sources */,
 				F4B37EF019FADFC9002F371A /* HMIgnoreZeroTransformer.m in Sources */,
 				F49688641B3AFE4900D3CEDE /* HMProgressPanel.m in Sources */,
-				F4BEEFE91B0CE312004702B8 /* HMAPIResult.m in Sources */,
+				F4BEEFE91B0CE312004702B8 /* HMAPIResponse.m in Sources */,
 				F4B3DC4418E70B370011B4FC /* HMServerDataStore.m in Sources */,
 				F4AA0607192E3B6200844688 /* HMMapStartCommand.m in Sources */,
 				F4AA0604192E20F500844688 /* HMCalculateDamageCommand.m in Sources */,

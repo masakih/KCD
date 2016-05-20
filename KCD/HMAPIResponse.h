@@ -1,5 +1,5 @@
 //
-//  HMAPIResult.h
+//  HMAPIResponse.h
 //  KCD
 //
 //  Created by Hori,Masaki on 2015/05/21.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface HMAPIResult : NSObject
+@interface HMAPIResponse : NSObject
 
 @property (readonly, nonatomic) NSString *api;
 @property (readonly, nonatomic) NSDictionary *parameter;

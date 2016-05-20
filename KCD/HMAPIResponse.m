@@ -1,17 +1,17 @@
 //
-//  HMAPIResult.m
+//  HMAPIResponse.m
 //  KCD
 //
 //  Created by Hori,Masaki on 2015/05/21.
 //  Copyright (c) 2015年 Hori,Masaki. All rights reserved.
 //
 
-#import "HMAPIResult.h"
+#import "HMAPIResponse.h"
 
 #import "HMAppDelegate.h"
 
 
-@interface HMAPIResult ()
+@interface HMAPIResponse ()
 @property (strong, readwrite, nonatomic) NSString *api;
 @property (strong, readwrite, nonatomic) NSDictionary *parameter;
 @property (strong, readwrite, nonatomic) id json;
@@ -24,7 +24,7 @@
 
 @end
 
-@implementation HMAPIResult
+@implementation HMAPIResponse
 
 - (instancetype)initWithRequest:(NSURLRequest *)request data:(NSData *)data
 {
