@@ -76,7 +76,7 @@
 	NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 	[[NSApp delegate] logLineReturn:@"body -> \n%@", string];
 #else
-	HMAPIResponse *apiResult = [[HMAPIResponse alloc] initWithRequest:protocol.request data:data];
+	HMAPIResponse *apiResult = [HMAPIResponse apiResponseWithRequest:protocol.request data:data];
 	if(apiResult) {
 		[self.queueu enqueue:apiResult];
 	}

@@ -26,6 +26,10 @@
 
 @implementation HMAPIResponse
 
++ (instancetype)apiResponseWithRequest:(NSURLRequest *)request data:(NSData *)data
+{
+	return [[self alloc] initWithRequest:request data:data];
+}
 - (instancetype)initWithRequest:(NSURLRequest *)request data:(NSData *)data
 {
 	self = [super init];

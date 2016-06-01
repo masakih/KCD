@@ -21,6 +21,7 @@
 @property (strong, nonatomic) NSArray *argumentArray;
 #endif
 
++ (instancetype)apiResponseWithRequest:(NSURLRequest *)request data:(NSData *)data;
 - (instancetype)initWithRequest:(NSURLRequest *)request data:(NSData *)data;
 
 @end
