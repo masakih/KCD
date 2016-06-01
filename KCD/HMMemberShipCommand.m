@@ -76,8 +76,12 @@
 	}
 	if([self.api isEqualToString:@"/kcsapi/api_get_member/ship_deck"]) {
 		return @"api_data.api_ship_data";
-	}if([self.api isEqualToString:@"/kcsapi/api_req_kaisou/powerup"]) {
+	}
+	if([self.api isEqualToString:@"/kcsapi/api_req_kaisou/powerup"]) {
 		return @"api_data.api_ship";
+	}
+	if([self.api isEqualToString:@"/kcsapi/api_req_kaisou/slot_deprive"]) {
+		return @"api_data.api_ship_data.api_set_ship";
 	}
 	return [super dataKey];
 }
@@ -263,6 +267,7 @@ static BOOL isFewShipUpdateAPI(NSString *api)
 	if([api isEqualToString:@"/kcsapi/api_req_kousyou/getship"]) return YES;
 	if([api isEqualToString:@"/kcsapi/api_get_member/ship_deck"]) return YES;
 	if([api isEqualToString:@"/kcsapi/api_req_kaisou/powerup"]) return YES;
+	if([api isEqualToString:@"/kcsapi/api_req_kaisou/slot_deprive"]) return YES;
 	
 	return NO;
 }

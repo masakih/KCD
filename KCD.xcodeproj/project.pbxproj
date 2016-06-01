@@ -71,6 +71,8 @@
 		F46F104118A9B85E0063E503 /* HMJSONNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F46F104018A9B85E0063E503 /* HMJSONNode.m */; };
 		F46F104518AA50730063E503 /* HMBroserWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F46F104318AA50730063E503 /* HMBroserWindowController.m */; };
 		F46F104918ABAC910063E503 /* KCD.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F46F104718ABAC910063E503 /* KCD.xcdatamodeld */; };
+		F46F45BF1CFF0BEE00EB7F4D /* HMSlotDepriveCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F46F45BE1CFF0BEE00EB7F4D /* HMSlotDepriveCommand.m */; };
+		F46F45C21CFF0CFF00EB7F4D /* HMSlotDepriveUnsetCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F46F45C11CFF0CFF00EB7F4D /* HMSlotDepriveUnsetCommand.m */; };
 		F46FCB291BD933C600304DE7 /* HMSlotItemShortNameTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F46FCB281BD933C600304DE7 /* HMSlotItemShortNameTransformer.m */; };
 		F47178471B6DE9F400F5E59D /* HMMapAreaTransformaer.m in Sources */ = {isa = PBXBuildFile; fileRef = F47178461B6DE9F400F5E59D /* HMMapAreaTransformaer.m */; };
 		F471784A1B6F9B5600F5E59D /* ResourceHistory.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F47178481B6F9B5600F5E59D /* ResourceHistory.xcdatamodeld */; };
@@ -408,6 +410,10 @@
 		F46F104218AA50730063E503 /* HMBroserWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMBroserWindowController.h; sourceTree = "<group>"; };
 		F46F104318AA50730063E503 /* HMBroserWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMBroserWindowController.m; sourceTree = "<group>"; };
 		F46F104818ABAC910063E503 /* KCD.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KCD.xcdatamodel; sourceTree = "<group>"; };
+		F46F45BD1CFF0BEE00EB7F4D /* HMSlotDepriveCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSlotDepriveCommand.h; sourceTree = "<group>"; };
+		F46F45BE1CFF0BEE00EB7F4D /* HMSlotDepriveCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSlotDepriveCommand.m; sourceTree = "<group>"; };
+		F46F45C01CFF0CFF00EB7F4D /* HMSlotDepriveUnsetCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSlotDepriveUnsetCommand.h; sourceTree = "<group>"; };
+		F46F45C11CFF0CFF00EB7F4D /* HMSlotDepriveUnsetCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSlotDepriveUnsetCommand.m; sourceTree = "<group>"; };
 		F46FCB271BD933C600304DE7 /* HMSlotItemShortNameTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSlotItemShortNameTransformer.h; sourceTree = "<group>"; };
 		F46FCB281BD933C600304DE7 /* HMSlotItemShortNameTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSlotItemShortNameTransformer.m; sourceTree = "<group>"; };
 		F47178451B6DE9F400F5E59D /* HMMapAreaTransformaer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMapAreaTransformaer.h; sourceTree = "<group>"; };
@@ -1248,6 +1254,10 @@
 				F402D5361BE3AFAB008D5881 /* HMSlotResetCommand.m */,
 				F4F479241C074E9900D0BF69 /* HMCombinedCommand.h */,
 				F4F479251C074E9900D0BF69 /* HMCombinedCommand.m */,
+				F46F45BD1CFF0BEE00EB7F4D /* HMSlotDepriveCommand.h */,
+				F46F45BE1CFF0BEE00EB7F4D /* HMSlotDepriveCommand.m */,
+				F46F45C01CFF0CFF00EB7F4D /* HMSlotDepriveUnsetCommand.h */,
+				F46F45C11CFF0CFF00EB7F4D /* HMSlotDepriveUnsetCommand.m */,
 			);
 			name = Command;
 			sourceTree = "<group>";
@@ -1661,6 +1671,8 @@
 				F4268031194D1B1A00B2C27F /* HMChangeHenseiCommand.m in Sources */,
 				F4BEEFE11B0B6326004702B8 /* HMDummyShipCommand.m in Sources */,
 				F4513EE418B635EA00073552 /* HMDocksViewController.m in Sources */,
+				F46F45BF1CFF0BEE00EB7F4D /* HMSlotDepriveCommand.m in Sources */,
+				F46F45C21CFF0CFF00EB7F4D /* HMSlotDepriveUnsetCommand.m in Sources */,
 				F4666C5E1B242124001840DB /* HMQuestProgressTransformer.m in Sources */,
 				F494DC6D18CC054800AE97E4 /* HMNyukyoDockStatus.m in Sources */,
 				F4666C641B25CA3E001840DB /* HMKCQuest+Extensions.m in Sources */,
