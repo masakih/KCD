@@ -97,7 +97,6 @@
 		F49828FC1902A226000D6BBE /* HMStrokeTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F49828FB1902A226000D6BBE /* HMStrokeTextFieldCell.m */; };
 		F499E8901B5D4E7F00189029 /* HMPortNotifyCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F499E88F1B5D4E7F00189029 /* HMPortNotifyCommand.m */; };
 		F4A2AF521A074DCF0024BD9E /* HMScreenshotListWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A2AF501A074DCF0024BD9E /* HMScreenshotListWindowController.m */; };
-		F4A2AF541A074DE40024BD9E /* HMScreenshotListWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A2AF561A074DE40024BD9E /* HMScreenshotListWindowController.xib */; };
 		F4A2AF581A0930160024BD9E /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A2AF571A0930160024BD9E /* Quartz.framework */; };
 		F4A2AF5B1A0F9B490024BD9E /* HMScreenshotInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A2AF5A1A0F9B490024BD9E /* HMScreenshotInformation.m */; };
 		F4A3AD82199F529700FDBF80 /* HMCombinedBattleCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A3AD81199F529700FDBF80 /* HMCombinedBattleCommand.m */; };
@@ -112,6 +111,15 @@
 		F4A9B8D71B99D5B7005786C2 /* Taihi.txt in Resources */ = {isa = PBXBuildFile; fileRef = F4A9B8D51B99D5B7005786C2 /* Taihi.txt */; };
 		F4A9B8D91BA40ED1005786C2 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = F4A9B8D81BA40ED1005786C2 /* LICENSE */; };
 		F4A9E25A1C2700CF0006E4BC /* HMRealPowerUpCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A9E2591C2700CF0006E4BC /* HMRealPowerUpCommand.m */; };
+		F4A9E7F41D045B9D00F91746 /* HMScreenshotList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4A9E7F31D045B9D00F91746 /* HMScreenshotList.storyboard */; };
+		F4A9E7FB1D045BC100F91746 /* HMScreenshotModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A9E7F61D045BC100F91746 /* HMScreenshotModel.m */; };
+		F4A9E7FC1D045BC100F91746 /* HMSlideReplaceSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A9E7F81D045BC100F91746 /* HMSlideReplaceSegue.m */; };
+		F4A9E7FD1D045BC100F91746 /* HMTiledImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A9E7FA1D045BC100F91746 /* HMTiledImageView.m */; };
+		F4A9E8001D045C0E00F91746 /* HMBridgeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A9E7FF1D045C0E00F91746 /* HMBridgeViewController.m */; };
+		F4A9E8031D045C1E00F91746 /* HMImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A9E8021D045C1E00F91746 /* HMImageView.m */; };
+		F4A9E8081D045C3000F91746 /* HMScreenshotDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A9E8051D045C3000F91746 /* HMScreenshotDetailViewController.m */; };
+		F4A9E8091D045C3000F91746 /* HMScreenshotEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A9E8071D045C3000F91746 /* HMScreenshotEditorViewController.m */; };
+		F4A9E80C1D045C4200F91746 /* HMScreenshotListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A9E80B1D045C4200F91746 /* HMScreenshotListViewController.m */; };
 		F4AA05FB192B92C800844688 /* Temporary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4AA05F9192B92C700844688 /* Temporary.xcdatamodeld */; };
 		F4AA05FE192B932E00844688 /* HMTemporaryDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AA05FD192B932E00844688 /* HMTemporaryDataStore.m */; };
 		F4AA0601192E1FE900844688 /* HMBattleCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4AA0600192E1FE900844688 /* HMBattleCommand.m */; };
@@ -461,7 +469,6 @@
 		F499E88F1B5D4E7F00189029 /* HMPortNotifyCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMPortNotifyCommand.m; sourceTree = "<group>"; };
 		F4A2AF4F1A074DCF0024BD9E /* HMScreenshotListWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMScreenshotListWindowController.h; sourceTree = "<group>"; };
 		F4A2AF501A074DCF0024BD9E /* HMScreenshotListWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMScreenshotListWindowController.m; sourceTree = "<group>"; };
-		F4A2AF551A074DE40024BD9E /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMScreenshotListWindowController.xib; sourceTree = "<group>"; };
 		F4A2AF571A0930160024BD9E /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		F4A2AF591A0F9B490024BD9E /* HMScreenshotInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMScreenshotInformation.h; sourceTree = "<group>"; };
 		F4A2AF5A1A0F9B490024BD9E /* HMScreenshotInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMScreenshotInformation.m; sourceTree = "<group>"; };
@@ -485,6 +492,23 @@
 		F4A9B8D81BA40ED1005786C2 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		F4A9E2581C2700CF0006E4BC /* HMRealPowerUpCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMRealPowerUpCommand.h; sourceTree = "<group>"; };
 		F4A9E2591C2700CF0006E4BC /* HMRealPowerUpCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMRealPowerUpCommand.m; sourceTree = "<group>"; };
+		F4A9E7F31D045B9D00F91746 /* HMScreenshotList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HMScreenshotList.storyboard; sourceTree = "<group>"; };
+		F4A9E7F51D045BC100F91746 /* HMScreenshotModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMScreenshotModel.h; sourceTree = "<group>"; };
+		F4A9E7F61D045BC100F91746 /* HMScreenshotModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMScreenshotModel.m; sourceTree = "<group>"; };
+		F4A9E7F71D045BC100F91746 /* HMSlideReplaceSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSlideReplaceSegue.h; sourceTree = "<group>"; };
+		F4A9E7F81D045BC100F91746 /* HMSlideReplaceSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSlideReplaceSegue.m; sourceTree = "<group>"; };
+		F4A9E7F91D045BC100F91746 /* HMTiledImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMTiledImageView.h; sourceTree = "<group>"; };
+		F4A9E7FA1D045BC100F91746 /* HMTiledImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMTiledImageView.m; sourceTree = "<group>"; };
+		F4A9E7FE1D045C0E00F91746 /* HMBridgeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMBridgeViewController.h; sourceTree = "<group>"; };
+		F4A9E7FF1D045C0E00F91746 /* HMBridgeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMBridgeViewController.m; sourceTree = "<group>"; };
+		F4A9E8011D045C1E00F91746 /* HMImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMImageView.h; sourceTree = "<group>"; };
+		F4A9E8021D045C1E00F91746 /* HMImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMImageView.m; sourceTree = "<group>"; };
+		F4A9E8041D045C3000F91746 /* HMScreenshotDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMScreenshotDetailViewController.h; sourceTree = "<group>"; };
+		F4A9E8051D045C3000F91746 /* HMScreenshotDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMScreenshotDetailViewController.m; sourceTree = "<group>"; };
+		F4A9E8061D045C3000F91746 /* HMScreenshotEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMScreenshotEditorViewController.h; sourceTree = "<group>"; };
+		F4A9E8071D045C3000F91746 /* HMScreenshotEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMScreenshotEditorViewController.m; sourceTree = "<group>"; };
+		F4A9E80A1D045C4200F91746 /* HMScreenshotListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMScreenshotListViewController.h; sourceTree = "<group>"; };
+		F4A9E80B1D045C4200F91746 /* HMScreenshotListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMScreenshotListViewController.m; sourceTree = "<group>"; };
 		F4AA05FA192B92C800844688 /* Temporary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Temporary.xcdatamodel; sourceTree = "<group>"; };
 		F4AA05FC192B932E00844688 /* HMTemporaryDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMTemporaryDataStore.h; sourceTree = "<group>"; };
 		F4AA05FD192B932E00844688 /* HMTemporaryDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMTemporaryDataStore.m; sourceTree = "<group>"; };
@@ -802,6 +826,34 @@
 			name = Bookmark;
 			sourceTree = "<group>";
 		};
+		F4A9E7F21D045B8800F91746 /* ScreenshotList */ = {
+			isa = PBXGroup;
+			children = (
+				F4A9E7F51D045BC100F91746 /* HMScreenshotModel.h */,
+				F4A9E7F61D045BC100F91746 /* HMScreenshotModel.m */,
+				F4A2AF591A0F9B490024BD9E /* HMScreenshotInformation.h */,
+				F4A2AF5A1A0F9B490024BD9E /* HMScreenshotInformation.m */,
+				F4A9E7F31D045B9D00F91746 /* HMScreenshotList.storyboard */,
+				F4A2AF4F1A074DCF0024BD9E /* HMScreenshotListWindowController.h */,
+				F4A2AF501A074DCF0024BD9E /* HMScreenshotListWindowController.m */,
+				F4A9E80A1D045C4200F91746 /* HMScreenshotListViewController.h */,
+				F4A9E80B1D045C4200F91746 /* HMScreenshotListViewController.m */,
+				F4A9E7FE1D045C0E00F91746 /* HMBridgeViewController.h */,
+				F4A9E7FF1D045C0E00F91746 /* HMBridgeViewController.m */,
+				F4A9E8041D045C3000F91746 /* HMScreenshotDetailViewController.h */,
+				F4A9E8051D045C3000F91746 /* HMScreenshotDetailViewController.m */,
+				F4A9E8011D045C1E00F91746 /* HMImageView.h */,
+				F4A9E8021D045C1E00F91746 /* HMImageView.m */,
+				F4A9E8061D045C3000F91746 /* HMScreenshotEditorViewController.h */,
+				F4A9E8071D045C3000F91746 /* HMScreenshotEditorViewController.m */,
+				F4A9E7F91D045BC100F91746 /* HMTiledImageView.h */,
+				F4A9E7FA1D045BC100F91746 /* HMTiledImageView.m */,
+				F4A9E7F71D045BC100F91746 /* HMSlideReplaceSegue.h */,
+				F4A9E7F81D045BC100F91746 /* HMSlideReplaceSegue.m */,
+			);
+			name = ScreenshotList;
+			sourceTree = "<group>";
+		};
 		F4BDEB3A187252F30069D0CE = {
 			isa = PBXGroup;
 			children = (
@@ -960,6 +1012,7 @@
 		F4BEEEA918D890660006F70C /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				F4A9E7F21D045B8800F91746 /* ScreenshotList */,
 				F4BDEB5B187252F30069D0CE /* MainMenu.xib */,
 				F4BEEFE31B0CD3C5004702B8 /* MainWindow */,
 				F4666C5B1B242065001840DB /* Bookmark */,
@@ -979,11 +1032,6 @@
 				F4B37EFA19FC8D98002F371A /* HMUpgradableShipsWindowController.h */,
 				F4B37EFB19FC8D98002F371A /* HMUpgradableShipsWindowController.m */,
 				F4B37F0119FC8DCC002F371A /* HMUpgradableShipsWindowController.xib */,
-				F4A2AF4F1A074DCF0024BD9E /* HMScreenshotListWindowController.h */,
-				F4A2AF501A074DCF0024BD9E /* HMScreenshotListWindowController.m */,
-				F4A2AF561A074DE40024BD9E /* HMScreenshotListWindowController.xib */,
-				F4A2AF591A0F9B490024BD9E /* HMScreenshotInformation.h */,
-				F4A2AF5A1A0F9B490024BD9E /* HMScreenshotInformation.m */,
 				F4B2A08C1A1F9C2100D2EF12 /* HMExternalBrowserWindowController.h */,
 				F4B2A08D1A1F9C2100D2EF12 /* HMExternalBrowserWindowController.m */,
 				F4BEEFFE1B11A5A7004702B8 /* HMExternalBrowserWindowController.xib */,
@@ -1530,6 +1578,7 @@
 				F4C668631C54518F00601AFB /* HMProgressPanel.xib in Resources */,
 				F4C6686F1C54524900601AFB /* HMVerticalFleetViewController.xib in Resources */,
 				F4C668601C54517500601AFB /* HMGameViewController.xib in Resources */,
+				F4A9E7F41D045B9D00F91746 /* HMScreenshotList.storyboard in Resources */,
 				F4B3DC3918E5C8700011B4FC /* HMJSONViewWindowController.xib in Resources */,
 				F4F9F8A01C6CBFF400D0EE76 /* HMFleetTestViewController.xib in Resources */,
 				F4BEF0081B11A5DE004702B8 /* HMShipDetailViewController.xib in Resources */,
@@ -1544,7 +1593,6 @@
 				F4A9B8D41B975029005786C2 /* SlotItemShortName.plist in Resources */,
 				F4BEF0051B11A5D3004702B8 /* HMFleetViewController.xib in Resources */,
 				F4253D841C8B307800CDA2A6 /* HMAncherageRepairTimerViewController.xib in Resources */,
-				F4A2AF541A074DE40024BD9E /* HMScreenshotListWindowController.xib in Resources */,
 				F4BEEFFC1B11A5A7004702B8 /* HMExternalBrowserWindowController.xib in Resources */,
 				F4BDEB5F187252F30069D0CE /* Images.xcassets in Resources */,
 				F4BEF00B1B11A628004702B8 /* HMShipMasterDetailWindowController.xib in Resources */,
@@ -1578,10 +1626,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4A9E8031D045C1E00F91746 /* HMImageView.m in Sources */,
 				F4ED5D2A1B78D0CA00D1BDEF /* HMGuardEscapedView.m in Sources */,
 				F4513EE818B77A5300073552 /* HMMemberKDockCommand.m in Sources */,
 				F4F9F87E1C6B5E4A00D0EE76 /* HMKCMasterSType.m in Sources */,
 				F426802B194D0F4800B2C27F /* HMMemberShip2Command.m in Sources */,
+				F4A9E8001D045C0E00F91746 /* HMBridgeViewController.m in Sources */,
 				F4AA06101931869E00844688 /* HMBattleResultCommand.m in Sources */,
 				F4B37EF019FADFC9002F371A /* HMIgnoreZeroTransformer.m in Sources */,
 				F49688641B3AFE4900D3CEDE /* HMProgressPanel.m in Sources */,
@@ -1608,6 +1658,7 @@
 				F4666C561B1E0262001840DB /* HMBookmarkEditorViewController.m in Sources */,
 				F43769DE1AE1248800DE6204 /* HMAirBattleCommand.m in Sources */,
 				F426802E194D0FFD00B2C27F /* HMMemberShip3Command.m in Sources */,
+				F4A9E7FD1D045BC100F91746 /* HMTiledImageView.m in Sources */,
 				F4B37EF319FBBBED002F371A /* HMRemodelSlotCommand.m in Sources */,
 				F495462E1B1894DD00E0D8D0 /* Bookmark.xcdatamodeld in Sources */,
 				F4B414FB18B1FB6C00468DAF /* HMMasterMapCellCommand.m in Sources */,
@@ -1631,6 +1682,7 @@
 				F4D6BCB31AA2B18100742FEB /* HMSlotitemNameTransformer.m in Sources */,
 				F4F9F88F1C6B6ACA00D0EE76 /* HMKCNyukyoDock+CoreDataProperties.m in Sources */,
 				F48F62A41BD364E000076C8E /* HMDamageView.m in Sources */,
+				F4A9E7FB1D045BC100F91746 /* HMScreenshotModel.m in Sources */,
 				F448F9981B75A128004901AD /* HMKCBasic.m in Sources */,
 				F43769E11AE7CFF800DE6204 /* HMClearItemGetComand.m in Sources */,
 				F4131ED5190F63D8004F7F9A /* HMUpdateSlotItemCommand.m in Sources */,
@@ -1654,6 +1706,7 @@
 				F4B414F518B1888800468DAF /* HMMasterFurnitureCommand.m in Sources */,
 				F4AA0601192E1FE900844688 /* HMBattleCommand.m in Sources */,
 				F495462B1B14CBA600E0D8D0 /* HMBookmarkManager.m in Sources */,
+				F4A9E7FC1D045BC100F91746 /* HMSlideReplaceSegue.m in Sources */,
 				F43F3D521A39CC7500D6DAF7 /* HMKCMasterSlotItemObject.m in Sources */,
 				F4A9E25A1C2700CF0006E4BC /* HMRealPowerUpCommand.m in Sources */,
 				F448F9921B6FBF80004901AD /* HMResourceHistoryManager.m in Sources */,
@@ -1663,6 +1716,7 @@
 				F4F9F86E1C6A306A00D0EE76 /* HMKCDamage.m in Sources */,
 				F44AB23519E805D100F217AF /* HMKaisouLockCommand.m in Sources */,
 				F4BDEB53187252F30069D0CE /* main.m in Sources */,
+				F4A9E8081D045C3000F91746 /* HMScreenshotDetailViewController.m in Sources */,
 				F4B1E30F19D1C9C400805879 /* HMApplySuppliesCommand.m in Sources */,
 				F48F7B021907D7B800E78AE1 /* HMPortCommand.m in Sources */,
 				F494DC5F18C30AE100AE97E4 /* HMMissionStatus.m in Sources */,
@@ -1732,6 +1786,7 @@
 				F4131EE91911445F004F7F9A /* HMSlotItemEquipTypeTransformer.m in Sources */,
 				F402D5371BE3AFAB008D5881 /* HMSlotResetCommand.m in Sources */,
 				F4BDEB5A187252F30069D0CE /* HMAppDelegate.m in Sources */,
+				F4A9E8091D045C3000F91746 /* HMScreenshotEditorViewController.m in Sources */,
 				F4E7802B18DC3A820011BC4C /* HMLocalDataStore.m in Sources */,
 				F494DC6718C8BA6400AE97E4 /* HMPowerUpSupportViewController.m in Sources */,
 				F43BA4A7197CD59400CFF788 /* HMNyukyoSpeedChangeCommand.m in Sources */,
@@ -1745,6 +1800,7 @@
 				F4B414FE18B3A66200468DAF /* HMMemberNDockCommand.m in Sources */,
 				F4F9F8781C6B5BA900D0EE76 /* HMKCKenzoDock.m in Sources */,
 				F4F388BD1C13D63B00508549 /* HMGameViewController.m in Sources */,
+				F4A9E80C1D045C4200F91746 /* HMScreenshotListViewController.m in Sources */,
 				F4FDF2411A3D50420033E0AD /* HMShipMasterDetailWindowController.m in Sources */,
 				F47178471B6DE9F400F5E59D /* HMMapAreaTransformaer.m in Sources */,
 				F44AB20619E053CB00F217AF /* HMKCDeck+Extension.m in Sources */,
@@ -1819,14 +1875,6 @@
 				F494DC6918C8BAB900AE97E4 /* ja */,
 			);
 			name = HMPowerUpSupportViewController.xib;
-			sourceTree = "<group>";
-		};
-		F4A2AF561A074DE40024BD9E /* HMScreenshotListWindowController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F4A2AF551A074DE40024BD9E /* ja */,
-			);
-			name = HMScreenshotListWindowController.xib;
 			sourceTree = "<group>";
 		};
 		F4A3AD9619BDDE5500FDBF80 /* HMPreferencePanelController.xib */ = {

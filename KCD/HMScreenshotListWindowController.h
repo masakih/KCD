@@ -19,17 +19,4 @@
 - (void)reloadData;
 - (void)registerScreenshot:(NSBitmapImageRep *)image fromOnScreen:(NSRect)screenRect;
 
-
-// Tweet
-@property BOOL appendKanColleTag;
-@property (copy, nonatomic) NSString *tagString;
-
-@property (weak, nonatomic) IBOutlet HMMaskSelectView *maskSelectView;
-@property BOOL useMask;
-
-- (IBAction)share:(id)sender;
-
-- (IBAction)delete:(id)sender;
-- (IBAction)revealInFinder:(id)sender;
-
 @end

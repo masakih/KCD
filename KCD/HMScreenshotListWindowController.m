@@ -7,494 +7,97 @@
 //
 
 #import "HMScreenshotListWindowController.h"
-#import "HMScreenshotInformation.h"
-#import "HMMaskSelectView.h"
 
-#import <Quartz/Quartz.h>
+#import "HMScreenshotListViewController.h"
 
-#import "HMAppDelegate.h"
-#import "HMUserDefaults.h"
+#import "HMScreenshotModel.h"
 
-#import <Accounts/Accounts.h>
-#import <Social/Social.h>
 
-@interface NSFileManager (KCDExtension)
-- (NSString *)_web_pathWithUniqueFilenameForPath:(NSString *)path;
-@end
-
-@interface HMCacheVersionInfo : NSObject <NSCopying>
-@property (strong) NSString *fullpath;
-@property (strong) NSNumber *version;
-@end
-
-@implementation HMCacheVersionInfo
-
-- (instancetype)copyWithZone:(NSZone *)zone
-{
-	HMCacheVersionInfo *result = [[self class] new];
-	result.fullpath = self.fullpath;
-	result.version = self.version;
-	return result;
-}
-- (NSUInteger)hash
-{
-	return [self.fullpath hash];
-}
-- (BOOL)isEqual:(id)object
-{
-	if([super isEqual:object]) return YES;
-	if(![object isMemberOfClass:[self class]]) return NO;
-	return [self.fullpath isEqualToString:[object fullpath]];
-}
-@end
+typedef BOOL (^HMFindViewController)(NSViewController *viewController);
 
 
 @interface HMScreenshotListWindowController ()
-@property (strong, nonatomic) IBOutlet NSArrayController *screenshotsController;
-@property (strong) NSArray *screenshots;
-@property (weak) NSIndexSet *selectedIndexes;
-@property (strong) NSMutableArray *deletedPaths;
-
-@property (weak, nonatomic) IBOutlet IKImageBrowserView *browser;
-@property (strong, nonatomic) IBOutlet NSMenu *contextMenu;
-@property (weak, nonatomic) IBOutlet NSButton *shareButton;
-
-@end
-
-@interface HMScreenshotListWindowController (HMSharingService) <NSSharingServiceDelegate, NSSharingServicePickerDelegate>
-
+@property (nonatomic, weak) NSPredicate *filterPredicate;
+@property (nonatomic, weak) IBOutlet NSButton *shareButton;
 @end
 
 @implementation HMScreenshotListWindowController
+@synthesize filterPredicate = _filterPredicate;
 
-- (id)init
+
++ (instancetype)new
 {
-	self = [super initWithWindowNibName:NSStringFromClass([self class])];
-	if(self) {
-		_screenshots = [self loadCache];
-		_deletedPaths = [NSMutableArray new];
-		
-		NSString *tag = NSLocalizedString(@"kancolle", @"kancolle twitter hash tag");
-		if(tag) {
-			_tagString = [NSString stringWithFormat:@"#%@", tag];
-		} else {
-			_tagString = @"";
-		}
-		_appendKanColleTag = HMStandardDefaults.appendKanColleTag;
-		_useMask = HMStandardDefaults.useMask;
-	}
-	return self;
+	NSStoryboard *storyboard = [NSStoryboard storyboardWithName:@"HMScreenshotList" bundle:nil];
+	return [storyboard instantiateInitialController];
 }
 
-- (void)awakeFromNib
+- (void)windowDidLoad
 {
-	[self.browser setCanControlQuickLookPanel:YES];
+	[super windowDidLoad];
+	
 	[self.shareButton sendActionOn:NSLeftMouseDownMask];
-	
-	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO];
-	self.screenshotsController.sortDescriptors = @[sortDescriptor];
-	self.selectedIndexes = [NSIndexSet indexSetWithIndex:0];
-	
-	[self performSelector:@selector(reloadData:)
-			   withObject:nil
-			   afterDelay:0.0];
 }
 
-- (NSString *)screenshotSaveDirectoryPath
+- (void)setFilterPredicate:(NSPredicate *)filterPredicate
 {
-	HMAppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
-	NSString *parentDirctory = appDelegate.screenShotSaveDirectory;
-	NSBundle *mainBundle = [NSBundle mainBundle];
-	NSDictionary *localizedInfoDictionary = [mainBundle localizedInfoDictionary];
-	NSString *saveDirectoryName = localizedInfoDictionary[@"CFBundleName"];
-	NSString *path = [parentDirctory stringByAppendingPathComponent:saveDirectoryName];
+	id vc = self.contentViewController;
+	assert([vc isKindOfClass:[HMScreenshotListViewController class]]);
+	HMScreenshotListViewController *viewController = vc;
 	
-	NSFileManager *fm = [NSFileManager defaultManager];
-	BOOL isDir = NO;
-	NSError *error = nil;
-	if(![fm fileExistsAtPath:path isDirectory:&isDir]) {
-		BOOL ok = [fm createDirectoryAtPath:path
-				withIntermediateDirectories:NO
-								 attributes:nil
-									  error:&error];
-		if(!ok) {
-			NSLog(@"Can not create screenshot save directory.");
-			return parentDirctory;
-		}
-	} else if(!isDir) {
-		NSLog(@"%@ is regular file, not direcory.", path);
-		return parentDirctory;
-	}
-	
-	return path;
+	viewController.screenshots.filterPredicate = filterPredicate;
+	_filterPredicate = filterPredicate;
+}
+- (NSPredicate *)filterPredicate
+{
+	return _filterPredicate;
 }
 
-- (void)reloadData
+- (NSViewController *)findFromViewController:(NSViewController *)viewController usingBlock:(HMFindViewController)blocks
 {
-	NSMutableArray *screenshotNames = [NSMutableArray new];
-	NSMutableArray *currentArray = [self.screenshots mutableCopy];
-	NSFileManager *fm = [NSFileManager defaultManager];
+	if(blocks(viewController)) return viewController;
 	
-	NSError *error = nil;
-	NSArray *files = [fm contentsOfDirectoryAtPath:self.screenshotSaveDirectoryPath error:&error];
-	if(error) {
-		NSLog(@"%s: error -> %@", __PRETTY_FUNCTION__, error);
-	}
-	
-	NSArray *imageTypes = [NSImage imageTypes];
-	NSWorkspace *ws = [NSWorkspace sharedWorkspace];
-	for(NSString *file in files) {
-		NSString *fullpath = [self.screenshotSaveDirectoryPath stringByAppendingPathComponent:file];
-		NSString *fileType = [ws typeOfFile:fullpath error:NULL];
-		if([imageTypes containsObject:fileType]) {
-			[screenshotNames addObject:fullpath];
+	for(NSViewController *vc in viewController.childViewControllers) {
+		NSViewController *found = [self findFromViewController:vc usingBlock:blocks];
+		if(found) {
+			return found;
 		}
 	}
 	
-	// 無くなっているものを調べる
-	NSMutableArray *deleteObjects = [NSMutableArray new];
-	for(HMScreenshotInformation *info in self.screenshots) {
-		if(![screenshotNames containsObject:info.path]) {
-			[self incrementCacheVersionForPath:info.path];
-			[deleteObjects addObject:info];
-		}
-	}
-	[currentArray removeObjectsInArray:deleteObjects];
-	
-	// 新しいものを調べる
-	for(NSString *path in screenshotNames) {
-		NSUInteger index = [self.screenshots indexOfObjectPassingTest:^(HMScreenshotInformation *obj, NSUInteger idx, BOOL *stop) {
-			if([path isEqualToString:obj.path]) {
-				*stop = YES;
-				return YES;
-			}
-			return NO;
-		}];
-		if(index == NSNotFound) {
-			HMScreenshotInformation *info = [HMScreenshotInformation new];
-			info.path = path;
-			[currentArray addObject:info];
-		}
-	}
-	self.screenshots = [currentArray copy];
-	
-	[self saveCache];
-}
-
-- (void)saveCache
-{
-	NSString *path = [self screenshotSaveDirectoryPath];
-	path = [path stringByAppendingPathComponent:@"Cache.db"];
-	NSURL *url = [NSURL fileURLWithPath:path];
-	
-	NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.screenshots];
-	NSError *error = nil;
-	BOOL ok = [data writeToURL:url
-					   options:NSDataWritingAtomic
-						 error:&error];
-	if(!ok) {
-		if(error) {
-			[[NSApplication sharedApplication] presentError:error];
-		}
-		NSLog(@"Can not write error. %@", error);
-	}
-}
-- (NSArray *)loadCache
-{
-	NSString *path = [self screenshotSaveDirectoryPath];
-	path = [path stringByAppendingPathComponent:@"Cache.db"];
-	NSURL *url = [NSURL fileURLWithPath:path];
-	
-	NSData *data = [NSData dataWithContentsOfURL:url];
-	if(!data) return [NSArray new];
-	
-	id loaded = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-	if(![loaded isKindOfClass:[NSArray class]]) {
-		return [NSArray new];
-	}
-	
-	return loaded;
-}
-
-- (IBAction)reloadData:(id)sender
-{
-	[self reloadData];
-}
-- (IBAction)delete:(id)sender
-{
-	NSArray<HMScreenshotInformation *> *informations = [self.screenshotsController.selectedObjects copy];
-	NSMutableArray<NSString *> *paths = [NSMutableArray array];
-	for(HMScreenshotInformation *info in informations) {
-		[paths addObject:info.path];
-	}
-	NSMutableArray<NSString *> *opsixPathes = [NSMutableArray array];
-	for(NSString *path in paths) {
-		[opsixPathes addObject:[NSString stringWithFormat:@"(\"%@\" as POSIX file)", path]];
-	}
-	NSString *pathListString = [opsixPathes componentsJoinedByString:@" , "];
-	pathListString = [@"{ " stringByAppendingString:pathListString];
-	pathListString = [pathListString stringByAppendingString:@" }"];
-	
-	NSString *scriptTmplate =
-	@"tell application \"Finder\"\n"
-	@"	delete  %@\n"
-	@"end tell";
-	NSString *script = [NSString stringWithFormat:scriptTmplate, pathListString];
-	NSAppleScript *appleScript = [[NSAppleScript alloc] initWithSource:script];
-	if(!appleScript) NSBeep();
-	[appleScript executeAndReturnError:nil];
-	
-	NSIndexSet *selectionIndexes = self.screenshotsController.selectionIndexes;
-	[self.screenshotsController removeObjectsAtArrangedObjectIndexes:selectionIndexes];
-	for(NSString *path in paths) {
-		[self incrementCacheVersionForPath:path];
-	}
-	[self saveCache];
-	
-	NSInteger selectionIndex = selectionIndexes.firstIndex;
-	NSUInteger count = [self.screenshotsController.arrangedObjects count];
-	if(count == 0) return;
-	if(count <= selectionIndex) {
-		selectionIndex = count - 1;
-	}
-	self.screenshotsController.selectionIndex = selectionIndex;
-}
-- (IBAction)revealInFinder:(id)sender
-{
-	NSArray<HMScreenshotInformation *> *informations = [self.screenshotsController.selectedObjects copy];
-	NSMutableArray<NSString *> *paths = [NSMutableArray array];
-	for(HMScreenshotInformation *info in informations) {
-		[paths addObject:info.path];
-	}
-	NSMutableArray<NSURL *> *pathURLs = [NSMutableArray array];
-	for(NSString *path in paths) {
-		[pathURLs addObject:[NSURL fileURLWithPath:path]];
-	}
-	
-	NSWorkspace *ws = [NSWorkspace sharedWorkspace];
-	[ws activateFileViewerSelectingURLs:pathURLs];
+	return nil;
 }
 
 - (void)registerScreenshot:(NSBitmapImageRep *)image fromOnScreen:(NSRect)screenRect
 {
-	dispatch_queue_t queue = dispatch_queue_create("Screenshot queue", DISPATCH_QUEUE_SERIAL);
-	dispatch_async(queue, ^{		
-		NSData *imageData = [image representationUsingType:NSJPEGFileType properties:@{}];
-		
-		NSBundle *mainBundle = [NSBundle mainBundle];
-		NSDictionary *infoList = [mainBundle localizedInfoDictionary];
-		NSString *filename = [infoList objectForKey:@"CFBundleName"];
-		if([filename length] == 0) {
-			filename = @"KCD";
-		}
-		filename = [filename stringByAppendingPathExtension:@"jpg"];
-		NSString *path = [[self screenshotSaveDirectoryPath] stringByAppendingPathComponent:filename];
-		path = [[NSFileManager defaultManager] _web_pathWithUniqueFilenameForPath:path];
-		[imageData writeToFile:path atomically:NO];
-		
-		dispatch_async(dispatch_get_main_queue(), ^{
-			HMScreenshotInformation *info = [HMScreenshotInformation new];
-			info.path = path;
-			info.version = [self cacheVersionForPath:path];
-			
-			[self.screenshotsController insertObject:info atArrangedObjectIndex:0];
-			self.screenshotsController.selectedObjects = @[info];
-			
-			if(HMStandardDefaults.showsListWindowAtScreenshot) {
-				[self.window makeKeyAndOrderFront:nil];
-			}
-			[self saveCache];
-		});
-	});
-}
-
-- (void)incrementCacheVersionForPath:(NSString *)fullpath
-{
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"fullpath = %@", fullpath];
-	NSArray *filteredArray = [self.deletedPaths filteredArrayUsingPredicate:predicate];
-	if(filteredArray.count == 0) {
-		HMCacheVersionInfo *info = [HMCacheVersionInfo new];
-		info.fullpath = fullpath;
-		info.version = @(1);
-		[self.deletedPaths addObject:info];
-	} else {
-		HMCacheVersionInfo *info = filteredArray[0];
-		info.version = @(info.version.unsignedIntegerValue + 1);
-	}
-}
-- (NSUInteger)cacheVersionForPath:(NSString *)fullpath
-{
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"fullpath = %@", fullpath];
-	NSArray *filteredArray = [self.deletedPaths filteredArrayUsingPredicate:predicate];
-	if(filteredArray.count == 0) {
-		return 0;
-	}
+	id viewControler = [self findFromViewController:self.contentViewController
+										 usingBlock:^BOOL(NSViewController *viewController) {
+											 return [viewController respondsToSelector:_cmd];
+										 }];
 	
-	HMCacheVersionInfo *cacheInfo = filteredArray[0];
-	return cacheInfo.version.unsignedIntegerValue;
-}
-
-#pragma mark - Tweet
-@synthesize useMask = _useMask;
-@synthesize appendKanColleTag = _appendKanColleTag;
-
-
-- (BOOL)useMask
-{
-	return _useMask;
-}
-- (void)setUseMask:(BOOL)useMask
-{
-	HMStandardDefaults.useMask = useMask;
-	_useMask = useMask;
-}
-
-- (BOOL)appendKanColleTag
-{
-	return _appendKanColleTag;
-}
-- (void)setAppendKanColleTag:(BOOL)appendKanColleTag
-{
-	HMStandardDefaults.appendKanColleTag = appendKanColleTag;
-	_appendKanColleTag = appendKanColleTag;
+	[viewControler registerScreenshot:image fromOnScreen:screenRect];
 }
 
 - (IBAction)share:(id)sender
 {
-	NSArray<HMScreenshotInformation *> *informations = [self.screenshotsController.selectedObjects copy];
-	NSMutableArray<NSString *> *paths = [NSMutableArray array];
-	for(HMScreenshotInformation *info in informations) {
-		[paths addObject:info.path];
+	NSViewController *viewControler = [self findFromViewController:self.contentViewController
+														usingBlock:^BOOL(NSViewController *viewController) {
+															return [viewController respondsToSelector:_cmd];
+														}];
+	[viewControler performSelector:_cmd withObject:sender];
+}
+
+- (void)showViewControllerHierarchy:(NSViewController *)viewController level:(NSInteger)level
+{
+	if(!viewController) return;
+	
+	NSString *desc = [NSString stringWithFormat:@"<%p> %@", viewController, viewController];
+	fprintf(stderr, "%*s%s\n", (int)level * 4, " ", desc.UTF8String);
+	for(NSViewController *vc in viewController.childViewControllers) {
+		[self showViewControllerHierarchy:vc level:level + 1];
 	}
-	NSMutableArray *items = [NSMutableArray array];
-	for(NSString *path in paths) {
-		NSImage *image = [[NSImage alloc] initWithContentsOfFile:path];
-		if(image) [items addObject:image];
-	}
-	
-	NSString *tags = nil;
-	if(self.appendKanColleTag) {
-		tags = self.tagString;
-		tags = [@"\n" stringByAppendingString:tags];
-	}
-	if(tags) {
-		[items addObject:tags];
-	}
-	NSSharingServicePicker *picker = [[NSSharingServicePicker alloc] initWithItems:items];
-	picker.delegate = self;
-	[picker showRelativeToRect:[sender bounds]
-						ofView:sender
-				 preferredEdge:NSMinXEdge];
 }
 
-
-+ (NSSet *)keyPathsForValuesAffectingTrimButtonTitle
+- (IBAction)showViewControllerHierarchy:(id)sender
 {
-	return [NSSet setWithObjects:@"selectedIndexes", nil];
+	[self showViewControllerHierarchy:self.contentViewController level:0];
 }
-- (NSString *)trimButtonTitle
-{
-	NSArray *informations = self.screenshotsController.selectedObjects;
-	if(informations.count == 0) {
-		return NSLocalizedString(@"None", @"Screenshot window trim button title");
-	}
-	if(informations.count == 1) {
-		return NSLocalizedString(@"Trim", @"Screenshot window trim button title");
-	}
-	return NSLocalizedString(@"Join", @"Screenshot window trim button title");
-}
-- (IBAction)makeTrimedImage:(id)sender
-{
-	NSArray<HMScreenshotInformation *> *informations = [self.screenshotsController.selectedObjects copy];
-	
-	if(informations.count == 0) return;
-	
-	// 切り抜き位置とサイズ
-	const NSPoint origin = {328, 13};
-	const NSSize size = {470, 365};
-	
-	NSUInteger imageCount = informations.count;
-	NSInteger col = imageCount == 1 ? 1 : 2;
-	NSInteger row = imageCount / 2 + imageCount % 2;
-	
-	dispatch_queue_t queue = dispatch_queue_create("makeTrimedImage queue", DISPATCH_QUEUE_SERIAL);
-	dispatch_async(queue, ^{
-		NSImage *trimedImage = [[NSImage alloc] initWithSize:NSMakeSize(size.width * col, size.height * row)];
-		
-		// 空き枠に市松模様を描画
-		if(imageCount % 2 == 1) {
-			[trimedImage lockFocus];
-			{
-				[[NSColor lightGrayColor] setFill];
-				// 市松模様のサイズ
-				const NSInteger tileSize = 10;
-				for(NSInteger i = 0; i < (size.width * col) / tileSize; i++) {
-					for(NSInteger j = 0; j < (size.height * row) / tileSize; j++) {
-						if(i % 2 == 0 && j % 2 == 1) continue;
-						if(i % 2 == 1 && j % 2 == 0) continue;
-						NSRect rect = NSMakeRect(i * tileSize, j * tileSize, tileSize, tileSize);
-						NSRectFill(rect);
-					}
-				}
-			}
-			[trimedImage unlockFocus];
-		}
-		
-		// 画像の切り取りと描画
-		NSEnumerator *reverse = [informations reverseObjectEnumerator];
-		NSArray<HMScreenshotInformation *> *reverseInformations = reverse.allObjects;
-		for(NSInteger i = 0; i < imageCount; i++) {
-			HMScreenshotInformation *info = reverseInformations[i];
-			NSImage *originalImage = [[NSImage alloc] initWithContentsOfFile:info.path];
-			if(!originalImage) continue;
-			CGFloat x = (i % 2 == 0) ? 0 : size.width;
-			CGFloat y = size.height * row - (i / 2 + 1) * size.height;
-			[trimedImage lockFocus];
-			{
-				[originalImage drawAtPoint:NSMakePoint(x, y)
-								  fromRect:NSMakeRect(origin.x, origin.y, size.width, size.height)
-								 operation:NSCompositeCopy
-								  fraction:1.0];
-			}
-			[trimedImage unlockFocus];
-		}
-		
-		NSData *TIFFData = trimedImage.TIFFRepresentation;
-		NSBitmapImageRep *rep = [NSBitmapImageRep imageRepWithData:TIFFData];
-		[self registerScreenshot:rep fromOnScreen:NSZeroRect];
-	});
-}
-
-#pragma mark - IKImageBrowserDelegate
-- (void) imageBrowser:(IKImageBrowserView *) aBrowser cellWasRightClickedAtIndex:(NSUInteger) index withEvent:(NSEvent *) event
-{
-	[NSMenu popUpContextMenu:self.contextMenu withEvent:event forView:aBrowser];
-}
-
-
-#pragma mark - NSSharingServiceDelegate NSSharingServicePickerDelegate
-- (id <NSSharingServiceDelegate>)sharingServicePicker:(NSSharingServicePicker *)sharingServicePicker delegateForSharingService:(NSSharingService *)sharingService
-{
-	return self;
-}
-
-- (NSRect)sharingService:(NSSharingService *)sharingService sourceFrameOnScreenForShareItem:(id<NSPasteboardWriting>)item
-{
-	if([item isKindOfClass:[NSString class]]) return NSZeroRect;
-	
-	NSRect frame = self.maskSelectView.frame;
-	return [self.window convertRectToScreen:frame];
-}
-- (NSImage *)sharingService:(NSSharingService *)sharingService transitionImageForShareItem:(id<NSPasteboardWriting>)item contentRect:(NSRect *)contentRect
-{
-	if([item isKindOfClass:[NSImage class]]) return (NSImage *)item;
-	
-	return nil;
-}
-- (NSWindow *)sharingService:(NSSharingService *)sharingService sourceWindowForShareItems:(NSArray *)items sharingContentScope:(NSSharingContentScope *)sharingContentScope
-{
-	return self.window;
-}
-
-
 @end
