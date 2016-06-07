@@ -68,7 +68,7 @@
 	
 	trimInfo = [HMTrimRectInformation new];
 	trimInfo.name = @"List";
-	trimInfo.rect = NSMakeRect(385, 15, 415, 368);
+	trimInfo.rect = NSMakeRect(362, 15, 438, 368);
 	[trimInfos addObject:trimInfo];
 	
 	trimInfo = [HMTrimRectInformation new];
