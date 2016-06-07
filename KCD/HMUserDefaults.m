@@ -46,6 +46,7 @@ HMUserDefaults *HMStandardDefaults = nil;
 		   @"showEquipmentType" : @(-1),
 		   @"fleetViewPosition" : @(1),
 		   @"autoCombinedView" : @YES,
+		   @"screenshotEditorColumnCount" : @2,
 		   }
 		 ];
 	});
@@ -372,6 +373,24 @@ HMUserDefaults *HMStandardDefaults = nil;
 - (NSNumber *)screenshotPreviewZoomValue
 {
 	return [self objectForKey:@"screenshotPreviewZoomValue"];
+}
+
+- (void)setScreenshotEditorColumnCount:(NSInteger)screenshotEditorColumnCount
+{
+	[self setInteger:screenshotEditorColumnCount forKey:@"screenshotEditorColumnCount"];
+}
+- (NSInteger)screenshotEditorColumnCount
+{
+	return [self integerForKey:@"screenshotEditorColumnCount"];
+}
+
+- (void)setScrennshotEditorType:(NSInteger)scrennshotEditorType
+{
+	[self setInteger:scrennshotEditorType forKey:@"scrennshotEditorType"];
+}
+- (NSInteger)scrennshotEditorType
+{
+	return [self integerForKey:@"scrennshotEditorType"];
 }
 
 #pragma mark - Notify Sound

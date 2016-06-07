@@ -154,4 +154,15 @@ extern HMUserDefaults *HMStandardDefaults;
  */
 @property BOOL useSwipeChangeCombinedView;
 
+
+/**
+ * 連結するスクリーンショットの列数
+ */
+@property NSInteger screenshotEditorColumnCount;
+
+/**
+ * スクリーンショットの切り抜きタイプ
+ */
+@property NSInteger scrennshotEditorType;
+
 @end

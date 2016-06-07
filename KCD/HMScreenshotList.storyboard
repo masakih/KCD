@@ -9,10 +9,10 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" customClass="HMScreenshotListWindowController" sceneMemberID="viewController">
-                    <window key="window" title="スクリーンショットリスト" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="screnshotlist2" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="スクリーンショットリスト" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES"/>
+                        <rect key="contentRect" x="47" y="456" width="800" height="500"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <value key="minSize" type="size" width="700" height="270"/>
                         <toolbar key="toolbar" implicitIdentifier="7362269C-7A89-42EA-8CB7-32B068DD6626" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconOnly" sizeMode="regular" id="4dv-ah-mGb">
@@ -71,27 +71,27 @@
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="250"/>
+            <point key="canvasLocation" x="66" y="67"/>
         </scene>
         <!--Screenshot List View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="HMScreenshotListViewController" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="406"/>
+                        <rect key="frame" x="0.0" y="0.0" width="800" height="406"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <splitView arrangesAllSubviews="NO" dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MHj-df-99H">
-                                <rect key="frame" x="0.0" y="0.0" width="667" height="406"/>
+                            <splitView arrangesAllSubviews="NO" autosaveName="screenshotSplit" dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MHj-df-99H">
+                                <rect key="frame" x="0.0" y="0.0" width="800" height="406"/>
                                 <subviews>
                                     <customView id="LI6-HR-8Po">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="406"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="406"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <scrollView horizontalLineScroll="297" horizontalPageScroll="10" verticalLineScroll="297" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aGk-To-H3S">
-                                                <rect key="frame" x="-1" y="35" width="337" height="373"/>
+                                                <rect key="frame" x="-1" y="35" width="396" height="373"/>
                                                 <clipView key="contentView" copiesOnScroll="NO" id="Bbc-1q-8pf">
-                                                    <rect key="frame" x="1" y="1" width="335" height="371"/>
+                                                    <rect key="frame" x="1" y="1" width="394" height="371"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <ikImageBrowserView autoresizesSubviews="NO" fixedFrame="YES" zoomValue="1" allowsEmptySelection="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uAF-Jd-5Nq">
@@ -109,11 +109,11 @@
                                                     </subviews>
                                                 </clipView>
                                                 <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="er6-xc-C8h">
-                                                    <rect key="frame" x="1" y="356" width="335" height="16"/>
+                                                    <rect key="frame" x="1" y="356" width="394" height="16"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
                                                 <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="0.94117647058823528" horizontal="NO" id="XCu-Zg-n9L">
-                                                    <rect key="frame" x="320" y="1" width="16" height="371"/>
+                                                    <rect key="frame" x="379" y="1" width="16" height="371"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
                                             </scrollView>
@@ -139,21 +139,21 @@
                                         </constraints>
                                     </customView>
                                     <customView id="Rwn-yT-6Ek">
-                                        <rect key="frame" x="336" y="0.0" width="331" height="406"/>
+                                        <rect key="frame" x="394" y="0.0" width="406" height="406"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="n7g-1n-MRJ">
-                                                <rect key="frame" x="0.0" y="0.0" width="331" height="406"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="406" height="406"/>
                                                 <connections>
                                                     <segue destination="0TQ-Wp-LYG" kind="embed" id="Zcx-2K-4bn"/>
                                                 </connections>
                                             </containerView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="n7g-1n-MRJ" secondAttribute="trailing" id="JCl-YW-erS"/>
-                                            <constraint firstAttribute="bottom" secondItem="n7g-1n-MRJ" secondAttribute="bottom" id="RYb-h8-N59"/>
-                                            <constraint firstItem="n7g-1n-MRJ" firstAttribute="leading" secondItem="Rwn-yT-6Ek" secondAttribute="leading" id="RZB-6U-Y98"/>
-                                            <constraint firstItem="n7g-1n-MRJ" firstAttribute="top" secondItem="Rwn-yT-6Ek" secondAttribute="top" id="f09-H0-64B"/>
+                                            <constraint firstItem="n7g-1n-MRJ" firstAttribute="top" secondItem="Rwn-yT-6Ek" secondAttribute="top" id="3wB-0a-3gV"/>
+                                            <constraint firstAttribute="bottom" secondItem="n7g-1n-MRJ" secondAttribute="bottom" id="Ezt-Vx-JEv"/>
+                                            <constraint firstAttribute="trailing" secondItem="n7g-1n-MRJ" secondAttribute="trailing" id="NM4-aq-XA1"/>
+                                            <constraint firstItem="n7g-1n-MRJ" firstAttribute="leading" secondItem="Rwn-yT-6Ek" secondAttribute="leading" id="ofS-Bf-Cq0"/>
                                         </constraints>
                                     </customView>
                                 </subviews>
@@ -206,7 +206,7 @@
                     </items>
                 </menu>
             </objects>
-            <point key="canvasLocation" x="168.5" y="722"/>
+            <point key="canvasLocation" x="168" y="722"/>
         </scene>
         <!--first-->
         <scene sceneID="mNb-8t-ebX">
@@ -236,8 +236,8 @@
                                     <constraint firstAttribute="height" constant="17" id="6nA-1f-15b"/>
                                     <constraint firstAttribute="width" constant="65" id="WbX-Ze-LBE"/>
                                 </constraints>
-                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="タグ：" id="XmD-yz-qIE">
-                                    <font key="font" size="13" name=".HiraKakuInterface-W3"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="タグ：" id="XmD-yz-qIE">
+                                    <font key="font" size="11" name=".HiraKakuInterface-W3"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>

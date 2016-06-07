@@ -13,6 +13,9 @@
 #import "HMTiledImageView.h"
 
 
+#import "HMUserDefaults.h"
+
+
 #pragma mark - HMEditedImage class
 @interface HMEditedImage : NSObject
 @property (strong) NSImage *editedImage;
@@ -75,7 +78,9 @@
 	
 	self.trimInfo = trimInfos;
 	
-	self.currentTrimInfoIndex = 0;
+	self.currentTrimInfoIndex = HMStandardDefaults.scrennshotEditorType;
+	
+	self.columnCount = HMStandardDefaults.screenshotEditorColumnCount;
 	
 	[super viewDidLoad];
 	
@@ -96,6 +101,7 @@
 - (void)setColumnCount:(NSInteger)columnCount
 {
 	self.tiledImageView.columnCount = columnCount;
+	HMStandardDefaults.screenshotEditorColumnCount = columnCount;
 }
 - (NSInteger)columnCount
 {
@@ -106,6 +112,8 @@
 {
 	_currentTrimInfo = currentTrimInfo;
 	self.trimRect = currentTrimInfo.rect;
+	
+	HMStandardDefaults.scrennshotEditorType = [self.trimInfo indexOfObject:currentTrimInfo];
 }
 
 - (void)setTrimRect:(NSRect)trimRect

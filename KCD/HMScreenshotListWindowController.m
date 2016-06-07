@@ -28,8 +28,15 @@ typedef BOOL (^HMFindViewController)(NSViewController *viewController);
 + (instancetype)new
 {
 	NSStoryboard *storyboard = [NSStoryboard storyboardWithName:@"HMScreenshotList" bundle:nil];
-	return [storyboard instantiateInitialController];
+	HMScreenshotListWindowController *wc = [storyboard instantiateInitialController];
+	wc.windowFrameAutosaveName = NSStringFromClass([self class]);
+	return wc;
 }
+
+//- (void)windowWillLoad
+//{
+//	self.windowFrameAutosaveName = NSStringFromClass([self class]);
+//}
 
 - (void)windowDidLoad
 {

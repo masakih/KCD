@@ -11,6 +11,7 @@
 #import "HMScreenshotModel.h"
 #import "HMScreenshotInformation.h"
 
+#import "HMAppDelegate.h"
 #import "HMUserDefaults.h"
 
 #import <Quartz/Quartz.h>
@@ -92,10 +93,12 @@
 
 - (NSString *)screenshotSaveDirectoryPath
 {
-#warning MUST MODIFY
-	NSString *parentDirctory = [NSHomeDirectory() stringByAppendingPathComponent:@"Pictures"];
-	
-	NSString *path = [parentDirctory stringByAppendingPathComponent:@"艦娘は今日も元気です。"];
+	HMAppDelegate *appDelegate =[[NSApplication sharedApplication] delegate];
+	NSString *parentDirctory = appDelegate.screenShotSaveDirectory;
+	NSBundle *mainBundle = [NSBundle mainBundle];
+	NSDictionary *localizedInfoDictionary = [mainBundle localizedInfoDictionary];
+	NSString *saveDirectoryName = localizedInfoDictionary[@"CFBundleName"];
+	NSString *path = [parentDirctory stringByAppendingPathComponent:saveDirectoryName];
 	
 	NSFileManager *fm = [NSFileManager defaultManager];
 	BOOL isDir = NO;
@@ -372,7 +375,7 @@
 
 #pragma mark - NSSplitViewDelegate
 
-const CGFloat leftMinWidth = 300;
+const CGFloat leftMinWidth = 299;
 const CGFloat rightMinWidth = 400;
 
 - (CGFloat)splitView:(NSSplitView *)splitView constrainMinCoordinate:(CGFloat)proposedMinimumPosition ofSubviewAt:(NSInteger)dividerIndex
