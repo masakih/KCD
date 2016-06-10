@@ -9,9 +9,11 @@
 #import "HMBridgeViewController.h"
 #import "HMScreenshotModel.h"
 
+#import "HMUserDefaults.h"
+
+
 @interface HMBridgeViewController () <NSSharingServiceDelegate, NSSharingServicePickerDelegate>
 
-@property (readwrite) BOOL appendKanColleTag;
 @property (nonatomic, copy) NSString *tagString;
 
 @end
@@ -28,7 +30,6 @@
 		} else {
 			_tagString = @"";
 		}
-//		_appendKanColleTag = HMStandardDefaults.appendKanColleTag;
 //		_useMask = HMStandardDefaults.useMask;
 	}
 	
@@ -79,6 +80,11 @@
 	
 	NSViewController *v = segue.destinationController;
 	v.representedObject = self.representedObject;
+}
+
+- (BOOL)appendKanColleTag
+{
+	return HMStandardDefaults.appendKanColleTag;
 }
 
 
