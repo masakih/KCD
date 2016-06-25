@@ -39,7 +39,7 @@ static NSString *loginPageURLPrefix = @"https://www.dmm.com/my/-/login/=/";
 {
 	[self.clipView setDocumentView:self.webView];
 	
-	self.flashTopLeft = NSMakePoint(2600, 145);
+	self.flashTopLeft = NSMakePoint(2600, 1445);
 	[self adjustFlash];
 	
 	[[[self.webView mainFrame] frameView] setAllowsScrolling:NO];
