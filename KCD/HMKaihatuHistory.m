@@ -21,5 +21,6 @@
 @dynamic flagShipName;
 @dynamic flagShipLv;
 @dynamic commanderLv;
+@dynamic mark;
 
 @end

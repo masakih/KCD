@@ -29,6 +29,7 @@
 		F4268031194D1B1A00B2C27F /* HMChangeHenseiCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4268030194D1B1A00B2C27F /* HMChangeHenseiCommand.m */; };
 		F4268034195332A000B2C27F /* HMPowerUpCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4268033195332A000B2C27F /* HMPowerUpCommand.m */; };
 		F42680371957000200B2C27F /* HMTimerCountFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F42680361957000200B2C27F /* HMTimerCountFormatter.m */; };
+		F42CBB231D1F967F004C2AE2 /* HMHistoryMarkTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F42CBB221D1F967F004C2AE2 /* HMHistoryMarkTransformer.m */; };
 		F43769D61ADE86B200DE6204 /* HMQuestListCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F43769D51ADE86B200DE6204 /* HMQuestListCommand.m */; };
 		F43769DA1ADE890800DE6204 /* HMQuestListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43769D81ADE890800DE6204 /* HMQuestListViewController.m */; };
 		F43769DE1AE1248800DE6204 /* HMAirBattleCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F43769DD1AE1248800DE6204 /* HMAirBattleCommand.m */; };
@@ -338,6 +339,9 @@
 		F4268033195332A000B2C27F /* HMPowerUpCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMPowerUpCommand.m; sourceTree = "<group>"; };
 		F42680351957000200B2C27F /* HMTimerCountFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMTimerCountFormatter.h; sourceTree = "<group>"; };
 		F42680361957000200B2C27F /* HMTimerCountFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMTimerCountFormatter.m; sourceTree = "<group>"; };
+		F42CBB201D1ED41D004C2AE2 /* LocalData 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "LocalData 3.xcdatamodel"; sourceTree = "<group>"; };
+		F42CBB211D1F967F004C2AE2 /* HMHistoryMarkTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMHistoryMarkTransformer.h; sourceTree = "<group>"; };
+		F42CBB221D1F967F004C2AE2 /* HMHistoryMarkTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMHistoryMarkTransformer.m; sourceTree = "<group>"; };
 		F43769D41ADE86B200DE6204 /* HMQuestListCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMQuestListCommand.h; sourceTree = "<group>"; };
 		F43769D51ADE86B200DE6204 /* HMQuestListCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMQuestListCommand.m; sourceTree = "<group>"; };
 		F43769D71ADE890800DE6204 /* HMQuestListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMQuestListViewController.h; sourceTree = "<group>"; };
@@ -1073,6 +1077,8 @@
 				F4ECA36E1C6102FC0098AB6A /* HMMillisecondTransformer.m */,
 				F4F9F8AA1C7C823600D0EE76 /* HMDamageValueTransformer.h */,
 				F4F9F8AB1C7C823600D0EE76 /* HMDamageValueTransformer.m */,
+				F42CBB211D1F967F004C2AE2 /* HMHistoryMarkTransformer.h */,
+				F42CBB221D1F967F004C2AE2 /* HMHistoryMarkTransformer.m */,
 			);
 			name = "Transformar&Formatter";
 			sourceTree = "<group>";
@@ -1718,6 +1724,7 @@
 				F4BDEB53187252F30069D0CE /* main.m in Sources */,
 				F4A9E8081D045C3000F91746 /* HMScreenshotDetailViewController.m in Sources */,
 				F4B1E30F19D1C9C400805879 /* HMApplySuppliesCommand.m in Sources */,
+				F42CBB231D1F967F004C2AE2 /* HMHistoryMarkTransformer.m in Sources */,
 				F48F7B021907D7B800E78AE1 /* HMPortCommand.m in Sources */,
 				F494DC5F18C30AE100AE97E4 /* HMMissionStatus.m in Sources */,
 				F43F3D4C1A34AC8000D6DAF7 /* HMKCMasterShipObject.m in Sources */,
@@ -2415,10 +2422,11 @@
 		F4E7802C18DC3AF00011BC4C /* LocalData.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				F42CBB201D1ED41D004C2AE2 /* LocalData 3.xcdatamodel */,
 				F4D6BC4C1A923C0B00742FEB /* LocalData 2.xcdatamodel */,
 				F4E7802D18DC3AF00011BC4C /* LocalData.xcdatamodel */,
 			);
-			currentVersion = F4D6BC4C1A923C0B00742FEB /* LocalData 2.xcdatamodel */;
+			currentVersion = F42CBB201D1ED41D004C2AE2 /* LocalData 3.xcdatamodel */;
 			path = LocalData.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

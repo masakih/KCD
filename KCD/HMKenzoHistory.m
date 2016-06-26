@@ -22,6 +22,7 @@
 @dynamic flagShipName;
 @dynamic flagShipLv;
 @dynamic commanderLv;
+@dynamic mark;
 
 - (NSNumber *)isLarge
 {

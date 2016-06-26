@@ -17,6 +17,7 @@
 @dynamic mapCell;
 @dynamic mapAreaName;
 @dynamic mapInfoName;
+@dynamic mark;
 @dynamic date;
 @dynamic winRank;
 

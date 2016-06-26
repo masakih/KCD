@@ -22,5 +22,6 @@
 @property (nonatomic, retain) NSString * flagShipName;
 @property (nonatomic, retain) NSNumber * flagShipLv;
 @property (nonatomic, retain) NSNumber * commanderLv;
+@property (nonatomic, retain) NSNumber * mark;
 
 @end

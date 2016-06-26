@@ -10,6 +10,11 @@
 
 #import "HMLocalDataStore.h"
 
+#import "HMKaihatuHistory.h"
+#import "HMKenzoHistory.h"
+#import "HMDropShipHistory.h"
+
+
 typedef NS_ENUM(NSUInteger, HMHistoryWindowTabIndex) {
 	kKaihatuHistoryIndex = 0,
 	kKenzoHistoryIndex = 1,
@@ -17,6 +22,10 @@ typedef NS_ENUM(NSUInteger, HMHistoryWindowTabIndex) {
 };
 
 @interface HMHistoryWindowController () <NSTabViewDelegate>
+
+@property (weak, nonatomic) IBOutlet NSTableView *kaihatuHistoryTableView;
+@property (weak, nonatomic) IBOutlet NSTableView *kenzoHistoryTableView;
+@property (weak, nonatomic) IBOutlet NSTableView *dropHistoryTableView;
 
 @property (weak, nonatomic) IBOutlet NSSearchField *searchField;
 
@@ -97,6 +106,108 @@ typedef NS_ENUM(NSUInteger, HMHistoryWindowTabIndex) {
 		NSManagedObject *object = [moc objectWithID:objectID];
 		[moc deleteObject:object];
 	}
+}
+
+- (IBAction)addMark:(id)sender
+{
+	NSArrayController *target = nil;
+	NSTableView *targetView = nil;
+	switch (self.selectedTabIndex) {
+		case kKaihatuHistoryIndex:
+			target = self.kaihatuHistoryController;
+			targetView = self.kaihatuHistoryTableView;
+			break;
+		case kKenzoHistoryIndex:
+			target = self.kenzoHistoryController;
+			targetView = self.kenzoHistoryTableView;
+			break;
+		case kDropHistoryIndex:
+			target = self.dropHistoryController;
+			targetView = self.dropHistoryTableView;
+			break;
+			
+	}
+	
+	if(!target) return;
+	
+	NSArray *a = target.arrangedObjects;
+	id o = a[targetView.clickedRow];
+	
+	NSString *entityName = nil;
+	NSPredicate *predicate = nil;
+	switch (self.selectedTabIndex) {
+		case kKaihatuHistoryIndex:
+		{
+			HMKaihatuHistory *obj = o;
+			entityName = @"KaihatuHistory";
+			predicate = [NSPredicate predicateWithFormat:@"date = %@ AND name = %@", obj.date, obj.name];
+			break;
+		}
+		case kKenzoHistoryIndex:
+		{
+			HMKenzoHistory *obj = o;
+			entityName = @"KenzoHistory";
+			predicate = [NSPredicate predicateWithFormat:@"date = %@ AND name = %@", obj.date, obj.name];
+			break;
+		}
+		case kDropHistoryIndex:
+		{
+			HMDropShipHistory *obj = o;
+			entityName = @"DropShipHistory";
+			predicate = [NSPredicate predicateWithFormat:@"date = %@ AND mapCell = %@", obj.date, obj.mapCell];
+			break;
+		}
+			
+	}
+	
+	HMLocalDataStore *store = [HMLocalDataStore oneTimeEditor];
+	NSError *error = nil;
+	NSArray<HMDropShipHistory *> *array = [store objectsWithEntityName:entityName predicate:predicate error:&error];
+	if(array.count == 0) {
+		NSLog(@"%s: ERROR", __PRETTY_FUNCTION__);
+		return;
+	}
+	
+	BOOL mark = array[0].mark.boolValue;
+	array[0].mark = mark ? @NO : @YES;
+	[store saveAction:nil];
+}
+
+- (BOOL)validateMenuItem:(NSMenuItem *)menuItem
+{
+	SEL action = menuItem.action;
+	if(action == @selector(addMark:)) {
+		NSArrayController *target = nil;
+		NSTableView *targetView = nil;
+		switch (self.selectedTabIndex) {
+			case kKaihatuHistoryIndex:
+				target = self.kaihatuHistoryController;
+				targetView = self.kaihatuHistoryTableView;
+				break;
+			case kKenzoHistoryIndex:
+				target = self.kenzoHistoryController;
+				targetView = self.kenzoHistoryTableView;
+				break;
+			case kDropHistoryIndex:
+				target = self.dropHistoryController;
+				targetView = self.dropHistoryTableView;
+				break;
+				
+		}
+		
+		if(target) {
+			NSArray<HMDropShipHistory *> *a = target.arrangedObjects;
+			HMDropShipHistory *o = a[targetView.clickedRow];
+			
+			if(o.mark.boolValue) {
+				menuItem.title = NSLocalizedString(@"Remove mark", @"Remove history mark.");
+			} else {
+				menuItem.title = NSLocalizedString(@"Add mark", @"Add history mark.");
+			}
+		}
+	}
+	
+	return YES;
 }
 
 #pragma mark - NSTabViewDelegate

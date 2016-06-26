@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15F34" minimumToolsVersion="Xcode 4.3">
+    <entity name="DropShipHistory" representedClassName="HMDropShipHistory" syncable="YES">
+        <attribute name="date" attributeType="Date" syncable="YES"/>
+        <attribute name="mapArea" attributeType="String" syncable="YES"/>
+        <attribute name="mapAreaName" attributeType="String" syncable="YES"/>
+        <attribute name="mapCell" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="mapInfo" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="mapInfoName" attributeType="String" syncable="YES"/>
+        <attribute name="mark" optional="YES" attributeType="Integer 32" defaultValueString="NO" syncable="YES"/>
+        <attribute name="shipName" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="winRank" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="HiddenDropShipHistory" representedClassName="HMDropShipHistory" syncable="YES">
+        <attribute name="date" attributeType="Date" syncable="YES"/>
+        <attribute name="mapArea" attributeType="String" syncable="YES"/>
+        <attribute name="mapAreaName" attributeType="String" syncable="YES"/>
+        <attribute name="mapCell" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="mapInfo" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="mapInfoName" attributeType="String" syncable="YES"/>
+        <attribute name="shipName" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="winRank" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="KaihatuHistory" representedClassName="HMKaihatuHistory" syncable="YES">
+        <attribute name="bauxite" attributeType="Integer 32" minValueString="10" syncable="YES"/>
+        <attribute name="bull" attributeType="Integer 32" minValueString="10" syncable="YES"/>
+        <attribute name="commanderLv" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="date" attributeType="Date" indexed="YES" syncable="YES"/>
+        <attribute name="flagShipLv" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="flagShipName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fuel" attributeType="Integer 32" minValueString="10" syncable="YES"/>
+        <attribute name="kaihatusizai" attributeType="Integer 32" minValueString="0" syncable="YES"/>
+        <attribute name="mark" optional="YES" attributeType="Integer 32" defaultValueString="NO" syncable="YES"/>
+        <attribute name="name" attributeType="String" minValueString="1" indexed="YES" syncable="YES"/>
+        <attribute name="steel" attributeType="Integer 32" minValueString="10" syncable="YES"/>
+    </entity>
+    <entity name="KenzoHistory" representedClassName="HMKenzoHistory" syncable="YES">
+        <attribute name="bauxite" attributeType="Integer 32" minValueString="30" syncable="YES"/>
+        <attribute name="bull" attributeType="Integer 32" minValueString="30" syncable="YES"/>
+        <attribute name="commanderLv" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="date" attributeType="Date" indexed="YES" syncable="YES"/>
+        <attribute name="flagShipLv" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="flagShipName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fuel" attributeType="Integer 32" minValueString="30" syncable="YES"/>
+        <attribute name="kaihatusizai" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="mark" optional="YES" attributeType="Integer 32" defaultValueString="NO" syncable="YES"/>
+        <attribute name="name" attributeType="String" minValueString="1" indexed="YES" syncable="YES"/>
+        <attribute name="steel" attributeType="Integer 32" minValueString="30" syncable="YES"/>
+        <attribute name="sTypeId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="KenzoMark" representedClassName="HMKenzoMark" syncable="YES">
+        <attribute name="bauxite" attributeType="Integer 32" minValueString="30" syncable="YES"/>
+        <attribute name="bull" attributeType="Integer 32" minValueString="30" syncable="YES"/>
+        <attribute name="commanderLv" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="created_ship_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="flagShipLv" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="flagShipName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fuel" attributeType="Integer 32" minValueString="30" syncable="YES"/>
+        <attribute name="kaihatusizai" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="kDockId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="steel" attributeType="Integer 32" minValueString="30" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="DropShipHistory" positionX="9" positionY="135" width="128" height="180"/>
+        <element name="HiddenDropShipHistory" positionX="18" positionY="144" width="128" height="165"/>
+        <element name="KaihatuHistory" positionX="0" positionY="63" width="128" height="210"/>
+        <element name="KenzoHistory" positionX="0" positionY="0" width="128" height="225"/>
+        <element name="KenzoMark" positionX="9" positionY="117" width="128" height="195"/>
+    </elements>
+</model>

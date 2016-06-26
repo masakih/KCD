@@ -18,6 +18,7 @@
 @property (nonatomic, retain) NSNumber * mapCell;
 @property (nonatomic, retain) NSString * mapAreaName;
 @property (nonatomic, retain) NSString * mapInfoName;
+@property (nonatomic, retain) NSNumber * mark;
 @property (nonatomic, retain) NSDate * date;
 @property (nonatomic, retain) NSString * winRank;
 
