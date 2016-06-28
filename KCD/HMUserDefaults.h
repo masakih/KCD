@@ -165,4 +165,14 @@ extern HMUserDefaults *HMStandardDefaults;
  */
 @property NSInteger scrennshotEditorType;
 
+/**
+ * 古い履歴を削除する
+ */
+@property BOOL cleanOldHistoryItems;
+
+/**
+ * 削除を開始する経過日数
+ */
+@property NSInteger cleanSiceDays;
+
 @end

@@ -47,6 +47,9 @@ HMUserDefaults *HMStandardDefaults = nil;
 		   @"fleetViewPosition" : @(1),
 		   @"autoCombinedView" : @YES,
 		   @"screenshotEditorColumnCount" : @2,
+		   
+		   @"cleanSiceDays" : @90,
+		   
 		   }
 		 ];
 	});
@@ -501,5 +504,24 @@ HMUserDefaults *HMStandardDefaults = nil;
 - (BOOL)useSwipeChangeCombinedView
 {
 	return [self boolForKey:@"useSwipeChangeCombinedView"];
+}
+
+#pragma mark - Old History Item Clean
+- (void)setCleanOldHistoryItems:(BOOL)cleanOldHistoryItems
+{
+	[self setBool:cleanOldHistoryItems forKey:@"cleanOldHistoryItems"];
+}
+- (BOOL)cleanOldHistoryItems
+{
+	return [self boolForKey:@"cleanOldHistoryItems"];
+}
+- (void)setCleanSiceDays:(NSInteger)cleanSiceDays
+{
+	if(cleanSiceDays <= 0) return;
+	[self setInteger:cleanSiceDays forKey:@"cleanSiceDays"];
+}
+- (NSInteger)cleanSiceDays
+{
+	return [self integerForKey:@"cleanSiceDays"];
 }
 @end
