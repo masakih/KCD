@@ -22,6 +22,9 @@
 
 #import "HMFleetManager.h"
 
+#import "HMPeriodicNotifier.h"
+#import "HMHistoryItemCleaner.h"
+
 #import "HMTSVSupport.h"
 
 #import "CustomHTTPProtocol.h"
@@ -59,6 +62,8 @@
 @property (strong) NSMutableArray *updaters;
 
 @property (strong) HMFleetManager *fleetManager;
+
+@property (strong) HMPeriodicNotifier *historyCleanNotifer;
 
 #ifdef DEBUG
 @property (strong) HMShipWindowController *shipWindowController;
@@ -143,8 +148,17 @@
 	if(!HMStandardDefaults.showsDebugMenu) {
 		[self.debugMenuItem setHidden:YES];
 	}
+	
+	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+	_historyCleanNotifer = [HMPeriodicNotifier periodicNotifierWithHour:0 minutes:7];
+	[nc addObserverForName:HMPeriodicNotification
+					object:_historyCleanNotifer
+					 queue:nil
+				usingBlock:^(NSNotification * _Nonnull note) {
+					HMHistoryItemCleaner *historyItemCleaner = [HMHistoryItemCleaner new];
+					[historyItemCleaner cleanOldHistoryItems];
+				}];
 }
-
 
 - (void)addCounterUpdateBlock:(void(^)())updater
 {
