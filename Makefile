@@ -39,12 +39,12 @@ release: updateRevision
 	$(MAKE) restoreInfoPlist
 
 package: deploy release
-	REV=`git show | head -1 | awk '{printf("%.7s\n", $$2)}'`;	\
+	REV=`git rev-parse --short HEAD`;	\
 	ditto -ck -rsrc --keepParent $(APP) $(APP_NAME)-$(VERSION)-$${REV}.zip
 
 updateRevision:
 	if [ ! -f $(INFO_PLIST).bak ] ; then cp $(INFO_PLIST) $(INFO_PLIST).bak ; fi ;	\
-	REV=`git show | head -1 | awk '{printf("%.7s\n", $$2)}'` ;	\
+	REV=`git rev-parse --short HEAD` ;	\
 	sed -e "s/%%%%REVISION%%%%/$${REV}/" $(INFO_PLIST) > $(INFO_PLIST).r ;	\
 	mv -f $(INFO_PLIST).r $(INFO_PLIST) ;	\
 
