@@ -38,3 +38,5 @@ s/Hide Kanmusu/隠す/2
 s/Show Kanmusu/表示/2
 s/Join/作成/2
 s/Trim/切り抜き/2
+s/Add mark/マークを付ける/2
+s/Remove mark/マークを削除/2
