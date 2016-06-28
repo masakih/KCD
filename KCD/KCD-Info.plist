@@ -47,7 +47,7 @@
 		<true/>
 	</dict>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2013-2014 Hori,Masaki. All rights reserved.</string>
+	<string>Copyright © 2013-2016 Hori,Masaki. All rights reserved.</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
