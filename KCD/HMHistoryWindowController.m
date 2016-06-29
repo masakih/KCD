@@ -21,7 +21,7 @@ typedef NS_ENUM(NSUInteger, HMHistoryWindowTabIndex) {
 	kDropHistoryIndex = 2,
 };
 
-@interface HMHistoryWindowController () <NSTabViewDelegate>
+@interface HMHistoryWindowController () <NSTabViewDelegate, NSTableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet NSTableView *kaihatuHistoryTableView;
 @property (weak, nonatomic) IBOutlet NSTableView *kenzoHistoryTableView;
@@ -208,6 +208,14 @@ typedef NS_ENUM(NSUInteger, HMHistoryWindowTabIndex) {
 	}
 	
 	return YES;
+}
+
+#pragma mark - NSTableViewDelegate & NSTableViewDataSource
+
+- (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
+{
+	NSView *itemView = [tableView makeViewWithIdentifier:tableColumn.identifier owner:nil];
+	return itemView;
 }
 
 #pragma mark - NSTabViewDelegate
