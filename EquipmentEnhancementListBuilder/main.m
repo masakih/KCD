@@ -59,6 +59,7 @@ int main(int argc, const char * argv[]) {
 					fprintf(stderr, "Error %s proccess is not complete\n", currentIdentifire.UTF8String);
 				}
 				currentIdentifire = nil;
+				[requiredEquipments removeAllObjects];
 				continue;
 			}
 			
@@ -122,8 +123,8 @@ int main(int argc, const char * argv[]) {
 				return NO;
 			}];
 			if(index == NSNotFound) {
-				NSLog(@"HMEnhancementListItem.txt is broken.");
-				return -1;
+				NSLog(@"Do not find %@ in HMEnhancementListItem.txt.", identifier);
+				continue;
 			}
 			requiredEquipment.requiredEquipments = sets[index];
 			
