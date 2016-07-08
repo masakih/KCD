@@ -348,15 +348,24 @@ static NSArray *levelUpExps = nil;
 	return slotItem;
 }
 
+- (NSArray *)effectiveTypes
+{
+	static NSArray *array = nil;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		array = @[@6, @7, @8, @11, @45];
+	});
+	
+	return array;
+}
+
 - (NSInteger)floatSeikuWithSlotIndex:(NSUInteger)index
 {
-	NSArray *effectiveTypes = @[@6, @7, @8, @11, @45];
-	
 	CGFloat totalSeiku = 0;
 	HMKCSlotItemObject *slotItem = [self slotItemAtIndex:index];
 	HMKCMasterSlotItemObject *master = slotItem.master_slotItem;
 	NSNumber *type2 = master.type_2;
-	if(![effectiveTypes containsObject:type2]) {
+	if(![self.effectiveTypes containsObject:type2]) {
 		return 0.0;
 	}
 	
@@ -371,14 +380,59 @@ static NSArray *levelUpExps = nil;
 	
 	return totalSeiku;
 }
+
+- (NSArray *)fighterTypes
+{
+	static NSArray *array = nil;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		array = @[@6];
+	});
+	
+	return array;
+}
+- (NSArray *)bomberTypes
+{
+	static NSArray *array = nil;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		array = @[@7];
+	});
+	
+	return array;
+}
+- (NSArray *)attackerTypes
+{
+	static NSArray *array = nil;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		array = @[@8];
+	});
+	
+	return array;
+}
+- (NSArray *)floatplaneBomberTypes
+{
+	static NSArray *array = nil;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		array = @[@11];
+	});
+	
+	return array;
+}
+- (NSArray *)floatplaneFighterTypes
+{
+	static NSArray *array = nil;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		array = @[@45];
+	});
+	
+	return array;
+}
 - (NSInteger)extraSeikuWithSlotIndex:(NSUInteger)index
 {
-	NSArray *fighterTypes = @[@6];
-	NSArray *bomberTypes = @[@7];
-	NSArray *attackerTypes = @[@8];
-	NSArray *floatplaneBomberTypes = @[@11];
-	NSArray *floatplaneFighterTypes = @[@45];
-	
 	const CGFloat fighterBonus[] = {0, 0, 2, 5, 9, 14, 14, 22};
 	const CGFloat bomberBonus[] = {0, 0, 0, 0, 0, 0, 0, 0};
 	const CGFloat attackerBonus[] = {0, 0, 0, 0, 0, 0, 0, 0};
@@ -401,19 +455,19 @@ static NSArray *levelUpExps = nil;
 	
 	HMKCMasterSlotItemObject *master = slotItem.master_slotItem;
 	NSNumber *type2 = master.type_2;
-	if([fighterTypes containsObject:type2]) {
+	if([self.fighterTypes containsObject:type2]) {
 		typeBonus = fighterBonus;
 	}
-	if([bomberTypes containsObject:type2]) {
+	if([self.bomberTypes containsObject:type2]) {
 		typeBonus = bomberBonus;
 	}
-	if([attackerTypes containsObject:type2]) {
+	if([self.attackerTypes containsObject:type2]) {
 		typeBonus = attackerBonus;
 	}
-	if([floatplaneBomberTypes containsObject:type2]) {
+	if([self.floatplaneBomberTypes containsObject:type2]) {
 		typeBonus = floatplaneBomberBonus;
 	}
-	if([floatplaneFighterTypes containsObject:type2]) {
+	if([self.floatplaneFighterTypes containsObject:type2]) {
 		typeBonus = floatplaneFighterBonus;
 	}
 	if(!typeBonus) return 0.0;
@@ -516,6 +570,159 @@ static NSArray *levelUpExps = nil;
 {
 	NSInteger fuel = self.master_ship.fuel_max.integerValue * 0.032 * (self.maxhp.integerValue - self.nowhp.integerValue);
 	return @(fuel);
+}
+
+
+
+// Carrier-based plane count and max count.
+- (NSArray *)planeItemTypes
+{
+	static NSArray *array = nil;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		array = @[@6, @7, @8, @9, @10, @11, @25, @26, @41, @45];
+	});
+	
+	return array;
+}
+- (NSString *)planeStringForSlot:(NSNumber *)slot
+{
+	NSString *slotKey = [NSString stringWithFormat:@"slot_%@", slot];
+	NSString *onslotKey = [NSString stringWithFormat:@"onslot_%@", slot];
+	NSString *maxKeypath = [NSString stringWithFormat:@"master_ship.maxeq_%@", slot];
+	
+	NSNumber *equipment = [self valueForKey:slotKey];
+	NSNumber *current = [self valueForKey:onslotKey];
+	NSNumber *max = [self valueForKeyPath:maxKeypath];
+	
+	if(max.integerValue == 0) return nil;
+	
+	if(equipment.integerValue == -1) return [NSString stringWithFormat:@"%@", max];
+	
+	if(self.equippedItem.count > slot.integerValue) {
+		HMKCSlotItemObject *eq = self.equippedItem[slot.integerValue];
+		if(![self.planeItemTypes containsObject:eq.master_slotItem.type_2]) return [NSString stringWithFormat:@"%@", max];
+	}
+	
+	return [NSString stringWithFormat:@"%@/%@", current, max];
+}
+
+- (NSString *)planeString0
+{
+	return [self planeStringForSlot:@0];
+}
+- (NSString *)planeString1
+{
+	return [self planeStringForSlot:@1];
+}
+- (NSString *)planeString2
+{
+	return [self planeStringForSlot:@2];
+}
+- (NSString *)planeString3
+{
+	return [self planeStringForSlot:@3];
+}
+- (NSString *)planeString4
+{
+	return [self planeStringForSlot:@4];
+}
+- (NSString *)planeString5
+{
+	return [self planeStringForSlot:@5];
+}
++ (NSSet *)keyPathsForValuesAffectingPlaneString0
+{
+	return [NSSet setWithObjects:@"onslot_0", @"master_ship.maxeq_0", @"equippedItem", nil];
+}
++ (NSSet *)keyPathsForValuesAffectingPlaneString1
+{
+	return [NSSet setWithObjects:@"onslot_1", @"master_ship.maxeq_1", @"equippedItem", nil];
+}
++ (NSSet *)keyPathsForValuesAffectingPlaneString2
+{
+	return [NSSet setWithObjects:@"onslot_2", @"master_ship.maxeq_2", @"equippedItem", nil];
+}
++ (NSSet *)keyPathsForValuesAffectingPlaneString3
+{
+	return [NSSet setWithObjects:@"onslot_3", @"master_ship.maxeq_3", @"equippedItem", nil];
+}
++ (NSSet *)keyPathsForValuesAffectingPlaneString4
+{
+	return [NSSet setWithObjects:@"onslot_4", @"master_ship.maxeq_4", @"equippedItem", nil];
+}
++ (NSSet *)keyPathsForValuesAffectingPlaneString5
+{
+	return [NSSet setWithObjects:@"onslot_5", @"master_ship.maxeq_5", @"equippedItem", nil];
+}
+
+
+- (NSColor *)planeStringColorForSlot:(NSNumber *)slot
+{
+	NSString *slotKey = [NSString stringWithFormat:@"slot_%@", slot];
+	NSString *maxKeypath = [NSString stringWithFormat:@"master_ship.maxeq_%@", slot];
+	
+	NSNumber *equipment = [self valueForKey:slotKey];
+	NSNumber *max = [self valueForKeyPath:maxKeypath];
+	
+	if(max.integerValue == 0) return [NSColor controlTextColor];
+	
+	if(equipment.integerValue == -1) return [NSColor disabledControlTextColor];
+	
+	if(self.equippedItem.count > slot.integerValue) {
+		HMKCSlotItemObject *eq = self.equippedItem[slot.integerValue];
+		if(![self.planeItemTypes containsObject:eq.master_slotItem.type_2]) return [NSColor disabledControlTextColor];;
+	}
+	
+	return [NSColor controlTextColor];
+}
+- (NSColor *)planeString0Color
+{
+	return [self planeStringColorForSlot:@0];
+}
+- (NSColor *)planeString1Color
+{
+	return [self planeStringColorForSlot:@1];
+}
+- (NSColor *)planeString2Color
+{
+	return [self planeStringColorForSlot:@2];
+}
+- (NSColor *)planeString3Color
+{
+	return [self planeStringColorForSlot:@3];
+}
+- (NSColor *)planeString4Color
+{
+	return [self planeStringColorForSlot:@4];
+}
+- (NSColor *)planeString5Color
+{
+	return [self planeStringColorForSlot:@5];
+}
++ (NSSet *)keyPathsForValuesAffectingPlaneString0Color
+{
+	return [NSSet setWithObjects:@"onslot_0", @"master_ship.maxeq_0", @"equippedItem", nil];
+}
++ (NSSet *)keyPathsForValuesAffectingPlaneString1Color
+{
+	return [NSSet setWithObjects:@"onslot_1", @"master_ship.maxeq_1", @"equippedItem", nil];
+}
++ (NSSet *)keyPathsForValuesAffectingPlaneString2Color
+{
+	return [NSSet setWithObjects:@"onslot_2", @"master_ship.maxeq_2", @"equippedItem", nil];
+}
++ (NSSet *)keyPathsForValuesAffectingPlaneString3Color
+{
+	return [NSSet setWithObjects:@"onslot_3", @"master_ship.maxeq_3", @"equippedItem", nil];
+}
++ (NSSet *)keyPathsForValuesAffectingPlaneString4Color
+{
+	return [NSSet setWithObjects:@"onslot_4", @"master_ship.maxeq_4", @"equippedItem", nil];
+}
++ (NSSet *)keyPathsForValuesAffectingPlaneString5Color
+{
+	return [NSSet setWithObjects:@"onslot_5", @"master_ship.maxeq_5", @"equippedItem", nil];
 }
 
 @end

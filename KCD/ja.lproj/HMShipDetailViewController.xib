@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
         <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
@@ -500,23 +500,12 @@
                                     </textFieldCell>
                                     <connections>
                                         <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont11" id="mFd-Yt-QLh"/>
-                                        <binding destination="LyA-xZ-gxq" name="displayPatternValue2" keyPath="selection.master_ship.maxeq_3" previousBinding="9AA-N6-hPm" id="Ydb-6S-XB4">
+                                        <binding destination="LyA-xZ-gxq" name="textColor" keyPath="selection.planeString3Color" id="Chy-2e-Lmi"/>
+                                        <binding destination="LyA-xZ-gxq" name="value" keyPath="selection.planeString3" id="xIK-54-52H">
                                             <dictionary key="options">
-                                                <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
-                                            </dictionary>
-                                        </binding>
-                                        <binding destination="LyA-xZ-gxq" name="displayPatternValue1" keyPath="selection.onslot_3" id="9AA-N6-hPm">
-                                            <dictionary key="options">
-                                                <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
-                                            </dictionary>
-                                        </binding>
-                                        <binding destination="LyA-xZ-gxq" name="hidden" keyPath="selection.slot_3" id="cdM-OH-Ysp">
-                                            <dictionary key="options">
-                                                <integer key="NSMultipleValuesPlaceholder" value="1"/>
-                                                <integer key="NSNoSelectionPlaceholder" value="1"/>
-                                                <integer key="NSNotApplicablePlaceholder" value="1"/>
-                                                <integer key="NSNullPlaceholder" value="1"/>
-                                                <string key="NSValueTransformerName">HMHideEquipNumberTransformer</string>
+                                                <string key="NSNoSelectionPlaceholder" base64-UTF8="YES">
+IA
+</string>
                                             </dictionary>
                                         </binding>
                                     </connections>
@@ -531,23 +520,12 @@
                                     </textFieldCell>
                                     <connections>
                                         <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont11" id="kul-5E-0xA"/>
-                                        <binding destination="LyA-xZ-gxq" name="displayPatternValue2" keyPath="selection.master_ship.maxeq_2" previousBinding="lPy-3I-3NS" id="1Zc-nX-eXl">
+                                        <binding destination="LyA-xZ-gxq" name="textColor" keyPath="selection.planeString2Color" id="buT-xh-Ibg"/>
+                                        <binding destination="LyA-xZ-gxq" name="value" keyPath="selection.planeString2" id="uFu-EH-LYM">
                                             <dictionary key="options">
-                                                <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
-                                            </dictionary>
-                                        </binding>
-                                        <binding destination="LyA-xZ-gxq" name="displayPatternValue1" keyPath="selection.onslot_2" id="lPy-3I-3NS">
-                                            <dictionary key="options">
-                                                <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
-                                            </dictionary>
-                                        </binding>
-                                        <binding destination="LyA-xZ-gxq" name="hidden" keyPath="selection.slot_2" id="8VG-7F-MZI">
-                                            <dictionary key="options">
-                                                <integer key="NSMultipleValuesPlaceholder" value="1"/>
-                                                <integer key="NSNoSelectionPlaceholder" value="1"/>
-                                                <integer key="NSNotApplicablePlaceholder" value="1"/>
-                                                <integer key="NSNullPlaceholder" value="1"/>
-                                                <string key="NSValueTransformerName">HMHideEquipNumberTransformer</string>
+                                                <string key="NSNoSelectionPlaceholder" base64-UTF8="YES">
+IA
+</string>
                                             </dictionary>
                                         </binding>
                                     </connections>
@@ -562,23 +540,12 @@
                                     </textFieldCell>
                                     <connections>
                                         <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont11" id="UGQ-Lq-cIy"/>
-                                        <binding destination="LyA-xZ-gxq" name="displayPatternValue2" keyPath="selection.master_ship.maxeq_1" previousBinding="W5y-RQ-eBZ" id="hJv-zS-VdQ">
+                                        <binding destination="LyA-xZ-gxq" name="textColor" keyPath="selection.planeString1Color" id="fQG-fy-OXE"/>
+                                        <binding destination="LyA-xZ-gxq" name="value" keyPath="selection.planeString1" id="lL8-wA-VaA">
                                             <dictionary key="options">
-                                                <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
-                                            </dictionary>
-                                        </binding>
-                                        <binding destination="LyA-xZ-gxq" name="displayPatternValue1" keyPath="selection.onslot_1" id="W5y-RQ-eBZ">
-                                            <dictionary key="options">
-                                                <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
-                                            </dictionary>
-                                        </binding>
-                                        <binding destination="LyA-xZ-gxq" name="hidden" keyPath="selection.slot_1" id="L6V-8H-Zbv">
-                                            <dictionary key="options">
-                                                <integer key="NSMultipleValuesPlaceholder" value="1"/>
-                                                <integer key="NSNoSelectionPlaceholder" value="1"/>
-                                                <integer key="NSNotApplicablePlaceholder" value="1"/>
-                                                <integer key="NSNullPlaceholder" value="1"/>
-                                                <string key="NSValueTransformerName">HMHideEquipNumberTransformer</string>
+                                                <string key="NSNoSelectionPlaceholder" base64-UTF8="YES">
+IA
+</string>
                                             </dictionary>
                                         </binding>
                                     </connections>
@@ -593,23 +560,12 @@
                                     </textFieldCell>
                                     <connections>
                                         <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont11" id="IHy-kj-CyW"/>
-                                        <binding destination="LyA-xZ-gxq" name="displayPatternValue2" keyPath="selection.master_ship.maxeq_0" previousBinding="Ahn-ud-CaT" id="OoJ-cR-uSP">
+                                        <binding destination="LyA-xZ-gxq" name="textColor" keyPath="selection.planeString0Color" id="qi5-CC-ewP"/>
+                                        <binding destination="LyA-xZ-gxq" name="value" keyPath="selection.planeString0" id="uGt-PK-qg0">
                                             <dictionary key="options">
-                                                <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
-                                            </dictionary>
-                                        </binding>
-                                        <binding destination="LyA-xZ-gxq" name="displayPatternValue1" keyPath="selection.onslot_0" id="Ahn-ud-CaT">
-                                            <dictionary key="options">
-                                                <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
-                                            </dictionary>
-                                        </binding>
-                                        <binding destination="LyA-xZ-gxq" name="hidden" keyPath="selection.slot_0" id="9D6-lj-SHX">
-                                            <dictionary key="options">
-                                                <integer key="NSMultipleValuesPlaceholder" value="1"/>
-                                                <integer key="NSNoSelectionPlaceholder" value="1"/>
-                                                <integer key="NSNotApplicablePlaceholder" value="1"/>
-                                                <integer key="NSNullPlaceholder" value="1"/>
-                                                <string key="NSValueTransformerName">HMHideEquipNumberTransformer</string>
+                                                <string key="NSNoSelectionPlaceholder" base64-UTF8="YES">
+IA
+</string>
                                             </dictionary>
                                         </binding>
                                     </connections>
