@@ -264,8 +264,6 @@
 		F4F9F88F1C6B6ACA00D0EE76 /* HMKCNyukyoDock+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F9F88C1C6B6ACA00D0EE76 /* HMKCNyukyoDock+CoreDataProperties.m */; };
 		F4F9F8901C6B6ACA00D0EE76 /* HMKCNyukyoDock.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F9F88E1C6B6ACA00D0EE76 /* HMKCNyukyoDock.m */; };
 		F4F9F89B1C6CB7D400D0EE76 /* HMFleet.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F9F89A1C6CB7D400D0EE76 /* HMFleet.m */; };
-		F4F9F89F1C6CBFF400D0EE76 /* HMFleetTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F9F89D1C6CBFF400D0EE76 /* HMFleetTestViewController.m */; };
-		F4F9F8A01C6CBFF400D0EE76 /* HMFleetTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4F9F89E1C6CBFF400D0EE76 /* HMFleetTestViewController.xib */; };
 		F4F9F8A31C70AFB600D0EE76 /* HMFleetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F9F8A21C70AFB600D0EE76 /* HMFleetManager.m */; };
 		F4F9F8A61C78596900D0EE76 /* HMAnchorageRepairManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F9F8A51C78596900D0EE76 /* HMAnchorageRepairManager.m */; };
 		F4F9F8A91C796C2E00D0EE76 /* HMChangeHenseiNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F9F8A81C796C2E00D0EE76 /* HMChangeHenseiNotification.m */; };
@@ -760,9 +758,6 @@
 		F4F9F88E1C6B6ACA00D0EE76 /* HMKCNyukyoDock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKCNyukyoDock.m; sourceTree = "<group>"; };
 		F4F9F8991C6CB7D400D0EE76 /* HMFleet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMFleet.h; sourceTree = "<group>"; };
 		F4F9F89A1C6CB7D400D0EE76 /* HMFleet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMFleet.m; sourceTree = "<group>"; };
-		F4F9F89C1C6CBFF400D0EE76 /* HMFleetTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMFleetTestViewController.h; sourceTree = "<group>"; };
-		F4F9F89D1C6CBFF400D0EE76 /* HMFleetTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMFleetTestViewController.m; sourceTree = "<group>"; };
-		F4F9F89E1C6CBFF400D0EE76 /* HMFleetTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMFleetTestViewController.xib; sourceTree = "<group>"; };
 		F4F9F8A11C70AFB600D0EE76 /* HMFleetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMFleetManager.h; sourceTree = "<group>"; };
 		F4F9F8A21C70AFB600D0EE76 /* HMFleetManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMFleetManager.m; sourceTree = "<group>"; };
 		F4F9F8A41C78596900D0EE76 /* HMAnchorageRepairManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMAnchorageRepairManager.h; sourceTree = "<group>"; };
@@ -1459,9 +1454,6 @@
 				F4D6BC991AA1FAC600742FEB /* HMUITestWindowController.h */,
 				F4D6BC9A1AA1FAC600742FEB /* HMUITestWindowController.m */,
 				F4BEF0101B11A645004702B8 /* HMUITestWindowController.xib */,
-				F4F9F89C1C6CBFF400D0EE76 /* HMFleetTestViewController.h */,
-				F4F9F89D1C6CBFF400D0EE76 /* HMFleetTestViewController.m */,
-				F4F9F89E1C6CBFF400D0EE76 /* HMFleetTestViewController.xib */,
 			);
 			name = TestAndDebug;
 			path = KCD;
@@ -1586,7 +1578,6 @@
 				F4C668601C54517500601AFB /* HMGameViewController.xib in Resources */,
 				F4A9E7F41D045B9D00F91746 /* HMScreenshotList.storyboard in Resources */,
 				F4B3DC3918E5C8700011B4FC /* HMJSONViewWindowController.xib in Resources */,
-				F4F9F8A01C6CBFF400D0EE76 /* HMFleetTestViewController.xib in Resources */,
 				F4BEF0081B11A5DE004702B8 /* HMShipDetailViewController.xib in Resources */,
 				F4B3DC3318E5C8520011B4FC /* HMShipViewController.xib in Resources */,
 				F4C668691C5451C800601AFB /* HMResourceViewController.xib in Resources */,
@@ -1783,7 +1774,6 @@
 				F471784A1B6F9B5600F5E59D /* ResourceHistory.xcdatamodeld in Sources */,
 				F499E8901B5D4E7F00189029 /* HMPortNotifyCommand.m in Sources */,
 				F424A6FA1BC801DE0096C431 /* HMUnknownComand.m in Sources */,
-				F4F9F89F1C6CBFF400D0EE76 /* HMFleetTestViewController.m in Sources */,
 				F4C3957418CDDFE500A1E918 /* HMKenzoDockStatus.m in Sources */,
 				F471784D1B6FA18800F5E59D /* HMKCResource.m in Sources */,
 				F4F9F87D1C6B5E4A00D0EE76 /* HMKCMasterSType+CoreDataProperties.m in Sources */,
