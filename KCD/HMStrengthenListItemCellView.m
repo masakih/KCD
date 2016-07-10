@@ -90,6 +90,7 @@
 {
 	NSInteger screw = self.requiredEquipment01.screw.integerValue;
 	if(screw == 0) return nil;
+	if(screw == -1) return @"-/-";
 	
 	return [NSString stringWithFormat:@"%@/%@", self.requiredEquipment01.screw, self.requiredEquipment01.ensureScrew];
 }
@@ -97,6 +98,7 @@
 {
 	NSInteger screw = self.requiredEquipment02.screw.integerValue;
 	if(screw == 0) return nil;
+	if(screw == -1) return @"-/-";
 	
 	return [NSString stringWithFormat:@"%@/%@", self.requiredEquipment02.screw, self.requiredEquipment02.ensureScrew];
 }
@@ -104,6 +106,7 @@
 {
 	NSInteger screw = self.requiredEquipment03.screw.integerValue;
 	if(screw == 0) return nil;
+	if(screw == -1) return @"-/-";
 	
 	return [NSString stringWithFormat:@"%@/%@", self.requiredEquipment03.screw, self.requiredEquipment03.ensureScrew];
 }
