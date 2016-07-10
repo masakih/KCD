@@ -45,6 +45,15 @@
 	return obj;
 }
 
+- (NSString *)numberString
+{
+	NSNumber *number = self.number;
+	if(!number) return nil;
+	if(number.integerValue == -1) return @"-";
+	
+	return [NSString stringWithFormat:@"%@", number];
+}
+
 - (id)description
 {
 	NSString *format =

@@ -35,6 +35,8 @@ typedef NS_ENUM(NSUInteger, EquipmentType) {
 @property (copy, nonatomic) NSNumber *screw;
 @property (copy, nonatomic) NSNumber *ensureScrew;
 
+@property (readonly) NSString *numberString;
+
 @end
 
 
