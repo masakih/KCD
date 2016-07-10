@@ -206,12 +206,12 @@ const NSInteger maxFleetNumber = 4;
 
 -(NSArray<NSString *> *)shipObserveKeys
 {
-	return  [NSArray arrayWithObjects:
-			 @"sakuteki_0",
-			 @"seiku",
-			 @"lv",
-			 @"totalDrums",
-			 nil];
+	static NSArray *array = nil;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		array = @[@"sakuteki_0", @"seiku", @"lv", @"totalDrums"];
+	});
+	return  array;
 }
 
 - (void)setShips:(NSArray<HMKCShipObject *> *)ships
