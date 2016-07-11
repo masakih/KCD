@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment version="101000" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="HMShipViewController">
@@ -97,7 +97,7 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="FL8-Ci-gLs">
-                                                        <rect key="frame" x="0.0" y="0.0" width="90" height="17"/>
+                                                        <rect key="frame" x="13" y="0.0" width="77" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Graf Zeppelin改" id="E0R-q0-YIZ">
                                                             <font key="font" metaFont="system"/>
@@ -105,13 +105,30 @@
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                         <connections>
+                                                            <binding destination="mHq-2t-AXg" name="textColor" keyPath="objectValue.planColor" id="prr-UH-kCE"/>
                                                             <binding destination="mHq-2t-AXg" name="fontBold" keyPath="objectValue.sally_area" id="598-ZP-Ef5">
                                                                 <dictionary key="options">
                                                                     <string key="NSValueTransformerName">HMPlanToShowsBoldFontTransformer</string>
                                                                 </dictionary>
                                                             </binding>
-                                                            <binding destination="mHq-2t-AXg" name="textColor" keyPath="objectValue.planColor" id="prr-UH-kCE"/>
-                                                            <binding destination="mHq-2t-AXg" name="value" keyPath="objectValue.name" id="VZg-Eo-gGu"/>
+                                                            <binding destination="mHq-2t-AXg" name="value" keyPath="objectValue.name" id="uwJ-YT-w3n"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="bx8-sm-mpL">
+                                                        <rect key="frame" x="0.0" y="0.0" width="18" height="17"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="4" id="OZv-SL-t2R">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                        <connections>
+                                                            <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="JvT-rr-Tz2"/>
+                                                            <binding destination="mHq-2t-AXg" name="value" keyPath="objectValue.fleet" id="Qu0-ge-Ook">
+                                                                <dictionary key="options">
+                                                                    <string key="NSValueTransformerName">HMIgnoreZeroTransformer</string>
+                                                                </dictionary>
+                                                            </binding>
                                                         </connections>
                                                     </textField>
                                                 </subviews>
@@ -392,7 +409,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="8CZ-RA-Js4">
-                                                <rect key="frame" x="0.0" y="0.0" width="116" height="17"/>
+                                                <rect key="frame" x="13" y="0.0" width="103" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Graf Zeppelin改" id="aP0-AF-p8o">
                                                     <font key="font" metaFont="system"/>
@@ -400,13 +417,30 @@
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                                 <connections>
+                                                    <binding destination="JDP-Dk-25p" name="value" keyPath="objectValue.name" id="a5G-2Y-BoT"/>
+                                                    <binding destination="JDP-Dk-25p" name="textColor" keyPath="objectValue.planColor" id="aca-qQ-lU8"/>
                                                     <binding destination="JDP-Dk-25p" name="fontBold" keyPath="objectValue.sally_area" id="aDv-sN-1jC">
                                                         <dictionary key="options">
                                                             <string key="NSValueTransformerName">HMPlanToShowsBoldFontTransformer</string>
                                                         </dictionary>
                                                     </binding>
-                                                    <binding destination="JDP-Dk-25p" name="textColor" keyPath="objectValue.planColor" id="aca-qQ-lU8"/>
-                                                    <binding destination="JDP-Dk-25p" name="value" keyPath="objectValue.name" id="a5G-2Y-BoT"/>
+                                                </connections>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="NuW-lo-X8H">
+                                                <rect key="frame" x="0.0" y="0.0" width="18" height="17"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="4" id="mgm-dk-Go2">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="B2Q-Em-kon"/>
+                                                    <binding destination="JDP-Dk-25p" name="value" keyPath="objectValue.fleet" id="LWl-tW-LIl">
+                                                        <dictionary key="options">
+                                                            <string key="NSValueTransformerName">HMIgnoreZeroTransformer</string>
+                                                        </dictionary>
+                                                    </binding>
                                                 </connections>
                                             </textField>
                                         </subviews>
@@ -698,7 +732,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="fMV-SM-AiN">
-                                                <rect key="frame" x="0.0" y="0.0" width="116" height="17"/>
+                                                <rect key="frame" x="13" y="0.0" width="103" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Graf Zeppelin改" id="qTN-CE-m3C">
                                                     <font key="font" metaFont="system"/>
@@ -706,13 +740,30 @@
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                                 <connections>
+                                                    <binding destination="fLC-Bq-fXH" name="value" keyPath="objectValue.name" id="K60-6n-cO4"/>
+                                                    <binding destination="fLC-Bq-fXH" name="textColor" keyPath="objectValue.planColor" id="au2-UN-LaC"/>
                                                     <binding destination="fLC-Bq-fXH" name="fontBold" keyPath="objectValue.sally_area" id="CnU-WY-glu">
                                                         <dictionary key="options">
                                                             <string key="NSValueTransformerName">HMPlanToShowsBoldFontTransformer</string>
                                                         </dictionary>
                                                     </binding>
-                                                    <binding destination="fLC-Bq-fXH" name="textColor" keyPath="objectValue.planColor" id="au2-UN-LaC"/>
-                                                    <binding destination="fLC-Bq-fXH" name="value" keyPath="objectValue.name" id="K60-6n-cO4"/>
+                                                </connections>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="bjq-G7-rC2">
+                                                <rect key="frame" x="0.0" y="0.0" width="18" height="17"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="4" id="2jc-Tc-bi3">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="vjs-ix-osV"/>
+                                                    <binding destination="fLC-Bq-fXH" name="value" keyPath="objectValue.fleet" id="dDC-oo-EZX">
+                                                        <dictionary key="options">
+                                                            <string key="NSValueTransformerName">HMIgnoreZeroTransformer</string>
+                                                        </dictionary>
+                                                    </binding>
                                                 </connections>
                                             </textField>
                                         </subviews>
@@ -970,7 +1021,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="304" height="17"/>
                 <autoresizingMask key="autoresizingMask"/>
             </tableHeaderView>
-            <point key="canvasLocation" x="707.5" y="132"/>
+            <point key="canvasLocation" x="785.5" y="129"/>
         </scrollView>
         <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="mzf-qx-L1i">
             <rect key="frame" x="0.0" y="0.0" width="311" height="352"/>
@@ -1000,11 +1051,11 @@
                                 <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                 <prototypeCellViews>
                                     <tableCellView identifier="name" id="xcP-Rc-pGu">
-                                        <rect key="frame" x="1" y="1" width="116" height="20"/>
+                                        <rect key="frame" x="1" y="1" width="116" height="17"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="gYx-84-mVX">
-                                                <rect key="frame" x="0.0" y="3" width="116" height="17"/>
+                                                <rect key="frame" x="13" y="0.0" width="103" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Graf Zeppelin改" id="rFz-UF-DW3">
                                                     <font key="font" metaFont="system"/>
@@ -1017,6 +1068,23 @@
                                                     <binding destination="xcP-Rc-pGu" name="fontBold" keyPath="objectValue.sally_area" id="x2C-ie-0QK">
                                                         <dictionary key="options">
                                                             <string key="NSValueTransformerName">HMPlanToShowsBoldFontTransformer</string>
+                                                        </dictionary>
+                                                    </binding>
+                                                </connections>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="0aC-0W-cNh">
+                                                <rect key="frame" x="0.0" y="0.0" width="18" height="17"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="4" id="wlp-wT-zu2">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="hSn-r1-c8T"/>
+                                                    <binding destination="xcP-Rc-pGu" name="value" keyPath="objectValue.fleet" id="zEO-Zf-vxF">
+                                                        <dictionary key="options">
+                                                            <string key="NSValueTransformerName">HMIgnoreZeroTransformer</string>
                                                         </dictionary>
                                                     </binding>
                                                 </connections>

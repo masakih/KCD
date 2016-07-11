@@ -104,10 +104,11 @@ NSString *HMFleetManagerCompletePrepareFleetNotification = @"HMFleetManagerCompl
 - (void)updateDeck:(NSNotification *)notification
 {
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-	
 	[nc postNotificationName:HMFleetManagerCompletePrepareFleetNotification object:self];
-	
 	[nc removeObserver:self];
+	
+	_fleetController = [[NSArrayController alloc] initWithContent:_fleets];
+	[_fleetController addObserver:self forKeyPath:@"arrangedObjects.ships" options:0 context:NULL];
 }
 
 @end
