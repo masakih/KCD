@@ -31,6 +31,14 @@
 //{
 //	return @"api_data.api_list";
 //}
+- (NSArray *)ignoreKeys
+{
+	static NSArray *ignoreKeys = nil;
+	if(ignoreKeys) return ignoreKeys;
+	
+	ignoreKeys = @[@"api_lost_badges"];
+	return ignoreKeys;
+}
 - (void)execute
 {
 	NSDictionary *data = [self.json valueForKeyPath:self.dataKey];
