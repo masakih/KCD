@@ -373,7 +373,8 @@ static NSArray *levelUpExps = nil;
 	NSNumber *itemCountValue = [self valueForKey:key];
 	NSNumber *taikuValue = master.tyku;
 	NSInteger itemCount = [itemCountValue integerValue];
-	NSInteger taiku = [taikuValue integerValue];
+	CGFloat taiku = [taikuValue integerValue];
+	taiku += slotItem.level.integerValue * 0.2;
 	if(itemCount && taiku) {
 		totalSeiku += taiku * sqrt(itemCount);
 	}
