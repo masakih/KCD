@@ -17,59 +17,42 @@
 @implementation HMKCSlotItemObject (Extensions)
 - (NSString *)name
 {
-	[self willAccessValueForKey:@"master_slotItem"];
-	NSString *name = [self.master_slotItem valueForKey:@"name"];
-	[self didAccessValueForKey:@"master_slotItem"];
+	NSString *name = self.master_slotItem.name;
 	return name;
 }
 
 - (NSString *)equippedShipName
 {
-	[self willAccessValueForKey:@"equippedShip"];
 	NSString *equippedShipName = self.equippedShip.name;
-	[self didAccessValueForKey:@"equippedShip"];
 	
 	if(!equippedShipName) {
-		[self willAccessValueForKey:@"extraEquippedShip"];
 		equippedShipName = self.extraEquippedShip.name;
-		[self didAccessValueForKey:@"extraEquippedShip"];
 	}
 	return equippedShipName;
 }
 - (NSNumber *)equippedShipLv
 {
-	[self willAccessValueForKey:@"equippedShip"];
 	NSNumber *equippedShipLv = self.equippedShip.lv;
-	[self didAccessValueForKey:@"equippedShip"];
 	
 	if(!equippedShipLv) {
-		[self willAccessValueForKey:@"extraEquippedShip"];
 		equippedShipLv = self.extraEquippedShip.lv;
-		[self didAccessValueForKey:@"extraEquippedShip"];
 	}
 	return equippedShipLv;
 }
 - (NSNumber *)masterSlotItemRare
 {
-	[self willAccessValueForKey:@"master_slotItem"];
-	NSNumber *masterSlotItemRare = [self.master_slotItem valueForKey:@"rare"];
-	[self didAccessValueForKey:@"master_slotItem"];
+	NSNumber *masterSlotItemRare = self.master_slotItem.rare;
 	return masterSlotItemRare;
 }
-- (NSString *)typeName
+- (NSNumber *)typeName
 {
-	[self willAccessValueForKey:@"master_slotItem"];
-	NSString *typeName = [self.master_slotItem valueForKey:@"type_2"];
-	[self didAccessValueForKey:@"master_slotItem"];
+	NSNumber *typeName = self.master_slotItem.type_2;
 	return typeName;
 }
 - (NSNumber *)isLocked
 {
-	[self willAccessValueForKey:@"locked"];
 	NSNumber *locked = self.locked;
-	[self didAccessValueForKey:@"locked"];
 	return locked;
 }
-- (void)setIsLocked:(NSNumber *)isLocked {}
 
 @end

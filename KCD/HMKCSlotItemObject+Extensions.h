@@ -15,7 +15,7 @@
 @property (readonly) NSString *equippedShipName;
 @property (readonly) NSNumber *equippedShipLv;
 @property (readonly) NSNumber *masterSlotItemRare;
-@property (readonly) NSString *typeName;
+@property (readonly) NSNumber *typeName;
 
 @property (readonly) NSNumber *isLocked;
 @end

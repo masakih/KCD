@@ -51,15 +51,9 @@ static NSArray *levelUpExps = nil;
 }
 - (NSNumber *)isMaxKaryoku
 {
-	[self willAccessValueForKey:@"master_ship"];
-	[self willAccessValueForKey:@"karyoku_1"];
-	[self willAccessValueForKey:@"kyouka_0"];
 	NSInteger defaultValue = [self.master_ship.houg_0 integerValue];
 	NSInteger maxValue = [self.karyoku_1 integerValue];
 	NSInteger growth = [self.kyouka_0 integerValue];
-	[self didAccessValueForKey:@"kyouka_0"];
-	[self didAccessValueForKey:@"karyoku_1"];
-	[self didAccessValueForKey:@"master_ship"];
 	
 	return @(defaultValue + growth >= maxValue);
 }
@@ -70,15 +64,9 @@ static NSArray *levelUpExps = nil;
 }
 - (NSNumber *)isMaxRaisou
 {
-	[self willAccessValueForKey:@"master_ship"];
-	[self willAccessValueForKey:@"raisou_1"];
-	[self willAccessValueForKey:@"kyouka_1"];
 	NSInteger defaultValue = [self.master_ship.raig_0 integerValue];
 	NSInteger maxValue = [self.raisou_1 integerValue];
 	NSInteger growth = [self.kyouka_1 integerValue];
-	[self didAccessValueForKey:@"kyouka_1"];
-	[self didAccessValueForKey:@"raisou_1"];
-	[self didAccessValueForKey:@"master_ship"];
 	
 	return @(defaultValue + growth >= maxValue);
 }
@@ -89,15 +77,9 @@ static NSArray *levelUpExps = nil;
 }
 - (NSNumber *)isMaxTaiku
 {
-	[self willAccessValueForKey:@"master_ship"];
-	[self willAccessValueForKey:@"taiku_1"];
-	[self willAccessValueForKey:@"kyouka_2"];
 	NSInteger defaultValue = [self.master_ship.tyku_0 integerValue];
 	NSInteger maxValue = [self.taiku_1 integerValue];
 	NSInteger growth = [self.kyouka_2 integerValue];
-	[self didAccessValueForKey:@"kyouka_2"];
-	[self didAccessValueForKey:@"taiku_1"];
-	[self didAccessValueForKey:@"master_ship"];
 	
 	return @(defaultValue + growth >= maxValue);
 }
@@ -108,15 +90,9 @@ static NSArray *levelUpExps = nil;
 }
 - (NSNumber *)isMaxSoukou
 {
-	[self willAccessValueForKey:@"master_ship"];
-	[self willAccessValueForKey:@"soukou_1"];
-	[self willAccessValueForKey:@"kyouka_3"];
 	NSInteger defaultValue = [self.master_ship.souk_0 integerValue];
 	NSInteger maxValue = [self.soukou_1 integerValue];
 	NSInteger growth = [self.kyouka_3 integerValue];
-	[self didAccessValueForKey:@"kyouka_3"];
-	[self didAccessValueForKey:@"soukou_1"];
-	[self didAccessValueForKey:@"master_ship"];
 	
 	return @(defaultValue + growth >= maxValue);
 }
@@ -127,15 +103,9 @@ static NSArray *levelUpExps = nil;
 }
 - (NSNumber *)isMaxLucky
 {
-	[self willAccessValueForKey:@"master_ship"];
-	[self willAccessValueForKey:@"lucky_1"];
-	[self willAccessValueForKey:@"kyouka_4"];
 	NSInteger defaultValue = [self.master_ship.luck_0 integerValue];
 	NSInteger maxValue = [self.lucky_1 integerValue];
 	NSInteger growth = [self.kyouka_4 integerValue];
-	[self didAccessValueForKey:@"kyouka_4"];
-	[self didAccessValueForKey:@"lucky_1"];
-	[self didAccessValueForKey:@"master_ship"];
 	
 	return @(defaultValue + growth >= maxValue);
 }
@@ -155,9 +125,7 @@ static NSArray *levelUpExps = nil;
 }
 - (NSString *)shortTypeName
 {
-	[self willAccessValueForKey:@"master_ship"];
 	NSNumber *idValue = self.master_ship.stype.id;
-	[self didAccessValueForKey:@"master_ship"];
 	if(!idValue || [idValue isKindOfClass:[NSNull class]]) return nil;
 	
 	if([shortSTypeNames count] < [idValue integerValue]) return nil;
@@ -171,12 +139,8 @@ static NSArray *levelUpExps = nil;
 }
 - (NSNumber *)next
 {
-	[self willAccessValueForKey:@"lv"];
 	id lvValue = self.lv;
-	[self didAccessValueForKey:@"lv"];
-	[self willAccessValueForKey:@"exp"];
 	id expValue = self.exp;
-	[self didAccessValueForKey:@"exp"];
 	
 	NSUInteger currentLevel = [lvValue integerValue];
 	if(currentLevel >= [levelUpExps count]) {
@@ -197,12 +161,8 @@ static NSArray *levelUpExps = nil;
 }
 - (NSInteger)status
 {
-	[self willAccessValueForKey:@"maxhp"];
-	[self willAccessValueForKey:@"nowhp"];
 	NSInteger maxhp = [self.maxhp integerValue];
 	CGFloat nowhp = [self.nowhp integerValue];
-	[self didAccessValueForKey:@"nowhp"];
-	[self didAccessValueForKey:@"maxhp"];
 	
 	CGFloat status = nowhp / maxhp;
 	if(status <= 0.25) {
@@ -224,12 +184,8 @@ static NSArray *levelUpExps = nil;
 }
 - (NSColor *)statusColor
 {
-	[self willAccessValueForKey:@"maxhp"];
-	[self willAccessValueForKey:@"nowhp"];
 	NSInteger maxhp = [self.maxhp integerValue];
 	CGFloat nowhp = [self.nowhp integerValue];
-	[self didAccessValueForKey:@"nowhp"];
-	[self didAccessValueForKey:@"maxhp"];
 	
 	CGFloat status = nowhp / maxhp;
 	if(status <= 0.25) {
@@ -258,9 +214,8 @@ static NSArray *levelUpExps = nil;
 {
 	if(!HMStandardDefaults.showsPlanColor) return [NSColor controlTextColor];
 	
-	[self willAccessValueForKey:@"sally_area"];
 	NSInteger planType = [self.sally_area integerValue];
-	[self didAccessValueForKey:@"sally_area"];
+
 	if(planType == 1) return HMStandardDefaults.plan01Color;
 	if(planType == 2) return HMStandardDefaults.plan02Color;
 	if(planType == 3) return HMStandardDefaults.plan03Color;
@@ -273,24 +228,18 @@ static NSArray *levelUpExps = nil;
 
 - (NSNumber *)maxFuel
 {
-	[self willAccessValueForKey:@"master_ship"];
 	NSNumber *number = self.master_ship.fuel_max;
-	[self didAccessValueForKey:@"master_ship"];
 	return number;
 }
 - (NSNumber *)maxBull
 {
-	[self willAccessValueForKey:@"master_ship"];
 	NSNumber *number = self.master_ship.bull_max;
-	[self didAccessValueForKey:@"master_ship"];
 	return number;
 }
 
 - (NSNumber *)upgradeLevel
 {
-	[self willAccessValueForKey:@"master_ship"];
 	NSNumber *number = self.master_ship.afterlv;
-	[self didAccessValueForKey:@"master_ship"];
 	return number;
 }
 + (NSSet *)keyPathsForValuesAffectingUpgradeExp
@@ -314,13 +263,11 @@ static NSArray *levelUpExps = nil;
 - (NSNumber *)totalEquipment
 {
 	NSInteger total = 0;
-	[self willAccessValueForKey:@"master_ship"];
 	total += self.master_ship.maxeq_0.integerValue;
 	total += self.master_ship.maxeq_1.integerValue;
 	total += self.master_ship.maxeq_2.integerValue;
 	total += self.master_ship.maxeq_3.integerValue;
 	total += self.master_ship.maxeq_4.integerValue;
-	[self didAccessValueForKey:@"master_ship"];
 	return @(total);
 }
 
