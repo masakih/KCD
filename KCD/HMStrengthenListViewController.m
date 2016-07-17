@@ -34,6 +34,7 @@ static NSString *groupNameKey = @"group";
 @end
 
 @implementation HMStrengthenListViewController
+@synthesize itemList = _itemList;
 
 - (id)init
 {
@@ -137,6 +138,40 @@ static NSString *groupNameKey = @"group";
 	self.plistDownloadTask = nil;
 }
 
+- (void)setItemList:(NSArray<HMEnhancementListItem *> *)itemList
+{
+	NSValueTransformer *tf = [NSValueTransformer valueTransformerForName:@"HMSlotItemEquipTypeTransformer"];
+	
+	NSMutableArray<HMEnhancementListItem *> *mutableItemList = [itemList mutableCopy];
+	
+	__block NSNumber *type = nil;
+	NSMutableArray *group = [NSMutableArray array];
+	
+	[itemList enumerateObjectsUsingBlock:^(HMEnhancementListItem * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+		if(![type isEqualToNumber:obj.equipmentType]) {
+			type = obj.equipmentType;
+			[group addObject:@{ @"type" : type, @"index" : @(idx)}];
+		}
+	}];
+	
+	for(NSDictionary *dict in group.reverseObjectEnumerator) {
+		NSUInteger index = [dict[@"index"] integerValue];
+		NSString *typeName = [tf transformedValue:dict[@"type"]];
+		
+		HMEnhancementListItem *item = [HMEnhancementListItem new];
+		item.identifire = typeName;
+		item.equipmentType = @(-1);
+		
+		[mutableItemList insertObject:item atIndex:index];
+	}
+	
+	_itemList = [mutableItemList copy];
+}
+- (NSArray<HMEnhancementListItem *> *)itemList
+{
+	return _itemList;
+}
+
 - (NSArray<HMEnhancementListItem *> *)allItemList
 {
 	NSMutableDictionary<NSString *, HMEnhancementListItem *> *dict = [NSMutableDictionary dictionary];
@@ -185,8 +220,32 @@ static NSString *groupNameKey = @"group";
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
 {
+	HMEnhancementListItem *item = self.itemList[row];
+	if([item.equipmentType isEqualToNumber:@(-1)]) {
+		HMStrengthenListItemCellView *itemView = [tableView makeViewWithIdentifier:@"GroupCell" owner:nil];
+		return itemView;
+	}
 	HMStrengthenListItemCellView *itemView = [tableView makeViewWithIdentifier:@"ItemCell" owner:nil];
 	return itemView;
+}
+
+- (BOOL)tableView:(NSTableView *)tableView isGroupRow:(NSInteger)row
+{
+	HMEnhancementListItem *item = self.itemList[row];
+	if([item.equipmentType isEqualToNumber:@(-1)]) {
+		return YES;
+	}
+	
+	return NO;
+}
+- (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row
+{
+	HMEnhancementListItem *item = self.itemList[row];
+	if([item.equipmentType isEqualToNumber:@(-1)]) {
+		return 23;
+	}
+	
+	return 103;
 }
 
 @end
