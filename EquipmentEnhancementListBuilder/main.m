@@ -107,7 +107,7 @@ int main(int argc, const char * argv[]) {
 			
 			requiredEquipment.identifire = cols[0];
 			requiredEquipment.weekday = @([cols[1] integerValue]);
-			requiredEquipment.equipmentType = cols[2];
+			requiredEquipment.equipmentType = @([cols[2] integerValue]);
 			requiredEquipment.targetEquipment = cols[3];
 			requiredEquipment.remodelEquipment = cols[4];
 			requiredEquipment.secondsShipNames = [cols[5] componentsSeparatedByString:@","];
