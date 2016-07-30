@@ -15,16 +15,12 @@ NSString *HMPortAPIRecieveNotification = @"HMPortAPIRecieveNotification";
 
 - (void)execute
 {
-	[self performSelectorOnMainThread:@selector(notifyOnMainThread:)
-						   withObject:nil
-						waitUntilDone:NO];
+	dispatch_async(dispatch_get_main_queue(), ^{
+		NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+		[nc postNotificationName:HMPortAPIRecieveNotification
+						  object:self
+						userInfo:nil];
+	});
 }
 
-- (void)notifyOnMainThread:(id)dummy
-{
-	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-	[nc postNotificationName:HMPortAPIRecieveNotification
-					  object:self
-					userInfo:nil];
-}
 @end

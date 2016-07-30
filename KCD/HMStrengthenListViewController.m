@@ -194,26 +194,23 @@ static NSString *groupNameKey = @"group";
 	return array;
 }
 
-- (void)refreshTableView
-{
-	if(self.offsetDay == -1) {
-		self.itemList = [self allItemList];
-		return;
-	}
-	
-	NSDate *now = [NSDate dateWithTimeIntervalSinceNow:0.0];
-	NSCalendarUnit unit = NSCalendarUnitWeekday;
-	NSDateComponents *currentDay = [[NSCalendar currentCalendar] components:unit fromDate:now];
-	
-	NSInteger targetWeekday = currentDay.weekday + self.offsetDay;
-	if(targetWeekday > 7) targetWeekday = 1;
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"weekday = %ld", targetWeekday];
-	self.itemList = [self.equipmentStrengthenList filteredArrayUsingPredicate:predicate];
-}
-
 - (void)buildList:(id)dummy
 {
-	[self performSelectorOnMainThread:@selector(refreshTableView) withObject:nil waitUntilDone:NO];
+	dispatch_async(dispatch_get_main_queue(), ^{
+		if(self.offsetDay == -1) {
+			self.itemList = [self allItemList];
+			return;
+		}
+		
+		NSDate *now = [NSDate dateWithTimeIntervalSinceNow:0.0];
+		NSCalendarUnit unit = NSCalendarUnitWeekday;
+		NSDateComponents *currentDay = [[NSCalendar currentCalendar] components:unit fromDate:now];
+		
+		NSInteger targetWeekday = currentDay.weekday + self.offsetDay;
+		if(targetWeekday > 7) targetWeekday = 1;
+		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"weekday = %ld", targetWeekday];
+		self.itemList = [self.equipmentStrengthenList filteredArrayUsingPredicate:predicate];
+	});
 }
 
 #pragma mark - NSTableViewDelegate & NSTableViewDataSource
