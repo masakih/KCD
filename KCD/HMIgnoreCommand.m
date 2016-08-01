@@ -28,7 +28,9 @@ static NSArray *ignoreCommands = nil;
 
 + (BOOL)canExcuteAPI:(NSString *)api
 {
-	return [ignoreCommands containsObject:api];
+	if([ignoreCommands containsObject:api]) return YES;
+	if([api hasPrefix:@"/kcsapi/api_req_ranking/"]) return YES;
+	return NO;
 }
 
 - (void)execute
