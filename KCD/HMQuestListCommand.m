@@ -41,6 +41,11 @@
 }
 - (void)execute
 {
+	// 左のタブがAllじゃない時は無視する
+	NSDictionary *param = self.arguments;
+	NSString *tabID = param[@"api_tab_id"];
+	if(tabID.integerValue != 0) return;
+	
 	NSDictionary *data = [self.json valueForKeyPath:self.dataKey];
 	NSArray *questList = data[@"api_list"];
 	if([questList isKindOfClass:[NSNumber class]] || [questList isKindOfClass:[NSNull class]]) {
