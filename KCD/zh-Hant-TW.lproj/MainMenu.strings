@@ -1,0 +1,243 @@
+
+/* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "5"; */
+"5.title" = "Bring All to Front";
+
+/* Class = "NSMenuItem"; title = "Window"; ObjectID = "19"; */
+"19.title" = "Window";
+
+/* Class = "NSMenuItem"; title = "Minimize"; ObjectID = "23"; */
+"23.title" = "Minimize";
+
+/* Class = "NSMenu"; title = "Window"; ObjectID = "24"; */
+"24.title" = "Window";
+
+/* Class = "NSMenu"; title = "AMainMenu"; ObjectID = "29"; */
+"29.title" = "AMainMenu";
+
+/* Class = "NSMenuItem"; title = "KCD"; ObjectID = "56"; */
+"56.title" = "KCD";
+
+/* Class = "NSMenu"; title = "KCD"; ObjectID = "57"; */
+"57.title" = "KCD";
+
+/* Class = "NSMenuItem"; title = "About KCD"; ObjectID = "58"; */
+"58.title" = "About KCD";
+
+/* Class = "NSMenuItem"; title = "Open…"; ObjectID = "72"; */
+"72.title" = "Open…";
+
+/* Class = "NSMenuItem"; title = "Close"; ObjectID = "73"; */
+"73.title" = "Close";
+
+/* Class = "NSMenuItem"; title = "Save…"; ObjectID = "75"; */
+"75.title" = "Save…";
+
+/* Class = "NSMenu"; title = "File"; ObjectID = "81"; */
+"81.title" = "File";
+
+/* Class = "NSMenuItem"; title = "File"; ObjectID = "83"; */
+"83.title" = "File";
+
+/* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "129"; */
+"129.title" = "Preferences…";
+
+/* Class = "NSMenu"; title = "Services"; ObjectID = "130"; */
+"130.title" = "Services";
+
+/* Class = "NSMenuItem"; title = "Services"; ObjectID = "131"; */
+"131.title" = "Services";
+
+/* Class = "NSMenuItem"; title = "Hide KCD"; ObjectID = "134"; */
+"134.title" = "Hide KCD";
+
+/* Class = "NSMenuItem"; title = "Quit KCD"; ObjectID = "136"; */
+"136.title" = "Quit KCD";
+
+/* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "145"; */
+"145.title" = "Hide Others";
+
+/* Class = "NSMenuItem"; title = "Show All"; ObjectID = "150"; */
+"150.title" = "Show All";
+
+/* Class = "NSMenuItem"; title = "Stop Speaking"; ObjectID = "195"; */
+"195.title" = "Stop Speaking";
+
+/* Class = "NSMenuItem"; title = "Start Speaking"; ObjectID = "196"; */
+"196.title" = "Start Speaking";
+
+/* Class = "NSMenuItem"; title = "Copy"; ObjectID = "197"; */
+"197.title" = "Copy";
+
+/* Class = "NSMenuItem"; title = "Select All"; ObjectID = "198"; */
+"198.title" = "Select All";
+
+/* Class = "NSMenuItem"; title = "Cut"; ObjectID = "199"; */
+"199.title" = "Cut";
+
+/* Class = "NSMenuItem"; title = "Delete"; ObjectID = "202"; */
+"202.title" = "Delete";
+
+/* Class = "NSMenuItem"; title = "Paste"; ObjectID = "203"; */
+"203.title" = "Paste";
+
+/* Class = "NSMenu"; title = "Edit"; ObjectID = "205"; */
+"205.title" = "Edit";
+
+/* Class = "NSMenuItem"; title = "Undo"; ObjectID = "207"; */
+"207.title" = "Undo";
+
+/* Class = "NSMenuItem"; title = "Speech"; ObjectID = "211"; */
+"211.title" = "Speech";
+
+/* Class = "NSMenu"; title = "Speech"; ObjectID = "212"; */
+"212.title" = "Speech";
+
+/* Class = "NSMenuItem"; title = "Redo"; ObjectID = "215"; */
+"215.title" = "Redo";
+
+/* Class = "NSMenuItem"; title = "Edit"; ObjectID = "217"; */
+"217.title" = "Edit";
+
+/* Class = "NSMenuItem"; title = "Zoom"; ObjectID = "239"; */
+"239.title" = "Zoom";
+
+/* Class = "NSMenuItem"; title = "Help"; ObjectID = "490"; */
+"490.title" = "Help";
+
+/* Class = "NSMenu"; title = "Help"; ObjectID = "491"; */
+"491.title" = "Help";
+
+/* Class = "NSMenuItem"; title = "KCD Help"; ObjectID = "492"; */
+"492.title" = "KCD Help";
+
+/* Class = "NSMenuItem"; title = "SlotItem"; ObjectID = "1dX-yC-Onz"; */
+"1dX-yC-Onz.title" = "SlotItem";
+
+/* Class = "NSMenuItem"; title = "Load Local Data..."; ObjectID = "1eX-JA-86F"; */
+"1eX-JA-86F.title" = "Load Local Data...";
+
+/* Class = "NSMenuItem"; title = "Screenshot List"; ObjectID = "5DA-g9-eCS"; */
+"5DA-g9-eCS.title" = "Screenshot List";
+
+/* Class = "NSMenuItem"; title = "Simple"; ObjectID = "5jd-9p-Aur"; */
+"5jd-9p-Aur.title" = "Simple";
+
+/* Class = "NSMenuItem"; title = "Clear Log"; ObjectID = "6D5-CG-8mM"; */
+"6D5-CG-8mM.title" = "Clear Log";
+
+/* Class = "NSMenuItem"; title = "Screen Shot"; ObjectID = "7Fq-TJ-VZE"; */
+"7Fq-TJ-VZE.title" = "Screen Shot";
+
+/* Class = "NSMenuItem"; title = "Add Bookmark..."; ObjectID = "7SK-TN-4tQ"; */
+"7SK-TN-4tQ.title" = "Add Bookmark...";
+
+/* Class = "NSMenuItem"; title = "Remove database file"; ObjectID = "Ccl-EH-65g"; */
+"Ccl-EH-65g.title" = "Remove database file";
+
+/* Class = "NSMenuItem"; title = "Show Combined View"; ObjectID = "FfV-qc-P4a"; */
+"FfV-qc-P4a.title" = "Show Combined View";
+
+/* Class = "NSMenuItem"; title = "Show Equipment Window"; ObjectID = "GcF-z8-Ddi"; */
+"GcF-z8-Ddi.title" = "Show Equipment Window";
+
+/* Class = "NSMenu"; title = "Bookmark"; ObjectID = "H6h-Wd-VXD"; */
+"H6h-Wd-VXD.title" = "Bookmark";
+
+/* Class = "NSMenuItem"; title = "Clear Quset List"; ObjectID = "HhI-qq-nGv"; */
+"HhI-qq-nGv.title" = "Clear Quset List";
+
+/* Class = "NSMenu"; title = "Fleet List"; ObjectID = "KtL-eg-QnH"; */
+"KtL-eg-QnH.title" = "Fleet List";
+
+/* Class = "NSMenuItem"; title = "Above"; ObjectID = "Ljv-Ui-lY8"; */
+"Ljv-Ui-lY8.title" = "Above";
+
+/* Class = "NSMenuItem"; title = "Select Previous Fleet"; ObjectID = "Q3x-8F-nJC"; */
+"Q3x-8F-nJC.title" = "Select Previous Fleet";
+
+/* Class = "NSMenuItem"; title = "Divided"; ObjectID = "SJK-A3-3uA"; */
+"SJK-A3-3uA.title" = "Divided";
+
+/* Class = "NSMenuItem"; title = "Debug"; ObjectID = "TRC-ZR-9HP"; */
+"TRC-ZR-9HP.title" = "Debug";
+
+/* Class = "NSMenuItem"; title = "Repair"; ObjectID = "U2N-Wx-ugY"; */
+"U2N-Wx-ugY.title" = "Repair";
+
+/* Class = "NSMenu"; title = "View"; ObjectID = "Vz8-ph-AM1"; */
+"Vz8-ph-AM1.title" = "View";
+
+/* Class = "NSMenuItem"; title = "Situation"; ObjectID = "Yem-aw-cnP"; */
+"Yem-aw-cnP.title" = "Situation";
+
+/* Class = "NSMenuItem"; title = "Delete Caches and Reload"; ObjectID = "aKj-J2-uzo"; */
+"aKj-J2-uzo.title" = "Delete Caches and Reload";
+
+/* Class = "NSMenuItem"; title = "Show Ownership Ship Window"; ObjectID = "b7n-c5-oSe"; */
+"b7n-c5-oSe.title" = "Show Ownership Ship Window";
+
+/* Class = "NSMenuItem"; title = "Show Map Window"; ObjectID = "bQ2-OZ-YH9"; */
+"bQ2-OZ-YH9.title" = "Show Map Window";
+
+/* Class = "NSMenuItem"; title = "Ship 2"; ObjectID = "cVa-gh-VEf"; */
+"cVa-gh-VEf.title" = "Ship 2";
+
+/* Class = "NSMenuItem"; title = "Show Bookmark"; ObjectID = "eg5-Hn-joP"; */
+"eg5-Hn-joP.title" = "Show Bookmark";
+
+/* Class = "NSMenuItem"; title = "Reload"; ObjectID = "gZf-9I-jGv"; */
+"gZf-9I-jGv.title" = "Reload";
+
+/* Class = "NSMenuItem"; title = "TopToBottom"; ObjectID = "hiE-Nv-1G0"; */
+"hiE-Nv-1G0.title" = "TopToBottom";
+
+/* Class = "NSMenuItem"; title = "New Browser Window"; ObjectID = "jwh-yD-YWK"; */
+"jwh-yD-YWK.title" = "New Browser Window";
+
+/* Class = "NSMenuItem"; title = "Order"; ObjectID = "mSr-GI-6Zz"; */
+"mSr-GI-6Zz.title" = "Order";
+
+/* Class = "NSMenuItem"; title = "History"; ObjectID = "o9G-2b-cSn"; */
+"o9G-2b-cSn.title" = "History";
+
+/* Class = "NSMenuItem"; title = "Save Local Data..."; ObjectID = "o9W-5J-Fwv"; */
+"o9W-5J-Fwv.title" = "Save Local Data...";
+
+/* Class = "NSMenuItem"; title = "Ship 1"; ObjectID = "qeT-8e-gvB"; */
+"qeT-8e-gvB.title" = "Ship 1";
+
+/* Class = "NSMenuItem"; title = "Show Ship Window"; ObjectID = "rWo-Pp-hLc"; */
+"rWo-Pp-hLc.title" = "Show Ship Window";
+
+/* Class = "NSMenu"; title = "Order"; ObjectID = "rkn-Ic-lTk"; */
+"rkn-Ic-lTk.title" = "Order";
+
+/* Class = "NSMenuItem"; title = "LeftToRight"; ObjectID = "sYQ-7k-VJo"; */
+"sYQ-7k-VJo.title" = "LeftToRight";
+
+/* Class = "NSMenu"; title = "Debug"; ObjectID = "t7H-yt-6so"; */
+"t7H-yt-6so.title" = "Debug";
+
+/* Class = "NSMenuItem"; title = "View"; ObjectID = "tAR-BV-xdI"; */
+"tAR-BV-xdI.title" = "View";
+
+/* Class = "NSMenuItem"; title = "Upgradable Ship"; ObjectID = "tF1-uX-NEg"; */
+"tF1-uX-NEg.title" = "Upgradable Ship";
+
+/* Class = "NSMenuItem"; title = "Window Adjuster"; ObjectID = "uYj-hc-FOY"; */
+"uYj-hc-FOY.title" = "Window Adjuster";
+
+/* Class = "NSMenuItem"; title = "GradeUp"; ObjectID = "y18-nA-SS3"; */
+"y18-nA-SS3.title" = "GradeUp";
+
+/* Class = "NSMenuItem"; title = "Fleet List"; ObjectID = "y5i-Ab-gfR"; */
+"y5i-Ab-gfR.title" = "Fleet List";
+
+/* Class = "NSMenuItem"; title = "Below"; ObjectID = "y9Q-QO-snI"; */
+"y9Q-QO-snI.title" = "Below";
+
+/* Class = "NSMenuItem"; title = "Bookmark"; ObjectID = "yi1-h1-D39"; */
+"yi1-h1-D39.title" = "Bookmark";
+
+/* Class = "NSMenuItem"; title = "Select Next Fleet"; ObjectID = "zEh-tr-mhX"; */
+"zEh-tr-mhX.title" = "Select Next Fleet";

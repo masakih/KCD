@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="HMResourceViewController">
+            <connections>
+                <outlet property="basicController" destination="3oV-La-Kt3" id="VKo-Dh-mw9"/>
+                <outlet property="shipController" destination="IVi-pf-Aix" id="xhF-ug-rPK"/>
+                <outlet property="view" destination="1MO-Pt-VWY" id="To0-7W-Cnu"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <objectController mode="entity" entityName="Material" editable="NO" automaticallyPreparesContent="YES" id="sGD-jN-K4W" userLabel="Material">
+            <connections>
+                <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="Bh3-55-6fa"/>
+            </connections>
+        </objectController>
+        <arrayController mode="entity" entityName="Ship" editable="NO" automaticallyPreparesContent="YES" id="IVi-pf-Aix" userLabel="Ship">
+            <connections>
+                <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="bp4-6F-hbk"/>
+            </connections>
+        </arrayController>
+        <arrayController mode="entity" entityName="Basic" editable="NO" automaticallyPreparesContent="YES" id="3oV-La-Kt3" userLabel="Basic">
+            <connections>
+                <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="e0O-TD-JQ0"/>
+            </connections>
+        </arrayController>
+        <arrayController mode="entity" entityName="SlotItem" editable="NO" automaticallyPreparesContent="YES" id="wdd-MS-AVm" userLabel="SlotItem">
+            <connections>
+                <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="51j-FI-BhR"/>
+            </connections>
+        </arrayController>
+        <customView id="1MO-Pt-VWY">
+            <rect key="frame" x="0.0" y="0.0" width="352" height="103"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <box verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="TAs-Z0-HON">
+                    <rect key="frame" x="11" y="69" width="329" height="5"/>
+                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <font key="titleFont" metaFont="system"/>
+                </box>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pbz-zc-m0a">
+                    <rect key="frame" x="18" y="47" width="30" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="油：" id="OOc-p2-nak">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jSq-lq-r2A">
+                    <rect key="frame" x="47" y="48" width="58" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="123,456" id="khk-Fx-0Sr">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="I0l-mt-VHP"/>
+                        <binding destination="sGD-jN-K4W" name="value" keyPath="selection.fuel" id="Ioi-d0-mHa"/>
+                    </connections>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0jI-DX-wvy">
+                    <rect key="frame" x="18" y="24" width="30" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="弾：" id="caa-Yt-7sH">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hh9-mi-7o3">
+                    <rect key="frame" x="47" y="25" width="58" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="123,456" id="UgO-e7-NJX">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="Cjk-jy-rfK"/>
+                        <binding destination="sGD-jN-K4W" name="value" keyPath="selection.bull" id="se7-3h-ga0"/>
+                    </connections>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2uq-H5-eb3">
+                    <rect key="frame" x="108" y="48" width="56" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="鉄：" id="bbs-3r-2PL">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Buq-Ef-oiE">
+                    <rect key="frame" x="163" y="48" width="58" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="123,456" id="DnK-h9-LLL">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="KT7-sw-Y6m"/>
+                        <binding destination="sGD-jN-K4W" name="value" keyPath="selection.steel" id="ecP-yP-VVp"/>
+                    </connections>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fzi-8b-HJJ">
+                    <rect key="frame" x="108" y="25" width="56" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="ボーキ：" id="xhk-Fw-2Re">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dpL-F2-tIB">
+                    <rect key="frame" x="163" y="25" width="58" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="123,456" id="Dgx-b3-zYf">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="6Nm-L4-G2t"/>
+                        <binding destination="sGD-jN-K4W" name="value" keyPath="selection.bauxite" id="A1p-Rj-MJt"/>
+                    </connections>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wF0-59-deC">
+                    <rect key="frame" x="108" y="2" width="56" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="バケツ：" id="Psw-z9-CyC">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jIF-Vx-Ore">
+                    <rect key="frame" x="163" y="2" width="50" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="12,345" id="eSg-2O-mMP">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="4NE-H7-VR1"/>
+                        <binding destination="sGD-jN-K4W" name="value" keyPath="selection.kousokushuhuku" id="dId-mn-rKl"/>
+                    </connections>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EVm-HL-pIG">
+                    <rect key="frame" x="224" y="25" width="69" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="改修資材：" id="bp4-7X-Y4C">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cDs-nw-aC8">
+                    <rect key="frame" x="292" y="26" width="41" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="1,234" id="Dmc-L8-eZV">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="CFU-yp-oRA"/>
+                        <binding destination="sGD-jN-K4W" name="value" keyPath="selection.screw" id="l1y-08-6JI"/>
+                    </connections>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NRa-hf-lX4">
+                    <rect key="frame" x="224" y="2" width="69" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="バーナー：" id="MaZ-rV-nig">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Yo-zp-asa">
+                    <rect key="frame" x="292" y="2" width="41" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="1,234" id="iBB-VR-fGg">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="v1b-my-GDt"/>
+                        <binding destination="sGD-jN-K4W" name="value" keyPath="selection.kousokukenzo" id="MZr-qt-ttx"/>
+                    </connections>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hxY-LT-yej">
+                    <rect key="frame" x="292" y="48" width="41" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="1,234" id="UGX-sj-Mct">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="kLw-zd-iUz"/>
+                        <binding destination="sGD-jN-K4W" name="value" keyPath="selection.kaihatusizai" id="rTI-nc-t3e"/>
+                    </connections>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="icZ-Y6-wZC">
+                    <rect key="frame" x="224" y="48" width="69" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="開発：" id="cMZ-qY-TLr">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3LS-D9-NHl">
+                    <rect key="frame" x="117" y="80" width="51" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="999/999" id="q8P-vC-JIx" customClass="HMStrokeTextFieldCell">
+                        <font key="font" size="13" name="Helvetica"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="IVi-pf-Aix" name="displayPatternValue1" keyPath="arrangedObjects.@count" id="7xt-p3-exG">
+                            <dictionary key="options">
+                                <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
+                            </dictionary>
+                        </binding>
+                        <binding destination="3oV-La-Kt3" name="displayPatternValue2" keyPath="selection.max_chara" previousBinding="7xt-p3-exG" id="Lvi-EP-EVQ">
+                            <dictionary key="options">
+                                <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
+                            </dictionary>
+                        </binding>
+                        <binding destination="-2" name="textColor" keyPath="shipNumberColor" id="BLy-Xq-c9m"/>
+                    </connections>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6bF-9E-LIx">
+                    <rect key="frame" x="26" y="80" width="95" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="艦娘入居状況：" id="Mjc-VP-2DY">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Lj-Yk-pkb">
+                    <rect key="frame" x="268" y="80" width="66" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="1999/1999" id="y6E-Nb-6oy">
+                        <font key="font" size="13" name="Helvetica"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="wdd-MS-AVm" name="displayPatternValue1" keyPath="arrangedObjects.@count" id="4SL-65-abw">
+                            <dictionary key="options">
+                                <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
+                            </dictionary>
+                        </binding>
+                        <binding destination="3oV-La-Kt3" name="displayPatternValue2" keyPath="selection.max_slotitem" previousBinding="4SL-65-abw" id="SJp-yX-Fqs">
+                            <dictionary key="options">
+                                <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Iui-TE-Dcw">
+                    <rect key="frame" x="203" y="80" width="69" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="倉庫状況：" id="An9-yO-CCk">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ssb-eY-F4t">
+                    <rect key="frame" x="180" y="76" width="15" height="22"/>
+                    <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="9" id="snU-3a-0HH"/>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="minimumColoredShipCount" id="5Jg-wN-va8"/>
+                    </connections>
+                </stepper>
+                <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JGC-t2-usB">
+                    <rect key="frame" x="169" y="78" width="15" height="19"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" focusRingType="none" alignment="right" title="9" drawsBackground="YES" id="69t-vj-KJ7">
+                        <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="309" maximumFractionDigits="3" id="hpk-eB-Q8e"/>
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="minimumColoredShipCount" id="PON-xi-PoW"/>
+                    </connections>
+                </textField>
+            </subviews>
+            <point key="canvasLocation" x="585" y="-82.5"/>
+        </customView>
+    </objects>
+</document>

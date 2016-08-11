@@ -1,0 +1,12 @@
+
+/* Class = "NSButtonCell"; title = "閉じる"; ObjectID = "2tP-La-LYA"; */
+"2tP-La-LYA.title" = "閉じる";
+
+/* Class = "NSMenuItem"; title = "削除"; ObjectID = "Jun-Ih-Oad"; */
+"Jun-Ih-Oad.title" = "削除";
+
+/* Class = "NSMenuItem"; title = "編集..."; ObjectID = "Onj-yS-RSu"; */
+"Onj-yS-RSu.title" = "編集...";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "jyQ-wl-Tql"; */
+"jyQ-wl-Tql.title" = "Text Cell";

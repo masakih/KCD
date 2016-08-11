@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+    <dependencies>
+        <deployment version="101000" identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9532"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="HMPowerUpSupportViewController">
+            <connections>
+                <outlet property="shipController" destination="b8v-Gn-JZD" id="HWc-JG-I1c"/>
+                <outlet property="typeSegment" destination="oAr-IJ-cOj" id="cdh-k4-b1A"/>
+                <outlet property="view" destination="1" id="2"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="1">
+            <rect key="frame" x="0.0" y="0.0" width="323" height="424"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="3B2-Jy-NLq">
+                    <rect key="frame" x="6" y="8" width="311" height="354"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
+                    <clipView key="contentView" id="gHP-Wh-ryl">
+                        <rect key="frame" x="1" y="17" width="304" height="334"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveName="powerupsupportview" headerView="xz8-nE-DgQ" id="HLz-Kp-DN2">
+                                <rect key="frame" x="0.0" y="0.0" width="309" height="336"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <size key="intercellSpacing" width="3" height="2"/>
+                                <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                <tableColumns>
+                                    <tableColumn identifier="name" editable="NO" width="110" minWidth="83" maxWidth="110" id="82a-ca-AZb">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="名前">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
+                                        </tableHeaderCell>
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="m2O-RV-D2n">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <connections>
+                                                <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="Tjw-gU-VAU"/>
+                                            </connections>
+                                        </textFieldCell>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.name" id="Wdl-aY-u3L">
+                                                <dictionary key="options">
+                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                </dictionary>
+                                            </binding>
+                                            <binding destination="b8v-Gn-JZD" name="textColor" keyPath="arrangedObjects.planColor" id="UHh-9X-yQ0"/>
+                                            <binding destination="b8v-Gn-JZD" name="fontBold" keyPath="arrangedObjects.sally_area" id="XLY-9p-IPT">
+                                                <dictionary key="options">
+                                                    <string key="NSValueTransformerName">HMPlanToShowsBoldFontTransformer</string>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
+                                    </tableColumn>
+                                    <tableColumn identifier="lv" editable="NO" width="38" minWidth="38" maxWidth="38" id="u6A-sR-Kyv">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Lv.">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                        </tableHeaderCell>
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="right" title="100" id="S64-3w-pbh">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.lv" id="qEu-ub-xiv"/>
+                                        </connections>
+                                    </tableColumn>
+                                    <tableColumn identifier="karyoku" editable="NO" width="28" minWidth="28" maxWidth="28" id="G9R-OQ-qxc">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="火力">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                        </tableHeaderCell>
+                                        <buttonCell key="dataCell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="only" controlSize="small" inset="2" id="Rk8-XT-UgL">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="smallSystem"/>
+                                        </buttonCell>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.isMaxKaryoku" id="kFw-53-Ztq"/>
+                                        </connections>
+                                    </tableColumn>
+                                    <tableColumn identifier="raisou" editable="NO" width="28" minWidth="28" maxWidth="28" id="h1X-yX-kBd">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="雷装">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                        </tableHeaderCell>
+                                        <buttonCell key="dataCell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="only" controlSize="small" inset="2" id="Vx2-b7-yJ4">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="smallSystem"/>
+                                        </buttonCell>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.isMaxRaisou" id="4Et-xX-GBO"/>
+                                        </connections>
+                                    </tableColumn>
+                                    <tableColumn identifier="taiku" editable="NO" width="28" minWidth="28" maxWidth="28" id="kOg-s3-rC4">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="対空">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                        </tableHeaderCell>
+                                        <buttonCell key="dataCell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="only" controlSize="small" inset="2" id="WkI-lc-Ls6">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="smallSystem"/>
+                                        </buttonCell>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.isMaxTaiku" id="Fbm-nQ-g0X"/>
+                                        </connections>
+                                    </tableColumn>
+                                    <tableColumn identifier="soukou" editable="NO" width="28" minWidth="28" maxWidth="28" id="whd-ZR-lLz">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="装甲">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                        </tableHeaderCell>
+                                        <buttonCell key="dataCell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="only" controlSize="small" inset="2" id="Exb-sJ-p8J">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="smallSystem"/>
+                                        </buttonCell>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.isMaxSoukou" id="rId-U9-Y9l"/>
+                                        </connections>
+                                    </tableColumn>
+                                    <tableColumn identifier="lucky" editable="NO" width="28" minWidth="28" maxWidth="28" id="zY7-Tf-YmF">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="運">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                        </tableHeaderCell>
+                                        <buttonCell key="dataCell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="only" controlSize="small" inset="2" id="OLr-3a-Vgv">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="smallSystem"/>
+                                        </buttonCell>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.isMaxLucky" id="urS-pg-8CB"/>
+                                        </connections>
+                                    </tableColumn>
+                                </tableColumns>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </clipView>
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="edk-ob-MlH">
+                        <rect key="frame" x="1" y="335" width="304" height="16"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="B9P-a1-x7u">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <tableHeaderView key="headerView" id="xz8-nE-DgQ">
+                        <rect key="frame" x="0.0" y="0.0" width="309" height="17"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </tableHeaderView>
+                </scrollView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="FZQ-ab-vfc">
+                    <rect key="frame" x="4" y="399" width="66" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="999 Ships" id="TeI-HB-SYu">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="b8v-Gn-JZD" name="displayPatternValue1" keyPath="arrangedObjects.@count" id="ElJ-BE-vFz">
+                            <dictionary key="options">
+                                <string key="NSDisplayPattern">%{value1}@ ships</string>
+                            </dictionary>
+                        </binding>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="F4C-gV-FCX"/>
+                    </connections>
+                </textField>
+                <segmentedControl verticalHuggingPriority="750" id="oAr-IJ-cOj">
+                    <rect key="frame" x="4" y="368" width="315" height="24"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="b1J-je-IDl">
+                        <font key="font" metaFont="system"/>
+                        <segments>
+                            <segment label="All" width="35" selected="YES"/>
+                            <segment label="駆逐" width="39" tag="1"/>
+                            <segment label="軽巡" width="39" tag="2"/>
+                            <segment label="重巡" width="39" tag="3"/>
+                            <segment label="空母" width="39" tag="4"/>
+                            <segment label="戦艦" width="38" tag="5"/>
+                            <segment label="潜水" width="38" tag="6"/>
+                            <segment label="他" width="35" tag="7"/>
+                        </segments>
+                    </segmentedCell>
+                    <connections>
+                        <action selector="changeCategory:" target="-2" id="0up-5E-fLg"/>
+                    </connections>
+                </segmentedControl>
+                <button id="1zs-Vq-5x3">
+                    <rect key="frame" x="90" y="398" width="48" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="火力" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="dhe-tG-3cL">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="changeCategory:" target="-2" id="RB4-r4-4dE"/>
+                        <binding destination="O24-QT-DRL" name="value" keyPath="values.hideMaxKaryoku" id="pjl-ZT-Jng"/>
+                    </connections>
+                </button>
+                <button id="bme-k0-rWL">
+                    <rect key="frame" x="138" y="398" width="48" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="雷装" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="VHm-25-m9p">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="changeCategory:" target="-2" id="WPv-Ld-FDo"/>
+                        <binding destination="O24-QT-DRL" name="value" keyPath="values.hideMaxRaisou" id="mo0-eD-bz5"/>
+                    </connections>
+                </button>
+                <button id="6XO-ev-1Mj">
+                    <rect key="frame" x="186" y="398" width="48" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="対空" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="uwe-h9-3aH">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="changeCategory:" target="-2" id="sjT-Qp-Os5"/>
+                        <binding destination="O24-QT-DRL" name="value" keyPath="values.hideMaxTaiku" id="jvU-9d-Va0"/>
+                    </connections>
+                </button>
+                <button id="jGM-rA-FMz">
+                    <rect key="frame" x="234" y="398" width="48" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="装甲" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="hFv-rt-7rt">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="changeCategory:" target="-2" id="hgX-Fj-fKS"/>
+                        <binding destination="O24-QT-DRL" name="value" keyPath="values.hideMaxSoukou" id="6nB-zE-Y6l"/>
+                    </connections>
+                </button>
+                <button id="aEI-HV-qk7">
+                    <rect key="frame" x="282" y="398" width="35" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="運" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Uzw-uL-ANY">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="changeCategory:" target="-2" id="OSZ-DD-oFK"/>
+                        <binding destination="O24-QT-DRL" name="value" keyPath="values.hideMaxLucky" id="abr-iX-GlJ"/>
+                    </connections>
+                </button>
+            </subviews>
+            <point key="canvasLocation" x="139.5" y="154"/>
+        </customView>
+        <arrayController mode="entity" entityName="Ship" fetchPredicateFormat="id != -2" editable="NO" automaticallyPreparesContent="YES" automaticallyRearrangesObjects="YES" id="b8v-Gn-JZD" userLabel="Ship">
+            <connections>
+                <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="mMh-Jt-CpI"/>
+            </connections>
+        </arrayController>
+        <userDefaultsController representsSharedInstance="YES" id="O24-QT-DRL"/>
+    </objects>
+</document>
