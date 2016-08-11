@@ -491,6 +491,16 @@
 		F497F63E1D5B7CE600A8F609 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/SlotItemShortName.plist"; sourceTree = "<group>"; };
 		F497F63F1D5B7CE700A8F609 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/Taihi.txt"; sourceTree = "<group>"; };
 		F497F6461D5CABA000A8F609 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/HMBookmarkListViewController.strings"; sourceTree = "<group>"; };
+		F497F6481D5CD30100A8F609 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/HMGameViewController.strings"; sourceTree = "<group>"; };
+		F497F64A1D5CD31A00A8F609 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/HMVerticalFleetViewController.strings"; sourceTree = "<group>"; };
+		F497F64C1D5CD32900A8F609 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/HMCombileViewController.strings"; sourceTree = "<group>"; };
+		F497F64E1D5CD34400A8F609 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/HMBookmarkEditorViewController.strings"; sourceTree = "<group>"; };
+		F497F6501D5CD35000A8F609 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/HMExternalBrowserWindowController.strings"; sourceTree = "<group>"; };
+		F497F6521D5CD36500A8F609 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/HMProgressPanel.strings"; sourceTree = "<group>"; };
+		F497F6541D5CD3AA00A8F609 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/HMShipMasterDetailWindowController.strings"; sourceTree = "<group>"; };
+		F497F6561D5CD3DC00A8F609 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/HMJSONViewWindowController.strings"; sourceTree = "<group>"; };
+		F497F6581D5CD3ED00A8F609 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/HMShipWindowController.strings"; sourceTree = "<group>"; };
+		F497F65A1D5CD40F00A8F609 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/HMUITestWindowController.strings"; sourceTree = "<group>"; };
 		F49828FA1902A226000D6BBE /* HMStrokeTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMStrokeTextFieldCell.h; sourceTree = "<group>"; };
 		F49828FB1902A226000D6BBE /* HMStrokeTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMStrokeTextFieldCell.m; sourceTree = "<group>"; };
 		F499E88E1B5D4E7F00189029 /* HMPortNotifyCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPortNotifyCommand.h; sourceTree = "<group>"; };
@@ -1959,6 +1969,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F4B3DC3718E5C8650011B4FC /* ja */,
+				F497F6581D5CD3ED00A8F609 /* zh-Hant-TW */,
 			);
 			name = HMShipWindowController.xib;
 			sourceTree = "<group>";
@@ -1967,6 +1978,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F4B3DC3A18E5C8700011B4FC /* ja */,
+				F497F6561D5CD3DC00A8F609 /* zh-Hant-TW */,
 			);
 			name = HMJSONViewWindowController.xib;
 			sourceTree = "<group>";
@@ -2047,6 +2059,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F4BEEFFD1B11A5A7004702B8 /* ja */,
+				F497F6501D5CD35000A8F609 /* zh-Hant-TW */,
 			);
 			name = HMExternalBrowserWindowController.xib;
 			sourceTree = "<group>";
@@ -2091,6 +2104,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F4BEF00C1B11A628004702B8 /* ja */,
+				F497F6541D5CD3AA00A8F609 /* zh-Hant-TW */,
 			);
 			name = HMShipMasterDetailWindowController.xib;
 			sourceTree = "<group>";
@@ -2099,6 +2113,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F4BEF00F1B11A645004702B8 /* ja */,
+				F497F65A1D5CD40F00A8F609 /* zh-Hant-TW */,
 			);
 			name = HMUITestWindowController.xib;
 			sourceTree = "<group>";
@@ -2116,6 +2131,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F4C6685B1C54510E00601AFB /* ja */,
+				F497F64E1D5CD34400A8F609 /* zh-Hant-TW */,
 			);
 			name = HMBookmarkEditorViewController.xib;
 			sourceTree = "<group>";
@@ -2133,6 +2149,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F4C668611C54517500601AFB /* ja */,
+				F497F6481D5CD30100A8F609 /* zh-Hant-TW */,
 			);
 			name = HMGameViewController.xib;
 			sourceTree = "<group>";
@@ -2141,6 +2158,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F4C668641C54518F00601AFB /* ja */,
+				F497F6521D5CD36500A8F609 /* zh-Hant-TW */,
 			);
 			name = HMProgressPanel.xib;
 			sourceTree = "<group>";
@@ -2176,6 +2194,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F4C668701C54524900601AFB /* ja */,
+				F497F64A1D5CD31A00A8F609 /* zh-Hant-TW */,
 			);
 			name = HMVerticalFleetViewController.xib;
 			sourceTree = "<group>";
@@ -2184,6 +2203,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F4C668731C54525300601AFB /* ja */,
+				F497F64C1D5CD32900A8F609 /* zh-Hant-TW */,
 			);
 			name = HMCombileViewController.xib;
 			sourceTree = "<group>";

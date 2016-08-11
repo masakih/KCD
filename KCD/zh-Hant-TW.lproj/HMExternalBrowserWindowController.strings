@@ -1,0 +1,48 @@
+
+/* Class = "NSToolbarItem"; label = "URL Lock"; ObjectID = "3km-dZ-tV1"; */
+"3km-dZ-tV1.label" = "URL Lock";
+
+/* Class = "NSToolbarItem"; paletteLabel = "URL Lock"; ObjectID = "3km-dZ-tV1"; */
+"3km-dZ-tV1.paletteLabel" = "URL Lock";
+
+/* Class = "NSToolbarItem"; label = "Resize Lock"; ObjectID = "DmT-Fb-EfY"; */
+"DmT-Fb-EfY.label" = "Resize Lock";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Resize Lock"; ObjectID = "DmT-Fb-EfY"; */
+"DmT-Fb-EfY.paletteLabel" = "Resize Lock";
+
+/* Class = "NSButtonCell"; title = "UR"; ObjectID = "EsD-AX-Gm6"; */
+"EsD-AX-Gm6.title" = "UR";
+
+/* Class = "NSWindow"; title = "Window"; ObjectID = "F0z-JX-Cv5"; */
+"F0z-JX-Cv5.title" = "Window";
+
+/* Class = "NSToolbarItem"; label = "Scroll Lock"; ObjectID = "QwU-Py-Vzr"; */
+"QwU-Py-Vzr.label" = "Scroll Lock";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Scroll Lock"; ObjectID = "QwU-Py-Vzr"; */
+"QwU-Py-Vzr.paletteLabel" = "Scroll Lock";
+
+/* Class = "NSToolbarItem"; label = "Address"; ObjectID = "dk4-x0-fn2"; */
+"dk4-x0-fn2.label" = "Address";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Address"; ObjectID = "dk4-x0-fn2"; */
+"dk4-x0-fn2.paletteLabel" = "Address";
+
+/* Class = "NSToolbarItem"; label = "Home"; ObjectID = "fQm-0j-yZH"; */
+"fQm-0j-yZH.label" = "Home";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Home"; ObjectID = "fQm-0j-yZH"; */
+"fQm-0j-yZH.paletteLabel" = "Home";
+
+/* Class = "NSButtonCell"; title = "RS"; ObjectID = "gLF-bQ-UuT"; */
+"gLF-bQ-UuT.title" = "RS";
+
+/* Class = "NSButtonCell"; title = "SC"; ObjectID = "lE8-PW-EdX"; */
+"lE8-PW-EdX.title" = "SC";
+
+/* Class = "NSToolbarItem"; label = "Navi"; ObjectID = "yBb-7R-Qfc"; */
+"yBb-7R-Qfc.label" = "Navi";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Navi"; ObjectID = "yBb-7R-Qfc"; */
+"yBb-7R-Qfc.paletteLabel" = "Navi";

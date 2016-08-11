@@ -1,0 +1,57 @@
+
+/* Class = "NSBox"; title = "Box"; ObjectID = "5hv-Zw-U2p"; */
+"5hv-Zw-U2p.title" = "Box";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "6d0-b9-g3t"; */
+"6d0-b9-g3t.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "75Z-B0-gr6"; */
+"75Z-B0-gr6.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "艦隊："; ObjectID = "7Po-Oi-WHz"; */
+"7Po-Oi-WHz.title" = "艦隊：";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "BMb-JD-9H1"; */
+"BMb-JD-9H1.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "Dbm-fk-YAj"; */
+"Dbm-fk-YAj.title" = "Text Cell";
+
+/* Class = "BindingConnection"; ibShadowedDisplayName = "predicate"; ObjectID = "DlW-od-1H0"; */
+"DlW-od-1H0.ibShadowedDisplayName" = "predicate";
+
+/* Class = "NSWindow"; title = "Ownership Ship Window"; ObjectID = "F0z-JX-Cv5"; */
+"F0z-JX-Cv5.title" = "Ownership Ship Window";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "ZrP-a7-zC2"; */
+"ZrP-a7-zC2.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "bCm-Vb-H7x"; */
+"bCm-Vb-H7x.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "所属艦娘："; ObjectID = "bQ3-Rq-cpJ"; */
+"bQ3-Rq-cpJ.title" = "所属艦娘：";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "byL-vk-907"; */
+"byL-vk-907.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "hd0-fK-1Ba"; */
+"hd0-fK-1Ba.title" = "Text Cell";
+
+/* Class = "NSBox"; title = "Box"; ObjectID = "kmw-8z-kp1"; */
+"kmw-8z-kp1.title" = "Box";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "onm-2e-wgl"; */
+"onm-2e-wgl.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "装備："; ObjectID = "peg-bA-Vqf"; */
+"peg-bA-Vqf.title" = "装備：";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "q08-F0-MUD"; */
+"q08-F0-MUD.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "諸元："; ObjectID = "sN2-pw-JwP"; */
+"sN2-pw-JwP.title" = "諸元：";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "zQQ-NL-GAZ"; */
+"zQQ-NL-GAZ.title" = "Text Cell";
