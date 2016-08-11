@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="9531"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="HMExternalBrowserWindowController">
+            <connections>
+                <outlet property="goSegment" destination="TLp-GC-eT2" id="OZi-HB-8MM"/>
+                <outlet property="webView" destination="Vpq-H1-y1B" id="wm8-wa-ayH"/>
+                <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" frameAutosaveName="externalBrowserWindow" animationBehavior="default" id="F0z-JX-Cv5">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="850" height="631"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
+            <view key="contentView" id="se5-gp-TjO">
+                <rect key="frame" x="0.0" y="0.0" width="850" height="631"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <webView id="Vpq-H1-y1B">
+                        <rect key="frame" x="0.0" y="0.0" width="850" height="631"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                        <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12">
+                            <nil key="identifier"/>
+                        </webPreferences>
+                        <connections>
+                            <outlet property="policyDelegate" destination="-2" id="5gY-jp-abU"/>
+                        </connections>
+                    </webView>
+                </subviews>
+            </view>
+            <toolbar key="toolbar" implicitIdentifier="5B7CBCD4-15D6-41E0-B4FD-96F089B89683" explicitIdentifier="externalBrowserWindowToolbar" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="SpO-Qb-h0u">
+                <allowedToolbarItems>
+                    <toolbarItem implicitItemIdentifier="D74BA0C4-BF39-447F-8B06-F4B1EF0BE5EC" label="Address" paletteLabel="Address" id="dk4-x0-fn2">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="200" height="22"/>
+                        <size key="maxSize" width="40000000" height="22"/>
+                        <textField key="view" verticalHuggingPriority="750" id="g1V-ng-7Ik">
+                            <rect key="frame" x="0.0" y="14" width="241" height="22"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="Wm7-Gz-0Q2">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                            <connections>
+                                <binding destination="-2" name="enabled" keyPath="canMovePage" previousBinding="XNO-ln-Wxl" id="610-oc-a1H"/>
+                                <binding destination="-2" name="editable" keyPath="canMovePage" id="XNO-ln-Wxl"/>
+                                <binding destination="Bwc-hB-eRh" name="value" keyPath="selection.mainFrameURL" id="vuh-9N-P9x"/>
+                            </connections>
+                        </textField>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="C8E49B13-1DFD-4FC0-8FB4-B65AB8673D2C" label="Navi" paletteLabel="Navi" id="yBb-7R-Qfc">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="51" height="25"/>
+                        <size key="maxSize" width="53" height="25"/>
+                        <segmentedControl key="view" verticalHuggingPriority="750" id="TLp-GC-eT2">
+                            <rect key="frame" x="14" y="14" width="51" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="momentary" id="g7f-xt-fZd">
+                                <font key="font" metaFont="system"/>
+                                <segments>
+                                    <segment image="NSGoLeftTemplate" width="24">
+                                        <nil key="label"/>
+                                    </segment>
+                                    <segment image="NSGoRightTemplate" width="24" tag="1">
+                                        <nil key="label"/>
+                                    </segment>
+                                </segments>
+                            </segmentedCell>
+                            <connections>
+                                <action selector="clickGoBackSegment:" target="-2" id="eIq-se-YwF"/>
+                            </connections>
+                        </segmentedControl>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="6550A6B2-0DD9-4DC6-BEE3-CB1A4CFC1A7C" label="Home" paletteLabel="Home" image="NSHomeTemplate" id="fQm-0j-yZH">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="34" height="25"/>
+                        <size key="maxSize" width="34" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="2HZ-Ws-7pY">
+                            <rect key="frame" x="19" y="14" width="34" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSHomeTemplate" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RNx-lC-wD6">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <binding destination="-2" name="enabled" keyPath="canMovePage" id="oTe-BE-JvZ"/>
+                            </connections>
+                        </button>
+                        <connections>
+                            <action selector="goHome:" target="-2" id="7WE-aZ-0yM"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="D8C9124A-CB95-4031-BDD2-16E6A7807759" label="Scroll Lock" paletteLabel="Scroll Lock" id="QwU-Py-Vzr">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="34" height="25"/>
+                        <size key="maxSize" width="34" height="32"/>
+                        <button key="view" verticalHuggingPriority="750" id="lIn-uu-eHu">
+                            <rect key="frame" x="0.0" y="14" width="34" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" title="SC" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lE8-PW-EdX">
+                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <binding destination="-2" name="value" keyPath="canScroll" id="Ecd-cr-lwI">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                    </dictionary>
+                                </binding>
+                            </connections>
+                        </button>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="169D6888-0E3D-4A99-B657-2256D029340F" label="Resize Lock" paletteLabel="Resize Lock" id="DmT-Fb-EfY">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="34" height="25"/>
+                        <size key="maxSize" width="34" height="32"/>
+                        <button key="view" verticalHuggingPriority="750" id="5Ib-oj-x0A">
+                            <rect key="frame" x="0.0" y="14" width="34" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" title="RS" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gLF-bQ-UuT">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <binding destination="-2" name="value" keyPath="canResize" id="RPl-W7-gDI">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                    </dictionary>
+                                </binding>
+                            </connections>
+                        </button>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="B26F6547-1AFA-461E-8849-7049CEB3CCD5" label="URL Lock" paletteLabel="URL Lock" id="3km-dZ-tV1">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="34" height="25"/>
+                        <size key="maxSize" width="34" height="32"/>
+                        <button key="view" verticalHuggingPriority="750" id="oIU-UU-oyi">
+                            <rect key="frame" x="0.0" y="14" width="34" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" title="UR" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="EsD-AX-Gm6">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <binding destination="-2" name="value" keyPath="canMovePage" id="NNX-Bh-NfK">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                    </dictionary>
+                                </binding>
+                            </connections>
+                        </button>
+                    </toolbarItem>
+                </allowedToolbarItems>
+                <defaultToolbarItems>
+                    <toolbarItem reference="yBb-7R-Qfc"/>
+                    <toolbarItem reference="QwU-Py-Vzr"/>
+                    <toolbarItem reference="DmT-Fb-EfY"/>
+                    <toolbarItem reference="3km-dZ-tV1"/>
+                    <toolbarItem reference="fQm-0j-yZH"/>
+                    <toolbarItem reference="dk4-x0-fn2"/>
+                </defaultToolbarItems>
+            </toolbar>
+            <connections>
+                <binding destination="Bwc-hB-eRh" name="title" keyPath="selection.mainFrameTitle" id="9c0-go-DbU"/>
+                <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
+            </connections>
+            <point key="canvasLocation" x="143" y="388.5"/>
+        </window>
+        <objectController objectClassName="WebView" id="Bwc-hB-eRh">
+            <connections>
+                <outlet property="content" destination="Vpq-H1-y1B" id="TIS-JD-71b"/>
+            </connections>
+        </objectController>
+    </objects>
+    <resources>
+        <image name="NSGoLeftTemplate" width="9" height="12"/>
+        <image name="NSGoRightTemplate" width="9" height="12"/>
+        <image name="NSHomeTemplate" width="14" height="14"/>
+    </resources>
+</document>
