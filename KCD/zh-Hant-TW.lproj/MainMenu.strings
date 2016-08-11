@@ -1,63 +1,63 @@
 
 /* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "5"; */
-"5.title" = "Bring All to Front";
+"5.title" = "將此程式所有視窗移到最前";
 
 /* Class = "NSMenuItem"; title = "Window"; ObjectID = "19"; */
-"19.title" = "Window";
+"19.title" = "視窗";
 
 /* Class = "NSMenuItem"; title = "Minimize"; ObjectID = "23"; */
-"23.title" = "Minimize";
+"23.title" = "縮到最小";
 
 /* Class = "NSMenu"; title = "Window"; ObjectID = "24"; */
-"24.title" = "Window";
+"24.title" = "視窗";
 
 /* Class = "NSMenu"; title = "AMainMenu"; ObjectID = "29"; */
 "29.title" = "AMainMenu";
 
 /* Class = "NSMenuItem"; title = "KCD"; ObjectID = "56"; */
-"56.title" = "KCD";
+"56.title" = "艦娘今天是健康的";
 
 /* Class = "NSMenu"; title = "KCD"; ObjectID = "57"; */
-"57.title" = "KCD";
+"57.title" = "艦娘今天是健康的";
 
 /* Class = "NSMenuItem"; title = "About KCD"; ObjectID = "58"; */
-"58.title" = "About KCD";
+"58.title" = "關於艦娘今天是健康的";
 
 /* Class = "NSMenuItem"; title = "Open…"; ObjectID = "72"; */
-"72.title" = "Open…";
+"72.title" = "打開…";
 
 /* Class = "NSMenuItem"; title = "Close"; ObjectID = "73"; */
-"73.title" = "Close";
+"73.title" = "關閉";
 
 /* Class = "NSMenuItem"; title = "Save…"; ObjectID = "75"; */
-"75.title" = "Save…";
+"75.title" = "儲存…";
 
 /* Class = "NSMenu"; title = "File"; ObjectID = "81"; */
-"81.title" = "File";
+"81.title" = "檔案";
 
 /* Class = "NSMenuItem"; title = "File"; ObjectID = "83"; */
-"83.title" = "File";
+"83.title" = "檔案";
 
 /* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "129"; */
-"129.title" = "Preferences…";
+"129.title" = "偏好設定…";
 
 /* Class = "NSMenu"; title = "Services"; ObjectID = "130"; */
-"130.title" = "Services";
+"130.title" = "服務";
 
 /* Class = "NSMenuItem"; title = "Services"; ObjectID = "131"; */
-"131.title" = "Services";
+"131.title" = "服務";
 
 /* Class = "NSMenuItem"; title = "Hide KCD"; ObjectID = "134"; */
-"134.title" = "Hide KCD";
+"134.title" = "隱藏艦娘今天是健康的";
 
 /* Class = "NSMenuItem"; title = "Quit KCD"; ObjectID = "136"; */
-"136.title" = "Quit KCD";
+"136.title" = "結束艦娘今天是健康的";
 
 /* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "145"; */
-"145.title" = "Hide Others";
+"145.title" = "隱藏其他";
 
 /* Class = "NSMenuItem"; title = "Show All"; ObjectID = "150"; */
-"150.title" = "Show All";
+"150.title" = "顯示全部";
 
 /* Class = "NSMenuItem"; title = "Stop Speaking"; ObjectID = "195"; */
 "195.title" = "Stop Speaking";
@@ -66,25 +66,25 @@
 "196.title" = "Start Speaking";
 
 /* Class = "NSMenuItem"; title = "Copy"; ObjectID = "197"; */
-"197.title" = "Copy";
+"197.title" = "剪下";
 
 /* Class = "NSMenuItem"; title = "Select All"; ObjectID = "198"; */
-"198.title" = "Select All";
+"198.title" = "全選";
 
 /* Class = "NSMenuItem"; title = "Cut"; ObjectID = "199"; */
-"199.title" = "Cut";
+"199.title" = "拷貝";
 
 /* Class = "NSMenuItem"; title = "Delete"; ObjectID = "202"; */
 "202.title" = "Delete";
 
 /* Class = "NSMenuItem"; title = "Paste"; ObjectID = "203"; */
-"203.title" = "Paste";
+"203.title" = "貼上";
 
 /* Class = "NSMenu"; title = "Edit"; ObjectID = "205"; */
-"205.title" = "Edit";
+"205.title" = "編輯";
 
 /* Class = "NSMenuItem"; title = "Undo"; ObjectID = "207"; */
-"207.title" = "Undo";
+"207.title" = "還原";
 
 /* Class = "NSMenuItem"; title = "Speech"; ObjectID = "211"; */
 "211.title" = "Speech";
@@ -93,22 +93,22 @@
 "212.title" = "Speech";
 
 /* Class = "NSMenuItem"; title = "Redo"; ObjectID = "215"; */
-"215.title" = "Redo";
+"215.title" = "重做";
 
 /* Class = "NSMenuItem"; title = "Edit"; ObjectID = "217"; */
-"217.title" = "Edit";
+"217.title" = "編輯";
 
 /* Class = "NSMenuItem"; title = "Zoom"; ObjectID = "239"; */
-"239.title" = "Zoom";
+"239.title" = "縮放";
 
 /* Class = "NSMenuItem"; title = "Help"; ObjectID = "490"; */
-"490.title" = "Help";
+"490.title" = "輔助說明";
 
 /* Class = "NSMenu"; title = "Help"; ObjectID = "491"; */
-"491.title" = "Help";
+"491.title" = "輔助說明";
 
 /* Class = "NSMenuItem"; title = "KCD Help"; ObjectID = "492"; */
-"492.title" = "KCD Help";
+"492.title" = "艦娘今天是健康的 輔助說明";
 
 /* Class = "NSMenuItem"; title = "SlotItem"; ObjectID = "1dX-yC-Onz"; */
 "1dX-yC-Onz.title" = "SlotItem";
@@ -141,7 +141,7 @@
 "GcF-z8-Ddi.title" = "Show Equipment Window";
 
 /* Class = "NSMenu"; title = "Bookmark"; ObjectID = "H6h-Wd-VXD"; */
-"H6h-Wd-VXD.title" = "Bookmark";
+"H6h-Wd-VXD.title" = "書籤";
 
 /* Class = "NSMenuItem"; title = "Clear Quset List"; ObjectID = "HhI-qq-nGv"; */
 "HhI-qq-nGv.title" = "Clear Quset List";
@@ -165,7 +165,7 @@
 "U2N-Wx-ugY.title" = "Repair";
 
 /* Class = "NSMenu"; title = "View"; ObjectID = "Vz8-ph-AM1"; */
-"Vz8-ph-AM1.title" = "View";
+"Vz8-ph-AM1.title" = "顯示方式";
 
 /* Class = "NSMenuItem"; title = "Situation"; ObjectID = "Yem-aw-cnP"; */
 "Yem-aw-cnP.title" = "Situation";
@@ -192,7 +192,7 @@
 "hiE-Nv-1G0.title" = "TopToBottom";
 
 /* Class = "NSMenuItem"; title = "New Browser Window"; ObjectID = "jwh-yD-YWK"; */
-"jwh-yD-YWK.title" = "New Browser Window";
+"jwh-yD-YWK.title" = "新增 Browser 視窗";
 
 /* Class = "NSMenuItem"; title = "Order"; ObjectID = "mSr-GI-6Zz"; */
 "mSr-GI-6Zz.title" = "Order";
@@ -219,7 +219,7 @@
 "t7H-yt-6so.title" = "Debug";
 
 /* Class = "NSMenuItem"; title = "View"; ObjectID = "tAR-BV-xdI"; */
-"tAR-BV-xdI.title" = "View";
+"tAR-BV-xdI.title" = "顯示方式";
 
 /* Class = "NSMenuItem"; title = "Upgradable Ship"; ObjectID = "tF1-uX-NEg"; */
 "tF1-uX-NEg.title" = "Upgradable Ship";
@@ -237,7 +237,7 @@
 "y9Q-QO-snI.title" = "Below";
 
 /* Class = "NSMenuItem"; title = "Bookmark"; ObjectID = "yi1-h1-D39"; */
-"yi1-h1-D39.title" = "Bookmark";
+"yi1-h1-D39.title" = "書籤";
 
 /* Class = "NSMenuItem"; title = "Select Next Fleet"; ObjectID = "zEh-tr-mhX"; */
 "zEh-tr-mhX.title" = "Select Next Fleet";
