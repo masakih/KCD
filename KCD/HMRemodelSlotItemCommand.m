@@ -26,13 +26,15 @@
 	
 	// remove use slot items
 	NSArray<NSNumber *> *useSlotItemIDs = api_data[@"api_use_slot_id"];
-	NSArray<HMKCSlotItemObject *> *useSlotItems = [serverDataStore objectsWithEntityName:@"SlotItem"
-																				error:&error
-																	  predicateFormat:@"id IN %@", useSlotItemIDs];
-	[useSlotItems enumerateObjectsUsingBlock:^(HMKCSlotItemObject * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-		NSManagedObjectContext *con = serverDataStore.managedObjectContext;
-		[con deleteObject:obj];
-	}];
+	if([useSlotItemIDs isKindOfClass:[NSArray class]]) {
+		NSArray<HMKCSlotItemObject *> *useSlotItems = [serverDataStore objectsWithEntityName:@"SlotItem"
+																					   error:&error
+																			 predicateFormat:@"id IN %@", useSlotItemIDs];
+		[useSlotItems enumerateObjectsUsingBlock:^(HMKCSlotItemObject * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+			NSManagedObjectContext *con = serverDataStore.managedObjectContext;
+			[con deleteObject:obj];
+		}];
+	}
 	
 	BOOL success = [api_data[@"api_remodel_flag"] boolValue];
 	if(!success) {
