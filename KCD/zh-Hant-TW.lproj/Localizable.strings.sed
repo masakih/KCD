@@ -1,42 +1,40 @@
-s/%@ Will Finish Docking\./まもなく%@の修復が完了します/2
-s/%1$@ Will Return From %2$@\./まもなく%1$@が%2$@から帰投します/
-s/%@ Will Return From Mission\./まもなく%@が遠征から帰投します/2
+s/%@ Will Finish Docking\./%@將完成塢站/2
+s/%1$@ Will Return From %2$@\./%1$@就返回從%2$@/
+s/%@ Will Return From Mission\./%@就返回從使命/2
 s/Cancel/取消/2
-s/It Will Finish Build at No\.%@\./第%@ドックでの建造が完了しました/2
-s/Reload interval is too short\.\\nWait until %@\./リロード間隔が短すぎます\\n%@までお待ちください/2
-s/Reload interval is too short/リロードしすぎ！/2
+s/It Will Finish Build at No\.%@\./將在%@號構建完成/2
+s/Reload interval is too short\.\\nWait until %@\./重裝載間隔太短\\n等到 %@/2
+s/Reload interval is too short/重裝間隔太短/2
 s/fail to develop/失敗/2
-s/Hide History/隱藏歷史視窗/2
-s/Show History/顯示歷史視窗/2
+s/Hide History/隱藏歷史一覽/2
+s/Show History/顯示歷史一覽/2
 s/kancolle/艦これ/2
-s/Show Slot Item/顯示裝備視窗/2
-s/Hide Slot Item/隱藏裝備視窗/2
+s/Show Slot Item/顯示裝備一覽/2
+s/Hide Slot Item/隱藏裝備一覽/2
 s/Show Upgradable Ships/顯示可能重塑船舶一覽/2
 s/Hide Upgradable Ships/隱藏可能重塑船舶一覽/2
 s/Show Screenshot List/顯示截圖一覽/2
 s/Hide Screenshot List/隱藏截圖一覽/2
-s/%1$@ in sortie into %2$@ (%3$@)/%1$@が\\n（%3$@）%2$@\\nに出撃中/
-s/%1$@ battle at %2$@ war zone in %3$@ (%4$@) now/%1$@が\\n（%4$@）%3$@\\n第%2$@戦闘域にて交戦中/
-s/%1$@ battle against the enemy main fleet at %2$@ war zone in %3$@ (%4$@) now/%1$@が\\n（%4$@）%3$@\\n第%2$@戦闘域にて敵主力艦隊と交戦中/
-s/All/すべて/2
-s/Equiped/装備済み/2
+s/%1$@ in sortie into %2$@ (%3$@)/%1$@在涉足到\\n（%3$@）%2$@/
+s/%1$@ battle at %2$@ war zone in %3$@ (%4$@) now/%1$@戰在%3$@ (%4$@)的海上區域在第%2$@戰區現在/
+s/%1$@ battle against the enemy main fleet at %2$@ war zone in %3$@ (%4$@) now/%1$@戰敵人主力艦隊在%3$@ (%4$@)的海上區域在第%2$@戰區現在/
+s/All/一切/2
+s/Equiped/裝備/2
 s/Unequiped/未裝備/2
 s/Reload/重裝/2
-s/Back To Game/ゲームに戻る/2
-s/Show Bookmark/ブックマークを表示/2
-s/Hide Bookmark/ブックマークを隠す/2
+s/Back To Game/返回游戲/2
+s/Show Bookmark/顯示書籤/2
+s/Hide Bookmark/隱藏書籤/2
 s/Very Long/超長/2
 s/Long/長/2
 s/Middle/中/2
 s/Short/短/2
 s/Slow/低速/2
 s/Fast/高速/2
-s/Deleting caches.../キャッシュを削除中.../2
+s/Deleting caches.../刪除緩存.../2
 s/Hide Combined View/隱藏聯合艦隊視窗/2
 s/Show Combined View/顯示聯合艦隊視窗/2
 s/Hide Kanmusu/隱藏/2
 s/Show Kanmusu/顯示/2
-s/Join/作成/2
-s/Trim/切り抜き/2
-s/Add mark/マークを付ける/2
-s/Remove mark/マークを削除/2
+s/Add mark/添加標記/2
+s/Remove mark/刪除標記/2
