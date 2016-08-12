@@ -26,10 +26,14 @@ Localizable: $(LOCALIZE_FILES)
 	(cd KCD/ja.lproj; ${MAKE} $@;)
 #	genstrings -o KCD/en.lproj $^
 #	(cd KCD/en.lproj; ${MAKE} $@;)
+	genstrings -o KCD/zh-Hant-TW.lproj $^
+	(cd KCD/zh-Hant-TW.lproj; ${MAKE} $@;)
+
 
 checkLocalizable:
 #	(cd KCD/en.lproj; ${MAKE} $@;)
 	(cd KCD/ja.lproj; ${MAKE} $@;)
+	(cd KCD/zh-Hant-TW.lproj; ${MAKE} $@;)
 
 deploy:
 	test -z "`git status --porcelain`"
