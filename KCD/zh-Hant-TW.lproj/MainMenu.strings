@@ -60,10 +60,10 @@
 "150.title" = "顯示全部";
 
 /* Class = "NSMenuItem"; title = "Stop Speaking"; ObjectID = "195"; */
-"195.title" = "Stop Speaking";
+"195.title" = "停止朗讀";
 
 /* Class = "NSMenuItem"; title = "Start Speaking"; ObjectID = "196"; */
-"196.title" = "Start Speaking";
+"196.title" = "開始朗讀";
 
 /* Class = "NSMenuItem"; title = "Copy"; ObjectID = "197"; */
 "197.title" = "剪下";
@@ -75,7 +75,7 @@
 "199.title" = "拷貝";
 
 /* Class = "NSMenuItem"; title = "Delete"; ObjectID = "202"; */
-"202.title" = "Delete";
+"202.title" = "刪除";
 
 /* Class = "NSMenuItem"; title = "Paste"; ObjectID = "203"; */
 "203.title" = "貼上";
@@ -87,10 +87,10 @@
 "207.title" = "還原";
 
 /* Class = "NSMenuItem"; title = "Speech"; ObjectID = "211"; */
-"211.title" = "Speech";
+"211.title" = "語音";
 
 /* Class = "NSMenu"; title = "Speech"; ObjectID = "212"; */
-"212.title" = "Speech";
+"212.title" = "語音";
 
 /* Class = "NSMenuItem"; title = "Redo"; ObjectID = "215"; */
 "215.title" = "重做";
@@ -111,109 +111,109 @@
 "492.title" = "艦娘今天是健康的 輔助說明";
 
 /* Class = "NSMenuItem"; title = "SlotItem"; ObjectID = "1dX-yC-Onz"; */
-"1dX-yC-Onz.title" = "SlotItem";
+"1dX-yC-Onz.title" = "裝備";
 
 /* Class = "NSMenuItem"; title = "Load Local Data..."; ObjectID = "1eX-JA-86F"; */
 "1eX-JA-86F.title" = "Load Local Data...";
 
 /* Class = "NSMenuItem"; title = "Screenshot List"; ObjectID = "5DA-g9-eCS"; */
-"5DA-g9-eCS.title" = "Screenshot List";
+"5DA-g9-eCS.title" = "截圖一覽";
 
 /* Class = "NSMenuItem"; title = "Simple"; ObjectID = "5jd-9p-Aur"; */
-"5jd-9p-Aur.title" = "Simple";
+"5jd-9p-Aur.title" = "簡易";
 
 /* Class = "NSMenuItem"; title = "Clear Log"; ObjectID = "6D5-CG-8mM"; */
 "6D5-CG-8mM.title" = "Clear Log";
 
 /* Class = "NSMenuItem"; title = "Screen Shot"; ObjectID = "7Fq-TJ-VZE"; */
-"7Fq-TJ-VZE.title" = "Screen Shot";
+"7Fq-TJ-VZE.title" = "截圖";
 
 /* Class = "NSMenuItem"; title = "Add Bookmark..."; ObjectID = "7SK-TN-4tQ"; */
-"7SK-TN-4tQ.title" = "Add Bookmark...";
+"7SK-TN-4tQ.title" = "加入書籤...";
 
 /* Class = "NSMenuItem"; title = "Remove database file"; ObjectID = "Ccl-EH-65g"; */
 "Ccl-EH-65g.title" = "Remove database file";
 
 /* Class = "NSMenuItem"; title = "Show Combined View"; ObjectID = "FfV-qc-P4a"; */
-"FfV-qc-P4a.title" = "Show Combined View";
+"FfV-qc-P4a.title" = "顯示聯合艦隊視窗";
 
 /* Class = "NSMenuItem"; title = "Show Equipment Window"; ObjectID = "GcF-z8-Ddi"; */
-"GcF-z8-Ddi.title" = "Show Equipment Window";
+"GcF-z8-Ddi.title" = "顯示裝備視窗";
 
 /* Class = "NSMenu"; title = "Bookmark"; ObjectID = "H6h-Wd-VXD"; */
 "H6h-Wd-VXD.title" = "書籤";
 
 /* Class = "NSMenuItem"; title = "Clear Quset List"; ObjectID = "HhI-qq-nGv"; */
-"HhI-qq-nGv.title" = "Clear Quset List";
+"HhI-qq-nGv.title" = "清理任務列表";
 
 /* Class = "NSMenu"; title = "Fleet List"; ObjectID = "KtL-eg-QnH"; */
-"KtL-eg-QnH.title" = "Fleet List";
+"KtL-eg-QnH.title" = "視圖艦隊";
 
 /* Class = "NSMenuItem"; title = "Above"; ObjectID = "Ljv-Ui-lY8"; */
-"Ljv-Ui-lY8.title" = "Above";
+"Ljv-Ui-lY8.title" = "頂部";
 
 /* Class = "NSMenuItem"; title = "Select Previous Fleet"; ObjectID = "Q3x-8F-nJC"; */
-"Q3x-8F-nJC.title" = "Select Previous Fleet";
+"Q3x-8F-nJC.title" = "選擇上一個艦隊";
 
 /* Class = "NSMenuItem"; title = "Divided"; ObjectID = "SJK-A3-3uA"; */
-"SJK-A3-3uA.title" = "Divided";
+"SJK-A3-3uA.title" = "劃分";
 
 /* Class = "NSMenuItem"; title = "Debug"; ObjectID = "TRC-ZR-9HP"; */
 "TRC-ZR-9HP.title" = "Debug";
 
 /* Class = "NSMenuItem"; title = "Repair"; ObjectID = "U2N-Wx-ugY"; */
-"U2N-Wx-ugY.title" = "Repair";
+"U2N-Wx-ugY.title" = "修理";
 
 /* Class = "NSMenu"; title = "View"; ObjectID = "Vz8-ph-AM1"; */
 "Vz8-ph-AM1.title" = "顯示方式";
 
 /* Class = "NSMenuItem"; title = "Situation"; ObjectID = "Yem-aw-cnP"; */
-"Yem-aw-cnP.title" = "Situation";
+"Yem-aw-cnP.title" = "情況";
 
 /* Class = "NSMenuItem"; title = "Delete Caches and Reload"; ObjectID = "aKj-J2-uzo"; */
 "aKj-J2-uzo.title" = "Delete Caches and Reload";
 
 /* Class = "NSMenuItem"; title = "Show Ownership Ship Window"; ObjectID = "b7n-c5-oSe"; */
-"b7n-c5-oSe.title" = "Show Ownership Ship Window";
+"b7n-c5-oSe.title" = "顯示 Ownership Ship 視窗";
 
 /* Class = "NSMenuItem"; title = "Show Map Window"; ObjectID = "bQ2-OZ-YH9"; */
-"bQ2-OZ-YH9.title" = "Show Map Window";
+"bQ2-OZ-YH9.title" = "顯示 Map 視窗";
 
 /* Class = "NSMenuItem"; title = "Ship 2"; ObjectID = "cVa-gh-VEf"; */
-"cVa-gh-VEf.title" = "Ship 2";
+"cVa-gh-VEf.title" = "現代化改造支援";
 
 /* Class = "NSMenuItem"; title = "Show Bookmark"; ObjectID = "eg5-Hn-joP"; */
-"eg5-Hn-joP.title" = "Show Bookmark";
+"eg5-Hn-joP.title" = "顯示書籤";
 
 /* Class = "NSMenuItem"; title = "Reload"; ObjectID = "gZf-9I-jGv"; */
-"gZf-9I-jGv.title" = "Reload";
+"gZf-9I-jGv.title" = "重裝";
 
 /* Class = "NSMenuItem"; title = "TopToBottom"; ObjectID = "hiE-Nv-1G0"; */
-"hiE-Nv-1G0.title" = "TopToBottom";
+"hiE-Nv-1G0.title" = "從上到下";
 
 /* Class = "NSMenuItem"; title = "New Browser Window"; ObjectID = "jwh-yD-YWK"; */
-"jwh-yD-YWK.title" = "新增 Browser 視窗";
+"jwh-yD-YWK.title" = "新增瀏覽器的視窗";
 
 /* Class = "NSMenuItem"; title = "Order"; ObjectID = "mSr-GI-6Zz"; */
-"mSr-GI-6Zz.title" = "Order";
+"mSr-GI-6Zz.title" = "顺序";
 
 /* Class = "NSMenuItem"; title = "History"; ObjectID = "o9G-2b-cSn"; */
-"o9G-2b-cSn.title" = "History";
+"o9G-2b-cSn.title" = "歷史";
 
 /* Class = "NSMenuItem"; title = "Save Local Data..."; ObjectID = "o9W-5J-Fwv"; */
 "o9W-5J-Fwv.title" = "Save Local Data...";
 
 /* Class = "NSMenuItem"; title = "Ship 1"; ObjectID = "qeT-8e-gvB"; */
-"qeT-8e-gvB.title" = "Ship 1";
+"qeT-8e-gvB.title" = "组织支援";
 
 /* Class = "NSMenuItem"; title = "Show Ship Window"; ObjectID = "rWo-Pp-hLc"; */
-"rWo-Pp-hLc.title" = "Show Ship Window";
+"rWo-Pp-hLc.title" = "顯示船舶視窗";
 
 /* Class = "NSMenu"; title = "Order"; ObjectID = "rkn-Ic-lTk"; */
-"rkn-Ic-lTk.title" = "Order";
+"rkn-Ic-lTk.title" = "顺序";
 
 /* Class = "NSMenuItem"; title = "LeftToRight"; ObjectID = "sYQ-7k-VJo"; */
-"sYQ-7k-VJo.title" = "LeftToRight";
+"sYQ-7k-VJo.title" = "左到右";
 
 /* Class = "NSMenu"; title = "Debug"; ObjectID = "t7H-yt-6so"; */
 "t7H-yt-6so.title" = "Debug";
@@ -222,22 +222,22 @@
 "tAR-BV-xdI.title" = "顯示方式";
 
 /* Class = "NSMenuItem"; title = "Upgradable Ship"; ObjectID = "tF1-uX-NEg"; */
-"tF1-uX-NEg.title" = "Upgradable Ship";
+"tF1-uX-NEg.title" = "可能重塑船舶";
 
 /* Class = "NSMenuItem"; title = "Window Adjuster"; ObjectID = "uYj-hc-FOY"; */
-"uYj-hc-FOY.title" = "Window Adjuster";
+"uYj-hc-FOY.title" = "視窗調節器";
 
 /* Class = "NSMenuItem"; title = "GradeUp"; ObjectID = "y18-nA-SS3"; */
-"y18-nA-SS3.title" = "GradeUp";
+"y18-nA-SS3.title" = "裝修工廠";
 
 /* Class = "NSMenuItem"; title = "Fleet List"; ObjectID = "y5i-Ab-gfR"; */
-"y5i-Ab-gfR.title" = "Fleet List";
+"y5i-Ab-gfR.title" = "視圖艦隊";
 
 /* Class = "NSMenuItem"; title = "Below"; ObjectID = "y9Q-QO-snI"; */
-"y9Q-QO-snI.title" = "Below";
+"y9Q-QO-snI.title" = "底部";
 
 /* Class = "NSMenuItem"; title = "Bookmark"; ObjectID = "yi1-h1-D39"; */
 "yi1-h1-D39.title" = "書籤";
 
 /* Class = "NSMenuItem"; title = "Select Next Fleet"; ObjectID = "zEh-tr-mhX"; */
-"zEh-tr-mhX.title" = "Select Next Fleet";
+"zEh-tr-mhX.title" = "選擇下一步艦隊";
