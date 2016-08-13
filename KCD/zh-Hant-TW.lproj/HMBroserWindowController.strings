@@ -1,0 +1,27 @@
+
+/* Class = "NSWindow"; title = "Window"; ObjectID = "1"; */
+"1.title" = "Window";
+
+/* Class = "NSTabViewItem"; label = "状況"; ObjectID = "ETl-Gs-mBL"; */
+"ETl-Gs-mBL.label" = "情況";
+
+/* Class = "NSTabViewItem"; label = " 修復"; ObjectID = "GgO-z3-Sgk"; */
+"GgO-z3-Sgk.label" = " 修理";
+
+/* Class = "NSTabViewItem"; label = "改修工廠"; ObjectID = "Ls3-Cp-5p4"; */
+"Ls3-Cp-5p4.label" = "裝修工廠";
+
+/* Class = "NSTabViewItem"; label = "近代化"; ObjectID = "Ops-Am-LiF"; */
+"Ops-Am-LiF.label" = "現代化改造";
+
+/* Class = "NSBox"; title = "Box"; ObjectID = "hNz-5S-KHR"; */
+"hNz-5S-KHR.title" = "Box";
+
+/* Class = "BindingConnection"; ibShadowedDisplayPattern = "%{title1}@は今日も元気です。"; ObjectID = "rRI-cU-knj"; */
+"rRI-cU-knj.ibShadowedDisplayPattern" = "%{title1}@今天是健康的";
+
+/* Class = "BindingConnection"; ibShadowedIsNilPlaceholder = "艦娘"; ObjectID = "rRI-cU-knj"; */
+"rRI-cU-knj.ibShadowedIsNilPlaceholder" = "艦娘";
+
+/* Class = "NSTabViewItem"; label = "編成支援"; ObjectID = "vnl-eb-0bM"; */
+"vnl-eb-0bM.label" = "组织支援";
