@@ -732,6 +732,7 @@
 		F4F9472C1D5DBC7300F95998 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/HMBroserWindowController.xib; sourceTree = "<group>"; };
 		F4F9472E1D5DBC8E00F95998 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/HMScreenshotList.storyboard; sourceTree = "<group>"; };
 		F4F947331D5EB44700F95998 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/HMBroserWindowController.strings"; sourceTree = "<group>"; };
+		F4F947351D5EBDD700F95998 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/HMShipViewController.strings"; sourceTree = "<group>"; };
 		F4F9F8611C6A306A00D0EE76 /* HMKCDamage+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HMKCDamage+CoreDataProperties.h"; sourceTree = "<group>"; };
 		F4F9F8621C6A306A00D0EE76 /* HMKCDamage+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HMKCDamage+CoreDataProperties.m"; sourceTree = "<group>"; };
 		F4F9F8631C6A306A00D0EE76 /* HMKCDamage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMKCDamage.h; sourceTree = "<group>"; };
@@ -1929,6 +1930,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F4F947241D5DBC0400F95998 /* Base */,
+				F4F947351D5EBDD700F95998 /* zh-Hant-TW */,
 			);
 			name = HMShipViewController.xib;
 			sourceTree = "<group>";

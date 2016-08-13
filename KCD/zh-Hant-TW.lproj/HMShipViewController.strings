@@ -1,0 +1,258 @@
+
+/* Class = "NSTextFieldCell"; title = "4"; ObjectID = "2jc-Tc-bi3"; */
+"2jc-Tc-bi3.title" = "4";
+
+/* Class = "NSTableColumn"; headerCell.title = "対空"; ObjectID = "3cA-40-8P3"; */
+"3cA-40-8P3.headerCell.title" = "對空";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "41S-sN-3Wv"; */
+"41S-sN-3Wv.title" = "Text Cell";
+
+/* Class = "NSTableColumn"; headerCell.title = "射程"; ObjectID = "6lE-dw-CML"; */
+"6lE-dw-CML.headerCell.title" = "射程";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "76R-ZJ-XSA"; */
+"76R-ZJ-XSA.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "7s0-iF-nqR"; */
+"7s0-iF-nqR.title" = "Text Cell";
+
+/* Class = "NSTableColumn"; headerCell.title = "名前"; ObjectID = "82a-ca-AZb"; */
+"82a-ca-AZb.headerCell.title" = "名稱";
+
+/* Class = "NSTextFieldCell"; title = "100"; ObjectID = "853-eN-blb"; */
+"853-eN-blb.title" = "100";
+
+/* Class = "NSTextFieldCell"; title = "100"; ObjectID = "9Ar-fp-gdx"; */
+"9Ar-fp-gdx.title" = "100";
+
+/* Class = "NSTextFieldCell"; title = "Graf Zeppelin改"; ObjectID = "E0R-q0-YIZ"; */
+"E0R-q0-YIZ.title" = "Graf Zeppelin改";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "EFp-Jx-xyl"; */
+"EFp-Jx-xyl.title" = "Text Cell";
+
+/* Class = "BindingConnection"; ibShadowedDisplayPattern = "%{value1}@ ships"; ObjectID = "ElJ-BE-vFz"; */
+"ElJ-BE-vFz.ibShadowedDisplayPattern" = "%{value1}@ ships";
+
+/* Class = "NSTableColumn"; headerCell.title = "名前"; ObjectID = "FOr-6I-RQX"; */
+"FOr-6I-RQX.headerCell.title" = "名稱";
+
+/* Class = "NSTableColumn"; headerCell.title = "艦種"; ObjectID = "G9R-OQ-qxc"; */
+"G9R-OQ-qxc.headerCell.title" = "艦種";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "GUo-y4-Zco"; */
+"GUo-y4-Zco.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "1,999,999"; ObjectID = "GfR-h8-xZs"; */
+"GfR-h8-xZs.title" = "1,999,999";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "Gv0-ad-HJS"; */
+"Gv0-ad-HJS.title" = "Text Cell";
+
+/* Class = "NSTableColumn"; headerCell.title = "火力"; ObjectID = "HJD-3v-pYl"; */
+"HJD-3v-pYl.headerCell.title" = "火力";
+
+/* Class = "NSTableColumn"; headerCell.title = "回避"; ObjectID = "J7e-62-cUm"; */
+"J7e-62-cUm.headerCell.title" = "躲避";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "M3l-3V-DMe"; */
+"M3l-3V-DMe.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "MbF-GP-L30"; */
+"MbF-GP-L30.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "O9T-1D-odk"; */
+"O9T-1D-odk.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "4"; ObjectID = "OZv-SL-t2R"; */
+"OZv-SL-t2R.title" = "4";
+
+/* Class = "NSTableColumn"; headerCell.title = "艦載機搭載数"; ObjectID = "Ou4-ln-GfK"; */
+"Ou4-ln-GfK.headerCell.title" = "艦載機數量";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "T0n-hD-WpV"; */
+"T0n-hD-WpV.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "TeI-HB-SYu"; */
+"TeI-HB-SYu.title" = "Label";
+
+/* Class = "NSTableColumn"; headerCell.title = "体調"; ObjectID = "UTt-vy-S3S"; */
+"UTt-vy-S3S.headerCell.title" = "狀態";
+
+/* Class = "NSTableColumn"; headerCell.title = "名前"; ObjectID = "VCd-OU-K6V"; */
+"VCd-OU-K6V.headerCell.title" = "名稱";
+
+/* Class = "NSTextFieldCell"; title = "100"; ObjectID = "VK3-hg-r5G"; */
+"VK3-hg-r5G.title" = "100";
+
+/* Class = "NSTextFieldCell"; title = "100"; ObjectID = "Wmi-vP-xgv"; */
+"Wmi-vP-xgv.title" = "100";
+
+/* Class = "NSTableColumn"; headerCell.title = "耐久"; ObjectID = "XBP-7Q-86k"; */
+"XBP-7Q-86k.headerCell.title" = "耐力";
+
+/* Class = "NSTableColumn"; headerCell.title = "運"; ObjectID = "Ycr-qT-Abn"; */
+"Ycr-qT-Abn.headerCell.title" = "運氣";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "YyE-Mu-UH5"; */
+"YyE-Mu-UH5.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "Zkc-ig-fZp"; */
+"Zkc-ig-fZp.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "ZnJ-Q2-7ID"; */
+"ZnJ-Q2-7ID.title" = "Label";
+
+/* Class = "NSTextFieldCell"; title = "100"; ObjectID = "ZpB-Y2-aXM"; */
+"ZpB-Y2-aXM.title" = "100";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "a2K-BX-KY8"; */
+"a2K-BX-KY8.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "Graf Zeppelin改"; ObjectID = "aP0-AF-p8o"; */
+"aP0-AF-p8o.title" = "Graf Zeppelin改";
+
+/* Class = "NSTableColumn"; headerCell.title = "対潜"; ObjectID = "aaq-4b-AS5"; */
+"aaq-4b-AS5.headerCell.title" = "反潛";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "acH-kU-8ep"; */
+"acH-kU-8ep.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "100"; ObjectID = "auB-gy-eyw"; */
+"auB-gy-eyw.title" = "100";
+
+/* Class = "NSSegmentedCell"; b1J-je-IDl.ibShadowedLabels[0] = "All"; ObjectID = "b1J-je-IDl"; */
+"b1J-je-IDl.ibShadowedLabels[0]" = "All";
+
+/* Class = "NSSegmentedCell"; b1J-je-IDl.ibShadowedLabels[1] = "駆逐"; ObjectID = "b1J-je-IDl"; */
+"b1J-je-IDl.ibShadowedLabels[1]" = "驅逐";
+
+/* Class = "NSSegmentedCell"; b1J-je-IDl.ibShadowedLabels[2] = "軽巡"; ObjectID = "b1J-je-IDl"; */
+"b1J-je-IDl.ibShadowedLabels[2]" = "輕巡";
+
+/* Class = "NSSegmentedCell"; b1J-je-IDl.ibShadowedLabels[3] = "重巡"; ObjectID = "b1J-je-IDl"; */
+"b1J-je-IDl.ibShadowedLabels[3]" = "重巡";
+
+/* Class = "NSSegmentedCell"; b1J-je-IDl.ibShadowedLabels[4] = "空母"; ObjectID = "b1J-je-IDl"; */
+"b1J-je-IDl.ibShadowedLabels[4]" = "空母";
+
+/* Class = "NSSegmentedCell"; b1J-je-IDl.ibShadowedLabels[5] = "戦艦"; ObjectID = "b1J-je-IDl"; */
+"b1J-je-IDl.ibShadowedLabels[5]" = "戰艦";
+
+/* Class = "NSSegmentedCell"; b1J-je-IDl.ibShadowedLabels[6] = "潜水"; ObjectID = "b1J-je-IDl"; */
+"b1J-je-IDl.ibShadowedLabels[6]" = "潛艇";
+
+/* Class = "NSSegmentedCell"; b1J-je-IDl.ibShadowedLabels[7] = "他"; ObjectID = "b1J-je-IDl"; */
+"b1J-je-IDl.ibShadowedLabels[7]" = "其他";
+
+/* Class = "NSTableColumn"; headerCell.title = "速力"; ObjectID = "bw6-Ox-T0t"; */
+"bw6-Ox-T0t.headerCell.title" = "速度";
+
+/* Class = "NSTextFieldCell"; title = "超長"; ObjectID = "c1z-5h-c1a"; */
+"c1z-5h-c1a.title" = "超長";
+
+/* Class = "NSTableColumn"; headerCell.title = "雷装"; ObjectID = "c2Z-Gz-ccl"; */
+"c2Z-Gz-ccl.headerCell.title" = "雷裝";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "cGR-Br-bL3"; */
+"cGR-Br-bL3.title" = "Text Cell";
+
+/* Class = "NSTableColumn"; headerCell.title = "装甲"; ObjectID = "d4u-ni-SBZ"; */
+"d4u-ni-SBZ.headerCell.title" = "裝甲";
+
+/* Class = "NSTableColumn"; headerCell.title = "名前"; ObjectID = "ecf-RJ-BUc"; */
+"ecf-RJ-BUc.headerCell.title" = "名稱";
+
+/* Class = "NSTextFieldCell"; title = "100"; ObjectID = "f2z-sF-nY6"; */
+"f2z-sF-nY6.title" = "100";
+
+/* Class = "NSSegmentedCell"; fvt-PE-zAC.ibShadowedLabels[0] = "経験値"; ObjectID = "fvt-PE-zAC"; */
+"fvt-PE-zAC.ibShadowedLabels[0]" = "經驗值";
+
+/* Class = "NSSegmentedCell"; fvt-PE-zAC.ibShadowedLabels[1] = "能力値1"; ObjectID = "fvt-PE-zAC"; */
+"fvt-PE-zAC.ibShadowedLabels[1]" = "能力值1";
+
+/* Class = "NSSegmentedCell"; fvt-PE-zAC.ibShadowedLabels[2] = "能力値2"; ObjectID = "fvt-PE-zAC"; */
+"fvt-PE-zAC.ibShadowedLabels[2]" = "能力值2";
+
+/* Class = "NSSegmentedCell"; fvt-PE-zAC.ibShadowedLabels[3] = "能力値3"; ObjectID = "fvt-PE-zAC"; */
+"fvt-PE-zAC.ibShadowedLabels[3]" = "能力值3";
+
+/* Class = "NSTextFieldCell"; title = "100"; ObjectID = "gDY-E8-ZO7"; */
+"gDY-E8-ZO7.title" = "100";
+
+/* Class = "NSTextFieldCell"; title = "100"; ObjectID = "gcn-h6-VyK"; */
+"gcn-h6-VyK.title" = "100";
+
+/* Class = "NSTableColumn"; headerCell.title = "Lv."; ObjectID = "h1X-yX-kBd"; */
+"h1X-yX-kBd.headerCell.title" = "Lv.";
+
+/* Class = "NSTextFieldCell"; title = "高速"; ObjectID = "iXJ-TB-lB4"; */
+"iXJ-TB-lB4.title" = "高速";
+
+/* Class = "NSTextFieldCell"; title = "100"; ObjectID = "j67-Nm-egV"; */
+"j67-Nm-egV.title" = "100";
+
+/* Class = "NSTextFieldCell"; title = "戦艦"; ObjectID = "kIN-Yq-Hsm"; */
+"kIN-Yq-Hsm.title" = "戰艦";
+
+/* Class = "NSTableColumn"; headerCell.title = "Exp."; ObjectID = "kOg-s3-rC4"; */
+"kOg-s3-rC4.headerCell.title" = "Exp.";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "m2O-RV-D2n"; */
+"m2O-RV-D2n.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "4"; ObjectID = "mgm-dk-Go2"; */
+"mgm-dk-Go2.title" = "4";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "nTu-mA-FeK"; */
+"nTu-mA-FeK.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "100"; ObjectID = "nhX-U6-f4J"; */
+"nhX-U6-f4J.title" = "100";
+
+/* Class = "NSTextFieldCell"; title = "155"; ObjectID = "oRB-8b-aqE"; */
+"oRB-8b-aqE.title" = "155";
+
+/* Class = "NSTextFieldCell"; title = "Graf Zeppelin改"; ObjectID = "qTN-CE-m3C"; */
+"qTN-CE-m3C.title" = "Graf Zeppelin改";
+
+/* Class = "NSTextFieldCell"; title = "Graf Zeppelin改"; ObjectID = "rFz-UF-DW3"; */
+"rFz-UF-DW3.title" = "Graf Zeppelin改";
+
+/* Class = "NSTableColumn"; headerCell.title = "索敵"; ObjectID = "roP-4x-mhA"; */
+"roP-4x-mhA.headerCell.title" = "索敵";
+
+/* Class = "NSTextFieldCell"; title = "1,000,000"; ObjectID = "sZk-i1-ld2"; */
+"sZk-i1-ld2.title" = "1,000,000";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "t0R-M0-QxJ"; */
+"t0R-M0-QxJ.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "100"; ObjectID = "ud4-AG-iyT"; */
+"ud4-AG-iyT.title" = "100";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "v2t-RB-PLB"; */
+"v2t-RB-PLB.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "wIS-6X-j1o"; */
+"wIS-6X-j1o.title" = "Text Cell";
+
+/* Class = "BindingConnection"; ibShadowedIsNilPlaceholder = "MAX"; ObjectID = "wfa-jj-ts1"; */
+"wfa-jj-ts1.ibShadowedIsNilPlaceholder" = "MAX";
+
+/* Class = "NSTableColumn"; headerCell.title = "Next"; ObjectID = "whd-ZR-lLz"; */
+"whd-ZR-lLz.headerCell.title" = "Next";
+
+/* Class = "NSTextFieldCell"; title = "4"; ObjectID = "wlp-wT-zu2"; */
+"wlp-wT-zu2.title" = "4";
+
+/* Class = "NSTextFieldCell"; title = "100"; ObjectID = "xIh-mN-mWP"; */
+"xIh-mN-mWP.title" = "100";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "xQj-t0-OnT"; */
+"xQj-t0-OnT.title" = "Text Cell";
+
+/* Class = "NSTextFieldCell"; title = "100"; ObjectID = "zkw-Cs-P16"; */
+"zkw-Cs-P16.title" = "100";
