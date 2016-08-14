@@ -123,13 +123,13 @@
 183A	5	3	16inch三連装砲 Mk.7+GFCS		Iowa
 183A	6	3	16inch三連装砲 Mk.7+GFCS		Iowa
 183A	7	3	16inch三連装砲 Mk.7+GFCS		Iowa
-125A	2	4	90mm単装高角砲		Littorio
-125A	3	4	90mm単装高角砲		Littorio
-125A	4	4	90mm単装高角砲		Littorio
-125A	5	4	90mm単装高角砲		Littorio,Roma
-125A	1	4	90mm単装高角砲		Roma
-125A	6	4	90mm単装高角砲		Roma
-125A	7	4	90mm単装高角砲		Roma
+135A	2	4	90mm単装高角砲		Littorio
+135A	3	4	90mm単装高角砲		Littorio
+135A	4	4	90mm単装高角砲		Littorio
+135A	5	4	90mm単装高角砲		Littorio,Roma
+135A	1	4	90mm単装高角砲		Roma
+135A	6	4	90mm単装高角砲		Roma
+135A	7	4	90mm単装高角砲		Roma
 11A	1	4	15.2cm単装砲	15.2cm連装砲	阿賀野,金剛
 11A	2	4	15.2cm単装砲	15.2cm連装砲	阿賀野,金剛,山城
 11A	3	4	15.2cm単装砲	15.2cm連装砲	阿賀野,山城
