@@ -29,6 +29,7 @@
 	<string>/kcsapi/api_req_hensei/preset_delete</string>
 	<string>/kcsapi/api_req_hensei/preset_register</string>
 	<string>/kcsapi/api_req_kaisou/marriage</string>
+	<string>kcsapi/api_req_kaisou/open_exslot</string>
 	<string>/kcsapi/api_req_kaisou/remodeling</string>
 	<string>/kcsapi/api_req_kaisou/slotset</string>
 	<string>/kcsapi/api_req_kaisou/slotset_ex</string>
