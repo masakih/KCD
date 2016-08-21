@@ -13,10 +13,6 @@
 
 @interface HMScreenshotListWindowController : NSWindowController
 
-
-- (IBAction)reloadData:(id)sender;
-
-- (void)reloadData;
 - (void)registerScreenshot:(NSBitmapImageRep *)image fromOnScreen:(NSRect)screenRect;
 
 @end
