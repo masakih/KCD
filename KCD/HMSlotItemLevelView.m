@@ -120,13 +120,17 @@ static CGImageRef sAirLevelMaskImage = nil;
 	// Create an image mask from what we've drawn so far
 	CGImageRef maskImage = CGBitmapContextCreateImage(maskContext);
 	
-	return maskImage;
+	CFRelease(maskContext);
+	
+	return (CGImageRef)CFAutorelease(maskImage);
 }
 - (CGImageRef)levelMaskImage
 {
 	if(sLevelMaskImage) return sLevelMaskImage;
 	
 	sLevelMaskImage = [self maskImageWith:0.75 middle2:0.85];
+	CFRetain(sLevelMaskImage);
+	
 	return sLevelMaskImage;
 }
 - (CGImageRef)airLevelMaskImage
@@ -134,6 +138,8 @@ static CGImageRef sAirLevelMaskImage = nil;
 	if(sAirLevelMaskImage) return sAirLevelMaskImage;
 	
 	sAirLevelMaskImage = [self maskImageWith:0.65 middle2:0.75];
+	CFRetain(sAirLevelMaskImage);
+	
 	return sAirLevelMaskImage;
 }
 
