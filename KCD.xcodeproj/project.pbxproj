@@ -467,7 +467,7 @@
 		F497F6231D5B7CCA00A8F609 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/MainMenu.strings"; sourceTree = "<group>"; };
 		F497F63A1D5B7CE300A8F609 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/Makefile"; sourceTree = "<group>"; };
 		F497F63B1D5B7CE400A8F609 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/Localizable.strings.sed"; sourceTree = "<group>"; };
-		F497F63C1D5B7CE500A8F609 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		F497F63C1D5B7CE500A8F609 /* zh-Hant-TW */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		F497F63D1D5B7CE600A8F609 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		F497F63E1D5B7CE600A8F609 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/SlotItemShortName.plist"; sourceTree = "<group>"; };
 		F497F63F1D5B7CE700A8F609 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/Taihi.txt"; sourceTree = "<group>"; };
