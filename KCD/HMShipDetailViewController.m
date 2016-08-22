@@ -155,6 +155,9 @@
 - (void)setShip:(HMKCShipObject *)ship
 {
 	self.shipController.fetchPredicate = [self fetchPredicateWithShipID:ship.id];
+	[self performSelector:@selector(updateStatus:)
+			   withObject:nil
+			   afterDelay:0.0];
 }
 - (HMKCShipObject *)ship
 {
