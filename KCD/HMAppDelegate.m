@@ -466,7 +466,6 @@
 {
 	id object = [notification object];
 	if([self.browserWindowControllers containsObject:object]) {
-		[self.browserWindowControllers removeObject:object];
 		[[NSNotificationCenter defaultCenter] removeObserver:self
 														name:NSWindowWillCloseNotification
 													  object:object];
