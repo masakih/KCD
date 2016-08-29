@@ -190,6 +190,7 @@
 		F4C1190518A71AEA005D5B25 /* HMJSONReciever.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C1190418A71AEA005D5B25 /* HMJSONReciever.m */; };
 		F4C1190818A746EB005D5B25 /* HMJSONTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C1190718A746EB005D5B25 /* HMJSONTracker.m */; };
 		F4C1190B18A74DF0005D5B25 /* HMJSONCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C1190A18A74DF0005D5B25 /* HMJSONCommand.m */; };
+		F4C2ACA51D7167C2007BFE90 /* HMTimeSignalNotifier.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C2ACA41D7167C2007BFE90 /* HMTimeSignalNotifier.m */; };
 		F4C3957418CDDFE500A1E918 /* HMKenzoDockStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C3957318CDDFE500A1E918 /* HMKenzoDockStatus.m */; };
 		F4C5A2231C3533E800533FB6 /* HMEnhancementListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C5A2221C3533E800533FB6 /* HMEnhancementListItem.m */; };
 		F4C5A2261C36C68C00533FB6 /* HMStrengthenListItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C5A2251C36C68C00533FB6 /* HMStrengthenListItemView.m */; };
@@ -620,6 +621,8 @@
 		F4C1190718A746EB005D5B25 /* HMJSONTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMJSONTracker.m; sourceTree = "<group>"; };
 		F4C1190918A74DF0005D5B25 /* HMJSONCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMJSONCommand.h; sourceTree = "<group>"; };
 		F4C1190A18A74DF0005D5B25 /* HMJSONCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMJSONCommand.m; sourceTree = "<group>"; };
+		F4C2ACA31D7167C2007BFE90 /* HMTimeSignalNotifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMTimeSignalNotifier.h; sourceTree = "<group>"; };
+		F4C2ACA41D7167C2007BFE90 /* HMTimeSignalNotifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMTimeSignalNotifier.m; sourceTree = "<group>"; };
 		F4C3957218CDDFE500A1E918 /* HMKenzoDockStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMKenzoDockStatus.h; sourceTree = "<group>"; };
 		F4C3957318CDDFE500A1E918 /* HMKenzoDockStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMKenzoDockStatus.m; sourceTree = "<group>"; };
 		F4C5A2211C3533E800533FB6 /* HMEnhancementListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMEnhancementListItem.h; sourceTree = "<group>"; };
@@ -950,6 +953,8 @@
 				F4F9F8A21C70AFB600D0EE76 /* HMFleetManager.m */,
 				F42CBB241D21583C004C2AE2 /* HMHistoryItemCleaner.h */,
 				F42CBB251D21583C004C2AE2 /* HMHistoryItemCleaner.m */,
+				F4C2ACA31D7167C2007BFE90 /* HMTimeSignalNotifier.h */,
+				F4C2ACA41D7167C2007BFE90 /* HMTimeSignalNotifier.m */,
 				F4D2CBBF18ACE7D7000EBC59 /* Command */,
 				F4BEEEA918D890660006F70C /* UI */,
 				F4BEEEA818D88FF30006F70C /* CoreData */,
@@ -1805,6 +1810,7 @@
 				F4C668881C60F5F200601AFB /* HMRepairListViewController.m in Sources */,
 				F46F104918ABAC910063E503 /* KCD.xcdatamodeld in Sources */,
 				F4B414FE18B3A66200468DAF /* HMMemberNDockCommand.m in Sources */,
+				F4C2ACA51D7167C2007BFE90 /* HMTimeSignalNotifier.m in Sources */,
 				F4F9F8781C6B5BA900D0EE76 /* HMKCKenzoDock.m in Sources */,
 				F4F388BD1C13D63B00508549 /* HMGameViewController.m in Sources */,
 				F4A9E80C1D045C4200F91746 /* HMScreenshotListViewController.m in Sources */,
