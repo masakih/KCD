@@ -49,6 +49,9 @@ HMUserDefaults *HMStandardDefaults = nil;
 		   @"screenshotEditorColumnCount" : @2,
 		   
 		   @"cleanSiceDays" : @90,
+           
+           @"notifyTimeSignal" : @YES,
+           @"notifyTimeBeforeTimeSignal" : @5,
 		   
 		   }
 		 ];
@@ -523,5 +526,38 @@ HMUserDefaults *HMStandardDefaults = nil;
 - (NSInteger)cleanSiceDays
 {
 	return [self integerForKey:@"cleanSiceDays"];
+}
+
+#pragma mark - Notify time signal
+- (void)setNotifyTimeSignal:(BOOL)notifyTimeSignal
+{
+    [self setBool:notifyTimeSignal forKey:@"notifyTimeSignal"];
+}
+- (BOOL)notifyTimeSignal
+{
+    return [self boolForKey:@"notifyTimeSignal"];
+}
+- (void)setNotifyTimeBeforeTimeSignal:(NSNumber *)notifyTimeBeforeTimeSignal
+{
+    NSInteger time = notifyTimeBeforeTimeSignal.integerValue;
+    if(time < 0) {
+        notifyTimeBeforeTimeSignal = @(0);
+    }
+    if(time > 59) {
+        notifyTimeBeforeTimeSignal = @59;
+    }
+    [self setObject:notifyTimeBeforeTimeSignal forKey:@"notifyTimeBeforeTimeSignal"];
+}
+- (NSNumber *)notifyTimeBeforeTimeSignal
+{
+    return [self objectForKey:@"notifyTimeBeforeTimeSignal"];
+}
+- (void)setPlayNotifyTimeSignalSound:(BOOL)playNotifyTimeSignalSound
+{
+    [self setBool:playNotifyTimeSignalSound forKey:@"playNotifyTimeSignalSound"];
+}
+- (BOOL)playNotifyTimeSignalSound
+{
+    return [self boolForKey:@"playNotifyTimeSignalSound"];
 }
 @end

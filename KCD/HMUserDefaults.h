@@ -175,4 +175,18 @@ extern HMUserDefaults *HMStandardDefaults;
  */
 @property NSInteger cleanSiceDays;
 
+/**
+ * 時報の通知を出すか
+ */
+@property BOOL notifyTimeSignal;
+
+/**
+ * 時報の通知を何分前に出すか
+ */
+@property NSNumber *notifyTimeBeforeTimeSignal;
+
+/**
+ * 時報の通知時に音を鳴らすか
+ */
+@property BOOL playNotifyTimeSignalSound;
 @end
