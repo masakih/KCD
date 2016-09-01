@@ -14,7 +14,11 @@
 static HMTimeSignalNotifier *sInstance = nil;
 
 @interface HMTimeSignalNotifier ()
+
+@property NSInteger notifyTimeBeforeTimeSignal;
 @property NSTimer *timer;
+
+@property (weak) NSUserDefaultsController *udController;
 @end
 
 @implementation HMTimeSignalNotifier
@@ -32,9 +36,29 @@ static HMTimeSignalNotifier *sInstance = nil;
     self = [super init];
     if(self) {
         [self registerTimer];
+        _udController = [NSUserDefaultsController sharedUserDefaultsController];
+        [_udController addObserver:self
+                        forKeyPath:@"values.notifyTimeBeforeTimeSignal"
+                           options:0
+                           context:NULL];
     }
     
     return self;
+}
+- (void)dealloc
+{
+    [_udController removeObserver:self forKeyPath:@"values.notifyTimeBeforeTimeSignal"];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
+{
+    if([keyPath isEqualToString:@"values.notifyTimeBeforeTimeSignal"]) {
+        self.notifyTimeBeforeTimeSignal = HMStandardDefaults.notifyTimeBeforeTimeSignal.integerValue;
+        [self registerTimer];
+        return;
+    }
+    
+    [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }
 
 - (void)fire:(NSTimer *)timer
@@ -43,25 +67,22 @@ static HMTimeSignalNotifier *sInstance = nil;
     NSCalendar *cal = [NSCalendar currentCalendar];
     NSInteger minutes = [cal component:NSCalendarUnitMinute fromDate:now];
     
-    if((59 - minutes) <= self.notifyTimeBeforeTimeSignal) {
-        // Notify
-        NSUserNotification * notification = [NSUserNotification new];
-        NSString *format = NSLocalizedString(@"It is soon %zd o'clock.", @"It is soon %zd o'clock.");
-        NSInteger hour = [cal component:NSCalendarUnitHour fromDate:now];
-        notification.title = [NSString stringWithFormat:format, hour + 1];
-        notification.informativeText = notification.title;
-        if(HMStandardDefaults.playFinishMissionSound) {
-            notification.soundName = NSUserNotificationDefaultSoundName;
+    if(HMStandardDefaults.notifyTimeSignal) {
+        if((59 - minutes) <= self.notifyTimeBeforeTimeSignal) {
+            // Notify
+            NSUserNotification * notification = [NSUserNotification new];
+            NSString *format = NSLocalizedString(@"It is soon %zd o'clock.", @"It is soon %zd o'clock.");
+            NSInteger hour = [cal component:NSCalendarUnitHour fromDate:now];
+            notification.title = [NSString stringWithFormat:format, hour + 1];
+            notification.informativeText = notification.title;
+            if(HMStandardDefaults.playNotifyTimeSignalSound) {
+                notification.soundName = NSUserNotificationDefaultSoundName;
+            }
+            [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
         }
-        [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
     }
     
     [self registerTimer];
-}
-
-- (NSInteger)notifyTimeBeforeTimeSignal
-{
-    return 5;
 }
 
 - (void)registerTimer
@@ -72,7 +93,9 @@ static HMTimeSignalNotifier *sInstance = nil;
     NSCalendar *cal = [NSCalendar currentCalendar];
     NSDateComponents *comp = [cal components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour
                                     fromDate:now];
-    if(self.timer) {
+    NSInteger minutes = [cal component:NSCalendarUnitMinute fromDate:now];
+    
+    if((59 - minutes) <= self.notifyTimeBeforeTimeSignal) {
         comp.hour = comp.hour + 1;
     }
     comp.minute = 60 - self.notifyTimeBeforeTimeSignal;
