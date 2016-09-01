@@ -19,4 +19,6 @@
 
 - (IBAction)selectScreenShotSaveDirectoryPopUp:(id)sender;
 
+- (IBAction)didChangeSelection:(id)sender;
+
 @end

@@ -11,6 +11,11 @@
 #import "HMAppDelegate.h"
 #import "HMUserDefaults.h"
 
+typedef NS_ENUM(NSInteger, HMPreferencePaneType) {
+    kGeneral = 1,
+    kNotification = 2,
+};
+
 typedef NS_ENUM(NSUInteger, HMScreenShotSaveDirectoryPopUpMenuItemTag) {
     kSaveDirectoryItem = 1000,
     kSelectDirectoryItem = 2000,
@@ -19,6 +24,10 @@ typedef NS_ENUM(NSUInteger, HMScreenShotSaveDirectoryPopUpMenuItemTag) {
 @interface HMPreferencePanelController ()
 
 @property (nonatomic, strong) NSURL *screenShotSaveURL;
+
+
+@property (nonatomic, weak) IBOutlet NSView *generalPane;
+@property (nonatomic, weak) IBOutlet NSView *notificationPane;
 @end
 
 @implementation HMPreferencePanelController
@@ -33,6 +42,16 @@ typedef NS_ENUM(NSUInteger, HMScreenShotSaveDirectoryPopUpMenuItemTag) {
 {
 	HMAppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
 	self.screenShotSaveDirectory = appDelegate.screenShotSaveDirectory;
+    
+    NSArray *items = self.window.toolbar.items;
+    if(items.count != 0) {
+        NSToolbarItem *item = items.firstObject;
+        self.window.toolbar.selectedItemIdentifier = item.itemIdentifier;
+        [NSApp sendAction:@selector(didChangeSelection:)
+                       to:self
+                     from:item];
+        [self.window center];
+    }
 }
 
 #pragma mark - Screen Shot
@@ -96,6 +115,38 @@ typedef NS_ENUM(NSUInteger, HMScreenShotSaveDirectoryPopUpMenuItemTag) {
 					  
 					  self.screenShotSaveDirectory = panel.URL.path;
 				  }];
+}
+
+- (IBAction)didChangeSelection:(id)sender
+{
+    NSInteger tag = [sender tag];
+    NSView *newPane = nil;
+    switch(tag) {
+        case kGeneral:
+            newPane = self.generalPane;
+            break;
+        case kNotification:
+            newPane = self.notificationPane;
+            break;
+    }
+    
+    if(!newPane) return;
+    
+    NSToolbarItem *item = (NSToolbarItem *)sender;
+    self.window.title = item.label;
+    
+    NSArray *subviews = self.window.contentView.subviews;
+    for(NSView *subview in subviews) {
+        [subview removeFromSuperview];
+    }
+    
+    NSRect windowRect = self.window.frame;
+    NSRect newWindowRect = [self.window frameRectForContentRect:newPane.frame];
+    newWindowRect.origin.x = windowRect.origin.x;
+    newWindowRect.origin.y = windowRect.origin.y + windowRect.size.height - newWindowRect.size.height;
+    [self.window setFrame:newWindowRect display:YES animate:YES];
+    
+    [self.window.contentView addSubview:newPane];
 }
 
 @end
