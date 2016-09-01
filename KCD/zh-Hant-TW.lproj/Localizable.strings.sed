@@ -38,3 +38,4 @@ s/Hide Kanmusu/隱藏/2
 s/Show Kanmusu/顯示/2
 s/Add mark/添加標記/2
 s/Remove mark/刪除標記/2
+s/It is soon %zd o'clock./不久是%zd點鐘/2

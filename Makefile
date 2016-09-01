@@ -14,7 +14,8 @@ KCD/HMMissionStatus.m KCD/HMNyukyoDockStatus.m KCD/HMCreateSlotItemCommand.m KCD
 KCD/HMStoreCreateSlotItemHistoryCommand.m KCD/HMDocksViewController.m KCD/HMSlotItemWindowController.m \
 KCD/HMBroserWindowController.m KCD/HMExternalBrowserWindowController.m KCD/HMLengTransformer.m \
 KCD/HMSokuTransformer.m KCD/HMGameViewController.m KCD/HMUpgradableShipsWindowController.m \
-KCD/HMScreenshotListWindowController.m KCD/HMHistoryWindowController.m KCD/HMBridgeViewController.m
+KCD/HMScreenshotListWindowController.m KCD/HMHistoryWindowController.m KCD/HMBridgeViewController.m \
+KCD/HMTimeSignalNotifier.m
 
 VER_CMD=grep -A1 'CFBundleShortVersionString' $(INFO_PLIST) | tail -1 | tr -d "'\t</string>" 
 VERSION=$(shell $(VER_CMD))
