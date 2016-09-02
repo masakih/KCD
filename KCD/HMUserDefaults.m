@@ -540,8 +540,8 @@ HMUserDefaults *HMStandardDefaults = nil;
 - (void)setNotifyTimeBeforeTimeSignal:(NSNumber *)notifyTimeBeforeTimeSignal
 {
     NSInteger time = notifyTimeBeforeTimeSignal.integerValue;
-    if(time < 0) {
-        notifyTimeBeforeTimeSignal = @(0);
+    if(time < 1) {
+        notifyTimeBeforeTimeSignal = @(1);
     }
     if(time > 59) {
         notifyTimeBeforeTimeSignal = @59;
