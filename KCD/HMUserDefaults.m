@@ -50,7 +50,7 @@ HMUserDefaults *HMStandardDefaults = nil;
 		   
 		   @"cleanSiceDays" : @90,
            
-           @"notifyTimeSignal" : @YES,
+           @"notifyTimeSignal" : @NO,
            @"notifyTimeBeforeTimeSignal" : @5,
 		   
 		   }
