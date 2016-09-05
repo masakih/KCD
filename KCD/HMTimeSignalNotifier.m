@@ -101,7 +101,6 @@ static HMTimeSignalNotifier *sInstance = nil;
     comp.minute = 60 - self.notifyTimeBeforeTimeSignal;
     
     NSDate *notifyDate = [cal dateFromComponents:comp];
-    NSLog(@"notify date -> %@", notifyDate);
     
     self.timer = [NSTimer scheduledTimerWithTimeInterval:[notifyDate timeIntervalSinceNow]
                                                   target:self
