@@ -92,19 +92,4 @@ typedef BOOL (^HMFindViewController)(NSViewController *viewController);
 	[viewControler performSelector:_cmd withObject:sender];
 }
 
-- (void)showViewControllerHierarchy:(NSViewController *)viewController level:(NSInteger)level
-{
-	if(!viewController) return;
-	
-	NSString *desc = [NSString stringWithFormat:@"<%p> %@", viewController, viewController];
-	fprintf(stderr, "%*s%s\n", (int)level * 4, " ", desc.UTF8String);
-	for(NSViewController *vc in viewController.childViewControllers) {
-		[self showViewControllerHierarchy:vc level:level + 1];
-	}
-}
-
-- (IBAction)showViewControllerHierarchy:(id)sender
-{
-	[self showViewControllerHierarchy:self.contentViewController level:0];
-}
 @end
