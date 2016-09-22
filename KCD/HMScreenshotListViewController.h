@@ -14,5 +14,7 @@
 
 @property (nonatomic, strong) HMScreenshotModel *screenshots;
 
+- (IBAction)registerImage:(id)sender;
+
 @end
 

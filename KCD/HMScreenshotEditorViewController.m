@@ -10,6 +10,7 @@
 
 #import "HMScreenshotInformation.h"
 
+#import "HMScreenshotListViewController.h"
 #import "HMTiledImageView.h"
 
 
