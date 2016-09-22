@@ -69,10 +69,12 @@
 104A	4	3	35.6cm連装砲(ダズル迷彩)		榛名改二
 104A	7	3	35.6cm連装砲(ダズル迷彩)		榛名改二
 190A	1	3	38.1cm Mk.I連装砲		Warspite
-
+190A	2	3	38.1cm Mk.I連装砲		Warspite
+190A	3	3	38.1cm Mk.I連装砲		Warspite
+190A	4	3	38.1cm Mk.I連装砲		Warspite
+190A	5	3	38.1cm Mk.I連装砲		Warspite
 190A	6	3	38.1cm Mk.I連装砲		Warspite
 190A	7	3	38.1cm Mk.I連装砲		Warspite
-
 76A	5	3	38cm連装砲	38cm連装砲改★+3	Bismarck
 76A	6	3	38cm連装砲	38cm連装砲改★+3	Bismarck
 76A	7	3	38cm連装砲	38cm連装砲改★+3	Bismarck
