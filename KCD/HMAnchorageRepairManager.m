@@ -17,6 +17,7 @@
 #import "HMKCMasterSType.h"
 
 #import "HMUserDefaults.h"
+#import "HMAppDelegate.h"
 
 #import "HMChangeHenseiNotification.h"
 #import "HMPortNotifyCommand.h"
@@ -45,8 +46,8 @@
 {
 	self = [super init];
 	if(self) {
-		_fleetManager = [[[NSApplication sharedApplication] delegate] fleetManager];
-		
+        HMAppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
+		_fleetManager = appDelegate.fleetManager;
 		
 		NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 		[[NSNotificationCenter defaultCenter] addObserver:self
