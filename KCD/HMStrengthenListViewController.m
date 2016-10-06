@@ -144,6 +144,10 @@ static NSString *groupNameKey = @"group";
 	
 	NSMutableArray<HMEnhancementListItem *> *mutableItemList = [itemList mutableCopy];
 	
+    
+    // 連続するtypeの戦闘にグループアイテムを追加する
+    // グループアイテムはequipmentTypeを-1とする
+    // １、存在するtype全てのグループアイテムを生成
 	__block NSNumber *type = nil;
 	NSMutableArray *group = [NSMutableArray array];
 	
@@ -154,6 +158,7 @@ static NSString *groupNameKey = @"group";
 		}
 	}];
 	
+    // ２、リストにグループアイテムを追加する。 挿入位置がずれないように逆順で行う
 	for(NSDictionary *dict in group.reverseObjectEnumerator) {
 		NSUInteger index = [dict[@"index"] integerValue];
 		NSString *typeName = [tf transformedValue:dict[@"type"]];
