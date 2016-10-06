@@ -85,11 +85,11 @@ typedef BOOL (^HMFindViewController)(NSViewController *viewController);
 
 - (IBAction)share:(id)sender
 {
-	NSViewController *viewControler = [self findFromViewController:self.contentViewController
+	id viewControler = [self findFromViewController:self.contentViewController
 														usingBlock:^BOOL(NSViewController *viewController) {
 															return [viewController respondsToSelector:_cmd];
 														}];
-	[viewControler performSelector:_cmd withObject:sender];
+	[viewControler share:sender];
 }
 
 @end
