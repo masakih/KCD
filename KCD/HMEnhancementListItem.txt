@@ -78,6 +78,7 @@
 
 192A	4	3	38.1cm Mk.I/N連装砲改		Warspite
 192A	5	3	38.1cm Mk.I/N連装砲改		Warspite
+192A	6	3	38.1cm Mk.I/N連装砲改		Warspite
 
 
 76A	5	3	38cm連装砲	38cm連装砲改★+3	Bismarck
