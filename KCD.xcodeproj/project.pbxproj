@@ -17,6 +17,13 @@
 		F4131EDE190FEBDB004F7F9A /* HMSlotItemWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4131EE0190FEBDB004F7F9A /* HMSlotItemWindowController.xib */; };
 		F4131EE61910318F004F7F9A /* HMMasterSlotItemEquipTypeCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4131EE51910318F004F7F9A /* HMMasterSlotItemEquipTypeCommand.m */; };
 		F4131EE91911445F004F7F9A /* HMSlotItemEquipTypeTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4131EE81911445F004F7F9A /* HMSlotItemEquipTypeTransformer.m */; };
+		F41465641DAB850D00D68C97 /* HMScreenshotListWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F41465631DAB850D00D68C97 /* HMScreenshotListWindowController.xib */; };
+		F41465661DAB851F00D68C97 /* HMScreenshotListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F41465651DAB851F00D68C97 /* HMScreenshotListViewController.xib */; };
+		F41465681DAB852E00D68C97 /* HMScreenshotCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = F41465671DAB852E00D68C97 /* HMScreenshotCollectionViewItem.xib */; };
+		F414656B1DAB853D00D68C97 /* HMScreenshotCollectionViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F414656A1DAB853D00D68C97 /* HMScreenshotCollectionViewItem.m */; };
+		F414656E1DAB855700D68C97 /* HMCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = F414656D1DAB855700D68C97 /* HMCollectionView.m */; };
+		F41465701DAB895900D68C97 /* HMScreenshotEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F414656F1DAB895900D68C97 /* HMScreenshotEditorViewController.xib */; };
+		F41465721DAB898900D68C97 /* HMScreenshotDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F41465711DAB898900D68C97 /* HMScreenshotDetailViewController.xib */; };
 		F424A6FA1BC801DE0096C431 /* HMUnknownComand.m in Sources */ = {isa = PBXBuildFile; fileRef = F424A6F91BC801DE0096C431 /* HMUnknownComand.m */; };
 		F424A6FD1BC809490096C431 /* HMIgnoreCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F424A6FC1BC809490096C431 /* HMIgnoreCommand.m */; };
 		F424A7001BC8C10C0096C431 /* HMFailedCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F424A6FF1BC8C10C0096C431 /* HMFailedCommand.m */; };
@@ -314,6 +321,15 @@
 		F4131EE51910318F004F7F9A /* HMMasterSlotItemEquipTypeCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMasterSlotItemEquipTypeCommand.m; sourceTree = "<group>"; };
 		F4131EE71911445F004F7F9A /* HMSlotItemEquipTypeTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSlotItemEquipTypeTransformer.h; sourceTree = "<group>"; };
 		F4131EE81911445F004F7F9A /* HMSlotItemEquipTypeTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSlotItemEquipTypeTransformer.m; sourceTree = "<group>"; };
+		F41465631DAB850D00D68C97 /* HMScreenshotListWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMScreenshotListWindowController.xib; sourceTree = "<group>"; };
+		F41465651DAB851F00D68C97 /* HMScreenshotListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMScreenshotListViewController.xib; sourceTree = "<group>"; };
+		F41465671DAB852E00D68C97 /* HMScreenshotCollectionViewItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMScreenshotCollectionViewItem.xib; sourceTree = "<group>"; };
+		F41465691DAB853D00D68C97 /* HMScreenshotCollectionViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMScreenshotCollectionViewItem.h; sourceTree = "<group>"; };
+		F414656A1DAB853D00D68C97 /* HMScreenshotCollectionViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMScreenshotCollectionViewItem.m; sourceTree = "<group>"; };
+		F414656C1DAB855700D68C97 /* HMCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMCollectionView.h; sourceTree = "<group>"; };
+		F414656D1DAB855700D68C97 /* HMCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMCollectionView.m; sourceTree = "<group>"; };
+		F414656F1DAB895900D68C97 /* HMScreenshotEditorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMScreenshotEditorViewController.xib; sourceTree = "<group>"; };
+		F41465711DAB898900D68C97 /* HMScreenshotDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMScreenshotDetailViewController.xib; sourceTree = "<group>"; };
 		F424A6F81BC801DE0096C431 /* HMUnknownComand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMUnknownComand.h; sourceTree = "<group>"; };
 		F424A6F91BC801DE0096C431 /* HMUnknownComand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMUnknownComand.m; sourceTree = "<group>"; };
 		F424A6FB1BC809490096C431 /* HMIgnoreCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMIgnoreCommand.h; sourceTree = "<group>"; };
@@ -847,16 +863,25 @@
 				F4F9472F1D5DBC8E00F95998 /* HMScreenshotList.storyboard */,
 				F4A2AF4F1A074DCF0024BD9E /* HMScreenshotListWindowController.h */,
 				F4A2AF501A074DCF0024BD9E /* HMScreenshotListWindowController.m */,
+				F41465631DAB850D00D68C97 /* HMScreenshotListWindowController.xib */,
 				F4A9E80A1D045C4200F91746 /* HMScreenshotListViewController.h */,
 				F4A9E80B1D045C4200F91746 /* HMScreenshotListViewController.m */,
+				F41465651DAB851F00D68C97 /* HMScreenshotListViewController.xib */,
+				F414656C1DAB855700D68C97 /* HMCollectionView.h */,
+				F414656D1DAB855700D68C97 /* HMCollectionView.m */,
+				F41465691DAB853D00D68C97 /* HMScreenshotCollectionViewItem.h */,
+				F414656A1DAB853D00D68C97 /* HMScreenshotCollectionViewItem.m */,
+				F41465671DAB852E00D68C97 /* HMScreenshotCollectionViewItem.xib */,
 				F4A9E7FE1D045C0E00F91746 /* HMBridgeViewController.h */,
 				F4A9E7FF1D045C0E00F91746 /* HMBridgeViewController.m */,
 				F4A9E8041D045C3000F91746 /* HMScreenshotDetailViewController.h */,
 				F4A9E8051D045C3000F91746 /* HMScreenshotDetailViewController.m */,
+				F41465711DAB898900D68C97 /* HMScreenshotDetailViewController.xib */,
 				F4A9E8011D045C1E00F91746 /* HMImageView.h */,
 				F4A9E8021D045C1E00F91746 /* HMImageView.m */,
 				F4A9E8061D045C3000F91746 /* HMScreenshotEditorViewController.h */,
 				F4A9E8071D045C3000F91746 /* HMScreenshotEditorViewController.m */,
+				F414656F1DAB895900D68C97 /* HMScreenshotEditorViewController.xib */,
 				F4A9E7F91D045BC100F91746 /* HMTiledImageView.h */,
 				F4A9E7FA1D045BC100F91746 /* HMTiledImageView.m */,
 				F4A9E7F71D045BC100F91746 /* HMSlideReplaceSegue.h */,
@@ -1589,12 +1614,15 @@
 				F4C6685A1C54510E00601AFB /* HMBookmarkEditorViewController.xib in Resources */,
 				F4B3DC3C18E5C87D0011B4FC /* HMDocksViewController.xib in Resources */,
 				F4C668631C54518F00601AFB /* HMProgressPanel.xib in Resources */,
+				F41465641DAB850D00D68C97 /* HMScreenshotListWindowController.xib in Resources */,
 				F4C6686F1C54524900601AFB /* HMVerticalFleetViewController.xib in Resources */,
 				F4C668601C54517500601AFB /* HMGameViewController.xib in Resources */,
 				F4F9472D1D5DBC8E00F95998 /* HMScreenshotList.storyboard in Resources */,
 				F4B3DC3918E5C8700011B4FC /* HMJSONViewWindowController.xib in Resources */,
 				F4BEF0081B11A5DE004702B8 /* HMShipDetailViewController.xib in Resources */,
+				F41465721DAB898900D68C97 /* HMScreenshotDetailViewController.xib in Resources */,
 				F4B3DC3318E5C8520011B4FC /* HMShipViewController.xib in Resources */,
+				F41465661DAB851F00D68C97 /* HMScreenshotListViewController.xib in Resources */,
 				F4C668691C5451C800601AFB /* HMResourceViewController.xib in Resources */,
 				F4BEEFFF1B11A5C2004702B8 /* HMMediumShipViewController.xib in Resources */,
 				F4F9471F1D5DBBC700F95998 /* HMRepairListViewController.xib in Resources */,
@@ -1607,6 +1635,7 @@
 				F4F947281D5DBC5500F95998 /* HMAncherageRepairTimerViewController.xib in Resources */,
 				F4BEEFFC1B11A5A7004702B8 /* HMExternalBrowserWindowController.xib in Resources */,
 				F4BDEB5F187252F30069D0CE /* Images.xcassets in Resources */,
+				F41465681DAB852E00D68C97 /* HMScreenshotCollectionViewItem.xib in Resources */,
 				F4BEF00B1B11A628004702B8 /* HMShipMasterDetailWindowController.xib in Resources */,
 				F4BEEE9F18D211280006F70C /* Localizable.strings in Resources */,
 				F4A3AD9419BDDE5500FDBF80 /* HMPreferencePanelController.xib in Resources */,
@@ -1614,6 +1643,7 @@
 				F40ADA021CE6317500AE29B0 /* HMIgnoreCommand.plist in Resources */,
 				F4BDEB5D187252F30069D0CE /* MainMenu.xib in Resources */,
 				F4B3DC3F18E5C8870011B4FC /* HMBroserWindowController.xib in Resources */,
+				F41465701DAB895900D68C97 /* HMScreenshotEditorViewController.xib in Resources */,
 				F4C668661C5451AB00601AFB /* HMQuestListViewController.xib in Resources */,
 				F4666C6B1B29E974001840DB /* EquipmentStrengthen.plist in Resources */,
 				F4131EDE190FEBDB004F7F9A /* HMSlotItemWindowController.xib in Resources */,
@@ -1662,6 +1692,7 @@
 				F4B3DC2A18DF31400011B4FC /* HMCreateShipCommand.m in Sources */,
 				F46F103618A7CE310063E503 /* HMJSONViewCommand.m in Sources */,
 				F4F9F8701C6A306A00D0EE76 /* HMKCGuardEscaped.m in Sources */,
+				F414656B1DAB853D00D68C97 /* HMScreenshotCollectionViewItem.m in Sources */,
 				F4B3DC1E18DEB8C70011B4FC /* HMKenzoHistory.m in Sources */,
 				F4F9F86D1C6A306A00D0EE76 /* HMKCDamage+CoreDataProperties.m in Sources */,
 				F4F9F8771C6B5BA900D0EE76 /* HMKCKenzoDock+CoreDataProperties.m in Sources */,
@@ -1792,6 +1823,7 @@
 				F4C3957418CDDFE500A1E918 /* HMKenzoDockStatus.m in Sources */,
 				F471784D1B6FA18800F5E59D /* HMKCResource.m in Sources */,
 				F4F9F87D1C6B5E4A00D0EE76 /* HMKCMasterSType+CoreDataProperties.m in Sources */,
+				F414656E1DAB855700D68C97 /* HMCollectionView.m in Sources */,
 				F4C6687D1C545E3800601AFB /* HMMapWindowController.m in Sources */,
 				F4AA060D1930E69200844688 /* HMMidnightBattleCommand.m in Sources */,
 				F4D6BC551A93903E00742FEB /* HMDropShipHistory.m in Sources */,

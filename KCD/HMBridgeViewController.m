@@ -36,6 +36,21 @@
 	return self;
 }
 
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if(self) {
+        NSString *tag = NSLocalizedString(@"kancolle", @"kancolle twitter hash tag");
+        if(tag) {
+            _tagString = [NSString stringWithFormat:@"#%@", tag];
+        } else {
+            _tagString = @"";
+        }
+//		_useMask = HMStandardDefaults.useMask;
+    }
+    return self;
+}
+
 - (void)setRepresentedObject:(id)representedObject
 {
 	[super setRepresentedObject:representedObject];

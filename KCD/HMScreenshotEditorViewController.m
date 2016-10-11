@@ -264,6 +264,6 @@
 	
 	[NSApp sendAction:@selector(registerImage:) to:nil from:self];
 	
-	[self performSegueWithIdentifier:@"right" sender:self];
+    [NSApp sendAction:@selector(changeToDetail:) to:nil from:sender];
 }
 @end

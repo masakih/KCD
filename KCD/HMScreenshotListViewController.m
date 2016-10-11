@@ -47,18 +47,21 @@
 @end
 
 
-@interface HMScreenshotListViewController () <NSSplitViewDelegate>
+@interface HMScreenshotListViewController ()
 
 @property (weak, nonatomic) IBOutlet NSArrayController *screenshotsController;
 @property (strong) NSMutableArray *deletedPaths;
 
-@property (weak, nonatomic) IBOutlet IKImageBrowserView *browser;
+@property (weak, nonatomic) IBOutlet NSCollectionView *collectionView;
 @property (strong, nonatomic) IBOutlet NSMenu *contextMenu;
 @property (weak, nonatomic) IBOutlet NSButton *shareButton;
 
 
 @property (weak, nonatomic) IBOutlet NSView *standardView;
 @property (weak, nonatomic) IBOutlet NSView *editorView;
+
+@property (nonatomic) CGFloat zoom;
+
 
 - (void)reloadData;
 
@@ -77,18 +80,65 @@
 	return self;
 }
 
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if(self) {
+        _screenshots = [HMScreenshotModel new];
+        _screenshots.screenshots = [self loadCache];
+        _deletedPaths = [NSMutableArray new];
+        
+        _zoom = 0.3;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	
-	[self.browser setCanControlQuickLookPanel:YES];
+    NSNib *nib = [[NSNib alloc] initWithNibNamed:@"HMScreenshotCollectionViewItem" bundle:nil];
+    [self.collectionView registerClass:[NSCollectionViewItem class] forItemWithIdentifier:@"item"];
+    [self.collectionView registerNib:nib forItemWithIdentifier:@"item"];
 
 	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO];
 	self.screenshots.sortDescriptors = @[sortDescriptor];
 	self.screenshots.selectedIndexes = [NSIndexSet indexSetWithIndex:0];
+    
+    [self.collectionView addObserver:self
+                          forKeyPath:@"selectionIndexPaths"
+                             options:0
+                             context:nil];
 	
 	[self performSelector:@selector(reloadData:)
 			   withObject:nil
 			   afterDelay:0.0];
+}
+
+- (void)setZoom:(CGFloat)zoom
+{
+    _zoom = zoom;
+    [self.collectionView reloadData];
+}
+- (NSSize)collectionView:(NSCollectionView *)collectionView layout:(NSCollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    const NSInteger def = 800;
+    return NSMakeSize(def * self.zoom, def * self.zoom);
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
+{
+    if( object == self.collectionView ) {
+        NSSet<NSIndexPath *> *selections = self.collectionView.selectionIndexPaths;
+        NSMutableIndexSet *selectionIndexes = [NSMutableIndexSet indexSet];
+        for(NSIndexPath *indexPath in selections) {
+            [selectionIndexes addIndex:[indexPath indexAtPosition:1]];
+        }
+        self.screenshots.selectedIndexes = selectionIndexes;
+        
+        return;
+    }
+    
+    [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }
 
 - (NSString *)screenshotSaveDirectoryPath
@@ -331,6 +381,7 @@
 			
 			[self.screenshotsController insertObject:info atArrangedObjectIndex:0];
 			self.screenshotsController.selectedObjects = @[info];
+            [self.collectionView reloadData];
 			
 			if(HMStandardDefaults.showsListWindowAtScreenshot) {
 				[self.view.window makeKeyAndOrderFront:nil];
@@ -371,69 +422,6 @@
 {
 	NSViewController *v = segue.destinationController;
 	v.representedObject = self.screenshots;
-}
-
-#pragma mark - NSSplitViewDelegate
-
-const CGFloat leftMinWidth = 299;
-const CGFloat rightMinWidth = 400;
-
-- (CGFloat)splitView:(NSSplitView *)splitView constrainMinCoordinate:(CGFloat)proposedMinimumPosition ofSubviewAt:(NSInteger)dividerIndex
-{
-	if(dividerIndex == 0) {
-		return leftMinWidth;
-	}
-	return proposedMinimumPosition;
-}
-- (CGFloat)splitView:(NSSplitView *)splitView constrainSplitPosition:(CGFloat)proposedPosition ofSubviewAt:(NSInteger)dividerIndex
-{
-	if(dividerIndex == 0) {
-		NSSize size = splitView.frame.size;
-		CGFloat rightWidth = size.width - proposedPosition;
-		if(rightWidth < rightMinWidth) {
-			return size.width - rightMinWidth;
-		}
-	}
-	return proposedPosition;
-}
-- (void)splitView:(NSSplitView *)splitView resizeSubviewsWithOldSize:(NSSize)oldSize
-{
-	[splitView adjustSubviews];
-	
-	NSView *leftView = splitView.subviews[0];
-	NSView *rightView = splitView.subviews[1];
-	
-	if(NSWidth(leftView.frame) < leftMinWidth) {
-		NSRect leftRect = leftView.frame;
-		leftRect.size.width = leftMinWidth;
-		leftView.frame = leftRect;
-		
-		NSRect rightRect = rightView.frame;
-		rightRect.size.width = NSWidth(splitView.frame) - NSWidth(leftRect) - splitView.dividerThickness;
-		rightRect.origin.x = NSWidth(leftRect) + splitView.dividerThickness;
-		rightView.frame = rightRect;
-	}
-}
-- (BOOL)splitView:(NSSplitView *)splitView shouldAdjustSizeOfSubview:(NSView *)view
-{
-	NSView *leftView = splitView.subviews[0];
-	NSView *rightView = splitView.subviews[1];
-	
-	if(leftView == view) {
-		if(NSWidth(leftView.frame) < leftMinWidth) return NO;
-	}
-	if(rightView == view) {
-		if(NSWidth(leftView.frame) >= leftMinWidth) return NO;
-	}
-	
-	return YES;
-}
-
-
-#pragma mark - IKImageBrowserDelegate
-- (void)imageBrowser:(IKImageBrowserView *) aBrowser cellWasRightClickedAtIndex:(NSUInteger) index withEvent:(NSEvent *) event
-{
-	[NSMenu popUpContextMenu:self.contextMenu withEvent:event forView:aBrowser];
 }
 
 @end
