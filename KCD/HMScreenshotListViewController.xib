@@ -62,9 +62,10 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="17" id="hwt-Fn-wJs"/>
                     </constraints>
-                    <sliderCell key="cell" continuous="YES" refusesFirstResponder="YES" state="on" alignment="left" minValue="0.20000000000000001" maxValue="1" doubleValue="1" tickMarkPosition="above" sliderType="linear" id="hO7-4z-A2O"/>
+                    <sliderCell key="cell" continuous="YES" refusesFirstResponder="YES" state="on" alignment="left" minValue="0.20000000000000001" maxValue="0.90000000000000002" doubleValue="0.90000000000000002" tickMarkPosition="above" sliderType="linear" id="hO7-4z-A2O"/>
                     <connections>
-                        <binding destination="-2" name="value" keyPath="zoom" id="kWI-Wj-qk7"/>
+                        <binding destination="-2" name="maxValue" keyPath="maxZoom" id="vam-gz-oQq"/>
+                        <binding destination="-2" name="value" keyPath="zoom" previousBinding="vam-gz-oQq" id="2mY-1p-K3E"/>
                     </connections>
                 </slider>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vkb-uY-8tN">

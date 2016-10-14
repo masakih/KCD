@@ -61,6 +61,7 @@
 @property (weak, nonatomic) IBOutlet NSView *editorView;
 
 @property (nonatomic) CGFloat zoom;
+@property CGFloat maxZoom;
 
 
 - (void)reloadData;
@@ -108,12 +109,45 @@
                           forKeyPath:@"selectionIndexPaths"
                              options:0
                              context:nil];
+    self.collectionView.postsFrameChangedNotifications = YES;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(viewFrameDidChange:)
+                                                 name:NSViewFrameDidChangeNotification
+                                               object:self.collectionView];
+    [self viewFrameDidChange:nil];
 	
 	[self performSelector:@selector(reloadData:)
 			   withObject:nil
 			   afterDelay:0.0];
 }
 
+const CGFloat def = 800;
+const CGFloat leftMergin = 8 + 1;
+const CGFloat rightMergin = 8 + 1;
+
+CGFloat maxZoom(CGFloat width) {
+    width -= leftMergin;
+    width -= rightMergin;
+    
+    if(width < 240) {
+        return width / def / 0.6;
+    }
+    if(width > 800) {
+        return 1;
+    }
+    return pow((width / def - 0.2) / 0.8, 1.0 / 3.0);
+}
+CGFloat realFromZoom(CGFloat zoom) {
+    CGFloat f = 0.0;
+    
+    if(zoom < 0.5) {
+        f = def * zoom * 0.6;
+    } else {
+        f = def * (0.8 * zoom * zoom * zoom + 0.2);
+    }
+    
+    return f;
+}
 - (void)setZoom:(CGFloat)zoom
 {
     _zoom = zoom;
@@ -121,8 +155,15 @@
 }
 - (NSSize)collectionView:(NSCollectionView *)collectionView layout:(NSCollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    const NSInteger def = 800;
-    return NSMakeSize(def * self.zoom, def * self.zoom);
+    CGFloat f = realFromZoom(self.zoom);
+    return NSMakeSize(f, f);
+}
+- (void)viewFrameDidChange:(id)no
+{
+    self.maxZoom = maxZoom(self.collectionView.frame.size.width);;
+    
+    CGFloat f = self.maxZoom;
+    if(_zoom > f) self.zoom = f;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
