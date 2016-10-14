@@ -88,24 +88,24 @@ typedef BOOL (^HMFindViewController)(NSViewController *viewController);
         if(blocks(vc)) return vc;
 	}
 	
-	return nil;
+    return nil;
 }
 
 - (void)registerScreenshot:(NSBitmapImageRep *)image fromOnScreen:(NSRect)screenRect
 {
-	id viewControler = [self findFromViewControllerUsingBlock:^BOOL(NSViewController *viewController) {
-											 return [viewController respondsToSelector:_cmd];
-										 }];
-	
-	[viewControler registerScreenshot:image fromOnScreen:screenRect];
+    id viewControler = [self findFromViewControllerUsingBlock:^BOOL(NSViewController *viewController) {
+                            return [viewController respondsToSelector:_cmd];
+                        }];
+    
+    [viewControler registerScreenshot:image fromOnScreen:screenRect];
 }
 
 - (IBAction)share:(id)sender
 {
-	id viewControler = [self findFromViewControllerUsingBlock:^BOOL(NSViewController *viewController) {
-															return [viewController respondsToSelector:_cmd];
-														}];
-	[viewControler share:sender];
+    id viewControler = [self findFromViewControllerUsingBlock:^BOOL(NSViewController *viewController) {
+                            return [viewController respondsToSelector:_cmd];
+                        }];
+    [viewControler share:sender];
 }
 
 
@@ -113,77 +113,22 @@ typedef BOOL (^HMFindViewController)(NSViewController *viewController);
 {
     if(!self.editorViewController) {
         self.editorViewController = [HMScreenshotEditorViewController new];
+        [self.rightController addChildViewController:self.editorViewController];
         [self.editorViewController view];
         self.editorViewController.representedObject = self.listViewController.screenshots;
     }
     
-    NSStoryboardSegue *se = [NSStoryboardSegue segueWithIdentifier:@""
-                                                            source:self.detailViewController
-                                                       destination:self.editorViewController
-                                                    performHandler:^{
-                                                        NSViewController *s = self.detailViewController;
-                                                        NSViewController *d = self.editorViewController;
-                                                        NSView *superView = s.view.superview;
-                                                        NSViewController *p = s.parentViewController;
-                                                        
-                                                        [p addChildViewController:d];
-                                                        
-                                                        [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
-                                                            NSRect sFrame = s.view.frame;
-                                                            NSRect dFrame = sFrame;
-                                                            dFrame.origin.x += dFrame.size.width;
-                                                            d.view.frame = dFrame;
-                                                            [superView addSubview:d.view];
-                                                            
-                                                            dFrame.origin.x = sFrame.origin.x;
-                                                            sFrame.origin.x += -sFrame.size.width;
-                                                            
-                                                            s.view.animator.frame = sFrame;
-                                                            d.view.animator.frame = dFrame;
-                                                            
-                                                            d.view.autoresizingMask = s.view.autoresizingMask;
-                                                            
-                                                        } completionHandler:^{
-                                                            [s removeFromParentViewController];
-                                                            [s.view removeFromSuperview];
-                                                        }];
-                                                    }];
-    [se perform];
+    [self.rightController transitionFromViewController:self.detailViewController
+                                      toViewController:self.editorViewController
+                                               options:NSViewControllerTransitionSlideLeft
+                                     completionHandler:nil];
 }
 - (IBAction)changeToDetail:(id)sender
 {
-    NSStoryboardSegue *se = [NSStoryboardSegue segueWithIdentifier:@""
-                                                            source:self.editorViewController
-                                                       destination:self.detailViewController
-                                                    performHandler:^{
-                                                        NSViewController *s = self.editorViewController;
-                                                        NSViewController *d = self.detailViewController;
-                                                        NSView *superView = s.view.superview;
-                                                        NSViewController *p = s.parentViewController;
-                                                        
-                                                        [p addChildViewController:d];
-                                                        
-                                                        [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
-                                                            NSRect sFrame = s.view.frame;
-                                                            NSRect dFrame = sFrame;
-                                                            dFrame.origin.x += -dFrame.size.width;
-                                                            d.view.frame = dFrame;
-                                                            [superView addSubview:d.view];
-                                                            
-                                                            dFrame.origin.x = sFrame.origin.x;
-                                                            sFrame.origin.x += sFrame.size.width;
-                                                            
-                                                            s.view.animator.frame = sFrame;
-                                                            d.view.animator.frame = dFrame;
-                                                            
-                                                            d.view.autoresizingMask = s.view.autoresizingMask;
-                                                            
-                                                        } completionHandler:^{
-                                                            [s removeFromParentViewController];
-                                                            [s.view removeFromSuperview];
-                                                        }];
-                                                    }];
-    [se perform];
+    [self.rightController transitionFromViewController:self.editorViewController
+                                      toViewController:self.detailViewController
+                                               options:NSViewControllerTransitionSlideRight
+                                     completionHandler:nil];
 }
 
 #pragma mark - NSSplitViewDelegate
