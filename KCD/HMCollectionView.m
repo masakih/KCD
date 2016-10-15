@@ -73,7 +73,37 @@
     NSString *key = event.charactersIgnoringModifiers;
     if([key isEqualToString:@" "]) {
         [self quickLookWithEvent:event];
+        
+        return;
     }
+    // 左右矢印キーの時の動作
+    const NSUInteger leftArrow = 123;
+    const NSUInteger rightArrow = 124;
+    if(event.keyCode == leftArrow || event.keyCode == rightArrow) {
+        NSSet *se = self.selectionIndexPaths;
+        if(se.count == 0) return;
+        NSIndexPath *indexPath = se.allObjects[0];
+        NSInteger index = indexPath.item;
+        
+        if(event.keyCode == leftArrow) {
+            if(index == 0) return;
+            index -= 1;
+        } else {
+            NSUInteger count = self.content.count;
+            if(index == count - 1) return;
+            index += 1;
+        }
+        
+        NSRect frame = [self frameForItemAtIndex:index];
+        [self scrollRectToVisible:frame];
+        
+        NSUInteger i[] = { 0, index };
+        NSIndexPath *newIndexPath = [NSIndexPath indexPathWithIndexes:i length:2];
+        self.selectionIndexPaths = [NSSet setWithObject:newIndexPath];
+        
+        return;
+    }
+    
     [super keyDown:event];
 }
 
