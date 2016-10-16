@@ -69,12 +69,11 @@
 		self.errorString = @"JSON is NOT NSDictionary.";
 		return;
 	}
-	if(![[json objectForKey:@"api_result"] isEqual:@1]) {
-		self.success = NO;
-		return;
-	}
-	self.success = YES;
 	self.json = json;
+    self.success = YES;
+    if(![[json objectForKey:@"api_result"] isEqual:@1]) {
+        self.success = NO;
+    }
 }
 
 - (id)json
