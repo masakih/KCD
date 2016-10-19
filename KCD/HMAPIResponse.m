@@ -86,7 +86,7 @@
 
 - (void)parseParameter
 {
-	NSString *unescape = [self.paramString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *unescape = self.paramString.stringByRemovingPercentEncoding;
 	NSArray *pair = [unescape componentsSeparatedByString:@"&"];
 	NSMutableDictionary *dict = [NSMutableDictionary new];
 	for(NSString *p in pair) {
