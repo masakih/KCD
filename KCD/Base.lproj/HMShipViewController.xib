@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <deployment version="101000" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="HMShipViewController">
@@ -26,7 +26,7 @@
                     <rect key="frame" x="6" y="8" width="311" height="354"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="gHP-Wh-ryl">
-                        <rect key="frame" x="1" y="17" width="304" height="334"/>
+                        <rect key="frame" x="1" y="0.0" width="309" height="353"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveName="shipviewtable21" rowSizeStyle="automatic" headerView="xz8-nE-DgQ" viewBased="YES" floatsGroupRows="NO" id="HLz-Kp-DN2">
@@ -105,13 +105,13 @@
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                         <connections>
+                                                            <binding destination="mHq-2t-AXg" name="value" keyPath="objectValue.name" id="uwJ-YT-w3n"/>
                                                             <binding destination="mHq-2t-AXg" name="textColor" keyPath="objectValue.planColor" id="prr-UH-kCE"/>
                                                             <binding destination="mHq-2t-AXg" name="fontBold" keyPath="objectValue.sally_area" id="598-ZP-Ef5">
                                                                 <dictionary key="options">
                                                                     <string key="NSValueTransformerName">HMPlanToShowsBoldFontTransformer</string>
                                                                 </dictionary>
                                                             </binding>
-                                                            <binding destination="mHq-2t-AXg" name="value" keyPath="objectValue.name" id="uwJ-YT-w3n"/>
                                                         </connections>
                                                     </textField>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="bx8-sm-mpL">
@@ -289,7 +289,6 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="edk-ob-MlH">
                         <rect key="frame" x="1" y="337" width="309" height="16"/>
@@ -381,7 +380,7 @@
             <rect key="frame" x="0.0" y="0.0" width="311" height="352"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
             <clipView key="contentView" id="V5p-7l-cBF">
-                <rect key="frame" x="1" y="17" width="304" height="334"/>
+                <rect key="frame" x="1" y="0.0" width="309" height="351"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveName="shipviewtable22" rowSizeStyle="automatic" headerView="QxO-zY-mjX" viewBased="YES" floatsGroupRows="NO" id="Ze3-Gd-1Qe">
@@ -685,7 +684,6 @@
                         </connections>
                     </tableView>
                 </subviews>
-                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
             </clipView>
             <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="kJ5-e9-x5h">
                 <rect key="frame" x="1" y="335" width="304" height="16"/>
@@ -695,7 +693,7 @@
                 <autoresizingMask key="autoresizingMask"/>
             </scroller>
             <tableHeaderView key="headerView" id="QxO-zY-mjX">
-                <rect key="frame" x="0.0" y="0.0" width="304" height="17"/>
+                <rect key="frame" x="0.0" y="0.0" width="309" height="17"/>
                 <autoresizingMask key="autoresizingMask"/>
             </tableHeaderView>
             <point key="canvasLocation" x="348.5" y="611"/>
@@ -704,7 +702,7 @@
             <rect key="frame" x="0.0" y="0.0" width="311" height="352"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
             <clipView key="contentView" id="qkK-9C-mZ5">
-                <rect key="frame" x="1" y="17" width="304" height="334"/>
+                <rect key="frame" x="1" y="0.0" width="309" height="351"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveName="shipviewtable23" rowSizeStyle="automatic" headerView="dJx-c5-qhN" viewBased="YES" floatsGroupRows="NO" id="qaM-It-e1l">
@@ -1008,7 +1006,6 @@
                         </connections>
                     </tableView>
                 </subviews>
-                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
             </clipView>
             <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="8Ql-PL-OjH">
                 <rect key="frame" x="1" y="335" width="304" height="16"/>
@@ -1018,7 +1015,7 @@
                 <autoresizingMask key="autoresizingMask"/>
             </scroller>
             <tableHeaderView key="headerView" id="dJx-c5-qhN">
-                <rect key="frame" x="0.0" y="0.0" width="304" height="17"/>
+                <rect key="frame" x="0.0" y="0.0" width="309" height="17"/>
                 <autoresizingMask key="autoresizingMask"/>
             </tableHeaderView>
             <point key="canvasLocation" x="785.5" y="129"/>
@@ -1027,7 +1024,7 @@
             <rect key="frame" x="0.0" y="0.0" width="311" height="352"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
             <clipView key="contentView" id="MyI-d7-N9C">
-                <rect key="frame" x="1" y="23" width="309" height="328"/>
+                <rect key="frame" x="1" y="0.0" width="309" height="351"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveName="shipviewtable24" rowSizeStyle="automatic" headerView="TD0-tZ-Rbv" viewBased="YES" floatsGroupRows="NO" id="Js9-iC-cBR">
@@ -1300,7 +1297,6 @@
                         </connections>
                     </tableView>
                 </subviews>
-                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
             </clipView>
             <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="pcD-da-JKM">
                 <rect key="frame" x="1" y="335" width="309" height="16"/>
