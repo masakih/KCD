@@ -94,12 +94,14 @@
             index += 1;
         }
         
-        NSRect frame = [self frameForItemAtIndex:index];
-        [self scrollRectToVisible:frame];
-        
         NSUInteger i[] = { 0, index };
         NSIndexPath *newIndexPath = [NSIndexPath indexPathWithIndexes:i length:2];
-        self.selectionIndexPaths = [NSSet setWithObject:newIndexPath];
+        NSSet *set = [NSSet setWithObject:newIndexPath];
+        
+        [self scrollToItemsAtIndexPaths:set
+                         scrollPosition:NSCollectionViewScrollPositionNearestHorizontalEdge];
+        
+        self.selectionIndexPaths = set;
         
         return;
     }
@@ -143,7 +145,7 @@
 }
 - (id <QLPreviewItem>)previewPanel:(QLPreviewPanel *)panel previewItemAtIndex:(NSInteger)index
 {
-    HMScreenshotCollectionViewItem *item = (HMScreenshotCollectionViewItem *)[self itemAtIndexPath:self.selectionIndexPaths.allObjects[index]];
+    HMScreenshotCollectionViewItem *item = (HMScreenshotCollectionViewItem *)[self itemAtIndexPath:self.selectionIndexPaths.allObjects[index]];    
     return item;
 }
 
