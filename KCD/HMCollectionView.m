@@ -94,8 +94,8 @@
             index += 1;
         }
         
-        NSUInteger i[] = { 0, index };
-        NSIndexPath *newIndexPath = [NSIndexPath indexPathWithIndexes:i length:2];
+        NSIndexPath *newIndexPath = [NSIndexPath indexPathForItem:index
+                                                        inSection:0];
         NSSet *set = [NSSet setWithObject:newIndexPath];
         
         [self scrollToItemsAtIndexPaths:set
@@ -145,7 +145,7 @@
 }
 - (id <QLPreviewItem>)previewPanel:(QLPreviewPanel *)panel previewItemAtIndex:(NSInteger)index
 {
-    HMScreenshotCollectionViewItem *item = (HMScreenshotCollectionViewItem *)[self itemAtIndexPath:self.selectionIndexPaths.allObjects[index]];    
+    HMScreenshotCollectionViewItem *item = (HMScreenshotCollectionViewItem *)[self itemAtIndexPath:self.selectionIndexPaths.allObjects[index]];
     return item;
 }
 
