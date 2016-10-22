@@ -53,7 +53,7 @@ static NSMutableArray *registeredCommands = nil;
 {
 	HMJSONCommand *command = nil;
 	
-	if(!apiResult.json) {
+	if(!apiResult.success) {
 		command = [HMFailedCommand new];
 		command.api = apiResult.api;
 		command.arguments = apiResult.parameter;
