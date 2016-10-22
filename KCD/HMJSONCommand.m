@@ -60,20 +60,6 @@ static NSMutableArray *registeredCommands = nil;
 		command.json = apiResult.json;
 		return command;
 	}
-#if ENABLE_JSON_LOG
-	HMJSONViewCommand *viewCommand = [HMJSONViewCommand new];
-	viewCommand.api = apiResult.api;
-	viewCommand.arguments = apiResult.parameter;
-	viewCommand.json = apiResult.json;
-	viewCommand.argumentArray = apiResult.argumentArray;
-	id json = [HMJSONNode nodeWithJSON:apiResult.json];
-	if(json) {
-		viewCommand.jsonTree = @[json];
-	}
-	viewCommand.recieveDate = apiResult.date;
-	
-	command = viewCommand;
-#endif
 	
 	for(Class commandClass in registeredCommands) {
 		if([commandClass canExcuteAPI:apiResult.api]) {
@@ -82,25 +68,16 @@ static NSMutableArray *registeredCommands = nil;
 			command.arguments = apiResult.parameter;
 			command.json = apiResult.json;
 			
-#if ENABLE_JSON_LOG_HANDLED_API
-			command = [HMCompositCommand compositCommandWithCommands:command, viewCommand, nil];
-#endif
-			return command;
+            break;
 		}
 	}
-#if ENABLE_JSON_LOG
-	if(command == viewCommand) command = nil;
-#endif
+    
 	if(!command) {
 		if([HMIgnoreCommand canExcuteAPI:apiResult.api]) {
 			command =  [HMIgnoreCommand new];
 			command.api = apiResult.api;
 			command.arguments = apiResult.parameter;
 			command.json = apiResult.json;
-			
-#if ENABLE_JSON_LOG_HANDLED_API
-			command = [HMCompositCommand compositCommandWithCommands:command, viewCommand, nil];
-#endif
 		}
 	}
 	if(!command) {
@@ -108,11 +85,22 @@ static NSMutableArray *registeredCommands = nil;
 		command.api = apiResult.api;
 		command.arguments = apiResult.parameter;
 		command.json = apiResult.json;
-		
-#if ENABLE_JSON_LOG_HANDLED_API
-		command = [HMCompositCommand compositCommandWithCommands:command, viewCommand, nil];
-#endif
 	}
+    
+#if ENABLE_JSON_LOG
+    HMJSONViewCommand *viewCommand = [HMJSONViewCommand new];
+    viewCommand.api = apiResult.api;
+    viewCommand.arguments = apiResult.parameter;
+    viewCommand.json = apiResult.json;
+    viewCommand.argumentArray = apiResult.argumentArray;
+    id json = [HMJSONNode nodeWithJSON:apiResult.json];
+    if(json) {
+        viewCommand.jsonTree = @[json];
+    }
+    viewCommand.recieveDate = apiResult.date;
+    
+    command = [HMCompositCommand compositCommandWithCommands:command, viewCommand, nil];
+#endif
 	
 	return command;
 }
