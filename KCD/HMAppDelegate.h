@@ -35,15 +35,15 @@ typedef NS_ENUM(NSUInteger, HMShipType) {
 
 - (NSPredicate *)predicateForShipType:(HMShipType)shipType;
 
-@property (strong, nonatomic) IBOutlet NSMenuItem *debugMenuItem;
+@property (nonatomic, strong) IBOutlet NSMenuItem *debugMenuItem;
 @property (nonatomic, weak) IBOutlet NSMenuItem *billingWindowMenuItem;
 
-@property (readonly) HMFleetManager *fleetManager;
+@property (nonatomic, readonly) HMFleetManager *fleetManager;
 
-@property (nonatomic, strong) NSString *screenShotSaveDirectory;
-@property (readonly) HMScreenshotListWindowController *screenshotListWindowController;
+@property (nonatomic, copy) NSString *screenShotSaveDirectory;
+@property (nonatomic, readonly) HMScreenshotListWindowController *screenshotListWindowController;
 
-@property (readonly) NSURL *supportDirectory;
+@property (nonatomic, readonly) NSURL *supportDirectory;
 
 - (IBAction)showHideHistory:(id)sender;
 - (IBAction)showHideSlotItemWindow:(id)sender;

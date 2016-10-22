@@ -12,9 +12,9 @@
 
 @interface HMScreenshotCollectionViewItem ()
 
-@property (weak, nonatomic) IBOutlet NSBox *imageBox;
-@property (weak, nonatomic) IBOutlet NSTextField *nameField;
-@property (weak, nonatomic) IBOutlet NSBox *nameBox;
+@property (nonatomic, weak) IBOutlet NSBox *imageBox;
+@property (nonatomic, weak) IBOutlet NSTextField *nameField;
+@property (nonatomic, weak) IBOutlet NSBox *nameBox;
 
 @property (readonly) HMScreenshotInformation *info;
 @end

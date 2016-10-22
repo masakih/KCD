@@ -21,7 +21,7 @@
 
 @property (readonly) NSClipView *clipView;
 
-@property (strong, nonatomic) IBOutlet WebView *webView;
+@property (nonatomic, strong) IBOutlet WebView *webView;
 
 @end
 

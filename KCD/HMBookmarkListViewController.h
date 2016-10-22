@@ -15,7 +15,7 @@
 
 @interface HMBookmarkListViewController : NSViewController
 
-@property (weak) id<HMBookmarkListViewControllerDelegate> delegate;
+@property (nonatomic, weak) id<HMBookmarkListViewControllerDelegate> delegate;
 
 @end
 

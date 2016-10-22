@@ -16,8 +16,7 @@
 @interface HMScreenshotDetailViewController ()
 @property (nonatomic, weak) IBOutlet HMImageView *imageView;
 
-@property (strong) NSArray<HMScreenshotInformation *> *currentSelection;
-@property (nonatomic, strong) NSArray<NSImage *> *currentImages;
+@property (copy) NSArray<HMScreenshotInformation *> *currentSelection;
 
 @end
 

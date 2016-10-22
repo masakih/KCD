@@ -11,8 +11,14 @@
 #import "HMJSONViewWindowController.h"
 
 @interface HMJSONViewWindowController ()
-@property (strong, readwrite) NSMutableArray *commands;
+@property (nonatomic, weak) IBOutlet NSTableView *argumentsView;
+@property (nonatomic, weak) IBOutlet NSOutlineView *jsonView;
 
+@property (nonatomic, strong) IBOutlet NSArrayController *apis;
+
+@property (nonatomic, strong, readwrite) NSMutableArray *commands;
+
+@property (weak) NSArray *arguments;
 @property (weak, readwrite) id json;
 @end
 

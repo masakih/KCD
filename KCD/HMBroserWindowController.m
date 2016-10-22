@@ -42,28 +42,36 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 };
 
 @interface HMBroserWindowController ()
-@property (strong) HMGameViewController *gameViewController;
+@property (nonatomic, weak) IBOutlet NSView *placeholder;
+@property (nonatomic, weak) IBOutlet NSView *combinedViewPlaceholder;
+@property (nonatomic, strong) IBOutlet NSArrayController *deckContoller;
+@property (nonatomic, weak) IBOutlet NSView *deckPlaceholder;
 
-@property (weak) IBOutlet NSView *resourcePlaceholder;
-@property (strong) HMResourceViewController *resourceViewController;
+@property (readonly) NSManagedObjectContext *managedObjectContext;
 
-@property (weak) IBOutlet NSView *ancherageRepariTimerPlaceholder;
-@property (strong) HMAncherageRepairTimerViewController *ancherageRepariTimerViewController;
+@property (nonatomic, strong) HMGameViewController *gameViewController;
+
+@property (nonatomic, weak) IBOutlet NSView *resourcePlaceholder;
+@property (nonatomic, strong) HMResourceViewController *resourceViewController;
+
+@property (nonatomic, weak) IBOutlet NSView *ancherageRepariTimerPlaceholder;
+@property (nonatomic, strong) HMAncherageRepairTimerViewController *ancherageRepariTimerViewController;
 
 @property (strong) NSNumber *flagShipID;
+@property (readonly) NSString *flagShipName;
 
-@property (strong) HMFleetViewController *fleetViewController;
+@property (nonatomic, strong) HMFleetViewController *fleetViewController;
 @property FleetViewPosition fleetViewPosition;
 
-@property (weak) IBOutlet NSTabView *informations;
-@property (strong) HMDocksViewController *docksViewController;
-@property (strong) HMShipViewController *shipViewController;
-@property (strong) HMPowerUpSupportViewController *powerUpViewController;
-@property (strong) HMStrengthenListViewController *strengthedListViewController;
-@property (strong) HMRepairListViewController *repairListViewController;
+@property (nonatomic, weak) IBOutlet NSTabView *informations;
+@property (nonatomic, strong) HMDocksViewController *docksViewController;
+@property (nonatomic, strong) HMShipViewController *shipViewController;
+@property (nonatomic, strong) HMPowerUpSupportViewController *powerUpViewController;
+@property (nonatomic, strong) HMStrengthenListViewController *strengthedListViewController;
+@property (nonatomic, strong) HMRepairListViewController *repairListViewController;
 
 
-@property (strong) HMCombileViewController *combinedViewController;
+@property (nonatomic, strong) HMCombileViewController *combinedViewController;
 @property BOOL isCombinedMode;
 
 @end

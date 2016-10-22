@@ -10,15 +10,15 @@
 
 @interface HMBookmarkItem : NSManagedObject <NSPasteboardWriting>
 
-@property (copy, nonatomic) NSString *identifier;
-@property (copy, nonatomic) NSString *name;
-@property (strong, nonatomic) NSString *urlString;
+@property (nonatomic, copy) NSString *identifier;
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *urlString;
 @property NSSize windowContentSize;
 @property NSRect contentVisibleRect;
 @property BOOL canResize;
 @property BOOL canScroll;
 
-@property (strong, nonatomic) NSNumber *order;
+@property (nonatomic, strong) NSNumber *order;
 
 /// contentVisibleRectに移動するまでの遅延時間
 @property NSTimeInterval scrollDelay;

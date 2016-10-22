@@ -20,13 +20,13 @@ typedef NS_ENUM(NSUInteger, HMChangeHenseiType) {
 
 @property HMChangeHenseiType type;
 
-@property (strong) NSNumber *fleetNumber;
-@property (strong) NSNumber *position;
-@property (strong) NSNumber	*shipID;
+@property (nonatomic, strong) NSNumber *fleetNumber;
+@property (nonatomic, strong) NSNumber *position;
+@property (nonatomic, strong) NSNumber *shipID;
 
-@property (strong) NSNumber *replaceFleetNumber;
-@property (strong) NSNumber *replacePosition;
-@property (strong) NSNumber *replaceShipID;
+@property (nonatomic, strong) NSNumber *replaceFleetNumber;
+@property (nonatomic, strong) NSNumber *replacePosition;
+@property (nonatomic, strong) NSNumber *replaceShipID;
 
 @end
 

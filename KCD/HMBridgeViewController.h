@@ -11,7 +11,7 @@
 #import "HMScreenshotInformation.h"
 
 @interface HMBridgeViewController : NSViewController
-@property (strong, nonatomic) IBOutlet NSArrayController *arrayController;
+@property (nonatomic, strong) IBOutlet NSArrayController *arrayController;
 
 // for sharing service
 @property (readonly) NSRect contentRect;

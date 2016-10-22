@@ -14,9 +14,5 @@
 
 @property (weak) NSManagedObjectContext *managedObjectContext;
 
-@property (readonly) NSNumber *time;
-@property (readonly) BOOL isTasking;
-@property (readonly) BOOL didNotify;
-
 - (void)update;
 @end

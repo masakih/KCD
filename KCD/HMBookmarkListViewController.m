@@ -19,15 +19,15 @@ const NSInteger kDeleteMenuItemTag = 5000;
 
 @property (readonly) NSManagedObjectContext *managedObjectContext;
 
-@property (weak) IBOutlet NSTableView *tableView;
-@property (strong) IBOutlet NSArrayController *bookmarkController;
-@property (strong) IBOutlet NSMenu *contextMenu;
+@property (nonatomic, weak) IBOutlet NSTableView *tableView;
+@property (nonatomic, strong) IBOutlet NSArrayController *bookmarkController;
+@property (nonatomic, strong) IBOutlet NSMenu *contextMenu;
 
-@property (weak) IBOutlet NSPopover *popover;
-@property (strong, nonatomic) HMBookmarkEditorViewController *editorController;
+@property (nonatomic, weak) IBOutlet NSPopover *popover;
+@property (nonatomic, strong) HMBookmarkEditorViewController *editorController;
 
 @property NSRange objectRange;
-@property (strong, nonatomic) NSArray *currentlyDraggedObjects;
+@property (nonatomic, copy) NSArray *currentlyDraggedObjects;
 
 - (IBAction)editBookmark:(id)sender;
 - (IBAction)deleteBookmark:(id)sender;

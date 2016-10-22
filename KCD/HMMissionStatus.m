@@ -19,11 +19,11 @@ enum {
 };
 
 @interface HMMissionStatus ()
-@property (strong) NSArrayController *controller;
+@property (nonatomic, strong) NSArrayController *controller;
 
-@property (strong, readwrite) NSString *name;
-@property (strong, readwrite) NSNumber *time;
-@property (readwrite) BOOL didNotify;
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, strong) NSNumber *time;
+@property BOOL didNotify;
 
 @end
 

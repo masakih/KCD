@@ -10,6 +10,4 @@
 
 @interface HMUITestWindowController : NSWindowController
 
-@property (nonatomic, weak) IBOutlet NSView *testViewPlaceholder;
-
 @end

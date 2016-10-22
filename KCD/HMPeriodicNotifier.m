@@ -15,8 +15,8 @@ NSString *HMPeriodicNotification = @"HMPeriodicNotification";
 @property NSUInteger hour;
 @property NSUInteger minutes;
 
-@property (strong, nonatomic) NSDateComponents *currentDay;
-@property (strong, nonatomic) NSTimer *timer;
+@property (nonatomic, strong) NSDateComponents *currentDay;
+@property (nonatomic, strong) NSTimer *timer;
 @end
 
 @implementation HMPeriodicNotifier

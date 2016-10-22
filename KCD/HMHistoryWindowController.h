@@ -10,12 +10,5 @@
 
 @interface HMHistoryWindowController : NSWindowController <NSTabViewDelegate>
 
-@property (strong) IBOutlet NSArrayController *kaihatuHistoryController;
-@property (strong) IBOutlet NSArrayController *kenzoHistoryController;
-@property (strong) IBOutlet NSArrayController *dropHistoryController;
-
-@property (readonly) NSManagedObjectContext *manageObjectContext;
-
-@property NSInteger selectedTabIndex;
 
 @end

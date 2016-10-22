@@ -23,11 +23,19 @@ typedef NS_ENUM(NSUInteger, HMHistoryWindowTabIndex) {
 
 @interface HMHistoryWindowController () <NSTabViewDelegate, NSTableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet NSTableView *kaihatuHistoryTableView;
-@property (weak, nonatomic) IBOutlet NSTableView *kenzoHistoryTableView;
-@property (weak, nonatomic) IBOutlet NSTableView *dropHistoryTableView;
+@property (readonly) NSManagedObjectContext *manageObjectContext;
 
-@property (weak, nonatomic) IBOutlet NSSearchField *searchField;
+@property NSInteger selectedTabIndex;
+
+@property (nonatomic, strong) IBOutlet NSArrayController *kaihatuHistoryController;
+@property (nonatomic, strong) IBOutlet NSArrayController *kenzoHistoryController;
+@property (nonatomic, strong) IBOutlet NSArrayController *dropHistoryController;
+
+@property (nonatomic, weak) IBOutlet NSTableView *kaihatuHistoryTableView;
+@property (nonatomic, weak) IBOutlet NSTableView *kenzoHistoryTableView;
+@property (nonatomic, weak) IBOutlet NSTableView *dropHistoryTableView;
+
+@property (nonatomic, weak) IBOutlet NSSearchField *searchField;
 
 @end
 

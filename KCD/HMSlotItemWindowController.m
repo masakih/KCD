@@ -12,6 +12,7 @@
 #import "HMServerDataStore.h"
 
 @interface HMSlotItemWindowController ()
+@property (nonatomic, strong) IBOutlet NSArrayController *slotItemController;
 
 @end
 

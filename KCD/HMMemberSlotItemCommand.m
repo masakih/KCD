@@ -9,9 +9,9 @@
 #import "HMMemberSlotItemCommand.h"
 
 @interface HMMemberSlotItemCommand ()
-@property (strong) NSMutableArray *ids;
+@property (nonatomic, strong) NSMutableArray *ids;
 
-@property (nonatomic, strong) NSArray *masterSlotItems;
+@property (nonatomic, copy) NSArray *masterSlotItems;
 @end
 
 @implementation HMMemberSlotItemCommand

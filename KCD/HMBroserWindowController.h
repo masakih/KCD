@@ -10,15 +10,5 @@
 
 @interface HMBroserWindowController : NSWindowController
 
-@property (readonly) NSManagedObjectContext *managedObjectContext;
-
-@property (weak) IBOutlet NSView *placeholder;
-
-@property (weak) IBOutlet NSView *combinedViewPlaceholder;
-
-@property (nonatomic, strong) IBOutlet NSArrayController *deckContoller;
-@property (nonatomic, readonly) NSString *flagShipName;
-
-@property (nonatomic, weak) IBOutlet NSView *deckPlaceholder;
 
 @end

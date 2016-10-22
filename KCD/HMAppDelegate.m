@@ -48,35 +48,35 @@
 
 @interface HMAppDelegate () <NSUserNotificationCenterDelegate>
 
-@property (strong) HMBroserWindowController *browserWindowController;
-@property (strong) HMHistoryWindowController *historyWindowController;
-@property (strong) HMSlotItemWindowController *slotItemWindowController;
-@property (strong) HMPreferencePanelController *preferencePanelController;
-@property (strong) HMUpgradableShipsWindowController *upgradableShipWindowController;
+@property (nonatomic, strong) HMBroserWindowController *browserWindowController;
+@property (nonatomic, strong) HMHistoryWindowController *historyWindowController;
+@property (nonatomic, strong) HMSlotItemWindowController *slotItemWindowController;
+@property (nonatomic, strong) HMPreferencePanelController *preferencePanelController;
+@property (nonatomic, strong) HMUpgradableShipsWindowController *upgradableShipWindowController;
 
 //@property (strong) HMExternalBrowserWindowController *externalBrowserWindowController;
-@property (strong) HMBrowserContentAdjuster *browserContentAdjuster;
+@property (nonatomic, strong) HMBrowserContentAdjuster *browserContentAdjuster;
 
-@property (strong) NSMutableArray *browserWindowControllers;
+@property (nonatomic, strong) NSMutableArray *browserWindowControllers;
 
-@property (strong) NSMutableArray *updaters;
+@property (nonatomic, strong) NSMutableArray *updaters;
 
-@property (strong) HMFleetManager *fleetManager;
+@property (nonatomic, strong) HMFleetManager *fleetManager;
 
-@property (strong) HMPeriodicNotifier *historyCleanNotifer;
+@property (nonatomic, strong) HMPeriodicNotifier *historyCleanNotifer;
 
 #ifdef DEBUG
-@property (strong) HMShipWindowController *shipWindowController;
-@property (strong) HMShipMasterDetailWindowController *shipMDWindowController;
-@property (strong) HMEquipmentWindowController *equipmentWindowController;
-@property (strong) HMMapWindowController *mapWindowController;
+@property (nonatomic, strong) HMShipWindowController *shipWindowController;
+@property (nonatomic, strong) HMShipMasterDetailWindowController *shipMDWindowController;
+@property (nonatomic, strong) HMEquipmentWindowController *equipmentWindowController;
+@property (nonatomic, strong) HMMapWindowController *mapWindowController;
 #endif
 
 #if UI_TEST
-@property (strong) HMUITestWindowController *uiTestWindowController;
+@property (nonatomic, strong) HMUITestWindowController *uiTestWindowController;
 #endif
 #if ENABLE_JSON_LOG
-@property (strong) HMJSONViewWindowController *logedJSONViewWindowController;
+@property (nonatomic, strong) HMJSONViewWindowController *logedJSONViewWindowController;
 #endif
 @end
 

@@ -9,7 +9,9 @@
 #import "HMUITestWindowController.h"
 
 @interface HMUITestWindowController ()
-@property (strong) NSViewController *testViewController;
+@property (nonatomic, weak) IBOutlet NSView *testViewPlaceholder;
+
+@property (nonatomic, strong) NSViewController *testViewController;
 @end
 
 @implementation HMUITestWindowController

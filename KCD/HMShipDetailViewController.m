@@ -21,7 +21,7 @@
 
 @property (readonly) NSManagedObjectContext *managedObjectContext;
 
-@property (nonatomic) HMShipDetailViewType type;
+@property HMShipDetailViewType type;
 
 @property (nonatomic, weak) IBOutlet HMSuppliesView *supply;
 @property (nonatomic, weak) IBOutlet HMGuardEscapedView *guardEscapedView;

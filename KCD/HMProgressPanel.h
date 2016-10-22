@@ -10,8 +10,8 @@
 
 @interface HMProgressPanel : NSWindowController
 
-@property (strong, nonatomic) NSString *title;
-@property (strong, nonatomic) NSString *message;
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *message;
 @property BOOL animate;
 
 @end

@@ -9,7 +9,7 @@
 #import "HMMaserShipCommand.h"
 
 @interface HMMaserShipCommand ()
-@property (nonatomic, strong) NSArray *masterSTypes;
+@property (nonatomic, copy) NSArray *masterSTypes;
 @end
 
 @implementation HMMaserShipCommand

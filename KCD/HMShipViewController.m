@@ -22,7 +22,7 @@ typedef NS_ENUM(NSInteger, ViewType) {
 
 @interface HMShipViewController ()
 @property (weak) NSView *currentTableView;
-@property (weak, nonatomic) IBOutlet NSTextField *standardDeviationField;
+@property (nonatomic, weak) IBOutlet NSTextField *standardDeviationField;
 
 @property (readonly) NSManagedObjectContext *managedObjectContext;
 

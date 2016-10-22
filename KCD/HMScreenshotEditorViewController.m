@@ -19,8 +19,8 @@
 
 #pragma mark - HMEditedImage class
 @interface HMEditedImage : NSObject
-@property (strong) NSImage *editedImage;
-@property (copy) NSString *path;
+@property (nonatomic, strong) NSImage *editedImage;
+@property (nonatomic, copy) NSString *path;
 @end
 
 @implementation HMEditedImage
@@ -42,7 +42,7 @@
 
 @property (nonatomic, weak) IBOutlet HMTiledImageView *tiledImageView;
 
-@property (strong) NSArray<HMScreenshotInformation *> *currentSelection;
+@property (copy) NSArray<HMScreenshotInformation *> *currentSelection;
 @property (strong) NSMutableArray<HMEditedImage *> *editedImages;
 
 

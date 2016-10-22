@@ -23,19 +23,19 @@
 
 @interface HMDocksViewController ()
 
-@property (strong) HMMissionStatus *mission2Status;
-@property (strong) HMMissionStatus *mission3Status;
-@property (strong) HMMissionStatus *mission4Status;
+@property (nonatomic, strong) HMMissionStatus *mission2Status;
+@property (nonatomic, strong) HMMissionStatus *mission3Status;
+@property (nonatomic, strong) HMMissionStatus *mission4Status;
 
-@property (strong) HMNyukyoDockStatus *ndock1Status;
-@property (strong) HMNyukyoDockStatus *ndock2Status;
-@property (strong) HMNyukyoDockStatus *ndock3Status;
-@property (strong) HMNyukyoDockStatus *ndock4Status;
+@property (nonatomic, strong) HMNyukyoDockStatus *ndock1Status;
+@property (nonatomic, strong) HMNyukyoDockStatus *ndock2Status;
+@property (nonatomic, strong) HMNyukyoDockStatus *ndock3Status;
+@property (nonatomic, strong) HMNyukyoDockStatus *ndock4Status;
 
-@property (strong) HMKenzoDockStatus *kdock1Status;
-@property (strong) HMKenzoDockStatus *kdock2Status;
-@property (strong) HMKenzoDockStatus *kdock3Status;
-@property (strong) HMKenzoDockStatus *kdock4Status;
+@property (nonatomic, strong) HMKenzoDockStatus *kdock1Status;
+@property (nonatomic, strong) HMKenzoDockStatus *kdock2Status;
+@property (nonatomic, strong) HMKenzoDockStatus *kdock3Status;
+@property (nonatomic, strong) HMKenzoDockStatus *kdock4Status;
 
 
 @property (readonly) NSManagedObjectContext *battleManagedObjectController;

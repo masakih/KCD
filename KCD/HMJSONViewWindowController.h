@@ -11,15 +11,8 @@
 #ifdef DEBUG
 
 @interface HMJSONViewWindowController : NSWindowController
-@property (nonatomic, weak) IBOutlet NSTableView *argumentsView;
-@property (nonatomic, weak) IBOutlet NSOutlineView *jsonView;
 
-@property (nonatomic, strong) IBOutlet NSArrayController *apis;
-
-
-@property (weak) NSArray *arguments;
-@property (strong, readonly) NSMutableArray *commands;
-@property (weak, readonly) id json;
+@property (nonatomic, strong, readonly) NSMutableArray *commands;
 
 - (void)setCommand:(NSDictionary *)command;
 

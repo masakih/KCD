@@ -21,7 +21,7 @@
 @end
 
 @interface HMCacheVersionInfo : NSObject <NSCopying>
-@property (strong) NSString *fullpath;
+@property (copy) NSString *fullpath;
 @property (strong) NSNumber *version;
 @end
 
@@ -49,18 +49,18 @@
 
 @interface HMScreenshotListViewController ()
 
-@property (weak, nonatomic) IBOutlet NSArrayController *screenshotsController;
+@property (nonatomic, weak) IBOutlet NSArrayController *screenshotsController;
 @property (strong) NSMutableArray *deletedPaths;
 
-@property (weak, nonatomic) IBOutlet NSCollectionView *collectionView;
-@property (strong, nonatomic) IBOutlet NSMenu *contextMenu;
-@property (weak, nonatomic) IBOutlet NSButton *shareButton;
+@property (nonatomic, weak) IBOutlet NSCollectionView *collectionView;
+@property (nonatomic, strong) IBOutlet NSMenu *contextMenu;
+@property (nonatomic, weak) IBOutlet NSButton *shareButton;
 
 
-@property (weak, nonatomic) IBOutlet NSView *standardView;
-@property (weak, nonatomic) IBOutlet NSView *editorView;
+@property (nonatomic, weak) IBOutlet NSView *standardView;
+@property (nonatomic, weak) IBOutlet NSView *editorView;
 
-@property (nonatomic) CGFloat zoom;
+@property CGFloat zoom;
 @property CGFloat maxZoom;
 
 

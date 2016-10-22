@@ -12,7 +12,19 @@
 
 
 @interface HMStrengthenListItemCellView ()
-@property (weak, nonatomic) IBOutlet HMStrengthenListItemView *itemBox;
+@property (nonatomic, weak) IBOutlet HMStrengthenListItemView *itemBox;
+
+// for Cocoa Bindings
+@property (readonly) NSString *secondsShipList;
+@property (readonly) HMRequiredEquipment *requiredEquipment01;
+@property (readonly) HMRequiredEquipment *requiredEquipment02;
+@property (readonly) HMRequiredEquipment *requiredEquipment03;
+@property (readonly) NSString *targetEquipment;
+@property (readonly) NSString *remodelEquipment;
+
+@property (readonly) NSString *needsScrewString01;
+@property (readonly) NSString *needsScrewString02;
+@property (readonly) NSString *needsScrewString03;
 @end
 
 @implementation HMStrengthenListItemCellView

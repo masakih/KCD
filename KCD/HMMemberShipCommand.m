@@ -14,10 +14,10 @@
 
 
 @interface HMMemberShipCommand ()
-@property (strong) NSMutableArray *ids;
+@property (nonatomic, strong) NSMutableArray *ids;
 
-@property (nonatomic, strong) NSArray<HMKCMasterShipObject *> *masterShips;
-@property (nonatomic, strong) NSArray<HMKCSlotItemObject *> *slotItems;
+@property (nonatomic, copy) NSArray<HMKCMasterShipObject *> *masterShips;
+@property (nonatomic, copy) NSArray<HMKCSlotItemObject *> *slotItems;
 @end
 
 @implementation HMMemberShipCommand

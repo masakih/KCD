@@ -18,7 +18,7 @@ static NSMenu *bookmarkMenu = nil;
 
 @interface HMBookmarkManager () <NSMenuDelegate>
 
-@property (strong, nonatomic) NSArrayController *bookmarksController;
+@property (nonatomic, strong) NSArrayController *bookmarksController;
 
 @property (readonly) HMBookmarkDataStore *editorStore;
 @end

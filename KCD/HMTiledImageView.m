@@ -19,8 +19,8 @@
 static NSString *privateDraggingUTI = @"com.masakih.KCD.ScreenshotDDImte";
 
 @interface HMTiledImageView () <NSDraggingSource>
-@property (copy, nonatomic) NSArray<HMTitledImageCellInformation *> *infos;
-@property (weak, nonatomic) HMTitledImageCellInformation *currentSelection;
+@property (nonatomic, copy) NSArray<HMTitledImageCellInformation *> *infos;
+@property (nonatomic, weak) HMTitledImageCellInformation *currentSelection;
 
 @property (nonatomic, strong) NSImageCell *imageCell;
 @end

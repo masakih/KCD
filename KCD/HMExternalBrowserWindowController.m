@@ -19,11 +19,11 @@ static void *WebViewContext = &WebViewContext;
 @property (nonatomic, weak) IBOutlet NSSegmentedControl *goSegment;
 
 @property (nonatomic, weak) IBOutlet NSView *bookmarkListView;
-@property (strong) HMBookmarkListViewController *bookmarkListViwController;
+@property (nonatomic, strong) HMBookmarkListViewController *bookmarkListViwController;
 
 @property (readwrite) NSRect contentVisibleRect;
 
-@property (weak) HMBookmarkItem *waitingBookmarkItem;
+@property (nonatomic, weak) HMBookmarkItem *waitingBookmarkItem;
 
 
 @property BOOL bookarkShowing;

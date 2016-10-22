@@ -9,8 +9,8 @@
 #import "HMSourceListColoredView.h"
 
 @interface HMSourceListColoredView ()
-@property (strong, nonatomic) NSColor *backgroundColor;
-@property (nonatomic, getter=isObservingKeyState) BOOL observingKeyState;
+@property (nonatomic, strong) NSColor *backgroundColor;
+@property (getter=isObservingKeyState) BOOL observingKeyState;
 @end
 
 @implementation HMSourceListColoredView

@@ -24,19 +24,22 @@
 static NSMutableArray *registeredCommands = nil;
 
 @interface HMJSONCommand ()
-@property (strong, readwrite) NSDictionary *arguments;
+
+@property (nonatomic, copy) NSString *argumentsString;
+@property (nonatomic, strong) NSData *jsonData;
+@property (nonatomic, strong, readwrite) NSDate *recieveDate;
+
+@property (copy, readwrite) NSDictionary *arguments;
 @property (copy, readwrite) NSString *api;
-@property (strong, readwrite) id json;
+@property (copy, readwrite) id json;
 
 #if ENABLE_JSON_LOG
-@property (strong, readwrite) NSArray *jsonTree;
-@property (strong, readwrite) NSArray *argumentArray;
+@property (copy, readwrite) NSArray *jsonTree;
+@property (copy, readwrite) NSArray *argumentArray;
 #endif
 @end
 
 @implementation HMJSONCommand
-@synthesize argumentsString = _argumentsString;
-@synthesize jsonData = _jsonData;
 
 + (void)load
 {

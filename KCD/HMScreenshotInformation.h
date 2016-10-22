@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface HMScreenshotInformation : NSObject <NSCoding>
-@property (strong) NSString *path;
+@property (copy) NSString *path;
 @property (readonly) NSString *name;
 @property (strong) NSDate *creationDate;
 @property NSUInteger version;
-@property (nonatomic, strong) NSArray *tags;
+@property (nonatomic, copy) NSArray<NSString *> *tags;
 @end

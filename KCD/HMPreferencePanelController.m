@@ -25,7 +25,7 @@ typedef NS_ENUM(NSUInteger, HMScreenShotSaveDirectoryPopUpMenuItemTag) {
 
 @property (nonatomic, strong) NSURL *screenShotSaveURL;
 
-
+@property (nonatomic, weak) IBOutlet NSPopUpButton *screenShotSaveDirectoryPopUp;
 @property (nonatomic, weak) IBOutlet NSView *generalPane;
 @property (nonatomic, weak) IBOutlet NSView *notificationPane;
 @end

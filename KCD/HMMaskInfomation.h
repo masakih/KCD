@@ -12,6 +12,6 @@
 
 @property NSRect maskRect;
 @property BOOL enable;
-@property (strong, nonatomic) NSColor *maskColor;
-@property (strong, nonatomic) NSColor *borderColor;
+@property (nonatomic, strong) NSColor *maskColor;
+@property (nonatomic, strong) NSColor *borderColor;
 @end

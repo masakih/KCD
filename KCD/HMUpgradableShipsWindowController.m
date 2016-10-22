@@ -22,7 +22,7 @@ static NSArray *sExcludeShiIDs = nil;
 @property (nonatomic, weak) IBOutlet NSTableView *tableView;
 @property (nonatomic, strong) IBOutlet NSArrayController *shipsController;
 
-@property (nonatomic, strong) NSArray *excludeShiIDs;
+@property (nonatomic, copy) NSArray *excludeShiIDs;
 @end
 
 

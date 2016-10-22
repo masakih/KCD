@@ -16,7 +16,7 @@
 @property (strong) HMAnchorageRepairManager *anchorageRepairManager;
 @property (strong) NSNumber *repairTime;
 
-@property (weak) IBOutlet NSButton *screenshotButton;
+@property (nonatomic, weak) IBOutlet NSButton *screenshotButton;
 @property (strong) NSTrackingArea *trackingArea;
 
 @end

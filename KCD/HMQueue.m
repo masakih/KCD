@@ -9,8 +9,8 @@
 #import "HMQueue.h"
 
 @interface HMQueue ()
-@property (strong) NSMutableArray *contents;
-@property (strong) NSCondition *lock;
+@property (nonatomic, strong) NSMutableArray *contents;
+@property (nonatomic, strong) NSCondition *lock;
 @end
 
 @implementation HMQueue

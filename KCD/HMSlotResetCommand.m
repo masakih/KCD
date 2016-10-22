@@ -13,7 +13,7 @@
 
 
 @interface HMSlotResetCommand ()
-@property (nonatomic, strong) NSArray *slotItems;
+@property (nonatomic, copy) NSArray *slotItems;
 
 @end
 

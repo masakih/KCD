@@ -21,8 +21,8 @@
 NSString *HMFleetManagerCompletePrepareFleetNotification = @"HMFleetManagerCompletePrepareFleetNotification";
 
 @interface HMFleetManager ()
-@property (nonatomic, strong) NSArray<HMFleet *> *fleets;
-@property (strong) NSArrayController *fleetController;
+@property (nonatomic, copy, readwrite) NSArray<HMFleet *> *fleets;
+@property (nonatomic, strong) NSArrayController *fleetController;
 
 @end
 

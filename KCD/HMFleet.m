@@ -25,7 +25,7 @@ static void *ShipContext = &ShipContext;
 
 @property (readonly) NSArray<NSString *> *deckObserveKeys;
 
-@property (strong) NSArray<HMKCShipObject *> *ships;
+@property (copy) NSArray<HMKCShipObject *> *ships;
 @property (readonly) NSArray<NSString *> *shipObserveKeys;
 
 @end

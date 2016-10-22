@@ -27,13 +27,13 @@ typedef NS_ENUM(NSUInteger, EquipmentType) {
 
 @interface HMRequiredEquipment : NSObject <NSCoding, NSCopying>
 
-@property (copy, nonatomic) NSString *identifire;
+@property (nonatomic, copy) NSString *identifire;
 
-@property (copy, nonatomic) NSString *currentLevelString;
-@property (copy, nonatomic) NSString *name;
-@property (copy, nonatomic) NSNumber *number;
-@property (copy, nonatomic) NSNumber *screw;
-@property (copy, nonatomic) NSNumber *ensureScrew;
+@property (nonatomic, copy) NSString *currentLevelString;
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSNumber *number;
+@property (nonatomic, copy) NSNumber *screw;
+@property (nonatomic, copy) NSNumber *ensureScrew;
 
 @property (readonly) NSString *numberString;
 
@@ -42,9 +42,9 @@ typedef NS_ENUM(NSUInteger, EquipmentType) {
 
 @interface HMRequiredEquipmentSet : NSObject <NSCoding, NSCopying>
 
-@property (copy, nonatomic) NSString *identifire;
+@property (nonatomic, copy) NSString *identifire;
 
-@property (copy, nonatomic) NSArray<HMRequiredEquipment *> *requiredEquipments;
+@property (nonatomic, copy) NSArray<HMRequiredEquipment *> *requiredEquipments;
 
 
 // for Cocoa Bindings
@@ -57,18 +57,18 @@ typedef NS_ENUM(NSUInteger, EquipmentType) {
 
 @interface HMEnhancementListItem : NSObject <NSCoding, NSCopying>
 
-@property (copy, nonatomic) NSString *identifire;
+@property (nonatomic, copy) NSString *identifire;
 
-@property (copy, nonatomic) NSNumber *weekday;
+@property (nonatomic, copy) NSNumber *weekday;
 
-@property (copy, nonatomic) NSNumber *equipmentType;
+@property (nonatomic, copy) NSNumber *equipmentType;
 
-@property (copy, nonatomic) NSString *targetEquipment;
-@property (copy, nonatomic) NSString *remodelEquipment;
+@property (nonatomic, copy) NSString *targetEquipment;
+@property (nonatomic, copy) NSString *remodelEquipment;
 
-@property (strong, nonatomic) HMRequiredEquipmentSet *requiredEquipments;
+@property (nonatomic, strong) HMRequiredEquipmentSet *requiredEquipments;
 
-@property (strong, nonatomic) NSArray<NSString *> *secondsShipNames;
+@property (nonatomic, copy) NSArray<NSString *> *secondsShipNames;
 
 
 // for Cocoa Bindings

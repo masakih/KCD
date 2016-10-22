@@ -32,7 +32,7 @@
 
 @property (strong) NSArray *equipments;
 
-@property (strong) HMFleetManager *fleetManager;
+@property (nonatomic, strong) HMFleetManager *fleetManager;
 
 @end
 

@@ -9,7 +9,7 @@
 #import "HMCompositCommand.h"
 
 @interface HMCompositCommand ()
-@property (strong) NSMutableArray *commands;
+@property (nonatomic, strong) NSMutableArray *commands;
 @end
 
 @implementation HMCompositCommand

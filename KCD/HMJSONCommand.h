@@ -15,9 +15,7 @@
 
 + (HMJSONCommand *)commandForAPIResult:(HMAPIResponse *)apiResult;
 
-@property (copy) NSString *argumentsString;
-@property (strong) NSData *jsonData;
-@property (strong) NSDate *recieveDate;
+@property (readonly) NSDate *recieveDate;
 
 - (void)execute;
 
@@ -25,13 +23,13 @@
 // for subclass
 + (void)registerClass:(Class)commandClass;
 
-@property (copy, readonly) NSString *api;	// api is /kcsapi/mainAPI/subAPI
-@property (strong, readonly) NSDictionary *arguments;
-@property (strong, readonly) id json;		// NSArray or NSDictionary
+@property (readonly) NSString *api;	// api is /kcsapi/mainAPI/subAPI
+@property (readonly) NSDictionary *arguments;
+@property (readonly) id json;		// NSArray or NSDictionary
 
 #if ENABLE_JSON_LOG
-@property (strong, readonly) NSArray *jsonTree;	// for NSTreeController
-@property (strong, readonly) NSArray *argumentArray; // for NSArrayController
+@property (readonly) NSArray *jsonTree;	// for NSTreeController
+@property (readonly) NSArray *argumentArray; // for NSArrayController
 #endif
 
 + (BOOL)canExcuteAPI:(NSString *)api;

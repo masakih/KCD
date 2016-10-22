@@ -33,7 +33,7 @@ const NSInteger maxFleetNumber = 4;
 @property (strong) HMKCDeck *fleet;
 @property (strong) NSObjectController *fleetController;
 
-@property (nonatomic, strong) NSArray<HMKCShipObject *> *ships;
+@property (nonatomic, copy) NSArray<HMKCShipObject *> *ships;
 
 @property (nonatomic, weak) IBOutlet NSView *placeholder01;
 @property (nonatomic, weak) IBOutlet NSView *placeholder02;
@@ -42,18 +42,18 @@ const NSInteger maxFleetNumber = 4;
 @property (nonatomic, weak) IBOutlet NSView *placeholder05;
 @property (nonatomic, weak) IBOutlet NSView *placeholder06;
 
-@property (strong) HMShipDetailViewController *detail01;
-@property (strong) HMShipDetailViewController *detail02;
-@property (strong) HMShipDetailViewController *detail03;
-@property (strong) HMShipDetailViewController *detail04;
-@property (strong) HMShipDetailViewController *detail05;
-@property (strong) HMShipDetailViewController *detail06;
-@property (strong) NSArray<HMShipDetailViewController *> *details;
+@property (nonatomic, strong) HMShipDetailViewController *detail01;
+@property (nonatomic, strong) HMShipDetailViewController *detail02;
+@property (nonatomic, strong) HMShipDetailViewController *detail03;
+@property (nonatomic, strong) HMShipDetailViewController *detail04;
+@property (nonatomic, strong) HMShipDetailViewController *detail05;
+@property (nonatomic, strong) HMShipDetailViewController *detail06;
+@property (nonatomic, copy) NSArray<HMShipDetailViewController *> *details;
 
 @property (readonly) NSArray *shipKeys;
 
 
-@property (strong) HMAnchorageRepairManager *anchorageRepair;
+@property (nonatomic, strong) HMAnchorageRepairManager *anchorageRepair;
 @property (readonly) NSNumber *repairTime;
 @property (readonly) BOOL repairable;
 

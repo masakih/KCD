@@ -13,7 +13,7 @@
 
 @interface HMBookmarkManager : NSObject
 
-@property (readonly, nonatomic) NSArray *bookmarks;
+@property (readonly) NSArray *bookmarks;
 
 + (instancetype)sharedManager;
 

@@ -21,12 +21,12 @@ enum {
 };
 
 @interface HMKenzoDockStatus ()
-@property (strong) NSArrayController *controller;
+@property (nonatomic, strong) NSArrayController *controller;
 
-@property (strong) NSNumber *number;
-@property (strong, readwrite) NSNumber *time;
-@property (readwrite) BOOL isTasking;
-@property (readwrite) BOOL didNotify;
+@property (nonatomic, strong) NSNumber *number;
+@property (nonatomic, strong) NSNumber *time;
+@property BOOL isTasking;
+@property BOOL didNotify;
 
 @end
 

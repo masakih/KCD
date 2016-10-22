@@ -11,8 +11,8 @@
 const CGFloat boarderWidth = 2.0;
 
 @interface HMStrokeTextFieldCell ()
-@property (strong, nonatomic) NSLayoutManager *layoutManager;
-@property (strong, nonatomic) NSTextContainer *textContainer;
+@property (nonatomic, strong) NSLayoutManager *layoutManager;
+@property (nonatomic, strong) NSTextContainer *textContainer;
 @end
 
 @implementation HMStrokeTextFieldCell

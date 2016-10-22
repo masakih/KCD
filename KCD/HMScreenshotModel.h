@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "HMScreenshotInformation.h"
 
 @interface HMScreenshotModel : NSObject
-@property (strong) NSArray *screenshots;
-@property (strong) NSArray *sortDescriptors;
-@property (strong) NSIndexSet *selectedIndexes;
+@property (copy) NSArray<HMScreenshotInformation *> *screenshots;
+@property (copy) NSArray<NSSortDescriptor *> *sortDescriptors;
+@property (copy) NSIndexSet *selectedIndexes;
 @property (strong) NSPredicate *filterPredicate;
 @end

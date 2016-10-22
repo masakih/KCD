@@ -17,7 +17,7 @@ static CGImageRef sAirLevelMaskImage = nil;
 
 @interface HMSlotItemLevelView ()
 
-@property (strong) NSObjectController *slotItemController;
+@property (nonatomic, strong) NSObjectController *slotItemController;
 
 @property (nonatomic, strong) NSNumber *slotItemLevel;
 @property (nonatomic, strong) NSNumber *slotItemAlv;

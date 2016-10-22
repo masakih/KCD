@@ -18,9 +18,9 @@ static NSString *groupNameKey = @"group";
 
 @interface HMStrengthenListViewController () <NSTableViewDataSource, NSURLSessionDelegate>
 
-@property (strong) NSArray<HMEnhancementListItem *> *equipmentStrengthenList;
-@property (weak, nonatomic) IBOutlet NSTableView *tableView;
-@property (strong) NSArray<HMEnhancementListItem *> *itemList;
+@property (nonatomic, copy) NSArray<HMEnhancementListItem *> *equipmentStrengthenList;
+@property (nonatomic, weak) IBOutlet NSTableView *tableView;
+@property (copy) NSArray<HMEnhancementListItem *> *itemList;
 
 @property (nonatomic) NSInteger offsetDay;
 

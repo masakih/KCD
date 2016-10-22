@@ -14,6 +14,10 @@
 
 
 @interface HMPowerUpSupportViewController ()
+@property (readonly) NSManagedObjectContext *managedObjectContext;
+
+@property (nonatomic, strong) IBOutlet NSArrayController *shipController;
+@property (nonatomic, weak) IBOutlet NSSegmentedControl *typeSegment;
 
 @end
 

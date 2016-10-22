@@ -9,9 +9,9 @@
 #import "HMBookmarkItem.h"
 
 @interface HMBookmarkItem ()
-@property (strong, nonatomic) NSString *windowContentSizeString;
-@property (strong, nonatomic) NSString *contentVisibleRectString;
-@property (strong, nonatomic) NSNumber *scrollDelayValue;
+@property (nonatomic, copy) NSString *windowContentSizeString;
+@property (nonatomic, copy) NSString *contentVisibleRectString;
+@property (nonatomic, strong) NSNumber *scrollDelayValue;
 @end
 
 @implementation HMBookmarkItem
