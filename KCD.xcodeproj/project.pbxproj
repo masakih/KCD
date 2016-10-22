@@ -833,6 +833,180 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F4649FBF1DBBB0F50097AEBF /* Supply&DockCommand */ = {
+			isa = PBXGroup;
+			children = (
+				F4A3AD8619B6149D00FDBF80 /* HMNyukyoStartCommand.h */,
+				F4A3AD8719B6149D00FDBF80 /* HMNyukyoStartCommand.m */,
+				F4B1E30A19D1C06900805879 /* HMHokyuChargeCommand.h */,
+				F4B1E30B19D1C06900805879 /* HMHokyuChargeCommand.m */,
+				F43BA4A5197CD59400CFF788 /* HMNyukyoSpeedChangeCommand.h */,
+				F43BA4A6197CD59400CFF788 /* HMNyukyoSpeedChangeCommand.m */,
+				F4B1E30D19D1C9C400805879 /* HMApplySuppliesCommand.h */,
+				F4B1E30E19D1C9C400805879 /* HMApplySuppliesCommand.m */,
+			);
+			name = "Supply&DockCommand";
+			sourceTree = "<group>";
+		};
+		F4649FC01DBBB30F0097AEBF /* MasterUpdateCommand */ = {
+			isa = PBXGroup;
+			children = (
+				F4B3DC4518EEEB920011B4FC /* HMStart2Command.h */,
+				F4B3DC4618EEEB920011B4FC /* HMStart2Command.m */,
+				F4D2CBC018AD0E1A000EBC59 /* HMMasterSTypeCommand.h */,
+				F4D2CBC118AD0E1A000EBC59 /* HMMasterSTypeCommand.m */,
+				F4D2CBC918B05E58000EBC59 /* HMMaserShipCommand.h */,
+				F4D2CBCA18B05E58000EBC59 /* HMMaserShipCommand.m */,
+				F4B414E718B09A4B00468DAF /* HMMasterMapAreaCommand.h */,
+				F4B414E818B09A4B00468DAF /* HMMasterMapAreaCommand.m */,
+				F4B414ED18B0BF1A00468DAF /* HMMasterMapInfoCommand.h */,
+				F4B414EE18B0BF1A00468DAF /* HMMasterMapInfoCommand.m */,
+				F4B414F918B1FB6C00468DAF /* HMMasterMapCellCommand.h */,
+				F4B414FA18B1FB6C00468DAF /* HMMasterMapCellCommand.m */,
+				F4B414EA18B0A7D600468DAF /* HMMasterUseItemCommand.h */,
+				F4B414EB18B0A7D600468DAF /* HMMasterUseItemCommand.m */,
+				F4B414F018B1013C00468DAF /* HMMasterSlotItemCommand.h */,
+				F4B414F118B1013C00468DAF /* HMMasterSlotItemCommand.m */,
+				F4B414F318B1888800468DAF /* HMMasterFurnitureCommand.h */,
+				F4B414F418B1888800468DAF /* HMMasterFurnitureCommand.m */,
+				F4B414F618B1D35800468DAF /* HMMasterMissionCommand.h */,
+				F4B414F718B1D35800468DAF /* HMMasterMissionCommand.m */,
+				F4131EE41910318F004F7F9A /* HMMasterSlotItemEquipTypeCommand.h */,
+				F4131EE51910318F004F7F9A /* HMMasterSlotItemEquipTypeCommand.m */,
+			);
+			name = MasterUpdateCommand;
+			sourceTree = "<group>";
+		};
+		F4649FC11DBBB3410097AEBF /* MemberUpdateCommand */ = {
+			isa = PBXGroup;
+			children = (
+				F4BEEFDF1B0B6326004702B8 /* HMDummyShipCommand.h */,
+				F4BEEFE01B0B6326004702B8 /* HMDummyShipCommand.m */,
+				F4B414FC18B3A66200468DAF /* HMMemberNDockCommand.h */,
+				F4B414FD18B3A66200468DAF /* HMMemberNDockCommand.m */,
+				F4513EE618B77A5300073552 /* HMMemberKDockCommand.h */,
+				F4513EE718B77A5300073552 /* HMMemberKDockCommand.m */,
+				F4513EE918B7900A00073552 /* HMMemberDeckCommand.h */,
+				F4513EEA18B7900A00073552 /* HMMemberDeckCommand.m */,
+				F4513EEC18B8E2F600073552 /* HMMemberMaterialCommand.h */,
+				F4513EED18B8E2F600073552 /* HMMemberMaterialCommand.m */,
+				F4513EF118B991F800073552 /* HMMemberBasicCommand.h */,
+				F4513EF218B991F800073552 /* HMMemberBasicCommand.m */,
+				F4513EF418B9F29800073552 /* HMMemberShipCommand.h */,
+				F4513EF518B9F29800073552 /* HMMemberShipCommand.m */,
+				F4E33B5618BF5F67005B8C07 /* HMMemberSlotItemCommand.h */,
+				F4E33B5718BF5F67005B8C07 /* HMMemberSlotItemCommand.m */,
+				F4268029194D0F4800B2C27F /* HMMemberShip2Command.h */,
+				F426802A194D0F4800B2C27F /* HMMemberShip2Command.m */,
+				F426802C194D0FFD00B2C27F /* HMMemberShip3Command.h */,
+				F426802D194D0FFD00B2C27F /* HMMemberShip3Command.m */,
+				F403893C1CAEA711002A264B /* HMMemberRequireInfoCommand.h */,
+				F403893D1CAEA711002A264B /* HMMemberRequireInfoCommand.m */,
+			);
+			name = MemberUpdateCommand;
+			sourceTree = "<group>";
+		};
+		F4649FC21DBBB3820097AEBF /* Create&DestoryCommand */ = {
+			isa = PBXGroup;
+			children = (
+				F4FCFD42191F4C1D000640A1 /* HMKenzoMarkCommand.h */,
+				F4FCFD43191F4C1D000640A1 /* HMKenzoMarkCommand.m */,
+				F4B3DC2818DF31400011B4FC /* HMCreateShipCommand.h */,
+				F4B3DC2918DF31400011B4FC /* HMCreateShipCommand.m */,
+				F4131ECD190F5C08004F7F9A /* HMStoreCreateSlotItemHistoryCommand.h */,
+				F4131ECE190F5C08004F7F9A /* HMStoreCreateSlotItemHistoryCommand.m */,
+				F4D6BC4D1A938EFC00742FEB /* HMDropShipHistoryCommand.h */,
+				F4D6BC4E1A938EFC00742FEB /* HMDropShipHistoryCommand.m */,
+				F4131ED3190F63D8004F7F9A /* HMUpdateSlotItemCommand.h */,
+				F4131ED4190F63D8004F7F9A /* HMUpdateSlotItemCommand.m */,
+				F4131ED6190FA08D004F7F9A /* HMDestroyItem2Command.h */,
+				F4131ED7190FA08D004F7F9A /* HMDestroyItem2Command.m */,
+				F43BA4A2197BE6C200CFF788 /* HMRealDestroyShipCommand.h */,
+				F43BA4A3197BE6C200CFF788 /* HMRealDestroyShipCommand.m */,
+			);
+			name = "Create&DestoryCommand";
+			sourceTree = "<group>";
+		};
+		F4649FC31DBBB3B00097AEBF /* BattleCommand */ = {
+			isa = PBXGroup;
+			children = (
+				F4AA0605192E3B6200844688 /* HMMapStartCommand.h */,
+				F4AA0606192E3B6200844688 /* HMMapStartCommand.m */,
+				F4AA05FF192E1FE900844688 /* HMBattleCommand.h */,
+				F4AA0600192E1FE900844688 /* HMBattleCommand.m */,
+				F4AA060B1930E69200844688 /* HMMidnightBattleCommand.h */,
+				F4AA060C1930E69200844688 /* HMMidnightBattleCommand.m */,
+				F4AA060E1931869E00844688 /* HMBattleResultCommand.h */,
+				F4AA060F1931869E00844688 /* HMBattleResultCommand.m */,
+				F4A3AD80199F529700FDBF80 /* HMCombinedBattleCommand.h */,
+				F4A3AD81199F529700FDBF80 /* HMCombinedBattleCommand.m */,
+				F43769DC1AE1248800DE6204 /* HMAirBattleCommand.h */,
+				F43769DD1AE1248800DE6204 /* HMAirBattleCommand.m */,
+				F4AA0602192E20F500844688 /* HMCalculateDamageCommand.h */,
+				F4AA0603192E20F500844688 /* HMCalculateDamageCommand.m */,
+				F43F3D441A33F7D400D6DAF7 /* HMResetSortieCommand.h */,
+				F43F3D451A33F7D400D6DAF7 /* HMResetSortieCommand.m */,
+				F4ED5D2B1B7C677E00D1BDEF /* HMGuardShelterCommand.h */,
+				F4ED5D2C1B7C677E00D1BDEF /* HMGuardShelterCommand.m */,
+			);
+			name = BattleCommand;
+			sourceTree = "<group>";
+		};
+		F4649FC41DBBB4590097AEBF /* ArsenalCommand */ = {
+			isa = PBXGroup;
+			children = (
+				F4B3DBC818DDB9170011B4FC /* HMCreateSlotItemCommand.h */,
+				F4B3DBC918DDB9170011B4FC /* HMCreateSlotItemCommand.m */,
+				F4E7802618DBD2A00011BC4C /* HMGetShipCommand.h */,
+				F4E7802718DBD2A00011BC4C /* HMGetShipCommand.m */,
+				F43BA49F197BE22200CFF788 /* HMDestroyShipCommand.h */,
+				F43BA4A0197BE22200CFF788 /* HMDestroyShipCommand.m */,
+				F4268032195332A000B2C27F /* HMPowerUpCommand.h */,
+				F4268033195332A000B2C27F /* HMPowerUpCommand.m */,
+				F4A9E2581C2700CF0006E4BC /* HMRealPowerUpCommand.h */,
+				F4A9E2591C2700CF0006E4BC /* HMRealPowerUpCommand.m */,
+				F4B37EF419FBE801002F371A /* HMRemodelSlotItemCommand.h */,
+				F4B37EF519FBE801002F371A /* HMRemodelSlotItemCommand.m */,
+				F4B37EF119FBBBED002F371A /* HMRemodelSlotCommand.h */,
+				F4B37EF219FBBBED002F371A /* HMRemodelSlotCommand.m */,
+			);
+			name = ArsenalCommand;
+			sourceTree = "<group>";
+		};
+		F4649FC51DBBB5100097AEBF /* FormationCommand */ = {
+			isa = PBXGroup;
+			children = (
+				F4BEEFD91B0A219E004702B8 /* HMShipDeckCommand.h */,
+				F4BEEFDA1B0A219E004702B8 /* HMShipDeckCommand.m */,
+				F426802F194D1B1A00B2C27F /* HMChangeHenseiCommand.h */,
+				F4268030194D1B1A00B2C27F /* HMChangeHenseiCommand.m */,
+				F44AB23319E805D100F217AF /* HMKaisouLockCommand.h */,
+				F44AB23419E805D100F217AF /* HMKaisouLockCommand.m */,
+				F402D5351BE3AFAB008D5881 /* HMSlotResetCommand.h */,
+				F402D5361BE3AFAB008D5881 /* HMSlotResetCommand.m */,
+				F4F479241C074E9900D0BF69 /* HMCombinedCommand.h */,
+				F4F479251C074E9900D0BF69 /* HMCombinedCommand.m */,
+				F46F45BD1CFF0BEE00EB7F4D /* HMSlotDepriveCommand.h */,
+				F46F45BE1CFF0BEE00EB7F4D /* HMSlotDepriveCommand.m */,
+				F46F45C01CFF0CFF00EB7F4D /* HMSlotDepriveUnsetCommand.h */,
+				F46F45C11CFF0CFF00EB7F4D /* HMSlotDepriveUnsetCommand.m */,
+			);
+			name = FormationCommand;
+			sourceTree = "<group>";
+		};
+		F4649FC61DBBB5870097AEBF /* QuestCommand */ = {
+			isa = PBXGroup;
+			children = (
+				F43769D41ADE86B200DE6204 /* HMQuestListCommand.h */,
+				F43769D51ADE86B200DE6204 /* HMQuestListCommand.m */,
+				F43769E21AE7D01D00DE6204 /* HMUpdateQuestListCommand.h */,
+				F43769E31AE7D01D00DE6204 /* HMUpdateQuestListCommand.m */,
+				F43769DF1AE7CFF800DE6204 /* HMClearItemGetComand.h */,
+				F43769E01AE7CFF800DE6204 /* HMClearItemGetComand.m */,
+			);
+			name = QuestCommand;
+			sourceTree = "<group>";
+		};
 		F4666C5B1B242065001840DB /* Bookmark */ = {
 			isa = PBXGroup;
 			children = (
@@ -952,14 +1126,14 @@
 				F4C1190418A71AEA005D5B25 /* HMJSONReciever.m */,
 				F4C1190618A746EB005D5B25 /* HMJSONTracker.h */,
 				F4C1190718A746EB005D5B25 /* HMJSONTracker.m */,
+				F4BEEFE71B0CE312004702B8 /* HMAPIResponse.h */,
+				F4BEEFE81B0CE312004702B8 /* HMAPIResponse.m */,
 				F494DC5D18C30AE100AE97E4 /* HMMissionStatus.h */,
 				F494DC5E18C30AE100AE97E4 /* HMMissionStatus.m */,
 				F494DC6B18CC054800AE97E4 /* HMNyukyoDockStatus.h */,
 				F494DC6C18CC054800AE97E4 /* HMNyukyoDockStatus.m */,
 				F4C3957218CDDFE500A1E918 /* HMKenzoDockStatus.h */,
 				F4C3957318CDDFE500A1E918 /* HMKenzoDockStatus.m */,
-				F4BEEFE71B0CE312004702B8 /* HMAPIResponse.h */,
-				F4BEEFE81B0CE312004702B8 /* HMAPIResponse.m */,
 				F49546241B1355EC00E0D8D0 /* HMBookMarkItem.h */,
 				F49546251B1355EC00E0D8D0 /* HMBookmarkItem.m */,
 				F49546291B14CBA600E0D8D0 /* HMBookmarkManager.h */,
@@ -1214,6 +1388,14 @@
 		F4D2CBBF18ACE7D7000EBC59 /* Command */ = {
 			isa = PBXGroup;
 			children = (
+				F4649FC01DBBB30F0097AEBF /* MasterUpdateCommand */,
+				F4649FC11DBBB3410097AEBF /* MemberUpdateCommand */,
+				F4649FC21DBBB3820097AEBF /* Create&DestoryCommand */,
+				F4649FC31DBBB3B00097AEBF /* BattleCommand */,
+				F4649FC41DBBB4590097AEBF /* ArsenalCommand */,
+				F4649FC51DBBB5100097AEBF /* FormationCommand */,
+				F4649FC61DBBB5870097AEBF /* QuestCommand */,
+				F4649FBF1DBBB0F50097AEBF /* Supply&DockCommand */,
 				F4C1190918A74DF0005D5B25 /* HMJSONCommand.h */,
 				F4C1190A18A74DF0005D5B25 /* HMJSONCommand.m */,
 				F4D2CBC318AE2AE2000EBC59 /* HMCompositCommand.h */,
@@ -1224,128 +1406,10 @@
 				F424A6F91BC801DE0096C431 /* HMUnknownComand.m */,
 				F424A6FE1BC8C10C0096C431 /* HMFailedCommand.h */,
 				F424A6FF1BC8C10C0096C431 /* HMFailedCommand.m */,
-				F4B3DC4518EEEB920011B4FC /* HMStart2Command.h */,
-				F4B3DC4618EEEB920011B4FC /* HMStart2Command.m */,
-				F4D2CBC018AD0E1A000EBC59 /* HMMasterSTypeCommand.h */,
-				F4D2CBC118AD0E1A000EBC59 /* HMMasterSTypeCommand.m */,
-				F4D2CBC918B05E58000EBC59 /* HMMaserShipCommand.h */,
-				F4D2CBCA18B05E58000EBC59 /* HMMaserShipCommand.m */,
-				F4B414E718B09A4B00468DAF /* HMMasterMapAreaCommand.h */,
-				F4B414E818B09A4B00468DAF /* HMMasterMapAreaCommand.m */,
-				F4B414ED18B0BF1A00468DAF /* HMMasterMapInfoCommand.h */,
-				F4B414EE18B0BF1A00468DAF /* HMMasterMapInfoCommand.m */,
-				F4B414F918B1FB6C00468DAF /* HMMasterMapCellCommand.h */,
-				F4B414FA18B1FB6C00468DAF /* HMMasterMapCellCommand.m */,
-				F4B414EA18B0A7D600468DAF /* HMMasterUseItemCommand.h */,
-				F4B414EB18B0A7D600468DAF /* HMMasterUseItemCommand.m */,
-				F4B414F018B1013C00468DAF /* HMMasterSlotItemCommand.h */,
-				F4B414F118B1013C00468DAF /* HMMasterSlotItemCommand.m */,
-				F4B414F318B1888800468DAF /* HMMasterFurnitureCommand.h */,
-				F4B414F418B1888800468DAF /* HMMasterFurnitureCommand.m */,
-				F4B414F618B1D35800468DAF /* HMMasterMissionCommand.h */,
-				F4B414F718B1D35800468DAF /* HMMasterMissionCommand.m */,
-				F4131EE41910318F004F7F9A /* HMMasterSlotItemEquipTypeCommand.h */,
-				F4131EE51910318F004F7F9A /* HMMasterSlotItemEquipTypeCommand.m */,
-				F4B414FC18B3A66200468DAF /* HMMemberNDockCommand.h */,
-				F4B414FD18B3A66200468DAF /* HMMemberNDockCommand.m */,
-				F4513EE618B77A5300073552 /* HMMemberKDockCommand.h */,
-				F4513EE718B77A5300073552 /* HMMemberKDockCommand.m */,
-				F4513EE918B7900A00073552 /* HMMemberDeckCommand.h */,
-				F4513EEA18B7900A00073552 /* HMMemberDeckCommand.m */,
-				F4513EEC18B8E2F600073552 /* HMMemberMaterialCommand.h */,
-				F4513EED18B8E2F600073552 /* HMMemberMaterialCommand.m */,
-				F4513EF118B991F800073552 /* HMMemberBasicCommand.h */,
-				F4513EF218B991F800073552 /* HMMemberBasicCommand.m */,
-				F4513EF418B9F29800073552 /* HMMemberShipCommand.h */,
-				F4513EF518B9F29800073552 /* HMMemberShipCommand.m */,
-				F4268029194D0F4800B2C27F /* HMMemberShip2Command.h */,
-				F426802A194D0F4800B2C27F /* HMMemberShip2Command.m */,
-				F426802C194D0FFD00B2C27F /* HMMemberShip3Command.h */,
-				F426802D194D0FFD00B2C27F /* HMMemberShip3Command.m */,
-				F403893C1CAEA711002A264B /* HMMemberRequireInfoCommand.h */,
-				F403893D1CAEA711002A264B /* HMMemberRequireInfoCommand.m */,
-				F4BEEFD91B0A219E004702B8 /* HMShipDeckCommand.h */,
-				F4BEEFDA1B0A219E004702B8 /* HMShipDeckCommand.m */,
-				F4E33B5618BF5F67005B8C07 /* HMMemberSlotItemCommand.h */,
-				F4E33B5718BF5F67005B8C07 /* HMMemberSlotItemCommand.m */,
-				F4E7802618DBD2A00011BC4C /* HMGetShipCommand.h */,
-				F4E7802718DBD2A00011BC4C /* HMGetShipCommand.m */,
-				F4FCFD42191F4C1D000640A1 /* HMKenzoMarkCommand.h */,
-				F4FCFD43191F4C1D000640A1 /* HMKenzoMarkCommand.m */,
-				F4B3DC2818DF31400011B4FC /* HMCreateShipCommand.h */,
-				F4B3DC2918DF31400011B4FC /* HMCreateShipCommand.m */,
-				F4B3DBC818DDB9170011B4FC /* HMCreateSlotItemCommand.h */,
-				F4B3DBC918DDB9170011B4FC /* HMCreateSlotItemCommand.m */,
-				F4131ECD190F5C08004F7F9A /* HMStoreCreateSlotItemHistoryCommand.h */,
-				F4131ECE190F5C08004F7F9A /* HMStoreCreateSlotItemHistoryCommand.m */,
-				F4D6BC4D1A938EFC00742FEB /* HMDropShipHistoryCommand.h */,
-				F4D6BC4E1A938EFC00742FEB /* HMDropShipHistoryCommand.m */,
-				F4131ED3190F63D8004F7F9A /* HMUpdateSlotItemCommand.h */,
-				F4131ED4190F63D8004F7F9A /* HMUpdateSlotItemCommand.m */,
-				F4131ED6190FA08D004F7F9A /* HMDestroyItem2Command.h */,
-				F4131ED7190FA08D004F7F9A /* HMDestroyItem2Command.m */,
-				F43BA49F197BE22200CFF788 /* HMDestroyShipCommand.h */,
-				F43BA4A0197BE22200CFF788 /* HMDestroyShipCommand.m */,
-				F43BA4A2197BE6C200CFF788 /* HMRealDestroyShipCommand.h */,
-				F43BA4A3197BE6C200CFF788 /* HMRealDestroyShipCommand.m */,
 				F48F7B001907D7B800E78AE1 /* HMPortCommand.h */,
 				F48F7B011907D7B800E78AE1 /* HMPortCommand.m */,
 				F499E88E1B5D4E7F00189029 /* HMPortNotifyCommand.h */,
 				F499E88F1B5D4E7F00189029 /* HMPortNotifyCommand.m */,
-				F4AA0605192E3B6200844688 /* HMMapStartCommand.h */,
-				F4AA0606192E3B6200844688 /* HMMapStartCommand.m */,
-				F4AA05FF192E1FE900844688 /* HMBattleCommand.h */,
-				F4AA0600192E1FE900844688 /* HMBattleCommand.m */,
-				F4AA060B1930E69200844688 /* HMMidnightBattleCommand.h */,
-				F4AA060C1930E69200844688 /* HMMidnightBattleCommand.m */,
-				F4AA060E1931869E00844688 /* HMBattleResultCommand.h */,
-				F4AA060F1931869E00844688 /* HMBattleResultCommand.m */,
-				F4A3AD80199F529700FDBF80 /* HMCombinedBattleCommand.h */,
-				F4A3AD81199F529700FDBF80 /* HMCombinedBattleCommand.m */,
-				F43769DC1AE1248800DE6204 /* HMAirBattleCommand.h */,
-				F43769DD1AE1248800DE6204 /* HMAirBattleCommand.m */,
-				F4AA0602192E20F500844688 /* HMCalculateDamageCommand.h */,
-				F4AA0603192E20F500844688 /* HMCalculateDamageCommand.m */,
-				F4ED5D2B1B7C677E00D1BDEF /* HMGuardShelterCommand.h */,
-				F4ED5D2C1B7C677E00D1BDEF /* HMGuardShelterCommand.m */,
-				F426802F194D1B1A00B2C27F /* HMChangeHenseiCommand.h */,
-				F4268030194D1B1A00B2C27F /* HMChangeHenseiCommand.m */,
-				F4268032195332A000B2C27F /* HMPowerUpCommand.h */,
-				F4268033195332A000B2C27F /* HMPowerUpCommand.m */,
-				F4A9E2581C2700CF0006E4BC /* HMRealPowerUpCommand.h */,
-				F4A9E2591C2700CF0006E4BC /* HMRealPowerUpCommand.m */,
-				F43BA4A5197CD59400CFF788 /* HMNyukyoSpeedChangeCommand.h */,
-				F43BA4A6197CD59400CFF788 /* HMNyukyoSpeedChangeCommand.m */,
-				F4A3AD8619B6149D00FDBF80 /* HMNyukyoStartCommand.h */,
-				F4A3AD8719B6149D00FDBF80 /* HMNyukyoStartCommand.m */,
-				F4B1E30A19D1C06900805879 /* HMHokyuChargeCommand.h */,
-				F4B1E30B19D1C06900805879 /* HMHokyuChargeCommand.m */,
-				F4B1E30D19D1C9C400805879 /* HMApplySuppliesCommand.h */,
-				F4B1E30E19D1C9C400805879 /* HMApplySuppliesCommand.m */,
-				F44AB23319E805D100F217AF /* HMKaisouLockCommand.h */,
-				F44AB23419E805D100F217AF /* HMKaisouLockCommand.m */,
-				F4B37EF119FBBBED002F371A /* HMRemodelSlotCommand.h */,
-				F4B37EF219FBBBED002F371A /* HMRemodelSlotCommand.m */,
-				F4B37EF419FBE801002F371A /* HMRemodelSlotItemCommand.h */,
-				F4B37EF519FBE801002F371A /* HMRemodelSlotItemCommand.m */,
-				F43F3D441A33F7D400D6DAF7 /* HMResetSortieCommand.h */,
-				F43F3D451A33F7D400D6DAF7 /* HMResetSortieCommand.m */,
-				F4BEEFDF1B0B6326004702B8 /* HMDummyShipCommand.h */,
-				F4BEEFE01B0B6326004702B8 /* HMDummyShipCommand.m */,
-				F43769D41ADE86B200DE6204 /* HMQuestListCommand.h */,
-				F43769D51ADE86B200DE6204 /* HMQuestListCommand.m */,
-				F43769DF1AE7CFF800DE6204 /* HMClearItemGetComand.h */,
-				F43769E01AE7CFF800DE6204 /* HMClearItemGetComand.m */,
-				F43769E21AE7D01D00DE6204 /* HMUpdateQuestListCommand.h */,
-				F43769E31AE7D01D00DE6204 /* HMUpdateQuestListCommand.m */,
-				F402D5351BE3AFAB008D5881 /* HMSlotResetCommand.h */,
-				F402D5361BE3AFAB008D5881 /* HMSlotResetCommand.m */,
-				F4F479241C074E9900D0BF69 /* HMCombinedCommand.h */,
-				F4F479251C074E9900D0BF69 /* HMCombinedCommand.m */,
-				F46F45BD1CFF0BEE00EB7F4D /* HMSlotDepriveCommand.h */,
-				F46F45BE1CFF0BEE00EB7F4D /* HMSlotDepriveCommand.m */,
-				F46F45C01CFF0CFF00EB7F4D /* HMSlotDepriveUnsetCommand.h */,
-				F46F45C11CFF0CFF00EB7F4D /* HMSlotDepriveUnsetCommand.m */,
 			);
 			name = Command;
 			sourceTree = "<group>";
