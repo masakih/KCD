@@ -103,8 +103,7 @@
 
 	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO];
 	self.screenshots.sortDescriptors = @[sortDescriptor];
-	self.screenshots.selectedIndexes = [NSIndexSet indexSetWithIndex:0];
-    
+
     [self.collectionView addObserver:self
                           forKeyPath:@"selectionIndexPaths"
                              options:0
@@ -213,6 +212,8 @@ CGFloat realFromZoom(CGFloat zoom) {
 
 - (void)registerScreenshot:(NSBitmapImageRep *)image fromOnScreen:(NSRect)screenRect
 {
+    if( !image ) return;
+    
 	dispatch_queue_t queue = dispatch_queue_create("Screenshot queue", DISPATCH_QUEUE_SERIAL);
 	dispatch_async(queue, ^{
 		NSData *imageData = [image representationUsingType:NSJPEGFileType properties:@{}];
@@ -234,7 +235,11 @@ CGFloat realFromZoom(CGFloat zoom) {
 			info.version = [self cacheVersionForPath:path];
 			
 			[self.screenshotsController insertObject:info atArrangedObjectIndex:0];
-			self.screenshotsController.selectedObjects = @[info];
+            NSSet *set = [NSSet setWithObject:[NSIndexPath indexPathForItem:0 inSection:0]];
+            self.collectionView.selectionIndexPaths = set;
+            
+            [self.collectionView scrollToItemsAtIndexPaths:set
+                                            scrollPosition:NSCollectionViewScrollPositionNearestHorizontalEdge];
 			
 			if(HMStandardDefaults.showsListWindowAtScreenshot) {
 				[self.view.window makeKeyAndOrderFront:nil];
@@ -292,7 +297,8 @@ CGFloat realFromZoom(CGFloat zoom) {
 		}
 	}
 	self.screenshots.screenshots = [currentArray copy];
-	self.screenshots.selectedIndexes = [NSIndexSet indexSetWithIndex:0];
+    NSSet *set = [NSSet setWithObject:[NSIndexPath indexPathForItem:0 inSection:0]];
+    self.collectionView.selectionIndexPaths = set;
 	
 	[self saveCache];
 }
@@ -375,7 +381,8 @@ CGFloat realFromZoom(CGFloat zoom) {
 	if(count <= selectionIndex) {
 		selectionIndex = count - 1;
 	}
-	self.screenshotsController.selectionIndex = selectionIndex;
+    NSSet *set = [NSSet setWithObject:[NSIndexPath indexPathForItem:selectionIndex inSection:0]];
+    self.collectionView.selectionIndexPaths = set;
 }
 - (IBAction)revealInFinder:(id)sender
 {
@@ -398,38 +405,8 @@ CGFloat realFromZoom(CGFloat zoom) {
 	if(![sender respondsToSelector:@selector(image)]) return;
 	
 	NSImage *image = [sender image];
-	
-	dispatch_queue_t queue = dispatch_queue_create("Screenshot queue", DISPATCH_QUEUE_SERIAL);
-	dispatch_async(queue, ^{
-		NSBitmapImageRep *imageRep = [NSBitmapImageRep imageRepWithData:image.TIFFRepresentation];
-		NSData *imageData = [imageRep representationUsingType:NSJPEGFileType properties:@{}];
-		
-		NSBundle *mainBundle = [NSBundle mainBundle];
-		NSDictionary *infoList = [mainBundle localizedInfoDictionary];
-		NSString *filename = [infoList objectForKey:@"CFBundleName"];
-		if([filename length] == 0) {
-			filename = @"KCD";
-		}
-		filename = [filename stringByAppendingPathExtension:@"jpg"];
-		NSString *path = [[self screenshotSaveDirectoryPath] stringByAppendingPathComponent:filename];
-		path = [[NSFileManager defaultManager] _web_pathWithUniqueFilenameForPath:path];
-		[imageData writeToFile:path atomically:NO];
-		
-		dispatch_async(dispatch_get_main_queue(), ^{
-			HMScreenshotInformation *info = [HMScreenshotInformation new];
-			info.path = path;
-			info.version = [self cacheVersionForPath:path];
-			
-			[self.screenshotsController insertObject:info atArrangedObjectIndex:0];
-			self.screenshotsController.selectedObjects = @[info];
-            [self.collectionView reloadData];
-			
-			if(HMStandardDefaults.showsListWindowAtScreenshot) {
-				[self.view.window makeKeyAndOrderFront:nil];
-			}
-			[self saveCache];
-		});
-	});
+    NSBitmapImageRep *imageRep = [NSBitmapImageRep imageRepWithData:image.TIFFRepresentation];
+    [self registerScreenshot:imageRep fromOnScreen:NSZeroRect];
 }
 
 - (void)incrementCacheVersionForPath:(NSString *)fullpath
