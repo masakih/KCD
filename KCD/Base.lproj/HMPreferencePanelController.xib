@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="HMPreferencePanelController">
@@ -52,6 +53,9 @@
         <customView id="mPf-SR-Day">
             <rect key="frame" x="0.0" y="0.0" width="486" height="141"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <userGuides>
+                <userLayoutGuide location="201" affinity="minX"/>
+            </userGuides>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="tlH-Nm-il8">
                     <rect key="frame" x="18" y="104" width="186" height="17"/>
@@ -154,15 +158,15 @@
             </subviews>
             <point key="canvasLocation" x="1131" y="834.5"/>
         </customView>
-        <customView id="ROt-zH-HCQ">
-            <rect key="frame" x="0.0" y="0.0" width="486" height="401"/>
+        <customView misplaced="YES" id="ROt-zH-HCQ">
+            <rect key="frame" x="0.0" y="0.0" width="486" height="393"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <userGuides>
-                <userLayoutGuide location="183" affinity="minX"/>
+                <userLayoutGuide location="201" affinity="minX"/>
             </userGuides>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="KN7-sy-a0j">
-                    <rect key="frame" x="18" y="362" width="186" height="17"/>
+                    <rect key="frame" x="18" y="354" width="186" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="スクリーンショットの保存先：" id="nxM-71-Zg6">
                         <font key="font" metaFont="system"/>
@@ -171,7 +175,7 @@
                     </textFieldCell>
                 </textField>
                 <popUpButton verticalHuggingPriority="750" id="bu3-qp-Qbv">
-                    <rect key="frame" x="208" y="357" width="180" height="26"/>
+                    <rect key="frame" x="208" y="349" width="180" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="1000" inset="2" selectedItem="HeK-3M-4cT" id="Y49-eY-VPt">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -190,7 +194,7 @@
                     </popUpButtonCell>
                 </popUpButton>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="otX-MN-x7l">
-                    <rect key="frame" x="18" y="270" width="186" height="17"/>
+                    <rect key="frame" x="18" y="262" width="186" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="参加作戦カラー：" id="6kd-P6-Bwt">
                         <font key="font" metaFont="system"/>
@@ -199,7 +203,7 @@
                     </textFieldCell>
                 </textField>
                 <button id="5vm-EO-1Eg">
-                    <rect key="frame" x="208" y="269" width="87" height="18"/>
+                    <rect key="frame" x="208" y="261" width="87" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="色付けする" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Z4X-Rv-dnI">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -210,7 +214,7 @@
                     </connections>
                 </button>
                 <colorWell id="6ca-TN-zpl">
-                    <rect key="frame" x="260" y="240" width="44" height="23"/>
+                    <rect key="frame" x="260" y="232" width="44" height="23"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
@@ -222,7 +226,7 @@
                     </connections>
                 </colorWell>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="5PE-z1-0Ij">
-                    <rect key="frame" x="229" y="243" width="30" height="17"/>
+                    <rect key="frame" x="229" y="235" width="30" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="１：" id="WNG-o8-8aW">
                         <font key="font" metaFont="system"/>
@@ -231,7 +235,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="4gn-qG-kfh">
-                    <rect key="frame" x="269" y="92" width="181" height="17"/>
+                    <rect key="frame" x="269" y="84" width="181" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="日以上経過した履歴を削除" id="hCo-S7-Bxv">
                         <font key="font" metaFont="system"/>
@@ -240,7 +244,7 @@
                     </textFieldCell>
                 </textField>
                 <colorWell id="ljj-uV-GaN">
-                    <rect key="frame" x="341" y="240" width="44" height="23"/>
+                    <rect key="frame" x="341" y="232" width="44" height="23"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
@@ -252,7 +256,7 @@
                     </connections>
                 </colorWell>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="p6j-a1-mSb">
-                    <rect key="frame" x="310" y="243" width="30" height="17"/>
+                    <rect key="frame" x="310" y="235" width="30" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="２：" id="Pzg-hJ-M2Q">
                         <font key="font" metaFont="system"/>
@@ -261,7 +265,7 @@
                     </textFieldCell>
                 </textField>
                 <colorWell id="uAH-FY-G1V">
-                    <rect key="frame" x="422" y="240" width="44" height="23"/>
+                    <rect key="frame" x="422" y="232" width="44" height="23"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
@@ -273,7 +277,7 @@
                     </connections>
                 </colorWell>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="h3d-pw-NLI">
-                    <rect key="frame" x="391" y="243" width="30" height="17"/>
+                    <rect key="frame" x="391" y="235" width="30" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="３：" id="yiJ-tP-64S">
                         <font key="font" metaFont="system"/>
@@ -282,7 +286,7 @@
                     </textFieldCell>
                 </textField>
                 <button id="P0h-6y-57H">
-                    <rect key="frame" x="229" y="337" width="204" height="18"/>
+                    <rect key="frame" x="229" y="329" width="204" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="撮影後リストウインドウを表示" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="fvW-fR-dOk">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -293,7 +297,7 @@
                     </connections>
                 </button>
                 <colorWell id="qg1-uY-Jyo">
-                    <rect key="frame" x="260" y="211" width="44" height="23"/>
+                    <rect key="frame" x="260" y="203" width="44" height="23"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
@@ -305,7 +309,7 @@
                     </connections>
                 </colorWell>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="OSN-EO-NJW">
-                    <rect key="frame" x="229" y="214" width="30" height="17"/>
+                    <rect key="frame" x="229" y="206" width="30" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="４：" id="gvs-zZ-7bl">
                         <font key="font" metaFont="system"/>
@@ -314,7 +318,7 @@
                     </textFieldCell>
                 </textField>
                 <colorWell id="G6P-ks-Ttd">
-                    <rect key="frame" x="341" y="211" width="44" height="23"/>
+                    <rect key="frame" x="341" y="203" width="44" height="23"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
@@ -326,7 +330,7 @@
                     </connections>
                 </colorWell>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="wrP-ky-n1g">
-                    <rect key="frame" x="310" y="214" width="30" height="17"/>
+                    <rect key="frame" x="310" y="206" width="30" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="５：" id="Qqm-cr-nBv">
                         <font key="font" size="13" name="HiraKakuProN-W3"/>
@@ -335,7 +339,7 @@
                     </textFieldCell>
                 </textField>
                 <colorWell id="Eha-BF-mrE">
-                    <rect key="frame" x="422" y="211" width="44" height="23"/>
+                    <rect key="frame" x="422" y="203" width="44" height="23"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
@@ -347,7 +351,7 @@
                     </connections>
                 </colorWell>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="oUs-l4-bGp">
-                    <rect key="frame" x="391" y="214" width="30" height="17"/>
+                    <rect key="frame" x="391" y="206" width="30" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="６：" id="heb-je-e2Z">
                         <font key="font" size="13" name="HiraKakuProN-W3"/>
@@ -356,7 +360,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="UVY-fV-YyH">
-                    <rect key="frame" x="18" y="176" width="186" height="17"/>
+                    <rect key="frame" x="18" y="168" width="186" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="連合艦隊表示：" id="tWu-Vc-uAA">
                         <font key="font" metaFont="system"/>
@@ -365,7 +369,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="755-fu-Xei">
-                    <rect key="frame" x="18" y="119" width="186" height="17"/>
+                    <rect key="frame" x="18" y="111" width="186" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="履歴：" id="fNC-6f-cqh">
                         <font key="font" metaFont="system"/>
@@ -374,7 +378,7 @@
                     </textFieldCell>
                 </textField>
                 <button id="BAL-yn-Hzt">
-                    <rect key="frame" x="208" y="175" width="139" height="18"/>
+                    <rect key="frame" x="208" y="167" width="139" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="自動的に連動させる" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Mb9-b0-Q0s">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -385,7 +389,7 @@
                     </connections>
                 </button>
                 <button id="gch-YJ-UjX">
-                    <rect key="frame" x="208" y="118" width="139" height="18"/>
+                    <rect key="frame" x="208" y="110" width="139" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="古い履歴を削除" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="jUP-gT-uhJ">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -395,24 +399,12 @@
                         <binding destination="DTu-dT-pUA" name="value" keyPath="values.cleanOldHistoryItems" id="fgt-Hf-NgV"/>
                     </connections>
                 </button>
-                <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="4dF-1I-gNC">
-                    <rect key="frame" x="12" y="40" width="462" height="5"/>
+                <box verticalHuggingPriority="750" boxType="separator" id="4dF-1I-gNC">
+                    <rect key="frame" x="12" y="32" width="462" height="5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <font key="titleFont" metaFont="system"/>
                 </box>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="4kc-Do-EnQ">
-                    <rect key="frame" x="174" y="0.0" width="149" height="34"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="艦娘や装備のデータがおかしくなった時に使用します。" id="rTT-JC-pFN">
-                        <font key="font" size="11" name="HiraKakuProN-W3"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <button verticalHuggingPriority="750" id="h7t-eg-ugk">
-                    <rect key="frame" x="325" y="5" width="147" height="28"/>
+                <button verticalHuggingPriority="750" misplaced="YES" id="h7t-eg-ugk">
+                    <rect key="frame" x="325" y="2" width="147" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="push" title="データを削除して再起動" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="64g-2Z-cqb">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -423,7 +415,7 @@
                     </connections>
                 </button>
                 <button id="O0m-0s-Yai">
-                    <rect key="frame" x="208" y="153" width="173" height="18"/>
+                    <rect key="frame" x="208" y="145" width="173" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="3本指スワイプで切り替え" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="jWo-0e-bjf">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -434,7 +426,7 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="lsH-gX-tj2">
-                    <rect key="frame" x="18" y="304" width="186" height="17"/>
+                    <rect key="frame" x="18" y="296" width="186" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="スクリーンショットのツイート：" id="2Ab-V5-xRA">
                         <font key="font" metaFont="system"/>
@@ -443,7 +435,7 @@
                     </textFieldCell>
                 </textField>
                 <button id="c0c-Kj-GjA">
-                    <rect key="frame" x="208" y="303" width="204" height="18"/>
+                    <rect key="frame" x="208" y="295" width="204" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="#艦これ タグを付ける" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="XbN-Tu-Pff">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -454,7 +446,7 @@
                     </connections>
                 </button>
                 <textField verticalHuggingPriority="750" id="vfF-Ib-CIc">
-                    <rect key="frame" x="231" y="90" width="39" height="22"/>
+                    <rect key="frame" x="231" y="82" width="39" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="1000" drawsBackground="YES" id="vxw-Px-bUr">
                         <font key="font" metaFont="system"/>
@@ -466,7 +458,7 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="Y4e-kx-BC6">
-                    <rect key="frame" x="258" y="51" width="170" height="33"/>
+                    <rect key="frame" x="258" y="43" width="170" height="33"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="マークが付いた履歴とイベント海域のドロップ履歴は削除されません" id="NiL-Wb-wFs">
                         <font key="font" metaFont="smallSystem"/>
@@ -474,8 +466,17 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" id="4kc-Do-EnQ">
+                    <rect key="frame" x="46" y="10" width="278" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="艦娘や装備のデータがおかしくなった時に使用します。" id="rTT-JC-pFN">
+                        <font key="font" size="11" name="HiraKakuProN-W3"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
-            <point key="canvasLocation" x="591" y="964.5"/>
+            <point key="canvasLocation" x="591" y="961"/>
         </customView>
     </objects>
     <resources>
