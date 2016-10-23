@@ -1,0 +1,18 @@
+
+/* Class = "NSToolbarItem"; label = "Search"; ObjectID = "AOw-u0-d4y"; */
+"AOw-u0-d4y.label" = "Search";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Search"; ObjectID = "AOw-u0-d4y"; */
+"AOw-u0-d4y.paletteLabel" = "Search";
+
+/* Class = "CocoaBindingsConnection"; ibShadowedDisplayName = "predicate"; ObjectID = "Mal-Vq-ElL"; */
+"Mal-Vq-ElL.ibShadowedDisplayName" = "predicate";
+
+/* Class = "NSWindow"; title = "スクリーンショット"; ObjectID = "QvC-M9-y7g"; */
+"QvC-M9-y7g.title" = "截圖一覽";
+
+/* Class = "NSToolbarItem"; label = "Share"; ObjectID = "YJF-yq-Qjk"; */
+"YJF-yq-Qjk.label" = "Share";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Share"; ObjectID = "YJF-yq-Qjk"; */
+"YJF-yq-Qjk.paletteLabel" = "Share";

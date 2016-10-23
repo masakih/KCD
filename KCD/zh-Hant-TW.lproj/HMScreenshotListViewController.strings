@@ -1,0 +1,12 @@
+
+/* Class = "CocoaBindingsConnection"; ibShadowedDisplayPattern = "%{value1}@のスクリーンショット"; ObjectID = "An8-PN-bAR"; */
+"An8-PN-bAR.ibShadowedDisplayPattern" = "%{value1}@截圖";
+
+/* Class = "NSMenuItem"; title = "Finderに表示"; ObjectID = "eyO-ph-Z9i"; */
+"eyO-ph-Z9i.title" = "在Finder中顯示";
+
+/* Class = "NSMenuItem"; title = "削除"; ObjectID = "grB-62-VUF"; */
+"grB-62-VUF.title" = "刪除";
+
+/* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "rWY-Vt-N4T"; */
+"rWY-Vt-N4T.title" = "Label";

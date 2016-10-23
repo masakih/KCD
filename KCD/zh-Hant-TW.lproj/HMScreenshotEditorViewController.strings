@@ -1,0 +1,21 @@
+
+/* Class = "NSTextFieldCell"; title = "4"; ObjectID = "7be-WC-jLx"; */
+"7be-WC-jLx.title" = "4";
+
+/* Class = "NSBox"; title = "Title"; ObjectID = "VY1-YY-sUD"; */
+"VY1-YY-sUD.title" = "Title";
+
+/* Class = "NSMenuItem"; title = "Item 3"; ObjectID = "fmY-Fx-1SI"; */
+"fmY-Fx-1SI.title" = "Item 3";
+
+/* Class = "NSButtonCell"; title = "戻る"; ObjectID = "ic0-Qz-2A7"; */
+"ic0-Qz-2A7.title" = "取消";
+
+/* Class = "NSMenuItem"; title = "Item 1"; ObjectID = "kAg-Qr-uFn"; */
+"kAg-Qr-uFn.title" = "Item 1";
+
+/* Class = "NSButtonCell"; title = "OK"; ObjectID = "kKo-lO-ca8"; */
+"kKo-lO-ca8.title" = "OK";
+
+/* Class = "NSMenuItem"; title = "Item 2"; ObjectID = "ms6-9N-2jQ"; */
+"ms6-9N-2jQ.title" = "Item 2";

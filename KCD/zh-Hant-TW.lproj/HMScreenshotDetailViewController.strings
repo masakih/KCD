@@ -1,0 +1,9 @@
+
+/* Class = "NSBox"; title = "Title"; ObjectID = "Xeu-p0-zaC"; */
+"Xeu-p0-zaC.title" = "Title";
+
+/* Class = "NSButtonCell"; title = "切り抜き…"; ObjectID = "jjc-rO-wq6"; */
+"jjc-rO-wq6.title" = "修剪…";
+
+/* Class = "NSTextFieldCell"; title = "タグ："; ObjectID = "leY-Z3-bcj"; */
+"leY-Z3-bcj.title" = "Tags：";
