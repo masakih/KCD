@@ -880,8 +880,6 @@
 		F4649FC11DBBB3410097AEBF /* MemberUpdateCommand */ = {
 			isa = PBXGroup;
 			children = (
-				F4BEEFDF1B0B6326004702B8 /* HMDummyShipCommand.h */,
-				F4BEEFE01B0B6326004702B8 /* HMDummyShipCommand.m */,
 				F4B414FC18B3A66200468DAF /* HMMemberNDockCommand.h */,
 				F4B414FD18B3A66200468DAF /* HMMemberNDockCommand.m */,
 				F4513EE618B77A5300073552 /* HMMemberKDockCommand.h */,
@@ -915,8 +913,6 @@
 				F4B3DC2918DF31400011B4FC /* HMCreateShipCommand.m */,
 				F4131ECD190F5C08004F7F9A /* HMStoreCreateSlotItemHistoryCommand.h */,
 				F4131ECE190F5C08004F7F9A /* HMStoreCreateSlotItemHistoryCommand.m */,
-				F4D6BC4D1A938EFC00742FEB /* HMDropShipHistoryCommand.h */,
-				F4D6BC4E1A938EFC00742FEB /* HMDropShipHistoryCommand.m */,
 				F4131ED3190F63D8004F7F9A /* HMUpdateSlotItemCommand.h */,
 				F4131ED4190F63D8004F7F9A /* HMUpdateSlotItemCommand.m */,
 				F4131ED6190FA08D004F7F9A /* HMDestroyItem2Command.h */,
@@ -948,6 +944,10 @@
 				F43F3D451A33F7D400D6DAF7 /* HMResetSortieCommand.m */,
 				F4ED5D2B1B7C677E00D1BDEF /* HMGuardShelterCommand.h */,
 				F4ED5D2C1B7C677E00D1BDEF /* HMGuardShelterCommand.m */,
+				F4BEEFDF1B0B6326004702B8 /* HMDummyShipCommand.h */,
+				F4BEEFE01B0B6326004702B8 /* HMDummyShipCommand.m */,
+				F4D6BC4D1A938EFC00742FEB /* HMDropShipHistoryCommand.h */,
+				F4D6BC4E1A938EFC00742FEB /* HMDropShipHistoryCommand.m */,
 			);
 			name = BattleCommand;
 			sourceTree = "<group>";
