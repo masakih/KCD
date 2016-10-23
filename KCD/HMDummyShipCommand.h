@@ -8,6 +8,9 @@
 
 #import "HMJSONCommand.h"
 
+/**
+ * 出撃中にドロップした艦をマスクした上で入居数に反映させるためのダミーデータの生成と削除を行う
+ **/
 @interface HMDummyShipCommand : HMJSONCommand
 
 @end
