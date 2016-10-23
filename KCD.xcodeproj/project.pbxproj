@@ -325,7 +325,6 @@
 		F414656A1DAB853D00D68C97 /* HMScreenshotCollectionViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMScreenshotCollectionViewItem.m; sourceTree = "<group>"; };
 		F414656C1DAB855700D68C97 /* HMCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMCollectionView.h; sourceTree = "<group>"; };
 		F414656D1DAB855700D68C97 /* HMCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMCollectionView.m; sourceTree = "<group>"; };
-		F41465751DB4F1A700D68C97 /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMScreenshotListWindowController.xib; sourceTree = "<group>"; };
 		F424A6F81BC801DE0096C431 /* HMUnknownComand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMUnknownComand.h; sourceTree = "<group>"; };
 		F424A6F91BC801DE0096C431 /* HMUnknownComand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMUnknownComand.m; sourceTree = "<group>"; };
 		F424A6FB1BC809490096C431 /* HMIgnoreCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMIgnoreCommand.h; sourceTree = "<group>"; };
@@ -414,12 +413,13 @@
 		F4513EF718BB699700073552 /* HMShipWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMShipWindowController.h; sourceTree = "<group>"; };
 		F4513EF818BB699700073552 /* HMShipWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMShipWindowController.m; sourceTree = "<group>"; };
 		F4649FC81DBC51A90097AEBF /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/HMScreenshotListWindowController.strings"; sourceTree = "<group>"; };
-		F4649FCA1DBC51EF0097AEBF /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMScreenshotListViewController.xib; sourceTree = "<group>"; };
 		F4649FCD1DBC51F30097AEBF /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/HMScreenshotListViewController.strings"; sourceTree = "<group>"; };
-		F4649FCF1DBC52600097AEBF /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMScreenshotDetailViewController.xib; sourceTree = "<group>"; };
 		F4649FD21DBC52630097AEBF /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/HMScreenshotDetailViewController.strings"; sourceTree = "<group>"; };
-		F4649FD41DBC52A50097AEBF /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/HMScreenshotEditorViewController.xib; sourceTree = "<group>"; };
 		F4649FD71DBC52A90097AEBF /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/HMScreenshotEditorViewController.strings"; sourceTree = "<group>"; };
+		F4649FD81DBC54180097AEBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/HMScreenshotListWindowController.xib; sourceTree = "<group>"; };
+		F4649FD91DBC54270097AEBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/HMScreenshotListViewController.xib; sourceTree = "<group>"; };
+		F4649FDA1DBC54320097AEBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/HMScreenshotDetailViewController.xib; sourceTree = "<group>"; };
+		F4649FDB1DBC543A0097AEBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/HMScreenshotEditorViewController.xib; sourceTree = "<group>"; };
 		F4666C4B1B1B3113001840DB /* HMBookmarkListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMBookmarkListTableView.h; sourceTree = "<group>"; };
 		F4666C4C1B1B3113001840DB /* HMBookmarkListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMBookmarkListTableView.m; sourceTree = "<group>"; };
 		F4666C4E1B1CB2CE001840DB /* HMBrowserContentAdjuster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMBrowserContentAdjuster.h; sourceTree = "<group>"; };
@@ -1981,8 +1981,8 @@
 		F41465761DB4F1A700D68C97 /* HMScreenshotListWindowController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				F41465751DB4F1A700D68C97 /* ja */,
 				F4649FC81DBC51A90097AEBF /* zh-Hant-TW */,
+				F4649FD81DBC54180097AEBF /* Base */,
 			);
 			name = HMScreenshotListWindowController.xib;
 			sourceTree = "<group>";
@@ -1990,8 +1990,8 @@
 		F4649FCB1DBC51EF0097AEBF /* HMScreenshotListViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				F4649FCA1DBC51EF0097AEBF /* ja */,
 				F4649FCD1DBC51F30097AEBF /* zh-Hant-TW */,
+				F4649FD91DBC54270097AEBF /* Base */,
 			);
 			name = HMScreenshotListViewController.xib;
 			sourceTree = "<group>";
@@ -1999,8 +1999,8 @@
 		F4649FD01DBC52600097AEBF /* HMScreenshotDetailViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				F4649FCF1DBC52600097AEBF /* ja */,
 				F4649FD21DBC52630097AEBF /* zh-Hant-TW */,
+				F4649FDA1DBC54320097AEBF /* Base */,
 			);
 			name = HMScreenshotDetailViewController.xib;
 			sourceTree = "<group>";
@@ -2008,8 +2008,8 @@
 		F4649FD51DBC52A50097AEBF /* HMScreenshotEditorViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				F4649FD41DBC52A50097AEBF /* ja */,
 				F4649FD71DBC52A90097AEBF /* zh-Hant-TW */,
+				F4649FDB1DBC543A0097AEBF /* Base */,
 			);
 			name = HMScreenshotEditorViewController.xib;
 			sourceTree = "<group>";
