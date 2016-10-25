@@ -11,10 +11,10 @@
 @interface HMAPIResponse : NSObject
 
 @property (readonly) NSString *api;
-@property (readonly) NSDictionary *parameter;
-@property (readonly) id json;
+@property (nonatomic, readonly) NSDictionary *parameter;
+@property (nonatomic, readonly) id json;
 @property (readonly) NSDate *date;
-@property (readonly) BOOL success;
+@property (nonatomic, readonly) BOOL success;
 @property (readonly) NSString *errorString;
 
 #if ENABLE_JSON_LOG

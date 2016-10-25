@@ -13,10 +13,10 @@
 
 @interface HMAPIResponse ()
 @property (copy, readwrite) NSString *api;
-@property (copy, readwrite) NSDictionary *parameter;
-@property (strong, readwrite) id json;
+@property (nonatomic, copy, readwrite) NSDictionary *parameter;
+@property (nonatomic, strong, readwrite) id json;
 @property (strong, readwrite) NSDate *date;
-@property (readwrite) BOOL success;
+@property (nonatomic, readwrite) BOOL success;
 @property (copy, readwrite) NSString *errorString;
 
 @property (nonatomic, copy) NSData *jsonData;
