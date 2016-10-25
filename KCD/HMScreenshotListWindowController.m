@@ -41,7 +41,9 @@ typedef BOOL (^HMFindViewController)(NSViewController *viewController);
 
 + (instancetype)new
 {
-    return [[self alloc] initWithWindowNibName:NSStringFromClass([self class])];
+    HMScreenshotListWindowController *result = [[self alloc] initWithWindowNibName:NSStringFromClass([self class])];
+    [result window];
+    return result;
 }
 
 - (void)replaceView:(NSView *)placeholder withViewController:(NSViewController *)viewController
