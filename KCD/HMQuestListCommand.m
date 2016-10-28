@@ -36,7 +36,7 @@
 	static NSArray *ignoreKeys = nil;
 	if(ignoreKeys) return ignoreKeys;
 	
-	ignoreKeys = @[@"api_lost_badges"];
+	ignoreKeys = @[@"api_lost_badges", @"api_select_rewards"];
 	return ignoreKeys;
 }
 - (void)execute
