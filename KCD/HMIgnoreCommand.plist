@@ -17,6 +17,7 @@
 	<string>/kcsapi/api_get_member/unsetslot</string>
 	<string>/kcsapi/api_get_member/useitem</string>
 	<string>/kcsapi/api_req_air_corps/change_name</string>
+	<string>/kcsapi/api_req_air_corps/expand_base</string>
 	<string>/kcsapi/api_req_air_corps/set_action</string>
 	<string>/kcsapi/api_req_air_corps/set_plane</string>
 	<string>/kcsapi/api_req_air_corps/supply</string>
