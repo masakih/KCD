@@ -11,6 +11,7 @@
 #import "HMServerDataStore.h"
 #import "HMKCNyukyoDock.h"
 #import "HMKCShipObject+Extensions.h"
+#import "HMKCMaterial.h"
 
 
 @implementation HMNyukyoSpeedChangeCommand
@@ -37,7 +38,7 @@
 	NSError *error = nil;
 	NSArray<HMKCNyukyoDock *> *nyukyoDocks = [store objectsWithEntityName:@"NyukyoDock"
 															  error:&error
-														  predicateFormat:@"id = %@", @([ndockId integerValue])];
+														  predicateFormat:@"id = %@", @(ndockId.integerValue)];
 	if(nyukyoDocks.count == 0) {
 		if(error) {
 			NSLog(@"Error: at %@ : %@", NSStringFromClass([self class]), error);
@@ -54,14 +55,26 @@
 	error = nil;
 	NSArray<HMKCShipObject *> *ships = [store objectsWithEntityName:@"Ship"
 															  error:&error
-													predicateFormat:@"id = %@", @([shipId integerValue])];
+													predicateFormat:@"id = %@", @(shipId.integerValue)];
 	if(ships.count == 0) {
 		if(error) {
 			NSLog(@"Error: at %@ : %@", NSStringFromClass([self class]), error);
 		}
 		return;
 	}
-	
 	ships[0].nowhp = ships[0].maxhp;
+    
+    //
+    NSArray<HMKCMaterial *> *materials = [store objectsWithEntityName:@"Material"
+                                                            predicate:nil
+                                                                error:&error];
+    if(materials.count == 0) {
+        if(error) {
+            NSLog(@"Error: at %@ : %@", NSStringFromClass([self class]), error);
+        }
+        return;
+    }
+    NSNumber *bukkets = materials[0].kousokushuhuku;
+    materials[0].kousokushuhuku = @(bukkets.integerValue - 1);
 }
 @end

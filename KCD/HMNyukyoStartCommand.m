@@ -10,6 +10,7 @@
 
 #import "HMServerDataStore.h"
 #import "HMKCShipObject+Extensions.h"
+#import "HMKCMaterial.h"
 
 
 @implementation HMNyukyoStartCommand
@@ -36,10 +37,10 @@
 	
 	HMServerDataStore *store = [HMServerDataStore oneTimeEditor];
 	
+    NSError *error = nil;
+
 	NSString *shipId = self.arguments[@"api_ship_id"];
-	
-	NSError *error = nil;
-	NSArray<HMKCShipObject *> *ships = [store objectsWithEntityName:@"Ship"
+    NSArray<HMKCShipObject *> *ships = [store objectsWithEntityName:@"Ship"
 															  error:&error
 													predicateFormat:@"id = %@", @([shipId integerValue])];
 	if(ships.count == 0) {
@@ -48,7 +49,18 @@
 		}
 		return;
 	}
-	
 	ships[0].nowhp = ships[0].maxhp;
+    
+    NSArray<HMKCMaterial *> *materials = [store objectsWithEntityName:@"Material"
+                                            predicate:nil
+                                                error:&error];
+    if(materials.count == 0) {
+        if(error) {
+            NSLog(@"Error: at %@ : %@", NSStringFromClass([self class]), error);
+        }
+        return;
+    }
+    NSNumber *bukkets = materials[0].kousokushuhuku;
+    materials[0].kousokushuhuku = @(bukkets.integerValue - 1);
 }
 @end
