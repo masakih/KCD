@@ -15,12 +15,7 @@
 }
 - (NSArray *)ignoreKeys
 {
-	static NSArray *ignoreKeys = nil;
-	if(ignoreKeys) return ignoreKeys;
-	
-	ignoreKeys = @[@"api_req_shiptype", @"api_link_no"];
-	
-	return ignoreKeys;
+	return @[@"api_req_shiptype", @"api_link_no"];
 }
 - (void)execute
 {

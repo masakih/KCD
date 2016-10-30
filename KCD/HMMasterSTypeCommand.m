@@ -11,11 +11,7 @@
 @implementation HMMasterSTypeCommand
 - (NSArray *)ignoreKeys
 {
-	static NSArray *ignoreKeys = nil;
-	if(ignoreKeys) return ignoreKeys;
-	
-	ignoreKeys = @[@"api_equip_type"];
-	return ignoreKeys;
+	return @[@"api_equip_type"];
 }
 - (NSString *)dataKey
 {
