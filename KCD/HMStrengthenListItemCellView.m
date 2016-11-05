@@ -98,28 +98,39 @@
 	return self.item.remodelEquipment;
 }
 
+NSString *needsScrewString(NSNumber *screwNumber, NSNumber *ensureScrewNumber)
+{
+    NSString *screwString = @"";
+    NSString *ensureScrewString = @"";
+    
+    NSInteger screw = screwNumber.integerValue;
+    if(screw == 0) return nil;
+    if(screw == -1) {
+        screwString = @"-";
+    } else {
+        screwString = [NSString stringWithFormat:@"%ld", screw];
+    }
+    
+    NSInteger ensureScrew = ensureScrewNumber.integerValue;
+    if(ensureScrew == -1) {
+        ensureScrewString = @"-";
+    } else {
+        ensureScrewString = [NSString stringWithFormat:@"%ld", ensureScrew];
+    }
+    
+    return [NSString stringWithFormat:@"%@/%@", screwString, ensureScrewString];
+}
+
 - (NSString *)needsScrewString01
 {
-	NSInteger screw = self.requiredEquipment01.screw.integerValue;
-	if(screw == 0) return nil;
-	if(screw == -1) return @"-/-";
-	
-	return [NSString stringWithFormat:@"%@/%@", self.requiredEquipment01.screw, self.requiredEquipment01.ensureScrew];
+    return needsScrewString(self.requiredEquipment01.screw, self.requiredEquipment01.ensureScrew);
 }
 - (NSString *)needsScrewString02
 {
-	NSInteger screw = self.requiredEquipment02.screw.integerValue;
-	if(screw == 0) return nil;
-	if(screw == -1) return @"-/-";
-	
-	return [NSString stringWithFormat:@"%@/%@", self.requiredEquipment02.screw, self.requiredEquipment02.ensureScrew];
+	return needsScrewString(self.requiredEquipment02.screw, self.requiredEquipment02.ensureScrew);
 }
 - (NSString *)needsScrewString03
 {
-	NSInteger screw = self.requiredEquipment03.screw.integerValue;
-	if(screw == 0) return nil;
-	if(screw == -1) return @"-/-";
-	
-	return [NSString stringWithFormat:@"%@/%@", self.requiredEquipment03.screw, self.requiredEquipment03.ensureScrew];
+    return needsScrewString(self.requiredEquipment03.screw, self.requiredEquipment03.ensureScrew);
 }
 @end
