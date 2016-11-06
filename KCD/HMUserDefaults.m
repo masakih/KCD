@@ -399,6 +399,15 @@ HMUserDefaults *HMStandardDefaults = nil;
 	return [self integerForKey:@"scrennshotEditorType"];
 }
 
+- (void)setScreenshotButtonSize:(NSControlSize)screenshotButtonSize
+{
+    [self setInteger:screenshotButtonSize forKey:@"screenshotButtonSize"];
+}
+- (NSControlSize)screenshotButtonSize
+{
+    return [self integerForKey:@"screenshotButtonSize"];
+}
+
 #pragma mark - Notify Sound
 - (void)setPlayFinishMissionSound:(BOOL)playFinishMissionSound
 {

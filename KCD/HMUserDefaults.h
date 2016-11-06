@@ -86,6 +86,21 @@ extern HMUserDefaults *HMStandardDefaults;
 @property NSNumber *screenshotPreviewZoomValue;
 
 /**
+ * 連結するスクリーンショットの列数
+ */
+@property NSInteger screenshotEditorColumnCount;
+
+/**
+ * スクリーンショットの切り抜きタイプ
+ */
+@property NSInteger scrennshotEditorType;
+
+/**
+ * スクリーンショットボタンの大きさ
+ */
+@property NSControlSize screenshotButtonSize;
+
+/**
  *  遠征帰還時の通知音を鳴らす
  */
 @property BOOL playFinishMissionSound;
@@ -154,16 +169,6 @@ extern HMUserDefaults *HMStandardDefaults;
  */
 @property BOOL useSwipeChangeCombinedView;
 
-
-/**
- * 連結するスクリーンショットの列数
- */
-@property NSInteger screenshotEditorColumnCount;
-
-/**
- * スクリーンショットの切り抜きタイプ
- */
-@property NSInteger scrennshotEditorType;
 
 /**
  * 古い履歴を削除する

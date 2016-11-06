@@ -108,6 +108,9 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 	self.ancherageRepariTimerViewController = [HMAncherageRepairTimerViewController new];
 	[self.ancherageRepariTimerViewController.view setFrameOrigin:NSZeroPoint];
 	[self.ancherageRepariTimerPlaceholder addSubview:self.ancherageRepariTimerViewController.view];
+    if(HMStandardDefaults.screenshotButtonSize == NSControlSizeSmall) {
+        [self toggleAnchorageSize:nil];
+    }
 	
 	self.docksViewController = [HMDocksViewController new];
 	self.shipViewController = [HMShipViewController new];
@@ -224,6 +227,26 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 	if([event deltaX] < 0) {
 		[self hideCombinedView];
 	}
+}
+
+
+- (IBAction)toggleAnchorageSize:(id)sender
+{
+    NSControlSize current = self.ancherageRepariTimerViewController.controlSize;
+    CGFloat diff = [HMAncherageRepairTimerViewController regularHeight] - [HMAncherageRepairTimerViewController smallHeight];
+    NSControlSize newSize = NSControlSizeRegular;
+    if(current == NSControlSizeRegular) {
+        diff *= -1;
+        newSize = NSControlSizeSmall;
+    }
+    self.ancherageRepariTimerViewController.controlSize = newSize;
+    
+    NSRect frame = self.informations.frame;
+    frame.size.height -= diff;
+    frame.origin.y += diff;
+    self.informations.frame = frame;
+    
+    HMStandardDefaults.screenshotButtonSize = newSize;
 }
 
 #pragma mark - Combined view
@@ -585,6 +608,9 @@ const CGFloat flashTopMargin = 4;
 		if(self.fleetViewPosition == kOldStyle) return NO;
 		return YES;
 	}
+    if(action == @selector(toggleAnchorageSize:))  {
+        return YES;
+    }
 	
 	return NO;
 }

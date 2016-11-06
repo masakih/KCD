@@ -12,6 +12,9 @@
 
 #import "HMAnchorageRepairManager.h"
 
+static const CGFloat regularHeight = 76;
+static const CGFloat smallHeight = regularHeight - 32;
+
 @interface HMAncherageRepairTimerViewController ()
 @property (strong) HMAnchorageRepairManager *anchorageRepairManager;
 @property (strong) NSNumber *repairTime;
@@ -22,12 +25,14 @@
 @end
 
 @implementation HMAncherageRepairTimerViewController
+@synthesize controlSize = _controlSize;
 
 - (id)init
 {
 	self = [super initWithNibName:NSStringFromClass([self class]) bundle:nil];
 	if(self) {
 		_anchorageRepairManager = [HMAnchorageRepairManager defaultManager];
+        _controlSize = NSControlSizeRegular;
 		
 		HMAppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
 		[appDelegate addCounterUpdateBlock:^{
@@ -55,6 +60,33 @@
 - (void)mouseExited:(NSEvent *)theEvent
 {
 	self.screenshotButton.image = [NSImage imageNamed:@"CameraDisabled"];
+}
+
+- (void)setControlSize:(NSControlSize)controlSize
+{
+    if(_controlSize == controlSize) return;
+    
+    NSRect frame = self.view.frame;
+    frame.size.height = controlSize == NSControlSizeRegular ? regularHeight : smallHeight;
+    self.view.frame = frame;
+    
+    NSRect buttonFrame = self.screenshotButton.frame;
+    buttonFrame.size.width += controlSize == NSControlSizeRegular ? +32 : -32;
+    self.screenshotButton.frame = buttonFrame;
+    _controlSize = controlSize;
+}
+- (NSControlSize)controlSize
+{
+    return _controlSize;
+}
+
++ (CGFloat)regularHeight
+{
+    return regularHeight;
+}
++ (CGFloat)smallHeight
+{
+    return smallHeight;
 }
 
 - (NSNumber *)calcRepairTime

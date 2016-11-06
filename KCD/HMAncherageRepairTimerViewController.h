@@ -10,4 +10,9 @@
 
 @interface HMAncherageRepairTimerViewController : NSViewController
 
+@property NSControlSize controlSize;
+
+@property (class, readonly) CGFloat regularHeight;
+@property (class, readonly) CGFloat smallHeight;
+
 @end
