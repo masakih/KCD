@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1108" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
@@ -284,7 +284,8 @@
                                 </tableColumns>
                                 <connections>
                                     <binding destination="b8v-Gn-JZD" name="content" keyPath="arrangedObjects" id="DUn-9S-eQ5"/>
-                                    <binding destination="b8v-Gn-JZD" name="sortDescriptors" keyPath="sortDescriptors" previousBinding="DUn-9S-eQ5" id="BTy-CB-NX7"/>
+                                    <binding destination="b8v-Gn-JZD" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="DUn-9S-eQ5" id="gsY-Gp-kVk"/>
+                                    <binding destination="b8v-Gn-JZD" name="sortDescriptors" keyPath="sortDescriptors" previousBinding="gsY-Gp-kVk" id="dvw-9U-8bQ"/>
                                     <outlet property="delegate" destination="-2" id="n0d-rD-1Vm"/>
                                 </connections>
                             </tableView>
@@ -679,7 +680,8 @@
                         </tableColumns>
                         <connections>
                             <binding destination="b8v-Gn-JZD" name="content" keyPath="arrangedObjects" id="hRu-8B-BlL"/>
-                            <binding destination="b8v-Gn-JZD" name="sortDescriptors" keyPath="sortDescriptors" previousBinding="hRu-8B-BlL" id="GOe-XZ-oZ9"/>
+                            <binding destination="b8v-Gn-JZD" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="hRu-8B-BlL" id="pCC-Jn-LWv"/>
+                            <binding destination="b8v-Gn-JZD" name="sortDescriptors" keyPath="sortDescriptors" previousBinding="pCC-Jn-LWv" id="XQT-RK-dFF"/>
                             <outlet property="delegate" destination="-2" id="LyH-LL-Ov5"/>
                         </connections>
                     </tableView>
@@ -1001,7 +1003,8 @@
                         </tableColumns>
                         <connections>
                             <binding destination="b8v-Gn-JZD" name="content" keyPath="arrangedObjects" id="SYF-BX-xwH"/>
-                            <binding destination="b8v-Gn-JZD" name="sortDescriptors" keyPath="sortDescriptors" previousBinding="SYF-BX-xwH" id="F9y-uk-8zg"/>
+                            <binding destination="b8v-Gn-JZD" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="SYF-BX-xwH" id="hGw-9f-WyK"/>
+                            <binding destination="b8v-Gn-JZD" name="sortDescriptors" keyPath="sortDescriptors" previousBinding="hGw-9f-WyK" id="aBN-0T-y3D"/>
                             <outlet property="delegate" destination="-2" id="do9-hX-28g"/>
                         </connections>
                     </tableView>
@@ -1292,7 +1295,8 @@
                         </tableColumns>
                         <connections>
                             <binding destination="b8v-Gn-JZD" name="content" keyPath="arrangedObjects" id="ge8-Y4-mGI"/>
-                            <binding destination="b8v-Gn-JZD" name="sortDescriptors" keyPath="sortDescriptors" previousBinding="ge8-Y4-mGI" id="Ps4-b0-jN0"/>
+                            <binding destination="b8v-Gn-JZD" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="ge8-Y4-mGI" id="rGo-yw-I53"/>
+                            <binding destination="b8v-Gn-JZD" name="sortDescriptors" keyPath="sortDescriptors" previousBinding="rGo-yw-I53" id="DKS-m7-vif"/>
                             <outlet property="delegate" destination="-2" id="yXB-WZ-Xs4"/>
                         </connections>
                     </tableView>
