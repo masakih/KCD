@@ -120,7 +120,6 @@
 		F4A9B8D91BA40ED1005786C2 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = F4A9B8D81BA40ED1005786C2 /* LICENSE */; };
 		F4A9E25A1C2700CF0006E4BC /* HMRealPowerUpCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A9E2591C2700CF0006E4BC /* HMRealPowerUpCommand.m */; };
 		F4A9E7FB1D045BC100F91746 /* HMScreenshotModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A9E7F61D045BC100F91746 /* HMScreenshotModel.m */; };
-		F4A9E7FC1D045BC100F91746 /* HMSlideReplaceSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A9E7F81D045BC100F91746 /* HMSlideReplaceSegue.m */; };
 		F4A9E7FD1D045BC100F91746 /* HMTiledImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A9E7FA1D045BC100F91746 /* HMTiledImageView.m */; };
 		F4A9E8001D045C0E00F91746 /* HMBridgeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A9E7FF1D045C0E00F91746 /* HMBridgeViewController.m */; };
 		F4A9E8031D045C1E00F91746 /* HMImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A9E8021D045C1E00F91746 /* HMImageView.m */; };
@@ -521,8 +520,6 @@
 		F4A9E2591C2700CF0006E4BC /* HMRealPowerUpCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMRealPowerUpCommand.m; sourceTree = "<group>"; };
 		F4A9E7F51D045BC100F91746 /* HMScreenshotModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMScreenshotModel.h; sourceTree = "<group>"; };
 		F4A9E7F61D045BC100F91746 /* HMScreenshotModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMScreenshotModel.m; sourceTree = "<group>"; };
-		F4A9E7F71D045BC100F91746 /* HMSlideReplaceSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSlideReplaceSegue.h; sourceTree = "<group>"; };
-		F4A9E7F81D045BC100F91746 /* HMSlideReplaceSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSlideReplaceSegue.m; sourceTree = "<group>"; };
 		F4A9E7F91D045BC100F91746 /* HMTiledImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMTiledImageView.h; sourceTree = "<group>"; };
 		F4A9E7FA1D045BC100F91746 /* HMTiledImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMTiledImageView.m; sourceTree = "<group>"; };
 		F4A9E7FE1D045C0E00F91746 /* HMBridgeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMBridgeViewController.h; sourceTree = "<group>"; };
@@ -1059,8 +1056,6 @@
 				F4649FD51DBC52A50097AEBF /* HMScreenshotEditorViewController.xib */,
 				F4A9E7F91D045BC100F91746 /* HMTiledImageView.h */,
 				F4A9E7FA1D045BC100F91746 /* HMTiledImageView.m */,
-				F4A9E7F71D045BC100F91746 /* HMSlideReplaceSegue.h */,
-				F4A9E7F81D045BC100F91746 /* HMSlideReplaceSegue.m */,
 			);
 			name = ScreenshotList;
 			sourceTree = "<group>";
@@ -1812,7 +1807,6 @@
 				F4B414F518B1888800468DAF /* HMMasterFurnitureCommand.m in Sources */,
 				F4AA0601192E1FE900844688 /* HMBattleCommand.m in Sources */,
 				F495462B1B14CBA600E0D8D0 /* HMBookmarkManager.m in Sources */,
-				F4A9E7FC1D045BC100F91746 /* HMSlideReplaceSegue.m in Sources */,
 				F43F3D521A39CC7500D6DAF7 /* HMKCMasterSlotItemObject.m in Sources */,
 				F4A9E25A1C2700CF0006E4BC /* HMRealPowerUpCommand.m in Sources */,
 				F448F9921B6FBF80004901AD /* HMResourceHistoryManager.m in Sources */,
