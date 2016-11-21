@@ -195,7 +195,7 @@ NSString *keyByDeletingPrefix(NSString *key)
 		api_data = @[api_data];
 	}
 	if(![api_data isKindOfClass:[NSArray class]]) {
-		[self log:@"api_data is NOT NSArray."];
+		[self log:@"%@ is NOT NSArray.", self.dataKey];
 		return;
 	}
 	

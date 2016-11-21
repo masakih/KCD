@@ -10,7 +10,7 @@
 
 #import "HMMasterMapAreaCommand.h"
 #import "HMMasterMapInfoCommand.h"
-#import "HMMasterMapCellCommand.h"
+// #import "HMMasterMapCellCommand.h"
 #import "HMMasterSTypeCommand.h"
 #import "HMMaserShipCommand.h"
 #import "HMMasterMissionCommand.h"
@@ -37,7 +37,7 @@
 - (id)init
 {
 	self = [super initWithCommands:
-			[HMMasterMapAreaCommand new], [HMMasterMapInfoCommand new], [HMMasterMapCellCommand new],
+			[HMMasterMapAreaCommand new], [HMMasterMapInfoCommand new], //[HMMasterMapCellCommand new],
 			[HMMasterSTypeCommand new], [HMMaserShipCommand new],
 			[HMMasterMissionCommand new],
 			[HMMasterFurnitureCommand new],
