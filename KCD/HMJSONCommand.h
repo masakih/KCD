@@ -35,8 +35,10 @@
 + (BOOL)canExcuteAPI:(NSString *)api;
 
 @property (readonly) NSString *primaryKey;
+@property (readonly) NSArray<NSString *> *cmpositPrimaryKeys;
 @property (readonly) NSArray *ignoreKeys;
 @property (readonly) NSString *dataKey;
+
 
 - (void)commitJSONToEntityNamed:(NSString *)entityName;
 

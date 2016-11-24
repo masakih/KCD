@@ -6,7 +6,6 @@
 	<string>/kcsapi/api_get_member/base_air_corps</string>
 	<string>/kcsapi/api_get_member/furniture</string>
 	<string>/kcsapi/api_get_member/mapcell</string>
-	<string>/kcsapi/api_get_member/mapinfo</string>
 	<string>/kcsapi/api_get_member/mission</string>
 	<string>/kcsapi/api_get_member/payitem</string>
 	<string>/kcsapi/api_get_member/picture_book</string>
@@ -16,11 +15,6 @@
 	<string>/kcsapi/api_get_member/sortie_conditions</string>
 	<string>/kcsapi/api_get_member/unsetslot</string>
 	<string>/kcsapi/api_get_member/useitem</string>
-	<string>/kcsapi/api_req_air_corps/change_name</string>
-	<string>/kcsapi/api_req_air_corps/expand_base</string>
-	<string>/kcsapi/api_req_air_corps/set_action</string>
-	<string>/kcsapi/api_req_air_corps/set_plane</string>
-	<string>/kcsapi/api_req_air_corps/supply</string>
 	<string>/kcsapi/api_req_furniture/buy</string>
 	<string>/kcsapi/api_req_furniture/change</string>
 	<string>/kcsapi/api_req_furniture/music_list</string>

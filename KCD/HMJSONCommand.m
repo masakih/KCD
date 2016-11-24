@@ -25,6 +25,9 @@ static NSMutableArray *registeredCommands = nil;
 
 @interface HMJSONCommand ()
 
+typedef NSManagedObject *(^HMObjectSearcher)(NSString *entityName, NSManagedObjectContext *managedObjectContext, NSArray *objects, NSDictionary *element);
+
+
 @property (nonatomic, copy) NSString *argumentsString;
 @property (nonatomic, strong) NSData *jsonData;
 @property (nonatomic, strong, readwrite) NSDate *recieveDate;
@@ -188,67 +191,103 @@ NSString *keyByDeletingPrefix(NSString *key)
 		}
 	}
 }
+
+- (NSArray<NSSortDescriptor *> *)sortDescriptors
+{
+    NSArray<NSString *> *keys = self.cmpositPrimaryKeys;
+    if(!keys) {
+        keys = @[self.primaryKey];
+    }
+    NSMutableArray<NSSortDescriptor *> *sortDescriptors = [NSMutableArray array];
+    for(NSString *key in keys) {
+        NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:key ascending:YES];
+        [sortDescriptors addObject:sortDescriptor];
+    }
+    return [sortDescriptors copy];
+}
+- (HMObjectSearcher)objectSearcher
+{
+    __weak HMJSONCommand *weakSelf = self;
+    HMObjectSearcher p = ^NSManagedObject *(NSString *entityName, NSManagedObjectContext *moc, NSArray *objects, NSDictionary *element) {
+        NSRange range = NSMakeRange(0, objects.count);
+        NSArray<NSString *> *keys = weakSelf.cmpositPrimaryKeys;
+        if(!keys) {
+            keys = @[weakSelf.primaryKey];
+        }
+        NSMutableDictionary<NSString *, NSString *> *apiKeys = [NSMutableDictionary dictionary];
+        for(NSString *key in keys) {
+            [apiKeys setObject:[NSString stringWithFormat:@"api_%@", key] forKey:key];
+        }
+        NSUInteger index = [objects indexOfObject:element
+                                    inSortedRange:range
+                                          options:NSBinarySearchingFirstEqual
+                                  usingComparator:^(id obj1, id obj2) {
+                                      for(NSString *key in keys) {
+                                          id value1 = [obj1 valueForKey:key];
+                                          if(!value1) {
+                                              value1 = [obj1 objectForKey:apiKeys[key]];
+                                          }
+                                          if(!value1) return NSOrderedDescending;
+
+                                          id value2 = [obj2 valueForKey:key];
+                                          if(!value2) {
+                                              value2 = [obj2 objectForKey:apiKeys[key]];
+                                          }
+                                          if(!value2) return NSOrderedAscending;
+                                          
+                                          NSComparisonResult result = [value1 compare:value2];
+                                          if(result != NSOrderedSame) return result;
+                                      }
+                                      
+                                      return NSOrderedSame;
+                                  }];
+        
+        NSManagedObject *object = nil;
+        if(index == NSNotFound) {
+            object = [NSEntityDescription insertNewObjectForEntityForName:entityName
+                                                   inManagedObjectContext:moc];
+        } else {
+            object = objects[index];
+        }
+        return object;
+    };
+    
+    return p;
+}
 - (void)commitJSONToEntityNamed:(NSString *)entityName
 {
-	NSArray *api_data = [self.json valueForKeyPath:self.dataKey];
-	if([api_data isKindOfClass:[NSDictionary class]]) {
-		api_data = @[api_data];
-	}
-	if(![api_data isKindOfClass:[NSArray class]]) {
-		[self log:@"%@ is NOT NSArray.", self.dataKey];
-		return;
-	}
-	
-	NSString *primaryKey = self.primaryKey;
-	NSString *primaryAPIKey = [NSString stringWithFormat:@"api_%@", primaryKey];
-	
-	HMServerDataStore *serverDataStore = [HMServerDataStore oneTimeEditor];
-	NSManagedObjectContext *managedObjectContext = [serverDataStore managedObjectContext];
-	
-	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:primaryKey ascending:YES];
-	NSError *error = nil;
-	NSArray *objects = [serverDataStore objectsWithEntityName:entityName
-											  sortDescriptors:@[sortDescriptor]
-													predicate:nil
-														error:&error];
-	if(error) {
-		[self log:@"Fetch error: %@", error];
-		return;
-	}
-	
-	NSRange range = NSMakeRange(0, objects.count);
-	for(NSDictionary *element in api_data) {
-		NSUInteger index = [objects indexOfObject:element[primaryAPIKey]
-									inSortedRange:range
-										  options:NSBinarySearchingFirstEqual
-								  usingComparator:^(id obj1, id obj2) {
-									  id value1, value2;
-									  if([obj1 isKindOfClass:[NSNumber class]]) {
-										  value1 = obj1;
-									  } else {
-										  value1 = [obj1 valueForKey:primaryKey];
-									  }
-									  if([obj2 isKindOfClass:[NSNumber class]]) {
-										  value2 = obj2;
-									  } else {
-										  value2 = [obj2 valueForKey:primaryKey];
-									  }
-									  return [value1 compare:value2];
-								  }];
-		
-		NSManagedObject *object = nil;
-		if(index == NSNotFound) {
-			object = [NSEntityDescription insertNewObjectForEntityForName:entityName
-												   inManagedObjectContext:managedObjectContext];
-		} else {
-			object = objects[index];
-		}
-		
-		[self registerElement:element
-					 toObject:object];
-	}
-	[self finishOperating:managedObjectContext];
+    NSArray *api_data = [self.json valueForKeyPath:self.dataKey];
+    if([api_data isKindOfClass:[NSDictionary class]]) {
+        api_data = @[api_data];
+    }
+    if(![api_data isKindOfClass:[NSArray class]]) {
+        [self log:@"%@ is NOT NSArray.", self.dataKey];
+        return;
+    }
+    
+    HMServerDataStore *serverDataStore = [HMServerDataStore oneTimeEditor];
+    NSManagedObjectContext *managedObjectContext = [serverDataStore managedObjectContext];
+    
+    NSError *error = nil;
+    NSArray *objects = [serverDataStore objectsWithEntityName:entityName
+                                              sortDescriptors:self.sortDescriptors
+                                                    predicate:nil
+                                                        error:&error];
+    if(error) {
+        [self log:@"Fetch error: %@", error];
+        return;
+    }
+    
+    HMObjectSearcher objectSearcher = self.objectSearcher;
+    for(NSDictionary *element in api_data) {
+        NSManagedObject *object = objectSearcher(entityName, managedObjectContext, objects, element);
+        if(object) {
+            [self registerElement:element toObject:object];
+        }
+    }
+    [self finishOperating:managedObjectContext];
 }
+
 
 // abstruct
 - (void)execute

@@ -88,6 +88,15 @@
 		F47178501B6FA1B300F5E59D /* HMResourceHistoryDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F471784F1B6FA1B300F5E59D /* HMResourceHistoryDataStore.m */; };
 		F47B78B218A7B42B0011386E /* HMJSONViewWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F47B78B018A7B42B0011386E /* HMJSONViewWindowController.m */; };
 		F47E895D1B80DB9F00B2E552 /* HMSlotItemLevelView.m in Sources */ = {isa = PBXBuildFile; fileRef = F47E895C1B80DB9F00B2E552 /* HMSlotItemLevelView.m */; };
+		F48A704D1DE326F0005DFC0B /* HMAirBaseCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F48A704C1DE326F0005DFC0B /* HMAirBaseCommand.m */; };
+		F48A70501DE32847005DFC0B /* HMMapInfoCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F48A704F1DE32847005DFC0B /* HMMapInfoCommand.m */; };
+		F48A705C1DE58A38005DFC0B /* HMKCAirBase+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = F48A70551DE58A38005DFC0B /* HMKCAirBase+CoreDataClass.m */; };
+		F48A705D1DE58A38005DFC0B /* HMKCAirBase+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = F48A70571DE58A38005DFC0B /* HMKCAirBase+CoreDataProperties.m */; };
+		F48A705E1DE58A38005DFC0B /* HMKCAirBasePlaneInfo+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = F48A70591DE58A38005DFC0B /* HMKCAirBasePlaneInfo+CoreDataClass.m */; };
+		F48A705F1DE58A38005DFC0B /* HMKCAirBasePlaneInfo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = F48A705B1DE58A38005DFC0B /* HMKCAirBasePlaneInfo+CoreDataProperties.m */; };
+		F48A70631DE58C54005DFC0B /* HMAirBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F48A70611DE58C54005DFC0B /* HMAirBaseViewController.m */; };
+		F48A70641DE58C54005DFC0B /* HMAirBaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F48A70621DE58C54005DFC0B /* HMAirBaseViewController.xib */; };
+		F48A70671DE5D62C005DFC0B /* HMOrderedSetToArrayTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F48A70661DE5D62C005DFC0B /* HMOrderedSetToArrayTransformer.m */; };
 		F48F62A41BD364E000076C8E /* HMDamageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F48F62A31BD364E000076C8E /* HMDamageView.m */; };
 		F48F7B021907D7B800E78AE1 /* HMPortCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F48F7B011907D7B800E78AE1 /* HMPortCommand.m */; };
 		F494DC5F18C30AE100AE97E4 /* HMMissionStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = F494DC5E18C30AE100AE97E4 /* HMMissionStatus.m */; };
@@ -235,6 +244,7 @@
 		F4E7802818DBD2A00011BC4C /* HMGetShipCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E7802718DBD2A00011BC4C /* HMGetShipCommand.m */; };
 		F4E7802B18DC3A820011BC4C /* HMLocalDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E7802A18DC3A820011BC4C /* HMLocalDataStore.m */; };
 		F4E7802E18DC3AF00011BC4C /* LocalData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4E7802C18DC3AF00011BC4C /* LocalData.xcdatamodeld */; };
+		F4E90B5E1DE713FF00643B5F /* HMSetPlaneCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E90B5D1DE713FF00643B5F /* HMSetPlaneCommand.m */; };
 		F4ECA36F1C6102FC0098AB6A /* HMMillisecondTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4ECA36E1C6102FC0098AB6A /* HMMillisecondTransformer.m */; };
 		F4ED5D2A1B78D0CA00D1BDEF /* HMGuardEscapedView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4ED5D291B78D0CA00D1BDEF /* HMGuardEscapedView.m */; };
 		F4ED5D2D1B7C677E00D1BDEF /* HMGuardShelterCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4ED5D2C1B7C677E00D1BDEF /* HMGuardShelterCommand.m */; };
@@ -456,6 +466,23 @@
 		F47B78B018A7B42B0011386E /* HMJSONViewWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMJSONViewWindowController.m; sourceTree = "<group>"; };
 		F47E895B1B80DB9F00B2E552 /* HMSlotItemLevelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSlotItemLevelView.h; sourceTree = "<group>"; };
 		F47E895C1B80DB9F00B2E552 /* HMSlotItemLevelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSlotItemLevelView.m; sourceTree = "<group>"; };
+		F48A704B1DE326F0005DFC0B /* HMAirBaseCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMAirBaseCommand.h; sourceTree = "<group>"; };
+		F48A704C1DE326F0005DFC0B /* HMAirBaseCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMAirBaseCommand.m; sourceTree = "<group>"; };
+		F48A704E1DE32847005DFC0B /* HMMapInfoCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMapInfoCommand.h; sourceTree = "<group>"; };
+		F48A704F1DE32847005DFC0B /* HMMapInfoCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMapInfoCommand.m; sourceTree = "<group>"; };
+		F48A70541DE58A38005DFC0B /* HMKCAirBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMKCAirBase.h; sourceTree = "<group>"; };
+		F48A70551DE58A38005DFC0B /* HMKCAirBase+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HMKCAirBase+CoreDataClass.m"; sourceTree = "<group>"; };
+		F48A70561DE58A38005DFC0B /* HMKCAirBase+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HMKCAirBase+CoreDataProperties.h"; sourceTree = "<group>"; };
+		F48A70571DE58A38005DFC0B /* HMKCAirBase+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HMKCAirBase+CoreDataProperties.m"; sourceTree = "<group>"; };
+		F48A70581DE58A38005DFC0B /* HMKCAirBasePlaneInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMKCAirBasePlaneInfo.h; sourceTree = "<group>"; };
+		F48A70591DE58A38005DFC0B /* HMKCAirBasePlaneInfo+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HMKCAirBasePlaneInfo+CoreDataClass.m"; sourceTree = "<group>"; };
+		F48A705A1DE58A38005DFC0B /* HMKCAirBasePlaneInfo+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HMKCAirBasePlaneInfo+CoreDataProperties.h"; sourceTree = "<group>"; };
+		F48A705B1DE58A38005DFC0B /* HMKCAirBasePlaneInfo+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HMKCAirBasePlaneInfo+CoreDataProperties.m"; sourceTree = "<group>"; };
+		F48A70601DE58C54005DFC0B /* HMAirBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMAirBaseViewController.h; sourceTree = "<group>"; };
+		F48A70611DE58C54005DFC0B /* HMAirBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMAirBaseViewController.m; sourceTree = "<group>"; };
+		F48A70621DE58C54005DFC0B /* HMAirBaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMAirBaseViewController.xib; sourceTree = "<group>"; };
+		F48A70651DE5D62C005DFC0B /* HMOrderedSetToArrayTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMOrderedSetToArrayTransformer.h; sourceTree = "<group>"; };
+		F48A70661DE5D62C005DFC0B /* HMOrderedSetToArrayTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMOrderedSetToArrayTransformer.m; sourceTree = "<group>"; };
 		F48F62A21BD364E000076C8E /* HMDamageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDamageView.h; sourceTree = "<group>"; };
 		F48F62A31BD364E000076C8E /* HMDamageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDamageView.m; sourceTree = "<group>"; };
 		F48F7B001907D7B800E78AE1 /* HMPortCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPortCommand.h; sourceTree = "<group>"; };
@@ -690,6 +717,8 @@
 		F4E7802918DC3A820011BC4C /* HMLocalDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMLocalDataStore.h; sourceTree = "<group>"; };
 		F4E7802A18DC3A820011BC4C /* HMLocalDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMLocalDataStore.m; sourceTree = "<group>"; };
 		F4E7802D18DC3AF00011BC4C /* LocalData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocalData.xcdatamodel; sourceTree = "<group>"; };
+		F4E90B5C1DE713FF00643B5F /* HMSetPlaneCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSetPlaneCommand.h; sourceTree = "<group>"; };
+		F4E90B5D1DE713FF00643B5F /* HMSetPlaneCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSetPlaneCommand.m; sourceTree = "<group>"; };
 		F4ECA36D1C6102FC0098AB6A /* HMMillisecondTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMillisecondTransformer.h; sourceTree = "<group>"; };
 		F4ECA36E1C6102FC0098AB6A /* HMMillisecondTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMillisecondTransformer.m; sourceTree = "<group>"; };
 		F4ED5D281B78D0CA00D1BDEF /* HMGuardEscapedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGuardEscapedView.h; sourceTree = "<group>"; };
@@ -947,6 +976,12 @@
 				F4BEEFE01B0B6326004702B8 /* HMDummyShipCommand.m */,
 				F4D6BC4D1A938EFC00742FEB /* HMDropShipHistoryCommand.h */,
 				F4D6BC4E1A938EFC00742FEB /* HMDropShipHistoryCommand.m */,
+				F48A704E1DE32847005DFC0B /* HMMapInfoCommand.h */,
+				F48A704F1DE32847005DFC0B /* HMMapInfoCommand.m */,
+				F48A704B1DE326F0005DFC0B /* HMAirBaseCommand.h */,
+				F48A704C1DE326F0005DFC0B /* HMAirBaseCommand.m */,
+				F4E90B5C1DE713FF00643B5F /* HMSetPlaneCommand.h */,
+				F4E90B5D1DE713FF00643B5F /* HMSetPlaneCommand.m */,
 			);
 			name = BattleCommand;
 			sourceTree = "<group>";
@@ -1283,6 +1318,8 @@
 				F4F9F8AB1C7C823600D0EE76 /* HMDamageValueTransformer.m */,
 				F42CBB211D1F967F004C2AE2 /* HMHistoryMarkTransformer.h */,
 				F42CBB221D1F967F004C2AE2 /* HMHistoryMarkTransformer.m */,
+				F48A70651DE5D62C005DFC0B /* HMOrderedSetToArrayTransformer.h */,
+				F48A70661DE5D62C005DFC0B /* HMOrderedSetToArrayTransformer.m */,
 			);
 			name = "Transformar&Formatter";
 			sourceTree = "<group>";
@@ -1460,6 +1497,14 @@
 				F43769E61AE7D22700DE6204 /* HMKCQuest.m */,
 				F4666C621B25CA3E001840DB /* HMKCQuest+Extensions.h */,
 				F4666C631B25CA3E001840DB /* HMKCQuest+Extensions.m */,
+				F48A70541DE58A38005DFC0B /* HMKCAirBase.h */,
+				F48A70551DE58A38005DFC0B /* HMKCAirBase+CoreDataClass.m */,
+				F48A70561DE58A38005DFC0B /* HMKCAirBase+CoreDataProperties.h */,
+				F48A70571DE58A38005DFC0B /* HMKCAirBase+CoreDataProperties.m */,
+				F48A70581DE58A38005DFC0B /* HMKCAirBasePlaneInfo.h */,
+				F48A70591DE58A38005DFC0B /* HMKCAirBasePlaneInfo+CoreDataClass.m */,
+				F48A705A1DE58A38005DFC0B /* HMKCAirBasePlaneInfo+CoreDataProperties.h */,
+				F48A705B1DE58A38005DFC0B /* HMKCAirBasePlaneInfo+CoreDataProperties.m */,
 			);
 			name = KCD;
 			sourceTree = "<group>";
@@ -1553,6 +1598,9 @@
 				F4D6BC991AA1FAC600742FEB /* HMUITestWindowController.h */,
 				F4D6BC9A1AA1FAC600742FEB /* HMUITestWindowController.m */,
 				F4BEF0101B11A645004702B8 /* HMUITestWindowController.xib */,
+				F48A70601DE58C54005DFC0B /* HMAirBaseViewController.h */,
+				F48A70611DE58C54005DFC0B /* HMAirBaseViewController.m */,
+				F48A70621DE58C54005DFC0B /* HMAirBaseViewController.xib */,
 			);
 			name = TestAndDebug;
 			path = KCD;
@@ -1669,6 +1717,7 @@
 				F4A9B8D71B99D5B7005786C2 /* Taihi.txt in Resources */,
 				F4B3DC3018E5C81E0011B4FC /* HMHistoryWindowController.xib in Resources */,
 				F4C5A22E1C37CB5100533FB6 /* HMEnhancementListItem.txt in Resources */,
+				F48A70641DE58C54005DFC0B /* HMAirBaseViewController.xib in Resources */,
 				F4A9B8D91BA40ED1005786C2 /* LICENSE in Resources */,
 				F4B3DC3618E5C8650011B4FC /* HMShipWindowController.xib in Resources */,
 				F4C6685A1C54510E00601AFB /* HMBookmarkEditorViewController.xib in Resources */,
@@ -1738,10 +1787,12 @@
 				F49688641B3AFE4900D3CEDE /* HMProgressPanel.m in Sources */,
 				F4BEEFE91B0CE312004702B8 /* HMAPIResponse.m in Sources */,
 				F4B3DC4418E70B370011B4FC /* HMServerDataStore.m in Sources */,
+				F48A70501DE32847005DFC0B /* HMMapInfoCommand.m in Sources */,
 				F4AA0607192E3B6200844688 /* HMMapStartCommand.m in Sources */,
 				F4AA0604192E20F500844688 /* HMCalculateDamageCommand.m in Sources */,
 				F4D2CBC518AE2AE2000EBC59 /* HMCompositCommand.m in Sources */,
 				F4F9F89B1C6CB7D400D0EE76 /* HMFleet.m in Sources */,
+				F48A705D1DE58A38005DFC0B /* HMKCAirBase+CoreDataProperties.m in Sources */,
 				F4F9F88A1C6B642B00D0EE76 /* HMKCMasterMapArea.m in Sources */,
 				F4C1190218A6FFC2005D5B25 /* HMQueue.m in Sources */,
 				F4513EEB18B7900A00073552 /* HMMemberDeckCommand.m in Sources */,
@@ -1758,6 +1809,7 @@
 				F4A2AF5B1A0F9B490024BD9E /* HMScreenshotInformation.m in Sources */,
 				F4666C561B1E0262001840DB /* HMBookmarkEditorViewController.m in Sources */,
 				F43769DE1AE1248800DE6204 /* HMAirBattleCommand.m in Sources */,
+				F48A705F1DE58A38005DFC0B /* HMKCAirBasePlaneInfo+CoreDataProperties.m in Sources */,
 				F426802E194D0FFD00B2C27F /* HMMemberShip3Command.m in Sources */,
 				F4A9E7FD1D045BC100F91746 /* HMTiledImageView.m in Sources */,
 				F4B37EF319FBBBED002F371A /* HMRemodelSlotCommand.m in Sources */,
@@ -1774,6 +1826,7 @@
 				F4F6E8291B3045970008B66E /* CacheStoragePolicy.m in Sources */,
 				F4F9F8A31C70AFB600D0EE76 /* HMFleetManager.m in Sources */,
 				F4D6BCBA1AA32BEA00742FEB /* HMFleetViewController.m in Sources */,
+				F48A70631DE58C54005DFC0B /* HMAirBaseViewController.m in Sources */,
 				F49546311B18991300E0D8D0 /* HMBookmarkDataStore.m in Sources */,
 				F4666C511B1CB2CE001840DB /* HMBrowserContentAdjuster.m in Sources */,
 				F4F479261C074E9900D0BF69 /* HMCombinedCommand.m in Sources */,
@@ -1797,11 +1850,13 @@
 				F46FCB291BD933C600304DE7 /* HMSlotItemShortNameTransformer.m in Sources */,
 				F4A3AD82199F529700FDBF80 /* HMCombinedBattleCommand.m in Sources */,
 				F4AA05FE192B932E00844688 /* HMTemporaryDataStore.m in Sources */,
+				F48A705C1DE58A38005DFC0B /* HMKCAirBase+CoreDataClass.m in Sources */,
 				F4F388C21C140AFB00508549 /* HMResourceViewController.m in Sources */,
 				F4B37EFD19FC8D98002F371A /* HMUpgradableShipsWindowController.m in Sources */,
 				F4B414F818B1D35800468DAF /* HMMasterMissionCommand.m in Sources */,
 				F4E33B5818BF5F67005B8C07 /* HMMemberSlotItemCommand.m in Sources */,
 				F4C1190B18A74DF0005D5B25 /* HMJSONCommand.m in Sources */,
+				F48A70671DE5D62C005DFC0B /* HMOrderedSetToArrayTransformer.m in Sources */,
 				F44AB23E19E824D700F217AF /* HMKCSlotItemObject.m in Sources */,
 				F4D6BCB01AA2A97200742FEB /* HMLengTransformer.m in Sources */,
 				F4B414F518B1888800468DAF /* HMMasterFurnitureCommand.m in Sources */,
@@ -1865,8 +1920,10 @@
 				F4B3DC4718EEEB920011B4FC /* HMStart2Command.m in Sources */,
 				F4F6E82B1B3045970008B66E /* CustomHTTPProtocol.m in Sources */,
 				F4513EDD18B619B600073552 /* HMCoreDataManager.m in Sources */,
+				F4E90B5E1DE713FF00643B5F /* HMSetPlaneCommand.m in Sources */,
 				F4B3DBCA18DDB9170011B4FC /* HMCreateSlotItemCommand.m in Sources */,
 				F4131ED8190FA08D004F7F9A /* HMDestroyItem2Command.m in Sources */,
+				F48A705E1DE58A38005DFC0B /* HMKCAirBasePlaneInfo+CoreDataClass.m in Sources */,
 				F4B3DC2718DF2F360011B4FC /* HMKenzoMark.m in Sources */,
 				F4F6E80F1B2C25D20008B66E /* HMStrengthenListItemCellView.m in Sources */,
 				F424A7001BC8C10C0096C431 /* HMFailedCommand.m in Sources */,
@@ -1903,6 +1960,7 @@
 				F4C2ACA51D7167C2007BFE90 /* HMTimeSignalNotifier.m in Sources */,
 				F4F9F8781C6B5BA900D0EE76 /* HMKCKenzoDock.m in Sources */,
 				F4F388BD1C13D63B00508549 /* HMGameViewController.m in Sources */,
+				F48A704D1DE326F0005DFC0B /* HMAirBaseCommand.m in Sources */,
 				F4A9E80C1D045C4200F91746 /* HMScreenshotListViewController.m in Sources */,
 				F4FDF2411A3D50420033E0AD /* HMShipMasterDetailWindowController.m in Sources */,
 				F47178471B6DE9F400F5E59D /* HMMapAreaTransformaer.m in Sources */,
