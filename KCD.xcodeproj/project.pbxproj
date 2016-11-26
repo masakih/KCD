@@ -245,6 +245,7 @@
 		F4E7802B18DC3A820011BC4C /* HMLocalDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E7802A18DC3A820011BC4C /* HMLocalDataStore.m */; };
 		F4E7802E18DC3AF00011BC4C /* LocalData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4E7802C18DC3AF00011BC4C /* LocalData.xcdatamodeld */; };
 		F4E90B5E1DE713FF00643B5F /* HMSetPlaneCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E90B5D1DE713FF00643B5F /* HMSetPlaneCommand.m */; };
+		F4E90B611DE8899F00643B5F /* HMAirCorpsSupplyCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E90B601DE8899F00643B5F /* HMAirCorpsSupplyCommand.m */; };
 		F4ECA36F1C6102FC0098AB6A /* HMMillisecondTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4ECA36E1C6102FC0098AB6A /* HMMillisecondTransformer.m */; };
 		F4ED5D2A1B78D0CA00D1BDEF /* HMGuardEscapedView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4ED5D291B78D0CA00D1BDEF /* HMGuardEscapedView.m */; };
 		F4ED5D2D1B7C677E00D1BDEF /* HMGuardShelterCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F4ED5D2C1B7C677E00D1BDEF /* HMGuardShelterCommand.m */; };
@@ -719,6 +720,8 @@
 		F4E7802D18DC3AF00011BC4C /* LocalData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocalData.xcdatamodel; sourceTree = "<group>"; };
 		F4E90B5C1DE713FF00643B5F /* HMSetPlaneCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSetPlaneCommand.h; sourceTree = "<group>"; };
 		F4E90B5D1DE713FF00643B5F /* HMSetPlaneCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSetPlaneCommand.m; sourceTree = "<group>"; };
+		F4E90B5F1DE8899F00643B5F /* HMAirCorpsSupplyCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMAirCorpsSupplyCommand.h; sourceTree = "<group>"; };
+		F4E90B601DE8899F00643B5F /* HMAirCorpsSupplyCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMAirCorpsSupplyCommand.m; sourceTree = "<group>"; };
 		F4ECA36D1C6102FC0098AB6A /* HMMillisecondTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMillisecondTransformer.h; sourceTree = "<group>"; };
 		F4ECA36E1C6102FC0098AB6A /* HMMillisecondTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMillisecondTransformer.m; sourceTree = "<group>"; };
 		F4ED5D281B78D0CA00D1BDEF /* HMGuardEscapedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGuardEscapedView.h; sourceTree = "<group>"; };
@@ -1443,6 +1446,8 @@
 				F48F7B011907D7B800E78AE1 /* HMPortCommand.m */,
 				F499E88E1B5D4E7F00189029 /* HMPortNotifyCommand.h */,
 				F499E88F1B5D4E7F00189029 /* HMPortNotifyCommand.m */,
+				F4E90B5F1DE8899F00643B5F /* HMAirCorpsSupplyCommand.h */,
+				F4E90B601DE8899F00643B5F /* HMAirCorpsSupplyCommand.m */,
 			);
 			name = Command;
 			sourceTree = "<group>";
@@ -1944,6 +1949,7 @@
 				F4D6BC551A93903E00742FEB /* HMDropShipHistory.m in Sources */,
 				F4131EE91911445F004F7F9A /* HMSlotItemEquipTypeTransformer.m in Sources */,
 				F402D5371BE3AFAB008D5881 /* HMSlotResetCommand.m in Sources */,
+				F4E90B611DE8899F00643B5F /* HMAirCorpsSupplyCommand.m in Sources */,
 				F4BDEB5A187252F30069D0CE /* HMAppDelegate.m in Sources */,
 				F4A9E8091D045C3000F91746 /* HMScreenshotEditorViewController.m in Sources */,
 				F4E7802B18DC3A820011BC4C /* HMLocalDataStore.m in Sources */,
