@@ -1,6 +1,6 @@
 
 RM=/bin/rm
-SED=/usr/local/bin/sed
+SED=/usr/bin/sed
 ICONV=/usr/bin/iconv
 
 Localize_template=Localizable.strings.sed
