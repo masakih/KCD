@@ -45,14 +45,21 @@ static const CGFloat smallHeight = regularHeight - 32;
 
 - (void)awakeFromNib
 {
-	NSRect frame = self.screenshotButton.frame;
-	self.trackingArea = [[NSTrackingArea alloc] initWithRect:frame
-													 options:NSTrackingMouseEnteredAndExited | NSTrackingActiveInActiveApp
-													   owner:self
-													userInfo:nil];
-	[self.view addTrackingArea:self.trackingArea];
+    [self refleshTrackingArea];
 }
 
+- (void)refleshTrackingArea
+{
+    for(NSTrackingArea *area in self.view.trackingAreas) {
+        [self.view removeTrackingArea:area];
+    }
+    NSRect frame = self.screenshotButton.frame;
+    self.trackingArea = [[NSTrackingArea alloc] initWithRect:frame
+                                                     options:NSTrackingMouseEnteredAndExited | NSTrackingActiveInActiveApp
+                                                       owner:self
+                                                    userInfo:nil];
+    [self.view addTrackingArea:self.trackingArea];
+}
 - (void)mouseEntered:(NSEvent *)theEvent
 {
 	self.screenshotButton.image = [NSImage imageNamed:@"Camera"];
@@ -74,6 +81,8 @@ static const CGFloat smallHeight = regularHeight - 32;
     buttonFrame.size.width += controlSize == NSControlSizeRegular ? +32 : -32;
     self.screenshotButton.frame = buttonFrame;
     _controlSize = controlSize;
+    
+    [self refleshTrackingArea];
 }
 - (NSControlSize)controlSize
 {
