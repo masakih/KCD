@@ -1,12 +1,15 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2659" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="HMScreenshotEditorViewController">
             <connections>
                 <outlet property="arrayController" destination="1VC-Yr-1PQ" id="BG1-LA-5PA"/>
+                <outlet property="doneButton" destination="iTK-y4-DQg" id="cdi-Rb-sYU"/>
                 <outlet property="tiledImageView" destination="lCg-sn-irn" id="87K-J6-oKX"/>
                 <outlet property="view" destination="c22-O7-iKe" id="h4x-1w-GfV"/>
             </connections>
@@ -81,8 +84,8 @@ DQ
                         </menu>
                     </popUpButtonCell>
                     <connections>
-                        <binding destination="S0t-qm-yVr" name="content" keyPath="arrangedObjects" id="TNR-KK-m7j"/>
                         <binding destination="S0t-qm-yVr" name="contentObjects" keyPath="arrangedObjects" previousBinding="TNR-KK-m7j" id="6l3-5F-6Rd"/>
+                        <binding destination="S0t-qm-yVr" name="content" keyPath="arrangedObjects" id="TNR-KK-m7j"/>
                         <binding destination="S0t-qm-yVr" name="contentValues" keyPath="arrangedObjects.name" previousBinding="6l3-5F-6Rd" id="DRF-2G-1DY"/>
                         <binding destination="-2" name="selectedIndex" keyPath="currentTrimInfoIndex" previousBinding="DRF-2G-1DY" id="T9O-Nz-3lk"/>
                     </connections>
@@ -107,7 +110,7 @@ DQ
                     </connections>
                 </textField>
                 <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ong-Wl-WvH">
-                    <rect key="frame" x="48" y="17" width="19" height="27"/>
+                    <rect key="frame" x="48" y="18" width="19" height="26"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="13" id="JWr-Ab-eUf"/>
                         <constraint firstAttribute="height" constant="22" id="jaG-AX-7rd"/>

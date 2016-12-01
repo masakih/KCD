@@ -41,6 +41,7 @@
 @property (strong) NSImage *editedImage;
 
 @property (nonatomic, weak) IBOutlet HMTiledImageView *tiledImageView;
+@property (nonatomic, weak) IBOutlet NSButton *doneButton;
 
 @property (copy) NSArray<HMScreenshotInformation *> *currentSelection;
 @property (strong) NSMutableArray<HMEditedImage *> *editedImages;
@@ -97,6 +98,11 @@
 -(void)dealloc
 {
 	[self.arrayController removeObserver:self forKeyPath:NSSelectionIndexesBinding];
+}
+
+- (void)viewWillAppear
+{
+    [self.doneButton setAction:@selector(done:)];
 }
 
 - (void)setColumnCount:(NSInteger)columnCount
@@ -258,9 +264,9 @@
 
 - (IBAction)done:(id)sender
 {
-	if([sender respondsToSelector:@selector(setAction:)]) {
-		[sender setAction:nil];
-	}
+//	if([sender respondsToSelector:@selector(setAction:)]) {
+//		[sender setAction:nil];
+//	}
 	
 	[NSApp sendAction:@selector(registerImage:) to:nil from:self];
 	
