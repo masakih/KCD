@@ -53,7 +53,6 @@
     if(planeInfos.count == 0) { return; }
     
     NSArray *squadronIds = [squadronIdsString componentsSeparatedByString:@","];
-    NSLog(@"sq count -> %ld", squadronIds.count);
     
     [squadronIds enumerateObjectsUsingBlock:^(NSString * _Nonnull squadronId, NSUInteger idx, BOOL * _Nonnull stop) {
         if(planes.count < squadronId.integerValue) { return; }
