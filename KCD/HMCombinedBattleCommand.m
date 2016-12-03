@@ -27,9 +27,11 @@
 	if([api isEqualToString:@"/kcsapi/api_req_combined_battle/battle"]) return YES;
 	if([api isEqualToString:@"/kcsapi/api_req_combined_battle/airbattle"]) return YES;
 	if([api isEqualToString:@"/kcsapi/api_req_combined_battle/battle_water"]) return YES;
+    if([api isEqualToString:@"/kcsapi/api_req_combined_battle/each_battle"]) return YES;
+    if([api isEqualToString:@"/kcsapi/api_req_combined_battle/each_battle_water"]) return YES;
 	if([api isEqualToString:@"/kcsapi/api_req_combined_battle/midnight_battle"]) return YES;
 	if([api isEqualToString:@"/kcsapi/api_req_combined_battle/sp_midnight"]) return YES;
-	if([api isEqualToString:@"/kcsapi/api_req_combined_battle/battleresult"]) return YES;
+    if([api isEqualToString:@"/kcsapi/api_req_combined_battle/battleresult"]) return YES;
 	
 	return NO;
 }

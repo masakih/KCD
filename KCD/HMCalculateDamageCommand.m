@@ -24,6 +24,8 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 	typeNormal = 0,
 	typeCombinedAir,
 	typeCombinedWater,
+    typeEachCombinedAir,
+    typeEachCombinedWater,
 };
 
 typedef NS_ENUM(NSUInteger, HMDamageControlMasterSlotItemID) {
@@ -35,6 +37,7 @@ typedef NS_ENUM(NSUInteger, HMDamageControlMasterSlotItemID) {
 @property (nonatomic, strong) HMTemporaryDataStore *store;
 @property HMBattleType battleType;
 @property BOOL calcSecondFleet;
+@property BOOL calcEachFleet;
 @end
 
 @implementation HMCalculateDamageCommand
@@ -259,16 +262,19 @@ typedef NS_ENUM(NSUInteger, HMDamageControlMasterSlotItemID) {
 	return [NSArray arrayWithArray:array];
 }
 
-- (void)calculateHougeki:(NSArray<HMKCDamage *> *)damages targetsKeyPath:(NSString *)targetKeyPath damageKeyPath:(NSString *)damageKeyPath
+- (void)calculateHougeki:(NSArray<HMKCDamage *> *)damages targetsKeyPath:(NSString *)targetKeyPath damageKeyPath:(NSString *)damageKeyPath eFlagKeyPath:(NSString *)eFlagKeyPath
 {
-#if DAMAGE_CHECK
-	NSLog(@"Start Hougeki %@", targetKeyPath);
-#endif
 	NSArray<NSArray<NSNumber *> *> *targetPositionArraysArray = [self.json valueForKeyPath:targetKeyPath];
 	if(!targetPositionArraysArray || ![targetPositionArraysArray isKindOfClass:[NSArray class]]) return;
+    
+#if DAMAGE_CHECK
+    NSLog(@"Start Hougeki %@", targetKeyPath);
+#endif
 	
 	NSArray<NSArray *> *hougeki1Damages = [self.json valueForKeyPath:damageKeyPath];
 	NSInteger offset = self.calcSecondFleet ? 6 : 0;
+    
+    NSArray<NSNumber *> *eFlags = [self.json valueForKeyPath:eFlagKeyPath];
 	
 	[targetPositionArraysArray enumerateObjectsUsingBlock:^(NSArray * _Nonnull targetPositions, NSUInteger i, BOOL * _Nonnull stop) {
 		if(![targetPositions isKindOfClass:[NSArray class]]) {
@@ -276,15 +282,26 @@ typedef NS_ENUM(NSUInteger, HMDamageControlMasterSlotItemID) {
 		}
 		
 		[targetPositions enumerateObjectsUsingBlock:^(NSNumber * _Nonnull targetPositionNumber, NSUInteger j, BOOL * _Nonnull stop) {
-			NSInteger targetPosition = [targetPositionNumber integerValue];
+			NSInteger targetPosition = targetPositionNumber.integerValue;
 #if DAMAGE_CHECK
 			NSLog(@"Hougeki target -> %ld", targetPosition + offset);
 #endif
 			// target is enemy
-			if(targetPosition < 0 || targetPosition > 6) {
-				return;
-			}
-			
+            if(eFlags) {
+                NSInteger eFlag = eFlags[i].integerValue;
+                if(eFlag != 1) return;
+            } else {
+                if(self.calcEachFleet) {
+                    if(targetPosition < 0 || targetPosition > 12) {
+                        return;
+                    }
+                } else {
+                    if(targetPosition < 0 || targetPosition > 6) {
+                        return;
+                    }
+                }
+            }
+            
 			HMKCDamage *damageObject = damages[targetPosition - 1 + offset];
 			NSInteger damage = [hougeki1Damages[i][j] integerValue];
 			NSInteger hp = damageObject.hp.integerValue;
@@ -309,32 +326,35 @@ typedef NS_ENUM(NSUInteger, HMDamageControlMasterSlotItemID) {
 
 - (void)calculateFDam:(NSArray<HMKCDamage *> *)damages fdamKeyPath:(NSString *)fdamKeyPath
 {
-#if DAMAGE_CHECK
-	NSLog(@"Start FDam %@", fdamKeyPath);
-#endif
 	NSArray<NSNumber *> *koukuDamage = [self.json valueForKeyPath:fdamKeyPath];
 	if(!koukuDamage || ![koukuDamage isKindOfClass:[NSArray class]]) return;
+    
+#if DAMAGE_CHECK
+    NSLog(@"Start FDam %@", fdamKeyPath);
+#endif
 	
 	NSInteger offset = self.calcSecondFleet ? 6 : 0;
-	for(NSInteger i = 1; i <= 6; i++) {
-		HMKCDamage *damageObject = damages[i - 1 + offset];
-		NSInteger damage = [koukuDamage[i] integerValue];
-		NSInteger hp = damageObject.hp.integerValue;
-		NSInteger newHP = hp - damage;
-		if(newHP <= 0) {
-			HMKCShipObject *ship = [self shipByID:damageObject.shipID store:[HMServerDataStore defaultManager]];
-			NSInteger efectiveHP = damageControlIfPossible(newHP, ship);
-			if(efectiveHP != 0 && efectiveHP != newHP) {
-				damageObject.useDamageControl = @YES;
-			}
-			newHP = efectiveHP;
-		}
-		damageObject.hp = @(newHP);
-		
+    [koukuDamage enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if(idx == 0) return;
+        
+        HMKCDamage *damageObject = damages[idx - 1 + offset];
+        NSInteger damage = obj.integerValue;
+        NSInteger hp = damageObject.hp.integerValue;
+        NSInteger newHP = hp - damage;
+        if(newHP <= 0) {
+            HMKCShipObject *ship = [self shipByID:damageObject.shipID store:[HMServerDataStore defaultManager]];
+            NSInteger efectiveHP = damageControlIfPossible(newHP, ship);
+            if(efectiveHP != 0 && efectiveHP != newHP) {
+                damageObject.useDamageControl = @YES;
+            }
+            newHP = efectiveHP;
+        }
+        damageObject.hp = @(newHP);
+        
 #if DAMAGE_CHECK
-		NSLog(@"FDam %ld -> %ld", i + offset, damage);
+        NSLog(@"FDam %ld -> %ld", idx + offset, damage);
 #endif
-	}
+    }];
 	
 	[self.store saveAction:nil];
 }
@@ -343,84 +363,193 @@ typedef NS_ENUM(NSUInteger, HMDamageControlMasterSlotItemID) {
 {
 	return [self.api hasPrefix:@"/kcsapi/api_req_combined_battle"];
 }
+- (BOOL)isEnemyCombinedBattle
+{
+    if([self.api isEqualToString:@"/kcsapi/api_req_combined_battle/each_battle"]) return YES;
+    if([self.api isEqualToString:@"/kcsapi/api_req_combined_battle/each_battle_water"]) return YES;
+    if([self.api isEqualToString:@"/kcsapi/api_req_combined_battle/ec_midnight_battle"]) return YES;
+    
+    return NO;
+}
+- (void)calcKouku:(NSArray<HMKCDamage *> *)damages
+{
+    [self calculateFDam:damages
+            fdamKeyPath:@"api_data.api_kouku.api_stage3.api_fdam"];
+    
+    [self calculateFDam:damages
+            fdamKeyPath:@"api_data.api_kouku2.api_stage3.api_fdam"];
+    
+    // 艦隊　戦闘艦隊
+    // 連合vs通常（水上）　第２
+    // 連合vs通常（機動）　第２
+    // 連合vs連合（水上）　第２ use kouku nor kouku2
+    // 連合vs連合（機動）　第１ use kouku nor kouku2
+    if(self.isCombinedBattle) {
+        self.calcSecondFleet = YES; // self.battleType == typeCombinedAir || self.battleType == typeCombinedWater;
+        [self calculateFDam:damages
+                fdamKeyPath:@"api_data.api_kouku.api_stage3_combined.api_fdam"];
+        [self calculateFDam:damages
+                fdamKeyPath:@"api_data.api_kouku2.api_stage3_combined.api_fdam"];
+        self.calcSecondFleet = NO;
+    }
+}
+- (void)calcOpeningAtack:(NSArray<HMKCDamage *> *)damages
+{
+    // 艦隊　戦闘艦隊
+    // 連合vs通常（水上）　第２
+    // 連合vs通常（機動）　第２
+    // 連合vs連合（水上）　第２
+    // 連合vs連合（機動）　第２　全体
+    self.calcSecondFleet = self.battleType == typeCombinedAir || self.battleType == typeCombinedWater;
+    [self calculateFDam:damages
+            fdamKeyPath:@"api_data.api_opening_atack.api_fdam"];
+    self.calcSecondFleet = NO;
+}
+- (void)calcOpeningTaisen:(NSArray<HMKCDamage *> *)damages
+{
+    self.calcSecondFleet = self.isCombinedBattle;
+    [self calculateHougeki:damages
+            targetsKeyPath:@"api_data.api_opening_taisen.api_df_list"
+             damageKeyPath:@"api_data.api_opening_taisen.api_damage"
+              eFlagKeyPath:@"api_data.api_opening_taisen.api_at_eflag"];
+    self.calcSecondFleet = NO;
+}
+- (void)calcHougeki1:(NSArray<HMKCDamage *> *)damages
+{
+    // 艦隊　戦闘艦隊
+    // 連合vs通常（水上）　第１
+    // 連合vs通常（機動）　第２
+    // 連合vs連合（水上）　第１
+    // 連合vs連合（機動）　第1
+    self.calcSecondFleet = self.battleType == typeCombinedAir;
+    [self calculateHougeki:damages
+            targetsKeyPath:@"api_data.api_hougeki1.api_df_list"
+             damageKeyPath:@"api_data.api_hougeki1.api_damage"
+              eFlagKeyPath:@"api_data.api_hougeki1.api_at_eflag"];
+    self.calcSecondFleet = NO;
+}
+- (void)calcHougeki2:(NSArray<HMKCDamage *> *)damages
+{
+    // 艦隊　戦闘艦隊
+    // 連合vs通常（水上）　第１
+    // 連合vs通常（機動）　第１
+    // 連合vs連合（水上）　第１　全体
+    // 連合vs連合（機動）　第１
+    self.calcEachFleet = self.battleType == typeEachCombinedWater;
+    [self calculateHougeki:damages
+            targetsKeyPath:@"api_data.api_hougeki2.api_df_list"
+             damageKeyPath:@"api_data.api_hougeki2.api_damage"
+              eFlagKeyPath:@"api_data.api_hougeki2.api_at_eflag"];
+    self.calcEachFleet = NO;
+}
+- (void)calcHougeki3:(NSArray<HMKCDamage *> *)damages
+{
+    // 艦隊　戦闘艦隊
+    // 連合vs通常（水上）　第２
+    // 連合vs通常（機動）　第１
+    // 連合vs連合（水上）　第２
+    // 連合vs連合（機動）　第１　全体
+    self.calcSecondFleet = self.battleType == typeCombinedWater;
+    self.calcEachFleet = self.battleType == typeEachCombinedAir;
+    [self calculateHougeki:damages
+            targetsKeyPath:@"api_data.api_hougeki3.api_df_list"
+             damageKeyPath:@"api_data.api_hougeki3.api_damage"
+              eFlagKeyPath:@"api_data.api_hougeki3.api_at_eflag"];
+    self.calcSecondFleet = NO;
+    self.calcEachFleet = NO;
+}
+- (void)calcRaigeki:(NSArray<HMKCDamage *> *)damages
+{
+    // 艦隊　戦闘艦隊
+    // 連合vs通常（水上）　第２
+    // 連合vs通常（機動）　第２
+    // 連合vs連合（水上）　第２　全体
+    // 連合vs連合（機動）　第２　全体
+    self.calcSecondFleet = self.isCombinedBattle;
+    if(self.battleType == typeEachCombinedWater || self.battleType == typeEachCombinedAir) {
+        self.calcSecondFleet = NO;
+    }
+    [self calculateFDam:damages
+            fdamKeyPath:@"api_data.api_raigeki.api_fdam"];
+    self.calcSecondFleet = NO;
+}
+- (void)calculateMidnightBattle
+{
+    [self updateBattleCell];
+    
+    // Damage 取得
+    NSArray<HMKCDamage *> *damages = [self damages];
+    
+    // 艦隊　戦闘艦隊
+    // 連合vs通常（水上）　第２
+    // 連合vs通常（機動）　第２
+    // 連合vs連合（水上）　第２
+    // 連合vs連合（機動）　第２
+    self.calcSecondFleet = self.isCombinedBattle;
+    [self calculateHougeki:damages
+            targetsKeyPath:@"api_data.api_hougeki.api_df_list"
+             damageKeyPath:@"api_data.api_hougeki.api_damage"
+              eFlagKeyPath:@"api_data.api_hougeki.api_at_eflag"];
+    self.calcSecondFleet = NO;
+    
+    [self.store saveAction:nil];
+}
 
 - (void)calculateBattle
 {
 	[self updateBattleCell];
-	
-	// 艦隊のチェック
-	
+    
 	// Damage エンティティ作成6個
 	NSArray<HMKCDamage *> *damages = [self damages];
-	
-	// koukuu
-	[self calculateFDam:damages
-			fdamKeyPath:@"api_data.api_kouku.api_stage3.api_fdam"];
-	
-	if(self.isCombinedBattle) {
-		[self calculateFDam:damages
-				fdamKeyPath:@"api_data.api_kouku2.api_stage3.api_fdam"];
-		
-		self.calcSecondFleet = YES;
-		[self calculateFDam:damages
-				fdamKeyPath:@"api_data.api_kouku.api_stage3_combined.api_fdam"];
-		[self calculateFDam:damages
-				fdamKeyPath:@"api_data.api_kouku2.api_stage3_combined.api_fdam"];
-		self.calcSecondFleet = NO;
-	} else {
-		[self calculateFDam:damages
-				fdamKeyPath:@"api_data.api_kouku2.api_stage3.api_fdam"];
-	}
-	
-	// opening attack
-	self.calcSecondFleet = self.isCombinedBattle;
-	[self calculateFDam:damages
-			fdamKeyPath:@"api_data.api_opening_atack.api_fdam"];
-	self.calcSecondFleet = NO;
-	
-	// hougeki1
-	self.calcSecondFleet = self.isCombinedBattle && self.battleType == typeCombinedAir;
-	[self calculateHougeki:damages
-			targetsKeyPath:@"api_data.api_hougeki1.api_df_list"
-			 damageKeyPath:@"api_data.api_hougeki1.api_damage"];
-	self.calcSecondFleet = NO;
-	
-	// hougeki2
-	[self calculateHougeki:damages
-			targetsKeyPath:@"api_data.api_hougeki2.api_df_list"
-			 damageKeyPath:@"api_data.api_hougeki2.api_damage"];
-	
-	// hougeki3
-	self.calcSecondFleet = self.isCombinedBattle && self.battleType == typeCombinedWater;
-	[self calculateHougeki:damages
-			targetsKeyPath:@"api_data.api_hougeki3.api_df_list"
-			 damageKeyPath:@"api_data.api_hougeki3.api_damage"];
-	self.calcSecondFleet = NO;
-
-	// raigeki
-	self.calcSecondFleet = self.isCombinedBattle;
-	[self calculateFDam:damages
-			fdamKeyPath:@"api_data.api_raigeki.api_fdam"];
-	self.calcSecondFleet = NO;
+    
+    [self calcKouku:damages];
+    [self calcOpeningTaisen:damages];
+    [self calcOpeningAtack:damages];
+    [self calcHougeki1:damages];
+    [self calcHougeki2:damages];
+    [self calcHougeki3:damages];
+    [self calcRaigeki:damages];
 	
 	[self.store saveAction:nil];
 }
-
-- (void)calculateMidnightBattle
+- (void)calcCombinedBattleAir
 {
-	[self updateBattleCell];
-	
-	// Damage 取得
-	NSArray<HMKCDamage *> *damages = [self damages];
-	
-	// hougeki
-	self.calcSecondFleet = self.isCombinedBattle;
-	[self calculateHougeki:damages
-			targetsKeyPath:@"api_data.api_hougeki.api_df_list"
-			 damageKeyPath:@"api_data.api_hougeki.api_damage"];
-	self.calcSecondFleet = NO;
-	
-	[self.store saveAction:nil];
+    [self updateBattleCell];
+    
+    // Damage エンティティ作成6個
+    NSArray<HMKCDamage *> *damages = [self damages];
+    
+    [self calcKouku:damages];
+    [self calcOpeningTaisen:damages];
+    [self calcOpeningAtack:damages];
+    [self calcHougeki1:damages];
+    [self calcRaigeki:damages];
+    [self calcHougeki2:damages];
+    [self calcHougeki3:damages];
+    
+    [self.store saveAction:nil];
+}
+- (void)calcEachBattleAir
+{
+    [self updateBattleCell];
+    
+    // Damage エンティティ作成6個
+    NSArray<HMKCDamage *> *damages = [self damages];
+    
+    [self calcKouku:damages];
+    [self calcOpeningTaisen:damages];
+    [self calcOpeningAtack:damages];
+    [self calcHougeki1:damages];
+    [self calcHougeki2:damages];
+    [self calcRaigeki:damages];
+    [self calcHougeki3:damages];
+    
+    [self.store saveAction:nil];
+}
+- (void)calcEnemyCombinedBattle
+{
+    // same phase with combined air
+    [self calcCombinedBattleAir];
 }
 
 NSInteger masterSlotItemIDbySlotItem(NSNumber *value)
@@ -587,7 +716,7 @@ NSInteger damageControlIfPossible(NSInteger nowhp, HMKCShipObject *ship)
 	if([self.api isEqualToString:@"/kcsapi/api_req_combined_battle/battle"]
 	   || [self.api isEqualToString:@"/kcsapi/api_req_combined_battle/airbattle"]) {
 		self.battleType = typeCombinedAir;
-		[self calculateBattle];
+		[self calcCombinedBattleAir];
 		return;
 	}
 	if([self.api isEqualToString:@"/kcsapi/api_req_combined_battle/battle_water"]) {
@@ -596,13 +725,24 @@ NSInteger damageControlIfPossible(NSInteger nowhp, HMKCShipObject *ship)
 		return;
 	}
 	if([self.api isEqualToString:@"/kcsapi/api_req_combined_battle/ld_airbattle"]) {
-		self.battleType = typeCombinedWater;
-		[self calculateBattle];
-		return;
+        self.battleType = typeCombinedWater;
+        [self calculateBattle];
+        return;
 	}
+    if([self.api isEqualToString:@"/kcsapi/api_req_combined_battle/each_battle"]) {
+        self.battleType = typeEachCombinedAir;
+        [self calcEachBattleAir];
+        return;
+    }
+    if([self.api isEqualToString:@"/kcsapi/api_req_combined_battle/each_battle_water"]) {
+        self.battleType = typeEachCombinedWater;
+        [self calculateBattle];
+        return;
+    }
 	
 	if([self.api isEqualToString:@"/kcsapi/api_req_combined_battle/midnight_battle"]
-	   || [self.api isEqualToString:@"/kcsapi/api_req_combined_battle/sp_midnight"]) {
+	   || [self.api isEqualToString:@"/kcsapi/api_req_combined_battle/sp_midnight"]
+       || [self.api isEqualToString:@"/kcsapi/api_req_combined_battle/ec_midnight_battle"]) {
 		[self calculateMidnightBattle];
 		return;
 	}
