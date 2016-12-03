@@ -11,6 +11,7 @@
 #import "HMCalculateDamageCommand.h"
 #import "HMDropShipHistoryCommand.h"
 #import "HMDummyShipCommand.h"
+#import "HMGuardShelterCommand.h"
 
 
 @implementation HMBattleResultCommand
@@ -24,7 +25,10 @@
 
 + (BOOL)canExcuteAPI:(NSString *)api
 {
-	return [api isEqualToString:@"/kcsapi/api_req_sortie/battleresult"];
+    if([api isEqualToString:@"/kcsapi/api_req_sortie/battleresult"]) return YES;
+    if([api isEqualToString:@"/kcsapi/api_req_combined_battle/battleresult"]) return YES;
+    
+    return NO;
 }
 
 - (id)init
@@ -33,6 +37,7 @@
 			[HMDropShipHistoryCommand new],
 			[HMCalculateDamageCommand new],
 			[HMDummyShipCommand new],
+            [HMGuardShelterCommand new],
 			nil];
 	return self;
 }

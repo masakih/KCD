@@ -26,6 +26,8 @@ typedef NS_ENUM(NSUInteger, HMBattleType) {
 	typeCombinedWater,
     typeEachCombinedAir,
     typeEachCombinedWater,
+    
+    typeEnemyCombined,
 };
 
 typedef NS_ENUM(NSUInteger, HMDamageControlMasterSlotItemID) {
@@ -361,16 +363,19 @@ typedef NS_ENUM(NSUInteger, HMDamageControlMasterSlotItemID) {
 
 - (BOOL)isCombinedBattle
 {
-	return [self.api hasPrefix:@"/kcsapi/api_req_combined_battle"];
-}
-- (BOOL)isEnemyCombinedBattle
-{
-    if([self.api isEqualToString:@"/kcsapi/api_req_combined_battle/each_battle"]) return YES;
-    if([self.api isEqualToString:@"/kcsapi/api_req_combined_battle/each_battle_water"]) return YES;
-    if([self.api isEqualToString:@"/kcsapi/api_req_combined_battle/ec_midnight_battle"]) return YES;
-    
+    switch(self.battleType) {
+        case typeCombinedWater:
+        case typeCombinedAir:
+        case typeEachCombinedWater:
+        case typeEachCombinedAir:
+            return YES;
+        default:
+            //
+            break;
+    }
     return NO;
 }
+
 - (void)calcKouku:(NSArray<HMKCDamage *> *)damages
 {
     [self calculateFDam:damages
@@ -385,7 +390,7 @@ typedef NS_ENUM(NSUInteger, HMDamageControlMasterSlotItemID) {
     // 連合vs連合（水上）　第２ use kouku nor kouku2
     // 連合vs連合（機動）　第１ use kouku nor kouku2
     if(self.isCombinedBattle) {
-        self.calcSecondFleet = YES; // self.battleType == typeCombinedAir || self.battleType == typeCombinedWater;
+        self.calcSecondFleet = YES;
         [self calculateFDam:damages
                 fdamKeyPath:@"api_data.api_kouku.api_stage3_combined.api_fdam"];
         [self calculateFDam:damages
@@ -548,7 +553,7 @@ typedef NS_ENUM(NSUInteger, HMDamageControlMasterSlotItemID) {
 }
 - (void)calcEnemyCombinedBattle
 {
-    // same phase with combined air
+    // same phase as combined air
     [self calcCombinedBattleAir];
 }
 
@@ -711,6 +716,12 @@ NSInteger damageControlIfPossible(NSInteger nowhp, HMKCShipObject *ship)
 		[self calculateMidnightBattle];
 		return;
 	}
+    
+    if([self.api isEqualToString:@"/kcsapi/api_req_combined_battle/ec_battle"]) {
+        self.battleType = typeEnemyCombined;
+        [self calcEnemyCombinedBattle];
+        return;
+    }
 	
 	// combined battle
 	if([self.api isEqualToString:@"/kcsapi/api_req_combined_battle/battle"]

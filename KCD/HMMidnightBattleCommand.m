@@ -24,6 +24,8 @@
 	if([api isEqualToString:@"/kcsapi/api_req_battle_midnight/battle"]) return YES;
     if([api isEqualToString:@"/kcsapi/api_req_battle_midnight/sp_midnight"]) return YES;
     if([api isEqualToString:@"/kcsapi/api_req_combined_battle/ec_midnight_battle"]) return YES;
+    if([api isEqualToString:@"/kcsapi/api_req_combined_battle/midnight_battle"]) return YES;
+    if([api isEqualToString:@"/kcsapi/api_req_combined_battle/sp_midnight"]) return YES;
 	
 	return NO;
 }

@@ -10,7 +10,6 @@
 
 #import "HMCalculateDamageCommand.h"
 #import "HMDropShipHistoryCommand.h"
-#import "HMGuardShelterCommand.h"
 
 
 @implementation HMCombinedBattleCommand
@@ -27,11 +26,9 @@
 	if([api isEqualToString:@"/kcsapi/api_req_combined_battle/battle"]) return YES;
 	if([api isEqualToString:@"/kcsapi/api_req_combined_battle/airbattle"]) return YES;
 	if([api isEqualToString:@"/kcsapi/api_req_combined_battle/battle_water"]) return YES;
+    if([api isEqualToString:@"/kcsapi/api_req_combined_battle/ec_battle"]) return YES;
     if([api isEqualToString:@"/kcsapi/api_req_combined_battle/each_battle"]) return YES;
     if([api isEqualToString:@"/kcsapi/api_req_combined_battle/each_battle_water"]) return YES;
-	if([api isEqualToString:@"/kcsapi/api_req_combined_battle/midnight_battle"]) return YES;
-	if([api isEqualToString:@"/kcsapi/api_req_combined_battle/sp_midnight"]) return YES;
-    if([api isEqualToString:@"/kcsapi/api_req_combined_battle/battleresult"]) return YES;
 	
 	return NO;
 }
@@ -39,9 +36,7 @@
 - (id)init
 {
 	self = [super initWithCommands:
-			[HMDropShipHistoryCommand new],
 			[HMCalculateDamageCommand new],
-			[HMGuardShelterCommand new],
 			nil];
 	return self;
 }
