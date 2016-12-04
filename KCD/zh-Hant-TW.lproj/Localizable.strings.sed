@@ -44,3 +44,4 @@ s/Rest/休息/2
 s/Shelter/疏散/2
 s/Sortie/突擊/2
 s/StandBy/等候/2
+s/rotating/転換中/2
