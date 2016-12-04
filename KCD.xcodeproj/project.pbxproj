@@ -35,6 +35,9 @@
 		F42CBB231D1F967F004C2AE2 /* HMHistoryMarkTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F42CBB221D1F967F004C2AE2 /* HMHistoryMarkTransformer.m */; };
 		F42CBB261D21583C004C2AE2 /* HMHistoryItemCleaner.m in Sources */ = {isa = PBXBuildFile; fileRef = F42CBB251D21583C004C2AE2 /* HMHistoryItemCleaner.m */; };
 		F431E9761DF3AC1C00FB56AE /* HMSetActionCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F431E9751DF3AC1C00FB56AE /* HMSetActionCommand.m */; };
+		F431E9791DF3CD1B00FB56AE /* HMActinKindTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F431E9781DF3CD1B00FB56AE /* HMActinKindTransformer.m */; };
+		F431E97C1DF3D2E100FB56AE /* HMAreaNameTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F431E97B1DF3D2E100FB56AE /* HMAreaNameTransformer.m */; };
+		F431E97F1DF3D8CC00FB56AE /* HMAirCorpsChangeNameCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F431E97E1DF3D8CC00FB56AE /* HMAirCorpsChangeNameCommand.m */; };
 		F43769D61ADE86B200DE6204 /* HMQuestListCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F43769D51ADE86B200DE6204 /* HMQuestListCommand.m */; };
 		F43769DA1ADE890800DE6204 /* HMQuestListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43769D81ADE890800DE6204 /* HMQuestListViewController.m */; };
 		F43769DE1AE1248800DE6204 /* HMAirBattleCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F43769DD1AE1248800DE6204 /* HMAirBattleCommand.m */; };
@@ -365,6 +368,12 @@
 		F42CBB251D21583C004C2AE2 /* HMHistoryItemCleaner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMHistoryItemCleaner.m; sourceTree = "<group>"; };
 		F431E9741DF3AC1C00FB56AE /* HMSetActionCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSetActionCommand.h; sourceTree = "<group>"; };
 		F431E9751DF3AC1C00FB56AE /* HMSetActionCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSetActionCommand.m; sourceTree = "<group>"; };
+		F431E9771DF3CD1B00FB56AE /* HMActinKindTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMActinKindTransformer.h; sourceTree = "<group>"; };
+		F431E9781DF3CD1B00FB56AE /* HMActinKindTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMActinKindTransformer.m; sourceTree = "<group>"; };
+		F431E97A1DF3D2E100FB56AE /* HMAreaNameTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMAreaNameTransformer.h; sourceTree = "<group>"; };
+		F431E97B1DF3D2E100FB56AE /* HMAreaNameTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMAreaNameTransformer.m; sourceTree = "<group>"; };
+		F431E97D1DF3D8CC00FB56AE /* HMAirCorpsChangeNameCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMAirCorpsChangeNameCommand.h; sourceTree = "<group>"; };
+		F431E97E1DF3D8CC00FB56AE /* HMAirCorpsChangeNameCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMAirCorpsChangeNameCommand.m; sourceTree = "<group>"; };
 		F43769D41ADE86B200DE6204 /* HMQuestListCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMQuestListCommand.h; sourceTree = "<group>"; };
 		F43769D51ADE86B200DE6204 /* HMQuestListCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMQuestListCommand.m; sourceTree = "<group>"; };
 		F43769D71ADE890800DE6204 /* HMQuestListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMQuestListViewController.h; sourceTree = "<group>"; };
@@ -1328,6 +1337,10 @@
 				F42CBB221D1F967F004C2AE2 /* HMHistoryMarkTransformer.m */,
 				F48A70651DE5D62C005DFC0B /* HMOrderedSetToArrayTransformer.h */,
 				F48A70661DE5D62C005DFC0B /* HMOrderedSetToArrayTransformer.m */,
+				F431E9771DF3CD1B00FB56AE /* HMActinKindTransformer.h */,
+				F431E9781DF3CD1B00FB56AE /* HMActinKindTransformer.m */,
+				F431E97A1DF3D2E100FB56AE /* HMAreaNameTransformer.h */,
+				F431E97B1DF3D2E100FB56AE /* HMAreaNameTransformer.m */,
 			);
 			name = "Transformar&Formatter";
 			sourceTree = "<group>";
@@ -1453,6 +1466,8 @@
 				F499E88F1B5D4E7F00189029 /* HMPortNotifyCommand.m */,
 				F4E90B5F1DE8899F00643B5F /* HMAirCorpsSupplyCommand.h */,
 				F4E90B601DE8899F00643B5F /* HMAirCorpsSupplyCommand.m */,
+				F431E97D1DF3D8CC00FB56AE /* HMAirCorpsChangeNameCommand.h */,
+				F431E97E1DF3D8CC00FB56AE /* HMAirCorpsChangeNameCommand.m */,
 			);
 			name = Command;
 			sourceTree = "<group>";
@@ -1790,6 +1805,7 @@
 				F4ED5D2A1B78D0CA00D1BDEF /* HMGuardEscapedView.m in Sources */,
 				F4513EE818B77A5300073552 /* HMMemberKDockCommand.m in Sources */,
 				F4F9F87E1C6B5E4A00D0EE76 /* HMKCMasterSType.m in Sources */,
+				F431E9791DF3CD1B00FB56AE /* HMActinKindTransformer.m in Sources */,
 				F426802B194D0F4800B2C27F /* HMMemberShip2Command.m in Sources */,
 				F4A9E8001D045C0E00F91746 /* HMBridgeViewController.m in Sources */,
 				F4AA06101931869E00844688 /* HMBattleResultCommand.m in Sources */,
@@ -1821,6 +1837,7 @@
 				F43769DE1AE1248800DE6204 /* HMAirBattleCommand.m in Sources */,
 				F48A705F1DE58A38005DFC0B /* HMKCAirBasePlaneInfo+CoreDataProperties.m in Sources */,
 				F426802E194D0FFD00B2C27F /* HMMemberShip3Command.m in Sources */,
+				F431E97C1DF3D2E100FB56AE /* HMAreaNameTransformer.m in Sources */,
 				F4A9E7FD1D045BC100F91746 /* HMTiledImageView.m in Sources */,
 				F4B37EF319FBBBED002F371A /* HMRemodelSlotCommand.m in Sources */,
 				F495462E1B1894DD00E0D8D0 /* Bookmark.xcdatamodeld in Sources */,
@@ -1998,6 +2015,7 @@
 				F4F9F8A61C78596900D0EE76 /* HMAnchorageRepairManager.m in Sources */,
 				F4513EF318B991F800073552 /* HMMemberBasicCommand.m in Sources */,
 				F4268009193AF4E000B2C27F /* HMUserDefaults.m in Sources */,
+				F431E97F1DF3D8CC00FB56AE /* HMAirCorpsChangeNameCommand.m in Sources */,
 				F47E895D1B80DB9F00B2E552 /* HMSlotItemLevelView.m in Sources */,
 				F44AB20019E050F600F217AF /* HMKCDeck.m in Sources */,
 				F43F3D4F1A34ACCD00D6DAF7 /* HMKCShipObject.m in Sources */,
