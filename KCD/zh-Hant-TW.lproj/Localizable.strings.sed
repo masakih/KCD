@@ -45,3 +45,5 @@ s/Shelter/疏散/2
 s/Sortie/突擊/2
 s/StandBy/等候/2
 s/rotating/転換中/2
+s/Show Air Base Info/顯示基地空軍信息/2
+s/Hide Air Base Info/隱藏基地空軍信息/2

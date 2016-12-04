@@ -45,3 +45,6 @@ s/Shelter/退避/2
 s/Sortie/出撃/2
 s/StandBy/待機/2
 s/rotating/転換中/2
+s/Show Air Base Info/基地航空隊情報を表示/2
+s/Hide Air Base Info/基地航空隊情報を隠す/2
+
