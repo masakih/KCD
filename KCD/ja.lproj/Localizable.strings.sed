@@ -39,3 +39,8 @@ s/Show Kanmusu/表示/2
 s/Add mark/マークを付ける/2
 s/Remove mark/マークを削除/2
 s/It is soon %zd o'clock./まもなく %zd 時です/2
+s/Air Difence/防空/2
+s/Rest/休息/2
+s/Shelter/退避/2
+s/Sortie/出撃/2
+s/StandBy/待機/2

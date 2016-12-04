@@ -39,3 +39,8 @@ s/Show Kanmusu/顯示/2
 s/Add mark/添加標記/2
 s/Remove mark/刪除標記/2
 s/It is soon %zd o'clock./不久是%zd點鐘/2
+s/Air Difence/防空/2
+s/Rest/休息/2
+s/Shelter/疏散/2
+s/Sortie/突擊/2
+s/StandBy/等候/2
