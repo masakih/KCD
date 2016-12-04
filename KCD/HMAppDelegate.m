@@ -16,6 +16,8 @@
 #import "HMUpgradableShipsWindowController.h"
 #import "HMScreenshotListWindowController.h"
 #import "HMShipMasterDetailWindowController.h"
+#import "HMAirBaseWindowController.h"
+
 
 #import "HMExternalBrowserWindowController.h"
 #import "HMBrowserContentAdjuster.h"
@@ -53,6 +55,7 @@
 @property (nonatomic, strong) HMSlotItemWindowController *slotItemWindowController;
 @property (nonatomic, strong) HMPreferencePanelController *preferencePanelController;
 @property (nonatomic, strong) HMUpgradableShipsWindowController *upgradableShipWindowController;
+@property (nonatomic, strong) HMAirBaseWindowController *airBaseWindowController;
 
 //@property (strong) HMExternalBrowserWindowController *externalBrowserWindowController;
 @property (nonatomic, strong) HMBrowserContentAdjuster *browserContentAdjuster;
@@ -331,15 +334,23 @@
 			[menuItem setTitle:NSLocalizedString(@"Hide Upgradable Ships", @"")];
 		}
 		return YES;
-	} else if(action == @selector(showHideScreenshotListWindow:)) {
-		NSWindow *window = self.screenshotListWindowController.window;
-		if(!window.isVisible || !window.isMainWindow) {
-			[menuItem setTitle:NSLocalizedString(@"Show Screenshot List", @"")];
-		} else {
-			[menuItem setTitle:NSLocalizedString(@"Hide Screenshot List", @"")];
-		}
-		return YES;
-	} else if(action == @selector(saveLocalData:) || action == @selector(loadLocalData:)) {
+    } else if(action == @selector(showHideScreenshotListWindow:)) {
+        NSWindow *window = self.screenshotListWindowController.window;
+        if(!window.isVisible || !window.isMainWindow) {
+            [menuItem setTitle:NSLocalizedString(@"Show Screenshot List", @"")];
+        } else {
+            [menuItem setTitle:NSLocalizedString(@"Hide Screenshot List", @"")];
+        }
+        return YES;
+    } else if(action == @selector(showHideAirBaseInfoWindow:)) {
+        NSWindow *window = self.airBaseWindowController.window;
+        if(!window.isVisible || !window.isMainWindow) {
+            [menuItem setTitle:NSLocalizedString(@"Show Air Base Info", @"")];
+        } else {
+            [menuItem setTitle:NSLocalizedString(@"Hide Air Base Info", @"")];
+        }
+        return YES;
+    } else if(action == @selector(saveLocalData:) || action == @selector(loadLocalData:)) {
 		return YES;
 	} else if(action == @selector(showHidePreferencePanle:)) {
 		return YES;
@@ -428,6 +439,19 @@
 	} else {
 		[window orderOut:nil];
 	}
+}
+- (IBAction)showHideAirBaseInfoWindow:(id)sender
+{
+    if(!self.airBaseWindowController) {
+        self.airBaseWindowController = [HMAirBaseWindowController new];
+    }
+    
+    NSWindow *window = self.airBaseWindowController.window;
+    if(!window.isVisible || !window.isMainWindow) {
+        [window makeKeyAndOrderFront:nil];
+    } else {
+        [window orderOut:nil];
+    }
 }
 
 - (IBAction)openNewBrowser:(id)sender
