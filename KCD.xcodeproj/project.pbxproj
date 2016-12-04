@@ -21,6 +21,7 @@
 		F414656B1DAB853D00D68C97 /* HMScreenshotCollectionViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F414656A1DAB853D00D68C97 /* HMScreenshotCollectionViewItem.m */; };
 		F414656E1DAB855700D68C97 /* HMCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = F414656D1DAB855700D68C97 /* HMCollectionView.m */; };
 		F41465741DB4F1A700D68C97 /* HMScreenshotListWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F41465761DB4F1A700D68C97 /* HMScreenshotListWindowController.xib */; };
+		F42185041DF43D0700256590 /* HMAirbasePlaneStateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F42185031DF43D0700256590 /* HMAirbasePlaneStateTransformer.m */; };
 		F424A6FA1BC801DE0096C431 /* HMUnknownComand.m in Sources */ = {isa = PBXBuildFile; fileRef = F424A6F91BC801DE0096C431 /* HMUnknownComand.m */; };
 		F424A6FD1BC809490096C431 /* HMIgnoreCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F424A6FC1BC809490096C431 /* HMIgnoreCommand.m */; };
 		F424A7001BC8C10C0096C431 /* HMFailedCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F424A6FF1BC8C10C0096C431 /* HMFailedCommand.m */; };
@@ -339,6 +340,8 @@
 		F414656A1DAB853D00D68C97 /* HMScreenshotCollectionViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMScreenshotCollectionViewItem.m; sourceTree = "<group>"; };
 		F414656C1DAB855700D68C97 /* HMCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMCollectionView.h; sourceTree = "<group>"; };
 		F414656D1DAB855700D68C97 /* HMCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMCollectionView.m; sourceTree = "<group>"; };
+		F42185021DF43D0700256590 /* HMAirbasePlaneStateTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMAirbasePlaneStateTransformer.h; sourceTree = "<group>"; };
+		F42185031DF43D0700256590 /* HMAirbasePlaneStateTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMAirbasePlaneStateTransformer.m; sourceTree = "<group>"; };
 		F424A6F81BC801DE0096C431 /* HMUnknownComand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMUnknownComand.h; sourceTree = "<group>"; };
 		F424A6F91BC801DE0096C431 /* HMUnknownComand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMUnknownComand.m; sourceTree = "<group>"; };
 		F424A6FB1BC809490096C431 /* HMIgnoreCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMIgnoreCommand.h; sourceTree = "<group>"; };
@@ -1341,6 +1344,8 @@
 				F431E9781DF3CD1B00FB56AE /* HMActinKindTransformer.m */,
 				F431E97A1DF3D2E100FB56AE /* HMAreaNameTransformer.h */,
 				F431E97B1DF3D2E100FB56AE /* HMAreaNameTransformer.m */,
+				F42185021DF43D0700256590 /* HMAirbasePlaneStateTransformer.h */,
+				F42185031DF43D0700256590 /* HMAirbasePlaneStateTransformer.m */,
 			);
 			name = "Transformar&Formatter";
 			sourceTree = "<group>";
@@ -1908,6 +1913,7 @@
 				F4268031194D1B1A00B2C27F /* HMChangeHenseiCommand.m in Sources */,
 				F4BEEFE11B0B6326004702B8 /* HMDummyShipCommand.m in Sources */,
 				F4513EE418B635EA00073552 /* HMDocksViewController.m in Sources */,
+				F42185041DF43D0700256590 /* HMAirbasePlaneStateTransformer.m in Sources */,
 				F46F45BF1CFF0BEE00EB7F4D /* HMSlotDepriveCommand.m in Sources */,
 				F46F45C21CFF0CFF00EB7F4D /* HMSlotDepriveUnsetCommand.m in Sources */,
 				F4666C5E1B242124001840DB /* HMQuestProgressTransformer.m in Sources */,
