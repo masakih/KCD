@@ -34,6 +34,7 @@
 		F42680371957000200B2C27F /* HMTimerCountFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F42680361957000200B2C27F /* HMTimerCountFormatter.m */; };
 		F42CBB231D1F967F004C2AE2 /* HMHistoryMarkTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = F42CBB221D1F967F004C2AE2 /* HMHistoryMarkTransformer.m */; };
 		F42CBB261D21583C004C2AE2 /* HMHistoryItemCleaner.m in Sources */ = {isa = PBXBuildFile; fileRef = F42CBB251D21583C004C2AE2 /* HMHistoryItemCleaner.m */; };
+		F431E9761DF3AC1C00FB56AE /* HMSetActionCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F431E9751DF3AC1C00FB56AE /* HMSetActionCommand.m */; };
 		F43769D61ADE86B200DE6204 /* HMQuestListCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F43769D51ADE86B200DE6204 /* HMQuestListCommand.m */; };
 		F43769DA1ADE890800DE6204 /* HMQuestListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43769D81ADE890800DE6204 /* HMQuestListViewController.m */; };
 		F43769DE1AE1248800DE6204 /* HMAirBattleCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F43769DD1AE1248800DE6204 /* HMAirBattleCommand.m */; };
@@ -362,6 +363,8 @@
 		F42CBB221D1F967F004C2AE2 /* HMHistoryMarkTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMHistoryMarkTransformer.m; sourceTree = "<group>"; };
 		F42CBB241D21583C004C2AE2 /* HMHistoryItemCleaner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMHistoryItemCleaner.h; sourceTree = "<group>"; };
 		F42CBB251D21583C004C2AE2 /* HMHistoryItemCleaner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMHistoryItemCleaner.m; sourceTree = "<group>"; };
+		F431E9741DF3AC1C00FB56AE /* HMSetActionCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSetActionCommand.h; sourceTree = "<group>"; };
+		F431E9751DF3AC1C00FB56AE /* HMSetActionCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSetActionCommand.m; sourceTree = "<group>"; };
 		F43769D41ADE86B200DE6204 /* HMQuestListCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMQuestListCommand.h; sourceTree = "<group>"; };
 		F43769D51ADE86B200DE6204 /* HMQuestListCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMQuestListCommand.m; sourceTree = "<group>"; };
 		F43769D71ADE890800DE6204 /* HMQuestListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMQuestListViewController.h; sourceTree = "<group>"; };
@@ -985,6 +988,8 @@
 				F48A704C1DE326F0005DFC0B /* HMAirBaseCommand.m */,
 				F4E90B5C1DE713FF00643B5F /* HMSetPlaneCommand.h */,
 				F4E90B5D1DE713FF00643B5F /* HMSetPlaneCommand.m */,
+				F431E9741DF3AC1C00FB56AE /* HMSetActionCommand.h */,
+				F431E9751DF3AC1C00FB56AE /* HMSetActionCommand.m */,
 			);
 			name = BattleCommand;
 			sourceTree = "<group>";
@@ -1903,6 +1908,7 @@
 				F4513EFA18BB699700073552 /* HMShipWindowController.m in Sources */,
 				F42680121943E92D00B2C27F /* HMKCShipObject+Extensions.m in Sources */,
 				F403893E1CAEA711002A264B /* HMMemberRequireInfoCommand.m in Sources */,
+				F431E9761DF3AC1C00FB56AE /* HMSetActionCommand.m in Sources */,
 				F46F104118A9B85E0063E503 /* HMJSONNode.m in Sources */,
 				F4BEEFDB1B0A219E004702B8 /* HMShipDeckCommand.m in Sources */,
 				F42CBB261D21583C004C2AE2 /* HMHistoryItemCleaner.m in Sources */,
