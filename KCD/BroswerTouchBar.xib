@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2659" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="7104"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="the Touch Bar" message="Use a version of macOS with Touch Bar support." minToolsVersion="8.1" minSystemVersion="10.12.1" requiredIntegratedClassName="NSTouchBar"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="HMBroserWindowController">
+            <connections>
+                <outlet property="mainTouchBar" destination="KO5-NQ-mYI" id="pZh-IT-1V9"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <touchBar id="KO5-NQ-mYI">
+            <touchBarItems>
+                <touchBarItem id="pKr-9W-iXa">
+                    <viewController key="viewController" id="hTJ-9d-zGZ">
+                        <segmentedControl key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bbl-dd-WqK">
+                            <rect key="frame" x="0.0" y="0.0" width="330" height="30"/>
+                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="csj-UU-Nt7">
+                                <font key="font" metaFont="system"/>
+                                <segments>
+                                    <segment label="状況" width="64" selected="YES"/>
+                                    <segment label="編成支援" width="63" tag="1"/>
+                                    <segment label="近代化" width="63"/>
+                                    <segment label="改修工廠"/>
+                                    <segment label="修復"/>
+                                </segments>
+                            </segmentedCell>
+                            <connections>
+                                <action selector="changeMainTab:" target="-2" id="Rk4-So-gqY"/>
+                            </connections>
+                        </segmentedControl>
+                    </viewController>
+                    <size key="designTimeSize" width="330" height="30"/>
+                </touchBarItem>
+            </touchBarItems>
+            <point key="canvasLocation" x="-230" y="22"/>
+        </touchBar>
+    </objects>
+</document>

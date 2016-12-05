@@ -74,6 +74,9 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 @property (nonatomic, strong) HMCombileViewController *combinedViewController;
 @property BOOL isCombinedMode;
 
+@property (nonatomic, strong) IBOutlet NSTouchBar *mainTouchBar;
+
+
 @end
 
 @implementation HMBroserWindowController
@@ -87,13 +90,10 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 - (id)init
 {
 	self = [super initWithWindowNibName:NSStringFromClass([self class])];
-	if(self) {
-		[self loadWindow];
-	}
 	return self;
 }
 
-- (void)awakeFromNib
+- (void)windowDidLoad
 {
 	self.gameViewController = [HMGameViewController new];
 	[self.gameViewController.view setFrame:[self.placeholder frame]];
@@ -212,6 +212,11 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 {
 	[self showViewWithNumber:[sender tag]];
 }
+- (IBAction)changeMainTab:(id)sender
+{
+    NSInteger segment = [sender selectedSegment];
+    [self showViewWithNumber:segment];
+}
 - (IBAction)screenShot:(id)sender
 {
 	[self.gameViewController screenShot:sender];
@@ -322,6 +327,21 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 							   break;
 					   }
 				   });
+}
+
+- (NSTouchBar *)touchBar
+{
+    if(NSClassFromString(@"NSTouchBar") == Nil) return nil;
+    
+    if(self.mainTouchBar) return self.mainTouchBar;
+    
+    NSArray *toplevel = nil;
+    NSBundle *mainBundle = [NSBundle mainBundle];
+    [mainBundle loadNibNamed:@"BroswerTouchBar"
+                       owner:self
+             topLevelObjects:&toplevel];
+    
+    return self.mainTouchBar;
 }
 
 #pragma mark - FleetView position
