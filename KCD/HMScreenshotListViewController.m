@@ -47,7 +47,7 @@
 @end
 
 
-@interface HMScreenshotListViewController ()
+@interface HMScreenshotListViewController () <NSScrubberDataSource, NSScrubberDelegate>
 
 @property (nonatomic, weak) IBOutlet NSArrayController *screenshotsController;
 @property (strong) NSMutableArray *deletedPaths;
@@ -60,9 +60,12 @@
 @property (nonatomic, weak) IBOutlet NSView *standardView;
 @property (nonatomic, weak) IBOutlet NSView *editorView;
 
-@property CGFloat zoom;
+@property (nonatomic) CGFloat zoom;
 @property CGFloat maxZoom;
 
+@property (nonatomic, strong) IBOutlet NSTouchBar *screenshotTouchBar;
+@property (nonatomic, weak) IBOutlet NSScrubber *scrubber;
+@property (nonatomic, strong) NSSharingServicePickerTouchBarItem *sharingItem;
 
 - (void)reloadData;
 
@@ -300,6 +303,8 @@ CGFloat realFromZoom(CGFloat zoom) {
     NSSet *set = [NSSet setWithObject:[NSIndexPath indexPathForItem:0 inSection:0]];
     self.collectionView.selectionIndexPaths = set;
 	
+    [self.scrubber reloadData];
+    
 	[self saveCache];
 }
 
@@ -383,6 +388,8 @@ CGFloat realFromZoom(CGFloat zoom) {
 	}
     NSSet *set = [NSSet setWithObject:[NSIndexPath indexPathForItem:selectionIndex inSection:0]];
     self.collectionView.selectionIndexPaths = set;
+    
+    [self.scrubber reloadData];
 }
 - (IBAction)revealInFinder:(id)sender
 {
@@ -440,6 +447,68 @@ CGFloat realFromZoom(CGFloat zoom) {
 {
 	NSViewController *v = segue.destinationController;
 	v.representedObject = self.screenshots;
+}
+
+#pragma mark  NSTouchBarProvider & NSTouchBarDelegate
+static NSTouchBarItemIdentifier ServicesItemIdentifier = @"com.masakih.sharingTouchBarItem";
+- (NSTouchBar *)makeTouchBar
+{
+    NSArray *array = nil;
+    NSBundle *mainBundle = [NSBundle mainBundle];
+    [mainBundle loadNibNamed:@"HMScreenshotTouchBar"
+                       owner:self
+             topLevelObjects:&array];
+    
+    self.scrubber.continuous = YES;
+    
+    NSMutableArray *identifires = [self.screenshotTouchBar.defaultItemIdentifiers mutableCopy];
+    [identifires addObject:ServicesItemIdentifier];
+    self.screenshotTouchBar.defaultItemIdentifiers = identifires;
+    
+    return self.screenshotTouchBar;
+}
+- (nullable NSTouchBarItem *)touchBar:(NSTouchBar *)touchBar makeItemForIdentifier:(NSTouchBarItemIdentifier)identifier
+{
+    if([identifier isEqualToString:ServicesItemIdentifier]){
+        if (self.sharingItem == nil) {
+            _sharingItem = [[NSSharingServicePickerTouchBarItem alloc] initWithIdentifier:identifier];
+            id<NSSharingServicePickerTouchBarItemDelegate> w = self.view.window.windowController;
+            if([w conformsToProtocol:@protocol(NSSharingServicePickerTouchBarItemDelegate)]) {
+                self.sharingItem.delegate = w;
+            }
+        }
+        return self.sharingItem;
+    }
+    
+    return nil;
+}
+
+#pragma mark NSScrubberDataSource and NSScrubberDelegate
+- (NSInteger)numberOfItemsForScrubber:(NSScrubber *)scrubber
+{
+    return [self.screenshotsController.arrangedObjects count];
+}
+- (__kindof NSScrubberItemView *)scrubber:(NSScrubber *)scrubber viewForItemAtIndex:(NSInteger)index
+{
+    HMScreenshotInformation *info = [self.screenshotsController.arrangedObjects objectAtIndex:index];
+    NSImage *image = [[NSImage alloc] initWithContentsOfFile:info.path];
+    NSScrubberImageItemView *itemView = [NSScrubberImageItemView new];
+    itemView.image = image;
+    
+    return itemView;
+}
+- (void)scrubber:(NSScrubber *)scrubber didSelectItemAtIndex:(NSInteger)selectedIndex
+{
+    NSSet *set = [NSSet setWithObject:[NSIndexPath indexPathForItem:selectedIndex inSection:0]];
+    self.collectionView.selectionIndexPaths = set;
+}
+- (void)scrubber:(NSScrubber *)scrubber didChangeVisibleRange:(NSRange)visibleRange
+{
+    
+    NSInteger centerIndex = visibleRange.location + visibleRange.length / 2;
+    NSSet<NSIndexPath *> *set = [NSSet setWithObject:[NSIndexPath indexPathForItem:centerIndex inSection:0]];
+//    [[self.collectionView animator] scrollToItemsAtIndexPaths:set scrollPosition:NSCollectionViewScrollPositionCenteredVertically];
+    [self.collectionView scrollToItemsAtIndexPaths:set scrollPosition:NSCollectionViewScrollPositionCenteredVertically];
 }
 
 @end

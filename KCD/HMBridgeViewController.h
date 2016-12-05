@@ -10,7 +10,7 @@
 
 #import "HMScreenshotInformation.h"
 
-@interface HMBridgeViewController : NSViewController
+@interface HMBridgeViewController : NSViewController <NSSharingServicePickerTouchBarItemDelegate, NSSharingServiceDelegate>
 @property (nonatomic, strong) IBOutlet NSArrayController *arrayController;
 
 // for sharing service
@@ -18,4 +18,6 @@
 
 @property (readonly) BOOL appendKanColleTag;
 @property (readonly) NSString *tagString;
+
+- (IBAction)share:(id)sender;
 @end

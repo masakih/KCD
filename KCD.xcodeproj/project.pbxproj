@@ -25,6 +25,7 @@
 		F42185081DF4425500256590 /* HMAirBaseWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F42185061DF4425500256590 /* HMAirBaseWindowController.m */; };
 		F421850A1DF44AA900256590 /* HMAirBaseWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F421850C1DF44AA900256590 /* HMAirBaseWindowController.xib */; };
 		F421850F1DF4518000256590 /* BroswerTouchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = F421850E1DF4518000256590 /* BroswerTouchBar.xib */; };
+		F42185111DF461A600256590 /* HMScreenshotTouchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = F42185101DF461A600256590 /* HMScreenshotTouchBar.xib */; };
 		F424A6FA1BC801DE0096C431 /* HMUnknownComand.m in Sources */ = {isa = PBXBuildFile; fileRef = F424A6F91BC801DE0096C431 /* HMUnknownComand.m */; };
 		F424A6FD1BC809490096C431 /* HMIgnoreCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F424A6FC1BC809490096C431 /* HMIgnoreCommand.m */; };
 		F424A7001BC8C10C0096C431 /* HMFailedCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F424A6FF1BC8C10C0096C431 /* HMFailedCommand.m */; };
@@ -349,6 +350,7 @@
 		F42185061DF4425500256590 /* HMAirBaseWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMAirBaseWindowController.m; sourceTree = "<group>"; };
 		F421850D1DF44AEA00256590 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/HMAirBaseWindowController.xib; sourceTree = "<group>"; };
 		F421850E1DF4518000256590 /* BroswerTouchBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BroswerTouchBar.xib; sourceTree = "<group>"; };
+		F42185101DF461A600256590 /* HMScreenshotTouchBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HMScreenshotTouchBar.xib; sourceTree = "<group>"; };
 		F424A6F81BC801DE0096C431 /* HMUnknownComand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMUnknownComand.h; sourceTree = "<group>"; };
 		F424A6F91BC801DE0096C431 /* HMUnknownComand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMUnknownComand.m; sourceTree = "<group>"; };
 		F424A6FB1BC809490096C431 /* HMIgnoreCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMIgnoreCommand.h; sourceTree = "<group>"; };
@@ -1642,6 +1644,7 @@
 				F48A70611DE58C54005DFC0B /* HMAirBaseViewController.m */,
 				F48A70621DE58C54005DFC0B /* HMAirBaseViewController.xib */,
 				F421850E1DF4518000256590 /* BroswerTouchBar.xib */,
+				F42185101DF461A600256590 /* HMScreenshotTouchBar.xib */,
 			);
 			name = TestAndDebug;
 			path = KCD;
@@ -1776,6 +1779,7 @@
 				F421850F1DF4518000256590 /* BroswerTouchBar.xib in Resources */,
 				F4C668691C5451C800601AFB /* HMResourceViewController.xib in Resources */,
 				F4BEEFFF1B11A5C2004702B8 /* HMMediumShipViewController.xib in Resources */,
+				F42185111DF461A600256590 /* HMScreenshotTouchBar.xib in Resources */,
 				F4F9471F1D5DBBC700F95998 /* HMRepairListViewController.xib in Resources */,
 				F4BEF00E1B11A645004702B8 /* HMUITestWindowController.xib in Resources */,
 				F4F947071D5DBA2D00F95998 /* HMMapWindowController.xib in Resources */,

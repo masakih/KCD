@@ -18,7 +18,7 @@
 typedef BOOL (^HMFindViewController)(NSViewController *viewController);
 
 
-@interface HMScreenshotListWindowController () <NSSplitViewDelegate>
+@interface HMScreenshotListWindowController () <NSSplitViewDelegate, NSSharingServicePickerTouchBarItemDelegate>
 @property (nonatomic, weak) NSPredicate *filterPredicate;
 @property (nonatomic, weak) IBOutlet NSButton *shareButton;
 
@@ -32,6 +32,7 @@ typedef BOOL (^HMFindViewController)(NSViewController *viewController);
 @property (nonatomic, strong) HMScreenshotEditorViewController *editorViewController;
 
 @property (strong) NSMutableArray<NSViewController *> *viewControllers;
+@property (nonatomic, weak) HMBridgeViewController *currentRightViewController;
 
 @end
 
@@ -71,6 +72,8 @@ typedef BOOL (^HMFindViewController)(NSViewController *viewController);
     [self replaceView:self.right withViewController:self.detailViewController];
     self.detailViewController.representedObject = self.listViewController.screenshots;
     
+    self.currentRightViewController = self.detailViewController;
+    
     [self.shareButton sendActionOn:NSLeftMouseDownMask];
 }
 
@@ -104,12 +107,17 @@ typedef BOOL (^HMFindViewController)(NSViewController *viewController);
 
 - (IBAction)share:(id)sender
 {
-    id viewControler = [self findFromViewControllerUsingBlock:^BOOL(NSViewController *viewController) {
-                            return [viewController respondsToSelector:_cmd];
-                        }];
-    [viewControler share:sender];
+    [self.currentRightViewController share:sender];
 }
 
+- (id <NSSharingServiceDelegate>)sharingServicePicker:(NSSharingServicePicker *)sharingServicePicker delegateForSharingService:(NSSharingService *)sharingService
+{
+    return self.currentRightViewController;
+}
+- (NSArray *)itemsForSharingServicePickerTouchBarItem:(NSSharingServicePickerTouchBarItem *)pickerTouchBarItem
+{
+    return [self.currentRightViewController itemsForSharingServicePickerTouchBarItem:pickerTouchBarItem];
+}
 
 - (IBAction)changeToEditor:(id)sender
 {
@@ -124,6 +132,8 @@ typedef BOOL (^HMFindViewController)(NSViewController *viewController);
                                       toViewController:self.editorViewController
                                                options:NSViewControllerTransitionSlideLeft
                                      completionHandler:nil];
+    
+    self.currentRightViewController = self.editorViewController;
 }
 - (IBAction)changeToDetail:(id)sender
 {
@@ -131,8 +141,14 @@ typedef BOOL (^HMFindViewController)(NSViewController *viewController);
                                       toViewController:self.detailViewController
                                                options:NSViewControllerTransitionSlideRight
                                      completionHandler:nil];
+    
+    self.currentRightViewController = self.detailViewController;
 }
 
+- (NSTouchBar *)touchBar
+{
+    return self.listViewController.touchBar;
+}
 #pragma mark - NSSplitViewDelegate
 
 const CGFloat leftMinWidth = 299;

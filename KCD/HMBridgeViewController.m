@@ -12,7 +12,7 @@
 #import "HMUserDefaults.h"
 
 
-@interface HMBridgeViewController () <NSSharingServiceDelegate, NSSharingServicePickerDelegate>
+@interface HMBridgeViewController () <NSSharingServicePickerDelegate>
 
 @property (nonatomic, copy) NSString *tagString;
 
@@ -103,27 +103,34 @@
 }
 
 
+- (NSArray *)itemsForShareingServicePicker
+{
+    NSArray<HMScreenshotInformation *> *informations = [self.arrayController.selectedObjects copy];
+    NSMutableArray<NSString *> *paths = [NSMutableArray array];
+    for(HMScreenshotInformation *info in informations) {
+        [paths addObject:info.path];
+    }
+    NSMutableArray *items = [NSMutableArray array];
+    for(NSString *path in paths) {
+        NSImage *image = [[NSImage alloc] initWithContentsOfFile:path];
+        if(image) [items addObject:image];
+    }
+    
+    NSString *tags = nil;
+    if(self.appendKanColleTag) {
+        tags = self.tagString;
+        tags = [@"\n" stringByAppendingString:tags];
+    }
+    if(tags) {
+        [items addObject:tags];
+    }
+    
+    return items;
+}
 - (IBAction)share:(id)sender
 {
-	NSArray<HMScreenshotInformation *> *informations = [self.arrayController.selectedObjects copy];
-	NSMutableArray<NSString *> *paths = [NSMutableArray array];
-	for(HMScreenshotInformation *info in informations) {
-		[paths addObject:info.path];
-	}
-	NSMutableArray *items = [NSMutableArray array];
-	for(NSString *path in paths) {
-		NSImage *image = [[NSImage alloc] initWithContentsOfFile:path];
-		if(image) [items addObject:image];
-	}
+	NSArray *items = [self itemsForShareingServicePicker];
 	
-	NSString *tags = nil;
-	if(self.appendKanColleTag) {
-		tags = self.tagString;
-		tags = [@"\n" stringByAppendingString:tags];
-	}
-	if(tags) {
-		[items addObject:tags];
-	}
 	NSSharingServicePicker *picker = [[NSSharingServicePicker alloc] initWithItems:items];
 	picker.delegate = self;
 	[picker showRelativeToRect:[sender bounds]
@@ -131,6 +138,10 @@
 				 preferredEdge:NSMinXEdge];
 }
 
+- (NSArray *)itemsForSharingServicePickerTouchBarItem:(NSSharingServicePickerTouchBarItem *)pickerTouchBarItem
+{
+    return [self itemsForShareingServicePicker];
+}
 
 #pragma mark - NSSharingServiceDelegate NSSharingServicePickerDelegate
 - (id <NSSharingServiceDelegate>)sharingServicePicker:(NSSharingServicePicker *)sharingServicePicker delegateForSharingService:(NSSharingService *)sharingService
