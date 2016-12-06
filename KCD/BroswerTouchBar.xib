@@ -33,6 +33,7 @@
                             </segmentedCell>
                             <connections>
                                 <action selector="changeMainTab:" target="-2" id="Rk4-So-gqY"/>
+                                <binding destination="-2" name="selectedIndex" keyPath="selectedMainTabIndex" id="b2F-bE-3gb"/>
                             </connections>
                         </segmentedControl>
                     </viewController>

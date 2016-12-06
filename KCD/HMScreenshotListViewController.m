@@ -103,20 +103,27 @@
     NSNib *nib = [[NSNib alloc] initWithNibNamed:@"HMScreenshotCollectionViewItem" bundle:nil];
     [self.collectionView registerClass:[NSCollectionViewItem class] forItemWithIdentifier:@"item"];
     [self.collectionView registerNib:nib forItemWithIdentifier:@"item"];
-
-	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO];
-	self.screenshots.sortDescriptors = @[sortDescriptor];
-
+    
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO];
+    self.screenshots.sortDescriptors = @[sortDescriptor];
+    
     [self.collectionView addObserver:self
                           forKeyPath:@"selectionIndexPaths"
                              options:0
                              context:nil];
     self.collectionView.postsFrameChangedNotifications = YES;
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(viewFrameDidChange:)
-                                                 name:NSViewFrameDidChangeNotification
-                                               object:self.collectionView];
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc addObserver:self
+           selector:@selector(viewFrameDidChange:)
+               name:NSViewFrameDidChangeNotification
+             object:self.collectionView];
     [self viewFrameDidChange:nil];
+    
+    [nc addObserver:self
+           selector:@selector(scrollViewDidLiveScrollNotification:)
+               name:NSScrollViewDidLiveScrollNotification
+             object:self.collectionView.enclosingScrollView];
+    
 	
 	[self performSelector:@selector(reloadData:)
 			   withObject:nil
@@ -168,6 +175,16 @@ CGFloat realFromZoom(CGFloat zoom) {
     if(_zoom > f) self.zoom = f;
 }
 
+- (void)scrollViewDidLiveScrollNotification:(NSNotification *)notification
+{
+    NSSet<NSIndexPath *> *visibleItems = self.collectionView.indexPathsForVisibleItems;
+    NSIndexPath *index = visibleItems.allObjects.firstObject;
+    NSInteger middle = index.item + visibleItems.count / 2;
+    if(middle < [self.screenshotsController.arrangedObjects count] - 1) {
+        [self.scrubber scrollItemAtIndex:middle toAlignment:NSScrubberAlignmentNone];
+    }
+}
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
 {
     if( object == self.collectionView ) {
@@ -177,6 +194,7 @@ CGFloat realFromZoom(CGFloat zoom) {
             [selectionIndexes addIndex:[indexPath indexAtPosition:1]];
         }
         self.screenshots.selectedIndexes = selectionIndexes;
+        self.scrubber.selectedIndex = selectionIndexes.firstIndex;
         
         return;
     }
@@ -458,9 +476,7 @@ static NSTouchBarItemIdentifier ServicesItemIdentifier = @"com.masakih.sharingTo
     [mainBundle loadNibNamed:@"HMScreenshotTouchBar"
                        owner:self
              topLevelObjects:&array];
-    
-    self.scrubber.continuous = YES;
-    
+        
     NSMutableArray *identifires = [self.screenshotTouchBar.defaultItemIdentifiers mutableCopy];
     [identifires addObject:ServicesItemIdentifier];
     self.screenshotTouchBar.defaultItemIdentifiers = identifires;

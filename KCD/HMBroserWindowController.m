@@ -76,6 +76,7 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 
 @property (nonatomic, strong) IBOutlet NSTouchBar *mainTouchBar;
 
+@property (nonatomic) NSInteger selectedMainTabIndex;
 
 @end
 

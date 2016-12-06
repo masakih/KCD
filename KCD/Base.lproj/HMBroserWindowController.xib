@@ -81,6 +81,9 @@
                                 </view>
                             </tabViewItem>
                         </tabViewItems>
+                        <connections>
+                            <binding destination="-2" name="selectedIndex" keyPath="selectedMainTabIndex" id="bvs-iv-JKe"/>
+                        </connections>
                     </tabView>
                     <customView id="0dQ-uF-j2x">
                         <rect key="frame" x="809" y="9" width="352" height="103"/>
