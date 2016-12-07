@@ -8,8 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface HMPowerUpSupportViewController : NSViewController
+#import "HMMainTabVIewItemViewController.h"
 
-- (IBAction)changeCategory:(id)sender;
+@interface HMPowerUpSupportViewController : HMMainTabVIewItemViewController
 
 @end

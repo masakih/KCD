@@ -55,6 +55,27 @@
 	return [HMServerDataStore defaultManager].managedObjectContext;
 }
 
+- (BOOL)hasShipTypeSelector
+{
+    return YES;
+}
+
+- (void)setSelectedShipType:(HMShipType)selectedShipType
+{
+    super.selectedShipType = selectedShipType;
+    
+    NSPredicate *predicate = [self omitPredicate];
+    NSPredicate *catPredicate = [self predicateForShipType:selectedShipType];
+    if(predicate && catPredicate) {
+        NSArray *sub = @[predicate, catPredicate];
+        predicate = [NSCompoundPredicate andPredicateWithSubpredicates:sub];
+    } else if(catPredicate) {
+        predicate = catPredicate;
+    }
+    [self.shipController setFilterPredicate:predicate];
+    [self.shipController rearrangeObjects];
+}
+
 //- (id)valueForUndefinedKey:(NSString *)key
 //{
 //	NSArray *defindeKyes = @[@"hideMaxKaryoku", @"hideMaxRaisou", @"hideMaxTaiku", @"hideMaxSoukou", @"hideMaxLucky"];
@@ -115,8 +136,7 @@
 {
 	NSPredicate *predicate = [self omitPredicate];
 	NSUInteger tag = [self.typeSegment selectedSegment];
-	HMAppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
-	NSPredicate *catPredicate = [appDelegate predicateForShipType:tag];
+	NSPredicate *catPredicate = [self predicateForShipType:tag];
 	if(predicate && catPredicate) {
 		NSArray *sub = @[predicate, catPredicate];
 		predicate = [NSCompoundPredicate andPredicateWithSubpredicates:sub];

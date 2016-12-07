@@ -8,7 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface HMDocksViewController : NSViewController
+#import "HMMainTabVIewItemViewController.h"
+
+@interface HMDocksViewController : HMMainTabVIewItemViewController
 
 @property (readonly) NSManagedObjectContext *managedObjectContext;
 

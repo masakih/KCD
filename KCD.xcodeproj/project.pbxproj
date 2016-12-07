@@ -122,6 +122,7 @@
 		F49688671B3EA16800D3CEDE /* RemoveDatabaseFileAndRestart.app in Resources */ = {isa = PBXBuildFile; fileRef = F49688661B3EA16800D3CEDE /* RemoveDatabaseFileAndRestart.app */; };
 		F49828FC1902A226000D6BBE /* HMStrokeTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F49828FB1902A226000D6BBE /* HMStrokeTextFieldCell.m */; };
 		F499E8901B5D4E7F00189029 /* HMPortNotifyCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F499E88F1B5D4E7F00189029 /* HMPortNotifyCommand.m */; };
+		F49AABC71DF70BAE00E0B24F /* HMMainTabVIewItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F49AABC61DF70BAE00E0B24F /* HMMainTabVIewItemViewController.m */; };
 		F4A2AF521A074DCF0024BD9E /* HMScreenshotListWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A2AF501A074DCF0024BD9E /* HMScreenshotListWindowController.m */; };
 		F4A2AF581A0930160024BD9E /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A2AF571A0930160024BD9E /* Quartz.framework */; };
 		F4A2AF5B1A0F9B490024BD9E /* HMScreenshotInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A2AF5A1A0F9B490024BD9E /* HMScreenshotInformation.m */; };
@@ -546,6 +547,8 @@
 		F49828FB1902A226000D6BBE /* HMStrokeTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMStrokeTextFieldCell.m; sourceTree = "<group>"; };
 		F499E88E1B5D4E7F00189029 /* HMPortNotifyCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPortNotifyCommand.h; sourceTree = "<group>"; };
 		F499E88F1B5D4E7F00189029 /* HMPortNotifyCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMPortNotifyCommand.m; sourceTree = "<group>"; };
+		F49AABC51DF70BAE00E0B24F /* HMMainTabVIewItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMainTabVIewItemViewController.h; sourceTree = "<group>"; };
+		F49AABC61DF70BAE00E0B24F /* HMMainTabVIewItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMainTabVIewItemViewController.m; sourceTree = "<group>"; };
 		F4A2AF4F1A074DCF0024BD9E /* HMScreenshotListWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMScreenshotListWindowController.h; sourceTree = "<group>"; };
 		F4A2AF501A074DCF0024BD9E /* HMScreenshotListWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMScreenshotListWindowController.m; sourceTree = "<group>"; };
 		F4A2AF571A0930160024BD9E /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
@@ -1367,6 +1370,8 @@
 			children = (
 				F46F104218AA50730063E503 /* HMBroserWindowController.h */,
 				F46F104318AA50730063E503 /* HMBroserWindowController.m */,
+				F49AABC51DF70BAE00E0B24F /* HMMainTabVIewItemViewController.h */,
+				F49AABC61DF70BAE00E0B24F /* HMMainTabVIewItemViewController.m */,
 				F4B3DC4118E5C8870011B4FC /* HMBroserWindowController.xib */,
 				F4F388BF1C140AFB00508549 /* HMResourceViewController.h */,
 				F4F388C01C140AFB00508549 /* HMResourceViewController.m */,
@@ -1916,6 +1921,7 @@
 				F448F9921B6FBF80004901AD /* HMResourceHistoryManager.m in Sources */,
 				F4513EEE18B8E2F600073552 /* HMMemberMaterialCommand.m in Sources */,
 				F4FCFD44191F4C1D000640A1 /* HMKenzoMarkCommand.m in Sources */,
+				F49AABC71DF70BAE00E0B24F /* HMMainTabVIewItemViewController.m in Sources */,
 				F4ED5D2D1B7C677E00D1BDEF /* HMGuardShelterCommand.m in Sources */,
 				F4F9F86E1C6A306A00D0EE76 /* HMKCDamage.m in Sources */,
 				F44AB23519E805D100F217AF /* HMKaisouLockCommand.m in Sources */,

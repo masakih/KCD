@@ -64,6 +64,7 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 @property FleetViewPosition fleetViewPosition;
 
 @property (nonatomic, weak) IBOutlet NSTabView *informations;
+@property (nonatomic, strong) NSArray<HMMainTabVIewItemViewController *> *tabViewItemViewControllers;
 @property (nonatomic, strong) HMDocksViewController *docksViewController;
 @property (nonatomic, strong) HMShipViewController *shipViewController;
 @property (nonatomic, strong) HMPowerUpSupportViewController *powerUpViewController;
@@ -75,6 +76,8 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 @property BOOL isCombinedMode;
 
 @property (nonatomic, strong) IBOutlet NSTouchBar *mainTouchBar;
+@property (nonatomic, weak) IBOutlet NSPopoverTouchBarItem *shipTypeButton;
+@property (nonatomic, weak) IBOutlet NSSegmentedControl *shipTypeSegment;
 
 @property (nonatomic) NSInteger selectedMainTabIndex;
 
@@ -113,22 +116,23 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
         [self toggleAnchorageSize:nil];
     }
 	
-	self.docksViewController = [HMDocksViewController new];
-	self.shipViewController = [HMShipViewController new];
-	self.powerUpViewController = [HMPowerUpSupportViewController new];
-	self.strengthedListViewController = [HMStrengthenListViewController new];
-	self.repairListViewController = [HMRepairListViewController new];
-	NSTabViewItem *item = [self.informations tabViewItemAtIndex:0];
-	item.view = self.docksViewController.view;
-	item = [self.informations tabViewItemAtIndex:1];
-	item.view = self.shipViewController.view;
-	item = [self.informations tabViewItemAtIndex:2];
-	item.view = self.powerUpViewController.view;
-	item = [self.informations tabViewItemAtIndex:3];
-	item.view = self.strengthedListViewController.view;
-	item = [self.informations tabViewItemAtIndex:4];
-	item.view = self.repairListViewController.view;
-	
+    self.tabViewItemViewControllers = @[
+                                        [HMDocksViewController new],
+                                        [HMShipViewController new],
+                                        [HMPowerUpSupportViewController new],
+                                        [HMStrengthenListViewController new],
+                                        [HMRepairListViewController new],
+                                        ];
+    [self.tabViewItemViewControllers enumerateObjectsUsingBlock:^(HMMainTabVIewItemViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSTabViewItem *item = [self.informations tabViewItemAtIndex:idx];
+        [obj loadView];
+        item.viewController = obj;
+    }];
+    [self.shipTypeSegment bind:NSSelectedIndexBinding
+                      toObject:self.tabViewItemViewControllers[0]
+                   withKeyPath:@"selectedShipType"
+                       options:nil];
+    
 	_fleetViewController = [HMFleetViewController viewControlerWithViewType:detailViewType];
 	[self.fleetViewController.view setFrame:[self.deckPlaceholder frame]];
 	[self.fleetViewController.view setAutoresizingMask:[self.deckPlaceholder autoresizingMask]];
@@ -162,9 +166,26 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 	return [HMServerDataStore defaultManager].managedObjectContext;
 }
 
+- (void)setSelectedMainTabIndex:(NSInteger)selectedMainTabIndex
+{
+    _selectedMainTabIndex = selectedMainTabIndex;
+    
+    [self.shipTypeButton dismissPopover:nil];
+    [self.shipTypeSegment unbind:NSSelectedIndexBinding];
+    
+    NSView *b = self.shipTypeButton.view;
+    if([b isKindOfClass:[NSButton class]]) return;
+    NSButton *button = (NSButton *)self.shipTypeButton.view;
+    HMMainTabVIewItemViewController *vc = self.tabViewItemViewControllers[selectedMainTabIndex];
+    button.enabled = vc.hasShipTypeSelector;
+    [self.shipTypeSegment bind:NSSelectedIndexBinding
+                      toObject:vc
+                   withKeyPath:@"selectedShipType"
+                       options:nil];
+}
 - (void)showViewWithNumber:(ViewType)type
 {
-	[self.informations selectTabViewItemAtIndex:type];
+    [self.informations selectTabViewItemAtIndex:type];
 }
 
 - (IBAction)reloadContent:(id)sender

@@ -8,6 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface HMRepairListViewController : NSViewController
+#import "HMMainTabVIewItemViewController.h"
+
+@interface HMRepairListViewController : HMMainTabVIewItemViewController
 
 @end

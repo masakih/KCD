@@ -8,7 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface HMShipViewController : NSViewController
+#import "HMMainTabVIewItemViewController.h"
+
+@interface HMShipViewController : HMMainTabVIewItemViewController
 
 
 @end

@@ -13,17 +13,6 @@
 @class HMFleetManager;
 @class HMExternalBrowserWindowController;
 
-typedef NS_ENUM(NSUInteger, HMShipType) {
-    kHMAllType,
-    kHMDestroyer,
-    kHMLightCruiser,
-	kHMHeavyCruiser,
-	kHMAircraftCarrier,
-	kHMBattleShip,
-	kHMSubmarine,
-	kHMOtherType,
-};
-
 @class HMScreenshotListWindowController;
 
 @interface HMAppDelegate : NSObject <NSApplicationDelegate>
@@ -32,8 +21,6 @@ typedef NS_ENUM(NSUInteger, HMShipType) {
 - (void)log:(NSString *)format, ... NS_FORMAT_FUNCTION(1,2);
 
 - (void)addCounterUpdateBlock:(void(^)())updater;
-
-- (NSPredicate *)predicateForShipType:(HMShipType)shipType;
 
 @property (nonatomic, strong) IBOutlet NSMenuItem *debugMenuItem;
 @property (nonatomic, weak) IBOutlet NSMenuItem *billingWindowMenuItem;

@@ -476,7 +476,7 @@ static NSTouchBarItemIdentifier ServicesItemIdentifier = @"com.masakih.sharingTo
     [mainBundle loadNibNamed:@"HMScreenshotTouchBar"
                        owner:self
              topLevelObjects:&array];
-        
+    
     NSMutableArray *identifires = [self.screenshotTouchBar.defaultItemIdentifiers mutableCopy];
     [identifires addObject:ServicesItemIdentifier];
     self.screenshotTouchBar.defaultItemIdentifiers = identifires;

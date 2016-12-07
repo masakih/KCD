@@ -8,6 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface HMStrengthenListViewController : NSViewController
+#import "HMMainTabVIewItemViewController.h"
+
+@interface HMStrengthenListViewController : HMMainTabVIewItemViewController
 
 @end

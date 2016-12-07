@@ -36,8 +36,6 @@ typedef NS_ENUM(NSInteger, ViewType) {
 @property (nonatomic, strong) IBOutlet NSScrollView *power3TableView;
 
 
-- (IBAction)changeCategory:(id)sender;
-
 - (IBAction)changeView:(id)sender;
 @end
 
@@ -104,6 +102,18 @@ typedef NS_ENUM(NSInteger, ViewType) {
 	return [HMServerDataStore defaultManager].managedObjectContext;
 }
 
+- (BOOL)hasShipTypeSelector
+{
+    return YES;
+}
+- (void)setSelectedShipType:(HMShipType)selectedShipType
+{
+    super.selectedShipType = selectedShipType;
+    
+    NSPredicate *predicate = [self predicateForShipType:selectedShipType];
+    [self.shipController setFilterPredicate:predicate];
+    [self.shipController rearrangeObjects];
+}
 - (NSNumber *)standardDeviation
 {
 	NSArray *arrengedObjects = self.shipController.arrangedObjects;
@@ -150,16 +160,6 @@ typedef NS_ENUM(NSInteger, ViewType) {
 	self.currentTableView = newSelection;
 	
 	[self.view.window makeFirstResponder:self.currentTableView];
-}
-
-
-- (IBAction)changeCategory:(id)sender
-{
-	NSUInteger tag = [sender selectedSegment];
-	HMAppDelegate *appDelegate = [[NSApplication sharedApplication] delegate];
-	NSPredicate *predicate = [appDelegate predicateForShipType:tag];
-	[self.shipController setFilterPredicate:predicate];
-	[self.shipController rearrangeObjects];
 }
 
 - (IBAction)changeView:(id)sender

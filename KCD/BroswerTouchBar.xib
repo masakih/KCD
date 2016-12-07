@@ -11,6 +11,8 @@
         <customObject id="-2" userLabel="File's Owner" customClass="HMBroserWindowController">
             <connections>
                 <outlet property="mainTouchBar" destination="KO5-NQ-mYI" id="pZh-IT-1V9"/>
+                <outlet property="shipTypeButton" destination="VCN-k6-mCb" id="0ld-6v-ddw"/>
+                <outlet property="shipTypeSegment" destination="7HW-CC-4Ea" id="7R0-xy-vJB"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -39,8 +41,57 @@
                     </viewController>
                     <size key="designTimeSize" width="330" height="30"/>
                 </touchBarItem>
+                <touchBarPopoverItem collapsedRepresentationLabel="艦種" id="VCN-k6-mCb">
+                    <touchBar key="popoverTouchBar" id="APL-uq-yMM">
+                        <touchBarItems>
+                            <touchBarItem id="vZX-un-FLk">
+                                <viewController key="viewController" id="aGC-uc-EzH">
+                                    <segmentedControl key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7HW-CC-4Ea">
+                                        <rect key="frame" x="0.0" y="0.0" width="530" height="30"/>
+                                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="yxg-T9-ze0">
+                                            <font key="font" metaFont="system"/>
+                                            <segments>
+                                                <segment label="All"/>
+                                                <segment label="駆逐艦" selected="YES" tag="1"/>
+                                                <segment label="軽巡洋艦"/>
+                                                <segment label="重巡洋艦"/>
+                                                <segment label="航空母艦"/>
+                                                <segment label="戦艦"/>
+                                                <segment label="潜水艦"/>
+                                                <segment label="その他"/>
+                                            </segments>
+                                        </segmentedCell>
+                                    </segmentedControl>
+                                </viewController>
+                                <size key="designTimeSize" width="530" height="30"/>
+                            </touchBarItem>
+                        </touchBarItems>
+                    </touchBar>
+                </touchBarPopoverItem>
+                <touchBarSpacerItem identifier="NSTouchBarItemIdentifierFlexibleSpace" id="svg-Pb-xQP"/>
+                <touchBarItem id="7eW-tl-nGX">
+                    <viewController key="viewController" id="vRj-hI-LkZ">
+                        <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cIH-Bh-vW5">
+                            <rect key="frame" x="0.0" y="0.0" width="70" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="70" id="rQ7-jW-TxG"/>
+                            </constraints>
+                            <buttonCell key="cell" type="push" bezelStyle="rounded" image="CameraDisabled" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fCm-1G-N0B">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="screenShot:" target="-2" id="ANI-9D-fKN"/>
+                            </connections>
+                        </button>
+                    </viewController>
+                    <size key="designTimeSize" width="70" height="30"/>
+                </touchBarItem>
             </touchBarItems>
             <point key="canvasLocation" x="-230" y="22"/>
         </touchBar>
     </objects>
+    <resources>
+        <image name="CameraDisabled" width="128" height="128"/>
+    </resources>
 </document>
