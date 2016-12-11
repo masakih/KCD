@@ -54,38 +54,8 @@
             </touchBarItems>
             <point key="canvasLocation" x="104" y="262"/>
         </touchBar>
-        <touchBarItem id="hCw-Xd-2LG">
-            <viewController key="viewController" id="J3c-sk-1H3">
-                <button key="view" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZwL-ek-v5p">
-                    <rect key="frame" x="0.0" y="0.0" width="76" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" image="search" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BQn-ci-5dz">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                </button>
-            </viewController>
-            <size key="designTimeSize" width="76" height="30"/>
-        </touchBarItem>
-        <touchBarItem id="EUH-3v-F6X">
-            <viewController key="viewController" id="uWQ-IC-kA8">
-                <button key="view" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ejy-QB-1X3">
-                    <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" image="Search" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="c0P-G4-0iY">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="selectSearchField:" target="-2" id="Z1r-E2-pV3"/>
-                    </connections>
-                </button>
-            </viewController>
-        </touchBarItem>
     </objects>
     <resources>
         <image name="NSTouchBarSearchTemplate" width="128" height="128"/>
-        <image name="Search" width="512" height="512"/>
-        <image name="search" width="512" height="512"/>
     </resources>
 </document>
