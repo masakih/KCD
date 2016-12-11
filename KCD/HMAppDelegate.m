@@ -48,7 +48,7 @@
 //- (void)_removeDisplayedNotification:(id)obj;
 //@end
 
-@interface HMAppDelegate () <NSUserNotificationCenterDelegate>
+@interface HMAppDelegate () <NSUserNotificationCenterDelegate, NSTouchBarProvider>
 
 @property (nonatomic, strong) HMBroserWindowController *browserWindowController;
 @property (nonatomic, strong) HMHistoryWindowController *historyWindowController;
@@ -67,6 +67,8 @@
 @property (nonatomic, strong) HMFleetManager *fleetManager;
 
 @property (nonatomic, strong) HMPeriodicNotifier *historyCleanNotifer;
+
+@property (nonatomic, strong) IBOutlet NSTouchBar *mainTouchBar;
 
 #ifdef DEBUG
 @property (nonatomic, strong) HMShipWindowController *shipWindowController;
@@ -136,6 +138,8 @@
 
 - (void)awakeFromNib
 {
+    if(self.browserWindowController) return;
+    
 	self.browserWindowController = [HMBroserWindowController new];
 	[self.browserWindowController showWindow:nil];
 	
@@ -459,6 +463,11 @@
 	[task launch];
 }
 
+- (IBAction)showMainBrowser:(id)sender
+{
+    [self.browserWindowController showWindow:nil];
+}
+
 #ifdef DEBUG
 
 - (IBAction)showShipWindow:(id)sender
@@ -490,6 +499,24 @@
 	[self.shipMDWindowController showWindow:nil];
 }
 #endif
+
+- (NSTouchBar *)touchBar
+{
+    if(NSClassFromString(@"NSTouchBar") == Nil) return nil;
+    
+    NSWindow *mainWindow = [NSApplication sharedApplication].mainWindow;
+    if(mainWindow == self.browserWindowController.window) return nil;
+    
+    if(self.mainTouchBar) return self.mainTouchBar;
+    
+    NSArray *toplevel = nil;
+    NSBundle *mainBundle = [NSBundle mainBundle];
+    [mainBundle loadNibNamed:@"MainTouchBar"
+                       owner:self
+             topLevelObjects:&toplevel];
+    
+    return self.mainTouchBar;
+}
 
 #pragma mark - NSApplicationDelegate
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender
