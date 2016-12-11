@@ -8,6 +8,8 @@
 
 #import "HMAirBaseCommand.h"
 
+#import "HMServerDataStore.h"
+
 #import "HMKCAirBase.h"
 #import "HMKCAirBasePlaneInfo.h"
 
@@ -26,6 +28,18 @@
 
 - (void)execute
 {
+    HMServerDataStore *serverDataStore = [HMServerDataStore oneTimeEditor];
+    NSManagedObjectContext *managedObjectContext = [serverDataStore managedObjectContext];
+    
+    NSError *error = nil;
+    NSArray *objects = [serverDataStore objectsWithEntityName:@"AirBase"
+                                                    predicate:nil
+                                                        error:&error];
+    for(NSManagedObject *obj in objects) {
+        [managedObjectContext deleteObject:obj];
+    }
+    serverDataStore = nil;
+    
     [self commitJSONToEntityNamed:@"AirBase"];
 }
 

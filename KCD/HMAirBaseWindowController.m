@@ -64,7 +64,8 @@
     }
     
     NSArray<NSNumber *> *areas = [areaSet.allObjects sortedArrayUsingSelector:@selector(compare:)];
-    if(areas.count != self.areaMatrix.numberOfRows) {
+    NSInteger cellCount = self.areaMatrix.numberOfRows * self.areaMatrix.numberOfColumns;
+    if(areas.count != cellCount) {
         NSInteger diff = areas.count - self.areaMatrix.numberOfColumns;
         while(areas.count != self.areaMatrix.numberOfColumns) {
             if(diff < 0) {
