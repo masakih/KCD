@@ -14,6 +14,10 @@
 @interface HMSlotItemWindowController ()
 @property (nonatomic, strong) IBOutlet NSArrayController *slotItemController;
 
+@property (nonatomic, weak) IBOutlet NSSearchField *searchField;
+
+@property (nonatomic, strong) IBOutlet NSTouchBar *myTouchBar;
+
 @end
 
 @implementation HMSlotItemWindowController
@@ -88,5 +92,32 @@
 	}
 	return @"";
 }
+
+- (IBAction)nextShowType:(id)sender
+{
+    NSNumber *next = @((self.showEquipmentType.integerValue + 2) % 3 - 1);
+    self.showEquipmentType = next;
+}
+
+- (IBAction)selectSearchField:(id)sender
+{
+    [self.window makeFirstResponder:self.searchField];
+}
+
+- (NSTouchBar *)touchBar
+{
+    if(NSClassFromString(@"NSTouchBar") == Nil) return nil;
+    
+    if(self.myTouchBar) return self.myTouchBar;
+    
+    NSArray *toplevel = nil;
+    NSBundle *mainBundle = [NSBundle mainBundle];
+    [mainBundle loadNibNamed:@"SlotItemWindowTouchBar"
+                       owner:self
+             topLevelObjects:&toplevel];
+    
+    return self.myTouchBar;
+}
+
 
 @end
