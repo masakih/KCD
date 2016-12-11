@@ -76,6 +76,17 @@
         }
     }
     
+    if(self.areaMatrix.numberOfColumns == 0) {
+        [self.areaMatrix addColumn];
+        NSCell *areaCell = [self.areaMatrix cellAtRow:0 column:0];
+        areaCell.title = @"";
+        areaCell.tag = -10000;
+        
+        self.areaMatrix.enabled = NO;
+    } else {
+        self.areaMatrix.enabled = YES;
+    }
+    
     [areas enumerateObjectsUsingBlock:^(NSNumber * _Nonnull area, NSUInteger idx, BOOL * _Nonnull stop) {
         NSValueTransformer *t = [NSValueTransformer valueTransformerForName:@"HMAreaNameTransformer"];
         NSCell *areaCell = [self.areaMatrix cellAtRow:0 column:idx];
