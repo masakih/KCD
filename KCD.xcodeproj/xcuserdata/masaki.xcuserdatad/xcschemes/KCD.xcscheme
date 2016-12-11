@@ -107,6 +107,15 @@
             ReferencedContainer = "container:KCD.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "NSConstraintBasedLayoutVisualizeMutuallyExclusiveConstraints 1"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            isEnabled = "NO">
+         </CommandLineArgument>
+      </CommandLineArguments>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
