@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2659" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="7104"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="the Touch Bar" message="Use a version of macOS with Touch Bar support." minToolsVersion="8.1" minSystemVersion="10.12.1" requiredIntegratedClassName="NSTouchBar"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="HMHistoryWindowController">
+            <connections>
+                <outlet property="myTouchBar" destination="6zi-UH-Fiy" id="0fR-6K-oG1"/>
+                <outlet property="searchButton" destination="zwm-UM-SpA" id="ips-An-Ehr"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <touchBar id="6zi-UH-Fiy">
+            <touchBarItems>
+                <touchBarItem id="j7q-km-9xd">
+                    <viewController key="viewController" id="Kuk-0j-Ob6">
+                        <segmentedControl key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="n7V-dp-sAJ">
+                            <rect key="frame" x="0.0" y="0.0" width="269" height="30"/>
+                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="uPP-QN-23U">
+                                <font key="font" metaFont="system"/>
+                                <segments>
+                                    <segment label="開発履歴" width="87"/>
+                                    <segment label="建造履歴" width="87" selected="YES" tag="1"/>
+                                    <segment label="ドロップ履歴" width="87"/>
+                                </segments>
+                            </segmentedCell>
+                            <connections>
+                                <binding destination="-2" name="selectedIndex" keyPath="selectedTabIndex" id="0ve-VN-WmF"/>
+                            </connections>
+                        </segmentedControl>
+                    </viewController>
+                    <size key="designTimeSize" width="269" height="30"/>
+                </touchBarItem>
+                <touchBarItem id="X83-Wd-05k">
+                    <viewController key="viewController" id="Lek-zg-1B1">
+                        <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zwm-UM-SpA">
+                            <rect key="frame" x="0.0" y="0.0" width="144" height="30"/>
+                            <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSTouchBarSearchTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uOd-QH-aXS">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="selectSearchField:" target="-2" id="92A-dN-pkO"/>
+                            </connections>
+                        </button>
+                    </viewController>
+                </touchBarItem>
+            </touchBarItems>
+            <point key="canvasLocation" x="104" y="262"/>
+        </touchBar>
+        <touchBarItem id="hCw-Xd-2LG">
+            <viewController key="viewController" id="J3c-sk-1H3">
+                <button key="view" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZwL-ek-v5p">
+                    <rect key="frame" x="0.0" y="0.0" width="76" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" image="search" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BQn-ci-5dz">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+            </viewController>
+            <size key="designTimeSize" width="76" height="30"/>
+        </touchBarItem>
+        <touchBarItem id="EUH-3v-F6X">
+            <viewController key="viewController" id="uWQ-IC-kA8">
+                <button key="view" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ejy-QB-1X3">
+                    <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" image="Search" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="c0P-G4-0iY">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="selectSearchField:" target="-2" id="Z1r-E2-pV3"/>
+                    </connections>
+                </button>
+            </viewController>
+        </touchBarItem>
+    </objects>
+    <resources>
+        <image name="NSTouchBarSearchTemplate" width="128" height="128"/>
+        <image name="Search" width="512" height="512"/>
+        <image name="search" width="512" height="512"/>
+    </resources>
+</document>

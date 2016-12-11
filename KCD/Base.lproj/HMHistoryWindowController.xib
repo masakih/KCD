@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2659" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="HMHistoryWindowController">
@@ -41,7 +43,7 @@
                                             <rect key="frame" x="17" y="8" width="638" height="426"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <clipView key="contentView" id="fQm-u6-BcB">
-                                                <rect key="frame" x="1" y="17" width="636" height="408"/>
+                                                <rect key="frame" x="1" y="0.0" width="636" height="425"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="reverseSequential" alternatingRowBackgroundColors="YES" autosaveName="kaihatuHistory" rowSizeStyle="automatic" headerView="S87-OC-vhS" viewBased="YES" id="aCA-Gg-AUV">
@@ -491,7 +493,6 @@
                                                         </connections>
                                                     </tableView>
                                                 </subviews>
-                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </clipView>
                                             <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Vfq-5M-tgG">
                                                 <rect key="frame" x="1" y="438" width="636" height="16"/>
@@ -518,8 +519,8 @@
                                             <rect key="frame" x="17" y="8" width="638" height="426"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <clipView key="contentView" id="pnS-lB-JNx">
-                                                <rect key="frame" x="1" y="17" width="636" height="408"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <rect key="frame" x="1" y="0.0" width="636" height="425"/>
+                                                <autoresizingMask key="autoresizingMask"/>
                                                 <subviews>
                                                     <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="reverseSequential" alternatingRowBackgroundColors="YES" autosaveName="kenzoHistory" rowSizeStyle="automatic" headerView="11L-S0-22L" viewBased="YES" id="Wyj-Am-Fha">
                                                         <rect key="frame" x="0.0" y="0.0" width="636" height="408"/>
@@ -971,7 +972,6 @@
                                                         </connections>
                                                     </tableView>
                                                 </subviews>
-                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </clipView>
                                             <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="D5A-az-4EU">
                                                 <rect key="frame" x="1" y="438" width="636" height="16"/>
@@ -998,7 +998,7 @@
                                             <rect key="frame" x="17" y="8" width="638" height="426"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <clipView key="contentView" id="egd-t1-HqM">
-                                                <rect key="frame" x="1" y="17" width="636" height="408"/>
+                                                <rect key="frame" x="1" y="0.0" width="636" height="425"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="sequential" alternatingRowBackgroundColors="YES" autosaveName="drophistory" rowSizeStyle="automatic" headerView="GLB-Em-NKT" viewBased="YES" id="VIc-m5-S1Y">
@@ -1135,6 +1135,7 @@
                                                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                                 </textFieldCell>
                                                                                 <connections>
+                                                                                    <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="Q3a-dJ-8WA"/>
                                                                                     <binding destination="eS2-cp-erZ" name="displayPatternValue1" keyPath="objectValue.mapArea" id="SeI-xA-Dvb">
                                                                                         <dictionary key="options">
                                                                                             <string key="NSDisplayPattern">%{value1}@-%{value2}@</string>
@@ -1146,7 +1147,6 @@
                                                                                             <string key="NSDisplayPattern">%{value1}@-%{value2}@</string>
                                                                                         </dictionary>
                                                                                     </binding>
-                                                                                    <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="Q3a-dJ-8WA"/>
                                                                                 </connections>
                                                                             </textField>
                                                                         </subviews>
@@ -1223,11 +1223,11 @@
                                                                 <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                 <prototypeCellViews>
                                                                     <tableCellView identifier="mapAreaName" id="zhT-Pt-fhX">
-                                                                        <rect key="frame" x="234" y="1" width="81" height="17"/>
+                                                                        <rect key="frame" x="234" y="1" width="80.5" height="17"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                         <subviews>
                                                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="2Fj-d3-l4h">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="81" height="17"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="80.5" height="17"/>
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="Table View Cell" id="UDn-ez-Nj9">
                                                                                     <font key="font" metaFont="system"/>
@@ -1266,7 +1266,7 @@
                                                                 <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                 <prototypeCellViews>
                                                                     <tableCellView identifier="mapInfoName" id="1tQ-Ie-SRJ">
-                                                                        <rect key="frame" x="318" y="1" width="141" height="17"/>
+                                                                        <rect key="frame" x="317.5" y="1" width="141" height="17"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                         <subviews>
                                                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="0Jh-At-Nua">
@@ -1295,7 +1295,7 @@
                                                                     </binding>
                                                                 </connections>
                                                             </tableColumn>
-                                                            <tableColumn identifier="date" width="172" minWidth="10" maxWidth="3.4028234663852886e+38" id="g2X-bk-atQ">
+                                                            <tableColumn identifier="date" width="172.5" minWidth="10" maxWidth="3.4028234663852886e+38" id="g2X-bk-atQ">
                                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="日付">
                                                                     <font key="font" metaFont="smallSystem"/>
                                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -1313,11 +1313,11 @@
                                                                 <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                 <prototypeCellViews>
                                                                     <tableCellView identifier="date" id="Q70-Uk-Ff9">
-                                                                        <rect key="frame" x="462" y="1" width="172" height="17"/>
+                                                                        <rect key="frame" x="461.5" y="1" width="172.5" height="17"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                         <subviews>
                                                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="b8z-UU-fXa">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="172" height="17"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="172.5" height="17"/>
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="Table View Cell" id="JWc-Nh-Ejr">
                                                                                     <dateFormatter key="formatter" dateStyle="short" timeStyle="short" doesRelativeDateFormatting="YES" id="IRe-cs-RHF"/>
@@ -1351,7 +1351,6 @@
                                                         </connections>
                                                     </tableView>
                                                 </subviews>
-                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </clipView>
                                             <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="X8L-gi-Dxc">
                                                 <rect key="frame" x="1" y="409" width="636" height="16"/>

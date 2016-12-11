@@ -37,6 +37,9 @@ typedef NS_ENUM(NSUInteger, HMHistoryWindowTabIndex) {
 
 @property (nonatomic, weak) IBOutlet NSSearchField *searchField;
 
+@property (nonatomic, strong) IBOutlet NSTouchBar *myTouchBar;
+@property (nonatomic, weak) IBOutlet NSButton *searchButton;
+
 @end
 
 @implementation HMHistoryWindowController
@@ -48,8 +51,10 @@ typedef NS_ENUM(NSUInteger, HMHistoryWindowTabIndex) {
 	return self;
 }
 
-- (void)awakeFromNib
+- (void)windowDidLoad
 {
+    [super windowDidLoad];
+    
 	NSString *predicateFormat = @"";
 	NSArrayController *target = nil;
 	switch (self.selectedTabIndex) {
@@ -181,6 +186,11 @@ typedef NS_ENUM(NSUInteger, HMHistoryWindowTabIndex) {
 	[store saveAction:nil];
 }
 
+- (IBAction)selectSearchField:(id)sender
+{
+    [self.window makeFirstResponder:self.searchField];
+}
+
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem
 {
 	SEL action = menuItem.action;
@@ -216,6 +226,21 @@ typedef NS_ENUM(NSUInteger, HMHistoryWindowTabIndex) {
 	}
 	
 	return YES;
+}
+
+- (NSTouchBar *)touchBar
+{
+    if(NSClassFromString(@"NSTouchBar") == Nil) return nil;
+    
+    if(self.myTouchBar) return self.myTouchBar;
+    
+    NSArray *toplevel = nil;
+    NSBundle *mainBundle = [NSBundle mainBundle];
+    [mainBundle loadNibNamed:@"HistoryWindowTouchBar"
+                       owner:self
+             topLevelObjects:&toplevel];
+    
+    return self.myTouchBar;
 }
 
 #pragma mark - NSTableViewDelegate & NSTableViewDataSource

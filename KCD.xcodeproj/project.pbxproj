@@ -124,6 +124,7 @@
 		F499E8901B5D4E7F00189029 /* HMPortNotifyCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = F499E88F1B5D4E7F00189029 /* HMPortNotifyCommand.m */; };
 		F49AABC71DF70BAE00E0B24F /* HMMainTabVIewItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F49AABC61DF70BAE00E0B24F /* HMMainTabVIewItemViewController.m */; };
 		F49AABE61DFC48F300E0B24F /* MainTouchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = F49AABE51DFC48F300E0B24F /* MainTouchBar.xib */; };
+		F49AABE81DFD33FB00E0B24F /* HistoryWindowTouchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = F49AABE71DFD33FB00E0B24F /* HistoryWindowTouchBar.xib */; };
 		F4A2AF521A074DCF0024BD9E /* HMScreenshotListWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A2AF501A074DCF0024BD9E /* HMScreenshotListWindowController.m */; };
 		F4A2AF581A0930160024BD9E /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A2AF571A0930160024BD9E /* Quartz.framework */; };
 		F4A2AF5B1A0F9B490024BD9E /* HMScreenshotInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A2AF5A1A0F9B490024BD9E /* HMScreenshotInformation.m */; };
@@ -551,6 +552,7 @@
 		F49AABC51DF70BAE00E0B24F /* HMMainTabVIewItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMainTabVIewItemViewController.h; sourceTree = "<group>"; };
 		F49AABC61DF70BAE00E0B24F /* HMMainTabVIewItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMainTabVIewItemViewController.m; sourceTree = "<group>"; };
 		F49AABE51DFC48F300E0B24F /* MainTouchBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainTouchBar.xib; sourceTree = "<group>"; };
+		F49AABE71DFD33FB00E0B24F /* HistoryWindowTouchBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryWindowTouchBar.xib; sourceTree = "<group>"; };
 		F4A2AF4F1A074DCF0024BD9E /* HMScreenshotListWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMScreenshotListWindowController.h; sourceTree = "<group>"; };
 		F4A2AF501A074DCF0024BD9E /* HMScreenshotListWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMScreenshotListWindowController.m; sourceTree = "<group>"; };
 		F4A2AF571A0930160024BD9E /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
@@ -1222,7 +1224,6 @@
 				F4D2CBBF18ACE7D7000EBC59 /* Command */,
 				F4BEEEA918D890660006F70C /* UI */,
 				F4BEEEA818D88FF30006F70C /* CoreData */,
-				F4BDEB5E187252F30069D0CE /* Images.xcassets */,
 				F4BDEB4D187252F30069D0CE /* Supporting Files */,
 			);
 			path = KCD;
@@ -1250,6 +1251,7 @@
 				F40ADA011CE6317500AE29B0 /* HMIgnoreCommand.plist */,
 				F4A9B8D51B99D5B7005786C2 /* Taihi.txt */,
 				F4A9B8D81BA40ED1005786C2 /* LICENSE */,
+				F4BDEB5E187252F30069D0CE /* Images.xcassets */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1653,6 +1655,7 @@
 				F421850E1DF4518000256590 /* BroswerTouchBar.xib */,
 				F42185101DF461A600256590 /* HMScreenshotTouchBar.xib */,
 				F49AABE51DFC48F300E0B24F /* MainTouchBar.xib */,
+				F49AABE71DFD33FB00E0B24F /* HistoryWindowTouchBar.xib */,
 			);
 			name = TestAndDebug;
 			path = KCD;
@@ -1812,6 +1815,7 @@
 				F4666C6B1B29E974001840DB /* EquipmentStrengthen.plist in Resources */,
 				F4131EDE190FEBDB004F7F9A /* HMSlotItemWindowController.xib in Resources */,
 				F4C6685D1C54515C00601AFB /* HMBrowserContentAdjuster.xib in Resources */,
+				F49AABE81DFD33FB00E0B24F /* HistoryWindowTouchBar.xib in Resources */,
 				F4C668721C54525300601AFB /* HMCombileViewController.xib in Resources */,
 				F4C5A23E1C380E0400533FB6 /* HMEnhancementListItem.plist in Resources */,
 			);
