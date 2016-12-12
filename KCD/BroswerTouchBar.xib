@@ -11,7 +11,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="HMBroserWindowController">
             <connections>
                 <outlet property="mainTouchBar" destination="KO5-NQ-mYI" id="pZh-IT-1V9"/>
-                <outlet property="shipTypeButton" destination="VCN-k6-mCb" id="0ld-6v-ddw"/>
+                <outlet property="shipTypeButton" destination="VCN-k6-mCb" id="gST-RT-3t0"/>
                 <outlet property="shipTypeSegment" destination="7HW-CC-4Ea" id="7R0-xy-vJB"/>
             </connections>
         </customObject>

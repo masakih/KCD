@@ -97,6 +97,18 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 	return self;
 }
 
+- (void)awakeFromNib
+{
+    if(!self.shipTypeSegment) return;
+    
+    [self.shipTypeSegment bind:NSSelectedIndexBinding
+                      toObject:self.tabViewItemViewControllers[0]
+                   withKeyPath:@"selectedShipType"
+                       options:nil];
+    
+    self.selectedMainTabIndex = self.selectedMainTabIndex;
+}
+
 - (void)windowDidLoad
 {
 	self.gameViewController = [HMGameViewController new];
@@ -128,10 +140,6 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
         [obj loadView];
         item.viewController = obj;
     }];
-    [self.shipTypeSegment bind:NSSelectedIndexBinding
-                      toObject:self.tabViewItemViewControllers[0]
-                   withKeyPath:@"selectedShipType"
-                       options:nil];
     
 	_fleetViewController = [HMFleetViewController viewControlerWithViewType:detailViewType];
 	[self.fleetViewController.view setFrame:[self.deckPlaceholder frame]];
@@ -174,10 +182,10 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
     [self.shipTypeSegment unbind:NSSelectedIndexBinding];
     
     NSView *b = self.shipTypeButton.view;
-    if([b isKindOfClass:[NSButton class]]) return;
+    if([b isKindOfClass:[NSClassFromString(@"NSPopoverTouchBarItem") class]]) return;
     NSButton *button = (NSButton *)self.shipTypeButton.view;
     HMMainTabVIewItemViewController *vc = self.tabViewItemViewControllers[selectedMainTabIndex];
-    button.enabled = vc.hasShipTypeSelector;
+    button.hidden = ! vc.hasShipTypeSelector;
     [self.shipTypeSegment bind:NSSelectedIndexBinding
                       toObject:vc
                    withKeyPath:@"selectedShipType"
