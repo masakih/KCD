@@ -230,13 +230,11 @@
 156A	7	6	零戦52型甲(付岩本小隊)		瑞鶴
 157A	6	6	零式艦戦53型(岩本隊)		瑞鶴
 157A	7	6	零式艦戦53型(岩本隊)		瑞鶴
-
 197A	1	6	F4F-3	F4F-4	Saratoga（改は除く）
-197A	4	6	F4F-3	F4F-4	Saratoga
-197A	5	6	F4F-3	F4F-4	Saratoga
+197A	4	6	F4F-3	F4F-4	Saratoga（改は除く）
+197A	5	6	F4F-3	F4F-4	Saratoga（改は除く）
 197A	6	6	F4F-3	F4F-4	Saratoga
 197A	7	6	F4F-3	F4F-4	Saratoga
-
 198A	1	6	F4F-4		Saratoga改
 198A	2	6	F4F-4		Saratoga
 198A	3	6	F4F-4		Saratoga
