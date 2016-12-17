@@ -29,14 +29,13 @@
 - (void)execute
 {
     HMServerDataStore *serverDataStore = [HMServerDataStore oneTimeEditor];
-    NSManagedObjectContext *managedObjectContext = [serverDataStore managedObjectContext];
     
     NSError *error = nil;
     NSArray *objects = [serverDataStore objectsWithEntityName:@"AirBase"
                                                     predicate:nil
                                                         error:&error];
     for(NSManagedObject *obj in objects) {
-        [managedObjectContext deleteObject:obj];
+        [serverDataStore deleteObject:obj];
     }
     serverDataStore = nil;
     

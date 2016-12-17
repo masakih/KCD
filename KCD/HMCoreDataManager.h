@@ -31,6 +31,13 @@
 - (__kindof NSManagedObject *)insertNewObjectForEntityForName:(NSString *)name;
 
 /**
+ *  CoreDataオブジェクトを削除する
+ *
+ *  @param object   削除するオブジェクト
+ **/
+- (void)deleteObject:(NSManagedObject *)object;
+
+/**
  *  CoreDataからデータを読み出す
  *
  *  @param entityName      対象エンティティ

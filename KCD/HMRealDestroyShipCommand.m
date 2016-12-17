@@ -14,7 +14,6 @@
 - (void)execute
 {
 	HMServerDataStore *store = [HMServerDataStore oneTimeEditor];
-	NSManagedObjectContext *moc = store.managedObjectContext;
 	
 	NSString *destroyedShipId = [self.arguments objectForKey:@"api_ship_id"];
 	
@@ -25,6 +24,6 @@
 	if(ships.count == 0) {
 		return;
 	}
-	[moc deleteObject:ships[0]];
+	[store deleteObject:ships[0]];
 }
 @end

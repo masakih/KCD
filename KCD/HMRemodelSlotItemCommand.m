@@ -31,8 +31,7 @@
 																					   error:&error
 																			 predicateFormat:@"id IN %@", useSlotItemIDs];
 		[useSlotItems enumerateObjectsUsingBlock:^(HMKCSlotItemObject * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-			NSManagedObjectContext *con = serverDataStore.managedObjectContext;
-			[con deleteObject:obj];
+			[serverDataStore deleteObject:obj];
 		}];
 	}
 	

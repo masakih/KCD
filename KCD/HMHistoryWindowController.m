@@ -117,7 +117,7 @@ typedef NS_ENUM(NSUInteger, HMHistoryWindowTabIndex) {
 	
 	for(NSManagedObjectID *objectID in objectIds) {
 		NSManagedObject *object = [moc objectWithID:objectID];
-		[moc deleteObject:object];
+		[store deleteObject:object];
 	}
 }
 

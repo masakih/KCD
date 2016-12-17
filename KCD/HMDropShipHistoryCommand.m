@@ -102,7 +102,6 @@
 	if(error) {
 		NSLog(@"%s error: %@", __PRETTY_FUNCTION__, error);
 	}
-	NSManagedObjectContext *context = lds.managedObjectContext;
 	for(HMDropShipHistory *history in dropShipHistories) {
 		HMDropShipHistory *newObejct = [lds insertNewObjectForEntityForName:@"DropShipHistory"];
 		
@@ -115,7 +114,7 @@
 		newObejct.winRank = history.winRank;
 		newObejct.date = history.date;
 		
-		[context deleteObject:history];
+		[lds deleteObject:history];
 	}
 	
 	[lds saveAction:nil];

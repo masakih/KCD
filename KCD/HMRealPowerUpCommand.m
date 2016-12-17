@@ -16,7 +16,6 @@
 - (void)execute
 {
 	HMServerDataStore *store = [HMServerDataStore oneTimeEditor];
-	NSManagedObjectContext *moc = store.managedObjectContext;
 	
 	NSString *usedShipsStrings = [self.arguments objectForKey:@"api_id_items"];
 	NSArray *usedShipStringArray = [usedShipsStrings componentsSeparatedByString:@","];
@@ -29,7 +28,7 @@
 		if(ships.count == 0) {
 			continue;
 		}
-		[moc deleteObject:ships[0]];
+		[store deleteObject:ships[0]];
 	}
 }
 @end

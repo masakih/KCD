@@ -212,9 +212,8 @@ typedef NS_ENUM(NSUInteger, FleetViewPosition) {
 	NSArray *objects = [store objectsWithEntityName:@"Quest"
 										  predicate:nil
 											  error:NULL];
-	NSManagedObjectContext *moc = store.managedObjectContext;
 	for(id object in objects) {
-		[moc deleteObject:object];
+		[store deleteObject:object];
 	}
 }
 

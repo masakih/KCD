@@ -31,7 +31,6 @@
 - (void)execute
 {
 	HMServerDataStore *store = [HMServerDataStore oneTimeEditor];
-	NSManagedObjectContext *moc = store.managedObjectContext;
 	
 	NSString *itemsString = self.arguments[@"api_slotitem_ids"];
 	NSArray *itemsStrings = [itemsString componentsSeparatedByString:@","];
@@ -50,7 +49,7 @@
 	}
 	
 	for(id obj in slotItems) {
-		[moc deleteObject:obj];
+		[store deleteObject:obj];
 	}
 	
 	//

@@ -138,13 +138,12 @@ static HMResourceHistoryManager *sInstance;
 void reduceResourceByConditions(HMResourceHistoryDataStore *resourceStore, NSArray *target, NSDate *oneMonthAgo)
 {
 	NSError *error = nil;
-	NSManagedObjectContext *moc = resourceStore.managedObjectContext;
 	NSArray *array = [resourceStore objectsWithEntityName:@"Resource"
 													error:&error
 										  predicateFormat:@"minute IN %@ AND date < %@",
 					  target, oneMonthAgo];
 	for( NSManagedObject *object in array) {
-		[moc deleteObject:object];
+		[resourceStore deleteObject:object];
 	}
 }
 

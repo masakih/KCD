@@ -62,6 +62,10 @@ typedef NS_ENUM(NSUInteger, HMCoreDataManagerType) {
     return [NSEntityDescription insertNewObjectForEntityForName:name
                                          inManagedObjectContext:self.managedObjectContext];
 }
+- (void)deleteObject:(NSManagedObject *)object
+{
+    [self.managedObjectContext deleteObject:object];
+}
 
 - (NSArray *)objectsWithEntityName:(NSString *)entityName sortDescriptors:(NSArray *)sortDescriptors predicate:(NSPredicate *)predicate error:(NSError **)error
 {

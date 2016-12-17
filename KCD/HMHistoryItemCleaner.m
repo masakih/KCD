@@ -32,7 +32,7 @@
 																	  error:&error];
 	if(!error) {
 		for(NSManagedObject *obj in array) {
-			[store.managedObjectContext deleteObject:obj];
+			[store deleteObject:obj];
 		}
 	} else {
 		NSLog(@"%s ERROR: KaihatuHistory, %@", __PRETTY_FUNCTION__, error);
@@ -44,7 +44,7 @@
 								   error:&error];
 	if(!error) {
 		for(NSManagedObject *obj in array) {
-			[store.managedObjectContext deleteObject:obj];
+			[store deleteObject:obj];
 		}
 	} else {
 		NSLog(@"%s ERROR: KenzoHistory, %@", __PRETTY_FUNCTION__, error);
@@ -60,7 +60,7 @@
 								   error:&error];
 	if(!error) {
 		for(NSManagedObject *obj in array) {
-			[store.managedObjectContext deleteObject:obj];
+			[store deleteObject:obj];
 		}
 	} else {
 		NSLog(@"%s ERROR: DropShipHistory, %@", __PRETTY_FUNCTION__, error);

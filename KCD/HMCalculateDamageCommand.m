@@ -55,10 +55,9 @@ typedef NS_ENUM(NSUInteger, HMDamageControlMasterSlotItemID) {
 
 - (void)resetBattle
 {
-	NSManagedObjectContext *moc = self.store.managedObjectContext;
 	NSArray<HMKCBattle *> *array = self.store.battles;
 	for(HMKCBattle *object in array) {
-		[moc deleteObject:object];
+		[self.store deleteObject:object];
 	}
 		
 	[self.store saveAction:nil];
@@ -66,10 +65,9 @@ typedef NS_ENUM(NSUInteger, HMDamageControlMasterSlotItemID) {
 
 - (void)resetDamage
 {
-	NSManagedObjectContext *moc = self.store.managedObjectContext;
 	NSArray<HMKCDamage *> *array = [self.store damagesWithSortDescriptors:nil];
 	for(HMKCDamage *object in array) {
-		[moc deleteObject:object];
+		[self.store deleteObject:object];
 	}
 	
 	[self.store saveAction:nil];

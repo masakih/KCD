@@ -133,7 +133,7 @@ NSString *HMGuardShelterCommandDidUpdateGuardExcapeNotification = @"HMGuardShelt
 		return;
 	}
 	for(NSManagedObject *object in escapeds) {
-		[store.managedObjectContext deleteObject:object];
+		[store deleteObject:object];
 	}
 	[store saveAction:nil];
 	[NSThread sleepForTimeInterval:0.1];
@@ -156,7 +156,7 @@ NSString *HMGuardShelterCommandDidUpdateGuardExcapeNotification = @"HMGuardShelt
 		return;
 	}
 	for(NSManagedObject *object in escapeds) {
-		[store.managedObjectContext deleteObject:object];
+		[store deleteObject:object];
 	}
 	[store saveAction:nil];
 	[NSThread sleepForTimeInterval:0.1];

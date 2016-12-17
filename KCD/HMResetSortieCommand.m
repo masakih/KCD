@@ -17,7 +17,6 @@
 - (void)execute
 {
 	HMTemporaryDataStore *store = [HMTemporaryDataStore oneTimeEditor];
-	NSManagedObjectContext *moc = store.managedObjectContext;
 	
 	NSError *error = nil;
 	NSArray<HMKCBattle *> *battles = [store objectsWithEntityName:@"Battle"
@@ -28,7 +27,7 @@
 		return;
 	}
 	for(HMKCBattle *object in battles) {
-		[moc deleteObject:object];
+		[store deleteObject:object];
 	}
 }
 
