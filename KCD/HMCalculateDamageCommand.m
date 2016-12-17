@@ -53,91 +53,10 @@ typedef NS_ENUM(NSUInteger, HMDamageControlMasterSlotItemID) {
 	return self;
 }
 
-- (nullable NSArray<HMKCBattle *> *)battles
-{
-	NSError *error = nil;
-	NSArray<HMKCBattle *> *array = [self.store objectsWithEntityName:@"Battle"
-													  predicate:nil
-														  error:&error];
-	if(error) {
-		[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
-		return nil;
-	}
-	
-	return array;
-}
-- (nullable NSArray<HMKCDamage *> *)damagesWithSortDescriptors:(nullable NSArray<NSSortDescriptor *> *)sortDescriptors
-{
-	NSError *error = nil;
-	NSArray<HMKCDamage *> *array = [self.store objectsWithEntityName:@"Damage"
-													 sortDescriptors:sortDescriptors
-														   predicate:nil
-															   error:&error];
-	if(error) {
-		[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
-		return nil;
-	}
-	return array;
-}
-- (nullable NSArray<HMKCShipObject *> *)shipsByDeckID:(NSNumber *)deckId store:(HMServerDataStore *)store
-{
-	NSError *error = nil;
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id = %@", deckId];
-	NSArray<HMKCDeck *> *decks = [store objectsWithEntityName:@"Deck"
-													predicate:predicate
-														error:&error];
-	if(error) {
-		[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
-		return nil;
-	}
-	
-	if(decks.count == 0) {
-		[self log:@"Deck is invalid. %s", __PRETTY_FUNCTION__];
-		return nil;
-	}
-	HMKCDeck *deck = decks[0];
-	NSArray<NSNumber *> *shipIds = @[deck.ship_0, deck.ship_1, deck.ship_2, deck.ship_3, deck.ship_4, deck.ship_5];
-	
-	NSMutableArray<HMKCShipObject *> *ships = [NSMutableArray new];
-	for(NSNumber *shipId in shipIds) {
-		error = nil;
-		NSArray<HMKCShipObject *> *ship = [store objectsWithEntityName:@"Ship"
-																 error:&error
-													   predicateFormat:@"id = %@", @([shipId integerValue])];
-		if(error) {
-			[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
-		}
-		if(ship.count != 0 && ![ship[0] isEqual:[NSNull null]]) {
-			[ships addObject:ship[0]];
-		}
-	}
-	
-	return ships;
-}
-- (nullable HMKCShipObject *)shipByID:(NSNumber *)shipId store:(HMServerDataStore *)store
-{
-	if(shipId.integerValue < 1) return nil;
-	
-	NSError *error = nil;
-	NSArray<HMKCShipObject *> *ships = [store objectsWithEntityName:@"Ship"
-															  error:&error
-													predicateFormat:@"id = %@", @([shipId integerValue])];
-	if(error) {
-		[self log:@"%s error: %@", __PRETTY_FUNCTION__, error];
-		return nil;
-	}
-	if(ships.count == 0) {
-		[self log:@"%s error: ship is not fount by id %@", __PRETTY_FUNCTION__, shipId];
-		return nil;
-	}
-	
-	return ships[0];
-}
-
 - (void)resetBattle
 {
 	NSManagedObjectContext *moc = self.store.managedObjectContext;
-	NSArray<HMKCBattle *> *array = [self battles];
+	NSArray<HMKCBattle *> *array = self.store.battles;
 	for(HMKCBattle *object in array) {
 		[moc deleteObject:object];
 	}
@@ -148,7 +67,7 @@ typedef NS_ENUM(NSUInteger, HMDamageControlMasterSlotItemID) {
 - (void)resetDamage
 {
 	NSManagedObjectContext *moc = self.store.managedObjectContext;
-	NSArray<HMKCDamage *> *array = [self damagesWithSortDescriptors:nil];
+	NSArray<HMKCDamage *> *array = [self.store damagesWithSortDescriptors:nil];
 	for(HMKCDamage *object in array) {
 		[moc deleteObject:object];
 	}
@@ -174,7 +93,7 @@ typedef NS_ENUM(NSUInteger, HMDamageControlMasterSlotItemID) {
 
 - (void)updateBattleCell
 {
-	NSArray<HMKCBattle *> *battles = [self battles];
+	NSArray<HMKCBattle *> *battles = self.store.battles;
 	if(battles.count == 0) {
 		NSLog(@"Battle is invalid.");
 		return;
@@ -194,7 +113,7 @@ typedef NS_ENUM(NSUInteger, HMDamageControlMasterSlotItemID) {
 
 - (void)nextCell
 {
-	NSArray<HMKCBattle *> *battles = [self battles];
+	NSArray<HMKCBattle *> *battles = self.store.battles;
 	if(battles.count == 0) {
 		NSLog(@"Battle is invalid.");
 		return;
@@ -211,19 +130,19 @@ typedef NS_ENUM(NSUInteger, HMDamageControlMasterSlotItemID) {
 
 - (void)buildDamageEntity
 {
-	NSArray<HMKCBattle *> *battles = [self battles];
+	NSArray<HMKCBattle *> *battles = self.store.battles;
 	if(battles.count == 0) {
 		NSLog(@"Battle is invalid.");
 		return;
 	}
 	
 	NSMutableArray *ships = [NSMutableArray array];
-	NSArray<HMKCShipObject *> *firstFleetShips = [self shipsByDeckID:battles[0].deckId store:[HMServerDataStore defaultManager]];
+	NSArray<HMKCShipObject *> *firstFleetShips = [[HMServerDataStore defaultManager] shipsByDeckID:battles[0].deckId];
 	[ships addObjectsFromArray:firstFleetShips];
 	while(ships.count != 6) {
 		[ships addObject:[NSNull null]];
 	}
-	NSArray<HMKCShipObject *> *secondFleetShips = [self shipsByDeckID:@2 store:[HMServerDataStore defaultManager]];
+	NSArray<HMKCShipObject *> *secondFleetShips = [[HMServerDataStore defaultManager] shipsByDeckID:@2];
 	if(secondFleetShips) {
 		[ships addObjectsFromArray:secondFleetShips];
 		while(ships.count != 12) {
@@ -253,12 +172,12 @@ typedef NS_ENUM(NSUInteger, HMDamageControlMasterSlotItemID) {
 - (NSArray<HMKCDamage *> *)damages
 {
 	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
-	NSArray<HMKCDamage *> *array = [self damagesWithSortDescriptors:@[sortDescriptor]];
+	NSArray<HMKCDamage *> *array = [self.store damagesWithSortDescriptors:@[sortDescriptor]];
 	
 	NSInteger frendShipCount = 12;
 	if(array.count != frendShipCount) {
 		[self buildDamageEntity];
-		array = [self damagesWithSortDescriptors:@[sortDescriptor]];
+		array = [self.store damagesWithSortDescriptors:@[sortDescriptor]];
 	}
 	
 	return [NSArray arrayWithArray:array];
@@ -313,7 +232,7 @@ typedef NS_ENUM(NSUInteger, HMDamageControlMasterSlotItemID) {
 			NSInteger hp = damageObject.hp.integerValue;
 			NSInteger newHP = hp - damage;
 			if(newHP <= 0) {
-				HMKCShipObject *ship = [self shipByID:damageObject.shipID store:[HMServerDataStore defaultManager]];
+				HMKCShipObject *ship = [[HMServerDataStore defaultManager] shipByID:damageObject.shipID];
 				NSInteger efectiveHP = damageControlIfPossible(newHP, ship);
 				if(efectiveHP != 0 && efectiveHP != newHP) {
 					damageObject.useDamageControl = @YES;
@@ -350,7 +269,7 @@ typedef NS_ENUM(NSUInteger, HMDamageControlMasterSlotItemID) {
         NSInteger hp = damageObject.hp.integerValue;
         NSInteger newHP = hp - damage;
         if(newHP <= 0) {
-            HMKCShipObject *ship = [self shipByID:damageObject.shipID store:[HMServerDataStore defaultManager]];
+            HMKCShipObject *ship = [[HMServerDataStore defaultManager] shipByID:damageObject.shipID];
             NSInteger efectiveHP = damageControlIfPossible(newHP, ship);
             if(efectiveHP != 0 && efectiveHP != newHP) {
                 damageObject.useDamageControl = @YES;
@@ -553,30 +472,6 @@ typedef NS_ENUM(NSUInteger, HMDamageControlMasterSlotItemID) {
     [self calcCombinedBattleAir];
 }
 
-NSInteger masterSlotItemIDbySlotItem(NSNumber *value)
-{
-	if(![value isKindOfClass:[NSNumber class]]) return 0;
-	NSInteger slotItemID = [value integerValue];
-	if(slotItemID == -1) return 0;
-	if(slotItemID == 0) return 0;
-	
-	HMServerDataStore *store = [HMServerDataStore defaultManager];
-	
-	NSError *error = nil;
-	NSArray *array = [store objectsWithEntityName:@"SlotItem"
-											error:&error
-								  predicateFormat:@"id = %@", value];
-	if([array count] == 0) {
-		NSLog(@"SlotItem is invalid.");
-		return 0;
-	}
-	
-	HMKCSlotItemObject *slotItem = array[0];
-	NSInteger masterSlotItemID = [slotItem.master_slotItem.id integerValue];
-	
-	return masterSlotItemID;
-}
-
 NSInteger damageControlIfPossible(NSInteger nowhp, HMKCShipObject *ship)
 {
 	if(nowhp < 0) nowhp = 0;
@@ -585,10 +480,11 @@ NSInteger damageControlIfPossible(NSInteger nowhp, HMKCShipObject *ship)
 	
 	NSOrderedSet<HMKCSlotItemObject *> *items = ship.equippedItem;
 	
+    HMServerDataStore *store = [HMServerDataStore defaultManager];
 	__block NSInteger newhp = nowhp;
 	__block BOOL useDamageControl = NO;
 	[items enumerateObjectsUsingBlock:^(HMKCSlotItemObject * _Nonnull item, NSUInteger idx, BOOL * _Nonnull stop) {
-		NSInteger masterSlotItemID = masterSlotItemIDbySlotItem(item.id);
+        NSInteger masterSlotItemID = [store masterSlotItemIDbySlotItem:item.id].integerValue;
 		switch(masterSlotItemID) {
 			case damageControl:
 				newhp = maxhp * 0.2;
@@ -606,7 +502,7 @@ NSInteger damageControlIfPossible(NSInteger nowhp, HMKCShipObject *ship)
 		return newhp;
 	}
 	
-	NSInteger masterSlotItemID = masterSlotItemIDbySlotItem(ship.slot_ex);
+    NSInteger masterSlotItemID = [store masterSlotItemIDbySlotItem:ship.slot_ex].integerValue;
 	switch(masterSlotItemID) {
 		case damageControl:
 			nowhp =  maxhp * 0.2;
@@ -621,10 +517,12 @@ NSInteger damageControlIfPossible(NSInteger nowhp, HMKCShipObject *ship)
 
 - (void)removeFirstDamageControlItemWithShip:(HMKCShipObject *)ship
 {
+    HMServerDataStore *store = [HMServerDataStore defaultManager];
+    
 	NSOrderedSet<HMKCSlotItemObject *> *items = ship.equippedItem;
 	NSMutableOrderedSet<HMKCSlotItemObject *> *newItems = [items mutableCopy];
 	[items enumerateObjectsUsingBlock:^(HMKCSlotItemObject * _Nonnull item, NSUInteger idx, BOOL * _Nonnull stop) {
-		NSInteger masterSlotItemID = masterSlotItemIDbySlotItem(item.id);
+        NSInteger masterSlotItemID = [store masterSlotItemIDbySlotItem:item.id].integerValue;
 		switch(masterSlotItemID) {
 			case goddes:
 				ship.fuel = ship.maxFuel;
@@ -641,7 +539,7 @@ NSInteger damageControlIfPossible(NSInteger nowhp, HMKCShipObject *ship)
 		return;
 	}
 	
-	NSInteger masterSlotItemID = masterSlotItemIDbySlotItem(ship.slot_ex);
+    NSInteger masterSlotItemID = [store masterSlotItemIDbySlotItem:ship.slot_ex].integerValue;
 	switch(masterSlotItemID) {
 		case goddes:
 			ship.fuel = ship.maxFuel;
@@ -656,13 +554,13 @@ NSInteger damageControlIfPossible(NSInteger nowhp, HMKCShipObject *ship)
 {
 	// Damage 取得
 	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
-	NSArray<HMKCDamage *> *damages = [self damagesWithSortDescriptors:@[sortDescriptor]];
+	NSArray<HMKCDamage *> *damages = [self.store damagesWithSortDescriptors:@[sortDescriptor]];
 	if(damages.count != 12) {
 		[self log:@"Damage is invalid. count %lx", damages.count];
 		return;
 	}
 	
-	NSArray<HMKCBattle *> *array = [self battles];
+	NSArray<HMKCBattle *> *array = self.store.battles;
 	if(array.count == 0) {
 		[self log:@"Battle is invalid. %s", __PRETTY_FUNCTION__];
 		return;
@@ -671,7 +569,7 @@ NSInteger damageControlIfPossible(NSInteger nowhp, HMKCShipObject *ship)
 	HMServerDataStore *serverStore = [HMServerDataStore oneTimeEditor];
 	for(HMKCDamage *damage in damages) {
 		if(!damage.shipID || [damage.shipID isEqual:[NSNull null]]) { continue; }
-		HMKCShipObject *ship = [self shipByID:damage.shipID store:serverStore];
+		HMKCShipObject *ship = [serverStore shipByID:damage.shipID];
 		ship.nowhp = damage.hp;
 		if(damage.useDamageControl.boolValue) {
 			[self removeFirstDamageControlItemWithShip:ship];

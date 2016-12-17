@@ -8,6 +8,9 @@
 
 #import "HMTemporaryDataStore.h"
 
+#import "HMKCDamage.h"
+#import "HMKCBattle.h"
+
 @implementation HMTemporaryDataStore
 + (void)load
 {
@@ -46,3 +49,36 @@
 	return YES;
 }
 @end
+
+
+@implementation HMTemporaryDataStore (HMAccessor)
+
+- (nullable NSArray<HMKCBattle *> *)battles
+{
+    NSError *error = nil;
+    NSArray<HMKCBattle *> *array = [self objectsWithEntityName:@"Battle"
+                                                     predicate:nil
+                                                         error:&error];
+    if(error) {
+        NSLog(@"%s error: %@", __PRETTY_FUNCTION__, error);
+        return nil;
+    }
+    
+    return array;
+}
+- (nullable NSArray<HMKCDamage *> *)damagesWithSortDescriptors:(nullable NSArray<NSSortDescriptor *> *)sortDescriptors
+{
+    NSError *error = nil;
+    NSArray<HMKCDamage *> *array = [self objectsWithEntityName:@"Damage"
+                                               sortDescriptors:sortDescriptors
+                                                     predicate:nil
+                                                         error:&error];
+    if(error) {
+        NSLog(@"%s error: %@", __PRETTY_FUNCTION__, error);
+        return nil;
+    }
+    return array;
+}
+
+@end
+

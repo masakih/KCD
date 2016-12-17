@@ -8,6 +8,13 @@
 
 #import "HMCoreDataManager.h"
 
+@class HMKCBattle, HMKCDamage;
+
 @interface HMTemporaryDataStore : HMCoreDataManager
 
+@end
+
+@interface HMTemporaryDataStore (HMAccessor)
+- (nullable NSArray<HMKCBattle *> *)battles;
+- (nullable NSArray<HMKCDamage *> *)damagesWithSortDescriptors:(nullable NSArray<NSSortDescriptor *> *)sortDescriptors;
 @end

@@ -8,9 +8,17 @@
 
 #import "HMCoreDataManager.h"
 
+@class HMKCShipObject;
+
 /**
  サーバーサイドから取り込むデータを保存する
  */
 @interface HMServerDataStore : HMCoreDataManager
 
+@end
+
+@interface HMServerDataStore (HMAccessor)
+- (nullable NSArray<HMKCShipObject *> *)shipsByDeckID:(nonnull NSNumber *)deckId;
+- (nullable HMKCShipObject *)shipByID:(nonnull NSNumber *)shipId;
+- (nullable NSNumber *) masterSlotItemIDbySlotItem:(nonnull NSNumber *)value;
 @end
