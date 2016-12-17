@@ -264,13 +264,17 @@ typedef NS_ENUM(NSUInteger, HMDamageControlMasterSlotItemID) {
 	return [NSArray arrayWithArray:array];
 }
 
-- (void)calculateHougeki:(NSArray<HMKCDamage *> *)damages targetsKeyPath:(NSString *)targetKeyPath damageKeyPath:(NSString *)damageKeyPath eFlagKeyPath:(NSString *)eFlagKeyPath
+- (void)calculateHougeki:(NSArray<HMKCDamage *> *)damages baseKeyPath:(NSString *)baseKeyPath
 {
+    NSString *targetKeyPath = [baseKeyPath stringByAppendingString:@".api_df_list"];
+    NSString *damageKeyPath = [baseKeyPath stringByAppendingString:@".api_damage"];
+    NSString *eFlagKeyPath = [baseKeyPath stringByAppendingString:@".api_at_eflag"];
+    
 	NSArray<NSArray<NSNumber *> *> *targetPositionArraysArray = [self.json valueForKeyPath:targetKeyPath];
 	if(!targetPositionArraysArray || ![targetPositionArraysArray isKindOfClass:[NSArray class]]) return;
     
 #if DAMAGE_CHECK
-    NSLog(@"Start Hougeki %@", targetKeyPath);
+    NSLog(@"Start Hougeki %@", baseKeyPath);
 #endif
 	
 	NSArray<NSArray *> *hougeki1Damages = [self.json valueForKeyPath:damageKeyPath];
@@ -326,8 +330,10 @@ typedef NS_ENUM(NSUInteger, HMDamageControlMasterSlotItemID) {
 	[self.store saveAction:nil];
 }
 
-- (void)calculateFDam:(NSArray<HMKCDamage *> *)damages fdamKeyPath:(NSString *)fdamKeyPath
+- (void)calculateFDam:(NSArray<HMKCDamage *> *)damages baseKeyPath:(NSString *)baseKeyPath
 {
+    NSString *fdamKeyPath = [baseKeyPath stringByAppendingString:@".api_fdam"];
+    
 	NSArray<NSNumber *> *koukuDamage = [self.json valueForKeyPath:fdamKeyPath];
 	if(!koukuDamage || ![koukuDamage isKindOfClass:[NSArray class]]) return;
     
@@ -379,10 +385,10 @@ typedef NS_ENUM(NSUInteger, HMDamageControlMasterSlotItemID) {
 - (void)calcKouku:(NSArray<HMKCDamage *> *)damages
 {
     [self calculateFDam:damages
-            fdamKeyPath:@"api_data.api_kouku.api_stage3.api_fdam"];
+            baseKeyPath:@"api_data.api_kouku.api_stage3"];
     
     [self calculateFDam:damages
-            fdamKeyPath:@"api_data.api_kouku2.api_stage3.api_fdam"];
+            baseKeyPath:@"api_data.api_kouku2.api_stage3"];
     
     // 艦隊　戦闘艦隊
     // 連合vs通常（水上）　第２
@@ -392,9 +398,9 @@ typedef NS_ENUM(NSUInteger, HMDamageControlMasterSlotItemID) {
     if(self.isCombinedBattle) {
         self.calcSecondFleet = YES;
         [self calculateFDam:damages
-                fdamKeyPath:@"api_data.api_kouku.api_stage3_combined.api_fdam"];
+                baseKeyPath:@"api_data.api_kouku.api_stage3_combined"];
         [self calculateFDam:damages
-                fdamKeyPath:@"api_data.api_kouku2.api_stage3_combined.api_fdam"];
+                baseKeyPath:@"api_data.api_kouku2.api_stage3_combined"];
         self.calcSecondFleet = NO;
     }
 }
@@ -407,16 +413,14 @@ typedef NS_ENUM(NSUInteger, HMDamageControlMasterSlotItemID) {
     // 連合vs連合（機動）　第２　全体
     self.calcSecondFleet = self.battleType == typeCombinedAir || self.battleType == typeCombinedWater;
     [self calculateFDam:damages
-            fdamKeyPath:@"api_data.api_opening_atack.api_fdam"];
+            baseKeyPath:@"api_data.api_opening_atack"];
     self.calcSecondFleet = NO;
 }
 - (void)calcOpeningTaisen:(NSArray<HMKCDamage *> *)damages
 {
     self.calcSecondFleet = self.isCombinedBattle;
     [self calculateHougeki:damages
-            targetsKeyPath:@"api_data.api_opening_taisen.api_df_list"
-             damageKeyPath:@"api_data.api_opening_taisen.api_damage"
-              eFlagKeyPath:@"api_data.api_opening_taisen.api_at_eflag"];
+               baseKeyPath:@"api_data.api_opening_taisen"];
     self.calcSecondFleet = NO;
 }
 - (void)calcHougeki1:(NSArray<HMKCDamage *> *)damages
@@ -428,9 +432,7 @@ typedef NS_ENUM(NSUInteger, HMDamageControlMasterSlotItemID) {
     // 連合vs連合（機動）　第1
     self.calcSecondFleet = self.battleType == typeCombinedAir;
     [self calculateHougeki:damages
-            targetsKeyPath:@"api_data.api_hougeki1.api_df_list"
-             damageKeyPath:@"api_data.api_hougeki1.api_damage"
-              eFlagKeyPath:@"api_data.api_hougeki1.api_at_eflag"];
+               baseKeyPath:@"api_data.api_hougeki1"];
     self.calcSecondFleet = NO;
 }
 - (void)calcHougeki2:(NSArray<HMKCDamage *> *)damages
@@ -442,9 +444,7 @@ typedef NS_ENUM(NSUInteger, HMDamageControlMasterSlotItemID) {
     // 連合vs連合（機動）　第１
     self.calcEachFleet = self.battleType == typeEachCombinedWater;
     [self calculateHougeki:damages
-            targetsKeyPath:@"api_data.api_hougeki2.api_df_list"
-             damageKeyPath:@"api_data.api_hougeki2.api_damage"
-              eFlagKeyPath:@"api_data.api_hougeki2.api_at_eflag"];
+               baseKeyPath:@"api_data.api_hougeki2"];
     self.calcEachFleet = NO;
 }
 - (void)calcHougeki3:(NSArray<HMKCDamage *> *)damages
@@ -457,9 +457,7 @@ typedef NS_ENUM(NSUInteger, HMDamageControlMasterSlotItemID) {
     self.calcSecondFleet = self.battleType == typeCombinedWater;
     self.calcEachFleet = self.battleType == typeEachCombinedAir;
     [self calculateHougeki:damages
-            targetsKeyPath:@"api_data.api_hougeki3.api_df_list"
-             damageKeyPath:@"api_data.api_hougeki3.api_damage"
-              eFlagKeyPath:@"api_data.api_hougeki3.api_at_eflag"];
+               baseKeyPath:@"api_data.api_hougeki3"];
     self.calcSecondFleet = NO;
     self.calcEachFleet = NO;
 }
@@ -475,7 +473,7 @@ typedef NS_ENUM(NSUInteger, HMDamageControlMasterSlotItemID) {
         self.calcSecondFleet = NO;
     }
     [self calculateFDam:damages
-            fdamKeyPath:@"api_data.api_raigeki.api_fdam"];
+            baseKeyPath:@"api_data.api_raigeki"];
     self.calcSecondFleet = NO;
 }
 - (void)calculateMidnightBattle
@@ -492,9 +490,7 @@ typedef NS_ENUM(NSUInteger, HMDamageControlMasterSlotItemID) {
     // 連合vs連合（機動）　第２
     self.calcSecondFleet = self.isCombinedBattle;
     [self calculateHougeki:damages
-            targetsKeyPath:@"api_data.api_hougeki.api_df_list"
-             damageKeyPath:@"api_data.api_hougeki.api_damage"
-              eFlagKeyPath:@"api_data.api_hougeki.api_at_eflag"];
+               baseKeyPath:@"api_data.api_hougeki"];
     self.calcSecondFleet = NO;
     
     [self.store saveAction:nil];
