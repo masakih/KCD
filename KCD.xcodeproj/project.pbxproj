@@ -897,6 +897,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F45F3BDC1E0575170009434E /* TouchBar */ = {
+			isa = PBXGroup;
+			children = (
+				F421850E1DF4518000256590 /* BroswerTouchBar.xib */,
+				F42185101DF461A600256590 /* HMScreenshotTouchBar.xib */,
+				F49AABE51DFC48F300E0B24F /* MainTouchBar.xib */,
+				F49AABE71DFD33FB00E0B24F /* HistoryWindowTouchBar.xib */,
+				F49AABF11DFD53A300E0B24F /* SlotItemWindowTouchBar.xib */,
+			);
+			name = TouchBar;
+			sourceTree = "<group>";
+		};
 		F4649FBF1DBBB0F50097AEBF /* Supply&DockCommand */ = {
 			isa = PBXGroup;
 			children = (
@@ -1223,6 +1235,7 @@
 				F42CBB251D21583C004C2AE2 /* HMHistoryItemCleaner.m */,
 				F4C2ACA31D7167C2007BFE90 /* HMTimeSignalNotifier.h */,
 				F4C2ACA41D7167C2007BFE90 /* HMTimeSignalNotifier.m */,
+				F45F3BDC1E0575170009434E /* TouchBar */,
 				F4D2CBBF18ACE7D7000EBC59 /* Command */,
 				F4BEEEA918D890660006F70C /* UI */,
 				F4BEEEA818D88FF30006F70C /* CoreData */,
@@ -1654,11 +1667,6 @@
 				F48A70601DE58C54005DFC0B /* HMAirBaseViewController.h */,
 				F48A70611DE58C54005DFC0B /* HMAirBaseViewController.m */,
 				F48A70621DE58C54005DFC0B /* HMAirBaseViewController.xib */,
-				F421850E1DF4518000256590 /* BroswerTouchBar.xib */,
-				F42185101DF461A600256590 /* HMScreenshotTouchBar.xib */,
-				F49AABE51DFC48F300E0B24F /* MainTouchBar.xib */,
-				F49AABE71DFD33FB00E0B24F /* HistoryWindowTouchBar.xib */,
-				F49AABF11DFD53A300E0B24F /* SlotItemWindowTouchBar.xib */,
 			);
 			name = TestAndDebug;
 			path = KCD;
