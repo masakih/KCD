@@ -67,6 +67,11 @@ typedef NS_ENUM(NSUInteger, HMCoreDataManagerType) {
     [self.managedObjectContext deleteObject:object];
 }
 
+- (__kindof NSManagedObject *)objectWithID:(NSManagedObjectID *)objectID
+{
+    return [self.managedObjectContext objectWithID:objectID];
+}
+
 - (NSArray *)objectsWithEntityName:(NSString *)entityName sortDescriptors:(NSArray *)sortDescriptors predicate:(NSPredicate *)predicate error:(NSError **)error
 {
 	NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:entityName];

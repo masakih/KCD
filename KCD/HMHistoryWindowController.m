@@ -113,10 +113,9 @@ typedef NS_ENUM(NSUInteger, HMHistoryWindowTabIndex) {
 	}
 	
 	HMLocalDataStore *store = [HMLocalDataStore oneTimeEditor];
-	NSManagedObjectContext *moc = store.managedObjectContext;
 	
 	for(NSManagedObjectID *objectID in objectIds) {
-		NSManagedObject *object = [moc objectWithID:objectID];
+		NSManagedObject *object = [store objectWithID:objectID];
 		[store deleteObject:object];
 	}
 }

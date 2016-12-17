@@ -38,6 +38,15 @@
 - (void)deleteObject:(NSManagedObject *)object;
 
 /**
+ *  objectIDからオブジェクトを取り出す。
+ *  
+ *  @param objectID objuect id.
+ *
+ *  @return object.
+ **/
+- (__kindof NSManagedObject *)objectWithID:(NSManagedObjectID *)objectID;
+
+/**
  *  CoreDataからデータを読み出す
  *
  *  @param entityName      対象エンティティ
