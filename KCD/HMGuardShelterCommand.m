@@ -108,13 +108,11 @@ NSString *HMGuardShelterCommandDidUpdateGuardExcapeNotification = @"HMGuardShelt
 	
 	
 	HMTemporaryDataStore *store = [HMTemporaryDataStore oneTimeEditor];
-	HMKCGuardEscaped *guardian = [NSEntityDescription insertNewObjectForEntityForName:@"GuardEscaped"
-															   inManagedObjectContext:store.managedObjectContext];
+	HMKCGuardEscaped *guardian = [store insertNewObjectForEntityForName:@"GuardEscaped"];
 	guardian.shipID = guardianID;
 	guardian.ensured = @NO;
 	
-	HMKCGuardEscaped *damaged = [NSEntityDescription insertNewObjectForEntityForName:@"GuardEscaped"
-										   inManagedObjectContext:store.managedObjectContext];
+	HMKCGuardEscaped *damaged = [store insertNewObjectForEntityForName:@"GuardEscaped"];
 	damaged.shipID = damagedShipID;
 	damaged.ensured = @NO;
 	

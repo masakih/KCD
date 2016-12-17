@@ -77,11 +77,8 @@ typedef NS_ENUM(NSUInteger, HMDamageControlMasterSlotItemID) {
 
 - (void)startBattle
 {
-	NSManagedObjectContext *moc = self.store.managedObjectContext;
-	
 	// Battleエンティティ作成
-	HMKCBattle *battle = [NSEntityDescription insertNewObjectForEntityForName:@"Battle"
-													   inManagedObjectContext:moc];
+	HMKCBattle *battle = [self.store insertNewObjectForEntityForName:@"Battle"];
 	
 	battle.deckId = @([[self.arguments valueForKey:@"api_deck_id"] integerValue]);
 	battle.mapArea = @([[self.arguments valueForKey:@"api_maparea_id"] integerValue]);
@@ -150,14 +147,12 @@ typedef NS_ENUM(NSUInteger, HMDamageControlMasterSlotItemID) {
 		}
 	}
 	
-	NSManagedObjectContext *moc = self.store.managedObjectContext;
 	for(NSInteger idx = 0; idx < 12; idx++) {
 		if(idx >= 6 && ships.count == 6) {
 			return;
 		}
 		
-		HMKCDamage *damage = [NSEntityDescription insertNewObjectForEntityForName:@"Damage"
-														   inManagedObjectContext:moc];
+		HMKCDamage *damage = [self.store insertNewObjectForEntityForName:@"Damage"];
 		damage.battle = battles[0];
 		damage.id = @(idx);
 		HMKCShipObject *ship = ships[idx];

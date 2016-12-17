@@ -70,8 +70,7 @@
 	HMKCBasic *basic = basics[0];
 	
 	HMLocalDataStore *lds = [HMLocalDataStore oneTimeEditor];
-	HMKaihatuHistory *newObejct = [NSEntityDescription insertNewObjectForEntityForName:@"KaihatuHistory"
-																inManagedObjectContext:[lds managedObjectContext]];
+	HMKaihatuHistory *newObejct = [lds insertNewObjectForEntityForName:@"KaihatuHistory"];
 	newObejct.name = name;
 	newObejct.fuel = @([[self.arguments valueForKey:@"api_item1"] integerValue]);
 	newObejct.bull = @([[self.arguments valueForKey:@"api_item2"] integerValue]);

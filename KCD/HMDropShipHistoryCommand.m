@@ -78,8 +78,7 @@
 	NSString *mapAreaName = mapAreas[0].name;
 	
 	HMLocalDataStore *lds = [HMLocalDataStore oneTimeEditor];
-	HMDropShipHistory *newObejct = [NSEntityDescription insertNewObjectForEntityForName:@"HiddenDropShipHistory"
-																inManagedObjectContext:[lds managedObjectContext]];
+	HMDropShipHistory *newObejct = [lds insertNewObjectForEntityForName:@"HiddenDropShipHistory"];
 	
 	newObejct.shipName = [getShip valueForKey:@"api_ship_name"];
 	newObejct.mapArea = [NSString stringWithFormat:@"%@", mapAreaId];
@@ -105,8 +104,7 @@
 	}
 	NSManagedObjectContext *context = lds.managedObjectContext;
 	for(HMDropShipHistory *history in dropShipHistories) {
-		HMDropShipHistory *newObejct = [NSEntityDescription insertNewObjectForEntityForName:@"DropShipHistory"
-																	 inManagedObjectContext:[lds managedObjectContext]];
+		HMDropShipHistory *newObejct = [lds insertNewObjectForEntityForName:@"DropShipHistory"];
 		
 		newObejct.shipName = history.shipName;
 		newObejct.mapArea = history.mapArea;

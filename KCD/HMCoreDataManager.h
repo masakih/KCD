@@ -23,6 +23,14 @@
 + (instancetype)oneTimeEditor;
 
 /**
+ *  CoreDataの新しいオブジェクトを生成する
+ *  @param name     エンティティ名
+ *
+ *  @return 生成されたオブジェクト。失敗した場合はnil。
+ **/
+- (__kindof NSManagedObject *)insertNewObjectForEntityForName:(NSString *)name;
+
+/**
  *  CoreDataからデータを読み出す
  *
  *  @param entityName      対象エンティティ

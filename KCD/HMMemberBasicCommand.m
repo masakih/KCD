@@ -40,7 +40,6 @@
 	}
 	
 	HMServerDataStore *serverDataStore = [HMServerDataStore oneTimeEditor];
-	NSManagedObjectContext *managedObjectContext = [serverDataStore managedObjectContext];
 	
 	NSError *error = nil;
 	NSArray *result = [serverDataStore objectsWithEntityName:@"Basic" predicate:nil error:&error];
@@ -51,8 +50,7 @@
 	
 	NSManagedObject *object = nil;
 	if(!result || [result count] == 0) {
-		object = [NSEntityDescription insertNewObjectForEntityForName:@"Basic"
-											   inManagedObjectContext:managedObjectContext];
+		object = [serverDataStore insertNewObjectForEntityForName:@"Basic"];
 	} else {
 		object = result[0];
 	}

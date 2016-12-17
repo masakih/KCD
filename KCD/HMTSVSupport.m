@@ -214,7 +214,6 @@
 	NSString *entityName = @"KaihatuHistory";
 	NSArray *contents;
 	HMLocalDataStore *lds = [HMLocalDataStore oneTimeEditor];
-	NSManagedObjectContext *moc = [lds managedObjectContext];
 	
 	contents = [self arrayFromLFSeparatedStringData:data];
 	id attribute;
@@ -229,8 +228,7 @@
 									predicateFormat:@"date = %@", [self dateWithString:attr[0]]];
 		if(array.count != 0) continue;
 		
-		HMKaihatuHistory *obj = [NSEntityDescription insertNewObjectForEntityForName:entityName
-															  inManagedObjectContext:moc];
+		HMKaihatuHistory *obj = [lds insertNewObjectForEntityForName:entityName];
 		obj.date = [self dateWithString:attr[0]];
 		obj.fuel = @([attr[1] integerValue]);
 		obj.bull = @([attr[2] integerValue]);
@@ -262,8 +260,7 @@
 									predicateFormat:@"date = %@", [self dateWithString:attr[0]]];
 		if(array.count != 0) continue;
 		
-		HMKenzoHistory *obj = [NSEntityDescription insertNewObjectForEntityForName:entityName
-															inManagedObjectContext:lds.managedObjectContext];
+		HMKenzoHistory *obj = [lds insertNewObjectForEntityForName:entityName];
 		
 		obj.date = [self dateWithString:attr[0]];
 		obj.fuel = @([attr[1] integerValue]);
@@ -284,7 +281,6 @@
 	NSArray *contents;
 	if([self isEmptyEntityName:entityName]) {
 		HMLocalDataStore *lds = [HMLocalDataStore oneTimeEditor];
-		NSManagedObjectContext *moc = [lds managedObjectContext];
 		
 		contents = [self arrayFromLFSeparatedStringData:data];
 		id attribute;
@@ -292,8 +288,7 @@
 			NSArray *attr = [self arrayFromTabSeparatedString:attribute];
 			if([attr count] < 1) continue;
 			
-			HMKenzoMark *obj = [NSEntityDescription insertNewObjectForEntityForName:entityName
-																inManagedObjectContext:moc];
+			HMKenzoMark *obj = [lds insertNewObjectForEntityForName:entityName];
 			obj.created_ship_id = @([attr[0] integerValue]);
 			obj.fuel = @([attr[1] integerValue]);
 			obj.bull = @([attr[2] integerValue]);

@@ -16,7 +16,7 @@ typedef NS_ENUM(NSUInteger, HMCoreDataManagerType) {
 };
 
 @interface HMCoreDataManager ()
-@property HMCoreDataManagerType	type;
+@property (readwrite) HMCoreDataManagerType	type;
 @end
 
 @implementation HMCoreDataManager
@@ -55,6 +55,12 @@ typedef NS_ENUM(NSUInteger, HMCoreDataManagerType) {
 - (void)dealloc
 {
 	[self saveAction:nil];
+}
+
+- (NSManagedObject *)insertNewObjectForEntityForName:(NSString *)name
+{
+    return [NSEntityDescription insertNewObjectForEntityForName:name
+                                         inManagedObjectContext:self.managedObjectContext];
 }
 
 - (NSArray *)objectsWithEntityName:(NSString *)entityName sortDescriptors:(NSArray *)sortDescriptors predicate:(NSPredicate *)predicate error:(NSError **)error

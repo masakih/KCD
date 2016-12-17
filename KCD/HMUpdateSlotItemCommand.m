@@ -23,8 +23,6 @@
 	if(!data || [data isKindOfClass:[NSNull class]]) return;
 	
 	HMServerDataStore *store = [HMServerDataStore oneTimeEditor];
-	NSManagedObjectContext *moc = store.managedObjectContext;
-	
 	NSError *error = nil;
 	NSArray<HMKCMasterSlotItemObject *> *masterSlotItems = [store objectsWithEntityName:@"MasterSlotItem"
 																				  error:&error
@@ -34,8 +32,7 @@
 		return;
 	}
 	
-	HMKCSlotItemObject *newSlotItem = [NSEntityDescription insertNewObjectForEntityForName:@"SlotItem"
-																	inManagedObjectContext:moc];
+	HMKCSlotItemObject *newSlotItem = [store insertNewObjectForEntityForName:@"SlotItem"];
 	newSlotItem.id =  data[@"api_id"];
 	newSlotItem.master_slotItem = masterSlotItems[0];
 }

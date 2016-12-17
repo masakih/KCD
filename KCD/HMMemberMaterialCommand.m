@@ -47,7 +47,6 @@
 	}
 	
 	HMServerDataStore *serverDataStore = [HMServerDataStore oneTimeEditor];
-	NSManagedObjectContext *managedObjectContext = [serverDataStore managedObjectContext];
 	
 	NSError *error = nil;
 	id result = [serverDataStore objectsWithEntityName:@"Material" predicate:nil error:&error];
@@ -57,8 +56,7 @@
 	}
 	NSManagedObject *object = nil;
 	if(!result || [result count] == 0) {
-		object = [NSEntityDescription insertNewObjectForEntityForName:@"Material"
-											   inManagedObjectContext:managedObjectContext];
+		object = [serverDataStore insertNewObjectForEntityForName:@"Material"];
 	} else {
 		object = result[0];
 	}

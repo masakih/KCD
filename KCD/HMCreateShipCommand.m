@@ -83,8 +83,7 @@
 																  error:NULL
 														predicateFormat:@"kDockId = %@", @([[self.arguments valueForKey:@"api_kdock_id"] integerValue])];
 		if([kenzomarks count] == 0) {
-			newObejct = [NSEntityDescription insertNewObjectForEntityForName:@"KenzoMark"
-													  inManagedObjectContext:[lds managedObjectContext]];
+			newObejct = [lds insertNewObjectForEntityForName:@"KenzoMark"];
 		} else {
 			newObejct = kenzomarks[0];
 		}

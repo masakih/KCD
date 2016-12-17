@@ -59,7 +59,6 @@
 	NSString *entityName = @"Quest";
 	
 	HMServerDataStore *serverDataStore = [HMServerDataStore oneTimeEditor];
-	NSManagedObjectContext *managedObjectContext = [serverDataStore managedObjectContext];
 	NSError *error = nil;
 	
 	// 範囲内の任務をいったん遂行中からはずす
@@ -119,8 +118,7 @@
 									  return [value1 compare:value2];
 								  }];
 		if(index == NSNotFound) {
-			object = [NSEntityDescription insertNewObjectForEntityForName:entityName
-												   inManagedObjectContext:managedObjectContext];
+			object = [serverDataStore insertNewObjectForEntityForName:entityName];
 		} else {
 			object = objects[index];
 		}

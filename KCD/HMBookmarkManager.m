@@ -124,8 +124,7 @@ static NSMenu *bookmarkMenu = nil;
 {
 	NSNumber *maxOrder = [self.bookmarksController valueForKeyPath:@"arrangedObjects.@max.order"];
 	
-	HMBookmarkItem *object = [NSEntityDescription insertNewObjectForEntityForName:@"Bookmark"
-														   inManagedObjectContext:self.editorStore.managedObjectContext];
+	HMBookmarkItem *object = [self.editorStore insertNewObjectForEntityForName:@"Bookmark"];
 	object.identifier = [NSString stringWithFormat:@"HMBM%@", [NSDate date]];
 	object.order = @(maxOrder.integerValue + 100);
 

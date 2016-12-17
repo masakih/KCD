@@ -61,9 +61,7 @@
 	}
 	
 	HMLocalDataStore *lds = [HMLocalDataStore oneTimeEditor];
-	NSManagedObjectContext *localStoreContext = [lds managedObjectContext];
-	HMKenzoHistory *newObejct = [NSEntityDescription insertNewObjectForEntityForName:@"KenzoHistory"
-															  inManagedObjectContext:localStoreContext];
+	HMKenzoHistory *newObejct = [lds insertNewObjectForEntityForName:@"KenzoHistory"];
 	newObejct.name = ships[0].name;
 	newObejct.sTypeId = ships[0].stype.id;
 	newObejct.fuel = item1;

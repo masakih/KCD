@@ -25,7 +25,7 @@ static NSMutableArray *registeredCommands = nil;
 
 @interface HMJSONCommand ()
 
-typedef NSManagedObject *(^HMObjectSearcher)(NSString *entityName, NSManagedObjectContext *managedObjectContext, NSArray *objects, NSDictionary *element);
+typedef NSManagedObject *(^HMObjectSearcher)(NSString *entityName, HMServerDataStore *store, NSArray *objects, NSDictionary *element);
 
 
 @property (nonatomic, copy) NSString *argumentsString;
@@ -208,7 +208,7 @@ NSString *keyByDeletingPrefix(NSString *key)
 - (HMObjectSearcher)objectSearcher
 {
     __weak HMJSONCommand *weakSelf = self;
-    HMObjectSearcher p = ^NSManagedObject *(NSString *entityName, NSManagedObjectContext *moc, NSArray *objects, NSDictionary *element) {
+    HMObjectSearcher p = ^NSManagedObject *(NSString *entityName, HMServerDataStore *store, NSArray *objects, NSDictionary *element) {
         NSRange range = NSMakeRange(0, objects.count);
         NSArray<NSString *> *keys = weakSelf.cmpositPrimaryKeys;
         if(!keys) {
@@ -244,8 +244,7 @@ NSString *keyByDeletingPrefix(NSString *key)
         
         NSManagedObject *object = nil;
         if(index == NSNotFound) {
-            object = [NSEntityDescription insertNewObjectForEntityForName:entityName
-                                                   inManagedObjectContext:moc];
+            object = [store insertNewObjectForEntityForName:entityName];
         } else {
             object = objects[index];
         }
@@ -266,7 +265,6 @@ NSString *keyByDeletingPrefix(NSString *key)
     }
     
     HMServerDataStore *serverDataStore = [HMServerDataStore oneTimeEditor];
-    NSManagedObjectContext *managedObjectContext = [serverDataStore managedObjectContext];
     
     NSError *error = nil;
     NSArray *objects = [serverDataStore objectsWithEntityName:entityName
@@ -280,12 +278,12 @@ NSString *keyByDeletingPrefix(NSString *key)
     
     HMObjectSearcher objectSearcher = self.objectSearcher;
     for(NSDictionary *element in api_data) {
-        NSManagedObject *object = objectSearcher(entityName, managedObjectContext, objects, element);
+        NSManagedObject *object = objectSearcher(entityName, serverDataStore, objects, element);
         if(object) {
             [self registerElement:element toObject:object];
         }
     }
-    [self finishOperating:managedObjectContext];
+    [self finishOperating:serverDataStore.managedObjectContext];
 }
 
 

@@ -108,10 +108,8 @@ static HMResourceHistoryManager *sInstance;
 	HMKCBasic *basic = basics[0];
 	
 	HMResourceHistoryDataStore *resourceStore = [HMResourceHistoryDataStore oneTimeEditor];
-	NSManagedObjectContext *moc = resourceStore.managedObjectContext;
 	
-	HMKCResource *newResource = [NSEntityDescription insertNewObjectForEntityForName:@"Resource"
-															  inManagedObjectContext:moc];
+	HMKCResource *newResource = [resourceStore insertNewObjectForEntityForName:@"Resource"];
 	
 	NSDate *now = [NSDate dateWithTimeIntervalSinceNow:0.0];
 	NSCalendarUnit unit = NSCalendarUnitEra | NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute;

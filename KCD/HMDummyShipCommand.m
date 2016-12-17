@@ -29,10 +29,8 @@ static BOOL getShipFlag = 0;
 	if(!getShipFlag) return;
 	
 	HMServerDataStore *serverDataStore = [HMServerDataStore oneTimeEditor];
-	NSManagedObjectContext *managedObjectContext = [serverDataStore managedObjectContext];
 	
-	HMKCShipObject *object = [NSEntityDescription insertNewObjectForEntityForName:@"Ship"
-														   inManagedObjectContext:managedObjectContext];
+	HMKCShipObject *object = [serverDataStore insertNewObjectForEntityForName:@"Ship"];
 	object.id = @(-2);
 	getShipFlag = NO;
 }
