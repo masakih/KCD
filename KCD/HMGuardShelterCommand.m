@@ -94,7 +94,7 @@ NSString *HMGuardShelterCommandDidUpdateGuardExcapeNotification = @"HMGuardShelt
 	NSNumber *guardianID = secondFleet[guardianPosition.integerValue - 6 - 1];
 	
 	
-	NSNumber  *damagedShipPosition = [escape objectForKey:@"api_escape_idx"];
+	NSNumber *damagedShipPosition = [escape objectForKey:@"api_escape_idx"];
 	if([damagedShipPosition isKindOfClass:[NSArray class]]) {
 		damagedShipPosition = [(NSArray *)damagedShipPosition objectAtIndex:0];
 	}

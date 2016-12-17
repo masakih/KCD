@@ -17,12 +17,9 @@
 	NSString *questNo = self.arguments[@"api_quest_id"];
 	if(!questNo || [questNo isKindOfClass:[NSNull class]]) return;
 	
-	
-	NSString *entityName = @"Quest";
-	
 	HMServerDataStore *serverDataStore = [HMServerDataStore oneTimeEditor];	
 	NSError *error = nil;
-	NSArray *objects = [serverDataStore objectsWithEntityName:entityName
+	NSArray<HMKCQuest *> *objects = [serverDataStore objectsWithEntityName:@"Quest"
 														error:&error
 											  predicateFormat:@"%K = %@", @"no", @([questNo integerValue])];
 	
@@ -35,8 +32,7 @@
 		return;
 	}
 	
-	HMKCQuest *quest = objects[0];
-	quest.progress_flag = @NO;
-	quest.state = @1;
+	objects[0].progress_flag = @NO;
+	objects[0].state = @1;
 }
 @end

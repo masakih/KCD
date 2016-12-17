@@ -43,13 +43,12 @@
     
     [rIds enumerateObjectsUsingBlock:^(NSString * _Nonnull rId, NSUInteger idx, BOOL * _Nonnull stop) {
         NSError *error = nil;
-        NSArray *airBases = [store objectsWithEntityName:@"AirBase"
+        NSArray<HMKCAirBase *> *airBases = [store objectsWithEntityName:@"AirBase"
                                          sortDescriptors:nil
                                                    error:&error
                                          predicateFormat:@"area_id == %@ AND rid == %@", @(areaId.integerValue), @(rId.integerValue)];
         if(airBases.count == 0) { return; }
-        HMKCAirBase *airBase = airBases[0];
-        airBase.action_kind = @(actionKinds[idx].integerValue);
+        airBases[0].action_kind = @(actionKinds[idx].integerValue);
     }];
 }
 @end

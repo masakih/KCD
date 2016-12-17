@@ -36,13 +36,12 @@
     
     NSString *areaId = self.arguments[@"api_area_id"];
     NSString *rId = self.arguments[@"api_base_id"];
-    NSArray *airBases = [store objectsWithEntityName:@"AirBase"
-                                     sortDescriptors:nil
-                                               error:&error
-                                     predicateFormat:@"area_id == %@ AND rid == %@", @(areaId.integerValue), @(rId.integerValue)];
+    NSArray<HMKCAirBase *> *airBases = [store objectsWithEntityName:@"AirBase"
+                                                    sortDescriptors:nil
+                                                              error:&error
+                                                    predicateFormat:@"area_id == %@ AND rid == %@", @(areaId.integerValue), @(rId.integerValue)];
     if(airBases.count == 0) { return; }
     
-    HMKCAirBase *airBase = airBases[0];
-    airBase.name = self.arguments[@"api_name"];
+    airBases[0].name = self.arguments[@"api_name"];
 }
 @end
