@@ -121,26 +121,24 @@
 	return NO;
 }
 
-- (void)finishOperating:(NSManagedObjectContext *)moc
+- (void)finishOperating:(HMCoreDataManager *)store
 {
 	// getshipの時は取得した艦娘の装備のみのデータのため
 	if([self.api isEqualToString:@"/kcsapi/api_req_kousyou/getship"]) {
 		return;
 	}
-	
-	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"SlotItem"];
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"NOT id IN %@", self.ids];
-	[request setPredicate:predicate];
-	
+		
 	NSError *error = nil;
-	NSArray *array = [moc executeFetchRequest:request error:&error];
+	NSArray *array = [store objectsWithEntityName:@"SlotItem"
+                                            error:&error
+                                  predicateFormat:@"NOT id IN %@", self.ids];
 	if(error) {
 		NSLog(@"HOGEEEEE");
 		return;
 	}
 	
 	for(id obj in array) {
-		[moc deleteObject:obj];
+		[store deleteObject:obj];
 	}
 }
 

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #import "HMAPIResponse.h"
-
+#import "HMCoreDataManager.h"
 
 @interface HMJSONCommand : NSObject
 
@@ -39,6 +39,8 @@
 @property (readonly) NSArray *ignoreKeys;
 @property (readonly) NSString *dataKey;
 
+@property (readonly) Class coreDataManagerClass;    // default is HMServerDataStore.
+
 
 - (void)commitJSONToEntityNamed:(NSString *)entityName;
 
@@ -52,7 +54,7 @@
 - (BOOL)handleExtraValue:(id)value forKey:(NSString *)key toObject:(NSManagedObject *)object;
 
 // データ登録後の処理を行う
-- (void)finishOperating:(NSManagedObjectContext *)moc;
+- (void)finishOperating:(HMCoreDataManager *)store;
 
 - (void)setValueIfNeeded:(id)value toObject:(id)object forKey:(NSString *)key;
 

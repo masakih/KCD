@@ -25,7 +25,7 @@ static NSMutableArray *registeredCommands = nil;
 
 @interface HMJSONCommand ()
 
-typedef NSManagedObject *(^HMObjectSearcher)(NSString *entityName, HMServerDataStore *store, NSArray *objects, NSDictionary *element);
+typedef NSManagedObject *(^HMObjectSearcher)(NSString *entityName, HMCoreDataManager *store, NSArray *objects, NSDictionary *element);
 
 
 @property (nonatomic, copy) NSString *argumentsString;
@@ -143,6 +143,11 @@ NSString *keyByDeletingPrefix(NSString *key)
 {
 	return @"id";
 }
+
+- (Class)coreDataManagerClass
+{
+    return [HMServerDataStore class];
+}
 - (void)setValueIfNeeded:(id)value toObject:(id)object forKey:(NSString *)key
 {
 	id oldValue = [object valueForKey:key];
@@ -208,7 +213,7 @@ NSString *keyByDeletingPrefix(NSString *key)
 - (HMObjectSearcher)objectSearcher
 {
     __weak HMJSONCommand *weakSelf = self;
-    HMObjectSearcher p = ^NSManagedObject *(NSString *entityName, HMServerDataStore *store, NSArray *objects, NSDictionary *element) {
+    HMObjectSearcher p = ^NSManagedObject *(NSString *entityName, HMCoreDataManager *store, NSArray *objects, NSDictionary *element) {
         NSRange range = NSMakeRange(0, objects.count);
         NSArray<NSString *> *keys = weakSelf.cmpositPrimaryKeys;
         if(!keys) {
@@ -264,10 +269,10 @@ NSString *keyByDeletingPrefix(NSString *key)
         return;
     }
     
-    HMServerDataStore *serverDataStore = [HMServerDataStore oneTimeEditor];
+    HMCoreDataManager *store = [self.coreDataManagerClass oneTimeEditor];
     
     NSError *error = nil;
-    NSArray *objects = [serverDataStore objectsWithEntityName:entityName
+    NSArray *objects = [store objectsWithEntityName:entityName
                                               sortDescriptors:self.sortDescriptors
                                                     predicate:nil
                                                         error:&error];
@@ -278,12 +283,12 @@ NSString *keyByDeletingPrefix(NSString *key)
     
     HMObjectSearcher objectSearcher = self.objectSearcher;
     for(NSDictionary *element in api_data) {
-        NSManagedObject *object = objectSearcher(entityName, serverDataStore, objects, element);
+        NSManagedObject *object = objectSearcher(entityName, store, objects, element);
         if(object) {
             [self registerElement:element toObject:object];
         }
     }
-    [self finishOperating:serverDataStore.managedObjectContext];
+    [self finishOperating:store];
 }
 
 
@@ -307,7 +312,7 @@ NSString *keyByDeletingPrefix(NSString *key)
 {
 	return NO;
 }
-- (void)finishOperating:(NSManagedObjectContext *)moc
+- (void)finishOperating:(HMCoreDataManager *)store
 {
 	
 }

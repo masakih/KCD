@@ -271,34 +271,26 @@ static BOOL isFewShipUpdateAPI(NSString *api)
 	
 	return NO;
 }
-- (void)finishOperating:(NSManagedObjectContext *)moc
+- (void)finishOperating:(HMCoreDataManager *)store
 {
 	// ship3の時は1隻のみのデータアップデートがあるため
 	// getshipの時は取得した1隻のみのデータのため
 	if(isFewShipUpdateAPI(self.api)) {
 		return;
 	}
-	
-	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Ship"];
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"NOT id IN %@", self.ids];
-	[request setPredicate:predicate];
-	
-	NSError *error = nil;
-	NSArray *array = [moc executeFetchRequest:request error:&error];
-	if(error) {
-		NSLog(@"HOGEEEEE");
+    
+    NSError *error = nil;
+    NSArray *array = [store objectsWithEntityName:@"Ship"
+                                            error:&error
+                                  predicateFormat:@"NOT id IN %@", self.ids];
+    if(error) {
+        NSLog(@"HOGEEEEE");
 		return;
 	}
 	
 	for(id obj in array) {
-		[moc deleteObject:obj];
+		[store deleteObject:obj];
 	}
-	
-//	if(array.count != 0) {
-//		NSLog(@"%ld Objects deleted.", array.count);
-//	}
-//	
-//	NSLog(@"updated count -> %ld\ndeleted -> %@", [[moc updatedObjects] count], [moc deletedObjects]);
 }
 
 @end
