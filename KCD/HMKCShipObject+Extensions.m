@@ -385,6 +385,36 @@ static NSArray *levelUpExps = nil;
 	
 	return array;
 }
+- (NSArray *)jetFighter
+{
+    static NSArray *array = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        array = @[@56];
+    });
+    
+    return array;
+}
+- (NSArray *)jetBomberTypes
+{
+    static NSArray *array = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        array = @[@57];
+    });
+    
+    return array;
+}
+- (NSArray *)jetAttacker
+{
+    static NSArray *array = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        array = @[@58];
+    });
+    
+    return array;
+}
 - (NSInteger)extraSeikuWithSlotIndex:(NSUInteger)index
 {
 	const CGFloat fighterBonus[] = {0, 0, 2, 5, 9, 14, 14, 22};
@@ -392,6 +422,9 @@ static NSArray *levelUpExps = nil;
 	const CGFloat attackerBonus[] = {0, 0, 0, 0, 0, 0, 0, 0};
 	const CGFloat floatplaneBomberBonus[] = {0, 0, 1, 1, 1, 3, 3, 6};
 	const CGFloat floatplaneFighterBonus[] = {0, 0, 2, 5, 9, 14, 14, 22};
+//    const CGFloat jetFighterBonus[] = {0, 0, 0, 0, 0, 0, 0, 0}; 未実装
+    const CGFloat jetBomberBonus[] = {0, 0, 0, 0, 0, 0, 0, 0};
+//    const CGFloat jetAttackerBonus[] = {0, 0, 0, 0, 0, 0, 0, 0}; 未実装
 	//            sqrt 0, 1,     2.5,   4,     5.5,   7,     8.5,   10
 	const CGFloat bonus[] = {0, 1.000, 1.581, 2.000, 2.345, 2.645, 2.915, 3.162};
 	
@@ -424,6 +457,9 @@ static NSArray *levelUpExps = nil;
 	if([self.floatplaneFighterTypes containsObject:type2]) {
 		typeBonus = floatplaneFighterBonus;
 	}
+    if([self.jetBomberTypes containsObject:type2]) {
+        typeBonus = jetBomberBonus;
+    }
 	if(!typeBonus) return 0.0;
 	
 	extraSeiku += typeBonus[airLevel] + bonus[airLevel];
@@ -534,7 +570,7 @@ static NSArray *levelUpExps = nil;
 	static NSArray *array = nil;
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
-		array = @[@6, @7, @8, @9, @10, @11, @25, @26, @41, @45];
+		array = @[@6, @7, @8, @9, @10, @11, @25, @26, @41, @45, @56, @57, @58, @59];
 	});
 	
 	return array;
