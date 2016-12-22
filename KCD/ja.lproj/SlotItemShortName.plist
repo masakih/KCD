@@ -2,13 +2,45 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>37</key>
+	<string>7.7</string>
+	<key>38</key>
+	<string>12.7</string>
+	<key>39</key>
+	<string>25連</string>
+	<key>40</key>
+	<string>25三</string>
 	<key>42</key>
 	<string>修理</string>
 	<key>43</key>
 	<string>女神</string>
+	<key>49</key>
+	<string>25単</string>
+	<key>51</key>
+	<string>噴進</string>
+	<key>72</key>
+	<string>バル</string>
+	<key>73</key>
+	<string>バル</string>
+	<key>84</key>
+	<string>Flak</string>
+	<key>85</key>
+	<string>M42</string>
+	<key>92</key>
+	<string>毘式</string>
+	<key>131</key>
+	<string>集中</string>
+	<key>136</key>
+	<string>プリ</string>
 	<key>145</key>
 	<string>糧食</string>
 	<key>150</key>
 	<string>秋缶</string>
+	<key>173</key>
+	<string>Bof</string>
+	<key>191</key>
+	<string>QF</string>
+	<key>204</key>
+	<string>艦本</string>
 </dict>
 </plist>

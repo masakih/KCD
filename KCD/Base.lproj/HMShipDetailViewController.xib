@@ -1,8 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
         <capability name="box content view" minToolsVersion="7.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="HMShipDetailViewController">
@@ -25,7 +27,7 @@
                 <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="5At-Ts-Skb"/>
             </connections>
         </objectController>
-        <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" id="SH2-fF-cTe">
+        <box autoresizesSubviews="NO" boxType="custom" borderType="line" title="Box" titlePosition="noTitle" id="SH2-fF-cTe">
             <rect key="frame" x="0.0" y="0.0" width="267" height="129"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <view key="contentView" id="jQ9-k8-Ur5">
@@ -415,7 +417,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" id="6Is-2V-XYS" customClass="HMSlotItemFrameView">
+                    <box autoresizesSubviews="NO" boxType="custom" borderType="line" title="Box" titlePosition="noTitle" id="6Is-2V-XYS" customClass="HMSlotItemFrameView">
                         <rect key="frame" x="68" y="4" width="191" height="69"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView" id="rQ9-Xi-Ego">
@@ -500,7 +502,6 @@
                                     </textFieldCell>
                                     <connections>
                                         <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont11" id="mFd-Yt-QLh"/>
-                                        <binding destination="LyA-xZ-gxq" name="textColor" keyPath="selection.planeString3Color" id="Chy-2e-Lmi"/>
                                         <binding destination="LyA-xZ-gxq" name="value" keyPath="selection.planeString3" id="xIK-54-52H">
                                             <dictionary key="options">
                                                 <string key="NSNoSelectionPlaceholder" base64-UTF8="YES">
@@ -508,6 +509,7 @@ IA
 </string>
                                             </dictionary>
                                         </binding>
+                                        <binding destination="LyA-xZ-gxq" name="textColor" keyPath="selection.planeString3Color" id="Chy-2e-Lmi"/>
                                     </connections>
                                 </textField>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="WhO-fO-H5s">
@@ -520,7 +522,6 @@ IA
                                     </textFieldCell>
                                     <connections>
                                         <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont11" id="kul-5E-0xA"/>
-                                        <binding destination="LyA-xZ-gxq" name="textColor" keyPath="selection.planeString2Color" id="buT-xh-Ibg"/>
                                         <binding destination="LyA-xZ-gxq" name="value" keyPath="selection.planeString2" id="uFu-EH-LYM">
                                             <dictionary key="options">
                                                 <string key="NSNoSelectionPlaceholder" base64-UTF8="YES">
@@ -528,6 +529,7 @@ IA
 </string>
                                             </dictionary>
                                         </binding>
+                                        <binding destination="LyA-xZ-gxq" name="textColor" keyPath="selection.planeString2Color" id="buT-xh-Ibg"/>
                                     </connections>
                                 </textField>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="RcS-au-uGU">
@@ -540,7 +542,6 @@ IA
                                     </textFieldCell>
                                     <connections>
                                         <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont11" id="UGQ-Lq-cIy"/>
-                                        <binding destination="LyA-xZ-gxq" name="textColor" keyPath="selection.planeString1Color" id="fQG-fy-OXE"/>
                                         <binding destination="LyA-xZ-gxq" name="value" keyPath="selection.planeString1" id="lL8-wA-VaA">
                                             <dictionary key="options">
                                                 <string key="NSNoSelectionPlaceholder" base64-UTF8="YES">
@@ -548,6 +549,7 @@ IA
 </string>
                                             </dictionary>
                                         </binding>
+                                        <binding destination="LyA-xZ-gxq" name="textColor" keyPath="selection.planeString1Color" id="fQG-fy-OXE"/>
                                     </connections>
                                 </textField>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Fv0-MW-cv7">
@@ -560,7 +562,6 @@ IA
                                     </textFieldCell>
                                     <connections>
                                         <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont11" id="IHy-kj-CyW"/>
-                                        <binding destination="LyA-xZ-gxq" name="textColor" keyPath="selection.planeString0Color" id="qi5-CC-ewP"/>
                                         <binding destination="LyA-xZ-gxq" name="value" keyPath="selection.planeString0" id="uGt-PK-qg0">
                                             <dictionary key="options">
                                                 <string key="NSNoSelectionPlaceholder" base64-UTF8="YES">
@@ -568,6 +569,7 @@ IA
 </string>
                                             </dictionary>
                                         </binding>
+                                        <binding destination="LyA-xZ-gxq" name="textColor" keyPath="selection.planeString0Color" id="qi5-CC-ewP"/>
                                     </connections>
                                 </textField>
                             </subviews>
@@ -593,11 +595,11 @@ IA
                             </binding>
                         </connections>
                     </textField>
-                    <box autoresizesSubviews="NO" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" id="49N-EY-dSN">
-                        <rect key="frame" x="229" y="74" width="30" height="16"/>
+                    <box autoresizesSubviews="NO" misplaced="YES" boxType="custom" borderType="line" title="Box" titlePosition="noTitle" id="49N-EY-dSN">
+                        <rect key="frame" x="227" y="74" width="32" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView" id="uEK-HG-wX8">
-                            <rect key="frame" x="1" y="1" width="28" height="14"/>
+                            <rect key="frame" x="1" y="1" width="30" height="14"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="3He-Ij-QMC">
