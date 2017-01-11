@@ -11,6 +11,8 @@
 typedef NS_ENUM(NSInteger, SokuType) {
 	kSlow = 5,
 	kFast = 10,
+    kFaster = 15,
+    kFastest = 20,
 };
 
 @implementation HMSokuTransformer
@@ -43,6 +45,12 @@ typedef NS_ENUM(NSInteger, SokuType) {
 		case kFast:
 			result = NSLocalizedString(@"Fast", @"Speed, fast");
 			break;
+        case kFaster:
+            result = NSLocalizedString(@"Faster", @"Speed, faster");
+            break;
+        case kFastest:
+            result = NSLocalizedString(@"Fastest", @"Speed, fastest");
+            break;
 	}
 	
 	return result;

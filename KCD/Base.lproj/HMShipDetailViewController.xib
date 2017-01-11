@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -339,15 +338,15 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="e8z-uk-5Kj">
-                        <rect key="frame" x="160" y="92" width="30" height="14"/>
+                        <rect key="frame" x="160" y="92" width="35" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="高速" id="Olc-Xu-clL">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="高速＋" id="Olc-Xu-clL">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                         <connections>
-                            <binding destination="LyA-xZ-gxq" name="value" keyPath="selection.master_ship.soku" id="M9h-T3-rlj">
+                            <binding destination="LyA-xZ-gxq" name="value" keyPath="selection.soku" id="Bba-EJ-qC6">
                                 <dictionary key="options">
                                     <string key="NSNoSelectionPlaceholder">-</string>
                                     <string key="NSValueTransformerName">HMSokuTransformer</string>

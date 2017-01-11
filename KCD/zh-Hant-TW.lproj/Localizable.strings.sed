@@ -30,7 +30,9 @@ s/Long/長/2
 s/Middle/中/2
 s/Short/短/2
 s/Slow/低速/2
-s/Fast/高速/2
+s/Fast"/高速"/2
+s/Faster"/高速＋"/2
+s/Fastest"/最速"/2
 s/Deleting caches.../刪除緩存.../2
 s/Hide Combined View/隱藏聯合艦隊視窗/2
 s/Show Combined View/顯示聯合艦隊視窗/2
