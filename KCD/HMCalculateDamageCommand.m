@@ -639,8 +639,12 @@ NSInteger damageControlIfPossible(NSInteger nowhp, HMKCShipObject *ship)
     }
 	
 	if([self.api isEqualToString:@"/kcsapi/api_req_combined_battle/midnight_battle"]
-	   || [self.api isEqualToString:@"/kcsapi/api_req_combined_battle/sp_midnight"]
-       || [self.api isEqualToString:@"/kcsapi/api_req_combined_battle/ec_midnight_battle"]) {
+       || [self.api isEqualToString:@"/kcsapi/api_req_combined_battle/sp_midnight"]) {
+        [self calculateMidnightBattle];
+        return;
+    }
+    if([self.api isEqualToString:@"/kcsapi/api_req_combined_battle/ec_midnight_battle"]) {
+        self.battleType = typeCombinedWater;
 		[self calculateMidnightBattle];
 		return;
 	}
