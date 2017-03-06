@@ -46,7 +46,7 @@ fileprivate func parseParameter(_ request: URLRequest) -> [String: String]? {
         .map { $0.components(separatedBy: "=") }
         .filter { $0.count == 2 }
         .map { ($0[0], $0[1]) }
-        .reduce([String:String]()) { $0.apended($1) }
+        .reduce([String: String]()) { $0.apended($1) }
 }
 
 struct APIResponse {
