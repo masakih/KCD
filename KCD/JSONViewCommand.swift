@@ -31,7 +31,12 @@ class JSONViewCommand: JSONCommand {
     }
     
     override func execute() {
-        command.execute()
+        do {
+            try command.execute()
+        }
+        catch {
+            print("JSONTracker Cought Exception -> \(error)")
+        }
         
         guard let _ = jsonTree else { return print("jsonTree is nil.") }
         guard let _ = recieveDate else { return print("recieveDate is nil.") }

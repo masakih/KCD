@@ -23,5 +23,5 @@ class JSONCommand {
     
     var dataKey: String { return "api_data" }
 
-    func execute() {}
+    func execute() throws {}
 }

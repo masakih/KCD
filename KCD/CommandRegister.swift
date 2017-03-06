@@ -56,35 +56,27 @@ class CommandRegister {
         registerClass(AirCorpsChangeNameCommand.self)
     }
     
-    class func command(for response: APIResponse) throws -> JSONCommand {
-        var command: JSONCommand? = nil
-        if !response.success {
-            command = FailedCommand(apiResponse: response)
-        }
-        for c in registeredClasses {
-            if c.canExecuteAPI(response.api) {
-                command = c.init(apiResponse: response)
-                break
+    class func command(for response: APIResponse) -> JSONCommand {
+        func concreteCommand(for response: APIResponse) -> JSONCommand {
+            if !response.success {
+                return FailedCommand(apiResponse: response)
             }
-        }
-        
-        if command == nil {
+            for c in registeredClasses {
+                if c.canExecuteAPI(response.api) {
+                    return c.init(apiResponse: response)
+                }
+            }
             if IgnoreCommand.canExecuteAPI(response.api) {
-                command = IgnoreCommand(apiResponse: response)
+                return IgnoreCommand(apiResponse: response)
             }
+            return UnknownComand(apiResponse: response)
         }
-        if command == nil {
-            command = UnknownComand(apiResponse: response)
-        }
-        
-        guard var validCommand = command
-            else { throw JSONCommandError.CanNotFindCommand }
         
         #if ENABLE_JSON_LOG
-            validCommand = JSONViewCommand(apiResponse: response, command: validCommand)
+            return JSONViewCommand(apiResponse: response, command: concreteCommand(for: response))
+        #else
+            return concreteCommand(for: response)
         #endif
-        
-        return validCommand
     }
     class func registerClass(_ commandClass: JSONCommand.Type) {
         if registeredClasses.contains(where: { $0 == commandClass }) { return }
