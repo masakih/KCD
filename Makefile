@@ -9,13 +9,13 @@ APP_NAME=$(BUILD_PATH)/$(DEPLOYMENT)/$(PRODUCT_NAME)
 SCHEME=KCD
 INFO_PLIST=KCD/KCD-Info.plist
 
-LOCALIZE_FILES=KCD/HMBroserWindowController.m KCD/HMServerDataStore.m KCD/HMKenzoDockStatus.m \
-KCD/HMMissionStatus.m KCD/HMNyukyoDockStatus.m KCD/HMCreateSlotItemCommand.m KCD/HMAppDelegate.m \
-KCD/HMStoreCreateSlotItemHistoryCommand.m KCD/HMDocksViewController.m KCD/HMSlotItemWindowController.m \
-KCD/HMBroserWindowController.m KCD/HMExternalBrowserWindowController.m KCD/HMLengTransformer.m \
-KCD/HMSokuTransformer.m KCD/HMGameViewController.m KCD/HMUpgradableShipsWindowController.m \
-KCD/HMScreenshotListWindowController.m KCD/HMHistoryWindowController.m KCD/HMBridgeViewController.m \
-KCD/HMTimeSignalNotifier.m KCD/HMActinKindTransformer.m KCD/HMAirbasePlaneStateTransformer.m
+LOCALIZE_FILES=KCD/BroserWindowController.m KCD/ServerDataStore.m KCD/KenzoDockStatus.m \
+KCD/MissionStatus.m KCD/NyukyoDockStatus.m KCD/CreateSlotItemCommand.m KCD/AppDelegate.m \
+KCD/StoreCreateSlotItemHistoryCommand.m KCD/DocksViewController.m KCD/SlotItemWindowController.m \
+KCD/BroserWindowController.m KCD/ExternalBrowserWindowController.m KCD/LengTransformer.m \
+KCD/SokuTransformer.m KCD/GameViewController.m KCD/UpgradableShipsWindowController.m \
+KCD/ScreenshotListWindowController.m KCD/HistoryWindowController.m KCD/BridgeViewController.m \
+KCD/TimeSignalNotifier.m KCD/ActinKindTransformer.m KCD/AirbasePlaneStateTransformer.m
 
 VER_CMD=grep -A1 'CFBundleShortVersionString' $(INFO_PLIST) | tail -1 | tr -d "'\t</string>" 
 VERSION=$(shell $(VER_CMD))
@@ -56,7 +56,7 @@ updateRevision:
 restoreInfoPlist:
 	if [ -f $(INFO_PLIST).bak ] ; then mv -f $(INFO_PLIST).bak $(INFO_PLIST) ; fi
 
-build/Release/EquipmentEnhancementListBuilder: EquipmentEnhancementListBuilder/main.m KCD/HMEnhancementListItem.m
+build/Release/EquipmentEnhancementListBuilder: EquipmentEnhancementListBuilder/main.swift KCD/EnhancementListItem.swift
 	xcodebuild -derivedDataPath=build -configuration $(DEPLOYMENT) -target EquipmentEnhancementListBuilder
 
 buildEquipmentEnhancementList: build/Release/EquipmentEnhancementListBuilder

@@ -8,7 +8,7 @@
         <capability name="the Touch Bar" message="Use a version of macOS with Touch Bar support." minToolsVersion="8.1" minSystemVersion="10.12.1" requiredIntegratedClassName="NSTouchBar"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="HMBroserWindowController">
+        <customObject id="-2" userLabel="File's Owner" customClass="BroserWindowController">
             <connections>
                 <outlet property="mainTouchBar" destination="KO5-NQ-mYI" id="pZh-IT-1V9"/>
                 <outlet property="shipTypeButton" destination="VCN-k6-mCb" id="gST-RT-3t0"/>

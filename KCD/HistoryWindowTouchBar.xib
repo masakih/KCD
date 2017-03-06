@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2659" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="7104"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="the Touch Bar" message="Use a version of macOS with Touch Bar support." minToolsVersion="8.1" minSystemVersion="10.12.1" requiredIntegratedClassName="NSTouchBar"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="HMHistoryWindowController">
+        <customObject id="-2" userLabel="File's Owner" customClass="HistoryWindowController" customModule="KCD">
             <connections>
                 <outlet property="myTouchBar" destination="6zi-UH-Fiy" id="0fR-6K-oG1"/>
                 <outlet property="searchButton" destination="zwm-UM-SpA" id="ips-An-Ehr"/>
@@ -40,7 +40,7 @@
                 <touchBarItem id="X83-Wd-05k">
                     <viewController key="viewController" id="Lek-zg-1B1">
                         <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zwm-UM-SpA">
-                            <rect key="frame" x="0.0" y="0.0" width="144" height="30"/>
+                            <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
                             <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSTouchBarSearchTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uOd-QH-aXS">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -56,6 +56,6 @@
         </touchBar>
     </objects>
     <resources>
-        <image name="NSTouchBarSearchTemplate" width="128" height="128"/>
+        <image name="NSTouchBarSearchTemplate" width="19" height="30"/>
     </resources>
 </document>

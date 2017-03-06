@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="NSCollectionViewItem">
+            <connections>
+                <outlet property="view" destination="TXJ-3S-E8P" id="4dS-uA-XCB"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <collectionViewItem nibName="ScreenshotCollectionViewItem" id="aXc-ZY-djk" customClass="ScreenshotCollectionViewItem" customModule="KCD">
+            <connections>
+                <outlet property="imageBox" destination="159-rU-lXv" id="Dp7-cA-1X3"/>
+                <outlet property="imageView" destination="a8h-Hh-NFt" id="WqX-Hk-lhg"/>
+                <outlet property="nameBox" destination="Wov-f9-29q" id="142-Z6-oTQ"/>
+                <outlet property="nameField" destination="Kbm-fL-Jhl" id="hsL-Ne-PNy"/>
+                <outlet property="view" destination="TXJ-3S-E8P" id="oB5-hz-wI3"/>
+            </connections>
+        </collectionViewItem>
+        <menu id="Uqh-QP-sOx">
+            <items>
+                <menuItem title="Finderに表示" id="SHB-Do-sa8">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="revealInFinder:" target="-1" id="oZH-HP-xCa"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="削除" id="AAV-L8-Pec">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="delete:" target="-1" id="zlz-si-dTB"/>
+                    </connections>
+                </menuItem>
+            </items>
+        </menu>
+        <box boxType="custom" cornerRadius="4" title="Box" id="TXJ-3S-E8P">
+            <rect key="frame" x="0.0" y="0.0" width="255" height="249"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <view key="contentView" id="eB8-2u-bYG">
+                <rect key="frame" x="1" y="1" width="253" height="247"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <box fixedFrame="YES" boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="Wov-f9-29q">
+                        <rect key="frame" x="5" y="24" width="243" height="17"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                        <view key="contentView" ambiguous="YES" id="2EB-YS-gTo">
+                            <rect key="frame" x="1" y="1" width="241" height="15"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kbm-fL-Jhl">
+                                    <rect key="frame" x="-1" y="-1" width="243" height="17"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Label" usesSingleLineMode="YES" id="oh8-Nq-qD6">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                    <connections>
+                                        <binding destination="aXc-ZY-djk" name="value" keyPath="representedObject.name" id="HwD-6i-9H2"/>
+                                    </connections>
+                                </textField>
+                            </subviews>
+                        </view>
+                        <color key="borderColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </box>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="haC-Q0-wzk">
+                        <rect key="frame" x="3" y="5" width="247" height="14"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                        <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Label" usesSingleLineMode="YES" id="lbH-Tx-LUi">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <binding destination="aXc-ZY-djk" name="value" keyPath="representedObject.creationDateString" id="qQI-5x-ebm"/>
+                        </connections>
+                    </textField>
+                    <box fixedFrame="YES" boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="159-rU-lXv">
+                        <rect key="frame" x="5" y="48" width="243" height="194"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <view key="contentView" ambiguous="YES" id="IsW-Ak-xpr">
+                            <rect key="frame" x="1" y="1" width="241" height="192"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a8h-Hh-NFt">
+                                    <rect key="frame" x="-2" y="-2" width="243" height="194"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="XFd-y1-xps"/>
+                                    <connections>
+                                        <binding destination="aXc-ZY-djk" name="valueURL" keyPath="representedObject.url" id="GrT-re-OWz"/>
+                                    </connections>
+                                </imageView>
+                            </subviews>
+                        </view>
+                        <color key="borderColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </box>
+                </subviews>
+            </view>
+            <point key="canvasLocation" x="688.5" y="-246.5"/>
+        </box>
+        <userDefaultsController representsSharedInstance="YES" id="PO3-Gb-nyE"/>
+    </objects>
+</document>

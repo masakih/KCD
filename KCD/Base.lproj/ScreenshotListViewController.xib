@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="ScreenshotListViewController">
+            <connections>
+                <outlet property="collectionView" destination="qg6-X7-FWD" id="Ojq-hC-5x0"/>
+                <outlet property="screenshotsController" destination="iuk-Lx-Dxz" id="ydd-tm-UeM"/>
+                <outlet property="view" destination="c22-O7-iKe" id="EjK-Hp-A4z"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <arrayController id="iuk-Lx-Dxz">
+            <connections>
+                <binding destination="-2" name="filterPredicate" keyPath="representedObject.filterPredicate" id="fn0-ws-5GV"/>
+                <binding destination="-2" name="contentArray" keyPath="representedObject.screenshots" id="O3C-i5-4jJ"/>
+                <binding destination="-2" name="selectionIndexes" keyPath="representedObject.selectedIndexes" previousBinding="fn0-ws-5GV" id="bnU-Aj-PDq"/>
+                <binding destination="-2" name="sortDescriptors" keyPath="representedObject.sortDescriptors" previousBinding="bnU-Aj-PDq" id="NIu-Rc-Grr"/>
+            </connections>
+        </arrayController>
+        <customView id="c22-O7-iKe">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="594"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7U1-Yk-pgg">
+                    <rect key="frame" x="0.0" y="33" width="480" height="561"/>
+                    <clipView key="contentView" drawsBackground="NO" id="Zbz-bV-Frt">
+                        <rect key="frame" x="1" y="1" width="478" height="559"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView selectable="YES" allowsEmptySelection="NO" allowsMultipleSelection="YES" id="qg6-X7-FWD" customClass="CollectionView" customModule="KCD">
+                                <rect key="frame" x="0.0" y="0.0" width="478" height="559"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="trf-hX-M9X">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <edgeInsets key="sectionInset" left="8" right="8" top="8" bottom="8"/>
+                                </collectionViewFlowLayout>
+                                <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <connections>
+                                    <binding destination="iuk-Lx-Dxz" name="content" keyPath="arrangedObjects" id="V8Q-op-clC"/>
+                                    <outlet property="delegate" destination="-2" id="duc-gn-uxz"/>
+                                    <outlet property="menu" destination="YP2-M6-2WJ" id="uUA-fj-mSm"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </clipView>
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="EkW-lH-Xqi">
+                        <rect key="frame" x="1" y="144" width="233" height="15"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="zfy-z5-JwX">
+                        <rect key="frame" x="234" y="1" width="15" height="143"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                </scrollView>
+                <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yAb-DI-6ut">
+                    <rect key="frame" x="207" y="6" width="267" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="17" id="hwt-Fn-wJs"/>
+                    </constraints>
+                    <sliderCell key="cell" continuous="YES" refusesFirstResponder="YES" state="on" alignment="left" minValue="0.20000000000000001" maxValue="0.90000000000000002" doubleValue="0.90000000000000002" tickMarkPosition="above" sliderType="linear" id="hO7-4z-A2O"/>
+                    <connections>
+                        <binding destination="-2" name="maxValue" keyPath="maxZoom" id="vam-gz-oQq"/>
+                        <binding destination="-2" name="value" keyPath="zoom" previousBinding="vam-gz-oQq" id="2mY-1p-K3E"/>
+                    </connections>
+                </slider>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vkb-uY-8tN">
+                    <rect key="frame" x="6" y="8" width="197" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="193" id="Dzl-ia-8qS"/>
+                        <constraint firstAttribute="height" constant="17" id="guK-c8-dLQ"/>
+                    </constraints>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="rWY-Vt-N4T">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="iuk-Lx-Dxz" name="displayPatternValue1" keyPath="arrangedObjects.@count" id="An8-PN-bAR">
+                            <dictionary key="options">
+                                <string key="NSDisplayPattern">%{value1}@のスクリーンショット</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="vkb-uY-8tN" secondAttribute="bottom" constant="8" id="PfF-7V-b9m"/>
+                <constraint firstItem="vkb-uY-8tN" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="8" id="U2X-gh-3E4"/>
+                <constraint firstAttribute="trailing" secondItem="7U1-Yk-pgg" secondAttribute="trailing" id="Wx3-wj-ptE"/>
+                <constraint firstItem="7U1-Yk-pgg" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="Yix-uG-z25"/>
+                <constraint firstItem="7U1-Yk-pgg" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="Zdh-8d-J9U"/>
+                <constraint firstAttribute="trailing" secondItem="yAb-DI-6ut" secondAttribute="trailing" constant="8" id="aGW-zm-Jyq"/>
+                <constraint firstAttribute="bottom" secondItem="7U1-Yk-pgg" secondAttribute="bottom" constant="33" id="jlB-Hy-hgZ"/>
+                <constraint firstItem="yAb-DI-6ut" firstAttribute="leading" secondItem="vkb-uY-8tN" secondAttribute="trailing" constant="8" id="qnm-O9-zdZ"/>
+                <constraint firstAttribute="bottom" secondItem="yAb-DI-6ut" secondAttribute="bottom" constant="8" id="wQw-rB-Vex"/>
+            </constraints>
+            <point key="canvasLocation" x="72" y="135"/>
+        </customView>
+        <menu id="YP2-M6-2WJ">
+            <items>
+                <menuItem title="Finderに表示" id="eyO-ph-Z9i">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="revealInFinder:" target="-2" id="Tq2-Kn-f2S"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="削除" id="grB-62-VUF">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="delete:" target="-2" id="XSU-hZ-PG3"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="-287" y="128.5"/>
+        </menu>
+    </objects>
+</document>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9532"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="QuestListViewController">
+            <connections>
+                <outlet property="view" destination="Kl6-lo-Q4i" id="KmT-Sb-Wds"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <arrayController mode="entity" entityName="Quest" fetchPredicateFormat="state != 1" editable="NO" automaticallyPreparesContent="YES" automaticallyRearrangesObjects="YES" id="F22-nO-j6e">
+            <connections>
+                <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="db1-Gy-siX"/>
+                <binding destination="-2" name="sortDescriptors" keyPath="sortDesciptors" id="39T-nq-LD0"/>
+            </connections>
+        </arrayController>
+        <scrollView focusRingType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="Kl6-lo-Q4i">
+            <rect key="frame" x="0.0" y="0.0" width="274" height="425"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <clipView key="contentView" drawsBackground="NO" id="wWB-1O-7s9">
+                <rect key="frame" x="1" y="17" width="272" height="407"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" headerView="Rqz-dR-haG" id="HY7-kd-226">
+                        <rect key="frame" x="0.0" y="0.0" width="272" height="407"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <size key="intercellSpacing" width="3" height="2"/>
+                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                        <tableColumns>
+                            <tableColumn width="225" minWidth="225" maxWidth="225" id="ZLy-Yv-ZcC">
+                                <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="作戦名">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                </tableHeaderCell>
+                                <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="DZM-uI-E9q">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                <connections>
+                                    <binding destination="F22-nO-j6e" name="value" keyPath="arrangedObjects.title" id="PU5-di-U50">
+                                        <dictionary key="options">
+                                            <bool key="NSCreatesSortDescriptor" value="NO"/>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </tableColumn>
+                            <tableColumn width="41" minWidth="10" maxWidth="41" id="3hh-X0-4MT">
+                                <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="進捗">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                </tableHeaderCell>
+                                <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="right" title="Text Cell" id="tGB-ju-3YR">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <connections>
+                                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="voc-e7-Wvv"/>
+                                    </connections>
+                                </textFieldCell>
+                                <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                <connections>
+                                    <binding destination="F22-nO-j6e" name="value" keyPath="arrangedObjects.compositStatus" id="ntL-5l-UMh">
+                                        <dictionary key="options">
+                                            <bool key="NSCreatesSortDescriptor" value="NO"/>
+                                            <string key="NSValueTransformerName">QuestProgressTransformer</string>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </tableColumn>
+                        </tableColumns>
+                    </tableView>
+                </subviews>
+                <nil key="backgroundColor"/>
+            </clipView>
+            <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="egE-Yp-zYw">
+                <rect key="frame" x="1" y="119" width="223" height="15"/>
+                <autoresizingMask key="autoresizingMask"/>
+            </scroller>
+            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="Ote-xp-8xc">
+                <rect key="frame" x="224" y="17" width="15" height="102"/>
+                <autoresizingMask key="autoresizingMask"/>
+            </scroller>
+            <tableHeaderView key="headerView" id="Rqz-dR-haG">
+                <rect key="frame" x="0.0" y="0.0" width="272" height="17"/>
+                <autoresizingMask key="autoresizingMask"/>
+            </tableHeaderView>
+            <point key="canvasLocation" x="292" y="367.5"/>
+        </scrollView>
+    </objects>
+</document>

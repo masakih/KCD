@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0800"
+   LastUpgradeVersion = "0820"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -109,11 +109,12 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "NSConstraintBasedLayoutVisualizeMutuallyExclusiveConstraints 1"
+            argument = "-NSConstraintBasedLayoutVisualizeMutuallyExclusiveConstraints 1"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            isEnabled = "NO">
+            argument = "-DebugPrintLevel 2"
+            isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
       <AdditionalOptions>

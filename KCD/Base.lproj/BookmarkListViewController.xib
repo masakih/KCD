@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="BookmarkListViewController">
+            <connections>
+                <outlet property="bookmarkController" destination="k0q-xy-XXR" id="g6t-gz-0fh"/>
+                <outlet property="contextMenu" destination="Q3n-jS-n1E" id="Qcy-s3-LQL"/>
+                <outlet property="popover" destination="mDW-wJ-wBK" id="ncS--vrn"/>
+                <outlet property="tableView" destination="UuT-SX-V20" id="SNP-Fe-ikv"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="305" height="618"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
+            <subviews>
+                <visualEffectView wantsLayer="YES" misplaced="YES" blendingMode="behindWindow" material="light" state="active" id="d5V-Fh-3iq">
+                    <rect key="frame" x="0.0" y="0.0" width="305" height="27"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button verticalHuggingPriority="750" id="7iE-xc-WDA">
+                            <rect key="frame" x="244" y="-2" width="59" height="28"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                            <buttonCell key="cell" type="push" title="閉じる" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2tP-La-LYA">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="smallSystem"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="showBookmark:" target="-1" id="hgX-Af-c7v"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </visualEffectView>
+                <scrollView autohidesScrollers="YES" horizontalLineScroll="22" horizontalPageScroll="10" verticalLineScroll="22" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="SgB-i9-QMI">
+                    <rect key="frame" x="-1" y="27" width="307" height="592"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <clipView key="contentView" drawsBackground="NO" id="RRB-uC-llr">
+                        <rect key="frame" x="1" y="1" width="305" height="590"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView focusRingType="none" appearanceType="vibrantLight" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="18" id="UuT-SX-V20">
+                                <rect key="frame" x="0.0" y="0.0" width="305" height="590"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <size key="intercellSpacing" width="3" height="4"/>
+                                <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                <tableColumns>
+                                    <tableColumn width="302" minWidth="40" maxWidth="1000" id="Djw-Kz-846">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                        </tableHeaderCell>
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="jyQ-wl-Tql">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="k0q-xy-XXR" name="value" keyPath="arrangedObjects.name" id="rHu-Uu-6bR"/>
+                                        </connections>
+                                    </tableColumn>
+                                </tableColumns>
+                                <connections>
+                                    <outlet property="dataSource" destination="-2" id="ZY2-PF-PrX"/>
+                                    <outlet property="delegate" destination="-2" id="eQt-bz-lsL"/>
+                                    <outlet property="menu" destination="Q3n-jS-n1E" id="SMM-Pk-g9K"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <nil key="backgroundColor"/>
+                    </clipView>
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="DtO-aT-4Xo">
+                        <rect key="frame" x="1" y="115.5" width="233" height="16"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="caP-Y9-8W4">
+                        <rect key="frame" x="224" y="17" width="15" height="102"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                </scrollView>
+            </subviews>
+            <point key="canvasLocation" x="232.5" y="356"/>
+        </customView>
+        <arrayController mode="entity" entityName="Bookmark" automaticallyPreparesContent="YES" avoidsEmptySelection="NO" id="k0q-xy-XXR">
+            <connections>
+                <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="vDA-YV-JVF"/>
+            </connections>
+        </arrayController>
+        <popover behavior="t" id="mDW-wJ-wBK"/>
+        <menu id="Q3n-jS-n1E">
+            <items>
+                <menuItem title="編集..." tag="1000" id="Onj-yS-RSu">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="editBookmark:" target="-2" id="ywx-7a-CES"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="Mpw-eP-FJw"/>
+                <menuItem title="削除" tag="5000" id="Jun-Ih-Oad">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="deleteBookmark:" target="-2" id="Fly-Dt-yiU"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="562.5" y="169.5"/>
+        </menu>
+    </objects>
+</document>

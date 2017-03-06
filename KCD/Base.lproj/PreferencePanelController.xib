@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="PreferencePanelController" customModule="KCD">
+            <connections>
+                <outlet property="generalPane" destination="ROt-zH-HCQ" id="NCn-Bk-ZJU"/>
+                <outlet property="notificationPane" destination="mPf-SR-Day" id="API-qC-HZL"/>
+                <outlet property="screenShotSaveDirectoryPopUp" destination="bu3-qp-Qbv" id="CpX-gz-cQc"/>
+                <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="環境設定" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="F0z-JX-Cv5" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="486" height="231"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
+            <view key="contentView" id="se5-gp-TjO">
+                <rect key="frame" x="0.0" y="0.0" width="486" height="231"/>
+                <autoresizingMask key="autoresizingMask"/>
+            </view>
+            <toolbar key="toolbar" implicitIdentifier="5F767803-9ADF-46E3-8348-256ADF7776B0" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconAndLabel" sizeMode="regular" id="kv0-mo-u4v">
+                <allowedToolbarItems>
+                    <toolbarItem implicitItemIdentifier="670A644E-7B01-432A-BFBA-95BB0CD332B3" explicitItemIdentifier="general" label="一般" paletteLabel="一般" tag="1" image="NSPreferencesGeneral" selectable="YES" id="XiW-4k-C1J">
+                        <nil key="toolTip"/>
+                        <connections>
+                            <action selector="didChangeSelection:" target="-2" id="cN1-Vj-LX6"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="36335FC7-17A0-4322-AFE2-2B9BFAE0A1B3" explicitItemIdentifier="notification" label="通知" paletteLabel="通知" tag="2" image="NotificationsPreferences" selectable="YES" id="yfI-KL-48v">
+                        <nil key="toolTip"/>
+                        <connections>
+                            <action selector="didChangeSelection:" target="-2" id="Gxn-PF-5ej"/>
+                        </connections>
+                    </toolbarItem>
+                </allowedToolbarItems>
+                <defaultToolbarItems>
+                    <toolbarItem reference="XiW-4k-C1J"/>
+                    <toolbarItem reference="yfI-KL-48v"/>
+                </defaultToolbarItems>
+            </toolbar>
+            <connections>
+                <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
+            </connections>
+            <point key="canvasLocation" x="591" y="584.5"/>
+        </window>
+        <userDefaultsController representsSharedInstance="YES" id="DTu-dT-pUA"/>
+        <customView id="mPf-SR-Day">
+            <rect key="frame" x="0.0" y="0.0" width="486" height="141"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <userGuides>
+                <userLayoutGuide location="201" affinity="minX"/>
+            </userGuides>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="tlH-Nm-il8">
+                    <rect key="frame" x="18" y="104" width="186" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="通知音を鳴らす：" id="KUF-ch-Mbw">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="g4L-3q-nDD">
+                    <rect key="frame" x="18" y="69" width="186" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="時報前に通知する：" id="Q8p-Km-La7">
+                        <font key="font" size="13" name=".HiraKakuInterface-W3"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button id="HSc-Bc-B00">
+                    <rect key="frame" x="208" y="103" width="48" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="遠征" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="wdw-X4-3nk">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <binding destination="DTu-dT-pUA" name="value" keyPath="values.playFinishMissionSound" id="Gw6-aM-k2V"/>
+                    </connections>
+                </button>
+                <button id="08f-KI-u1l">
+                    <rect key="frame" x="284" y="103" width="87" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="入渠ドック" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="FQU-PU-UhE">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <binding destination="DTu-dT-pUA" name="value" keyPath="values.playFinishNyukyoSound" id="vmX-21-TTu"/>
+                    </connections>
+                </button>
+                <button id="JH5-aR-VeH">
+                    <rect key="frame" x="377" y="102" width="87" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="建造ドック" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="FO7-lH-5xk">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <binding destination="DTu-dT-pUA" name="value" keyPath="values.playFinishKenzoSound" id="pd6-Xj-i6f"/>
+                    </connections>
+                </button>
+                <textField verticalHuggingPriority="750" id="haN-Ro-cP0">
+                    <rect key="frame" x="230" y="42" width="25" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" title="50" drawsBackground="YES" id="XSz-IL-ZdX">
+                        <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="ncG-YI-E5t">
+                            <real key="minimum" value="1"/>
+                            <real key="maximum" value="59"/>
+                        </numberFormatter>
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="DTu-dT-pUA" name="value" keyPath="values.notifyTimeBeforeTimeSignal" id="hLM-Tq-fQu"/>
+                    </connections>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="AmI-fQ-lQ8">
+                    <rect key="frame" x="255" y="42" width="65" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="分前に通知" id="pDK-az-0ve">
+                        <font key="font" size="13" name=".HiraKakuInterface-W3"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button id="BGi-Zo-sZ5">
+                    <rect key="frame" x="208" y="70" width="138" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="通知を行う" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="qQm-5V-vWT">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" size="13" name=".HiraKakuInterface-W3"/>
+                    </buttonCell>
+                    <connections>
+                        <binding destination="DTu-dT-pUA" name="value" keyPath="values.notifyTimeSignal" id="AJl-Gr-60d"/>
+                    </connections>
+                </button>
+                <button id="wrf-Ev-w0L">
+                    <rect key="frame" x="228" y="18" width="138" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="通知音を鳴らす" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="k5r-Jr-bbg">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" size="13" name=".HiraKakuInterface-W3"/>
+                    </buttonCell>
+                    <connections>
+                        <binding destination="DTu-dT-pUA" name="value" keyPath="values.playNotifyTimeSignalSound" id="PXS-Ac-LWY"/>
+                    </connections>
+                </button>
+            </subviews>
+            <point key="canvasLocation" x="1131" y="834.5"/>
+        </customView>
+        <customView misplaced="YES" id="ROt-zH-HCQ">
+            <rect key="frame" x="0.0" y="0.0" width="486" height="393"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <userGuides>
+                <userLayoutGuide location="201" affinity="minX"/>
+            </userGuides>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="KN7-sy-a0j">
+                    <rect key="frame" x="18" y="354" width="186" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="スクリーンショットの保存先：" id="nxM-71-Zg6">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <popUpButton verticalHuggingPriority="750" id="bu3-qp-Qbv">
+                    <rect key="frame" x="208" y="349" width="180" height="26"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="1000" inset="2" selectedItem="HeK-3M-4cT" id="Y49-eY-VPt">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                        <menu key="menu" title="OtherViews" id="NhW-mf-hlo">
+                            <items>
+                                <menuItem title="Item 1" state="on" tag="1000" id="HeK-3M-4cT"/>
+                                <menuItem isSeparatorItem="YES" id="YOz-If-ohv"/>
+                                <menuItem title="その他…" tag="2000" id="KoM-Q4-rfS">
+                                    <connections>
+                                        <action selector="selectScreenShotSaveDirectoryPopUp:" target="-2" id="anh-D5-eax"/>
+                                    </connections>
+                                </menuItem>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                </popUpButton>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="otX-MN-x7l">
+                    <rect key="frame" x="18" y="262" width="186" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="参加作戦カラー：" id="6kd-P6-Bwt">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button id="5vm-EO-1Eg">
+                    <rect key="frame" x="208" y="261" width="87" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="色付けする" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Z4X-Rv-dnI">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <binding destination="DTu-dT-pUA" name="value" keyPath="values.showsPlanColor" id="jG9-vs-N7Z"/>
+                    </connections>
+                </button>
+                <colorWell id="6ca-TN-zpl">
+                    <rect key="frame" x="260" y="232" width="44" height="23"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <binding destination="DTu-dT-pUA" name="value" keyPath="values.plan01Color" id="eKF-ss-O5E">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </colorWell>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="5PE-z1-0Ij">
+                    <rect key="frame" x="229" y="235" width="30" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="１：" id="WNG-o8-8aW">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="4gn-qG-kfh">
+                    <rect key="frame" x="269" y="84" width="181" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="日以上経過した履歴を削除" id="hCo-S7-Bxv">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <colorWell id="ljj-uV-GaN">
+                    <rect key="frame" x="341" y="232" width="44" height="23"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <binding destination="DTu-dT-pUA" name="value" keyPath="values.plan02Color" id="d33-aQ-aRU">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </colorWell>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="p6j-a1-mSb">
+                    <rect key="frame" x="310" y="235" width="30" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="２：" id="Pzg-hJ-M2Q">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <colorWell id="uAH-FY-G1V">
+                    <rect key="frame" x="422" y="232" width="44" height="23"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <binding destination="DTu-dT-pUA" name="value" keyPath="values.plan03Color" id="gaf-XQ-Jjo">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </colorWell>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="h3d-pw-NLI">
+                    <rect key="frame" x="391" y="235" width="30" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="３：" id="yiJ-tP-64S">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button id="P0h-6y-57H">
+                    <rect key="frame" x="229" y="329" width="204" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="撮影後リストウインドウを表示" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="fvW-fR-dOk">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <binding destination="DTu-dT-pUA" name="value" keyPath="values.showsListWindowAtScreenshot" id="nJS-rt-E6w"/>
+                    </connections>
+                </button>
+                <colorWell id="qg1-uY-Jyo">
+                    <rect key="frame" x="260" y="203" width="44" height="23"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <binding destination="DTu-dT-pUA" name="value" keyPath="values.plan04Color" id="ixe-Oo-o2e">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </colorWell>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="OSN-EO-NJW">
+                    <rect key="frame" x="229" y="206" width="30" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="４：" id="gvs-zZ-7bl">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <colorWell id="G6P-ks-Ttd">
+                    <rect key="frame" x="341" y="203" width="44" height="23"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <binding destination="DTu-dT-pUA" name="value" keyPath="values.plan05Color" id="xHk-s3-FaE">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </colorWell>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="wrP-ky-n1g">
+                    <rect key="frame" x="310" y="206" width="30" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="５：" id="Qqm-cr-nBv">
+                        <font key="font" size="13" name="HiraKakuProN-W3"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <colorWell id="Eha-BF-mrE">
+                    <rect key="frame" x="422" y="203" width="44" height="23"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <binding destination="DTu-dT-pUA" name="value" keyPath="values.plan06Color" id="VZj-5B-dSo">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </colorWell>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="oUs-l4-bGp">
+                    <rect key="frame" x="391" y="206" width="30" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="６：" id="heb-je-e2Z">
+                        <font key="font" size="13" name="HiraKakuProN-W3"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="UVY-fV-YyH">
+                    <rect key="frame" x="18" y="168" width="186" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="連合艦隊表示：" id="tWu-Vc-uAA">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="755-fu-Xei">
+                    <rect key="frame" x="18" y="111" width="186" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="履歴：" id="fNC-6f-cqh">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button id="BAL-yn-Hzt">
+                    <rect key="frame" x="208" y="167" width="139" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="自動的に連動させる" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Mb9-b0-Q0s">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <binding destination="DTu-dT-pUA" name="value" keyPath="values.autoCombinedView" id="r2H-fG-C5c"/>
+                    </connections>
+                </button>
+                <button id="gch-YJ-UjX">
+                    <rect key="frame" x="208" y="110" width="139" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="古い履歴を削除" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="jUP-gT-uhJ">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <binding destination="DTu-dT-pUA" name="value" keyPath="values.cleanOldHistoryItems" id="fgt-Hf-NgV"/>
+                    </connections>
+                </button>
+                <box verticalHuggingPriority="750" boxType="separator" id="4dF-1I-gNC">
+                    <rect key="frame" x="12" y="32" width="462" height="5"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </box>
+                <button verticalHuggingPriority="750" misplaced="YES" id="h7t-eg-ugk">
+                    <rect key="frame" x="325" y="2" width="147" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="データを削除して再起動" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="64g-2Z-cqb">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="removeDatabaseFile:" target="-1" id="awI-pe-VnN"/>
+                    </connections>
+                </button>
+                <button id="O0m-0s-Yai">
+                    <rect key="frame" x="208" y="145" width="173" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="3本指スワイプで切り替え" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="jWo-0e-bjf">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <binding destination="DTu-dT-pUA" name="value" keyPath="values.useSwipeChangeCombinedView" id="Rp3-Kb-2iV"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="lsH-gX-tj2">
+                    <rect key="frame" x="18" y="296" width="186" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="スクリーンショットのツイート：" id="2Ab-V5-xRA">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button id="c0c-Kj-GjA">
+                    <rect key="frame" x="208" y="295" width="204" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="#艦これ タグを付ける" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="XbN-Tu-Pff">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <binding destination="DTu-dT-pUA" name="value" keyPath="values.appendKanColleTag" id="rYq-tJ-itc"/>
+                    </connections>
+                </button>
+                <textField verticalHuggingPriority="750" id="vfF-Ib-CIc">
+                    <rect key="frame" x="231" y="82" width="39" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="1000" drawsBackground="YES" id="vxw-Px-bUr">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="DTu-dT-pUA" name="value" keyPath="values.cleanSiceDays" id="pCZ-Gk-0OI"/>
+                    </connections>
+                </textField>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="Y4e-kx-BC6">
+                    <rect key="frame" x="258" y="43" width="170" height="33"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="マークが付いた履歴とイベント海域のドロップ履歴は削除されません" id="NiL-Wb-wFs">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" id="4kc-Do-EnQ">
+                    <rect key="frame" x="46" y="10" width="278" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="艦娘や装備のデータがおかしくなった時に使用します。" id="rTT-JC-pFN">
+                        <font key="font" size="11" name="HiraKakuProN-W3"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <point key="canvasLocation" x="591" y="961"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="NSPreferencesGeneral" width="32" height="32"/>
+        <image name="NotificationsPreferences" width="32" height="32"/>
+    </resources>
+</document>
