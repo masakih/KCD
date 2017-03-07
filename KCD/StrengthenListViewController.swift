@@ -41,7 +41,7 @@ class StrengthenListViewController: MainTabVIewItemViewController {
             buildList()
             
             #if DEBUG
-                //
+//                downloadPList()
             #else
                 downloadPList()
             #endif
@@ -145,8 +145,8 @@ fileprivate class EnhancementListItemDownloader: NSObject, URLSessionDownloadDel
     private var finishOperation: (([EnhancementListItem]) -> Void)? = nil
     
     func download(using block: @escaping ([EnhancementListItem]) -> Void) {
-        guard let _ = plistDownloadTask,
-            let plistURL = URL(string: "http://git.osdn.jp/view?p=kcd/KCD.git;a=blob;f=KCD/\(resourceName).\(resourceExtension);hb=HEAD")
+        if let _ = plistDownloadTask { return }
+        guard let plistURL = URL(string: "http://git.osdn.jp/view?p=kcd/KCD.git;a=blob;f=KCD/\(resourceName).\(resourceExtension);hb=HEAD")
             else { return }
         
         finishOperation = block
@@ -155,6 +155,7 @@ fileprivate class EnhancementListItemDownloader: NSObject, URLSessionDownloadDel
     }
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+        plistDownloadTask = nil
         guard let data = try? Data(contentsOf: location, options: []),
             let list = NSKeyedUnarchiver.unarchiveObject(with: data as Data) as? [EnhancementListItem]
             else { return }
