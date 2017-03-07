@@ -51,14 +51,16 @@ class UpgradableShipsWindowController: NSWindowController {
         if showLevelOneShipInUpgradableList == false {
             filterPredicate = NSPredicate(format: "lv != 1")
         }
-        if showsExcludedShipInUpgradableList == false && excludeShiIDs.count != 0 {
-            excludeShip = NSPredicate(format: "NOT id IN %@", argumentArray: [excludeShiIDs])
+        if showsExcludedShipInUpgradableList == false,
+            excludeShiIDs.count != 0 {
+            excludeShip = NSPredicate(format: "NOT id IN %@", excludeShiIDs)
         }
-        if filterPredicate != nil && excludeShip != nil {
-            return NSCompoundPredicate(andPredicateWithSubpredicates: [filterPredicate!, excludeShip!])
+        if let filterPredicate = filterPredicate,
+            let excludeShip = excludeShip {
+            return NSCompoundPredicate(andPredicateWithSubpredicates: [filterPredicate, excludeShip])
         }
-        if filterPredicate != nil { return filterPredicate }
-        if excludeShip != nil { return excludeShip }
+        if let filterPredicate = filterPredicate { return filterPredicate }
+        if let excludeShip = excludeShip { return excludeShip }
         
         return nil
     }
@@ -114,11 +116,10 @@ class UpgradableShipsWindowController: NSWindowController {
     
     @IBAction func showHideShip(_ sender: AnyObject?) {
         let row = tableView.clickedRow
-        guard row != -1,
-            let a = shipsController.arrangedObjects as? NSArray,
-            let ship = a.object(at: row) as? KCShipObject
+        guard let ships = shipsController.arrangedObjects as? [KCShipObject],
+            0..<ships.count ~= row
             else { return }
-        let shipID = ship.id
+        let shipID = ships[row].id
         if isExcludeShipID(shipID) {
             includeShip(shipID: shipID)
         } else {
@@ -129,11 +130,10 @@ class UpgradableShipsWindowController: NSWindowController {
     override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
         if menuItem.action == .showHideShip {
             let row = tableView.clickedRow
-            guard row != -1,
-                let a = shipsController.arrangedObjects as? NSArray,
-                let ship = a.object(at: row) as? KCShipObject
+            guard let ships = shipsController.arrangedObjects as? [KCShipObject],
+                0..<ships.count ~= row
                 else { return false }
-            let shipID = ship.id
+            let shipID = ships[row].id
             if isExcludeShipID(shipID) {
                 menuItem.title = NSLocalizedString("Show Kanmusu", comment: "UpgradableShipsWindowController menu item")
             } else {

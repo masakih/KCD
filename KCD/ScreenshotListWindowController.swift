@@ -14,11 +14,14 @@ class ScreenshotListWindowController: NSWindowController {
     @IBOutlet weak var left: NSView!
     @IBOutlet weak var right: NSView!
     
-    private var detailViewController: ScreenshotDetailViewController! = nil
-    private var editorViewController: ScreenshotEditorViewController! = nil
+    private lazy var detailViewController: ScreenshotDetailViewController =
+        { return ScreenshotDetailViewController() }()
+    private var editorViewController: ScreenshotEditorViewController =
+        { return ScreenshotEditorViewController() }()
     private var viewControllers: [NSViewController] = []
-    fileprivate weak var currentRightViewController: BridgeViewController! = nil
-    fileprivate var listViewController: ScreenshotListViewController! = nil
+    fileprivate weak var currentRightViewController: BridgeViewController? = nil
+    fileprivate lazy var listViewController: ScreenshotListViewController =
+        { return ScreenshotListViewController() }()
     
     var filterPredicate: NSPredicate? = nil {
         didSet {
@@ -32,34 +35,19 @@ class ScreenshotListWindowController: NSWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
         
-        listViewController = ScreenshotListViewController()
         viewControllers.append(listViewController)
         replaceView(left, viewController: listViewController)
         listViewController.representedObject = listViewController.screenshots
-        guard let _ = listViewController else {
-            print("Can not load listViewController")
-            return
-        }
         
-        detailViewController = ScreenshotDetailViewController()
         viewControllers.append(detailViewController)
         rightController.addChildViewController(detailViewController)
         replaceView(right, viewController: detailViewController)
         detailViewController.representedObject = listViewController.screenshots
-        guard let _ = detailViewController else {
-            print("Can not load detailViewController")
-            return
-        }
         
-        editorViewController = ScreenshotEditorViewController()
         rightController.addChildViewController(editorViewController)
         // force load view.
         let _ = editorViewController.view
         editorViewController.representedObject = listViewController.screenshots
-        guard let _ = editorViewController else {
-            print("Can not load editorViewContoller")
-            return
-        }
         
         currentRightViewController = detailViewController
         
@@ -78,7 +66,7 @@ class ScreenshotListWindowController: NSWindowController {
     }
     
     @IBAction func share(_ sender: AnyObject?) {
-        currentRightViewController.share(sender)
+        currentRightViewController?.share(sender)
     }
     @IBAction func changeToEditor(_ sender: AnyObject?) {
         rightController.transition(from: detailViewController, to: editorViewController, options: [.slideLeft], completionHandler: nil)
@@ -149,6 +137,6 @@ extension ScreenshotListWindowController: NSSharingServicePickerTouchBarItemDele
     }
     
     func items(for pickerTouchBarItem: NSSharingServicePickerTouchBarItem) -> [Any] {
-        return currentRightViewController.items(for: pickerTouchBarItem)
+        return currentRightViewController?.items(for: pickerTouchBarItem) ?? []
     }
 }

@@ -89,7 +89,8 @@ class HistoryWindowController: NSWindowController {
     
     var selectedTabIndex: Int = 0 {
         didSet {
-            swiftSelectedTabIndex = HistoryWindowTabIndex(rawValue: selectedTabIndex)!
+            HistoryWindowTabIndex(rawValue: selectedTabIndex)
+                .map { swiftSelectedTabIndex = $0 }
         }
     }
     fileprivate var swiftSelectedTabIndex: HistoryWindowTabIndex = .kaihatuHistory
