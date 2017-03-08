@@ -18,7 +18,7 @@ class BorderTextField: NSTextField {
         NSColor.controlShadowColor.set()
         NSBezierPath.setDefaultLineWidth(1.0)
         multiline {
-            Array<(NSPoint, NSPoint)>()
+            [(NSPoint, NSPoint)]()
                 .appended { (NSPoint(x: 3, y: height), NSPoint(x: NSMaxX(bounds), y: height)) }
                 .appended { (NSPoint(x: width, y: 0), NSPoint(x: width, y: height)) }
             }
