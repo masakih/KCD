@@ -56,6 +56,9 @@ extension ServerDataStore {
             else { return nil }
         return airBase
     }
+    func createAirBasePlaneInfo() -> KCAirBasePlaneInfo? {
+        return insertNewObject(forEntityName: "AirBasePlaneInfo") as? KCAirBasePlaneInfo
+    }
     
     func basic() -> KCBasic? {
         guard let b = try? objects(withEntityName: "Basic"),

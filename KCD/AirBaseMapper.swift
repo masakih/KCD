@@ -27,11 +27,12 @@ class AirBaseMapper: JSONMapper {
             return false
         }
         if airbase.planeInfo.count == 0 {
-            let moc = airbase.managedObjectContext
-            let new: [KCAirBasePlaneInfo] = (0..<4).flatMap {_ in
-                NSEntityDescription.insertNewObject(forEntityName: "AirBasePlaneInfo", into: moc!) as? KCAirBasePlaneInfo
+            if let store = configuration.editorStore as? ServerDataStore {
+                let new: [KCAirBasePlaneInfo] = (0..<4).flatMap {_ in 
+                    store.createAirBasePlaneInfo()
+                }
+                airbase.planeInfo = NSOrderedSet(array: new)
             }
-            airbase.planeInfo = NSOrderedSet(array: new)
         }
         
         guard let planeInfos = value as? [[String: Any]]
