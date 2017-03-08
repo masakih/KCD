@@ -41,7 +41,9 @@ class SlotItemMapper: JSONMapper {
     }()
     
     func beginRegister(_ object: NSManagedObject) {
-        object.setValue(nil, forKey: "alv")
+        guard let slotItem = object as? KCSlotItemObject
+            else { return }
+        slotItem.alv = 0
     }
     func handleExtraValue(_ value: Any, forKey key: String, to object: NSManagedObject) -> Bool {
         // 取得後破棄した装備のデータを削除するため保有IDを保存
