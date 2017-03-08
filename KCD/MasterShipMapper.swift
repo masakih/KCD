@@ -43,8 +43,7 @@ class MasterShipMapper: JSONMapper {
         if masterShip.stype.id == stypeID { return }
         guard let stype = masterSTypes.binarySearch(comparator: { $0.id ==? stypeID })
             else { return print("MasterShipMapper: Can not find MasterSType") }
-        guard let moc = masterShip.managedObjectContext,
-            let masterSType = moc.object(with: stype.objectID) as? KCMasterSType
+        guard let masterSType = configuration.editorStore.object(with: stype.objectID) as? KCMasterSType
             else { return print("MasterShipMapper: Can not convert to current moc object masterSType") }
         masterShip.stype = masterSType
     }
