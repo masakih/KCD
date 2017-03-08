@@ -88,7 +88,7 @@ class AirBaseWindowController: NSWindowController {
         let t = AreaNameTransformer()
         areas.enumerated().forEach {
             let areaCell = areaMatrix.cell(atRow: 0, column: $0.offset)
-            areaCell?.title = t.transformedValue($0.element) as! String
+            areaCell?.title = t.transformedValue($0.element) as? String ?? String($0.element)
             areaCell?.tag = $0.element
         }
         
