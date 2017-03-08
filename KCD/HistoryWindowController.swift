@@ -11,70 +11,67 @@ import Cocoa
 fileprivate protocol Markable {
     var marked: Bool { get set }
 }
-fileprivate extension Markable where Self: DropShipHistory {
+extension DropShipHistory: Markable {
     var marked: Bool {
         get { return mark }
         set { mark = newValue }
     }
 }
-fileprivate extension Markable where Self: KenzoHistory {
+extension KenzoHistory: Markable {
     var marked: Bool {
         get { return mark }
         set { mark = newValue }
     }
 }
-fileprivate extension Markable where Self: KaihatuHistory {
+extension KaihatuHistory: Markable {
     var marked: Bool {
         get { return mark }
         set { mark = newValue }
     }
-}
-extension DropShipHistory: Markable {}
-extension KenzoHistory: Markable {}
-extension KaihatuHistory: Markable {}
-
-fileprivate enum HistoryWindowTabIndex: Int {
-    case kaihatuHistory = 0
-    case kenzoHistory = 1
-    case dropHistory = 2
 }
 
 fileprivate extension Selector {
     static let addMark = #selector(HistoryWindowController.addMark(_:))
 }
 
-fileprivate struct SelectionInfo {
-    var controller: NSArrayController
-    var predicateFormat: String
-    var tableView: NSTableView
-    var entityName: String
-    var pickUpPredicateFormat: String
+class HistoryWindowController: NSWindowController {
+    fileprivate enum HistoryWindowTabIndex: Int {
+        case kaihatuHistory = 0
+        case kenzoHistory = 1
+        case dropHistory = 2
+    }
     
-    init(_ owner: HistoryWindowController) {
-        switch owner.swiftSelectedTabIndex {
-        case .kaihatuHistory:
-            controller = owner.kaihatuHistoryController
-            predicateFormat = "name contains $value"
-            tableView = owner.kaihatuHistoryTableView
-            entityName = "KaihatuHistory"
-            pickUpPredicateFormat = "date = %@ AND name = %@"
-        case .kenzoHistory:
-            controller = owner.kenzoHistoryController
-            predicateFormat = "name contains $value"
-            tableView = owner.kenzoHistoryTableView
-            entityName = "KenzoHistory"
-            pickUpPredicateFormat = "date = %@ AND name = %@"
-        case .dropHistory:
-            controller = owner.dropHistoryController
-            predicateFormat = "shipName contains $value"
-            tableView = owner.dropHistoryTableView
-            entityName = "DropShipHistory"
-            pickUpPredicateFormat = "date = %@ AND mapCell = %ld"
+    fileprivate struct SelectionInfo {
+        let controller: NSArrayController
+        let predicateFormat: String
+        let tableView: NSTableView
+        let entityName: String
+        let pickUpPredicateFormat: String
+        
+        init(_ owner: HistoryWindowController) {
+            switch owner.swiftSelectedTabIndex {
+            case .kaihatuHistory:
+                controller = owner.kaihatuHistoryController
+                predicateFormat = "name contains $value"
+                tableView = owner.kaihatuHistoryTableView
+                entityName = "KaihatuHistory"
+                pickUpPredicateFormat = "date = %@ AND name = %@"
+            case .kenzoHistory:
+                controller = owner.kenzoHistoryController
+                predicateFormat = "name contains $value"
+                tableView = owner.kenzoHistoryTableView
+                entityName = "KenzoHistory"
+                pickUpPredicateFormat = "date = %@ AND name = %@"
+            case .dropHistory:
+                controller = owner.dropHistoryController
+                predicateFormat = "shipName contains $value"
+                tableView = owner.dropHistoryTableView
+                entityName = "DropShipHistory"
+                pickUpPredicateFormat = "date = %@ AND mapCell = %ld"
+            }
         }
     }
-}
-
-class HistoryWindowController: NSWindowController {
+    
     let manageObjectContext = LocalDataStore.default.managedObjectContext
     
     @IBOutlet var kaihatuHistoryController: NSArrayController!
