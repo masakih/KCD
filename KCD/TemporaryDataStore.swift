@@ -20,6 +20,11 @@ extension CoreDataIntormation {
 extension CoreDataCore {
     static let temporary = CoreDataCore(.temporary)
 }
+extension Entity {
+    static let battle = Entity(name: "Battle")
+    static let damage = Entity(name: "Damage")
+    static let guardEscaped = Entity(name: "GuardEscaped")
+}
 
 class TemporaryDataStore: CoreDataAccessor, CoreDataManager {
     static var `default` = TemporaryDataStore(type: .reader)
@@ -45,7 +50,7 @@ extension TemporaryDataStore {
         return battles().first
     }
     func battles() -> [KCBattle] {
-        guard let a = try? self.objects(withEntityName: "Battle"),
+        guard let a = try? self.objects(with: .battle),
             let array = a as? [KCBattle]
             else { return [] }
         return array
@@ -53,33 +58,36 @@ extension TemporaryDataStore {
     func resetBattle() {
         battles().forEach { delete($0) }
     }
+    func createBattle() -> KCBattle? {
+        return insertNewObject(for: .battle) as? KCBattle
+    }
     
     func sortedDamagesById() -> [KCDamage] {
         let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
-        guard let a = try? objects(withEntityName: "Damage", sortDescriptors: [sortDescriptor]),
+        guard let a = try? objects(with: .damage, sortDescriptors: [sortDescriptor]),
             let array = a as? [KCDamage]
             else { return [] }
         return array
     }
     func damages() -> [KCDamage] {
-        guard let a = try? objects(withEntityName: "Damage"),
+        guard let a = try? objects(with: .damage),
             let array = a as? [KCDamage]
             else { return [] }
         return array
     }
     func createDamage() -> KCDamage? {
-        return insertNewObject(forEntityName: "Damage") as? KCDamage
+        return insertNewObject(for: .damage) as? KCDamage
     }
     
     func guardEscaped() -> [KCGuardEscaped] {
-        guard let e = try? objects(withEntityName: "GuardEscaped"),
+        guard let e = try? objects(with: .guardEscaped),
             let escapeds = e as? [KCGuardEscaped]
             else { return [] }
         return escapeds
     }
     func ensuredGuardEscaped(byShipId shipId: Int) -> KCGuardEscaped? {
         let p = NSPredicate(format: "shipID = %ld AND ensured = TRUE", shipId)
-        guard let e = try? objects(withEntityName: "GuardEscaped", predicate: p),
+        guard let e = try? objects(with: .guardEscaped, predicate: p),
             let escapes = e as? [KCGuardEscaped],
             let escape = escapes.first
             else { return nil }
@@ -87,12 +95,12 @@ extension TemporaryDataStore {
     }
     func notEnsuredGuardEscaped() -> [KCGuardEscaped] {
         let predicate = NSPredicate(format: "ensured = FALSE")
-        guard let e = try? objects(withEntityName: "GuardEscaped", predicate: predicate),
+        guard let e = try? objects(with: .guardEscaped, predicate: predicate),
             let escapeds = e as? [KCGuardEscaped]
             else { return [] }
         return escapeds
     }
     func createGuardEscaped() -> KCGuardEscaped? {
-        return insertNewObject(forEntityName: "GuardEscaped") as? KCGuardEscaped
+        return insertNewObject(for: .guardEscaped) as? KCGuardEscaped
     }
 }

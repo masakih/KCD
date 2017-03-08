@@ -30,7 +30,7 @@ class KenzoDockMapper: JSONMapper {
     
     required init(_ apiResponse: APIResponse) {
         self.apiResponse = apiResponse
-        self.configuration = MappingConfiguration(entityName: "KenzoDock",
+        self.configuration = MappingConfiguration(entity: .kenzoDock,
                                                   dataKey: dataKey(apiResponse),
                                                   editorStore: ServerDataStore.oneTimeEditor())
     }

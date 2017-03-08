@@ -21,6 +21,13 @@ extension CoreDataIntormation {
 extension CoreDataCore {
     static let local = CoreDataCore(.local)
 }
+extension Entity {
+    static let dropShipHistory = Entity(name: "DropShipHistory")
+    static let kaihatuHistory = Entity(name: "KaihatuHistory")
+    static let kenzoMark = Entity(name: "KenzoMark")
+    static let kenzoHistory = Entity(name: "KenzoHistory")
+    static let hiddenDropShipHistory = Entity(name: "HiddenDropShipHistory")
+}
 
 class LocalDataStore: CoreDataAccessor, CoreDataManager {
     static var `default` = LocalDataStore(type: .reader)
@@ -48,18 +55,18 @@ extension LocalDataStore {
         let predicate02 = NSPredicate(format: "mark = 0 || mark = nil")
         let predicate03 = NSPredicate(format: "mapArea IN %@", ["1", "2", "3", "4", "5", "6", "7", "8", "9"])
         let predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate01, predicate02, predicate03])
-        guard let k = try? objects(withEntityName: "DropShipHistory", predicate: predicate),
+        guard let k = try? objects(with: .dropShipHistory, predicate: predicate),
             let dropHistories = k as? [DropShipHistory]
             else { return [] }
         return dropHistories
     }
     
     func createDropShipHistory() -> DropShipHistory? {
-        return insertNewObject(forEntityName: "DropShipHistory") as? DropShipHistory
+        return insertNewObject(for: .dropShipHistory) as? DropShipHistory
     }
     
     func kaihatuHistories() -> [KaihatuHistory] {
-        guard let k = try? objects(withEntityName: "KaihatuHistory"),
+        guard let k = try? objects(with: .kaihatuHistory),
             let kaihatuHistories = k as? [KaihatuHistory]
             else { return [] }
         return kaihatuHistories
@@ -69,18 +76,18 @@ extension LocalDataStore {
         let predicate01 = NSPredicate(format: "date < %@", date as NSDate)
         let predicate02 = NSPredicate(format: "mark = 0 || mark = nil")
         let predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate01, predicate02])
-        guard let k = try? objects(withEntityName: "KaihatuHistory", predicate: predicate),
+        guard let k = try? objects(with: .kaihatuHistory, predicate: predicate),
             let kaihatuHistories = k as? [KaihatuHistory]
             else { return [] }
         return kaihatuHistories
     }
     func createKaihatuHistory() -> KaihatuHistory? {
-        return insertNewObject(forEntityName: "KaihatuHistory") as? KaihatuHistory
+        return insertNewObject(for: .kaihatuHistory) as? KaihatuHistory
     }
     
     func kenzoMark(byDockId dockId: Int) -> KenzoMark? {
         let predicate = NSPredicate(format: "kDockId = %ld", dockId)
-        guard let km = try? objects(withEntityName: "KenzoMark", predicate: predicate),
+        guard let km = try? objects(with: .kenzoMark, predicate: predicate),
             let kenzoMarks = km as? [KenzoMark],
             let kenzoMark = kenzoMarks.first
             else { return nil }
@@ -89,14 +96,14 @@ extension LocalDataStore {
     func kenzoMark(fuel: Int, bull: Int, steel: Int, bauxite: Int, kaihatusizai: Int, kDockId: Int, shipId: Int) -> KenzoMark? {
         let predicate = NSPredicate(format: "fuel = %ld AND bull = %ld AND steel = %ld AND bauxite = %ld AND kaihatusizai = %ld AND kDockId = %ld AND created_ship_id = %ld"
             , fuel, bull, steel, bauxite, kaihatusizai, kDockId, shipId)
-        guard let km = try? objects(withEntityName: "KenzoMark", predicate: predicate),
+        guard let km = try? objects(with: .kenzoMark, predicate: predicate),
             let kenzoMarks = km as? [KenzoMark],
             let kenzoMark = kenzoMarks.first
             else { return nil }
         return kenzoMark
     }
     func createKenzoMark() -> KenzoMark? {
-        return insertNewObject(forEntityName: "KenzoMark") as? KenzoMark
+        return insertNewObject(for: .kenzoMark) as? KenzoMark
     }
     
     func unmarkedKenzoHistories(befor days: Int) -> [KenzoHistory] {
@@ -104,22 +111,22 @@ extension LocalDataStore {
         let predicate01 = NSPredicate(format: "date < %@", date as NSDate)
         let predicate02 = NSPredicate(format: "mark = 0 || mark = nil")
         let predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate01, predicate02])
-        guard let k = try? objects(withEntityName: "KenzoHistory", predicate: predicate),
+        guard let k = try? objects(with: .kenzoHistory, predicate: predicate),
             let kenzoHistories = k as? [KenzoHistory]
             else { return [] }
         return kenzoHistories
     }
     func createKenzoHistory() -> KenzoHistory? {
-        return insertNewObject(forEntityName: "KenzoHistory") as? KenzoHistory
+        return insertNewObject(for: .kenzoHistory) as? KenzoHistory
     }
     
     func hiddenDropShipHistories() -> [DropShipHistory] {
-        guard let d = try? objects(withEntityName: "HiddenDropShipHistory"),
+        guard let d = try? objects(with: .hiddenDropShipHistory),
             let dropShipHistories = d as? [DropShipHistory]
             else { return [] }
         return dropShipHistories
     }
     func createHiddenDropShipHistory() -> DropShipHistory? {
-        return insertNewObject(forEntityName: "HiddenDropShipHistory") as? DropShipHistory
+        return insertNewObject(for: .hiddenDropShipHistory) as? DropShipHistory
     }
 }

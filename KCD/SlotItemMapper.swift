@@ -30,7 +30,7 @@ class SlotItemMapper: JSONMapper {
     
     required init(_ apiResponse: APIResponse) {
         self.apiResponse = apiResponse
-        self.configuration = MappingConfiguration(entityName: "SlotItem",
+        self.configuration = MappingConfiguration(entity: .slotItem,
                                                   dataKey: dataKey(apiResponse),
                                                   editorStore: ServerDataStore.oneTimeEditor())
     }

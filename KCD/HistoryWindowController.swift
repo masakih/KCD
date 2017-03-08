@@ -45,7 +45,7 @@ class HistoryWindowController: NSWindowController {
         let controller: NSArrayController
         let predicateFormat: String
         let tableView: NSTableView
-        let entityName: String
+        let entityName: Entity
         let pickUpPredicateFormat: String
         
         init(_ owner: HistoryWindowController) {
@@ -54,19 +54,19 @@ class HistoryWindowController: NSWindowController {
                 controller = owner.kaihatuHistoryController
                 predicateFormat = "name contains $value"
                 tableView = owner.kaihatuHistoryTableView
-                entityName = "KaihatuHistory"
+                entityName = .kaihatuHistory
                 pickUpPredicateFormat = "date = %@ AND name = %@"
             case .kenzoHistory:
                 controller = owner.kenzoHistoryController
                 predicateFormat = "name contains $value"
                 tableView = owner.kenzoHistoryTableView
-                entityName = "KenzoHistory"
+                entityName = .kenzoHistory
                 pickUpPredicateFormat = "date = %@ AND name = %@"
             case .dropHistory:
                 controller = owner.dropHistoryController
                 predicateFormat = "shipName contains $value"
                 tableView = owner.dropHistoryTableView
-                entityName = "DropShipHistory"
+                entityName = .dropShipHistory
                 pickUpPredicateFormat = "date = %@ AND mapCell = %ld"
             }
         }
@@ -144,7 +144,7 @@ class HistoryWindowController: NSWindowController {
         guard let predicate = p else { return }
         
         let store = LocalDataStore.oneTimeEditor()
-        if let a = try? store.objects(withEntityName: info.entityName,
+        if let a = try? store.objects(with: info.entityName,
                              predicate: predicate),
             let item = a.first,
             var history = item as? Markable {

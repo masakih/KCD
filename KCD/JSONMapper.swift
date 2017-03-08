@@ -9,20 +9,20 @@
 import Cocoa
 
 struct MappingConfiguration {
-    let entityName: String
+    let entity: Entity
     let dataKey: String
     let primaryKey: String
     let compositPrimaryKeys: [String]?
     let editorStore: CoreDataAccessor
     let ignoreKeys: [String]
     
-    init(entityName: String,
+    init(entity: Entity,
          dataKey: String = "api_data",
          primaryKey: String = "id",
          compositPrimaryKeys: [String]? = nil,
          editorStore: CoreDataAccessor,
          ignoreKeys: [String] = []) {
-        self.entityName = entityName
+        self.entity = entity
         self.dataKey = dataKey
         self.primaryKey = primaryKey
         self.compositPrimaryKeys = compositPrimaryKeys
@@ -118,13 +118,13 @@ extension JSONMapper {
             else { return print("JSON is wrong.") }
         
         let store = configuration.editorStore
-        guard let objects = try? store.objects(withEntityName: configuration.entityName, sortDescriptors: sortDescriptors)
-            else { return print("Can not get entity named \(configuration.entityName)") }
+        guard let objects = try? store.objects(with: configuration.entity, sortDescriptors: sortDescriptors)
+            else { return print("Can not get entity named \(configuration.entity)") }
         data.forEach {
             if let object = objectSearch(objects, $0) {
                 registerElement($0, to: object)
             } else {
-                registerElement($0, to: store.insertNewObject(forEntityName: configuration.entityName))
+                registerElement($0, to: store.insertNewObject(for: configuration.entity))
             }
         }
         finishOperating()

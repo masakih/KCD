@@ -43,7 +43,7 @@ class MapStartCommand: JSONCommand {
         guard let data = json["api_data"] as? [String: Any],
             let no = data["api_no"] as? Int
             else { return print("startBattle JSON is wrong") }
-        guard let battle = store.insertNewObject(forEntityName: "Battle") as? KCBattle
+        guard let battle = store.createBattle()
             else { return print("Can not create Battle") }
         battle.deckId = deckId
         battle.mapArea = mapArea

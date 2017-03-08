@@ -87,18 +87,18 @@ class TSVSupport {
         }
     }
     
-    private func localData(_ name: String, sortBy: String = "date") -> [NSManagedObject] {
+    private func localData(_ entity: Entity, sortBy: String = "date") -> [NSManagedObject] {
         let sortDesc = NSSortDescriptor(key: sortBy, ascending: true)
-        guard let a = try? store.objects(withEntityName: name, sortDescriptors: [sortDesc], predicate: nil),
+        guard let a = try? store.objects(with: entity, sortDescriptors: [sortDesc], predicate: nil),
             let array = a as? [KaihatuHistory]
             else {
-                print("Can not get \(name)")
+                print("Can not get \(entity.name)")
                 return []
         }
         return array
     }
     private func dataOfKaihatuHistory() -> Data? {
-        return (localData("KaihatuHistory") as? [KaihatuHistory])?
+        return (localData(.kaihatuHistory) as? [KaihatuHistory])?
             .map {
                 LFSeparateLine.empty
                     .append($0.date)
@@ -117,7 +117,7 @@ class TSVSupport {
             .data(using: .utf8)
     }
     private func dataOfKenzoHistory() -> Data? {
-        return (localData("KenzoHistory") as? [KenzoHistory])?
+        return (localData(.kenzoHistory) as? [KenzoHistory])?
             .map {
             LFSeparateLine.empty
                 .append($0.date)
@@ -137,7 +137,7 @@ class TSVSupport {
             .data(using: .utf8)
     }
     private func dataOfKenzoMark() -> Data? {
-        return (localData("KenzoMark", sortBy: "kDockId") as? [KenzoMark])?
+        return (localData(.kenzoMark, sortBy: "kDockId") as? [KenzoMark])?
             .map {
             LFSeparateLine.empty
                 .append($0.date)
@@ -157,7 +157,7 @@ class TSVSupport {
             .data(using: .utf8)
     }
     private func dataOfDropShipHistory() -> Data? {
-        return (localData("DropShipHistory") as? [DropShipHistory])?
+        return (localData(.dropShipHistory) as? [DropShipHistory])?
             .map {
                 LFSeparateLine.empty
                     .append($0.date)
@@ -190,11 +190,11 @@ class TSVSupport {
                 let commandLv = Int(attr[9])
                 else { return }
             let p = NSPredicate(format: "date = %@", argumentArray: [date])
-            guard let oo = try? store.objects(withEntityName: "KaihatuHistory", predicate: p),
+            guard let oo = try? store.objects(with: .kaihatuHistory, predicate: p),
                 oo.count != 0
                 else { return }
             
-            guard let obj = store.insertNewObject(forEntityName: "KaihatuHistory") as? KaihatuHistory
+            guard let obj = store.insertNewObject(for: .kaihatuHistory) as? KaihatuHistory
                 else { return }
             
             obj.date = date
@@ -226,11 +226,11 @@ class TSVSupport {
                 let commandLv = Int(attr[10])
                 else { return }
             let p = NSPredicate(format: "date = %@", argumentArray: [date])
-            guard let oo = try? store.objects(withEntityName: "KenzoHistory", predicate: p),
+            guard let oo = try? store.objects(with: .kenzoHistory, predicate: p),
                 oo.count != 0
                 else { return }
             
-            guard let obj = store.insertNewObject(forEntityName: "KenzoHistory") as? KenzoHistory
+            guard let obj = store.insertNewObject(for: .kenzoHistory) as? KenzoHistory
                 else { return }
             
             obj.date = date
@@ -264,11 +264,11 @@ class TSVSupport {
                 let commandLv = Int(attr[10])
                 else { return }
             let p = NSPredicate(format: "date = %@", argumentArray: [date])
-            guard let oo = try? store.objects(withEntityName: "KenzoMark", predicate: p),
+            guard let oo = try? store.objects(with: .kenzoMark, predicate: p),
                 oo.count != 0
                 else { return }
             
-            guard let obj = store.insertNewObject(forEntityName: "KenzoMark") as? KenzoMark
+            guard let obj = store.insertNewObject(for: .kenzoMark) as? KenzoMark
                 else { return }
             
             obj.date = date
@@ -296,11 +296,11 @@ class TSVSupport {
                 let mark = Int(attr[7])
                 else { return }
             let p = NSPredicate(format: "date = %@", argumentArray: [date])
-            guard let oo = try? store.objects(withEntityName: "DropShipHistory", predicate: p),
+            guard let oo = try? store.objects(with: .dropShipHistory, predicate: p),
                 oo.count != 0
                 else { return }
             
-            guard let obj = store.insertNewObject(forEntityName: "DropShipHistory") as? DropShipHistory
+            guard let obj = store.insertNewObject(for: .dropShipHistory) as? DropShipHistory
                 else { return }
             
             obj.date = date

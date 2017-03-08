@@ -49,6 +49,10 @@ struct CoreDataCore {
     }
 }
 
+struct Entity {
+    let name: String
+}
+
 protocol CoreDataProvider {
     init(type: CoreDataManagerType)
     var core: CoreDataCore { get }
@@ -66,10 +70,10 @@ protocol CoreDataManager {
 }
 
 protocol CoreDataAccessor: CoreDataProvider {
-    func insertNewObject(forEntityName name: String) -> NSManagedObject
+    func insertNewObject(for entity: Entity) -> NSManagedObject
     func delete(_ object: NSManagedObject)
     func object(with objectId: NSManagedObjectID) -> NSManagedObject
-    func objects(withEntityName entityName: String, sortDescriptors: [NSSortDescriptor]?, predicate: NSPredicate?) throws -> [NSManagedObject]
+    func objects(with entity: Entity, sortDescriptors: [NSSortDescriptor]?, predicate: NSPredicate?) throws -> [NSManagedObject]
 }
 
 private class CoreDataRemover {
@@ -210,8 +214,8 @@ extension CoreDataProvider {
 }
 
 extension CoreDataAccessor {
-    func insertNewObject(forEntityName name: String) -> NSManagedObject {
-        return NSEntityDescription.insertNewObject(forEntityName: name, into: managedObjectContext)
+    func insertNewObject(for entity: Entity) -> NSManagedObject {
+        return NSEntityDescription.insertNewObject(forEntityName: entity.name, into: managedObjectContext)
     }
     func delete(_ object: NSManagedObject) {
         managedObjectContext.delete(object)
@@ -219,8 +223,8 @@ extension CoreDataAccessor {
     func object(with objectId: NSManagedObjectID) -> NSManagedObject {
         return managedObjectContext.object(with: objectId)
     }
-    func objects(withEntityName entityName: String, sortDescriptors: [NSSortDescriptor]? = nil, predicate: NSPredicate? = nil) throws -> [NSManagedObject] {
-        let req = NSFetchRequest<NSManagedObject>(entityName: entityName)
+    func objects(with entity: Entity, sortDescriptors: [NSSortDescriptor]? = nil, predicate: NSPredicate? = nil) throws -> [NSManagedObject] {
+        let req = NSFetchRequest<NSManagedObject>(entityName: entity.name)
         req.sortDescriptors = sortDescriptors
         req.predicate = predicate
         return try managedObjectContext.fetch(req)

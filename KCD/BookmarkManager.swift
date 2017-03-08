@@ -26,7 +26,7 @@ class BookmarkManager: NSObject, NSMenuDelegate {
         bookmarksController = NSArrayController()
         super.init()
         bookmarksController.managedObjectContext = self.manageObjectContext
-        bookmarksController.entityName = "Bookmark"
+        bookmarksController.entityName = Entity.bookmark.name
         let sort = NSSortDescriptor(key: "order", ascending: true)
         bookmarksController.sortDescriptors = [sort]
         let mainMenu = NSApplication.shared().mainMenu
@@ -52,7 +52,7 @@ class BookmarkManager: NSObject, NSMenuDelegate {
                 print("BookmarkManager: Can no convert max order to Int")
                 return nil
         }
-        guard let new = editorStore.insertNewObject(forEntityName: "Bookmark") as? BookmarkItem
+        guard let new = editorStore.createBookmark()
             else {
                 print("BookmarkManager: Can not insert BookMarkItem")
                 return nil

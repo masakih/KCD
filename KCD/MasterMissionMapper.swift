@@ -10,7 +10,7 @@ import Cocoa
 
 class MasterMissionMapper: JSONMapper {
     let apiResponse: APIResponse
-    let configuration = MappingConfiguration(entityName: "MasterMission",
+    let configuration = MappingConfiguration(entity: .masterMission,
                                              dataKey: "api_data.api_mst_mission",
                                              editorStore: ServerDataStore.oneTimeEditor())
     

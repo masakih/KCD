@@ -21,6 +21,9 @@ extension CoreDataIntormation {
 extension CoreDataCore {
     static let resourceHistory = CoreDataCore(.resourceHistory)
 }
+extension Entity {
+    static let resource = Entity(name: "Resource")
+}
 
 class ResourceHistoryDataStore: CoreDataAccessor, CoreDataManager {
     static var `default` = ResourceHistoryDataStore(type: .reader)
@@ -44,12 +47,12 @@ class ResourceHistoryDataStore: CoreDataAccessor, CoreDataManager {
 extension ResourceHistoryDataStore {
     func resources(in minites: [Int], older: Date) -> [KCResource] {
         let p = NSPredicate(format: "minute IN %@ AND date < %@", minites, older as NSDate)
-        guard let a = try? objects(withEntityName: "Resource", predicate: p),
+        guard let a = try? objects(with: .resource, predicate: p),
             let resources = a as? [KCResource]
             else { return [] }
         return resources
     }
     func cerateResource() -> KCResource? {
-        return insertNewObject(forEntityName: "Resource") as? KCResource
+        return insertNewObject(for: .resource) as? KCResource
     }
 }

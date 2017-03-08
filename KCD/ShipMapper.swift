@@ -34,7 +34,7 @@ fileprivate func dataKey(_ apiResponse: APIResponse) -> String {
 
 extension MappingConfiguration {
     func change(dataKey: String) -> MappingConfiguration {
-        return MappingConfiguration(entityName: self.entityName,
+        return MappingConfiguration(entity: self.entity,
                                     dataKey: dataKey,
                                     primaryKey: self.primaryKey,
                                     compositPrimaryKeys: self.compositPrimaryKeys,
@@ -49,7 +49,7 @@ class ShipMapper: JSONMapper {
     
     required init(_ apiResponse: APIResponse) {
         self.apiResponse = apiResponse
-        self.configuration = MappingConfiguration(entityName: "Ship",
+        self.configuration = MappingConfiguration(entity: .ship,
                                                   dataKey: dataKey(apiResponse),
                                                   editorStore: ServerDataStore.oneTimeEditor(),
                                                   ignoreKeys:

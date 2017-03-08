@@ -27,11 +27,11 @@ class Fleet: NSObject {
         deckController = NSObjectController()
         super.init()
         
-        deckController.entityName = "Deck"
+        deckController.entityName = Entity.deck.name
         deckController.managedObjectContext = ServerDataStore.default.managedObjectContext
         deckController.fetchPredicate = NSPredicate(format: "id = %ld", number)
         let req = NSFetchRequest<NSFetchRequestResult>()
-        req.entity = NSEntityDescription.entity(forEntityName: "Deck", in: deckController.managedObjectContext!)
+        req.entity = NSEntityDescription.entity(forEntityName: Entity.deck.name, in: deckController.managedObjectContext!)
         req.predicate = deckController.fetchPredicate
         do {
             try deckController.fetch(with: req, merge: false)
