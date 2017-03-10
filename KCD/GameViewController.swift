@@ -26,7 +26,7 @@ class GameViewController: NSViewController {
         return "GameViewController"
     }
     
-    fileprivate var flashTopLeft = NSMakePoint(2600, 1445)
+    fileprivate var flashTopLeft = NSPoint(x: 2600, y: 1445)
     private var clipView: NSClipView {
         return view as! NSClipView
     }
@@ -49,6 +49,11 @@ class GameViewController: NSViewController {
     }
     
     @IBAction func reloadContent(_ sender: AnyObject?) {
+        guard let _ = webView.mainFrameURL
+            else {
+                webView.mainFrameURL = GameViewController.gamePageURL
+                return
+        }
         // ゲームページでない場合はゲームページを表示する
         if webView.mainFrameURL != GameViewController.gamePageURL {
             webView.mainFrameURL = GameViewController.gamePageURL
@@ -107,8 +112,10 @@ class GameViewController: NSViewController {
     
     override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
         if menuItem.action == .reloadContent {
-            guard let _ = webView.mainFrame else { return true }
-            switch webView.mainFrameURL {
+            guard let _ = webView.mainFrame,
+                let frameURL = webView.mainFrameURL
+                else { return true }
+            switch frameURL {
             case GameViewController.gamePageURL:
                 menuItem.title = NSLocalizedString("Reload", comment: "Reload menu, reload")
             case let s where s.hasPrefix(GameViewController.loginPageURLPrefix):
