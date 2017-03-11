@@ -10,7 +10,7 @@ import Cocoa
 
 class AirBaseMapper: JSONMapper {
     let apiResponse: APIResponse
-    let configuration = MappingConfiguration(entity: .airBase,
+    let configuration = MappingConfiguration(entityType: KCAirBase.self,
                                              dataKey: "api_data.api_air_base",
                                              compositPrimaryKeys: ["area_id", "rid"],
                                              editorStore: ServerDataStore.oneTimeEditor())

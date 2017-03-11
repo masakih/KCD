@@ -30,7 +30,7 @@ class SlotItemMapper: JSONMapper {
     
     required init(_ apiResponse: APIResponse) {
         self.apiResponse = apiResponse
-        self.configuration = MappingConfiguration(entity: .slotItem,
+        self.configuration = MappingConfiguration(entityType: KCSlotItemObject.self,
                                                   dataKey: dataKey(apiResponse),
                                                   editorStore: ServerDataStore.oneTimeEditor())
     }

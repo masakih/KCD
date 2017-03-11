@@ -10,7 +10,7 @@ import Cocoa
 
 class MasterShipMapper: JSONMapper {
     let apiResponse: APIResponse
-    let configuration = MappingConfiguration(entity: .masterShip,
+    let configuration = MappingConfiguration(entityType: KCMasterShipObject.self,
                                              dataKey: "api_data.api_mst_ship",
                                              editorStore: ServerDataStore.oneTimeEditor())
     

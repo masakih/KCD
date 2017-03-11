@@ -49,9 +49,6 @@ struct CoreDataCore {
     }
 }
 
-struct Entity {
-    let name: String
-}
 
 protocol CoreDataProvider {
     init(type: CoreDataManagerType)
@@ -70,10 +67,10 @@ protocol CoreDataManager {
 }
 
 protocol CoreDataAccessor: CoreDataProvider {
-    func insertNewObject(for entity: Entity) -> NSManagedObject
+    func insertNewObject<T>(for entity: Entity<T>) -> T?
     func delete(_ object: NSManagedObject)
     func object(with objectId: NSManagedObjectID) -> NSManagedObject
-    func objects(with entity: Entity, sortDescriptors: [NSSortDescriptor]?, predicate: NSPredicate?) throws -> [NSManagedObject]
+    func objects<T>(with entity: Entity<T>, sortDescriptors: [NSSortDescriptor]?, predicate: NSPredicate?) throws -> [T]
 }
 
 private class CoreDataRemover {
@@ -214,8 +211,10 @@ extension CoreDataProvider {
 }
 
 extension CoreDataAccessor {
-    func insertNewObject(for entity: Entity) -> NSManagedObject {
-        return NSEntityDescription.insertNewObject(forEntityName: entity.name, into: managedObjectContext)
+    func insertNewObject<T>(for entity: Entity<T>) -> T? {
+        return NSEntityDescription
+            .insertNewObject(forEntityName: entity.name
+                , into: managedObjectContext) as? T
     }
     func delete(_ object: NSManagedObject) {
         managedObjectContext.delete(object)
@@ -223,8 +222,8 @@ extension CoreDataAccessor {
     func object(with objectId: NSManagedObjectID) -> NSManagedObject {
         return managedObjectContext.object(with: objectId)
     }
-    func objects(with entity: Entity, sortDescriptors: [NSSortDescriptor]? = nil, predicate: NSPredicate? = nil) throws -> [NSManagedObject] {
-        let req = NSFetchRequest<NSManagedObject>(entityName: entity.name)
+    func objects<T>(with entity: Entity<T>, sortDescriptors: [NSSortDescriptor]? = nil, predicate: NSPredicate? = nil) throws -> [T] {
+        let req = NSFetchRequest<T>(entityName: entity.name)
         req.sortDescriptors = sortDescriptors
         req.predicate = predicate
         return try managedObjectContext.fetch(req)

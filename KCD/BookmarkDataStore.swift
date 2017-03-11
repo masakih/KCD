@@ -21,9 +21,6 @@ extension CoreDataIntormation {
 extension CoreDataCore {
     static let bookmark = CoreDataCore(.bookmark)
 }
-extension Entity {
-    static let bookmark = Entity(name: "Bookmark")
-}
 
 class BookmarkDataStore: CoreDataAccessor, CoreDataManager {
     static var `default` = BookmarkDataStore(type: .reader)
@@ -44,8 +41,12 @@ class BookmarkDataStore: CoreDataAccessor, CoreDataManager {
     var managedObjectContext: NSManagedObjectContext
 }
 
+extension BookmarkItem: EntityProvider {
+    override class var entityName: String { return "Bookmark" }
+}
+
 extension BookmarkDataStore {
     func createBookmark() -> BookmarkItem? {
-        return insertNewObject(for: .bookmark) as? BookmarkItem
+        return insertNewObject(for: BookmarkItem.entity)
     }
 }

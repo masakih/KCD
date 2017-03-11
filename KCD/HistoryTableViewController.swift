@@ -43,7 +43,7 @@ enum MenuItemTag: Int {
 class HistoryTableViewController: NSViewController {
     var pickUpPredicateFormat: String { return "date = %@" }
     var predicateFormat: String { return "" }
-    var entity: Entity? { return nil }
+    var entityType: NSManagedObject.Type? { return nil }
     
     @IBOutlet var controller: NSArrayController!
     @IBOutlet var tableView: NSTableView!
@@ -61,7 +61,7 @@ class HistoryTableViewController: NSViewController {
         }
     }
     @IBAction func addMark(_ sender: AnyObject?) {
-        guard let entity = entity,
+        guard let entityType = entityType,
             let clickedRow = tableView?.clickedRow,
             let items = controller?.arrangedObjects as? [HistoryObject],
             0..<items.count ~= clickedRow
@@ -70,7 +70,7 @@ class HistoryTableViewController: NSViewController {
         let predicate = NSPredicate(format: pickUpPredicateFormat,
                                     argumentArray: [clickedObject.date])
         let store = LocalDataStore.oneTimeEditor()
-        if let a = try? store.objects(with: entity,
+        if let a = try? store.objects(with: Entity(name: entityType.entityName, type: entityType),
                                       predicate: predicate),
             let item = a.first,
             var history = item as? Markable {
@@ -113,13 +113,13 @@ extension HistoryTableViewController: NSTableViewDelegate {
 
 class KaihatsuHistoryTableViewController: HistoryTableViewController {
     override var predicateFormat: String { return "name contains $value" }
-    override var entity: Entity? { return .kaihatuHistory }
+    override var entityType: NSManagedObject.Type? { return KaihatuHistory.self }
 }
 class KenzoHistoryTableViewController: HistoryTableViewController {
     override var predicateFormat: String { return "name contains $value" }
-    override var entity: Entity? { return .kenzoHistory }
+    override var entityType: NSManagedObject.Type? { return KenzoHistory.self }
 }
 class DropShipHistoryTableViewController: HistoryTableViewController {
     override var predicateFormat: String { return "shipName contains $value" }
-    override var entity: Entity? { return .dropShipHistory }
+    override var entityType: NSManagedObject.Type? { return DropShipHistory.self }
 }

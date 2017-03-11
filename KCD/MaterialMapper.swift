@@ -39,7 +39,7 @@ class MaterialMapper: JSONMapper {
     
     required init(_ apiResponse: APIResponse) {
         self.apiResponse = apiResponse
-        self.configuration = MappingConfiguration(entity: .material,
+        self.configuration = MappingConfiguration(entityType: KCMaterial.self,
                                                   dataKey: dataKey(apiResponse),
                                                   editorStore: ServerDataStore.oneTimeEditor())
     }

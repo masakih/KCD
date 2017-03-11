@@ -28,7 +28,7 @@ class BasicMapper: JSONMapper {
     
     required init(_ apiResponse: APIResponse) {
         self.apiResponse = apiResponse
-        self.configuration = MappingConfiguration(entity: .basic,
+        self.configuration = MappingConfiguration(entityType: KCBasic.self,
                                                   dataKey: dataKey(apiResponse),
                                                   editorStore: ServerDataStore.oneTimeEditor())
     }

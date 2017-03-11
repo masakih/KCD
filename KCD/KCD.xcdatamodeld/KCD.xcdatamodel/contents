@@ -89,7 +89,7 @@
         <attribute name="member_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
     </entity>
-    <entity name="MasterFurniture" representedClassName="KCD.KCManagedObject" syncable="YES">
+    <entity name="MasterFurniture" representedClassName="KCD.MasterFurniture" syncable="YES">
         <attribute name="description_" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" indexed="YES" syncable="YES"/>
         <attribute name="no" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
@@ -242,7 +242,7 @@
         <attribute name="sortno" attributeType="Integer 64" usesScalarValueType="NO" indexed="YES" syncable="YES"/>
         <relationship name="ships" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MasterShip" inverseName="stype" inverseEntity="MasterShip" syncable="YES"/>
     </entity>
-    <entity name="MasterUseItem" representedClassName="KCD.KCManagedObject" syncable="YES">
+    <entity name="MasterUseItem" representedClassName="KCD.MasterUseItem" syncable="YES">
         <attribute name="category" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="description_0" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="description_1" optional="YES" attributeType="String" syncable="YES"/>
@@ -359,7 +359,7 @@
         <element name="Basic" positionX="0" positionY="0" width="128" height="645"/>
         <element name="Deck" positionX="0" positionY="0" width="128" height="270"/>
         <element name="KenzoDock" positionX="0" positionY="0" width="128" height="210"/>
-        <element name="MasterFurniture" positionX="0" positionY="0" width="128" height="165"/>
+        <element name="MasterFurniture" positionX="0" positionY="0" width="128" height="30"/>
         <element name="MasterMapArea" positionX="0" positionY="0" width="128" height="90"/>
         <element name="MasterMapCell" positionX="0" positionY="0" width="128" height="135"/>
         <element name="MasterMapInfo" positionX="0" positionY="0" width="128" height="270"/>
@@ -368,7 +368,7 @@
         <element name="MasterSlotItem" positionX="0" positionY="0" width="128" height="585"/>
         <element name="MasterSlotItemEquipType" positionX="0" positionY="0" width="128" height="90"/>
         <element name="MasterSType" positionX="0" positionY="0" width="128" height="135"/>
-        <element name="MasterUseItem" positionX="0" positionY="0" width="128" height="150"/>
+        <element name="MasterUseItem" positionX="0" positionY="0" width="128" height="30"/>
         <element name="Material" positionX="0" positionY="0" width="128" height="165"/>
         <element name="NyukyoDock" positionX="0" positionY="0" width="128" height="195"/>
         <element name="Quest" positionX="0" positionY="0" width="128" height="240"/>

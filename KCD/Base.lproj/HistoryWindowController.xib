@@ -1337,8 +1337,8 @@
                                         <rect key="frame" x="234" y="1" width="80.5" height="17"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="2Fj-d3-l4h">
-                                                <rect key="frame" x="0.0" y="0.0" width="80.5" height="17"/>
+                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" id="2Fj-d3-l4h">
+                                                <rect key="frame" x="0.0" y="0.0" width="80" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="Table View Cell" id="UDn-ez-Nj9">
                                                     <font key="font" metaFont="system"/>

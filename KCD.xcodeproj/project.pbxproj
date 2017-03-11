@@ -218,6 +218,10 @@
 		F4BDEB6F187252F30069D0CE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4BDEB6D187252F30069D0CE /* InfoPlist.strings */; };
 		F4BDEB7B187253130069D0CE /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4BDEB7A187253130069D0CE /* WebKit.framework */; };
 		F4BDEEB01E72D2D700D689AE /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BDEEAF1E72D2D700D689AE /* HistoryTableViewController.swift */; };
+		F4BDEEB21E73FE2000D689AE /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BDEEB11E73FE2000D689AE /* Entity.swift */; };
+		F4BDEEB41E74017800D689AE /* MasterFurniture.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BDEEB31E74017800D689AE /* MasterFurniture.swift */; };
+		F4BDEEB61E74025700D689AE /* MasterUseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BDEEB51E74025700D689AE /* MasterUseItem.swift */; };
+		F4BDEEB81E740D9300D689AE /* HiddenDropShipHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BDEEB71E740D9300D689AE /* HiddenDropShipHistory.swift */; };
 		F4BEEE9F18D211280006F70C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4BEEE9D18D211280006F70C /* Localizable.strings */; };
 		F4BEEFFC1B11A5A7004702B8 /* ExternalBrowserWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BEEFFE1B11A5A7004702B8 /* ExternalBrowserWindowController.xib */; };
 		F4BEEFFF1B11A5C2004702B8 /* MediumShipViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BEF0011B11A5C2004702B8 /* MediumShipViewController.xib */; };
@@ -535,6 +539,10 @@
 		F4BDEB6C187252F30069D0CE /* KCDTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KCDTests-Info.plist"; sourceTree = "<group>"; };
 		F4BDEB7A187253130069D0CE /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		F4BDEEAF1E72D2D700D689AE /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
+		F4BDEEB11E73FE2000D689AE /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		F4BDEEB31E74017800D689AE /* MasterFurniture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterFurniture.swift; sourceTree = "<group>"; };
+		F4BDEEB51E74025700D689AE /* MasterUseItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterUseItem.swift; sourceTree = "<group>"; };
+		F4BDEEB71E740D9300D689AE /* HiddenDropShipHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HiddenDropShipHistory.swift; sourceTree = "<group>"; };
 		F4BEEE9E18D211280006F70C /* ja */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F4BEEEA118D211360006F70C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text; name = ja; path = ja.lproj/Localizable.strings.sed; sourceTree = "<group>"; };
 		F4BEEEA418D211500006F70C /* ja */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; name = ja; path = ja.lproj/Makefile; sourceTree = "<group>"; };
@@ -962,6 +970,7 @@
 		F4BEEEA818D88FF30006F70C /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				F4BDEEB11E73FE2000D689AE /* Entity.swift */,
 				F4E471281E46ECF1009B5AF4 /* CoreDataCore.swift */,
 				F4FC3E8D1E4368BB00E41228 /* KCManagedObject.swift */,
 				F4F9F8911C6BA26400D0EE76 /* KCD */,
@@ -1122,9 +1131,12 @@
 			children = (
 				F46F104718ABAC910063E503 /* KCD.xcdatamodeld */,
 				F47215AF1E1FEACC0083D3BC /* ServerDataStore.swift */,
+				F42A8FDF1E40CC050099DC1D /* KCAirBase.swift */,
+				F42A8FE11E40D0900099DC1D /* KCAirBasePlaneInfo.swift */,
 				F42CFE1F1E3CDE7E000B4F9B /* KCBasic.swift */,
 				F42CFE211E3D6CEE000B4F9B /* KCDeck.swift */,
 				F42CFE231E3D8309000B4F9B /* KCKenzoDock.swift */,
+				F4BDEEB31E74017800D689AE /* MasterFurniture.swift */,
 				F42CFE251E3D91FD000B4F9B /* KCMasterMapArea.swift */,
 				F42CFE271E3D9A02000B4F9B /* KCMasterMapInfo.swift */,
 				F42A8FCB1E3DA4DF0099DC1D /* KCMasterMission.swift */,
@@ -1132,13 +1144,12 @@
 				F42A8FCF1E3DB49A0099DC1D /* KCMasterSlotItemObject.swift */,
 				F42A8FD11E3DC56C0099DC1D /* KCMasterSType.swift */,
 				F42A8FD31E3DD57E0099DC1D /* KCMasterSlotItemEquipTypeObject.swift */,
+				F4BDEEB51E74025700D689AE /* MasterUseItem.swift */,
 				F42A8FD51E3DE2C60099DC1D /* KCMaterial.swift */,
 				F42A8FD71E3DEAA00099DC1D /* KCNyukyoDock.swift */,
 				F42A8FD91E3DF2230099DC1D /* KCShipObject.swift */,
 				F42A8FDB1E40B9FE0099DC1D /* KCSlotItemObject.swift */,
 				F42A8FDD1E40C6DF0099DC1D /* KCQuest.swift */,
-				F42A8FDF1E40CC050099DC1D /* KCAirBase.swift */,
-				F42A8FE11E40D0900099DC1D /* KCAirBasePlaneInfo.swift */,
 			);
 			name = KCD;
 			sourceTree = "<group>";
@@ -1149,6 +1160,7 @@
 				F4E7802C18DC3AF00011BC4C /* LocalData.xcdatamodeld */,
 				F47215A51E1F84B40083D3BC /* LocalDataStore.swift */,
 				F42A8FE31E41FD6F0099DC1D /* DropShipHistory.swift */,
+				F4BDEEB71E740D9300D689AE /* HiddenDropShipHistory.swift */,
 				F42A8FE51E420A360099DC1D /* KaihatuHistory.swift */,
 				F42A8FE71E422B180099DC1D /* KenzoHistory.swift */,
 				F42A8FE91E43476F0099DC1D /* KenzoMark.swift */,
@@ -1454,6 +1466,7 @@
 				F491A4C01E4EACDD00D1E067 /* CacheStoragePolicy.swift in Sources */,
 				F47C3EB41E606C4300D97449 /* ResetSortie.swift in Sources */,
 				F42A8FEE1E435E330099DC1D /* KCDamage.swift in Sources */,
+				F4BDEEB81E740D9300D689AE /* HiddenDropShipHistory.swift in Sources */,
 				F42CFE1C1E3CB495000B4F9B /* BookmarkItem.swift in Sources */,
 				F44BC7151E2914FE004644E3 /* MemberBasicCommand.swift in Sources */,
 				F47215AC1E1FA2460083D3BC /* TemporaryDataStore.swift in Sources */,
@@ -1522,6 +1535,7 @@
 				F49097871E1A85F70085A45D /* ImageView.swift in Sources */,
 				F4D05BC61E0ABD6800688D66 /* SlotItemWindowController.swift in Sources */,
 				F4AA593A1E1E02D9001667AF /* UpgradeShipExcludeColorTransformer.swift in Sources */,
+				F4BDEEB21E73FE2000D689AE /* Entity.swift in Sources */,
 				F42A8FCC1E3DA4DF0099DC1D /* KCMasterMission.swift in Sources */,
 				F44BC6C71E222675004644E3 /* FailedCommand.swift in Sources */,
 				F47215A01E1E90C10083D3BC /* JSONNode.swift in Sources */,
@@ -1548,8 +1562,10 @@
 				F4AA59501E1E4D18001667AF /* ShipWindowController.swift in Sources */,
 				F42CFE181E3C12AA000B4F9B /* ScreenshotInformation.swift in Sources */,
 				F44BC7371E2A4258004644E3 /* SetPlaneCommand.swift in Sources */,
+				F4BDEEB41E74017800D689AE /* MasterFurniture.swift in Sources */,
 				F42CFE281E3D9A02000B4F9B /* KCMasterMapInfo.swift in Sources */,
 				F4AA594C1E1E497C001667AF /* EquipmentWindowController.swift in Sources */,
+				F4BDEEB61E74025700D689AE /* MasterUseItem.swift in Sources */,
 				F4CF25B41E34A38F00C02A66 /* ResourceHistoryManager.swift in Sources */,
 				F4D05BCA1E0CADA100688D66 /* ExternalBrowserWindowController.swift in Sources */,
 				F47C3EBA1E619CC400D97449 /* KenzoDockMapper.swift in Sources */,

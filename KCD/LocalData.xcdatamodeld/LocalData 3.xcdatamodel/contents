@@ -11,7 +11,7 @@
         <attribute name="shipName" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="winRank" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="HiddenDropShipHistory" representedClassName="KCD.DropShipHistory" syncable="YES">
+    <entity name="HiddenDropShipHistory" representedClassName="KCD.HiddenDropShipHistory" syncable="YES">
         <attribute name="date" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="mapArea" attributeType="String" syncable="YES"/>
         <attribute name="mapAreaName" attributeType="String" syncable="YES"/>
