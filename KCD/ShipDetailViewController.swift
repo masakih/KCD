@@ -67,9 +67,9 @@ class ShipDetailViewController: NSViewController {
             guardEscapedView.isHidden = !guardEscaped
         }
     }
-    dynamic var ship: KCShipObject? {
+    dynamic var ship: Ship? {
         get {
-            return shipController.content as? KCShipObject
+            return shipController.content as? Ship
         }
         set {
             shipController.fetchPredicate = NSPredicate(format: "id = %ld", newValue?.id ?? 0)

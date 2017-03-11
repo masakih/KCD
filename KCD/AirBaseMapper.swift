@@ -10,7 +10,7 @@ import Cocoa
 
 class AirBaseMapper: JSONMapper {
     let apiResponse: APIResponse
-    let configuration = MappingConfiguration(entityType: KCAirBase.self,
+    let configuration = MappingConfiguration(entityType: AirBase.self,
                                              dataKey: "api_data.api_air_base",
                                              compositPrimaryKeys: ["area_id", "rid"],
                                              editorStore: ServerDataStore.oneTimeEditor())
@@ -22,13 +22,13 @@ class AirBaseMapper: JSONMapper {
     func handleExtraValue(_ value: Any, forKey key: String, to object: NSManagedObject) -> Bool {
         if key != "api_plane_info" { return false }
         
-        guard let airbase = object as? KCAirBase else {
+        guard let airbase = object as? AirBase else {
             print("object is not AirBase")
             return false
         }
         if airbase.planeInfo.count == 0 {
             if let store = configuration.editorStore as? ServerDataStore {
-                let new: [KCAirBasePlaneInfo] = (0..<4).flatMap {_ in 
+                let new: [AirBasePlaneInfo] = (0..<4).flatMap {_ in
                     store.createAirBasePlaneInfo()
                 }
                 airbase.planeInfo = NSOrderedSet(array: new)
@@ -40,7 +40,7 @@ class AirBaseMapper: JSONMapper {
                 print("value is wrong")
                 return false
         }
-        guard let infos = airbase.planeInfo.array as? [KCAirBasePlaneInfo]
+        guard let infos = airbase.planeInfo.array as? [AirBasePlaneInfo]
             else { print("airbase is wrong")
                 return false
         }

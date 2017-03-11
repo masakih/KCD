@@ -10,7 +10,7 @@ import Cocoa
 
 class MasterMapInfoMapper: JSONMapper {
     let apiResponse: APIResponse
-    let configuration = MappingConfiguration(entityType: KCMasterMapInfo.self,
+    let configuration = MappingConfiguration(entityType: MasterMapInfo.self,
                                              dataKey: "api_data.api_mst_mapinfo",
                                              editorStore: ServerDataStore.oneTimeEditor())
     

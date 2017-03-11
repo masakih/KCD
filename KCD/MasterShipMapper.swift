@@ -10,7 +10,7 @@ import Cocoa
 
 class MasterShipMapper: JSONMapper {
     let apiResponse: APIResponse
-    let configuration = MappingConfiguration(entityType: KCMasterShipObject.self,
+    let configuration = MappingConfiguration(entityType: MasterShip.self,
                                              dataKey: "api_data.api_mst_ship",
                                              editorStore: ServerDataStore.oneTimeEditor())
     
@@ -18,7 +18,7 @@ class MasterShipMapper: JSONMapper {
         self.apiResponse = apiResponse
     }
     
-    private lazy var masterSTypes: [KCMasterSType] = {
+    private lazy var masterSTypes: [MasterSType] = {
         return ServerDataStore.default.sortedMasterSTypesById()
     }()
     
@@ -30,7 +30,7 @@ class MasterShipMapper: JSONMapper {
                 print("MasterShipMapper: value is not Int")
                 return false
         }
-        guard let masterShip = object as? KCMasterShipObject
+        guard let masterShip = object as? MasterShip
             else {
                 print("MasterShipMapper: object is not KCMasterShipObject")
                 return false
@@ -39,11 +39,11 @@ class MasterShipMapper: JSONMapper {
         return true
     }
     
-    private func setStype(_ stypeID: Int, to masterShip: KCMasterShipObject) {
+    private func setStype(_ stypeID: Int, to masterShip: MasterShip) {
         if masterShip.stype.id == stypeID { return }
         guard let stype = masterSTypes.binarySearch(comparator: { $0.id ==? stypeID })
             else { return print("MasterShipMapper: Can not find MasterSType") }
-        guard let masterSType = configuration.editorStore.object(with: stype.objectID) as? KCMasterSType
+        guard let masterSType = configuration.editorStore.object(with: stype.objectID) as? MasterSType
             else { return print("MasterShipMapper: Can not convert to current moc object masterSType") }
         masterShip.stype = masterSType
     }

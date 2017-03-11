@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class KCDeck: KCManagedObject {
+class Deck: KCManagedObject {
     @NSManaged var flagship: NSNumber?
     @NSManaged var id: Int
     @NSManaged var member_id: NSNumber?
@@ -26,7 +26,7 @@ class KCDeck: KCManagedObject {
     @NSManaged var ship_5: Int
 }
 
-extension KCDeck {
+extension Deck {
     private func shipId(ofPosition position: Int) -> Int? {
         switch position {
         case 0: return ship_0
@@ -38,17 +38,17 @@ extension KCDeck {
         default: return nil
         }
     }
-    private func ship(ofId identifier: Int) -> KCShipObject? {
+    private func ship(ofId identifier: Int) -> Ship? {
         guard let moc = self.managedObjectContext else { return nil }
-        let req = NSFetchRequest<KCShipObject>(entityName: "Ship")
+        let req = NSFetchRequest<Ship>(entityName: "Ship")
         req.predicate = NSPredicate(format: "id = %ld", identifier)
         guard let ships = try? moc.fetch(req),
             let ship = ships.first
             else { return nil }
-        return ship as KCShipObject
+        return ship as Ship
     }
     
-    subscript(_ index: Int) -> KCShipObject? {
+    subscript(_ index: Int) -> Ship? {
         guard let shipId = shipId(ofPosition: index) else { return nil }
         return ship(ofId: shipId)
     }

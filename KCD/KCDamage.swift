@@ -8,9 +8,9 @@
 
 import Foundation
 
-class KCDamage: KCManagedObject {
+class Damage: KCManagedObject {
     @NSManaged var id: Int
-    @NSManaged var battle: KCBattle
+    @NSManaged var battle: Battle
     @NSManaged var hp: Int
     @NSManaged var shipID: Int
     @NSManaged var useDamageControl: Bool

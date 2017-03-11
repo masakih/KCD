@@ -41,12 +41,12 @@ class BookmarkDataStore: CoreDataAccessor, CoreDataManager {
     var managedObjectContext: NSManagedObjectContext
 }
 
-extension BookmarkItem: EntityProvider {
+extension Bookmark: EntityProvider {
     override class var entityName: String { return "Bookmark" }
 }
 
 extension BookmarkDataStore {
-    func createBookmark() -> BookmarkItem? {
-        return insertNewObject(for: BookmarkItem.entity)
+    func createBookmark() -> Bookmark? {
+        return insertNewObject(for: Bookmark.entity)
     }
 }

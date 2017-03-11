@@ -30,18 +30,18 @@ class SlotItemMapper: JSONMapper {
     
     required init(_ apiResponse: APIResponse) {
         self.apiResponse = apiResponse
-        self.configuration = MappingConfiguration(entityType: KCSlotItemObject.self,
+        self.configuration = MappingConfiguration(entityType: SlotItem.self,
                                                   dataKey: dataKey(apiResponse),
                                                   editorStore: ServerDataStore.oneTimeEditor())
     }
     
     private var registerIds: [Int] = []
-    private lazy var masterSlotItems: [KCMasterSlotItemObject] = {
+    private lazy var masterSlotItems: [MasterSlotItem] = {
         return ServerDataStore.default.sortedMasterSlotItemsById()
     }()
     
     func beginRegister(_ object: NSManagedObject) {
-        guard let slotItem = object as? KCSlotItemObject
+        guard let slotItem = object as? SlotItem
             else { return }
         slotItem.alv = 0
     }
@@ -74,14 +74,14 @@ class SlotItemMapper: JSONMapper {
     }
     
     private func setMaster(_ masterId: Int, to object: NSManagedObject?) {
-        guard let slotItem = object as? KCSlotItemObject
+        guard let slotItem = object as? SlotItem
             else { return print("argument is wrong") }
         if slotItem.slotitem_id == masterId { return }
         
         guard let mSlotItem = masterSlotItems.binarySearch(comparator: { $0.id ==? masterId })
             else { return print("Can not find MasterSlotItem") }
         guard let moc = slotItem.managedObjectContext,
-            let masterSlotItem = moc.object(with: mSlotItem.objectID) as? KCMasterSlotItemObject
+            let masterSlotItem = moc.object(with: mSlotItem.objectID) as? MasterSlotItem
             else { return print("Can not convert to current moc object") }
         slotItem.master_slotItem = masterSlotItem
         slotItem.slotitem_id = masterId

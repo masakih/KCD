@@ -38,7 +38,7 @@ class DeckMapper: JSONMapper {
     
     required init(_ apiResponse: APIResponse) {
         self.apiResponse = apiResponse
-        self.configuration = MappingConfiguration(entityType: KCDeck.self,
+        self.configuration = MappingConfiguration(entityType: Deck.self,
                                                   dataKey: dataKey(apiResponse),
                                                   editorStore: ServerDataStore.oneTimeEditor())
     }

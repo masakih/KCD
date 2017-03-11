@@ -73,7 +73,7 @@ class DocksViewController: MainTabVIewItemViewController {
         return "DocksViewController"
     }
     
-    var battle: KCBattle? {
+    var battle: Battle? {
         return TemporaryDataStore.default.battle()
     }
     

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class KCMasterShipObject: KCManagedObject {
+class MasterShip: KCManagedObject {
     @NSManaged var afterbull: NSNumber?
     @NSManaged var afterfuel: NSNumber?
     @NSManaged var afterlv: Int
@@ -53,6 +53,6 @@ class KCMasterShipObject: KCManagedObject {
     @NSManaged var tyku_1: Int
     @NSManaged var voicef: NSNumber?
     @NSManaged var yomi: String?
-    @NSManaged var ships: Set<KCShipObject>
-    @NSManaged var stype: KCMasterSType
+    @NSManaged var ships: Set<Ship>
+    @NSManaged var stype: MasterSType
 }

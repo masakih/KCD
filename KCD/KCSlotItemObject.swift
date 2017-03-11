@@ -8,18 +8,18 @@
 
 import Foundation
 
-class KCSlotItemObject: KCManagedObject {
+class SlotItem: KCManagedObject {
     @NSManaged var alv: Int
     @NSManaged var id: Int
     @NSManaged var level: Int
     @NSManaged var locked: Bool
     @NSManaged var slotitem_id: Int
-    @NSManaged var equippedShip: KCShipObject?
-    @NSManaged var master_slotItem: KCMasterSlotItemObject
-    @NSManaged var extraEquippedShip: KCShipObject?
+    @NSManaged var equippedShip: Ship?
+    @NSManaged var master_slotItem: MasterSlotItem
+    @NSManaged var extraEquippedShip: Ship?
 }
 
-extension KCSlotItemObject {
+extension SlotItem {
     dynamic var name: String {
         return master_slotItem.name
     }

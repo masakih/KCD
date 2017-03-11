@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class KCResource: NSManagedObject {
+class Resource: NSManagedObject {
     @NSManaged var steel: Int
     @NSManaged var fuel: Int
     @NSManaged var bull: Int

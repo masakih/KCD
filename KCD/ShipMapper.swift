@@ -49,7 +49,7 @@ class ShipMapper: JSONMapper {
     
     required init(_ apiResponse: APIResponse) {
         self.apiResponse = apiResponse
-        self.configuration = MappingConfiguration(entityType: KCShipObject.self,
+        self.configuration = MappingConfiguration(entityType: Ship.self,
                                                   dataKey: dataKey(apiResponse),
                                                   editorStore: ServerDataStore.oneTimeEditor(),
                                                   ignoreKeys:
@@ -75,10 +75,10 @@ class ShipMapper: JSONMapper {
     }
     
     private var registerIds: [Int] = []
-    private lazy var masterShips: [KCMasterShipObject] = {
+    private lazy var masterShips: [MasterShip] = {
         return ServerDataStore.default.sortedMasterShipsById()
     }()
-    private lazy var slotItems: [KCSlotItemObject] = {
+    private lazy var slotItems: [SlotItem] = {
         return ServerDataStore.default.sortedSlotItemsById()
     }()
     private var isDeleteNotExist: Bool {
@@ -97,12 +97,12 @@ class ShipMapper: JSONMapper {
     }
     
     func beginRegister(_ object: NSManagedObject) {
-        guard let ship = object as? KCShipObject
+        guard let ship = object as? Ship
             else { return }
         ship.sally_area = nil
     }
     func handleExtraValue(_ value: Any, forKey key: String, to object: NSManagedObject) -> Bool {
-        guard let ship = object as? KCShipObject
+        guard let ship = object as? Ship
             else { return false }
         
         // 取得後破棄した装備のデータを削除するため保有IDを保存
@@ -146,24 +146,24 @@ class ShipMapper: JSONMapper {
         store?.ships(exclude: registerIds).forEach { store?.delete($0) }
     }
     
-    private func setMaster(_ masterId: Int, to ship: KCShipObject) {
+    private func setMaster(_ masterId: Int, to ship: Ship) {
         if ship.ship_id == masterId { return }
         guard let mShip = masterShips.binarySearch(comparator: { $0.id ==? masterId }),
-            let masterShip = store?.object(with: mShip.objectID) as? KCMasterShipObject
+            let masterShip = store?.object(with: mShip.objectID) as? MasterShip
             else { return print("Can not convert to current moc object masterShip") }
         ship.master_ship = masterShip
         ship.ship_id = masterId
     }
     
-    private func setSlot(_ slotItems: [Any], to ship: KCShipObject) {
+    private func setSlot(_ slotItems: [Any], to ship: Ship) {
         guard let converSlotItems = slotItems as? [Int],
             let store = store
             else { return }
-        let newItems: [KCSlotItemObject] =
+        let newItems: [SlotItem] =
             converSlotItems.flatMap { (item: Int) in
                 if item == 0 || item == -1 { return nil }
                 guard let found = self.slotItems.binarySearch(comparator: { $0.id ==? item }),
-                    let slotItem = store.object(with: found.objectID) as? KCSlotItemObject
+                    let slotItem = store.object(with: found.objectID) as? SlotItem
                     else {
                         let maxV = converSlotItems.last
                         if maxV != nil && maxV! < item {
@@ -179,12 +179,12 @@ class ShipMapper: JSONMapper {
         }
         ship.equippedItem = NSOrderedSet(array: newItems)
     }
-    private func setExtraSlot(_ exSlotItem: Int, to ship: KCShipObject) {
+    private func setExtraSlot(_ exSlotItem: Int, to ship: Ship) {
         guard exSlotItem != -1,
             exSlotItem != 0
             else { return }
         guard let found = slotItems.binarySearch(comparator: { $0.id ==? exSlotItem }),
-            let ex = store?.object(with: found.objectID) as? KCSlotItemObject
+            let ex = store?.object(with: found.objectID) as? SlotItem
             else { return print("Can not convert to current moc object") }
         ship.extraItem = ex
     }

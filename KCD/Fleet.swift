@@ -27,11 +27,11 @@ class Fleet: NSObject {
         deckController = NSObjectController()
         super.init()
         
-        deckController.entityName = KCDeck.entityName
+        deckController.entityName = Deck.entityName
         deckController.managedObjectContext = ServerDataStore.default.managedObjectContext
         deckController.fetchPredicate = NSPredicate(format: "id = %ld", number)
         let req = NSFetchRequest<NSFetchRequestResult>()
-        req.entity = NSEntityDescription.entity(forEntityName: KCDeck.entityName, in: deckController.managedObjectContext!)
+        req.entity = NSEntityDescription.entity(forEntityName: Deck.entityName, in: deckController.managedObjectContext!)
         req.predicate = deckController.fetchPredicate
         do {
             try deckController.fetch(with: req, merge: false)
@@ -40,16 +40,16 @@ class Fleet: NSObject {
             print("Fetch error")
             return nil
         }
-        deck = deckController.content as? KCDeck
+        deck = deckController.content as? Deck
         deckObserveKeys.forEach { deckController.addObserver(self, forKeyPath: $0, context: &DeckContext) }
     }
     deinit {
         deckObserveKeys.forEach { deckController.removeObserver(self, forKeyPath: $0) }
     }
     
-    dynamic private(set) var ships: [KCShipObject] = []
+    dynamic private(set) var ships: [Ship] = []
     private let deckController: NSObjectController
-    private weak var deck: KCDeck?
+    private weak var deck: Deck?
     
     dynamic var name: String? { return deck?.name }
     func keyPathsForValuesAffectingName() -> Set<String> {
@@ -60,7 +60,7 @@ class Fleet: NSObject {
         return ["deck.id"]
     }
     
-    subscript(_ index: Int) -> KCShipObject? { return deck?[index] }
+    subscript(_ index: Int) -> Ship? { return deck?[index] }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if context == &DeckContext {

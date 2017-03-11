@@ -8,7 +8,7 @@
 
 import Foundation
 
-class KCQuest: KCManagedObject {
+class Quest: KCManagedObject {
     @NSManaged var bonus_flag: Bool
     @NSManaged var category: Int
     @NSManaged var detail: String
@@ -24,7 +24,7 @@ class KCQuest: KCManagedObject {
     @NSManaged var type: Int
 }
 
-extension KCQuest {
+extension Quest {
     class func keyPathsForValuesAffectingCompositStatus() -> Set<String> {
         return ["state", "progress_flag"]
     }

@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class BookmarkItem: NSManagedObject {
+class Bookmark: NSManagedObject {
     @NSManaged var identifier: String
     @NSManaged var name: String
     @NSManaged var urlString: String
@@ -20,7 +20,7 @@ class BookmarkItem: NSManagedObject {
     @NSManaged var scrollDelayValue: Float
 }
 
-extension BookmarkItem {
+extension Bookmark {
     var windowContentSize: NSSize {
         get { return NSSizeFromString(windowContentSizeString) }
         set { windowContentSizeString = NSStringFromSize(newValue) }
@@ -35,7 +35,7 @@ extension BookmarkItem {
     }
 }
 
-extension BookmarkItem: NSPasteboardWriting {
+extension Bookmark: NSPasteboardWriting {
     func writableTypes(for pasteboard: NSPasteboard) -> [String] {
         return ["com.masakih.KCD.BookmarkItem"]
     }

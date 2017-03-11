@@ -9,7 +9,7 @@
 import Cocoa
 
 protocol BookmarkListViewControllerDelegate {
-    func didSelectBookmark(_ bookmark: BookmarkItem)
+    func didSelectBookmark(_ bookmark: Bookmark)
 }
 
 fileprivate struct DragingType {
@@ -65,7 +65,7 @@ class BookmarkListViewController: NSViewController {
 
 extension BookmarkListViewController: NSTableViewDelegate, NSTableViewDataSource {
     func reorderingBoolmarks() {
-        guard let objects = bookmarkController.arrangedObjects as? [BookmarkItem] else { return }
+        guard let objects = bookmarkController.arrangedObjects as? [Bookmark] else { return }
         var order = 100
         objects.forEach {
             $0.order = order
@@ -75,7 +75,7 @@ extension BookmarkListViewController: NSTableViewDelegate, NSTableViewDataSource
     
     func tableViewSelectionDidChange(_ notification: Notification) {
         guard let tableView = notification.object as? NSTableView,
-            let bookmarks = bookmarkController.arrangedObjects as? [BookmarkItem]
+            let bookmarks = bookmarkController.arrangedObjects as? [Bookmark]
             else { return }
         let selection = tableView.selectedRow
         tableView.deselectAll(nil)
@@ -112,7 +112,7 @@ extension BookmarkListViewController: NSTableViewDelegate, NSTableViewDataSource
         let targetOrder: Int = {
             guard let objects = bookmarkController.arrangedObjects as? [Any],
                 1...objects.count ~= row,
-                let target = objects[row - 1] as? BookmarkItem
+                let target = objects[row - 1] as? Bookmark
                 else { return 0 }
             return target.order
         }()
@@ -123,7 +123,7 @@ extension BookmarkListViewController: NSTableViewDelegate, NSTableViewDataSource
             guard let data = $0.element.data(forType: DragingType.bookmarkItem),
                 let uri = NSKeyedUnarchiver.unarchiveObject(with: data) as? URL,
                 let oID = managedObjectContext.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: uri),
-                let bookmark = store.object(with: oID) as? BookmarkItem
+                let bookmark = store.object(with: oID) as? Bookmark
                 else { return }
             bookmark.order = targetOrder + $0.offset + 1
         }

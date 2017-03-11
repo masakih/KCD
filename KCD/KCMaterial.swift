@@ -8,7 +8,7 @@
 
 import Foundation
 
-class KCMaterial: KCManagedObject {
+class Material: KCManagedObject {
     @NSManaged var bauxite: Int
     @NSManaged var bull: Int
     @NSManaged var fuel: Int

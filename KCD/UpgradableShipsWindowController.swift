@@ -116,7 +116,7 @@ class UpgradableShipsWindowController: NSWindowController {
     
     @IBAction func showHideShip(_ sender: AnyObject?) {
         let row = tableView.clickedRow
-        guard let ships = shipsController.arrangedObjects as? [KCShipObject],
+        guard let ships = shipsController.arrangedObjects as? [Ship],
             0..<ships.count ~= row
             else { return }
         let shipID = ships[row].id
@@ -130,7 +130,7 @@ class UpgradableShipsWindowController: NSWindowController {
     override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
         if menuItem.action == .showHideShip {
             let row = tableView.clickedRow
-            guard let ships = shipsController.arrangedObjects as? [KCShipObject],
+            guard let ships = shipsController.arrangedObjects as? [Ship],
                 0..<ships.count ~= row
                 else { return false }
             let shipID = ships[row].id

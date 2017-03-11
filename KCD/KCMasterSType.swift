@@ -8,11 +8,11 @@
 
 import Foundation
 
-class KCMasterSType: KCManagedObject {
+class MasterSType: KCManagedObject {
     @NSManaged var id: Int
     @NSManaged var kcnt: NSNumber?
     @NSManaged var name: String
     @NSManaged var scnt: NSNumber?
     @NSManaged var sortno: NSNumber?
-    @NSManaged var ships: Set<KCMasterShipObject>
+    @NSManaged var ships: Set<MasterShip>
 }

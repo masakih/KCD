@@ -30,7 +30,7 @@ class SuppliesView: NSControl {
         }
     }
     
-    var shipStatus: KCShipObject? {
+    var shipStatus: Ship? {
         get {
             return suppliesCell.shipStatus
         }

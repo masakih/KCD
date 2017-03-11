@@ -55,7 +55,7 @@ class AirBaseWindowController: NSWindowController {
     }
     
     private func updateAreaRadio() {
-        guard let content = airBaseController.content as? [KCAirBase]
+        guard let content = airBaseController.content as? [AirBase]
             else { return }
         let areas = content
             .flatMap { $0.area_id }
@@ -99,7 +99,7 @@ class AirBaseWindowController: NSWindowController {
         guard let content = airBaseController.content as? NSArray else { return }
         let area = NSCountedSet()
         content.forEach {
-            if let i = ($0 as? KCAirBase)?.area_id {
+            if let i = ($0 as? AirBase)?.area_id {
                 area.add(i)
             }
         }

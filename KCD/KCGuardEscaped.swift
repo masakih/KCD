@@ -8,7 +8,7 @@
 
 import Foundation
 
-class KCGuardEscaped: KCManagedObject {
+class GuardEscaped: KCManagedObject {
     @NSManaged var ensured: Bool
     @NSManaged var shipID: Int
 }

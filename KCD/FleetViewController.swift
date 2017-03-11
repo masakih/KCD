@@ -80,9 +80,9 @@ class FleetViewController: NSViewController {
                 .map { fleet = $0 }
         }
     }
-    dynamic var fleet: KCDeck? {
+    dynamic var fleet: Deck? {
         get {
-            return representedObject as? KCDeck
+            return representedObject as? Deck
         }
         set {
             representedObject = newValue
@@ -122,7 +122,7 @@ class FleetViewController: NSViewController {
     var totalLevel: Int { return ships.reduce(0) { $0 + $1.lv } }
     var totalDrums: Int { return ships.reduce(0) { $0 + $1.totalDrums } }
     
-    fileprivate var ships: [KCShipObject] = [] {
+    fileprivate var ships: [Ship] = [] {
         willSet {
             ships.forEach { (ship) in
                 shipObserveKeys.forEach {
@@ -228,7 +228,7 @@ class FleetViewController: NSViewController {
     }
     
     private func setupShips() {
-        let array: [KCShipObject?] = (0..<6).map { fleet?[$0] }
+        let array: [Ship?] = (0..<6).map { fleet?[$0] }
         zip(details, array).forEach { $0.0.ship = $0.1 }
         ships = array.flatMap { $0 }
         

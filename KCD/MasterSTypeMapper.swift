@@ -10,7 +10,7 @@ import Cocoa
 
 class MasterSTypeMapper: JSONMapper {
     let apiResponse: APIResponse
-    let configuration = MappingConfiguration(entityType: KCMasterSType.self,
+    let configuration = MappingConfiguration(entityType: MasterSType.self,
                                              dataKey: "api_data.api_mst_stype",
                                              editorStore: ServerDataStore.oneTimeEditor(),
                                              ignoreKeys: ["api_equip_type"])

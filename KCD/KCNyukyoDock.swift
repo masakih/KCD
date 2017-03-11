@@ -8,7 +8,7 @@
 
 import Foundation
 
-class KCNyukyoDock: KCManagedObject {
+class NyukyoDock: KCManagedObject {
     @NSManaged var complete_time: Int
     @NSManaged var complete_time_str: String?
     @NSManaged var id: Int

@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class KCShipObject: KCManagedObject {
+class Ship: KCManagedObject {
     @NSManaged dynamic var bull: Int
     @NSManaged dynamic var cond: Int
     @NSManaged dynamic var exp: Int
@@ -58,8 +58,8 @@ class KCShipObject: KCManagedObject {
     @NSManaged dynamic var taisen_0: Int
     @NSManaged dynamic var taisen_1: NSNumber?
     @NSManaged dynamic var equippedItem: NSOrderedSet
-    @NSManaged dynamic var master_ship: KCMasterShipObject
-    @NSManaged dynamic var extraItem: KCSlotItemObject?
+    @NSManaged dynamic var master_ship: MasterShip
+    @NSManaged dynamic var extraItem: SlotItem?
 }
 
 fileprivate let shortSTypeNames: [String] = {
@@ -81,7 +81,7 @@ fileprivate let levelUpExps: [Int] = {
     return array
 }()
 
-extension KCShipObject {
+extension Ship {
     class func keyPathsForValuesAffectingName() -> Set<String> {
         return ["ship_id"]
     }
@@ -157,7 +157,7 @@ extension KCShipObject {
 }
 
 
-extension KCShipObject {
+extension Ship {
     dynamic var maxBull: Int { return master_ship.bull_max }
     dynamic var maxFuel: Int { return master_ship.fuel_max }
     
@@ -274,7 +274,7 @@ fileprivate let jetBomberBonus: [Double] = [0, 0, 0, 0, 0, 0, 0, 0]
 fileprivate let bonus: [Double] = [0, 1.000, 1.581, 2.000, 2.345, 2.645, 2.915, 3.162]
 
 
-extension KCShipObject {
+extension Ship {
     
     private func slotItemCount(_ index: Int) -> Int {
         switch index {
@@ -307,7 +307,7 @@ extension KCShipObject {
         }
     }
     
-    private func slotItem(_ index: Int) -> KCSlotItemObject? {
+    private func slotItem(_ index: Int) -> SlotItem? {
         return ServerDataStore.default.slotItem(byId: slotItemId(index))
     }
     private func typeBonus(_ type: Int) -> [Double]? {

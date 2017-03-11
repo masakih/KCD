@@ -8,7 +8,7 @@
 
 import Foundation
 
-class KCMasterSlotItemObject: KCManagedObject {
+class MasterSlotItem: KCManagedObject {
     @NSManaged var atap: NSNumber?
     @NSManaged var bakk: NSNumber?
     @NSManaged var baku: NSNumber?
@@ -41,5 +41,5 @@ class KCMasterSlotItemObject: KCManagedObject {
     @NSManaged var type_2: Int
     @NSManaged var type_3: Int
     @NSManaged var usebull: NSNumber?
-    @NSManaged var slotItems: Set<KCSlotItemObject>
+    @NSManaged var slotItems: Set<SlotItem>
 }

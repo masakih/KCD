@@ -41,7 +41,7 @@ class ShipViewController: MainTabVIewItemViewController {
     }
     
     var standardDeviation: Double {
-        guard let ships = shipController.arrangedObjects as? [KCShipObject],
+        guard let ships = shipController.arrangedObjects as? [Ship],
             !ships.isEmpty,
             let avg = shipController.value(forKeyPath: "arrangedObjects.@avg.lv") as? Double
             else { return 0.0 }

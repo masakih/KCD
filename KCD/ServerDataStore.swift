@@ -1,6 +1,6 @@
 //
 //  ServerDataStore.swift
-//  KCD
+//  D
 //
 //  Created by Hori,Masaki on 2017/01/07.
 //  Copyright © 2017年 Hori,Masaki. All rights reserved.
@@ -42,303 +42,303 @@ class ServerDataStore: CoreDataAccessor, CoreDataManager {
     var managedObjectContext: NSManagedObjectContext
 }
 
-extension KCAirBase: EntityProvider {
+extension AirBase: EntityProvider {
     override class var entityName: String { return "AirBase" }
 }
-extension KCAirBasePlaneInfo: EntityProvider {
+extension AirBasePlaneInfo: EntityProvider {
     override class var entityName: String { return "AirBasePlaneInfo" }
 }
-extension KCBasic: EntityProvider {
+extension Basic: EntityProvider {
     override class var entityName: String { return "Basic" }
 }
-extension KCDeck: EntityProvider {
+extension Deck: EntityProvider {
     override class var entityName: String { return "Deck" }
 }
-extension KCKenzoDock: EntityProvider {
+extension KenzoDock: EntityProvider {
     override class var entityName: String { return "KenzoDock" }
 }
 extension MasterFurniture: EntityProvider {
     override class var entityName: String { return "MasterFurniture" }
 }
-extension KCMasterMapArea: EntityProvider {
+extension MasterMapArea: EntityProvider {
     override class var entityName: String { return "MasterMapArea" }
 }
-extension KCMasterMapInfo: EntityProvider {
+extension MasterMapInfo: EntityProvider {
     override class var entityName: String { return "MasterMapInfo" }
 }
-extension KCMasterMission: EntityProvider {
+extension MasterMission: EntityProvider {
     override class var entityName: String { return "MasterMission" }
 }
-extension KCMasterShipObject: EntityProvider {
+extension MasterShip: EntityProvider {
     override class var entityName: String { return "MasterShip" }
 }
-extension KCMasterSlotItemObject: EntityProvider {
+extension MasterSlotItem: EntityProvider {
     override class var entityName: String { return "MasterSlotItem" }
 }
-extension KCMasterSType: EntityProvider {
+extension MasterSType: EntityProvider {
     override class var entityName: String { return "MasterSType" }
 }
-extension KCMasterSlotItemEquipTypeObject: EntityProvider {
+extension MasterSlotItemEquipType: EntityProvider {
     override class var entityName: String { return "MasterSlotItemEquipType" }
 }
 extension MasterUseItem: EntityProvider {
     override class var entityName: String { return "MasterUseItem" }
 }
-extension KCMaterial: EntityProvider {
+extension Material: EntityProvider {
     override class var entityName: String { return "Material" }
 }
-extension KCNyukyoDock: EntityProvider {
+extension NyukyoDock: EntityProvider {
     override class var entityName: String { return "NyukyoDock" }
 }
-extension KCShipObject: EntityProvider {
+extension Ship: EntityProvider {
     override class var entityName: String { return "Ship" }
 }
-extension KCSlotItemObject: EntityProvider {
+extension SlotItem: EntityProvider {
     override class var entityName: String { return "SlotItem" }
 }
-extension KCQuest: EntityProvider {
+extension Quest: EntityProvider {
     override class var entityName: String { return "Quest" }
 }
 
 extension ServerDataStore {
-    func airBases() -> [KCAirBase] {
-        guard let airbase = try? objects(with: KCAirBase.entity)
+    func airBases() -> [AirBase] {
+        guard let airbase = try? objects(with: AirBase.entity)
             else { return [] }
         return airbase
     }
-    func airBase(area: Int, base: Int) -> KCAirBase? {
+    func airBase(area: Int, base: Int) -> AirBase? {
         let p = NSPredicate(format: "area_id == %ld AND rid == %ld", area, base)
-        guard let airBases = try? objects(with: KCAirBase.entity, predicate: p)
+        guard let airBases = try? objects(with: AirBase.entity, predicate: p)
             else { return nil }
         return airBases.first
     }
-    func createAirBasePlaneInfo() -> KCAirBasePlaneInfo? {
-        return insertNewObject(for: KCAirBasePlaneInfo.entity)
+    func createAirBasePlaneInfo() -> AirBasePlaneInfo? {
+        return insertNewObject(for: AirBasePlaneInfo.entity)
     }
     
-    func basic() -> KCBasic? {
-        guard let basics = try? objects(with: KCBasic.entity)
+    func basic() -> Basic? {
+        guard let basics = try? objects(with: Basic.entity)
             else { return nil }
         return basics.first
     }
-    func createBasic() -> KCBasic? {
-        return insertNewObject(for: KCBasic.entity)
+    func createBasic() -> Basic? {
+        return insertNewObject(for: Basic.entity)
     }
     
-    func decksSortedById() -> [KCDeck] {
+    func decksSortedById() -> [Deck] {
         let sortDec = NSSortDescriptor(key: "id", ascending: true)
-        guard let decks = try? objects(with: KCDeck.entity, sortDescriptors: [sortDec])
+        guard let decks = try? objects(with: Deck.entity, sortDescriptors: [sortDec])
             else { return [] }
         return decks
     }
-    func deck(byId id: Int) -> KCDeck? {
+    func deck(byId id: Int) -> Deck? {
         let p = NSPredicate(format: "id = %ld", id)
-        guard let decks = try? objects(with: KCDeck.entity, predicate: p)
+        guard let decks = try? objects(with: Deck.entity, predicate: p)
             else { return nil }
         return decks.first
     }
     
-    func kenzoDock(byDockId dockId: Int) -> KCKenzoDock? {
+    func kenzoDock(byDockId dockId: Int) -> KenzoDock? {
         let dockPredicate = NSPredicate(format: "id = %ld", dockId)
-        guard let kenzoDocks = try? objects(with: KCKenzoDock.entity, predicate: dockPredicate)
+        guard let kenzoDocks = try? objects(with: KenzoDock.entity, predicate: dockPredicate)
             else { return nil }
         return kenzoDocks.first
     }
     
-    func mapArea(byId id: Int) -> KCMasterMapArea? {
+    func mapArea(byId id: Int) -> MasterMapArea? {
         let predicate = NSPredicate(format: "id = %ld", id)
-        guard let mapAreas = try? objects(with: KCMasterMapArea.entity, predicate: predicate)
+        guard let mapAreas = try? objects(with: MasterMapArea.entity, predicate: predicate)
             else { return nil }
         return mapAreas.first
     }
     
-    func mapInfo(area: Int, no: Int) -> KCMasterMapInfo? {
+    func mapInfo(area: Int, no: Int) -> MasterMapInfo? {
         let predicate = NSPredicate(format: "maparea_id = %ld AND %K = %ld", area, "no", no)
-        guard let mapInfos = try? objects(with: KCMasterMapInfo.entity, predicate: predicate)
+        guard let mapInfos = try? objects(with: MasterMapInfo.entity, predicate: predicate)
             else { return nil }
         return mapInfos.first
     }
     
-    func masterMission(by id: Int) -> KCMasterMission? {
+    func masterMission(by id: Int) -> MasterMission? {
         let p = NSPredicate(format: "id = %ld", id)
-        guard let missions = try? objects(with: KCMasterMission.entity, predicate: p)
+        guard let missions = try? objects(with: MasterMission.entity, predicate: p)
             else { return nil }
         return missions.first
     }
     
-    func masterShips() -> [KCMasterShipObject] {
-        guard let ships = try? objects(with: KCMasterShipObject.entity)
+    func masterShips() -> [MasterShip] {
+        guard let ships = try? objects(with: MasterShip.entity)
             else { return [] }
         return ships
     }
-    func sortedMasterShipsById() -> [KCMasterShipObject] {
+    func sortedMasterShipsById() -> [MasterShip] {
         let sortDesc = NSSortDescriptor(key: "id", ascending: true)
-        guard let ships = try? objects(with: KCMasterShipObject.entity, sortDescriptors: [sortDesc])
+        guard let ships = try? objects(with: MasterShip.entity, sortDescriptors: [sortDesc])
             else { return [] }
         return ships
     }
-    func masterShip(byId id: Int) -> KCMasterShipObject? {
+    func masterShip(byId id: Int) -> MasterShip? {
         let p = NSPredicate(format: "id = %ld", id)
-        guard let ships = try? objects(with: KCMasterShipObject.entity, predicate: p)
+        guard let ships = try? objects(with: MasterShip.entity, predicate: p)
             else { return nil }
         return ships.first
     }
     
-    func sortedMasterSlotItemsById() -> [KCMasterSlotItemObject] {
+    func sortedMasterSlotItemsById() -> [MasterSlotItem] {
         let sortDesc = NSSortDescriptor(key: "id", ascending: true)
-        guard let masterSlotItems = try? objects(with: KCMasterSlotItemObject.entity, sortDescriptors: [sortDesc])
+        guard let masterSlotItems = try? objects(with: MasterSlotItem.entity, sortDescriptors: [sortDesc])
             else { return [] }
         return masterSlotItems
     }
-    func masterSlotItems() -> [KCMasterSlotItemObject] {
-        guard let masterSlotItems = try? objects(with: KCMasterSlotItemObject.entity)
+    func masterSlotItems() -> [MasterSlotItem] {
+        guard let masterSlotItems = try? objects(with: MasterSlotItem.entity)
             else { return [] }
         return masterSlotItems
     }
-    func masterSlotItem(by id: Int) -> KCMasterSlotItemObject? {
+    func masterSlotItem(by id: Int) -> MasterSlotItem? {
         let p = NSPredicate(format: "id = %ld", id)
-        guard let masterSlotItems = try? objects(with: KCMasterSlotItemObject.entity, predicate: p)
+        guard let masterSlotItems = try? objects(with: MasterSlotItem.entity, predicate: p)
             else { return nil }
         return masterSlotItems.first
     }
     
-    func masterSlotItemEquipType(by id: Int) -> KCMasterSlotItemEquipTypeObject? {
+    func masterSlotItemEquipType(by id: Int) -> MasterSlotItemEquipType? {
         let predicate = NSPredicate(format: "id = %ld", id)
-        guard let types = try? objects(with: KCMasterSlotItemEquipTypeObject.entity, predicate: predicate)
+        guard let types = try? objects(with: MasterSlotItemEquipType.entity, predicate: predicate)
             else { return nil }
         return types.first
     }
     
-    func masterSTypes() -> [KCMasterSType] {
-        guard let masterSTypes = try? objects(with: KCMasterSType.entity)
+    func masterSTypes() -> [MasterSType] {
+        guard let masterSTypes = try? objects(with: MasterSType.entity)
             else { return [] }
         return masterSTypes
     }
-    func sortedMasterSTypesById() -> [KCMasterSType] {
+    func sortedMasterSTypesById() -> [MasterSType] {
         let sortDesc = NSSortDescriptor(key: "id", ascending: true)
-        guard let masterSTypes = try? objects(with: KCMasterSType.entity, sortDescriptors: [sortDesc])
+        guard let masterSTypes = try? objects(with: MasterSType.entity, sortDescriptors: [sortDesc])
             else { return [] }
         return masterSTypes
     }
     
-    func material() -> KCMaterial? {
-        guard let materials = try? objects(with: KCMaterial.entity)
+    func material() -> Material? {
+        guard let materials = try? objects(with: Material.entity)
             else { return nil }
         return materials.first
     }
-    func createMaterial() -> KCMaterial? {
-        return insertNewObject(for: KCMaterial.entity)
+    func createMaterial() -> Material? {
+        return insertNewObject(for: Material.entity)
     }
     
-    func nyukyoDock(by id: Int) -> KCNyukyoDock? {
+    func nyukyoDock(by id: Int) -> NyukyoDock? {
         let p = NSPredicate(format: "id = %ld", id)
-        guard let ndocks = try? objects(with: KCNyukyoDock.entity, predicate: p)
+        guard let ndocks = try? objects(with: NyukyoDock.entity, predicate: p)
             else { return nil }
         return ndocks.first
     }
     
-    func ships(byDeckId deckId: Int) -> [KCShipObject] {
+    func ships(byDeckId deckId: Int) -> [Ship] {
         let predicate = NSPredicate(format: "id = %d", deckId)
-        guard let decks = try? objects(with: KCDeck.entity, predicate: predicate),
+        guard let decks = try? objects(with: Deck.entity, predicate: predicate),
             let deck = decks.first
             else { return [] }
         return (0..<6).flatMap { deck[$0] }
     }
-    func ship(byId shipId: Int) -> KCShipObject? {
+    func ship(byId shipId: Int) -> Ship? {
         if shipId < 1 { return nil }
         let predicate = NSPredicate(format: "id = %d", shipId)
-        guard let ships = try? objects(with: KCShipObject.entity, predicate: predicate)
+        guard let ships = try? objects(with: Ship.entity, predicate: predicate)
             else { return nil }
         return ships.first
     }
-    func ships(byId shipId: Int) -> [KCShipObject] {
+    func ships(byId shipId: Int) -> [Ship] {
         let predicate = NSPredicate(format: "id = %d", shipId)
-        guard let ships = try? objects(with: KCShipObject.entity, predicate: predicate)
+        guard let ships = try? objects(with: Ship.entity, predicate: predicate)
             else { return [] }
         return ships
     }
-    func ships(exclude shipIds: [Int]) -> [KCShipObject] {
+    func ships(exclude shipIds: [Int]) -> [Ship] {
         let predicate = NSPredicate(format: "NOT id IN %@", shipIds)
-        guard let ships = try? objects(with: KCShipObject.entity, predicate: predicate)
+        guard let ships = try? objects(with: Ship.entity, predicate: predicate)
             else { return [] }
         return ships
     }
-    func shipsInFleet() -> [KCShipObject] {
+    func shipsInFleet() -> [Ship] {
         let predicate = NSPredicate(format: "NOT fleet = 0")
-        guard let ships = try? objects(with: KCShipObject.entity, predicate: predicate)
+        guard let ships = try? objects(with: Ship.entity, predicate: predicate)
             else { return [] }
         return ships
     }
-    func createShip() -> KCShipObject? {
-        return insertNewObject(for: KCShipObject.entity)
+    func createShip() -> Ship? {
+        return insertNewObject(for: Ship.entity)
     }
     
     func masterSlotItemID(bySlotItemId slotItemId: Int) -> Int {
         if slotItemId < 1 { return 0 }
         let predicate = NSPredicate(format: "id = %d", argumentArray: [slotItemId])
-        guard let slotItems = try? objects(with: KCSlotItemObject.entity, predicate: predicate),
+        guard let slotItems = try? objects(with: SlotItem.entity, predicate: predicate),
             let slotItem = slotItems.first
             else { return 0 }
         return slotItem.master_slotItem.id
     }
     
-    func slotItem(byId itemId: Int) -> KCSlotItemObject? {
+    func slotItem(byId itemId: Int) -> SlotItem? {
         let p = NSPredicate(format: "id = %ld", itemId)
-        guard let slotItems = try? objects(with: KCSlotItemObject.entity, predicate: p)
+        guard let slotItems = try? objects(with: SlotItem.entity, predicate: p)
             else { return nil }
         return slotItems.first
     }
-    func sortedSlotItemsById() -> [KCSlotItemObject] {
+    func sortedSlotItemsById() -> [SlotItem] {
         let sortDesc = NSSortDescriptor(key: "id", ascending: true)
-        guard let slotItems = try? objects(with: KCSlotItemObject.entity, sortDescriptors: [sortDesc])
+        guard let slotItems = try? objects(with: SlotItem.entity, sortDescriptors: [sortDesc])
             else { return [] }
         return slotItems
     }
-    func slotItems() -> [KCSlotItemObject] {
-        guard let slotItems = try? objects(with: KCSlotItemObject.entity)
+    func slotItems() -> [SlotItem] {
+        guard let slotItems = try? objects(with: SlotItem.entity)
             else { return [] }
         return slotItems
     }
-    func slotItems(in itemIds: [Int]) -> [KCSlotItemObject] {
+    func slotItems(in itemIds: [Int]) -> [SlotItem] {
         let predicate = NSPredicate(format: "id IN %@", itemIds)
-        guard let slotItems = try? objects(with: KCSlotItemObject.entity, predicate: predicate)
+        guard let slotItems = try? objects(with: SlotItem.entity, predicate: predicate)
             else { return [] }
         return slotItems
     }
-    func slotItems(exclude itemIds: [Int]) -> [KCSlotItemObject] {
+    func slotItems(exclude itemIds: [Int]) -> [SlotItem] {
         let predicate = NSPredicate(format: "NOT id IN %@", itemIds)
-        guard let slotItems = try? objects(with: KCSlotItemObject.entity, predicate: predicate)
+        guard let slotItems = try? objects(with: SlotItem.entity, predicate: predicate)
             else { return [] }
         return slotItems
     }
-    func createSlotItem() -> KCSlotItemObject? {
-        return insertNewObject(for: KCSlotItemObject.entity)
+    func createSlotItem() -> SlotItem? {
+        return insertNewObject(for: SlotItem.entity)
     }
     
-    func quests() -> [KCQuest] {
-        guard let quests = try? objects(with: KCQuest.entity)
+    func quests() -> [Quest] {
+        guard let quests = try? objects(with: Quest.entity)
             else { return [] }
         return quests
     }
-    func quest(by no: Int) -> KCQuest? {
+    func quest(by no: Int) -> Quest? {
         let p = NSPredicate(format: "%K = %ld", "no", no)
-        guard let quests = try? objects(with: KCQuest.entity, predicate: p)
+        guard let quests = try? objects(with: Quest.entity, predicate: p)
             else { return nil }
         return quests.first
     }
-    func quests(in range: CountableClosedRange<Int>) -> [KCQuest] {
+    func quests(in range: CountableClosedRange<Int>) -> [Quest] {
         let p = NSPredicate(format: "%K In %@", "no", range.map {$0})
-        guard let quests = try? objects(with: KCQuest.entity, predicate: p)
+        guard let quests = try? objects(with: Quest.entity, predicate: p)
             else { return [] }
         return quests
     }
-    func sortedQuestByNo() -> [KCQuest] {
+    func sortedQuestByNo() -> [Quest] {
         let sortDesc = NSSortDescriptor(key: "no", ascending: true)
-        guard let quests = try? objects(with: KCQuest.entity, sortDescriptors: [sortDesc])
+        guard let quests = try? objects(with: Quest.entity, sortDescriptors: [sortDesc])
             else { return [] }
         return quests
     }
-    func createQuest() -> KCQuest? {
-        return insertNewObject(for: KCQuest.entity)
+    func createQuest() -> Quest? {
+        return insertNewObject(for: Quest.entity)
     }
 }

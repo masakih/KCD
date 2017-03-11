@@ -8,7 +8,7 @@
 
 import Foundation
 
-class KCMasterMission: KCManagedObject {
+class MasterMission: KCManagedObject {
     @NSManaged var details: String?
     @NSManaged var difficulty: NSNumber?
     @NSManaged var id: Int

@@ -87,7 +87,7 @@ class ExternalBrowserWindowController: NSWindowController {
     }
     
     fileprivate var bookmarkShowing: Bool = false
-    fileprivate var waitingBookmarkItem: BookmarkItem?
+    fileprivate var waitingBookmarkItem: Bookmark?
     
     private lazy var bookmarkListViwController: BookmarkListViewController? = {
         [weak self] in
@@ -155,7 +155,7 @@ class ExternalBrowserWindowController: NSWindowController {
         }
     }
     
-    fileprivate func move(bookmark: BookmarkItem) {
+    fileprivate func move(bookmark: Bookmark) {
         if !canMovePage {
             let appDelegate = NSApp.delegate as! AppDelegate
             appDelegate.createNewBrowser().move(bookmark: bookmark)
@@ -174,7 +174,7 @@ class ExternalBrowserWindowController: NSWindowController {
     
     // MARK: - IBAction
     @IBAction func selectBookmark(_ sender: AnyObject?) {
-        guard let item = sender?.representedObject as? BookmarkItem
+        guard let item = sender?.representedObject as? Bookmark
             else { return }
         move(bookmark: item)
     }
@@ -293,7 +293,7 @@ class ExternalBrowserWindowController: NSWindowController {
 }
 
 extension ExternalBrowserWindowController: BookmarkListViewControllerDelegate {
-    func didSelectBookmark(_ bookmark: BookmarkItem) {
+    func didSelectBookmark(_ bookmark: Bookmark) {
         move(bookmark: bookmark)
     }
 }
@@ -307,7 +307,7 @@ extension ExternalBrowserWindowController: NSAnimationDelegate {
 extension ExternalBrowserWindowController: WebFrameLoadDelegate, WebPolicyDelegate {
     
     func updateContentVisibleRect(_ timer: Timer) {
-        guard let item = timer.userInfo as? BookmarkItem else { return }
+        guard let item = timer.userInfo as? Bookmark else { return }
         contentVisibleRect = item.contentVisibleRect
     }
     func webView(_ sender: WebView!, didFinishLoadFor frame: WebFrame!) {

@@ -37,7 +37,7 @@ class SetPlaneCommand: JSONCommand {
             else { return print("AirBase is not found") }
         let planes = airbase.planeInfo
         guard planes.count >= squadronId,
-            let plane = planes[squadronId - 1] as? KCAirBasePlaneInfo
+            let plane = planes[squadronId - 1] as? AirBasePlaneInfo
             else { return print("AirBase is wrong") }
         plane.cond = cond
         plane.slotid = slotid

@@ -44,7 +44,7 @@ class KenzoDockStatus: NSObject {
         controller = NSArrayController()
         super.init()
         controller.managedObjectContext = ServerDataStore.default.managedObjectContext
-        controller.entityName = KCKenzoDock.entityName
+        controller.entityName = KenzoDock.entityName
         controller.fetchPredicate = NSPredicate(format: "id = %ld", number)
         controller.automaticallyRearrangesObjects = true
         controller.fetch(nil)

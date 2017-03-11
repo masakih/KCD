@@ -903,7 +903,6 @@
 				F4CF25BF1E36428400C02A66 /* MissionStatus.swift */,
 				F4CF25BD1E361F4600C02A66 /* NyukyoDockStatus.swift */,
 				F4CF25BB1E34F67400C02A66 /* KenzoDockStatus.swift */,
-				F42CFE1B1E3CB495000B4F9B /* BookmarkItem.swift */,
 				F4CF25B91E34EB6600C02A66 /* BookmarkManager.swift */,
 				F45771221E1BCC7C008A9215 /* PeriodicNotifier.swift */,
 				F4CF25B51E34BAD500C02A66 /* AnchorageRepairManager.swift */,
@@ -1185,6 +1184,7 @@
 			children = (
 				F495462C1B1894DD00E0D8D0 /* Bookmark.xcdatamodeld */,
 				F47215A71E1F947A0083D3BC /* BookmarkDataStore.swift */,
+				F42CFE1B1E3CB495000B4F9B /* BookmarkItem.swift */,
 			);
 			name = Bookmark;
 			sourceTree = "<group>";

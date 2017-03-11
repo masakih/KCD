@@ -30,7 +30,7 @@ class CalculateDamageCommand: JSONCommand {
     private let store = TemporaryDataStore.oneTimeEditor()
     
     private var battleType: BattleType = .normal
-    private var damages: [KCDamage] {
+    private var damages: [Damage] {
         let array = store.sortedDamagesById()
         if array.count != 12 {
             buildDamagedEntity()
@@ -131,7 +131,7 @@ class CalculateDamageCommand: JSONCommand {
                 else { return print("Can not create Damage") }
             damage.battle = battle
             damage.id = $0.offset
-            if let ship = $0.element as? KCShipObject {
+            if let ship = $0.element as? Ship {
                 damage.hp = ship.nowhp
                 damage.shipID = ship.id
             }
@@ -392,7 +392,7 @@ class CalculateDamageCommand: JSONCommand {
     }
     
     // MARK: - Damage control
-    private func damageControlIfPossible(nowhp: Int, ship: KCShipObject) -> Int {
+    private func damageControlIfPossible(nowhp: Int, ship: Ship) -> Int {
         var nowHp = nowhp
         if nowHp < 0 { nowHp = 0 }
         let maxhp = ship.maxhp
@@ -400,7 +400,7 @@ class CalculateDamageCommand: JSONCommand {
         var useDamageControl = false
         ship.equippedItem.forEach {
             if useDamageControl { return }
-            guard let master = $0 as? KCSlotItemObject else { return }
+            guard let master = $0 as? SlotItem else { return }
             let masterSlotItemId = store.masterSlotItemID(bySlotItemId: master.id)
             guard let type = DamageControlID(rawValue: masterSlotItemId)
                 else { return }
@@ -426,14 +426,14 @@ class CalculateDamageCommand: JSONCommand {
         }
         return nowHp
     }
-    private func removeFirstDamageControl(of ship: KCShipObject) {
+    private func removeFirstDamageControl(of ship: Ship) {
         let equiped = ship.equippedItem
         let newEquiped = equiped.mutableCopy() as! NSMutableOrderedSet
         let store = ServerDataStore.default
         var useDamageControl = false
         equiped.forEach {
             if useDamageControl { return }
-            guard let master = $0 as? KCSlotItemObject else { return }
+            guard let master = $0 as? SlotItem else { return }
             let masterSlotItemId = store.masterSlotItemID(bySlotItemId: master.id)
             guard let type = DamageControlID(rawValue: masterSlotItemId)
                 else { return }

@@ -31,7 +31,7 @@ class ShipMasterDetailWindowController: NSWindowController {
         return "ShipMasterDetailWindowController"
     }
     
-    dynamic var selectedShip: KCShipObject? {
+    dynamic var selectedShip: Ship? {
         didSet { buildSpec() }
     }
     dynamic var spec: [[String: AnyObject]] = []
@@ -53,7 +53,7 @@ class ShipMasterDetailWindowController: NSWindowController {
     @IBAction func applySally(_ sender: AnyObject?) {
         let store = ServerDataStore.oneTimeEditor()
         guard let i = selectedShip?.objectID,
-            let ship = store.object(with: i) as? KCShipObject
+            let ship = store.object(with: i) as? Ship
             else { return }
         ship.sally_area = sally.integerValue as NSNumber
     }
@@ -68,7 +68,7 @@ extension ShipMasterDetailWindowController: NSTableViewDelegate {
             ]
             .filter { $0.0 == tableView }
             .first
-        guard let selectedObjects = controller?.1.selectedObjects as? [KCShipObject],
+        guard let selectedObjects = controller?.1.selectedObjects as? [Ship],
             selectedObjects.count != 0 else { return }
         selectedShip = selectedObjects[0]
     }

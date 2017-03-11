@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16D32" minimumToolsVersion="Xcode 4.3" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="AirBase" representedClassName="KCD.KCAirBase" syncable="YES">
+    <entity name="AirBase" representedClassName="KCD.AirBase" syncable="YES">
         <attribute name="action_kind" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="area_id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="distance" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
@@ -8,7 +8,7 @@
         <attribute name="rid" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="planeInfo" optional="YES" toMany="YES" maxCount="4" deletionRule="Cascade" ordered="YES" destinationEntity="AirBasePlaneInfo" inverseName="airBase" inverseEntity="AirBasePlaneInfo" syncable="YES"/>
     </entity>
-    <entity name="AirBasePlaneInfo" representedClassName="KCD.KCAirBasePlaneInfo" syncable="YES">
+    <entity name="AirBasePlaneInfo" representedClassName="KCD.AirBasePlaneInfo" syncable="YES">
         <attribute name="cond" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="count" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="max_count" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
@@ -17,7 +17,7 @@
         <attribute name="state" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="airBase" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AirBase" inverseName="planeInfo" inverseEntity="AirBase" syncable="YES"/>
     </entity>
-    <entity name="Basic" representedClassName="KCD.KCBasic" syncable="YES">
+    <entity name="Basic" representedClassName="KCD.Basic" syncable="YES">
         <attribute name="active_flag" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="comment_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
@@ -59,7 +59,7 @@
         <attribute name="tutorial" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="tutorial_progress" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
     </entity>
-    <entity name="Deck" representedClassName="KCD.KCDeck" syncable="YES">
+    <entity name="Deck" representedClassName="KCD.Deck" syncable="YES">
         <attribute name="flagship" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" indexed="YES" syncable="YES"/>
         <attribute name="member_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
@@ -76,7 +76,7 @@
         <attribute name="ship_4" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="ship_5" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
     </entity>
-    <entity name="KenzoDock" representedClassName="KCD.KCKenzoDock" syncable="YES">
+    <entity name="KenzoDock" representedClassName="KCD.KenzoDock" syncable="YES">
         <attribute name="complete_time" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="complete_time_str" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="created_ship_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
@@ -99,7 +99,7 @@
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
     </entity>
-    <entity name="MasterMapArea" representedClassName="KCD.KCMasterMapArea" syncable="YES">
+    <entity name="MasterMapArea" representedClassName="KCD.MasterMapArea" syncable="YES">
         <attribute name="id" attributeType="Integer 64" usesScalarValueType="NO" indexed="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="Integer 64" usesScalarValueType="NO" syncable="YES"/>
@@ -112,7 +112,7 @@
         <attribute name="mapinfo_no" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="no" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
     </entity>
-    <entity name="MasterMapInfo" representedClassName="KCD.KCMasterMapInfo" syncable="YES">
+    <entity name="MasterMapInfo" representedClassName="KCD.MasterMapInfo" syncable="YES">
         <attribute name="id" attributeType="Integer 64" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="infotext" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="item_0" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
@@ -129,7 +129,7 @@
         <attribute name="sally_flag_0" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="sally_flag_1" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
     </entity>
-    <entity name="MasterMission" representedClassName="KCD.KCMasterMission" syncable="YES">
+    <entity name="MasterMission" representedClassName="KCD.MasterMission" syncable="YES">
         <attribute name="details" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="difficulty" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" indexed="YES" syncable="YES"/>
@@ -144,7 +144,7 @@
         <attribute name="win_item2_0" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="win_item2_1" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
     </entity>
-    <entity name="MasterShip" representedClassName="KCD.KCMasterShipObject" syncable="YES">
+    <entity name="MasterShip" representedClassName="KCD.MasterShip" syncable="YES">
         <attribute name="afterbull" optional="YES" attributeType="Integer 64" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="afterfuel" optional="YES" attributeType="Integer 64" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="afterlv" attributeType="Integer 64" usesScalarValueType="NO" syncable="YES"/>
@@ -191,7 +191,7 @@
         <relationship name="ships" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ship" inverseName="master_ship" inverseEntity="Ship" syncable="YES"/>
         <relationship name="stype" maxCount="1" deletionRule="Nullify" destinationEntity="MasterSType" inverseName="ships" inverseEntity="MasterSType" syncable="YES"/>
     </entity>
-    <entity name="MasterSlotItem" representedClassName="KCD.KCMasterSlotItemObject" syncable="YES">
+    <entity name="MasterSlotItem" representedClassName="KCD.MasterSlotItem" syncable="YES">
         <attribute name="atap" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="bakk" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="baku" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
@@ -229,12 +229,12 @@
         <attribute name="usebull" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="slotItems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SlotItem" inverseName="master_slotItem" inverseEntity="SlotItem" syncable="YES"/>
     </entity>
-    <entity name="MasterSlotItemEquipType" representedClassName="KCD.KCMasterSlotItemEquipTypeObject" syncable="YES">
+    <entity name="MasterSlotItemEquipType" representedClassName="KCD.MasterSlotItemEquipType" syncable="YES">
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" indexed="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="show_flg" attributeType="Boolean" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
     </entity>
-    <entity name="MasterSType" representedClassName="KCD.KCMasterSType" syncable="YES">
+    <entity name="MasterSType" representedClassName="KCD.MasterSType" syncable="YES">
         <attribute name="id" attributeType="Integer 64" usesScalarValueType="NO" indexed="YES" syncable="YES"/>
         <attribute name="kcnt" optional="YES" attributeType="Integer 64" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="name" attributeType="String" indexed="YES" syncable="YES"/>
@@ -251,7 +251,7 @@
         <attribute name="price" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="usetype" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
     </entity>
-    <entity name="Material" representedClassName="KCD.KCMaterial" syncable="YES">
+    <entity name="Material" representedClassName="KCD.Material" syncable="YES">
         <attribute name="bauxite" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="bull" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="fuel" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
@@ -261,7 +261,7 @@
         <attribute name="screw" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="steel" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
     </entity>
-    <entity name="NyukyoDock" representedClassName="KCD.KCNyukyoDock" syncable="YES">
+    <entity name="NyukyoDock" representedClassName="KCD.NyukyoDock" syncable="YES">
         <attribute name="complete_time" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="complete_time_str" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" indexed="YES" syncable="YES"/>
@@ -273,7 +273,7 @@
         <attribute name="ship_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="state" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
     </entity>
-    <entity name="Quest" representedClassName="KCD.KCQuest" syncable="YES">
+    <entity name="Quest" representedClassName="KCD.Quest" syncable="YES">
         <attribute name="bonus_flag" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="category" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="detail" attributeType="String" defaultValueString=" " syncable="YES"/>
@@ -288,7 +288,7 @@
         <attribute name="title" attributeType="String" defaultValueString=" " syncable="YES"/>
         <attribute name="type" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
     </entity>
-    <entity name="Ship" representedClassName="KCD.KCShipObject" syncable="YES">
+    <entity name="Ship" representedClassName="KCD.Ship" syncable="YES">
         <attribute name="bull" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="cond" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="exp" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
@@ -343,7 +343,7 @@
         <relationship name="extraItem" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="SlotItem" inverseName="extraEquippedShip" inverseEntity="SlotItem" syncable="YES"/>
         <relationship name="master_ship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MasterShip" inverseName="ships" inverseEntity="MasterShip" syncable="YES"/>
     </entity>
-    <entity name="SlotItem" representedClassName="KCD.KCSlotItemObject" syncable="YES">
+    <entity name="SlotItem" representedClassName="KCD.SlotItem" syncable="YES">
         <attribute name="alv" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" indexed="YES" syncable="YES"/>
         <attribute name="level" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>

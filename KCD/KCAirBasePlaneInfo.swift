@@ -9,12 +9,12 @@
 import Foundation
 import CoreData
 
-class KCAirBasePlaneInfo: KCManagedObject {
+class AirBasePlaneInfo: KCManagedObject {
     @NSManaged var squadron_id: Int
     @NSManaged var state: Int
     @NSManaged var slotid: Int
     @NSManaged var cond: Int
     @NSManaged var count: Int
     @NSManaged var max_count: Int
-    @NSManaged var airBase: KCAirBase
+    @NSManaged var airBase: AirBase
 }

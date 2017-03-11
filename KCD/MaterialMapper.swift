@@ -39,7 +39,7 @@ class MaterialMapper: JSONMapper {
     
     required init(_ apiResponse: APIResponse) {
         self.apiResponse = apiResponse
-        self.configuration = MappingConfiguration(entityType: KCMaterial.self,
+        self.configuration = MappingConfiguration(entityType: Material.self,
                                                   dataKey: dataKey(apiResponse),
                                                   editorStore: ServerDataStore.oneTimeEditor())
     }
@@ -59,14 +59,14 @@ class MaterialMapper: JSONMapper {
         }
     }
     
-    private func register(_ material: KCMaterial, data: [Int]) {
+    private func register(_ material: Material, data: [Int]) {
         data.enumerated().forEach {
             guard $0.offset < keys.count
                 else { return }
             material.setValue($0.element as NSNumber, forKey: keys[$0.offset])
         }
     }
-    private func register(_ material: KCMaterial, data: [[String: Any]]) {
+    private func register(_ material: Material, data: [[String: Any]]) {
         data.forEach {
             guard let i = $0["api_id"] as? Int,
                 i != 0,

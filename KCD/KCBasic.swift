@@ -8,7 +8,7 @@
 
 import Foundation
 
-class KCBasic: KCManagedObject {
+class Basic: KCManagedObject {
     @NSManaged var active_flag: NSNumber?
     @NSManaged var comment: String?
     @NSManaged var comment_id: NSNumber?

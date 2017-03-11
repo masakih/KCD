@@ -31,7 +31,7 @@ class AirCorpsSupplyCommand: JSONCommand {
         squadronIds.enumerated().forEach {
             guard planes.count >= $0.element,
                 planeInfos.count > $0.offset,
-                let plane = planes[$0.element - 1] as? KCAirBasePlaneInfo
+                let plane = planes[$0.element - 1] as? AirBasePlaneInfo
                 else { return }
             let planeInfo = planeInfos[$0.offset]
             

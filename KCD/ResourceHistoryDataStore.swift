@@ -42,18 +42,18 @@ class ResourceHistoryDataStore: CoreDataAccessor, CoreDataManager {
     var managedObjectContext: NSManagedObjectContext
 }
 
-extension KCResource: EntityProvider {
+extension Resource: EntityProvider {
     override class var entityName: String { return "Resource" }
 }
 
 extension ResourceHistoryDataStore {
-    func resources(in minites: [Int], older: Date) -> [KCResource] {
+    func resources(in minites: [Int], older: Date) -> [Resource] {
         let p = NSPredicate(format: "minute IN %@ AND date < %@", minites, older as NSDate)
-        guard let resources = try? objects(with: KCResource.entity, predicate: p)
+        guard let resources = try? objects(with: Resource.entity, predicate: p)
             else { return [] }
         return resources
     }
-    func cerateResource() -> KCResource? {
-        return insertNewObject(for: KCResource.entity)
+    func cerateResource() -> Resource? {
+        return insertNewObject(for: Resource.entity)
     }
 }

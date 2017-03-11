@@ -22,7 +22,7 @@ class SuppliesCell: NSCell {
     private let borderColor = NSColor(calibratedWhite: 0.632, alpha: 1.0)
     private let backgroundColor = NSColor(calibratedWhite: 0.948, alpha: 1.0)
     
-    dynamic var shipStatus: KCShipObject?
+    dynamic var shipStatus: Ship?
     private var fuelStatusColor: NSColor {
         guard let s = shipStatus else { return redColor }
         return statusColor(withValue: s.fuel, max: s.maxFuel)

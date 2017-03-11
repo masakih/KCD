@@ -8,7 +8,7 @@
 
 import Foundation
 
-class KCAirBase: KCManagedObject {
+class AirBase: KCManagedObject {
     @NSManaged var rid: Int
     @NSManaged var name: String
     @NSManaged var area_id: Int
