@@ -21,34 +21,34 @@
 		F421850A1DF44AA900256590 /* AirBaseWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F421850C1DF44AA900256590 /* AirBaseWindowController.xib */; };
 		F421850F1DF4518000256590 /* BroswerTouchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = F421850E1DF4518000256590 /* BroswerTouchBar.xib */; };
 		F42185111DF461A600256590 /* ScreenshotTouchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = F42185101DF461A600256590 /* ScreenshotTouchBar.xib */; };
-		F42A8FCC1E3DA4DF0099DC1D /* KCMasterMission.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A8FCB1E3DA4DF0099DC1D /* KCMasterMission.swift */; };
-		F42A8FCE1E3DA7E90099DC1D /* KCMasterShipObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A8FCD1E3DA7E90099DC1D /* KCMasterShipObject.swift */; };
-		F42A8FD01E3DB49A0099DC1D /* KCMasterSlotItemObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A8FCF1E3DB49A0099DC1D /* KCMasterSlotItemObject.swift */; };
-		F42A8FD21E3DC56C0099DC1D /* KCMasterSType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A8FD11E3DC56C0099DC1D /* KCMasterSType.swift */; };
-		F42A8FD41E3DD57E0099DC1D /* KCMasterSlotItemEquipTypeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A8FD31E3DD57E0099DC1D /* KCMasterSlotItemEquipTypeObject.swift */; };
-		F42A8FD61E3DE2C60099DC1D /* KCMaterial.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A8FD51E3DE2C60099DC1D /* KCMaterial.swift */; };
-		F42A8FD81E3DEAA00099DC1D /* KCNyukyoDock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A8FD71E3DEAA00099DC1D /* KCNyukyoDock.swift */; };
-		F42A8FDA1E3DF2230099DC1D /* KCShipObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A8FD91E3DF2230099DC1D /* KCShipObject.swift */; };
-		F42A8FDC1E40B9FE0099DC1D /* KCSlotItemObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A8FDB1E40B9FE0099DC1D /* KCSlotItemObject.swift */; };
-		F42A8FDE1E40C6DF0099DC1D /* KCQuest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A8FDD1E40C6DF0099DC1D /* KCQuest.swift */; };
-		F42A8FE01E40CC050099DC1D /* KCAirBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A8FDF1E40CC050099DC1D /* KCAirBase.swift */; };
-		F42A8FE21E40D0900099DC1D /* KCAirBasePlaneInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A8FE11E40D0900099DC1D /* KCAirBasePlaneInfo.swift */; };
+		F42A8FCC1E3DA4DF0099DC1D /* MasterMission.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A8FCB1E3DA4DF0099DC1D /* MasterMission.swift */; };
+		F42A8FCE1E3DA7E90099DC1D /* MasterShip.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A8FCD1E3DA7E90099DC1D /* MasterShip.swift */; };
+		F42A8FD01E3DB49A0099DC1D /* MasterSlotItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A8FCF1E3DB49A0099DC1D /* MasterSlotItem.swift */; };
+		F42A8FD21E3DC56C0099DC1D /* MasterSType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A8FD11E3DC56C0099DC1D /* MasterSType.swift */; };
+		F42A8FD41E3DD57E0099DC1D /* MasterSlotItemEquipType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A8FD31E3DD57E0099DC1D /* MasterSlotItemEquipType.swift */; };
+		F42A8FD61E3DE2C60099DC1D /* Material.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A8FD51E3DE2C60099DC1D /* Material.swift */; };
+		F42A8FD81E3DEAA00099DC1D /* NyukyoDock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A8FD71E3DEAA00099DC1D /* NyukyoDock.swift */; };
+		F42A8FDA1E3DF2230099DC1D /* Ship.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A8FD91E3DF2230099DC1D /* Ship.swift */; };
+		F42A8FDC1E40B9FE0099DC1D /* SlotItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A8FDB1E40B9FE0099DC1D /* SlotItem.swift */; };
+		F42A8FDE1E40C6DF0099DC1D /* Quest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A8FDD1E40C6DF0099DC1D /* Quest.swift */; };
+		F42A8FE01E40CC050099DC1D /* AirBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A8FDF1E40CC050099DC1D /* AirBase.swift */; };
+		F42A8FE21E40D0900099DC1D /* AirBasePlaneInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A8FE11E40D0900099DC1D /* AirBasePlaneInfo.swift */; };
 		F42A8FE41E41FD6F0099DC1D /* DropShipHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A8FE31E41FD6F0099DC1D /* DropShipHistory.swift */; };
 		F42A8FE61E420A360099DC1D /* KaihatuHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A8FE51E420A360099DC1D /* KaihatuHistory.swift */; };
 		F42A8FE81E422B180099DC1D /* KenzoHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A8FE71E422B180099DC1D /* KenzoHistory.swift */; };
 		F42A8FEA1E43476F0099DC1D /* KenzoMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A8FE91E43476F0099DC1D /* KenzoMark.swift */; };
-		F42A8FEC1E4354F50099DC1D /* KCBattle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A8FEB1E4354F50099DC1D /* KCBattle.swift */; };
-		F42A8FEE1E435E330099DC1D /* KCDamage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A8FED1E435E330099DC1D /* KCDamage.swift */; };
+		F42A8FEC1E4354F50099DC1D /* Battle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A8FEB1E4354F50099DC1D /* Battle.swift */; };
+		F42A8FEE1E435E330099DC1D /* Damage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A8FED1E435E330099DC1D /* Damage.swift */; };
 		F42CFE161E3BA1E1000B4F9B /* EnhancementListItem2.plist in Resources */ = {isa = PBXBuildFile; fileRef = F42CFE151E3BA1E1000B4F9B /* EnhancementListItem2.plist */; };
 		F42CFE181E3C12AA000B4F9B /* ScreenshotInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42CFE171E3C12AA000B4F9B /* ScreenshotInformation.swift */; };
 		F42CFE1A1E3C726D000B4F9B /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42CFE191E3C726D000B4F9B /* UserDefaultsExtension.swift */; };
-		F42CFE1C1E3CB495000B4F9B /* BookmarkItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42CFE1B1E3CB495000B4F9B /* BookmarkItem.swift */; };
-		F42CFE1E1E3CCCC2000B4F9B /* KCResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42CFE1D1E3CCCC2000B4F9B /* KCResource.swift */; };
-		F42CFE201E3CDE7E000B4F9B /* KCBasic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42CFE1F1E3CDE7E000B4F9B /* KCBasic.swift */; };
-		F42CFE221E3D6CEE000B4F9B /* KCDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42CFE211E3D6CEE000B4F9B /* KCDeck.swift */; };
-		F42CFE241E3D8309000B4F9B /* KCKenzoDock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42CFE231E3D8309000B4F9B /* KCKenzoDock.swift */; };
-		F42CFE261E3D91FD000B4F9B /* KCMasterMapArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42CFE251E3D91FD000B4F9B /* KCMasterMapArea.swift */; };
-		F42CFE281E3D9A02000B4F9B /* KCMasterMapInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42CFE271E3D9A02000B4F9B /* KCMasterMapInfo.swift */; };
+		F42CFE1C1E3CB495000B4F9B /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42CFE1B1E3CB495000B4F9B /* Bookmark.swift */; };
+		F42CFE1E1E3CCCC2000B4F9B /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42CFE1D1E3CCCC2000B4F9B /* Resource.swift */; };
+		F42CFE201E3CDE7E000B4F9B /* Basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42CFE1F1E3CDE7E000B4F9B /* Basic.swift */; };
+		F42CFE221E3D6CEE000B4F9B /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42CFE211E3D6CEE000B4F9B /* Deck.swift */; };
+		F42CFE241E3D8309000B4F9B /* KenzoDock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42CFE231E3D8309000B4F9B /* KenzoDock.swift */; };
+		F42CFE261E3D91FD000B4F9B /* MasterMapArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42CFE251E3D91FD000B4F9B /* MasterMapArea.swift */; };
+		F42CFE281E3D9A02000B4F9B /* MasterMapInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42CFE271E3D9A02000B4F9B /* MasterMapInfo.swift */; };
 		F43E67B718BE02A10087E5B6 /* STypeShortName.plist in Resources */ = {isa = PBXBuildFile; fileRef = F43E67B618BE02A10087E5B6 /* STypeShortName.plist */; };
 		F43E67B918BE060E0087E5B6 /* LevelUpExp.plist in Resources */ = {isa = PBXBuildFile; fileRef = F43E67B818BE060E0087E5B6 /* LevelUpExp.plist */; };
 		F44BC6C11E221293004644E3 /* AirCorpsChangeNameCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44BC6C01E221293004644E3 /* AirCorpsChangeNameCommand.swift */; };
@@ -286,7 +286,7 @@
 		F4F9470A1D5DBA3800F95998 /* EquipmentWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4F9470C1D5DBA3800F95998 /* EquipmentWindowController.xib */; };
 		F4F9471F1D5DBBC700F95998 /* RepairListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4F947211D5DBBC700F95998 /* RepairListViewController.xib */; };
 		F4F947281D5DBC5500F95998 /* AncherageRepairTimerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4F9472A1D5DBC5500F95998 /* AncherageRepairTimerViewController.xib */; };
-		F4FC3E8C1E43660400E41228 /* KCGuardEscaped.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FC3E8B1E43660400E41228 /* KCGuardEscaped.swift */; };
+		F4FC3E8C1E43660400E41228 /* GuardEscaped.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FC3E8B1E43660400E41228 /* GuardEscaped.swift */; };
 		F4FC3E8E1E4368BB00E41228 /* KCManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FC3E8D1E4368BB00E41228 /* KCManagedObject.swift */; };
 		F4FC3E901E437E1F00E41228 /* JSONReciever.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FC3E8F1E437E1F00E41228 /* JSONReciever.swift */; };
 		F4FC3E941E44A5D600E41228 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FC3E931E44A5D600E41228 /* AppDelegate.swift */; };
@@ -329,35 +329,35 @@
 		F421850D1DF44AEA00256590 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AirBaseWindowController.xib; sourceTree = "<group>"; };
 		F421850E1DF4518000256590 /* BroswerTouchBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BroswerTouchBar.xib; sourceTree = "<group>"; };
 		F42185101DF461A600256590 /* ScreenshotTouchBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScreenshotTouchBar.xib; sourceTree = "<group>"; };
-		F42A8FCB1E3DA4DF0099DC1D /* KCMasterMission.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCMasterMission.swift; sourceTree = "<group>"; };
-		F42A8FCD1E3DA7E90099DC1D /* KCMasterShipObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCMasterShipObject.swift; sourceTree = "<group>"; };
-		F42A8FCF1E3DB49A0099DC1D /* KCMasterSlotItemObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCMasterSlotItemObject.swift; sourceTree = "<group>"; };
-		F42A8FD11E3DC56C0099DC1D /* KCMasterSType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCMasterSType.swift; sourceTree = "<group>"; };
-		F42A8FD31E3DD57E0099DC1D /* KCMasterSlotItemEquipTypeObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCMasterSlotItemEquipTypeObject.swift; sourceTree = "<group>"; };
-		F42A8FD51E3DE2C60099DC1D /* KCMaterial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCMaterial.swift; sourceTree = "<group>"; };
-		F42A8FD71E3DEAA00099DC1D /* KCNyukyoDock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCNyukyoDock.swift; sourceTree = "<group>"; };
-		F42A8FD91E3DF2230099DC1D /* KCShipObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCShipObject.swift; sourceTree = "<group>"; };
-		F42A8FDB1E40B9FE0099DC1D /* KCSlotItemObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCSlotItemObject.swift; sourceTree = "<group>"; };
-		F42A8FDD1E40C6DF0099DC1D /* KCQuest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCQuest.swift; sourceTree = "<group>"; };
-		F42A8FDF1E40CC050099DC1D /* KCAirBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCAirBase.swift; sourceTree = "<group>"; };
-		F42A8FE11E40D0900099DC1D /* KCAirBasePlaneInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCAirBasePlaneInfo.swift; sourceTree = "<group>"; };
+		F42A8FCB1E3DA4DF0099DC1D /* MasterMission.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterMission.swift; sourceTree = "<group>"; };
+		F42A8FCD1E3DA7E90099DC1D /* MasterShip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterShip.swift; sourceTree = "<group>"; };
+		F42A8FCF1E3DB49A0099DC1D /* MasterSlotItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterSlotItem.swift; sourceTree = "<group>"; };
+		F42A8FD11E3DC56C0099DC1D /* MasterSType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterSType.swift; sourceTree = "<group>"; };
+		F42A8FD31E3DD57E0099DC1D /* MasterSlotItemEquipType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterSlotItemEquipType.swift; sourceTree = "<group>"; };
+		F42A8FD51E3DE2C60099DC1D /* Material.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Material.swift; sourceTree = "<group>"; };
+		F42A8FD71E3DEAA00099DC1D /* NyukyoDock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NyukyoDock.swift; sourceTree = "<group>"; };
+		F42A8FD91E3DF2230099DC1D /* Ship.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ship.swift; sourceTree = "<group>"; };
+		F42A8FDB1E40B9FE0099DC1D /* SlotItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlotItem.swift; sourceTree = "<group>"; };
+		F42A8FDD1E40C6DF0099DC1D /* Quest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quest.swift; sourceTree = "<group>"; };
+		F42A8FDF1E40CC050099DC1D /* AirBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirBase.swift; sourceTree = "<group>"; };
+		F42A8FE11E40D0900099DC1D /* AirBasePlaneInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirBasePlaneInfo.swift; sourceTree = "<group>"; };
 		F42A8FE31E41FD6F0099DC1D /* DropShipHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropShipHistory.swift; sourceTree = "<group>"; };
 		F42A8FE51E420A360099DC1D /* KaihatuHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KaihatuHistory.swift; sourceTree = "<group>"; };
 		F42A8FE71E422B180099DC1D /* KenzoHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KenzoHistory.swift; sourceTree = "<group>"; };
 		F42A8FE91E43476F0099DC1D /* KenzoMark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KenzoMark.swift; sourceTree = "<group>"; };
-		F42A8FEB1E4354F50099DC1D /* KCBattle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCBattle.swift; sourceTree = "<group>"; };
-		F42A8FED1E435E330099DC1D /* KCDamage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCDamage.swift; sourceTree = "<group>"; };
+		F42A8FEB1E4354F50099DC1D /* Battle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Battle.swift; sourceTree = "<group>"; };
+		F42A8FED1E435E330099DC1D /* Damage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Damage.swift; sourceTree = "<group>"; };
 		F42CBB201D1ED41D004C2AE2 /* LocalData 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "LocalData 3.xcdatamodel"; sourceTree = "<group>"; };
 		F42CFE151E3BA1E1000B4F9B /* EnhancementListItem2.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = EnhancementListItem2.plist; sourceTree = "<group>"; };
 		F42CFE171E3C12AA000B4F9B /* ScreenshotInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenshotInformation.swift; sourceTree = "<group>"; };
 		F42CFE191E3C726D000B4F9B /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
-		F42CFE1B1E3CB495000B4F9B /* BookmarkItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkItem.swift; sourceTree = "<group>"; };
-		F42CFE1D1E3CCCC2000B4F9B /* KCResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCResource.swift; sourceTree = "<group>"; };
-		F42CFE1F1E3CDE7E000B4F9B /* KCBasic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCBasic.swift; sourceTree = "<group>"; };
-		F42CFE211E3D6CEE000B4F9B /* KCDeck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCDeck.swift; sourceTree = "<group>"; };
-		F42CFE231E3D8309000B4F9B /* KCKenzoDock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCKenzoDock.swift; sourceTree = "<group>"; };
-		F42CFE251E3D91FD000B4F9B /* KCMasterMapArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCMasterMapArea.swift; sourceTree = "<group>"; };
-		F42CFE271E3D9A02000B4F9B /* KCMasterMapInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCMasterMapInfo.swift; sourceTree = "<group>"; };
+		F42CFE1B1E3CB495000B4F9B /* Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
+		F42CFE1D1E3CCCC2000B4F9B /* Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
+		F42CFE1F1E3CDE7E000B4F9B /* Basic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Basic.swift; sourceTree = "<group>"; };
+		F42CFE211E3D6CEE000B4F9B /* Deck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
+		F42CFE231E3D8309000B4F9B /* KenzoDock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KenzoDock.swift; sourceTree = "<group>"; };
+		F42CFE251E3D91FD000B4F9B /* MasterMapArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterMapArea.swift; sourceTree = "<group>"; };
+		F42CFE271E3D9A02000B4F9B /* MasterMapInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterMapInfo.swift; sourceTree = "<group>"; };
 		F43E67B618BE02A10087E5B6 /* STypeShortName.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = STypeShortName.plist; sourceTree = "<group>"; };
 		F43E67B818BE060E0087E5B6 /* LevelUpExp.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LevelUpExp.plist; sourceTree = "<group>"; };
 		F44BC6C01E221293004644E3 /* AirCorpsChangeNameCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirCorpsChangeNameCommand.swift; sourceTree = "<group>"; };
@@ -624,7 +624,7 @@
 		F4F9472C1D5DBC7300F95998 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/BroserWindowController.xib; sourceTree = "<group>"; };
 		F4F947331D5EB44700F95998 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/BroserWindowController.strings"; sourceTree = "<group>"; };
 		F4F947351D5EBDD700F95998 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/ShipViewController.strings"; sourceTree = "<group>"; };
-		F4FC3E8B1E43660400E41228 /* KCGuardEscaped.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCGuardEscaped.swift; sourceTree = "<group>"; };
+		F4FC3E8B1E43660400E41228 /* GuardEscaped.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuardEscaped.swift; sourceTree = "<group>"; };
 		F4FC3E8D1E4368BB00E41228 /* KCManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCManagedObject.swift; sourceTree = "<group>"; };
 		F4FC3E8F1E437E1F00E41228 /* JSONReciever.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONReciever.swift; sourceTree = "<group>"; };
 		F4FC3E931E44A5D600E41228 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -1130,25 +1130,25 @@
 			children = (
 				F46F104718ABAC910063E503 /* KCD.xcdatamodeld */,
 				F47215AF1E1FEACC0083D3BC /* ServerDataStore.swift */,
-				F42A8FDF1E40CC050099DC1D /* KCAirBase.swift */,
-				F42A8FE11E40D0900099DC1D /* KCAirBasePlaneInfo.swift */,
-				F42CFE1F1E3CDE7E000B4F9B /* KCBasic.swift */,
-				F42CFE211E3D6CEE000B4F9B /* KCDeck.swift */,
-				F42CFE231E3D8309000B4F9B /* KCKenzoDock.swift */,
+				F42A8FDF1E40CC050099DC1D /* AirBase.swift */,
+				F42A8FE11E40D0900099DC1D /* AirBasePlaneInfo.swift */,
+				F42CFE1F1E3CDE7E000B4F9B /* Basic.swift */,
+				F42CFE211E3D6CEE000B4F9B /* Deck.swift */,
+				F42CFE231E3D8309000B4F9B /* KenzoDock.swift */,
 				F4BDEEB31E74017800D689AE /* MasterFurniture.swift */,
-				F42CFE251E3D91FD000B4F9B /* KCMasterMapArea.swift */,
-				F42CFE271E3D9A02000B4F9B /* KCMasterMapInfo.swift */,
-				F42A8FCB1E3DA4DF0099DC1D /* KCMasterMission.swift */,
-				F42A8FCD1E3DA7E90099DC1D /* KCMasterShipObject.swift */,
-				F42A8FCF1E3DB49A0099DC1D /* KCMasterSlotItemObject.swift */,
-				F42A8FD11E3DC56C0099DC1D /* KCMasterSType.swift */,
-				F42A8FD31E3DD57E0099DC1D /* KCMasterSlotItemEquipTypeObject.swift */,
+				F42CFE251E3D91FD000B4F9B /* MasterMapArea.swift */,
+				F42CFE271E3D9A02000B4F9B /* MasterMapInfo.swift */,
+				F42A8FCB1E3DA4DF0099DC1D /* MasterMission.swift */,
+				F42A8FCD1E3DA7E90099DC1D /* MasterShip.swift */,
+				F42A8FCF1E3DB49A0099DC1D /* MasterSlotItem.swift */,
+				F42A8FD31E3DD57E0099DC1D /* MasterSlotItemEquipType.swift */,
+				F42A8FD11E3DC56C0099DC1D /* MasterSType.swift */,
 				F4BDEEB51E74025700D689AE /* MasterUseItem.swift */,
-				F42A8FD51E3DE2C60099DC1D /* KCMaterial.swift */,
-				F42A8FD71E3DEAA00099DC1D /* KCNyukyoDock.swift */,
-				F42A8FD91E3DF2230099DC1D /* KCShipObject.swift */,
-				F42A8FDB1E40B9FE0099DC1D /* KCSlotItemObject.swift */,
-				F42A8FDD1E40C6DF0099DC1D /* KCQuest.swift */,
+				F42A8FD51E3DE2C60099DC1D /* Material.swift */,
+				F42A8FD71E3DEAA00099DC1D /* NyukyoDock.swift */,
+				F42A8FDD1E40C6DF0099DC1D /* Quest.swift */,
+				F42A8FD91E3DF2230099DC1D /* Ship.swift */,
+				F42A8FDB1E40B9FE0099DC1D /* SlotItem.swift */,
 			);
 			name = KCD;
 			sourceTree = "<group>";
@@ -1172,9 +1172,9 @@
 			children = (
 				F4AA05F9192B92C700844688 /* Temporary.xcdatamodeld */,
 				F47215AB1E1FA2460083D3BC /* TemporaryDataStore.swift */,
-				F42A8FEB1E4354F50099DC1D /* KCBattle.swift */,
-				F42A8FED1E435E330099DC1D /* KCDamage.swift */,
-				F4FC3E8B1E43660400E41228 /* KCGuardEscaped.swift */,
+				F42A8FEB1E4354F50099DC1D /* Battle.swift */,
+				F42A8FED1E435E330099DC1D /* Damage.swift */,
+				F4FC3E8B1E43660400E41228 /* GuardEscaped.swift */,
 			);
 			name = Temporary;
 			sourceTree = "<group>";
@@ -1184,7 +1184,7 @@
 			children = (
 				F495462C1B1894DD00E0D8D0 /* Bookmark.xcdatamodeld */,
 				F47215A71E1F947A0083D3BC /* BookmarkDataStore.swift */,
-				F42CFE1B1E3CB495000B4F9B /* BookmarkItem.swift */,
+				F42CFE1B1E3CB495000B4F9B /* Bookmark.swift */,
 			);
 			name = Bookmark;
 			sourceTree = "<group>";
@@ -1194,7 +1194,7 @@
 			children = (
 				F47178481B6F9B5600F5E59D /* ResourceHistory.xcdatamodeld */,
 				F47215A91E1F96B60083D3BC /* ResourceHistoryDataStore.swift */,
-				F42CFE1D1E3CCCC2000B4F9B /* KCResource.swift */,
+				F42CFE1D1E3CCCC2000B4F9B /* Resource.swift */,
 			);
 			name = ResourceHistory;
 			sourceTree = "<group>";
@@ -1402,13 +1402,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F42A8FE21E40D0900099DC1D /* KCAirBasePlaneInfo.swift in Sources */,
+				F42A8FE21E40D0900099DC1D /* AirBasePlaneInfo.swift in Sources */,
 				F44BC70B1E27B456004644E3 /* MemberRequireInfoCommand.swift in Sources */,
 				F4D05BD91E0F748900688D66 /* QuestListViewController.swift in Sources */,
 				F4AA59381E1DC4C3001667AF /* MapAreaTransformaer.swift in Sources */,
 				F47215A21E1F38280083D3BC /* Queue.swift in Sources */,
-				F42CFE261E3D91FD000B4F9B /* KCMasterMapArea.swift in Sources */,
-				F42A8FE01E40CC050099DC1D /* KCAirBase.swift in Sources */,
+				F42CFE261E3D91FD000B4F9B /* MasterMapArea.swift in Sources */,
+				F42A8FE01E40CC050099DC1D /* AirBase.swift in Sources */,
 				F40F97731E6989B300AE81BB /* NSViewExtension.swift in Sources */,
 				F44BC6F11E23A10C004644E3 /* RemodelSlotItemCommand.swift in Sources */,
 				F42A8FE81E422B180099DC1D /* KenzoHistory.swift in Sources */,
@@ -1427,10 +1427,10 @@
 				F4AC136D1E0802C000851147 /* PreferencePanelController.swift in Sources */,
 				F44BC6E91E232B15004644E3 /* KaisouLockCommand.swift in Sources */,
 				F44BC6EF1E239FB1004644E3 /* RemodelSlotCommand.swift in Sources */,
-				F42A8FD41E3DD57E0099DC1D /* KCMasterSlotItemEquipTypeObject.swift in Sources */,
+				F42A8FD41E3DD57E0099DC1D /* MasterSlotItemEquipType.swift in Sources */,
 				F4AA59161E1C9C5D001667AF /* ValueTransformerRegister.swift in Sources */,
 				F4CF25DE1E38E06300C02A66 /* EnhancementListItem.swift in Sources */,
-				F42A8FD61E3DE2C60099DC1D /* KCMaterial.swift in Sources */,
+				F42A8FD61E3DE2C60099DC1D /* Material.swift in Sources */,
 				F491A4BC1E4B523C00D1E067 /* ApplicationDirecrories.swift in Sources */,
 				F4E5FF141E17F93B0026868C /* BroserWindowController.swift in Sources */,
 				F4CF25BA1E34EB6600C02A66 /* BookmarkManager.swift in Sources */,
@@ -1439,14 +1439,14 @@
 				F44BC6DF1E228770004644E3 /* QuestListCommand.swift in Sources */,
 				F44BC7331E2A25E4004644E3 /* Start2Command.swift in Sources */,
 				F44BC6E31E230577004644E3 /* SlotDepriveCommand.swift in Sources */,
-				F42A8FCE1E3DA7E90099DC1D /* KCMasterShipObject.swift in Sources */,
-				F4FC3E8C1E43660400E41228 /* KCGuardEscaped.swift in Sources */,
+				F42A8FCE1E3DA7E90099DC1D /* MasterShip.swift in Sources */,
+				F4FC3E8C1E43660400E41228 /* GuardEscaped.swift in Sources */,
 				F490977B1E19C3910085A45D /* SuppliesView.swift in Sources */,
 				F4AA59341E1D2512001667AF /* SlotItemShortNameTransformer.swift in Sources */,
 				F44BC73B1E2A5C34004644E3 /* MapInfoCommand.swift in Sources */,
 				F4AA593E1E1E0BFB001667AF /* DamageValueTransformer.swift in Sources */,
 				F44BC6E71E231534004644E3 /* SlotResetCommand.swift in Sources */,
-				F42A8FEC1E4354F50099DC1D /* KCBattle.swift in Sources */,
+				F42A8FEC1E4354F50099DC1D /* Battle.swift in Sources */,
 				F4AA59321E1D211C001667AF /* SlotitemNameTransformer.swift in Sources */,
 				F4A0D7151E2FB11F00224DCE /* MapStartCommand.swift in Sources */,
 				F44BC6E51E23082B004644E3 /* CombinedCommand.swift in Sources */,
@@ -1465,15 +1465,15 @@
 				F4E7802E18DC3AF00011BC4C /* LocalData.xcdatamodeld in Sources */,
 				F491A4C01E4EACDD00D1E067 /* CacheStoragePolicy.swift in Sources */,
 				F47C3EB41E606C4300D97449 /* ResetSortie.swift in Sources */,
-				F42A8FEE1E435E330099DC1D /* KCDamage.swift in Sources */,
+				F42A8FEE1E435E330099DC1D /* Damage.swift in Sources */,
 				F4BDEEB81E740D9300D689AE /* HiddenDropShipHistory.swift in Sources */,
-				F42CFE1C1E3CB495000B4F9B /* BookmarkItem.swift in Sources */,
+				F42CFE1C1E3CB495000B4F9B /* Bookmark.swift in Sources */,
 				F44BC7151E2914FE004644E3 /* MemberBasicCommand.swift in Sources */,
 				F47215AC1E1FA2460083D3BC /* TemporaryDataStore.swift in Sources */,
 				F4D05BC81E0C0DA100688D66 /* AirBaseWindowController.swift in Sources */,
 				F44BC70D1E27B601004644E3 /* MemberShip3Command.swift in Sources */,
 				F42A8FE41E41FD6F0099DC1D /* DropShipHistory.swift in Sources */,
-				F42A8FDC1E40B9FE0099DC1D /* KCSlotItemObject.swift in Sources */,
+				F42A8FDC1E40B9FE0099DC1D /* SlotItem.swift in Sources */,
 				F4D05BE11E0FAB8E00688D66 /* ShipViewController.swift in Sources */,
 				F47C3E9E1E5DD3E400D97449 /* MasterMapAreaMapper.swift in Sources */,
 				F44BC6EB1E234531004644E3 /* ChangeHenseiCommand.swift in Sources */,
@@ -1490,7 +1490,7 @@
 				F4D05BDB1E0F76A800688D66 /* ResourceViewController.swift in Sources */,
 				F47C3EA21E5EFCC800D97449 /* MasterUseItemMapper.swift in Sources */,
 				F4CF25AC1E33AB4400C02A66 /* TimeSignalNotifier.swift in Sources */,
-				F42A8FD81E3DEAA00099DC1D /* KCNyukyoDock.swift in Sources */,
+				F42A8FD81E3DEAA00099DC1D /* NyukyoDock.swift in Sources */,
 				F4AA591A1E1CE2EA001667AF /* SlotItemEquipTypeTransformer.swift in Sources */,
 				F47C3E9C1E5DC94E00D97449 /* MasterShipMapper.swift in Sources */,
 				F44BC6C11E221293004644E3 /* AirCorpsChangeNameCommand.swift in Sources */,
@@ -1505,7 +1505,7 @@
 				F4AA592E1E1D1D4D001667AF /* SokuTransformer.swift in Sources */,
 				F4AA594A1E1E4863001667AF /* MapWindowController.swift in Sources */,
 				F4FC3E961E46AC3000E41228 /* TSVSupport.swift in Sources */,
-				F42A8FDA1E3DF2230099DC1D /* KCShipObject.swift in Sources */,
+				F42A8FDA1E3DF2230099DC1D /* Ship.swift in Sources */,
 				F47C3E9A1E5DC90000D97449 /* MasterSTypeMapper.swift in Sources */,
 				F4E5FF101E17A83D0026868C /* ScreenshotListWindowController.swift in Sources */,
 				F44BC7031E252C4F004644E3 /* UpdateSlotItemCommand.swift in Sources */,
@@ -1523,7 +1523,7 @@
 				F44BC6D91E2272F6004644E3 /* NyukyoStartCommand.swift in Sources */,
 				F44BC7411E2B263D004644E3 /* GuardShelterCommand.swift in Sources */,
 				F4D05BD21E0F3C4E00688D66 /* CombileViewController.swift in Sources */,
-				F42CFE241E3D8309000B4F9B /* KCKenzoDock.swift in Sources */,
+				F42CFE241E3D8309000B4F9B /* KenzoDock.swift in Sources */,
 				F47215B01E1FEACC0083D3BC /* ServerDataStore.swift in Sources */,
 				F4A0D7091E2BA2F300224DCE /* CalculateDamageCommand.swift in Sources */,
 				F47215A81E1F947A0083D3BC /* BookmarkDataStore.swift in Sources */,
@@ -1536,7 +1536,7 @@
 				F4D05BC61E0ABD6800688D66 /* SlotItemWindowController.swift in Sources */,
 				F4AA593A1E1E02D9001667AF /* UpgradeShipExcludeColorTransformer.swift in Sources */,
 				F4BDEEB21E73FE2000D689AE /* Entity.swift in Sources */,
-				F42A8FCC1E3DA4DF0099DC1D /* KCMasterMission.swift in Sources */,
+				F42A8FCC1E3DA4DF0099DC1D /* MasterMission.swift in Sources */,
 				F44BC6C71E222675004644E3 /* FailedCommand.swift in Sources */,
 				F47215A01E1E90C10083D3BC /* JSONNode.swift in Sources */,
 				F44BC6DB1E2281A7004644E3 /* ClearItemGetComand.swift in Sources */,
@@ -1546,7 +1546,7 @@
 				F490978D1E1BA64E0085A45D /* GuardEscapedView.swift in Sources */,
 				F4FC3E941E44A5D600E41228 /* AppDelegate.swift in Sources */,
 				F44BC71D1E29DF32004644E3 /* MemberNDockCommand.swift in Sources */,
-				F42CFE1E1E3CCCC2000B4F9B /* KCResource.swift in Sources */,
+				F42CFE1E1E3CCCC2000B4F9B /* Resource.swift in Sources */,
 				F4D05BCE1E0D50D300688D66 /* BrowserContentAdjuster.swift in Sources */,
 				F47C3EBE1E62718E00D97449 /* BattleCommand.swift in Sources */,
 				F47C3EB61E60766000D97449 /* BasicMapper.swift in Sources */,
@@ -1555,7 +1555,7 @@
 				F4D05BD71E0F696C00688D66 /* RepairListViewController.swift in Sources */,
 				F44BC7191E29D9DC004644E3 /* MemberDeckCommand.swift in Sources */,
 				F490977F1E19ED400085A45D /* StrengthenListItemView.swift in Sources */,
-				F42A8FDE1E40C6DF0099DC1D /* KCQuest.swift in Sources */,
+				F42A8FDE1E40C6DF0099DC1D /* Quest.swift in Sources */,
 				F4B15CBD1E21BA870078CFFC /* CommandRegister.swift in Sources */,
 				F4BDEEB01E72D2D700D689AE /* HistoryTableViewController.swift in Sources */,
 				F45FBB921E129BAE000E72B9 /* FleetViewController.swift in Sources */,
@@ -1563,7 +1563,7 @@
 				F42CFE181E3C12AA000B4F9B /* ScreenshotInformation.swift in Sources */,
 				F44BC7371E2A4258004644E3 /* SetPlaneCommand.swift in Sources */,
 				F4BDEEB41E74017800D689AE /* MasterFurniture.swift in Sources */,
-				F42CFE281E3D9A02000B4F9B /* KCMasterMapInfo.swift in Sources */,
+				F42CFE281E3D9A02000B4F9B /* MasterMapInfo.swift in Sources */,
 				F4AA594C1E1E497C001667AF /* EquipmentWindowController.swift in Sources */,
 				F4BDEEB61E74025700D689AE /* MasterUseItem.swift in Sources */,
 				F4CF25B41E34A38F00C02A66 /* ResourceHistoryManager.swift in Sources */,
@@ -1572,11 +1572,11 @@
 				F4AC13711E096A7B00851147 /* HistoryWindowController.swift in Sources */,
 				F471784A1B6F9B5600F5E59D /* ResourceHistory.xcdatamodeld in Sources */,
 				F4CF25C01E36428400C02A66 /* MissionStatus.swift in Sources */,
-				F42CFE221E3D6CEE000B4F9B /* KCDeck.swift in Sources */,
+				F42CFE221E3D6CEE000B4F9B /* Deck.swift in Sources */,
 				F4E5FF0A1E15CE3D0026868C /* BridgeViewController.swift in Sources */,
 				F44BC6FF1E250CED004644E3 /* CreateSlotItemCommand.swift in Sources */,
-				F42CFE201E3CDE7E000B4F9B /* KCBasic.swift in Sources */,
-				F42A8FD21E3DC56C0099DC1D /* KCMasterSType.swift in Sources */,
+				F42CFE201E3CDE7E000B4F9B /* Basic.swift in Sources */,
+				F42A8FD21E3DC56C0099DC1D /* MasterSType.swift in Sources */,
 				F4AA59461E1E33ED001667AF /* AreaNameTransformer.swift in Sources */,
 				F40F976D1E6708F300AE81BB /* Graphics.swift in Sources */,
 				F4AA59301E1D1FAB001667AF /* LengTransformer.swift in Sources */,
@@ -1604,7 +1604,7 @@
 				F44BC70F1E27BE55004644E3 /* MemberShip2Command.swift in Sources */,
 				F49097811E19F2C70085A45D /* BorderTextField.swift in Sources */,
 				F4AA594E1E1E4A7C001667AF /* UITestWindowController.swift in Sources */,
-				F42A8FD01E3DB49A0099DC1D /* KCMasterSlotItemObject.swift in Sources */,
+				F42A8FD01E3DB49A0099DC1D /* MasterSlotItem.swift in Sources */,
 				F49097851E1A15AF0085A45D /* SlotItemLevelView.swift in Sources */,
 				F44BC6C31E221865004644E3 /* AirCorpsSupplyCommand.swift in Sources */,
 				F44BC6D51E226308004644E3 /* NyukyoSpeedChangeCommand.swift in Sources */,
