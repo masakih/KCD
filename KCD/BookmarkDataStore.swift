@@ -12,8 +12,8 @@ extension CoreDataIntormation {
     static let bookmark = CoreDataIntormation(
         modelName: "Bookmark",
         storeFileName: "Bookmark.storedata",
-        storeOptions:[NSMigratePersistentStoresAutomaticallyOption: true,
-                      NSInferMappingModelAutomaticallyOption: true],
+        storeOptions: [NSMigratePersistentStoresAutomaticallyOption: true,
+                       NSInferMappingModelAutomaticallyOption: true],
         storeType: NSSQLiteStoreType,
         deleteAndRetry: false
     )
@@ -39,10 +39,6 @@ class BookmarkDataStore: CoreDataAccessor, CoreDataManager {
     
     let core = CoreDataCore.bookmark
     var managedObjectContext: NSManagedObjectContext
-}
-
-extension Bookmark: EntityProvider {
-    override class var entityName: String { return "Bookmark" }
 }
 
 extension BookmarkDataStore {

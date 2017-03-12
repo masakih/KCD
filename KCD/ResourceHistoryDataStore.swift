@@ -12,8 +12,8 @@ extension CoreDataIntormation {
     static let resourceHistory = CoreDataIntormation(
         modelName: "ResourceHistory",
         storeFileName: "ResourceHistory.storedata",
-        storeOptions:[NSMigratePersistentStoresAutomaticallyOption: true,
-                      NSInferMappingModelAutomaticallyOption: true],
+        storeOptions: [NSMigratePersistentStoresAutomaticallyOption: true,
+                       NSInferMappingModelAutomaticallyOption: true],
         storeType: NSSQLiteStoreType,
         deleteAndRetry: false
     )
@@ -21,7 +21,6 @@ extension CoreDataIntormation {
 extension CoreDataCore {
     static let resourceHistory = CoreDataCore(.resourceHistory)
 }
-
 
 class ResourceHistoryDataStore: CoreDataAccessor, CoreDataManager {
     static var `default` = ResourceHistoryDataStore(type: .reader)
@@ -40,10 +39,6 @@ class ResourceHistoryDataStore: CoreDataAccessor, CoreDataManager {
     
     let core = CoreDataCore.resourceHistory
     var managedObjectContext: NSManagedObjectContext
-}
-
-extension Resource: EntityProvider {
-    override class var entityName: String { return "Resource" }
 }
 
 extension ResourceHistoryDataStore {

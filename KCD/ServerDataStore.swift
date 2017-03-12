@@ -12,8 +12,8 @@ extension CoreDataIntormation {
     static let kcd = CoreDataIntormation(
         modelName: "KCD",
         storeFileName: "KCD.storedata",
-        storeOptions:[NSMigratePersistentStoresAutomaticallyOption: true,
-                      NSInferMappingModelAutomaticallyOption: true],
+        storeOptions: [NSMigratePersistentStoresAutomaticallyOption: true,
+                       NSInferMappingModelAutomaticallyOption: true],
         storeType: NSSQLiteStoreType,
         deleteAndRetry: true
     )
@@ -21,7 +21,6 @@ extension CoreDataIntormation {
 extension CoreDataCore {
     static let kcd = CoreDataCore(.kcd)
 }
-
 
 class ServerDataStore: CoreDataAccessor, CoreDataManager {
     static var `default` = ServerDataStore(type: .reader)
@@ -40,64 +39,6 @@ class ServerDataStore: CoreDataAccessor, CoreDataManager {
     
     let core = CoreDataCore.kcd
     var managedObjectContext: NSManagedObjectContext
-}
-
-extension AirBase: EntityProvider {
-    override class var entityName: String { return "AirBase" }
-}
-extension AirBasePlaneInfo: EntityProvider {
-    override class var entityName: String { return "AirBasePlaneInfo" }
-}
-extension Basic: EntityProvider {
-    override class var entityName: String { return "Basic" }
-}
-extension Deck: EntityProvider {
-    override class var entityName: String { return "Deck" }
-}
-extension KenzoDock: EntityProvider {
-    override class var entityName: String { return "KenzoDock" }
-}
-extension MasterFurniture: EntityProvider {
-    override class var entityName: String { return "MasterFurniture" }
-}
-extension MasterMapArea: EntityProvider {
-    override class var entityName: String { return "MasterMapArea" }
-}
-extension MasterMapInfo: EntityProvider {
-    override class var entityName: String { return "MasterMapInfo" }
-}
-extension MasterMission: EntityProvider {
-    override class var entityName: String { return "MasterMission" }
-}
-extension MasterShip: EntityProvider {
-    override class var entityName: String { return "MasterShip" }
-}
-extension MasterSlotItem: EntityProvider {
-    override class var entityName: String { return "MasterSlotItem" }
-}
-extension MasterSType: EntityProvider {
-    override class var entityName: String { return "MasterSType" }
-}
-extension MasterSlotItemEquipType: EntityProvider {
-    override class var entityName: String { return "MasterSlotItemEquipType" }
-}
-extension MasterUseItem: EntityProvider {
-    override class var entityName: String { return "MasterUseItem" }
-}
-extension Material: EntityProvider {
-    override class var entityName: String { return "Material" }
-}
-extension NyukyoDock: EntityProvider {
-    override class var entityName: String { return "NyukyoDock" }
-}
-extension Ship: EntityProvider {
-    override class var entityName: String { return "Ship" }
-}
-extension SlotItem: EntityProvider {
-    override class var entityName: String { return "SlotItem" }
-}
-extension Quest: EntityProvider {
-    override class var entityName: String { return "Quest" }
 }
 
 extension ServerDataStore {

@@ -12,7 +12,7 @@ extension CoreDataIntormation {
     static let temporary = CoreDataIntormation(
         modelName: "Temporary",
         storeFileName: ":memory:",
-        storeOptions:[:],
+        storeOptions: [:],
         storeType: NSInMemoryStoreType,
         deleteAndRetry: false
     )
@@ -20,7 +20,6 @@ extension CoreDataIntormation {
 extension CoreDataCore {
     static let temporary = CoreDataCore(.temporary)
 }
-
 
 class TemporaryDataStore: CoreDataAccessor, CoreDataManager {
     static var `default` = TemporaryDataStore(type: .reader)
@@ -39,16 +38,6 @@ class TemporaryDataStore: CoreDataAccessor, CoreDataManager {
     
     let core = CoreDataCore.temporary
     var managedObjectContext: NSManagedObjectContext
-}
-
-extension Battle: EntityProvider {
-    override class var entityName: String { return "Battle" }
-}
-extension Damage: EntityProvider {
-    override class var entityName: String { return "Damage" }
-}
-extension GuardEscaped: EntityProvider {
-    override class var entityName: String { return "GuardEscaped" }
 }
 
 extension TemporaryDataStore {

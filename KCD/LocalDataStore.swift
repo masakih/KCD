@@ -12,8 +12,8 @@ extension CoreDataIntormation {
     static let local = CoreDataIntormation(
         modelName: "LocalData",
         storeFileName: "LocalData.storedata",
-        storeOptions:[NSMigratePersistentStoresAutomaticallyOption: true,
-                      NSInferMappingModelAutomaticallyOption: true],
+        storeOptions: [NSMigratePersistentStoresAutomaticallyOption: true,
+                       NSInferMappingModelAutomaticallyOption: true],
         storeType: NSSQLiteStoreType,
         deleteAndRetry: false
     )
@@ -40,22 +40,6 @@ class LocalDataStore: CoreDataAccessor, CoreDataManager {
     
     let core = CoreDataCore.local
     var managedObjectContext: NSManagedObjectContext
-}
-
-extension DropShipHistory: EntityProvider {
-    override class var entityName: String { return String(describing: self) }
-}
-extension HiddenDropShipHistory: EntityProvider {
-    override class var entityName: String { return String(describing: self) }
-}
-extension KaihatuHistory: EntityProvider {
-    override class var entityName: String { return String(describing: self) }
-}
-extension KenzoHistory: EntityProvider {
-    override class var entityName: String { return String(describing: self) }
-}
-extension KenzoMark: EntityProvider {
-    override class var entityName: String { return String(describing: self) }
 }
 
 extension LocalDataStore {
