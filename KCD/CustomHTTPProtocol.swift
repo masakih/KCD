@@ -9,7 +9,7 @@
 import Cocoa
 
 
-protocol CustomHTTPProtocolDelegate {
+protocol CustomHTTPProtocolDelegate: class {
     func customHTTPProtocol(_ proto: CustomHTTPProtocol, didRecieve response: URLResponse)
     func customHTTPProtocol(_ proto: CustomHTTPProtocol, didRecieve data: Data)
     func customHTTPProtocolDidFinishLoading(_ proto: CustomHTTPProtocol)

@@ -8,7 +8,7 @@
 
 import Cocoa
 
-protocol BookmarkListViewControllerDelegate {
+protocol BookmarkListViewControllerDelegate: class {
     func didSelectBookmark(_ bookmark: Bookmark)
 }
 
