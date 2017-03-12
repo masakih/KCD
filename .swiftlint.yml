@@ -9,11 +9,9 @@ disabled_rules:
     - cyclomatic_complexity
     - legacy_nsgeometry_functions
     - redundant_optional_initialization
-    - large_tuple
     - trailing_comma
     - function_parameter_count
     - opening_brace
-    - operator_whitespace
     - return_arrow_whitespace
     - statement_position
     - todo
@@ -52,6 +50,8 @@ function_body_length:
 function_parameter_count:
     warning: 6
     error: 8
+
+large_tuple: 3
 
 cyclomatic_complexity:
     warning: 20
