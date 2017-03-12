@@ -86,7 +86,7 @@ class SlotItemLevelView: NSTextField {
         let width = NSWidth(bounds)
         let height = NSHeight(bounds)
         let path = multiline {
-            Array<(NSPoint, NSPoint)>()
+            [(NSPoint, NSPoint)]()
                 .appended { (NSPoint(x: width - offset, y: 0), NSPoint(x: width - offset, y: height)) }
                 .appended { (NSPoint(x: width - offset - padding, y: 0), NSPoint(x: width - offset - padding, y: height)) }
         }

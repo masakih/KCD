@@ -22,7 +22,7 @@ enum CoreDataError: Error {
 struct CoreDataIntormation {
     let modelName: String
     let storeFileName: String
-    let storeOptions: Dictionary<AnyHashable, Any>
+    let storeOptions: [AnyHashable: Any]
     let storeType: String
     let deleteAndRetry: Bool
     

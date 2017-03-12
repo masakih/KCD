@@ -15,7 +15,6 @@ disabled_rules:
     - weak_delegate
     - redundant_optional_initialization
     - large_tuple
-    - syntactic_sugar
     - trailing_comma
     - empty_parentheses_with_trailing_closure
     - function_parameter_count
