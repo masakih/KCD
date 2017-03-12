@@ -354,7 +354,7 @@ extension AppDelegate: NSUserNotificationCenterDelegate {
 }
 
 @available(OSX 10.12.2, *)
-fileprivate var objectForTouchBar:[Int: NSTouchBar] = [:]
+fileprivate var objectForTouchBar: [Int: NSTouchBar] = [:]
 
 @available(OSX 10.12.2, *)
 extension AppDelegate: NSTouchBarProvider {

@@ -50,7 +50,7 @@ class ScreenshotListViewController: NSViewController {
     fileprivate var arrangedInformations: [ScreenshotInformation]? {
         return screenshotsController.arrangedObjects as? [ScreenshotInformation]
     }
-    fileprivate var selectionInformations : [ScreenshotInformation] {
+    fileprivate var selectionInformations: [ScreenshotInformation] {
         return screenshotsController.selectedObjects as? [ScreenshotInformation] ?? []
     }
     
@@ -312,11 +312,11 @@ extension ScreenshotListViewController: NSCollectionViewDelegateFlowLayout {
 }
 
 @available(OSX 10.12.2, *)
-fileprivate var kTouchBars:[Int: NSTouchBar] = [:]
+fileprivate var kTouchBars: [Int: NSTouchBar] = [:]
 @available(OSX 10.12.2, *)
-fileprivate var kScrubbers:[Int: NSScrubber] = [:]
+fileprivate var kScrubbers: [Int: NSScrubber] = [:]
 @available(OSX 10.12.2, *)
-fileprivate var kPickers:[Int: NSSharingServicePickerTouchBarItem] = [:]
+fileprivate var kPickers: [Int: NSSharingServicePickerTouchBarItem] = [:]
 
 @available(OSX 10.12.2, *)
 extension ScreenshotListViewController: NSTouchBarDelegate {

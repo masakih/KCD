@@ -39,7 +39,7 @@ class ShipMasterDetailWindowController: NSWindowController {
     
     private func buildSpec() {
         guard let selectedShip = selectedShip else { return }
-        spec = specNames.flatMap { (s:String) -> [String: AnyObject]? in
+        spec = specNames.flatMap { (s: String) -> [String: AnyObject]? in
             guard let v = selectedShip.value(forKeyPath: s) else { return nil }
             var d = [String: AnyObject]()
             d["name"] = s as AnyObject?

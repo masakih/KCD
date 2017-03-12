@@ -11,7 +11,7 @@ import CoreData
 
 class KenzoHistory: NSManagedObject {
     @NSManaged var bauxite: Int
-    @NSManaged var bull:Int
+    @NSManaged var bull: Int
     @NSManaged var date: Date
     @NSManaged var fuel: Int
     @NSManaged var kaihatusizai: Int

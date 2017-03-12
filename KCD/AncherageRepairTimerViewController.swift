@@ -15,7 +15,7 @@ class AncherageRepairTimerViewController: NSViewController {
     
     private let anchorageRepairManager = AnchorageRepairManager.default
     
-    @IBOutlet var screenshotButton:NSButton!
+    @IBOutlet var screenshotButton: NSButton!
     
     dynamic var repairTime: NSNumber?
     override var nibName: String! {

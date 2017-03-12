@@ -74,8 +74,8 @@ class HistoryWindowController: NSWindowController {
 }
 
 @available(OSX 10.12.2, *)
-fileprivate var objectForTouchBar:[Int: NSTouchBar] = [:]
-fileprivate var object1ForTouchBar:[Int: NSButton] = [:]
+fileprivate var objectForTouchBar: [Int: NSTouchBar] = [:]
+fileprivate var object1ForTouchBar: [Int: NSButton] = [:]
 
 @available(OSX 10.12.2, *)
 extension HistoryWindowController {

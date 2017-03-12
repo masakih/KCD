@@ -2,7 +2,6 @@
 disabled_rules:
     - variable_name
     - closing_brace
-    - colon
     - comma
     - control_statement
     - shorthand_operator

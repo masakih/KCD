@@ -45,7 +45,7 @@ class CombinedCommand: JSONCommand {
     }
     
     private func postNotification(withType type: CombineType) {
-        let userInfo = [CombinedType:type]
+        let userInfo = [CombinedType: type]
         NotificationCenter
             .default
             .post(name: .CombinedDidCange, object: self, userInfo: userInfo)
