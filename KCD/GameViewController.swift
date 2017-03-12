@@ -101,7 +101,7 @@ class GameViewController: NSViewController {
     @IBAction func screenShot(_ sender: AnyObject?) {
         let frame = webView.visibleRect
         let screenshotBorder = UserDefaults.standard.screenShotBorderWidth
-        let f = NSInsetRect(frame, -screenshotBorder, -screenshotBorder)
+        let f = frame.insetBy(dx: -screenshotBorder, dy: -screenshotBorder)
         guard let rep = webView.bitmapImageRepForCachingDisplay(in: f) else { return }
         webView.cacheDisplay(in: frame, to: rep)
         AppDelegate.shared.screenshotListWindowController.registerScreenshot(rep, fromOnScreen: .zero)

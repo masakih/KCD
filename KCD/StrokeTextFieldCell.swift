@@ -43,7 +43,7 @@ class StrokeTextFieldCell: NSTextFieldCell {
         var point = NSPoint(x: StrokeTextFieldCell.boarderWidth, y: 0)
         point.y -= font.descender
         if controlView.isFlipped {
-            point.y -= NSHeight(controlView.frame)
+            point.y -= controlView.frame.height
         }
         let nsGlyph = UnsafeMutablePointer<NSGlyph>.allocate(capacity: range.length)
         for i in 0...range.length {

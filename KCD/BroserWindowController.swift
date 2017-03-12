@@ -167,7 +167,7 @@ class BroserWindowController: NSWindowController {
         }
         
         var winFrame = window!.frame
-        let incWid = NSMaxX(combinedViewController.view.frame)
+        let incWid = combinedViewController.view.frame.maxX
         winFrame.size.width += incWid
         winFrame.origin.x -= incWid
         combinedViewController.view.isHidden = false
@@ -177,7 +177,7 @@ class BroserWindowController: NSWindowController {
         if !isCombinedMode { return }
         isCombinedMode = false
         var winFrame = window!.frame
-        let decWid = NSMaxX(combinedViewController.view.frame)
+        let decWid = combinedViewController.view.frame.maxX
         winFrame.size.width -= decWid
         winFrame.origin.x += decWid
         window?.setFrame(winFrame, display: true, animate: true)
@@ -348,13 +348,13 @@ extension BroserWindowController {
         var flashY: CGFloat
         switch newPosition {
         case .above:
-            flashY = contentHeight - NSHeight(flashRect) - fleetViewController.normalHeight
+            flashY = contentHeight - flashRect.height - fleetViewController.normalHeight
         case .below:
-            flashY = contentHeight - NSHeight(flashRect)
+            flashY = contentHeight - flashRect.height
         case .divided:
-            flashY = contentHeight - NSHeight(flashRect) - fleetViewController.upsideHeight - BroserWindowController.margin
+            flashY = contentHeight - flashRect.height - fleetViewController.upsideHeight - BroserWindowController.margin
         case .oldStyle:
-            flashY = contentHeight - NSHeight(flashRect) - BroserWindowController.flashTopMargin
+            flashY = contentHeight - flashRect.height - BroserWindowController.flashTopMargin
         }
         flashRect.origin.y = flashY
         return flashRect
@@ -372,13 +372,13 @@ extension BroserWindowController {
             fleetViewY = contentHeight - fleetViewHeight
         case .below:
             fleetViewHeight = fleetViewController.normalHeight
-            fleetViewY = contentHeight - fleetViewHeight - NSHeight(flashRect) - BroserWindowController.margin
+            fleetViewY = contentHeight - fleetViewHeight - flashRect.height - BroserWindowController.margin
         case .divided:
-            fleetViewHeight = fleetViewController.normalHeight + NSHeight(flashRect) + BroserWindowController.margin + BroserWindowController.margin
+            fleetViewHeight = fleetViewController.normalHeight + flashRect.height + BroserWindowController.margin + BroserWindowController.margin
             fleetViewY = contentHeight - fleetViewHeight
         case .oldStyle:
             fleetViewHeight = FleetViewController.oldStyleFleetViewHeight
-            fleetViewY = contentHeight - fleetViewHeight - NSHeight(flashRect) - BroserWindowController.margin - BroserWindowController.flashTopMargin
+            fleetViewY = contentHeight - fleetViewHeight - flashRect.height - BroserWindowController.margin - BroserWindowController.flashTopMargin
         }
         fleetListRect.size.height = fleetViewHeight
         fleetListRect.origin.y = fleetViewY

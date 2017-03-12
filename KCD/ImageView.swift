@@ -15,17 +15,17 @@ class ImageView: NSView {
     var imageRect: NSRect {
         if images.isEmpty { return .zero }
         let bounds = self.bounds
-        let offset = NSWidth(bounds) * 0.1 / 2 / 3
+        let offset = bounds.width * 0.1 / 2 / 3
         let border = offset * 3
-        let rect = NSInsetRect(bounds, border, border)
+        let rect = bounds.insetBy(dx: border, dy: border)
         let size = images[0].size
-        let ratioX = NSHeight(rect) / size.height
-        let ratioY = NSWidth(rect) / size.width
+        let ratioX = rect.height / size.height
+        let ratioY = rect.width / size.width
         let ratio = ratioX > ratioY ? ratioY : ratioX
         let drawSize = NSSize(width: size.width * ratio, height: size.height * ratio)
         return NSRect(
-            x: NSMinX(rect) + (NSWidth(rect) - drawSize.width) / 2,
-            y: NSMinY(rect) + (NSHeight(rect) - drawSize.height) / 2,
+            x: rect.minX + (rect.width - drawSize.width) / 2,
+            y: rect.minY + (rect.height - drawSize.height) / 2,
             width: drawSize.width,
             height: drawSize.height)
     }
@@ -49,7 +49,7 @@ class ImageView: NSView {
         NSBezierPath.setDefaultLineWidth(1.0)
         NSBezierPath.stroke(bounds)
         
-        NSBezierPath.clip(NSInsetRect(bounds, 1, 1))
+        NSBezierPath.clip(bounds.insetBy(dx: 1, dy: 1))
         
         imageShadow.set()
         
@@ -58,15 +58,15 @@ class ImageView: NSView {
         let alphaFactor = 0.7
         var alpha = pow(alphaFactor, Double(count - 1))
         
-        let offset = NSWidth(bounds) * 0.1 / 2 / 3
+        let offset = bounds.width * 0.1 / 2 / 3
         let border = offset * 3
-        let rect = NSInsetRect(bounds, border, border)
+        let rect = bounds.insetBy(dx: border, dy: border)
         
         images
             .enumerated()
             .reversed()
             .forEach {
-                let offsetRect = NSOffsetRect(rect, offset * CGFloat($0.offset), offset * CGFloat($0.offset))
+                let offsetRect = rect.offsetBy(dx: offset * CGFloat($0.offset), dy: offset * CGFloat($0.offset))
                 let drawRect = imageRect(with: offsetRect, imageSize: $0.element.size)
                 $0.element.draw(in: drawRect, from: .zero, operation: NSCompositeSourceOver, fraction: CGFloat(alpha))
                 alpha /= alphaFactor
@@ -74,14 +74,14 @@ class ImageView: NSView {
     }
 
     private func imageRect(with rect: NSRect, imageSize: NSSize) -> NSRect {
-        let ratioX = NSHeight(rect) / imageSize.height
-        let ratioY = NSWidth(rect) / imageSize.width
+        let ratioX = rect.height / imageSize.height
+        let ratioY = rect.width / imageSize.width
         let ratio = ratioX > ratioY ? ratioY : ratioX
         let drawSize = NSSize(width: imageSize.width * ratio,
                               height: imageSize.height * ratio)
         return NSRect(
-            x: NSMinX(rect) + (NSWidth(rect) - drawSize.width) / 2,
-            y: NSMinY(rect) + (NSHeight(rect) - drawSize.height) / 2,
+            x: rect.minX + (rect.width - drawSize.width) / 2,
+            y: rect.minY + (rect.height - drawSize.height) / 2,
             width: drawSize.width,
             height: drawSize.height)
     }

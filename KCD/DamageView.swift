@@ -61,7 +61,7 @@ class DamageView: NSView {
         }
     }
     private var pathForRegular: NSBezierPath? {
-        let height = NSHeight(bounds)
+        let height = bounds.height
         switch innerDamageType {
         case .none:
             return nil
@@ -100,7 +100,7 @@ class DamageView: NSView {
         }
     }
     private var pathForSmall: NSBezierPath? {
-        let height = NSHeight(bounds)
+        let height = bounds.height
         switch innerDamageType {
         case .none:
             return nil

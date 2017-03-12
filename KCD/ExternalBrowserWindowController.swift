@@ -72,8 +72,8 @@ class ExternalBrowserWindowController: NSWindowController {
             contentRect.size = newValue
             var newFrame = window.frameRect(forContentRect: contentRect)
             let frame = window.frame
-            newFrame.origin.x = NSMinX(frame)
-            newFrame.origin.y = NSMaxY(frame) - NSHeight(newFrame)
+            newFrame.origin.x = frame.minX
+            newFrame.origin.y = frame.maxY - newFrame.height
             window.setFrame(newFrame, display: true)
         }
     }

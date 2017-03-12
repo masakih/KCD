@@ -106,14 +106,14 @@ extension ScreenshotListWindowController: NSSplitViewDelegate {
         
         let leftView = splitView.subviews[0]
         let rightView = splitView.subviews[1]
-        if NSWidth(leftView.frame) < ScreenshotListWindowController.leftMinWidth {
+        if leftView.frame.width < ScreenshotListWindowController.leftMinWidth {
             var leftRect = leftView.frame
             leftRect.size.width = ScreenshotListWindowController.leftMinWidth
             leftView.frame = leftRect
             
             var rightRect = rightView.frame
-            rightRect.size.width = NSWidth(splitView.frame) - NSWidth(leftRect) - splitView.dividerThickness
-            rightRect.origin.x = NSWidth(leftRect) + splitView.dividerThickness
+            rightRect.size.width = splitView.frame.width - leftRect.width - splitView.dividerThickness
+            rightRect.origin.x = leftRect.width + splitView.dividerThickness
             rightView.frame = rightRect
         }
     }
@@ -121,10 +121,10 @@ extension ScreenshotListWindowController: NSSplitViewDelegate {
         let leftView = splitView.subviews[0]
         let rightView = splitView.subviews[1]
         if leftView == view {
-            if NSWidth(leftView.frame) < ScreenshotListWindowController.leftMinWidth { return false }
+            if leftView.frame.width < ScreenshotListWindowController.leftMinWidth { return false }
         }
         if rightView == view {
-            if NSWidth(leftView.frame) >= ScreenshotListWindowController.leftMinWidth { return false }
+            if leftView.frame.width >= ScreenshotListWindowController.leftMinWidth { return false }
         }
         return true
     }

@@ -56,8 +56,8 @@ class SuppliesCell: NSCell {
         return type == .fuel ? fuelStatusColor : bullStatusColor
     }
     private func drawResource(withFrame cellFrame: NSRect, border: Int, type: ResourceType) {
-        let height: CGFloat = (NSHeight(cellFrame) - 3.0) / 2.0
-        let width: CGFloat = (NSWidth(cellFrame) - CGFloat(numberOfCell) - 1.0) / CGFloat(numberOfCell)
+        let height: CGFloat = (cellFrame.height - 3.0) / 2.0
+        let width: CGFloat = (cellFrame.width - CGFloat(numberOfCell) - 1.0) / CGFloat(numberOfCell)
         let y: CGFloat = type == .fuel ? height + 2.0 : 1.0
         for i in 0...10 {
             let x: CGFloat = CGFloat(1 + i) + width * CGFloat(i)

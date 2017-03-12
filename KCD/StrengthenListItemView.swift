@@ -13,8 +13,8 @@ class StrengthenListItemView: NSBox {
         super.draw(dirtyRect)
         
         let bounds = self.bounds
-        let width = NSWidth(bounds)
-        let height = NSHeight(bounds)
+        let width = bounds.width
+        let height = bounds.height
         NSColor.gridColor.set()
         NSBezierPath.setDefaultLineWidth(1.0)
         NSBezierPath.stroke(bounds)

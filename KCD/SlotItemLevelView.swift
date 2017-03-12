@@ -73,8 +73,8 @@ class SlotItemLevelView: NSTextField {
     }
     private var levelOneBezierPath: NSBezierPath? {
         let bounds = self.bounds
-        let width = NSWidth(bounds)
-        let height = NSHeight(bounds)
+        let width = bounds.width
+        let height = bounds.height
         let path = multiline {
             [(NSPoint(x: width - offset, y: 0), NSPoint(x: width - offset, y: height))]
         }
@@ -83,8 +83,8 @@ class SlotItemLevelView: NSTextField {
     }
     private var levelTwoBezierPath: NSBezierPath? {
         let bounds = self.bounds
-        let width = NSWidth(bounds)
-        let height = NSHeight(bounds)
+        let width = bounds.width
+        let height = bounds.height
         let path = multiline {
             [(NSPoint, NSPoint)]()
                 .appended { (NSPoint(x: width - offset, y: 0), NSPoint(x: width - offset, y: height)) }
@@ -95,8 +95,8 @@ class SlotItemLevelView: NSTextField {
     }
     private var levelThreeBezierPath: NSBezierPath? {
         let bounds = self.bounds
-        let width = NSWidth(bounds)
-        let height = NSHeight(bounds)
+        let width = bounds.width
+        let height = bounds.height
         let path = multiline {
             [(NSPoint, NSPoint)]()
                 .appended { (NSPoint(x: width - offset, y: 0), NSPoint(x: width - offset, y: height)) }
@@ -108,8 +108,8 @@ class SlotItemLevelView: NSTextField {
     }
     private var levelFourBezierPath: NSBezierPath? {
         let bounds = self.bounds
-        let width = NSWidth(bounds)
-        let height = NSHeight(bounds)
+        let width = bounds.width
+        let height = bounds.height
         let path = multiline {
             [(NSPoint, NSPoint)]()
                 .appended { (NSPoint(x: width - offset - slideOffset, y: 0), NSPoint(x: width - offset, y: height)) }
@@ -119,8 +119,8 @@ class SlotItemLevelView: NSTextField {
     }
     private var levelFiveBezierPath: NSBezierPath? {
         let bounds = self.bounds
-        let width = NSWidth(bounds)
-        let height = NSHeight(bounds)
+        let width = bounds.width
+        let height = bounds.height
         let path = multiline {
             [(NSPoint, NSPoint)]()
                 .appended { (NSPoint(x: width - offset - slideOffset, y: 0), NSPoint(x: width - offset, y: height)) }
@@ -132,8 +132,8 @@ class SlotItemLevelView: NSTextField {
     }
     private var levelSixBezierPath: NSBezierPath? {
         let bounds = self.bounds
-        let width = NSWidth(bounds)
-        let height = NSHeight(bounds)
+        let width = bounds.width
+        let height = bounds.height
         let path = multiline {
             [(NSPoint, NSPoint)]()
                 .appended { (NSPoint(x: width - offset - slideOffset, y: 0), NSPoint(x: width - offset, y: height)) }
@@ -145,8 +145,8 @@ class SlotItemLevelView: NSTextField {
     }
     private var levelSevenBezierPath: NSBezierPath? {
         let bounds = self.bounds
-        let width = NSWidth(bounds)
-        let height = NSHeight(bounds)
+        let width = bounds.width
+        let height = bounds.height
         let path = polyline {
             [NSPoint]()
                 .appended { NSPoint(x: width - offset - slideOffset, y: 0) }
@@ -189,8 +189,8 @@ class SlotItemLevelView: NSTextField {
         let bounds = self.bounds
         let colorspace = CGColorSpaceCreateDeviceGray()
         guard let maskContext = CGContext(
-            data: nil, width: Int(NSWidth(bounds)), height: Int(NSHeight(bounds)),
-            bitsPerComponent: 8, bytesPerRow: Int(NSWidth(bounds)),
+            data: nil, width: Int(bounds.width), height: Int(bounds.height),
+            bitsPerComponent: 8, bytesPerRow: Int(bounds.width),
             space: colorspace, bitmapInfo: 0) else {
             fatalError("Can not create bitmap context")
         }
@@ -273,7 +273,7 @@ class SlotItemLevelView: NSTextField {
         let attributedString = NSAttributedString(string: string, attributes: attr)
         let boundingRect = attributedString.boundingRect(with: self.bounds.size)
         var rect = self.bounds
-        rect.origin.x = NSWidth(rect) - NSWidth(boundingRect) - 1.0
+        rect.origin.x = rect.width - boundingRect.width - 1.0
         rect.origin.y = 0
         
         attributedString.draw(in: rect)

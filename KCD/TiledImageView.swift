@@ -63,13 +63,13 @@ class TiledImageView: NSView {
         NSBezierPath.setDefaultLineWidth(1.0)
         NSBezierPath.stroke(bounds)
         
-        let cellRect = NSInsetRect(bounds, 1, 1)
+        let cellRect = bounds.insetBy(dx: 1, dy: 1)
         NSBezierPath.clip(cellRect)
         imageCell.draw(withFrame: cellRect, in: self)
         imageCell.drawInterior(withFrame: cellRect, in: self)
         
         if let rect = currentSelection?.frame {
-            let forcusRing = NSInsetRect(rect, 1, 1)
+            let forcusRing = rect.insetBy(dx: 1, dy: 1)
             NSColor.keyboardFocusIndicatorColor.setStroke()
             NSBezierPath.setDefaultLineWidth(2.0)
             NSBezierPath.stroke(forcusRing)
@@ -132,29 +132,29 @@ class TiledImageView: NSView {
     private func calcurated(trackingAreaInfo originalInfos: [TitledImageCellInformation]) -> [TitledImageCellInformation] {
         guard let size = imageCell.image?.size else { return originalInfos }
         let bounds = self.bounds
-        let ratioX = NSHeight(bounds) / size.height
-        let ratioY = NSWidth(bounds) / size.width
+        let ratioX = bounds.height / size.height
+        let ratioY = bounds.width / size.width
         let ratio: CGFloat
         let offset: (x: CGFloat, y: CGFloat)
         if ratioX > 1 && ratioY > 1 {
             ratio = 1.0
-            offset = (x: (NSWidth(bounds) - size.width) / 2,
-                      y: (NSHeight(bounds) - size.height) / 2)
+            offset = (x: (bounds.width - size.width) / 2,
+                      y: (bounds.height - size.height) / 2)
         } else if ratioX > ratioY {
             ratio = ratioY
             offset = (x: 0,
-                      y: (NSHeight(bounds) - size.height * ratio) / 2)
+                      y: (bounds.height - size.height * ratio) / 2)
         } else {
             ratio = ratioX
-            offset = (x: (NSWidth(bounds) - size.width * ratio) / 2,
+            offset = (x: (bounds.width - size.width * ratio) / 2,
                       y: 0)
         }
         
         return originalInfos.map {
-            NSRect(x: NSMinX($0.frame) * ratio + offset.x,
-                   y: NSMinY($0.frame) * ratio + offset.y,
-                   width: NSWidth($0.frame) * ratio,
-                   height: NSHeight($0.frame) * ratio)
+            NSRect(x: $0.frame.minX * ratio + offset.x,
+                   y: $0.frame.minY * ratio + offset.y,
+                   width: $0.frame.width * ratio,
+                   height: $0.frame.height * ratio)
             }.map {
                 TitledImageCellInformation(with: $0)
         }

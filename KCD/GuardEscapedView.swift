@@ -50,8 +50,8 @@ class GuardEscapedView: NSView {
         
         let width = 50
         let height = 100
-        let x = Int((NSWidth(bounds) - CGFloat(width)) * 0.5)
-        let y = Int((NSHeight(bounds) - CGFloat(height)) * 0.5)
+        let x = Int((bounds.width - CGFloat(width)) * 0.5)
+        let y = Int((bounds.height - CGFloat(height)) * 0.5)
         let rect = NSRect(x: x, y: y, width: width, height: height)
         let path = NSBezierPath(rect: rect)
         NSColor.white.setFill()
@@ -59,7 +59,7 @@ class GuardEscapedView: NSView {
         path.fill()
         path.stroke()
         
-        let borderRect = NSInsetRect(rect, 3, 3)
+        let borderRect = rect.insetBy(dx: 3, dy: 3)
         let borderPath = NSBezierPath(rect: borderRect)
         borderPath.lineWidth = 2.0
         borderPath.stroke()
@@ -70,7 +70,7 @@ class GuardEscapedView: NSView {
         let tai = NSAttributedString(string: taiString, attributes: attributes)
         let hi = NSAttributedString(string: hiString, attributes: attributes)
         
-        var stringRect = NSInsetRect(borderRect, 2, 2)
+        var stringRect = borderRect.insetBy(dx: 2, dy: 2)
         stringRect.origin.y += 4
         stringRect.origin.x += 1.5
         stringRect.size.height -= 2
@@ -81,8 +81,8 @@ class GuardEscapedView: NSView {
     private func drawSmallTaihi(in bounds: NSRect) {
         let width = 100
         let height = 50
-        let x = Int((NSWidth(bounds) - CGFloat(width)) * 0.5)
-        let y = Int((NSHeight(bounds) - CGFloat(height)) * 0.5)
+        let x = Int((bounds.width - CGFloat(width)) * 0.5)
+        let y = Int((bounds.height - CGFloat(height)) * 0.5)
         let rect = NSRect(x: x, y: y, width: width, height: height)
         let path = NSBezierPath(rect: rect)
         NSColor.white.setFill()
@@ -90,7 +90,7 @@ class GuardEscapedView: NSView {
         path.fill()
         path.stroke()
         
-        let borderRect = NSInsetRect(rect, 3, 3)
+        let borderRect = rect.insetBy(dx: 3, dy: 3)
         let borderPath = NSBezierPath(rect: borderRect)
         borderPath.lineWidth = 2.0
         borderPath.stroke()
@@ -101,12 +101,12 @@ class GuardEscapedView: NSView {
         let tai = NSAttributedString(string: taiString, attributes: attributes)
         let hi = NSAttributedString(string: hiString, attributes: attributes)
         
-        var stringRect = NSInsetRect(borderRect, 2, 2)
+        var stringRect = borderRect.insetBy(dx: 2, dy: 2)
         stringRect.origin.y += 5
         stringRect.origin.x += 5
         stringRect.size.height -= 2
         tai.draw(in: stringRect)
-        stringRect.origin.x += NSWidth(stringRect) * 0.5 + 1
+        stringRect.origin.x += stringRect.width * 0.5 + 1
         hi.draw(in: stringRect)
     }
 }
