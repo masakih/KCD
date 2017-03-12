@@ -129,8 +129,7 @@ class DocksViewController: MainTabVIewItemViewController {
         
         setupStatus()
         
-        let appDelegate = NSApplication.shared().delegate as! AppDelegate
-        appDelegate.addCounterUpdate {
+        AppDelegate.shared.addCounterUpdate {
             self.missionStates.forEach { $0.update() }
             self.kdockStatus.forEach { $0.update() }
             self.ndockStatus.forEach { $0.update() }

@@ -110,8 +110,7 @@ class ExternalBrowserWindowController: NSWindowController {
         
         webView.addObserver(self, forKeyPath: "canGoBack", context: nil)
         webView.addObserver(self, forKeyPath: "canGoForward", context: nil)
-        let appDelegate = NSApplication.shared().delegate as! AppDelegate
-        webView.applicationNameForUserAgent = appDelegate.appNameForUserAgent
+        webView.applicationNameForUserAgent = AppDelegate.shared.appNameForUserAgent
         webView.frameLoadDelegate = self
     }
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
@@ -157,8 +156,7 @@ class ExternalBrowserWindowController: NSWindowController {
     
     fileprivate func move(bookmark: Bookmark) {
         if !canMovePage {
-            let appDelegate = NSApp.delegate as! AppDelegate
-            appDelegate.createNewBrowser().move(bookmark: bookmark)
+            AppDelegate.shared.createNewBrowser().move(bookmark: bookmark)
             return
         }
         

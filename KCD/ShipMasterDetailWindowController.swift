@@ -11,8 +11,7 @@ import Cocoa
 class ShipMasterDetailWindowController: NSWindowController {
     let managedObjectContext = ServerDataStore.default.managedObjectContext
     let fleetManager: FleetManager = {
-        let appDelegate = NSApplication.shared().delegate as! AppDelegate
-        return appDelegate.fleetManager
+        return AppDelegate.shared.fleetManager
     }()
     let specNames = [
         "name", "shortTypeName",

@@ -62,8 +62,7 @@ class ScreenshotListViewController: NSViewController {
         return name
     }
     private var screenshotSaveDirectoryURL: URL {
-        let appDelegate = NSApplication.shared().delegate as! AppDelegate
-        let parentURL = URL(fileURLWithPath: appDelegate.screenShotSaveDirectory)
+        let parentURL = URL(fileURLWithPath: AppDelegate.shared.screenShotSaveDirectory)
         let url = parentURL.appendingPathComponent(dirName)
         let fm = FileManager.default
         var isDir: ObjCBool = false

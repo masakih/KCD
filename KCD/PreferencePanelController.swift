@@ -32,12 +32,10 @@ class PreferencePanelController: NSWindowController {
     
     private(set) var screenShotSaveDirectory: String {
         get {
-            let appDelegate: AppDelegate = NSApplication.shared().delegate as! AppDelegate
-            return appDelegate.screenShotSaveDirectory
+            return AppDelegate.shared.screenShotSaveDirectory
         }
         set {
-            let appDelegate: AppDelegate = NSApplication.shared().delegate as! AppDelegate
-            appDelegate.screenShotSaveDirectory = newValue
+            AppDelegate.shared.screenShotSaveDirectory = newValue
             
             let index = screenShotSaveDirectoryPopUp.indexOfItem(withTag: ScreenshotSaveDirectoryPopupMenuItemTag.saveDirectory.rawValue)
             guard let item = screenShotSaveDirectoryPopUp.item(at: index)
@@ -56,8 +54,7 @@ class PreferencePanelController: NSWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
         
-        let appDelegate: AppDelegate = NSApplication.shared().delegate as! AppDelegate
-        screenShotSaveDirectory = appDelegate.screenShotSaveDirectory
+        screenShotSaveDirectory = AppDelegate.shared.screenShotSaveDirectory
         guard let window = window,
             let items = window.toolbar?.items,
             items.count != 0,

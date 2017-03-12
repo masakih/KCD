@@ -271,9 +271,7 @@ extension FleetViewController {
 
 extension FleetViewController {
     func buildAnchorageRepairHolder() {
-        guard let appDelegate = NSApplication.shared().delegate as? AppDelegate
-            else { return }
-        appDelegate.addCounterUpdate { [weak self] in
+        AppDelegate.shared.addCounterUpdate { [weak self] in
             guard let `self` = self else { return }
             self.repairTime = self.calcRepairTime()
         }

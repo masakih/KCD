@@ -16,8 +16,7 @@ class AnchorageRepairManager: NSObject {
     private let repairShipTypeIds: [Int] = [19]
     
     override init() {
-        let appDelegate = NSApplication.shared().delegate as! AppDelegate
-        fleetManager = appDelegate.fleetManager
+        fleetManager = AppDelegate.shared.fleetManager
         super.init()
         let nc = NotificationCenter.default
         nc.addObserver(forName: .HenseiDidChange, object: nil, queue: nil) { notification in

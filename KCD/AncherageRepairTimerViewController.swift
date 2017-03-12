@@ -40,8 +40,7 @@ class AncherageRepairTimerViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let appDelegate = NSApplication.shared().delegate as! AppDelegate
-        appDelegate.addCounterUpdate { [weak self] () in
+        AppDelegate.shared.addCounterUpdate { [weak self] () in
             guard let `self` = self else { return }
             self.repairTime = self.calcRepairTime()
         }

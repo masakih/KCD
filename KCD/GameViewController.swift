@@ -40,8 +40,7 @@ class GameViewController: NSViewController {
         
         webView.mainFrame.frameView.allowsScrolling = false
         
-        let appDelegate = NSApplication.shared().delegate as! AppDelegate
-        webView.applicationNameForUserAgent = appDelegate.appNameForUserAgent
+        webView.applicationNameForUserAgent = AppDelegate.shared.appNameForUserAgent
         webView.mainFrameURL = GameViewController.gamePageURL
     }
     func adjustFlash() {
@@ -95,8 +94,7 @@ class GameViewController: NSViewController {
             NSSound(named: "Submarine")?.play()
         })
         
-        let appDelegate = NSApplication.shared().delegate as! AppDelegate
-        appDelegate.clearCache()
+        AppDelegate.shared.clearCache()
         
         view.window?.endSheet(panel.window!)
     }
@@ -106,8 +104,7 @@ class GameViewController: NSViewController {
         let f = NSInsetRect(frame, -screenshotBorder, -screenshotBorder)
         guard let rep = webView.bitmapImageRepForCachingDisplay(in: f) else { return }
         webView.cacheDisplay(in: frame, to: rep)
-        let appDelegate = NSApplication.shared().delegate as! AppDelegate
-        appDelegate.screenshotListWindowController.registerScreenshot(rep, fromOnScreen: .zero)
+        AppDelegate.shared.screenshotListWindowController.registerScreenshot(rep, fromOnScreen: .zero)
     }
     
     override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
