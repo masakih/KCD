@@ -1,6 +1,6 @@
 //
 //  TemporaryDataStore.swift
-//  D
+//  KCD
 //
 //  Created by Hori,Masaki on 2017/01/06.
 //  Copyright © 2017年 Hori,Masaki. All rights reserved.
@@ -9,12 +9,10 @@
 import Cocoa
 
 extension CoreDataIntormation {
-    static let temporary = CoreDataIntormation(
-        modelName: "Temporary",
-        storeFileName: ":memory:",
-        storeOptions: [:],
-        storeType: NSInMemoryStoreType,
-        deleteAndRetry: false
+    static let temporary = CoreDataIntormation("Temporary",
+                                               storeFileName: ":memory:",
+                                               storeOptions: [:],
+                                               storeType: NSInMemoryStoreType
     )
 }
 extension CoreDataCore {

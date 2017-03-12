@@ -9,14 +9,7 @@
 import Cocoa
 
 extension CoreDataIntormation {
-    static let resourceHistory = CoreDataIntormation(
-        modelName: "ResourceHistory",
-        storeFileName: "ResourceHistory.storedata",
-        storeOptions: [NSMigratePersistentStoresAutomaticallyOption: true,
-                       NSInferMappingModelAutomaticallyOption: true],
-        storeType: NSSQLiteStoreType,
-        deleteAndRetry: false
-    )
+    static let resourceHistory = CoreDataIntormation("ResourceHistory")
 }
 extension CoreDataCore {
     static let resourceHistory = CoreDataCore(.resourceHistory)

@@ -1,6 +1,6 @@
 //
 //  ServerDataStore.swift
-//  D
+//  KCD
 //
 //  Created by Hori,Masaki on 2017/01/07.
 //  Copyright © 2017年 Hori,Masaki. All rights reserved.
@@ -9,14 +9,7 @@
 import Cocoa
 
 extension CoreDataIntormation {
-    static let kcd = CoreDataIntormation(
-        modelName: "KCD",
-        storeFileName: "KCD.storedata",
-        storeOptions: [NSMigratePersistentStoresAutomaticallyOption: true,
-                       NSInferMappingModelAutomaticallyOption: true],
-        storeType: NSSQLiteStoreType,
-        deleteAndRetry: true
-    )
+    static let kcd = CoreDataIntormation("KCD", deleteAndRetry: true)
 }
 extension CoreDataCore {
     static let kcd = CoreDataCore(.kcd)

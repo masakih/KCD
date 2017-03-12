@@ -9,14 +9,7 @@
 import Cocoa
 
 extension CoreDataIntormation {
-    static let bookmark = CoreDataIntormation(
-        modelName: "Bookmark",
-        storeFileName: "Bookmark.storedata",
-        storeOptions: [NSMigratePersistentStoresAutomaticallyOption: true,
-                       NSInferMappingModelAutomaticallyOption: true],
-        storeType: NSSQLiteStoreType,
-        deleteAndRetry: false
-    )
+    static let bookmark = CoreDataIntormation("Bookmark")
 }
 extension CoreDataCore {
     static let bookmark = CoreDataCore(.bookmark)

@@ -25,6 +25,23 @@ struct CoreDataIntormation {
     let storeOptions: Dictionary<AnyHashable, Any>
     let storeType: String
     let deleteAndRetry: Bool
+    
+    private static let defaultOptions: [AnyHashable: Any] = [
+        NSMigratePersistentStoresAutomaticallyOption: true,
+        NSInferMappingModelAutomaticallyOption: true
+    ]
+    
+    init(_ modelName: String,
+         storeFileName: String? = nil,
+         storeOptions: [AnyHashable: Any] = defaultOptions,
+         storeType: String = NSSQLiteStoreType,
+         deleteAndRetry: Bool = false) {
+        self.modelName = modelName
+        self.storeFileName = storeFileName ?? "\(modelName).storedata"
+        self.storeOptions = storeOptions
+        self.storeType = storeType
+        self.deleteAndRetry = deleteAndRetry
+    }
 }
 
 struct CoreDataCore {

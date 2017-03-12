@@ -9,14 +9,7 @@
 import Cocoa
 
 extension CoreDataIntormation {
-    static let local = CoreDataIntormation(
-        modelName: "LocalData",
-        storeFileName: "LocalData.storedata",
-        storeOptions: [NSMigratePersistentStoresAutomaticallyOption: true,
-                       NSInferMappingModelAutomaticallyOption: true],
-        storeType: NSSQLiteStoreType,
-        deleteAndRetry: false
-    )
+    static let local = CoreDataIntormation("LocalData")
 }
 extension CoreDataCore {
     static let local = CoreDataCore(.local)
