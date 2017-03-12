@@ -324,4 +324,3 @@ extension ExternalBrowserWindowController: WebFrameLoadDelegate, WebPolicyDelega
         listener.use()
     }
 }
-

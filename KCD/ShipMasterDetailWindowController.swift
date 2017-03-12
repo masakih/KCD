@@ -72,4 +72,3 @@ extension ShipMasterDetailWindowController: NSTableViewDelegate {
         selectedShip = selectedObjects[0]
     }
 }
-

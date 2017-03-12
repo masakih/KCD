@@ -1,8 +1,6 @@
 
 disabled_rules:
     - variable_name
-    - closing_brace
-    - control_statement
     - shorthand_operator
     - force_cast
     - force_try
@@ -22,7 +20,6 @@ disabled_rules:
     - return_arrow_whitespace
     - statement_position
     - todo
-    - trailing_newline
     - trailing_semicolon
     - trailing_whitespace
 

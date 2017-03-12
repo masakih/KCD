@@ -257,4 +257,3 @@ extension RequiredEquipment {
         return "\(number)"
     }
 }
-

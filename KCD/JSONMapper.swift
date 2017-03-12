@@ -142,6 +142,3 @@ extension JSONMapper {
     }
     func finishOperating() {}
 }
-
-
-

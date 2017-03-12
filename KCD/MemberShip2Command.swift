@@ -19,4 +19,3 @@ class MemberShip2Command: JSONCommand {
         DeckMapper(apiResponse).commit()
     }
 }
-

@@ -50,4 +50,3 @@ class JSONViewWindowController: NSWindowController {
         didChangeValue(forKey: "commands")
     }
 }
-

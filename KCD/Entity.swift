@@ -71,4 +71,3 @@ extension Bookmark: EntityProvider {}
 
 // MARK: - ResourceHistory model
 extension Resource: EntityProvider {}
-

@@ -119,4 +119,3 @@ extension CollectionView: QLPreviewPanelDataSource, QLPreviewPanelDelegate {
         return window?.convertToScreen(byWindow) ?? .zero
     }
 }
-

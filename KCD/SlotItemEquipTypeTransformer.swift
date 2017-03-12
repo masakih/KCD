@@ -18,4 +18,3 @@ class SlotItemEquipTypeTransformer: ValueTransformer {
         return ServerDataStore.default.masterSlotItemEquipType(by: id)?.name
     }
 }
-
