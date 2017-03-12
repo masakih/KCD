@@ -428,7 +428,7 @@ class CalculateDamageCommand: JSONCommand {
     }
     private func removeFirstDamageControl(of ship: Ship) {
         let equiped = ship.equippedItem
-        let newEquiped = equiped.mutableCopy() as! NSMutableOrderedSet
+        let newEquiped = equiped.array
         let store = ServerDataStore.default
         var useDamageControl = false
         equiped.forEach {
@@ -443,12 +443,15 @@ class CalculateDamageCommand: JSONCommand {
                 ship.bull = ship.maxBull
                 fallthrough
             case .damageControl:
-                newEquiped.remove(master)
-                useDamageControl = true
+                if var equiped = newEquiped as? [SlotItem],
+                    let index = equiped.index(of: master) {
+                    equiped[index...index] = []
+                    ship.equippedItem = NSOrderedSet(array: equiped)
+                    useDamageControl = true
+                }
             }
         }
         if useDamageControl {
-            ship.equippedItem = newEquiped
             return
         }
         
