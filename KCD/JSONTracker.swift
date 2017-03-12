@@ -34,6 +34,6 @@ class JSONTracker {
     
     private func start() {
         DispatchQueue(label: "JSONTracker")
-            .async { while true { autoreleasepool() { self.doAction() } } }
+            .async { while true { autoreleasepool { self.doAction() } } }
     }
 }
