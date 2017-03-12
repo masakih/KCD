@@ -531,7 +531,6 @@
 		F4BDEB4A187252F30069D0CE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		F4BDEB4B187252F30069D0CE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F4BDEB4E187252F30069D0CE /* KCD-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KCD-Info.plist"; sourceTree = "<group>"; };
-		F4BDEB54187252F30069D0CE /* KCD-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KCD-Prefix.pch"; sourceTree = "<group>"; };
 		F4BDEB5C187252F30069D0CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		F4BDEB5E187252F30069D0CE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F4BDEB64187252F30069D0CE /* KCDTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KCDTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -932,7 +931,6 @@
 				F4BEEE9D18D211280006F70C /* Localizable.strings */,
 				F4BDEB4E187252F30069D0CE /* KCD-Info.plist */,
 				F4BDEB4F187252F30069D0CE /* InfoPlist.strings */,
-				F4BDEB54187252F30069D0CE /* KCD-Prefix.pch */,
 				F43E67B618BE02A10087E5B6 /* STypeShortName.plist */,
 				F43E67B818BE060E0087E5B6 /* LevelUpExp.plist */,
 				F4666C6A1B29E974001840DB /* EquipmentStrengthen.plist */,
