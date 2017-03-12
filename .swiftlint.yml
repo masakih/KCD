@@ -1,0 +1,72 @@
+
+disabled_rules:
+    - variable_name
+    - closing_brace
+    - colon
+    - comma
+    - control_statement
+    - shorthand_operator
+    - force_cast
+    - force_try
+    - leading_whitespace
+    - vertical_whitespace
+    - unused_closure_parameter
+    - legacy_constructor
+    - cyclomatic_complexity
+    - legacy_nsgeometry_functions
+    - class_delegate_protocol
+    - weak_delegate
+    - redundant_optional_initialization
+    - large_tuple
+    - syntactic_sugar
+    - trailing_comma
+    - empty_parentheses_with_trailing_closure
+    - function_parameter_count
+    - nesting
+    - opening_brace
+    - operator_whitespace
+    - return_arrow_whitespace
+    - statement_position
+    - todo
+    - trailing_newline
+    - trailing_semicolon
+    - trailing_whitespace
+    - valid_docs
+
+
+
+file_length:
+    warning: 500
+
+line_length: 500
+
+variable_name:
+  max_length:
+    warning: 100
+    error: 200
+  min_length:
+    warning: 1
+    error: 2
+
+type_name:
+  max_length:
+    warning: 55
+    error: 60
+  min_length:
+    error: 3
+
+type_body_length:
+    warning: 300
+    error: 900
+
+function_body_length:
+    warning: 100
+    error: 1000
+
+function_parameter_count:
+    warning: 6
+    error: 8
+
+cyclomatic_complexity:
+    warning: 20
+    error: 20
