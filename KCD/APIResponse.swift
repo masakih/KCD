@@ -59,10 +59,6 @@ struct APIResponse {
         return false
     }
     
-    #if ENABLE_JSON_LOG
-    let argumentArray: [[String: String]]
-    #endif
-    
     init?(request: URLRequest, data: Data) {
         date = Date()
         
@@ -86,11 +82,5 @@ struct APIResponse {
                 return nil
         }
         self.api = api
-        
-        #if ENABLE_JSON_LOG
-            argumentArray = parameter.map { (key, value) in
-                ["key": key, "value": value]
-            }
-        #endif
     }
 }

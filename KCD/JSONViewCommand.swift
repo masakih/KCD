@@ -18,7 +18,9 @@ class JSONViewCommand: JSONCommand {
     
     init(apiResponse: APIResponse, command: JSONCommand) {
         self.recieveDate = Date()
-        self.parameterList = apiResponse.argumentArray
+        self.parameterList = apiResponse
+            .parameter
+            .map { ["key": $0.0, "value": $0.1] }
         self.jsonTree = JSONNode
             .nodeWithJSON(apiResponse.json as AnyObject?)
             .map { [$0] }
