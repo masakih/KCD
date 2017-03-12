@@ -163,7 +163,7 @@ extension GameViewController: WebFrameLoadDelegate, WebUIDelegate {
             )
             let top = context.objectForKeyedSubscript("atop").toDouble()
             let left = context.objectForKeyedSubscript("aleft").toDouble()
-            flashTopLeft = NSMakePoint(CGFloat(left), webView.frame.size.height - CGFloat(top) - 480)
+            flashTopLeft = NSPoint(x: CGFloat(left), y: webView.frame.size.height - CGFloat(top) - 480)
         }
         if path.hasSuffix("app_id=854854") {
             guard let context = frame.javaScriptContext else { return }
@@ -183,7 +183,7 @@ extension GameViewController: WebFrameLoadDelegate, WebUIDelegate {
             guard validIframe != 0 else { return }
             let top = context.objectForKeyedSubscript("atop").toDouble()
             let left = context.objectForKeyedSubscript("aleft").toDouble()
-            flashTopLeft = NSMakePoint(flashTopLeft.x + CGFloat(left), flashTopLeft.y - CGFloat(top))
+            flashTopLeft = NSPoint(x: flashTopLeft.x + CGFloat(left), y: flashTopLeft.y - CGFloat(top))
             adjustFlash()
         }
     }

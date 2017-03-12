@@ -307,7 +307,7 @@ class ScreenshotListViewController: NSViewController {
 extension ScreenshotListViewController: NSCollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
         let f = realFromZoom(zoom: zoom)
-        return NSMakeSize(f, f)
+        return NSSize(width: f, height: f)
     }
 }
 

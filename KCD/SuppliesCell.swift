@@ -61,7 +61,7 @@ class SuppliesCell: NSCell {
         let y: CGFloat = type == .fuel ? height + 2.0 : 1.0
         for i in 0...10 {
             let x: CGFloat = CGFloat(1 + i) + width * CGFloat(i)
-            let cellRect = NSMakeRect(x, y, width, height)
+            let cellRect = NSRect(x: x, y: y, width: width, height: height)
             color(of: type, position: i, border: border).set()
             NSBezierPath(rect: cellRect).fill()
         }

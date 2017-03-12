@@ -48,10 +48,10 @@ class ScreenshotCollectionViewItem: NSCollectionViewItem {
         } else {
             ratio = ratioX
         }
-        let fitSize = NSMakeSize(imageSize.width * ratio, imageSize.height * ratio)
+        let fitSize = NSSize(width: imageSize.width * ratio, height: imageSize.height * ratio)
         let left = (target.size.width - fitSize.width) * 0.5
         let bottom = (target.size.height - fitSize.height) * 0.5
-        return NSMakeRect(left, bottom, fitSize.width, fitSize.height)
+        return NSRect(x: left, y: bottom, width: fitSize.width, height: fitSize.height)
     }
 }
 

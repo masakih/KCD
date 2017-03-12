@@ -6,7 +6,6 @@ disabled_rules:
     - force_try
     - leading_whitespace
     - vertical_whitespace
-    - legacy_constructor
     - cyclomatic_complexity
     - legacy_nsgeometry_functions
     - redundant_optional_initialization

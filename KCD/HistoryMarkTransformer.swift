@@ -19,10 +19,10 @@ class HistoryMarkTransformer: ValueTransformer {
     
     static var markImage: NSImage = {
         let radius: CGFloat = 10.0
-        let image = NSImage(size: NSMakeSize(radius, radius))
+        let image = NSImage(size: NSSize(width: radius, height: radius))
         image.lockFocus()
         NSColor.red.highlight(withLevel: 0.6)?.set()
-        NSBezierPath(roundedRect: NSMakeRect(0, 0, radius, radius),
+        NSBezierPath(roundedRect: NSRect(x: 0, y: 0, width: radius, height: radius),
                      xRadius: radius / 2,
                      yRadius: radius / 2)
         .fill()

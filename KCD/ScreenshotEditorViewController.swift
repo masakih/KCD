@@ -39,9 +39,9 @@ class ScreenshotEditorViewController: BridgeViewController {
     
     override init?(nibName: String?, bundle: Bundle?) {
         trimInfo = [
-            TrimRectInformation(name: "Status", rect: NSMakeRect(328, 13, 470, 365)),
-            TrimRectInformation(name: "List", rect: NSMakeRect(362, 15, 438, 368)),
-            TrimRectInformation(name: "AirplaneBase", rect: NSMakeRect(575, 13, 225, 358))
+            TrimRectInformation(name: "Status", rect: NSRect(x: 328, y: 13, width: 470, height: 365)),
+            TrimRectInformation(name: "List", rect: NSRect(x: 362, y: 15, width: 438, height: 368)),
+            TrimRectInformation(name: "AirplaneBase", rect: NSRect(x: 575, y: 13, width: 225, height: 358))
         ]
         currentTrimInfo = trimInfo[0]
         super.init(nibName: "ScreenshotEditorViewController", bundle: nil)

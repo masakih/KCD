@@ -33,7 +33,7 @@ class ImageView: NSView {
     private var imageShadow: NSShadow {
         if let s = internalImageShadow { return s }
         let s = NSShadow()
-        s.shadowOffset = NSMakeSize(2, -2)
+        s.shadowOffset = NSSize(width: 2, height: -2)
         s.shadowBlurRadius = 4
         s.shadowColor = NSColor.darkGray
         internalImageShadow = s
