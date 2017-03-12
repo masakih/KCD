@@ -24,7 +24,7 @@ class BookmarkListViewController: NSViewController {
     @IBOutlet var contextMenu: NSMenu!
     @IBOutlet var popover: NSPopover!
     
-    var delegate: BookmarkListViewControllerDelegate?
+    weak var delegate: BookmarkListViewControllerDelegate?
     var editorController: BookmarkEditorViewController?
     
     // tableView support

@@ -9,7 +9,6 @@ disabled_rules:
     - legacy_constructor
     - cyclomatic_complexity
     - legacy_nsgeometry_functions
-    - weak_delegate
     - redundant_optional_initialization
     - large_tuple
     - trailing_comma
