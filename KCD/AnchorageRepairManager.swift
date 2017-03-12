@@ -25,7 +25,7 @@ class AnchorageRepairManager: NSObject {
                 else { return }
             self.resetIfNeeds(info: info)
         }
-        nc.addObserver(forName: .PortAPIReceived, object: nil, queue: nil) { (Notification) in
+        nc.addObserver(forName: .PortAPIReceived, object: nil, queue: nil) { _ in
             if Date().timeIntervalSince(self.repairTime) < 20 * 60 { return }
             self.reset()
         }
