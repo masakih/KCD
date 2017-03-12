@@ -20,7 +20,6 @@ disabled_rules:
     - return_arrow_whitespace
     - statement_position
     - todo
-    - trailing_semicolon
     - trailing_whitespace
 
 

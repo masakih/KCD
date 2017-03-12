@@ -102,7 +102,7 @@ private class CoreDataRemover {
             try FileManager.default.removeItem(at: url)
         }
         catch {
-            print("Could not remove file for URL (\(url))");
+            print("Could not remove file for URL (\(url))")
         }
     }
 }
