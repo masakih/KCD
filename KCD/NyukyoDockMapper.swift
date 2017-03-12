@@ -23,12 +23,14 @@ fileprivate func dataKey(_ apiResponse: APIResponse) -> String {
 }
 
 class NyukyoDockMapper: JSONMapper {
+    typealias ObjectType = NyukyoDock
+
     let apiResponse: APIResponse
-    let configuration: MappingConfiguration
+    let configuration: MappingConfiguration<NyukyoDock>
     
     required init(_ apiResponse: APIResponse) {
         self.apiResponse = apiResponse
-        self.configuration = MappingConfiguration(entityType: NyukyoDock.self,
+        self.configuration = MappingConfiguration(entity: NyukyoDock.entity,
                                                   dataKey: dataKey(apiResponse),
                                                   editorStore: ServerDataStore.oneTimeEditor())
     }

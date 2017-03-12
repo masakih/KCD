@@ -33,12 +33,14 @@ fileprivate func dataKey(_ apiResponse: APIResponse) -> String {
 }
 
 class DeckMapper: JSONMapper {
+    typealias ObjectType = Deck
+    
     let apiResponse: APIResponse
-    let configuration: MappingConfiguration
+    let configuration: MappingConfiguration<Deck>
     
     required init(_ apiResponse: APIResponse) {
         self.apiResponse = apiResponse
-        self.configuration = MappingConfiguration(entityType: Deck.self,
+        self.configuration = MappingConfiguration(entity: Deck.entity,
                                                   dataKey: dataKey(apiResponse),
                                                   editorStore: ServerDataStore.oneTimeEditor())
     }

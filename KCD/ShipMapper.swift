@@ -34,7 +34,7 @@ fileprivate func dataKey(_ apiResponse: APIResponse) -> String {
 
 extension MappingConfiguration {
     func change(dataKey: String) -> MappingConfiguration {
-        return MappingConfiguration(entityType: self.entityType,
+        return MappingConfiguration(entity: self.entity,
                                     dataKey: dataKey,
                                     primaryKey: self.primaryKey,
                                     compositPrimaryKeys: self.compositPrimaryKeys,
@@ -44,12 +44,13 @@ extension MappingConfiguration {
 }
 
 class ShipMapper: JSONMapper {
+    typealias ObjectType = Ship
     let apiResponse: APIResponse
-    let configuration: MappingConfiguration
+    let configuration: MappingConfiguration<Ship>
     
     required init(_ apiResponse: APIResponse) {
         self.apiResponse = apiResponse
-        self.configuration = MappingConfiguration(entityType: Ship.self,
+        self.configuration = MappingConfiguration(entity: Ship.entity,
                                                   dataKey: dataKey(apiResponse),
                                                   editorStore: ServerDataStore.oneTimeEditor(),
                                                   ignoreKeys:
@@ -69,7 +70,7 @@ class ShipMapper: JSONMapper {
             ShipMapper(apiResponse, configuration: conf).commit()
         }
     }
-    private init(_ apiResponse: APIResponse, configuration: MappingConfiguration) {
+    private init(_ apiResponse: APIResponse, configuration: MappingConfiguration<Ship>) {
         self.apiResponse = apiResponse
         self.configuration = configuration
     }
@@ -96,15 +97,10 @@ class ShipMapper: JSONMapper {
         return configuration.editorStore as? ServerDataStore
     }
     
-    func beginRegister(_ object: NSManagedObject) {
-        guard let ship = object as? Ship
-            else { return }
+    func beginRegister(_ ship: Ship) {
         ship.sally_area = nil
     }
-    func handleExtraValue(_ value: Any, forKey key: String, to object: NSManagedObject) -> Bool {
-        guard let ship = object as? Ship
-            else { return false }
-        
+    func handleExtraValue(_ value: Any, forKey key: String, to ship: Ship) -> Bool {
         // 取得後破棄した装備のデータを削除するため保有IDを保存
         if key == "api_id" {
             guard let id = value as? Int

@@ -9,8 +9,10 @@
 import Cocoa
 
 class MasterMapAreaMapper: JSONMapper {
+    typealias ObjectType = MasterMapArea
+    
     let apiResponse: APIResponse
-    let configuration = MappingConfiguration(entityType: MasterMapArea.self,
+    let configuration = MappingConfiguration(entity: MasterMapArea.entity,
                                              dataKey: "api_data.api_mst_maparea",
                                              editorStore: ServerDataStore.oneTimeEditor())
     

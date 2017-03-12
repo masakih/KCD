@@ -9,8 +9,10 @@
 import Cocoa
 
 class MasterSlotItemMapper: JSONMapper {
+    typealias ObjectType = MasterSlotItem
+
     let apiResponse: APIResponse
-    let configuration = MappingConfiguration(entityType: MasterSlotItem.self,
+    let configuration = MappingConfiguration(entity: MasterSlotItem.entity,
                                              dataKey: "api_data.api_mst_slotitem",
                                              editorStore: ServerDataStore.oneTimeEditor())
     

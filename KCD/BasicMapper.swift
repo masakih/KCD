@@ -23,12 +23,14 @@ fileprivate func dataKey(_ apiResponse: APIResponse) -> String {
 }
 
 class BasicMapper: JSONMapper {
+    typealias ObjectType = Basic
+    
     let apiResponse: APIResponse
-    let configuration: MappingConfiguration
+    let configuration: MappingConfiguration<Basic>
     
     required init(_ apiResponse: APIResponse) {
         self.apiResponse = apiResponse
-        self.configuration = MappingConfiguration(entityType: Basic.self,
+        self.configuration = MappingConfiguration(entity: Basic.entity,
                                                   dataKey: dataKey(apiResponse),
                                                   editorStore: ServerDataStore.oneTimeEditor())
     }

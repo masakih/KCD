@@ -9,8 +9,10 @@
 import Cocoa
 
 class AirBaseMapper: JSONMapper {
+    typealias ObjectType = AirBase
+    
     let apiResponse: APIResponse
-    let configuration = MappingConfiguration(entityType: AirBase.self,
+    let configuration = MappingConfiguration(entity: AirBase.entity,
                                              dataKey: "api_data.api_air_base",
                                              compositPrimaryKeys: ["area_id", "rid"],
                                              editorStore: ServerDataStore.oneTimeEditor())
@@ -19,13 +21,9 @@ class AirBaseMapper: JSONMapper {
         self.apiResponse = apiResponse
     }
 
-    func handleExtraValue(_ value: Any, forKey key: String, to object: NSManagedObject) -> Bool {
+    func handleExtraValue(_ value: Any, forKey key: String, to airbase: AirBase) -> Bool {
         if key != "api_plane_info" { return false }
         
-        guard let airbase = object as? AirBase else {
-            print("object is not AirBase")
-            return false
-        }
         if airbase.planeInfo.count == 0 {
             if let store = configuration.editorStore as? ServerDataStore {
                 let new: [AirBasePlaneInfo] = (0..<4).flatMap {_ in

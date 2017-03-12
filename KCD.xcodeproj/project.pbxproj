@@ -796,23 +796,23 @@
 			isa = PBXGroup;
 			children = (
 				F47C3E971E5DB29300D97449 /* JSONMapper.swift */,
-				F47C3E991E5DC90000D97449 /* MasterSTypeMapper.swift */,
+				F47C3EBB1E61AEC500D97449 /* AirBaseMapper.swift */,
+				F47C3EB51E60766000D97449 /* BasicMapper.swift */,
+				F47C3EAD1E5F26E900D97449 /* DeckMapper.swift */,
+				F47C3EB91E619CC400D97449 /* KenzoDockMapper.swift */,
 				F47C3EA31E5F017500D97449 /* MasterFurnitureMapper.swift */,
-				F47C3E9B1E5DC94E00D97449 /* MasterShipMapper.swift */,
 				F47C3E9D1E5DD3E400D97449 /* MasterMapAreaMapper.swift */,
 				F47C3E9F1E5DE08F00D97449 /* MasterMapInfoMapper.swift */,
-				F47C3EA11E5EFCC800D97449 /* MasterUseItemMapper.swift */,
-				F47C3EA51E5F050D00D97449 /* MasterSlotItemMapper.swift */,
-				F47C3EA71E5F06E700D97449 /* MasterSlotItemEquipTypeMapper.swift */,
 				F47C3EA91E5F085B00D97449 /* MasterMissionMapper.swift */,
-				F47C3EB51E60766000D97449 /* BasicMapper.swift */,
-				F47C3EAB1E5F1AD900D97449 /* ShipMapper.swift */,
-				F47C3EAD1E5F26E900D97449 /* DeckMapper.swift */,
+				F47C3E9B1E5DC94E00D97449 /* MasterShipMapper.swift */,
+				F47C3EA71E5F06E700D97449 /* MasterSlotItemEquipTypeMapper.swift */,
+				F47C3EA51E5F050D00D97449 /* MasterSlotItemMapper.swift */,
+				F47C3E991E5DC90000D97449 /* MasterSTypeMapper.swift */,
+				F47C3EA11E5EFCC800D97449 /* MasterUseItemMapper.swift */,
 				F47C3EAF1E60500700D97449 /* MaterialMapper.swift */,
 				F47C3EB11E60616E00D97449 /* NyukyoDockMapper.swift */,
+				F47C3EAB1E5F1AD900D97449 /* ShipMapper.swift */,
 				F47C3EB71E61967C00D97449 /* SlotItemMapper.swift */,
-				F47C3EB91E619CC400D97449 /* KenzoDockMapper.swift */,
-				F47C3EBB1E61AEC500D97449 /* AirBaseMapper.swift */,
 			);
 			name = JSONMapper;
 			sourceTree = "<group>";

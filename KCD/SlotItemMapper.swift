@@ -25,12 +25,14 @@ fileprivate func dataKey(_ apiResponse: APIResponse) -> String {
 }
 
 class SlotItemMapper: JSONMapper {
+    typealias ObjectType = SlotItem
+    
     let apiResponse: APIResponse
-    let configuration: MappingConfiguration
+    let configuration: MappingConfiguration<SlotItem>
     
     required init(_ apiResponse: APIResponse) {
         self.apiResponse = apiResponse
-        self.configuration = MappingConfiguration(entityType: SlotItem.self,
+        self.configuration = MappingConfiguration(entity: SlotItem.entity,
                                                   dataKey: dataKey(apiResponse),
                                                   editorStore: ServerDataStore.oneTimeEditor())
     }
@@ -40,12 +42,10 @@ class SlotItemMapper: JSONMapper {
         return ServerDataStore.default.sortedMasterSlotItemsById()
     }()
     
-    func beginRegister(_ object: NSManagedObject) {
-        guard let slotItem = object as? SlotItem
-            else { return }
+    func beginRegister(_ slotItem: SlotItem) {
         slotItem.alv = 0
     }
-    func handleExtraValue(_ value: Any, forKey key: String, to object: NSManagedObject) -> Bool {
+    func handleExtraValue(_ value: Any, forKey key: String, to object: SlotItem) -> Bool {
         // 取得後破棄した装備のデータを削除するため保有IDを保存
         if key == "api_id" {
             guard let id = value as? Int
@@ -73,9 +73,9 @@ class SlotItemMapper: JSONMapper {
         store.slotItems(exclude: registerIds).forEach { store.delete($0) }
     }
     
-    private func setMaster(_ masterId: Int, to object: NSManagedObject?) {
-        guard let slotItem = object as? SlotItem
-            else { return print("argument is wrong") }
+    private func setMaster(_ masterId: Int, to slotItem: SlotItem?) {
+        guard let slotItem = slotItem
+            else { return }
         if slotItem.slotitem_id == masterId { return }
         
         guard let mSlotItem = masterSlotItems.binarySearch(comparator: { $0.id ==? masterId })

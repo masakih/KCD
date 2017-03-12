@@ -8,21 +8,21 @@
 
 import Cocoa
 
-struct MappingConfiguration {
-    let entityType: NSManagedObject.Type
+struct MappingConfiguration<T: NSManagedObject> {
+    let entity: Entity<T>
     let dataKey: String
     let primaryKey: String
     let compositPrimaryKeys: [String]?
     let editorStore: CoreDataAccessor
     let ignoreKeys: [String]
     
-    init(entityType: NSManagedObject.Type,
+    init(entity: Entity<T>,
          dataKey: String = "api_data",
          primaryKey: String = "id",
          compositPrimaryKeys: [String]? = nil,
          editorStore: CoreDataAccessor,
          ignoreKeys: [String] = []) {
-        self.entityType = entityType
+        self.entity = entity
         self.dataKey = dataKey
         self.primaryKey = primaryKey
         self.compositPrimaryKeys = compositPrimaryKeys
@@ -32,15 +32,17 @@ struct MappingConfiguration {
 }
 
 protocol JSONMapper {
+    associatedtype ObjectType: NSManagedObject
+    
     init(_ apiResponse: APIResponse)
     
     var apiResponse: APIResponse { get }
-    var configuration: MappingConfiguration { get }
+    var configuration: MappingConfiguration<ObjectType> { get }
     
-    func registerElement(_ element: [String: Any], to object: NSManagedObject)
+    func registerElement(_ element: [String: Any], to object: ObjectType)
     func commit()
-    func beginRegister(_ object: NSManagedObject)
-    func handleExtraValue(_ value: Any, forKey key: String, to object: NSManagedObject) -> Bool
+    func beginRegister(_ object: ObjectType)
+    func handleExtraValue(_ value: Any, forKey key: String, to object: ObjectType) -> Bool
     func finishOperating()
 }
 
@@ -58,7 +60,7 @@ extension JSONMapper {
         if let aa = a, let bb = b { return aa.isEqual(bb) }
         return false
     }
-    func setValueIfNeeded(_ value: AnyObject?, to object: NSManagedObject, forKey key: String) {
+    func setValueIfNeeded(_ value: AnyObject?, to object: ObjectType, forKey key: String) {
         var validValue = value
         do { try object.validateValue(&validValue, forKey: key) }
         catch { return }
@@ -71,7 +73,7 @@ extension JSONMapper {
         }
     }
     
-    func registerElement(_ element: [String: Any], to object: NSManagedObject) {
+    func registerElement(_ element: [String: Any], to object: ObjectType) {
         beginRegister(object)
         element.forEach { (key: String, value: Any) in
             if configuration.ignoreKeys.contains(key) { return }
@@ -96,7 +98,7 @@ extension JSONMapper {
         let keys = configuration.compositPrimaryKeys ?? [configuration.primaryKey]
         return keys.map { NSSortDescriptor(key: $0, ascending: true) }
     }
-    private func objectSearch(_ objects: [NSManagedObject], _ element: [String: Any]) -> NSManagedObject? {
+    private func objectSearch(_ objects: [ObjectType], _ element: [String: Any]) -> ObjectType? {
         let keys = configuration.compositPrimaryKeys ?? [configuration.primaryKey]
         let keyPiar = keys.map { (key: $0, apiKey: "api_\($0)") }
         return objects.binarySearch {
@@ -118,17 +120,15 @@ extension JSONMapper {
             else { return print("JSON is wrong.") }
         
         let store = configuration.editorStore
-        let entity = Entity(name: configuration.entityType.entityName,
-                            type: configuration.entityType)
-        guard let objects = try? store.objects(with: entity, sortDescriptors: sortDescriptors)
-            else { return print("Can not get entity named \(configuration.entityType.entityName)") }
+        guard let objects = try? store.objects(with: configuration.entity, sortDescriptors: sortDescriptors)
+            else { return print("Can not get entity named \(configuration.entity.name)") }
         data.forEach {
             if let object = objectSearch(objects, $0) {
                 registerElement($0, to: object)
-            } else if let new = store.insertNewObject(for: entity) {
+            } else if let new = store.insertNewObject(for: configuration.entity) {
                 registerElement($0, to: new)
             } else {
-                fatalError("Can not create Entity")
+                fatalError("Can not get entity named \(configuration.entity.name)")
             }
         }
         finishOperating()
@@ -136,8 +136,8 @@ extension JSONMapper {
     }
     
     func execute() {}
-    func beginRegister(_ object: NSManagedObject) {}
-    func handleExtraValue(_ value: Any, forKey key: String, to object: NSManagedObject) -> Bool {
+    func beginRegister(_ object: ObjectType) {}
+    func handleExtraValue(_ value: Any, forKey key: String, to object: ObjectType) -> Bool {
         return false
     }
     func finishOperating() {}

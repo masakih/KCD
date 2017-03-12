@@ -9,8 +9,10 @@
 import Cocoa
 
 class MasterShipMapper: JSONMapper {
+    typealias ObjectType = MasterShip
+    
     let apiResponse: APIResponse
-    let configuration = MappingConfiguration(entityType: MasterShip.self,
+    let configuration = MappingConfiguration(entity: MasterShip.entity,
                                              dataKey: "api_data.api_mst_ship",
                                              editorStore: ServerDataStore.oneTimeEditor())
     
@@ -22,17 +24,12 @@ class MasterShipMapper: JSONMapper {
         return ServerDataStore.default.sortedMasterSTypesById()
     }()
     
-    func handleExtraValue(_ value: Any, forKey key: String, to object: NSManagedObject) -> Bool {
+    func handleExtraValue(_ value: Any, forKey key: String, to masterShip: MasterShip) -> Bool {
         if key != "api_stype" { return false }
         
         guard let sType = value as? Int
             else {
                 print("MasterShipMapper: value is not Int")
-                return false
-        }
-        guard let masterShip = object as? MasterShip
-            else {
-                print("MasterShipMapper: object is not KCMasterShipObject")
                 return false
         }
         setStype(sType, to: masterShip)

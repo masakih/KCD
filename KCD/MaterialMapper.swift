@@ -29,8 +29,10 @@ fileprivate func dataKey(_ apiResponse: APIResponse) -> String {
 }
 
 class MaterialMapper: JSONMapper {
+    typealias ObjectType = Material
+    
     let apiResponse: APIResponse
-    let configuration: MappingConfiguration
+    let configuration: MappingConfiguration<Material>
     
     private let keys = [
         "fuel", "bull", "steel", "bauxite",
@@ -39,7 +41,7 @@ class MaterialMapper: JSONMapper {
     
     required init(_ apiResponse: APIResponse) {
         self.apiResponse = apiResponse
-        self.configuration = MappingConfiguration(entityType: Material.self,
+        self.configuration = MappingConfiguration(entity: Material.entity,
                                                   dataKey: dataKey(apiResponse),
                                                   editorStore: ServerDataStore.oneTimeEditor())
     }
