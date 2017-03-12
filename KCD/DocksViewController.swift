@@ -25,7 +25,7 @@ class DocksViewController: MainTabVIewItemViewController {
                 unbind($0.0)
                 unbind($0.1)
         }
-        ["kDock1Time", "kDock2Time", "kDock3Time", "kDock4Time",]
+        ["kDock1Time", "kDock2Time", "kDock3Time", "kDock4Time"]
             .forEach { unbind($0) }
         
         ["selection", "selection.no", "content.battleCell"]

@@ -64,7 +64,7 @@ class ShipViewController: MainTabVIewItemViewController {
         shipController.addObserver(self, forKeyPath: NSSortDescriptorsBinding, context: nil)
         shipController.addObserver(self, forKeyPath: "arrangedObjects", context: nil)
         
-        let tableViews = [expTableView,powerTableView,power2TableView,power3TableView]
+        let tableViews = [expTableView, powerTableView, power2TableView, power3TableView]
         tableViews
             .forEach {
                 NotificationCenter.default

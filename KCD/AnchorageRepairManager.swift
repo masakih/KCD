@@ -42,7 +42,7 @@ class AnchorageRepairManager: NSObject {
     private func reset() {
         repairTime = Date()
     }
-    private func shipTypeId(fleetNumber: Int , position: Int) -> Int? {
+    private func shipTypeId(fleetNumber: Int, position: Int) -> Int? {
         guard 1...4 ~= fleetNumber,
             1...6 ~= position
             else { return nil }

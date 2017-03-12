@@ -230,8 +230,8 @@ extension CoreDataProvider {
 extension CoreDataAccessor {
     func insertNewObject<T>(for entity: Entity<T>) -> T? {
         return NSEntityDescription
-            .insertNewObject(forEntityName: entity.name
-                , into: managedObjectContext) as? T
+            .insertNewObject(forEntityName: entity.name,
+                             into: managedObjectContext) as? T
     }
     func delete(_ object: NSManagedObject) {
         managedObjectContext.delete(object)
