@@ -256,9 +256,11 @@ class AppDelegate: NSObject {
             do {
                 let data = try Data(contentsOf: url)
                 let array = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data as NSData)
+                guard let commands = array as? [[String: Any]]
+                    else { return }
                 
                 self.logedJSONViewWindowController = JSONViewWindowController()
-                self.logedJSONViewWindowController?.commands = array as! NSMutableArray
+                self.logedJSONViewWindowController?.commands = commands
                 self.logedJSONViewWindowController?.window?.title = "SAVED LOG FILE VIEWER"
                 self.logedJSONViewWindowController?.showWindow(nil)
             }

@@ -24,7 +24,7 @@ class JSONViewWindowController: NSWindowController {
     
     var arguments: NSArray?
     var json: AnyObject?
-    var commands: NSMutableArray = []
+    var commands: [[String: Any]] = []
     
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -33,20 +33,20 @@ class JSONViewWindowController: NSWindowController {
         bind("json", to: apis, withKeyPath: "selection.json")
     }
     
-    func setCommand(_ command: NSDictionary) {
+    func setCommand(_ command: [String: Any]) {
         willChangeValue(forKey: "commands")
-        commands.add(command)
+        commands += [command]
         didChangeValue(forKey: "commands")
     }
-    func setCommandArray(_ commands: NSArray) {
-        willChangeValue(forKey: "commands")
-        self.commands.addObjects(from: commands as! [Any])
-        didChangeValue(forKey: "commands")
-    }
+//    func setCommandArray(_ commands: NSArray) {
+//        willChangeValue(forKey: "commands")
+//        self.commands.addObjects(from: commands as! [Any])
+//        didChangeValue(forKey: "commands")
+//    }
     
     @IBAction func clearLog(_ sender: AnyObject?) {
         willChangeValue(forKey: "commands")
-        commands.removeAllObjects()
+        commands = []
         didChangeValue(forKey: "commands")
     }
 }

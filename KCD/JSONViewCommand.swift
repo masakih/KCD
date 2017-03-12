@@ -42,14 +42,14 @@ class JSONViewCommand: JSONCommand {
         guard let _ = recieveDate else { return print("recieveDate is nil.") }
         
         DispatchQueue.main.async {
-            let commands: [String:Any] = [
+            let commands: [String: Any] = [
                 "api": self.api,
                 "argument": self.parameterList,
                 "json": self.jsonTree ?? [],
                 "recieveDate": self.recieveDate ?? Date(),
                 "date": Date()
              ]
-            AppDelegate.shared.jsonViewWindowController?.setCommand(commands as NSDictionary)
+            AppDelegate.shared.jsonViewWindowController?.setCommand(commands)
         }
     }
 }
