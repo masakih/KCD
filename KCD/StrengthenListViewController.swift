@@ -78,7 +78,7 @@ class StrengthenListViewController: MainTabVIewItemViewController {
         let t = SlotItemEquipTypeTransformer()
         let prototype = newList[0]
         group.reversed().forEach {
-            let item = prototype.replace(identifier: t.transformedValue($0.0.rawValue) as! String?,
+            let item = prototype.replace(identifier: t.transformedValue($0.0.rawValue) as? String,
                                          equipmentType: .unknown)
             newList.insert(item, at: $0.1)
         }

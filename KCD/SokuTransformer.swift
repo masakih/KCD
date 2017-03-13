@@ -16,8 +16,8 @@ fileprivate enum SokuType: Int {
 }
 
 class SokuTransformer: ValueTransformer {
-    override class func transformedValueClass() -> Swift.AnyClass {
-        return String.self as! AnyClass
+    override class func transformedValueClass() -> AnyClass {
+        return NSString.self
     }
     override func transformedValue(_ value: Any?) -> Any? {
         guard let v = value as? Int, let type = SokuType(rawValue: v) else { return nil }

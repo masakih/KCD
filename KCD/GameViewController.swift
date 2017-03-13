@@ -28,7 +28,7 @@ class GameViewController: NSViewController {
     
     fileprivate var flashTopLeft = NSPoint(x: 2600, y: 1445)
     private var clipView: NSClipView {
-        return view as! NSClipView
+        return view as! NSClipView  // swiftlint:disable:this force_cast
     }
     
     override func viewDidLoad() {

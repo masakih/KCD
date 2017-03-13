@@ -26,7 +26,8 @@ class KenzoDockStatus: NSObject {
     dynamic var time: NSNumber?
     dynamic var state: NSNumber? {
         didSet {
-            guard let s = DockState(rawValue: state as! Int)
+            guard let state = state as? Int,
+                let s = DockState(rawValue: state)
                 else { return print("unknown State") }
             switch s {
             case .empty, .notOpen:

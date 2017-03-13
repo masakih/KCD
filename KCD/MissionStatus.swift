@@ -46,7 +46,8 @@ class MissionStatus: NSObject {
     }
     
     private func updateState() {
-        guard let stat = State(rawValue: state as! Int)
+        guard let state = state as? Int,
+            let stat = State(rawValue: state)
             else { return print("unknown State") }
         if stat == .none || stat == .finish  {
             if stat == .none { didNotify = false }

@@ -35,7 +35,7 @@ fileprivate extension Selector {
 @NSApplicationMain
 class AppDelegate: NSObject {
     static var shared: AppDelegate {
-        return NSApplication.shared().delegate as! AppDelegate
+        return NSApplication.shared().delegate as! AppDelegate  // swiftlint:disable:this force_cast
     }
     let appNameForUserAgent: String = "Version/9.1.2 Safari/601.7.7"
     let fleetManager: FleetManager = FleetManager()

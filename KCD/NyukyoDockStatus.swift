@@ -41,7 +41,8 @@ class NyukyoDockStatus: NSObject {
     }
     
     private func updateState() {
-        guard let stat = DockState(rawValue: state as! Int)
+        guard let state = state as? Int,
+            let stat = DockState(rawValue: state)
             else { return print("unknown State") }
         if stat == .empty {
             didNotify = false

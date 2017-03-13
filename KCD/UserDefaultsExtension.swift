@@ -11,6 +11,13 @@ import Cocoa
 
 extension UserDefaults {
     
+    static var plan01Color: NSColor { return NSColor(calibratedRed: 0.000, green: 0.043, blue: 0.518, alpha: 1.0) }
+    static var plan02Color: NSColor { return NSColor(calibratedRed: 0.800, green: 0.223, blue: 0.000, alpha: 1.0) }
+    static var plan03Color: NSColor { return NSColor(calibratedRed: 0.539, green: 0.012, blue: 0.046, alpha: 1.0) }
+    static var plan04Color: NSColor { return NSColor(calibratedRed: 0.000, green: 0.535, blue: 0.535, alpha: 1.0) }
+    static var plan05Color: NSColor { return NSColor(calibratedRed: 0.376, green: 0.035, blue: 0.535, alpha: 1.0) }
+    static var plan06Color: NSColor { return NSColor(calibratedRed: 0.535, green: 0.535, blue: 0.000, alpha: 1.0) }
+    
     func keyedArchivedObject(forKey key: String) -> Any? {
         guard let data = object(forKey: key) as? Data else { return nil }
         return NSKeyedUnarchiver.unarchiveObject(with: data)
@@ -25,13 +32,6 @@ extension UserDefaults {
     }
     
     class func registerAllDefaults() {
-        let plan01Color = NSColor(calibratedRed: 0.000, green: 0.043, blue: 0.518, alpha: 1.0)
-        let plan02Color = NSColor(calibratedRed: 0.800, green: 0.223, blue: 0.000, alpha: 1.0)
-        let plan03Color = NSColor(calibratedRed: 0.539, green: 0.012, blue: 0.046, alpha: 1.0)
-        let plan04Color = NSColor(calibratedRed: 0.000, green: 0.535, blue: 0.535, alpha: 1.0)
-        let plan05Color = NSColor(calibratedRed: 0.376, green: 0.035, blue: 0.535, alpha: 1.0)
-        let plan06Color = NSColor(calibratedRed: 0.535, green: 0.535, blue: 0.000, alpha: 1.0)
-        
         standard.register(defaults:
             [
                 "screenShotBorderWidth": 0.0,
@@ -119,27 +119,39 @@ extension UserDefaults {
         set { set(newValue, forKey: "showsPlanColor") }
     }
     var plan01Color: NSColor {
-        get { return keyedArchivedObject(forKey: "plan01Color") as! NSColor }
+        get {
+            return keyedArchivedObject(forKey: "plan01Color") as? NSColor ?? UserDefaults.plan01Color
+        }
         set { setKeyedArchived(newValue, forKey: "plan01Color") }
     }
     var plan02Color: NSColor {
-        get { return keyedArchivedObject(forKey: "plan02Color") as! NSColor }
+        get {
+            return keyedArchivedObject(forKey: "plan02Color") as? NSColor ?? UserDefaults.plan02Color
+        }
         set { setKeyedArchived(newValue, forKey: "plan02Color") }
     }
     var plan03Color: NSColor {
-        get { return keyedArchivedObject(forKey: "plan03Color") as! NSColor }
+        get {
+            return keyedArchivedObject(forKey: "plan03Color") as? NSColor ?? UserDefaults.plan03Color
+        }
         set { setKeyedArchived(newValue, forKey: "plan03Color") }
     }
     var plan04Color: NSColor {
-        get { return keyedArchivedObject(forKey: "plan04Color") as! NSColor }
+        get {
+            return keyedArchivedObject(forKey: "plan04Color") as? NSColor ?? UserDefaults.plan04Color
+        }
         set { setKeyedArchived(newValue, forKey: "plan04Color") }
     }
     var plan05Color: NSColor {
-        get { return keyedArchivedObject(forKey: "plan05Color") as! NSColor }
+        get {
+            return keyedArchivedObject(forKey: "plan05Color") as? NSColor ?? UserDefaults.plan05Color
+        }
         set { setKeyedArchived(newValue, forKey: "plan05Color") }
     }
     var plan06Color: NSColor {
-        get { return keyedArchivedObject(forKey: "plan06Color") as! NSColor }
+        get {
+            return keyedArchivedObject(forKey: "plan06Color") as? NSColor ?? UserDefaults.plan06Color
+        }
         set { setKeyedArchived(newValue, forKey: "plan06Color") }
     }
     

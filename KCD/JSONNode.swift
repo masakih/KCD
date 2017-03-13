@@ -111,7 +111,7 @@ class JSONContainerNode: JSONNode {
     }
     required convenience init?(coder aDecoder: NSCoder) {
         self.init()
-        self.children = (aDecoder.decodeObject(forKey: "children") as! [JSONNode]?)!
+        self.children = aDecoder.decodeObject(forKey: "children") as? [JSONNode] ?? []
     }
     override func encode(with aCoder: NSCoder) {
         aCoder.encode(children, forKey: "children")
@@ -133,8 +133,8 @@ class JSONLeafNode: JSONNode {
     }
     required convenience init?(coder aDecoder: NSCoder) {
         self.init()
-        self.value = aDecoder.decodeObject(forKey: "value") as! String?
-        self.key = aDecoder.decodeObject(forKey: "key") as! String?
+        self.value = aDecoder.decodeObject(forKey: "value") as? String
+        self.key = aDecoder.decodeObject(forKey: "key") as? String
     }
     override func encode(with aCoder: NSCoder) {
         aCoder.encode(value, forKey: "value")
