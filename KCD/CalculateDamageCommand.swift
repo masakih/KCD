@@ -145,39 +145,39 @@ class CalculateDamageCommand: JSONCommand {
     }
     
     // MARK: - Primitive Calclator
+    private func isTargetFriend(eFlags: [Int]?, index: Int) -> Bool {
+        if let eFlags = eFlags, 0..<eFlags.count ~= index {
+            return eFlags[index] == 1
+        }
+        return true
+    }
     private func calculateHogeki(baseKeyPath: String, _ bf: () -> BattleFleet) {
         calculateHogeki(baseKeyPath: baseKeyPath, battleFleet: bf())
     }
     private func calculateHogeki(baseKeyPath: String, battleFleet: BattleFleet = .first) {
         let j = json as NSDictionary
         guard let data = j.value(forKeyPath: baseKeyPath) as? [String: Any],
-            let tt = data["api_df_list"] as? [Any],
-            let dd = data["api_damage"] as? [Any]
+            let dfList = data["api_df_list"] as? [Any],
+            let damageList = data["api_damage"] as? [Any]
             else { return }
-        let ttt = tt.filter { $0 is [Int] }
-        let ddd = dd.filter { $0 is [Int] }
-        guard let targetArraysArray = ttt as? [[Int]],
-            tt.count - 1 == targetArraysArray.count
+        guard let targetArraysArray = dfList.filter({ $0 is [Int] }) as? [[Int]],
+            dfList.count - 1 == targetArraysArray.count
             else { return print("api_df_list is wrong") }
-        guard let hougeki1Damages = ddd as? [[Int]],
+        guard let hougeki1Damages = damageList.filter({ $0 is [Int] }) as? [[Int]],
             targetArraysArray.count == hougeki1Damages.count
             else { return print("api_damage is wrong") }
-
         let eFlags: [Int]? = (data["api_at_eflag"] as? [Int])?.filter { $0 != -1 }
         
         Debug.print("Start Hougeki \(baseKeyPath)", level: .debug)
         let shipOffset = (battleFleet == .second) ? 6 : 0
         targetArraysArray.enumerated().forEach { (i, targetArray) in
             targetArray.enumerated().forEach { (j, targetPosition) in
-                // targetは自軍か？
-                if let e = eFlags, 0..<e.count ~= i {
-                    if e[i] != 1 { return }
+                if !isTargetFriend(eFlags: eFlags, index: i) { return }
+                
+                if battleFleet == .each {
+                    guard 1...12 ~= targetPosition else { return }
                 } else {
-                    if battleFleet == .each {
-                        guard 1...12 ~= targetPosition else { return }
-                    } else {
-                        guard 1...6 ~= targetPosition else { return }
-                    }
+                    guard 1...6 ~= targetPosition else { return }
                 }
                 
                 let damagePos = targetPosition - 1 + shipOffset
@@ -193,7 +193,7 @@ class CalculateDamageCommand: JSONCommand {
                     let shipId = damageObject.shipID
                     if let ship = ServerDataStore.default.ship(byId: shipId) {
                         let efectiveHP = damageControlIfPossible(nowhp: newHP, ship: ship)
-                        if efectiveHP != 0 && efectiveHP != newHP {
+                        if efectiveHP != 0, efectiveHP != newHP {
                             damageObject.useDamageControl = true
                         }
                         newHP = efectiveHP

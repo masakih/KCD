@@ -279,6 +279,7 @@ class AppDelegate: NSObject {
             menuItem.title = showLabel
         }
     }
+    // swiftlint:disable function_body_length
     override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
         guard let action = menuItem.action else { return false }
         switch action {
