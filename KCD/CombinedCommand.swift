@@ -33,8 +33,9 @@ class CombinedCommand: JSONCommand {
             if let t = data["api_combined_flag"] as? Int {
                 CombineType(rawValue: t)
                     .map { postNotification(withType: $0) }
+            } else {
+                postNotification(withType: .cancel)
             }
-            else { postNotification(withType: .cancel) }
             return
         }
         

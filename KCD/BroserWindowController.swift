@@ -229,8 +229,7 @@ class BroserWindowController: NSWindowController {
         UserDefaults.standard.screenshotButtonSize = newSize
     }
     @IBAction func showHideCombinedView(_ sender: AnyObject?) {
-        if isCombinedMode { hideCombinedView() }
-        else { showCombinedView() }
+         isCombinedMode ? hideCombinedView() : showCombinedView()
     }
     
     @IBAction func fleetListAbove(_ sender: AnyObject?) {

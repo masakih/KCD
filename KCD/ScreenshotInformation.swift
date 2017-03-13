@@ -34,8 +34,7 @@ class ScreenshotInformation: NSObject, NSCoding {
                 } else {
                     try url.setResourceValue([] as NSArray, forKey: .tagNamesKey)
                 }
-            }
-            catch {
+            } catch {
                 print("Can not set tagNames")
             }
         }

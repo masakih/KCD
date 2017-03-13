@@ -6,7 +6,6 @@ disabled_rules:
     - trailing_comma
     - function_parameter_count
     - opening_brace
-    - statement_position
     - todo
     - trailing_whitespace
 

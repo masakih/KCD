@@ -210,8 +210,7 @@ extension TiledImageView {
 
 extension TiledImageView: NSDraggingSource {
     func draggingSession(_ session: NSDraggingSession, sourceOperationMaskFor context: NSDraggingContext) -> NSDragOperation {
-        if context == .withinApplication { return .move }
-        else { return [] }
+        return context == .withinApplication ? .move : []
     }
     override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
         return draggingUpdated(sender)

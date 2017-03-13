@@ -82,8 +82,9 @@ class TSVSupport {
             fileW.addRegularFile(withContents: kenzoHistory, preferredFilename: "kenzo.tsv")
             fileW.addRegularFile(withContents: kenzoMark, preferredFilename: "kenzoMark.tsv")
             fileW.addRegularFile(withContents: dropShipHistory, preferredFilename: "dropShip.tsv")
-            do { try fileW.write(to: url, originalContentsURL: nil) }
-            catch { print("Error to write") }
+            do {
+                try fileW.write(to: url, originalContentsURL: nil)
+            } catch { print("Error to write") }
         }
     }
     

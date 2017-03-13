@@ -104,8 +104,7 @@ private class CoreDataRemover {
     private class func removeDatabaseFileAtURL(url: URL) {
         do {
             try FileManager.default.removeItem(at: url)
-        }
-        catch {
+        } catch {
             print("Could not remove file for URL (\(url))")
         }
     }
@@ -118,8 +117,7 @@ private class MocGenerater {
             let coordinator = try createPersistentStoreCoordinator(info, model)
             let moc = createManagedObjectContext(coordinator)
             return (model: model, coordinator: coordinator, moc: moc)
-        }
-        catch {
+        } catch {
             throw error
         }
     }
@@ -143,8 +141,7 @@ private class MocGenerater {
                 failureReason = "Expected a folder to store application data, found a file \(ApplicationDirecrories.support.path)."
                 shouldFail = true
             }
-        }
-        catch {
+        } catch {
             let nserror = error as NSError
             if nserror.code == NSFileReadNoSuchFileError {
                 do {
@@ -172,8 +169,7 @@ private class MocGenerater {
                     do {
                         try coordinator!.addPersistentStore(ofType: info.storeType, configurationName: nil, at: url, options: info.storeOptions)
                         failError = nil
-                    }
-                    catch {
+                    } catch {
                         failError = error as NSError
                     }
                 }
@@ -211,12 +207,14 @@ extension CoreDataProvider {
             NSLog("\(String(describing: type(of: self))) unable to commit editing before saveing")
             return
         }
-        do { try managedObjectContext.save() }
-        catch { presentOnMainThread(error) }
+        do {
+            try managedObjectContext.save()
+        } catch { presentOnMainThread(error) }
         if let p = managedObjectContext.parent {
             p.performAndWait {
-                do { try p.save() }
-                catch { self.presentOnMainThread(error) }
+                do {
+                    try p.save()
+                } catch { self.presentOnMainThread(error) }
             }
         }
     }

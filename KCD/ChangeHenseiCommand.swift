@@ -121,8 +121,7 @@ class ChangeHenseiCommand: JSONCommand {
                    fleetNumber: deckNumber,
                    position: shipIndex,
                    shipID: replaceShipId)
-        }
-        else if alreadyInFleet {
+        } else if alreadyInFleet {
             notify(type: .replace,
                    fleetNumber: deckNumber,
                    position: shipIndex,
@@ -130,8 +129,7 @@ class ChangeHenseiCommand: JSONCommand {
                    replaceFleetNumber: shipDeckNumber + 1,
                    replacePosition: shipDeckIndex,
                    replaceShipID: replaceShipId)
-        }
-        else {
+        } else {
             notify(type: .append,
                    fleetNumber: deckNumber,
                    position: shipIndex,

@@ -26,8 +26,7 @@ class JSONTracker {
             else { return print("Dequeued item is not APIResponse") }
         do {
             try CommandRegister.command(for: item).execute()
-        }
-        catch {
+        } catch {
             print("JSONTracker Cought Exception -> \(error)")
         }
     }

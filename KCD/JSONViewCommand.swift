@@ -35,8 +35,7 @@ class JSONViewCommand: JSONCommand {
     override func execute() {
         do {
             try command.execute()
-        }
-        catch {
+        } catch {
             print("JSONTracker Cought Exception -> \(error)")
         }
         

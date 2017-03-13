@@ -62,8 +62,11 @@ extension JSONMapper {
     }
     func setValueIfNeeded(_ value: AnyObject?, to object: ObjectType, forKey key: String) {
         var validValue = value
-        do { try object.validateValue(&validValue, forKey: key) }
-        catch { return }
+        do {
+            try object.validateValue(&validValue, forKey: key)
+        } catch {
+            return
+        }
         
         let old = object.value(forKey: key)
         if !isEqual(old as AnyObject?, validValue) {

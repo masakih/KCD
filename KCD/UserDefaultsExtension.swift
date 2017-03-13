@@ -170,8 +170,7 @@ extension UserDefaults {
         get {
             let r = double(forKey: "screenShotBorderWidth")
             if r < 0 { return 0.0 }
-            else if r > 20 { return 20.0 }
-            return CGFloat(r)
+            return r > 20 ? 20.0 : CGFloat(r)
         }
         set {
             if 0.0..<20 ~= newValue { return }
@@ -298,9 +297,13 @@ extension UserDefaults {
     var notifyTimeBeforeTimeSignal: Int {
         get { return integer(forKey: "notifyTimeBeforeTimeSignal") }
         set {
-            if newValue < 1 { set(1, forKey: "notifyTimeBeforeTimeSignal") }
-            else if newValue > 59 { set(59, forKey: "notifyTimeBeforeTimeSignal") }
-            else { set(newValue, forKey: "notifyTimeBeforeTimeSignal") }
+            if newValue < 1 {
+                set(1, forKey: "notifyTimeBeforeTimeSignal")
+            } else if newValue > 59 {
+                set(59, forKey: "notifyTimeBeforeTimeSignal")
+            } else {
+                set(newValue, forKey: "notifyTimeBeforeTimeSignal")
+            }
         }
     }
     var playNotifyTimeSignalSound: Bool {

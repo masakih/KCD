@@ -239,8 +239,9 @@ class AppDelegate: NSObject {
                 let array = self.jsonViewWindowController?.commands
                 else { return }
             let data = NSKeyedArchiver.archivedData(withRootObject: array)
-            do { try data.write(to: url) }
-            catch { print("Can not write to \(url)") }
+            do {
+                try data.write(to: url)
+            } catch { print("Can not write to \(url)") }
         }
     }
     @IBAction func openDocument(_ sender: AnyObject?) {
@@ -263,8 +264,7 @@ class AppDelegate: NSObject {
                 self.logedJSONViewWindowController?.commands = commands
                 self.logedJSONViewWindowController?.window?.title = "SAVED LOG FILE VIEWER"
                 self.logedJSONViewWindowController?.showWindow(nil)
-            }
-            catch { print("Can not load \(url)") }
+            } catch { print("Can not load \(url)") }
         }
     }
     

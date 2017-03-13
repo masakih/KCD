@@ -35,8 +35,7 @@ class Fleet: NSObject {
         req.predicate = deckController.fetchPredicate
         do {
             try deckController.fetch(with: req, merge: false)
-        }
-        catch {
+        } catch {
             print("Fetch error")
             return nil
         }

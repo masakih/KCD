@@ -73,8 +73,7 @@ class ScreenshotListViewController: NSViewController {
                 print("\(url) is regular file, not direcory.")
                 return parentURL
             }
-        }
-        catch {
+        } catch {
             print("Can not create screenshot save directory.")
             return parentURL
         }
@@ -152,8 +151,7 @@ class ScreenshotListViewController: NSViewController {
                 let pathURL = FileManager.default.uniqueFileURL(url)
                 do {
                     try data.write(to: pathURL)
-                }
-                catch {
+                } catch {
                     print("Can not write image")
                     return
                 }
@@ -232,8 +230,7 @@ class ScreenshotListViewController: NSViewController {
         let data = NSKeyedArchiver.archivedData(withRootObject: screenshots.screenshots)
         do {
             try data.write(to: cachURL)
-        }
-        catch let e {
+        } catch let e {
             print("Can not write cache: \(e)")
         }
     }
@@ -257,8 +254,7 @@ class ScreenshotListViewController: NSViewController {
         let infos = deletedPaths.filter { $0.url == url }
         if var info = infos.first {
             info.incrementVersion()
-        }
-        else {
+        } else {
             deletedPaths.append(CacheVersionInfo(url: url))
         }
     }

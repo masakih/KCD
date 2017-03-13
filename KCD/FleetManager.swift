@@ -44,8 +44,7 @@ class FleetManager: NSObject {
                 self.setupFleetController()
                 center.post(name: .DidPrepareFleet, object: self)
             }
-        }
-        else { setupFleetController() }
+        } else { setupFleetController() }
     }
     
     private func setNewFleetNumberToShip() {

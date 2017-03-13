@@ -172,8 +172,7 @@ class CalculateDamageCommand: JSONCommand {
                 // targetは自軍か？
                 if let e = eFlags, 0..<e.count ~= i {
                     if e[i] != 1 { return }
-                }
-                else {
+                } else {
                     if battleFleet == .each {
                         guard 1...12 ~= targetPosition else { return }
                     } else {

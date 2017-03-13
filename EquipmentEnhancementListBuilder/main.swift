@@ -84,8 +84,9 @@ func generate(threeLines: ThreeItemsQueue<TabSeparatedLine>) -> [RequiredEquipme
 
 //
 func loadFile(path: String) -> String? {
-    do { return try String(contentsOfFile: path) }
-    catch {
+    do {
+        return try String(contentsOfFile: path)
+    } catch {
         print("Can not create String from \(path)")
         return nil
     }
