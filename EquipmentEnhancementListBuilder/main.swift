@@ -20,7 +20,7 @@ struct ThreeItemsQueue<T> {
     var count: Int { return items.count }
     mutating func push(item: T) {
         if count < 3 {
-            items = items + [item]
+            items += [item]
             return
         }
         items = items[1...2] + [item]

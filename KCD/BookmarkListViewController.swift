@@ -69,7 +69,7 @@ extension BookmarkListViewController: NSTableViewDelegate, NSTableViewDataSource
         var order = 100
         objects.forEach {
             $0.order = order
-            order = order + 100
+            order += 100
         }
     }
     
