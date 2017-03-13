@@ -46,7 +46,11 @@ class PowerUpSupportViewController: MainTabVIewItemViewController {
         super.viewDidLoad()
         
         changeCategory(nil)
-        try! shipController.fetch(with: nil, merge: true)
+        do {
+            try shipController.fetch(with: nil, merge: true)
+        } catch {
+            fatalError("PowerUpSupportViewController: can not fetch. \(error)")
+        }
         shipController.sortDescriptors = UserDefaults.standard.powerupSupportSortDecriptors
         shipController.addObserver(self, forKeyPath: NSSortDescriptorsBinding, context: nil)
     }

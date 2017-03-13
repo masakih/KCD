@@ -59,7 +59,11 @@ class ShipViewController: MainTabVIewItemViewController {
         
         currentTableView = expTableView
         
-        try! shipController.fetch(with: nil, merge: true)
+        do {
+            try shipController.fetch(with: nil, merge: true)
+        } catch {
+            fatalError("ShipViewController: can not fetch. \(error)")
+        }
         shipController.sortDescriptors = UserDefaults.standard.shipviewSortDescriptors
         shipController.addObserver(self, forKeyPath: NSSortDescriptorsBinding, context: nil)
         shipController.addObserver(self, forKeyPath: "arrangedObjects", context: nil)

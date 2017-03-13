@@ -52,10 +52,14 @@ struct CoreDataCore {
     
     init(_ info: CoreDataIntormation) {
         self.info = info
-        let genaratee = try! MocGenerater.genarate(info)
-        self.managedObjectModel = genaratee.model
-        self.persistentStoreCoordinator = genaratee.coordinator
-        self.parentManagedObjectContext = genaratee.moc
+        do {
+            let genaratee = try MocGenerater.genarate(info)
+            self.managedObjectModel = genaratee.model
+            self.persistentStoreCoordinator = genaratee.coordinator
+            self.parentManagedObjectContext = genaratee.moc
+        } catch {
+            fatalError("CoreDataCore: can not initialize. \(error)")
+        }
     }
     
     func editorManagedObjectContext() -> NSManagedObjectContext {
