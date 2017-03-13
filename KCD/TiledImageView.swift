@@ -52,7 +52,7 @@ class TiledImageView: NSView {
             setTrackingArea()
         }
     }
-    fileprivate var currentSelection: TitledImageCellInformation? = nil
+    fileprivate var currentSelection: TitledImageCellInformation?
     
     private var imageCell: NSImageCell
     

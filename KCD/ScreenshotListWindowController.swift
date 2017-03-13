@@ -19,7 +19,7 @@ class ScreenshotListWindowController: NSWindowController {
     private var editorViewController: ScreenshotEditorViewController =
         { return ScreenshotEditorViewController() }()
     private var viewControllers: [NSViewController] = []
-    fileprivate weak var currentRightViewController: BridgeViewController? = nil
+    fileprivate weak var currentRightViewController: BridgeViewController?
     fileprivate lazy var listViewController: ScreenshotListViewController =
         { return ScreenshotListViewController() }()
     

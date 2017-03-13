@@ -43,9 +43,9 @@ class ScreenshotListViewController: NSViewController {
     }
     dynamic var maxZoom: Double = 1.0
     
-    fileprivate var collectionVisibleDidChangeHandler: ((Set<IndexPath>) -> Void)? = nil
-    fileprivate var reloadHandler: (() -> Void)? = nil
-    fileprivate var collectionSelectionDidChangeHandler: ((Int) -> Void)? = nil
+    fileprivate var collectionVisibleDidChangeHandler: ((Set<IndexPath>) -> Void)?
+    fileprivate var reloadHandler: (() -> Void)?
+    fileprivate var collectionSelectionDidChangeHandler: ((Int) -> Void)?
     fileprivate(set) var inLiveScrolling = false
     fileprivate var arrangedInformations: [ScreenshotInformation]? {
         return screenshotsController.arrangedObjects as? [ScreenshotInformation]

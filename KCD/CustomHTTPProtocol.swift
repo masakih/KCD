@@ -18,7 +18,7 @@ protocol CustomHTTPProtocolDelegate: class {
 
 class CustomHTTPProtocol: URLProtocol {
     fileprivate static let requestProperty = "com.masakih.KCD.requestProperty"
-    static var classDelegate: CustomHTTPProtocolDelegate? = nil
+    static var classDelegate: CustomHTTPProtocolDelegate?
     fileprivate static let cachedExtensions = ["swf", "flv", "png", "jpg", "jpeg", "mp3"]
     fileprivate static let cacheFileURL: URL = ApplicationDirecrories.support.appendingPathComponent("Caches")
     fileprivate static let kcdURLCache = URLCache(memoryCapacity: 32 * 1024 * 1024,
@@ -41,8 +41,8 @@ class CustomHTTPProtocol: URLProtocol {
     
     fileprivate var delegate: CustomHTTPProtocolDelegate? { return CustomHTTPProtocol.classDelegate }
     
-    fileprivate var session: URLSession? = nil
-    fileprivate var dataTask: URLSessionDataTask? = nil
+    fileprivate var session: URLSession?
+    fileprivate var dataTask: URLSessionDataTask? 
     fileprivate var cachePolicy: URLCache.StoragePolicy = .notAllowed
     fileprivate var data: Data = Data()
     fileprivate var didRetry: Bool = false

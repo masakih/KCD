@@ -142,7 +142,7 @@ fileprivate class EnhancementListItemDownloader: NSObject, URLSessionDownloadDel
     private var plistDownloadSession: URLSession!
     private var plistDownloadQueue: OperationQueue!
     private var plistDownloadTask: URLSessionDownloadTask?
-    private var finishOperation: (([EnhancementListItem]) -> Void)? = nil
+    private var finishOperation: (([EnhancementListItem]) -> Void)?
     
     func download(using block: @escaping ([EnhancementListItem]) -> Void) {
         if let _ = plistDownloadTask { return }

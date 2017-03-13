@@ -61,7 +61,7 @@ class BroserWindowController: NSWindowController {
     var flagShipName: String? {
         return ServerDataStore.default.ship(byId: flagShipID)?.name
     }
-    var changeMainTabHandler: ((Int) -> Void)? = nil
+    var changeMainTabHandler: ((Int) -> Void)?
     dynamic var selectedMainTabIndex: Int = 0 {
         didSet {
             changeMainTabHandler?(selectedMainTabIndex)

@@ -42,28 +42,28 @@ class DocksViewController: MainTabVIewItemViewController {
     let ndockStatus = (1...4).flatMap { NyukyoDockStatus(number: $0) }
     let kdockStatus = (1...4).flatMap { KenzoDockStatus(number: $0) }
     
-    var nDock1Time: NSNumber? = nil
-    var nDock2Time: NSNumber? = nil
-    var nDock3Time: NSNumber? = nil
-    var nDock4Time: NSNumber? = nil
+    var nDock1Time: NSNumber?
+    var nDock2Time: NSNumber?
+    var nDock3Time: NSNumber?
+    var nDock4Time: NSNumber?
     
-    var nDock1ShipName: String? = nil
-    var nDock2ShipName: String? = nil
-    var nDock3ShipName: String? = nil
-    var nDock4ShipName: String? = nil
+    var nDock1ShipName: String?
+    var nDock2ShipName: String?
+    var nDock3ShipName: String?
+    var nDock4ShipName: String?
     
-    var kDock1Time: NSNumber? = nil
-    var kDock2Time: NSNumber? = nil
-    var kDock3Time: NSNumber? = nil
-    var kDock4Time: NSNumber? = nil
+    var kDock1Time: NSNumber?
+    var kDock2Time: NSNumber?
+    var kDock3Time: NSNumber?
+    var kDock4Time: NSNumber?
     
-    var deck2Time: NSNumber? = nil
-    var deck3Time: NSNumber? = nil
-    var deck4Time: NSNumber? = nil
+    var deck2Time: NSNumber?
+    var deck3Time: NSNumber?
+    var deck4Time: NSNumber?
     
-    var mission2Name: String? = nil
-    var mission3Name: String? = nil
-    var mission4Name: String? = nil
+    var mission2Name: String?
+    var mission3Name: String?
+    var mission4Name: String?
     
     @IBOutlet var battleContoller: NSObjectController!
     @IBOutlet weak var questListViewPlaceholder: NSView!
