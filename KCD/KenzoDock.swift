@@ -9,15 +9,15 @@
 import Foundation
 
 class KenzoDock: KCManagedObject {
-    @NSManaged var complete_time: Int
-    @NSManaged var complete_time_str: String?
-    @NSManaged var created_ship_id: Int
+    @NSManaged var complete_time: Int   // swiftlint:disable:this variable_name
+    @NSManaged var complete_time_str: String?   // swiftlint:disable:this variable_name
+    @NSManaged var created_ship_id: Int // swiftlint:disable:this variable_name
     @NSManaged var id: Int
     @NSManaged var item1: Int
     @NSManaged var item2: Int
     @NSManaged var item3: Int
     @NSManaged var item4: Int
     @NSManaged var item5: Int
-    @NSManaged var member_id: NSNumber?
+    @NSManaged var member_id: NSNumber? // swiftlint:disable:this variable_name
     @NSManaged var state: Int
 }

@@ -11,5 +11,5 @@ import Foundation
 class MasterSlotItemEquipType: KCManagedObject {
     @NSManaged var id: Int
     @NSManaged var name: String
-    @NSManaged var show_flg: NSNumber?
+    @NSManaged var show_flg: NSNumber?  // swiftlint:disable:this variable_name
 }

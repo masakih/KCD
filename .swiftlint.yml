@@ -1,6 +1,5 @@
 
 disabled_rules:
-    - variable_name
     - leading_whitespace
     - vertical_whitespace
     - cyclomatic_complexity

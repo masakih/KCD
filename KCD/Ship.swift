@@ -15,50 +15,50 @@ class Ship: KCManagedObject {
     @NSManaged dynamic var fleet: NSNumber?
     @NSManaged dynamic var fuel: Int
     @NSManaged dynamic var id: Int
-    @NSManaged dynamic var kaihi_0: Int
-    @NSManaged dynamic var kaihi_1: NSNumber?
-    @NSManaged dynamic var karyoku_0: Int
-    @NSManaged dynamic var karyoku_1: Int
-    @NSManaged dynamic var kyouka_0: Int
-    @NSManaged dynamic var kyouka_1: Int
-    @NSManaged dynamic var kyouka_2: Int
-    @NSManaged dynamic var kyouka_3: Int
-    @NSManaged dynamic var kyouka_4: Int
+    @NSManaged dynamic var kaihi_0: Int // swiftlint:disable:this variable_name
+    @NSManaged dynamic var kaihi_1: NSNumber?   // swiftlint:disable:this variable_name
+    @NSManaged dynamic var karyoku_0: Int   // swiftlint:disable:this variable_name
+    @NSManaged dynamic var karyoku_1: Int   // swiftlint:disable:this variable_name
+    @NSManaged dynamic var kyouka_0: Int    // swiftlint:disable:this variable_name
+    @NSManaged dynamic var kyouka_1: Int    // swiftlint:disable:this variable_name
+    @NSManaged dynamic var kyouka_2: Int    // swiftlint:disable:this variable_name
+    @NSManaged dynamic var kyouka_3: Int    // swiftlint:disable:this variable_name
+    @NSManaged dynamic var kyouka_4: Int    // swiftlint:disable:this variable_name
     @NSManaged dynamic var locked: Int
-    @NSManaged dynamic var locked_equip: NSNumber?
-    @NSManaged dynamic var lucky_0: Int
-    @NSManaged dynamic var lucky_1: Int
+    @NSManaged dynamic var locked_equip: NSNumber?  // swiftlint:disable:this variable_name
+    @NSManaged dynamic var lucky_0: Int // swiftlint:disable:this variable_name
+    @NSManaged dynamic var lucky_1: Int // swiftlint:disable:this variable_name
     @NSManaged dynamic var lv: Int
     @NSManaged dynamic var maxhp: Int
-    @NSManaged dynamic var ndock_time: NSNumber?
+    @NSManaged dynamic var ndock_time: NSNumber?    // swiftlint:disable:this variable_name
     @NSManaged dynamic var nowhp: Int
-    @NSManaged dynamic var onslot_0: Int
-    @NSManaged dynamic var onslot_1: Int
-    @NSManaged dynamic var onslot_2: Int
-    @NSManaged dynamic var onslot_3: Int
-    @NSManaged dynamic var onslot_4: Int
-    @NSManaged dynamic var raisou_0: Int
-    @NSManaged dynamic var raisou_1: Int
-    @NSManaged dynamic var sakuteki_0: Int
-    @NSManaged dynamic var sakuteki_1: NSNumber?
-    @NSManaged dynamic var sally_area: NSNumber?
-    @NSManaged dynamic var ship_id: Int
-    @NSManaged dynamic var slot_0: Int
-    @NSManaged dynamic var slot_1: Int
-    @NSManaged dynamic var slot_2: Int
-    @NSManaged dynamic var slot_3: Int
-    @NSManaged dynamic var slot_4: Int
-    @NSManaged dynamic var slot_ex: Int
+    @NSManaged dynamic var onslot_0: Int    // swiftlint:disable:this variable_name
+    @NSManaged dynamic var onslot_1: Int    // swiftlint:disable:this variable_name
+    @NSManaged dynamic var onslot_2: Int    // swiftlint:disable:this variable_name
+    @NSManaged dynamic var onslot_3: Int    // swiftlint:disable:this variable_name
+    @NSManaged dynamic var onslot_4: Int    // swiftlint:disable:this variable_name
+    @NSManaged dynamic var raisou_0: Int    // swiftlint:disable:this variable_name
+    @NSManaged dynamic var raisou_1: Int    // swiftlint:disable:this variable_name
+    @NSManaged dynamic var sakuteki_0: Int  // swiftlint:disable:this variable_name
+    @NSManaged dynamic var sakuteki_1: NSNumber?    // swiftlint:disable:this variable_name
+    @NSManaged dynamic var sally_area: NSNumber?    // swiftlint:disable:this variable_name
+    @NSManaged dynamic var ship_id: Int // swiftlint:disable:this variable_name
+    @NSManaged dynamic var slot_0: Int  // swiftlint:disable:this variable_name
+    @NSManaged dynamic var slot_1: Int  // swiftlint:disable:this variable_name
+    @NSManaged dynamic var slot_2: Int  // swiftlint:disable:this variable_name
+    @NSManaged dynamic var slot_3: Int  // swiftlint:disable:this variable_name
+    @NSManaged dynamic var slot_4: Int  // swiftlint:disable:this variable_name
+    @NSManaged dynamic var slot_ex: Int // swiftlint:disable:this variable_name
     @NSManaged dynamic var sortno: NSNumber?
-    @NSManaged dynamic var soukou_0: Int
-    @NSManaged dynamic var soukou_1: Int
+    @NSManaged dynamic var soukou_0: Int    // swiftlint:disable:this variable_name
+    @NSManaged dynamic var soukou_1: Int    // swiftlint:disable:this variable_name
     @NSManaged dynamic var srate: NSNumber?
-    @NSManaged dynamic var taiku_0: Int
-    @NSManaged dynamic var taiku_1: Int
-    @NSManaged dynamic var taisen_0: Int
-    @NSManaged dynamic var taisen_1: NSNumber?
+    @NSManaged dynamic var taiku_0: Int // swiftlint:disable:this variable_name
+    @NSManaged dynamic var taiku_1: Int // swiftlint:disable:this variable_name
+    @NSManaged dynamic var taisen_0: Int    // swiftlint:disable:this variable_name
+    @NSManaged dynamic var taisen_1: NSNumber?  // swiftlint:disable:this variable_name
     @NSManaged dynamic var equippedItem: NSOrderedSet
-    @NSManaged dynamic var master_ship: MasterShip
+    @NSManaged dynamic var master_ship: MasterShip  // swiftlint:disable:this variable_name
     @NSManaged dynamic var extraItem: SlotItem?
 }
 

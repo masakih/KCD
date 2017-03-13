@@ -13,9 +13,9 @@ class SlotItem: KCManagedObject {
     @NSManaged var id: Int
     @NSManaged var level: Int
     @NSManaged var locked: Bool
-    @NSManaged var slotitem_id: Int
+    @NSManaged var slotitem_id: Int // swiftlint:disable:this variable_name
     @NSManaged var equippedShip: Ship?
-    @NSManaged var master_slotItem: MasterSlotItem
+    @NSManaged var master_slotItem: MasterSlotItem  // swiftlint:disable:this variable_name
     @NSManaged var extraEquippedShip: Ship?
 }
 

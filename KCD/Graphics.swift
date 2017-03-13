@@ -8,8 +8,8 @@
 
 import Cocoa
 
-func polygon(_ f: () -> [NSPoint]) -> NSBezierPath? {
-    let points = f()
+func polygon(_ point: () -> [NSPoint]) -> NSBezierPath? {
+    let points = point()
     let count = points.count
     guard count > 2 else { return nil }
     let path = NSBezierPath()
@@ -19,8 +19,8 @@ func polygon(_ f: () -> [NSPoint]) -> NSBezierPath? {
     
     return path
 }
-func polyline(_ f: () -> [NSPoint]) -> NSBezierPath? {
-    let points = f()
+func polyline(_ point: () -> [NSPoint]) -> NSBezierPath? {
+    let points = point()
     let count = points.count
     guard count > 1 else { return nil }
     let path = NSBezierPath()
@@ -29,9 +29,9 @@ func polyline(_ f: () -> [NSPoint]) -> NSBezierPath? {
     
     return path
 }
-func multiline(_ f: () -> [(NSPoint, NSPoint)]) -> NSBezierPath? {
+func multiline(_ lines: () -> [(NSPoint, NSPoint)]) -> NSBezierPath? {
     let path = NSBezierPath()
-    f().forEach {
+    lines().forEach {
         path.move(to: $0.0)
         path.line(to: $0.1)
     }

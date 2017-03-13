@@ -18,9 +18,9 @@ enum CombineType: Int {
 extension Notification.Name {
     static let CombinedDidCange = Notification.Name("com.masakih.KCD.Notification.CombinedDidCange")
 }
-let CombinedType = "com.masakih.KCD.Notification.CombinedDidCange.CombinedType"
 
 class CombinedCommand: JSONCommand {
+    static let userInfoKey = "com.masakih.KCD.Notification.CombinedDidCange.CombinedType"
     override class func canExecuteAPI(_ api: String) -> Bool {
         if api == "/kcsapi/api_req_hensei/combined" { return true }
         return false
@@ -45,7 +45,7 @@ class CombinedCommand: JSONCommand {
     }
     
     private func postNotification(withType type: CombineType) {
-        let userInfo = [CombinedType: type]
+        let userInfo = [CombinedCommand.userInfoKey: type]
         NotificationCenter
             .default
             .post(name: .CombinedDidCange, object: self, userInfo: userInfo)

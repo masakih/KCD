@@ -27,8 +27,8 @@ extension Array where Element: Hashable {
 }
 
 extension Array {
-    func appended(_ f: () -> Element) -> Array {
-        return self + [f()]
+    func appended(_ elem: () -> Element) -> Array {
+        return self + [elem()]
     }
 }
 

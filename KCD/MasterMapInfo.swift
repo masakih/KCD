@@ -11,17 +11,17 @@ import Foundation
 class MasterMapInfo: KCManagedObject {
     @NSManaged var id: Int
     @NSManaged var infotext: String
-    @NSManaged var item_0: NSNumber?
-    @NSManaged var item_1: NSNumber?
-    @NSManaged var item_2: NSNumber?
-    @NSManaged var item_3: NSNumber?
+    @NSManaged var item_0: NSNumber?    // swiftlint:disable:this variable_name
+    @NSManaged var item_1: NSNumber?    // swiftlint:disable:this variable_name
+    @NSManaged var item_2: NSNumber?    // swiftlint:disable:this variable_name
+    @NSManaged var item_3: NSNumber?    // swiftlint:disable:this variable_name
     @NSManaged var level: NSNumber?
-    @NSManaged var maparea_id: Int
-    @NSManaged var max_maphp: NSNumber?
+    @NSManaged var maparea_id: Int  // swiftlint:disable:this variable_name
+    @NSManaged var max_maphp: NSNumber? // swiftlint:disable:this variable_name
     @NSManaged var name: String
     @NSManaged var no: Int
     @NSManaged var opetext: String?
-    @NSManaged var required_defeat_count: NSNumber?
-    @NSManaged var sally_flag_0: NSNumber?
-    @NSManaged var sally_flag_1: NSNumber?
+    @NSManaged var required_defeat_count: NSNumber? // swiftlint:disable:this variable_name
+    @NSManaged var sally_flag_0: NSNumber?  // swiftlint:disable:this variable_name
+    @NSManaged var sally_flag_1: NSNumber?  // swiftlint:disable:this variable_name
 }

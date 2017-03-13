@@ -55,9 +55,9 @@ extension String {
 }
 
 extension JSONMapper {
-    private func isEqual(_ a: AnyObject?, _ b: AnyObject?) -> Bool {
-        if a == nil, b == nil { return true }
-        if let aa = a, let bb = b { return aa.isEqual(bb) }
+    private func isEqual(_ lhs: AnyObject?, _ rhs: AnyObject?) -> Bool {
+        if lhs == nil, rhs == nil { return true }
+        if let lhs = lhs, let rhs = rhs { return lhs.isEqual(rhs) }
         return false
     }
     func setValueIfNeeded(_ value: AnyObject?, to object: ObjectType, forKey key: String) {

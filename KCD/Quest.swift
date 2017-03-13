@@ -9,16 +9,16 @@
 import Foundation
 
 class Quest: KCManagedObject {
-    @NSManaged var bonus_flag: Bool
+    @NSManaged var bonus_flag: Bool // swiftlint:disable:this variable_name
     @NSManaged var category: Int
     @NSManaged var detail: String
-    @NSManaged var get_material_0: Int
-    @NSManaged var get_material_1: Int
-    @NSManaged var get_material_2: Int
-    @NSManaged var get_material_3: Int
-    @NSManaged var invalid_flag: Int
+    @NSManaged var get_material_0: Int  // swiftlint:disable:this variable_name
+    @NSManaged var get_material_1: Int  // swiftlint:disable:this variable_name
+    @NSManaged var get_material_2: Int  // swiftlint:disable:this variable_name
+    @NSManaged var get_material_3: Int  // swiftlint:disable:this variable_name
+    @NSManaged var invalid_flag: Int    // swiftlint:disable:this variable_name
     @NSManaged var no: Int
-    @NSManaged var progress_flag: Int
+    @NSManaged var progress_flag: Int   // swiftlint:disable:this variable_name
     @NSManaged var state: Int
     @NSManaged var title: String
     @NSManaged var type: Int

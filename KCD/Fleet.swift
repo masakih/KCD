@@ -8,7 +8,7 @@
 
 import Cocoa
 
-fileprivate var DeckContext = 0
+fileprivate var pDeckContext = 0
 
 class Fleet: NSObject {
     let fleetNumber: Int
@@ -41,7 +41,7 @@ class Fleet: NSObject {
             return nil
         }
         deck = deckController.content as? Deck
-        deckObserveKeys.forEach { deckController.addObserver(self, forKeyPath: $0, context: &DeckContext) }
+        deckObserveKeys.forEach { deckController.addObserver(self, forKeyPath: $0, context: &pDeckContext) }
     }
     deinit {
         deckObserveKeys.forEach { deckController.removeObserver(self, forKeyPath: $0) }
@@ -63,7 +63,7 @@ class Fleet: NSObject {
     subscript(_ index: Int) -> Ship? { return deck?[index] }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if context == &DeckContext {
+        if context == &pDeckContext {
             ships = (0..<6).flatMap { return self[$0] }
             return
         }

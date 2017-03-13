@@ -122,7 +122,7 @@ class BroserWindowController: NSWindowController {
         NotificationCenter.default
             .addObserver(forName: .CombinedDidCange, object: nil, queue: nil) { (notification) in
                 guard UserDefaults.standard.autoCombinedView,
-                    let type = notification.userInfo?[CombinedType] as? CombineType
+                    let type = notification.userInfo?[CombinedCommand.userInfoKey] as? CombineType
                     else { return }
                 if !Thread.isMainThread { Thread.sleep(forTimeInterval: 0.1) }
                 DispatchQueue.main.async {

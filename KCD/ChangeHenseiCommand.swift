@@ -18,7 +18,6 @@ enum ChangeHenseiType: Int {
 extension Notification.Name {
     static let HenseiDidChange = Notification.Name("com.masakih.KCD.Notification.HenseiDidChange")
 }
-let HenseiDidChangeUserInfoKey = "HenseiDidChangeUserInfoKey"
 
 class HenseiDidChangeUserInfo: NSObject {
     let type: ChangeHenseiType
@@ -55,7 +54,7 @@ class HenseiDidChangeUserInfo: NSObject {
 }
 
 class ChangeHenseiCommand: JSONCommand {
-    static let userInfoKey = HenseiDidChangeUserInfoKey
+    static let userInfoKey = "HenseiDidChangeUserInfoKey"
     
     override class func canExecuteAPI(_ api: String) -> Bool {
         if api == "/kcsapi/api_req_hensei/change" { return true }
@@ -186,6 +185,6 @@ class ChangeHenseiCommand: JSONCommand {
         NotificationCenter.default
             .post(name: .HenseiDidChange,
                   object: self,
-                  userInfo: [HenseiDidChangeUserInfoKey: userInfo])
+                  userInfo: [ChangeHenseiCommand.userInfoKey: userInfo])
     }
 }

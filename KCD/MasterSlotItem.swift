@@ -12,10 +12,10 @@ class MasterSlotItem: KCManagedObject {
     @NSManaged var atap: NSNumber?
     @NSManaged var bakk: NSNumber?
     @NSManaged var baku: NSNumber?
-    @NSManaged var broken_0: NSNumber?
-    @NSManaged var broken_1: NSNumber?
-    @NSManaged var broken_2: NSNumber?
-    @NSManaged var broken_3: NSNumber?
+    @NSManaged var broken_0: NSNumber?  // swiftlint:disable:this variable_name
+    @NSManaged var broken_1: NSNumber?  // swiftlint:disable:this variable_name
+    @NSManaged var broken_2: NSNumber?  // swiftlint:disable:this variable_name
+    @NSManaged var broken_3: NSNumber?  // swiftlint:disable:this variable_name
     @NSManaged var houg: NSNumber?
     @NSManaged var houk: NSNumber?
     @NSManaged var houm: NSNumber?
@@ -36,10 +36,10 @@ class MasterSlotItem: KCManagedObject {
     @NSManaged var taik: NSNumber?
     @NSManaged var tais: NSNumber?
     @NSManaged var tyku: Int
-    @NSManaged var type_0: Int
-    @NSManaged var type_1: Int
-    @NSManaged var type_2: Int
-    @NSManaged var type_3: Int
+    @NSManaged var type_0: Int  // swiftlint:disable:this variable_name
+    @NSManaged var type_1: Int  // swiftlint:disable:this variable_name
+    @NSManaged var type_2: Int  // swiftlint:disable:this variable_name
+    @NSManaged var type_3: Int  // swiftlint:disable:this variable_name
     @NSManaged var usebull: NSNumber?
     @NSManaged var slotItems: Set<SlotItem>
 }

@@ -8,7 +8,7 @@
 
 import Cocoa
 
-fileprivate var ShipStatusContext: Int = 0
+fileprivate var pShipStatusContext: Int = 0
 
 class SuppliesView: NSControl {
     private let observeKeys = ["fuel", "maxFuel", "bull", "maxBull"]
@@ -40,14 +40,14 @@ class SuppliesView: NSControl {
             }
             suppliesCell.shipStatus = newValue
             observeKeys.forEach {
-                suppliesCell.shipStatus?.addObserver(self, forKeyPath: $0, context: &ShipStatusContext)
+                suppliesCell.shipStatus?.addObserver(self, forKeyPath: $0, context: &pShipStatusContext)
             }
             needsDisplay = true
         }
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
-        if context == &ShipStatusContext {
+        if context == &pShipStatusContext {
             needsDisplay = true
             return
         }
