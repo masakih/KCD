@@ -27,7 +27,18 @@ class Deck: KCManagedObject {
 }
 
 extension Deck {
-    private func shipId(ofPosition position: Int) -> Int? {
+    func setShip(id: Int, for position: Int) {
+        switch position {
+        case 0: return ship_0 = id
+        case 1: return ship_1 = id
+        case 2: return ship_2 = id
+        case 3: return ship_3 = id
+        case 4: return ship_4 = id
+        case 5: return ship_5 = id
+        default: fatalError("Deck.setShip: position out of range.")
+        }
+    }
+    func shipId(of position: Int) -> Int? {
         switch position {
         case 0: return ship_0
         case 1: return ship_1
@@ -49,7 +60,7 @@ extension Deck {
     }
     
     subscript(_ index: Int) -> Ship? {
-        guard let shipId = shipId(ofPosition: index) else { return nil }
+        guard let shipId = shipId(of: index) else { return nil }
         return ship(ofId: shipId)
     }
 }
