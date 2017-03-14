@@ -8,21 +8,23 @@
 
 import Foundation
 
+// swiftlint:disable variable_name
 class Quest: KCManagedObject {
-    @NSManaged var bonus_flag: Bool // swiftlint:disable:this variable_name
+    @NSManaged var bonus_flag: Bool
     @NSManaged var category: Int
     @NSManaged var detail: String
-    @NSManaged var get_material_0: Int  // swiftlint:disable:this variable_name
-    @NSManaged var get_material_1: Int  // swiftlint:disable:this variable_name
-    @NSManaged var get_material_2: Int  // swiftlint:disable:this variable_name
-    @NSManaged var get_material_3: Int  // swiftlint:disable:this variable_name
-    @NSManaged var invalid_flag: Int    // swiftlint:disable:this variable_name
+    @NSManaged var get_material_0: Int
+    @NSManaged var get_material_1: Int
+    @NSManaged var get_material_2: Int
+    @NSManaged var get_material_3: Int
+    @NSManaged var invalid_flag: Int
     @NSManaged var no: Int
-    @NSManaged var progress_flag: Int   // swiftlint:disable:this variable_name
+    @NSManaged var progress_flag: Int
     @NSManaged var state: Int
     @NSManaged var title: String
     @NSManaged var type: Int
 }
+// swiftlint:eable variable_name
 
 extension Quest {
     class func keyPathsForValuesAffectingCompositStatus() -> Set<String> {

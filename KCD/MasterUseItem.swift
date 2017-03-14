@@ -8,10 +8,11 @@
 
 import Cocoa
 
+// swiftlint:disable variable_name
 class MasterUseItem: KCManagedObject {
     @NSManaged var category: NSNumber?
-    @NSManaged var description_0: String?   // swiftlint:disable:this variable_name
-    @NSManaged var description_1: String?// swiftlint:disable:this variable_name
+    @NSManaged var description_0: String?
+    @NSManaged var description_1: String?
     @NSManaged var id: Int
     @NSManaged var name: String
     @NSManaged var price: NSNumber?

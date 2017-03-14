@@ -8,8 +8,9 @@
 
 import Foundation
 
+// swiftlint:disable variable_name
 class MasterSlotItemEquipType: KCManagedObject {
     @NSManaged var id: Int
     @NSManaged var name: String
-    @NSManaged var show_flg: NSNumber?  // swiftlint:disable:this variable_name
+    @NSManaged var show_flg: NSNumber?
 }

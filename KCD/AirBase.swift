@@ -8,11 +8,12 @@
 
 import Foundation
 
+// swiftlint:disable variable_name
 class AirBase: KCManagedObject {
     @NSManaged var rid: Int
     @NSManaged var name: String
-    @NSManaged var area_id: Int // swiftlint:disable:this variable_name
+    @NSManaged var area_id: Int
     @NSManaged var distance: Int
-    @NSManaged var action_kind: Int // swiftlint:disable:this variable_name
+    @NSManaged var action_kind: Int
     @NSManaged var planeInfo: NSOrderedSet
 }

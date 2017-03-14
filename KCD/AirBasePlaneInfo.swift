@@ -9,12 +9,13 @@
 import Foundation
 import CoreData
 
+// swiftlint:disable variable_name
 class AirBasePlaneInfo: KCManagedObject {
-    @NSManaged var squadron_id: Int // swiftlint:disable:this variable_name
+    @NSManaged var squadron_id: Int
     @NSManaged var state: Int
     @NSManaged var slotid: Int
     @NSManaged var cond: Int
     @NSManaged var count: Int
-    @NSManaged var max_count: Int   // swiftlint:disable:this variable_name
+    @NSManaged var max_count: Int
     @NSManaged var airBase: AirBase
 }

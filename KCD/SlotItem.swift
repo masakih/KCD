@@ -8,16 +8,18 @@
 
 import Foundation
 
+// swiftlint:disable variable_name
 class SlotItem: KCManagedObject {
     @NSManaged var alv: Int
     @NSManaged var id: Int
     @NSManaged var level: Int
     @NSManaged var locked: Bool
-    @NSManaged var slotitem_id: Int // swiftlint:disable:this variable_name
+    @NSManaged var slotitem_id: Int
     @NSManaged var equippedShip: Ship?
-    @NSManaged var master_slotItem: MasterSlotItem  // swiftlint:disable:this variable_name
+    @NSManaged var master_slotItem: MasterSlotItem
     @NSManaged var extraEquippedShip: Ship?
 }
+// swiftlint:eable variable_name
 
 extension SlotItem {
     dynamic var name: String {

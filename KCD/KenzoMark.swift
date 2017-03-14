@@ -8,11 +8,12 @@
 
 import Cocoa
 
+// swiftlint:disable variable_name
 class KenzoMark: NSManagedObject {
     @NSManaged var bauxite: Int
     @NSManaged var bull: Int
     @NSManaged var commanderLv: Int
-    @NSManaged var created_ship_id: Int // swiftlint:disable:this variable_name
+    @NSManaged var created_ship_id: Int
     @NSManaged var date: Date
     @NSManaged var flagShipLv: Int
     @NSManaged var flagShipName: String
