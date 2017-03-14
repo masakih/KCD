@@ -24,9 +24,7 @@ class SlotResetCommand: JSONCommand {
             let slotItems = sl["api_slot"] as? [Int]
             else { return print("Can not parse api_data.api_slot") }
         
-        slotItems.enumerated().forEach {
-            ship.setValue($0.element, forKey: "slot_\($0.offset)")
-        }
+        slotItems.enumerated().forEach { ship.setItem($0.element, for: $0.offset) }
         
         let storedSlotItems = store.sortedSlotItemsById()
         let newSet = slotItems

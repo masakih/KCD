@@ -77,51 +77,38 @@ class ChangeHenseiCommand: JSONCommand {
         }
         let store = ServerDataStore.oneTimeEditor()
         let decks = store.decksSortedById()
-        let shipIds = decks.flatMap { (deck) -> [Int] in
-            return (0..<6).map {
-                if let res = deck.value(forKey: "ship_\($0)") as? Int {
-                    return res
-                }
-                return -1
-            }
-        }
+        let shipIds = decks.flatMap { deck in (0..<6).map { deck.shipId(of: $0) ?? -1 } }
         
         // すでに編成されているか？ どこに？
-        let alreadyInFleet = shipIds.contains(shipId)
-        let index = alreadyInFleet ? shipIds.index(of: shipId) : nil
-        let shipDeckNumber = index.map { $0 / 6 } ?? -1
-        let shipDeckIndex = index.map { $0 % 6 } ?? -1
+        let currentIndex = shipIds.index(of: shipId)
+        let shipDeckNumber = currentIndex.map { $0 / 6 } ?? -1
+        let shipDeckIndex = currentIndex.map { $0 % 6 } ?? -1
         
         // 配置しようとする位置に今配置されている艦娘
-        let currentIndex = (deckNumber - 1) * 6 + shipIndex
-        guard 0..<shipIds.count ~= currentIndex
+        let replaceIndex = (deckNumber - 1) * 6 + shipIndex
+        guard 0..<shipIds.count ~= replaceIndex
             else { return }
-        let replaceShipId = shipIds[currentIndex]
+        let replaceShipId = shipIds[replaceIndex]
         
         // 艦隊に配備
         guard 0..<decks.count ~= (deckNumber - 1)
             else { return }
-        let deck = decks[deckNumber - 1]
-        deck.setValue(shipId as NSNumber, forKey: "ship_\(shipIndex)")
+        decks[deckNumber - 1].setShip(id: shipId, for: shipIndex)
         
         // 入れ替え
-        if alreadyInFleet,
-            shipId != -1,
-            0..<decks.count ~= shipDeckNumber
-        {
-            let aDeck = decks[shipDeckNumber]
-            aDeck.setValue(replaceShipId, forKey: "ship_\(shipDeckIndex)")
+        if currentIndex != nil, shipId != -1, 0..<decks.count ~= shipDeckNumber {
+            decks[shipDeckNumber].setShip(id: replaceShipId, for: shipDeckIndex)
         }
         
         packFleet(store: store)
         
         // Notify
-        if alreadyInFleet && shipId == -1 {
+        if currentIndex != nil, shipId == -1 {
             notify(type: .remove,
                    fleetNumber: deckNumber,
                    position: shipIndex,
                    shipID: replaceShipId)
-        } else if alreadyInFleet {
+        } else if currentIndex != nil {
             notify(type: .replace,
                    fleetNumber: deckNumber,
                    position: shipIndex,
@@ -141,9 +128,7 @@ class ChangeHenseiCommand: JSONCommand {
         let store = ServerDataStore.oneTimeEditor()
         guard let deck = store.deck(byId: deckNumber)
             else { return print("Deck not found") }
-        (1..<6).forEach {
-            deck.setValue(-1 as NSNumber, forKey: "ship_\($0)")
-        }
+        (1..<6).forEach { deck.setShip(id: -1, for: $0) }
     }
     
     private func packFleet(store: ServerDataStore) {
@@ -151,16 +136,14 @@ class ChangeHenseiCommand: JSONCommand {
             .forEach { (deck) in
                 var needsPack = false
                 (0..<6).forEach {
-                    let shipId = deck.value(forKey: "ship_\($0)") as? Int
+                    let shipId = deck.shipId(of: $0)
                     if (shipId == nil || shipId! == -1) && !needsPack {
                         needsPack = true
                         return
                     }
                     if needsPack {
-                        deck.setValue(shipId! as NSNumber, forKey: "ship_\($0 - 1)")
-                        if $0 == 5 {
-                            deck.setValue(-1 as NSNumber, forKey: "ship_5")
-                        }
+                        deck.setShip(id: shipId!, for: $0 - 1)
+                        if $0 == 5 { deck.setShip(id: -1, for: 5) }
                     }
                 }
         }
