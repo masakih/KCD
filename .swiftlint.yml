@@ -4,7 +4,6 @@ disabled_rules:
     - vertical_whitespace
     - cyclomatic_complexity
     - trailing_comma
-    - function_parameter_count
     - todo
     - trailing_whitespace
 file_length:
@@ -18,9 +17,6 @@ variable_name:
 function_body_length:
     warning: 40
     error: 100
-function_parameter_count:
-    warning: 6
-    error: 8
 large_tuple: 3
 cyclomatic_complexity:
     warning: 20

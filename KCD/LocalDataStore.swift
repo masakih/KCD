@@ -75,6 +75,7 @@ extension LocalDataStore {
             else { return nil }
         return kenzoMarks.first
     }
+    // swiftlint:disable function_parameter_count
     func kenzoMark(fuel: Int,
                    bull: Int,
                    steel: Int,

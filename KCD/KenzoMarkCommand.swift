@@ -47,6 +47,7 @@ class KenzoMarkCommand: JSONCommand {
                          kdockId: kdockId,
                          shipId: shipId)
     }
+    // swiftlint:disable function_parameter_count
     private func markedValues(fuel: Int,
                               bull: Int,
                               steel: Int,
