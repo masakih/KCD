@@ -31,8 +31,9 @@ class CustomHTTPProtocol: URLProtocol {
     override class func canInit(with request: URLRequest) -> Bool {
         if let _ = property(forKey: requestProperty, in: request) { return false }
         if let scheme = request.url?.scheme?.lowercased(),
-            (scheme == "http" || scheme == "https")
-        { return true }
+            (scheme == "http" || scheme == "https") {
+            return true
+        }
         return false
     }
     override class func canonicalRequest(for request: URLRequest) -> URLRequest {
@@ -68,8 +69,7 @@ class CustomHTTPProtocol: URLProtocol {
         if let cache = CustomHTTPProtocol.kcdURLCache.cachedResponse(for: request),
             let info = cache.userInfo,
             let expires = info["Expires"] as? Date,
-            Date().compare(expires) == .orderedAscending
-        {
+            Date().compare(expires) == .orderedAscending {
             use(cache)
             if let name = request.url?.lastPathComponent {
                 Debug.print("Use cache for", name, level: .full)
@@ -138,8 +138,7 @@ extension CustomHTTPProtocol: URLSessionDataDelegate {
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
         if let error = error {
             if canRetry(error: error as NSError),
-                let request = task.originalRequest
-            {
+                let request = task.originalRequest {
                 didRetry = true
                 dataTask = session.dataTask(with: request)
                 dataTask?.resume()
@@ -159,8 +158,7 @@ extension CustomHTTPProtocol: URLSessionDataDelegate {
             CustomHTTPProtocol.cachedExtensions.contains(ext),
             let request = task.originalRequest,
             let response = task.response as? HTTPURLResponse,
-            let expires = response.expires()
-        {
+            let expires = response.expires() {
             let cache = CachedURLResponse(response: response,
                                           data: data,
                                           userInfo: ["Expires": expires],
@@ -183,13 +181,11 @@ extension HTTPURLResponse {
             let s = cc[range.upperBound..<cc.endIndex]
                 .components(separatedBy: ",")
                 .first,
-            let age = TimeInterval(s)
-        {
+            let age = TimeInterval(s) {
             return Date(timeIntervalSinceNow: age)
         }
         if let ex = (allHeaderFields["Expires"] as? String)?.lowercased(),
-            let exp = httpDateFormatter.date(from: ex)
-        {
+            let exp = httpDateFormatter.date(from: ex) {
             return exp
         }
         return nil

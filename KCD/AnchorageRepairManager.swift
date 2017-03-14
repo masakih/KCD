@@ -56,26 +56,30 @@ class AnchorageRepairManager: NSObject {
     private func needsReset(info: HenseiDidChangeUserInfo) -> Bool {
         // 変更のあった艦隊の旗艦は工作艦か？
         if let flagShipType = shipTypeId(fleetNumber: info.fleetNumber, position: 0),
-            repairShipTypeIds.contains(flagShipType)
-        { return true }
+            repairShipTypeIds.contains(flagShipType) {
+            return true
+        }
         if info.type == .replace,
             let replaceFleet = info.replaceFleetNumber,
             let flagShipType = shipTypeId(fleetNumber: replaceFleet, position: 0),
-            repairShipTypeIds.contains(flagShipType)
-        { return true }
+            repairShipTypeIds.contains(flagShipType) {
+            return true
+        }
         
         // 変更のあった艦娘は工作艦か？
         //     旗艦から外れたか？
         if info.type == .remove || info.type == .append,
             let shipType = shipTypeId(shipId: info.shipID),
-            repairShipTypeIds.contains(shipType)
-        { return info.position == 0 }
+            repairShipTypeIds.contains(shipType) {
+            return info.position == 0
+        }
         if info.type == .replace,
             let shipId = info.replaceShipID,
             let shipType = shipTypeId(shipId: shipId),
             repairShipTypeIds.contains(shipType),
-            let replacePos = info.replacePosition
-        { return replacePos == 0 }
+            let replacePos = info.replacePosition {
+            return replacePos == 0
+        }
         
         return false
     }

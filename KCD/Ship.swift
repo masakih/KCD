@@ -409,8 +409,9 @@ extension Ship {
         if itemId == -1 { return .notEquip(maxCount) }
         
         if let item = slotItem(index),
-            allPlaneTypes.contains(item.master_slotItem.type_2)
-        { return .equiped(slotItemCount(index), maxCount) }
+            allPlaneTypes.contains(item.master_slotItem.type_2) {
+            return .equiped(slotItemCount(index), maxCount)
+        }
         return .notEquip(maxCount)
     }
     private func planeString(_ index: Int) -> String? {

@@ -30,8 +30,7 @@ class RemodelSlotItemCommand: JSONCommand {
         }
         if let masterSlotItemId = afterSlot["api_slotitem_id"] as? Int,
             masterSlotItemId != slotItem.slotitem_id,
-            let masterSlotItem = store.masterSlotItem(by: slotItemId)
-        {
+            let masterSlotItem = store.masterSlotItem(by: slotItemId) {
             slotItem.master_slotItem = masterSlotItem
             slotItem.slotitem_id = slotItemId
         }

@@ -14,14 +14,17 @@ class ScreenshotListWindowController: NSWindowController {
     @IBOutlet weak var left: NSView!
     @IBOutlet weak var right: NSView!
     
-    private lazy var detailViewController: ScreenshotDetailViewController =
-        { return ScreenshotDetailViewController() }()
-    private var editorViewController: ScreenshotEditorViewController =
-        { return ScreenshotEditorViewController() }()
+    private lazy var detailViewController: ScreenshotDetailViewController = {
+        return ScreenshotDetailViewController()
+    }()
+    private var editorViewController: ScreenshotEditorViewController = {
+            return ScreenshotEditorViewController()
+    }()
     private var viewControllers: [NSViewController] = []
     fileprivate weak var currentRightViewController: BridgeViewController?
-    fileprivate lazy var listViewController: ScreenshotListViewController =
-        { return ScreenshotListViewController() }()
+    fileprivate lazy var listViewController: ScreenshotListViewController = {
+            return ScreenshotListViewController()
+    }()
     
     var filterPredicate: NSPredicate? = nil {
         didSet {

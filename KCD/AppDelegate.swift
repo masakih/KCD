@@ -170,10 +170,11 @@ class AppDelegate: NSObject {
             .addObserver(forName: .NSWindowWillClose,
                          object: browser.window,
                          queue: nil) { [unowned self] notification in
-                NotificationCenter.default.removeObserver(token)
-                if let obj = notification.object as? NSWindow,
-                    let index = self.browserWindowControllers.index(where: { $0.window == obj })
-                { self.browserWindowControllers.remove(at: index) }
+                            NotificationCenter.default.removeObserver(token)
+                            if let obj = notification.object as? NSWindow,
+                                let index = self.browserWindowControllers.index(where: { $0.window == obj }) {
+                                self.browserWindowControllers.remove(at: index)
+                            }
         }
         return browser
     }

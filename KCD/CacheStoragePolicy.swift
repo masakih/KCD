@@ -36,16 +36,16 @@ private func cacheable(request: URLRequest) -> Bool {
 
 private func policy(request: URLRequest) -> URLCache.StoragePolicy {
     if let scheme = request.url?.scheme?.lowercased(),
-        scheme == "https"
-    { return .allowedInMemoryOnly }
+        scheme == "https" {
+        return .allowedInMemoryOnly
+    }
     return .allowed
 }
 
 func CacheStoragePolicy(for request: URLRequest, response: HTTPURLResponse) -> URLCache.StoragePolicy {
     if cacheable(status: response.statusCode),
         cacheable(response: response),
-        cacheable(request: request)
-    {
+        cacheable(request: request) {
         return policy(request: request)
     }
     return .notAllowed

@@ -47,8 +47,7 @@ class PeriodicNotifier: NSObject {
         currentDay.hour = hour
         currentDay.minute = minutes
         if let notifyDate = Calendar.current.date(from: currentDay),
-            now.compare(notifyDate) == .orderedDescending
-        {
+            now.compare(notifyDate) == .orderedDescending {
             currentDay.day? += 1
             NotificationCenter.default.post(name: .Periodic, object: self)
         }
