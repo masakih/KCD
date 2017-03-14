@@ -296,6 +296,16 @@ extension Ship {
         default: return 0
         }
     }
+    func setItem(_ id: Int, for slot: Int) {
+        switch slot {
+        case 0: slot_0 = id
+        case 1: slot_1 = id
+        case 2: slot_2 = id
+        case 3: slot_3 = id
+        case 4: slot_4 = id
+        default: fatalError("Ship: setItem out of bounds.")
+        }
+    }
     private func slotItemMax(_ index: Int) -> Int {
         switch index {
         case 0: return master_ship.maxeq_0
