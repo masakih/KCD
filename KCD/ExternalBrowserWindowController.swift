@@ -89,7 +89,7 @@ class ExternalBrowserWindowController: NSWindowController {
     fileprivate var bookmarkShowing: Bool = false
     fileprivate var waitingBookmarkItem: Bookmark?
     
-    private lazy var bookmarkListViwController: BookmarkListViewController? = {
+    fileprivate lazy var bookmarkListViwController: BookmarkListViewController? = {
         [weak self] in
         guard let `self` = self else { return nil }
         let controller = BookmarkListViewController()
@@ -128,26 +128,6 @@ class ExternalBrowserWindowController: NSWindowController {
         
         super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
     }
-    override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
-        guard let action = menuItem.action else { return false }
-        switch action {
-        case Selector.addBookmark:
-            return webView.mainFrameURL != nil
-        case Selector.showBookmark:
-            if showsBookmarkList() {
-                menuItem.title = NSLocalizedString("Hide Bookmark", comment: "Menu item title, Hide Bookmark")
-            } else {
-                menuItem.title = NSLocalizedString("Show Bookmark", comment: "Menu item title, Show Bookmark")
-            }
-            return true
-        case Selector.selectBookmark:
-            return true
-        case Selector.reloadContent:
-            return true
-        default:
-            return false
-        }
-    }
     override func swipe(with event: NSEvent) {
         if event.deltaX > 0 && showsBookmarkList() {
             showBookmark(nil)
@@ -172,8 +152,31 @@ class ExternalBrowserWindowController: NSWindowController {
     fileprivate func showsBookmarkList() -> Bool {
         return webView.frame.origin.x > 0
     }
+}
+
+// MARK: - IBAction
+extension ExternalBrowserWindowController {
+    override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+        guard let action = menuItem.action else { return false }
+        switch action {
+        case Selector.addBookmark:
+            return webView.mainFrameURL != nil
+        case Selector.showBookmark:
+            if showsBookmarkList() {
+                menuItem.title = NSLocalizedString("Hide Bookmark", comment: "Menu item title, Hide Bookmark")
+            } else {
+                menuItem.title = NSLocalizedString("Show Bookmark", comment: "Menu item title, Show Bookmark")
+            }
+            return true
+        case Selector.selectBookmark:
+            return true
+        case Selector.reloadContent:
+            return true
+        default:
+            return false
+        }
+    }
     
-    // MARK: - IBAction
     @IBAction func selectBookmark(_ sender: AnyObject?) {
         guard let item = sender?.representedObject as? Bookmark
             else { return }

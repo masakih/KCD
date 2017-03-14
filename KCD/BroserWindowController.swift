@@ -71,8 +71,8 @@ class BroserWindowController: NSWindowController {
     fileprivate var gameViewController: GameViewController!
     fileprivate var fleetViewController: FleetViewController!
     fileprivate var tabViewItemViewControllers: [MainTabVIewItemViewController] = []
+    fileprivate var ancherageRepariTimerViewController: AncherageRepairTimerViewController!
     private var resourceViewController: ResourceViewController!
-    private var ancherageRepariTimerViewController: AncherageRepairTimerViewController!
     private var docksViewController: DocksViewController!
     private var shipViewController: ShipViewController!
     private var powerUpViewController: PowerUpSupportViewController!
@@ -183,11 +183,12 @@ class BroserWindowController: NSWindowController {
         window?.setFrame(winFrame, display: true, animate: true)
         combinedViewController.view.isHidden = true
     }
+}
+// MARK: - IBAction
+extension BroserWindowController {
     private func showView(number: Int) {
         informations.selectTabViewItem(at: number)
     }
-    
-    // MARK: - IBAction
     @IBAction func reloadContent(_ sender: AnyObject?) {
         gameViewController.reloadContent(sender)
     }

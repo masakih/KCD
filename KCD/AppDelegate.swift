@@ -72,46 +72,46 @@ class AppDelegate: NSObject {
     @IBOutlet var debugMenuItem: NSMenuItem!
     @IBOutlet var billingWindowMenuItem: NSMenuItem!
     
-    private lazy var historyWindowController: HistoryWindowController = {
+    fileprivate lazy var historyWindowController: HistoryWindowController = {
         HistoryWindowController()
     }()
-    private lazy var slotItemWindowController: SlotItemWindowController = {
+    fileprivate lazy var slotItemWindowController: SlotItemWindowController = {
         SlotItemWindowController()
     }()
-    private lazy var preferencePanelController: PreferencePanelController = {
+    fileprivate lazy var preferencePanelController: PreferencePanelController = {
         PreferencePanelController()
     }()
-    private lazy var upgradableShipWindowController: UpgradableShipsWindowController = {
+    fileprivate lazy var upgradableShipWindowController: UpgradableShipsWindowController = {
         UpgradableShipsWindowController()
     }()
-    private lazy var airBaseWindowController: AirBaseWindowController = {
+    fileprivate lazy var airBaseWindowController: AirBaseWindowController = {
         AirBaseWindowController()
     }()
-    private lazy var browserContentAdjuster: BrowserContentAdjuster = {
+    fileprivate lazy var browserContentAdjuster: BrowserContentAdjuster = {
         BrowserContentAdjuster()
     }()
-    private(set) lazy var screenshotListWindowController: ScreenshotListWindowController = {
+    fileprivate(set) lazy var screenshotListWindowController: ScreenshotListWindowController = {
         let wc = ScreenshotListWindowController()
         let _ = wc.window
         return wc
     }()
     
-    private lazy var shipWindowController: ShipWindowController = {
+    fileprivate lazy var shipWindowController: ShipWindowController = {
         ShipWindowController()
     }()
-    private lazy var shipMDWindowController: ShipMasterDetailWindowController = {
+    fileprivate lazy var shipMDWindowController: ShipMasterDetailWindowController = {
         ShipMasterDetailWindowController()
     } ()
-    private lazy var equipmentWindowController: EquipmentWindowController = {
+    fileprivate lazy var equipmentWindowController: EquipmentWindowController = {
         EquipmentWindowController()
     }()
-    private lazy var mapWindowController: MapWindowController = {
+    fileprivate lazy var mapWindowController: MapWindowController = {
         MapWindowController()
     }()
     
     private var browserWindowControllers: [ExternalBrowserWindowController] = []
     private var updaters: [() -> Void] = []
-    private var logedJSONViewWindowController: JSONViewWindowController?
+    fileprivate var logedJSONViewWindowController: JSONViewWindowController?
     private var isLoadedMainMenu = false
     
     var screenShotSaveDirectory: String {
@@ -181,8 +181,9 @@ class AppDelegate: NSObject {
     func fire(_ timer: Timer) {
         updaters.forEach { $0() }
     }
-    
-    // MARK: - IBActions
+}
+// MARK: - IBActions
+extension AppDelegate {
     private func isFrontMostWindow(_ window: NSWindow) -> Bool {
         return window.isVisible && window.isMainWindow
     }

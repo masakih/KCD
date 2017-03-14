@@ -29,8 +29,8 @@ fileprivate enum BattleFleet {
 class CalculateDamageCommand: JSONCommand {
     private let store = TemporaryDataStore.oneTimeEditor()
     
-    private var battleType: BattleType = .normal
-    private var damages: [Damage] {
+    fileprivate var battleType: BattleType = .normal
+    fileprivate var damages: [Damage] {
         let array = store.sortedDamagesById()
         if array.count != 12 {
             buildDamagedEntity()
@@ -44,7 +44,7 @@ class CalculateDamageCommand: JSONCommand {
         }
         return array
     }
-    private var isCombinedBattle: Bool {
+    fileprivate var isCombinedBattle: Bool {
         switch battleType {
         case .combinedAir, .combinedWater, .eachCombinedAir, .eachCombinedWater:
             return true
@@ -138,23 +138,24 @@ class CalculateDamageCommand: JSONCommand {
         }
     }
     
-    private func updateBattleCell() {
+    fileprivate func updateBattleCell() {
         guard let battle = store.battle()
             else { return print("Battle is invalid.") }
         battle.battleCell = (battle.no == 0 ? nil : battle.no as NSNumber)
     }
-    
-    // MARK: - Primitive Calclator
+}
+// MARK: - Primitive Calclator
+extension CalculateDamageCommand {
     private func isTargetFriend(eFlags: [Int]?, index: Int) -> Bool {
         if let eFlags = eFlags, 0..<eFlags.count ~= index {
             return eFlags[index] == 1
         }
         return true
     }
-    private func calculateHogeki(baseKeyPath: String, _ bf: () -> BattleFleet) {
+    fileprivate func calculateHogeki(baseKeyPath: String, _ bf: () -> BattleFleet) {
         calculateHogeki(baseKeyPath: baseKeyPath, battleFleet: bf())
     }
-    private func calculateHogeki(baseKeyPath: String, battleFleet: BattleFleet = .first) {
+    fileprivate func calculateHogeki(baseKeyPath: String, battleFleet: BattleFleet = .first) {
         let j = json as NSDictionary
         guard let data = j.value(forKeyPath: baseKeyPath) as? [String: Any],
             let dfList = data["api_df_list"] as? [Any],
@@ -205,10 +206,10 @@ class CalculateDamageCommand: JSONCommand {
             }
         }
     }
-    private func calculateFDam(baseKeyPath: String, _ bf: () -> BattleFleet) {
+    fileprivate func calculateFDam(baseKeyPath: String, _ bf: () -> BattleFleet) {
         calculateFDam(baseKeyPath: baseKeyPath, battleFleet: bf())
     }
-    private func calculateFDam(baseKeyPath: String, battleFleet: BattleFleet = .first) {
+    fileprivate func calculateFDam(baseKeyPath: String, battleFleet: BattleFleet = .first) {
         let j = json as NSDictionary
         guard let data = j.value(forKeyPath: baseKeyPath) as? [String: Any],
             let koukuDamages = data["api_fdam"] as? [Int]
@@ -241,9 +242,10 @@ class CalculateDamageCommand: JSONCommand {
             Debug.print("FDam \(idx + shipOffset) -> \(damage)", level: .debug)
         }
     }
-    
-    // MARK: - Battle phase
-    private func calcKouku() {
+}
+// MARK: - Battle phase
+extension CalculateDamageCommand {
+    fileprivate func calcKouku() {
         calculateFDam(baseKeyPath: "api_data.api_kouku.api_stage3")
         calculateFDam(baseKeyPath: "api_data.api_kouku2.api_stage3")
         
@@ -264,7 +266,7 @@ class CalculateDamageCommand: JSONCommand {
         calculateFDam(baseKeyPath: "api_data.api_kouku2.api_stage3_combined", bf)
         
     }
-    private func calcOpeningAttack() {
+    fileprivate func calcOpeningAttack() {
         // 艦隊　戦闘艦隊
         // 連合vs通常（水上）　第２
         // 連合vs通常（機動）　第２
@@ -278,12 +280,12 @@ class CalculateDamageCommand: JSONCommand {
             }
         }
     }
-    private func calcOpeningTaisen() {
+    fileprivate func calcOpeningTaisen() {
         calculateHogeki(baseKeyPath: "api_data.api_opening_taisen") {
             isCombinedBattle ? .second : .first
         }
     }
-    private func calcHougeki1() {
+    fileprivate func calcHougeki1() {
         // 艦隊　戦闘艦隊
         // 連合vs通常（水上）　第１
         // 連合vs通常（機動）　第２
@@ -296,7 +298,7 @@ class CalculateDamageCommand: JSONCommand {
             }
         }
     }
-    private func calcHougeki2() {
+    fileprivate func calcHougeki2() {
         // 艦隊　戦闘艦隊
         // 連合vs通常（水上）　第１
         // 連合vs通常（機動）　第１
@@ -310,7 +312,7 @@ class CalculateDamageCommand: JSONCommand {
             }
         }
     }
-    private func calcHougeki3() {
+    fileprivate func calcHougeki3() {
         // 艦隊　戦闘艦隊
         // 連合vs通常（水上）　第２
         // 連合vs通常（機動）　第１
@@ -325,7 +327,7 @@ class CalculateDamageCommand: JSONCommand {
             }
         }
     }
-    private func calcRaigeki() {
+    fileprivate func calcRaigeki() {
         // 艦隊　戦闘艦隊
         // 連合vs通常（水上）　第２
         // 連合vs通常（機動）　第２
@@ -340,7 +342,7 @@ class CalculateDamageCommand: JSONCommand {
         }
     }
     
-    private func calculateMidnightBattle() {
+    fileprivate func calculateMidnightBattle() {
         // 艦隊　戦闘艦隊
         // 連合vs通常（水上）　第２
         // 連合vs通常（機動）　第２
@@ -350,9 +352,10 @@ class CalculateDamageCommand: JSONCommand {
             isCombinedBattle ? .second : .first
         }
     }
-    
-    // MARK: - Battle type
-    private func calculateBattle() {
+}
+// MARK: - Battle type
+extension CalculateDamageCommand {
+    fileprivate func calculateBattle() {
         updateBattleCell()
         
         calcKouku()
@@ -363,7 +366,7 @@ class CalculateDamageCommand: JSONCommand {
         calcHougeki3()
         calcRaigeki()
     }
-    private func calcCombinedBattleAir() {
+    fileprivate func calcCombinedBattleAir() {
         updateBattleCell()
         
         calcKouku()
@@ -374,7 +377,7 @@ class CalculateDamageCommand: JSONCommand {
         calcHougeki2()
         calcHougeki3()
     }
-    private func calcEachBattleAir() {
+    fileprivate func calcEachBattleAir() {
         updateBattleCell()
         
         calcKouku()
@@ -385,13 +388,15 @@ class CalculateDamageCommand: JSONCommand {
         calcRaigeki()
         calcHougeki3()
     }
-    private func calcEnemyCombinedBattle() {
+    fileprivate func calcEnemyCombinedBattle() {
         // same phase as combined air
         calcCombinedBattleAir()
     }
-    
+}
+extension CalculateDamageCommand {
+
     // MARK: - Damage control
-    private func damageControlIfPossible(nowhp: Int, ship: Ship) -> Int {
+    fileprivate func damageControlIfPossible(nowhp: Int, ship: Ship) -> Int {
         var nowHp = nowhp
         if nowHp < 0 { nowHp = 0 }
         let maxhp = ship.maxhp
@@ -425,7 +430,7 @@ class CalculateDamageCommand: JSONCommand {
         }
         return nowHp
     }
-    private func removeFirstDamageControl(of ship: Ship) {
+    fileprivate func removeFirstDamageControl(of ship: Ship) {
         let equiped = ship.equippedItem
         let newEquiped = equiped.array
         let store = ServerDataStore.default

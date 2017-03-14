@@ -191,7 +191,7 @@ class ScreenshotListViewController: NSViewController {
         return pow((w / ScreenshotListViewController.def - 0.2) / 0.8, 1.0 / 3.0)
     }
     
-    private func reloadData() {
+    fileprivate func reloadData() {
         guard let f = try? FileManager
             .default
             .contentsOfDirectory(at: screenshotSaveDirectoryURL, includingPropertiesForKeys: nil) else {
@@ -232,7 +232,7 @@ class ScreenshotListViewController: NSViewController {
         
     }
     
-    private func saveCache() {
+    fileprivate func saveCache() {
         let data = NSKeyedArchiver.archivedData(withRootObject: screenshots.screenshots)
         do {
             try data.write(to: cachURL)
@@ -256,7 +256,7 @@ class ScreenshotListViewController: NSViewController {
         return loaded
     }
     
-    private func incrementCacheVersion(forUrl url: URL) {
+    fileprivate func incrementCacheVersion(forUrl url: URL) {
         let infos = deletedPaths.filter { $0.url == url }
         if var info = infos.first {
             info.incrementVersion()
@@ -271,8 +271,10 @@ class ScreenshotListViewController: NSViewController {
             .first?
             .version ?? 0
     }
-    
-    // MARK: - IBAction
+}
+
+// MARK: - IBAction
+extension ScreenshotListViewController {
     @IBAction func reloadData(_ sender: AnyObject?) {
         reloadData()
     }

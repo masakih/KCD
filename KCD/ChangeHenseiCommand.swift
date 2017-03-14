@@ -86,13 +86,11 @@ class ChangeHenseiCommand: JSONCommand {
         
         // 配置しようとする位置に今配置されている艦娘
         let replaceIndex = (deckNumber - 1) * 6 + shipIndex
-        guard 0..<shipIds.count ~= replaceIndex
-            else { return }
+        guard 0..<shipIds.count ~= replaceIndex else { return }
         let replaceShipId = shipIds[replaceIndex]
         
         // 艦隊に配備
-        guard 0..<decks.count ~= (deckNumber - 1)
-            else { return }
+        guard 0..<decks.count ~= (deckNumber - 1) else { return }
         decks[deckNumber - 1].setShip(id: shipId, for: shipIndex)
         
         // 入れ替え
