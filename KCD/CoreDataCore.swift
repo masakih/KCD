@@ -111,15 +111,16 @@ private class CoreDataRemover {
 }
 
 private class MocGenerater {
-    class func genarate(_ info: CoreDataIntormation) throws -> (model: NSManagedObjectModel, coordinator: NSPersistentStoreCoordinator, moc: NSManagedObjectContext) {
-        do {
-            let model = try createManagedObjectModel(info)
-            let coordinator = try createPersistentStoreCoordinator(info, model)
-            let moc = createManagedObjectContext(coordinator)
-            return (model: model, coordinator: coordinator, moc: moc)
-        } catch {
-            throw error
-        }
+    class func genarate(_ info: CoreDataIntormation) throws ->
+        (model: NSManagedObjectModel, coordinator: NSPersistentStoreCoordinator, moc: NSManagedObjectContext) {
+            do {
+                let model = try createManagedObjectModel(info)
+                let coordinator = try createPersistentStoreCoordinator(info, model)
+                let moc = createManagedObjectContext(coordinator)
+                return (model: model, coordinator: coordinator, moc: moc)
+            } catch {
+                throw error
+            }
     }
     
     private class func createManagedObjectModel(_ info: CoreDataIntormation) throws -> NSManagedObjectModel {
@@ -129,8 +130,9 @@ private class MocGenerater {
         }
         return model
     }
-    
-    private class func createPersistentStoreCoordinator(_ info: CoreDataIntormation, _ model: NSManagedObjectModel) throws -> NSPersistentStoreCoordinator {
+    // swiftlint:disable:next line_length function_body_length
+    private class func createPersistentStoreCoordinator(_ info: CoreDataIntormation, _ model: NSManagedObjectModel)
+        throws -> NSPersistentStoreCoordinator {
         var failError: NSError? = nil
         var shouldFail = false
         var failureReason = "There was an error creating or loading the application's saved data."
@@ -138,6 +140,7 @@ private class MocGenerater {
         do {
             let p = try ApplicationDirecrories.support.resourceValues(forKeys: [.isDirectoryKey])
             if !p.isDirectory! {
+                // swiftlint:disable:next line_length
                 failureReason = "Expected a folder to store application data, found a file \(ApplicationDirecrories.support.path)."
                 shouldFail = true
             }
@@ -145,7 +148,11 @@ private class MocGenerater {
             let nserror = error as NSError
             if nserror.code == NSFileReadNoSuchFileError {
                 do {
-                    try FileManager.default.createDirectory(at: ApplicationDirecrories.support, withIntermediateDirectories: false, attributes: nil)
+                    try FileManager
+                        .default
+                        .createDirectory(at: ApplicationDirecrories.support,
+                                         withIntermediateDirectories: false,
+                                         attributes: nil)
                 } catch {
                     failError = nserror
                 }
@@ -159,15 +166,23 @@ private class MocGenerater {
             coordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
             let url = ApplicationDirecrories.support.appendingPathComponent(info.storeFileName)
             do {
-                try coordinator!.addPersistentStore(ofType: info.storeType, configurationName: nil, at: url, options: info.storeOptions)
+                try coordinator!.addPersistentStore(ofType: info.storeType,
+                                                    configurationName: nil,
+                                                    at: url,
+                                                    options: info.storeOptions)
             } catch {
                 failError = error as NSError
                 
                 // Data Modelが更新されていたらストアファイルを削除してもう一度
-                if failError?.domain == NSCocoaErrorDomain && (failError?.code == 134130 || failError?.code == 134110) && info.deleteAndRetry {
+                if failError?.domain == NSCocoaErrorDomain,
+                    (failError?.code == 134130 || failError?.code == 134110),
+                    info.deleteAndRetry {
                     self.removeDatabaseFile(info)
                     do {
-                        try coordinator!.addPersistentStore(ofType: info.storeType, configurationName: nil, at: url, options: info.storeOptions)
+                        try coordinator!.addPersistentStore(ofType: info.storeType,
+                                                            configurationName: nil,
+                                                            at: url,
+                                                            options: info.storeOptions)
                         failError = nil
                     } catch {
                         failError = error as NSError
@@ -184,6 +199,7 @@ private class MocGenerater {
         }
         return coordinator!
     }
+    // swiftlint:disable:next line_length
     private class func createManagedObjectContext(_ coordinator: NSPersistentStoreCoordinator) -> NSManagedObjectContext {
         let moc = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         moc.persistentStoreCoordinator = coordinator
@@ -241,7 +257,9 @@ extension CoreDataAccessor {
     func object(with objectId: NSManagedObjectID) -> NSManagedObject {
         return managedObjectContext.object(with: objectId)
     }
-    func objects<T>(with entity: Entity<T>, sortDescriptors: [NSSortDescriptor]? = nil, predicate: NSPredicate? = nil) throws -> [T] {
+    func objects<T>(with entity: Entity<T>,
+                    sortDescriptors: [NSSortDescriptor]? = nil,
+                    predicate: NSPredicate? = nil) throws -> [T] {
         let req = NSFetchRequest<T>(entityName: entity.name)
         req.sortDescriptors = sortDescriptors
         req.predicate = predicate

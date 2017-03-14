@@ -69,17 +69,24 @@ class ScreenshotListWindowController: NSWindowController {
         currentRightViewController?.share(sender)
     }
     @IBAction func changeToEditor(_ sender: AnyObject?) {
-        rightController.transition(from: detailViewController, to: editorViewController, options: [.slideLeft], completionHandler: nil)
+        rightController.transition(from: detailViewController,
+                                   to: editorViewController,
+                                   options: [.slideLeft],
+                                   completionHandler: nil)
         currentRightViewController = editorViewController
     }
     @IBAction func changeToDetail(_ sender: AnyObject?) {
-        rightController.transition(from: editorViewController, to: detailViewController, options: [.slideRight], completionHandler: nil)
+        rightController.transition(from: editorViewController,
+                                   to: detailViewController,
+                                   options: [.slideRight],
+                                   completionHandler: nil)
         currentRightViewController = detailViewController
     }
 }
 
 extension ScreenshotListWindowController: NSSharingServicePickerDelegate {
-    func sharingServicePicker(_ sharingServicePicker: NSSharingServicePicker, delegateFor sharingService: NSSharingService) -> NSSharingServiceDelegate? {
+    func sharingServicePicker(_ sharingServicePicker: NSSharingServicePicker,
+                              delegateFor sharingService: NSSharingService) -> NSSharingServiceDelegate? {
         return currentRightViewController
     }
 }
@@ -88,11 +95,15 @@ extension ScreenshotListWindowController: NSSplitViewDelegate {
     private static let leftMinWidth: CGFloat = 299
     private static let rightMinWidth: CGFloat = 400
     
-    func splitView(_ splitView: NSSplitView, constrainMinCoordinate proposedMinimumPosition: CGFloat, ofSubviewAt dividerIndex: Int) -> CGFloat {
+    func splitView(_ splitView: NSSplitView,
+                   constrainMinCoordinate proposedMinimumPosition: CGFloat,
+                   ofSubviewAt dividerIndex: Int) -> CGFloat {
         if dividerIndex == 0 { return ScreenshotListWindowController.leftMinWidth }
         return proposedMinimumPosition
     }
-    func splitView(_ splitView: NSSplitView, constrainSplitPosition proposedPosition: CGFloat, ofSubviewAt dividerIndex: Int) -> CGFloat {
+    func splitView(_ splitView: NSSplitView,
+                   constrainSplitPosition proposedPosition: CGFloat,
+                   ofSubviewAt dividerIndex: Int) -> CGFloat {
         if dividerIndex == 0 {
             let rightWidth = splitView.frame.size.width - proposedPosition
             if rightWidth < ScreenshotListWindowController.rightMinWidth {

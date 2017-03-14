@@ -101,7 +101,8 @@ class ScreenshotListViewController: NSViewController {
         let scrollView = collectionView.enclosingScrollView
         
         nc.addObserver(forName: .NSViewFrameDidChange, object: collectionView, queue: nil, using: viewFrameDidChange)
-        nc.addObserver(forName: .NSScrollViewDidLiveScroll, object: collectionView.enclosingScrollView, queue: nil) { _ in
+        nc.addObserver(forName: .NSScrollViewDidLiveScroll,
+                       object: collectionView.enclosingScrollView, queue: nil) { _ in
             let visibleItems = self.collectionView.indexPathsForVisibleItems()
             self.collectionVisibleDidChangeHandler?(visibleItems)
         }
@@ -117,7 +118,10 @@ class ScreenshotListViewController: NSViewController {
         DispatchQueue.main
             .asyncAfter(deadline: .now() + 0.0001 ) { self.reloadData() }
     }
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    override func observeValue(forKeyPath keyPath: String?,
+                               of object: Any?,
+                               change: [NSKeyValueChangeKey : Any]?,
+                               context: UnsafeMutableRawPointer?) {
         if let object = object as? NSCollectionView,
             object == collectionView {
             let selections = collectionView.selectionIndexPaths
@@ -188,7 +192,9 @@ class ScreenshotListViewController: NSViewController {
     }
     
     private func reloadData() {
-        guard let f = try? FileManager.default.contentsOfDirectory(at: screenshotSaveDirectoryURL, includingPropertiesForKeys: nil) else {
+        guard let f = try? FileManager
+            .default
+            .contentsOfDirectory(at: screenshotSaveDirectoryURL, includingPropertiesForKeys: nil) else {
             print("can not read list of screenshot directory")
             return
         }
@@ -301,7 +307,9 @@ class ScreenshotListViewController: NSViewController {
 }
 
 extension ScreenshotListViewController: NSCollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
+    func collectionView(_ collectionView: NSCollectionView,
+                        layout collectionViewLayout: NSCollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> NSSize {
         let f = realFromZoom(zoom: zoom)
         return NSSize(width: f, height: f)
     }
@@ -316,7 +324,8 @@ fileprivate var kPickers: [Int: NSSharingServicePickerTouchBarItem] = [:]
 
 @available(OSX 10.12.2, *)
 extension ScreenshotListViewController: NSTouchBarDelegate {
-    static let ServicesItemIdentifier: NSTouchBarItemIdentifier = NSTouchBarItemIdentifier(rawValue: "com.masakih.sharingTouchBarItem")
+    static let ServicesItemIdentifier: NSTouchBarItemIdentifier
+        = NSTouchBarItemIdentifier(rawValue: "com.masakih.sharingTouchBarItem")
     
     @IBOutlet var screenshotTouchBar: NSTouchBar! {
         get { return kTouchBars[hashValue] }
@@ -334,7 +343,8 @@ extension ScreenshotListViewController: NSTouchBarDelegate {
     override func makeTouchBar() -> NSTouchBar? {
         var array: NSArray = []
         Bundle.main.loadNibNamed("ScreenshotTouchBar", owner: self, topLevelObjects: &array)
-        let identifiers = self.screenshotTouchBar.defaultItemIdentifiers + [ScreenshotListViewController.ServicesItemIdentifier]
+        let identifiers = self.screenshotTouchBar.defaultItemIdentifiers
+            + [ScreenshotListViewController.ServicesItemIdentifier]
         screenshotTouchBar.defaultItemIdentifiers = identifiers
         
         if collectionVisibleDidChangeHandler == nil {
@@ -361,7 +371,8 @@ extension ScreenshotListViewController: NSTouchBarDelegate {
         return screenshotTouchBar
     }
     
-    func touchBar(_ touchBar: NSTouchBar, makeItemForIdentifier identifier: NSTouchBarItemIdentifier) -> NSTouchBarItem? {
+    func touchBar(_ touchBar: NSTouchBar,
+                  makeItemForIdentifier identifier: NSTouchBarItemIdentifier) -> NSTouchBarItem? {
         guard identifier == ScreenshotListViewController.ServicesItemIdentifier
             else { return nil }
         if sharingItem == nil {

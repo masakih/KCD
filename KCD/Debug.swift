@@ -52,7 +52,11 @@ class Debug {
         #endif
     }
     
-    class func dump<T>(_ value: T, name: String? = nil, indent: Int = 0, maxDepth: Int = Int.max, maxItems: Int = Int.max) -> T {
+    class func dump<T>(_ value: T,
+                       name: String? = nil,
+                       indent: Int = 0,
+                       maxDepth: Int = Int.max,
+                       maxItems: Int = Int.max) -> T {
         #if DEBUG
             return Swift.dump(value, name: name, indent: indent, maxDepth: maxDepth, maxItems: maxItems)
         #else

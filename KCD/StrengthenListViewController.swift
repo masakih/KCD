@@ -136,7 +136,9 @@ fileprivate class EnhancementListItemDownloader: NSObject, URLSessionDownloadDel
         plistDownloadQueue.maxConcurrentOperationCount = 1
         plistDownloadQueue.qualityOfService = .background
         let configuration = URLSessionConfiguration.default
-        plistDownloadSession = URLSession(configuration: configuration, delegate: self, delegateQueue: plistDownloadQueue)
+        plistDownloadSession = URLSession(configuration: configuration,
+                                          delegate: self,
+                                          delegateQueue: plistDownloadQueue)
     }
     
     private var plistDownloadSession: URLSession!
@@ -146,6 +148,7 @@ fileprivate class EnhancementListItemDownloader: NSObject, URLSessionDownloadDel
     
     func download(using block: @escaping ([EnhancementListItem]) -> Void) {
         if let _ = plistDownloadTask { return }
+        // swiftlint:disable:next line_length
         guard let plistURL = URL(string: "http://git.osdn.jp/view?p=kcd/KCD.git;a=blob;f=KCD/\(resourceName).\(resourceExtension);hb=HEAD")
             else { return }
         

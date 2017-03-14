@@ -75,7 +75,14 @@ extension LocalDataStore {
             else { return nil }
         return kenzoMarks.first
     }
-    func kenzoMark(fuel: Int, bull: Int, steel: Int, bauxite: Int, kaihatusizai: Int, kDockId: Int, shipId: Int) -> KenzoMark? {
+    func kenzoMark(fuel: Int,
+                   bull: Int,
+                   steel: Int,
+                   bauxite: Int,
+                   kaihatusizai: Int,
+                   kDockId: Int,
+                   shipId: Int) -> KenzoMark? {
+        // swiftlint:disable:next line_length
         let predicate = NSPredicate(format: "fuel = %ld AND bull = %ld AND steel = %ld AND bauxite = %ld AND kaihatusizai = %ld AND kDockId = %ld AND created_ship_id = %ld",
                                     fuel, bull, steel, bauxite, kaihatusizai, kDockId, shipId)
         guard let kenzoMarks = try? objects(with: KenzoMark.entity, predicate: predicate)

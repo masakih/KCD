@@ -21,7 +21,10 @@ class FleetManager: NSObject {
     private(set) var fleets: [Fleet] = []
     private var fleetController: NSArrayController!
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
+    override func observeValue(forKeyPath keyPath: String?,
+                               of object: Any?,
+                               change: [NSKeyValueChangeKey: Any]?,
+                               context: UnsafeMutableRawPointer?) {
         if keyPath == "arrangedObjects.ships" {
             setNewFleetNumberToShip()
             return

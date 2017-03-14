@@ -109,7 +109,13 @@ class EnhancementListItem: NSObject, NSCoding, NSCopying {
         self.secondsShipNames = secondsShipNames
         super.init()
     }
-    func replace(identifier: String? = nil, weekday: Int? = nil, equipmentType: EquipmentType? = nil, targetEquipment: String? = nil, remodelEquipment: String? = nil, requiredEquipments: RequiredEquipmentSet? = nil, secondsShipNames: [String]? = nil) -> EnhancementListItem {
+    func replace(identifier: String? = nil,
+                 weekday: Int? = nil,
+                 equipmentType: EquipmentType? = nil,
+                 targetEquipment: String? = nil,
+                 remodelEquipment: String? = nil,
+                 requiredEquipments: RequiredEquipmentSet? = nil,
+                 secondsShipNames: [String]? = nil) -> EnhancementListItem {
         return EnhancementListItem(identifier: identifier ?? self.identifier,
                                      weekday: weekday ?? self.weekday,
                                      equipmentType: equipmentType ?? self.equipmentType,

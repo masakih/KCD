@@ -55,7 +55,10 @@ class PowerUpSupportViewController: MainTabVIewItemViewController {
         shipController.addObserver(self, forKeyPath: NSSortDescriptorsBinding, context: nil)
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    override func observeValue(forKeyPath keyPath: String?,
+                               of object: Any?,
+                               change: [NSKeyValueChangeKey : Any]?,
+                               context: UnsafeMutableRawPointer?) {
         if keyPath == NSSortDescriptorsBinding {
             UserDefaults.standard.powerupSupportSortDecriptors = shipController.sortDescriptors
             return

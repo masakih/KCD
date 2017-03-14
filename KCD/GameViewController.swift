@@ -73,7 +73,8 @@ class GameViewController: NSViewController {
                 let date = DateFormatter.localizedString(from: untilDate!, dateStyle: .none, timeStyle: .medium)
                 let alert = NSAlert()
                 alert.messageText = NSLocalizedString("Reload interval is too short?", comment: "")
-                alert.informativeText = String(format: NSLocalizedString("Reload interval is too short.\nWait until %@.", comment: ""), date)
+                let format = NSLocalizedString("Reload interval is too short.\nWait until %@.", comment: "")
+                alert.informativeText = String(format: format, date)
                 alert.runModal()
                 
                 return
@@ -188,7 +189,9 @@ extension GameViewController: WebFrameLoadDelegate, WebUIDelegate {
         }
     }
     
-    func webView(_ sender: WebView!, contextMenuItemsForElement element: [AnyHashable: Any]!, defaultMenuItems: [Any]!) -> [Any]! {
+    func webView(_ sender: WebView!,
+                 contextMenuItemsForElement element: [AnyHashable: Any]!,
+                 defaultMenuItems: [Any]!) -> [Any]! {
         guard let menuItems = defaultMenuItems as? [NSMenuItem] else { return [] }
         return menuItems.flatMap {
             GameViewController.excludeMenuItemTag.contains($0.tag) ? nil : $0

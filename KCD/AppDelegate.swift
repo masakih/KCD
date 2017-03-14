@@ -72,22 +72,42 @@ class AppDelegate: NSObject {
     @IBOutlet var debugMenuItem: NSMenuItem!
     @IBOutlet var billingWindowMenuItem: NSMenuItem!
     
-    private lazy var historyWindowController: HistoryWindowController = { HistoryWindowController() }()
-    private lazy var slotItemWindowController: SlotItemWindowController = { SlotItemWindowController() }()
-    private lazy var preferencePanelController: PreferencePanelController = { PreferencePanelController() }()
-    private lazy var upgradableShipWindowController: UpgradableShipsWindowController = { UpgradableShipsWindowController() }()
-    private lazy var airBaseWindowController: AirBaseWindowController = { AirBaseWindowController() }()
-    private lazy var browserContentAdjuster: BrowserContentAdjuster = { BrowserContentAdjuster() }()
+    private lazy var historyWindowController: HistoryWindowController = {
+        HistoryWindowController()
+    }()
+    private lazy var slotItemWindowController: SlotItemWindowController = {
+        SlotItemWindowController()
+    }()
+    private lazy var preferencePanelController: PreferencePanelController = {
+        PreferencePanelController()
+    }()
+    private lazy var upgradableShipWindowController: UpgradableShipsWindowController = {
+        UpgradableShipsWindowController()
+    }()
+    private lazy var airBaseWindowController: AirBaseWindowController = {
+        AirBaseWindowController()
+    }()
+    private lazy var browserContentAdjuster: BrowserContentAdjuster = {
+        BrowserContentAdjuster()
+    }()
     private(set) lazy var screenshotListWindowController: ScreenshotListWindowController = {
         let wc = ScreenshotListWindowController()
         let _ = wc.window
         return wc
     }()
     
-    private lazy var shipWindowController: ShipWindowController = { ShipWindowController() }()
-    private lazy var shipMDWindowController: ShipMasterDetailWindowController = { ShipMasterDetailWindowController() } ()
-    private lazy var equipmentWindowController: EquipmentWindowController = { EquipmentWindowController() }()
-    private lazy var mapWindowController: MapWindowController = { MapWindowController() }()
+    private lazy var shipWindowController: ShipWindowController = {
+        ShipWindowController()
+    }()
+    private lazy var shipMDWindowController: ShipMasterDetailWindowController = {
+        ShipMasterDetailWindowController()
+    } ()
+    private lazy var equipmentWindowController: EquipmentWindowController = {
+        EquipmentWindowController()
+    }()
+    private lazy var mapWindowController: MapWindowController = {
+        MapWindowController()
+    }()
     
     private var browserWindowControllers: [ExternalBrowserWindowController] = []
     private var updaters: [() -> Void] = []
@@ -147,7 +167,9 @@ class AppDelegate: NSObject {
         browser.window?.makeKeyAndOrderFront(nil)
         var token: NSObjectProtocol! = nil
         token = NotificationCenter.default
-            .addObserver(forName: .NSWindowWillClose, object: browser.window, queue: nil) { [unowned self] notification in
+            .addObserver(forName: .NSWindowWillClose,
+                         object: browser.window,
+                         queue: nil) { [unowned self] notification in
                 NotificationCenter.default.removeObserver(token)
                 if let obj = notification.object as? NSWindow,
                     let index = self.browserWindowControllers.index(where: { $0.window == obj })
@@ -351,7 +373,8 @@ extension AppDelegate: NSApplicationDelegate {
 }
 
 extension AppDelegate: NSUserNotificationCenterDelegate {
-    func userNotificationCenter(_ center: NSUserNotificationCenter, shouldPresent notification: NSUserNotification) -> Bool {
+    func userNotificationCenter(_ center: NSUserNotificationCenter,
+                                shouldPresent notification: NSUserNotification) -> Bool {
         return true
     }
 }

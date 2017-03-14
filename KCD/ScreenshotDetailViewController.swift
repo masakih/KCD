@@ -32,7 +32,10 @@ class ScreenshotDetailViewController: BridgeViewController {
         updateSelections()
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
+    override func observeValue(forKeyPath keyPath: String?,
+                               of object: Any?,
+                               change: [NSKeyValueChangeKey: Any]?,
+                               context: UnsafeMutableRawPointer?) {
         if keyPath == NSSelectionIndexesBinding {
             updateSelections()
             return

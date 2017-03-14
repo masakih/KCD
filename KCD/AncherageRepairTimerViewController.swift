@@ -25,7 +25,7 @@ class AncherageRepairTimerViewController: NSViewController {
         willSet {
             if controlSize == newValue { return }
             var frame = view.frame
-            frame.size.height = newValue == .regular ? AncherageRepairTimerViewController.regularHeight : AncherageRepairTimerViewController.smallHeight
+            frame.size.height = (newValue == .regular ? type(of: self).regularHeight : type(of: self).smallHeight)
             view.frame = frame
             
             var buttonFrame = screenshotButton.frame
@@ -56,7 +56,10 @@ class AncherageRepairTimerViewController: NSViewController {
         view.trackingAreas.forEach {
             view.removeTrackingArea($0)
         }
-        trackingArea = NSTrackingArea(rect: screenshotButton.frame, options: [.mouseEnteredAndExited, .activeInActiveApp], owner: self, userInfo: nil)
+        trackingArea = NSTrackingArea(rect: screenshotButton.frame,
+                                      options: [.mouseEnteredAndExited, .activeInActiveApp],
+                                      owner: self,
+                                      userInfo: nil)
         view.addTrackingArea(trackingArea!)
     }
     

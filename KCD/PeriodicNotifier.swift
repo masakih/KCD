@@ -58,6 +58,10 @@ class PeriodicNotifier: NSObject {
         guard let nextNotifyDate = Calendar.current.date(from: currentDay)
             else { fatalError("Can not create time of notify") }
         let nextNotifyTime = nextNotifyDate.timeIntervalSinceNow + 0.1
-        Timer.scheduledTimer(timeInterval: nextNotifyTime, target: self, selector: .notifyIfNeeded, userInfo: nil, repeats: false)
+        Timer.scheduledTimer(timeInterval: nextNotifyTime,
+                             target: self,
+                             selector: .notifyIfNeeded,
+                             userInfo: nil,
+                             repeats: false)
     }
 }

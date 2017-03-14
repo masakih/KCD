@@ -39,7 +39,11 @@ class StrokeTextFieldCell: NSTextFieldCell {
         textStorage.addLayoutManager(layoutManager)
         let range = layoutManager.glyphRange(for: textContainer)
         let glyph = UnsafeMutablePointer<CGGlyph>.allocate(capacity: range.length)
-        let glyphLength = layoutManager.getGlyphs(in: range, glyphs: glyph, properties: nil, characterIndexes: nil, bidiLevels: nil)
+        let glyphLength = layoutManager.getGlyphs(in: range,
+                                                  glyphs: glyph,
+                                                  properties: nil,
+                                                  characterIndexes: nil,
+                                                  bidiLevels: nil)
         var point = NSPoint(x: StrokeTextFieldCell.boarderWidth, y: 0)
         point.y -= font.descender
         if controlView.isFlipped {

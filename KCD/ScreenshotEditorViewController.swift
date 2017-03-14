@@ -104,7 +104,10 @@ class ScreenshotEditorViewController: BridgeViewController {
         doneButton.action = .done
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    override func observeValue(forKeyPath keyPath: String?,
+                               of object: Any?,
+                               change: [NSKeyValueChangeKey : Any]?,
+                               context: UnsafeMutableRawPointer?) {
         if keyPath == NSSelectionIndexesBinding {
             updateSelections()
             return
@@ -158,7 +161,10 @@ class ScreenshotEditorViewController: BridgeViewController {
                     guard let originalImage = NSImage(contentsOf: $0.url) else { return nil }
                     let trimedImage = NSImage(size: self.currentTrimInfo.rect.size)
                     trimedImage.lockFocus()
-                    originalImage.draw(at: .zero, from: self.currentTrimInfo.rect, operation: NSCompositeCopy, fraction: 1.0)
+                    originalImage.draw(at: .zero,
+                                       from: self.currentTrimInfo.rect,
+                                       operation: NSCompositeCopy,
+                                       fraction: 1.0)
                     trimedImage.unlockFocus()
                     
                     return trimedImage

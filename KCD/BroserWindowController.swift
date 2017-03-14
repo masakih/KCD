@@ -351,7 +351,10 @@ extension BroserWindowController {
         case .below:
             flashY = contentHeight - flashRect.height
         case .divided:
-            flashY = contentHeight - flashRect.height - fleetViewController.upsideHeight - BroserWindowController.margin
+            flashY = contentHeight
+                - flashRect.height
+                - fleetViewController.upsideHeight
+                - BroserWindowController.margin
         case .oldStyle:
             flashY = contentHeight - flashRect.height - BroserWindowController.flashTopMargin
         }
@@ -371,13 +374,23 @@ extension BroserWindowController {
             fleetViewY = contentHeight - fleetViewHeight
         case .below:
             fleetViewHeight = fleetViewController.normalHeight
-            fleetViewY = contentHeight - fleetViewHeight - flashRect.height - BroserWindowController.margin
+            fleetViewY = contentHeight
+                - fleetViewHeight
+                - flashRect.height
+                - BroserWindowController.margin
         case .divided:
-            fleetViewHeight = fleetViewController.normalHeight + flashRect.height + BroserWindowController.margin + BroserWindowController.margin
+            fleetViewHeight = fleetViewController.normalHeight
+                + flashRect.height
+                + BroserWindowController.margin
+                + BroserWindowController.margin
             fleetViewY = contentHeight - fleetViewHeight
         case .oldStyle:
             fleetViewHeight = FleetViewController.oldStyleFleetViewHeight
-            fleetViewY = contentHeight - fleetViewHeight - flashRect.height - BroserWindowController.margin - BroserWindowController.flashTopMargin
+            fleetViewY = contentHeight
+                - fleetViewHeight
+                - flashRect.height
+                - BroserWindowController.margin
+                - BroserWindowController.flashTopMargin
         }
         fleetListRect.size.height = fleetViewHeight
         fleetListRect.origin.y = fleetViewY
@@ -449,7 +462,10 @@ extension BroserWindowController {
             var array: NSArray = []
             Bundle.main.loadNibNamed("BroswerTouchBar", owner: self, topLevelObjects: &array)
             
-            shipTypeSegment.bind(NSSelectedIndexBinding, to: tabViewItemViewControllers[0], withKeyPath: "selectedShipType", options: nil)
+            shipTypeSegment.bind(NSSelectedIndexBinding,
+                                 to: tabViewItemViewControllers[0],
+                                 withKeyPath: "selectedShipType",
+                                 options: nil)
             let o = selectedMainTabIndex
             selectedMainTabIndex = o
             
@@ -459,7 +475,10 @@ extension BroserWindowController {
                 guard let button = self.shipTypeButton.view as? NSButton else { return }
                 let vc = self.tabViewItemViewControllers[newValue]
                 button.isHidden = !vc.hasShipTypeSelector
-                self.shipTypeSegment.bind(NSSelectedIndexBinding, to: vc, withKeyPath: "selectedShipType", options: nil)
+                self.shipTypeSegment.bind(NSSelectedIndexBinding,
+                                          to: vc,
+                                          withKeyPath: "selectedShipType",
+                                          options: nil)
             }
         }
         return mainTouchBar

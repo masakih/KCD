@@ -72,17 +72,22 @@ extension BridgeViewController: NSSharingServicePickerDelegate, ScreenshotSharin
     }
 }
 extension BridgeViewController: NSSharingServiceDelegate {
-    func sharingServicePicker(_ sharingServicePicker: NSSharingServicePicker, delegateFor sharingService: NSSharingService) -> NSSharingServiceDelegate? {
+    func sharingServicePicker(_ sharingServicePicker: NSSharingServicePicker,
+                              delegateFor sharingService: NSSharingService) -> NSSharingServiceDelegate? {
         return self
     }
     
     func sharingService(_ sharingService: NSSharingService, sourceFrameOnScreenForShareItem item: Any) -> NSRect {
         return self.view.window?.convertToScreen(contentRect) ?? .zero
     }
-    func sharingService(_ sharingService: NSSharingService, transitionImageForShareItem item: Any, contentRect: UnsafeMutablePointer<NSRect>) -> NSImage? {
+    func sharingService(_ sharingService: NSSharingService,
+                        transitionImageForShareItem item: Any,
+                        contentRect: UnsafeMutablePointer<NSRect>) -> NSImage? {
         return item as? NSImage
     }
-    func sharingService(_ sharingService: NSSharingService, sourceWindowForShareItems items: [Any], sharingContentScope: UnsafeMutablePointer<NSSharingContentScope>) -> NSWindow? {
+    func sharingService(_ sharingService: NSSharingService,
+                        sourceWindowForShareItems items: [Any],
+                        sharingContentScope: UnsafeMutablePointer<NSSharingContentScope>) -> NSWindow? {
         return view.window
     }
 }

@@ -113,7 +113,10 @@ class ExternalBrowserWindowController: NSWindowController {
         webView.applicationNameForUserAgent = AppDelegate.shared.appNameForUserAgent
         webView.frameLoadDelegate = self
     }
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
+    override func observeValue(forKeyPath keyPath: String?,
+                               of object: Any?,
+                               change: [NSKeyValueChangeKey: Any]?,
+                               context: UnsafeMutableRawPointer?) {
         if keyPath == "canGoBack" {
             goSegment.setEnabled(webView.canGoBack, forSegment: 0)
             return
@@ -310,11 +313,19 @@ extension ExternalBrowserWindowController: WebFrameLoadDelegate, WebPolicyDelega
     }
     func webView(_ sender: WebView!, didFinishLoadFor frame: WebFrame!) {
         if let waitingBookmarkItem = waitingBookmarkItem {
-            Timer.scheduledTimer(timeInterval: waitingBookmarkItem.scrollDelay, target: self, selector: .updateContentVisibleRect, userInfo: waitingBookmarkItem, repeats: false)
+            Timer.scheduledTimer(timeInterval: waitingBookmarkItem.scrollDelay,
+                                 target: self,
+                                 selector: .updateContentVisibleRect,
+                                 userInfo: waitingBookmarkItem,
+                                 repeats: false)
         }
         waitingBookmarkItem = nil
     }
-    func webView(_ webView: WebView!, decidePolicyForNavigationAction actionInformation: [AnyHashable: Any]!, request: URLRequest!, frame: WebFrame!, decisionListener listener: WebPolicyDecisionListener!) {
+    func webView(_ webView: WebView!,
+                 decidePolicyForNavigationAction actionInformation: [AnyHashable: Any]!,
+                 request: URLRequest!,
+                 frame: WebFrame!,
+                 decisionListener listener: WebPolicyDecisionListener!) {
         if actionInformation?[WebActionNavigationTypeKey] as? WebNavigationType == .linkClicked {
             if canMovePage {
                 listener.use()

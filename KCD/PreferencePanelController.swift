@@ -37,7 +37,8 @@ class PreferencePanelController: NSWindowController {
         set {
             AppDelegate.shared.screenShotSaveDirectory = newValue
             
-            let index = screenShotSaveDirectoryPopUp.indexOfItem(withTag: ScreenshotSaveDirectoryPopupMenuItemTag.saveDirectory.rawValue)
+            let index = screenShotSaveDirectoryPopUp
+                .indexOfItem(withTag: ScreenshotSaveDirectoryPopupMenuItemTag.saveDirectory.rawValue)
             guard let item = screenShotSaveDirectoryPopUp.item(at: index)
                 else { return }
             
@@ -78,7 +79,8 @@ class PreferencePanelController: NSWindowController {
         panel.canChooseDirectories = true
         panel.canChooseFiles = false
         panel.beginSheetModal(for: window) {
-            self.screenShotSaveDirectoryPopUp.selectItem(withTag: ScreenshotSaveDirectoryPopupMenuItemTag.saveDirectory.rawValue)
+            self.screenShotSaveDirectoryPopUp
+                .selectItem(withTag: ScreenshotSaveDirectoryPopupMenuItemTag.saveDirectory.rawValue)
             guard $0 != NSModalResponseCancel,
                 let path = panel.url?.path
                 else { return }

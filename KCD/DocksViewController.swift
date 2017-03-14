@@ -117,7 +117,8 @@ class DocksViewController: MainTabVIewItemViewController {
             return String(format: format, arguments: [fleetName, areaName, areaNumber])
         }
         if isBossCell {
-            let format = NSLocalizedString("%@ battle against the enemy main fleet at %@ war zone in %@ (%@) now", comment: "Sortie")
+            let format = NSLocalizedString("%@ battle against the enemy main fleet at %@ war zone in %@ (%@) now",
+                                           comment: "Sortie")
             return String(format: format, arguments: [fleetName, battleCellNumber as NSNumber, areaName, areaNumber])
         }
         let format = NSLocalizedString("%@ battle at %@ war zone in %@ (%@) now", comment: "Sortie")
@@ -149,7 +150,10 @@ class DocksViewController: MainTabVIewItemViewController {
         #endif
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
+    override func observeValue(forKeyPath keyPath: String?,
+                               of object: Any?,
+                               change: [NSKeyValueChangeKey: Any]?,
+                               context: UnsafeMutableRawPointer?) {
         if keyPath == "selection" || keyPath == "content.battleCell" {
             willChangeValue(forKey: "sortieString")
             didChangeValue(forKey: "sortieString")

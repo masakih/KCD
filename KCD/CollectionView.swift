@@ -19,7 +19,10 @@ class CollectionView: NSCollectionView {
         self.removeObserver(self, forKeyPath: "selectionIndexPaths")
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    override func observeValue(forKeyPath keyPath: String?,
+                               of object: Any?,
+                               change: [NSKeyValueChangeKey : Any]?,
+                               context: UnsafeMutableRawPointer?) {
         if let o = object as? CollectionView, o == self {
             if !QLPreviewPanel.sharedPreviewPanelExists() { return }
             if !QLPreviewPanel.shared().isVisible { return }

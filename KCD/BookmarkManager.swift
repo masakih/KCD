@@ -76,7 +76,9 @@ class BookmarkManager: NSObject, NSMenuDelegate {
         }
         
         bookmarks.forEach {
-            let item = NSMenuItem(title: $0.name, action:  #selector(ExternalBrowserWindowController.selectBookmark(_:)), keyEquivalent: "")
+            let item = NSMenuItem(title: $0.name,
+                                  action:  #selector(ExternalBrowserWindowController.selectBookmark(_:)),
+                                  keyEquivalent: "")
             item.representedObject = $0
             bookmarkMenu.addItem(item)
         }

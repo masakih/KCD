@@ -31,7 +31,8 @@ class Fleet: NSObject {
         deckController.managedObjectContext = ServerDataStore.default.managedObjectContext
         deckController.fetchPredicate = NSPredicate(format: "id = %ld", number)
         let req = NSFetchRequest<NSFetchRequestResult>()
-        req.entity = NSEntityDescription.entity(forEntityName: Deck.entityName, in: deckController.managedObjectContext!)
+        req.entity = NSEntityDescription.entity(forEntityName: Deck.entityName,
+                                                in: deckController.managedObjectContext!)
         req.predicate = deckController.fetchPredicate
         do {
             try deckController.fetch(with: req, merge: false)
@@ -61,7 +62,10 @@ class Fleet: NSObject {
     
     subscript(_ index: Int) -> Ship? { return deck?[index] }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    override func observeValue(forKeyPath keyPath: String?,
+                               of object: Any?,
+                               change: [NSKeyValueChangeKey : Any]?,
+                               context: UnsafeMutableRawPointer?) {
         if context == &pDeckContext {
             ships = (0..<6).flatMap { return self[$0] }
             return

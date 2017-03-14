@@ -88,16 +88,25 @@ extension BookmarkListViewController: NSTableViewDelegate, NSTableViewDataSource
             else { return nil }
         return objects[row]
     }
-    func tableView(_ tableView: NSTableView, draggingSession session: NSDraggingSession, willBeginAt screenPoint: NSPoint, forRowIndexes rowIndexes: IndexSet) {
+    func tableView(_ tableView: NSTableView,
+                   draggingSession session: NSDraggingSession,
+                   willBeginAt screenPoint: NSPoint,
+                   forRowIndexes rowIndexes: IndexSet) {
         guard let first = rowIndexes.first,
             let last = rowIndexes.last
             else { return }
         objectRange = first...last
     }
-    func tableView(_ tableView: NSTableView, draggingSession session: NSDraggingSession, endedAt screenPoint: NSPoint, operation: NSDragOperation) {
+    func tableView(_ tableView: NSTableView,
+                   draggingSession session: NSDraggingSession,
+                   endedAt screenPoint: NSPoint,
+                   operation: NSDragOperation) {
         objectRange = 0...0
     }
-    func tableView(_ tableView: NSTableView, validateDrop info: NSDraggingInfo, proposedRow row: Int, proposedDropOperation dropOperation: NSTableViewDropOperation) -> NSDragOperation {
+    func tableView(_ tableView: NSTableView,
+                   validateDrop info: NSDraggingInfo,
+                   proposedRow row: Int,
+                   proposedDropOperation dropOperation: NSTableViewDropOperation) -> NSDragOperation {
         guard dropOperation == .above,
             !(objectRange ~= row),
             let tableView = info.draggingSource() as? NSTableView,
@@ -105,7 +114,10 @@ extension BookmarkListViewController: NSTableViewDelegate, NSTableViewDataSource
             else { return [] }
         return .move
     }
-    func tableView(_ tableView: NSTableView, acceptDrop info: NSDraggingInfo, row: Int, dropOperation: NSTableViewDropOperation) -> Bool {
+    func tableView(_ tableView: NSTableView,
+                   acceptDrop info: NSDraggingInfo,
+                   row: Int,
+                   dropOperation: NSTableViewDropOperation) -> Bool {
         tableView.beginUpdates()
         defer { tableView.endUpdates() }
         

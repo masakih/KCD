@@ -76,6 +76,24 @@ class TiledImageView: NSView {
         }
     }
     
+    // 市松模様を描画
+    private func drawCheckerIn(_ image: NSImage, checkerSize: Int = 10) {
+        let size = image.size
+        image.lockFocus()
+        NSColor.white.setFill()
+        NSRectFill(NSRect(origin: .zero, size: size))
+        NSColor.lightGray.setFill()
+        let colTileNum: Int = Int(size.width / CGFloat(checkerSize))
+        let rowTileNum: Int = Int(size.height / CGFloat(checkerSize))
+        for i in 0..<colTileNum {
+            for j in 0..<rowTileNum {
+                if i % 2 == 0 && j % 2 == 1 { continue }
+                if i % 2 == 1 && j % 2 == 0 { continue }
+                NSRectFill(NSRect(x: i * checkerSize, y: j * checkerSize, width: checkerSize, height: checkerSize))
+            }
+        }
+        image.unlockFocus()
+    }
     fileprivate func calcImagePosition() {
         let imageCount = images.count
         if imageCount == 0 {
@@ -87,29 +105,15 @@ class TiledImageView: NSView {
         DispatchQueue(label: "makeTrimedImage queue").async {
             let numberOfCol = imageCount < self.columnCount ? imageCount : self.columnCount
             let numberOfRow = imageCount / self.columnCount + ((imageCount % self.columnCount != 0) ? 1 : 0)
-            let tiledImage = NSImage(size: NSSize(width: size.width * CGFloat(numberOfCol), height: size.height * CGFloat(numberOfRow)))
+            let tiledImage = NSImage(size: NSSize(width: size.width * CGFloat(numberOfCol),
+                                                  height: size.height * CGFloat(numberOfRow)))
             
-            // 市松模様を描画
-            tiledImage.lockFocus()
-            NSColor.white.setFill()
-            NSRectFill(NSRect(x: 0, y: 0, width: size.width * CGFloat(numberOfCol), height: size.height * CGFloat(numberOfRow)))
-            NSColor.lightGray.setFill()
-            let tileSize = 10
-            let colTileNum: Int = Int((size.width * CGFloat(numberOfCol)) / CGFloat(tileSize))
-            let rowTileNum: Int = Int((size.height * CGFloat(numberOfRow)) / CGFloat(tileSize))
-            for i in 0..<colTileNum {
-                for j in 0..<rowTileNum {
-                    if i % 2 == 0 && j % 2 == 1 { continue }
-                    if i % 2 == 1 && j % 2 == 0 { continue }
-                    NSRectFill(NSRect(x: i * tileSize, y: j * tileSize, width: tileSize, height: tileSize))
-                }
-            }
-            tiledImage.unlockFocus()
+            self.drawCheckerIn(tiledImage)
             
             // 画像の描画
             let offset = (0..<self.images.count).map {
                 NSPoint(x: CGFloat($0 % self.columnCount) * size.width,
-                       y: size.height * CGFloat(numberOfRow) - CGFloat($0 / self.columnCount + 1) * size.height)
+                        y: size.height * CGFloat(numberOfRow) - CGFloat($0 / self.columnCount + 1) * size.height)
             }
             let imageRect = NSRect(origin: .zero, size: size)
             tiledImage.lockFocus()
@@ -117,9 +121,7 @@ class TiledImageView: NSView {
                 $0.0.draw(at: $0.1, from: imageRect, operation: NSCompositeCopy, fraction: 1.0)
             }
             tiledImage.unlockFocus()
-            let newInfos = offset.map {
-                TitledImageCellInformation(with: NSRect(origin: $0, size: size))
-            }
+            let newInfos = offset.map { TitledImageCellInformation(with: NSRect(origin: $0, size: size)) }
             
             DispatchQueue.main.sync {
                 self.imageCell.image = tiledImage
@@ -128,7 +130,7 @@ class TiledImageView: NSView {
             }
         }
     }
-    
+    // swiftlint:disable:next line_length
     private func calcurated(trackingAreaInfo originalInfos: [TitledImageCellInformation]) -> [TitledImageCellInformation] {
         guard let size = imageCell.image?.size else { return originalInfos }
         let bounds = self.bounds
@@ -142,12 +144,10 @@ class TiledImageView: NSView {
                       y: (bounds.height - size.height) / 2)
         } else if ratioX > ratioY {
             ratio = ratioY
-            offset = (x: 0,
-                      y: (bounds.height - size.height * ratio) / 2)
+            offset = (x: 0, y: (bounds.height - size.height * ratio) / 2)
         } else {
             ratio = ratioX
-            offset = (x: (bounds.width - size.width * ratio) / 2,
-                      y: 0)
+            offset = (x: (bounds.width - size.width * ratio) / 2, y: 0)
         }
         
         return originalInfos.map {
@@ -155,9 +155,7 @@ class TiledImageView: NSView {
                    y: $0.frame.minY * ratio + offset.y,
                    width: $0.frame.width * ratio,
                    height: $0.frame.height * ratio)
-            }.map {
-                TitledImageCellInformation(with: $0)
-        }
+            }.map { TitledImageCellInformation(with: $0) }
     }
     fileprivate func removeAllTrackingAreas() {
         trackingAreas.forEach { removeTrackingArea($0) }
@@ -195,7 +193,8 @@ extension TiledImageView {
         let mouse = convert(event.locationInWindow, from: nil)
         infos.enumerated().forEach {
             if !NSMouseInRect(mouse, $0.element.frame, isFlipped) { return }
-            guard let pItem = NSPasteboardItem(pasteboardPropertyList: $0.offset, ofType: TiledImageView.privateDraggingUTI)
+            guard let pItem = NSPasteboardItem(pasteboardPropertyList: $0.offset,
+                                               ofType: TiledImageView.privateDraggingUTI)
                 else { fatalError() }
             let item = NSDraggingItem(pasteboardWriter: pItem)
             item.setDraggingFrame($0.element.frame, contents: images[$0.offset])
@@ -209,7 +208,8 @@ extension TiledImageView {
 }
 
 extension TiledImageView: NSDraggingSource {
-    func draggingSession(_ session: NSDraggingSession, sourceOperationMaskFor context: NSDraggingContext) -> NSDragOperation {
+    func draggingSession(_ session: NSDraggingSession,
+                         sourceOperationMaskFor context: NSDraggingContext) -> NSDragOperation {
         return context == .withinApplication ? .move : []
     }
     override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
