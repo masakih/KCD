@@ -25,9 +25,7 @@ class SlotItemWindowController: NSWindowController {
     }
     
     var showEquipmentType: Int {
-        get {
-            return UserDefaults.standard.showEquipmentType.rawValue
-        }
+        get { return UserDefaults.standard.showEquipmentType.rawValue }
         set {
             willChangeValue(forKey: "showEquipmentTypeTitle")
             UserDefaults.standard.showEquipmentType = ShowType(rawValue: newValue) ?? .all
@@ -73,12 +71,8 @@ fileprivate var objectForTouchBar: [Int: NSTouchBar] = [:]
 @available(OSX 10.12.2, *)
 extension SlotItemWindowController {
     @IBOutlet var myTouchBar: NSTouchBar? {
-        get {
-            return objectForTouchBar[hash]
-        }
-        set {
-            objectForTouchBar[hash] = newValue
-        }
+        get { return objectForTouchBar[hash] }
+        set { objectForTouchBar[hash] = newValue }
     }
 
     override var touchBar: NSTouchBar? {

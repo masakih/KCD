@@ -99,13 +99,9 @@ class AirBaseWindowController: NSWindowController {
     }
     
     private func updatePlaneSegment() {
-        guard let content = airBaseController.content as? NSArray else { return }
+        guard let content = airBaseController.content as? [AirBase] else { return }
         let area = NSCountedSet()
-        content.forEach {
-            if let i = ($0 as? AirBase)?.area_id {
-                area.add(i)
-            }
-        }
+        content.forEach { area.add($0.area_id) }
         let count = area.count(for: areaId)
         [0, 1, 2].forEach { squadronTab.setEnabled($0 < count, forSegment: $0) }
     }

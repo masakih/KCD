@@ -32,12 +32,8 @@ class ResourceViewController: NSViewController {
         return NSColor.controlTextColor
     }
     dynamic var minimumColoredShipCount: Int {
-        get {
-            return UserDefaults.standard.minimumColoredShipCount
-        }
-        set {
-            UserDefaults.standard.minimumColoredShipCount = newValue
-        }
+        get { return UserDefaults.standard.minimumColoredShipCount }
+        set { UserDefaults.standard.minimumColoredShipCount = newValue }
     }
     override var nibName: String! {
         return "ResourceViewController"

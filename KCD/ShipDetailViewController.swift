@@ -16,12 +16,9 @@ enum ShipDetailViewType {
 
 private func nibNameFor(_ type: ShipDetailViewType) -> String {
     switch type {
-    case .full:
-        return "ShipDetailViewController"
-    case .medium:
-        return "MediumShipViewController"
-    case .minimum:
-        return "MediumShipViewController"
+    case .full: return "ShipDetailViewController"
+    case .medium: return "MediumShipViewController"
+    case .minimum: return "MediumShipViewController"
     }
 }
 
@@ -68,9 +65,7 @@ class ShipDetailViewController: NSViewController {
         }
     }
     dynamic var ship: Ship? {
-        get {
-            return shipController.content as? Ship
-        }
+        get { return shipController.content as? Ship }
         set {
             shipController.fetchPredicate = NSPredicate(format: "id = %ld", newValue?.id ?? 0)
         }

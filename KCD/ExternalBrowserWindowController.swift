@@ -78,12 +78,8 @@ class ExternalBrowserWindowController: NSWindowController {
         }
     }
     var contentVisibleRect: NSRect {
-        get {
-            return webView.mainFrame.frameView.documentView.visibleRect
-        }
-        set {
-            webView.mainFrame.frameView.documentView.scrollToVisible(newValue)
-        }
+        get { return webView.mainFrame.frameView.documentView.visibleRect }
+        set { webView.mainFrame.frameView.documentView.scrollToVisible(newValue) }
     }
     
     fileprivate var bookmarkShowing: Bool = false

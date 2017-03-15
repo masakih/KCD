@@ -13,7 +13,6 @@ class ScreenshotDetailViewController: BridgeViewController {
         arrayController.removeObserver(self, forKeyPath: NSSelectionIndexesBinding)
     }
     
-    
     @IBOutlet var imageView: ImageView!
     
     override var nibName: String! {

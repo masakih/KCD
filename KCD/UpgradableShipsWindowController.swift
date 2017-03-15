@@ -25,12 +25,8 @@ class UpgradableShipsWindowController: NSWindowController {
     }
     
     private var excludeShiIDsCache: [Int] {
-        get {
-            return UpgradableShipsWindowController.excludeShiIDsCache
-        }
-        set {
-            UpgradableShipsWindowController.excludeShiIDsCache = newValue
-        }
+        get { return UpgradableShipsWindowController.excludeShiIDsCache }
+        set { UpgradableShipsWindowController.excludeShiIDsCache = newValue }
     }
     private func isExcludeShipID(_ shipID: Int) -> Bool {
         return excludeShiIDsCache.contains(shipID)
@@ -46,8 +42,8 @@ class UpgradableShipsWindowController: NSWindowController {
     }
     
     dynamic var filterPredicate: NSPredicate? {
-        var filterPredicate: NSPredicate? = nil
-        var excludeShip: NSPredicate? = nil
+        var filterPredicate: NSPredicate?
+        var excludeShip: NSPredicate?
         if showLevelOneShipInUpgradableList == false {
             filterPredicate = NSPredicate(format: "lv != 1")
         }
@@ -66,25 +62,15 @@ class UpgradableShipsWindowController: NSWindowController {
     }
     
     var showLevelOneShipInUpgradableList: Bool {
-        get {
-            return UserDefaults.standard.showLevelOneShipInUpgradableList
-        }
-        set {
-            UserDefaults.standard.showLevelOneShipInUpgradableList = newValue
-        }
+        get { return UserDefaults.standard.showLevelOneShipInUpgradableList }
+        set { UserDefaults.standard.showLevelOneShipInUpgradableList = newValue }
     }
     var showsExcludedShipInUpgradableList: Bool {
-        get {
-            return UserDefaults.standard.showsExcludedShipInUpgradableList
-        }
-        set {
-            UserDefaults.standard.showsExcludedShipInUpgradableList = newValue
-        }
+        get { return UserDefaults.standard.showsExcludedShipInUpgradableList }
+        set { UserDefaults.standard.showsExcludedShipInUpgradableList = newValue }
     }
     var excludeShiIDs: [Int] {
-        get {
-            return (NSArray(contentsOf: excludeShipIDsSaveURL) as? [Int]) ?? []
-        }
+        get { return (NSArray(contentsOf: excludeShipIDsSaveURL) as? [Int]) ?? [] }
         set {
             willChangeValue(forKey: "filterPredicate")
             (newValue as NSArray).write(to: excludeShipIDsSaveURL, atomically: true)

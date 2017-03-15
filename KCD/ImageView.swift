@@ -41,7 +41,6 @@ class ImageView: NSView {
     }
     
     override func draw(_ dirtyRect: NSRect) {
-        let bounds = self.bounds
         NSColor.controlBackgroundColor.set()
         NSBezierPath.stroke(bounds)
         

@@ -31,7 +31,7 @@ class MissionStatus: NSObject {
     }
     
     init?(number: Int) {
-        guard (2...4).contains(number) else { return nil }
+        guard 2...4 ~= number else { return nil }
         self.number = number
         controller = NSArrayController()
         super.init()

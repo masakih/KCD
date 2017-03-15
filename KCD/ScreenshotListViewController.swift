@@ -203,24 +203,16 @@ class ScreenshotListViewController: NSViewController {
         var current = screenshots.screenshots
         let newFiles: [URL] = f.flatMap {
             guard let type = try? ws.type(ofFile: $0.path) else { return nil }
-            if imageTypes.contains(type) {
-                return $0
-            }
-            return nil
+            return imageTypes.contains(type) ? $0 : nil
         }
         
         // なくなっているものを削除
         current = current.filter { newFiles.contains($0.url) }
         
         // 新しいものを追加
-        let new: [ScreenshotInformation] = newFiles.flatMap { (url) in
-            let index = current.index(where: { (info) -> Bool in
-                url == info.url
-            })
-            if index == nil {
-                return ScreenshotInformation(url: url)
-            }
-            return nil
+        let new: [ScreenshotInformation] = newFiles.flatMap { url in
+            let index = current.index { (info) -> Bool in url == info.url }
+            return index == nil ? ScreenshotInformation(url: url) : nil
         }
         
         screenshots.screenshots = current + new
@@ -279,10 +271,10 @@ extension ScreenshotListViewController {
         reloadData()
     }
     @IBAction func delete(_ sender: AnyObject?) {
-        let posixPaths = selectionInformations
+        let list = selectionInformations
             .map { $0.url.path }
             .map { "(\"\($0)\" as POSIX file)" }
-        let list = posixPaths.joined(separator: " , ")
+            .joined(separator: " , ")
         let script = "tell application \"Finder\"\n"
         + "    delete { \(list) }\n"
         + "end tell"
@@ -350,7 +342,7 @@ extension ScreenshotListViewController: NSTouchBarDelegate {
         screenshotTouchBar.defaultItemIdentifiers = identifiers
         
         if collectionVisibleDidChangeHandler == nil {
-            collectionVisibleDidChangeHandler = { [unowned self] (visible) in
+            collectionVisibleDidChangeHandler = { [unowned self] visible in
                 guard let objects = self.arrangedInformations else { return }
                 guard let index = visible.first else { return }
                 let middle = index.item + visible.count / 2
@@ -360,7 +352,7 @@ extension ScreenshotListViewController: NSTouchBarDelegate {
             }
         }
         if collectionSelectionDidChangeHandler == nil {
-            collectionSelectionDidChangeHandler = { [unowned self] (index) in
+            collectionSelectionDidChangeHandler = { [unowned self] index in
                 self.scrubber.selectedIndex = index
             }
         }

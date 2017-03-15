@@ -49,7 +49,6 @@ class ScreenshotInformation: NSObject, NSCoding {
     
     func incrementVersion() { version = version + 1 }
     
-    
     // MARK: - NSCoding
     struct CodingKey {
         static let url = "Url"

@@ -66,11 +66,11 @@ class GameViewController: NSViewController {
         adjustFlash()
         
         let prevDate = UserDefaults.standard.prevReloadDate
-        if prevDate != nil {
+        if let prevDate = prevDate {
             let now = Date(timeIntervalSinceNow: 0.0)
-            if now.timeIntervalSince(prevDate!) < 1 * 60 {
-                let untilDate = prevDate?.addingTimeInterval(1 * 60)
-                let date = DateFormatter.localizedString(from: untilDate!, dateStyle: .none, timeStyle: .medium)
+            if now.timeIntervalSince(prevDate) < 1 * 60 {
+                let untilDate = prevDate.addingTimeInterval(1 * 60)
+                let date = DateFormatter.localizedString(from: untilDate, dateStyle: .none, timeStyle: .medium)
                 let alert = NSAlert()
                 alert.messageText = NSLocalizedString("Reload interval is too short?", comment: "")
                 let format = NSLocalizedString("Reload interval is too short.\nWait until %@.", comment: "")
@@ -87,17 +87,18 @@ class GameViewController: NSViewController {
     }
     @IBAction func deleteCacheAndReload(_ sender: AnyObject?) {
         let panel = ProgressPanel()
+        guard let window = view.window,
+            let panelWindow = panel.window
+            else { return }
         panel.title = ""
         panel.message = NSLocalizedString("Deleting caches...", comment: "Deleting caches...")
         panel.animate = true
         
-        view.window?.beginSheet(panel.window!, completionHandler: { _ in
-            NSSound(named: "Submarine")?.play()
-        })
+        window.beginSheet(panelWindow) { _ in NSSound(named: "Submarine")?.play() }
         
         AppDelegate.shared.clearCache()
         
-        view.window?.endSheet(panel.window!)
+        window.endSheet(panelWindow)
     }
     @IBAction func screenShot(_ sender: AnyObject?) {
         let frame = webView.visibleRect

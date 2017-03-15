@@ -31,9 +31,7 @@ class PreferencePanelController: NSWindowController {
     }
     
     private(set) var screenShotSaveDirectory: String {
-        get {
-            return AppDelegate.shared.screenShotSaveDirectory
-        }
+        get { return AppDelegate.shared.screenShotSaveDirectory }
         set {
             AppDelegate.shared.screenShotSaveDirectory = newValue
             
@@ -94,10 +92,8 @@ class PreferencePanelController: NSWindowController {
             else { return }
         let pane: NSView = {
             switch paneType {
-            case .general:
-                return generalPane
-            case .notification:
-                return notificationPane
+            case .general: return generalPane
+            case .notification: return notificationPane
             }
         }()
 
@@ -105,9 +101,7 @@ class PreferencePanelController: NSWindowController {
             let window = self.window
             else { return }
         window.title = item.label
-        window.contentView?.subviews.forEach {
-            $0.removeFromSuperview()
-        }
+        window.contentView?.subviews.forEach { $0.removeFromSuperview() }
         
         let windowRect = window.frame
         var newWindowRect = window.frameRect(forContentRect: pane.frame)

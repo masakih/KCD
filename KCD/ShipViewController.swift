@@ -104,14 +104,10 @@ class ShipViewController: MainTabVIewItemViewController {
     fileprivate func showView(with type: ViewType) {
         let newSelection: NSView = {
             switch type {
-            case .exp:
-                return expTableView
-            case .power:
-                return powerTableView
-            case .power2:
-                return power2TableView
-            case .power3:
-                return power3TableView
+            case .exp: return expTableView
+            case .power: return powerTableView
+            case .power2: return power2TableView
+            case .power3: return power3TableView
             }
         }()
         if currentTableView == newSelection { return }

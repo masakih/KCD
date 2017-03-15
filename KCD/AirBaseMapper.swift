@@ -39,7 +39,8 @@ class AirBaseMapper: JSONMapper {
                 return false
         }
         guard let infos = airbase.planeInfo.array as? [AirBasePlaneInfo]
-            else { print("airbase is wrong")
+            else {
+                print("airbase is wrong")
                 return false
         }
         zip(infos, planeInfos).forEach { (info, dict) in

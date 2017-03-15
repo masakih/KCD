@@ -81,9 +81,7 @@ class FleetViewController: NSViewController {
         }
     }
     dynamic var fleet: Deck? {
-        get {
-            return representedObject as? Deck
-        }
+        get { return representedObject as? Deck }
         set {
             representedObject = newValue
             title = newValue?.name

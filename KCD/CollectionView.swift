@@ -21,14 +21,14 @@ class CollectionView: NSCollectionView {
     
     override func observeValue(forKeyPath keyPath: String?,
                                of object: Any?,
-                               change: [NSKeyValueChangeKey : Any]?,
+                               change: [NSKeyValueChangeKey: Any]?,
                                context: UnsafeMutableRawPointer?) {
         if let o = object as? CollectionView, o == self {
             if !QLPreviewPanel.sharedPreviewPanelExists() { return }
             if !QLPreviewPanel.shared().isVisible { return }
-            DispatchQueue.main.asyncAfter(wallDeadline: DispatchWallTime.now(), execute: {
+            DispatchQueue.main.asyncAfter(deadline: .now()) {
                 QLPreviewPanel.shared().reloadData()
-            })
+            }
             return
         }
         super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
@@ -61,8 +61,7 @@ extension CollectionView {
             var index = selectionIndexPaths.first!.item
             if event.keyCode == leftArrow && index != 0 { index -= 1 }
             if event.keyCode == rightArrow && index != content.count - 1 { index += 1 }
-            let newIndexPath = IndexPath(item: index, section: 0)
-            let set: Set<IndexPath> = [newIndexPath]
+            let set: Set<IndexPath> = [IndexPath(item: index, section: 0)]
             scrollToItems(at: set, scrollPosition: .nearestHorizontalEdge)
             selectionIndexPaths = set
             

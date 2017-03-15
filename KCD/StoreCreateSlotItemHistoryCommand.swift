@@ -27,7 +27,7 @@ class StoreCreateSlotItemHistoryCommand: JSONCommand {
             let flagShip = store.ship(byId: ship0)
             else { return print("Flagship is not found") }
         
-        guard let basic = ServerDataStore.default.basic()
+        guard let basic = store.basic()
             else { return print("Basic is wrong") }
         
         let localStore = LocalDataStore.oneTimeEditor()

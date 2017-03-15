@@ -434,53 +434,40 @@ fileprivate var shipTypeSegments: [Int: NSSegmentedControl] = [:]
 @available(OSX 10.12.2, *)
 extension BroserWindowController {
     @IBOutlet var mainTouchBar: NSTouchBar! {
-        get {
-            return mainTouchBars[hashValue]
-        }
-        set {
-            mainTouchBars[hashValue] = newValue
-        }
+        get { return mainTouchBars[hashValue] }
+        set { mainTouchBars[hashValue] = newValue }
     }
     @IBOutlet var shipTypeButton: NSPopoverTouchBarItem! {
-        get {
-            return shipTypeButtons[hashValue]
-        }
-        set {
-            shipTypeButtons[hashValue] = newValue
-        }
+        get { return shipTypeButtons[hashValue] }
+        set { shipTypeButtons[hashValue] = newValue }
     }
     @IBOutlet var shipTypeSegment: NSSegmentedControl! {
-        get {
-            return shipTypeSegments[hashValue]
-        }
-        set {
-            shipTypeSegments[hashValue] = newValue
-        }
+        get { return shipTypeSegments[hashValue] }
+        set { shipTypeSegments[hashValue] = newValue }
     }
     
     override func makeTouchBar() -> NSTouchBar? {
-        if mainTouchBar == nil {
-            var array: NSArray = []
-            Bundle.main.loadNibNamed("BroswerTouchBar", owner: self, topLevelObjects: &array)
-            
-            shipTypeSegment.bind(NSSelectedIndexBinding,
-                                 to: tabViewItemViewControllers[0],
-                                 withKeyPath: "selectedShipType",
-                                 options: nil)
-            let o = selectedMainTabIndex
-            selectedMainTabIndex = o
-            
-            changeMainTabHandler = { [unowned self] (newValue) in
-                self.shipTypeButton.dismissPopover(nil)
-                self.shipTypeSegment.unbind(NSSelectedIndexBinding)
-                guard let button = self.shipTypeButton.view as? NSButton else { return }
-                let vc = self.tabViewItemViewControllers[newValue]
-                button.isHidden = !vc.hasShipTypeSelector
-                self.shipTypeSegment.bind(NSSelectedIndexBinding,
-                                          to: vc,
-                                          withKeyPath: "selectedShipType",
-                                          options: nil)
-            }
+        if let mainTouchBar = mainTouchBar { return mainTouchBar }
+        var array: NSArray = []
+        Bundle.main.loadNibNamed("BroswerTouchBar", owner: self, topLevelObjects: &array)
+        
+        shipTypeSegment.bind(NSSelectedIndexBinding,
+                             to: tabViewItemViewControllers[0],
+                             withKeyPath: "selectedShipType",
+                             options: nil)
+        let o = selectedMainTabIndex
+        selectedMainTabIndex = o
+        
+        changeMainTabHandler = { [unowned self] newValue in
+            self.shipTypeButton.dismissPopover(nil)
+            self.shipTypeSegment.unbind(NSSelectedIndexBinding)
+            guard let button = self.shipTypeButton.view as? NSButton else { return }
+            let vc = self.tabViewItemViewControllers[newValue]
+            button.isHidden = !vc.hasShipTypeSelector
+            self.shipTypeSegment.bind(NSSelectedIndexBinding,
+                                      to: vc,
+                                      withKeyPath: "selectedShipType",
+                                      options: nil)
         }
         return mainTouchBar
     }

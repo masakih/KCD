@@ -10,21 +10,15 @@ import Cocoa
 
 class DocksViewController: MainTabVIewItemViewController {
     deinit {
-        [("deck2Time", "mission2Name"),
-         ("deck3Time", "mission3Name"),
-         ("deck4Time", "mission4Name")]
-            .forEach {
-                unbind($0.0)
-                unbind($0.1)
-        }
-        [("nDock1Time", "nDock1ShipName"),
-         ("nDock2Time", "nDock2ShipName"),
-         ("nDock3Time", "nDock3ShipName"),
-         ("nDock4Time", "nDock4ShipName")]
-            .forEach {
-                unbind($0.0)
-                unbind($0.1)
-        }
+        ["deck2Time", "mission2Name",
+         "deck3Time", "mission3Name",
+         "deck4Time", "mission4Name"]
+            .forEach { unbind($0) }
+        ["nDock1Time", "nDock1ShipName",
+         "nDock2Time", "nDock2ShipName",
+         "nDock3Time", "nDock3ShipName",
+         "nDock4Time", "nDock4ShipName"]
+            .forEach { unbind($0) }
         ["kDock1Time", "kDock2Time", "kDock3Time", "kDock4Time"]
             .forEach { unbind($0) }
         

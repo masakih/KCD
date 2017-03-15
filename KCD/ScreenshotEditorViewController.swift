@@ -57,9 +57,7 @@ class ScreenshotEditorViewController: BridgeViewController {
     @IBOutlet weak var doneButton: NSButton!
     
     var columnCount: Int {
-        get {
-            return tiledImageView.columnCount
-        }
+        get { return tiledImageView.columnCount }
         set {
             tiledImageView.columnCount = newValue
             UserDefaults.standard.screenshotEditorColumnCount = newValue
@@ -85,10 +83,10 @@ class ScreenshotEditorViewController: BridgeViewController {
         didSet {
             makeEditedImage()
             trimInfo
-                .index(where: {
+                .index {
                     if $0.name != currentTrimInfo.name { return false }
                     return $0.rect == currentTrimInfo.rect
-                })
+                }
                 .map { UserDefaults.standard.scrennshotEditorType = $0 }
         }
     }
@@ -119,12 +117,10 @@ class ScreenshotEditorViewController: BridgeViewController {
         guard let selection = arrayController.selectedObjects as? [ScreenshotInformation] else { return }
         if selection == currentSelection { return }
         let removed: [ScreenshotInformation] = currentSelection.flatMap {
-            if selection.contains($0) { return nil }
-            return $0
+            selection.contains($0) ? nil : $0
         }
         let appended: [ScreenshotInformation] = selection.flatMap {
-            if currentSelection.contains($0) { return nil }
-            return $0
+            currentSelection.contains($0) ? nil : $0
         }
         removed.forEach {
             removeEditedImage(url: $0.url)
@@ -139,7 +135,7 @@ class ScreenshotEditorViewController: BridgeViewController {
     
     private func removeEditedImage(url: URL) {
         let _ = editedImages
-            .index(where: { $0.url == url })
+            .index { $0.url == url }
             .map { editedImages.remove(at: $0) }
     }
     

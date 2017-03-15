@@ -31,9 +31,7 @@ class SuppliesView: NSControl {
     }
     
     var shipStatus: Ship? {
-        get {
-            return suppliesCell.shipStatus
-        }
+        get { return suppliesCell.shipStatus }
         set {
             observeKeys.forEach {
                 suppliesCell.shipStatus?.removeObserver(self, forKeyPath: $0)
