@@ -119,9 +119,7 @@ class AppDelegate: NSObject {
         get {
             return UserDefaults.standard.screenShotSaveDirectory ?? ApplicationDirecrories.pictures.path
         }
-        set {
-            UserDefaults.standard.screenShotSaveDirectory = newValue
-        }
+        set { UserDefaults.standard.screenShotSaveDirectory = newValue }
     }
     var screenShotSaveDirectoryURL: URL {
         return URL(fileURLWithPath: screenShotSaveDirectory)
@@ -388,12 +386,8 @@ fileprivate var objectForTouchBar: [Int: NSTouchBar] = [:]
 @available(OSX 10.12.2, *)
 extension AppDelegate: NSTouchBarProvider {
     @IBOutlet var mainTouchBar: NSTouchBar? {
-        get {
-            return objectForTouchBar[hash]
-        }
-        set {
-            objectForTouchBar[hash] = newValue
-        }
+        get { return objectForTouchBar[hash] }
+        set { objectForTouchBar[hash] = newValue }
     }
     
     var touchBar: NSTouchBar? {
