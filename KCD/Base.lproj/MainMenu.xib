@@ -72,7 +72,7 @@
                         <items>
                             <menuItem title="New Browser Window" keyEquivalent="n" id="jwh-yD-YWK">
                                 <connections>
-                                    <action selector="openNewBrowser:" target="494" id="f0y-cf-nSg"/>
+                                    <action selector="openNewBrowser:" target="-1" id="gnv-IH-H9F"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="8zj-xF-FZU"/>
@@ -286,7 +286,7 @@ CA
                             <menuItem title="Window Adjuster" id="uYj-hc-FOY">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="showWindowAduster:" target="494" id="UYl-ys-buJ"/>
+                                    <action selector="showWindowAduster:" target="-1" id="7VD-5f-Ojb"/>
                                 </connections>
                             </menuItem>
                         </items>
@@ -356,25 +356,25 @@ CA
                             <menuItem title="Show Ownership Ship Window" id="b7n-c5-oSe">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="showOwnershipShipWindow:" target="494" id="VxB-mH-VrC"/>
+                                    <action selector="showOwnershipShipWindow:" target="-1" id="zix-PZ-0Xe"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Show Ship Window" id="rWo-Pp-hLc">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="showShipWindow:" target="494" id="Esn-nC-nz7"/>
+                                    <action selector="showShipWindow:" target="-1" id="RC2-rw-NV0"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Show Equipment Window" id="GcF-z8-Ddi">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="showEquipmentWindow:" target="494" id="2Ae-6k-YpZ"/>
+                                    <action selector="showEquipmentWindow:" target="-1" id="5Wj-JN-KwF"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Show Map Window" id="bQ2-OZ-YH9">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="showMapWindow:" target="494" id="OV7-gv-unh"/>
+                                    <action selector="showMapWindow:" target="-1" id="h5j-Uw-Osp"/>
                                 </connections>
                             </menuItem>
                         </items>
@@ -404,27 +404,27 @@ CA
                             <menuItem isSeparatorItem="YES" id="amy-So-5jo"/>
                             <menuItem title="History" keyEquivalent="0" id="o9G-2b-cSn">
                                 <connections>
-                                    <action selector="showHideHistory:" target="494" id="0rp-Sl-bZf"/>
+                                    <action selector="showHideHistory:" target="-1" id="yNN-UO-MLe"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="SlotItem" keyEquivalent="e" id="1dX-yC-Onz">
                                 <connections>
-                                    <action selector="showHideSlotItemWindow:" target="-1" id="Gy1-8v-t7R"/>
+                                    <action selector="showHideSlotItemWindow:" target="-1" id="Al4-4j-qt5"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Upgradable Ship" keyEquivalent="u" id="tF1-uX-NEg">
                                 <connections>
-                                    <action selector="showHideUpgradableShipWindow:" target="-1" id="cHX-Zr-QBT"/>
+                                    <action selector="showHideUpgradableShipWindow:" target="-1" id="t1U-zr-uUG"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Screenshot List" keyEquivalent="l" id="5DA-g9-eCS">
                                 <connections>
-                                    <action selector="showHideScreenshotListWindow:" target="-1" id="Ynz-Sq-TRj"/>
+                                    <action selector="showHideScreenshotListWindow:" target="-1" id="sAK-Tq-G22"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Air Base Info" keyEquivalent="k" id="S96-gd-cGb">
                                 <connections>
-                                    <action selector="showHideAirBaseInfoWindow:" target="494" id="cQX-ax-QHm"/>
+                                    <action selector="showHideAirBaseInfoWindow:" target="-1" id="9hy-tM-AiU"/>
                                 </connections>
                             </menuItem>
                         </items>
