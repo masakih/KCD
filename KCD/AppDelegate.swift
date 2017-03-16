@@ -55,7 +55,7 @@ class AppDelegate: NSObject {
         return vc
     }()
     #else
-    private let jsonViewWindowController: JSONViewWindowController? = nil
+    let jsonViewWindowController: JSONViewWindowController? = nil
     #endif
     
     #if UI_TEST
