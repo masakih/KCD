@@ -92,7 +92,7 @@ class CalculateDamageCommand: JSONCommand {
     private func applyDamage() {
         let totalDamages = store.sortedDamagesById()
         guard totalDamages.count == 12
-            else { return print("Damages count is invalid") }
+            else { return print("Damages count is invalid. count is \(totalDamages.count).") }
         let aStore = ServerDataStore.oneTimeEditor()
         totalDamages.forEach {
             guard let ship = aStore.ship(byId: $0.shipID)
