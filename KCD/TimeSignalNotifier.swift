@@ -33,6 +33,7 @@ class TimeSignalNotifier: NSObject {
     
     func fire(_ timer: Timer) {
         defer { registerTimer() }
+        if !UserDefaults.standard.notifyTimeSignal { return }
                 
         let now = Date()
         let cal = Calendar.current
@@ -59,7 +60,7 @@ class TimeSignalNotifier: NSObject {
         let cal = Calendar.current
         var comp = cal.dateComponents([.year, .month, .day, .hour], from: now)
         let minutes = cal.component(.minute, from: now)
-        if (59 - minutes) <= notifyTimeBeforeTimeSignal {
+        if minutes + notifyTimeBeforeTimeSignal >= 60 {
             comp.hour = comp.hour! + 1
         }
         comp.minute = 60 - notifyTimeBeforeTimeSignal

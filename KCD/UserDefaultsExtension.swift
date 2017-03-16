@@ -290,8 +290,8 @@ extension UserDefaults {
     }
     
     // MARK: - Notify time signal
-    var notifyTimeSignal: Int {
-        get { return integer(forKey: "notifyTimeSignal") }
+    var notifyTimeSignal: Bool {
+        get { return bool(forKey: "notifyTimeSignal") }
         set { set(newValue, forKey: "notifyTimeSignal") }
     }
     var notifyTimeBeforeTimeSignal: Int {
