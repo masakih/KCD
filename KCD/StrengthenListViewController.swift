@@ -85,10 +85,10 @@ class StrengthenListViewController: MainTabVIewItemViewController {
         itemList = newList
     }
     private func downloadPList() {
-        downloader.download { [weak self] (array) in
+        downloader.download { [weak self] items in
             guard let `self` = self else { return }
             DispatchQueue.main.async {
-                self.equipmentStrengthenList = array
+                self.equipmentStrengthenList = items
                 self.buildList()
             }
         }
