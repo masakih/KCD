@@ -31,7 +31,7 @@ class ServerDataStore: CoreDataAccessor, CoreDataManager {
     }
     
     let core = CoreDataCore.kcd
-    var managedObjectContext: NSManagedObjectContext
+    let managedObjectContext: NSManagedObjectContext
 }
 
 extension ServerDataStore {

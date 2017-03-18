@@ -35,7 +35,7 @@ class TemporaryDataStore: CoreDataAccessor, CoreDataManager {
     }
     
     let core = CoreDataCore.temporary
-    var managedObjectContext: NSManagedObjectContext
+    let managedObjectContext: NSManagedObjectContext
 }
 
 extension TemporaryDataStore {

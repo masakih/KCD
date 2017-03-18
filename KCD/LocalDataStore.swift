@@ -32,7 +32,7 @@ class LocalDataStore: CoreDataAccessor, CoreDataManager {
     }
     
     let core = CoreDataCore.local
-    var managedObjectContext: NSManagedObjectContext
+    let managedObjectContext: NSManagedObjectContext
 }
 
 extension LocalDataStore {

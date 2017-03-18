@@ -31,7 +31,7 @@ class BookmarkDataStore: CoreDataAccessor, CoreDataManager {
     }
     
     let core = CoreDataCore.bookmark
-    var managedObjectContext: NSManagedObjectContext
+    let managedObjectContext: NSManagedObjectContext
 }
 
 extension BookmarkDataStore {

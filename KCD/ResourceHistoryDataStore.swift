@@ -31,7 +31,7 @@ class ResourceHistoryDataStore: CoreDataAccessor, CoreDataManager {
     }
     
     let core = CoreDataCore.resourceHistory
-    var managedObjectContext: NSManagedObjectContext
+    let managedObjectContext: NSManagedObjectContext
 }
 
 extension ResourceHistoryDataStore {
