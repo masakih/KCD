@@ -9,7 +9,7 @@
 import Cocoa
 
 class HistoryMarkTransformer: ValueTransformer {
-    override class func transformedValueClass() -> Swift.AnyClass {
+    override class func transformedValueClass() -> AnyClass {
         return NSColor.self
     }
     override func transformedValue(_ value: Any?) -> Any? {

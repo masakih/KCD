@@ -79,7 +79,7 @@ class PowerUpSupportViewController: MainTabVIewItemViewController {
     }
     
     @IBAction func changeCategory(_ sender: AnyObject?) {
-        guard let type = ShipType(rawValue: Int(typeSegment.selectedSegment)) else { return }
+        guard let type = ShipType(rawValue: typeSegment.selectedSegment) else { return }
         shipController.filterPredicate = customPredicate(for: type)
         shipController.rearrangeObjects()
     }

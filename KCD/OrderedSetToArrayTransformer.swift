@@ -9,7 +9,7 @@
 import Cocoa
 
 class OrderedSetToArrayTransformer: ValueTransformer {
-    override class func transformedValueClass() -> Swift.AnyClass {
+    override class func transformedValueClass() -> AnyClass {
         return NSArray.self
     }
     override class func allowsReverseTransformation() -> Bool {

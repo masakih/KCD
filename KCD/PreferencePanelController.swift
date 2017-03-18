@@ -56,7 +56,6 @@ class PreferencePanelController: NSWindowController {
         screenShotSaveDirectory = AppDelegate.shared.screenShotSaveDirectory
         guard let window = window,
             let items = window.toolbar?.items,
-            items.count != 0,
             let item = items.first
             else { return }
         window.toolbar?.selectedItemIdentifier = item.itemIdentifier

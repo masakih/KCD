@@ -9,7 +9,7 @@
 import Cocoa
 
 class IgnoreZeroTransformer: ValueTransformer {
-    override class func transformedValueClass() -> Swift.AnyClass {
+    override class func transformedValueClass() -> AnyClass {
         return NSNumber.self
     }
     override func transformedValue(_ value: Any?) -> Any? {

@@ -9,7 +9,7 @@
 import Cocoa
 
 class DamageValueTransformer: ValueTransformer {
-    override class func transformedValueClass() -> Swift.AnyClass {
+    override class func transformedValueClass() -> AnyClass {
         return NSAttributedString.self
     }
     override func transformedValue(_ value: Any?) -> Any? {

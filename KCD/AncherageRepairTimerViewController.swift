@@ -40,7 +40,7 @@ class AncherageRepairTimerViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        AppDelegate.shared.addCounterUpdate { [weak self] () in
+        AppDelegate.shared.addCounterUpdate { [weak self] _ in
             guard let `self` = self else { return }
             self.repairTime = self.calcRepairTime()
         }
@@ -59,14 +59,15 @@ class AncherageRepairTimerViewController: NSViewController {
                                       options: [.mouseEnteredAndExited, .activeInActiveApp],
                                       owner: self,
                                       userInfo: nil)
-        view.addTrackingArea(trackingArea!)
+        if let trackingArea = trackingArea {
+            view.addTrackingArea(trackingArea)
+        }
     }
     
     private func calcRepairTime() -> NSNumber? {
-        let time = anchorageRepairManager.repairTime
-        let complete = time.timeIntervalSince1970
-        let now = Date(timeIntervalSinceNow: 0.0)
-        let diff = complete - now.timeIntervalSince1970
+        let complete = anchorageRepairManager.repairTime.timeIntervalSince1970
+        let now = Date(timeIntervalSinceNow: 0.0).timeIntervalSince1970
+        let diff = complete - now
         return NSNumber(value: diff + 20.0 * 60)
     }
 }
