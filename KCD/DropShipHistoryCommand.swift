@@ -15,10 +15,8 @@ class DropShipHistoryCommand: JSONCommand {
         }
         if !api.hasSuffix("battleresult") { return }
         
-        guard let data = json[dataKey] as? [String: Any],
-            let getShip = data["api_get_ship"] as? [String: Any],
-            let shipName = getShip["api_ship_name"] as? String,
-            let winRank = data["api_win_rank"] as? String
+        guard let shipName = data["api_get_ship"]["api_ship_name"].string,
+            let winRank = data["api_win_rank"].string
             else { return }
         guard let battle = TemporaryDataStore.default.battle()
             else { return print("Can not get Battle") }

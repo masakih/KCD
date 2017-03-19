@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import SwiftyJSON
 
 struct MappingConfiguration<T: NSManagedObject> {
     let entity: Entity<T>
@@ -39,10 +40,10 @@ protocol JSONMapper {
     var apiResponse: APIResponse { get }
     var configuration: MappingConfiguration<ObjectType> { get }
     
-    func registerElement(_ element: [String: Any], to object: ObjectType)
+    func registerElement(_ element: JSON, to object: ObjectType)
     func commit()
     func beginRegister(_ object: ObjectType)
-    func handleExtraValue(_ value: Any, forKey key: String, to object: ObjectType) -> Bool
+    func handleExtraValue(_ value: JSON, forKey key: String, to object: ObjectType) -> Bool
     func finishOperating()
 }
 
@@ -55,13 +56,15 @@ extension String {
 }
 
 extension JSONMapper {
+    var data: JSON { return apiResponse.json.value(for: configuration.dataKey) }
+    
     private func isEqual(_ lhs: AnyObject?, _ rhs: AnyObject?) -> Bool {
         if lhs == nil, rhs == nil { return true }
         if let lhs = lhs, let rhs = rhs { return lhs.isEqual(rhs) }
         return false
     }
-    func setValueIfNeeded(_ value: AnyObject?, to object: ObjectType, forKey key: String) {
-        var validValue = value
+    func setValueIfNeeded(_ value: JSON, to object: ObjectType, forKey key: String) {
+        var validValue = value.object as AnyObject?
         do {
             try object.validateValue(&validValue, forKey: key)
         } catch {
@@ -76,24 +79,24 @@ extension JSONMapper {
         }
     }
     
-    func registerElement(_ element: [String: Any], to object: ObjectType) {
+    func registerElement(_ element: JSON, to object: ObjectType) {
         beginRegister(object)
-        element.forEach { (key: String, value: Any) in
+        element.forEach { (key: String, value: JSON) in
             if configuration.ignoreKeys.contains(key) { return }
             if handleExtraValue(value, forKey: key, to: object) { return }
-            switch value {
-            case let a as [AnyObject]:
-                a.enumerated().forEach {
+            switch value.type {
+            case .array:
+                value.array?.enumerated().forEach {
                     let newKey = "\(key)_\($0.offset)"
                     setValueIfNeeded($0.element, to: object, forKey: newKey)
                 }
-            case let d as [String: AnyObject]:
-                d.forEach { (subKey: String, subValue) in
+            case .dictionary:
+                value.forEach { (subKey: String, subValue) in
                     let newKey = "\(key)_D_\(subKey.keyByDeletingPrefix())"
                     setValueIfNeeded(subValue, to: object, forKey: newKey)
                 }
             default:
-                setValueIfNeeded(value as AnyObject?, to: object, forKey: key)
+                setValueIfNeeded(value, to: object, forKey: key)
             }
         }
     }
@@ -101,31 +104,26 @@ extension JSONMapper {
         let keys = configuration.compositPrimaryKeys ?? [configuration.primaryKey]
         return keys.map { NSSortDescriptor(key: $0, ascending: true) }
     }
-    private func objectSearch(_ objects: [ObjectType], _ element: [String: Any]) -> ObjectType? {
+    private func objectSearch(_ objects: [ObjectType], _ element: JSON) -> ObjectType? {
         let keys = configuration.compositPrimaryKeys ?? [configuration.primaryKey]
         let keyPiar = keys.map { (key: $0, apiKey: "api_\($0)") }
         return objects.binarySearch {
             for piar in keyPiar {
                 guard let v1 = $0.value(forKey: piar.key)
                     else { return .orderedAscending }
-                guard let v2 = element[piar.apiKey]
-                    else { return .orderedDescending }
+                if element[piar.apiKey].type == .null { return .orderedDescending }
+                let v2 = element[piar.apiKey].object
                 return (v1 as AnyObject).compare(v2)
             }
             return .orderedDescending
         }
     }
     func commit() {
-        guard var d = (apiResponse.json as AnyObject).value(forKeyPath: configuration.dataKey)
-            else { return print("JSON is wrong.") }
-        if let dd = d as? NSDictionary { d = [dd] }
-        guard let data = d as? [[String: Any]]
-            else { return print("JSON is wrong.") }
-        
         let store = configuration.editorStore
         guard let objects = try? store.objects(with: configuration.entity, sortDescriptors: sortDescriptors)
             else { return print("Can not get entity named \(configuration.entity.name)") }
-        data.forEach {
+        let list = (data.type == .array ? data.arrayValue : [data])
+        list.forEach {
             if let object = objectSearch(objects, $0) {
                 registerElement($0, to: object)
             } else if let new = store.insertNewObject(for: configuration.entity) {
@@ -138,9 +136,8 @@ extension JSONMapper {
         store.saveActionCore()
     }
     
-    func execute() {}
     func beginRegister(_ object: ObjectType) {}
-    func handleExtraValue(_ value: Any, forKey key: String, to object: ObjectType) -> Bool {
+    func handleExtraValue(_ value: JSON, forKey key: String, to object: ObjectType) -> Bool {
         return false
     }
     func finishOperating() {}

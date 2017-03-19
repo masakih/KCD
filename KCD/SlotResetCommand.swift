@@ -20,8 +20,7 @@ class SlotResetCommand: JSONCommand {
             .flatMap({ Int($0) })
             .flatMap({ store.ship(byId: $0) })
             else { return print("api_id is wrong") }
-        guard let sl = json["api_data"] as? [String: Any],
-            let slotItems = sl["api_slot"] as? [Int]
+        guard let slotItems = data["api_slot"].arrayObject as? [Int]
             else { return print("Can not parse api_data.api_slot") }
         
         slotItems.enumerated().forEach { ship.setItem($0.element, for: $0.offset) }

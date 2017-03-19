@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import SwiftyJSON
 
 fileprivate enum BattleType {
     case normal
@@ -146,6 +147,25 @@ class CalculateDamageCommand: JSONCommand {
 }
 // MARK: - Primitive Calclator
 extension CalculateDamageCommand {
+    
+    private func hogekiTargets(_ list: JSON) -> [[Int]]? {
+        guard let targetArraysArray = list
+            .array?
+            .flatMap({ $0.array?.flatMap { $0.int } }),
+            list.count - 1 == targetArraysArray.count
+            else { return nil }
+        return targetArraysArray
+    }
+    private func hogekiDamages(_ list: JSON) -> [[Int]]? {
+        guard let hougeki1Damages = list
+            .array?
+            .flatMap({ $0.array?.flatMap { $0.int } })
+            else { return nil }
+        return hougeki1Damages
+    }
+    private func enemyFlags(_ list: JSON) -> [Int]? {
+        return list.array?.flatMap { $0.int }.filter { $0 != -1 }
+    }
     private func isTargetFriend(eFlags: [Int]?, index: Int) -> Bool {
         if let eFlags = eFlags, 0..<eFlags.count ~= index {
             return eFlags[index] == 1
@@ -156,18 +176,12 @@ extension CalculateDamageCommand {
         calculateHogeki(baseKeyPath: baseKeyPath, battleFleet: bf())
     }
     fileprivate func calculateHogeki(baseKeyPath: String, battleFleet: BattleFleet = .first) {
-        let j = json as NSDictionary
-        guard let data = j.value(forKeyPath: baseKeyPath) as? [String: Any],
-            let dfList = data["api_df_list"] as? [Any],
-            let damageList = data["api_damage"] as? [Any]
-            else { return }
-        guard let targetArraysArray = dfList.filter({ $0 is [Int] }) as? [[Int]],
-            dfList.count - 1 == targetArraysArray.count
+        guard let targetArraysArray = hogekiTargets(data["api_df_list"])
             else { return print("api_df_list is wrong") }
-        guard let hougeki1Damages = damageList.filter({ $0 is [Int] }) as? [[Int]],
+        guard let hougeki1Damages = hogekiDamages(data["api_damage"]),
             targetArraysArray.count == hougeki1Damages.count
             else { return print("api_damage is wrong") }
-        let eFlags: [Int]? = (data["api_at_eflag"] as? [Int])?.filter { $0 != -1 }
+        let eFlags: [Int]? = enemyFlags(data["api_at_eflag"])
         
         Debug.print("Start Hougeki \(baseKeyPath)", level: .debug)
         let shipOffset = (battleFleet == .second) ? 6 : 0
@@ -210,9 +224,9 @@ extension CalculateDamageCommand {
         calculateFDam(baseKeyPath: baseKeyPath, battleFleet: bf())
     }
     fileprivate func calculateFDam(baseKeyPath: String, battleFleet: BattleFleet = .first) {
-        let j = json as NSDictionary
-        guard let data = j.value(forKeyPath: baseKeyPath) as? [String: Any],
-            let koukuDamages = data["api_fdam"] as? [Int]
+        guard let koukuDamages = json
+            .value(for: baseKeyPath)["api_fdam"]
+            .arrayObject as? [Int]
             else { return }
         
         Debug.print("Start FDam \(baseKeyPath)", level: .debug)

@@ -7,6 +7,18 @@
 //
 
 import Cocoa
+import SwiftyJSON
+
+extension JSON {
+    func value(for keyPath: String) -> JSON {
+        return self[keyPath.components(separatedBy: ".")]
+    }
+    
+    var last: JSON {
+        let index = self.count - 1
+        return self[index]
+    }
+}
 
 fileprivate extension Data {
     var utf8String: String? { return String(data: self, encoding: .utf8) }
@@ -19,7 +31,7 @@ fileprivate extension Dictionary {
     }
 }
 
-fileprivate func splitJSON(_ data: Data) -> Data? {
+fileprivate func splitJSON(_ data: Data) -> String? {
     let prefix = "svdata="
     guard let string = data.utf8String,
         let range = string.range(of: prefix)
@@ -27,14 +39,7 @@ fileprivate func splitJSON(_ data: Data) -> Data? {
             print("data is wrong")
             return nil
     }
-    return string[range.upperBound..<string.endIndex].data(using: .utf8)
-}
-fileprivate func parseJSON(_ data: Data?) -> [String: Any]? {
-    guard let data = data,
-        let j = try? JSONSerialization.jsonObject(with: data, options: [.allowFragments]),
-        let json = j as? [String: Any]
-        else { return nil }
-    return json
+    return string[range.upperBound..<string.endIndex]
 }
 
 fileprivate func parseParameter(_ request: URLRequest) -> [String: String]? {
@@ -52,22 +57,22 @@ fileprivate func parseParameter(_ request: URLRequest) -> [String: String]? {
 struct APIResponse {
     let api: String
     let parameter: [String: String]
-    let json: [String: Any]
+    let json: JSON
     let date: Date
     var success: Bool {
-        if let r = json["api_result"] as? Int { return r == 1 }
+        if let r = json["api_result"].int { return r == 1 }
         return false
     }
     
     init?(request: URLRequest, data: Data) {
         date = Date()
         
-        guard let json = parseJSON(splitJSON(data))
+        guard let josn = splitJSON(data)
             else {
                 print("Can not parse JSON")
                 return nil
         }
-        self.json = json
+        self.json = JSON(parseJSON: josn)
         
         guard let parameter = parseParameter(request)
             else {

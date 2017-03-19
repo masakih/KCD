@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import SwiftyJSON
 
 fileprivate enum ShipAPI: String {
     case getMemberShip = "/kcsapi/api_get_member/ship"
@@ -100,36 +101,33 @@ class ShipMapper: JSONMapper {
     func beginRegister(_ ship: Ship) {
         ship.sally_area = nil
     }
-    func handleExtraValue(_ value: Any, forKey key: String, to ship: Ship) -> Bool {
+    func handleExtraValue(_ value: JSON, forKey key: String, to ship: Ship) -> Bool {
         // 取得後破棄した装備のデータを削除するため保有IDを保存
         if key == "api_id" {
-            guard let id = value as? Int
+            guard let id = value.int
                 else { return false }
             registerIds.append(id)
             return false
         }
         
         if key == "api_ship_id" {
-            guard let masterId = value as? Int
+            guard let masterId = value.int
                 else { return false }
             setMaster(masterId, to: ship)
             return true
         }
         if key == "api_exp" {
-            guard let v = value as? [Any],
-                let vv = v.first as? Int
+            guard let exp = value[0].int
                 else { return false }
-            ship.exp = vv
+            ship.exp = exp
             return true
         }
         if key == "api_slot" {
-            guard let slotItems = value as? [Any]
-                else { return false }
-            setSlot(slotItems, to: ship)
+            setSlot(value, to: ship)
             return false
         }
         if key == "api_slot_ex" {
-            guard let ex = value as? Int
+            guard let ex = value.int
                 else { return false }
             setExtraSlot(ex, to: ship)
             return false
@@ -151,8 +149,8 @@ class ShipMapper: JSONMapper {
         ship.ship_id = masterId
     }
     
-    private func setSlot(_ slotItems: [Any], to ship: Ship) {
-        guard let converSlotItems = slotItems as? [Int],
+    private func setSlot(_ slotItems: JSON, to ship: Ship) {
+        guard let converSlotItems = slotItems.arrayObject as? [Int],
             let store = store
             else { return }
         let newItems: [SlotItem] =

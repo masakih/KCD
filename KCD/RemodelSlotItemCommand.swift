@@ -10,36 +10,33 @@ import Cocoa
 
 class RemodelSlotItemCommand: JSONCommand {
     override func execute() {
-        guard let data = json[dataKey] as? [String: Any]
-            else { return print("JSON is wrong") }
-        
-        guard let success = data["api_remodel_flag"] as? Int,
+        guard let success = data["api_remodel_flag"].int,
             success != 0
             else { return }
         
-        guard let slotItemId = arguments["api_slot_id"].flatMap({ Int($0) }),
-            let afterSlot = data["api_after_slot"] as? [String: Any]
+        guard let slotItemId = arguments["api_slot_id"].flatMap({ Int($0) })
             else { return print("api_slot_id is wrong") }
         
+        let afterSlot = data["api_after_slot"]
         let store = ServerDataStore.oneTimeEditor()
         guard let slotItem = store.slotItem(byId: slotItemId)
             else { return print("SlotItem not found") }
 
-        if let locked = afterSlot["api_locked"] as? Bool {
+        if let locked = afterSlot["api_locked"].bool {
             slotItem.locked = locked
         }
-        if let masterSlotItemId = afterSlot["api_slotitem_id"] as? Int,
+        if let masterSlotItemId = afterSlot["api_slotitem_id"].int,
             masterSlotItemId != slotItem.slotitem_id,
             let masterSlotItem = store.masterSlotItem(by: slotItemId) {
             slotItem.master_slotItem = masterSlotItem
             slotItem.slotitem_id = slotItemId
         }
-        if let level = afterSlot["api_level"] as? Int {
+        if let level = afterSlot["api_level"].int {
             slotItem.level = level
         }
         
         // remove used slot items.
-        guard let useSlot = data["api_use_slot_id"] as? [Int]
+        guard let useSlot = data["api_use_slot_id"].arrayObject as? [Int]
             else { return }
         store.slotItems(in: useSlot).forEach { store.delete($0) }
     }

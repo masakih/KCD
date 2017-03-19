@@ -21,8 +21,7 @@ class DummyShipCommand: JSONCommand {
     }
     
     private func checkGetShip() {
-        guard let data = json[dataKey] as? [String: Any],
-            let _ = data["api_get_ship"]
+        guard !data["api_get_ship"].exists()
             else { return }
         DummyShipCommand.needsEnterDummy = true
     }

@@ -19,11 +19,9 @@ class AirCorpsSupplyCommand: JSONCommand {
         guard let areaId = arguments["api_area_id"].flatMap({ Int($0) }),
             let rId = arguments["api_base_id"].flatMap({ Int($0) }),
             let squadronIdsString = arguments["api_squadron_id"],
-            let data = json[dataKey] as? [String: Any],
-            let planeInfos = data["api_plane_info"] as? [[String: Any]],
-            planeInfos.count != 0,
             let airBase = store.airBase(area: areaId, base: rId)
             else { return }
+        let planeInfos = data["api_plane_info"]
         let planes = airBase.planeInfo
         let squadronIds = squadronIdsString
             .components(separatedBy: ",")
@@ -35,17 +33,17 @@ class AirCorpsSupplyCommand: JSONCommand {
                 else { return }
             let planeInfo = planeInfos[$0.offset]
             
-            if let v = planeInfo["api_cond"] as? Int { plane.cond = v }
-            if let v = planeInfo["api_slotid"] as? Int { plane.slotid = v }
-            if let v = planeInfo["api_state"] as? Int { plane.state = v }
-            if let v = planeInfo["api_count"] as? Int { plane.count = v }
-            if let v = planeInfo["api_max_count"] as? Int { plane.max_count = v }
+            if let v = planeInfo["api_cond"].int { plane.cond = v }
+            if let v = planeInfo["api_slotid"].int { plane.slotid = v }
+            if let v = planeInfo["api_state"].int { plane.state = v }
+            if let v = planeInfo["api_count"].int { plane.count = v }
+            if let v = planeInfo["api_max_count"].int { plane.max_count = v }
         }
-        if let v = data["api_distance"] as? Int { airBase.distance = v }
+        if let v = data["api_distance"].int { airBase.distance = v }
         
         guard let material = store.material()
             else { return }
-        if let v = data["api_after_bauxite"] as? Int { material.bauxite = v }
-        if let v = data["api_after_fuel"] as? Int { material.fuel = v }
+        if let v = data["api_after_bauxite"].int { material.bauxite = v }
+        if let v = data["api_after_fuel"].int { material.fuel = v }
     }
 }

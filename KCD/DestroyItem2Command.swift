@@ -25,8 +25,7 @@ class DestroyItem2Command: JSONCommand {
         
         guard let material = store.material()
             else { return print("Material is not found") }
-        guard let data = json[dataKey] as? [String: Any],
-            let gm = data["api_get_material"] as? [Int]
+        guard let gm = data["api_get_material"].arrayObject as? [Int]
             else { return print("api_get_material is wrong") }
         let resouces = ["fuel", "bull", "steel", "bauxite"]
         zip(gm, resouces).forEach {

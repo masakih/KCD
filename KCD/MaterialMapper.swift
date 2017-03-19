@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import SwiftyJSON
 
 fileprivate enum MaterialAPI: String {
     case port = "/kcsapi/api_port/port"
@@ -47,17 +48,17 @@ class MaterialMapper: JSONMapper {
     }
     
     func commit() {
-        let j = apiResponse.json as NSDictionary
-        guard let data = j.value(forKeyPath: configuration.dataKey)
-            else { return print("JSON is wrong") }
         guard let store = configuration.editorStore as? ServerDataStore,
             let material = store.material() ?? store.createMaterial()
             else { return print("Can not create Material") }
         
-        switch data {
-        case let array as [Int]: register(material, data: array)
-        case let array as [[String: Any]]: register(material, data: array)
-        default: print("JSON is unknown type")
+        if let _ = data[0].int {
+            let array = data.arrayValue.flatMap { $0.int }
+            register(material, data: array)
+        } else if let _ = data[0].dictionary {
+            register(material, data: data.arrayValue)
+        } else {
+            print("JSON is unknown type")
         }
     }
     
@@ -68,12 +69,12 @@ class MaterialMapper: JSONMapper {
             material.setValue($0.element as NSNumber, forKey: keys[$0.offset])
         }
     }
-    private func register(_ material: Material, data: [[String: Any]]) {
+    private func register(_ material: Material, data: [JSON]) {
         data.forEach {
-            guard let i = $0["api_id"] as? Int,
+            guard let i = $0["api_id"].int,
                 i != 0,
                 i - 1 < keys.count,
-                let newValue = $0["api_value"] as? Int
+                let newValue = $0["api_value"].int
                 else { return }
             material.setValue(newValue as NSNumber, forKey: keys[i - 1])
         }

@@ -19,17 +19,15 @@ class SetPlaneCommand: JSONCommand {
             let rId = arguments["api_base_id"].flatMap({ Int($0) }),
             let squadronId = arguments["api_squadron_id"].flatMap({ Int($0) })
             else { return print("Argument is wrong") }
-        guard let data = json[dataKey] as? [String: Any],
-            let distance = data["api_distance"] as? Int,
-            let bauxite = data["api_after_bauxite"] as? Int,
-            let planInfos = data["api_plane_info"] as? [[String: Any]],
-            let planInfo = planInfos.first
+        guard let distance = data["api_distance"].int,
+            let bauxite = data["api_after_bauxite"].int
             else { return print("JSON is wrong") }
-        guard let cond = planInfo["api_cond"] as? Int,
-            let slotid = planInfo["api_slotid"] as? Int,
-            let state = planInfo["api_state"] as? Int,
-            let count = planInfo["api_count"] as? Int,
-            let maxCount = planInfo["api_max_count"] as? Int
+        let planInfo = data["api_plane_info"][0]
+        guard let cond = planInfo["api_cond"].int,
+            let slotid = planInfo["api_slotid"].int,
+            let state = planInfo["api_state"].int,
+            let count = planInfo["api_count"].int,
+            let maxCount = planInfo["api_max_count"].int
             else { return print("api_plane_info is wrong") }
         
         let store = ServerDataStore.oneTimeEditor()

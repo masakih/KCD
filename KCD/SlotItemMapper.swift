@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import SwiftyJSON
 
 fileprivate enum SlotItemAPI: String {
     case getMemberSlotItem = "/kcsapi/api_get_member/slot_item"
@@ -45,17 +46,17 @@ class SlotItemMapper: JSONMapper {
     func beginRegister(_ slotItem: SlotItem) {
         slotItem.alv = 0
     }
-    func handleExtraValue(_ value: Any, forKey key: String, to object: SlotItem) -> Bool {
+    func handleExtraValue(_ value: JSON, forKey key: String, to object: SlotItem) -> Bool {
         // 取得後破棄した装備のデータを削除するため保有IDを保存
         if key == "api_id" {
-            guard let id = value as? Int
+            guard let id = value.int
                 else { return false }
             registerIds.append(id)
             return false
         }
         
         if key == "api_slotitem_id" {
-            guard let id = value as? Int
+            guard let id = value.int
                 else { return false }
             setMaster(id, to: object)
             return true

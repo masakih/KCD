@@ -28,9 +28,7 @@ class CombinedCommand: JSONCommand {
     
     override func execute() {
         if api == "/kcsapi/api_port/port" {
-            guard let data = json["api_data"] as? [String: Any]
-                else { return }
-            if let t = data["api_combined_flag"] as? Int {
+            if let t = data["api_combined_flag"].int {
                 CombineType(rawValue: t)
                     .map { postNotification(withType: $0) }
             } else {

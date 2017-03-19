@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import SwiftyJSON
 
 class JSONCommand {
     class func canExecuteAPI(_ api: String) -> Bool { return false }
@@ -19,9 +20,9 @@ class JSONCommand {
     
     var api: String { return apiResponse.api }
     var arguments: [String: String] { return apiResponse.parameter }
-    var json: [String: Any] { return apiResponse.json }
+    var json: JSON { return apiResponse.json }
     
-    var dataKey: String { return "api_data" }
+    var data: JSON { return json["api_data"] }
 
     func execute() throws {}
 }

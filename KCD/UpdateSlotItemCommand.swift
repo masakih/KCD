@@ -10,12 +10,10 @@ import Cocoa
 
 class UpdateSlotItemCommand: JSONCommand {
     override func execute() {
-        guard let d = json["api_data"] as? [String: Any]
-            else { return print("api_data is wrong") }
-        guard let data = d["api_slot_item"] as? [String: Any],
-            let slotItemId = data["api_slotitem_id"] as? Int
+        let data = json["api_data"]["api_slot_item"]
+        guard let slotItemId = data["api_slotitem_id"].int
             else { return }
-        guard let newSlotItemId = data["api_id"] as? Int
+        guard let newSlotItemId = data["api_id"].int
             else { return print("api_id is wrong") }
         let store = ServerDataStore.oneTimeEditor()
         guard let masterSlotItem = store.masterSlotItem(by: slotItemId)

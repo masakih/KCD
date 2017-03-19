@@ -22,7 +22,7 @@ class JSONViewCommand: JSONCommand {
             .parameter
             .map { ["key": $0.0, "value": $0.1] }
         self.jsonTree = JSONNode
-            .nodeWithJSON(apiResponse.json as AnyObject?)
+            .nodeWithJSON(apiResponse.json)
             .map { [$0] }
         self.command = command
         super.init(apiResponse: apiResponse)

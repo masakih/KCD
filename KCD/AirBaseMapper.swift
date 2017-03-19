@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import SwiftyJSON
 
 class AirBaseMapper: JSONMapper {
     typealias ObjectType = AirBase
@@ -21,7 +22,7 @@ class AirBaseMapper: JSONMapper {
         self.apiResponse = apiResponse
     }
 
-    func handleExtraValue(_ value: Any, forKey key: String, to airbase: AirBase) -> Bool {
+    func handleExtraValue(_ value: JSON, forKey key: String, to airbase: AirBase) -> Bool {
         if key != "api_plane_info" { return false }
         
         if airbase.planeInfo.count == 0 {
@@ -33,7 +34,7 @@ class AirBaseMapper: JSONMapper {
             }
         }
         
-        guard let planeInfos = value as? [[String: Any]]
+        guard let planeInfos = value.array
             else {
                 print("value is wrong")
                 return false
@@ -44,14 +45,14 @@ class AirBaseMapper: JSONMapper {
                 return false
         }
         zip(infos, planeInfos).forEach { (info, dict) in
-            guard let slotid = dict["api_slotid"] as? Int,
+            guard let slotid = dict["api_slotid"].int,
                 slotid != 0
                 else { return }
-            guard let cond = dict["api_cond"] as? Int,
-                let count = dict["api_count"] as? Int,
-                let maxCount = dict["api_max_count"] as? Int,
-                let squadronid = dict["api_squadron_id"] as? Int,
-                let state = dict["api_state"] as? Int
+            guard let cond = dict["api_cond"].int,
+                let count = dict["api_count"].int,
+                let maxCount = dict["api_max_count"].int,
+                let squadronid = dict["api_squadron_id"].int,
+                let state = dict["api_state"].int
                 else { return print("planeInfos is wrong") }
             info.cond = cond
             info.count = count

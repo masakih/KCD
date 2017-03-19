@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import SwiftyJSON
 
 class StoreCreateSlotItemHistoryCommand: JSONCommand {
     override func execute() {
@@ -16,8 +17,7 @@ class StoreCreateSlotItemHistoryCommand: JSONCommand {
             let bauxite = arguments["api_item4"].flatMap({ Int($0) })
             else { return print("Parameter is Wrong") }
         
-        guard let data = json[dataKey] as? [String: Any],
-            let success = data["api_create_flag"] as? Bool
+        guard let success = data["api_create_flag"].bool
             else { return print("api_create_flag is wrong") }
         let name = masterSlotItemName(sccess: success, data: data)
         let numberOfUsedKaihatuSizai = success ? 1 : 0
@@ -45,12 +45,11 @@ class StoreCreateSlotItemHistoryCommand: JSONCommand {
         newHistory.date = Date()
     }
     
-    private func masterSlotItemName(sccess: Bool, data: [String: Any]) -> String {
+    private func masterSlotItemName(sccess: Bool, data: JSON) -> String {
         if !sccess {
             return NSLocalizedString("fail to develop", comment: "fail to develop")
         }
-        guard let si = data["api_slot_item"] as? [String: Any],
-            let slotItemId = si["api_slotitem_id"] as? Int
+        guard let slotItemId = data["api_slot_item"]["api_slotitem_id"].int
             else {
                 print("api_slotitem_id is wrong")
                 return ""

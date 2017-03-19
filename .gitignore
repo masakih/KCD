@@ -5,3 +5,7 @@ xcdebugger
 xcuserdata
 /build/
 .DS_Store
+
+#Carthage
+Carthage/Build
+

@@ -40,8 +40,7 @@ class MapStartCommand: JSONCommand {
             let mapInfo = arguments["api_mapinfo_no"].flatMap({ Int($0) })
             else { return print("startBattle Arguments is wrong") }
         
-        guard let data = json["api_data"] as? [String: Any],
-            let no = data["api_no"] as? Int
+        guard let no = data["api_no"].int
             else { return print("startBattle JSON is wrong") }
         guard let battle = store.createBattle()
             else { return print("Can not create Battle") }
@@ -51,9 +50,8 @@ class MapStartCommand: JSONCommand {
         battle.no = no
     }
     private func nextCell() {
-        guard let data = json[dataKey] as? [String: Any],
-            let cellNumber = data["api_no"] as? Int,
-            let eventId = data["api_event_id"] as? Int
+        guard let cellNumber = data["api_no"].int,
+            let eventId = data["api_event_id"].int
             else { return print("updateBattleCell JSON is wrong") }
         guard let battle = store.battle()
             else { return print("Battle is invalid.") }

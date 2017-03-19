@@ -36,10 +36,6 @@ class BasicMapper: JSONMapper {
     }
     
     func commit() {
-        let j = apiResponse.json as NSDictionary
-        guard let data = j.value(forKeyPath: configuration.dataKey) as? [String: Any]
-            else { return print("json is wrong") }
-        
         let store = ServerDataStore.oneTimeEditor()
         guard let basic = store.basic() ?? store.createBasic()
             else { return print("Can not Get Basic") }

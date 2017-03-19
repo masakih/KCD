@@ -17,8 +17,7 @@ class KaisouLockCommand: JSONCommand {
     override func execute() {
         guard let slotId = arguments["api_slotitem_id"].flatMap({ Int($0) })
             else { return print("api_slotitem_id is wrong") }
-        guard let dic = json[dataKey] as? [String: Any],
-            let locked = dic["api_locked"] as? Bool
+        guard let locked = data["api_locked"].bool
             else { return print("api_locked is wrong") }
         let store = ServerDataStore.oneTimeEditor()
         store.slotItem(byId: slotId)?.locked = locked

@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import SwiftyJSON
 
 class MasterShipMapper: JSONMapper {
     typealias ObjectType = MasterShip
@@ -24,10 +25,10 @@ class MasterShipMapper: JSONMapper {
         return ServerDataStore.default.sortedMasterSTypesById()
     }()
     
-    func handleExtraValue(_ value: Any, forKey key: String, to masterShip: MasterShip) -> Bool {
+    func handleExtraValue(_ value: JSON, forKey key: String, to masterShip: MasterShip) -> Bool {
         if key != "api_stype" { return false }
         
-        guard let sType = value as? Int
+        guard let sType = value.int
             else {
                 print("MasterShipMapper: value is not Int")
                 return false

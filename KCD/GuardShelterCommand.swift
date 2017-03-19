@@ -65,17 +65,16 @@ class GuardShelterCommand: JSONCommand {
         return nil
     }
     private func registerReserve() {
-        guard let data = json[dataKey] as? [String: Any],
-            let escape = data["api_escape"] as? [String: Any],
-            let guardians = escape["api_tow_idx"] as? [Int],
-            let guardianPos = guardians.first
+        let escape = data["api_escape"]
+        let guardians = escape["api_tow_idx"]
+        guard let guardianPos = guardians[0].int
             else { return }
         let fixedGuardianPos = guardianPos - 6 - 1
         guard 0..<6 ~= fixedGuardianPos,
             let guardianId = fleetMembers(fleetId: 2)?[fixedGuardianPos]
             else { return print("guardianPos is wrong") }
         
-        guard let escapeIdx = escape["api_escape_idx"],
+        guard let escapeIdx = escape["api_escape_idx"].int,
             let damagedPos = damagedMemberPosition(escapeIdx: escapeIdx),
             let damagedId = damagedShipId(damagedPos: damagedPos)
             else { return print("damagedPos is wrong") }

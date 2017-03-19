@@ -39,7 +39,7 @@ checkLocalizable:
 deploy:
 	test -z "`git status --porcelain`"
 
-release: updateRevision
+release: Carthage updateRevision
 	xcodebuild -derivedDataPath=build -configuration $(DEPLOYMENT)
 	$(MAKE) restoreInfoPlist
 
@@ -61,3 +61,7 @@ build/Release/EquipmentEnhancementListBuilder: EquipmentEnhancementListBuilder/m
 
 buildEquipmentEnhancementList: build/Release/EquipmentEnhancementListBuilder
 	./build/Release/EquipmentEnhancementListBuilder ./KCD
+
+Carthage:
+	carthage update
+	rm -rf Carthage/Build/*OS
