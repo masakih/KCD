@@ -37,8 +37,7 @@ extension MappingConfiguration {
     func change(dataKeys: [String]) -> MappingConfiguration {
         return MappingConfiguration(entity: self.entity,
                                     dataKeys: dataKeys,
-                                    primaryKey: self.primaryKey,
-                                    compositPrimaryKeys: self.compositPrimaryKeys,
+                                    primaryKeys: self.primaryKeys,
                                     editorStore: self.editorStore,
                                     ignoreKeys: self.ignoreKeys)
     }

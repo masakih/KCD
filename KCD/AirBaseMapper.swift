@@ -15,7 +15,7 @@ class AirBaseMapper: JSONMapper {
     let apiResponse: APIResponse
     let configuration = MappingConfiguration(entity: AirBase.entity,
                                              dataKeys: ["api_data", "api_air_base"],
-                                             compositPrimaryKeys: ["area_id", "rid"],
+                                             primaryKeys: ["area_id", "rid"],
                                              editorStore: ServerDataStore.oneTimeEditor())
     
     required init(_ apiResponse: APIResponse) {

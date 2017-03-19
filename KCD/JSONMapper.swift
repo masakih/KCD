@@ -12,21 +12,18 @@ import SwiftyJSON
 struct MappingConfiguration<T: NSManagedObject> {
     let entity: Entity<T>
     let dataKeys: [String]
-    let primaryKey: String
-    let compositPrimaryKeys: [String]?
+    let primaryKeys: [String]
     let editorStore: CoreDataAccessor
     let ignoreKeys: [String]
     
     init(entity: Entity<T>,
          dataKeys: [String] = ["api_data"],
-         primaryKey: String = "id",
-         compositPrimaryKeys: [String]? = nil,
+         primaryKeys: [String] = ["id"],
          editorStore: CoreDataAccessor,
          ignoreKeys: [String] = []) {
         self.entity = entity
         self.dataKeys = dataKeys
-        self.primaryKey = primaryKey
-        self.compositPrimaryKeys = compositPrimaryKeys
+        self.primaryKeys = primaryKeys
         self.editorStore = editorStore
         self.ignoreKeys = ignoreKeys
     }
@@ -101,12 +98,10 @@ extension JSONMapper {
         }
     }
     private var sortDescriptors: [NSSortDescriptor] {
-        let keys = configuration.compositPrimaryKeys ?? [configuration.primaryKey]
-        return keys.map { NSSortDescriptor(key: $0, ascending: true) }
+        return configuration.primaryKeys.map { NSSortDescriptor(key: $0, ascending: true) }
     }
     private func objectSearch(_ objects: [ObjectType], _ element: JSON) -> ObjectType? {
-        let keys = configuration.compositPrimaryKeys ?? [configuration.primaryKey]
-        let keyPiar = keys.map { (key: $0, apiKey: "api_\($0)") }
+        let keyPiar = configuration.primaryKeys.map { (key: $0, apiKey: "api_\($0)") }
         return objects.binarySearch {
             for piar in keyPiar {
                 guard let v1 = $0.value(forKey: piar.key)
