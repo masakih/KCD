@@ -27,8 +27,7 @@ class TemporaryDataStore: CoreDataAccessor, CoreDataManager {
     
     required init(type: CoreDataManagerType) {
         managedObjectContext =
-            type == .reader ? core.parentManagedObjectContext
-            : core.editorManagedObjectContext()
+            type == .reader ? core.parentContext : core.editorContext()
     }
     deinit {
         saveActionCore()

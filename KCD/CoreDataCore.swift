@@ -46,25 +46,23 @@ struct CoreDataIntormation {
 
 struct CoreDataCore {
     let info: CoreDataIntormation
-    let managedObjectModel: NSManagedObjectModel
-    let persistentStoreCoordinator: NSPersistentStoreCoordinator
-    let parentManagedObjectContext: NSManagedObjectContext
+    let model: NSManagedObjectModel
+    let coordinator: NSPersistentStoreCoordinator
+    let parentContext: NSManagedObjectContext
     
     init(_ info: CoreDataIntormation) {
         self.info = info
         do {
             let genaratee = try MocGenerater.genarate(info)
-            self.managedObjectModel = genaratee.model
-            self.persistentStoreCoordinator = genaratee.coordinator
-            self.parentManagedObjectContext = genaratee.moc
+            (self.model, self.coordinator, self.parentContext) = genaratee
         } catch {
             fatalError("CoreDataCore: can not initialize. \(error)")
         }
     }
     
-    func editorManagedObjectContext() -> NSManagedObjectContext {
+    func editorContext() -> NSManagedObjectContext {
         let moc = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
-        moc.parent = parentManagedObjectContext
+        moc.parent = parentContext
         moc.undoManager = nil
         return moc
     }
