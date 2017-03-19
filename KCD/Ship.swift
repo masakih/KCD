@@ -93,15 +93,17 @@ extension Ship {
         return ["ship_id"]
     }
     dynamic var shortTypeName: String? {
-        if shortSTypeNames.count < master_ship.stype.id { return nil }
-        return shortSTypeNames[master_ship.stype.id - 1]
+        let index = master_ship.stype.id - 1
+        guard 0..<shortSTypeNames.count ~= index
+            else { return nil }
+        return shortSTypeNames[index]
     }
     
     class func keyPathsForValuesAffectingNext() -> Set<String> {
         return ["exp"]
     }
     dynamic var next: NSNumber? {
-        if lv >= levelUpExps.count { return nil }
+        guard 0..<levelUpExps.count ~= lv else { return nil }
         if lv == 99 { return nil }
         let nextExp = levelUpExps[lv]
         if lv < 99 { return (nextExp - exp) as NSNumber }
