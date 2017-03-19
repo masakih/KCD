@@ -26,3 +26,32 @@ struct ApplicationDirecrories {
         .urls(for: .picturesDirectory,
               in: .userDomainMask).last ?? URL(fileURLWithPath: NSHomeDirectory())
 }
+
+func checkDirectory(_ url: URL) -> Bool {
+    var success = true
+    
+    do {
+        let p = try url.resourceValues(forKeys: [.isDirectoryKey])
+        if !p.isDirectory! {
+            print("Expected a folder to store application data, found a file \(url.path).")
+            success = false
+        }
+    } catch {
+        let nserror = error as NSError
+        if nserror.code == NSFileReadNoSuchFileError {
+            do {
+                try FileManager
+                    .default
+                    .createDirectory(at: url,
+                                     withIntermediateDirectories: false,
+                                     attributes: nil)
+            } catch {
+                success = false
+            }
+        } else {
+            success = false
+        }
+    }
+    
+    return success
+}
