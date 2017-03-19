@@ -151,9 +151,13 @@ extension CalculateDamageCommand {
     private func hogekiTargets(_ list: JSON) -> [[Int]]? {
         guard let targetArraysArray = list
             .array?
-            .flatMap({ $0.array?.flatMap { $0.int } }),
-            list.count - 1 == targetArraysArray.count
+            .flatMap({ $0.array?.flatMap { $0.int } })
             else { return nil }
+        guard list.count - 1 == targetArraysArray.count
+            else {
+                print("api_df_list is wrong")
+                return nil
+        }
         return targetArraysArray
     }
     private func hogekiDamages(_ list: JSON) -> [[Int]]? {
@@ -176,12 +180,14 @@ extension CalculateDamageCommand {
         calculateHogeki(baseKeyPath: baseKeyPath, battleFleet: bf())
     }
     fileprivate func calculateHogeki(baseKeyPath: String, battleFleet: BattleFleet = .first) {
-        guard let targetArraysArray = hogekiTargets(data["api_df_list"])
-            else { return print("api_df_list is wrong") }
-        guard let hougeki1Damages = hogekiDamages(data["api_damage"]),
-            targetArraysArray.count == hougeki1Damages.count
-            else { return print("api_damage is wrong") }
-        let eFlags: [Int]? = enemyFlags(data["api_at_eflag"])
+        let baseValue = json[baseKeyPath.components(separatedBy: ".")]
+        guard let targetArraysArray = hogekiTargets(baseValue["api_df_list"]),
+            let hougeki1Damages = hogekiDamages(baseValue["api_damage"])
+            else { return }
+        guard targetArraysArray.count == hougeki1Damages.count
+            else { return print("api_damage is wrong.") }
+
+        let eFlags: [Int]? = enemyFlags(baseValue["api_at_eflag"])
         
         Debug.print("Start Hougeki \(baseKeyPath)", level: .debug)
         let shipOffset = (battleFleet == .second) ? 6 : 0
@@ -224,9 +230,8 @@ extension CalculateDamageCommand {
         calculateFDam(baseKeyPath: baseKeyPath, battleFleet: bf())
     }
     fileprivate func calculateFDam(baseKeyPath: String, battleFleet: BattleFleet = .first) {
-        guard let koukuDamages = json
-            .value(for: baseKeyPath)["api_fdam"]
-            .arrayObject as? [Int]
+        let baseValue = json[baseKeyPath.components(separatedBy: ".")]
+        guard let koukuDamages = baseValue["api_fdam"].arrayObject as? [Int]
             else { return }
         
         Debug.print("Start FDam \(baseKeyPath)", level: .debug)
