@@ -44,7 +44,7 @@ class AnchorageRepairManager: NSObject {
     }
     private func shipTypeId(fleetNumber: Int, position: Int) -> Int? {
         guard 1...4 ~= fleetNumber,
-            1...6 ~= position
+             0...5 ~= position
             else { return nil }
         let ship = fleetManager.fleets[fleetNumber - 1][position]
         return ship?.master_ship.stype.id
@@ -68,17 +68,28 @@ class AnchorageRepairManager: NSObject {
         
         // 変更のあった艦娘は工作艦か？
         //     旗艦から外れたか？
-        if info.type == .remove || info.type == .append,
+        // 入れ替えた結果、工作艦が旗艦になったか？
+        if info.type == .remove || info.type == .append || info.type == .replace,
+            info.position == 0,
             let shipType = shipTypeId(shipId: info.shipID),
             repairShipTypeIds.contains(shipType) {
-            return info.position == 0
+            return true
         }
         if info.type == .replace,
+            let replacePos = info.replacePosition,
+            replacePos == 0,
             let shipId = info.replaceShipID,
             let shipType = shipTypeId(shipId: shipId),
-            repairShipTypeIds.contains(shipType),
-            let replacePos = info.replacePosition {
-            return replacePos == 0
+            repairShipTypeIds.contains(shipType) {
+            return true
+        }
+        
+        // 旗艦が外された結果、工作艦が旗艦になったか？
+        if info.type == .remove,
+            info.position == 0,
+            let shipType = shipTypeId(fleetNumber: info.fleetNumber, position: 1),
+            repairShipTypeIds.contains(shipType) {
+            return true
         }
         
         return false

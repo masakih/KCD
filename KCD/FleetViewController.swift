@@ -236,6 +236,7 @@ class FleetViewController: NSViewController {
             .appended { "totalCalclatedSeiku" }
             .appended { "totalLevel" }
             .appended { "totalDrums" }
+            .appended { "repairable" }
             .forEach {
                 willChangeValue(forKey: $0)
                 didChangeValue(forKey: $0)
@@ -274,9 +275,6 @@ extension FleetViewController {
             self.repairTime = self.calcRepairTime()
         }
     }
-    class func keyPathsForValuesAffectingRepairTime() -> Set<String> {
-        return ["fleet"]
-    }
     private func calcRepairTime() -> NSNumber? {
         let time = anchorageRepair.repairTime
         let complete = time.timeIntervalSince1970
@@ -285,10 +283,7 @@ extension FleetViewController {
         return NSNumber(value: diff + 20.0 * 60)
     }
     private var repairShipIds: [Int] { return [19] }
-    class func keyPathsForValuesAffectingRepairable() -> Set<String> {
-        return ["fleet", "ships"]
-    }
-    var repairable: Bool {
+    dynamic var repairable: Bool {
         guard let flagShip = fleet?[0]
             else { return false }
         return repairShipIds.contains(flagShip.master_ship.stype.id)
