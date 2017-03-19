@@ -10,9 +10,9 @@ import Cocoa
 
 extension CoreDataIntormation {
     static let temporary = CoreDataIntormation("Temporary",
-                                               storeFileName: ":memory:",
-                                               storeOptions: [:],
-                                               storeType: NSInMemoryStoreType
+                                               fileName: ":memory:",
+                                               options: [:],
+                                               type: NSInMemoryStoreType
     )
 }
 extension CoreDataCore {

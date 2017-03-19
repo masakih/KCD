@@ -9,7 +9,7 @@
 import Cocoa
 
 extension CoreDataIntormation {
-    static let kcd = CoreDataIntormation("KCD", deleteAndRetry: true)
+    static let kcd = CoreDataIntormation("KCD", tryRemake: true)
 }
 extension CoreDataCore {
     static let kcd = CoreDataCore(.kcd)

@@ -21,10 +21,10 @@ enum CoreDataError: Error {
 
 struct CoreDataIntormation {
     let modelName: String
-    let storeFileName: String
-    let storeOptions: [AnyHashable: Any]
-    let storeType: String
-    let deleteAndRetry: Bool
+    let fileName: String
+    let options: [AnyHashable: Any]
+    let type: String
+    let tryRemake: Bool
     
     private static let defaultOptions: [AnyHashable: Any] = [
         NSMigratePersistentStoresAutomaticallyOption: true,
@@ -32,15 +32,15 @@ struct CoreDataIntormation {
     ]
     
     init(_ modelName: String,
-         storeFileName: String? = nil,
-         storeOptions: [AnyHashable: Any] = defaultOptions,
-         storeType: String = NSSQLiteStoreType,
-         deleteAndRetry: Bool = false) {
+         fileName: String? = nil,
+         options: [AnyHashable: Any] = defaultOptions,
+         type: String = NSSQLiteStoreType,
+         tryRemake: Bool = false) {
         self.modelName = modelName
-        self.storeFileName = storeFileName ?? "\(modelName).storedata"
-        self.storeOptions = storeOptions
-        self.storeType = storeType
-        self.deleteAndRetry = deleteAndRetry
+        self.fileName = fileName ?? "\(modelName).storedata"
+        self.options = options
+        self.type = type
+        self.tryRemake = tryRemake
     }
 }
 
@@ -164,25 +164,25 @@ private class MocGenerater {
         var coordinator: NSPersistentStoreCoordinator? = nil
         if failError == nil {
             coordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
-            let url = ApplicationDirecrories.support.appendingPathComponent(info.storeFileName)
+            let url = ApplicationDirecrories.support.appendingPathComponent(info.fileName)
             do {
-                try coordinator!.addPersistentStore(ofType: info.storeType,
+                try coordinator!.addPersistentStore(ofType: info.type,
                                                     configurationName: nil,
                                                     at: url,
-                                                    options: info.storeOptions)
+                                                    options: info.options)
             } catch {
                 failError = error as NSError
                 
                 // Data Modelが更新されていたらストアファイルを削除してもう一度
                 if failError?.domain == NSCocoaErrorDomain,
                     (failError?.code == 134130 || failError?.code == 134110),
-                    info.deleteAndRetry {
+                    info.tryRemake {
                     self.removeDatabaseFile(info)
                     do {
-                        try coordinator!.addPersistentStore(ofType: info.storeType,
+                        try coordinator!.addPersistentStore(ofType: info.type,
                                                             configurationName: nil,
                                                             at: url,
-                                                            options: info.storeOptions)
+                                                            options: info.options)
                         failError = nil
                     } catch {
                         failError = error as NSError
@@ -207,13 +207,13 @@ private class MocGenerater {
         return moc
     }
     private class func removeDatabaseFile(_ info: CoreDataIntormation) {
-        CoreDataRemover.remove(name: info.storeFileName)
+        CoreDataRemover.remove(name: info.fileName)
     }
 }
 
 extension CoreDataManager where Self: CoreDataProvider {
     func removeDatabaseFile() {
-        CoreDataRemover.remove(name: self.core.info.storeFileName)
+        CoreDataRemover.remove(name: self.core.info.fileName)
     }
 }
 
