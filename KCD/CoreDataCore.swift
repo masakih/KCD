@@ -56,6 +56,7 @@ struct CoreDataCore {
             let genaratee = try MocGenerater.genarate(info)
             (self.model, self.coordinator, self.parentContext) = genaratee
         } catch {
+            NSApplication.shared().presentError(error)
             fatalError("CoreDataCore: can not initialize. \(error)")
         }
     }
@@ -112,93 +113,62 @@ private class MocGenerater {
     class func genarate(_ info: CoreDataIntormation) throws ->
         (model: NSManagedObjectModel, coordinator: NSPersistentStoreCoordinator, moc: NSManagedObjectContext) {
             do {
-                let model = try createManagedObjectModel(info)
-                let coordinator = try createPersistentStoreCoordinator(info, model)
-                let moc = createManagedObjectContext(coordinator)
+                let model = try createModel(info)
+                let coordinator = try getCoordinator(info, model)
+                let moc = createContext(coordinator)
                 return (model: model, coordinator: coordinator, moc: moc)
             } catch {
                 throw error
             }
     }
     
-    private class func createManagedObjectModel(_ info: CoreDataIntormation) throws -> NSManagedObjectModel {
+    private class func createModel(_ info: CoreDataIntormation) throws -> NSManagedObjectModel {
         let modelURL = Bundle.main.url(forResource: info.modelName, withExtension: "momd")!
         guard let model = NSManagedObjectModel(contentsOf: modelURL) else {
             throw CoreDataError.couldNotCreateModel
         }
         return model
     }
-    // swiftlint:disable:next line_length function_body_length
-    private class func createPersistentStoreCoordinator(_ info: CoreDataIntormation, _ model: NSManagedObjectModel)
-        throws -> NSPersistentStoreCoordinator {
-        var failError: NSError? = nil
-        var shouldFail = false
-        var failureReason = "There was an error creating or loading the application's saved data."
-        
+    private class func getCoordinator(_ info: CoreDataIntormation,
+                                      _ model: NSManagedObjectModel) throws -> NSPersistentStoreCoordinator {
         do {
-            let p = try ApplicationDirecrories.support.resourceValues(forKeys: [.isDirectoryKey])
-            if !p.isDirectory! {
-                // swiftlint:disable:next line_length
-                failureReason = "Expected a folder to store application data, found a file \(ApplicationDirecrories.support.path)."
-                shouldFail = true
-            }
+            return try createCoordinator(info, model)
         } catch {
             let nserror = error as NSError
-            if nserror.code == NSFileReadNoSuchFileError {
+            // Data Modelが更新されていたらストアファイルを削除してもう一度
+            if nserror.domain == NSCocoaErrorDomain,
+                (nserror.code == 134130 || nserror.code == 134110),
+                info.tryRemake {
+                self.removeDataFile(info)
                 do {
-                    try FileManager
-                        .default
-                        .createDirectory(at: ApplicationDirecrories.support,
-                                         withIntermediateDirectories: false,
-                                         attributes: nil)
+                    return try createCoordinator(info, model)
                 } catch {
-                    failError = nserror
-                }
-            } else {
-                failError = nserror
-            }
-        }
-        
-        var coordinator: NSPersistentStoreCoordinator? = nil
-        if failError == nil {
-            coordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
-            let url = ApplicationDirecrories.support.appendingPathComponent(info.fileName)
-            do {
-                try coordinator!.addPersistentStore(ofType: info.type,
-                                                    configurationName: nil,
-                                                    at: url,
-                                                    options: info.options)
-            } catch {
-                failError = error as NSError
-                
-                // Data Modelが更新されていたらストアファイルを削除してもう一度
-                if failError?.domain == NSCocoaErrorDomain,
-                    (failError?.code == 134130 || failError?.code == 134110),
-                    info.tryRemake {
-                    self.removeDataFile(info)
-                    do {
-                        try coordinator!.addPersistentStore(ofType: info.type,
-                                                            configurationName: nil,
-                                                            at: url,
-                                                            options: info.options)
-                        failError = nil
-                    } catch {
-                        failError = error as NSError
-                    }
+                    print("Fail crrate NSPersistentStoreCoordinator twice.")
                 }
             }
+            throw error
         }
-        
-        if shouldFail || (failError != nil) {
-            if let error = failError {
-                NSApplication.shared().presentError(error)
-            }
+    }
+    private class func createCoordinator(_ info: CoreDataIntormation,
+                                         _ model: NSManagedObjectModel) throws -> NSPersistentStoreCoordinator {
+        if !checkDirectory(ApplicationDirecrories.support) {
+            let failureReason = "Can not use directory \(ApplicationDirecrories.support.path)"
             throw CoreDataError.couldNotCreateCoordinator(failureReason)
         }
-        return coordinator!
+        
+        let coordinator: NSPersistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
+        let url = ApplicationDirecrories.support.appendingPathComponent(info.fileName)
+        do {
+            try coordinator.addPersistentStore(ofType: info.type,
+                                               configurationName: nil,
+                                               at: url,
+                                               options: info.options)
+        } catch {
+            throw error
+        }
+        return coordinator
     }
-    // swiftlint:disable:next line_length
-    private class func createManagedObjectContext(_ coordinator: NSPersistentStoreCoordinator) -> NSManagedObjectContext {
+    private class func createContext(_ coordinator: NSPersistentStoreCoordinator) -> NSManagedObjectContext {
         let moc = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         moc.persistentStoreCoordinator = coordinator
         moc.undoManager = nil
@@ -218,7 +188,7 @@ extension CoreDataManager where Self: CoreDataProvider {
 extension CoreDataProvider {
     func save() {
         if !context.commitEditing() {
-            NSLog("\(String(describing: type(of: self))) unable to commit editing before saveing")
+            print("\(String(describing: type(of: self))) unable to commit editing before saveing")
             return
         }
         do {
