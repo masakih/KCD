@@ -30,11 +30,6 @@ class HenseiDidChangeUserInfo: NSObject {
     let replacePosition: Int?
     let replaceShipID: Int?
     
-    var objcType: Int { return type.rawValue }
-    var objcReplaceFleetNumbner: NSNumber? { return replaceFleetNumber as NSNumber?? ?? nil }
-    var objcReplacePosition: NSNumber? { return replacePosition as NSNumber?? ?? nil }
-    var objcReplaceShipID: NSNumber? { return replaceShipID as NSNumber?? ?? nil }
-    
     required init(type: ChangeHenseiType,
                   fleetNumber: Int,
                   position: Int,
