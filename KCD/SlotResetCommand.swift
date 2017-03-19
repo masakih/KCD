@@ -27,7 +27,8 @@ class SlotResetCommand: JSONCommand {
         
         let storedSlotItems = store.sortedSlotItemsById()
         let newSet = slotItems
-            .flatMap { (slotItem) -> SlotItem? in
+            .flatMap { slotItem -> SlotItem? in
+                guard slotItem > 0 else { return nil }
                 let found = storedSlotItems.binarySearch { $0.id ==? slotItem }
                 if let item = found {
                     return item
