@@ -13,7 +13,7 @@ class MasterFurnitureMapper: JSONMapper {
 
     let apiResponse: APIResponse
     let configuration = MappingConfiguration(entity: MasterFurniture.entity,
-                                             dataKey: "api_data.api_mst_furniture",
+                                             dataKeys: ["api_data", "api_mst_furniture"],
                                              editorStore: ServerDataStore.oneTimeEditor(),
                                              ignoreKeys: ["api_season"])
     

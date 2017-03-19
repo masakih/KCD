@@ -11,20 +11,20 @@ import SwiftyJSON
 
 struct MappingConfiguration<T: NSManagedObject> {
     let entity: Entity<T>
-    let dataKey: String
+    let dataKeys: [String]
     let primaryKey: String
     let compositPrimaryKeys: [String]?
     let editorStore: CoreDataAccessor
     let ignoreKeys: [String]
     
     init(entity: Entity<T>,
-         dataKey: String = "api_data",
+         dataKeys: [String] = ["api_data"],
          primaryKey: String = "id",
          compositPrimaryKeys: [String]? = nil,
          editorStore: CoreDataAccessor,
          ignoreKeys: [String] = []) {
         self.entity = entity
-        self.dataKey = dataKey
+        self.dataKeys = dataKeys
         self.primaryKey = primaryKey
         self.compositPrimaryKeys = compositPrimaryKeys
         self.editorStore = editorStore
@@ -56,7 +56,7 @@ extension String {
 }
 
 extension JSONMapper {
-    var data: JSON { return apiResponse.json.value(for: configuration.dataKey) }
+    var data: JSON { return apiResponse.json[configuration.dataKeys] }
     
     private func isEqual(_ lhs: AnyObject?, _ rhs: AnyObject?) -> Bool {
         if lhs == nil, rhs == nil { return true }

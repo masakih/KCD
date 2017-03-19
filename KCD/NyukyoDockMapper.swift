@@ -13,12 +13,12 @@ fileprivate enum DeckAPI: String {
     case port = "/kcsapi/api_port/port"
 }
 
-fileprivate func dataKey(_ apiResponse: APIResponse) -> String {
+fileprivate func dataKeys(_ apiResponse: APIResponse) -> [String] {
     guard let deckApi = DeckAPI(rawValue: apiResponse.api)
-        else { return "api_data" }
+        else { return ["api_data"] }
     switch deckApi {
-    case .port: return "api_data.api_ndock"
-    default: return "api_data"
+    case .port: return ["api_data", "api_ndock"]
+    default: return ["api_data"]
     }
 }
 
@@ -31,7 +31,7 @@ class NyukyoDockMapper: JSONMapper {
     required init(_ apiResponse: APIResponse) {
         self.apiResponse = apiResponse
         self.configuration = MappingConfiguration(entity: NyukyoDock.entity,
-                                                  dataKey: dataKey(apiResponse),
+                                                  dataKeys: dataKeys(apiResponse),
                                                   editorStore: ServerDataStore.oneTimeEditor())
     }
 }

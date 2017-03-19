@@ -13,7 +13,7 @@ class MasterMissionMapper: JSONMapper {
 
     let apiResponse: APIResponse
     let configuration = MappingConfiguration(entity: MasterMission.entity,
-                                             dataKey: "api_data.api_mst_mission",
+                                             dataKeys: ["api_data", "api_mst_mission"],
                                              editorStore: ServerDataStore.oneTimeEditor())
     
     required init(_ apiResponse: APIResponse) {

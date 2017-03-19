@@ -13,7 +13,7 @@ class MasterMapAreaMapper: JSONMapper {
     
     let apiResponse: APIResponse
     let configuration = MappingConfiguration(entity: MasterMapArea.entity,
-                                             dataKey: "api_data.api_mst_maparea",
+                                             dataKeys: ["api_data", "api_mst_maparea"],
                                              editorStore: ServerDataStore.oneTimeEditor())
     
     required init(_ apiResponse: APIResponse) {

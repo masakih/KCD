@@ -19,24 +19,24 @@ fileprivate enum ShipAPI: String {
     case kaisouSlotDeprive = "/kcsapi/api_req_kaisou/slot_deprive"
 }
 
-fileprivate func dataKey(_ apiResponse: APIResponse) -> String {
+fileprivate func dataKeys(_ apiResponse: APIResponse) -> [String] {
     guard let shipApi = ShipAPI(rawValue: apiResponse.api)
-        else { return "api_data" }
+        else { return ["api_data"] }
     switch shipApi {
-    case .port: return "api_data.api_ship"
-    case .getMemberShip3: return "api_data.api_ship_data"
-    case .kousyouGetShip: return "api_data.api_ship"
-    case .getMemberShipDeck: return "api_data.api_ship_data"
-    case .kaisouPowerUp: return "api_data.api_ship"
-    case .kaisouSlotDeprive: return "api_data.api_ship_data.api_set_ship"
-    case .getMemberShip: return "api_data"
+    case .port: return ["api_data", "api_ship"]
+    case .getMemberShip3: return ["api_data", "api_ship_data"]
+    case .kousyouGetShip: return ["api_data", "api_ship"]
+    case .getMemberShipDeck: return ["api_data", "api_ship_data"]
+    case .kaisouPowerUp: return ["api_data", "api_ship"]
+    case .kaisouSlotDeprive: return ["api_data", "api_ship_data", "api_set_ship"]
+    case .getMemberShip: return ["api_data"]
     }
 }
 
 extension MappingConfiguration {
-    func change(dataKey: String) -> MappingConfiguration {
+    func change(dataKeys: [String]) -> MappingConfiguration {
         return MappingConfiguration(entity: self.entity,
-                                    dataKey: dataKey,
+                                    dataKeys: dataKeys,
                                     primaryKey: self.primaryKey,
                                     compositPrimaryKeys: self.compositPrimaryKeys,
                                     editorStore: self.editorStore,
@@ -52,7 +52,7 @@ class ShipMapper: JSONMapper {
     required init(_ apiResponse: APIResponse) {
         self.apiResponse = apiResponse
         self.configuration = MappingConfiguration(entity: Ship.entity,
-                                                  dataKey: dataKey(apiResponse),
+                                                  dataKeys: dataKeys(apiResponse),
                                                   editorStore: ServerDataStore.oneTimeEditor(),
                                                   ignoreKeys:
             ["api_gomes", "api_gomes2", "api_broken", "api_powup",
@@ -67,7 +67,7 @@ class ShipMapper: JSONMapper {
         // kaisouSlotDepriveでは同時に２種類のデータが入る
         if let api = ShipAPI(rawValue: apiResponse.api),
             api == .kaisouSlotDeprive {
-            let conf = self.configuration.change(dataKey: "api_data.api_ship_data.api_unset_ship")
+            let conf = self.configuration.change(dataKeys: ["api_data", "api_ship_data", "api_unset_ship"])
             ShipMapper(apiResponse, configuration: conf).commit()
         }
     }

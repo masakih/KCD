@@ -17,15 +17,15 @@ fileprivate enum MaterialAPI: String {
     case hokyuCharge = "/kcsapi/api_req_hokyu/charge"
 }
 
-fileprivate func dataKey(_ apiResponse: APIResponse) -> String {
+fileprivate func dataKeys(_ apiResponse: APIResponse) -> [String] {
     guard let materialApi = MaterialAPI(rawValue: apiResponse.api)
-        else { return "api_data" }
+        else { return ["api_data"] }
     switch materialApi {
-    case .port: return "api_data.api_material"
-    case .kousyouCreateItem: return "api_data.api_material"
-    case .kousyouDestoroyShip: return "api_data.api_material"
-    case .kousyouRemodelSlot: return "api_data.api_after_material"
-    case .hokyuCharge: return "api_data.api_material"
+    case .port: return ["api_data", "api_material"]
+    case .kousyouCreateItem: return ["api_data", "api_material"]
+    case .kousyouDestoroyShip: return ["api_data", "api_material"]
+    case .kousyouRemodelSlot: return ["api_data", "api_after_material"]
+    case .hokyuCharge: return ["api_data", "api_material"]
     }
 }
 
@@ -43,7 +43,7 @@ class MaterialMapper: JSONMapper {
     required init(_ apiResponse: APIResponse) {
         self.apiResponse = apiResponse
         self.configuration = MappingConfiguration(entity: Material.entity,
-                                                  dataKey: dataKey(apiResponse),
+                                                  dataKeys: dataKeys(apiResponse),
                                                   editorStore: ServerDataStore.oneTimeEditor())
     }
     

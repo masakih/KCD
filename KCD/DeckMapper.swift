@@ -19,16 +19,16 @@ fileprivate enum DeckAPI: String {
     case kaisouPowerUp = "/kcsapi/api_req_kaisou/powerup"
 }
 
-fileprivate func dataKey(_ apiResponse: APIResponse) -> String {
+fileprivate func dataKeys(_ apiResponse: APIResponse) -> [String] {
     guard let deckApi = DeckAPI(rawValue: apiResponse.api)
-        else { return "api_data" }
+        else { return ["api_data"] }
     switch deckApi {
-    case .port: return "api_data.api_deck_port"
-    case .getMemberShip2: return "api_data_deck"
-    case .getMemberShip3: return "api_data.api_deck_data"
-    case .getMemberShipDeck: return "api_data.api_deck_data"
-    case .kaisouPowerUp: return "api_data.api_deck"
-    default: return "api_data"
+    case .port: return ["api_data", "api_deck_port"]
+    case .getMemberShip2: return ["api_data_deck"]
+    case .getMemberShip3: return ["api_data", "api_deck_data"]
+    case .getMemberShipDeck: return ["api_data", "api_deck_data"]
+    case .kaisouPowerUp: return ["api_data", "api_deck"]
+    default: return ["api_data"]
     }
 }
 
@@ -41,7 +41,7 @@ class DeckMapper: JSONMapper {
     required init(_ apiResponse: APIResponse) {
         self.apiResponse = apiResponse
         self.configuration = MappingConfiguration(entity: Deck.entity,
-                                                  dataKey: dataKey(apiResponse),
+                                                  dataKeys: dataKeys(apiResponse),
                                                   editorStore: ServerDataStore.oneTimeEditor())
     }
 }

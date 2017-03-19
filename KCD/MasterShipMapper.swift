@@ -14,7 +14,7 @@ class MasterShipMapper: JSONMapper {
     
     let apiResponse: APIResponse
     let configuration = MappingConfiguration(entity: MasterShip.entity,
-                                             dataKey: "api_data.api_mst_ship",
+                                             dataKeys: ["api_data", "api_mst_ship"],
                                              editorStore: ServerDataStore.oneTimeEditor())
     
     required init(_ apiResponse: APIResponse) {

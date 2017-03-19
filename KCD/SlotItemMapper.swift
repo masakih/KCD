@@ -15,13 +15,13 @@ fileprivate enum SlotItemAPI: String {
     case getMemberRequireInfo = "/kcsapi/api_get_member/require_info"
 }
 
-fileprivate func dataKey(_ apiResponse: APIResponse) -> String {
+fileprivate func dataKeys(_ apiResponse: APIResponse) -> [String] {
     guard let slotItemApi = SlotItemAPI(rawValue: apiResponse.api)
-        else { return "api_data" }
+        else { return ["api_data"] }
     switch slotItemApi {
-    case .kousyouGetShip: return "api_data.api_slotitem"
-    case .getMemberRequireInfo: return "api_data.api_slot_item"
-    default: return "api_data"
+    case .kousyouGetShip: return ["api_data", "api_slotitem"]
+    case .getMemberRequireInfo: return ["api_data", "api_slot_item"]
+    default: return ["api_data"]
     }
 }
 
@@ -34,7 +34,7 @@ class SlotItemMapper: JSONMapper {
     required init(_ apiResponse: APIResponse) {
         self.apiResponse = apiResponse
         self.configuration = MappingConfiguration(entity: SlotItem.entity,
-                                                  dataKey: dataKey(apiResponse),
+                                                  dataKeys: dataKeys(apiResponse),
                                                   editorStore: ServerDataStore.oneTimeEditor())
     }
     

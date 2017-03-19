@@ -13,12 +13,12 @@ fileprivate enum BasicAPI: String {
     case port = "/kcsapi/api_port/port"
 }
 
-fileprivate func dataKey(_ apiResponse: APIResponse) -> String {
+fileprivate func dataKeys(_ apiResponse: APIResponse) -> [String] {
     guard let basicApi = BasicAPI(rawValue: apiResponse.api)
-        else { return "api_data" }
+        else { return ["api_data"] }
     switch basicApi {
-    case .port: return "api_data.api_basic"
-    default: return "api_data"
+    case .port: return ["api_data", "api_basic"]
+    default: return ["api_data"]
     }
 }
 
@@ -31,7 +31,7 @@ class BasicMapper: JSONMapper {
     required init(_ apiResponse: APIResponse) {
         self.apiResponse = apiResponse
         self.configuration = MappingConfiguration(entity: Basic.entity,
-                                                  dataKey: dataKey(apiResponse),
+                                                  dataKeys: dataKeys(apiResponse),
                                                   editorStore: ServerDataStore.oneTimeEditor())
     }
     
