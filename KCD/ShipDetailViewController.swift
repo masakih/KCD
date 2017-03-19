@@ -24,7 +24,7 @@ private func nibNameFor(_ type: ShipDetailViewType) -> String {
 
 class ShipDetailViewController: NSViewController {
     let type: ShipDetailViewType
-    let managedObjectContext = ServerDataStore.default.managedObjectContext
+    let managedObjectContext = ServerDataStore.default.context
     
     init?(type: ShipDetailViewType) {
         self.type = type

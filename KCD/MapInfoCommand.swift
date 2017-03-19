@@ -17,7 +17,7 @@ class MapInfoCommand: JSONCommand {
     override func execute() {
         let store = ServerDataStore.oneTimeEditor()
         store.airBases().forEach { store.delete($0) }
-        store.saveActionCore()
+        store.save()
         
         AirBaseMapper(apiResponse).commit()
     }

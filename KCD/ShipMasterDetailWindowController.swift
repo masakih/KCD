@@ -9,7 +9,7 @@
 import Cocoa
 
 class ShipMasterDetailWindowController: NSWindowController {
-    let managedObjectContext = ServerDataStore.default.managedObjectContext
+    let managedObjectContext = ServerDataStore.default.context
     let fleetManager: FleetManager = {
         return AppDelegate.shared.fleetManager
     }()

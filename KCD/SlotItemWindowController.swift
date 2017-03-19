@@ -15,7 +15,7 @@ class SlotItemWindowController: NSWindowController {
         case equiped = 1
     }
     
-    let managedObjectContext = ServerDataStore.default.managedObjectContext
+    let managedObjectContext = ServerDataStore.default.context
     
     @IBOutlet var slotItemController: NSArrayController!
     @IBOutlet var searchField: NSSearchField!

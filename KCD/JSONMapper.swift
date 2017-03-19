@@ -128,7 +128,7 @@ extension JSONMapper {
             }
         }
         finishOperating()
-        store.saveActionCore()
+        store.save()
     }
     
     func beginRegister(_ object: ObjectType) {}

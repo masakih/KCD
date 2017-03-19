@@ -15,7 +15,7 @@ class HistoryWindowController: NSWindowController {
         case dropHistory = 2
     }
     
-    let manageObjectContext = LocalDataStore.default.managedObjectContext
+    let manageObjectContext = LocalDataStore.default.context
     
     @IBOutlet var tabView: NSTabView!
     @IBOutlet var kaihatsuTableVC: KaihatsuHistoryTableViewController!

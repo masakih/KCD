@@ -9,7 +9,7 @@
 import Cocoa
 
 class ShipWindowController: NSWindowController {
-    let managedObjectContext = ServerDataStore.default.managedObjectContext
+    let managedObjectContext = ServerDataStore.default.context
     
     override var windowNibName: String! {
         return "ShipWindowController"

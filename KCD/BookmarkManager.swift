@@ -38,7 +38,7 @@ class BookmarkManager: NSObject, NSMenuDelegate {
     
     private(set) var editorStore: BookmarkDataStore = BookmarkDataStore.oneTimeEditor()
     private var bookmarkMenu: NSMenu!
-    var manageObjectContext = BookmarkDataStore.default.managedObjectContext
+    var manageObjectContext = BookmarkDataStore.default.context
     var bookmarks: [Bookmark] {
         bookmarksController.fetch(nil)
         guard let items = bookmarksController.arrangedObjects as? [Bookmark]
@@ -61,7 +61,7 @@ class BookmarkManager: NSObject, NSMenuDelegate {
         new.order = maxOrder + 100
         
         DispatchQueue.main.asyncAfter(deadline: .now()) {
-            self.editorStore.saveActionCore()
+            self.editorStore.save()
         }
         
         return new

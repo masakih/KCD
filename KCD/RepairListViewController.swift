@@ -9,7 +9,7 @@
 import Cocoa
 
 class RepairListViewController: MainTabVIewItemViewController {
-    let managedObjectContext = ServerDataStore.default.managedObjectContext
+    let managedObjectContext = ServerDataStore.default.context
     let fetchPredicate = NSPredicate(format: "NOT ndock_time = 0")
     
     override var nibName: String! {

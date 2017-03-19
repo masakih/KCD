@@ -13,7 +13,7 @@ class ResourceViewController: NSViewController {
         return ["maxChara", "shipCount", "minimumColoredShipCount"]
     }
     
-    let managedObjectContext = ServerDataStore.default.managedObjectContext
+    let managedObjectContext = ServerDataStore.default.context
     
     deinit {
         unbind("maxChara")

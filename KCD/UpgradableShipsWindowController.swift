@@ -13,7 +13,7 @@ private extension Selector {
 }
 
 class UpgradableShipsWindowController: NSWindowController {
-    let managedObjectContext = ServerDataStore.default.managedObjectContext
+    let managedObjectContext = ServerDataStore.default.context
     private static var excludeShiIDsCache: [Int] = []
     
     class func isExcludeShipID(_ shipID: Int) -> Bool {

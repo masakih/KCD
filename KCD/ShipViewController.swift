@@ -16,7 +16,7 @@ fileprivate enum ViewType: Int {
 }
 
 class ShipViewController: MainTabVIewItemViewController {
-    let managedObjectContext = ServerDataStore.default.managedObjectContext
+    let managedObjectContext = ServerDataStore.default.context
     
     deinit {
         NotificationCenter.default.removeObserver(self)

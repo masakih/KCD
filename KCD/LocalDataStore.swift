@@ -23,15 +23,14 @@ class LocalDataStore: CoreDataAccessor, CoreDataManager {
     }
     
     required init(type: CoreDataManagerType) {
-        managedObjectContext =
-            type == .reader ? core.parentContext : core.editorContext()
+        context = (type == .reader ? core.parentContext : core.editorContext())
     }
     deinit {
-        saveActionCore()
+        save()
     }
     
     let core = CoreDataCore.local
-    let managedObjectContext: NSManagedObjectContext
+    let context: NSManagedObjectContext
 }
 
 extension LocalDataStore {

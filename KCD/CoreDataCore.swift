@@ -72,8 +72,8 @@ struct CoreDataCore {
 protocol CoreDataProvider {
     init(type: CoreDataManagerType)
     var core: CoreDataCore { get }
-    var managedObjectContext: NSManagedObjectContext { get }
-    func saveActionCore()
+    var context: NSManagedObjectContext { get }
+    func save()
 }
 
 protocol CoreDataManager {
@@ -82,7 +82,7 @@ protocol CoreDataManager {
     static var `default`: InstanceType { get }
     static func oneTimeEditor() -> InstanceType
     
-    func removeDatabaseFile()
+    func removeDataFile()
 }
 
 protocol CoreDataAccessor: CoreDataProvider {
@@ -97,9 +97,9 @@ private class CoreDataRemover {
         ["", "-wal", "-shm"]
             .map { name + $0 }
             .map { ApplicationDirecrories.support.appendingPathComponent($0) }
-            .forEach { removeDatabaseFileAtURL(url: $0) }
+            .forEach { removeDataFile(at: $0) }
     }
-    private class func removeDatabaseFileAtURL(url: URL) {
+    private class func removeDataFile(at url: URL) {
         do {
             try FileManager.default.removeItem(at: url)
         } catch {
@@ -175,7 +175,7 @@ private class MocGenerater {
                 if failError?.domain == NSCocoaErrorDomain,
                     (failError?.code == 134130 || failError?.code == 134110),
                     info.tryRemake {
-                    self.removeDatabaseFile(info)
+                    self.removeDataFile(info)
                     do {
                         try coordinator!.addPersistentStore(ofType: info.type,
                                                             configurationName: nil,
@@ -204,27 +204,27 @@ private class MocGenerater {
         moc.undoManager = nil
         return moc
     }
-    private class func removeDatabaseFile(_ info: CoreDataIntormation) {
+    private class func removeDataFile(_ info: CoreDataIntormation) {
         CoreDataRemover.remove(name: info.fileName)
     }
 }
 
 extension CoreDataManager where Self: CoreDataProvider {
-    func removeDatabaseFile() {
+    func removeDataFile() {
         CoreDataRemover.remove(name: self.core.info.fileName)
     }
 }
 
 extension CoreDataProvider {
-    func saveActionCore() {
-        if !managedObjectContext.commitEditing() {
+    func save() {
+        if !context.commitEditing() {
             NSLog("\(String(describing: type(of: self))) unable to commit editing before saveing")
             return
         }
         do {
-            try managedObjectContext.save()
+            try context.save()
         } catch { presentOnMainThread(error) }
-        if let p = managedObjectContext.parent {
+        if let p = context.parent {
             p.performAndWait {
                 do {
                     try p.save()
@@ -247,13 +247,13 @@ extension CoreDataAccessor {
     func insertNewObject<T>(for entity: Entity<T>) -> T? {
         return NSEntityDescription
             .insertNewObject(forEntityName: entity.name,
-                             into: managedObjectContext) as? T
+                             into: context) as? T
     }
     func delete(_ object: NSManagedObject) {
-        managedObjectContext.delete(object)
+        context.delete(object)
     }
     func object(with objectId: NSManagedObjectID) -> NSManagedObject {
-        return managedObjectContext.object(with: objectId)
+        return context.object(with: objectId)
     }
     func objects<T>(with entity: Entity<T>,
                     sortDescriptors: [NSSortDescriptor]? = nil,
@@ -261,6 +261,6 @@ extension CoreDataAccessor {
         let req = NSFetchRequest<T>(entityName: entity.name)
         req.sortDescriptors = sortDescriptors
         req.predicate = predicate
-        return try managedObjectContext.fetch(req)
+        return try context.fetch(req)
     }
 }

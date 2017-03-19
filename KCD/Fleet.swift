@@ -28,7 +28,7 @@ class Fleet: NSObject {
         super.init()
         
         deckController.entityName = Deck.entityName
-        deckController.managedObjectContext = ServerDataStore.default.managedObjectContext
+        deckController.managedObjectContext = ServerDataStore.default.context
         deckController.fetchPredicate = NSPredicate(format: "id = %ld", number)
         let req = NSFetchRequest<NSFetchRequestResult>()
         req.entity = NSEntityDescription.entity(forEntityName: Deck.entityName,

@@ -9,7 +9,7 @@
 import Cocoa
 
 class PowerUpSupportViewController: MainTabVIewItemViewController {
-    let managedObjectContext = ServerDataStore.default.managedObjectContext
+    let managedObjectContext = ServerDataStore.default.context
     
     deinit {
         shipController.removeObserver(self, forKeyPath: NSSortDescriptorsBinding)

@@ -35,7 +35,7 @@ class MissionStatus: NSObject {
         self.number = number
         controller = NSArrayController()
         super.init()
-        controller.managedObjectContext = ServerDataStore.default.managedObjectContext
+        controller.managedObjectContext = ServerDataStore.default.context
         controller.entityName = Deck.entityName
         controller.fetchPredicate = NSPredicate(format: "id = %ld", number)
         controller.automaticallyRearrangesObjects = true

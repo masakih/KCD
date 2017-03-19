@@ -139,7 +139,7 @@ extension BookmarkListViewController: NSTableViewDelegate, NSTableViewDataSource
                 else { return }
             bookmark.order = targetOrder + $0.offset + 1
         }
-        store.saveActionCore()
+        store.save()
         bookmarkController.rearrangeObjects()
         reorderingBoolmarks()
         bookmarkController.rearrangeObjects()

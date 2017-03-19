@@ -93,21 +93,21 @@ class GuardShelterCommand: JSONCommand {
     private func removeInvalidEntry() {
         let store = TemporaryDataStore.oneTimeEditor()
         store.notEnsuredGuardEscaped().forEach { store.delete($0) }
-        store.saveActionCore()
+        store.save()
         Thread.sleep(forTimeInterval: 0.1)
         notify()
     }
     private func removeAllEntry() {
         let store = TemporaryDataStore.oneTimeEditor()
         store.guardEscaped().forEach { store.delete($0) }
-        store.saveActionCore()
+        store.save()
         Thread.sleep(forTimeInterval: 0.1)
         notify()
     }
     func ensureGuardShelter() {
         let store = TemporaryDataStore.oneTimeEditor()
         store.guardEscaped().forEach { $0.ensured = true }
-        store.saveActionCore()
+        store.save()
         Thread.sleep(forTimeInterval: 0.1)
         notify()
     }

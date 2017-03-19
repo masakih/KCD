@@ -22,15 +22,14 @@ class ResourceHistoryDataStore: CoreDataAccessor, CoreDataManager {
     }
     
     required init(type: CoreDataManagerType) {
-        managedObjectContext =
-            type == .reader ? core.parentContext : core.editorContext()
+        context = (type == .reader ? core.parentContext : core.editorContext())
     }
     deinit {
-        saveActionCore()
+        save()
     }
     
     let core = CoreDataCore.resourceHistory
-    let managedObjectContext: NSManagedObjectContext
+    let context: NSManagedObjectContext
 }
 
 extension ResourceHistoryDataStore {

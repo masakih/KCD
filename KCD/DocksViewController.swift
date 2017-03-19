@@ -28,8 +28,8 @@ class DocksViewController: MainTabVIewItemViewController {
         }
     }
     
-    let managedObjectContext = ServerDataStore.default.managedObjectContext
-    let battleManagedObjectController = TemporaryDataStore.default.managedObjectContext
+    let managedObjectContext = ServerDataStore.default.context
+    let battleManagedObjectController = TemporaryDataStore.default.context
     let questListViewController = QuestListViewController()
     
     let missionStates = (2...4).flatMap { MissionStatus(number: $0) }

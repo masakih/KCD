@@ -9,7 +9,7 @@
 import Cocoa
 
 class AirBaseWindowController: NSWindowController {
-    let managedObjectContext = ServerDataStore.default.managedObjectContext
+    let managedObjectContext = ServerDataStore.default.context
     
     @IBOutlet var areaMatrix: NSMatrix!
     @IBOutlet var squadronTab: NSSegmentedControl!
