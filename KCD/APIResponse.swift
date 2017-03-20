@@ -23,12 +23,11 @@ extension JSON {
 fileprivate extension Data {
     var utf8String: String? { return String(data: self, encoding: .utf8) }
 }
-fileprivate extension Dictionary {
-    func apended(_ keyValue: (Key, Value) ) -> Dictionary {
-        var dict  = self
-        dict[keyValue.0] = keyValue.1
-        return dict
-    }
+
+func +<Key, Value> (lhs: [Key: Value], rhs: (Key, Value)) -> [Key: Value] {
+    var new = lhs
+    new[rhs.0] = rhs.1
+    return new
 }
 
 fileprivate func splitJSON(_ data: Data) -> String? {
@@ -51,7 +50,7 @@ fileprivate func parseParameter(_ request: URLRequest) -> [String: String]? {
         .map { $0.components(separatedBy: "=") }
         .filter { $0.count == 2 }
         .map { ($0[0], $0[1]) }
-        .reduce([String: String]()) { $0.apended($1) }
+        .reduce([String: String]()) { $0 + $1 }
 }
 
 struct ParameterValue {
