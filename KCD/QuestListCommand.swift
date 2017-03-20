@@ -15,7 +15,7 @@ class QuestListCommand: JSONCommand {
     }
     override func execute() {
         // 左のタブがAllじゃない時は無視する
-        guard let tab = arguments["api_tab_id"].int,
+        guard let tab = parameter["api_tab_id"].int,
             tab == 0
             else { return }
         

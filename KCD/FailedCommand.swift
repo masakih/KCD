@@ -10,6 +10,6 @@ import Cocoa
 
 class FailedCommand: JSONCommand {
     override func execute() {
-        print("Fail API comand -> \(api)\nparameter -> \(arguments)\njson -> \(json)")
+        print("Fail API comand -> \(api)\nparameter -> \(parameter)\njson -> \(json)")
     }
 }

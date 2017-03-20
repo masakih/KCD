@@ -14,7 +14,7 @@ class RemodelSlotItemCommand: JSONCommand {
             success != 0
             else { return }
         
-        guard let slotItemId = arguments["api_slot_id"].int
+        guard let slotItemId = parameter["api_slot_id"].int
             else { return print("api_slot_id is wrong") }
         
         let afterSlot = data["api_after_slot"]

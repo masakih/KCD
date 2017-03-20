@@ -10,6 +10,6 @@ import Cocoa
 
 class UnknownComand: JSONCommand {
     override func execute() {
-        print("Unknown API command -> \(api)\nparameter -> \(arguments)\njson -> \(json)")
+        print("Unknown API command -> \(api)\nparameter -> \(parameter)\njson -> \(json)")
     }
 }

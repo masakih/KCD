@@ -11,10 +11,10 @@ import SwiftyJSON
 
 class StoreCreateSlotItemHistoryCommand: JSONCommand {
     override func execute() {
-        guard let fuel = arguments["api_item1"].int,
-            let bull = arguments["api_item2"].int,
-            let steel = arguments["api_item3"].int,
-            let bauxite = arguments["api_item4"].int
+        guard let fuel = parameter["api_item1"].int,
+            let bull = parameter["api_item2"].int,
+            let steel = parameter["api_item3"].int,
+            let bauxite = parameter["api_item4"].int
             else { return print("Parameter is Wrong") }
         
         guard let success = data["api_create_flag"].bool

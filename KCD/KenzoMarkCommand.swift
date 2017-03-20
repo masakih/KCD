@@ -10,7 +10,7 @@ import Cocoa
 
 class KenzoMarkCommand: JSONCommand {
     override func execute() {
-        guard let kdockId = arguments["api_kdock_id"].int
+        guard let kdockId = parameter["api_kdock_id"].int
             else { return print("api_kdock_id is wrong") }
         
         let store = ServerDataStore.default

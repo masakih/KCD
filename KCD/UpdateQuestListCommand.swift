@@ -11,7 +11,7 @@ import Cocoa
 class UpdateQuestListCommand: JSONCommand {
     override func execute() {
         let store = ServerDataStore.oneTimeEditor()
-        arguments["api_quest_id"]
+        parameter["api_quest_id"]
             .int
             .flatMap { store.quest(by: $0) }
             .map {

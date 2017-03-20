@@ -15,12 +15,12 @@ class SetActionCommand: JSONCommand {
     }
     
     override func execute() {
-        guard let areaId = arguments["api_area_id"].int,
-            let rIds = arguments["api_base_id"]
+        guard let areaId = parameter["api_area_id"].int,
+            let rIds = parameter["api_base_id"]
                 .string?
                 .components(separatedBy: ",")
                 .map({ Int($0) ?? -1 }),
-            let actions = arguments["api_action_kind"]
+            let actions = parameter["api_action_kind"]
                 .string?
                 .components(separatedBy: ",")
                 .map({ Int($0) ?? -1 })

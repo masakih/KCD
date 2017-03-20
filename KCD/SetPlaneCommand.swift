@@ -15,9 +15,9 @@ class SetPlaneCommand: JSONCommand {
     }
     
     override func execute() {
-        guard let areaId = arguments["api_area_id"].int,
-            let rId = arguments["api_base_id"].int,
-            let squadronId = arguments["api_squadron_id"].int
+        guard let areaId = parameter["api_area_id"].int,
+            let rId = parameter["api_base_id"].int,
+            let squadronId = parameter["api_squadron_id"].int
             else { return print("Argument is wrong") }
         guard let distance = data["api_distance"].int,
             let bauxite = data["api_after_bauxite"].int

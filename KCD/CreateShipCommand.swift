@@ -19,7 +19,7 @@ class CreateShipCommand: JSONCommand {
         }
     }
     private func afterExecute() {
-        guard let dockId = arguments["api_kdock_id"].int
+        guard let dockId = parameter["api_kdock_id"].int
             else { return print("api_kdock_id is wrong") }
         let store = ServerDataStore.default
         guard let kenzoDock = store.kenzoDock(byDockId: dockId),

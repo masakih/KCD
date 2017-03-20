@@ -11,7 +11,7 @@ import Cocoa
 class RealDestroyShipCommand: JSONCommand {
     override func execute() {
         let store = ServerDataStore.oneTimeEditor()
-        arguments["api_ship_id"]
+        parameter["api_ship_id"]
             .int
             .flatMap { store.ship(byId: $0) }
             .flatMap { store.delete($0) }

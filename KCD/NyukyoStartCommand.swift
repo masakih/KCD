@@ -14,12 +14,12 @@ class NyukyoStartCommand: JSONCommand {
         return false
     }
     override func execute() {
-        guard let hi = arguments["api_highspeed"].int,
+        guard let hi = parameter["api_highspeed"].int,
             hi != 0
         else { return }
         
         let store = ServerDataStore.oneTimeEditor()
-        arguments["api_ship_id"]
+        parameter["api_ship_id"]
             .int
             .flatMap { store.ship(byId: $0) }
             .map { $0.nowhp = $0.maxhp }

@@ -15,9 +15,9 @@ class AirCorpsChangeNameCommand: JSONCommand {
     }
     
     override func execute() {
-        guard let areaId = arguments["api_area_id"].int,
-            let rId = arguments["api_base_id"].int,
-            let name = arguments["api_name"].string
+        guard let areaId = parameter["api_area_id"].int,
+            let rId = parameter["api_base_id"].int,
+            let name = parameter["api_name"].string
             else { return }
         let store = ServerDataStore.oneTimeEditor()
         store.airBase(area: areaId, base: rId)?.name = name

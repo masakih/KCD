@@ -11,7 +11,7 @@ import Cocoa
 class RealPowerUpCommand: JSONCommand {
     override func execute() {
         let store = ServerDataStore.oneTimeEditor()
-        arguments["api_id_items"]
+        parameter["api_id_items"]
             .string?
             .components(separatedBy: ",")
             .flatMap { Int($0) }
