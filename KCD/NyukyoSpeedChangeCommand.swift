@@ -16,7 +16,7 @@ class NyukyoSpeedChangeCommand: JSONCommand {
     override func execute() {
         let store = ServerDataStore.oneTimeEditor()
         let nDock = arguments["api_ndock_id"]
-            .flatMap { Int($0) }
+            .int
             .flatMap { store.nyukyoDock(by: $0) }
         nDock
             .flatMap { $0.ship_id }

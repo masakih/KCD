@@ -16,9 +16,9 @@ class AirCorpsSupplyCommand: JSONCommand {
     
     override func execute() {
         let store = ServerDataStore.oneTimeEditor()
-        guard let areaId = arguments["api_area_id"].flatMap({ Int($0) }),
-            let rId = arguments["api_base_id"].flatMap({ Int($0) }),
-            let squadronIdsString = arguments["api_squadron_id"],
+        guard let areaId = arguments["api_area_id"].int,
+            let rId = arguments["api_base_id"].int,
+            let squadronIdsString = arguments["api_squadron_id"].string,
             let airBase = store.airBase(area: areaId, base: rId)
             else { return }
         let planeInfos = data["api_plane_info"]

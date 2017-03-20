@@ -54,9 +54,55 @@ fileprivate func parseParameter(_ request: URLRequest) -> [String: String]? {
         .reduce([String: String]()) { $0.apended($1) }
 }
 
+struct ParameterValue {
+    private let rowValue: String?
+    
+    var int: Int? { return rowValue.flatMap { Int($0) } }
+    var double: Double? { return rowValue.flatMap { Double($0) } }
+    var string: String? { return rowValue }
+    var bool: Bool? {
+        guard let _ = rowValue else { return nil }
+        if let i = self.int {
+            return i != 0
+        }
+        if let s = self.string?.lowercased() {
+            switch s {
+            case "true", "yes": return true
+            default: return false
+            }
+        }
+        return false
+    }
+    var valid: Bool { return rowValue != nil }
+    
+    init(_ rowValue: String?) {
+        self.rowValue = rowValue
+    }
+}
+
+struct Parameter {
+    private let rowValue: [String: String]
+    
+    init(_ rowValue: [String: String]) {
+        self.rowValue = rowValue
+    }
+    init?(_ request: URLRequest) {
+        guard let paramList = parseParameter(request)
+            else { return nil }
+        self.init(paramList)
+    }
+    
+    subscript(_ key: String) -> ParameterValue {
+        return ParameterValue(rowValue[key])
+    }
+    func map<T>(_ transform: (String, String) throws -> T) rethrows -> [T] {
+        return try rowValue.map(transform)
+    }
+}
+
 struct APIResponse {
     let api: String
-    let parameter: [String: String]
+    let parameter: Parameter
     let json: JSON
     let date: Date
     var success: Bool {
@@ -74,7 +120,7 @@ struct APIResponse {
         }
         self.json = JSON(parseJSON: josn)
         
-        guard let parameter = parseParameter(request)
+        guard let parameter = Parameter(request)
             else {
                 print("Can not parse Parameter")
                 return nil

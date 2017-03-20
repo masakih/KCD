@@ -35,9 +35,9 @@ class MapStartCommand: JSONCommand {
     private func startBattle() {
         store.battles().forEach { store.delete($0) }
         
-        guard let deckId = arguments["api_deck_id"].flatMap({ Int($0) }),
-            let mapArea = arguments["api_maparea_id"].flatMap({ Int($0) }),
-            let mapInfo = arguments["api_mapinfo_no"].flatMap({ Int($0) })
+        guard let deckId = arguments["api_deck_id"].int,
+            let mapArea = arguments["api_maparea_id"].int,
+            let mapInfo = arguments["api_mapinfo_no"].int
             else { return print("startBattle Arguments is wrong") }
         
         guard let no = data["api_no"].int

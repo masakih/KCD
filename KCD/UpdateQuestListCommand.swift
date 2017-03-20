@@ -12,7 +12,7 @@ class UpdateQuestListCommand: JSONCommand {
     override func execute() {
         let store = ServerDataStore.oneTimeEditor()
         arguments["api_quest_id"]
-            .flatMap { Int($0) }
+            .int
             .flatMap { store.quest(by: $0) }
             .map {
                 $0.progress_flag = 0

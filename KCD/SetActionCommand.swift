@@ -15,11 +15,13 @@ class SetActionCommand: JSONCommand {
     }
     
     override func execute() {
-        guard let areaId = arguments["api_area_id"].flatMap({ Int($0) }),
-            let rIds = arguments["api_base_id"]?
+        guard let areaId = arguments["api_area_id"].int,
+            let rIds = arguments["api_base_id"]
+                .string?
                 .components(separatedBy: ",")
                 .map({ Int($0) ?? -1 }),
-            let actions = arguments["api_action_kind"]?
+            let actions = arguments["api_action_kind"]
+                .string?
                 .components(separatedBy: ",")
                 .map({ Int($0) ?? -1 })
             else { return print("Argument is rwong") }

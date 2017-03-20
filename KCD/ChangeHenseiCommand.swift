@@ -61,9 +61,9 @@ class ChangeHenseiCommand: JSONCommand {
     // ship_id == -1 : remove.
     // ship_id == -2 : remove all without flag ship.
     override func execute() {
-        guard let deckNumber = arguments["api_id"].flatMap({ Int($0) }),
-            let shipId = arguments["api_ship_id"].flatMap({ Int($0) }),
-            let shipIndex = arguments["api_ship_idx"].flatMap({ Int($0) })
+        guard let deckNumber = arguments["api_id"].int,
+            let shipId = arguments["api_ship_id"].int,
+            let shipIndex = arguments["api_ship_idx"].int
             else { return print("parameter is wrong") }
         if shipId == -2 {
             excludeShipsWithoutFlagShip(deckNumber: deckNumber)

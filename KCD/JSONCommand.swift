@@ -19,7 +19,7 @@ class JSONCommand {
     }
     
     var api: String { return apiResponse.api }
-    var arguments: [String: String] { return apiResponse.parameter }
+    var arguments: Parameter { return apiResponse.parameter }
     var json: JSON { return apiResponse.json }
     
     var data: JSON { return json["api_data"] }

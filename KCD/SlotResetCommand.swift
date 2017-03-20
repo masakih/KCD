@@ -17,7 +17,7 @@ class SlotResetCommand: JSONCommand {
     override func execute() {
         let store = ServerDataStore.oneTimeEditor()
         guard let ship = arguments["api_id"]
-            .flatMap({ Int($0) })
+            .int
             .flatMap({ store.ship(byId: $0) })
             else { return print("api_id is wrong") }
         guard let slotItems = data["api_slot"].arrayObject as? [Int]

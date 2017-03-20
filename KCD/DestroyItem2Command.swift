@@ -15,7 +15,8 @@ class DestroyItem2Command: JSONCommand {
     }
     
     override func execute() {
-        guard let itemIds = arguments["api_slotitem_ids"]?
+        guard let itemIds = arguments["api_slotitem_ids"]
+            .string?
             .components(separatedBy: ",")
             .flatMap({ Int($0) })
             else { return print("api_slotitem_ids is wrong") }
