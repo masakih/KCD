@@ -254,7 +254,7 @@ extension Ship {
 }
 
 
-fileprivate let seikuEffectiveTypes: [Int] = [6, 7, 8, 11, 45]
+fileprivate let seikuEffectiveTypes: [Int] = [6, 7, 8, 11, 45, 56, 57, 58]
 
 fileprivate let fighterTypes: [Int] = [6]
 fileprivate let bomberTypes: [Int] = [7]
