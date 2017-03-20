@@ -66,8 +66,7 @@ class GuardShelterCommand: JSONCommand {
     }
     private func registerReserve() {
         let escape = data["api_escape"]
-        let guardians = escape["api_tow_idx"]
-        guard let guardianPos = guardians[0].int
+        guard let guardianPos = escape["api_tow_idx"][0].int
             else { return }
         let fixedGuardianPos = guardianPos - 6 - 1
         guard 0..<6 ~= fixedGuardianPos,

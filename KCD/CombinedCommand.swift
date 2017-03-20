@@ -39,7 +39,7 @@ class CombinedCommand: JSONCommand {
         
         parameter["api_combined_type"]
             .int
-            .flatMap { CombineType(rawValue:$0) }
+            .flatMap { CombineType(rawValue: $0) }
             .map { postNotification(withType: $0) }
     }
     

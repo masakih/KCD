@@ -36,7 +36,7 @@ class QuestListCommand: JSONCommand {
         let quests = store.sortedQuestByNo()
         data["api_list"].forEach { (_, quest) in
             guard let no = quest["api_no"].int
-            else { return }
+                else { return }
             let t = quests.binarySearch { $0.no ==? no }
             guard let new = t ?? store.createQuest()
                 else { return print("Can not create Quest") }

@@ -30,9 +30,7 @@ class SlotResetCommand: JSONCommand {
             .flatMap { slotItem -> SlotItem? in
                 guard slotItem > 0 else { return nil }
                 let found = storedSlotItems.binarySearch { $0.id ==? slotItem }
-                if let item = found {
-                    return item
-                }
+                if let item = found { return item }
                 print("Item \(slotItem) is not found")
                 return nil
         }

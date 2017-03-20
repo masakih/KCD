@@ -34,7 +34,7 @@ enum BattleAPI: String {
 
 class BattleCommand: JSONCommand {
     override class func canExecuteAPI(_ api: String) -> Bool {
-        return BattleAPI(rawValue: api) != nil ? true : false
+        return BattleAPI(rawValue: api) != nil
     }
     
     override func execute() {

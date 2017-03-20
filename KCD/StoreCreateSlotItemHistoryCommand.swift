@@ -23,8 +23,9 @@ class StoreCreateSlotItemHistoryCommand: JSONCommand {
         let numberOfUsedKaihatuSizai = success ? 1 : 0
         
         let store = ServerDataStore.default
-        guard let ship0 = store.deck(byId: 1)?.ship_0,
-            let flagShip = store.ship(byId: ship0)
+        guard let flagShip = store.deck(byId: 1)
+            .map({ $0.ship_0 })
+            .flatMap({ store.ship(byId: $0) })
             else { return print("Flagship is not found") }
         
         guard let basic = store.basic()
