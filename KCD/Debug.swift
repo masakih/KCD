@@ -33,23 +33,19 @@ class Debug {
     }
     
     class func print(_ items: Any..., separator: String = " ", terminator: String = "\n", level: Level = .debug) {
-        #if DEBUG
-            if UserDefaults.standard.degugPrintLevel.higher(other: level) {
+            excute(level: level) {
                 Swift.print(Args(args: items, separator: separator),
                             separator: separator,
                             terminator: terminator)
             }
-        #endif
     }
     
     class func debugPrint(_ items: Any..., separator: String = " ", terminator: String = "\n", level: Level = .debug) {
-        #if DEBUG
-            if UserDefaults.standard.degugPrintLevel.higher(other: level) {
+            excute(level: level) {
                 Swift.debugPrint(Args(args: items, separator: separator),
                                  separator: separator,
                                  terminator: terminator)
             }
-        #endif
     }
     
     class func dump<T>(_ value: T,
@@ -62,5 +58,11 @@ class Debug {
         #else
             return value
         #endif
+    }
+    
+    class func excute(level: Level, f: () -> Void) {
+        if UserDefaults.standard.degugPrintLevel.higher(other: level) {
+            f()
+        }
     }
 }
