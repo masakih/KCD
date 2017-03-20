@@ -147,7 +147,6 @@ class CalculateDamageCommand: JSONCommand {
 }
 // MARK: - Primitive Calclator
 extension CalculateDamageCommand {
-    
     private func hogekiTargets(_ list: JSON) -> [[Int]]? {
         guard let targetArraysArray = list
             .array?
@@ -176,53 +175,58 @@ extension CalculateDamageCommand {
         }
         return true
     }
+    private func validTargetPos(_ targetPos: Int, in battleFleet: BattleFleet) -> Bool {
+        let upper = (battleFleet == .each ? 12 : 6)
+        return 1...upper ~= targetPos
+    }
+    private func position(_ pos: Int, in fleet: BattleFleet) -> Int? {
+        let shipOffset = (fleet == .second) ? 6 : 0
+        let damagePos = pos - 1 + shipOffset
+        guard 0..<damages.count ~= damagePos
+            else { return nil }
+        return damagePos
+    }
+    private func calcHP(damage: Damage, receicve: Int) {
+        let hp = damage.hp
+        var newHP = (hp as Int) - receicve
+        if newHP <= 0 {
+            let shipId = damage.shipID
+            if let ship = ServerDataStore.default.ship(byId: shipId) {
+                let efectiveHP = damageControlIfPossible(nowhp: newHP, ship: ship)
+                if efectiveHP != 0, efectiveHP != newHP {
+                    damage.useDamageControl = true
+                }
+                newHP = efectiveHP
+            }
+        }
+        damage.hp = newHP
+    }
     fileprivate func calculateHogeki(baseKeyPath: String, _ bf: () -> BattleFleet) {
         calculateHogeki(baseKeyPath: baseKeyPath, battleFleet: bf())
     }
     fileprivate func calculateHogeki(baseKeyPath: String, battleFleet: BattleFleet = .first) {
         let baseValue = json[baseKeyPath.components(separatedBy: ".")]
-        guard let targetArraysArray = hogekiTargets(baseValue["api_df_list"]),
-            let hougeki1Damages = hogekiDamages(baseValue["api_damage"])
+        guard let targetPosLists = hogekiTargets(baseValue["api_df_list"]),
+            let damageLists = hogekiDamages(baseValue["api_damage"])
             else { return }
-        guard targetArraysArray.count == hougeki1Damages.count
+        guard targetPosLists.count == damageLists.count
             else { return print("api_damage is wrong.") }
 
-        let eFlags: [Int]? = enemyFlags(baseValue["api_at_eflag"])
+        let eFlags = enemyFlags(baseValue["api_at_eflag"])
         
         Debug.print("Start Hougeki \(baseKeyPath)", level: .debug)
         let shipOffset = (battleFleet == .second) ? 6 : 0
-        targetArraysArray.enumerated().forEach { (i, targetArray) in
-            targetArray.enumerated().forEach { (j, targetPosition) in
-                if !isTargetFriend(eFlags: eFlags, index: i) { return }
+        zip(targetPosLists, damageLists).enumerated().forEach { (i, list) in
+            if !isTargetFriend(eFlags: eFlags, index: i) { return }
+            
+            zip(list.0, list.1).forEach { (targetPos, damage) in
+                guard validTargetPos(targetPos, in: battleFleet) else { return }
                 
-                if battleFleet == .each {
-                    guard 1...12 ~= targetPosition else { return }
-                } else {
-                    guard 1...6 ~= targetPosition else { return }
-                }
-                
-                let damagePos = targetPosition - 1 + shipOffset
-                guard 0..<damages.count ~= damagePos
+                guard let damagePos = position(targetPos, in: battleFleet)
                     else { return print("damage pos is larger than damage count") }
-                let damageObject = damages[damagePos]
-                guard 0..<hougeki1Damages[i].count ~= j
-                    else { return print("target pos is larger than damages") }
-                let damage = hougeki1Damages[i][j]
-                let hp = damageObject.hp
-                var newHP = (hp as Int) - damage
-                if newHP <= 0 {
-                    let shipId = damageObject.shipID
-                    if let ship = ServerDataStore.default.ship(byId: shipId) {
-                        let efectiveHP = damageControlIfPossible(nowhp: newHP, ship: ship)
-                        if efectiveHP != 0, efectiveHP != newHP {
-                            damageObject.useDamageControl = true
-                        }
-                        newHP = efectiveHP
-                    }
-                }
-                damageObject.hp = newHP
+                calcHP(damage: damages[damagePos], receicve: damage)
                 
-                Debug.print("Hougeki \(targetPosition + shipOffset) -> \(damage)", level: .debug)
+                Debug.print("Hougeki \(targetPos + shipOffset) -> \(damage)", level: .debug)
             }
         }
     }
@@ -240,23 +244,9 @@ extension CalculateDamageCommand {
         koukuDamages.enumerated().forEach { (idx, damage) in
             if idx == 0 { return }
             
-            let damagePos = idx - 1 + shipOffset
-            guard 0..<damages.count ~= damagePos
+            guard let damagePos = position(idx, in: battleFleet)
                 else { return }
-            let damageObject = damages[damagePos]
-            var newHP = damageObject.hp - damage
-            if newHP <= 0 {
-                let shipId = damageObject.shipID
-                if let ship = ServerDataStore.default.ship(byId: shipId) {
-                    let efectiveHP = damageControlIfPossible(nowhp: newHP, ship: ship)
-                    if efectiveHP != 0 && efectiveHP != newHP {
-                        damageObject.useDamageControl = true
-                    }
-                    newHP = efectiveHP
-                }
-                damageObject.hp = newHP
-            }
-            damageObject.hp = newHP
+            calcHP(damage: damages[damagePos], receicve: damage)
             
             Debug.print("FDam \(idx + shipOffset) -> \(damage)", level: .debug)
         }
@@ -412,9 +402,8 @@ extension CalculateDamageCommand {
         calcCombinedBattleAir()
     }
 }
+// MARK: - Damage control
 extension CalculateDamageCommand {
-
-    // MARK: - Damage control
     fileprivate func damageControlIfPossible(nowhp: Int, ship: Ship) -> Int {
         var nowHp = nowhp
         if nowHp < 0 { nowHp = 0 }
@@ -477,7 +466,7 @@ extension CalculateDamageCommand {
         if useDamageControl {
             return
         }
-        
+        // check extra slot
         let exItemId = store.masterSlotItemID(bySlotItemId: ship.slot_ex)
         guard let exType = DamageControlID(rawValue: exItemId)
             else { return }
