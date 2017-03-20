@@ -17,10 +17,9 @@ class StoreCreateSlotItemHistoryCommand: JSONCommand {
             let bauxite = parameter["api_item4"].int
             else { return print("Parameter is Wrong") }
         
-        guard let success = data["api_create_flag"].bool
-            else { return print("api_create_flag is wrong") }
+        let success = data["api_create_flag"].int ?? 0
         let name = masterSlotItemName(sccess: success, data: data)
-        let numberOfUsedKaihatuSizai = success ? 1 : 0
+        let numberOfUsedKaihatuSizai = success != 0 ? 1 : 0
         
         let store = ServerDataStore.default
         guard let flagShip = store.deck(byId: 1)
@@ -46,8 +45,8 @@ class StoreCreateSlotItemHistoryCommand: JSONCommand {
         newHistory.date = Date()
     }
     
-    private func masterSlotItemName(sccess: Bool, data: JSON) -> String {
-        if !sccess {
+    private func masterSlotItemName(sccess: Int, data: JSON) -> String {
+        if sccess == 0 {
             return NSLocalizedString("fail to develop", comment: "fail to develop")
         }
         guard let slotItemId = data["api_slot_item"]["api_slotitem_id"].int
