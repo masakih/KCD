@@ -215,7 +215,6 @@ extension CalculateDamageCommand {
         let eFlags = enemyFlags(baseValue["api_at_eflag"])
         
         Debug.print("Start Hougeki \(baseKeyPath)", level: .debug)
-        let shipOffset = (battleFleet == .second) ? 6 : 0
         zip(targetPosLists, damageLists).enumerated().forEach { (i, list) in
             if !isTargetFriend(eFlags: eFlags, index: i) { return }
             
@@ -226,7 +225,10 @@ extension CalculateDamageCommand {
                     else { return print("damage pos is larger than damage count") }
                 calcHP(damage: damages[damagePos], receicve: damage)
                 
-                Debug.print("Hougeki \(targetPos + shipOffset) -> \(damage)", level: .debug)
+                Debug.excute(level: .debug) {
+                    let shipOffset = (battleFleet == .second) ? 6 : 0
+                    print("Hougeki \(targetPos + shipOffset) -> \(damage)")
+                }
             }
         }
     }
@@ -240,7 +242,6 @@ extension CalculateDamageCommand {
         
         Debug.print("Start FDam \(baseKeyPath)", level: .debug)
         
-        let shipOffset = (battleFleet == .second) ? 6 : 0
         koukuDamages.enumerated().forEach { (idx, damage) in
             if idx == 0 { return }
             
@@ -248,7 +249,10 @@ extension CalculateDamageCommand {
                 else { return }
             calcHP(damage: damages[damagePos], receicve: damage)
             
-            Debug.print("FDam \(idx + shipOffset) -> \(damage)", level: .debug)
+            Debug.excute(level: .debug) {
+                let shipOffset = (battleFleet == .second) ? 6 : 0
+                print("FDam \(idx + shipOffset) -> \(damage)")
+            }
         }
     }
 }
@@ -426,7 +430,7 @@ extension CalculateDamageCommand {
             }
         }
         if useDamageControl { return nowHp }
-        
+        // check extra slot
         let exItemId = store.masterSlotItemID(bySlotItemId: ship.slot_ex)
         guard let exType = DamageControlID(rawValue: exItemId)
             else { return nowHp }
@@ -463,9 +467,7 @@ extension CalculateDamageCommand {
                 }
             }
         }
-        if useDamageControl {
-            return
-        }
+        if useDamageControl { return }
         // check extra slot
         let exItemId = store.masterSlotItemID(bySlotItemId: ship.slot_ex)
         guard let exType = DamageControlID(rawValue: exItemId)
