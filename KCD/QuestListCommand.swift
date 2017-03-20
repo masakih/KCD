@@ -40,7 +40,7 @@ class QuestListCommand: JSONCommand {
             let t = quests.binarySearch { $0.no ==? no }
             guard let new = t ?? store.createQuest()
                 else { return print("Can not create Quest") }
-            new.bonus_flag = quest["api_bonus_flag"].bool ?? false
+            new.bonus_flag = quest["api_bonus_flag"].int.map { $0 != 0} ?? false
             new.category = quest["api_category"].int ?? 0
             new.detail = quest["api_detail"].string ?? ""
 //            new.get_material_0 = questData["api_get_material_0"] as? Int ?? 0
