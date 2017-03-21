@@ -8,8 +8,8 @@
 
 import Cocoa
 
-extension CoreDataIntormation {
-    static let resourceHistory = CoreDataIntormation("ResourceHistory")
+extension CoreDataConfiguration {
+    static let resourceHistory = CoreDataConfiguration("ResourceHistory")
 }
 extension CoreDataCore {
     static let resourceHistory = CoreDataCore(.resourceHistory)

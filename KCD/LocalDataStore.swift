@@ -8,8 +8,8 @@
 
 import Cocoa
 
-extension CoreDataIntormation {
-    static let local = CoreDataIntormation("LocalData")
+extension CoreDataConfiguration {
+    static let local = CoreDataConfiguration("LocalData")
 }
 extension CoreDataCore {
     static let local = CoreDataCore(.local)

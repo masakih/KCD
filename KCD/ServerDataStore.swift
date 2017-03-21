@@ -8,8 +8,8 @@
 
 import Cocoa
 
-extension CoreDataIntormation {
-    static let kcd = CoreDataIntormation("KCD", tryRemake: true)
+extension CoreDataConfiguration {
+    static let kcd = CoreDataConfiguration("KCD", tryRemake: true)
 }
 extension CoreDataCore {
     static let kcd = CoreDataCore(.kcd)

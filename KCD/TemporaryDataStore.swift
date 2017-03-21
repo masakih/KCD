@@ -8,11 +8,11 @@
 
 import Cocoa
 
-extension CoreDataIntormation {
-    static let temporary = CoreDataIntormation("Temporary",
-                                               fileName: ":memory:",
-                                               options: [:],
-                                               type: NSInMemoryStoreType
+extension CoreDataConfiguration {
+    static let temporary = CoreDataConfiguration("Temporary",
+                                                 fileName: ":memory:",
+                                                 options: [:],
+                                                 type: NSInMemoryStoreType
     )
 }
 extension CoreDataCore {

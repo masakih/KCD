@@ -15,7 +15,7 @@ enum CoreDataManagerType {
 }
 
 // MARK: - struct
-struct CoreDataIntormation {
+struct CoreDataConfiguration {
     let modelName: String
     let fileName: String
     let options: [AnyHashable: Any]
@@ -41,15 +41,15 @@ struct CoreDataIntormation {
 }
 
 struct CoreDataCore {
-    let info: CoreDataIntormation
+    let config: CoreDataConfiguration
     let model: NSManagedObjectModel
     let coordinator: NSPersistentStoreCoordinator
     let parentContext: NSManagedObjectContext
     
-    init(_ info: CoreDataIntormation) {
-        self.info = info
+    init(_ config: CoreDataConfiguration) {
+        self.config = config
         do {
-            (model, coordinator, parentContext) = try genarate(info)
+            (model, coordinator, parentContext) = try genarate(config)
         } catch {
             NSApplication.shared().presentError(error)
             fatalError("CoreDataCore: can not initialize. \(error)")
@@ -141,6 +141,6 @@ extension CoreDataAccessor {
 
 extension CoreDataManager where Self: CoreDataProvider {
     func removeDataFile() {
-        remove(name: core.info.fileName)
+        remove(name: core.config.fileName)
     }
 }

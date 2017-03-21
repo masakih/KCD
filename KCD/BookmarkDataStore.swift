@@ -8,8 +8,8 @@
 
 import Cocoa
 
-extension CoreDataIntormation {
-    static let bookmark = CoreDataIntormation("Bookmark")
+extension CoreDataConfiguration {
+    static let bookmark = CoreDataConfiguration("Bookmark")
 }
 extension CoreDataCore {
     static let bookmark = CoreDataCore(.bookmark)
