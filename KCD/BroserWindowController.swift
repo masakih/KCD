@@ -398,6 +398,7 @@ extension BroserWindowController {
         return fleetListRect
     }
     fileprivate func setFleetView(position newPosition: FleetViewPosition, animate: Bool) {
+        guard let window = window else { return }
         changeFleetViewForFleetViewPositionIfNeeded(position: newPosition)
         let winFrame = windowFrameForFleetViewPosition(position: newPosition)
         let flashRect = flashFrameForFleetViewPosition(position: newPosition)
@@ -407,7 +408,7 @@ extension BroserWindowController {
         UserDefaults.standard.fleetViewPosition = newPosition
         
         if animate {
-            let winAnime: [String: Any]  = [ NSViewAnimationTargetKey: window!,
+            let winAnime: [String: Any]  = [ NSViewAnimationTargetKey: window,
                              NSViewAnimationEndFrameKey: NSValue(rect: winFrame) ]
             let flashAnime: [String: Any] = [ NSViewAnimationTargetKey: gameViewController.view,
                                NSViewAnimationEndFrameKey: NSValue(rect: flashRect) ]
@@ -416,7 +417,7 @@ extension BroserWindowController {
             let anime = NSViewAnimation(viewAnimations: [winAnime, flashAnime, fleetAnime])
             anime.start()
         } else {
-            window!.setFrame(winFrame, display: false)
+            window.setFrame(winFrame, display: false)
             gameViewController.view.frame = flashRect
             fleetViewController.view.frame = fleetListRect
         }

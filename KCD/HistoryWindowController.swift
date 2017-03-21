@@ -103,6 +103,6 @@ extension HistoryWindowController {
     }
     
     @IBAction func selectSearchField(_ sender: AnyObject?) {
-        window!.makeFirstResponder(searchField!)
+        window?.makeFirstResponder(searchField!)
     }
 }

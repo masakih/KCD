@@ -62,7 +62,7 @@ class ResourceHistoryManager: NSObject {
         let now = Date()
         var nowComp = Calendar.current
             .dateComponents([.year, .month, .day, .hour, .minute], from: now)
-        var minutes: Int = (nowComp.minute! + 2) / 5
+        var minutes = nowComp.minute.map { ($0 + 2) / 5 } ?? 0
         minutes *= 5
         nowComp.minute = minutes
         

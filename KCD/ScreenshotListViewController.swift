@@ -342,22 +342,26 @@ extension ScreenshotListViewController: NSTouchBarDelegate {
         screenshotTouchBar.defaultItemIdentifiers = identifiers
         
         if collectionVisibleDidChangeHandler == nil {
-            collectionVisibleDidChangeHandler = { [unowned self] visible in
-                guard let objects = self.arrangedInformations else { return }
-                guard let index = visible.first else { return }
-                let middle = index.item + visible.count / 2
+            collectionVisibleDidChangeHandler = { [weak self] in
+                guard let `self` = self,
+                    let objects = self.arrangedInformations,
+                    let index = $0.first
+                    else { return }
+                let middle = index.item + $0.count / 2
                 if middle < objects.count - 1 {
                     self.scrubber.scrollItem(at: middle, to: .none)
                 }
             }
         }
         if collectionSelectionDidChangeHandler == nil {
-            collectionSelectionDidChangeHandler = { [unowned self] index in
-                self.scrubber.selectedIndex = index
+            collectionSelectionDidChangeHandler = { [weak self] in
+                guard let `self` = self else { return }
+                self.scrubber.selectedIndex = $0
             }
         }
         if reloadHandler == nil {
-            reloadHandler = { [unowned self] _ in
+            reloadHandler = { [weak self] _ in
+                guard let `self` = self else { return }
                 self.scrubber.reloadData()
             }
         }

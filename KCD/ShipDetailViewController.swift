@@ -34,7 +34,8 @@ class ShipDetailViewController: NSViewController {
             .default
             .addObserver(forName: .DidUpdateGuardEscape,
                          object: nil,
-                         queue: nil) { [unowned self] _ in
+                         queue: nil) { [weak self] _ in
+                            guard let `self` = self else { return }
                             self.guardEscaped = self.ship?.guardEscaped ?? false
         }
     }

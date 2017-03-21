@@ -45,7 +45,8 @@ class FleetViewController: NSViewController {
             }
         }()
         details = (1...6).map {
-            let res = ShipDetailViewController(type: shipiewType)!
+            guard let res = ShipDetailViewController(type: shipiewType)
+                else { fatalError("Can not create ShipDetailViewController") }
             res.title = "\($0)"
             return res
         }
