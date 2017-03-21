@@ -28,7 +28,7 @@ class SetActionCommand: JSONCommand {
         if rIds.count != actions.count { print("missmatch count") }
         
         let store = ServerDataStore.oneTimeEditor()
-        zip(rIds, actions).forEach { (rId: Int, action: Int) in
+        zip(rIds, actions).forEach { (rId, action) in
             store.airBase(area: areaId, base: rId)?.action_kind = action
         }
     }

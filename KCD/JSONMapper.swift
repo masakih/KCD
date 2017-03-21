@@ -78,7 +78,7 @@ extension JSONMapper {
     
     func registerElement(_ element: JSON, to object: ObjectType) {
         beginRegister(object)
-        element.forEach { (key: String, value: JSON) in
+        element.forEach { (key, value) in
             if configuration.ignoreKeys.contains(key) { return }
             if handleExtraValue(value, forKey: key, to: object) { return }
             switch value.type {

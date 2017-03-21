@@ -72,8 +72,8 @@ class ShipViewController: MainTabVIewItemViewController {
         tableViews
             .forEach {
                 NotificationCenter.default
-                    .addObserver(forName: .NSScrollViewDidEndLiveScroll, object: $0, queue: nil) { notification in
-                        guard let target = notification.object as? NSScrollView else { return }
+                    .addObserver(forName: .NSScrollViewDidEndLiveScroll, object: $0, queue: nil) {
+                        guard let target = $0.object as? NSScrollView else { return }
                         let visibleRect = target.documentVisibleRect
                         tableViews
                             .filter { $0 != target }

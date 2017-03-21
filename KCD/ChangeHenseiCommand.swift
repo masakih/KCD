@@ -126,11 +126,12 @@ class ChangeHenseiCommand: JSONCommand {
     
     private func packFleet(store: ServerDataStore) {
         store.decksSortedById()
-            .forEach { (deck) in
+            .forEach { deck in
                 var needsPack = false
                 (0..<6).forEach {
                     let shipId = deck.shipId(of: $0)
-                    if (shipId == nil || shipId! == -1) && !needsPack {
+                    // TODO: うまいことする　強制アンラップを消す
+                    if (shipId == nil || shipId! == -1), !needsPack {
                         needsPack = true
                         return
                     }

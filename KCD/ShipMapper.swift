@@ -103,21 +103,18 @@ class ShipMapper: JSONMapper {
     func handleExtraValue(_ value: JSON, forKey key: String, to ship: Ship) -> Bool {
         // 取得後破棄した装備のデータを削除するため保有IDを保存
         if key == "api_id" {
-            guard let id = value.int
-                else { return false }
+            guard let id = value.int else { return false }
             registerIds.append(id)
             return false
         }
         
         if key == "api_ship_id" {
-            guard let masterId = value.int
-                else { return false }
+            guard let masterId = value.int else { return false }
             setMaster(masterId, to: ship)
             return true
         }
         if key == "api_exp" {
-            guard let exp = value[0].int
-                else { return false }
+            guard let exp = value[0].int else { return false }
             ship.exp = exp
             return true
         }
@@ -126,8 +123,7 @@ class ShipMapper: JSONMapper {
             return false
         }
         if key == "api_slot_ex" {
-            guard let ex = value.int
-                else { return false }
+            guard let ex = value.int else { return false }
             setExtraSlot(ex, to: ship)
             return false
         }
@@ -153,13 +149,13 @@ class ShipMapper: JSONMapper {
             let store = store
             else { return }
         let newItems: [SlotItem] =
-            converSlotItems.flatMap { (item: Int) in
+            converSlotItems.flatMap { item in
                 if item == 0 || item == -1 { return nil }
                 guard let found = self.slotItems.binarySearch(comparator: { $0.id ==? item }),
                     let slotItem = store.object(with: found.objectID) as? SlotItem
                     else {
                         let maxV = converSlotItems.last
-                        if maxV != nil && maxV! < item {
+                        if maxV != nil, maxV! < item {
                             #if DEBUG
                                 print("item is maybe unregistered, so it is new ship's equipment.")
                             #endif

@@ -120,9 +120,9 @@ class BroserWindowController: NSWindowController {
         bind("flagShipID", to: deckContoller, withKeyPath: "selection.ship_0", options: nil)
         
         NotificationCenter.default
-            .addObserver(forName: .CombinedDidCange, object: nil, queue: nil) { (notification) in
+            .addObserver(forName: .CombinedDidCange, object: nil, queue: nil) {
                 guard UserDefaults.standard.autoCombinedView,
-                    let type = notification.userInfo?[CombinedCommand.userInfoKey] as? CombineType
+                    let type = $0.userInfo?[CombinedCommand.userInfoKey] as? CombineType
                     else { return }
                 if !Thread.isMainThread { Thread.sleep(forTimeInterval: 0.1) }
                 DispatchQueue.main.async {
@@ -458,11 +458,12 @@ extension BroserWindowController {
         let o = selectedMainTabIndex
         selectedMainTabIndex = o
         
-        changeMainTabHandler = { [unowned self] newValue in
+        changeMainTabHandler = { [weak self] in
+            guard let `self` = self else { return }
             self.shipTypeButton.dismissPopover(nil)
             self.shipTypeSegment.unbind(NSSelectedIndexBinding)
             guard let button = self.shipTypeButton.view as? NSButton else { return }
-            let vc = self.tabViewItemViewControllers[newValue]
+            let vc = self.tabViewItemViewControllers[$0]
             button.isHidden = !vc.hasShipTypeSelector
             self.shipTypeSegment.bind(NSSelectedIndexBinding,
                                       to: vc,

@@ -49,15 +49,13 @@ class SlotItemMapper: JSONMapper {
     func handleExtraValue(_ value: JSON, forKey key: String, to object: SlotItem) -> Bool {
         // 取得後破棄した装備のデータを削除するため保有IDを保存
         if key == "api_id" {
-            guard let id = value.int
-                else { return false }
+            guard let id = value.int else { return false }
             registerIds.append(id)
             return false
         }
         
         if key == "api_slotitem_id" {
-            guard let id = value.int
-                else { return false }
+            guard let id = value.int else { return false }
             setMaster(id, to: object)
             return true
         }
@@ -75,8 +73,7 @@ class SlotItemMapper: JSONMapper {
     }
     
     private func setMaster(_ masterId: Int, to slotItem: SlotItem?) {
-        guard let slotItem = slotItem
-            else { return }
+        guard let slotItem = slotItem else { return }
         if slotItem.slotitem_id == masterId { return }
         
         guard let mSlotItem = masterSlotItems.binarySearch(comparator: { $0.id ==? masterId })

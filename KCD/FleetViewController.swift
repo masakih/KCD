@@ -122,14 +122,14 @@ class FleetViewController: NSViewController {
     
     fileprivate var ships: [Ship] = [] {
         willSet {
-            ships.forEach { (ship) in
+            ships.forEach { ship in
                 shipObserveKeys.forEach {
                     ship.removeObserver(self, forKeyPath: $0)
                 }
             }
         }
         didSet {
-            ships.forEach { (ship) in
+            ships.forEach { ship in
                 shipObserveKeys.forEach {
                     ship.addObserver(self, forKeyPath: $0, context: &shipsContext)
                 }

@@ -211,7 +211,7 @@ class ScreenshotListViewController: NSViewController {
         
         // 新しいものを追加
         let new: [ScreenshotInformation] = newFiles.flatMap { url in
-            let index = current.index { (info) -> Bool in url == info.url }
+            let index = current.index { url == $0.url }
             return index == nil ? ScreenshotInformation(url: url) : nil
         }
         
