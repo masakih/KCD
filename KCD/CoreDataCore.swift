@@ -8,17 +8,13 @@
 
 import Cocoa
 
+// MARK: enum
 enum CoreDataManagerType {
     case reader
     case editor
 }
 
-enum CoreDataError: Error {
-    case applicationDirectoryIsFile
-    case couldNotCreateModel
-    case couldNotCreateCoordinator(String)
-}
-
+// MARK: - struct
 struct CoreDataIntormation {
     let modelName: String
     let fileName: String
@@ -53,8 +49,7 @@ struct CoreDataCore {
     init(_ info: CoreDataIntormation) {
         self.info = info
         do {
-            let genaratee = try MocGenerater.genarate(info)
-            (self.model, self.coordinator, self.parentContext) = genaratee
+            (model, coordinator, parentContext) = try genarate(info)
         } catch {
             NSApplication.shared().presentError(error)
             fatalError("CoreDataCore: can not initialize. \(error)")
@@ -69,12 +64,19 @@ struct CoreDataCore {
     }
 }
 
-
+// MARK: - protocol
 protocol CoreDataProvider {
     init(type: CoreDataManagerType)
     var core: CoreDataCore { get }
     var context: NSManagedObjectContext { get }
     func save()
+}
+
+protocol CoreDataAccessor: CoreDataProvider {
+    func insertNewObject<T>(for entity: Entity<T>) -> T?
+    func delete(_ object: NSManagedObject)
+    func object(with objectId: NSManagedObjectID) -> NSManagedObject
+    func objects<T>(with entity: Entity<T>, sortDescriptors: [NSSortDescriptor]?, predicate: NSPredicate?) throws -> [T]
 }
 
 protocol CoreDataManager {
@@ -86,105 +88,7 @@ protocol CoreDataManager {
     func removeDataFile()
 }
 
-protocol CoreDataAccessor: CoreDataProvider {
-    func insertNewObject<T>(for entity: Entity<T>) -> T?
-    func delete(_ object: NSManagedObject)
-    func object(with objectId: NSManagedObjectID) -> NSManagedObject
-    func objects<T>(with entity: Entity<T>, sortDescriptors: [NSSortDescriptor]?, predicate: NSPredicate?) throws -> [T]
-}
-
-private class CoreDataRemover {
-    class func remove(name: String) {
-        ["", "-wal", "-shm"]
-            .map { name + $0 }
-            .map { ApplicationDirecrories.support.appendingPathComponent($0) }
-            .forEach { removeDataFile(at: $0) }
-    }
-    private class func removeDataFile(at url: URL) {
-        do {
-            try FileManager.default.removeItem(at: url)
-        } catch {
-            print("Could not remove file for URL (\(url))")
-        }
-    }
-}
-
-private class MocGenerater {
-    class func genarate(_ info: CoreDataIntormation) throws ->
-        (model: NSManagedObjectModel, coordinator: NSPersistentStoreCoordinator, moc: NSManagedObjectContext) {
-            do {
-                let model = try createModel(info)
-                let coordinator = try getCoordinator(info, model)
-                let moc = createContext(coordinator)
-                return (model: model, coordinator: coordinator, moc: moc)
-            } catch {
-                throw error
-            }
-    }
-    
-    private class func createModel(_ info: CoreDataIntormation) throws -> NSManagedObjectModel {
-        let modelURL = Bundle.main.url(forResource: info.modelName, withExtension: "momd")!
-        guard let model = NSManagedObjectModel(contentsOf: modelURL) else {
-            throw CoreDataError.couldNotCreateModel
-        }
-        return model
-    }
-    private class func getCoordinator(_ info: CoreDataIntormation,
-                                      _ model: NSManagedObjectModel) throws -> NSPersistentStoreCoordinator {
-        do {
-            return try createCoordinator(info, model)
-        } catch {
-            let nserror = error as NSError
-            // Data Modelが更新されていたらストアファイルを削除してもう一度
-            if nserror.domain == NSCocoaErrorDomain,
-                (nserror.code == 134130 || nserror.code == 134110),
-                info.tryRemake {
-                self.removeDataFile(info)
-                do {
-                    return try createCoordinator(info, model)
-                } catch {
-                    print("Fail crrate NSPersistentStoreCoordinator twice.")
-                }
-            }
-            throw error
-        }
-    }
-    private class func createCoordinator(_ info: CoreDataIntormation,
-                                         _ model: NSManagedObjectModel) throws -> NSPersistentStoreCoordinator {
-        if !checkDirectory(ApplicationDirecrories.support) {
-            let failureReason = "Can not use directory \(ApplicationDirecrories.support.path)"
-            throw CoreDataError.couldNotCreateCoordinator(failureReason)
-        }
-        
-        let coordinator: NSPersistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
-        let url = ApplicationDirecrories.support.appendingPathComponent(info.fileName)
-        do {
-            try coordinator.addPersistentStore(ofType: info.type,
-                                               configurationName: nil,
-                                               at: url,
-                                               options: info.options)
-        } catch {
-            throw error
-        }
-        return coordinator
-    }
-    private class func createContext(_ coordinator: NSPersistentStoreCoordinator) -> NSManagedObjectContext {
-        let moc = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-        moc.persistentStoreCoordinator = coordinator
-        moc.undoManager = nil
-        return moc
-    }
-    private class func removeDataFile(_ info: CoreDataIntormation) {
-        CoreDataRemover.remove(name: info.fileName)
-    }
-}
-
-extension CoreDataManager where Self: CoreDataProvider {
-    func removeDataFile() {
-        CoreDataRemover.remove(name: self.core.info.fileName)
-    }
-}
-
+// MARK: - Extension
 extension CoreDataProvider {
     func save() {
         if !context.commitEditing() {
@@ -198,7 +102,9 @@ extension CoreDataProvider {
             p.performAndWait {
                 do {
                     try p.save()
-                } catch { self.presentOnMainThread(error) }
+                } catch {
+                    self.presentOnMainThread(error)
+                }
             }
         }
     }
@@ -215,9 +121,7 @@ extension CoreDataProvider {
 
 extension CoreDataAccessor {
     func insertNewObject<T>(for entity: Entity<T>) -> T? {
-        return NSEntityDescription
-            .insertNewObject(forEntityName: entity.name,
-                             into: context) as? T
+        return NSEntityDescription.insertNewObject(forEntityName: entity.name, into: context) as? T
     }
     func delete(_ object: NSManagedObject) {
         context.delete(object)
@@ -232,5 +136,11 @@ extension CoreDataAccessor {
         req.sortDescriptors = sortDescriptors
         req.predicate = predicate
         return try context.fetch(req)
+    }
+}
+
+extension CoreDataManager where Self: CoreDataProvider {
+    func removeDataFile() {
+        remove(name: core.info.fileName)
     }
 }

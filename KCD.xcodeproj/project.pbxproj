@@ -51,6 +51,7 @@
 		F42CFE281E3D9A02000B4F9B /* MasterMapInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42CFE271E3D9A02000B4F9B /* MasterMapInfo.swift */; };
 		F43E67B718BE02A10087E5B6 /* STypeShortName.plist in Resources */ = {isa = PBXBuildFile; fileRef = F43E67B618BE02A10087E5B6 /* STypeShortName.plist */; };
 		F43E67B918BE060E0087E5B6 /* LevelUpExp.plist in Resources */ = {isa = PBXBuildFile; fileRef = F43E67B818BE060E0087E5B6 /* LevelUpExp.plist */; };
+		F44AA2671E814A4400EED8BE /* ManagedObjectContextGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44AA2661E814A4400EED8BE /* ManagedObjectContextGenerator.swift */; };
 		F44BC6C11E221293004644E3 /* AirCorpsChangeNameCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44BC6C01E221293004644E3 /* AirCorpsChangeNameCommand.swift */; };
 		F44BC6C31E221865004644E3 /* AirCorpsSupplyCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44BC6C21E221865004644E3 /* AirCorpsSupplyCommand.swift */; };
 		F44BC6C51E222279004644E3 /* PortNotifyCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44BC6C41E222279004644E3 /* PortNotifyCommand.swift */; };
@@ -374,6 +375,7 @@
 		F42CFE271E3D9A02000B4F9B /* MasterMapInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterMapInfo.swift; sourceTree = "<group>"; };
 		F43E67B618BE02A10087E5B6 /* STypeShortName.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = STypeShortName.plist; sourceTree = "<group>"; };
 		F43E67B818BE060E0087E5B6 /* LevelUpExp.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LevelUpExp.plist; sourceTree = "<group>"; };
+		F44AA2661E814A4400EED8BE /* ManagedObjectContextGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectContextGenerator.swift; sourceTree = "<group>"; };
 		F44BC6C01E221293004644E3 /* AirCorpsChangeNameCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirCorpsChangeNameCommand.swift; sourceTree = "<group>"; };
 		F44BC6C21E221865004644E3 /* AirCorpsSupplyCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirCorpsSupplyCommand.swift; sourceTree = "<group>"; };
 		F44BC6C41E222279004644E3 /* PortNotifyCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortNotifyCommand.swift; sourceTree = "<group>"; };
@@ -987,6 +989,7 @@
 			children = (
 				F4BDEEB11E73FE2000D689AE /* Entity.swift */,
 				F4E471281E46ECF1009B5AF4 /* CoreDataCore.swift */,
+				F44AA2661E814A4400EED8BE /* ManagedObjectContextGenerator.swift */,
 				F4FC3E8D1E4368BB00E41228 /* KCManagedObject.swift */,
 				F4F9F8911C6BA26400D0EE76 /* KCD */,
 				F4F9F8921C6BA28200D0EE76 /* Local */,
@@ -1547,6 +1550,7 @@
 				F44BC73F1E2B1AD4004644E3 /* DummyShipCommand.swift in Sources */,
 				F44BC73D1E2A5D39004644E3 /* DropShipHistoryCommand.swift in Sources */,
 				F45771231E1BCC7C008A9215 /* PeriodicNotifier.swift in Sources */,
+				F44AA2671E814A4400EED8BE /* ManagedObjectContextGenerator.swift in Sources */,
 				F44BC6C91E22314B004644E3 /* UnknownComand.swift in Sources */,
 				F44BC6DD1E228345004644E3 /* UpdateQuestListCommand.swift in Sources */,
 				F4CF25A81E325ABA00C02A66 /* APIResponse.swift in Sources */,
