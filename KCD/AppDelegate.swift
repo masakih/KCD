@@ -38,7 +38,7 @@ class AppDelegate: NSObject {
         // swiftlint:disable force_cast
         return NSApplication.shared().delegate as! AppDelegate
     }
-    let appNameForUserAgent: String = "Version/9.1.2 Safari/601.7.7"
+    let appNameForUserAgent: String = "Version/10.0.3 Safari/602.4.8"
     let fleetManager: FleetManager = FleetManager()
     
     private let historyCleanNotifer = PeriodicNotifier(hour: 0, minutes: 7)
