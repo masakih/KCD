@@ -232,11 +232,11 @@ extension ExternalBrowserWindowController {
             newFrame.size.width = window.frame.size.width - 200
         }
         
-        let webAnime: [String : Any] = [
+        let webAnime: [String: Any] = [
             NSViewAnimationTargetKey: webView,
             NSViewAnimationEndFrameKey: NSValue(rect: newFrame)
         ]
-        let bookmarkAnime: [String : Any] = [
+        let bookmarkAnime: [String: Any] = [
             NSViewAnimationTargetKey: bookmarkListView,
             NSViewAnimationEndFrameKey: NSValue(rect: frame)
         ]
