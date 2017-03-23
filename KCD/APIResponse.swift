@@ -54,36 +54,36 @@ fileprivate func parseParameter(_ request: URLRequest) -> [String: String]? {
 }
 
 struct ParameterValue {
-    private let rowValue: String?
+    private let rawValue: String?
     
-    var int: Int? { return rowValue.flatMap { Int($0) } }
-    var double: Double? { return rowValue.flatMap { Double($0) } }
-    var string: String? { return rowValue }
+    var int: Int? { return rawValue.flatMap { Int($0) } }
+    var double: Double? { return rawValue.flatMap { Double($0) } }
+    var string: String? { return rawValue }
     var bool: Bool? {
-        guard let _ = rowValue else { return nil }
+        guard let _ = rawValue else { return nil }
         if let i = self.int {
             return i != 0
         }
         if let s = self.string?.lowercased() {
             switch s {
-            case "true", "yes": return true
+            case "true", "yes", "t", "y": return true
             default: return false
             }
         }
         return false
     }
-    var valid: Bool { return rowValue != nil }
+    var valid: Bool { return rawValue != nil }
     
-    init(_ rowValue: String?) {
-        self.rowValue = rowValue
+    init(_ rawValue: String?) {
+        self.rawValue = rawValue
     }
 }
 
 struct Parameter {
-    private let rowValue: [String: String]
+    private let rawValue: [String: String]
     
-    init(_ rowValue: [String: String]) {
-        self.rowValue = rowValue
+    init(_ rawValue: [String: String]) {
+        self.rawValue = rawValue
     }
     init?(_ request: URLRequest) {
         guard let paramList = parseParameter(request)
@@ -92,10 +92,10 @@ struct Parameter {
     }
     
     subscript(_ key: String) -> ParameterValue {
-        return ParameterValue(rowValue[key])
+        return ParameterValue(rawValue[key])
     }
     func map<T>(_ transform: (String, String) throws -> T) rethrows -> [T] {
-        return try rowValue.map(transform)
+        return try rawValue.map(transform)
     }
 }
 
