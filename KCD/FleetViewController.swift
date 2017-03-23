@@ -170,9 +170,9 @@ class FleetViewController: NSViewController {
         fleetNumber = 1
         
         NotificationCenter.default
-            .addObserver(forName: .DidPrepareFleet, object: nil, queue: nil) { _ in
-                self.willChangeValue(forKey: "fleetNumber")
-                self.didChangeValue(forKey: "fleetNumber")
+            .addObserver(forName: .DidPrepareFleet, object: nil, queue: nil) { [weak self] _ in
+                guard let `self` = self else { return }
+                self.notifyChangeValue(forKey: "fleetNumber")
         }
     }
     override func observeValue(forKeyPath keyPath: String?,
@@ -194,20 +194,15 @@ class FleetViewController: NSViewController {
             if context == &shipsContext {
                 switch keyPath {
                 case "sakuteki_0":
-                    willChangeValue(forKey: "totalSakuteki")
-                    didChangeValue(forKey: "totalSakuteki")
+                    notifyChangeValue(forKey: "totalSakuteki")
                 case "seiku":
-                    willChangeValue(forKey: "totalSeiku")
-                    didChangeValue(forKey: "totalSeiku")
+                    notifyChangeValue(forKey: "totalSeiku")
                 case "totalSeiku":
-                    willChangeValue(forKey: "totalCalclatedSeiku")
-                    didChangeValue(forKey: "totalCalclatedSeiku")
+                    notifyChangeValue(forKey: "totalCalclatedSeiku")
                 case "lv":
-                    willChangeValue(forKey: "totalLevel")
-                    didChangeValue(forKey: "totalLevel")
+                    notifyChangeValue(forKey: "totalLevel")
                 case "totalDrums":
-                    willChangeValue(forKey: "totalDrums")
-                    didChangeValue(forKey: "totalDrums")
+                    notifyChangeValue(forKey: "totalDrums")
                 default: break
                 }
                 return
@@ -238,10 +233,7 @@ class FleetViewController: NSViewController {
             .appended { "totalLevel" }
             .appended { "totalDrums" }
             .appended { "repairable" }
-            .forEach {
-                willChangeValue(forKey: $0)
-                didChangeValue(forKey: $0)
-        }
+            .forEach { notifyChangeValue(forKey: $0) }
     }
 }
 

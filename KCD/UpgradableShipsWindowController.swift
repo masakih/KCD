@@ -72,10 +72,10 @@ class UpgradableShipsWindowController: NSWindowController {
     var excludeShiIDs: [Int] {
         get { return (NSArray(contentsOf: excludeShipIDsSaveURL) as? [Int]) ?? [] }
         set {
-            willChangeValue(forKey: "filterPredicate")
-            (newValue as NSArray).write(to: excludeShipIDsSaveURL, atomically: true)
-            UpgradableShipsWindowController.excludeShiIDsCache = newValue
-            didChangeValue(forKey: "filterPredicate")
+            notifyChangeValue(forKey: "filterPredicate") {
+                (newValue as NSArray).write(to: excludeShipIDsSaveURL, atomically: true)
+                UpgradableShipsWindowController.excludeShiIDsCache = newValue
+            }
         }
     }
     private var excludeShipIDsSaveURL: URL {

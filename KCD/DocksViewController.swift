@@ -149,13 +149,11 @@ class DocksViewController: MainTabVIewItemViewController {
                                change: [NSKeyValueChangeKey: Any]?,
                                context: UnsafeMutableRawPointer?) {
         if keyPath == "selection" || keyPath == "content.battleCell" {
-            willChangeValue(forKey: "sortieString")
-            didChangeValue(forKey: "sortieString")
+            notifyChangeValue(forKey: "sortieString")
             return
         }
         if keyPath == "selection.no" {
-            willChangeValue(forKey: "cellNumber")
-            didChangeValue(forKey: "cellNumber")
+            notifyChangeValue(forKey: "cellNumber")
             return
         }
         

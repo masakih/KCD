@@ -27,10 +27,9 @@ class SlotItemWindowController: NSWindowController {
     var showEquipmentType: Int {
         get { return UserDefaults.standard.showEquipmentType.rawValue }
         set {
-            willChangeValue(forKey: "showEquipmentTypeTitle")
-            UserDefaults.standard.showEquipmentType = ShowType(rawValue: newValue) ?? .all
-            didChangeValue(forKey: "showEquipmentTypeTitle")
-            
+            notifyChangeValue(forKey: "showEquipmentTypeTitle") {
+                UserDefaults.standard.showEquipmentType = ShowType(rawValue: newValue) ?? .all
+            }
             slotItemController.fetchPredicate = filterPredicate
         }
     }

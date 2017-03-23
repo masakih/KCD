@@ -93,8 +93,7 @@ class ShipViewController: MainTabVIewItemViewController {
             return
         }
         if keyPath == "arrangedObjects" {
-            willChangeValue(forKey: "standardDeviation")
-            didChangeValue(forKey: "standardDeviation")
+            notifyChangeValue(forKey: "standardDeviation")
             return
         }
         

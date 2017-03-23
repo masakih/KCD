@@ -34,19 +34,14 @@ class JSONViewWindowController: NSWindowController {
     }
     
     func setCommand(_ command: [String: Any]) {
-        willChangeValue(forKey: "commands")
-        commands += [command]
-        didChangeValue(forKey: "commands")
+        notifyChangeValue(forKey: "commands") {
+            commands += [command]
+        }
     }
-//    func setCommandArray(_ commands: NSArray) {
-//        willChangeValue(forKey: "commands")
-//        self.commands.addObjects(from: commands as! [Any])
-//        didChangeValue(forKey: "commands")
-//    }
     
     @IBAction func clearLog(_ sender: AnyObject?) {
-        willChangeValue(forKey: "commands")
-        commands = []
-        didChangeValue(forKey: "commands")
+        notifyChangeValue(forKey: "commands") {
+            commands = []
+        }
     }
 }

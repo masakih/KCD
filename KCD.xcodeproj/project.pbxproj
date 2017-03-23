@@ -52,6 +52,7 @@
 		F43E67B718BE02A10087E5B6 /* STypeShortName.plist in Resources */ = {isa = PBXBuildFile; fileRef = F43E67B618BE02A10087E5B6 /* STypeShortName.plist */; };
 		F43E67B918BE060E0087E5B6 /* LevelUpExp.plist in Resources */ = {isa = PBXBuildFile; fileRef = F43E67B818BE060E0087E5B6 /* LevelUpExp.plist */; };
 		F44AA2671E814A4400EED8BE /* ManagedObjectContextGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44AA2661E814A4400EED8BE /* ManagedObjectContextGenerator.swift */; };
+		F44AA26B1E82AD2E00EED8BE /* NSObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44AA26A1E82AD2E00EED8BE /* NSObjectExtension.swift */; };
 		F44BC6C11E221293004644E3 /* AirCorpsChangeNameCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44BC6C01E221293004644E3 /* AirCorpsChangeNameCommand.swift */; };
 		F44BC6C31E221865004644E3 /* AirCorpsSupplyCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44BC6C21E221865004644E3 /* AirCorpsSupplyCommand.swift */; };
 		F44BC6C51E222279004644E3 /* PortNotifyCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44BC6C41E222279004644E3 /* PortNotifyCommand.swift */; };
@@ -376,6 +377,7 @@
 		F43E67B618BE02A10087E5B6 /* STypeShortName.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = STypeShortName.plist; sourceTree = "<group>"; };
 		F43E67B818BE060E0087E5B6 /* LevelUpExp.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LevelUpExp.plist; sourceTree = "<group>"; };
 		F44AA2661E814A4400EED8BE /* ManagedObjectContextGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectContextGenerator.swift; sourceTree = "<group>"; };
+		F44AA26A1E82AD2E00EED8BE /* NSObjectExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSObjectExtension.swift; sourceTree = "<group>"; };
 		F44BC6C01E221293004644E3 /* AirCorpsChangeNameCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirCorpsChangeNameCommand.swift; sourceTree = "<group>"; };
 		F44BC6C21E221865004644E3 /* AirCorpsSupplyCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirCorpsSupplyCommand.swift; sourceTree = "<group>"; };
 		F44BC6C41E222279004644E3 /* PortNotifyCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortNotifyCommand.swift; sourceTree = "<group>"; };
@@ -913,6 +915,7 @@
 				F42CFE191E3C726D000B4F9B /* UserDefaultsExtension.swift */,
 				F40F97701E68536400AE81BB /* FileManagerExtension.swift */,
 				F491A4BB1E4B523C00D1E067 /* ApplicationDirecrories.swift */,
+				F44AA26A1E82AD2E00EED8BE /* NSObjectExtension.swift */,
 				F4BEEFE21B0CD39B004702B8 /* Transformar&Formatter */,
 				F4C118F318A67B05005D5B25 /* CustomHTTPProtocol */,
 				F47215A11E1F38280083D3BC /* Queue.swift */,
@@ -1594,6 +1597,7 @@
 				F4D05BD71E0F696C00688D66 /* RepairListViewController.swift in Sources */,
 				F44BC7191E29D9DC004644E3 /* MemberDeckCommand.swift in Sources */,
 				F490977F1E19ED400085A45D /* StrengthenListItemView.swift in Sources */,
+				F44AA26B1E82AD2E00EED8BE /* NSObjectExtension.swift in Sources */,
 				F42A8FDE1E40C6DF0099DC1D /* Quest.swift in Sources */,
 				F4B15CBD1E21BA870078CFFC /* CommandRegister.swift in Sources */,
 				F4BDEEB01E72D2D700D689AE /* HistoryTableViewController.swift in Sources */,
