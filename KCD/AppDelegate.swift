@@ -149,8 +149,8 @@ class AppDelegate: NSObject {
         browserWindowController.showWindow(nil)
         if !UserDefaults.standard.showsDebugMenu { debugMenuItem.isHidden = true }
         NotificationCenter.default
-        .addObserver(forName: .Periodic, object: historyCleanNotifer, queue: nil) { _ in
-            HistoryItemCleaner().cleanOldHistoryItems()
+            .addObserver(forName: .Periodic, object: historyCleanNotifer, queue: nil) { _ in
+                HistoryItemCleaner().cleanOldHistoryItems()
         }
     }
     

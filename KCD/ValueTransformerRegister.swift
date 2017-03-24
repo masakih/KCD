@@ -21,8 +21,7 @@ fileprivate struct Register {
 }
 extension ValueTransformer {
     func registerName() -> NSValueTransformerName {
-        let name = String(describing: type(of: self))
-        return NSValueTransformerName(rawValue: name)
+        return NSValueTransformerName(String(describing: type(of: self)))
     }
 }
 
