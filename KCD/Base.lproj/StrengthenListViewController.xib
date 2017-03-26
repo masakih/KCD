@@ -19,33 +19,33 @@
             <rect key="frame" x="0.0" y="0.0" width="323" height="394"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <matrix verticalHuggingPriority="750" allowsEmptySelection="NO" autorecalculatesCellSize="YES" id="yJV-Se-HVC">
-                    <rect key="frame" x="6" y="367" width="148" height="18"/>
+                <matrix verticalHuggingPriority="750" misplaced="YES" allowsEmptySelection="NO" autorecalculatesCellSize="YES" id="yJV-Se-HVC">
+                    <rect key="frame" x="6" y="370" width="133" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    <size key="cellSize" width="47" height="18"/>
+                    <size key="cellSize" width="43" height="18"/>
                     <size key="intercellSpacing" width="2" height="2"/>
-                    <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" inset="2" id="9su-cb-kXx">
+                    <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" controlSize="small" inset="2" id="9su-cb-kXx">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                     <cells>
                         <column>
-                            <buttonCell type="radio" title="今日" imagePosition="left" alignment="left" state="on" inset="2" id="VyU-4m-N4y">
+                            <buttonCell type="radio" title="今日" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="VyU-4m-N4y">
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                <font key="font" metaFont="system"/>
+                                <font key="font" metaFont="smallSystem"/>
                             </buttonCell>
                         </column>
                         <column>
-                            <buttonCell type="radio" title="明日" imagePosition="left" alignment="left" tag="1" inset="2" id="4ig-3d-Zd6">
+                            <buttonCell type="radio" title="明日" imagePosition="left" alignment="left" controlSize="small" tag="1" inset="2" id="4ig-3d-Zd6">
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                <font key="font" metaFont="system"/>
+                                <font key="font" metaFont="smallSystem"/>
                             </buttonCell>
                         </column>
                         <column>
-                            <buttonCell type="radio" title="全て" imagePosition="left" alignment="left" tag="-1" inset="2" id="2gA-iz-YbS">
+                            <buttonCell type="radio" title="全て" imagePosition="left" alignment="left" controlSize="small" tag="-1" inset="2" id="2gA-iz-YbS">
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                <font key="font" metaFont="system"/>
+                                <font key="font" metaFont="smallSystem"/>
                             </buttonCell>
                         </column>
                     </cells>
@@ -53,15 +53,15 @@
                         <binding destination="-2" name="selectedTag" keyPath="offsetDay" id="44u-FC-Nab"/>
                     </connections>
                 </matrix>
-                <scrollView autohidesScrollers="YES" horizontalLineScroll="104" horizontalPageScroll="10" verticalLineScroll="104" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="0L6-8Q-wSg">
-                    <rect key="frame" x="6" y="8" width="311" height="355"/>
+                <scrollView misplaced="YES" autohidesScrollers="YES" horizontalLineScroll="104" horizontalPageScroll="10" verticalLineScroll="104" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="0L6-8Q-wSg">
+                    <rect key="frame" x="6" y="8" width="311" height="332"/>
                     <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                     <clipView key="contentView" id="wXf-Rt-Pl7">
-                        <rect key="frame" x="1" y="1" width="309" height="353"/>
+                        <rect key="frame" x="1" y="1" width="309" height="330"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="none" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="103" rowSizeStyle="automatic" viewBased="YES" id="vl3-HU-3qA">
-                                <rect key="frame" x="0.0" y="0.0" width="309" height="353"/>
+                                <rect key="frame" x="0.0" y="0.0" width="309" height="330"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="1"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -367,6 +367,24 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
+                <segmentedControl verticalHuggingPriority="750" misplaced="YES" id="K6N-di-SOa">
+                    <rect key="frame" x="4" y="346" width="315" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <segmentedCell key="cell" controlSize="small" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="Ury-Lz-cPA">
+                        <font key="font" metaFont="smallSystem"/>
+                        <segments>
+                            <segment label="All" width="46" selected="YES"/>
+                            <segment label="主砲" width="41" tag="1"/>
+                            <segment label="副砲/魚雷/機銃" width="76"/>
+                            <segment label="航空機"/>
+                            <segment label="電探" width="47"/>
+                            <segment label="そのた"/>
+                        </segments>
+                    </segmentedCell>
+                    <connections>
+                        <binding destination="-2" name="selectedIndex" keyPath="filterType" id="ExG-wb-sLZ"/>
+                    </connections>
+                </segmentedControl>
             </subviews>
             <point key="canvasLocation" x="211.5" y="313"/>
         </customView>

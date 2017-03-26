@@ -11,29 +11,85 @@ import Cocoa
 fileprivate let resourceName = "EnhancementListItem2"
 fileprivate let resourceExtension = "plist"
 
+
+fileprivate struct FilterCategories {
+    static let allType: [EquipmentType] = (1...100).flatMap { EquipmentType(rawValue: $0) }
+    static let canonType: [EquipmentType] = [.smallCaliberMainGun, .mediumCaliberMainGun,
+                                             .largeCaliberMainGun, .largeCaliberMainGunII]
+    static let torpedoType: [EquipmentType] = [.secondaryGun, .torpedo, .depthCharge,
+                                               .antiAircraftGun, .antiSunmrinerSercher, .submarinTorpedo,
+                                               .largeSonar]
+    static let airplaneType: [EquipmentType] = [.fighter, .bomber, .attacker, .searcher,
+                                                .airplaneSearcher, .airplaneBomber,
+                                                .largeAirplane, .airplaneFighter,
+                                                .landAttecker, .localFighter,
+                                                .jetFighter, .jetBomber,
+                                                .jetAttacker, .jetSearcher,
+                                                .searcherII]
+    static let radarType: [EquipmentType] = [.smallRadar, .largeRadar, .sonar]
+    static let otherType: [EquipmentType] = {
+        return allType
+            .filter { !canonType.contains($0) }
+            .filter { !torpedoType.contains($0) }
+            .filter { !airplaneType.contains($0) }
+            .filter { !radarType.contains($0) }
+    }()
+    
+    enum FilterType: Int {
+        case all = 0
+        case canon
+        case torpedo
+        case airplane
+        case radar
+        case other
+    }
+    
+    let categories: [EquipmentType]
+    
+    init(type: FilterType) {
+        switch type {
+        case .all: categories = FilterCategories.allType
+        case .canon: categories = FilterCategories.canonType
+        case .torpedo: categories = FilterCategories.torpedoType
+        case .airplane: categories = FilterCategories.airplaneType
+        case .radar: categories = FilterCategories.radarType
+        case .other: categories = FilterCategories.otherType
+        }
+    }
+}
+
 class StrengthenListViewController: MainTabVIewItemViewController {
-    private let notifier = PeriodicNotifier(hour: 0, minutes: 0)
-    private let plistDownloadNotifier = PeriodicNotifier(hour: 23, minutes: 55)
-        
+    
     @IBOutlet weak var tableView: NSTableView!
     
     dynamic var itemList: Any { return filteredItems as Any }
-    fileprivate var filteredItems: [StrengthenListItem] = [] {
-        willSet {
-            willChangeValue(forKey: #keyPath(itemList))
-        }
-        didSet {
-            didChangeValue(forKey: #keyPath(itemList))
-        }
-    }
     dynamic var offsetDay: Int = 0 {
         didSet { buildList() }
+    }
+    dynamic var filterType: Int = 0 {
+        didSet {
+            if let t = FilterCategories.FilterType(rawValue: filterType) {
+                showsTypes = FilterCategories(type: t).categories
+            } else {
+                showsTypes = FilterCategories.allType
+            }
+            buildList()
+        }
     }
     override var nibName: String! {
         return "StrengthenListViewController"
     }
+    
+    fileprivate var filteredItems: [StrengthenListItem] = [] {
+        willSet { willChangeValue(forKey: #keyPath(itemList)) }
+        didSet { didChangeValue(forKey: #keyPath(itemList)) }
+    }
+    
+    private let notifier = PeriodicNotifier(hour: 0, minutes: 0)
+    private let plistDownloadNotifier = PeriodicNotifier(hour: 23, minutes: 55)
     private let downloader = EnhancementListItemDownloader()
     private var equipmentStrengthenList: [EnhancementListItem] = []
+    private var showsTypes: [EquipmentType] = FilterCategories.allType
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,12 +103,6 @@ class StrengthenListViewController: MainTabVIewItemViewController {
             }
             equipmentStrengthenList = array
             buildList()
-            
-            #if DEBUG
-//                downloadPList()
-            #else
-                downloadPList()
-            #endif
         }
         
         let nc = NotificationCenter.default
@@ -64,6 +114,12 @@ class StrengthenListViewController: MainTabVIewItemViewController {
             guard let `self` = self else { return }
             self.downloadPList()
         }
+        
+        #if DEBUG
+//          downloadPList()
+        #else
+            downloadPList()
+        #endif
     }
     private func weekdayFiltered() -> [EnhancementListItem] {
         if offsetDay == -1 { return allItemList() }
@@ -84,6 +140,7 @@ class StrengthenListViewController: MainTabVIewItemViewController {
         filteredItems = filtered
             .map { $0.equipmentType }
             .unique()
+            .filter { showsTypes.contains($0) }
             .map { type in filtered.filter { $0.equipmentType == type } }
             .flatMap(convert)
     }
