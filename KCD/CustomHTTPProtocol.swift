@@ -114,7 +114,6 @@ class CustomHTTPProtocol: URLProtocol {
         threadOperator = ThreadOperator()
         
         let config = URLSessionConfiguration.default
-        config.protocolClasses = [type(of: self)]
         session = URLSession(configuration: config, delegate: self, delegateQueue: nil)
         dataTask = session?.dataTask(with: newRequest as URLRequest)
         dataTask?.resume()
