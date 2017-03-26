@@ -45,16 +45,65 @@ fileprivate class ThreadOperator: NSObject {
     }
 }
 
+extension HTTPURLResponse {
+    private var httpDateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEE',' dd' 'MMM' 'yyyy HH':'mm':'ss zzz"
+        formatter.locale = Locale(identifier: "en_US")
+        return formatter
+    }
+    func expires() -> Date? {
+        if let cc = (allHeaderFields["Cache-Control"] as? String)?.lowercased(),
+            let range = cc.range(of: "max-age="),
+            let s = cc[range.upperBound..<cc.endIndex]
+                .components(separatedBy: ",")
+                .first,
+            let age = TimeInterval(s) {
+            return Date(timeIntervalSinceNow: age)
+        }
+        if let ex = (allHeaderFields["Expires"] as? String)?.lowercased(),
+            let exp = httpDateFormatter.date(from: ex) {
+            return exp
+        }
+        return nil
+    }
+}
+
+extension URLCache {
+    static let kcd = URLCache(memoryCapacity: 32 * 1024 * 1024,
+                                      diskCapacity: 1024 * 1024 * 1024,
+                                      diskPath: ApplicationDirecrories.support.appendingPathComponent("Caches").path)
+    static let cachedExtensions = ["swf", "flv", "png", "jpg", "jpeg", "mp3"]
+    
+    func storeIfNeeded(for task: URLSessionTask, data: Data) {
+        if let request = task.originalRequest,
+            let response = task.response as? HTTPURLResponse,
+            let ext = request.url?.pathExtension,
+            URLCache.cachedExtensions.contains(ext),
+            let expires = response.expires() {
+            let cache = CachedURLResponse(response: response,
+                                          data: data,
+                                          userInfo: ["Expires": expires],
+                                          storagePolicy: .allowed)
+            storeCachedResponse(cache, for: request)
+        }
+    }
+    func validCach(for request: URLRequest) -> CachedURLResponse? {
+        if let cache = cachedResponse(for: request),
+            let info = cache.userInfo,
+            let expires = info["Expires"] as? Date,
+            Date().compare(expires) == .orderedAscending {
+                return cache
+        }
+        return nil
+    }
+}
+
 class CustomHTTPProtocol: URLProtocol {
     fileprivate static let requestProperty = "com.masakih.KCD.requestProperty"
     static var classDelegate: CustomHTTPProtocolDelegate?
-    fileprivate static let cachedExtensions = ["swf", "flv", "png", "jpg", "jpeg", "mp3"]
-    fileprivate static let cacheFileURL: URL = ApplicationDirecrories.support.appendingPathComponent("Caches")
-    fileprivate static let kcdURLCache = URLCache(memoryCapacity: 32 * 1024 * 1024,
-                                                  diskCapacity: 1024 * 1024 * 1024,
-                                                  diskPath: cacheFileURL.path)
     
-    class func clearCache() { kcdURLCache.removeAllCachedResponses() }
+    class func clearCache() { URLCache.kcd.removeAllCachedResponses() }
     class func start() { URLProtocol.registerClass(CustomHTTPProtocol.self) }
     
     override class func canInit(with request: URLRequest) -> Bool {
@@ -93,14 +142,11 @@ class CustomHTTPProtocol: URLProtocol {
     override func startLoading() {
         guard let newRequest = (request as NSObject).mutableCopy() as? NSMutableURLRequest
             else { fatalError("Can not convert to NSMutableURLRequest") }
-        CustomHTTPProtocol.setProperty(true,
-                                       forKey: CustomHTTPProtocol.requestProperty,
-                                       in: newRequest)
+        URLProtocol.setProperty(true,
+                                forKey: CustomHTTPProtocol.requestProperty,
+                                in: newRequest)
         
-        if let cache = CustomHTTPProtocol.kcdURLCache.cachedResponse(for: request),
-            let info = cache.userInfo,
-            let expires = info["Expires"] as? Date,
-            Date().compare(expires) == .orderedAscending {
+        if let cache = URLCache.kcd.validCach(for: request) {
             use(cache)
             if let name = request.url?.lastPathComponent {
                 Debug.print("Use cache for", name, level: .full)
@@ -196,42 +242,9 @@ extension CustomHTTPProtocol: URLSessionDataDelegate {
             self.delegate?.customHTTPProtocolDidFinishLoading(self)
             self.client?.urlProtocolDidFinishLoading(self)
             
-            if self.cachePolicy == .allowed,
-                let ext = task.originalRequest?.url?.pathExtension,
-                CustomHTTPProtocol.cachedExtensions.contains(ext),
-                let request = task.originalRequest,
-                let response = task.response as? HTTPURLResponse,
-                let expires = response.expires() {
-                let cache = CachedURLResponse(response: response,
-                                              data: self.data,
-                                              userInfo: ["Expires": expires],
-                                              storagePolicy: .allowed)
-                CustomHTTPProtocol.kcdURLCache.storeCachedResponse(cache, for: request)
+            if self.cachePolicy == .allowed {
+                URLCache.kcd.storeIfNeeded(for: task, data: self.data)
             }
         }
-    }
-}
-
-extension HTTPURLResponse {
-    private var httpDateFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "EEE',' dd' 'MMM' 'yyyy HH':'mm':'ss zzz"
-        formatter.locale = Locale(identifier: "en_US")
-        return formatter
-    }
-    func expires() -> Date? {
-        if let cc = (allHeaderFields["Cache-Control"] as? String)?.lowercased(),
-            let range = cc.range(of: "max-age="),
-            let s = cc[range.upperBound..<cc.endIndex]
-                .components(separatedBy: ",")
-                .first,
-            let age = TimeInterval(s) {
-            return Date(timeIntervalSinceNow: age)
-        }
-        if let ex = (allHeaderFields["Expires"] as? String)?.lowercased(),
-            let exp = httpDateFormatter.date(from: ex) {
-            return exp
-        }
-        return nil
     }
 }
