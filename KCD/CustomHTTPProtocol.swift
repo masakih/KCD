@@ -16,6 +16,35 @@ protocol CustomHTTPProtocolDelegate: class {
     func customHTTPProtocol(_ proto: CustomHTTPProtocol, didFailWithError error: Error)
 }
 
+fileprivate class ThreadOperator: NSObject {
+    private let thread: Thread
+    private let modes: [String]
+    private var operation: (() -> Void)?
+    
+    override init() {
+        thread = Thread.current
+        let mode = RunLoop.current.currentMode ?? .defaultRunLoopMode
+        if mode == .defaultRunLoopMode {
+            modes = [mode.rawValue]
+        } else {
+            modes = [mode, .defaultRunLoopMode].map { $0.rawValue }
+        }
+        super.init()
+    }
+    func execute(_ operation: @escaping () -> Void) {
+        self.operation = operation
+        perform(#selector(ThreadOperator.operate),
+                on: thread,
+                with: nil,
+                waitUntilDone: true,
+                modes: modes)
+        self.operation = nil
+    }
+    func operate() {
+        operation?()
+    }
+}
+
 class CustomHTTPProtocol: URLProtocol {
     fileprivate static let requestProperty = "com.masakih.KCD.requestProperty"
     static var classDelegate: CustomHTTPProtocolDelegate?
@@ -49,6 +78,8 @@ class CustomHTTPProtocol: URLProtocol {
     fileprivate var didRetry: Bool = false
     fileprivate var didRecieveData: Bool = false
     
+    fileprivate var threadOperator: ThreadOperator?
+    
     private func use(_ cache: CachedURLResponse) {
         delegate?.customHTTPProtocol(self, didRecieve: cache.response)
         client?.urlProtocol(self, didReceive: cache.response, cacheStoragePolicy: .allowed)
@@ -80,6 +111,8 @@ class CustomHTTPProtocol: URLProtocol {
             return
         }
         
+        threadOperator = ThreadOperator()
+        
         let config = URLSessionConfiguration.default
         config.protocolClasses = [type(of: self)]
         session = URLSession(configuration: config, delegate: self, delegateQueue: nil)
@@ -97,33 +130,42 @@ extension CustomHTTPProtocol: URLSessionDataDelegate {
                     willPerformHTTPRedirection response: HTTPURLResponse,
                     newRequest request: URLRequest,
                     completionHandler: @escaping (URLRequest?) -> Void) {
-        Debug.print("willPerformHTTPRedirection", level: .full)
-        client?.urlProtocol(self, wasRedirectedTo: request, redirectResponse: response)
-        completionHandler(request)
+        threadOperator?.execute { [weak self] in
+            guard let `self` = self else { return }
+            Debug.print("willPerformHTTPRedirection", level: .full)
+            self.client?.urlProtocol(self, wasRedirectedTo: request, redirectResponse: response)
+            completionHandler(request)
+        }
     }
     func urlSession(_ session: URLSession,
                     dataTask: URLSessionDataTask,
                     didReceive response: URLResponse,
                     completionHandler: @escaping (URLSession.ResponseDisposition) -> Void) {
-        Debug.print("didReceive response", level: .full)
-        
-        if let response = response as? HTTPURLResponse,
-            let request = dataTask.originalRequest {
-            cachePolicy = CacheStoragePolicy(for: request, response: response)
+        threadOperator?.execute { [weak self] in
+            guard let `self` = self else { return }
+            Debug.print("didReceive response", level: .full)
+            
+            if let response = response as? HTTPURLResponse,
+                let request = dataTask.originalRequest {
+                self.cachePolicy = CacheStoragePolicy(for: request, response: response)
+            }
+            
+            self.delegate?.customHTTPProtocol(self, didRecieve: response)
+            self.client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: self.cachePolicy)
+            completionHandler(.allow)
         }
-        
-        delegate?.customHTTPProtocol(self, didRecieve: response)
-        client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: cachePolicy)
-        completionHandler(.allow)
     }
     func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
-        Debug.print("didReceive data", level: .full)
-        if cachePolicy == .allowed {
-            self.data.append(data)
+        threadOperator?.execute { [weak self] in
+            guard let `self` = self else { return }
+            Debug.print("didReceive data", level: .full)
+            if self.cachePolicy == .allowed {
+                self.data.append(data)
+            }
+            self.delegate?.customHTTPProtocol(self, didRecieve: data)
+            self.client?.urlProtocol(self, didLoad: data)
+            self.didRecieveData = true
         }
-        delegate?.customHTTPProtocol(self, didRecieve: data)
-        client?.urlProtocol(self, didLoad: data)
-        didRecieveData = true
     }
     
     // cfurlErrorNetworkConnectionLost の場合はもう一度試す
@@ -136,34 +178,37 @@ extension CustomHTTPProtocol: URLSessionDataDelegate {
         return true
     }
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
-        if let error = error {
-            if canRetry(error: error as NSError),
-                let request = task.originalRequest {
-                didRetry = true
-                dataTask = session.dataTask(with: request)
-                dataTask?.resume()
+        threadOperator?.execute { [weak self] in
+            guard let `self` = self else { return }
+            if let error = error {
+                if self.canRetry(error: error as NSError),
+                    let request = task.originalRequest {
+                    self.didRetry = true
+                    self.dataTask = session.dataTask(with: request)
+                    self.dataTask?.resume()
+                    return
+                }
+                Debug.print("didCompleteWithError ERROR", level: .full)
+                self.delegate?.customHTTPProtocol(self, didFailWithError: error)
+                self.client?.urlProtocol(self, didFailWithError: error)
                 return
             }
-            Debug.print("didCompleteWithError ERROR", level: .full)
-            delegate?.customHTTPProtocol(self, didFailWithError: error)
-            client?.urlProtocol(self, didFailWithError: error)
-            return
-        }
-        Debug.print("didCompleteWithError SUCCESS", level: .full)
-        delegate?.customHTTPProtocolDidFinishLoading(self)
-        client?.urlProtocolDidFinishLoading(self)
-        
-        if cachePolicy == .allowed,
-            let ext = task.originalRequest?.url?.pathExtension,
-            CustomHTTPProtocol.cachedExtensions.contains(ext),
-            let request = task.originalRequest,
-            let response = task.response as? HTTPURLResponse,
-            let expires = response.expires() {
-            let cache = CachedURLResponse(response: response,
-                                          data: data,
-                                          userInfo: ["Expires": expires],
-                                          storagePolicy: .allowed)
-            CustomHTTPProtocol.kcdURLCache.storeCachedResponse(cache, for: request)
+            Debug.print("didCompleteWithError SUCCESS", level: .full)
+            self.delegate?.customHTTPProtocolDidFinishLoading(self)
+            self.client?.urlProtocolDidFinishLoading(self)
+            
+            if self.cachePolicy == .allowed,
+                let ext = task.originalRequest?.url?.pathExtension,
+                CustomHTTPProtocol.cachedExtensions.contains(ext),
+                let request = task.originalRequest,
+                let response = task.response as? HTTPURLResponse,
+                let expires = response.expires() {
+                let cache = CachedURLResponse(response: response,
+                                              data: self.data,
+                                              userInfo: ["Expires": expires],
+                                              storagePolicy: .allowed)
+                CustomHTTPProtocol.kcdURLCache.storeCachedResponse(cache, for: request)
+            }
         }
     }
 }
