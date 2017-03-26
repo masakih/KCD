@@ -17,7 +17,15 @@ class StrengthenListViewController: MainTabVIewItemViewController {
         
     @IBOutlet weak var tableView: NSTableView!
     
-    dynamic var itemList: [EnhancementListItem] = []
+    dynamic var itemList: Any { return filteredItems as Any }
+    fileprivate var filteredItems: [StrengthenListItem] = [] {
+        willSet {
+            willChangeValue(forKey: #keyPath(itemList))
+        }
+        didSet {
+            didChangeValue(forKey: #keyPath(itemList))
+        }
+    }
     dynamic var offsetDay: Int = 0 {
         didSet { buildList() }
     }
@@ -57,32 +65,27 @@ class StrengthenListViewController: MainTabVIewItemViewController {
             self.downloadPList()
         }
     }
-    private func buildList() {
-        var newList: [EnhancementListItem] = {
-            if offsetDay == -1 { return allItemList() }
-            
-            let currentDay = NSCalendar.current.dateComponents([.weekday], from: Date())
-            var targetWeekday = currentDay.weekday! + offsetDay
-            if targetWeekday > 7 { targetWeekday = 1 }
-            return equipmentStrengthenList.filter { $0.weekday == targetWeekday }
-        }()
+    private func weekdayFiltered() -> [EnhancementListItem] {
+        if offsetDay == -1 { return allItemList() }
         
-        var type: EquipmentType = .unknown
-        let group: [(EquipmentType, Int)] = newList.enumerated().flatMap {
-            if type != $0.element.equipmentType {
-                type = $0.element.equipmentType
-                return (type, $0.offset)
-            }
-            return nil
-        }
-        let t = SlotItemEquipTypeTransformer()
-        let prototype = newList[0]
-        group.reversed().forEach {
-            let item = prototype.replace(identifier: t.transformedValue($0.0.rawValue) as? String,
-                                         equipmentType: .unknown)
-            newList.insert(item, at: $0.1)
-        }
-        itemList = newList
+        let currentDay = NSCalendar.current.dateComponents([.weekday], from: Date())
+        var targetWeekday = currentDay.weekday! + offsetDay
+        if targetWeekday > 7 { targetWeekday = 1 }
+        return equipmentStrengthenList.filter { $0.weekday == targetWeekday }
+    }
+    private func convert(items: [EnhancementListItem]) -> [StrengthenListItem] {
+        guard let item = items.first else { return [] }
+        let group: StrengthenListItem = StrengthenListGroupItem(type: item.equipmentType)
+        let items: [StrengthenListItem] = items.map(StrengthenListEnhancementItem.init(item:))
+        return [group] + items
+    }
+    private func buildList() {
+        let filtered = weekdayFiltered()
+        filteredItems = filtered
+            .map { $0.equipmentType }
+            .unique()
+            .map { type in filtered.filter { $0.equipmentType == type } }
+            .flatMap(convert)
     }
     private func downloadPList() {
         downloader.download { [weak self] items in
@@ -115,15 +118,15 @@ class StrengthenListViewController: MainTabVIewItemViewController {
 
 extension StrengthenListViewController: NSTableViewDelegate {
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        let item = itemList[row]
-        let identifier = (item.equipmentType == .unknown) ? "GroupCell" : "ItemCell"
-        return tableView.make(withIdentifier: identifier, owner: nil)
+        let item = filteredItems[row]
+        return item.cellType.makeCellWithItem(item: item, tableView: tableView, owner: nil)
     }
     func tableView(_ tableView: NSTableView, isGroupRow row: Int) -> Bool {
-        return (itemList[row].equipmentType == .unknown)
+        return filteredItems[row] is StrengthenListGroupItem
     }
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-        return (itemList[row].equipmentType == .unknown) ? 23.0 : 103.0
+        let item = filteredItems[row]
+        return item.cellType.estimateCellHeightForItem(item: item, tableView: tableView)
     }
 }
 
@@ -146,13 +149,13 @@ fileprivate class EnhancementListItemDownloader: NSObject, URLSessionDownloadDel
     private var plistDownloadTask: URLSessionDownloadTask?
     private var finishOperation: (([EnhancementListItem]) -> Void)?
     
-    func download(using block: @escaping ([EnhancementListItem]) -> Void) {
+    func download(completeHandler: @escaping ([EnhancementListItem]) -> Void) {
         if let _ = plistDownloadTask { return }
         // swiftlint:disable:next line_length
         guard let plistURL = URL(string: "http://git.osdn.jp/view?p=kcd/KCD.git;a=blob;f=KCD/\(resourceName).\(resourceExtension);hb=HEAD")
             else { return }
         
-        finishOperation = block
+        finishOperation = completeHandler
         plistDownloadTask = plistDownloadSession.downloadTask(with: plistURL)
         plistDownloadTask?.resume()
     }

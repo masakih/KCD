@@ -38,8 +38,8 @@ class StrengthenListItemCellView: NSTableCellView {
         return ["objectValue"]
     }
     
-    private var item: EnhancementListItem? {
-        return objectValue as? EnhancementListItem
+    private var item: StrengthenListEnhancementItem? {
+        return objectValue as? StrengthenListEnhancementItem
     }
     
     var secondsShipList: String? {
@@ -82,5 +82,12 @@ class StrengthenListItemCellView: NSTableCellView {
         let screwString = (screw == -1) ? "-" : "\(screw)"
         let ensureScrewString = (ensureScrew == -1) ? "-" : "\(ensureScrew)"
         return "\(screwString)/\(ensureScrewString)"
+    }
+}
+
+extension StrengthenListItemCellView: StrengthenListCellType {
+    static var cellIdentifier: String { return "ItemCell" }
+    static func estimateCellHeightForItem(item: StrengthenListItem, tableView: NSTableView) -> CGFloat {
+        return 103.0
     }
 }

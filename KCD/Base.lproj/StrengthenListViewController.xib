@@ -340,7 +340,7 @@
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                         <connections>
-                                                            <binding destination="L62-B1-JYw" name="value" keyPath="objectValue.identifier" id="SEm-UA-hpM"/>
+                                                            <binding destination="L62-B1-JYw" name="value" keyPath="objectValue.name" id="uaW-aU-a6H"/>
                                                         </connections>
                                                     </textField>
                                                 </subviews>

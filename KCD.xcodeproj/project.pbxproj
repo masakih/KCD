@@ -273,6 +273,7 @@
 		F4D05BDB1E0F76A800688D66 /* ResourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D05BDA1E0F76A800688D66 /* ResourceViewController.swift */; };
 		F4D05BDF1E0F8B6900688D66 /* PowerUpSupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D05BDE1E0F8B6900688D66 /* PowerUpSupportViewController.swift */; };
 		F4D05BE11E0FAB8E00688D66 /* ShipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D05BE01E0FAB8E00688D66 /* ShipViewController.swift */; };
+		F4D3D9551E8544B90085A389 /* StrengthenListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D3D9541E8544B90085A389 /* StrengthenListItem.swift */; };
 		F4E471291E46ECF1009B5AF4 /* CoreDataCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E471281E46ECF1009B5AF4 /* CoreDataCore.swift */; };
 		F4E5FF021E150A850026868C /* AncherageRepairTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5FF011E150A850026868C /* AncherageRepairTimerViewController.swift */; };
 		F4E5FF041E1518200026868C /* ScreenshotDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5FF031E1518200026868C /* ScreenshotDetailViewController.swift */; };
@@ -596,6 +597,7 @@
 		F4D05BDA1E0F76A800688D66 /* ResourceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceViewController.swift; sourceTree = "<group>"; };
 		F4D05BDE1E0F8B6900688D66 /* PowerUpSupportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerUpSupportViewController.swift; sourceTree = "<group>"; };
 		F4D05BE01E0FAB8E00688D66 /* ShipViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShipViewController.swift; sourceTree = "<group>"; };
+		F4D3D9541E8544B90085A389 /* StrengthenListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrengthenListItem.swift; sourceTree = "<group>"; };
 		F4D6BC4C1A923C0B00742FEB /* LocalData 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "LocalData 2.xcdatamodel"; sourceTree = "<group>"; };
 		F4E471281E46ECF1009B5AF4 /* CoreDataCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataCore.swift; sourceTree = "<group>"; };
 		F4E5FF011E150A850026868C /* AncherageRepairTimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AncherageRepairTimerViewController.swift; sourceTree = "<group>"; };
@@ -1081,6 +1083,7 @@
 				F45FBB6E1E0FDB33000E72B9 /* StrengthenListViewController.swift */,
 				F4C6686E1C5451ED00601AFB /* StrengthenListViewController.xib */,
 				F49097821E19F7760085A45D /* StrengthenListItemCellView.swift */,
+				F4D3D9541E8544B90085A389 /* StrengthenListItem.swift */,
 				F490977E1E19ED400085A45D /* StrengthenListItemView.swift */,
 				F4CF25DD1E38E06300C02A66 /* EnhancementListItem.swift */,
 				F4D05BD61E0F696C00688D66 /* RepairListViewController.swift */,
@@ -1477,6 +1480,7 @@
 				F4CF25BA1E34EB6600C02A66 /* BookmarkManager.swift in Sources */,
 				F44BC7051E2660E4004644E3 /* StoreCreateSlotItemHistoryCommand.swift in Sources */,
 				F4E5FF061E1523900026868C /* ScreenshotCollectionViewItem.swift in Sources */,
+				F4D3D9551E8544B90085A389 /* StrengthenListItem.swift in Sources */,
 				F44BC6DF1E228770004644E3 /* QuestListCommand.swift in Sources */,
 				F44BC7331E2A25E4004644E3 /* Start2Command.swift in Sources */,
 				F44BC6E31E230577004644E3 /* SlotDepriveCommand.swift in Sources */,
