@@ -16,7 +16,7 @@ fileprivate struct FilterCategories {
     static let allType: [EquipmentType] = (1...100).flatMap { EquipmentType(rawValue: $0) }
     static let canonType: [EquipmentType] = [.smallCaliberMainGun, .mediumCaliberMainGun,
                                              .largeCaliberMainGun, .largeCaliberMainGunII]
-    static let torpedoType: [EquipmentType] = [.secondaryGun, .torpedo, .depthCharge,
+    static let torpedoType: [EquipmentType] = [.secondaryGun, .torpedo,
                                                .antiAircraftGun, .antiSunmrinerSercher, .submarinTorpedo,
                                                .largeSonar]
     static let airplaneType: [EquipmentType] = [.fighter, .bomber, .attacker, .searcher,
@@ -26,7 +26,9 @@ fileprivate struct FilterCategories {
                                                 .jetFighter, .jetBomber,
                                                 .jetAttacker, .jetSearcher,
                                                 .searcherII]
-    static let radarType: [EquipmentType] = [.smallRadar, .largeRadar, .sonar]
+    static let radarType: [EquipmentType] = [.smallRadar, .largeRadar,
+                                             .sonar, .depthCharge,
+                                             .SubmarineEquipment]
     static let otherType: [EquipmentType] = {
         return allType
             .filter { !canonType.contains($0) }

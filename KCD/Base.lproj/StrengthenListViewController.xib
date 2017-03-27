@@ -373,11 +373,11 @@
                     <segmentedCell key="cell" controlSize="small" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="Ury-Lz-cPA">
                         <font key="font" metaFont="smallSystem"/>
                         <segments>
-                            <segment label="All" width="46" selected="YES"/>
-                            <segment label="主砲" width="41" tag="1"/>
-                            <segment label="副砲/魚雷/機銃" width="76"/>
+                            <segment label="All" width="44" selected="YES"/>
+                            <segment label="主砲" width="39" tag="1"/>
+                            <segment label="副砲/魚雷/機銃" width="74"/>
                             <segment label="航空機"/>
-                            <segment label="電探" width="47"/>
+                            <segment label="電探/対潜" width="53"/>
                             <segment label="そのた"/>
                         </segments>
                     </segmentedCell>
