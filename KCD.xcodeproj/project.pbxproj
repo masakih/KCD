@@ -1080,30 +1080,10 @@
 				F49097801E19F2C70085A45D /* BorderTextField.swift */,
 				F4D05BDE1E0F8B6900688D66 /* PowerUpSupportViewController.swift */,
 				F494DC6818C8BAB900AE97E4 /* PowerUpSupportViewController.xib */,
-				F45FBB6E1E0FDB33000E72B9 /* StrengthenListViewController.swift */,
-				F4C6686E1C5451ED00601AFB /* StrengthenListViewController.xib */,
-				F49097821E19F7760085A45D /* StrengthenListItemCellView.swift */,
-				F4D3D9541E8544B90085A389 /* StrengthenListItem.swift */,
-				F490977E1E19ED400085A45D /* StrengthenListItemView.swift */,
-				F4CF25DD1E38E06300C02A66 /* EnhancementListItem.swift */,
+				F4D3D9561E87EB720085A389 /* Strengthen */,
 				F4D05BD61E0F696C00688D66 /* RepairListViewController.swift */,
 				F4F947211D5DBBC700F95998 /* RepairListViewController.xib */,
-				F4D05BD31E0F4F8500688D66 /* ShipDetailViewController.swift */,
-				F4BEF00A1B11A5DE004702B8 /* ShipDetailViewController.xib */,
-				F4BEF0011B11A5C2004702B8 /* MediumShipViewController.xib */,
-				F49097841E1A15AF0085A45D /* SlotItemLevelView.swift */,
-				F490978C1E1BA64E0085A45D /* GuardEscapedView.swift */,
-				F45FBB911E129BAE000E72B9 /* FleetViewController.swift */,
-				F4BEF0071B11A5D3004702B8 /* FleetViewController.xib */,
-				F4BEF0041B11A5CC004702B8 /* FleetMinimumViewController.xib */,
-				F4C668711C54524900601AFB /* VerticalFleetViewController.xib */,
-				F4D05BD11E0F3C4E00688D66 /* CombileViewController.swift */,
-				F4C668741C54525300601AFB /* CombileViewController.xib */,
-				F490977C1E19DF390085A45D /* SlotItemFrameView.swift */,
-				F4048AA01E1951BB008ACFD6 /* SuppliesCell.swift */,
-				F490977A1E19C3910085A45D /* SuppliesView.swift */,
-				F4048A9E1E19308A008ACFD6 /* StrokeTextFieldCell.swift */,
-				F4048A9C1E18D75E008ACFD6 /* DamageView.swift */,
+				F4D3D9571E87EBB90085A389 /* FleetView */,
 			);
 			name = MainWindow;
 			sourceTree = "<group>";
@@ -1148,6 +1128,42 @@
 				F44BC6C01E221293004644E3 /* AirCorpsChangeNameCommand.swift */,
 			);
 			name = Command;
+			sourceTree = "<group>";
+		};
+		F4D3D9561E87EB720085A389 /* Strengthen */ = {
+			isa = PBXGroup;
+			children = (
+				F4CF25DD1E38E06300C02A66 /* EnhancementListItem.swift */,
+				F4D3D9541E8544B90085A389 /* StrengthenListItem.swift */,
+				F45FBB6E1E0FDB33000E72B9 /* StrengthenListViewController.swift */,
+				F4C6686E1C5451ED00601AFB /* StrengthenListViewController.xib */,
+				F49097821E19F7760085A45D /* StrengthenListItemCellView.swift */,
+				F490977E1E19ED400085A45D /* StrengthenListItemView.swift */,
+			);
+			name = Strengthen;
+			sourceTree = "<group>";
+		};
+		F4D3D9571E87EBB90085A389 /* FleetView */ = {
+			isa = PBXGroup;
+			children = (
+				F4D05BD31E0F4F8500688D66 /* ShipDetailViewController.swift */,
+				F4BEF00A1B11A5DE004702B8 /* ShipDetailViewController.xib */,
+				F4BEF0011B11A5C2004702B8 /* MediumShipViewController.xib */,
+				F49097841E1A15AF0085A45D /* SlotItemLevelView.swift */,
+				F490978C1E1BA64E0085A45D /* GuardEscapedView.swift */,
+				F45FBB911E129BAE000E72B9 /* FleetViewController.swift */,
+				F4BEF0071B11A5D3004702B8 /* FleetViewController.xib */,
+				F4BEF0041B11A5CC004702B8 /* FleetMinimumViewController.xib */,
+				F4C668711C54524900601AFB /* VerticalFleetViewController.xib */,
+				F4D05BD11E0F3C4E00688D66 /* CombileViewController.swift */,
+				F4C668741C54525300601AFB /* CombileViewController.xib */,
+				F490977C1E19DF390085A45D /* SlotItemFrameView.swift */,
+				F4048AA01E1951BB008ACFD6 /* SuppliesCell.swift */,
+				F490977A1E19C3910085A45D /* SuppliesView.swift */,
+				F4048A9E1E19308A008ACFD6 /* StrokeTextFieldCell.swift */,
+				F4048A9C1E18D75E008ACFD6 /* DamageView.swift */,
+			);
+			name = FleetView;
 			sourceTree = "<group>";
 		};
 		F4F9F8911C6BA26400D0EE76 /* KCD */ = {
