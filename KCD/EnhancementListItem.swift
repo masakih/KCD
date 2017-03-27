@@ -62,8 +62,8 @@ enum EquipmentType: Int {
     case localFighter = 48
     
     case blank01 = 49
-    case blank02 = 50
-    case blank03 = 51
+    case TransportationMaterial = 50
+    case SubmarineEquipment = 51
     case blank04 = 52
     case blank05 = 53
     case blank06 = 54
@@ -82,6 +82,13 @@ enum EquipmentType: Int {
     
     case largeLadarII = 93
     case searcherII = 94
+    
+    case blank13 = 95
+    case blank14 = 96
+    case blank15 = 97
+    case blank16 = 98
+    case blank17 = 99
+    case blank18 = 100
 }
 
 class EnhancementListItem: NSObject, NSCoding, NSCopying {
