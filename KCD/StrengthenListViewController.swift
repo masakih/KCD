@@ -163,7 +163,6 @@ class StrengthenListViewController: MainTabVIewItemViewController {
             .map { $0.identifier }
             .unique()
             .map { identifier in equipmentStrengthenList.filter { $0.identifier == identifier } }
-//            .flatMap { $0.first?.replace(weekday: 10, secondsShipNames: packSecondShipName($0)) }
             .flatMap { $0.first?.replace(secondsShipNames: packSecondShipName($0)) }
     }
 }
