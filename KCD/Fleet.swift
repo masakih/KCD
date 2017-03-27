@@ -14,8 +14,8 @@ class Fleet: NSObject {
     let fleetNumber: Int
     private let deckObserveKeys = [
         "selection.ship_0", "selection.ship_1", "selection.ship_2",
-        "selection.ship_3", "selection.ship_4", "selection.ship_5",
-        ]
+        "selection.ship_3", "selection.ship_4", "selection.ship_5"
+    ]
     
     init?(number: Int) {
         guard 1...4 ~= number

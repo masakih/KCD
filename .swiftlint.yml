@@ -3,7 +3,6 @@ disabled_rules:
     - leading_whitespace
     - vertical_whitespace
     - cyclomatic_complexity
-    - trailing_comma
     - todo
     - trailing_whitespace
 file_length:

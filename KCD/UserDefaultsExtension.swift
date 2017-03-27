@@ -48,8 +48,8 @@ extension UserDefaults {
                 "screenshotEditorColumnCount": 2,
                 "cleanSiceDays": 90,
                 "notifyTimeSignal": false,
-                "notifyTimeBeforeTimeSignal": 5,
-                ]
+                "notifyTimeBeforeTimeSignal": 5
+            ]
         )
     }
 }
