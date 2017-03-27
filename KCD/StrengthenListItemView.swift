@@ -15,8 +15,8 @@ class StrengthenListItemView: NSBox {
         let bounds = self.bounds
         let width = bounds.width
         let height = bounds.height
-        NSColor.gridColor.set()
-        NSBezierPath.setDefaultLineWidth(1.0)
+        borderColor.set()
+        NSBezierPath.setDefaultLineWidth(borderWidth)
         NSBezierPath.stroke(bounds)
         multiline {
             [(NSPoint, NSPoint)]()
