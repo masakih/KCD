@@ -8,23 +8,19 @@
 
 import Foundation
 
-
-// powerd by http://qiita.com/su_k/items/157e4c6e390944237253
-extension Array where Element: Hashable {
-    
-    func unique() -> [Element] {
-        var r = [Element]()
-        for i in self {
-            r += !r.contains(i) ? [i] : []
+// powered by http://stackoverflow.com/questions/40579554/how-to-display-unique-elements-of-an-array-using-swift
+// swiftlint:disable syntactic_sugar
+extension Sequence where Iterator.Element: Hashable {
+    func unique() -> [Iterator.Element] {
+        var alreadyAdded = Array<Iterator.Element>()
+        return filter {
+            if alreadyAdded.contains($0) { return false }
+            alreadyAdded.append($0)
+            return true
         }
-        return r
     }
-    
-    mutating func uniqueInPlace() {
-        self = self.unique()
-    }
-    
 }
+// swiftlint:enable syntactic_sugar
 
 extension Array {
     func appended(_ elem: () -> Element) -> Array {
