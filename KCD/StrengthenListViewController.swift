@@ -155,23 +155,16 @@ class StrengthenListViewController: MainTabVIewItemViewController {
             }
         }
     }
+    private func packSecondShipName(_ items: [EnhancementListItem]) -> [String] {
+        return items.flatMap { $0.secondsShipNames }.unique()
+    }
     private func allItemList() -> [EnhancementListItem] {
-        var allIdentifier: [String] = []
-        var dict: [String: EnhancementListItem] = [:]
-        equipmentStrengthenList.forEach {
-            var item = dict[$0.identifier]
-            if item == nil {
-                item = $0.replace(weekday: 10)
-                dict[$0.identifier] = item
-                allIdentifier.append($0.identifier)
-            }
-            var secondShips = item?.secondsShipNames
-            secondShips?.append(contentsOf: $0.secondsShipNames)
-            secondShips?.uniqueInPlace()
-            dict[$0.identifier] = item?.replace(secondsShipNames: secondShips)
-        }
-        
-        return allIdentifier.flatMap { dict[$0] }
+        return equipmentStrengthenList
+            .map { $0.identifier }
+            .unique()
+            .map { identifier in equipmentStrengthenList.filter { $0.identifier == identifier } }
+//            .flatMap { $0.first?.replace(weekday: 10, secondsShipNames: packSecondShipName($0)) }
+            .flatMap { $0.first?.replace(secondsShipNames: packSecondShipName($0)) }
     }
 }
 
