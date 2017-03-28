@@ -25,19 +25,9 @@ class KenzoDockStatus: NSObject {
     }
     dynamic var time: NSNumber?
     dynamic var state: NSNumber? {
-        didSet {
-            guard let state = state as? Int,
-                let s = DockState(rawValue: state)
-                else { return print("unknown State") }
-            switch s {
-            case .empty, .notOpen:
-                isTasking = false
-                didNotify = false
-            case .hasShip, .completed:
-                isTasking = true
-            }
-        }
+        didSet { updateState() }
     }
+    dynamic var completeTime: NSNumber?
     
     init?(number: Int) {
         guard 1...4 ~= number else { return nil }
@@ -50,7 +40,21 @@ class KenzoDockStatus: NSObject {
         controller.automaticallyRearrangesObjects = true
         controller.fetch(nil)
         
-        bind("state", to: controller, withKeyPath: "selection.state")
+        bind(#keyPath(state), to: controller, withKeyPath: "selection.state")
+        bind(#keyPath(completeTime), to: controller, withKeyPath: "selection.complete_time")
+    }
+    
+    private func updateState() {
+        guard let state = state as? Int,
+            let s = DockState(rawValue: state)
+            else { return print("unknown State") }
+        switch s {
+        case .empty, .notOpen:
+            isTasking = false
+            didNotify = false
+        case .hasShip, .completed:
+            isTasking = true
+        }
     }
     
     func update() {
@@ -58,14 +62,13 @@ class KenzoDockStatus: NSObject {
             time = nil
             return
         }
-        guard let t = controller.value(forKeyPath: "selection.complete_time") as? Int
+        guard let completeTime = completeTime as? Int
             else {
                 time = nil
                 return
         }
-        let compTime = TimeInterval(Int(t / 1_000))
-        let now = Date()
-        let diff = compTime - now.timeIntervalSince1970
+        let compTime = TimeInterval(Int(completeTime / 1_000))
+        let diff = compTime - Date().timeIntervalSince1970
         
         realTime = diff < 0 ? 0 : diff
         

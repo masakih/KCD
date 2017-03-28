@@ -29,6 +29,8 @@ class MissionStatus: NSObject {
     dynamic var missionId: NSNumber? {
         didSet { updateState() }
     }
+    dynamic var milliseconds: NSNumber?
+    dynamic var fleetName: String?
     
     init?(number: Int) {
         guard 2...4 ~= number else { return nil }
@@ -41,8 +43,16 @@ class MissionStatus: NSObject {
         controller.automaticallyRearrangesObjects = true
         controller.fetch(nil)
         
-        bind("state", to: controller, withKeyPath: "selection.mission_0")
-        bind("missionId", to: controller, withKeyPath: "selection.mission_1")
+        bind(#keyPath(state), to: controller, withKeyPath: "selection.mission_0")
+        bind(#keyPath(missionId), to: controller, withKeyPath: "selection.mission_1")
+        bind(#keyPath(milliseconds), to: controller, withKeyPath: "selection.mission_2")
+        bind(#keyPath(fleetName), to: controller, withKeyPath: "selection.name")
+    }
+    deinit {
+        unbind(#keyPath(state))
+        unbind(#keyPath(missionId))
+        unbind(#keyPath(milliseconds))
+        unbind(#keyPath(fleetName))
     }
     
     private func updateState() {
@@ -75,22 +85,21 @@ class MissionStatus: NSObject {
             time = nil
             return
         }
-        guard let t = controller.value(forKeyPath: "selection.mission_2") as? Int
+        guard let milliSeconds = milliseconds as? Int
             else {
                 name = nil
                 time = nil
                 return
         }
-        let compTime = TimeInterval(Int(t / 1_000))
-        let now = Date()
-        let diff = compTime - now.timeIntervalSince1970
+        let compTime = TimeInterval(Int(milliSeconds / 1_000))
+        let diff = compTime - Date().timeIntervalSince1970
         
         realTime = diff < 0 ? 0 : diff
         
         if didNotify { return }
         if diff >= 1 * 60 { return }
         
-        guard let fleetName = controller.value(forKeyPath: "selection.name") as? String
+        guard let fleetName = fleetName
             else { return }
         let notification = NSUserNotification()
         let format = NSLocalizedString("%@ Will Return From Mission.", comment: "%@ Will Return From Mission.")
