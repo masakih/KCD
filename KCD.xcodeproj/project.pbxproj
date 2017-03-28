@@ -285,7 +285,6 @@
 		F4E5FF121E17D6850026868C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5FF111E17D6850026868C /* GameViewController.swift */; };
 		F4E5FF141E17F93B0026868C /* BroserWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5FF131E17F93B0026868C /* BroserWindowController.swift */; };
 		F4E7802E18DC3AF00011BC4C /* LocalData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4E7802C18DC3AF00011BC4C /* LocalData.xcdatamodeld */; };
-		F4EFBCA31E7D439A00DE4A58 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EFBCA21E7D439A00DE4A58 /* SwiftyJSON.framework */; };
 		F4EFBCA51E7D757E00DE4A58 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EFBCA21E7D439A00DE4A58 /* SwiftyJSON.framework */; };
 		F4EFBCA61E7D757E00DE4A58 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F4EFBCA21E7D439A00DE4A58 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F4F947071D5DBA2D00F95998 /* MapWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4F947091D5DBA2D00F95998 /* MapWindowController.xib */; };
@@ -657,7 +656,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4EFBCA51E7D757E00DE4A58 /* SwiftyJSON.framework in Frameworks */,
-				F4EFBCA31E7D439A00DE4A58 /* SwiftyJSON.framework in Frameworks */,
 				F4A2AF581A0930160024BD9E /* Quartz.framework in Frameworks */,
 				F4B3DC4E18F0C8FF0011B4FC /* Accounts.framework in Frameworks */,
 				F4B3DC4C18F0C8A90011B4FC /* Social.framework in Frameworks */,
@@ -1327,7 +1325,7 @@
 		F4BDEB3B187252F30069D0CE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Hori,Masaki";
 				TargetAttributes = {
 					F4BDEB42187252F30069D0CE = {

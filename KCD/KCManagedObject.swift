@@ -46,7 +46,7 @@ class KCManagedObject: NSManagedObject {
             let k = key[four..<key.endIndex]
             return value(forKey: k)
         }
-        print("Entity \(entity.name) dose not have key \(key)")
+        print("Entity \(type(of: self).entityName) dose not have key \(key)")
         return nil
     }
     override func setValue(_ value: Any?, forUndefinedKey key: String) {
@@ -60,6 +60,6 @@ class KCManagedObject: NSManagedObject {
             setValue(value, forKey: k)
             return
         }
-        print("Entity \(entity.name) dose not have key \(key)")
+        print("Entity \(type(of: self).entityName) dose not have key \(key)")
     }
 }

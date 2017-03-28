@@ -149,8 +149,12 @@ extension GameViewController: WebFrameLoadDelegate, WebUIDelegate {
     func webView(_ sender: WebView!, didFinishLoadFor frame: WebFrame!) {
         guard let path = frame.dataSource?.initialRequest.url?.path else { return }
         
-        let handler: (JSContext?, JSValue?) -> Void = { (context, exception) in
-            print("Caught exception in evaluteScript -> \(exception)")
+        let handler: (JSContext?, JSValue?) -> Void = { (_, exception) in
+            if let exception = exception {
+                print("Caught exception in evaluteScript -> \(exception)")
+            } else {
+                print("Caught exception in evaluteScript")
+            }
         }
         
         if path.hasSuffix("gadgets/ifr") {
