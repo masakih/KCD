@@ -10,16 +10,16 @@ import Cocoa
 
 class DocksViewController: MainTabVIewItemViewController {
     deinit {
-        ["deck2Time", "mission2Name",
-         "deck3Time", "mission3Name",
-         "deck4Time", "mission4Name"]
+        [#keyPath(deck2Time), #keyPath(mission2Name),
+         #keyPath(deck3Time), #keyPath(mission3Name),
+         #keyPath(deck4Time), #keyPath(mission4Name)]
             .forEach { unbind($0) }
-        ["nDock1Time", "nDock1ShipName",
-         "nDock2Time", "nDock2ShipName",
-         "nDock3Time", "nDock3ShipName",
-         "nDock4Time", "nDock4ShipName"]
+        [#keyPath(nDock1Time), #keyPath(nDock1ShipName),
+         #keyPath(nDock2Time), #keyPath(nDock2ShipName),
+         #keyPath(nDock3Time), #keyPath(nDock3ShipName),
+         #keyPath(nDock4Time), #keyPath(nDock4ShipName)]
             .forEach { unbind($0) }
-        ["kDock1Time", "kDock2Time", "kDock3Time", "kDock4Time"]
+        [#keyPath(kDock1Time), #keyPath(kDock2Time), #keyPath(kDock3Time), #keyPath(kDock4Time)]
             .forEach { unbind($0) }
         
         ["selection", "selection.no", "content.battleCell"]
@@ -149,11 +149,11 @@ class DocksViewController: MainTabVIewItemViewController {
                                change: [NSKeyValueChangeKey: Any]?,
                                context: UnsafeMutableRawPointer?) {
         if keyPath == "selection" || keyPath == "content.battleCell" {
-            notifyChangeValue(forKey: "sortieString")
+            notifyChangeValue(forKey: #keyPath(sortieString))
             return
         }
         if keyPath == "selection.no" {
-            notifyChangeValue(forKey: "cellNumber")
+            notifyChangeValue(forKey: #keyPath(cellNumber))
             return
         }
         
@@ -162,29 +162,29 @@ class DocksViewController: MainTabVIewItemViewController {
     
     private func setupStatus() {
         let missionKeys = [
-            ("deck2Time", "mission2Name"),
-            ("deck3Time", "mission3Name"),
-            ("deck4Time", "mission4Name")
+            (#keyPath(deck2Time), #keyPath(mission2Name)),
+            (#keyPath(deck3Time), #keyPath(mission3Name)),
+            (#keyPath(deck4Time), #keyPath(mission4Name))
         ]
         zip(missionStates, missionKeys).forEach {
-            bind($0.1.0, to: $0.0, withKeyPath: "time", options: nil)
-            bind($0.1.1, to: $0.0, withKeyPath: "name", options: nil)
+            bind($0.1.0, to: $0.0, withKeyPath: #keyPath(MissionStatus.time), options: nil)
+            bind($0.1.1, to: $0.0, withKeyPath: #keyPath(MissionStatus.name), options: nil)
         }
         
         let ndockKeys = [
-            ("nDock1Time", "nDock1ShipName"),
-            ("nDock2Time", "nDock2ShipName"),
-            ("nDock3Time", "nDock3ShipName"),
-            ("nDock4Time", "nDock4ShipName")
+            (#keyPath(nDock1Time), #keyPath(nDock1ShipName)),
+            (#keyPath(nDock2Time), #keyPath(nDock2ShipName)),
+            (#keyPath(nDock3Time), #keyPath(nDock3ShipName)),
+            (#keyPath(nDock4Time), #keyPath(nDock4ShipName))
         ]
         zip(ndockStatus, ndockKeys).forEach {
-            bind($0.1.0, to: $0.0, withKeyPath: "time", options: nil)
-            bind($0.1.1, to: $0.0, withKeyPath: "name", options: nil)
+            bind($0.1.0, to: $0.0, withKeyPath: #keyPath(MissionStatus.time), options: nil)
+            bind($0.1.1, to: $0.0, withKeyPath: #keyPath(MissionStatus.name), options: nil)
         }
         
-        let kdockKeys = ["kDock1Time", "kDock2Time", "kDock3Time", "kDock4Time"]
+        let kdockKeys = [#keyPath(kDock1Time), #keyPath(kDock2Time), #keyPath(kDock3Time), #keyPath(kDock4Time)]
         zip(kdockStatus, kdockKeys).forEach {
-            bind($0.1, to: $0.0, withKeyPath: "time", options: nil)
+            bind($0.1, to: $0.0, withKeyPath: #keyPath(MissionStatus.time), options: nil)
         }
     }
     

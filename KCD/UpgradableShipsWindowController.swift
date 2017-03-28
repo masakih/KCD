@@ -21,7 +21,7 @@ class UpgradableShipsWindowController: NSWindowController {
     }
     
     class func keyPathsForValuesAffectingFilterPredicate() -> Set<String> {
-        return ["showLevelOneShipInUpgradableList", "showsExcludedShipInUpgradableList"]
+        return [#keyPath(showLevelOneShipInUpgradableList), #keyPath(showsExcludedShipInUpgradableList)]
     }
     
     private var excludeShiIDsCache: [Int] {
@@ -72,7 +72,7 @@ class UpgradableShipsWindowController: NSWindowController {
     var excludeShiIDs: [Int] {
         get { return (NSArray(contentsOf: excludeShipIDsSaveURL) as? [Int]) ?? [] }
         set {
-            notifyChangeValue(forKey: "filterPredicate") {
+            notifyChangeValue(forKey: #keyPath(filterPredicate)) {
                 (newValue as NSArray).write(to: excludeShipIDsSaveURL, atomically: true)
                 UpgradableShipsWindowController.excludeShiIDsCache = newValue
             }

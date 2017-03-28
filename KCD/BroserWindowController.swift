@@ -37,7 +37,7 @@ class BroserWindowController: NSWindowController {
     }
     
     class func keyPathsForValuesAffectingFlagShipName() -> Set<String> {
-        return ["flagShipID"]
+        return [#keyPath(flagShipID)]
     }
     
     let managedObjectContext = ServerDataStore.default.context
@@ -117,7 +117,7 @@ class BroserWindowController: NSWindowController {
         fleetViewController.shipOrder = UserDefaults.standard.fleetViewShipOrder
         fleetViewController.enableAnimation = true
         
-        bind("flagShipID", to: deckContoller, withKeyPath: "selection.ship_0", options: nil)
+        bind(#keyPath(flagShipID), to: deckContoller, withKeyPath: "selection.ship_0", options: nil)
         
         NotificationCenter.default
             .addObserver(forName: .CombinedDidCange, object: nil, queue: nil) {
@@ -454,7 +454,7 @@ extension BroserWindowController {
         
         shipTypeSegment.bind(NSSelectedIndexBinding,
                              to: tabViewItemViewControllers[0],
-                             withKeyPath: "selectedShipType",
+                             withKeyPath: #keyPath(MainTabVIewItemViewController.selectedShipType),
                              options: nil)
         let o = selectedMainTabIndex
         selectedMainTabIndex = o
@@ -468,7 +468,7 @@ extension BroserWindowController {
             button.isHidden = !vc.hasShipTypeSelector
             self.shipTypeSegment.bind(NSSelectedIndexBinding,
                                       to: vc,
-                                      withKeyPath: "selectedShipType",
+                                      withKeyPath: #keyPath(MainTabVIewItemViewController.selectedShipType),
                                       options: nil)
         }
         return mainTouchBar

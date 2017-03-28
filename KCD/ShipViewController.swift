@@ -66,7 +66,7 @@ class ShipViewController: MainTabVIewItemViewController {
         }
         shipController.sortDescriptors = UserDefaults.standard.shipviewSortDescriptors
         shipController.addObserver(self, forKeyPath: NSSortDescriptorsBinding, context: nil)
-        shipController.addObserver(self, forKeyPath: "arrangedObjects", context: nil)
+        shipController.addObserver(self, forKeyPath: #keyPath(shipController.arrangedObjects), context: nil)
         
         let tableViews = [expTableView, powerTableView, power2TableView, power3TableView]
         tableViews
@@ -92,8 +92,8 @@ class ShipViewController: MainTabVIewItemViewController {
             UserDefaults.standard.shipviewSortDescriptors = shipController.sortDescriptors
             return
         }
-        if keyPath == "arrangedObjects" {
-            notifyChangeValue(forKey: "standardDeviation")
+        if keyPath == #keyPath(shipController.arrangedObjects) {
+            notifyChangeValue(forKey: #keyPath(standardDeviation))
             return
         }
         

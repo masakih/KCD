@@ -10,14 +10,14 @@ import Cocoa
 
 class ResourceViewController: NSViewController {
     class func keyPathsForValuesAffectingShipNumberColor() -> Set<String> {
-        return ["maxChara", "shipCount", "minimumColoredShipCount"]
+        return [#keyPath(maxChara), #keyPath(shipCount), #keyPath(minimumColoredShipCount)]
     }
     
     let managedObjectContext = ServerDataStore.default.context
     
     deinit {
-        unbind("maxChara")
-        unbind("shipCount")
+        unbind(#keyPath(maxChara))
+        unbind(#keyPath(shipCount))
     }
     
     @IBOutlet var shipController: NSArrayController!
@@ -42,7 +42,7 @@ class ResourceViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        bind("maxChara", to: basicController, withKeyPath: "selection.max_chara", options: nil)
-        bind("shipCount", to: shipController, withKeyPath: "arrangedObjects.@count", options: nil)
+        bind(#keyPath(maxChara), to: basicController, withKeyPath: "selection.max_chara", options: nil)
+        bind(#keyPath(shipCount), to: shipController, withKeyPath: "arrangedObjects.@count", options: nil)
     }
 }

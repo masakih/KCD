@@ -143,7 +143,7 @@ class FleetViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fleetController.bind("content", to:self, withKeyPath:"fleet", options:nil)
+        fleetController.bind("content", to:self, withKeyPath:#keyPath(fleet), options:nil)
         fleetController.addObserver(self, forKeyPath:"selection.name", context:nil)
         shipKeys.forEach {
             let keyPath = "selection.\($0)"
@@ -172,7 +172,7 @@ class FleetViewController: NSViewController {
         NotificationCenter.default
             .addObserver(forName: .DidPrepareFleet, object: nil, queue: nil) { [weak self] _ in
                 guard let `self` = self else { return }
-                self.notifyChangeValue(forKey: "fleetNumber")
+                self.notifyChangeValue(forKey: #keyPath(fleetNumber))
         }
     }
     override func observeValue(forKeyPath keyPath: String?,
@@ -194,15 +194,15 @@ class FleetViewController: NSViewController {
             if context == &shipsContext {
                 switch keyPath {
                 case "sakuteki_0":
-                    notifyChangeValue(forKey: "totalSakuteki")
+                    notifyChangeValue(forKey: #keyPath(totalSakuteki))
                 case "seiku":
-                    notifyChangeValue(forKey: "totalSeiku")
+                    notifyChangeValue(forKey: #keyPath(totalSeiku))
                 case "totalSeiku":
-                    notifyChangeValue(forKey: "totalCalclatedSeiku")
+                    notifyChangeValue(forKey: #keyPath(totalCalclatedSeiku))
                 case "lv":
-                    notifyChangeValue(forKey: "totalLevel")
+                    notifyChangeValue(forKey: #keyPath(totalLevel))
                 case "totalDrums":
-                    notifyChangeValue(forKey: "totalDrums")
+                    notifyChangeValue(forKey: #keyPath(totalDrums))
                 default: break
                 }
                 return
@@ -227,12 +227,12 @@ class FleetViewController: NSViewController {
         ships = array.flatMap { $0 }
         
         [String]()
-            .appended { "totalSakuteki" }
-            .appended { "totalSeiku" }
-            .appended { "totalCalclatedSeiku" }
-            .appended { "totalLevel" }
-            .appended { "totalDrums" }
-            .appended { "repairable" }
+            .appended { #keyPath(totalSakuteki) }
+            .appended { #keyPath(totalSeiku) }
+            .appended { #keyPath(totalCalclatedSeiku) }
+            .appended { #keyPath(totalLevel) }
+            .appended { #keyPath(totalDrums) }
+            .appended { #keyPath(repairable) }
             .forEach { notifyChangeValue(forKey: $0) }
     }
 }

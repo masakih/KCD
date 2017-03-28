@@ -25,10 +25,10 @@ class BridgeViewController: NSViewController {
         didSet {
             guard let representedObject = representedObject else { return }
             [
-                (NSContentArrayBinding, "screenshots"),
-                (NSSortDescriptorsBinding, "sortDescriptors"),
-                (NSSelectionIndexesBinding, "selectedIndexes"),
-                (NSFilterPredicateBinding, "filterPredicate")
+                (NSContentArrayBinding, #keyPath(ScreenshotModel.screenshots)),
+                (NSSortDescriptorsBinding, #keyPath(ScreenshotModel.sortDescriptors)),
+                (NSSelectionIndexesBinding, #keyPath(ScreenshotModel.selectedIndexes)),
+                (NSFilterPredicateBinding, #keyPath(ScreenshotModel.filterPredicate))
                 ]
                 .forEach {
                     arrayController.bind($0.0, to: representedObject, withKeyPath: $0.1, options: nil)

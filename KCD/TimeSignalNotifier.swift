@@ -18,12 +18,12 @@ class TimeSignalNotifier: NSObject {
     override init() {
         super.init()
         registerTimer()
-        self.bind("notifyTimeBeforeTimeSignal",
+        self.bind(#keyPath(notifyTimeBeforeTimeSignal),
                   to: udController,
                   withKeyPath: "values.notifyTimeBeforeTimeSignal")
     }
     deinit {
-        self.unbind("notifyTimeBeforeTimeSignal")
+        self.unbind(#keyPath(notifyTimeBeforeTimeSignal))
     }
     
     dynamic var notifyTimeBeforeTimeSignal: Int = 0 {

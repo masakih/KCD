@@ -11,31 +11,31 @@ import Cocoa
 class StrengthenListItemCellView: NSTableCellView {
     
     class func keyPathsForValuesAffectingSecondsShipList() -> Set<String> {
-        return ["objectValue"]
+        return [#keyPath(objectValue)]
     }
     class func keyPathsForValuesAffectingRequiredEquipment01() -> Set<String> {
-        return ["objectValue"]
+        return [#keyPath(objectValue)]
     }
     class func keyPathsForValuesAffectingRequiredEquipment02() -> Set<String> {
-        return ["objectValue"]
+        return [#keyPath(objectValue)]
     }
     class func keyPathsForValuesAffectingRequiredEquipment03() -> Set<String> {
-        return ["objectValue"]
+        return [#keyPath(objectValue)]
     }
     class func keyPathsForValuesAffectingTargetEquipment() -> Set<String> {
-        return ["objectValue"]
+        return [#keyPath(objectValue)]
     }
     class func keyPathsForValuesAffectingRemodelEquipment() -> Set<String> {
-        return ["objectValue"]
+        return [#keyPath(objectValue)]
     }
     class func keyPathsForValuesAffectingNeedsScrewString01() -> Set<String> {
-        return ["objectValue"]
+        return [#keyPath(objectValue)]
     }
     class func keyPathsForValuesAffectingNeedsScrewString02() -> Set<String> {
-        return ["objectValue"]
+        return [#keyPath(objectValue)]
     }
     class func keyPathsForValuesAffectingNeedsScrewString03() -> Set<String> {
-        return ["objectValue"]
+        return [#keyPath(objectValue)]
     }
     
     private var item: StrengthenListEnhancementItem? {

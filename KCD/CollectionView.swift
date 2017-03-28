@@ -13,10 +13,10 @@ class CollectionView: NSCollectionView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         
-        self.addObserver(self, forKeyPath: "selectionIndexPaths", context: nil)
+        self.addObserver(self, forKeyPath: #keyPath(selectionIndexPaths), context: nil)
     }
     deinit {
-        self.removeObserver(self, forKeyPath: "selectionIndexPaths")
+        self.removeObserver(self, forKeyPath: #keyPath(selectionIndexPaths))
     }
     
     override func observeValue(forKeyPath keyPath: String?,

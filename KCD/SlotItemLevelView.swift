@@ -20,18 +20,18 @@ class SlotItemLevelView: NSTextField {
     override init(frame frameRect: NSRect) {
         slotItemController = NSObjectController()
         super.init(frame: frameRect)
-        self.bind("slotItemLevel", to: slotItemController, withKeyPath: "selection.level", options: nil)
-        self.bind("slotItemAlv", to: slotItemController, withKeyPath: "selection.alv", options: nil)
+        bind(#keyPath(slotItemLevel), to: slotItemController, withKeyPath: "selection.level", options: nil)
+        bind(#keyPath(slotItemAlv), to: slotItemController, withKeyPath: "selection.alv", options: nil)
     }
     required init?(coder: NSCoder) {
         slotItemController = NSObjectController()
         super.init(coder: coder)
-        self.bind("slotItemLevel", to: slotItemController, withKeyPath: "selection.level", options: nil)
-        self.bind("slotItemAlv", to: slotItemController, withKeyPath: "selection.alv", options: nil)
+        bind(#keyPath(slotItemLevel), to: slotItemController, withKeyPath: "selection.level", options: nil)
+        bind(#keyPath(slotItemAlv), to: slotItemController, withKeyPath: "selection.alv", options: nil)
     }
     deinit {
-        self.unbind("slotItemLevel")
-        self.unbind("slotItemAlv")
+        unbind(#keyPath(slotItemLevel))
+        unbind(#keyPath(slotItemAlv))
     }
     
     // MARK: - Variable

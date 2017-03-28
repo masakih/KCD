@@ -44,20 +44,20 @@ class ShipDetailViewController: NSViewController {
     }
     deinit {
         NotificationCenter.default.removeObserver(self)
-        damageView.unbind("damageType")
-        supply.unbind("shipStatus")
+        damageView.unbind(#keyPath(DamageView.damageType))
+        supply.unbind(#keyPath(SuppliesView.shipStatus))
         [slot00Field, slot01Field, slot02Field, slot03Field]
-            .forEach { $0?.unbind("slotItemID") }
+            .forEach { $0?.unbind(#keyPath(SlotItemLevelView.slotItemID)) }
     }
     
     
     @IBOutlet weak var supply: SuppliesView!
     @IBOutlet weak var guardEscapedView: GuardEscapedView!
     @IBOutlet weak var damageView: DamageView!
-    @IBOutlet weak var slot00Field: NSTextField!
-    @IBOutlet weak var slot01Field: NSTextField!
-    @IBOutlet weak var slot02Field: NSTextField!
-    @IBOutlet weak var slot03Field: NSTextField!
+    @IBOutlet weak var slot00Field: SlotItemLevelView!
+    @IBOutlet weak var slot01Field: SlotItemLevelView!
+    @IBOutlet weak var slot02Field: SlotItemLevelView!
+    @IBOutlet weak var slot03Field: SlotItemLevelView!
     @IBOutlet var shipController: NSObjectController!
     
     dynamic var guardEscaped: Bool = false {
@@ -77,9 +77,13 @@ class ShipDetailViewController: NSViewController {
         
         damageView.setFrameOrigin(.zero)
         view.addSubview(damageView)
-        damageView.bind("damageType", to: shipController, withKeyPath: "selection.status", options: nil)
+        damageView.bind(#keyPath(DamageView.damageType),
+                        to: shipController,
+                        withKeyPath: "selection.status", options: nil)
         
-        supply.bind("shipStatus", to: shipController, withKeyPath: "selection.self", options: nil)
+        supply.bind(#keyPath(SuppliesView.shipStatus),
+                    to: shipController,
+                    withKeyPath: "selection.self", options: nil)
         
         guardEscapedView.setFrameOrigin(.zero)
         view.addSubview(guardEscapedView)
@@ -92,7 +96,7 @@ class ShipDetailViewController: NSViewController {
         let fields = [slot00Field, slot01Field, slot02Field, slot03Field]
         let keypath = ["selection.slot_0", "selection.slot_1", "selection.slot_2", "selection.slot_3"]
         zip(fields, keypath).forEach {
-            $0.0?.bind("slotItemID", to: shipController, withKeyPath: $0.1, options: nil)
+            $0.0?.bind(#keyPath(SlotItemLevelView.slotItemID), to: shipController, withKeyPath: $0.1, options: nil)
         }
     }
 }

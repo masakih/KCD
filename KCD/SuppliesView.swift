@@ -11,7 +11,10 @@ import Cocoa
 fileprivate var pShipStatusContext: Int = 0
 
 class SuppliesView: NSControl {
-    private let observeKeys = ["fuel", "maxFuel", "bull", "maxBull"]
+    private let observeKeys = [ #keyPath(Ship.fuel),
+                                #keyPath(Ship.maxFuel),
+                                #keyPath(Ship.bull),
+                                #keyPath(Ship.maxBull)]
     private let suppliesCell: SuppliesCell
     
     override init(frame: NSRect) {
