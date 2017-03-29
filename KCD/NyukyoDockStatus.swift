@@ -25,7 +25,9 @@ class NyukyoDockStatus: NSObject {
     dynamic var state: NSNumber? {
         didSet { updateState() }
     }
-    dynamic var shipId: NSNumber?
+    dynamic var shipId: NSNumber? {
+        didSet { updateState() }
+    }
     dynamic var completeTime: NSNumber?
     
     init?(number: Int) {
@@ -76,13 +78,13 @@ class NyukyoDockStatus: NSObject {
     }
     
     func update() {
-        if name == nil {
+        guard let name = name else {
             time = nil
             return
         }
         guard let completeTime = completeTime as? Int
             else {
-                name = nil
+                self.name = nil
                 time = nil
                 return
         }
@@ -96,7 +98,7 @@ class NyukyoDockStatus: NSObject {
         
         let notification = NSUserNotification()
         let format = NSLocalizedString("%@ Will Finish Docking.", comment: "%@ Will Finish Docking.")
-        notification.title = String(format: format, name!)
+        notification.title = String(format: format, name)
         notification.informativeText = notification.title
         if UserDefaults.standard.playFinishNyukyoSound {
             notification.soundName = NSUserNotificationDefaultSoundName
