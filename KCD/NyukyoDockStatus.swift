@@ -65,7 +65,7 @@ class NyukyoDockStatus: NSObject {
         guard let shipId = shipId as? Int,
             shipId != 0
             else { return }
-        guard let ship = ServerDataStore.default.ship(byId: shipId)
+        guard let ship = ServerDataStore.default.ship(by: shipId)
             else {
                 name = "Unknown"
                 DispatchQueue(label: "NyukyoDockStatus")

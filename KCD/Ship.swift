@@ -322,7 +322,7 @@ extension Ship {
     }
     
     private func slotItem(_ index: Int) -> SlotItem? {
-        return ServerDataStore.default.slotItem(byId: slotItemId(index))
+        return ServerDataStore.default.slotItem(by: slotItemId(index))
     }
     private func typeBonus(_ type: Int) -> [Double]? {
         switch type {

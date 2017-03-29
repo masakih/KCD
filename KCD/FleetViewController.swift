@@ -77,7 +77,7 @@ class FleetViewController: NSViewController {
     dynamic var fleetNumber: Int = 1 {
         didSet {
             ServerDataStore.default
-                .deck(byId: fleetNumber)
+                .deck(by: fleetNumber)
                 .map { fleet = $0 }
         }
     }

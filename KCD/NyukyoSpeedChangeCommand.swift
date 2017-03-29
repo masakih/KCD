@@ -20,7 +20,7 @@ class NyukyoSpeedChangeCommand: JSONCommand {
             .flatMap { store.nyukyoDock(by: $0) }
         nDock
             .flatMap { $0.ship_id }
-            .flatMap { store.ship(byId: $0) }
+            .flatMap { store.ship(by: $0) }
             .map { $0.nowhp = $0.maxhp }
         nDock?.ship_id = 0
         nDock?.state = 0

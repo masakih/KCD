@@ -59,7 +59,7 @@ class FleetManager: NSObject {
         // set
         fleets.enumerated().forEach { (index, fleet) in
             fleet.ships.forEach {
-                store.ship(byId: $0.id)?.fleet = (index + 1) as NSNumber
+                store.ship(by: $0.id)?.fleet = (index + 1) as NSNumber
             }
         }
     }

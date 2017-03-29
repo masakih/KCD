@@ -20,6 +20,6 @@ class KaisouLockCommand: JSONCommand {
         guard let locked = data["api_locked"].int
             else { return print("api_locked is wrong") }
         let store = ServerDataStore.oneTimeEditor()
-        store.slotItem(byId: slotId)?.locked = locked != 0
+        store.slotItem(by: slotId)?.locked = locked != 0
     }
 }

@@ -27,7 +27,7 @@ class SlotItemShortNameTransformer: ValueTransformer {
     }
     override func transformedValue(_ value: Any?) -> Any? {
         guard let id = value as? Int, id != 0, id != -1 else { return nil }
-        guard let item = ServerDataStore.default.slotItem(byId: id)
+        guard let item = ServerDataStore.default.slotItem(by: id)
             else { return nil }
         let itemId = item.master_slotItem.id
         return SlotItemShortNameTransformer.slotItemShortName[itemId] ?? item.name

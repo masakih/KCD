@@ -25,7 +25,7 @@ class DropShipHistoryCommand: JSONCommand {
         let store = ServerDataStore.default
         guard let mapInfo = store.mapInfo(area: mapAreaId, no: battle.mapInfo)
             else { return print("KCMasterMapInfo is not found") }
-        guard let mapArea = store.mapArea(byId: mapAreaId)
+        guard let mapArea = store.mapArea(by: mapAreaId)
             else { return print("KCMasterMapArea is not found") }
         
         let localStore = LocalDataStore.oneTimeEditor()

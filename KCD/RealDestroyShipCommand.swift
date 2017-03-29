@@ -13,7 +13,7 @@ class RealDestroyShipCommand: JSONCommand {
         let store = ServerDataStore.oneTimeEditor()
         parameter["api_ship_id"]
             .int
-            .flatMap { store.ship(byId: $0) }
+            .flatMap { store.ship(by: $0) }
             .flatMap { store.delete($0) }
     }
 }

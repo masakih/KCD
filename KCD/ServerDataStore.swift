@@ -63,21 +63,21 @@ extension ServerDataStore {
             else { return [] }
         return decks
     }
-    func deck(byId id: Int) -> Deck? {
+    func deck(by id: Int) -> Deck? {
         let p = NSPredicate(format: "id = %ld", id)
         guard let decks = try? objects(with: Deck.entity, predicate: p)
             else { return nil }
         return decks.first
     }
     
-    func kenzoDock(byDockId dockId: Int) -> KenzoDock? {
+    func kenzoDock(by dockId: Int) -> KenzoDock? {
         let dockPredicate = NSPredicate(format: "id = %ld", dockId)
         guard let kenzoDocks = try? objects(with: KenzoDock.entity, predicate: dockPredicate)
             else { return nil }
         return kenzoDocks.first
     }
     
-    func mapArea(byId id: Int) -> MasterMapArea? {
+    func mapArea(by id: Int) -> MasterMapArea? {
         let predicate = NSPredicate(format: "id = %ld", id)
         guard let mapAreas = try? objects(with: MasterMapArea.entity, predicate: predicate)
             else { return nil }
@@ -109,7 +109,7 @@ extension ServerDataStore {
             else { return [] }
         return ships
     }
-    func masterShip(byId id: Int) -> MasterShip? {
+    func masterShip(by id: Int) -> MasterShip? {
         let p = NSPredicate(format: "id = %ld", id)
         guard let ships = try? objects(with: MasterShip.entity, predicate: p)
             else { return nil }
@@ -176,14 +176,14 @@ extension ServerDataStore {
             else { return [] }
         return (0..<6).flatMap { deck[$0] }
     }
-    func ship(byId shipId: Int) -> Ship? {
+    func ship(by shipId: Int) -> Ship? {
         if shipId < 1 { return nil }
         let predicate = NSPredicate(format: "id = %d", shipId)
         guard let ships = try? objects(with: Ship.entity, predicate: predicate)
             else { return nil }
         return ships.first
     }
-    func ships(byId shipId: Int) -> [Ship] {
+    func ships(by shipId: Int) -> [Ship] {
         let predicate = NSPredicate(format: "id = %d", shipId)
         guard let ships = try? objects(with: Ship.entity, predicate: predicate)
             else { return [] }
@@ -205,7 +205,7 @@ extension ServerDataStore {
         return insertNewObject(for: Ship.entity)
     }
     
-    func masterSlotItemID(bySlotItemId slotItemId: Int) -> Int {
+    func masterSlotItemID(by slotItemId: Int) -> Int {
         if slotItemId < 1 { return 0 }
         let predicate = NSPredicate(format: "id = %d", argumentArray: [slotItemId])
         guard let slotItems = try? objects(with: SlotItem.entity, predicate: predicate),
@@ -214,7 +214,7 @@ extension ServerDataStore {
         return slotItem.master_slotItem.id
     }
     
-    func slotItem(byId itemId: Int) -> SlotItem? {
+    func slotItem(by itemId: Int) -> SlotItem? {
         let p = NSPredicate(format: "id = %ld", itemId)
         guard let slotItems = try? objects(with: SlotItem.entity, predicate: p)
             else { return nil }

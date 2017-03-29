@@ -19,7 +19,7 @@ class RemodelSlotItemCommand: JSONCommand {
         
         let afterSlot = data["api_after_slot"]
         let store = ServerDataStore.oneTimeEditor()
-        guard let slotItem = store.slotItem(byId: slotItemId)
+        guard let slotItem = store.slotItem(by: slotItemId)
             else { return print("SlotItem not found") }
 
         if let locked = afterSlot["api_locked"].int {

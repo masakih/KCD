@@ -96,7 +96,7 @@ class CalculateDamageCommand: JSONCommand {
             else { return print("Damages count is invalid. count is \(totalDamages.count).") }
         let aStore = ServerDataStore.oneTimeEditor()
         totalDamages.forEach {
-            guard let ship = aStore.ship(byId: $0.shipID)
+            guard let ship = aStore.ship(by: $0.shipID)
                 else { return }
             
             if ship.nowhp != $0.hp {
@@ -191,7 +191,7 @@ extension CalculateDamageCommand {
         var newHP = (hp as Int) - receicve
         if newHP <= 0 {
             let shipId = damage.shipID
-            if let ship = ServerDataStore.default.ship(byId: shipId) {
+            if let ship = ServerDataStore.default.ship(by: shipId) {
                 let efectiveHP = damageControlIfPossible(nowhp: newHP, ship: ship)
                 if efectiveHP != 0, efectiveHP != newHP {
                     damage.useDamageControl = true
@@ -417,7 +417,7 @@ extension CalculateDamageCommand {
         ship.equippedItem.forEach {
             if useDamageControl { return }
             guard let master = $0 as? SlotItem else { return }
-            let masterSlotItemId = store.masterSlotItemID(bySlotItemId: master.id)
+            let masterSlotItemId = store.masterSlotItemID(by: master.id)
             guard let type = DamageControlID(rawValue: masterSlotItemId)
                 else { return }
             switch type {
@@ -431,7 +431,7 @@ extension CalculateDamageCommand {
         }
         if useDamageControl { return nowHp }
         // check extra slot
-        let exItemId = store.masterSlotItemID(bySlotItemId: ship.slot_ex)
+        let exItemId = store.masterSlotItemID(by: ship.slot_ex)
         guard let exType = DamageControlID(rawValue: exItemId)
             else { return nowHp }
         switch exType {
@@ -450,7 +450,7 @@ extension CalculateDamageCommand {
         equiped.forEach {
             if useDamageControl { return }
             guard let master = $0 as? SlotItem else { return }
-            let masterSlotItemId = store.masterSlotItemID(bySlotItemId: master.id)
+            let masterSlotItemId = store.masterSlotItemID(by: master.id)
             guard let type = DamageControlID(rawValue: masterSlotItemId)
                 else { return }
             switch type {
@@ -469,7 +469,7 @@ extension CalculateDamageCommand {
         }
         if useDamageControl { return }
         // check extra slot
-        let exItemId = store.masterSlotItemID(bySlotItemId: ship.slot_ex)
+        let exItemId = store.masterSlotItemID(by: ship.slot_ex)
         guard let exType = DamageControlID(rawValue: exItemId)
             else { return }
         switch exType {

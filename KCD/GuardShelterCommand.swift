@@ -43,7 +43,7 @@ class GuardShelterCommand: JSONCommand {
     }
     
     private func fleetMembers(fleetId: Int) -> [Int]? {
-        guard let deck = ServerDataStore.default.deck(byId: fleetId)
+        guard let deck = ServerDataStore.default.deck(by: fleetId)
             else { return nil }
         return [deck.ship_0, deck.ship_1, deck.ship_2,
                 deck.ship_3, deck.ship_4, deck.ship_5]

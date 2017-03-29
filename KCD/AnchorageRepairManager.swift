@@ -51,7 +51,7 @@ class AnchorageRepairManager: NSObject {
     }
     private func shipTypeId(shipId: Int) -> Int? {
         return ServerDataStore.default
-            .ship(byId: shipId)?.master_ship.stype.id
+            .ship(by: shipId)?.master_ship.stype.id
     }
     private func needsReset(info: HenseiDidChangeUserInfo) -> Bool {
         // 変更のあった艦隊の旗艦は工作艦か？

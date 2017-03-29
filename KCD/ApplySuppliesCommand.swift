@@ -14,7 +14,7 @@ class ApplySuppliesCommand: JSONCommand {
         data["api_ship"]
             .forEach { (_, json) in
                 guard let i = json["api_id"].int,
-                    let ship = store.ship(byId: i),
+                    let ship = store.ship(by: i),
                     let bull = json["api_bull"].int,
                     let fuel = json["api_fuel"].int,
                     let slots = json["api_onslot"].arrayObject as? [Int],

@@ -14,7 +14,7 @@ class KenzoMarkCommand: JSONCommand {
             else { return print("api_kdock_id is wrong") }
         
         let store = ServerDataStore.default
-        guard let kenzoDock = store.kenzoDock(byDockId: kdockId)
+        guard let kenzoDock = store.kenzoDock(by: kdockId)
             else { return print("KenzoDock is not fount") }
         let fuel = kenzoDock.item1
         let bull = kenzoDock.item2
@@ -23,7 +23,7 @@ class KenzoMarkCommand: JSONCommand {
         let kaihatu = kenzoDock.item5
         let shipId = kenzoDock.created_ship_id
         
-        guard let flagShip = store.masterShip(byId: shipId)
+        guard let flagShip = store.masterShip(by: shipId)
             else { return print("MasterShip is not found") }
         
         let localStore = LocalDataStore.oneTimeEditor()

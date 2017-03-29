@@ -33,7 +33,7 @@ class DummyShipCommand: JSONCommand {
     }
     private func removeDummy() {
         let store = ServerDataStore.oneTimeEditor()
-        store.ships(byId: -2).forEach { store.delete($0) }
+        store.ships(by: -2).forEach { store.delete($0) }
         DummyShipCommand.needsEnterDummy = false
     }
 }

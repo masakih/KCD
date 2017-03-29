@@ -46,7 +46,7 @@ class SlotItemLevelView: NSTextField {
         didSet {
             slotItemController.content = nil
             guard let itemId = slotItemID as? Int else { return }
-            slotItemController.content = ServerDataStore.default.slotItem(byId: itemId)
+            slotItemController.content = ServerDataStore.default.slotItem(by: itemId)
             needsDisplay = true
         }
     }

@@ -119,7 +119,7 @@ class ChangeHenseiCommand: JSONCommand {
     
     private func excludeShipsWithoutFlagShip(deckNumber: Int) {
         let store = ServerDataStore.oneTimeEditor()
-        guard let deck = store.deck(byId: deckNumber)
+        guard let deck = store.deck(by: deckNumber)
             else { return print("Deck not found") }
         (1..<6).forEach { deck.setShip(id: -1, for: $0) }
     }

@@ -82,7 +82,7 @@ class DocksViewController: MainTabVIewItemViewController {
     }
     var fleetName: String? {
         guard let deckId = battleContoller.value(forKeyPath: "content.deckId") as? Int else { return nil }
-        return ServerDataStore.default.deck(byId: deckId)?.name
+        return ServerDataStore.default.deck(by: deckId)?.name
     }
     var areaNumber: String? {
         let mapArea: String = {

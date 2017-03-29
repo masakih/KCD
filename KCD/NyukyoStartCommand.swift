@@ -21,7 +21,7 @@ class NyukyoStartCommand: JSONCommand {
         let store = ServerDataStore.oneTimeEditor()
         parameter["api_ship_id"]
             .int
-            .flatMap { store.ship(byId: $0) }
+            .flatMap { store.ship(by: $0) }
             .map { $0.nowhp = $0.maxhp }
         
         store.material()
