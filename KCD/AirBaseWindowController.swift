@@ -38,7 +38,7 @@ class AirBaseWindowController: NSWindowController {
         
         rId = 1
         
-        airBaseController.addObserver(self, forKeyPath: #keyPath(airBaseController.content), context: nil)
+        airBaseController.addObserver(self, forKeyPath: "content", context: nil)
         
         updateAreaRadio()
         updatePlaneSegment()
@@ -48,7 +48,7 @@ class AirBaseWindowController: NSWindowController {
                                of object: Any?,
                                change: [NSKeyValueChangeKey: Any]?,
                                context: UnsafeMutableRawPointer?) {
-        guard keyPath == #keyPath(airBaseController.content) else {
+        guard keyPath == "content" else {
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
             return
         }

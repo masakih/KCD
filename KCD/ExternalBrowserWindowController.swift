@@ -21,8 +21,8 @@ class ExternalBrowserWindowController: NSWindowController {
     let managedObjectContext = BookmarkManager.shared().manageObjectContext
     
     deinit {
-        webView.removeObserver(self, forKeyPath: #keyPath(webView.canGoBack))
-        webView.removeObserver(self, forKeyPath: #keyPath(webView.canGoForward))
+        webView.removeObserver(self, forKeyPath: "canGoBack")
+        webView.removeObserver(self, forKeyPath: "canGoForward")
     }
     
     @IBOutlet var webView: WebView!
@@ -104,8 +104,8 @@ class ExternalBrowserWindowController: NSWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
         
-        webView.addObserver(self, forKeyPath: #keyPath(webView.canGoBack), context: nil)
-        webView.addObserver(self, forKeyPath: #keyPath(webView.canGoForward), context: nil)
+        webView.addObserver(self, forKeyPath: "canGoBack", context: nil)
+        webView.addObserver(self, forKeyPath: "canGoForward", context: nil)
         webView.applicationNameForUserAgent = AppDelegate.shared.appNameForUserAgent
         webView.frameLoadDelegate = self
     }
@@ -113,11 +113,11 @@ class ExternalBrowserWindowController: NSWindowController {
                                of object: Any?,
                                change: [NSKeyValueChangeKey: Any]?,
                                context: UnsafeMutableRawPointer?) {
-        if keyPath == #keyPath(webView.canGoBack) {
+        if keyPath == "canGoBack" {
             goSegment.setEnabled(webView.canGoBack, forSegment: 0)
             return
         }
-        if keyPath == #keyPath(webView.canGoForward) {
+        if keyPath == "canGoForward" {
             goSegment.setEnabled(webView.canGoForward, forSegment: 1)
             return
         }
