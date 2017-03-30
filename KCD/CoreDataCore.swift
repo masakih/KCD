@@ -42,9 +42,9 @@ struct CoreDataConfiguration {
 
 struct CoreDataCore {
     let config: CoreDataConfiguration
-    let model: NSManagedObjectModel
-    let coordinator: NSPersistentStoreCoordinator
     let parentContext: NSManagedObjectContext
+    private let model: NSManagedObjectModel
+    private let coordinator: NSPersistentStoreCoordinator
     
     init(_ config: CoreDataConfiguration) {
         self.config = config
