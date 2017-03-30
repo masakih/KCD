@@ -11,12 +11,12 @@ import Cocoa
 
 extension UserDefaults {
     
-    static var plan01Color: NSColor { return NSColor(calibratedRed: 0.000, green: 0.043, blue: 0.518, alpha: 1.0) }
-    static var plan02Color: NSColor { return NSColor(calibratedRed: 0.800, green: 0.223, blue: 0.000, alpha: 1.0) }
-    static var plan03Color: NSColor { return NSColor(calibratedRed: 0.539, green: 0.012, blue: 0.046, alpha: 1.0) }
-    static var plan04Color: NSColor { return NSColor(calibratedRed: 0.000, green: 0.535, blue: 0.535, alpha: 1.0) }
-    static var plan05Color: NSColor { return NSColor(calibratedRed: 0.376, green: 0.035, blue: 0.535, alpha: 1.0) }
-    static var plan06Color: NSColor { return NSColor(calibratedRed: 0.535, green: 0.535, blue: 0.000, alpha: 1.0) }
+    static var plan01Color: NSColor { return #colorLiteral(red: 0.000, green: 0.043, blue: 0.518, alpha: 1) }
+    static var plan02Color: NSColor { return #colorLiteral(red: 0.800, green: 0.223, blue: 0.000, alpha: 1) }
+    static var plan03Color: NSColor { return #colorLiteral(red: 0.539, green: 0.012, blue: 0.046, alpha: 1) }
+    static var plan04Color: NSColor { return #colorLiteral(red: 0.000, green: 0.535, blue: 0.535, alpha: 1) }
+    static var plan05Color: NSColor { return #colorLiteral(red: 0.376, green: 0.035, blue: 0.535, alpha: 1) }
+    static var plan06Color: NSColor { return #colorLiteral(red: 0.535, green: 0.535, blue: 0.000, alpha: 1) }
     
     func keyedArchivedObject(forKey key: String) -> Any? {
         guard let data = object(forKey: key) as? Data else { return nil }

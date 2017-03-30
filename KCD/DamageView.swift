@@ -33,7 +33,7 @@ class DamageView: NSView {
         case .none:
             return nil
         case .slightly:
-            return NSColor(calibratedRed: 1.00, green: 0.956, blue: 0.012, alpha: 0.5)
+            return #colorLiteral(red: 1.000, green: 0.956, blue: 0.012, alpha: 1)
         case .modest:
             return NSColor.orange.withAlphaComponent(0.5)
         case .badly:

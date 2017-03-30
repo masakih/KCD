@@ -167,7 +167,7 @@ class SlotItemLevelView: NSTextField {
         return NSFont.monospacedDigitSystemFont(ofSize: NSFont.smallSystemFontSize(), weight: NSFontWeightRegular)
     }
     private var levelColor: NSColor {
-        return NSColor(calibratedRed: 0.135, green: 0.522, blue: 0.619, alpha: 1.0)
+        return #colorLiteral(red: 0.135, green: 0.522, blue: 0.619, alpha: 1)
     }
     
     // MARK: - Function
@@ -220,8 +220,8 @@ class SlotItemLevelView: NSTextField {
     }
     private func colorForALevel(level: Int) -> NSColor? {
         switch level {
-        case 1, 2, 3: return NSColor(calibratedRed: 0.257, green: 0.523, blue: 0.643, alpha: 1.0)
-        case 4, 5, 6, 7: return NSColor(calibratedRed: 0.784, green: 0.549, blue: 0.0, alpha: 1.0)
+        case 1, 2, 3: return #colorLiteral(red: 0.257, green: 0.523, blue: 0.643, alpha: 1)
+        case 4, 5, 6, 7: return #colorLiteral(red: 0.784, green: 0.549, blue: 0.000, alpha: 1)
         default: return nil
         }
     }
@@ -229,7 +229,7 @@ class SlotItemLevelView: NSTextField {
         switch level {
         case 1, 2, 3:
             let shadow = NSShadow()
-            shadow.shadowColor = NSColor(calibratedRed: 0.095, green: 0.364, blue: 0.917, alpha: 1.0)
+            shadow.shadowColor = #colorLiteral(red: 0.095, green: 0.364, blue: 0.917, alpha: 1)
             shadow.shadowBlurRadius = 4.0
             return shadow
         case 4, 5, 6, 7:
