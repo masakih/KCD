@@ -70,6 +70,7 @@ protocol CoreDataProvider {
     var core: CoreDataCore { get }
     var context: NSManagedObjectContext { get }
     func save()
+    func removeDataFile()
 }
 
 protocol CoreDataAccessor: CoreDataProvider {
@@ -84,8 +85,6 @@ protocol CoreDataManager {
     
     static var `default`: InstanceType { get }
     static func oneTimeEditor() -> InstanceType
-    
-    func removeDataFile()
 }
 
 // MARK: - Extension
@@ -107,6 +106,9 @@ extension CoreDataProvider {
                 }
             }
         }
+    }
+    func removeDataFile() {
+        remove(name: core.config.fileName)
     }
     private func presentOnMainThread(_ error: Error) {
         if Thread.isMainThread {
@@ -136,11 +138,5 @@ extension CoreDataAccessor {
         req.sortDescriptors = sortDescriptors
         req.predicate = predicate
         return try context.fetch(req)
-    }
-}
-
-extension CoreDataManager where Self: CoreDataProvider {
-    func removeDataFile() {
-        remove(name: core.config.fileName)
     }
 }
