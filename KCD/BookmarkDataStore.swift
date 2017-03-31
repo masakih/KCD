@@ -11,24 +11,22 @@ import Cocoa
 extension CoreDataConfiguration {
     static let bookmark = CoreDataConfiguration("Bookmark")
 }
-extension CoreDataCore {
-    static let bookmark = CoreDataCore(.bookmark)
-}
 
 class BookmarkDataStore: CoreDataAccessor, CoreDataManager {
-    static var `default` = BookmarkDataStore(type: .reader)
+    static let core = CoreDataCore(.bookmark)
+    
+    static let `default` = BookmarkDataStore(type: .reader)
     class func oneTimeEditor() -> BookmarkDataStore {
         return BookmarkDataStore(type: .editor)
     }
     
     required init(type: CoreDataManagerType) {
-        context = (type == .reader ? core.parentContext : core.editorContext())
+        context = BookmarkDataStore.context(for: type)
     }
     deinit {
         save()
     }
     
-    let core = CoreDataCore.bookmark
     let context: NSManagedObjectContext
 }
 

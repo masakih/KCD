@@ -15,24 +15,22 @@ extension CoreDataConfiguration {
                                                  type: NSInMemoryStoreType
     )
 }
-extension CoreDataCore {
-    static let temporary = CoreDataCore(.temporary)
-}
 
 class TemporaryDataStore: CoreDataAccessor, CoreDataManager {
-    static var `default` = TemporaryDataStore(type: .reader)
+    static let core = CoreDataCore(.temporary)
+    
+    static let `default` = TemporaryDataStore(type: .reader)
     class func oneTimeEditor() -> TemporaryDataStore {
         return TemporaryDataStore(type: .editor)
     }
     
     required init(type: CoreDataManagerType) {
-        context = (type == .reader ? core.parentContext : core.editorContext())
+        context = TemporaryDataStore.context(for: type)
     }
     deinit {
         save()
     }
     
-    let core = CoreDataCore.temporary
     let context: NSManagedObjectContext
 }
 

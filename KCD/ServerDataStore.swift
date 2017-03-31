@@ -11,24 +11,22 @@ import Cocoa
 extension CoreDataConfiguration {
     static let kcd = CoreDataConfiguration("KCD", tryRemake: true)
 }
-extension CoreDataCore {
-    static let kcd = CoreDataCore(.kcd)
-}
 
 class ServerDataStore: CoreDataAccessor, CoreDataManager {
-    static var `default` = ServerDataStore(type: .reader)
+    static let core = CoreDataCore(.kcd)
+    
+    static let `default` = ServerDataStore(type: .reader)
     class func oneTimeEditor() -> ServerDataStore {
         return ServerDataStore(type: .editor)
     }
         
     required init(type: CoreDataManagerType) {
-        context = (type == .reader ? core.parentContext : core.editorContext())
+        context = ServerDataStore.context(for: type)
     }
     deinit {
         save()
     }
     
-    let core = CoreDataCore.kcd
     let context: NSManagedObjectContext
 }
 

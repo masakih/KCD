@@ -67,7 +67,7 @@ struct CoreDataCore {
 // MARK: - protocol
 protocol CoreDataProvider {
     init(type: CoreDataManagerType)
-    var core: CoreDataCore { get }
+    static var core: CoreDataCore { get }
     var context: NSManagedObjectContext { get }
     func save()
     func removeDataFile()
@@ -108,7 +108,7 @@ extension CoreDataProvider {
         }
     }
     func removeDataFile() {
-        remove(name: core.config.fileName)
+        remove(name: type(of: self).core.config.fileName)
     }
     private func presentOnMainThread(_ error: Error) {
         if Thread.isMainThread {
@@ -117,6 +117,15 @@ extension CoreDataProvider {
             DispatchQueue.main.sync {
                 let _ = NSApp.presentError(error)
             }
+        }
+    }
+    
+    static func context(for type: CoreDataManagerType) -> NSManagedObjectContext {
+        switch type {
+        case .reader:
+            return core.parentContext
+        case .editor:
+            return core.editorContext()
         }
     }
 }

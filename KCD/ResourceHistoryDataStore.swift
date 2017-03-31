@@ -11,24 +11,22 @@ import Cocoa
 extension CoreDataConfiguration {
     static let resourceHistory = CoreDataConfiguration("ResourceHistory")
 }
-extension CoreDataCore {
-    static let resourceHistory = CoreDataCore(.resourceHistory)
-}
 
 class ResourceHistoryDataStore: CoreDataAccessor, CoreDataManager {
-    static var `default` = ResourceHistoryDataStore(type: .reader)
+    static let core = CoreDataCore(.resourceHistory)
+    
+    static let `default` = ResourceHistoryDataStore(type: .reader)
     class func oneTimeEditor() -> ResourceHistoryDataStore {
         return ResourceHistoryDataStore(type: .editor)
     }
     
     required init(type: CoreDataManagerType) {
-        context = (type == .reader ? core.parentContext : core.editorContext())
+        context = ResourceHistoryDataStore.context(for: type)
     }
     deinit {
         save()
     }
     
-    let core = CoreDataCore.resourceHistory
     let context: NSManagedObjectContext
 }
 

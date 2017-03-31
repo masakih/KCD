@@ -11,25 +11,22 @@ import Cocoa
 extension CoreDataConfiguration {
     static let local = CoreDataConfiguration("LocalData")
 }
-extension CoreDataCore {
-    static let local = CoreDataCore(.local)
-}
-
 
 class LocalDataStore: CoreDataAccessor, CoreDataManager {
-    static var `default` = LocalDataStore(type: .reader)
+    static let core = CoreDataCore(.local)
+    
+    static let `default` = LocalDataStore(type: .reader)
     class func oneTimeEditor() -> LocalDataStore {
         return LocalDataStore(type: .editor)
     }
     
     required init(type: CoreDataManagerType) {
-        context = (type == .reader ? core.parentContext : core.editorContext())
+        context = LocalDataStore.context(for: type)
     }
     deinit {
         save()
     }
     
-    let core = CoreDataCore.local
     let context: NSManagedObjectContext
 }
 
