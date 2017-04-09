@@ -124,6 +124,7 @@
 		F47215AA1E1F96B60083D3BC /* ResourceHistoryDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47215A91E1F96B60083D3BC /* ResourceHistoryDataStore.swift */; };
 		F47215AC1E1FA2460083D3BC /* TemporaryDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47215AB1E1FA2460083D3BC /* TemporaryDataStore.swift */; };
 		F47215B01E1FEACC0083D3BC /* ServerDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47215AF1E1FEACC0083D3BC /* ServerDataStore.swift */; };
+		F47B06DD1E97ECD4006711D9 /* WindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B06DC1E97ECD4006711D9 /* WindowManager.swift */; };
 		F47C3E981E5DB29300D97449 /* JSONMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47C3E971E5DB29300D97449 /* JSONMapper.swift */; };
 		F47C3E9A1E5DC90000D97449 /* MasterSTypeMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47C3E991E5DC90000D97449 /* MasterSTypeMapper.swift */; };
 		F47C3E9C1E5DC94E00D97449 /* MasterShipMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47C3E9B1E5DC94E00D97449 /* MasterShipMapper.swift */; };
@@ -455,6 +456,7 @@
 		F47215A91E1F96B60083D3BC /* ResourceHistoryDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceHistoryDataStore.swift; sourceTree = "<group>"; };
 		F47215AB1E1FA2460083D3BC /* TemporaryDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemporaryDataStore.swift; sourceTree = "<group>"; };
 		F47215AF1E1FEACC0083D3BC /* ServerDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerDataStore.swift; sourceTree = "<group>"; };
+		F47B06DC1E97ECD4006711D9 /* WindowManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowManager.swift; sourceTree = "<group>"; };
 		F47C3E971E5DB29300D97449 /* JSONMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONMapper.swift; sourceTree = "<group>"; };
 		F47C3E991E5DC90000D97449 /* MasterSTypeMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterSTypeMapper.swift; sourceTree = "<group>"; };
 		F47C3E9B1E5DC94E00D97449 /* MasterShipMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterShipMapper.swift; sourceTree = "<group>"; };
@@ -911,6 +913,7 @@
 			isa = PBXGroup;
 			children = (
 				F4FC3E931E44A5D600E41228 /* AppDelegate.swift */,
+				F47B06DC1E97ECD4006711D9 /* WindowManager.swift */,
 				F40F976E1E67092600AE81BB /* ArrayExtensions.swift */,
 				F42CFE191E3C726D000B4F9B /* UserDefaultsExtension.swift */,
 				F40F97701E68536400AE81BB /* FileManagerExtension.swift */,
@@ -1573,6 +1576,7 @@
 				F45771231E1BCC7C008A9215 /* PeriodicNotifier.swift in Sources */,
 				F44AA2671E814A4400EED8BE /* ManagedObjectContextGenerator.swift in Sources */,
 				F44BC6C91E22314B004644E3 /* UnknownComand.swift in Sources */,
+				F47B06DD1E97ECD4006711D9 /* WindowManager.swift in Sources */,
 				F44BC6DD1E228345004644E3 /* UpdateQuestListCommand.swift in Sources */,
 				F4CF25A81E325ABA00C02A66 /* APIResponse.swift in Sources */,
 				F47C3EB01E60500700D97449 /* MaterialMapper.swift in Sources */,

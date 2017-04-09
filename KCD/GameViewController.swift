@@ -106,7 +106,7 @@ class GameViewController: NSViewController {
         let f = frame.insetBy(dx: -screenshotBorder, dy: -screenshotBorder)
         guard let rep = webView.bitmapImageRepForCachingDisplay(in: f) else { return }
         webView.cacheDisplay(in: frame, to: rep)
-        AppDelegate.shared.screenshotListWindowController.registerScreenshot(rep, fromOnScreen: .zero)
+        AppDelegate.shared.registerScreenshot(rep, fromOnScreen: .zero)
     }
     
     override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
