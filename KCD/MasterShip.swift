@@ -21,6 +21,7 @@ class MasterShip: KCManagedObject {
     @NSManaged var broken_3: NSNumber?
     @NSManaged var buildtime: NSNumber?
     @NSManaged var bull_max: Int
+    @NSManaged var ctype: Int
     @NSManaged var fuel_max: Int
     @NSManaged var getmes: NSNumber?
     @NSManaged var houg_0: Int

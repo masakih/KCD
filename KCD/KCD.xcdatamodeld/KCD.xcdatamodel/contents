@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16D32" minimumToolsVersion="Xcode 4.3" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16E195" minimumToolsVersion="Xcode 4.3" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="AirBase" representedClassName="KCD.AirBase" syncable="YES">
         <attribute name="action_kind" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="area_id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
@@ -156,6 +156,7 @@
         <attribute name="broken_3" optional="YES" attributeType="Integer 64" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="buildtime" optional="YES" attributeType="Integer 64" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="bull_max" attributeType="Integer 64" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="ctype" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="fuel_max" attributeType="Integer 64" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="getmes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="houg_0" optional="YES" attributeType="Integer 64" usesScalarValueType="NO" syncable="YES"/>
@@ -364,7 +365,7 @@
         <element name="MasterMapCell" positionX="0" positionY="0" width="128" height="135"/>
         <element name="MasterMapInfo" positionX="0" positionY="0" width="128" height="270"/>
         <element name="MasterMission" positionX="0" positionY="0" width="128" height="240"/>
-        <element name="MasterShip" positionX="0" positionY="0" width="128" height="720"/>
+        <element name="MasterShip" positionX="0" positionY="0" width="128" height="30"/>
         <element name="MasterSlotItem" positionX="0" positionY="0" width="128" height="585"/>
         <element name="MasterSlotItemEquipType" positionX="0" positionY="0" width="128" height="90"/>
         <element name="MasterSType" positionX="0" positionY="0" width="128" height="135"/>
