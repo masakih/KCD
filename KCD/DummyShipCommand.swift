@@ -21,12 +21,10 @@ class DummyShipCommand: JSONCommand {
     }
     
     private func checkGetShip() {
-        guard !data["api_get_ship"].exists()
-            else { return }
-        DummyShipCommand.needsEnterDummy = true
+        DummyShipCommand.needsEnterDummy = data["api_get_ship"].exists()
     }
     private func enterDummy() {
-        if !DummyShipCommand.needsEnterDummy { return }
+        guard DummyShipCommand.needsEnterDummy else { return }
         let store = ServerDataStore.oneTimeEditor()
         store.createShip()?.id = -2
         DummyShipCommand.needsEnterDummy = false
