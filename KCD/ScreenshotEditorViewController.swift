@@ -174,7 +174,7 @@ class ScreenshotEditorViewController: BridgeViewController {
     
     // TODO: 外部から End Handlerを登録できるようにして依存をなくす
     @IBAction func done(_ sender: AnyObject?) {
-        NSApplication.shared().sendAction(.registerImage, to: nil, from: self)
+        NSApplication.shared().sendAction(.registerImage, to: nil, from: self.image)
         NSApplication.shared().sendAction(.changeToDetail, to: nil, from: sender)
     }
 }
