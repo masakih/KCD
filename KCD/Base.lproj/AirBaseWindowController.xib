@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -34,7 +34,7 @@
                             <rect key="frame" x="1" y="1" width="292" height="291"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OuP-cj-2FX">
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OuP-cj-2FX">
                                     <rect key="frame" x="18" y="225" width="170" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="XhN-9I-IGk">
@@ -73,11 +73,11 @@
                                                         </textFieldCell>
                                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                         <prototypeCellViews>
-                                                            <tableCellView identifier="Plane" id="PxU-0P-03e">
+                                                            <tableCellView identifier="Plane" id="PxU-0P-03e" customClass="AirPlanInfoView" customModule="KCD" customModuleProvider="target">
                                                                 <rect key="frame" x="1" y="1" width="247" height="42"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                 <subviews>
-                                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NtS-hS-07y" customClass="SlotItemLevelView" customModule="KCD">
+                                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NtS-hS-07y" customClass="SlotItemLevelView" customModule="KCD">
                                                                         <rect key="frame" x="1" y="22" width="245" height="17"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="三式戦 飛燕(飛行第244戦隊)" id="DCg-rj-geR">
@@ -86,14 +86,14 @@
                                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                         </textFieldCell>
                                                                         <connections>
-                                                                            <binding destination="PxU-0P-03e" name="value" keyPath="objectValue.slotid" id="3hh-fX-Enx">
+                                                                            <binding destination="PxU-0P-03e" name="value" keyPath="objectValue.slotid" id="Ym3-zw-RqQ">
                                                                                 <dictionary key="options">
                                                                                     <string key="NSValueTransformerName">SlotitemNameTransformer</string>
                                                                                 </dictionary>
                                                                             </binding>
                                                                         </connections>
                                                                     </textField>
-                                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wca-Q0-vUn">
+                                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wca-Q0-vUn">
                                                                         <rect key="frame" x="13" y="3" width="39" height="17"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="18/18" id="WCl-N5-A1D">
@@ -114,7 +114,7 @@
                                                                             </binding>
                                                                         </connections>
                                                                     </textField>
-                                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NnQ-hl-Xh4">
+                                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NnQ-hl-Xh4">
                                                                         <rect key="frame" x="205" y="3" width="41" height="17"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="転換中" id="sub-Yc-fzn">
@@ -130,8 +130,28 @@
                                                                             </binding>
                                                                         </connections>
                                                                     </textField>
+                                                                    <box fixedFrame="YES" boxType="custom" cornerRadius="2" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="r7U-P0-HX9">
+                                                                        <rect key="frame" x="114" y="4" width="16" height="12"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                        <view key="contentView" ambiguous="YES" id="WFI-zX-MPU">
+                                                                            <rect key="frame" x="1" y="1" width="14" height="10"/>
+                                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                        </view>
+                                                                    </box>
+                                                                    <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lqb-bX-0Xt">
+                                                                        <rect key="frame" x="60" y="3" width="41" height="17"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="要補充" id="iJP-D6-6mP">
+                                                                            <font key="font" metaFont="systemBold"/>
+                                                                            <color key="textColor" red="0.86994009067357514" green="0.49668352008367767" blue="0.1245250512408806" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                        </textFieldCell>
+                                                                    </textField>
                                                                 </subviews>
                                                                 <connections>
+                                                                    <outlet property="conditionBox" destination="r7U-P0-HX9" id="EsE-xD-ZMc"/>
+                                                                    <outlet property="needSupplyField" destination="lqb-bX-0Xt" id="CLh-ut-PIq"/>
+                                                                    <outlet property="planNameVew" destination="NtS-hS-07y" id="xn2-sw-nBN"/>
                                                                     <outlet property="textField" destination="NtS-hS-07y" id="GLA-fR-4IQ"/>
                                                                 </connections>
                                                             </tableCellView>
@@ -153,7 +173,7 @@
                                         <autoresizingMask key="autoresizingMask"/>
                                     </scroller>
                                 </scrollView>
-                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uWu-Vp-PJw">
+                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uWu-Vp-PJw">
                                     <rect key="frame" x="18" y="206" width="89" height="17"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="right" title="戦闘行動半径：" id="aTA-M0-y0b">
@@ -162,7 +182,7 @@
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
-                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AKN-mz-2Rs">
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AKN-mz-2Rs">
                                     <rect key="frame" x="102" y="206" width="19" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="10" id="q2l-rA-9P2">
@@ -174,7 +194,7 @@
                                         <binding destination="7NM-nX-0DR" name="value" keyPath="selection.distance" id="6Pp-FD-aKZ"/>
                                     </connections>
                                 </textField>
-                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PsD-sw-esA">
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PsD-sw-esA">
                                     <rect key="frame" x="226" y="206" width="37" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="出撃" id="dKv-6b-lsr">

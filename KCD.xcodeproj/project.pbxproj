@@ -21,6 +21,7 @@
 		F421850A1DF44AA900256590 /* AirBaseWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F421850C1DF44AA900256590 /* AirBaseWindowController.xib */; };
 		F421850F1DF4518000256590 /* BroswerTouchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = F421850E1DF4518000256590 /* BroswerTouchBar.xib */; };
 		F42185111DF461A600256590 /* ScreenshotTouchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = F42185101DF461A600256590 /* ScreenshotTouchBar.xib */; };
+		F42539E21EB4A7950083EB9D /* AirPlanInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42539E11EB4A7950083EB9D /* AirPlanInfoView.swift */; };
 		F42A8FCC1E3DA4DF0099DC1D /* MasterMission.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A8FCB1E3DA4DF0099DC1D /* MasterMission.swift */; };
 		F42A8FCE1E3DA7E90099DC1D /* MasterShip.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A8FCD1E3DA7E90099DC1D /* MasterShip.swift */; };
 		F42A8FD01E3DB49A0099DC1D /* MasterSlotItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A8FCF1E3DB49A0099DC1D /* MasterSlotItem.swift */; };
@@ -346,6 +347,7 @@
 		F421850D1DF44AEA00256590 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AirBaseWindowController.xib; sourceTree = "<group>"; };
 		F421850E1DF4518000256590 /* BroswerTouchBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BroswerTouchBar.xib; sourceTree = "<group>"; };
 		F42185101DF461A600256590 /* ScreenshotTouchBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScreenshotTouchBar.xib; sourceTree = "<group>"; };
+		F42539E11EB4A7950083EB9D /* AirPlanInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirPlanInfoView.swift; sourceTree = "<group>"; };
 		F42A8FCB1E3DA4DF0099DC1D /* MasterMission.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterMission.swift; sourceTree = "<group>"; };
 		F42A8FCD1E3DA7E90099DC1D /* MasterShip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterShip.swift; sourceTree = "<group>"; };
 		F42A8FCF1E3DB49A0099DC1D /* MasterSlotItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterSlotItem.swift; sourceTree = "<group>"; };
@@ -1029,6 +1031,7 @@
 				F4AC136E1E0963DB00851147 /* ProgressPanel.swift */,
 				F4C668651C54518F00601AFB /* ProgressPanel.xib */,
 				F4D05BC71E0C0DA100688D66 /* AirBaseWindowController.swift */,
+				F42539E11EB4A7950083EB9D /* AirPlanInfoView.swift */,
 				F421850C1DF44AA900256590 /* AirBaseWindowController.xib */,
 			);
 			name = UI;
@@ -1525,6 +1528,7 @@
 				F47C3EA01E5DE08F00D97449 /* MasterMapInfoMapper.swift in Sources */,
 				F4AA59481E1E3CBA001667AF /* AirbasePlaneStateTransformer.swift in Sources */,
 				F4E7802E18DC3AF00011BC4C /* LocalData.xcdatamodeld in Sources */,
+				F42539E21EB4A7950083EB9D /* AirPlanInfoView.swift in Sources */,
 				F491A4C01E4EACDD00D1E067 /* CacheStoragePolicy.swift in Sources */,
 				F47C3EB41E606C4300D97449 /* ResetSortie.swift in Sources */,
 				F42A8FEE1E435E330099DC1D /* Damage.swift in Sources */,
