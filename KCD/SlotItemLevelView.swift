@@ -18,13 +18,11 @@ class SlotItemLevelView: NSTextField {
     private let anglePoint: CGFloat = 4.0
     
     override init(frame frameRect: NSRect) {
-        slotItemController = NSObjectController()
         super.init(frame: frameRect)
         bind(#keyPath(slotItemLevel), to: slotItemController, withKeyPath: "selection.level", options: nil)
         bind(#keyPath(slotItemAlv), to: slotItemController, withKeyPath: "selection.alv", options: nil)
     }
     required init?(coder: NSCoder) {
-        slotItemController = NSObjectController()
         super.init(coder: coder)
         bind(#keyPath(slotItemLevel), to: slotItemController, withKeyPath: "selection.level", options: nil)
         bind(#keyPath(slotItemAlv), to: slotItemController, withKeyPath: "selection.alv", options: nil)
@@ -35,7 +33,7 @@ class SlotItemLevelView: NSTextField {
     }
     
     // MARK: - Variable
-    dynamic var slotItemController: NSObjectController
+    dynamic var slotItemController = NSObjectController()
     dynamic var slotItemLevel: NSNumber? {
         didSet { needsDisplay = true }
     }

@@ -361,7 +361,7 @@ extension Ship {
     }
     
     dynamic var totalEquipment: Int {
-        return (0...4).reduce(0) { $0 + slotItemMax($1) }
+        return (0...4).map(slotItemMax).reduce(0, +)
     }
     
     class func keyPathsForValuesAffectingSeiku() -> Set<String> {
@@ -369,33 +369,28 @@ extension Ship {
                    "onslot_0", "onslot_1", "onslot_2", "onslot_3", "onslot_4"]
     }
     dynamic var seiku: Int {
-        return (0...4).reduce(0) { $0 + Int(normalSeiku($1)) }
+        return (0...4).map(normalSeiku).map { Int($0) }.reduce(0, +)
     }
     
     class func keyPathsForValuesAffectingExtraSeiku() -> Set<String> {
         return ["seiku"]
     }
     dynamic var extraSeiku: Int {
-        return (0...4).reduce(0) { $0 + Int(extraSeiku($1)) }
+        return (0...4).map(extraSeiku).map { Int($0) }.reduce(0, +)
     }
     
     class func keyPathsForValuesAffectingTotalSeiku() -> Set<String> {
         return ["seiku", "extraSeiku"]
     }
     dynamic var totalSeiku: Int {
-        return (0...4).reduce(0) { $0 + seiku($1) }
+        return (0...4).map(seiku).reduce(0, +)
     }
     
     class func keyPathsForValuesAffectingTotalDrums() -> Set<String> {
         return ["slot_0", "slot_1", "slot_2", "slot_3", "slot_4"]
     }
     dynamic var totalDrums: Int {
-        return (0...4).reduce(0) {
-            guard let item = slotItem($1),
-                item.slotitem_id == 75
-                else { return $0 }
-            return $0 + 1
-        }
+        return (0...4).flatMap(slotItem).filter { $0.slotitem_id == 75 }.count
     }
     
     // MARK: - Plane count strings
