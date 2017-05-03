@@ -35,14 +35,13 @@ class MainTabVIewItemViewController: NSViewController {
     dynamic var hasShipTypeSelector: Bool { return false }
     dynamic var selectedShipType: ShipType = .all
     
-    // TODO: var shipTypePredicte: NSPredicate? に変更する
-    func predicate(for shipType: ShipType) -> NSPredicate? {
-        switch shipType {
+    var shipTypePredicte: NSPredicate? {
+        switch selectedShipType {
         case .all:
             return nil
         case .destroyer, .lightCruiser, .heavyCruiser,
              .aircraftCarrier, .battleShip, .submarine:
-            return NSPredicate(format: "master_ship.stype.id IN %@", shipTypeCategories[Int(shipType.rawValue)])
+            return NSPredicate(format: "master_ship.stype.id IN %@", shipTypeCategories[selectedShipType.rawValue])
         case .other:
             let omitTypes = shipTypeCategories
                 .enumerated()

@@ -35,7 +35,7 @@ class ShipViewController: MainTabVIewItemViewController {
     override var hasShipTypeSelector: Bool { return true }
     override var selectedShipType: ShipType {
         didSet {
-            shipController.filterPredicate = predicate(for: selectedShipType)
+            shipController.filterPredicate = shipTypePredicte
             shipController.rearrangeObjects()
         }
     }

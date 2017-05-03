@@ -21,7 +21,7 @@ class PowerUpSupportViewController: MainTabVIewItemViewController {
     override var hasShipTypeSelector: Bool { return true }
     override var selectedShipType: ShipType {
         didSet {
-            shipController.filterPredicate = customPredicate(for: selectedShipType)
+            shipController.filterPredicate = customPredicate()
             shipController.rearrangeObjects()
         }
     }
@@ -67,20 +67,16 @@ class PowerUpSupportViewController: MainTabVIewItemViewController {
         super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
     }
     
-    fileprivate func customPredicate(for type: ShipType) -> NSPredicate? {
-        if let catPredicate = self.predicate(for: type) {
-            if let omitPredicate = self.omitPredicate {
-                return NSCompoundPredicate(type: .and,
-                                           subpredicates: [omitPredicate, catPredicate])
-            }
-            return catPredicate
+    fileprivate func customPredicate() -> NSPredicate? {
+        switch (shipTypePredicte, omitPredicate) {
+        case let (s?, o?): return NSCompoundPredicate(type: .and, subpredicates: [o, s])
+        case let (s?, nil): return s
+        case let (nil, o?): return o
+        default: return nil
         }
-        return omitPredicate
     }
     
     @IBAction func changeCategory(_ sender: AnyObject?) {
-        guard let type = ShipType(rawValue: typeSegment.selectedSegment) else { return }
-        shipController.filterPredicate = customPredicate(for: type)
-        shipController.rearrangeObjects()
+        ShipType(rawValue: typeSegment.selectedSegment).map { selectedShipType = $0 }
     }
 }
