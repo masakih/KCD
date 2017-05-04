@@ -103,7 +103,7 @@ class AirBaseWindowController: NSWindowController {
         let area = NSCountedSet()
         content.forEach { area.add($0.area_id) }
         let count = area.count(for: areaId)
-        [0, 1, 2].forEach { squadronTab.setEnabled($0 < count, forSegment: $0) }
+        (0...2).forEach { squadronTab.setEnabled($0 < count, forSegment: $0) }
     }
     
     private func updatePredicate() {
@@ -115,7 +115,8 @@ class AirBaseWindowController: NSWindowController {
 
 extension AirBaseWindowController: NSTableViewDelegate {
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        return tableView.make(withIdentifier: (tableColumn?.identifier)!, owner: nil)
+        guard let identifier = tableColumn?.identifier else { return nil }
+        return tableView.make(withIdentifier: identifier, owner: nil)
     }
     
     func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
