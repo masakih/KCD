@@ -48,21 +48,16 @@ class GuardShelterCommand: JSONCommand {
         return [deck.ship_0, deck.ship_1, deck.ship_2,
                 deck.ship_3, deck.ship_4, deck.ship_5]
     }
-    private func damagedMemberPosition(escapeIdx: Any) -> Int? {
-        switch escapeIdx {
-        case let i as Int: return i
-        case let a as [Int] where !a.isEmpty: return a[0]
-        default: return nil
-        }
-    }
     private func damagedShipId(damagedPos: Int) -> Int? {
-        if damagedPos > 6, 0..<6 ~= damagedPos - 6 - 1 {
-            return fleetMembers(fleetId: 2)?[damagedPos - 6 - 1]
+        func fleetAndPos(_ pos: Int) -> ([Int]?, Int) {
+            switch pos {
+            case 1...6: return (fleetMembers(fleetId: 1), pos - 1)
+            case 7...12: return (fleetMembers(fleetId: 2), pos - 6 - 1)
+            default: return (nil, -1)
+            }
         }
-        if 0..<6 ~= damagedPos - 1 {
-            return fleetMembers(fleetId: 1)?[damagedPos - 1]
-        }
-        return nil
+        let (fleet, pos) = fleetAndPos(damagedPos)
+        return fleet?[pos]
     }
     private func registerReserve() {
         let escape = data["api_escape"]
@@ -73,9 +68,8 @@ class GuardShelterCommand: JSONCommand {
             let guardianId = fleetMembers(fleetId: 2)?[fixedGuardianPos]
             else { return print("guardianPos is wrong") }
         
-        guard let escapeIdx = escape["api_escape_idx"].int,
-            let damagedPos = damagedMemberPosition(escapeIdx: escapeIdx),
-            let damagedId = damagedShipId(damagedPos: damagedPos)
+        guard let escapeIdx = escape["api_escape_idx"][0].int,
+            let damagedId = damagedShipId(damagedPos: escapeIdx)
             else { return print("damagedPos is wrong") }
         
         let store = TemporaryDataStore.oneTimeEditor()
