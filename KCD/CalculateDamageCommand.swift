@@ -76,7 +76,10 @@ class CalculateDamageCommand: JSONCommand {
         case .combinedEachBattleWater:
             battleType = .eachCombinedWater
             calculateBattle()
-        case .midnightBattle, .midnightSpMidnight, .combinedMidnightBattle, .combinedSpMidnight:
+        case .midnightBattle, .midnightSpMidnight:
+            calculateMidnightBattle()
+        case .combinedMidnightBattle, .combinedSpMidnight:
+            battleType = .combinedAir
             calculateMidnightBattle()
         case .combinedEcMidnightBattle:
             battleType = .eachCombinedAir
