@@ -18,16 +18,12 @@ class SetPlaneCommand: JSONCommand {
         guard let areaId = parameter["api_area_id"].int,
             let rId = parameter["api_base_id"].int,
             let squadronId = parameter["api_squadron_id"].int
-            else { return print("Argument is wrong") }
-        guard let distance = data["api_distance"].int,
-            let bauxite = data["api_after_bauxite"].int
-            else { return print("JSON is wrong") }
+            else { return print("SetPlaneCommand: Argument is wrong") }
+        guard let distance = data["api_distance"].int
+            else { return print("SetPlaneCommand: JSON is wrong") }
         let planInfo = data["api_plane_info"][0]
-        guard let cond = planInfo["api_cond"].int,
-            let slotid = planInfo["api_slotid"].int,
-            let state = planInfo["api_state"].int,
-            let count = planInfo["api_count"].int,
-            let maxCount = planInfo["api_max_count"].int
+        guard let slotid = planInfo["api_slotid"].int,
+            let state = planInfo["api_state"].int
             else { return print("api_plane_info is wrong") }
         
         let store = ServerDataStore.oneTimeEditor()
@@ -37,14 +33,16 @@ class SetPlaneCommand: JSONCommand {
         guard planes.count >= squadronId,
             let plane = planes[squadronId - 1] as? AirBasePlaneInfo
             else { return print("AirBase is wrong") }
-        plane.cond = cond
+        
+        // TODO: state が 2 の時のみ cond, count, max_count がnilであることを許すようにする
+        plane.cond = planInfo["api_cond"].int ?? 0
         plane.slotid = slotid
         plane.state = state
-        plane.count = count
-        plane.max_count = maxCount
+        plane.count = planInfo["api_count"].int ?? 0
+        plane.max_count = planInfo["api_max_count"].int ?? 0
         
         airbase.distance = distance
         
-        store.material()?.bauxite = bauxite
+        data["api_after_bauxite"].int.map { store.material()?.bauxite = $0 }
     }
 }

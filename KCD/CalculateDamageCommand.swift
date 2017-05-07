@@ -106,6 +106,8 @@ class CalculateDamageCommand: JSONCommand {
             ship.nowhp = $0.hp
             if $0.useDamageControl { removeFirstDamageControl(of: ship) }
         }
+        
+        Debug.print("End Battle ------- ", level: .debug)
     }
     private func buildDamagedEntity() {
         guard let battle = store.battle()
@@ -143,6 +145,8 @@ class CalculateDamageCommand: JSONCommand {
         guard let battle = store.battle()
             else { return print("Battle is invalid.") }
         battle.battleCell = (battle.no == 0 ? nil : battle.no as NSNumber)
+        
+        Debug.print("Enter Cell ------- ", level: .debug)
     }
 }
 // MARK: - Primitive Calclator

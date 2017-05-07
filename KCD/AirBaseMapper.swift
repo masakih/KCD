@@ -48,11 +48,23 @@ class AirBaseMapper: JSONMapper {
             guard let slotid = dict["api_slotid"].int,
                 slotid != 0
                 else { return }
+            guard let state = dict["api_state"].int,
+                let squadronid = dict["api_squadron_id"].int
+                else { return }
+            if state == 2 {
+                info.cond = 0
+                info.count = 0
+                info.max_count = 0
+                info.slotid = slotid
+                info.squadron_id = squadronid
+                info.state = state
+                info.airBase = airbase
+                return
+            }
+
             guard let cond = dict["api_cond"].int,
                 let count = dict["api_count"].int,
-                let maxCount = dict["api_max_count"].int,
-                let squadronid = dict["api_squadron_id"].int,
-                let state = dict["api_state"].int
+                let maxCount = dict["api_max_count"].int
                 else { return print("planeInfos is wrong") }
             info.cond = cond
             info.count = count
