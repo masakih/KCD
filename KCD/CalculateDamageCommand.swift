@@ -167,11 +167,7 @@ extension CalculateDamageCommand {
         return targetArraysArray
     }
     private func hogekiDamages(_ list: JSON) -> [[Int]]? {
-        guard let hougeki1Damages = list
-            .array?
-            .flatMap({ $0.array?.flatMap { $0.int } })
-            else { return nil }
-        return hougeki1Damages
+        return list.array?.flatMap { $0.array?.flatMap { $0.int } }
     }
     private func enemyFlags(_ list: JSON) -> [Int]? {
         return list.array?.flatMap { $0.int }.filter { $0 != -1 }
@@ -193,9 +189,9 @@ extension CalculateDamageCommand {
             else { return nil }
         return damagePos
     }
-    private func calcHP(damage: Damage, receicve: Int) {
-        let hp = damage.hp
-        var newHP = (hp as Int) - receicve
+    private func calcHP(damage: Damage, receive: Int) {
+        let hp = damage.hp as Int
+        var newHP = hp - receive
         if newHP <= 0 {
             let shipId = damage.shipID
             if let ship = ServerDataStore.default.ship(by: shipId) {
@@ -230,7 +226,7 @@ extension CalculateDamageCommand {
                 
                 guard let damagePos = position(targetPos, in: battleFleet)
                     else { return print("damage pos is larger than damage count") }
-                calcHP(damage: damages[damagePos], receicve: damage)
+                calcHP(damage: damages[damagePos], receive: damage)
                 
                 Debug.excute(level: .debug) {
                     let shipOffset = (battleFleet == .second) ? 6 : 0
@@ -254,7 +250,7 @@ extension CalculateDamageCommand {
             
             guard let damagePos = position(idx, in: battleFleet)
                 else { return }
-            calcHP(damage: damages[damagePos], receicve: damage)
+            calcHP(damage: damages[damagePos], receive: damage)
             
             Debug.excute(level: .debug) {
                 let shipOffset = (battleFleet == .second) ? 6 : 0
