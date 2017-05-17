@@ -26,22 +26,26 @@ class AirBaseWindowController: NSWindowController {
             updatePlaneSegment()
         }
     }
-    dynamic var rId: Int = 0 {
+    dynamic var rId: Int = 1 {
         didSet {
             updatePredicate()
             updatePlaneSegment()
         }
     }
     
+    private var areas: [Int] {
+        guard let content = airBaseController.content as? [AirBase]
+            else { return [] }
+        return content
+            .flatMap { $0.area_id }
+            .unique()
+            .sorted(by: <)
+    }
+    
     override func windowDidLoad() {
         super.windowDidLoad()
         
-        rId = 1
-        
         airBaseController.addObserver(self, forKeyPath: "content", context: nil)
-        
-        updateAreaRadio()
-        updatePlaneSegment()
     }
     
     override func observeValue(forKeyPath keyPath: String?,
@@ -55,15 +59,22 @@ class AirBaseWindowController: NSWindowController {
         
         updateAreaRadio()
         updatePlaneSegment()
+        
+        if areaId == 0 {
+            areaId = areas.first ?? 0
+            updatePredicate()
+        }
     }
     
     private func updateAreaRadio() {
-        guard let content = airBaseController.content as? [AirBase]
-            else { return }
-        let areas = content
-            .flatMap { $0.area_id }
-            .unique()
-            .sorted(by: <)
+        
+        //  更新の必要性チェック
+        let areas = self.areas
+        let currentTags = areaMatrix.cells.map { $0.tag }
+        if currentTags == areas { return }
+        
+        // 最初の設定以外でareasが空の場合は処理をしない
+        if areas.isEmpty, areaId != 0 { return }
         
         let cellCount = areaMatrix.numberOfRows * areaMatrix.numberOfColumns
         if areas.count != cellCount {
@@ -94,8 +105,6 @@ class AirBaseWindowController: NSWindowController {
             areaCell?.title = t.transformedValue($0.element) as? String ?? String($0.element)
             areaCell?.tag = $0.element
         }
-        
-        areaId = areas.first ?? 0
     }
     
     private func updatePlaneSegment() {
