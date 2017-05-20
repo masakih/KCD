@@ -149,7 +149,28 @@ class CalculateDamageCommand: JSONCommand {
             else { return print("Battle is invalid.") }
         battle.battleCell = (battle.no == 0 ? nil : battle.no as NSNumber)
         
-        Debug.print("Enter Cell ------- ", level: .debug)
+        Debug.excute(level: .debug) {
+            print("Enter Cell ------- ")
+            if let seiku = json["api_data"]["api_kouku"]["api_stage1"]["api_disp_seiku"].int {
+                switch seiku {
+                case 0: print("制空権 均衡")
+                case 1: print("制空権 確保")
+                case 2: print("制空権 優勢")
+                case 3: print("制空権 劣勢")
+                case 4: print("制空権 喪失")
+                default: break
+                }
+            }
+            if let intercept = json["api_data"]["api_formation"][2].int {
+                switch intercept {
+                case 1: print("交戦形態 同航戦")
+                case 2: print("交戦形態 反航戦")
+                case 3: print("交戦形態 Ｔ字戦有利")
+                case 4: print("交戦形態 Ｔ字戦不利")
+                default: break
+                }
+            }
+        }
     }
 }
 // MARK: - Primitive Calclator
