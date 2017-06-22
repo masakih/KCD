@@ -22,7 +22,7 @@ class StrengthenListItemView: NSBox {
             [(NSPoint, NSPoint)]()
                 .appended { (NSPoint(x: 29.5, y: 0), NSPoint(x: 29.5, y: height)) }
                 .appended { (NSPoint(x: 67.5, y: 0), NSPoint(x: 67.5, y: height)) }
-                .appended { (NSPoint(x: 206.5, y: 0), NSPoint(x: 206.5, y: height)) }
+                .appended { (NSPoint(x: 209.5, y: 0), NSPoint(x: 209.5, y: height)) }
                 .appended { (NSPoint(x: 0, y: 17.5), NSPoint(x: width, y: 17.5)) }
                 .appended { (NSPoint(x: 0, y: 34.5), NSPoint(x: width, y: 34.5)) }
             }
