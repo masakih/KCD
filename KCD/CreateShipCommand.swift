@@ -14,8 +14,7 @@ class CreateShipCommand: JSONCommand {
         return false
     }
     override func execute() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
-            guard let `self` = self else { return }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             self.afterExecute()
         }
     }
