@@ -8,23 +8,30 @@
 
 import Foundation
 
+private func supportDirName() -> String {
+    let main = Bundle.main
+    return main.bundleIdentifier
+        ?? main.infoDictionary?["CFBundleName"] as? String
+        ?? main.infoDictionary?["CFBundleExecutable"] as? String
+        ?? "UnknownAppliation"
+}
+
 struct ApplicationDirecrories {
-    static let support: URL = {
-        let url = FileManager
-            .default
-            .urls(for: .applicationSupportDirectory,
-                  in: .userDomainMask).last ?? URL(fileURLWithPath: NSHomeDirectory())
-        return url.appendingPathComponent("com.masakih.KCD")
-    }()
     
-    static let documents = FileManager
-        .default
-        .urls(for: .documentDirectory,
-              in: .userDomainMask).last ?? URL(fileURLWithPath: NSHomeDirectory())
-    static let pictures = FileManager
-        .default
-        .urls(for: .picturesDirectory,
-              in: .userDomainMask).last ?? URL(fileURLWithPath: NSHomeDirectory())
+    static let support = searchedURL(for: .applicationSupportDirectory)
+        .appendingPathComponent(supportDirName())
+    
+    static let documents = searchedURL(for: .documentDirectory)
+    
+    static let pictures = searchedURL(for: .picturesDirectory)
+    
+    private static func searchedURL(for directory: FileManager.SearchPathDirectory) -> URL {
+        
+        return FileManager.default.urls(for: directory,
+                                        in: .userDomainMask)
+            .last
+            ?? URL(fileURLWithPath: NSHomeDirectory())
+    }
 }
 
 func checkDirectory(_ url: URL) -> Bool {

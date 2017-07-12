@@ -28,7 +28,7 @@ fileprivate struct FilterCategories {
                                                 .searcherII]
     static let radarType: [EquipmentType] = [.smallRadar, .largeRadar,
                                              .sonar, .depthCharge,
-                                             .SubmarineEquipment]
+                                             .submarineEquipment]
     static let otherType: [EquipmentType] = {
         return allType
             .filter { !canonType.contains($0) }

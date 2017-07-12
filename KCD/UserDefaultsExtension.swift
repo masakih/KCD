@@ -48,7 +48,8 @@ extension UserDefaults {
                 "screenshotEditorColumnCount": 2,
                 "cleanSiceDays": 90,
                 "notifyTimeSignal": false,
-                "notifyTimeBeforeTimeSignal": 5
+                "notifyTimeBeforeTimeSignal": 5,
+                "formula33Factor": 1.0
             ]
         )
     }
@@ -309,6 +310,23 @@ extension UserDefaults {
     var playNotifyTimeSignalSound: Bool {
         get { return bool(forKey: "playNotifyTimeSignalSound") }
         set { set(newValue, forKey: "playNotifyTimeSignalSound") }
+    }
+    
+    // MARK: - Sakuteki Calculate
+    enum SakutekiCalclationSterategy: Int {
+        case total
+        case formula33
+    }
+    var sakutekiCalclationSterategy: SakutekiCalclationSterategy {
+        get {
+            let value = integer(forKey: "sakutekiCalclationSterategy")
+            return SakutekiCalclationSterategy(rawValue: value) ?? .total
+        }
+        set { set(newValue.rawValue, forKey: "sakutekiCalclationSterategy") }
+    }
+    var formula33Factor: Double {
+        get { return double(forKey: "formula33Factor") }
+        set { set(newValue, forKey: "formula33Factor") }
     }
     
     // MARK: - Debug print

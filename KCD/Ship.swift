@@ -372,24 +372,18 @@ extension Ship {
         return (0...4).map(normalSeiku).map { Int($0) }.reduce(0, +)
     }
     
-    class func keyPathsForValuesAffectingExtraSeiku() -> Set<String> {
-        return ["seiku"]
-    }
-    dynamic var extraSeiku: Int {
+    var extraSeiku: Int {
         return (0...4).map(extraSeiku).map { Int($0) }.reduce(0, +)
     }
     
     class func keyPathsForValuesAffectingTotalSeiku() -> Set<String> {
-        return ["seiku", "extraSeiku"]
+        return ["seiku"]
     }
-    dynamic var totalSeiku: Int {
+    var totalSeiku: Int {
         return (0...4).map(seiku).reduce(0, +)
     }
     
-    class func keyPathsForValuesAffectingTotalDrums() -> Set<String> {
-        return ["slot_0", "slot_1", "slot_2", "slot_3", "slot_4"]
-    }
-    dynamic var totalDrums: Int {
+    var totalDrums: Int {
         return (0...4).flatMap(slotItem).filter { $0.slotitem_id == 75 }.count
     }
     

@@ -26,6 +26,7 @@ fileprivate extension Selector {
     static let reorderToLeftToRight = #selector(BroserWindowController.reorderToLeftToRight(_:))
     static let selectNextFleet = #selector(BroserWindowController.selectNextFleet(_:))
     static let selectPreviousFleet = #selector(BroserWindowController.selectPreviousFleet(_:))
+    static let changeSakutekiCalculator = #selector(BroserWindowController.changeSakutekiCalculator(_:))
 }
 
 class BroserWindowController: NSWindowController {
@@ -259,6 +260,9 @@ extension BroserWindowController {
     @IBAction func selectPreviousFleet(_ sender: AnyObject?) {
         fleetViewController.selectPreviousFleet(sender)
     }
+    @IBAction func changeSakutekiCalculator(_ sender: Any?) {
+        fleetViewController.changeSakutekiCalculator(sender)
+    }
     
     override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
         guard let action: Selector = menuItem.action else { return false }
@@ -297,6 +301,8 @@ extension BroserWindowController {
             return true
         case Selector.toggleAnchorageSize:
             return true
+        case Selector.changeSakutekiCalculator:
+            return fleetViewController.validateMenuItem(menuItem)
         default:
             return false
         }

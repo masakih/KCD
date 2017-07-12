@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -249,6 +249,45 @@ CA
                                 <connections>
                                     <action selector="selectView:" target="-1" id="OF1-i2-gu7"/>
                                 </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="PrJ-hR-VPS"/>
+                            <menuItem title="SakutekiCalculator" id="CX5-5M-bhh">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="SakutekiCalculator" id="IW2-De-KIB">
+                                    <items>
+                                        <menuItem title="Total" id="VGS-nL-KMm">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="changeSakutekiCalculator:" target="-1" id="17h-aq-gRB"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="3Kl-fr-klK"/>
+                                        <menuItem title="Formula33_1" tag="101" id="r8d-Rp-kGg">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="changeSakutekiCalculator:" target="-1" id="3UQ-xm-jCG"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Formula33_3" tag="103" id="lsR-ab-DRG">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="changeSakutekiCalculator:" target="-1" id="xjT-R2-c1b"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Formula33_4" tag="104" id="wbG-TI-Ox5">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="changeSakutekiCalculator:" target="-1" id="sqd-Dg-NDO"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Formula33 ..." tag="100" id="z7j-YG-JPw">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="changeSakutekiCalculator:" target="-1" id="c21-fb-5bo"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="k5I-au-tcW"/>
                             <menuItem title="Select Next Fleet" keyEquivalent="" id="zEh-tr-mhX">

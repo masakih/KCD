@@ -22,6 +22,8 @@
 		F421850F1DF4518000256590 /* BroswerTouchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = F421850E1DF4518000256590 /* BroswerTouchBar.xib */; };
 		F42185111DF461A600256590 /* ScreenshotTouchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = F42185101DF461A600256590 /* ScreenshotTouchBar.xib */; };
 		F42539E21EB4A7950083EB9D /* AirPlanInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42539E11EB4A7950083EB9D /* AirPlanInfoView.swift */; };
+		F42546921EF8002E00BE297E /* EquitType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42546911EF8002E00BE297E /* EquitType.swift */; };
+		F42546931EFBE0D300BE297E /* EquitType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42546911EF8002E00BE297E /* EquitType.swift */; };
 		F42A8FCC1E3DA4DF0099DC1D /* MasterMission.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A8FCB1E3DA4DF0099DC1D /* MasterMission.swift */; };
 		F42A8FCE1E3DA7E90099DC1D /* MasterShip.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A8FCD1E3DA7E90099DC1D /* MasterShip.swift */; };
 		F42A8FD01E3DB49A0099DC1D /* MasterSlotItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A8FCF1E3DB49A0099DC1D /* MasterSlotItem.swift */; };
@@ -52,6 +54,7 @@
 		F42CFE281E3D9A02000B4F9B /* MasterMapInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42CFE271E3D9A02000B4F9B /* MasterMapInfo.swift */; };
 		F43E67B718BE02A10087E5B6 /* STypeShortName.plist in Resources */ = {isa = PBXBuildFile; fileRef = F43E67B618BE02A10087E5B6 /* STypeShortName.plist */; };
 		F43E67B918BE060E0087E5B6 /* LevelUpExp.plist in Resources */ = {isa = PBXBuildFile; fileRef = F43E67B818BE060E0087E5B6 /* LevelUpExp.plist */; };
+		F44775891EF6AAD900287572 /* SakutekiCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44775881EF6AAD900287572 /* SakutekiCalculator.swift */; };
 		F44AA2671E814A4400EED8BE /* ManagedObjectContextGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44AA2661E814A4400EED8BE /* ManagedObjectContextGenerator.swift */; };
 		F44AA26B1E82AD2E00EED8BE /* NSObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44AA26A1E82AD2E00EED8BE /* NSObjectExtension.swift */; };
 		F44BC6C11E221293004644E3 /* AirCorpsChangeNameCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44BC6C01E221293004644E3 /* AirCorpsChangeNameCommand.swift */; };
@@ -235,6 +238,8 @@
 		F4BEF00B1B11A628004702B8 /* ShipMasterDetailWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BEF00D1B11A628004702B8 /* ShipMasterDetailWindowController.xib */; };
 		F4BEF00E1B11A645004702B8 /* UITestWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BEF0101B11A645004702B8 /* UITestWindowController.xib */; };
 		F4C041BA1875CAF5009273EB /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4C041B91875CAF5009273EB /* JavaScriptCore.framework */; };
+		F4C3D1BF1F13A32D0084D0CA /* CalculateConditionPanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C3D1BD1F13A32D0084D0CA /* CalculateConditionPanelController.swift */; };
+		F4C3D1C01F13A32D0084D0CA /* CalculateConditionPanelController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C3D1BE1F13A32D0084D0CA /* CalculateConditionPanelController.xib */; };
 		F4C5A22C1C37B8DB00533FB6 /* RequiredEquipmentSet.txt in Resources */ = {isa = PBXBuildFile; fileRef = F4C5A22B1C37B8DB00533FB6 /* RequiredEquipmentSet.txt */; };
 		F4C5A22E1C37CB5100533FB6 /* EnhancementListItem.txt in Resources */ = {isa = PBXBuildFile; fileRef = F4C5A22D1C37CB5100533FB6 /* EnhancementListItem.txt */; };
 		F4C5A23E1C380E0400533FB6 /* HMEnhancementListItem.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4C5A23D1C380E0400533FB6 /* HMEnhancementListItem.plist */; };
@@ -348,6 +353,7 @@
 		F421850E1DF4518000256590 /* BroswerTouchBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BroswerTouchBar.xib; sourceTree = "<group>"; };
 		F42185101DF461A600256590 /* ScreenshotTouchBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScreenshotTouchBar.xib; sourceTree = "<group>"; };
 		F42539E11EB4A7950083EB9D /* AirPlanInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirPlanInfoView.swift; sourceTree = "<group>"; };
+		F42546911EF8002E00BE297E /* EquitType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquitType.swift; sourceTree = "<group>"; };
 		F42A8FCB1E3DA4DF0099DC1D /* MasterMission.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterMission.swift; sourceTree = "<group>"; };
 		F42A8FCD1E3DA7E90099DC1D /* MasterShip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterShip.swift; sourceTree = "<group>"; };
 		F42A8FCF1E3DB49A0099DC1D /* MasterSlotItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterSlotItem.swift; sourceTree = "<group>"; };
@@ -379,6 +385,7 @@
 		F42CFE271E3D9A02000B4F9B /* MasterMapInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterMapInfo.swift; sourceTree = "<group>"; };
 		F43E67B618BE02A10087E5B6 /* STypeShortName.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = STypeShortName.plist; sourceTree = "<group>"; };
 		F43E67B818BE060E0087E5B6 /* LevelUpExp.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LevelUpExp.plist; sourceTree = "<group>"; };
+		F44775881EF6AAD900287572 /* SakutekiCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SakutekiCalculator.swift; sourceTree = "<group>"; };
 		F44AA2661E814A4400EED8BE /* ManagedObjectContextGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectContextGenerator.swift; sourceTree = "<group>"; };
 		F44AA26A1E82AD2E00EED8BE /* NSObjectExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSObjectExtension.swift; sourceTree = "<group>"; };
 		F44BC6C01E221293004644E3 /* AirCorpsChangeNameCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirCorpsChangeNameCommand.swift; sourceTree = "<group>"; };
@@ -569,6 +576,8 @@
 		F4BEEEA418D211500006F70C /* ja */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; name = ja; path = ja.lproj/Makefile; sourceTree = "<group>"; };
 		F4BEEEA718D323520006F70C /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = SOURCE_ROOT; };
 		F4C041B91875CAF5009273EB /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		F4C3D1BD1F13A32D0084D0CA /* CalculateConditionPanelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateConditionPanelController.swift; sourceTree = "<group>"; };
+		F4C3D1BE1F13A32D0084D0CA /* CalculateConditionPanelController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalculateConditionPanelController.xib; sourceTree = "<group>"; };
 		F4C5A22B1C37B8DB00533FB6 /* RequiredEquipmentSet.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RequiredEquipmentSet.txt; sourceTree = "<group>"; };
 		F4C5A22D1C37CB5100533FB6 /* EnhancementListItem.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EnhancementListItem.txt; sourceTree = "<group>"; };
 		F4C5A2331C37F87500533FB6 /* EquipmentEnhancementListBuilder */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = EquipmentEnhancementListBuilder; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -921,6 +930,8 @@
 				F40F97701E68536400AE81BB /* FileManagerExtension.swift */,
 				F491A4BB1E4B523C00D1E067 /* ApplicationDirecrories.swift */,
 				F44AA26A1E82AD2E00EED8BE /* NSObjectExtension.swift */,
+				F44775881EF6AAD900287572 /* SakutekiCalculator.swift */,
+				F42546911EF8002E00BE297E /* EquitType.swift */,
 				F4BEEFE21B0CD39B004702B8 /* Transformar&Formatter */,
 				F4C118F318A67B05005D5B25 /* CustomHTTPProtocol */,
 				F47215A11E1F38280083D3BC /* Queue.swift */,
@@ -1157,6 +1168,8 @@
 				F490978C1E1BA64E0085A45D /* GuardEscapedView.swift */,
 				F45FBB911E129BAE000E72B9 /* FleetViewController.swift */,
 				F4BEF0071B11A5D3004702B8 /* FleetViewController.xib */,
+				F4C3D1BD1F13A32D0084D0CA /* CalculateConditionPanelController.swift */,
+				F4C3D1BE1F13A32D0084D0CA /* CalculateConditionPanelController.xib */,
 				F4BEF0041B11A5CC004702B8 /* FleetMinimumViewController.xib */,
 				F4C668711C54524900601AFB /* VerticalFleetViewController.xib */,
 				F4D05BD11E0F3C4E00688D66 /* CombileViewController.swift */,
@@ -1390,6 +1403,7 @@
 				F4B3DC3618E5C8650011B4FC /* ShipWindowController.xib in Resources */,
 				F4C6685A1C54510E00601AFB /* BookmarkEditorViewController.xib in Resources */,
 				F4B3DC3C18E5C87D0011B4FC /* DocksViewController.xib in Resources */,
+				F4C3D1C01F13A32D0084D0CA /* CalculateConditionPanelController.xib in Resources */,
 				F4C668631C54518F00601AFB /* ProgressPanel.xib in Resources */,
 				F41465741DB4F1A700D68C97 /* ScreenshotListWindowController.xib in Resources */,
 				F4C6686F1C54524900601AFB /* VerticalFleetViewController.xib in Resources */,
@@ -1502,6 +1516,7 @@
 				F4E5FF061E1523900026868C /* ScreenshotCollectionViewItem.swift in Sources */,
 				F4D3D9551E8544B90085A389 /* StrengthenListItem.swift in Sources */,
 				F44BC6DF1E228770004644E3 /* QuestListCommand.swift in Sources */,
+				F42546921EF8002E00BE297E /* EquitType.swift in Sources */,
 				F44BC7331E2A25E4004644E3 /* Start2Command.swift in Sources */,
 				F44BC6E31E230577004644E3 /* SlotDepriveCommand.swift in Sources */,
 				F42A8FCE1E3DA7E90099DC1D /* MasterShip.swift in Sources */,
@@ -1578,6 +1593,7 @@
 				F44BC73F1E2B1AD4004644E3 /* DummyShipCommand.swift in Sources */,
 				F44BC73D1E2A5D39004644E3 /* DropShipHistoryCommand.swift in Sources */,
 				F45771231E1BCC7C008A9215 /* PeriodicNotifier.swift in Sources */,
+				F4C3D1BF1F13A32D0084D0CA /* CalculateConditionPanelController.swift in Sources */,
 				F44AA2671E814A4400EED8BE /* ManagedObjectContextGenerator.swift in Sources */,
 				F44BC6C91E22314B004644E3 /* UnknownComand.swift in Sources */,
 				F47B06DD1E97ECD4006711D9 /* WindowManager.swift in Sources */,
@@ -1616,6 +1632,7 @@
 				F44BC71D1E29DF32004644E3 /* MemberNDockCommand.swift in Sources */,
 				F42CFE1E1E3CCCC2000B4F9B /* Resource.swift in Sources */,
 				F4D05BCE1E0D50D300688D66 /* BrowserContentAdjuster.swift in Sources */,
+				F44775891EF6AAD900287572 /* SakutekiCalculator.swift in Sources */,
 				F47C3EBE1E62718E00D97449 /* BattleCommand.swift in Sources */,
 				F47C3EB61E60766000D97449 /* BasicMapper.swift in Sources */,
 				F4D05BD01E0D667600688D66 /* BookmarkListViewController.swift in Sources */,
@@ -1700,6 +1717,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F42546931EFBE0D300BE297E /* EquitType.swift in Sources */,
 				F4CF25DF1E3A1D4100C02A66 /* EnhancementListItem.swift in Sources */,
 				F4CF25DC1E376D6600C02A66 /* main.swift in Sources */,
 			);

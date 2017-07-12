@@ -23,7 +23,8 @@ class AppDelegate: NSObject {
         // swiftlint:disable force_cast
         return NSApplication.shared().delegate as! AppDelegate
     }
-    let appNameForUserAgent: String = "Version/10.0.3 Safari/602.4.8"
+//    let appNameForUserAgent: String = "Version/10.0.3 Safari/603.2.4"
+    let appNameForUserAgent: String = "KCD(1.9b11) is not Safari/603.2.4"
     let fleetManager: FleetManager = FleetManager()
     
     let windowManager = WindowManager()
@@ -44,7 +45,7 @@ class AppDelegate: NSObject {
     private var browserWindowControllers: [ExternalBrowserWindowController] = []
     private var updaters: [() -> Void] = []
     fileprivate var logedJSONViewWindowController: JSONViewWindowController?
-    private var isLoadedMainMenu = false
+    private var didLoadedMainMenu = false
     
     var screenShotSaveDirectory: String {
         get {
@@ -67,8 +68,8 @@ class AppDelegate: NSObject {
     
     // MARK: - Function
     override func awakeFromNib() {
-        if isLoadedMainMenu { return }
-        isLoadedMainMenu = true
+        if didLoadedMainMenu { return }
+        didLoadedMainMenu = true
         
         ValueTransformerRegister.registerAll()
         UserDefaults.registerAllDefaults()

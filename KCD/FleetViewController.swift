@@ -23,6 +23,16 @@ class FleetViewController: NSViewController {
         case leftToRight = 1
     }
     
+    enum SakutekiType: Int {
+        case adding = 0
+        
+        case formula33 = 100
+        case formula33_1 = 101
+        case formula33_3 = 103
+        case formula33_4 = 104
+        
+    }
+    
     static let oldStyleFleetViewHeight: CGFloat = 128.0
     static let detailViewHeight: CGFloat = 288.0
     static let heightDifference: CGFloat = detailViewHeight - oldStyleFleetViewHeight
@@ -32,7 +42,7 @@ class FleetViewController: NSViewController {
     private let shipKeys = ["ship_0", "ship_1", "ship_2", "ship_3", "ship_4", "ship_5"]
     private let type: FleetViewType
     private let fleetController = NSObjectController()
-    private let shipObserveKeys = ["sakuteki_0", "seiku", "totalSeiku", "lv", "totalDrums"]
+    private let shipObserveKeys = ["seiku", "lv", "equippedItem"]
     
     init?(viewType: FleetViewType) {
         type = viewType
@@ -115,11 +125,24 @@ class FleetViewController: NSViewController {
         case .miniVierticalType: return 0.0
         }
     }
-    var totalSakuteki: Int { return ships.reduce(0) { $0 + $1.sakuteki_0 } }
+    var sakutekiCalculator: SakutekiCalculator = SimpleCalculator() {
+        didSet {
+            switch sakutekiCalculator {
+            case _ as SimpleCalculator:
+                UserDefaults.standard.sakutekiCalclationSterategy = .total
+            case let f as Formula33:
+                UserDefaults.standard.sakutekiCalclationSterategy = .formula33
+                UserDefaults.standard.formula33Factor = Double(f.condition)
+            default: ()
+            }
+        }
+    }
+    var totalSakuteki: Double { return sakutekiCalculator.calculate(ships) }
     var totalSeiku: Int { return ships.reduce(0) { $0 + $1.seiku } }
     var totalCalclatedSeiku: Int { return ships.reduce(0) { $0 + $1.totalSeiku } }
     var totalLevel: Int { return ships.reduce(0) { $0 + $1.lv } }
     var totalDrums: Int { return ships.reduce(0) { $0 + $1.totalDrums } }
+    
     
     fileprivate var ships: [Ship] = [] {
         willSet {
@@ -143,6 +166,14 @@ class FleetViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        switch UserDefaults.standard.sakutekiCalclationSterategy {
+        case .total:
+            sakutekiCalculator = SimpleCalculator()
+        case .formula33:
+            let factor = UserDefaults.standard.formula33Factor
+            sakutekiCalculator = Formula33(Int(factor))
+        }
+        
         fleetController.bind("content", to:self, withKeyPath:#keyPath(fleet), options:nil)
         fleetController.addObserver(self, forKeyPath:"selection.name", context:nil)
         shipKeys.forEach {
@@ -152,16 +183,12 @@ class FleetViewController: NSViewController {
         
         buildAnchorageRepairHolder()
         
-        [NSView?]()
-            .appended { placeholder01 }
-            .appended { placeholder02 }
-            .appended { placeholder03 }
-            .appended { placeholder04 }
-            .appended { placeholder05 }
-            .appended { placeholder06 }
+        [placeholder01, placeholder02, placeholder03,
+         placeholder04, placeholder05, placeholder06]
             .enumerated()
             .forEach {
                 guard let view = $0.element else { return }
+                
                 let detail = details[$0.offset]
                 detail.view.frame = view.frame
                 detail.view.autoresizingMask = view.autoresizingMask
@@ -193,16 +220,13 @@ class FleetViewController: NSViewController {
         if let keyPath = keyPath {
             if context == &shipsContext {
                 switch keyPath {
-                case "sakuteki_0":
+                case "equippedItem":
                     notifyChangeValue(forKey: #keyPath(totalSakuteki))
+                    notifyChangeValue(forKey: #keyPath(totalDrums))
                 case "seiku":
                     notifyChangeValue(forKey: #keyPath(totalSeiku))
-                case "totalSeiku":
-                    notifyChangeValue(forKey: #keyPath(totalCalclatedSeiku))
                 case "lv":
                     notifyChangeValue(forKey: #keyPath(totalLevel))
-                case "totalDrums":
-                    notifyChangeValue(forKey: #keyPath(totalDrums))
                 default: break
                 }
                 return
@@ -221,19 +245,79 @@ class FleetViewController: NSViewController {
         fleetNumber = prev > 0 ? prev : 4
     }
     
+    @IBAction func changeSakutekiCalculator(_ sender: Any?) {
+        
+        guard let menuItem = sender as? NSMenuItem
+            else { return }
+        
+        switch menuItem.tag {
+        case 0:
+            sakutekiCalculator = SimpleCalculator()
+        case 101...199:
+            sakutekiCalculator = Formula33(menuItem.tag - 100)
+        case 100:
+            askCalcutaionTurnPoint()
+        default: return
+        }
+        
+        notifyChangeValue(forKey: #keyPath(totalSakuteki))
+    }
+    
+    private func askCalcutaionTurnPoint() {
+        
+        guard let window = self.view.window else { return }
+        
+        let current = (sakutekiCalculator as? Formula33)?.condition ?? 1
+        
+        let wc = CalculateConditionPanelController()
+        wc.condition = Double(current)
+        wc.beginModal(for: window) {
+            
+            self.sakutekiCalculator = Formula33(Int($0))
+            
+            self.notifyChangeValue(forKey: #keyPath(totalSakuteki))
+        }
+    }
+    
     private func setupShips() {
         let array: [Ship?] = (0..<6).map { fleet?[$0] }
         zip(details, array).forEach { $0.0.ship = $0.1 }
         ships = array.flatMap { $0 }
         
-        [String]()
-            .appended { #keyPath(totalSakuteki) }
-            .appended { #keyPath(totalSeiku) }
-            .appended { #keyPath(totalCalclatedSeiku) }
-            .appended { #keyPath(totalLevel) }
-            .appended { #keyPath(totalDrums) }
-            .appended { #keyPath(repairable) }
+        [#keyPath(totalSakuteki), #keyPath(totalSeiku), #keyPath(totalCalclatedSeiku),
+         #keyPath(totalLevel), #keyPath(totalDrums), #keyPath(repairable)]
             .forEach { notifyChangeValue(forKey: $0) }
+    }
+}
+
+extension FleetViewController {
+    
+    override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+        
+        guard let action = menuItem.action
+            else { return false }
+        
+        switch action {
+            
+        case #selector(changeSakutekiCalculator(_:)):
+            
+            if let _ = sakutekiCalculator as? SimpleCalculator {
+                
+                menuItem.state = menuItem.tag == 0 ? NSOnState : NSOffState
+                return true
+                
+            } else if let sakuObj = sakutekiCalculator as? Formula33 {
+                
+                let cond = 100 + sakuObj.condition
+                
+                menuItem.state = menuItem.tag == cond ? NSOnState : NSOffState
+                return true
+            }
+            
+        default: ()
+        }
+        
+        return false
     }
 }
 
