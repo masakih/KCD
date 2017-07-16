@@ -171,12 +171,19 @@ extension AppDelegate {
         windowManager.openDocument(sender)
     }
     
+    @IBAction func openInDeckBuilder(_ sender: Any?) {
+        
+        DeckBuilder().openDeckBuilder()
+    }
+    
     override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
         guard let action = menuItem.action else { return false }
         switch action {
         case Selector.saveLocalData, Selector.loadLocalData:
             return true
         case Selector.removeDatabaseFile:
+            return true
+        case #selector(openInDeckBuilder(_:)):
             return true
         default:
             return windowManager.validateMenuItem(menuItem)

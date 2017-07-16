@@ -172,7 +172,7 @@ extension ServerDataStore {
         guard let decks = try? objects(with: Deck.entity, predicate: predicate),
             let deck = decks.first
             else { return [] }
-        return (0..<6).flatMap { deck[$0] }
+        return deck[0...5]
     }
     func ship(by shipId: Int) -> Ship? {
         if shipId < 1 { return nil }

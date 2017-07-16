@@ -65,4 +65,8 @@ extension Deck {
         guard let shipId = shipId(of: index) else { return nil }
         return ship(ofId: shipId)
     }
+    
+    subscript(_ range: CountableClosedRange<Int>) -> [Ship] {
+        return range.flatMap { self[$0] }
+    }
 }

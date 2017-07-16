@@ -75,6 +75,13 @@
                                     <action selector="openNewBrowser:" target="-1" id="gnv-IH-H9F"/>
                                 </connections>
                             </menuItem>
+                            <menuItem isSeparatorItem="YES" id="Btg-ej-IXz"/>
+                            <menuItem title="Open in DeckBuilder" id="oGw-ne-id0">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="openInDeckBuilder:" target="494" id="lsj-Oj-nEf"/>
+                                </connections>
+                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="8zj-xF-FZU"/>
                             <menuItem title="Close" keyEquivalent="w" id="73">
                                 <connections>

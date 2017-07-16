@@ -292,6 +292,8 @@
 		F4E5FF121E17D6850026868C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5FF111E17D6850026868C /* GameViewController.swift */; };
 		F4E5FF141E17F93B0026868C /* BroserWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5FF131E17F93B0026868C /* BroserWindowController.swift */; };
 		F4E7802E18DC3AF00011BC4C /* LocalData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4E7802C18DC3AF00011BC4C /* LocalData.xcdatamodeld */; };
+		F4EE4AD81F18F43700AD92B4 /* DeckBuilderStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EE4AD71F18F43700AD92B4 /* DeckBuilderStructure.swift */; };
+		F4EE4ADA1F18F66A00AD92B4 /* DeckBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EE4AD91F18F66A00AD92B4 /* DeckBuilder.swift */; };
 		F4EFBCA51E7D757E00DE4A58 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EFBCA21E7D439A00DE4A58 /* SwiftyJSON.framework */; };
 		F4EFBCA61E7D757E00DE4A58 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F4EFBCA21E7D439A00DE4A58 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F4F947071D5DBA2D00F95998 /* MapWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4F947091D5DBA2D00F95998 /* MapWindowController.xib */; };
@@ -622,6 +624,8 @@
 		F4E5FF111E17D6850026868C /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		F4E5FF131E17F93B0026868C /* BroserWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BroserWindowController.swift; sourceTree = "<group>"; };
 		F4E7802D18DC3AF00011BC4C /* LocalData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocalData.xcdatamodel; sourceTree = "<group>"; };
+		F4EE4AD71F18F43700AD92B4 /* DeckBuilderStructure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckBuilderStructure.swift; sourceTree = "<group>"; };
+		F4EE4AD91F18F66A00AD92B4 /* DeckBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckBuilder.swift; sourceTree = "<group>"; };
 		F4EFBCA21E7D439A00DE4A58 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/Mac/SwiftyJSON.framework; sourceTree = "<group>"; };
 		F4F947061D5DBA1A00F95998 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/UITestWindowController.xib; sourceTree = "<group>"; };
 		F4F947081D5DBA2D00F95998 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MapWindowController.xib; sourceTree = "<group>"; };
@@ -932,6 +936,8 @@
 				F44AA26A1E82AD2E00EED8BE /* NSObjectExtension.swift */,
 				F44775881EF6AAD900287572 /* SakutekiCalculator.swift */,
 				F42546911EF8002E00BE297E /* EquitType.swift */,
+				F4EE4AD71F18F43700AD92B4 /* DeckBuilderStructure.swift */,
+				F4EE4AD91F18F66A00AD92B4 /* DeckBuilder.swift */,
 				F4BEEFE21B0CD39B004702B8 /* Transformar&Formatter */,
 				F4C118F318A67B05005D5B25 /* CustomHTTPProtocol */,
 				F47215A11E1F38280083D3BC /* Queue.swift */,
@@ -1513,6 +1519,7 @@
 				F4E5FF141E17F93B0026868C /* BroserWindowController.swift in Sources */,
 				F4CF25BA1E34EB6600C02A66 /* BookmarkManager.swift in Sources */,
 				F44BC7051E2660E4004644E3 /* StoreCreateSlotItemHistoryCommand.swift in Sources */,
+				F4EE4ADA1F18F66A00AD92B4 /* DeckBuilder.swift in Sources */,
 				F4E5FF061E1523900026868C /* ScreenshotCollectionViewItem.swift in Sources */,
 				F4D3D9551E8544B90085A389 /* StrengthenListItem.swift in Sources */,
 				F44BC6DF1E228770004644E3 /* QuestListCommand.swift in Sources */,
@@ -1644,6 +1651,7 @@
 				F42A8FDE1E40C6DF0099DC1D /* Quest.swift in Sources */,
 				F4B15CBD1E21BA870078CFFC /* CommandRegister.swift in Sources */,
 				F4BDEEB01E72D2D700D689AE /* HistoryTableViewController.swift in Sources */,
+				F4EE4AD81F18F43700AD92B4 /* DeckBuilderStructure.swift in Sources */,
 				F45FBB921E129BAE000E72B9 /* FleetViewController.swift in Sources */,
 				F4AA59501E1E4D18001667AF /* ShipWindowController.swift in Sources */,
 				F42CFE181E3C12AA000B4F9B /* ScreenshotInformation.swift in Sources */,
