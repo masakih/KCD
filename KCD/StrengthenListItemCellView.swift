@@ -77,7 +77,7 @@ class StrengthenListItemCellView: NSTableCellView {
     private func needsScrewString(screw: Int?, ensureScrew: Int?) -> String? {
         guard let screw = screw,
             let ensureScrew = ensureScrew,
-            screw != 0
+            ensureScrew != 0
             else { return nil }
         let screwString = (screw == -1) ? "-" : "\(screw)"
         let ensureScrewString = (ensureScrew == -1) ? "-" : "\(ensureScrew)"
