@@ -55,7 +55,7 @@ class Formula33: SakutekiCalculator {
         
         let saku1 = ships
             .map(normalSakuteki)
-            .map { sqrt($0) }
+            .map(sqrt)
             .reduce(0, +)
         
         let saku2 = ships
