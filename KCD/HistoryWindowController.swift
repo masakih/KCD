@@ -30,10 +30,11 @@ class HistoryWindowController: NSWindowController {
             
             if let controller = currentSelection?.controller,
                 let predicateFormat = currentSelection?.predicateFormat {
-            searchField.bind(NSPredicateBinding,
-                             to: controller,
-                             withKeyPath: NSFilterPredicateBinding,
-                             options: [NSPredicateFormatBindingOption: predicateFormat])
+                
+                searchField.bind(NSPredicateBinding,
+                                 to: controller,
+                                 withKeyPath: NSFilterPredicateBinding,
+                                 options: [NSPredicateFormatBindingOption: predicateFormat])
             } else {
                 searchField.unbind(NSPredicateBinding)
             }
