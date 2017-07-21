@@ -17,11 +17,12 @@ class BorderTextField: NSTextField {
         let height = bounds.height
         NSColor.controlShadowColor.set()
         NSBezierPath.setDefaultLineWidth(1.0)
-        multiline {
-            [(NSPoint, NSPoint)]()
-                .appended { (NSPoint(x: 3, y: height), NSPoint(x: bounds.maxX, y: height)) }
-                .appended { (NSPoint(x: width, y: 0), NSPoint(x: width, y: height)) }
-            }
-            .map { $0.stroke() }
+        multiline(lines:
+            [
+                (NSPoint(x: 3, y: height), NSPoint(x: bounds.maxX, y: height)),
+                (NSPoint(x: width, y: 0), NSPoint(x: width, y: height))
+            ]
+            )
+            .stroke()
     }
 }

@@ -24,6 +24,6 @@ class SlotItemFrameView: NSBox {
                 .appended { (NSPoint(x: 0, y: 34.5), NSPoint(x: width, y: 34.5)) }
                 .appended { (NSPoint(x: 0, y: 51.5), NSPoint(x: width, y: 51.5)) }
             }
-            .map { $0.stroke() }
+            .stroke()
     }
 }

@@ -67,7 +67,7 @@ class SlotItemLevelView: NSTextField {
         let width = bounds.width
         let height = bounds.height
         let path = multiline { [(NSPoint(x: width - offset, y: 0), NSPoint(x: width - offset, y: height))] }
-        path?.lineWidth = 1.0
+        path.lineWidth = 1.0
         return path
     }
     private var levelTwoBezierPath: NSBezierPath? {
@@ -80,7 +80,7 @@ class SlotItemLevelView: NSTextField {
                     (NSPoint(x: width - offset - padding, y: 0), NSPoint(x: width - offset - padding, y: height))
             }
         }
-        path?.lineWidth = 1.0
+        path.lineWidth = 1.0
         return path
     }
     private var levelThreeBezierPath: NSBezierPath? {
@@ -97,7 +97,7 @@ class SlotItemLevelView: NSTextField {
                      NSPoint(x: width - offset - padding * 2, y: height))
             }
         }
-        path?.lineWidth = 1.0
+        path.lineWidth = 1.0
         return path
     }
     private var levelFourBezierPath: NSBezierPath? {
@@ -107,7 +107,7 @@ class SlotItemLevelView: NSTextField {
             [(NSPoint, NSPoint)]()
                 .appended { (NSPoint(x: width - offset - slideOffset, y: 0), NSPoint(x: width - offset, y: height)) }
         }
-        path?.lineWidth = 2.0
+        path.lineWidth = 2.0
         return path
     }
     private var levelFiveBezierPath: NSBezierPath? {
@@ -121,7 +121,7 @@ class SlotItemLevelView: NSTextField {
                      NSPoint(x: width - offset - padding, y: height))
             }
         }
-        path?.lineWidth = 2.0
+        path.lineWidth = 2.0
         return path
     }
     private var levelSixBezierPath: NSBezierPath? {
@@ -139,7 +139,7 @@ class SlotItemLevelView: NSTextField {
                      NSPoint(x: width - offset - padding * 2, y: height))
             }
         }
-        path?.lineWidth = 2.0
+        path.lineWidth = 2.0
         return path
     }
     private var levelSevenBezierPath: NSBezierPath? {
