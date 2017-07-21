@@ -69,7 +69,8 @@ class PreferencePanelController: NSWindowController {
     @IBAction func selectScreenShotSaveDirectoryPopUp(_ sender: AnyObject?) {
         guard let window = window,
             let tag = sender?.tag,
-            ScreenshotSaveDirectoryPopupMenuItemTag.selectDiretory.rawValue == tag
+            let itemTag = ScreenshotSaveDirectoryPopupMenuItemTag(rawValue: tag),
+            itemTag == .selectDiretory
             else { return }
         
         let panel = NSOpenPanel()
