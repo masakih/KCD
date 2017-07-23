@@ -76,7 +76,7 @@ class ResourceHistoryManager: NSObject {
         newHistory.kousokukenzo = material.kousokukenzo
         newHistory.kousokushuhuku = material.kousokushuhuku
         newHistory.screw = material.screw
-        newHistory.experience = basic.experience 
+        newHistory.experience = basic.experience
     }
     private func reduceResourceByConditions(_ store: ResourceHistoryDataStore,
                                             _ target: [Int],

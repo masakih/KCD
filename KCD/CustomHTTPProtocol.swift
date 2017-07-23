@@ -121,7 +121,7 @@ class CustomHTTPProtocol: URLProtocol {
     fileprivate var delegate: CustomHTTPProtocolDelegate? { return CustomHTTPProtocol.classDelegate }
     
     fileprivate var session: URLSession?
-    fileprivate var dataTask: URLSessionDataTask? 
+    fileprivate var dataTask: URLSessionDataTask?
     fileprivate var cachePolicy: URLCache.StoragePolicy = .notAllowed
     fileprivate var data: Data = Data()
     fileprivate var didRetry: Bool = false
