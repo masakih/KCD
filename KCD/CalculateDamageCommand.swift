@@ -10,6 +10,7 @@ import Cocoa
 import SwiftyJSON
 
 enum BattleType {
+    
     case normal
     case combinedAir
     case combinedWater
@@ -17,141 +18,136 @@ enum BattleType {
     case eachCombinedWater
     case enemyCombined
 }
+
 enum DamageControlID: Int {
+    
     case damageControl = 42
     case goddes = 43
 }
-enum BattleFleet {
-    case first
-    case second
-    case each
-}
 
-class CalculateDamageCommand: JSONCommand {
-    private let store = TemporaryDataStore.oneTimeEditor()
-    
-    var battleType: BattleType = .normal
-    var damages: [Damage] {
-        let array = store.sortedDamagesById()
-        if array.count != 12 {
-            buildDamagedEntity()
-            let newDamages = store.sortedDamagesById()
-            guard newDamages.count == 12
-                else {
-                    print("ERROR!!!! CAN NOT CREATE DAMAGE OBJECT")
-                    return []
-            }
-            return newDamages
-        }
-        return array
-    }
-    var isCombinedBattle: Bool {
-        switch battleType {
-        case .combinedAir, .combinedWater, .eachCombinedAir, .eachCombinedWater:
-            return true
-        default:
-            return false
-        }
-    }
+final class CalculateDamageCommand: JSONCommand {
     
     override func execute() {
+        
         guard let battleApi = BattleAPI(rawValue: api)
             else { return }
         
         switch battleApi {
         case .battle, .airBattle, .ldAirBattle:
-            calculateBattle()
+            normalBattle(battleType: .normal)
+            
         case .combinedEcBattle:
-            battleType = .enemyCombined
-            calcEnemyCombinedBattle()
+            enemyCombinedBattle(battleType: .enemyCombined)
+            
         case .combinedBattle, .combinedAirBattle:
-            battleType = .combinedAir
-            calcCombinedBattleAir()
+            combinedAirBattle(battleType: .combinedAir)
+            
         case .combinedBattleWater, .combinedLdAirBattle:
-            battleType = .combinedWater
-            calculateBattle()
+            normalBattle(battleType: .combinedWater)
+            
         case .combinedEachBattle:
-            battleType = .eachCombinedAir
-            calcEachBattleAir()
+            eachAirBattle(battleType: .eachCombinedAir)
+            
         case .combinedEachBattleWater:
-            battleType = .eachCombinedWater
-            calculateBattle()
+            normalBattle(battleType: .eachCombinedWater)
+            
         case .midnightBattle, .midnightSpMidnight:
-            calcMidnight()
+            midnightBattle(battleType: .normal)
+            
         case .combinedMidnightBattle, .combinedSpMidnight:
-            battleType = .combinedAir
-            calcMidnight()
+            midnightBattle(battleType: .combinedAir)
+            
         case .combinedEcMidnightBattle:
-            battleType = .eachCombinedAir
-            calcMidnight()
+            midnightBattle(battleType: .eachCombinedAir)
+            
         case .battleResult, .combinedBattleResult:
             applyDamage()
             resetDamage()
         }
     }
     
-    private func resetDamage() {
+    func normalBattle(battleType: BattleType) {
+        
+        updateBattleCell()
+        DamageCalculator(json, battleType).calculateBattle()
+    }
+    
+    func combinedAirBattle(battleType: BattleType) {
+        
+        updateBattleCell()
+        DamageCalculator(json, battleType).calcCombinedBattleAir()
+    }
+    
+    func eachAirBattle(battleType: BattleType) {
+        
+        updateBattleCell()
+        DamageCalculator(json, battleType).calcEachBattleAir()
+    }
+    
+    func enemyCombinedBattle(battleType: BattleType) {
+        
+        DamageCalculator(json, battleType).calcEnemyCombinedBattle()
+    }
+    
+    func midnightBattle(battleType: BattleType) {
+        
+        DamageCalculator(json, battleType).calcMidnight()
+    }
+}
+
+extension CalculateDamageCommand {
+    
+    func resetDamage() {
+        
+        let store = TemporaryDataStore.oneTimeEditor()
+        
         store.damages().forEach { store.delete($0) }
     }
-    private func applyDamage() {
+    
+    func applyDamage() {
+        
+        let store = TemporaryDataStore.oneTimeEditor()
+        
         let totalDamages = store.sortedDamagesById()
+        
         guard totalDamages.count == 12
             else { return print("Damages count is invalid. count is \(totalDamages.count).") }
+        
         let aStore = ServerDataStore.oneTimeEditor()
+        
         totalDamages.forEach {
+            
             guard let ship = aStore.ship(by: $0.shipID)
                 else { return }
             
             if ship.nowhp != $0.hp {
+                
                 Debug.print("\(ship.name)(\(ship.id)),HP \(ship.nowhp) -> \($0.hp)", level: .debug)
             }
             
             ship.nowhp = $0.hp
+            
             if $0.useDamageControl { removeFirstDamageControl(of: ship) }
         }
         
         Debug.print("------- End Battle", level: .debug)
     }
-    private func buildDamagedEntity() {
-        guard let battle = store.battle()
-            else { return print("Battle is invalid.") }
-        
-        let aStore = ServerDataStore.default
-        var ships: [Any] = []
-        
-        // 第一艦隊
-        let firstFleetShips = aStore.ships(byDeckId: battle.deckId)
-        ships += (firstFleetShips as [Any])
-        while ships.count != 6 {
-            ships.append(0)
-        }
-        
-        // 第二艦隊
-        let secondFleetShips = aStore.ships(byDeckId: 2)
-        ships += (secondFleetShips as [Any])
-        while ships.count != 12 {
-            ships.append(0)
-        }
-        ships.enumerated().forEach {
-            guard let damage = store.createDamage()
-                else { return print("Can not create Damage") }
-            damage.battle = battle
-            damage.id = $0.offset
-            if let ship = $0.element as? Ship {
-                damage.hp = ship.nowhp
-                damage.shipID = ship.id
-            }
-        }
-    }
     
     func updateBattleCell() {
+        
+        let store = TemporaryDataStore.default
+        
         guard let battle = store.battle()
             else { return print("Battle is invalid.") }
+        
         battle.battleCell = (battle.no == 0 ? nil : battle.no as NSNumber)
         
         Debug.excute(level: .debug) {
+            
             print("Enter Cell ------- ")
+            
             if let seiku = json["api_data"]["api_kouku"]["api_stage1"]["api_disp_seiku"].int {
+                
                 switch seiku {
                 case 0: print("制空権 均衡")
                 case 1: print("制空権 確保")
@@ -161,7 +157,9 @@ class CalculateDamageCommand: JSONCommand {
                 default: break
                 }
             }
+            
             if let intercept = json["api_data"]["api_formation"][2].int {
+                
                 switch intercept {
                 case 1: print("交戦形態 同航戦")
                 case 2: print("交戦形態 反航戦")
@@ -170,6 +168,61 @@ class CalculateDamageCommand: JSONCommand {
                 default: break
                 }
             }
+        }
+    }
+    
+    func removeFirstDamageControl(of ship: Ship) {
+        
+        let equiped = ship.equippedItem
+        let newEquiped = equiped.array
+        let store = ServerDataStore.default
+        var useDamageControl = false
+        
+        equiped.forEach {
+            
+            if useDamageControl { return }
+            
+            guard let master = $0 as? SlotItem
+                else { return }
+            
+            let masterSlotItemId = store.masterSlotItemID(by: master.id)
+            
+            guard let type = DamageControlID(rawValue: masterSlotItemId)
+                else { return }
+            
+            switch type {
+            case .goddes:
+                ship.fuel = ship.maxFuel
+                ship.bull = ship.maxBull
+                fallthrough
+                
+            case .damageControl:
+                if var equiped = newEquiped as? [SlotItem],
+                    let index = equiped.index(of: master) {
+                    
+                    equiped[index...index] = []
+                    ship.equippedItem = NSOrderedSet(array: equiped)
+                    useDamageControl = true
+                }
+            }
+        }
+        
+        if useDamageControl { return }
+        
+        // check extra slot
+        let exItemId = store.masterSlotItemID(by: ship.slot_ex)
+        
+        guard let exType = DamageControlID(rawValue: exItemId)
+            else { return }
+        
+        switch exType {
+        case .goddes:
+            ship.fuel = ship.maxFuel
+            ship.bull = ship.maxBull
+            fallthrough
+            
+        case .damageControl:
+            ship.slot_ex = -1
         }
     }
 }
