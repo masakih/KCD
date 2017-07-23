@@ -216,6 +216,7 @@
 		F4B3DC3F18E5C8870011B4FC /* BroserWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B3DC4118E5C8870011B4FC /* BroserWindowController.xib */; };
 		F4B3DC4C18F0C8A90011B4FC /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4B3DC4B18F0C8A90011B4FC /* Social.framework */; };
 		F4B3DC4E18F0C8FF0011B4FC /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4B3DC4D18F0C8FF0011B4FC /* Accounts.framework */; };
+		F4BBA21F1F243CA900E68743 /* DamageCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BBA21E1F243CA900E68743 /* DamageCalculator.swift */; };
 		F4BDEB47187252F30069D0CE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4BDEB46187252F30069D0CE /* Cocoa.framework */; };
 		F4BDEB51187252F30069D0CE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4BDEB4F187252F30069D0CE /* InfoPlist.strings */; };
 		F4BDEB5D187252F30069D0CE /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BDEB5B187252F30069D0CE /* MainMenu.xib */; };
@@ -556,6 +557,7 @@
 		F4B15CBC1E21BA870078CFFC /* CommandRegister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandRegister.swift; sourceTree = "<group>"; };
 		F4B3DC4B18F0C8A90011B4FC /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		F4B3DC4D18F0C8FF0011B4FC /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		F4BBA21E1F243CA900E68743 /* DamageCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DamageCalculator.swift; sourceTree = "<group>"; };
 		F4BDEB43187252F30069D0CE /* KCD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KCD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4BDEB46187252F30069D0CE /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F4BDEB49187252F30069D0CE /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -771,6 +773,7 @@
 				F4A0D7141E2FB11F00224DCE /* MapStartCommand.swift */,
 				F47C3EBD1E62718E00D97449 /* BattleCommand.swift */,
 				F4A0D7081E2BA2F300224DCE /* CalculateDamageCommand.swift */,
+				F4BBA21E1F243CA900E68743 /* DamageCalculator.swift */,
 				F47C3EB31E606C4300D97449 /* ResetSortie.swift */,
 				F44BC7401E2B263D004644E3 /* GuardShelterCommand.swift */,
 				F44BC73E1E2B1AD4004644E3 /* DummyShipCommand.swift */,
@@ -1560,6 +1563,7 @@
 				F47215AC1E1FA2460083D3BC /* TemporaryDataStore.swift in Sources */,
 				F4D05BC81E0C0DA100688D66 /* AirBaseWindowController.swift in Sources */,
 				F44BC70D1E27B601004644E3 /* MemberShip3Command.swift in Sources */,
+				F4BBA21F1F243CA900E68743 /* DamageCalculator.swift in Sources */,
 				F42A8FE41E41FD6F0099DC1D /* DropShipHistory.swift in Sources */,
 				F42A8FDC1E40B9FE0099DC1D /* SlotItem.swift in Sources */,
 				F4D05BE11E0FAB8E00688D66 /* ShipViewController.swift in Sources */,
