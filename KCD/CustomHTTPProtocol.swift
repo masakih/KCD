@@ -189,14 +189,16 @@ final class CustomHTTPProtocol: URLProtocol {
             
             use(cache)
             
-            // TODO: Debug.excuteに変更する
-            if let name = request.url?.lastPathComponent {
+            Debug.excute(level: .full) {
                 
-                Debug.print("Use cache for", name, level: .full)
-                
-            } else {
-                
-                Debug.print("Use cache", level: .full)
+                if let name = request.url?.lastPathComponent {
+                    
+                    print("Use cache for", name)
+                    
+                } else {
+                    
+                    print("Use cache")
+                }
             }
             
             return
