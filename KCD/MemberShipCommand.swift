@@ -8,13 +8,17 @@
 
 import Cocoa
 
-class MemberShipCommand: JSONCommand {
+final class MemberShipCommand: JSONCommand {
+    
     override class func canExecuteAPI(_ api: String) -> Bool {
+        
         if api == "/kcsapi/api_get_member/ship" { return true }
+        
         return false
     }
     
     override func execute() {
+        
         ShipMapper(apiResponse).commit()
     }
 }

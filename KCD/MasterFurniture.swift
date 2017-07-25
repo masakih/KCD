@@ -9,7 +9,8 @@
 import Cocoa
 
 // swiftlint:disable variable_name
-class MasterFurniture: KCManagedObject {
+final class MasterFurniture: KCManagedObject {
+    
     @NSManaged var description_: String?
     @NSManaged var id: NSNumber?
     @NSManaged var no: NSNumber?

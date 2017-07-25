@@ -8,13 +8,17 @@
 
 import Cocoa
 
-class Start2Command: JSONCommand {
+final class Start2Command: JSONCommand {
+    
     override class func canExecuteAPI(_ api: String) -> Bool {
+        
         if api == "/kcsapi/api_start2" { return true }
+        
         return false
     }
     
     override func execute() {
+        
         MasterMapAreaMapper(apiResponse).commit()
         MasterMapInfoMapper(apiResponse).commit()
         MasterSTypeMapper(apiResponse).commit()

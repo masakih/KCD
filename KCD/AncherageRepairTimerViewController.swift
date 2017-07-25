@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class AncherageRepairTimerViewController: NSViewController {
+final class AncherageRepairTimerViewController: NSViewController {
     
     static let regularHeight: CGFloat = 76
     static let smallHeight: CGFloat = regularHeight - 32
@@ -19,9 +19,11 @@ class AncherageRepairTimerViewController: NSViewController {
     
     dynamic var repairTime: NSNumber?
     override var nibName: String! {
+        
         return "AncherageRepairTimerViewController"
     }
     var controlSize: NSControlSize = .regular {
+        
         willSet {
             if controlSize == newValue { return }
             var frame = view.frame
@@ -38,21 +40,29 @@ class AncherageRepairTimerViewController: NSViewController {
     private var trackingArea: NSTrackingArea?
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         AppDelegate.shared.addCounterUpdate { [weak self] _ in
+            
             guard let `self` = self else { return }
+            
             self.repairTime = self.calcRepairTime()
         }
     }
+    
     override func mouseEntered(with event: NSEvent) {
+        
         screenshotButton.image = NSImage(named: "Camera")
     }
+    
     override func mouseExited(with event: NSEvent) {
+        
         screenshotButton.image = NSImage(named: "CameraDisabled")
     }
     
     private func refleshTrackingArea() {
+        
         view.trackingAreas
             .forEach { view.removeTrackingArea($0) }
         trackingArea = NSTrackingArea(rect: screenshotButton.frame,
@@ -60,14 +70,17 @@ class AncherageRepairTimerViewController: NSViewController {
                                       owner: self,
                                       userInfo: nil)
         if let trackingArea = trackingArea {
+            
             view.addTrackingArea(trackingArea)
         }
     }
     
     private func calcRepairTime() -> NSNumber? {
+        
         let complete = anchorageRepairManager.repairTime.timeIntervalSince1970
         let now = Date(timeIntervalSinceNow: 0.0).timeIntervalSince1970
         let diff = complete - now
+        
         return NSNumber(value: diff + 20.0 * 60)
     }
 }

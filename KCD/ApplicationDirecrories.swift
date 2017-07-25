@@ -9,7 +9,9 @@
 import Foundation
 
 private func supportDirName() -> String {
+    
     let main = Bundle.main
+    
     return main.bundleIdentifier
         ?? main.infoDictionary?["CFBundleName"] as? String
         ?? main.infoDictionary?["CFBundleExecutable"] as? String
@@ -27,35 +29,44 @@ struct ApplicationDirecrories {
     
     private static func searchedURL(for directory: FileManager.SearchPathDirectory) -> URL {
         
-        return FileManager.default.urls(for: directory,
-                                        in: .userDomainMask)
+        return FileManager.default.urls(for: directory, in: .userDomainMask)
             .last
             ?? URL(fileURLWithPath: NSHomeDirectory())
     }
 }
 
 func checkDirectory(_ url: URL) -> Bool {
+    
     var success = true
     
     do {
+        
         let p = try url.resourceValues(forKeys: [.isDirectoryKey])
         if !p.isDirectory! {
+            
             print("Expected a folder to store application data, found a file \(url.path).")
             success = false
         }
+        
     } catch {
+        
         let nserror = error as NSError
         if nserror.code == NSFileReadNoSuchFileError {
+            
             do {
+                
                 try FileManager
                     .default
                     .createDirectory(at: url,
                                      withIntermediateDirectories: false,
                                      attributes: nil)
+                
             } catch {
+                
                 success = false
             }
         } else {
+            
             success = false
         }
     }

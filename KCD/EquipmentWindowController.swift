@@ -8,10 +8,12 @@
 
 import Cocoa
 
-class EquipmentWindowController: NSWindowController {
+final class EquipmentWindowController: NSWindowController {
+    
     let managedObjectContext = ServerDataStore.default.context
     
     override var windowNibName: String! {
+        
         return "EquipmentWindowController"
     }
 }

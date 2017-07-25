@@ -9,12 +9,16 @@
 import Cocoa
 
 extension Notification.Name {
+    
     static let DidPrepareFleet = Notification.Name("com.masakih.KCD.Notification.DidPrepareFleet")
 }
 
-class FleetManager: NSObject {
+final class FleetManager: NSObject {
+    
     override init() {
+        
         super.init()
+        
         setupFleets()
     }
     
@@ -25,32 +29,49 @@ class FleetManager: NSObject {
                                of object: Any?,
                                change: [NSKeyValueChangeKey: Any]?,
                                context: UnsafeMutableRawPointer?) {
+        
         if keyPath == "arrangedObjects.ships" {
+            
             setNewFleetNumberToShip()
             return
+            
         }
+        
         super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
     }
     
     private func setupFleetController() {
+        
         fleetController = NSArrayController(content: fleets)
         fleetController.addObserver(self, forKeyPath: "arrangedObjects.ships", context: nil)
     }
+    
     private func setupFleets() {
+        
         fleets = (1...4).flatMap { Fleet(number: $0) }
+        
         guard fleets.count == 4 else { return print("Can not create Fleet") }
+        
         if fleets[0].ships.isEmpty {
+            
             let center = NotificationCenter.default
             var token: NSObjectProtocol!
             token = center.addObserver(forName: .PortAPIReceived, object: nil, queue: nil) {_ in
+                
                 center.removeObserver(token)
                 self.setupFleetController()
                 center.post(name: .DidPrepareFleet, object: self)
             }
-        } else { setupFleetController() }
+            
+        } else {
+            
+            setupFleetController()
+            
+        }
     }
     
     private func setNewFleetNumberToShip() {
+        
         let store = ServerDataStore.oneTimeEditor()
         
         // clear all
@@ -58,7 +79,9 @@ class FleetManager: NSObject {
         
         // set
         fleets.enumerated().forEach { (index, fleet) in
+            
             fleet.ships.forEach {
+                
                 store.ship(by: $0.id)?.fleet = (index + 1) as NSNumber
             }
         }

@@ -9,24 +9,33 @@
 import Cocoa
 
 fileprivate struct Register {
+    
     let prototype: ValueTransformer
     
     func register() {
+        
         ValueTransformer.setValueTransformer(prototype, forName: prototype.registerName())
     }
+    
     func register(name: String) {
+        
         let tName = NSValueTransformerName(name)
         ValueTransformer.setValueTransformer(prototype, forName: tName)
     }
 }
+
 extension ValueTransformer {
+    
     func registerName() -> NSValueTransformerName {
+        
         return NSValueTransformerName(String(describing: type(of: self)))
     }
 }
 
-class ValueTransformerRegister: NSObject {
+final class ValueTransformerRegister: NSObject {
+    
     class func registerAll() {
+        
         let valueTransformers: [ValueTransformer] = [
             SlotItemEquipTypeTransformer(),
             PlanToShowsBoldFontTransformer(),

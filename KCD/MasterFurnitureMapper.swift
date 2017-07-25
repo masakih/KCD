@@ -8,7 +8,8 @@
 
 import Cocoa
 
-class MasterFurnitureMapper: JSONMapper {
+final class MasterFurnitureMapper: JSONMapper {
+    
     typealias ObjectType = MasterFurniture
 
     let apiResponse: APIResponse
@@ -18,6 +19,7 @@ class MasterFurnitureMapper: JSONMapper {
                                              ignoreKeys: ["api_season"])
     
     required init(_ apiResponse: APIResponse) {
+        
         self.apiResponse = apiResponse
     }
 }

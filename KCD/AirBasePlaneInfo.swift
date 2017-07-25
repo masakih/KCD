@@ -10,7 +10,8 @@ import Foundation
 import CoreData
 
 // swiftlint:disable variable_name
-class AirBasePlaneInfo: KCManagedObject {
+final class AirBasePlaneInfo: KCManagedObject {
+    
     @NSManaged var squadron_id: Int
     @NSManaged var state: Int
     @NSManaged var slotid: Int

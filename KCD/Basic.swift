@@ -9,7 +9,8 @@
 import Foundation
 
 // swiftlint:disable variable_name
-class Basic: KCManagedObject {
+final class Basic: KCManagedObject {
+    
     @NSManaged var active_flag: NSNumber?
     @NSManaged var comment: String?
     @NSManaged var comment_id: NSNumber?

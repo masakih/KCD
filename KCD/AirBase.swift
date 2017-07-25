@@ -9,7 +9,8 @@
 import Foundation
 
 // swiftlint:disable variable_name
-class AirBase: KCManagedObject {
+final class AirBase: KCManagedObject {
+    
     @NSManaged var rid: Int
     @NSManaged var name: String
     @NSManaged var area_id: Int

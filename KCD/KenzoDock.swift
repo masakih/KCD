@@ -9,7 +9,8 @@
 import Foundation
 
 // swiftlint:disable variable_name
-class KenzoDock: KCManagedObject {
+final class KenzoDock: KCManagedObject {
+    
     @NSManaged var complete_time: Int
     @NSManaged var complete_time_str: String?
     @NSManaged var created_ship_id: Int

@@ -8,13 +8,20 @@
 
 import Cocoa
 
-class PlanToShowsBoldFontTransformer: ValueTransformer {
+final class PlanToShowsBoldFontTransformer: ValueTransformer {
+    
     override class func transformedValueClass() -> Swift.AnyClass {
+        
         return NSNumber.self
     }
+    
     override func transformedValue(_ value: Any?) -> Any? {
-        guard let v = value as? Int, v != 0 else { return false }
+        
+        guard let v = value as? Int, v != 0
+            else { return false }
+        
         if UserDefaults.standard.showsPlanColor { return true }
+        
         return false
     }
 }

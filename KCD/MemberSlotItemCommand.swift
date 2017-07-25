@@ -8,13 +8,17 @@
 
 import Cocoa
 
-class MemberSlotItemCommand: JSONCommand {
+final class MemberSlotItemCommand: JSONCommand {
+    
     override class func canExecuteAPI(_ api: String) -> Bool {
+        
         if api == "/kcsapi/api_get_member/slot_item" { return true }
+        
         return false
     }
     
     override func execute() {
+        
         SlotItemMapper(apiResponse).commit()
     }
 }

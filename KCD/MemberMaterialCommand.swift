@@ -8,13 +8,17 @@
 
 import Cocoa
 
-class MemberMaterialCommand: JSONCommand {
+final class MemberMaterialCommand: JSONCommand {
+    
     override class func canExecuteAPI(_ api: String) -> Bool {
+        
         if api == "/kcsapi/api_get_member/material" { return true }
+        
         return false
     }
     
     override func execute() {
+        
         MaterialMapper(apiResponse).commit()
     }
 }

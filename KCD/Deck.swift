@@ -9,7 +9,8 @@
 import Cocoa
 
 // swiftlint:disable variable_name
-class Deck: KCManagedObject {
+final class Deck: KCManagedObject {
+    
     @NSManaged var flagship: NSNumber?
     @NSManaged var id: Int
     @NSManaged var member_id: NSNumber?
@@ -29,7 +30,9 @@ class Deck: KCManagedObject {
 // swiftlint:eable variable_name
 
 extension Deck {
+    
     func setShip(id: Int, for position: Int) {
+        
         switch position {
         case 0: return ship_0 = id
         case 1: return ship_1 = id
@@ -40,7 +43,9 @@ extension Deck {
         default: fatalError("Deck.setShip: position out of range.")
         }
     }
+    
     func shipId(of position: Int) -> Int? {
+        
         switch position {
         case 0: return ship_0
         case 1: return ship_1
@@ -51,22 +56,32 @@ extension Deck {
         default: return nil
         }
     }
+    
     private func ship(ofId identifier: Int) -> Ship? {
-        guard let moc = self.managedObjectContext else { return nil }
+        
+        guard let moc = self.managedObjectContext
+            else { return nil }
+        
         let req = NSFetchRequest<Ship>(entityName: "Ship")
         req.predicate = NSPredicate(format: "id = %ld", identifier)
+        
         guard let ships = try? moc.fetch(req),
             let ship = ships.first
             else { return nil }
+        
         return ship as Ship
     }
     
     subscript(_ index: Int) -> Ship? {
-        guard let shipId = shipId(of: index) else { return nil }
+        
+        guard let shipId = shipId(of: index)
+            else { return nil }
+        
         return ship(ofId: shipId)
     }
     
     subscript(_ range: CountableClosedRange<Int>) -> [Ship] {
+        
         return range.flatMap { self[$0] }
     }
 }

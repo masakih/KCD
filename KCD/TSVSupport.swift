@@ -9,51 +9,75 @@
 import Cocoa
 
 fileprivate struct LFSeparateLine {
+    
     static let empty = LFSeparateLine(line: "", empty: true)
     
     let line: String
+    
     private let isEmpty: Bool
     
     init(line: String, empty: Bool = false) {
+        
         self.line = line
         isEmpty = empty
     }
+    
     func append(_ column: String) -> LFSeparateLine {
+        
         if isEmpty { return LFSeparateLine(line: column) }
+        
         let newLine = line + "\t" + column
+        
         return LFSeparateLine(line: newLine)
     }
+    
     func append(_ dateCol: Date) -> LFSeparateLine {
+        
         return append("\(dateCol)")
     }
+    
     func append(_ intCol: Int) -> LFSeparateLine {
+        
         return append("\(intCol)")
     }
+    
     func append(_ boolCol: Bool) -> LFSeparateLine {
+        
         return append("\(boolCol)")
     }
 }
 
 // swiftlint:disable type_body_length
-class TSVSupport {
+final class TSVSupport {
+    
     private let store = LocalDataStore.oneTimeEditor()
     
     private var dateFomatter: DateFormatter = {
+        
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy'-'MM'-'dd' 'HH':'mm':'ss' 'Z"
         return formatter
     }()
     
     func load() {
+        
         let panel = NSOpenPanel()
         panel.allowedFileTypes = ["kcdlocaldata"]
         panel.begin {
-            guard $0 == NSModalResponseOK else { return }
+            
+            guard $0 == NSModalResponseOK
+                else { return }
             
             panel.urls.forEach { url in
-                guard let fileW = try? FileWrapper(url: url) else { return }
+                
+                guard let fileW = try? FileWrapper(url: url)
+                    else { return }
+                
                 fileW.fileWrappers?.forEach {
-                    guard let data = $0.value.regularFileContents else { return }
+                    
+                    guard let data = $0.value.regularFileContents
+                        else { return }
+                    
                     switch $0.key {
                     case "kaihatu.tsv": self.registerKaihatuHistory(data)
                     case "kenzo.tsv": self.registerKenzoHistory(data)
@@ -66,10 +90,13 @@ class TSVSupport {
             }
         }
     }
+    
     func save() {
+        
         let panel = NSSavePanel()
         panel.allowedFileTypes = ["kcdlocaldata"]
         panel.begin {
+            
             guard $0 == NSModalResponseOK,
                 let url = panel.url
                 else { return }
@@ -78,27 +105,38 @@ class TSVSupport {
                 let kenzoMark = self.dataOfKenzoMark(),
                 let dropShipHistory = self.dataOfDropShipHistory()
                 else { return }
+            
             let fileW = FileWrapper(directoryWithFileWrappers: [:])
             fileW.addRegularFile(withContents: kaihatuHistory, preferredFilename: "kaihatu.tsv")
             fileW.addRegularFile(withContents: kenzoHistory, preferredFilename: "kenzo.tsv")
             fileW.addRegularFile(withContents: kenzoMark, preferredFilename: "kenzoMark.tsv")
             fileW.addRegularFile(withContents: dropShipHistory, preferredFilename: "dropShip.tsv")
             do {
+                
                 try fileW.write(to: url, originalContentsURL: nil)
-            } catch { print("Error to write") }
+                
+            } catch {
+                
+                print("Error to write")
+            }
         }
     }
     
     private func localData<T>(_ entity: Entity<T>, sortBy: String = "date") -> [T] {
+        
         let sortDesc = NSSortDescriptor(key: sortBy, ascending: true)
+        
         guard let array = try? store.objects(with: entity, sortDescriptors: [sortDesc])
             else {
                 print("Can not get \(entity.name)")
                 return []
         }
+        
         return array
     }
+    
     private func dataOfKaihatuHistory() -> Data? {
+        
         return localData(KaihatuHistory.entity)
             .map {
                 LFSeparateLine.empty
@@ -117,7 +155,9 @@ class TSVSupport {
             .joined(separator: "\n")
             .data(using: .utf8)
     }
+    
     private func dataOfKenzoHistory() -> Data? {
+        
         return localData(KenzoHistory.entity)
             .map {
             LFSeparateLine.empty
@@ -137,7 +177,9 @@ class TSVSupport {
             .joined(separator: "\n")
             .data(using: .utf8)
     }
+    
     private func dataOfKenzoMark() -> Data? {
+        
         return localData(KenzoMark.entity, sortBy: "kDockId")
             .map {
             LFSeparateLine.empty
@@ -157,7 +199,9 @@ class TSVSupport {
             .joined(separator: "\n")
             .data(using: .utf8)
     }
+    
     private func dataOfDropShipHistory() -> Data? {
+        
         return localData(DropShipHistory.entity)
             .map {
                 LFSeparateLine.empty
@@ -175,11 +219,15 @@ class TSVSupport {
             .joined(separator: "\n")
             .data(using: .utf8)
     }
+    
     private func registerKaihatuHistory(_ data: Data) {
+        
         let array = String(data: data, encoding: .utf8)?.components(separatedBy: "\n")
         let store = LocalDataStore.oneTimeEditor()
         array?.forEach {
+            
             let attr = $0.components(separatedBy: "\t")
+            
             guard attr.count == 10,
                 let date = dateFomatter.date(from: attr[0]),
                 let fuel = Int(attr[1]),
@@ -190,7 +238,9 @@ class TSVSupport {
                 let flagLv = Int(attr[8]),
                 let commandLv = Int(attr[9])
                 else { return }
+            
             let p = NSPredicate(format: "date = %@", argumentArray: [date])
+            
             guard let oo = try? store.objects(with: KaihatuHistory.entity, predicate: p),
                 oo.count != 0
                 else { return }
@@ -210,11 +260,16 @@ class TSVSupport {
             obj.commanderLv = commandLv
         }
     }
+    
     private func registerKenzoHistory(_ data: Data) {
+        
         let array = String(data: data, encoding: .utf8)?.components(separatedBy: "\n")
         let store = LocalDataStore.oneTimeEditor()
+        
         array?.forEach {
+            
             let attr = $0.components(separatedBy: "\t")
+            
             guard attr.count == 11,
                 let date = dateFomatter.date(from: attr[0]),
                 let fuel = Int(attr[1]),
@@ -226,7 +281,9 @@ class TSVSupport {
                 let flagLv = Int(attr[9]),
                 let commandLv = Int(attr[10])
                 else { return }
+            
             let p = NSPredicate(format: "date = %@", argumentArray: [date])
+            
             guard let oo = try? store.objects(with: KenzoHistory.entity, predicate: p),
                 oo.count != 0
                 else { return }
@@ -247,11 +304,16 @@ class TSVSupport {
             obj.commanderLv = commandLv
         }
     }
+    
     private func registerKenzoMark( _ data: Data) {
+        
         let array = String(data: data, encoding: .utf8)?.components(separatedBy: "\n")
         let store = LocalDataStore.oneTimeEditor()
+        
         array?.forEach {
+            
             let attr = $0.components(separatedBy: "\t")
+            
             guard attr.count == 11,
                 let date = dateFomatter.date(from: attr[0]),
                 let fuel = Int(attr[1]),
@@ -264,7 +326,9 @@ class TSVSupport {
                 let flagLv = Int(attr[9]),
                 let commandLv = Int(attr[10])
                 else { return }
+            
             let p = NSPredicate(format: "date = %@", argumentArray: [date])
+            
             guard let oo = try? store.objects(with: KenzoMark.entity, predicate: p),
                 oo.count != 0
                 else { return }
@@ -285,18 +349,25 @@ class TSVSupport {
             obj.commanderLv = commandLv
         }
     }
+    
     private func registerDropShipHistory( _ data: Data) {
+        
         let array = String(data: data, encoding: .utf8)?.components(separatedBy: "\n")
         let store = LocalDataStore.oneTimeEditor()
+        
         array?.forEach {
+            
             let attr = $0.components(separatedBy: "\t")
+            
             guard attr.count == 9,
                 let date = dateFomatter.date(from: attr[0]),
                 let mapInfo = Int(attr[3]),
                 let mapCell = Int(attr[4]),
                 let mark = Int(attr[7])
                 else { return }
+            
             let p = NSPredicate(format: "date = %@", argumentArray: [date])
+            
             guard let oo = try? store.objects(with: DropShipHistory.entity, predicate: p),
                 oo.count != 0
                 else { return }

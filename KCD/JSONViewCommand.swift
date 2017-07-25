@@ -10,13 +10,15 @@ import Cocoa
 
 #if ENABLE_JSON_LOG
 
-class JSONViewCommand: JSONCommand {
+final class JSONViewCommand: JSONCommand {
+    
     let jsonTree: [JSONNode]?
     let parameterList: [Any]
     let recieveDate: Date?
     let command: JSONCommand
     
     init(apiResponse: APIResponse, command: JSONCommand) {
+        
         self.recieveDate = Date()
         self.parameterList = apiResponse
             .parameter
@@ -25,24 +27,33 @@ class JSONViewCommand: JSONCommand {
             .nodeWithJSON(apiResponse.json)
             .map { [$0] }
         self.command = command
+        
         super.init(apiResponse: apiResponse)
     }
     
     required init(apiResponse: APIResponse) {
+        
         fatalError("use init(apiResponse:command:)")
     }
     
     override func execute() {
+        
         do {
+            
             try command.execute()
+            
         } catch {
+            
             print("JSONTracker Cought Exception -> \(error)")
         }
         
-        guard let _ = jsonTree else { return print("jsonTree is nil.") }
-        guard let _ = recieveDate else { return print("recieveDate is nil.") }
+        guard let _ = jsonTree
+            else { return print("jsonTree is nil.") }
+        guard let _ = recieveDate
+            else { return print("recieveDate is nil.") }
         
         DispatchQueue.main.async {
+            
             let commands: [String: Any] = [
                 "api": self.api,
                 "argument": self.parameterList,

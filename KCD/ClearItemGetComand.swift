@@ -8,13 +8,17 @@
 
 import Cocoa
 
-class ClearItemGetComand: JSONCommand {
+final class ClearItemGetComand: JSONCommand {
+    
     override class func canExecuteAPI(_ api: String) -> Bool {
+        
         if api == "/kcsapi/api_req_quest/clearitemget" { return true }
+        
         return false
     }
     
     override func execute() {
+        
         UpdateQuestListCommand(apiResponse: apiResponse).execute()
     }
 }

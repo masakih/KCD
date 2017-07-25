@@ -8,14 +8,18 @@
 
 import Cocoa
 
-class KenzoMarkCommand: JSONCommand {
+final class KenzoMarkCommand: JSONCommand {
+    
     override func execute() {
+        
         guard let kdockId = parameter["api_kdock_id"].int
             else { return print("api_kdock_id is wrong") }
         
         let store = ServerDataStore.default
+        
         guard let kenzoDock = store.kenzoDock(by: kdockId)
             else { return print("KenzoDock is not fount") }
+        
         let fuel = kenzoDock.item1
         let bull = kenzoDock.item2
         let steel = kenzoDock.item3
@@ -47,6 +51,7 @@ class KenzoMarkCommand: JSONCommand {
                          kdockId: kdockId,
                          shipId: shipId)
     }
+    
     // swiftlint:disable function_parameter_count
     private func markedValues(fuel: Int,
                               bull: Int,
@@ -55,7 +60,9 @@ class KenzoMarkCommand: JSONCommand {
                               kaihatu: Int,
                               kdockId: Int,
                               shipId: Int) -> (Int, String, Int) {
+        
         let store = LocalDataStore.default
+        
         if let kenzoMark = store.kenzoMark(fuel: fuel,
                                            bull: bull,
                                            steel: steel,
@@ -63,10 +70,12 @@ class KenzoMarkCommand: JSONCommand {
                                            kaihatusizai: kaihatu,
                                            kDockId: kdockId,
                                            shipId: shipId) {
+            
             return (kenzoMark.flagShipLv,
                     kenzoMark.flagShipName,
                     kenzoMark.commanderLv)
         }
+        
         return (-1, "", -1)
     }
 }

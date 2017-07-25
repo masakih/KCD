@@ -8,16 +8,20 @@
 
 import Cocoa
 
-class StrengthenListItemView: NSBox {
+final class StrengthenListItemView: NSBox {
+    
     override func draw(_ dirtyRect: NSRect) {
+        
         super.draw(dirtyRect)
         
         let bounds = self.bounds
         let width = bounds.width
         let height = bounds.height
+        
         borderColor.set()
         NSBezierPath.setDefaultLineWidth(borderWidth)
         NSBezierPath.stroke(bounds)
+        
         multiline(lines:
             [
                 (NSPoint(x: 29.5, y: 0), NSPoint(x: 29.5, y: height)),

@@ -9,26 +9,32 @@
 import Cocoa
 
 fileprivate extension Selector {
+    
     static let notifyIfNeeded = #selector(ResourceHistoryManager.notifyIfNeeded(_:))
 }
 
-class ResourceHistoryManager: NSObject {
+final class ResourceHistoryManager: NSObject {
+    
     private let periodicNotification: PeriodicNotifier
     
     override init() {
+        
         periodicNotification = PeriodicNotifier(hour: 23, minutes: 3)
+        
         super.init()
+        
         notifyIfNeeded(nil)
         NotificationCenter.default
-        .addObserver(forName: .Periodic,
-                     object: periodicNotification,
-                     queue: nil,
-                     using: reduce)
+            .addObserver(forName: .Periodic,
+                         object: periodicNotification,
+                         queue: nil,
+                         using: reduce)
     }
     
     private var timer: Timer?
     
     @objc fileprivate func notifyIfNeeded(_ timer: Timer?) {
+        
         if timer != nil { saveResources() }
         if let valid = timer?.isValid, valid { timer?.invalidate() }
         
@@ -40,8 +46,10 @@ class ResourceHistoryManager: NSObject {
             .flatMap { $0 + 5 }
             .flatMap { ($0 + 2) / 5 }
             .flatMap { $0 * 5 }
+        
         guard let notifyDate = Calendar.current.date(from: nowComp)
             else { return print("ResourceHistoryManager: Can not create notify date") }
+        
         let notifyTime = notifyDate.timeIntervalSinceNow
         self.timer = Timer.scheduledTimer(timeInterval: notifyTime,
                                           target: self,
@@ -49,16 +57,22 @@ class ResourceHistoryManager: NSObject {
                                           userInfo: nil,
                                           repeats: false)
     }
+    
     private func saveResources() {
+        
         let store = ServerDataStore.default
+        
         guard let material = store.material()
             else { return print("ResourceHistoryManager: Can not get Material") }
+        
         guard let basic = store.basic()
             else { return print("ResourceHistoryManager: Can not get Basic") }
         
         let historyStore = ResourceHistoryDataStore.oneTimeEditor()
+        
         guard let newHistory = historyStore.cerateResource()
             else { return print("ResourceHistoryManager: Can not create ResourceHIstory") }
+        
         let now = Date()
         var nowComp = Calendar.current
             .dateComponents([.year, .month, .day, .hour, .minute], from: now)
@@ -78,17 +92,22 @@ class ResourceHistoryManager: NSObject {
         newHistory.screw = material.screw
         newHistory.experience = basic.experience
     }
-    private func reduceResourceByConditions(_ store: ResourceHistoryDataStore,
-                                            _ target: [Int],
-                                            _ ago: Date) {
+    
+    private func reduceResourceByConditions(_ store: ResourceHistoryDataStore, _ target: [Int], _ ago: Date) {
+        
         store.resources(in: target, older: ago).forEach { store.delete($0) }
     }
+    
     private func dateOfMonth(_ month: Int) -> Date {
+        
         return Date(timeIntervalSinceNow: TimeInterval(month * 30 * 24 * 60 * 60))
     }
+    
     private func reduce(_ notification: Notification) {
+        
         let queue = DispatchQueue(label: "ResourceHistoryManager")
         queue.async {
+            
             let store = ResourceHistoryDataStore.oneTimeEditor()
             
             // 1 month

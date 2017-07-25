@@ -8,15 +8,19 @@
 
 import Cocoa
 
-class MemberDeckCommand: JSONCommand {
+final class MemberDeckCommand: JSONCommand {
+    
     override class func canExecuteAPI(_ api: String) -> Bool {
+        
         if api == "/kcsapi/api_get_member/deck" { return true }
         if api == "/kcsapi/api_get_member/deck_port" { return true }
         if api == "/kcsapi/api_req_hensei/preset_select" { return true }
+        
         return false
     }
     
     override func execute() {
+        
         DeckMapper(apiResponse).commit()
     }
 }

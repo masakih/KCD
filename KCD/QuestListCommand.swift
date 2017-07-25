@@ -8,12 +8,17 @@
 
 import Cocoa
 
-class QuestListCommand: JSONCommand {
+final class QuestListCommand: JSONCommand {
+    
     override class func canExecuteAPI(_ api: String) -> Bool {
+        
         if api == "/kcsapi/api_get_member/questlist" { return true }
+        
         return false
     }
+    
     override func execute() {
+        
         // 左のタブがAllじゃない時は無視する
         guard let tab = parameter["api_tab_id"].int,
             tab == 0
@@ -35,11 +40,15 @@ class QuestListCommand: JSONCommand {
         // 新しいデータ投入
         let quests = store.sortedQuestByNo()
         data["api_list"].forEach { (_, quest) in
+            
             guard let no = quest["api_no"].int
                 else { return }
+            
             let t = quests.binarySearch { $0.no ==? no }
+            
             guard let new = t ?? store.createQuest()
                 else { return print("Can not create Quest") }
+            
             new.bonus_flag = quest["api_bonus_flag"].int.map { $0 != 0} ?? false
             new.category = quest["api_category"].int ?? 0
             new.detail = quest["api_detail"].string ?? ""

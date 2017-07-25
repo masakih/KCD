@@ -8,23 +8,29 @@
 
 import Cocoa
 
-class ScreenshotDetailViewController: BridgeViewController {
+final class ScreenshotDetailViewController: BridgeViewController {
+    
     deinit {
+        
         arrayController.removeObserver(self, forKeyPath: NSSelectionIndexesBinding)
     }
     
     @IBOutlet var imageView: ImageView!
     
     override var nibName: String! {
+        
         return "ScreenshotDetailViewController"
     }
+    
     override var contentRect: NSRect {
+        
         return imageView.convert(imageView.imageRect, to: nil)
     }
     
     private var currentSelection: [ScreenshotInformation] = []
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         arrayController.addObserver(self, forKeyPath: NSSelectionIndexesBinding, context: nil)
@@ -35,8 +41,11 @@ class ScreenshotDetailViewController: BridgeViewController {
                                of object: Any?,
                                change: [NSKeyValueChangeKey: Any]?,
                                context: UnsafeMutableRawPointer?) {
+        
         if keyPath == NSSelectionIndexesBinding {
+            
             updateSelections()
+            
             return
         }
         
@@ -44,9 +53,12 @@ class ScreenshotDetailViewController: BridgeViewController {
     }
     
     private func updateSelections() {
+        
         guard let selection = arrayController.selectedObjects as? [ScreenshotInformation]
             else { return }
+        
         if currentSelection == selection { return }
+        
         imageView.images = selection.flatMap { NSImage(contentsOf: $0.url) }
         currentSelection = selection
     }

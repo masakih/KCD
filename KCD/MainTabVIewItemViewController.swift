@@ -10,6 +10,7 @@ import Cocoa
 
 @objc
 enum ShipType: Int {
+    
     case all = 0
     case destroyer = 1
     case lightCruiser = 2
@@ -21,6 +22,7 @@ enum ShipType: Int {
 }
 
 class MainTabVIewItemViewController: NSViewController {
+    
     let shipTypeCategories: [[Int]] = [
         [0],    // dummy
         [2],    // destoryer
@@ -36,12 +38,15 @@ class MainTabVIewItemViewController: NSViewController {
     dynamic var selectedShipType: ShipType = .all
     
     var shipTypePredicte: NSPredicate? {
+        
         switch selectedShipType {
         case .all:
             return nil
+            
         case .destroyer, .lightCruiser, .heavyCruiser,
              .aircraftCarrier, .battleShip, .submarine:
             return NSPredicate(format: "master_ship.stype.id IN %@", shipTypeCategories[selectedShipType.rawValue])
+            
         case .other:
             let omitTypes = shipTypeCategories
                 .enumerated()

@@ -9,7 +9,8 @@
 import Foundation
 
 // swiftlint:disable variable_name
-class MasterMission: KCManagedObject {
+final class MasterMission: KCManagedObject {
+    
     @NSManaged var details: String?
     @NSManaged var difficulty: NSNumber?
     @NSManaged var id: Int

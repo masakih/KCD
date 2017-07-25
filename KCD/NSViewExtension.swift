@@ -9,7 +9,9 @@
 import Cocoa
 
 extension NSView {
+    
     func setFrame(_ frame: NSRect, animate: Bool) {
+        
         (animate ? self.animator() : self).frame = frame
     }
 }

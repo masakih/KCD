@@ -9,12 +9,15 @@
 import Foundation
 
 extension NSObject {
+    
     func notifyChangeValue(forKey key: String) {
+        
         willChangeValue(forKey: key)
         didChangeValue(forKey: key)
     }
     
     func notifyChangeValue(forKey key: String, change f: () -> Void) {
+        
         willChangeValue(forKey: key)
         f()
         didChangeValue(forKey: key)

@@ -8,13 +8,17 @@
 
 import Cocoa
 
-class RemodelSlotCommand: JSONCommand {
+final class RemodelSlotCommand: JSONCommand {
+    
     override class func canExecuteAPI(_ api: String) -> Bool {
+        
         if api == "/kcsapi/api_req_kousyou/remodel_slot" { return true }
+        
         return false
     }
     
     override func execute() {
+        
         MaterialMapper(apiResponse).commit()
         RemodelSlotItemCommand(apiResponse: apiResponse).execute()
     }

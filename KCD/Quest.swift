@@ -9,7 +9,8 @@
 import Foundation
 
 // swiftlint:disable variable_name
-class Quest: KCManagedObject {
+final class Quest: KCManagedObject {
+    
     @NSManaged var bonus_flag: Bool
     @NSManaged var category: Int
     @NSManaged var detail: String
@@ -27,10 +28,14 @@ class Quest: KCManagedObject {
 // swiftlint:eable variable_name
 
 extension Quest {
+    
     class func keyPathsForValuesAffectingCompositStatus() -> Set<String> {
+        
         return ["state", "progress_flag"]
     }
+    
     dynamic var compositStatus: Int {
+        
         return progress_flag * 4 + state
     }
 }

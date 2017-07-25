@@ -8,7 +8,8 @@
 
 import Cocoa
 
-class SlotItemLevelView: NSTextField {
+final class SlotItemLevelView: NSTextField {
+    
     private static var sLevelMaskImage: CGImage?
     private static var sAirLevelMaskImage: CGImage?
     
@@ -18,16 +19,23 @@ class SlotItemLevelView: NSTextField {
     private let anglePoint: CGFloat = 4.0
     
     override init(frame frameRect: NSRect) {
+        
         super.init(frame: frameRect)
+        
         bind(#keyPath(slotItemLevel), to: slotItemController, withKeyPath: "selection.level", options: nil)
         bind(#keyPath(slotItemAlv), to: slotItemController, withKeyPath: "selection.alv", options: nil)
     }
+    
     required init?(coder: NSCoder) {
+        
         super.init(coder: coder)
+        
         bind(#keyPath(slotItemLevel), to: slotItemController, withKeyPath: "selection.level", options: nil)
         bind(#keyPath(slotItemAlv), to: slotItemController, withKeyPath: "selection.alv", options: nil)
     }
+    
     deinit {
+        
         unbind(#keyPath(slotItemLevel))
         unbind(#keyPath(slotItemAlv))
     }
@@ -35,42 +43,64 @@ class SlotItemLevelView: NSTextField {
     // MARK: - Variable
     dynamic var slotItemController = NSObjectController()
     dynamic var slotItemLevel: NSNumber? {
+        
         didSet { needsDisplay = true }
     }
+    
     dynamic var slotItemAlv: NSNumber? {
+        
         didSet { needsDisplay = true }
     }
+    
+    
     var slotItemID: NSNumber? {
         didSet {
             slotItemController.content = nil
-            guard let itemId = slotItemID as? Int else { return }
+            
+            guard let itemId = slotItemID as? Int
+                else { return }
+            
             slotItemController.content = ServerDataStore.default.slotItem(by: itemId)
             needsDisplay = true
         }
     }
+    
     private var maskImage: CGImage? {
+        
         if let alv = slotItemAlv as? Int, alv != 0 { return airLevelMaskImage }
         if let lv = slotItemLevel as? Int, lv != 0 { return levelMaskImage }
+        
         return nil
     }
+    
     private var levelMaskImage: CGImage {
+        
         if let r = SlotItemLevelView.sLevelMaskImage { return r }
         SlotItemLevelView.sLevelMaskImage = maskImage(middle1: 0.75, middle2: 0.85)
+        
         return SlotItemLevelView.sLevelMaskImage!
     }
+    
     private var airLevelMaskImage: CGImage {
+        
         if let r = SlotItemLevelView.sAirLevelMaskImage { return r }
         SlotItemLevelView.sAirLevelMaskImage = maskImage(middle1: 0.65, middle2: 0.75)
+        
         return SlotItemLevelView.sAirLevelMaskImage!
     }
+    
     private var levelOneBezierPath: NSBezierPath? {
+        
         let width = bounds.width
         let height = bounds.height
         let path = multiline { [(NSPoint(x: width - offset, y: 0), NSPoint(x: width - offset, y: height))] }
         path.lineWidth = 1.0
+        
         return path
     }
+    
     private var levelTwoBezierPath: NSBezierPath? {
+        
         let width = bounds.width
         let height = bounds.height
         let path = multiline {
@@ -81,9 +111,12 @@ class SlotItemLevelView: NSTextField {
             }
         }
         path.lineWidth = 1.0
+        
         return path
     }
+    
     private var levelThreeBezierPath: NSBezierPath? {
+        
         let width = bounds.width
         let height = bounds.height
         let path = multiline {
@@ -98,9 +131,12 @@ class SlotItemLevelView: NSTextField {
             }
         }
         path.lineWidth = 1.0
+        
         return path
     }
+    
     private var levelFourBezierPath: NSBezierPath? {
+        
         let width = bounds.width
         let height = bounds.height
         let path = multiline {
@@ -108,9 +144,12 @@ class SlotItemLevelView: NSTextField {
                 .appended { (NSPoint(x: width - offset - slideOffset, y: 0), NSPoint(x: width - offset, y: height)) }
         }
         path.lineWidth = 2.0
+        
         return path
     }
+    
     private var levelFiveBezierPath: NSBezierPath? {
+        
         let width = bounds.width
         let height = bounds.height
         let path = multiline {
@@ -122,9 +161,12 @@ class SlotItemLevelView: NSTextField {
             }
         }
         path.lineWidth = 2.0
+        
         return path
     }
+    
     private var levelSixBezierPath: NSBezierPath? {
+        
         let width = bounds.width
         let height = bounds.height
         let path = multiline {
@@ -140,9 +182,12 @@ class SlotItemLevelView: NSTextField {
             }
         }
         path.lineWidth = 2.0
+        
         return path
     }
+    
     private var levelSevenBezierPath: NSBezierPath? {
+        
         let width = bounds.width
         let height = bounds.height
         let path = polyline {
@@ -159,29 +204,41 @@ class SlotItemLevelView: NSTextField {
             }
             .map { path?.append($0) }
         path?.lineWidth = 2.0
+        
         return path
     }
+    
     private var levelFont: NSFont {
+        
         return NSFont.monospacedDigitSystemFont(ofSize: NSFont.smallSystemFontSize(), weight: NSFontWeightRegular)
     }
+    
     private var levelColor: NSColor {
+        
         return #colorLiteral(red: 0.135, green: 0.522, blue: 0.619, alpha: 1)
     }
     
     // MARK: - Function
     override func draw(_ dirtyRect: NSRect) {
+        
         guard let context = NSGraphicsContext.current()?.cgContext
             else { fatalError("Con not get current CGContext") }
+        
         context.saveGState()
         maskImage.map { context.clip(to: bounds, mask: $0) }
+        
         super.draw(dirtyRect)
+        
         context.restoreGState()
         
         drawLevel()
         drawAirLevel()
     }
+    
     private func maskImage(middle1: CGFloat, middle2: CGFloat) -> CGImage {
+        
         let colorspace = CGColorSpaceCreateDeviceGray()
+        
         guard let maskContext = CGContext(data: nil,
                                           width: Int(bounds.width),
                                           height: Int(bounds.height),
@@ -190,9 +247,13 @@ class SlotItemLevelView: NSTextField {
                                           space: colorspace,
                                           bitmapInfo: 0)
             else { fatalError("Can not create bitmap context") }
+        
         let maskGraphicsContext = NSGraphicsContext(cgContext: maskContext, flipped: false)
+        
+        
         NSGraphicsContext.saveGraphicsState()
         defer { NSGraphicsContext.restoreGraphicsState() }
+        
         NSGraphicsContext.setCurrent(maskGraphicsContext)
         
         let gradient = NSGradient(colorsAndLocations: (NSColor.white, 0.0),
@@ -200,11 +261,15 @@ class SlotItemLevelView: NSTextField {
                                   (NSColor.black, middle2),
                                   (NSColor.black, 1.0))
         gradient?.draw(in: bounds, angle: 0.0)
+        
         guard let r = maskContext.makeImage()
             else { fatalError(" can not create image from context") }
+        
         return r
     }
+    
     private func bezierPathForALevel(level: Int) -> NSBezierPath? {
+        
         switch level {
         case 1: return levelOneBezierPath
         case 2: return levelTwoBezierPath
@@ -216,37 +281,51 @@ class SlotItemLevelView: NSTextField {
         default: return nil
         }
     }
+    
     private func colorForALevel(level: Int) -> NSColor? {
+        
         switch level {
         case 1, 2, 3: return #colorLiteral(red: 0.257, green: 0.523, blue: 0.643, alpha: 1)
         case 4, 5, 6, 7: return #colorLiteral(red: 0.784, green: 0.549, blue: 0.000, alpha: 1)
         default: return nil
         }
     }
+    
     private func shadowForALevel(level: Int) -> NSShadow? {
+        
         switch level {
         case 1, 2, 3:
             let shadow = NSShadow()
             shadow.shadowColor = #colorLiteral(red: 0.095, green: 0.364, blue: 0.917, alpha: 1)
             shadow.shadowBlurRadius = 4.0
             return shadow
+            
         case 4, 5, 6, 7:
             let shadow = NSShadow()
             shadow.shadowColor = NSColor.yellow
             shadow.shadowBlurRadius = 3.0
             return shadow
+            
         default:
             return nil
         }
     }
+    
     private func drawAirLevel() {
-        guard let alv = slotItemAlv as? Int else { return }
+        
+        guard let alv = slotItemAlv as? Int
+            else { return }
+        
         colorForALevel(level: alv)?.set()
         shadowForALevel(level: alv)?.set()
         bezierPathForALevel(level: alv)?.stroke()
     }
+    
     private func drawLevel() {
-        guard let lv = slotItemLevel as? Int, lv != 0 else { return }
+        
+        guard let lv = slotItemLevel as? Int, lv != 0
+            else { return }
+        
         let string: String = lv == 10 ? "max" : "★+\(lv)"
         let attr: [String: Any] = [ NSFontAttributeName: levelFont,
                                      NSForegroundColorAttributeName: levelColor ]
@@ -255,6 +334,7 @@ class SlotItemLevelView: NSTextField {
         var rect = bounds
         rect.origin.x = rect.width - boundingRect.width - 1.0
         rect.origin.y = 0
+        
         attributedString.draw(in: rect)
     }
 }

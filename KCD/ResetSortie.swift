@@ -8,9 +8,12 @@
 
 import Foundation
 
-class ResetSortie {
+final class ResetSortie {
+    
     func reset() {
+        
         let store = TemporaryDataStore.oneTimeEditor()
+        
         store.battles().forEach { store.delete($0) }
     }
 }

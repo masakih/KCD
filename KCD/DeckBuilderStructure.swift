@@ -9,20 +9,24 @@
 import Foundation
 
 protocol DeckBuilderDescriptable {
+    
     var deckDescription: String { get }
 }
 
 struct DeckBuilderStructure {
+    
     let version: Int = 4
     let hqLv: Int?
     let fleets: [DBFleet]
 }
 
 struct DBFleet {
+    
     let ships: [DBShip]
 }
 
 struct DBShip {
+    
     let id: Int
     let lv: Int
     let luck: Int
@@ -31,12 +35,14 @@ struct DBShip {
 }
 
 struct DBItem {
+    
     let id: Int
     let lv: Int?
     let aLv: Int?
 }
 
 extension DeckBuilderStructure: DeckBuilderDescriptable {
+    
     var deckDescription: String {
         
         let verStr = "\"version\":\(version)"
@@ -54,6 +60,7 @@ extension DeckBuilderStructure: DeckBuilderDescriptable {
 }
 
 extension DBFleet: DeckBuilderDescriptable {
+    
     var deckDescription: String {
         
         return zip(1...6, ships)
@@ -63,6 +70,7 @@ extension DBFleet: DeckBuilderDescriptable {
 }
 
 extension DBShip: DeckBuilderDescriptable {
+    
     var deckDescription: String {
         
         return "\"id\":\"\(id)\",\"lv\":\(lv),\"luck\":\(luck),\"items\":{\(fullItemDesc)}"
@@ -91,6 +99,7 @@ extension DBShip: DeckBuilderDescriptable {
 }
 
 extension DBItem: DeckBuilderDescriptable {
+    
     var deckDescription: String {
         
         switch (lv, aLv) {

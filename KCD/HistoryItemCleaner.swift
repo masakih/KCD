@@ -8,12 +8,16 @@
 
 import Cocoa
 
-class HistoryItemCleaner {
+final class HistoryItemCleaner {
+    
     func cleanOldHistoryItems() {
+        
         guard UserDefaults.standard.cleanOldHistoryItems else {
             return
         }
+        
         let store = LocalDataStore.oneTimeEditor()
+        
         store.unmarkedKaihatuHistories(befor: UserDefaults.standard.cleanSiceDays)
             .forEach { store.delete($0) }
         store.unmarkedKenzoHistories(befor: UserDefaults.standard.cleanSiceDays)

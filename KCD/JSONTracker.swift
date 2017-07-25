@@ -8,30 +8,42 @@
 
 import Cocoa
 
-class JSONTracker {
+final class JSONTracker {
+    
     private let queue: Queue
     private let reciever: JSONReciever
     
     init() {
+        
         queue = Queue()
         reciever = JSONReciever(queue: queue)
+        
         start()
     }
+    
     deinit {
+        
         print("DEINIT")
     }
     
     private func doAction() {
+        
         guard let item = queue.dequeue() as? APIResponse
             else { return print("Dequeued item is not APIResponse") }
+        
         do {
+            
             try CommandRegister.command(for: item).execute()
+            
         } catch {
+            
             print("JSONTracker Cought Exception -> \(error)")
+            
         }
     }
     
     private func start() {
+        
         DispatchQueue(label: "JSONTracker")
             .async { while true { autoreleasepool { self.doAction() } } }
     }

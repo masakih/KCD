@@ -8,7 +8,8 @@
 
 import Foundation
 
-class Damage: KCManagedObject {
+final class Damage: KCManagedObject {
+    
     @NSManaged var id: Int
     @NSManaged var battle: Battle
     @NSManaged var hp: Int

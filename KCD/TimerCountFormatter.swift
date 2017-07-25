@@ -8,14 +8,18 @@
 
 import Cocoa
 
-class TimerCountFormatter: Formatter {
+final class TimerCountFormatter: Formatter {
+    
     override func string(for obj: Any?) -> String? {
+        
         let v: Double? = {
             if let o = obj as? NSNumber { return o.doubleValue }
             if let o = obj as? Date { return Double(o.timeIntervalSince1970) }
             return nil
         }()
-        guard let value = v else { return "" }
+        
+        guard let value = v
+            else { return "" }
         
         let minus = value < 0
         var interval = minus ? -value : value

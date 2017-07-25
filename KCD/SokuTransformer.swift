@@ -9,25 +9,35 @@
 import Cocoa
 
 fileprivate enum SokuType: Int {
+    
     case slow = 5
     case fast = 10
     case faster = 15
     case fastest = 20
 }
 
-class SokuTransformer: ValueTransformer {
+final class SokuTransformer: ValueTransformer {
+    
     override class func transformedValueClass() -> AnyClass {
+        
         return NSString.self
     }
+    
     override func transformedValue(_ value: Any?) -> Any? {
-        guard let v = value as? Int, let type = SokuType(rawValue: v) else { return nil }
+        
+        guard let v = value as? Int, let type = SokuType(rawValue: v)
+            else { return nil }
+        
         switch type {
         case .slow:
             return NSLocalizedString("Slow", comment: "Speed, slow")
+            
         case .fast:
             return NSLocalizedString("Fast", comment: "Speed, fast")
+            
         case .faster:
             return NSLocalizedString("Faster", comment: "Speed, faster")
+            
         case .fastest:
             return NSLocalizedString("Fastest", comment: "Speed, fastest")
         }

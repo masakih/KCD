@@ -9,26 +9,33 @@
 import Cocoa
 
 fileprivate enum BookmarkMenuTag: Int {
+    
     case bookmark = 5000
     case separator = 9999
 }
 
-class BookmarkManager: NSObject, NSMenuDelegate {
+final class BookmarkManager: NSObject, NSMenuDelegate {
+    
     private static let sharedInstance: BookmarkManager = BookmarkManager()
     
     class func shared() -> BookmarkManager {
+        
         return sharedInstance
     }
     
     private let bookmarksController: NSArrayController
     
     private override init() {
+        
         bookmarksController = NSArrayController()
+        
         super.init()
+        
         bookmarksController.managedObjectContext = self.manageObjectContext
         bookmarksController.entityName = Bookmark.entityName
         let sort = NSSortDescriptor(key: "order", ascending: true)
         bookmarksController.sortDescriptors = [sort]
+        
         let mainMenu = NSApplication.shared().mainMenu
         let bItem = mainMenu?.item(withTag: BookmarkMenuTag.bookmark.rawValue)
         bookmarkMenu = bItem?.submenu
@@ -39,43 +46,58 @@ class BookmarkManager: NSObject, NSMenuDelegate {
     private(set) var editorStore: BookmarkDataStore = BookmarkDataStore.oneTimeEditor()
     private var bookmarkMenu: NSMenu!
     var manageObjectContext = BookmarkDataStore.default.context
+    
     var bookmarks: [Bookmark] {
+        
         bookmarksController.fetch(nil)
+        
         guard let items = bookmarksController.arrangedObjects as? [Bookmark]
             else { return [] }
+        
         return items
     }
     
     func createNewBookmark() -> Bookmark? {
+        
         guard let maxOrder = bookmarksController.value(forKeyPath: "arrangedObjects.@max.order") as? Int
             else {
                 print("BookmarkManager: Can no convert max order to Int")
                 return nil
         }
+        
         guard let new = editorStore.createBookmark()
             else {
                 print("BookmarkManager: Can not insert BookMarkItem")
                 return nil
         }
+        
         new.identifier = String(format: "B%@", arguments: [NSDate()])
         new.order = maxOrder + 100
         
         DispatchQueue.main.asyncAfter(deadline: .now()) {
+            
             self.editorStore.save()
         }
         
         return new
     }
+    
     func menuNeedsUpdate(_ menu: NSMenu) {
+        
         buildBookmarkMenu()
     }
+    
     private func buildBookmarkMenu() {
+        
+        // TODO: replace to forEach
         for item in bookmarkMenu.items.reversed() {
+            
             if item.tag == BookmarkMenuTag.separator.rawValue { break }
             bookmarkMenu.removeItem(item)
         }
         
         bookmarks.forEach {
+            
             let item = NSMenuItem(title: $0.name,
                                   action: #selector(ExternalBrowserWindowController.selectBookmark(_:)),
                                   keyEquivalent: "")

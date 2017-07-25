@@ -9,27 +9,34 @@
 import CoreData
 
 struct Entity<T: NSManagedObject> {
+    
     let name: String
     
     init(name: String, type: T.Type) {
+        
         self.name = name
     }
 }
 
 protocol EntityProvider {
+    
     associatedtype ObjectType: NSManagedObject = Self
     
     static var entityName: String { get }
     static var entity: Entity<ObjectType> { get }
 }
+
 extension EntityProvider {
+    
     static var entity: Entity<ObjectType> {
+        
         return Entity(name: entityName, type: ObjectType.self)
     }
 }
 
 // MARK: - Implementations
 extension NSManagedObject {
+    
     class var entityName: String { return String(describing: self) }
 }
 

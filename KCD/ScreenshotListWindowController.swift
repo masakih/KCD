@@ -8,7 +8,8 @@
 
 import Cocoa
 
-class ScreenshotListWindowController: NSWindowController {
+final class ScreenshotListWindowController: NSWindowController {
+    
     @IBOutlet weak var shareButton: NSButton!
     @IBOutlet var rightController: NSViewController!
     @IBOutlet weak var left: NSView!
@@ -27,15 +28,19 @@ class ScreenshotListWindowController: NSWindowController {
     }()
     
     var filterPredicate: NSPredicate? = nil {
+        
         didSet {
             listViewController.screenshots.filterPredicate = filterPredicate
         }
     }
     
     override var windowNibName: String! {
+        
         return "ScreenshotListWindowController"
     }
+    
     override func windowDidLoad() {
+        
         super.windowDidLoad()
         
         viewControllers.append(listViewController)
@@ -49,7 +54,7 @@ class ScreenshotListWindowController: NSWindowController {
         
         rightController.addChildViewController(editorViewController)
         // force load view.
-        let _ = editorViewController.view
+        _ = editorViewController.view
         editorViewController.representedObject = listViewController.screenshots
         
         currentRightViewController = detailViewController
@@ -58,6 +63,7 @@ class ScreenshotListWindowController: NSWindowController {
     }
     
     func replaceView(_ view: NSView, viewController: NSViewController) {
+        
         viewController.view.frame = view.frame
         viewController.view.setFrameOrigin(.zero)
         viewController.view.autoresizingMask = view.autoresizingMask
@@ -65,20 +71,26 @@ class ScreenshotListWindowController: NSWindowController {
     }
     
     func registerScreenshot(_ image: NSBitmapImageRep, fromOnScreen: NSRect) {
+        
         listViewController.registerScreenshot(image, fromOnScreen: fromOnScreen)
     }
     
     @IBAction func share(_ sender: AnyObject?) {
+        
         currentRightViewController?.share(sender)
     }
+    
     @IBAction func changeToEditor(_ sender: AnyObject?) {
+        
         rightController.transition(from: detailViewController,
                                    to: editorViewController,
                                    options: [.slideLeft],
                                    completionHandler: nil)
         currentRightViewController = editorViewController
     }
+    
     @IBAction func changeToDetail(_ sender: AnyObject?) {
+        
         rightController.transition(from: editorViewController,
                                    to: detailViewController,
                                    options: [.slideRight],
@@ -88,39 +100,54 @@ class ScreenshotListWindowController: NSWindowController {
 }
 
 extension ScreenshotListWindowController: NSSharingServicePickerDelegate {
+    
     func sharingServicePicker(_ sharingServicePicker: NSSharingServicePicker,
                               delegateFor sharingService: NSSharingService) -> NSSharingServiceDelegate? {
+        
         return currentRightViewController
     }
 }
 
 extension ScreenshotListWindowController: NSSplitViewDelegate {
+    
     private static let leftMinWidth: CGFloat = 299
     private static let rightMinWidth: CGFloat = 400
     
     func splitView(_ splitView: NSSplitView,
                    constrainMinCoordinate proposedMinimumPosition: CGFloat,
                    ofSubviewAt dividerIndex: Int) -> CGFloat {
+        
         if dividerIndex == 0 { return ScreenshotListWindowController.leftMinWidth }
+        
         return proposedMinimumPosition
     }
+    
     func splitView(_ splitView: NSSplitView,
                    constrainSplitPosition proposedPosition: CGFloat,
                    ofSubviewAt dividerIndex: Int) -> CGFloat {
+        
         if dividerIndex == 0 {
+            
             let rightWidth = splitView.frame.size.width - proposedPosition
+            
             if rightWidth < ScreenshotListWindowController.rightMinWidth {
+                
                 return splitView.frame.size.width - ScreenshotListWindowController.rightMinWidth
             }
         }
+        
         return proposedPosition
     }
+    
     func splitView(_ splitView: NSSplitView, resizeSubviewsWithOldSize oldSize: NSSize) {
+        
         splitView.adjustSubviews()
         
         let leftView = splitView.subviews[0]
         let rightView = splitView.subviews[1]
+        
         if leftView.frame.width < ScreenshotListWindowController.leftMinWidth {
+            
             var leftRect = leftView.frame
             leftRect.size.width = ScreenshotListWindowController.leftMinWidth
             leftView.frame = leftRect
@@ -131,26 +158,35 @@ extension ScreenshotListWindowController: NSSplitViewDelegate {
             rightView.frame = rightRect
         }
     }
+    
     func splitView(_ splitView: NSSplitView, shouldAdjustSizeOfSubview view: NSView) -> Bool {
+        
         let leftView = splitView.subviews[0]
         let rightView = splitView.subviews[1]
+        
         if leftView == view {
+            
             if leftView.frame.width < ScreenshotListWindowController.leftMinWidth { return false }
         }
         if rightView == view {
+            
             if leftView.frame.width >= ScreenshotListWindowController.leftMinWidth { return false }
         }
+        
         return true
     }
 }
 
 @available(OSX 10.12.2, *)
 extension ScreenshotListWindowController: NSSharingServicePickerTouchBarItemDelegate {
+    
     override func makeTouchBar() -> NSTouchBar? {
+        
         return listViewController.touchBar
     }
     
     func items(for pickerTouchBarItem: NSSharingServicePickerTouchBarItem) -> [Any] {
+        
         return currentRightViewController?.items(for: pickerTouchBarItem) ?? []
     }
 }

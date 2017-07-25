@@ -8,13 +8,17 @@
 
 import Cocoa
 
-class PowerUpCommand: JSONCommand {
+final class PowerUpCommand: JSONCommand {
+    
     override class func canExecuteAPI(_ api: String) -> Bool {
+        
         if api == "/kcsapi/api_req_kaisou/powerup" { return true }
+        
         return false
     }
     
     override func execute() {
+        
         ShipMapper(apiResponse).commit()
         DeckMapper(apiResponse).commit()
         RealPowerUpCommand(apiResponse: apiResponse).execute()

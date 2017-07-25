@@ -9,7 +9,8 @@
 import Foundation
 
 // swiftlint:disable variable_name
-class MasterMapInfo: KCManagedObject {
+final class MasterMapInfo: KCManagedObject {
+    
     @NSManaged var id: Int
     @NSManaged var infotext: String
     @NSManaged var item_0: NSNumber?

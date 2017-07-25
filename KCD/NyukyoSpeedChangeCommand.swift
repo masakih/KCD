@@ -8,16 +8,23 @@
 
 import Cocoa
 
-class NyukyoSpeedChangeCommand: JSONCommand {
+final class NyukyoSpeedChangeCommand: JSONCommand {
+    
     override class func canExecuteAPI(_ api: String) -> Bool {
+        
         if api == "/kcsapi/api_req_nyukyo/speedchange" { return true }
+        
         return false
     }
+    
     override func execute() {
+        
         let store = ServerDataStore.oneTimeEditor()
+        
         let nDock = parameter["api_ndock_id"]
             .int
             .flatMap { store.nyukyoDock(by: $0) }
+        
         nDock
             .flatMap { $0.ship_id }
             .flatMap { store.ship(by: $0) }

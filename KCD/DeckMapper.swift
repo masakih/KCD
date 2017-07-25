@@ -9,6 +9,7 @@
 import Cocoa
 
 fileprivate enum DeckAPI: String {
+    
     case getMemberDeck = "/kcsapi/api_get_member/deck"
     case port = "/kcsapi/api_port/port"
     case getMemberShip2 = "/kcsapi/api_get_member/ship2"
@@ -20,25 +21,34 @@ fileprivate enum DeckAPI: String {
 }
 
 fileprivate func dataKeys(_ apiResponse: APIResponse) -> [String] {
+    
     guard let deckApi = DeckAPI(rawValue: apiResponse.api)
         else { return ["api_data"] }
+    
     switch deckApi {
     case .port: return ["api_data", "api_deck_port"]
+        
     case .getMemberShip2: return ["api_data_deck"]
+        
     case .getMemberShip3: return ["api_data", "api_deck_data"]
+        
     case .getMemberShipDeck: return ["api_data", "api_deck_data"]
+        
     case .kaisouPowerUp: return ["api_data", "api_deck"]
+        
     default: return ["api_data"]
     }
 }
 
-class DeckMapper: JSONMapper {
+final class DeckMapper: JSONMapper {
+    
     typealias ObjectType = Deck
     
     let apiResponse: APIResponse
     let configuration: MappingConfiguration<Deck>
     
     required init(_ apiResponse: APIResponse) {
+        
         self.apiResponse = apiResponse
         self.configuration = MappingConfiguration(entity: Deck.entity,
                                                   dataKeys: dataKeys(apiResponse),

@@ -8,7 +8,8 @@
 
 import Foundation
 
-class MasterMapArea: KCManagedObject {
+final class MasterMapArea: KCManagedObject {
+    
     @NSManaged var id: Int
     @NSManaged var name: String
     @NSManaged var type: NSNumber?

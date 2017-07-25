@@ -9,7 +9,8 @@
 import Foundation
 
 // swiftlint:disable variable_name
-class NyukyoDock: KCManagedObject {
+final class NyukyoDock: KCManagedObject {
+    
     @NSManaged var complete_time: Int
     @NSManaged var complete_time_str: String?
     @NSManaged var id: Int

@@ -8,13 +8,17 @@
 
 import Cocoa
 
-class GetShipCommand: JSONCommand {
+final class GetShipCommand: JSONCommand {
+    
     override class func canExecuteAPI(_ api: String) -> Bool {
+        
         if api == "/kcsapi/api_req_kousyou/getship" { return true }
+        
         return false
     }
     
     override func execute() {
+        
         SlotItemMapper(apiResponse).commit()
         ShipMapper(apiResponse).commit()
         KenzoMarkCommand(apiResponse: apiResponse).execute()

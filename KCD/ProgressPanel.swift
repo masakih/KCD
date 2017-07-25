@@ -8,12 +8,14 @@
 
 import Cocoa
 
-class ProgressPanel: NSWindowController {
+final class ProgressPanel: NSWindowController {
+    
     var title: String = ""
     var message: String = ""
     var animate: Bool = false
     
     override var windowNibName: String! {
+        
         return "ProgressPanel"
     }
 }

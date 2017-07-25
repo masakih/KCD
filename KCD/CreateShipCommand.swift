@@ -8,20 +8,29 @@
 
 import Cocoa
 
-class CreateShipCommand: JSONCommand {
+final class CreateShipCommand: JSONCommand {
+    
     override class func canExecuteAPI(_ api: String) -> Bool {
+        
         if api == "/kcsapi/api_req_kousyou/createship" { return true }
+        
         return false
     }
+    
     override func execute() {
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             self.afterExecute()
         }
     }
+    
     private func afterExecute() {
+        
         guard let dockId = parameter["api_kdock_id"].int
             else { return print("api_kdock_id is wrong") }
+        
         let store = ServerDataStore.default
+        
         guard let kenzoDock = store.kenzoDock(by: dockId),
             let flagShip = store.deck(by: 1)
                 .flatMap({ store.ship(by: $0.ship_0) }),
@@ -29,6 +38,7 @@ class CreateShipCommand: JSONCommand {
             else { return print("CreateShipCommand: CoreData is wrong") }
         
         let localStore = LocalDataStore.oneTimeEditor()
+        
         guard let newMark = localStore.kenzoMark(byDockId: dockId) ?? localStore.createKenzoMark()
             else { return print("Can not create KenzoMark") }
         

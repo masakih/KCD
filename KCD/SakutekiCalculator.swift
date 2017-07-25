@@ -9,20 +9,24 @@
 import Foundation
 
 protocol SakutekiCalculator {
+    
     func calculate(_ ships: [Ship]) -> Double
 }
 
-class SimpleCalculator: SakutekiCalculator {
+final class SimpleCalculator: SakutekiCalculator {
+    
     func calculate(_ ships: [Ship]) -> Double {
+        
         return Double(ships.reduce(0) { $0.0 + $0.1.sakuteki_0 })
     }
 }
 
-class Formula33: SakutekiCalculator {
+final class Formula33: SakutekiCalculator {
     
     let condition: Int
     
     init(_ condition: Int = 1) {
+        
         self.condition = condition
     }
     
@@ -77,6 +81,7 @@ class Formula33: SakutekiCalculator {
             .flatMap { $0 as? SlotItem }
             .flatMap { $0.master_slotItem.saku as? Double }
             .reduce(0, +)
+        
         return Double(ship.sakuteki_0) - eqSakuteki
     }
     
@@ -102,9 +107,11 @@ class Formula33: SakutekiCalculator {
         
         return Double(condition) * ratio * (saku + lvBounus)
     }
+    
     private func typeRatio(_ item: SlotItem) -> Double {
         
         let type2 = item.master_slotItem.type_2
+        
         guard let eqType = EquipmentType(rawValue: type2)
             else { return 1 }
         
@@ -131,6 +138,7 @@ class Formula33: SakutekiCalculator {
         default: return 0
         }
     }
+    
     private func levelBounus(_ item: SlotItem) -> Double {
         
         let level = item.level
@@ -139,9 +147,11 @@ class Formula33: SakutekiCalculator {
         
         return ratio * sqrt(Double(level))
     }
+    
     private func levelRatio(_ item: SlotItem) -> Double {
         
         let type2 = item.master_slotItem.type_2
+        
         guard let eqType = EquipmentType(rawValue: type2)
             else { return 1 }
         

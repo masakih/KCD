@@ -10,11 +10,13 @@ import Cocoa
 import SwiftyJSON
 
 class JSONCommand {
+    
     class func canExecuteAPI(_ api: String) -> Bool { return false }
     
     let apiResponse: APIResponse
     
     required init(apiResponse: APIResponse) {
+        
         self.apiResponse = apiResponse
     }
     

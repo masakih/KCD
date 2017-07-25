@@ -9,7 +9,8 @@
 import Cocoa
 import SwiftyJSON
 
-class AirBaseMapper: JSONMapper {
+final class AirBaseMapper: JSONMapper {
+    
     typealias ObjectType = AirBase
     
     let apiResponse: APIResponse
@@ -19,17 +20,24 @@ class AirBaseMapper: JSONMapper {
                                              editorStore: ServerDataStore.oneTimeEditor())
     
     required init(_ apiResponse: APIResponse) {
+        
         self.apiResponse = apiResponse
     }
 
     func handleExtraValue(_ value: JSON, forKey key: String, to airbase: AirBase) -> Bool {
+        
         if key != "api_plane_info" { return false }
         
         if airbase.planeInfo.count == 0 {
+            
             if let store = configuration.editorStore as? ServerDataStore {
+                
                 let new: [AirBasePlaneInfo] = (0..<4).flatMap {_ in
+                    
                     store.createAirBasePlaneInfo()
+                    
                 }
+                
                 airbase.planeInfo = NSOrderedSet(array: new)
             }
         }
@@ -39,19 +47,25 @@ class AirBaseMapper: JSONMapper {
                 print("value is wrong")
                 return false
         }
+        
         guard let infos = airbase.planeInfo.array as? [AirBasePlaneInfo]
             else {
                 print("airbase is wrong")
                 return false
         }
+        
         zip(infos, planeInfos).forEach { (info, dict) in
+            
             guard let slotid = dict["api_slotid"].int,
                 slotid != 0
                 else { return }
+            
             guard let state = dict["api_state"].int,
                 let squadronid = dict["api_squadron_id"].int
                 else { return }
+            
             if state == 2 {
+                
                 info.cond = 0
                 info.count = 0
                 info.max_count = 0
@@ -59,6 +73,7 @@ class AirBaseMapper: JSONMapper {
                 info.squadron_id = squadronid
                 info.state = state
                 info.airBase = airbase
+                
                 return
             }
 
@@ -66,6 +81,7 @@ class AirBaseMapper: JSONMapper {
                 let count = dict["api_count"].int,
                 let maxCount = dict["api_max_count"].int
                 else { return print("planeInfos is wrong") }
+            
             info.cond = cond
             info.count = count
             info.max_count = maxCount
@@ -74,6 +90,7 @@ class AirBaseMapper: JSONMapper {
             info.state = state
             info.airBase = airbase
         }
+        
         return true
     }
 }

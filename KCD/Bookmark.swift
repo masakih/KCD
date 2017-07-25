@@ -8,7 +8,8 @@
 
 import Cocoa
 
-class Bookmark: NSManagedObject {
+final class Bookmark: NSManagedObject {
+    
     @NSManaged var identifier: String
     @NSManaged var name: String
     @NSManaged var urlString: String
@@ -21,26 +22,37 @@ class Bookmark: NSManagedObject {
 }
 
 extension Bookmark {
+    
     var windowContentSize: NSSize {
+        
         get { return NSSizeFromString(windowContentSizeString) }
         set { windowContentSizeString = NSStringFromSize(newValue) }
     }
+    
     var contentVisibleRect: NSRect {
+        
         get { return NSRectFromString(contentVisibleRectString) }
         set { contentVisibleRectString = NSStringFromRect(newValue) }
     }
+    
     var scrollDelay: TimeInterval {
+        
         get { return TimeInterval(scrollDelayValue) }
         set { scrollDelayValue = Float(newValue) }
     }
 }
 
 extension Bookmark: NSPasteboardWriting {
+    
     func writableTypes(for pasteboard: NSPasteboard) -> [String] {
+        
         return ["com.masakih.KCD.BookmarkItem"]
     }
+    
     func pasteboardPropertyList(forType type: String) -> Any? {
+        
         let uri = objectID.uriRepresentation()
+        
         return NSKeyedArchiver.archivedData(withRootObject: uri)
     }
 }

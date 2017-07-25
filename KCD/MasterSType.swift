@@ -8,7 +8,8 @@
 
 import Foundation
 
-class MasterSType: KCManagedObject {
+final class MasterSType: KCManagedObject {
+    
     @NSManaged var id: Int
     @NSManaged var kcnt: NSNumber?
     @NSManaged var name: String

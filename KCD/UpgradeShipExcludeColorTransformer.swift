@@ -8,15 +8,23 @@
 
 import Cocoa
 
-class UpgradeShipExcludeColorTransformer: ValueTransformer {
+final class UpgradeShipExcludeColorTransformer: ValueTransformer {
+    
     override class func transformedValueClass() -> AnyClass {
+        
         return NSColor.self
     }
+    
     override func transformedValue(_ value: Any?) -> Any? {
-        guard let v = value as? Int else { return nil }
+        
+        guard let v = value as? Int
+            else { return nil }
+        
         if UpgradableShipsWindowController.isExcludeShipID(v) {
+            
             return NSColor.lightGray
         }
+        
         return NSColor.controlTextColor
     }
 }

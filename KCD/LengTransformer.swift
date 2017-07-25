@@ -9,25 +9,35 @@
 import Cocoa
 
 fileprivate enum LengType: Int {
+    
     case short = 1
     case middle
     case long
     case overLong
 }
 
-class LengTransformer: ValueTransformer {
+final class LengTransformer: ValueTransformer {
+    
     override class func transformedValueClass() -> AnyClass {
+        
         return NSString.self
     }
+    
     override func transformedValue(_ value: Any?) -> Any? {
-        guard let v = value as? Int, let type = LengType(rawValue: v) else { return nil }
+        
+        guard let v = value as? Int, let type = LengType(rawValue: v)
+            else { return nil }
+        
         switch type {
         case .short:
             return NSLocalizedString("Short", comment: "Range, short")
+            
         case .middle:
             return NSLocalizedString("Middle", comment: "Range, middle")
+            
         case .long:
             return NSLocalizedString("Long", comment: "Range, long")
+            
         case .overLong:
             return NSLocalizedString("Very Long", comment: "Range, very long")
         }

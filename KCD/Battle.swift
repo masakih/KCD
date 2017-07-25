@@ -9,6 +9,7 @@
 import Foundation
 
 class Battle: KCManagedObject {
+    
     @NSManaged var battleCell: NSNumber?
     @NSManaged var deckId: Int
     @NSManaged var isBossCell: Bool

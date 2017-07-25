@@ -9,7 +9,8 @@
 import Foundation
 import CoreData
 
-class KaihatuHistory: NSManagedObject {
+final class KaihatuHistory: NSManagedObject {
+    
     @NSManaged var bull: Int
     @NSManaged var bauxite: Int
     @NSManaged var date: Date

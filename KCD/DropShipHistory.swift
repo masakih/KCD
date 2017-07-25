@@ -9,7 +9,8 @@
 import Foundation
 import CoreData
 
-class DropShipHistory: NSManagedObject {
+final class DropShipHistory: NSManagedObject {
+    
     @NSManaged var shipName: String
     @NSManaged var mapArea: String
     @NSManaged var mapInfo: Int

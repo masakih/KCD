@@ -10,6 +10,7 @@ import Foundation
 
 @objc
 enum EquipmentType: Int {
+    
     case unknown = -1
     
     case smallCaliberMainGun = 1

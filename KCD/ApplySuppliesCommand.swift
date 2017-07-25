@@ -8,11 +8,15 @@
 
 import Cocoa
 
-class ApplySuppliesCommand: JSONCommand {
+final class ApplySuppliesCommand: JSONCommand {
+    
     override func execute() {
+        
         let store = ServerDataStore.oneTimeEditor()
+        
         data["api_ship"]
             .forEach { (_, json) in
+                
                 guard let i = json["api_id"].int,
                     let ship = store.ship(by: i),
                     let bull = json["api_bull"].int,
@@ -20,6 +24,7 @@ class ApplySuppliesCommand: JSONCommand {
                     let slots = json["api_onslot"].arrayObject as? [Int],
                     slots.count > 4
                     else { return }
+                
                 ship.bull = bull
                 ship.fuel = fuel
                 ship.onslot_0 = slots[0]

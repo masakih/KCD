@@ -8,12 +8,18 @@
 
 import Cocoa
 
-class SlotItemEquipTypeTransformer: ValueTransformer {
+final class SlotItemEquipTypeTransformer: ValueTransformer {
+    
     override class func transformedValueClass() -> AnyClass {
+        
         return NSString.self
     }
+    
     override func transformedValue(_ value: Any?) -> Any? {
-        guard let id = value as? Int else { return nil }
+        
+        guard let id = value as? Int
+            else { return nil }
+        
         return ServerDataStore.default.masterSlotItemEquipType(by: id)?.name
     }
 }

@@ -8,7 +8,8 @@
 
 import Cocoa
 
-class MasterSlotItemMapper: JSONMapper {
+final class MasterSlotItemMapper: JSONMapper {
+    
     typealias ObjectType = MasterSlotItem
 
     let apiResponse: APIResponse
@@ -18,6 +19,7 @@ class MasterSlotItemMapper: JSONMapper {
                                              ignoreKeys: ["api_version"])
     
     required init(_ apiResponse: APIResponse) {
+        
         self.apiResponse = apiResponse
     }
 }

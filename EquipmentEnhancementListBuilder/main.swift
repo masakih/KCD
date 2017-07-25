@@ -9,32 +9,53 @@
 import Foundation
 
 struct TabSeparatedLine {
+    
     let value: String
+    
     var count: Int { return columns.count }
     var columns: [String] { return value.components(separatedBy: "\t") }
-    subscript(_ index: Int) -> String { return columns[index] }
+    
+    subscript(_ index: Int) -> String {
+        
+        return columns[index]
+    }
 }
 
 struct ThreeItemsQueue<T> {
+    
     var items: [T] = []
     var count: Int { return items.count }
+    
     mutating func push(item: T) {
+        
         if count < 3 {
+            
             items += [item]
+            
             return
         }
+        
         items = items[1...2] + [item]
     }
-    subscript(_ index: Int) -> T { return items[index] }
+    
+    subscript(_ index: Int) -> T {
+        
+        return items[index]
+    }
 }
 
 fileprivate extension RequiredEquipment {
+    
     convenience init?(lines: TabSeparatedLine) {
-        guard lines.count == 6 else { return nil }
+        
+        guard lines.count == 6
+            else { return nil }
+        
         guard let nu = Int(lines[3]),
             let s = Int(lines[4]),
             let e = Int(lines[5])
             else { return nil }
+        
         self.init(identifier: lines[0],
                   levelRange: lines[1],
                   name: lines[2],
@@ -43,20 +64,35 @@ fileprivate extension RequiredEquipment {
                   ensureScrew: e)
     }
 }
+
 fileprivate extension RequiredEquipmentSet {
+    
     convenience init?(items: [RequiredEquipment]) {
-        guard items.count == 3 else { return nil }
+        
+        guard items.count == 3
+            else { return nil }
+        
         guard items[0].identifier == items[1].identifier,
             items[1].identifier == items[2].identifier
             else { return nil }
+        
         self.init(identifier: items[0].identifier,
                   requiredEquipments: items)
+        
         print("Create item of \(items[0].identifier)")
     }
 }
+
 fileprivate extension EnhancementListItem {
+    
     convenience init?(line: TabSeparatedLine, equSets: [RequiredEquipmentSet]) {
-        guard line.count == 6 else {print("count not 6"); return nil }
+        
+        guard line.count == 6
+            else {
+                print("count not 6")
+                return nil
+        }
+        
         guard let i = equSets.index(where: { $0.identifier == line[0] })
             else {
                 print("Do not find \(line[0]) in EnhancementListItem.txt")
@@ -74,19 +110,25 @@ fileprivate extension EnhancementListItem {
                   remodelEquipment: line[4],
                   requiredEquipments: equSets[i],
                   secondsShipNames: line[5].components(separatedBy: ","))
+        
         print("Add item \(line[3]) for weekday \(w)")
     }
 }
 
 func generate(threeLines: ThreeItemsQueue<TabSeparatedLine>) -> [RequiredEquipment] {
+    
     return threeLines.items.flatMap { RequiredEquipment(lines: $0) }
 }
 
 //
 func loadFile(path: String) -> String? {
+    
     do {
+        
         return try String(contentsOfFile: path)
+        
     } catch {
+        
         print("Can not create String from \(path)")
         return nil
     }

@@ -9,6 +9,7 @@
 import Cocoa
 
 enum ChangeHenseiType: Int {
+    
     case append
     case replace
     case remove
@@ -16,10 +17,12 @@ enum ChangeHenseiType: Int {
 }
 
 extension Notification.Name {
+    
     static let HenseiDidChange = Notification.Name("com.masakih.KCD.Notification.HenseiDidChange")
 }
 
-class HenseiDidChangeUserInfo: NSObject {
+final class HenseiDidChangeUserInfo: NSObject {
+    
     let type: ChangeHenseiType
     
     let fleetNumber: Int
@@ -37,6 +40,7 @@ class HenseiDidChangeUserInfo: NSObject {
                   replaceFleetNumber: Int? = nil,
                   replacePosition: Int? = nil,
                   replaceShipID: Int? = nil) {
+        
         self.type = type
         self.fleetNumber = fleetNumber
         self.position = position
@@ -44,15 +48,19 @@ class HenseiDidChangeUserInfo: NSObject {
         self.replaceFleetNumber = replaceFleetNumber
         self.replacePosition = replacePosition
         self.replaceShipID = replaceShipID
+        
         super.init()
     }
 }
 
-class ChangeHenseiCommand: JSONCommand {
+final class ChangeHenseiCommand: JSONCommand {
+    
     static let userInfoKey = "HenseiDidChangeUserInfoKey"
     
     override class func canExecuteAPI(_ api: String) -> Bool {
+        
         if api == "/kcsapi/api_req_hensei/change" { return true }
+        
         return false
     }
     
@@ -61,15 +69,20 @@ class ChangeHenseiCommand: JSONCommand {
     // ship_id == -1 : remove.
     // ship_id == -2 : remove all without flag ship.
     override func execute() {
+        
         guard let deckNumber = parameter["api_id"].int,
             let shipId = parameter["api_ship_id"].int,
             let shipIndex = parameter["api_ship_idx"].int
             else { return print("parameter is wrong") }
+        
         if shipId == -2 {
+            
             excludeShipsWithoutFlagShip(deckNumber: deckNumber)
             notify(type: .removeAllWithoutFlagship)
+            
             return
         }
+        
         let store = ServerDataStore.oneTimeEditor()
         let decks = store.decksSortedById()
         let shipIds = decks.flatMap { deck in (0..<6).map { deck.shipId(of: $0) ?? -1 } }
@@ -81,15 +94,21 @@ class ChangeHenseiCommand: JSONCommand {
         
         // 配置しようとする位置に今配置されている艦娘
         let replaceIndex = (deckNumber - 1) * 6 + shipIndex
-        guard 0..<shipIds.count ~= replaceIndex else { return }
+        
+        guard case 0..<shipIds.count = replaceIndex
+            else { return }
+        
         let replaceShipId = shipIds[replaceIndex]
         
         // 艦隊に配備
-        guard 0..<decks.count ~= (deckNumber - 1) else { return }
+        guard case 0..<decks.count = (deckNumber - 1)
+            else { return }
+        
         decks[deckNumber - 1].setShip(id: shipId, for: shipIndex)
         
         // 入れ替え
-        if currentIndex != nil, shipId != -1, 0..<decks.count ~= shipDeckNumber {
+        if currentIndex != nil, shipId != -1, case 0..<decks.count = shipDeckNumber {
+            
             decks[shipDeckNumber].setShip(id: replaceShipId, for: shipDeckIndex)
         }
         
@@ -97,11 +116,14 @@ class ChangeHenseiCommand: JSONCommand {
         
         // Notify
         if currentIndex != nil, shipId == -1 {
+            
             notify(type: .remove,
                    fleetNumber: deckNumber,
                    position: shipIndex,
                    shipID: replaceShipId)
+            
         } else if currentIndex != nil {
+            
             notify(type: .replace,
                    fleetNumber: deckNumber,
                    position: shipIndex,
@@ -109,7 +131,9 @@ class ChangeHenseiCommand: JSONCommand {
                    replaceFleetNumber: shipDeckNumber + 1,
                    replacePosition: shipDeckIndex,
                    replaceShipID: replaceShipId)
+            
         } else {
+            
             notify(type: .append,
                    fleetNumber: deckNumber,
                    position: shipIndex,
@@ -118,24 +142,33 @@ class ChangeHenseiCommand: JSONCommand {
     }
     
     private func excludeShipsWithoutFlagShip(deckNumber: Int) {
+        
         let store = ServerDataStore.oneTimeEditor()
+        
         guard let deck = store.deck(by: deckNumber)
             else { return print("Deck not found") }
+        
         (1..<6).forEach { deck.setShip(id: -1, for: $0) }
     }
     
     private func packFleet(store: ServerDataStore) {
+        
         store.decksSortedById()
             .forEach { deck in
+                
                 var needsPack = false
                 (0..<6).forEach {
+                    
                     let shipId = deck.shipId(of: $0)
                     // TODO: うまいことする　強制アンラップを消す
                     if (shipId == nil || shipId! == -1), !needsPack {
+                        
                         needsPack = true
+                        
                         return
                     }
                     if needsPack {
+                        
                         deck.setShip(id: shipId!, for: $0 - 1)
                         if $0 == 5 { deck.setShip(id: -1, for: 5) }
                     }
@@ -150,6 +183,7 @@ class ChangeHenseiCommand: JSONCommand {
                         replaceFleetNumber: Int? = nil,
                         replacePosition: Int? = nil,
                         replaceShipID: Int? = nil) {
+        
         let userInfo = HenseiDidChangeUserInfo(type: type,
                                                fleetNumber: fleetNumber,
                                                position: position,

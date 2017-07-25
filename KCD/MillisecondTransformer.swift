@@ -8,12 +8,18 @@
 
 import Cocoa
 
-class MillisecondTransformer: ValueTransformer {
+final class MillisecondTransformer: ValueTransformer {
+    
     override class func transformedValueClass() -> AnyClass {
+        
         return NSNumber.self
     }
+    
     override func transformedValue(_ value: Any?) -> Any? {
-        guard let v = value as? Double else { return nil }
+        
+        guard let v = value as? Double
+            else { return nil }
+        
         return v / 1_000.0
     }
 }

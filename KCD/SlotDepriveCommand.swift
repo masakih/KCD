@@ -8,13 +8,17 @@
 
 import Cocoa
 
-class SlotDepriveCommand: JSONCommand {
+final class SlotDepriveCommand: JSONCommand {
+    
     override class func canExecuteAPI(_ api: String) -> Bool {
+        
         if api == "/kcsapi/api_req_kaisou/slot_deprive" { return true }
+        
         return false
     }
     
     override func execute() {
+        
         ShipMapper(apiResponse).commit()
     }
 }

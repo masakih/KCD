@@ -8,17 +8,23 @@
 
 import Cocoa
 
-class NyukyoStartCommand: JSONCommand {
+final class NyukyoStartCommand: JSONCommand {
+    
     override class func canExecuteAPI(_ api: String) -> Bool {
+        
         if api == "/kcsapi/api_req_nyukyo/start" { return true }
+        
         return false
     }
+    
     override func execute() {
+        
         guard let hi = parameter["api_highspeed"].int,
             hi != 0
         else { return }
         
         let store = ServerDataStore.oneTimeEditor()
+        
         parameter["api_ship_id"]
             .int
             .flatMap { store.ship(by: $0) }

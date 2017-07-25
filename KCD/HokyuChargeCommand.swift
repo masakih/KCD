@@ -8,13 +8,17 @@
 
 import Cocoa
 
-class HokyuChargeCommand: JSONCommand {
+final class HokyuChargeCommand: JSONCommand {
+    
     override class func canExecuteAPI(_ api: String) -> Bool {
+        
         if api == "/kcsapi/api_req_hokyu/charge" { return true }
+        
         return false
     }
     
     override func execute() {
+        
         MaterialMapper(apiResponse).commit()
         ApplySuppliesCommand(apiResponse: apiResponse).execute()
     }

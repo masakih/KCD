@@ -8,8 +8,10 @@
 
 import Cocoa
 
-class SlotItemFrameView: NSBox {
+final class SlotItemFrameView: NSBox {
+    
     override func draw(_ dirtyRect: NSRect) {
+        
         super.draw(dirtyRect)
         
         let bounds = self.bounds
@@ -17,6 +19,7 @@ class SlotItemFrameView: NSBox {
         let height = bounds.height
         NSColor.gridColor.set()
         NSBezierPath.setDefaultLineWidth(1.0)
+        
         multiline {
             [(NSPoint, NSPoint)]()
                 .appended { (NSPoint(x: 40.5, y: 0), NSPoint(x: 40.5, y: height)) }

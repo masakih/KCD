@@ -9,7 +9,8 @@
 import Cocoa
 import SwiftyJSON
 
-class MasterShipMapper: JSONMapper {
+final class MasterShipMapper: JSONMapper {
+    
     typealias ObjectType = MasterShip
     
     let apiResponse: APIResponse
@@ -18,14 +19,17 @@ class MasterShipMapper: JSONMapper {
                                              editorStore: ServerDataStore.oneTimeEditor())
     
     required init(_ apiResponse: APIResponse) {
+        
         self.apiResponse = apiResponse
     }
     
     private lazy var masterSTypes: [MasterSType] = {
+        
         return ServerDataStore.default.sortedMasterSTypesById()
     }()
     
     func handleExtraValue(_ value: JSON, forKey key: String, to masterShip: MasterShip) -> Bool {
+        
         if key != "api_stype" { return false }
         
         guard let sType = value.int
@@ -33,16 +37,22 @@ class MasterShipMapper: JSONMapper {
                 print("MasterShipMapper: value is not Int")
                 return false
         }
+        
         setStype(sType, to: masterShip)
+        
         return true
     }
     
     private func setStype(_ stypeID: Int, to masterShip: MasterShip) {
+        
         if masterShip.stype.id == stypeID { return }
+        
         guard let stype = masterSTypes.binarySearch(comparator: { $0.id ==? stypeID })
             else { return print("MasterShipMapper: Can not find MasterSType") }
+        
         guard let masterSType = configuration.editorStore.object(with: stype.objectID) as? MasterSType
             else { return print("MasterShipMapper: Can not convert to current moc object masterSType") }
+        
         masterShip.stype = masterSType
     }
 }

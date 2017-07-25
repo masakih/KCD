@@ -8,8 +8,10 @@
 
 import Cocoa
 
-class JSONViewWindowController: NSWindowController {
+final class JSONViewWindowController: NSWindowController {
+    
     deinit {
+        
         unbind("arguments")
         unbind("json")
     }
@@ -19,6 +21,7 @@ class JSONViewWindowController: NSWindowController {
     @IBOutlet var apis: NSArrayController!
     
     override var windowNibName: String! {
+        
         return "JSONViewWindowController"
     }
     
@@ -27,6 +30,7 @@ class JSONViewWindowController: NSWindowController {
     var commands: [[String: Any]] = []
     
     override func windowDidLoad() {
+        
         super.windowDidLoad()
         
         bind("arguments", to: apis, withKeyPath: "selection.argument")
@@ -34,13 +38,17 @@ class JSONViewWindowController: NSWindowController {
     }
     
     func setCommand(_ command: [String: Any]) {
+        
         notifyChangeValue(forKey: "commands") {
+            
             commands += [command]
         }
     }
     
     @IBAction func clearLog(_ sender: AnyObject?) {
+        
         notifyChangeValue(forKey: "commands") {
+            
             commands = []
         }
     }

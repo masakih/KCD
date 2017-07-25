@@ -9,12 +9,16 @@
 import Cocoa
 
 extension Notification.Name {
+    
     static let PortAPIReceived = Notification.Name("com.masakih.KCD.Notification.PortAPIReceived")
 }
 
-class PortNotifyCommand: JSONCommand {
+final class PortNotifyCommand: JSONCommand {
+    
     override func execute() {
+        
         DispatchQueue.main.async {
+            
             NotificationCenter.default.post(name: .PortAPIReceived, object: self)
         }
     }

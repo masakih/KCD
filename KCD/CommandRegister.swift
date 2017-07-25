@@ -9,13 +9,16 @@
 import Cocoa
 
 enum JSONCommandError: Error {
+    
     case CanNotFindCommand
 }
 
-class CommandRegister {
+final class CommandRegister {
     
     private static var registeredClasses: [JSONCommand.Type] = []
+    
     class func register() {
+        
         registerClass(Start2Command.self)
         registerClass(MemberNDockCommand.self)
         registerClass(MemberKDockCommand.self)
@@ -57,18 +60,30 @@ class CommandRegister {
     }
     
     class func command(for response: APIResponse) -> JSONCommand {
+        
         func concreteCommand(for response: APIResponse) -> JSONCommand {
+            
             if !response.success {
+                
                 return FailedCommand(apiResponse: response)
+                
             }
+            
+            // TODO: user filter and forEach
             for c in registeredClasses {
+                
                 if c.canExecuteAPI(response.api) {
+                    
                     return c.init(apiResponse: response)
                 }
             }
+            
             if IgnoreCommand.canExecuteAPI(response.api) {
+                
                 return IgnoreCommand(apiResponse: response)
+                
             }
+            
             return UnknownComand(apiResponse: response)
         }
         
@@ -78,8 +93,11 @@ class CommandRegister {
             return concreteCommand(for: response)
         #endif
     }
+    
     class func registerClass(_ commandClass: JSONCommand.Type) {
+        
         if registeredClasses.contains(where: { $0 == commandClass }) { return }
+        
         registeredClasses.append(commandClass)
     }
 }

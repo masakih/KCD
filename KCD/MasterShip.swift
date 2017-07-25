@@ -9,7 +9,8 @@
 import Foundation
 
 // swiftlint:disable variable_name
-class MasterShip: KCManagedObject {
+final class MasterShip: KCManagedObject {
+    
     @NSManaged var afterbull: NSNumber?
     @NSManaged var afterfuel: NSNumber?
     @NSManaged var afterlv: Int

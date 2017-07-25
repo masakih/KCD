@@ -8,8 +8,10 @@
 
 import Cocoa
 
-class BorderTextField: NSTextField {
+final class BorderTextField: NSTextField {
+    
     override func draw(_ dirtyRect: NSRect) {
+        
         super.draw(dirtyRect)
 
         let bounds = self.bounds
@@ -17,6 +19,7 @@ class BorderTextField: NSTextField {
         let height = bounds.height
         NSColor.controlShadowColor.set()
         NSBezierPath.setDefaultLineWidth(1.0)
+        
         multiline(lines:
             [
                 (NSPoint(x: 3, y: height), NSPoint(x: bounds.maxX, y: height)),

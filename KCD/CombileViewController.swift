@@ -8,7 +8,8 @@
 
 import Cocoa
 
-class CombileViewController: NSViewController {
+final class CombileViewController: NSViewController {
+    
     let fleet1 = FleetViewController(viewType: .miniVierticalType)!
     let fleet2 = FleetViewController(viewType: .miniVierticalType)!
     
@@ -16,15 +17,18 @@ class CombileViewController: NSViewController {
     @IBOutlet weak var placeholder2: NSView!
     
     override var nibName: String! {
+        
         return "CombileViewController"
     }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         let placeholders: [NSView] = [placeholder1, placeholder2]
         let fleets = [fleet1, fleet2]
         zip(placeholders, fleets).enumerated().forEach {
+            
             $0.element.1.view.frame = $0.element.0.frame
             $0.element.1.view.autoresizingMask = $0.element.0.autoresizingMask
             $0.element.0.superview?.replaceSubview($0.element.0, with: $0.element.1.view)

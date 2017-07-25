@@ -8,12 +8,17 @@
 
 import Cocoa
 
-class ImageView: NSView {
+final class ImageView: NSView {
+    
     var images: [NSImage] = [] {
+        
         didSet { needsDisplay = true }
     }
+    
     var imageRect: NSRect {
+        
         if images.isEmpty { return .zero }
+        
         let bounds = self.bounds
         let offset = bounds.width * 0.1 / 2 / 3
         let border = offset * 3
@@ -23,24 +28,31 @@ class ImageView: NSView {
         let ratioY = rect.width / size.width
         let ratio = ratioX > ratioY ? ratioY : ratioX
         let drawSize = NSSize(width: size.width * ratio, height: size.height * ratio)
+        
         return NSRect(
             x: rect.minX + (rect.width - drawSize.width) / 2,
             y: rect.minY + (rect.height - drawSize.height) / 2,
             width: drawSize.width,
             height: drawSize.height)
     }
+    
     private var internalImageShadow: NSShadow?
+    
     private var imageShadow: NSShadow {
+        
         if let s = internalImageShadow { return s }
+        
         let s = NSShadow()
         s.shadowOffset = NSSize(width: 2, height: -2)
         s.shadowBlurRadius = 4
         s.shadowColor = NSColor.darkGray
         internalImageShadow = s
+        
         return s
     }
     
     override func draw(_ dirtyRect: NSRect) {
+        
         NSColor.controlBackgroundColor.set()
         NSBezierPath.stroke(bounds)
         
@@ -73,11 +85,13 @@ class ImageView: NSView {
     }
 
     private func imageRect(with rect: NSRect, imageSize: NSSize) -> NSRect {
+        
         let ratioX = rect.height / imageSize.height
         let ratioY = rect.width / imageSize.width
         let ratio = ratioX > ratioY ? ratioY : ratioX
         let drawSize = NSSize(width: imageSize.width * ratio,
                               height: imageSize.height * ratio)
+        
         return NSRect(
             x: rect.minX + (rect.width - drawSize.width) / 2,
             y: rect.minY + (rect.height - drawSize.height) / 2,

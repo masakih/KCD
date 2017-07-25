@@ -9,30 +9,39 @@
 import Cocoa
 
 extension Selector {
+    
     static let fire = #selector(TimeSignalNotifier.fire(_:))
 }
 
-class TimeSignalNotifier: NSObject {
+final class TimeSignalNotifier: NSObject {
+    
     let udController: NSUserDefaultsController = NSUserDefaultsController.shared()
     
     override init() {
+        
         super.init()
+        
         registerTimer()
         self.bind(#keyPath(notifyTimeBeforeTimeSignal),
                   to: udController,
                   withKeyPath: "values.notifyTimeBeforeTimeSignal")
     }
+    
     deinit {
+        
         self.unbind(#keyPath(notifyTimeBeforeTimeSignal))
     }
     
     dynamic var notifyTimeBeforeTimeSignal: Int = 0 {
+        
         didSet { registerTimer() }
     }
     var timer: Timer?
     
     func fire(_ timer: Timer) {
+        
         defer { registerTimer() }
+        
         if !UserDefaults.standard.notifyTimeSignal { return }
                 
         let now = Date()
@@ -43,17 +52,21 @@ class TimeSignalNotifier: NSObject {
         
         let notification = NSUserNotification()
         let hour = cal.component(.hour, from: now)
-        let format = NSLocalizedString("It is soon %zd o'clock.",
-                                       comment: "It is soon %zd o'clock.")
+        let format = NSLocalizedString("It is soon %zd o'clock.", comment: "It is soon %zd o'clock.")
         notification.title = String(format: format, hour + 1)
         notification.informativeText = notification.title
+        
         if UserDefaults.standard.playNotifyTimeSignalSound {
+            
             notification.soundName = NSUserNotificationDefaultSoundName
+            
         }
+        
         NSUserNotificationCenter.default.deliver(notification)
     }
     
     private func registerTimer() {
+        
         timer?.invalidate()
         
         let now = Date()
@@ -61,11 +74,14 @@ class TimeSignalNotifier: NSObject {
         var comp = cal.dateComponents([.year, .month, .day, .hour], from: now)
         let minutes = cal.component(.minute, from: now)
         if minutes + notifyTimeBeforeTimeSignal >= 60 {
+            
             comp.hour = comp.hour.map { $0 + 1 }
+            
         }
         comp.minute = 60 - notifyTimeBeforeTimeSignal
         guard let notifyDate = cal.date(from: comp)
             else { return print("Can not create notify date") }
+        
         timer = Timer.scheduledTimer(timeInterval: notifyDate.timeIntervalSinceNow,
                                      target: self,
                                      selector: .fire,

@@ -8,9 +8,12 @@
 
 import Cocoa
 
-class RealPowerUpCommand: JSONCommand {
+final class RealPowerUpCommand: JSONCommand {
+    
     override func execute() {
+        
         let store = ServerDataStore.oneTimeEditor()
+        
         parameter["api_id_items"]
             .string?
             .components(separatedBy: ",")

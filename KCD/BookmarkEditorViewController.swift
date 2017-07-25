@@ -8,8 +8,10 @@
 
 import Cocoa
 
-class BookmarkEditorViewController: NSViewController {
+final class BookmarkEditorViewController: NSViewController {
+    
     override var nibName: String! {
+        
         return "BookmarkEditorViewController"
     }
 }

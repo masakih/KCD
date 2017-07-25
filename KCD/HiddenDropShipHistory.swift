@@ -8,7 +8,8 @@
 
 import CoreData
 
-class HiddenDropShipHistory: NSManagedObject {
+final class HiddenDropShipHistory: NSManagedObject {
+    
     @NSManaged var shipName: String
     @NSManaged var mapArea: String
     @NSManaged var mapInfo: Int

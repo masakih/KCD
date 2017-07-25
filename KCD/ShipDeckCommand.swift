@@ -8,13 +8,17 @@
 
 import Cocoa
 
-class ShipDeckCommand: JSONCommand {
+final class ShipDeckCommand: JSONCommand {
+    
     override class func canExecuteAPI(_ api: String) -> Bool {
+        
         if api == "/kcsapi/api_get_member/ship_deck" { return true }
+        
         return false
     }
     
     override func execute() {
+        
         ShipMapper(apiResponse).commit()
         DeckMapper(apiResponse).commit()
         DummyShipCommand(apiResponse: apiResponse).execute()

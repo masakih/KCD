@@ -8,22 +8,31 @@
 
 import Cocoa
 
-class Queue {
+final class Queue {
+    
     private var contents: [Any] = []
     private let lock = NSCondition()
     
     func dequeue() -> Any {
+        
         lock.lock()
         defer { lock.unlock() }
+        
         while contents.count == 0 {
+            
             lock.wait()
         }
+        
         return contents.popLast()!
     }
+    
     func enqueue(_ obj: Any) {
+        
         lock.lock()
         defer { lock.unlock() }
+        
         contents.insert(obj, at: 0)
+        
         lock.broadcast()
     }
 }

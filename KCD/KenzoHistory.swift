@@ -9,7 +9,8 @@
 import Foundation
 import CoreData
 
-class KenzoHistory: NSManagedObject {
+final class KenzoHistory: NSManagedObject {
+    
     @NSManaged var bauxite: Int
     @NSManaged var bull: Int
     @NSManaged var date: Date
@@ -25,5 +26,6 @@ class KenzoHistory: NSManagedObject {
 }
 
 extension KenzoHistory {
+    
     dynamic var isLarge: Bool { return fuel > 999 }
 }

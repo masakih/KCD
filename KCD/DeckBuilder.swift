@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class DeckBuilder {
+final class DeckBuilder {
     
     private let structure: DeckBuilderStructure
     
@@ -24,7 +24,9 @@ class DeckBuilder {
         characterSet.insert(charactersIn: "-_.!~*'()")
         
         let desc = structure.deckDescription
+        
         Debug.excute(level: .debug) { print(desc as Any) }
+        
         let ss = "http://kancolle-calc.net/deckbuilder.html?predeck="
         
         if let param = desc.addingPercentEncoding(withAllowedCharacters: characterSet),

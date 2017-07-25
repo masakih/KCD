@@ -8,7 +8,8 @@
 
 import Cocoa
 
-class AirBaseWindowController: NSWindowController {
+final class AirBaseWindowController: NSWindowController {
+    
     let managedObjectContext = ServerDataStore.default.context
     
     @IBOutlet var areaMatrix: NSMatrix!
@@ -17,16 +18,20 @@ class AirBaseWindowController: NSWindowController {
     @IBOutlet var airBaseController: NSArrayController!
     
     override var windowNibName: String! {
+        
         return "AirBaseWindowController"
     }
     
     dynamic var areaId: Int = 0 {
+        
         didSet {
             updatePredicate()
             updatePlaneSegment()
         }
     }
+    
     dynamic var rId: Int = 1 {
+        
         didSet {
             updatePredicate()
             updatePlaneSegment()
@@ -34,8 +39,10 @@ class AirBaseWindowController: NSWindowController {
     }
     
     private var areas: [Int] {
+        
         guard let content = airBaseController.content as? [AirBase]
             else { return [] }
+        
         return content
             .flatMap { $0.area_id }
             .unique()
@@ -43,15 +50,14 @@ class AirBaseWindowController: NSWindowController {
     }
     
     override func windowDidLoad() {
+        
         super.windowDidLoad()
         
         airBaseController.addObserver(self, forKeyPath: "content", context: nil)
     }
     
-    override func observeValue(forKeyPath keyPath: String?,
-                               of object: Any?,
-                               change: [NSKeyValueChangeKey: Any]?,
-                               context: UnsafeMutableRawPointer?) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
+        
         guard keyPath == "content" else {
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
             return
@@ -61,6 +67,7 @@ class AirBaseWindowController: NSWindowController {
         updatePlaneSegment()
         
         if areaId == 0 {
+            
             areaId = areas.first ?? 0
             updatePredicate()
         }
@@ -71,6 +78,7 @@ class AirBaseWindowController: NSWindowController {
         //  更新の必要性チェック
         let areas = self.areas
         let currentTags = areaMatrix.cells.map { $0.tag }
+        
         if currentTags == areas { return }
         
         // 最初の設定以外でareasが空の場合は処理をしない
@@ -78,29 +86,38 @@ class AirBaseWindowController: NSWindowController {
         
         let cellCount = areaMatrix.numberOfRows * areaMatrix.numberOfColumns
         if areas.count != cellCount {
+            
             let diff = areas.count - areaMatrix.numberOfColumns
             while areas.count != areaMatrix.numberOfColumns {
+                
                 if diff < 0 {
+                    
                     areaMatrix.removeColumn(0)
+                    
                 } else {
+                    
                     areaMatrix.addColumn()
                 }
             }
         }
         
         if areaMatrix.numberOfColumns == 0 {
+            
             areaMatrix.addColumn()
             let areaCell = areaMatrix.cell(atRow: 0, column: 0)
             areaCell?.title = ""
             areaCell?.tag = -10_000
             
             areaMatrix.isEnabled = false
+            
         } else {
+            
             areaMatrix.isEnabled = true
         }
         
         let t = AreaNameTransformer()
         areas.enumerated().forEach {
+            
             let areaCell = areaMatrix.cell(atRow: 0, column: $0.offset)
             areaCell?.title = t.transformedValue($0.element) as? String ?? String($0.element)
             areaCell?.tag = $0.element
@@ -108,7 +125,10 @@ class AirBaseWindowController: NSWindowController {
     }
     
     private func updatePlaneSegment() {
-        guard let content = airBaseController.content as? [AirBase] else { return }
+        
+        guard let content = airBaseController.content as? [AirBase]
+            else { return }
+        
         let area = NSCountedSet()
         content.forEach { area.add($0.area_id) }
         let count = area.count(for: areaId)
@@ -116,6 +136,7 @@ class AirBaseWindowController: NSWindowController {
     }
     
     private func updatePredicate() {
+        
         airBaseController.filterPredicate = NSPredicate(format: "area_id = %ld AND rid = %ld", areaId, rId)
         airBaseController.setSelectionIndex(0)
         planesTable.deselectAll(nil)
@@ -123,12 +144,17 @@ class AirBaseWindowController: NSWindowController {
 }
 
 extension AirBaseWindowController: NSTableViewDelegate {
+    
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        guard let identifier = tableColumn?.identifier else { return nil }
+        
+        guard let identifier = tableColumn?.identifier
+            else { return nil }
+        
         return tableView.make(withIdentifier: identifier, owner: nil)
     }
     
     func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+        
         return false
     }
 }

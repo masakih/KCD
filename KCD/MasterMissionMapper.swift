@@ -8,7 +8,8 @@
 
 import Cocoa
 
-class MasterMissionMapper: JSONMapper {
+final class MasterMissionMapper: JSONMapper {
+    
     typealias ObjectType = MasterMission
 
     let apiResponse: APIResponse
@@ -17,6 +18,7 @@ class MasterMissionMapper: JSONMapper {
                                              editorStore: ServerDataStore.oneTimeEditor())
     
     required init(_ apiResponse: APIResponse) {
+        
         self.apiResponse = apiResponse
     }
 }

@@ -9,6 +9,7 @@
 import Cocoa
 
 enum BattleAPI: String {
+    
     case battle = "/kcsapi/api_req_sortie/battle"
     
     case combinedBattle = "/kcsapi/api_req_combined_battle/battle"
@@ -32,21 +33,26 @@ enum BattleAPI: String {
     case combinedBattleResult = "/kcsapi/api_req_combined_battle/battleresult"
 }
 
-class BattleCommand: JSONCommand {
+final class BattleCommand: JSONCommand {
+    
     override class func canExecuteAPI(_ api: String) -> Bool {
+        
         return BattleAPI(rawValue: api) != nil
     }
     
     override func execute() {
+        
         CalculateDamageCommand(apiResponse: apiResponse).execute()
         
         guard let battleApi = BattleAPI(rawValue: apiResponse.api)
             else { return }
+        
         switch battleApi {
         case .battleResult, .combinedBattleResult:
             DropShipHistoryCommand(apiResponse: apiResponse).execute()
             DummyShipCommand(apiResponse: apiResponse).execute()
             GuardShelterCommand(apiResponse: apiResponse).execute()
+            
         default: break
         }
     }

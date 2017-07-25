@@ -8,9 +8,10 @@
 
 import Cocoa
 
-class CalculateConditionPanelController: NSWindowController {
+final class CalculateConditionPanelController: NSWindowController {
     
     override var windowNibName: String {
+        
         return String(describing: type(of: self))
     }
     

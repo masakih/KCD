@@ -8,7 +8,8 @@
 
 import Cocoa
 
-class MasterSTypeMapper: JSONMapper {
+final class MasterSTypeMapper: JSONMapper {
+    
     typealias ObjectType = MasterSType
 
     let apiResponse: APIResponse
@@ -18,6 +19,7 @@ class MasterSTypeMapper: JSONMapper {
                                              ignoreKeys: ["api_equip_type"])
     
     required init(_ apiResponse: APIResponse) {
+        
         self.apiResponse = apiResponse
     }
 }

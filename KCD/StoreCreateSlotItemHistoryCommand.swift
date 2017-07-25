@@ -9,8 +9,10 @@
 import Cocoa
 import SwiftyJSON
 
-class StoreCreateSlotItemHistoryCommand: JSONCommand {
+final class StoreCreateSlotItemHistoryCommand: JSONCommand {
+    
     override func execute() {
+        
         guard let fuel = parameter["api_item1"].int,
             let bull = parameter["api_item2"].int,
             let steel = parameter["api_item3"].int,
@@ -22,6 +24,7 @@ class StoreCreateSlotItemHistoryCommand: JSONCommand {
         let numberOfUsedKaihatuSizai = success != 0 ? 1 : 0
         
         let store = ServerDataStore.default
+        
         guard let flagShip = store.deck(by: 1)
             .map({ $0.ship_0 })
             .flatMap({ store.ship(by: $0) })
@@ -31,8 +34,10 @@ class StoreCreateSlotItemHistoryCommand: JSONCommand {
             else { return print("Basic is wrong") }
         
         let localStore = LocalDataStore.oneTimeEditor()
+        
         guard let newHistory = localStore.createKaihatuHistory()
             else { return print("Can not create new KaihatuHistory entry") }
+        
         newHistory.name = name
         newHistory.fuel = fuel
         newHistory.bull = bull
@@ -46,9 +51,13 @@ class StoreCreateSlotItemHistoryCommand: JSONCommand {
     }
     
     private func masterSlotItemName(sccess: Int, data: JSON) -> String {
+        
         if sccess == 0 {
+            
             return NSLocalizedString("fail to develop", comment: "fail to develop")
+            
         }
+        
         guard let slotItemId = data["api_slot_item"]["api_slotitem_id"].int
             else {
                 print("api_slotitem_id is wrong")

@@ -8,13 +8,17 @@
 
 import Cocoa
 
-class MemberBasicCommand: JSONCommand {
+final class MemberBasicCommand: JSONCommand {
+    
     override class func canExecuteAPI(_ api: String) -> Bool {
+        
         if api == "/kcsapi/api_get_member/basic" { return true }
+        
         return false
     }
     
     override func execute() {
+        
         BasicMapper(apiResponse).commit()
     }
 }

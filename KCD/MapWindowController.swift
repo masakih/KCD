@@ -8,10 +8,12 @@
 
 import Cocoa
 
-class MapWindowController: NSWindowController {
+final class MapWindowController: NSWindowController {
+    
     let managedObjectContext = ServerDataStore.default.context
     
     override var windowNibName: String! {
+        
         return "MapWindowController"
     }
 }

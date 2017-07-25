@@ -8,18 +8,25 @@
 
 import Cocoa
 
-class KaisouLockCommand: JSONCommand {
+final class KaisouLockCommand: JSONCommand {
+    
     override class func canExecuteAPI(_ api: String) -> Bool {
+        
         if api == "/kcsapi/api_req_kaisou/lock" { return true }
+        
         return false
     }
     
     override func execute() {
+        
         guard let slotId = parameter["api_slotitem_id"].int
             else { return print("api_slotitem_id is wrong") }
+        
         guard let locked = data["api_locked"].int
             else { return print("api_locked is wrong") }
+        
         let store = ServerDataStore.oneTimeEditor()
+        
         store.slotItem(by: slotId)?.locked = locked != 0
     }
 }
