@@ -69,14 +69,12 @@ final class CommandRegister {
                 
             }
             
-            // TODO: user filter and forEach
-            for c in registeredClasses {
+            if let c = registeredClasses.lazy.filter({ $0.canExecuteAPI(response.api) }).first {
                 
-                if c.canExecuteAPI(response.api) {
-                    
-                    return c.init(apiResponse: response)
-                }
+                return c.init(apiResponse: response)
+                
             }
+            
             
             if IgnoreCommand.canExecuteAPI(response.api) {
                 
