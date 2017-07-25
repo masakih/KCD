@@ -11,7 +11,9 @@ import Cocoa
 fileprivate enum BookmarkMenuTag: Int {
     
     case bookmark = 5000
+    
     case separator = 9999
+    case bookmarkItem = 999999
 }
 
 final class BookmarkManager: NSObject, NSMenuDelegate {
@@ -89,12 +91,10 @@ final class BookmarkManager: NSObject, NSMenuDelegate {
     
     private func buildBookmarkMenu() {
         
-        // TODO: replace to forEach
-        for item in bookmarkMenu.items.reversed() {
-            
-            if item.tag == BookmarkMenuTag.separator.rawValue { break }
-            bookmarkMenu.removeItem(item)
-        }
+        bookmarkMenu
+            .items
+            .filter { $0.tag == BookmarkMenuTag.bookmarkItem.rawValue }
+            .forEach(bookmarkMenu.removeItem)
         
         bookmarks.forEach {
             
@@ -102,6 +102,7 @@ final class BookmarkManager: NSObject, NSMenuDelegate {
                                   action: #selector(ExternalBrowserWindowController.selectBookmark(_:)),
                                   keyEquivalent: "")
             item.representedObject = $0
+            item.tag = BookmarkMenuTag.bookmarkItem.rawValue
             bookmarkMenu.addItem(item)
         }
     }
