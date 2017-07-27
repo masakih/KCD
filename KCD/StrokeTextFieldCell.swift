@@ -70,11 +70,7 @@ final class StrokeTextFieldCell: NSTextFieldCell {
         
         let nsGlyph = UnsafeMutablePointer<NSGlyph>.allocate(capacity: range.length)
         
-        // TODO: use forEach
-        for i in 0...range.length {
-            
-            nsGlyph[i] = NSGlyph(glyph[i])
-        }
+        (0..<range.length).forEach { nsGlyph[$0] = NSGlyph(glyph[$0]) }
         
         let path = NSBezierPath()
         path.move(to: point)
