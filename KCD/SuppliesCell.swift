@@ -67,9 +67,8 @@ final class SuppliesCell: NSCell {
     
     private func drawBackground(withFrame cellFrame: NSRect) {
         
-        let path = NSBezierPath(rect: cellFrame)
         borderColor.set()
-        path.fill()
+        NSBezierPath(rect: cellFrame).fill()
     }
     
     private func color(of type: ResourceType, position: Int, border: Int) -> NSColor {
@@ -85,12 +84,11 @@ final class SuppliesCell: NSCell {
         let width: CGFloat = (cellFrame.width - CGFloat(numberOfCell) - 1.0) / CGFloat(numberOfCell)
         let y: CGFloat = type == .fuel ? height + 2.0 : 1.0
         
-        // TODO: use forEach
-        for i in 0...10 {
+        (0...numberOfCell).forEach {
             
-            let x: CGFloat = CGFloat(1 + i) + width * CGFloat(i)
+            let x: CGFloat = CGFloat(1 + $0) + width * CGFloat($0)
             let cellRect = NSRect(x: x, y: y, width: width, height: height)
-            color(of: type, position: i, border: border).set()
+            color(of: type, position: $0, border: border).set()
             NSBezierPath(rect: cellRect).fill()
         }
     }
