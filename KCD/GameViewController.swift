@@ -247,17 +247,11 @@ extension GameViewController: WebFrameLoadDelegate, WebUIDelegate {
         }
     }
     
-    func webView(_ sender: WebView!,
-                 contextMenuItemsForElement element: [AnyHashable: Any]!,
-                 defaultMenuItems: [Any]!) -> [Any]! {
+    func webView(_ sender: WebView!, contextMenuItemsForElement element: [AnyHashable: Any]!, defaultMenuItems: [Any]!) -> [Any]! {
         
         guard let menuItems = defaultMenuItems as? [NSMenuItem]
             else { return [] }
         
-        // TODO: use filter
-        return menuItems.flatMap {
-            
-            GameViewController.excludeMenuItemTag.contains($0.tag) ? nil : $0
-        }
+        return menuItems.filter { !GameViewController.excludeMenuItemTag.contains($0.tag) }
     }
 }
