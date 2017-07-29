@@ -40,11 +40,11 @@ final class DestroyItem2Command: JSONCommand {
         
         zip(gm, resouces).forEach {
             
-            // TODO: use filter
             if let current = material.value(forKey: $0.1) as? Int {
                 
                 material.setValue((current + $0.0) as NSNumber, forKey: $0.1)
             }
         }
+        
     }
 }
