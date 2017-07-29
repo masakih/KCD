@@ -10,6 +10,7 @@
 		F4048A9D1E18D75E008ACFD6 /* DamageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4048A9C1E18D75E008ACFD6 /* DamageView.swift */; };
 		F4048A9F1E19308A008ACFD6 /* StrokeTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4048A9E1E19308A008ACFD6 /* StrokeTextFieldCell.swift */; };
 		F4048AA11E1951BB008ACFD6 /* SuppliesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4048AA01E1951BB008ACFD6 /* SuppliesCell.swift */; };
+		F404AF5F1F2CE77500A006B8 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = F404AF5E1F2CE77500A006B8 /* LICENSE */; };
 		F40ADA021CE6317500AE29B0 /* IgnoreCommand.plist in Resources */ = {isa = PBXBuildFile; fileRef = F40ADA011CE6317500AE29B0 /* IgnoreCommand.plist */; };
 		F40F976D1E6708F300AE81BB /* Graphics.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40F976C1E6708F300AE81BB /* Graphics.swift */; };
 		F40F976F1E67092600AE81BB /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40F976E1E67092600AE81BB /* ArrayExtensions.swift */; };
@@ -177,7 +178,6 @@
 		F4A3AD9419BDDE5500FDBF80 /* PreferencePanelController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A3AD9619BDDE5500FDBF80 /* PreferencePanelController.xib */; };
 		F4A9B8D41B975029005786C2 /* SlotItemShortName.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4A9B8D21B975029005786C2 /* SlotItemShortName.plist */; };
 		F4A9B8D71B99D5B7005786C2 /* Taihi.txt in Resources */ = {isa = PBXBuildFile; fileRef = F4A9B8D51B99D5B7005786C2 /* Taihi.txt */; };
-		F4A9B8D91BA40ED1005786C2 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = F4A9B8D81BA40ED1005786C2 /* LICENSE */; };
 		F4AA05FB192B92C800844688 /* Temporary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4AA05F9192B92C700844688 /* Temporary.xcdatamodeld */; };
 		F4AA59141E1C951F001667AF /* TimerCountFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AA59131E1C951F001667AF /* TimerCountFormatter.swift */; };
 		F4AA59161E1C9C5D001667AF /* ValueTransformerRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AA59151E1C9C5D001667AF /* ValueTransformerRegister.swift */; };
@@ -346,6 +346,7 @@
 		F4048A9C1E18D75E008ACFD6 /* DamageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DamageView.swift; sourceTree = "<group>"; };
 		F4048A9E1E19308A008ACFD6 /* StrokeTextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrokeTextFieldCell.swift; sourceTree = "<group>"; };
 		F4048AA01E1951BB008ACFD6 /* SuppliesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuppliesCell.swift; sourceTree = "<group>"; };
+		F404AF5E1F2CE77500A006B8 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE; path = LICENSE; sourceTree = SOURCE_ROOT; };
 		F40ADA011CE6317500AE29B0 /* IgnoreCommand.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = IgnoreCommand.plist; sourceTree = "<group>"; };
 		F40F976C1E6708F300AE81BB /* Graphics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Graphics.swift; sourceTree = "<group>"; };
 		F40F976E1E67092600AE81BB /* ArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
@@ -525,7 +526,6 @@
 		F4A2AF571A0930160024BD9E /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		F4A9B8D31B975029005786C2 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = ja; path = ja.lproj/SlotItemShortName.plist; sourceTree = "<group>"; };
 		F4A9B8D61B99D5B7005786C2 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text; name = ja; path = ja.lproj/Taihi.txt; sourceTree = "<group>"; };
-		F4A9B8D81BA40ED1005786C2 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		F4AA05FA192B92C800844688 /* Temporary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Temporary.xcdatamodel; sourceTree = "<group>"; };
 		F4AA59131E1C951F001667AF /* TimerCountFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerCountFormatter.swift; sourceTree = "<group>"; };
 		F4AA59151E1C9C5D001667AF /* ValueTransformerRegister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueTransformerRegister.swift; sourceTree = "<group>"; };
@@ -989,7 +989,7 @@
 				F4A9B8D21B975029005786C2 /* SlotItemShortName.plist */,
 				F40ADA011CE6317500AE29B0 /* IgnoreCommand.plist */,
 				F4A9B8D51B99D5B7005786C2 /* Taihi.txt */,
-				F4A9B8D81BA40ED1005786C2 /* LICENSE */,
+				F404AF5E1F2CE77500A006B8 /* LICENSE */,
 				F4BDEB5E187252F30069D0CE /* Images.xcassets */,
 			);
 			name = "Supporting Files";
@@ -1408,7 +1408,6 @@
 				F4B3DC3018E5C81E0011B4FC /* HistoryWindowController.xib in Resources */,
 				F4C5A22E1C37CB5100533FB6 /* EnhancementListItem.txt in Resources */,
 				F421850A1DF44AA900256590 /* AirBaseWindowController.xib in Resources */,
-				F4A9B8D91BA40ED1005786C2 /* LICENSE in Resources */,
 				F4B3DC3618E5C8650011B4FC /* ShipWindowController.xib in Resources */,
 				F4C6685A1C54510E00601AFB /* BookmarkEditorViewController.xib in Resources */,
 				F4B3DC3C18E5C87D0011B4FC /* DocksViewController.xib in Resources */,
@@ -1449,6 +1448,7 @@
 				F4649FD31DBC52A50097AEBF /* ScreenshotEditorViewController.xib in Resources */,
 				F4C668661C5451AB00601AFB /* QuestListViewController.xib in Resources */,
 				F4666C6B1B29E974001840DB /* EquipmentStrengthen.plist in Resources */,
+				F404AF5F1F2CE77500A006B8 /* LICENSE in Resources */,
 				F4131EDE190FEBDB004F7F9A /* SlotItemWindowController.xib in Resources */,
 				F4C6685D1C54515C00601AFB /* BrowserContentAdjuster.xib in Resources */,
 				F49AABE81DFD33FB00E0B24F /* HistoryWindowTouchBar.xib in Resources */,
