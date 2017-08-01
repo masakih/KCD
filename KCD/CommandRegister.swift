@@ -10,7 +10,7 @@ import Cocoa
 
 enum JSONCommandError: Error {
     
-    case CanNotFindCommand
+    case canNotFindCommand
 }
 
 final class CommandRegister {

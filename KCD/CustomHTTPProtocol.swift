@@ -252,7 +252,7 @@ extension CustomHTTPProtocol: URLSessionDataDelegate {
             if let response = response as? HTTPURLResponse,
                 let request = dataTask.originalRequest {
                 
-                self.cachePolicy = CacheStoragePolicy(for: request, response: response)
+                self.cachePolicy = cacheStoragePolicy(for: request, response: response)
             }
             
             self.delegate?.customHTTPProtocol(self, didRecieve: response)

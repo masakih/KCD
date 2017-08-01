@@ -116,7 +116,7 @@ final class BroserWindowController: NSWindowController {
         ]
         tabViewItemViewControllers.enumerated().forEach {
             
-            let _ = $0.element.view
+            _ = $0.element.view
             let item = informations.tabViewItem(at: $0.offset)
             item.viewController = $0.element
         }

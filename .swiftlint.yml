@@ -3,10 +3,13 @@ excluded:
 disabled_rules:
     - leading_whitespace
     - vertical_whitespace
+    - unused_optional_binding
+    - discarded_notification_center_observer
     - todo
 
 trailing_whitespace:
     ignores_empty_lines: true
+    ignores_comments: true
 
 vertical_whitespace:
     max_empty_lines: 2
@@ -18,6 +21,8 @@ file_length:
 line_length:
     warning: 300
     error: 500
+    ignores_function_declarations: true
+    ignores_comments: true
 
 type_body_length:
     warning: 600
@@ -27,7 +32,7 @@ function_body_length:
     warning: 100
     error: 200
 
-variable_name:
+identifier_name:
   max_length:
     warning: 40
     error: 60

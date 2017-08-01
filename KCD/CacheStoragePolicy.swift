@@ -52,7 +52,7 @@ private func policy(request: URLRequest) -> URLCache.StoragePolicy {
     return .allowed
 }
 
-func CacheStoragePolicy(for request: URLRequest, response: HTTPURLResponse) -> URLCache.StoragePolicy {
+func cacheStoragePolicy(for request: URLRequest, response: HTTPURLResponse) -> URLCache.StoragePolicy {
     
     if cacheable(status: response.statusCode),
         cacheable(response: response),

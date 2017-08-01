@@ -126,10 +126,7 @@ final class ScreenshotEditorViewController: BridgeViewController {
         doneButton.action = .done
     }
     
-    override func observeValue(forKeyPath keyPath: String?,
-                               of object: Any?,
-                               change: [NSKeyValueChangeKey : Any]?,
-                               context: UnsafeMutableRawPointer?) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         
         if keyPath == NSSelectionIndexesBinding {
             
@@ -174,7 +171,7 @@ final class ScreenshotEditorViewController: BridgeViewController {
     
     private func removeEditedImage(url: URL) {
         
-        let _ = editedImages
+        _ = editedImages
             .index { $0.url == url }
             .map { editedImages.remove(at: $0) }
     }

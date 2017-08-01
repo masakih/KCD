@@ -31,10 +31,16 @@ final class FleetViewController: NSViewController {
         case adding = 0
         
         case formula33 = 100
-        case formula33_1 = 101
-        case formula33_3 = 103
-        case formula33_4 = 104
+        case formula33Parameter1 = 101
+        case formula33Parameter3 = 103
+        case formula33Parameter4 = 104
         
+    }
+    
+    enum SakutekiCalclationSterategy: Int {
+        
+        case total
+        case formula33
     }
     
     static let oldStyleFleetViewHeight: CGFloat = 128.0
