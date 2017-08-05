@@ -8,24 +8,6 @@
 
 import Cocoa
 
-fileprivate enum BasicAPI: String {
-    
-    case getMemberBasic = "/kcsapi/api_get_member/basic"
-    case port = "/kcsapi/api_port/port"
-}
-
-fileprivate func dataKeys(_ apiResponse: APIResponse) -> [String] {
-    
-    guard let basicApi = BasicAPI(rawValue: apiResponse.api)
-        else { return ["api_data"] }
-    
-    switch basicApi {
-    case .port: return ["api_data", "api_basic"]
-        
-    default: return ["api_data"]
-    }
-}
-
 final class BasicMapper: JSONMapper {
     
     typealias ObjectType = Basic
@@ -37,8 +19,26 @@ final class BasicMapper: JSONMapper {
         
         self.apiResponse = apiResponse
         self.configuration = MappingConfiguration(entity: Basic.entity,
-                                                  dataKeys: dataKeys(apiResponse),
+                                                  dataKeys: BasicMapper.dataKeys(apiResponse),
                                                   editorStore: ServerDataStore.oneTimeEditor())
+    }
+    
+    private enum BasicAPI: String {
+        
+        case getMemberBasic = "/kcsapi/api_get_member/basic"
+        case port = "/kcsapi/api_port/port"
+    }
+    
+    private class func dataKeys(_ apiResponse: APIResponse) -> [String] {
+        
+        guard let basicApi = BasicAPI(rawValue: apiResponse.api)
+            else { return ["api_data"] }
+        
+        switch basicApi {
+        case .port: return ["api_data", "api_basic"]
+            
+        case .getMemberBasic: return ["api_data"]
+        }
     }
     
     func commit() {

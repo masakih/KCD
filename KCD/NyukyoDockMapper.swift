@@ -8,24 +8,6 @@
 
 import Cocoa
 
-fileprivate enum DeckAPI: String {
-    
-    case getMemberNDock = "/kcsapi/api_get_member/ndock"
-    case port = "/kcsapi/api_port/port"
-}
-
-fileprivate func dataKeys(_ apiResponse: APIResponse) -> [String] {
-    
-    guard let deckApi = DeckAPI(rawValue: apiResponse.api)
-        else { return ["api_data"] }
-    
-    switch deckApi {
-    case .port: return ["api_data", "api_ndock"]
-        
-    default: return ["api_data"]
-    }
-}
-
 final class NyukyoDockMapper: JSONMapper {
     
     typealias ObjectType = NyukyoDock
@@ -37,7 +19,26 @@ final class NyukyoDockMapper: JSONMapper {
         
         self.apiResponse = apiResponse
         self.configuration = MappingConfiguration(entity: NyukyoDock.entity,
-                                                  dataKeys: dataKeys(apiResponse),
+                                                  dataKeys: NyukyoDockMapper.dataKeys(apiResponse),
                                                   editorStore: ServerDataStore.oneTimeEditor())
+    }
+    
+    
+    private enum DeckAPI: String {
+        
+        case getMemberNDock = "/kcsapi/api_get_member/ndock"
+        case port = "/kcsapi/api_port/port"
+    }
+    
+    private class func dataKeys(_ apiResponse: APIResponse) -> [String] {
+        
+        guard let deckApi = DeckAPI(rawValue: apiResponse.api)
+            else { return ["api_data"] }
+        
+        switch deckApi {
+        case .port: return ["api_data", "api_ndock"]
+            
+        case .getMemberNDock: return ["api_data"]
+        }
     }
 }

@@ -9,27 +9,6 @@
 import Cocoa
 import SwiftyJSON
 
-fileprivate enum SlotItemAPI: String {
-    
-    case getMemberSlotItem = "/kcsapi/api_get_member/slot_item"
-    case kousyouGetShip = "/kcsapi/api_req_kousyou/getship"
-    case getMemberRequireInfo = "/kcsapi/api_get_member/require_info"
-}
-
-fileprivate func dataKeys(_ apiResponse: APIResponse) -> [String] {
-    
-    guard let slotItemApi = SlotItemAPI(rawValue: apiResponse.api)
-        else { return ["api_data"] }
-    
-    switch slotItemApi {
-    case .kousyouGetShip: return ["api_data", "api_slotitem"]
-        
-    case .getMemberRequireInfo: return ["api_data", "api_slot_item"]
-        
-    default: return ["api_data"]
-    }
-}
-
 final class SlotItemMapper: JSONMapper {
     
     typealias ObjectType = SlotItem
@@ -41,8 +20,30 @@ final class SlotItemMapper: JSONMapper {
         
         self.apiResponse = apiResponse
         self.configuration = MappingConfiguration(entity: SlotItem.entity,
-                                                  dataKeys: dataKeys(apiResponse),
+                                                  dataKeys: SlotItemMapper.dataKeys(apiResponse),
                                                   editorStore: ServerDataStore.oneTimeEditor())
+    }
+    
+    
+    private enum SlotItemAPI: String {
+        
+        case getMemberSlotItem = "/kcsapi/api_get_member/slot_item"
+        case kousyouGetShip = "/kcsapi/api_req_kousyou/getship"
+        case getMemberRequireInfo = "/kcsapi/api_get_member/require_info"
+    }
+    
+    private class func dataKeys(_ apiResponse: APIResponse) -> [String] {
+        
+        guard let slotItemApi = SlotItemAPI(rawValue: apiResponse.api)
+            else { return ["api_data"] }
+        
+        switch slotItemApi {
+        case .kousyouGetShip: return ["api_data", "api_slotitem"]
+            
+        case .getMemberRequireInfo: return ["api_data", "api_slot_item"]
+            
+        case .getMemberSlotItem: return ["api_data"]
+        }
     }
     
     private var registerIds: [Int] = []

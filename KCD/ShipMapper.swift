@@ -9,39 +9,6 @@
 import Cocoa
 import SwiftyJSON
 
-fileprivate enum ShipAPI: String {
-    
-    case getMemberShip = "/kcsapi/api_get_member/ship"
-    case port = "/kcsapi/api_port/port"
-    case getMemberShip3 = "/kcsapi/api_get_member/ship3"
-    case kousyouGetShip = "/kcsapi/api_req_kousyou/getship"
-    case getMemberShipDeck = "/kcsapi/api_get_member/ship_deck"
-    case kaisouPowerUp = "/kcsapi/api_req_kaisou/powerup"
-    case kaisouSlotDeprive = "/kcsapi/api_req_kaisou/slot_deprive"
-}
-
-fileprivate func dataKeys(_ apiResponse: APIResponse) -> [String] {
-    
-    guard let shipApi = ShipAPI(rawValue: apiResponse.api)
-        else { return ["api_data"] }
-    
-    switch shipApi {
-    case .port: return ["api_data", "api_ship"]
-        
-    case .getMemberShip3: return ["api_data", "api_ship_data"]
-        
-    case .kousyouGetShip: return ["api_data", "api_ship"]
-        
-    case .getMemberShipDeck: return ["api_data", "api_ship_data"]
-        
-    case .kaisouPowerUp: return ["api_data", "api_ship"]
-        
-    case .kaisouSlotDeprive: return ["api_data", "api_ship_data", "api_set_ship"]
-        
-    case .getMemberShip: return ["api_data"]
-    }
-}
-
 extension MappingConfiguration {
     
     func change(dataKeys: [String]) -> MappingConfiguration {
@@ -64,7 +31,7 @@ final class ShipMapper: JSONMapper {
         
         self.apiResponse = apiResponse
         self.configuration = MappingConfiguration(entity: Ship.entity,
-                                                  dataKeys: dataKeys(apiResponse),
+                                                  dataKeys: ShipMapper.dataKeys(apiResponse),
                                                   editorStore: ServerDataStore.oneTimeEditor(),
                                                   ignoreKeys:
             ["api_gomes", "api_gomes2", "api_broken", "api_powup",
@@ -89,6 +56,40 @@ final class ShipMapper: JSONMapper {
         
         self.apiResponse = apiResponse
         self.configuration = configuration
+    }
+    
+    
+    private enum ShipAPI: String {
+        
+        case getMemberShip = "/kcsapi/api_get_member/ship"
+        case port = "/kcsapi/api_port/port"
+        case getMemberShip3 = "/kcsapi/api_get_member/ship3"
+        case kousyouGetShip = "/kcsapi/api_req_kousyou/getship"
+        case getMemberShipDeck = "/kcsapi/api_get_member/ship_deck"
+        case kaisouPowerUp = "/kcsapi/api_req_kaisou/powerup"
+        case kaisouSlotDeprive = "/kcsapi/api_req_kaisou/slot_deprive"
+    }
+    
+    private class func dataKeys(_ apiResponse: APIResponse) -> [String] {
+        
+        guard let shipApi = ShipAPI(rawValue: apiResponse.api)
+            else { return ["api_data"] }
+        
+        switch shipApi {
+        case .port: return ["api_data", "api_ship"]
+            
+        case .getMemberShip3: return ["api_data", "api_ship_data"]
+            
+        case .kousyouGetShip: return ["api_data", "api_ship"]
+            
+        case .getMemberShipDeck: return ["api_data", "api_ship_data"]
+            
+        case .kaisouPowerUp: return ["api_data", "api_ship"]
+            
+        case .kaisouSlotDeprive: return ["api_data", "api_ship_data", "api_set_ship"]
+            
+        case .getMemberShip: return ["api_data"]
+        }
     }
     
     private var registerIds: [Int] = []

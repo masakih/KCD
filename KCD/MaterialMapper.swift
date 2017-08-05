@@ -9,33 +9,6 @@
 import Cocoa
 import SwiftyJSON
 
-fileprivate enum MaterialAPI: String {
-    
-    case port = "/kcsapi/api_port/port"
-    case kousyouCreateItem = "/kcsapi/api_req_kousyou/createitem"
-    case kousyouDestoroyShip = "/kcsapi/api_req_kousyou/destroyship"
-    case kousyouRemodelSlot = "/kcsapi/api_req_kousyou/remodel_slot"
-    case hokyuCharge = "/kcsapi/api_req_hokyu/charge"
-}
-
-fileprivate func dataKeys(_ apiResponse: APIResponse) -> [String] {
-    
-    guard let materialApi = MaterialAPI(rawValue: apiResponse.api)
-        else { return ["api_data"] }
-    
-    switch materialApi {
-    case .port: return ["api_data", "api_material"]
-        
-    case .kousyouCreateItem: return ["api_data", "api_material"]
-        
-    case .kousyouDestoroyShip: return ["api_data", "api_material"]
-        
-    case .kousyouRemodelSlot: return ["api_data", "api_after_material"]
-        
-    case .hokyuCharge: return ["api_data", "api_material"]
-    }
-}
-
 final class MaterialMapper: JSONMapper {
     
     typealias ObjectType = Material
@@ -52,8 +25,36 @@ final class MaterialMapper: JSONMapper {
         
         self.apiResponse = apiResponse
         self.configuration = MappingConfiguration(entity: Material.entity,
-                                                  dataKeys: dataKeys(apiResponse),
+                                                  dataKeys: MaterialMapper.dataKeys(apiResponse),
                                                   editorStore: ServerDataStore.oneTimeEditor())
+    }
+    
+    
+    private enum MaterialAPI: String {
+        
+        case port = "/kcsapi/api_port/port"
+        case kousyouCreateItem = "/kcsapi/api_req_kousyou/createitem"
+        case kousyouDestoroyShip = "/kcsapi/api_req_kousyou/destroyship"
+        case kousyouRemodelSlot = "/kcsapi/api_req_kousyou/remodel_slot"
+        case hokyuCharge = "/kcsapi/api_req_hokyu/charge"
+    }
+    
+    private class func dataKeys(_ apiResponse: APIResponse) -> [String] {
+        
+        guard let materialApi = MaterialAPI(rawValue: apiResponse.api)
+            else { return ["api_data"] }
+        
+        switch materialApi {
+        case .port: return ["api_data", "api_material"]
+            
+        case .kousyouCreateItem: return ["api_data", "api_material"]
+            
+        case .kousyouDestoroyShip: return ["api_data", "api_material"]
+            
+        case .kousyouRemodelSlot: return ["api_data", "api_after_material"]
+            
+        case .hokyuCharge: return ["api_data", "api_material"]
+        }
     }
     
     func commit() {
