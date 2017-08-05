@@ -71,9 +71,7 @@ final class KenzoMarkCommand: JSONCommand {
                                            kDockId: kdockId,
                                            shipId: shipId) {
             
-            return (kenzoMark.flagShipLv,
-                    kenzoMark.flagShipName,
-                    kenzoMark.commanderLv)
+            return (kenzoMark.flagShipLv, kenzoMark.flagShipName, kenzoMark.commanderLv)
         }
         
         return (-1, "", -1)

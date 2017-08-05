@@ -20,7 +20,7 @@ final class MapStartCommand: JSONCommand {
     
     override class func canExecuteAPI(_ api: String) -> Bool {
         
-        return MapAPI(rawValue: api) != nil ? true : false
+        return MapAPI(rawValue: api) != nil
     }
     
     override func execute() {

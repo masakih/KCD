@@ -39,7 +39,7 @@ final class QuestListCommand: JSONCommand {
         
         // 新しいデータ投入
         let quests = store.sortedQuestByNo()
-        data["api_list"].forEach { (_, quest) in
+        data["api_list"].forEach { _, quest in
             
             guard let no = quest["api_no"].int
                 else { return }
@@ -49,7 +49,7 @@ final class QuestListCommand: JSONCommand {
             guard let new = t ?? store.createQuest()
                 else { return print("Can not create Quest") }
             
-            new.bonus_flag = quest["api_bonus_flag"].int.map { $0 != 0} ?? false
+            new.bonus_flag = quest["api_bonus_flag"].int.map { $0 != 0 } ?? false
             new.category = quest["api_category"].int ?? 0
             new.detail = quest["api_detail"].string ?? ""
 //            new.get_material_0 = questData["api_get_material_0"] as? Int ?? 0
