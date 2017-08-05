@@ -210,7 +210,7 @@ final class TiledImageView: NSView {
     
     fileprivate func removeAllTrackingAreas() {
         
-        trackingAreas.forEach { removeTrackingArea($0) }
+        trackingAreas.forEach(removeTrackingArea)
     }
     
     fileprivate func setTrackingArea() {
@@ -279,8 +279,7 @@ extension TiledImageView {
 
 extension TiledImageView: NSDraggingSource {
     
-    func draggingSession(_ session: NSDraggingSession,
-                         sourceOperationMaskFor context: NSDraggingContext) -> NSDragOperation {
+    func draggingSession(_ session: NSDraggingSession, sourceOperationMaskFor context: NSDraggingContext) -> NSDragOperation {
         
         return context == .withinApplication ? .move : []
     }

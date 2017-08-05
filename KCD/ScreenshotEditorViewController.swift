@@ -190,29 +190,29 @@ final class ScreenshotEditorViewController: BridgeViewController {
             return
         }
         
-        DispatchQueue(label: "makeTrimedImage queue")
-            .async {
+        DispatchQueue(label: "makeTrimedImage queue").async {
+            
+            let images: [NSImage] = self.editedImages.flatMap {
                 
-                let images: [NSImage] = self.editedImages.flatMap {
-                    
-                    guard let originalImage = NSImage(contentsOf: $0.url) else { return nil }
-                    
-                    let trimedImage = NSImage(size: self.currentTrimInfo.rect.size)
-                    
-                    trimedImage.lockFocus()
-                    originalImage.draw(at: .zero,
-                                       from: self.currentTrimInfo.rect,
-                                       operation: NSCompositeCopy,
-                                       fraction: 1.0)
-                    trimedImage.unlockFocus()
-                    
-                    return trimedImage
-                }
+                guard let originalImage = NSImage(contentsOf: $0.url)
+                    else { return nil }
                 
-                DispatchQueue.main.async {
-                    
-                    self.tiledImageView.images = images
-                }
+                let trimedImage = NSImage(size: self.currentTrimInfo.rect.size)
+                
+                trimedImage.lockFocus()
+                originalImage.draw(at: .zero,
+                                   from: self.currentTrimInfo.rect,
+                                   operation: NSCompositeCopy,
+                                   fraction: 1.0)
+                trimedImage.unlockFocus()
+                
+                return trimedImage
+            }
+            
+            DispatchQueue.main.async {
+                
+                self.tiledImageView.images = images
+            }
         }
     }
     

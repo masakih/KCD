@@ -16,7 +16,8 @@ final class GuardEscapedView: NSView {
             let taihiString = try? String(contentsOf: url, encoding: .utf8)
             else { fatalError("Can not load Taihi.txt") }
         
-        guard (taihiString as NSString).length == 2 else { fatalError("Taihi string is not 2 charactor") }
+        guard (taihiString as NSString).length == 2
+            else { fatalError("Taihi string is not 2 charactor") }
         
          return taihiString
     }()

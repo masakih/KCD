@@ -29,8 +29,7 @@ final class StrengthenListItemView: NSBox {
                 (NSPoint(x: 209.5, y: 0), NSPoint(x: 209.5, y: height)),
                 (NSPoint(x: 0, y: 17.5), NSPoint(x: width, y: 17.5)),
                 (NSPoint(x: 0, y: 34.5), NSPoint(x: width, y: 34.5))
-            ]
-            )
+            ])
             .stroke()
     }
 }

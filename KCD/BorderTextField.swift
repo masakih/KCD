@@ -24,8 +24,7 @@ final class BorderTextField: NSTextField {
             [
                 (NSPoint(x: 3, y: height), NSPoint(x: bounds.maxX, y: height)),
                 (NSPoint(x: width, y: 0), NSPoint(x: width, y: height))
-            ]
-            )
+            ])
             .stroke()
     }
 }

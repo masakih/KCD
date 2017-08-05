@@ -93,7 +93,12 @@ final class SlotItemLevelView: NSTextField {
         
         let width = bounds.width
         let height = bounds.height
-        let path = multiline { [(NSPoint(x: width - offset, y: 0), NSPoint(x: width - offset, y: height))] }
+        let path = multiline(lines: [
+            (
+                NSPoint(x: width - offset, y: 0),
+                NSPoint(x: width - offset, y: height)
+            )
+            ])
         path.lineWidth = 1.0
         
         return path
@@ -103,13 +108,17 @@ final class SlotItemLevelView: NSTextField {
         
         let width = bounds.width
         let height = bounds.height
-        let path = multiline {
-            [(NSPoint, NSPoint)]()
-                .appended { (NSPoint(x: width - offset, y: 0), NSPoint(x: width - offset, y: height)) }
-                .appended {
-                    (NSPoint(x: width - offset - padding, y: 0), NSPoint(x: width - offset - padding, y: height))
-            }
-        }
+        let path = multiline(lines:
+            [
+                (
+                    NSPoint(x: width - offset, y: 0),
+                    NSPoint(x: width - offset, y: height)
+                ),
+                (
+                    NSPoint(x: width - offset - padding, y: 0),
+                    NSPoint(x: width - offset - padding, y: height)
+                )
+            ])
         path.lineWidth = 1.0
         
         return path
@@ -119,17 +128,21 @@ final class SlotItemLevelView: NSTextField {
         
         let width = bounds.width
         let height = bounds.height
-        let path = multiline {
-            [(NSPoint, NSPoint)]()
-                .appended { (NSPoint(x: width - offset, y: 0), NSPoint(x: width - offset, y: height)) }
-                .appended {
-                    (NSPoint(x: width - offset - padding, y: 0), NSPoint(x: width - offset - padding, y: height))
-                }
-                .appended {
-                    (NSPoint(x: width - offset - padding * 2, y: 0),
-                     NSPoint(x: width - offset - padding * 2, y: height))
-            }
-        }
+        let path = multiline(lines:
+            [
+                (
+                    NSPoint(x: width - offset, y: 0),
+                    NSPoint(x: width - offset, y: height)
+                ),
+                (
+                    NSPoint(x: width - offset - padding, y: 0),
+                    NSPoint(x: width - offset - padding, y: height)
+                ),
+                (
+                    NSPoint(x: width - offset - padding * 2, y: 0),
+                    NSPoint(x: width - offset - padding * 2, y: height)
+                )
+            ])
         path.lineWidth = 1.0
         
         return path
@@ -139,10 +152,13 @@ final class SlotItemLevelView: NSTextField {
         
         let width = bounds.width
         let height = bounds.height
-        let path = multiline {
-            [(NSPoint, NSPoint)]()
-                .appended { (NSPoint(x: width - offset - slideOffset, y: 0), NSPoint(x: width - offset, y: height)) }
-        }
+        let path = multiline(lines:
+            [
+                (
+                    NSPoint(x: width - offset - slideOffset, y: 0),
+                    NSPoint(x: width - offset, y: height)
+                )
+            ])
         path.lineWidth = 2.0
         
         return path
@@ -152,14 +168,17 @@ final class SlotItemLevelView: NSTextField {
         
         let width = bounds.width
         let height = bounds.height
-        let path = multiline {
-            [(NSPoint, NSPoint)]()
-                .appended { (NSPoint(x: width - offset - slideOffset, y: 0), NSPoint(x: width - offset, y: height)) }
-                .appended {
-                    (NSPoint(x: width - offset - padding - slideOffset, y: 0),
-                     NSPoint(x: width - offset - padding, y: height))
-            }
-        }
+        let path = multiline(lines:
+            [
+                (
+                    NSPoint(x: width - offset - slideOffset, y: 0),
+                    NSPoint(x: width - offset, y: height)
+                ),
+                (
+                    NSPoint(x: width - offset - padding - slideOffset, y: 0),
+                    NSPoint(x: width - offset - padding, y: height)
+                )
+            ])
         path.lineWidth = 2.0
         
         return path
@@ -169,18 +188,21 @@ final class SlotItemLevelView: NSTextField {
         
         let width = bounds.width
         let height = bounds.height
-        let path = multiline {
-            [(NSPoint, NSPoint)]()
-                .appended { (NSPoint(x: width - offset - slideOffset, y: 0), NSPoint(x: width - offset, y: height)) }
-                .appended {
-                    (NSPoint(x: width - offset - padding - slideOffset, y: 0),
-                     NSPoint(x: width - offset - padding, y: height))
-                }
-                .appended {
-                    (NSPoint(x: width - offset - padding * 2 - slideOffset, y: 0),
-                     NSPoint(x: width - offset - padding * 2, y: height))
-            }
-        }
+        let path = multiline(lines:
+            [
+                (
+                    NSPoint(x: width - offset - slideOffset, y: 0),
+                    NSPoint(x: width - offset, y: height)
+                ),
+                (
+                    NSPoint(x: width - offset - padding - slideOffset, y: 0),
+                    NSPoint(x: width - offset - padding, y: height)
+                ),
+                (
+                    NSPoint(x: width - offset - padding * 2 - slideOffset, y: 0),
+                    NSPoint(x: width - offset - padding * 2, y: height)
+                )
+            ])
         path.lineWidth = 2.0
         
         return path
@@ -190,18 +212,18 @@ final class SlotItemLevelView: NSTextField {
         
         let width = bounds.width
         let height = bounds.height
-        let path = polyline {
-            [NSPoint]()
-                .appended { NSPoint(x: width - offset - slideOffset, y: 0) }
-                .appended { NSPoint(x: width - offset, y: height * 0.5) }
-                .appended { NSPoint(x: width - offset - anglePoint, y: height) }
-        }
-        polyline {
-            [NSPoint]()
-                .appended { NSPoint(x: width - offset - padding - slideOffset, y: 0) }
-                .appended { NSPoint(x: width - offset - padding, y: height * 0.5) }
-                .appended { NSPoint(x: width - offset - padding - anglePoint, y: height) }
-            }
+        let path = polyline(points:
+            [
+                NSPoint(x: width - offset - slideOffset, y: 0),
+                NSPoint(x: width - offset, y: height * 0.5),
+                NSPoint(x: width - offset - anglePoint, y: height)
+            ])
+        polyline(points:
+            [
+                NSPoint(x: width - offset - padding - slideOffset, y: 0),
+                NSPoint(x: width - offset - padding, y: height * 0.5),
+                NSPoint(x: width - offset - padding - anglePoint, y: height)
+            ])
             .map { path?.append($0) }
         path?.lineWidth = 2.0
         

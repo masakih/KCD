@@ -151,26 +151,24 @@ final class ShipViewController: MainTabVIewItemViewController {
     
     private func tag(_ sender: AnyObject?) -> Int {
         
-        guard let sender = sender
-            else { return -1 }
-        
-        if let control = sender as? NSSegmentedControl,
-            let cell = sender.cell as? NSSegmentedCell {
+        switch sender {
             
-            return cell.tag(forSegment: control.selectedSegment)
-        }
-        
-        if let control = sender as? NSControl {
+        case let segmented as NSSegmentedControl:
+            let cell = segmented.cell as? NSSegmentedCell
             
+            return cell?.tag(forSegment: segmented.selectedSegment) ?? -1
+            
+        case let control as NSControl:
             return control.tag
+            
+        default:
+            return -1
         }
-        
-        return -1
     }
     
     @IBAction func changeView(_ sender: AnyObject?) {
         
-        ViewType(rawValue: tag(sender)).map { showView(with: $0) }
+        ViewType(rawValue: tag(sender)).map(showView)
     }
 }
 

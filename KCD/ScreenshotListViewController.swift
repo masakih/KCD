@@ -175,43 +175,42 @@ final class ScreenshotListViewController: NSViewController {
     
     func registerScreenshot(_ image: NSBitmapImageRep, fromOnScreen: NSRect) {
         
-        DispatchQueue(label: "Screenshot queue")
-            .async {
+        DispatchQueue(label: "Screenshot queue").async {
+            
+            guard let data = image.representation(using: .JPEG, properties: [:])
+                else { return }
+            
+            let url = self.screenshotSaveDirectoryURL
+                .appendingPathComponent(self.dirName)
+                .appendingPathExtension("jpg")
+            let pathURL = FileManager.default.uniqueFileURL(url)
+            
+            do {
                 
-                guard let data = image.representation(using: .JPEG, properties: [:])
-                    else { return }
+                try data.write(to: pathURL)
                 
-                let url = self.screenshotSaveDirectoryURL
-                    .appendingPathComponent(self.dirName)
-                    .appendingPathExtension("jpg")
-                let pathURL = FileManager.default.uniqueFileURL(url)
+            } catch {
                 
-                do {
+                print("Can not write image")
+                return
+            }
+            
+            DispatchQueue.main.async {
+                
+                let info = ScreenshotInformation(url: pathURL, version: self.cacheVersion(forUrl: pathURL))
+                
+                self.screenshotsController.insert(info, atArrangedObjectIndex: 0)
+                let set: Set<IndexPath> = [NSIndexPath(forItem: 0, inSection: 0) as IndexPath]
+                self.collectionView.selectionIndexPaths = set
+                
+                self.collectionView.scrollToItems(at: set, scrollPosition: .nearestHorizontalEdge)
+                if UserDefaults.standard[.showsListWindowAtScreenshot] {
                     
-                    try data.write(to: pathURL)
-                    
-                } catch {
-                    
-                    print("Can not write image")
-                    return
+                    self.view.window?.makeKeyAndOrderFront(nil)
                 }
                 
-                DispatchQueue.main.async {
-                    
-                    let info = ScreenshotInformation(url: pathURL, version: self.cacheVersion(forUrl: pathURL))
-                    
-                    self.screenshotsController.insert(info, atArrangedObjectIndex: 0)
-                    let set: Set<IndexPath> = [NSIndexPath(forItem: 0, inSection: 0) as IndexPath]
-                    self.collectionView.selectionIndexPaths = set
-                    
-                    self.collectionView.scrollToItems(at: set, scrollPosition: .nearestHorizontalEdge)
-                    if UserDefaults.standard[.showsListWindowAtScreenshot] {
-                        
-                        self.view.window?.makeKeyAndOrderFront(nil)
-                    }
-                    
-                    self.saveCache()
-                }
+                self.saveCache()
+            }
         }
     }
     
@@ -240,11 +239,10 @@ final class ScreenshotListViewController: NSViewController {
     
     fileprivate func reloadData() {
         
-        guard let f = try? FileManager
-            .default
-            .contentsOfDirectory(at: screenshotSaveDirectoryURL, includingPropertiesForKeys: nil) else {
-            print("can not read list of screenshot directory")
-            return
+        guard let f = try? FileManager.default.contentsOfDirectory(at: screenshotSaveDirectoryURL, includingPropertiesForKeys: nil)
+            else {
+                print("can not read list of screenshot directory")
+                return
         }
         
         let imageTypes = NSImage.imageTypes()

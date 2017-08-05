@@ -69,7 +69,6 @@ final class ScreenshotInformation: NSObject, NSCoding {
     struct CodingKey {
         
         static let url = "Url"
-        static let version = "Version"
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
