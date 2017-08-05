@@ -66,12 +66,12 @@ final class Fleet: NSObject {
     private weak var deck: Deck?
     
     dynamic var name: String? { return deck?.name }
-    func keyPathsForValuesAffectingName() -> Set<String> {
+    class func keyPathsForValuesAffectingName() -> Set<String> {
         
         return ["deck.name"]
     }
     dynamic var id: NSNumber? { return deck?.id as NSNumber? }
-    func keyPathesForValuesAffectiongId() -> Set<String> {
+    class func keyPathesForValuesAffectiongId() -> Set<String> {
         
         return ["deck.id"]
     }
