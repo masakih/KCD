@@ -68,7 +68,7 @@ final class Debug {
     
     class func excute(level: Level, f: () -> Void) {
         
-        if UserDefaults.standard.degugPrintLevel.higher(other: level) {
+        if UserDefaults.standard[.degugPrintLevel].higher(other: level) {
             
             f()
         }

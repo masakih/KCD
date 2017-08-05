@@ -38,11 +38,11 @@ final class PowerUpSupportViewController: MainTabVIewItemViewController {
         
         let sd = UserDefaults.standard
         let hideKyes = [(Bool, String)]()
-            .appended { (sd.hideMaxKaryoku, "isMaxKaryoku != TRUE") }
-            .appended { (sd.hideMaxRaisou, "isMaxRaisou != TRUE") }
-            .appended { (sd.hideMaxTaiku, "isMaxTaiku != TRUE") }
-            .appended { (sd.hideMaxSoukou, "isMaxSoukou != TRUE") }
-            .appended { (sd.hideMaxLucky, "isMaxLucky != TRUE") }
+            .appended { (sd[.hideMaxKaryoku], "isMaxKaryoku != TRUE") }
+            .appended { (sd[.hideMaxRaisou], "isMaxRaisou != TRUE") }
+            .appended { (sd[.hideMaxTaiku], "isMaxTaiku != TRUE") }
+            .appended { (sd[.hideMaxSoukou], "isMaxSoukou != TRUE") }
+            .appended { (sd[.hideMaxLucky], "isMaxLucky != TRUE") }
             .flatMap { (b, s) in b ? s : nil }
         
         if hideKyes.isEmpty { return nil }
@@ -66,7 +66,7 @@ final class PowerUpSupportViewController: MainTabVIewItemViewController {
             
         }
         
-        shipController.sortDescriptors = UserDefaults.standard.powerupSupportSortDecriptors
+        shipController.sortDescriptors = UserDefaults.standard[.powerupSupportSortDecriptors]
         shipController.addObserver(self, forKeyPath: NSSortDescriptorsBinding, context: nil)
     }
     
@@ -74,7 +74,7 @@ final class PowerUpSupportViewController: MainTabVIewItemViewController {
         
         if keyPath == NSSortDescriptorsBinding {
             
-            UserDefaults.standard.powerupSupportSortDecriptors = shipController.sortDescriptors
+            UserDefaults.standard[.powerupSupportSortDecriptors] = shipController.sortDescriptors
             
             return
         }

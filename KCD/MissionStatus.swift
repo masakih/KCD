@@ -132,7 +132,7 @@ final class MissionStatus: NSObject {
         let txtFormat = NSLocalizedString("%@ Will Return From %@.", comment: "%@ Will Return From %@.")
         notification.informativeText = String(format: txtFormat, fleetName, name!)
         
-        if UserDefaults.standard.playFinishMissionSound {
+        if UserDefaults.standard[.playFinishMissionSound] {
             
             notification.soundName = NSUserNotificationDefaultSoundName
         }

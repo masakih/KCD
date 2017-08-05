@@ -81,7 +81,7 @@ final class ShipViewController: MainTabVIewItemViewController {
             
         }
         
-        shipController.sortDescriptors = UserDefaults.standard.shipviewSortDescriptors
+        shipController.sortDescriptors = UserDefaults.standard[.shipviewSortDescriptors]
         shipController.addObserver(self, forKeyPath: NSSortDescriptorsBinding, context: nil)
         shipController.addObserver(self, forKeyPath: "arrangedObjects", context: nil)
         
@@ -110,7 +110,7 @@ final class ShipViewController: MainTabVIewItemViewController {
         
         if keyPath == NSSortDescriptorsBinding {
             
-            UserDefaults.standard.shipviewSortDescriptors = shipController.sortDescriptors
+            UserDefaults.standard[.shipviewSortDescriptors] = shipController.sortDescriptors
             
             return
         }

@@ -105,7 +105,7 @@ final class BroserWindowController: NSWindowController {
         
         ancherageRepariTimerViewController = AncherageRepairTimerViewController()
         replace(ancherageRepariTimerPlaceholder, with: ancherageRepariTimerViewController)
-        if UserDefaults.standard.screenshotButtonSize == .small { toggleAnchorageSize(nil) }
+        if UserDefaults.standard[.screenshotButtonSize] == .small { toggleAnchorageSize(nil) }
         
         tabViewItemViewControllers = [
             DocksViewController(),
@@ -123,9 +123,9 @@ final class BroserWindowController: NSWindowController {
         
         fleetViewController = FleetViewController(viewType: .detailViewType)
         replace(deckPlaceholder, with: fleetViewController)
-        setFleetView(position: UserDefaults.standard.fleetViewPosition, animate: false)
+        setFleetView(position: UserDefaults.standard[.fleetViewPosition], animate: false)
         fleetViewController.enableAnimation = false
-        fleetViewController.shipOrder = UserDefaults.standard.fleetViewShipOrder
+        fleetViewController.shipOrder = UserDefaults.standard[.fleetViewShipOrder]
         fleetViewController.enableAnimation = true
         
         bind(#keyPath(flagShipID), to: deckContoller, withKeyPath: "selection.ship_0", options: nil)
@@ -133,7 +133,7 @@ final class BroserWindowController: NSWindowController {
         NotificationCenter.default
             .addObserver(forName: .CombinedDidCange, object: nil, queue: nil) {
                 
-                guard UserDefaults.standard.autoCombinedView,
+                guard UserDefaults.standard[.autoCombinedView],
                     let type = $0.userInfo?[CombinedCommand.userInfoKey] as? CombineType
                     else { return }
                 
@@ -151,12 +151,13 @@ final class BroserWindowController: NSWindowController {
                 }
         }
         
-        if UserDefaults.standard.lastHasCombinedView { showCombinedView() }
+        if UserDefaults.standard[.lastHasCombinedView] { showCombinedView() }
     }
     
     override func swipe(with event: NSEvent) {
         
-        guard UserDefaults.standard.useSwipeChangeCombinedView else { return }
+        guard UserDefaults.standard[.useSwipeChangeCombinedView]
+            else { return }
         
         if event.deltaX > 0 {
             
@@ -173,7 +174,7 @@ final class BroserWindowController: NSWindowController {
     
     func windowWillClose(_ notification: Notification) {
         
-        UserDefaults.standard.lastHasCombinedView = isCombinedMode
+        UserDefaults.standard[.lastHasCombinedView] = isCombinedMode
     }
     
     fileprivate func replace(_ view: NSView, with viewController: NSViewController) {
@@ -286,7 +287,7 @@ extension BroserWindowController {
         frame.origin.y += diff
         informations.frame = frame
         
-        UserDefaults.standard.screenshotButtonSize = newSize
+        UserDefaults.standard[.screenshotButtonSize] = newSize
     }
     
     @IBAction func showHideCombinedView(_ sender: AnyObject?) {
@@ -317,13 +318,13 @@ extension BroserWindowController {
     @IBAction func reorderToDoubleLine(_ sender: AnyObject?) {
         
         fleetViewController.shipOrder = .doubleLine
-        UserDefaults.standard.fleetViewShipOrder = .doubleLine
+        UserDefaults.standard[.fleetViewShipOrder] = .doubleLine
     }
     
     @IBAction func reorderToLeftToRight(_ sender: AnyObject?) {
         
         fleetViewController.shipOrder = .leftToRight
-        UserDefaults.standard.fleetViewShipOrder = .leftToRight
+        UserDefaults.standard[.fleetViewShipOrder] = .leftToRight
     }
     
     @IBAction func selectNextFleet(_ sender: AnyObject?) {
@@ -532,7 +533,7 @@ extension BroserWindowController {
         let fleetListRect = fleetViewFrameForFleetViewPosition(position: newPosition)
         
         fleetViewPosition = newPosition
-        UserDefaults.standard.fleetViewPosition = newPosition
+        UserDefaults.standard[.fleetViewPosition] = newPosition
         
         if animate {
             

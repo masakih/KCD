@@ -73,7 +73,7 @@ final class ScreenshotEditorViewController: BridgeViewController {
         get { return tiledImageView.columnCount }
         set {
             tiledImageView.columnCount = newValue
-            UserDefaults.standard.screenshotEditorColumnCount = newValue
+            UserDefaults.standard[.screenshotEditorColumnCount] = newValue
         }
     }
     
@@ -97,7 +97,7 @@ final class ScreenshotEditorViewController: BridgeViewController {
     private var editedImage: NSImage?
     private var currentSelection: [ScreenshotInformation] = []
     private var editedImages: [EditedImage] = []
-    private var realiesCurrentTrimInforIndex = UserDefaults.standard.scrennshotEditorType
+    private var realiesCurrentTrimInforIndex = UserDefaults.standard[.scrennshotEditorType]
     private var currentTrimInfo: TrimRectInformation {
         
         didSet {
@@ -108,7 +108,7 @@ final class ScreenshotEditorViewController: BridgeViewController {
                     if $0.name != currentTrimInfo.name { return false }
                     return $0.rect == currentTrimInfo.rect
                 }
-                .map { UserDefaults.standard.scrennshotEditorType = $0 }
+                .map { UserDefaults.standard[.scrennshotEditorType] = $0 }
         }
     }
     
@@ -117,7 +117,7 @@ final class ScreenshotEditorViewController: BridgeViewController {
         super.viewDidLoad()
         
         arrayController.addObserver(self, forKeyPath: NSSelectionIndexesBinding, context: nil)
-        currentTrimInfoIndex = UserDefaults.standard.scrennshotEditorType
+        currentTrimInfoIndex = UserDefaults.standard[.scrennshotEditorType]
         updateSelections()
     }
     

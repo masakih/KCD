@@ -12,17 +12,17 @@ final class HistoryItemCleaner {
     
     func cleanOldHistoryItems() {
         
-        guard UserDefaults.standard.cleanOldHistoryItems else {
-            return
-        }
+        guard UserDefaults.standard[.cleanOldHistoryItems]
+            else { return }
         
         let store = LocalDataStore.oneTimeEditor()
+        let cleanSinceDays = UserDefaults.standard[.cleanSinceDays]
         
-        store.unmarkedKaihatuHistories(befor: UserDefaults.standard.cleanSiceDays)
+        store.unmarkedKaihatuHistories(befor: cleanSinceDays)
             .forEach { store.delete($0) }
-        store.unmarkedKenzoHistories(befor: UserDefaults.standard.cleanSiceDays)
+        store.unmarkedKenzoHistories(befor: cleanSinceDays)
             .forEach { store.delete($0) }
-        store.unmarkedDropShipHistories(befor: UserDefaults.standard.cleanSiceDays)
+        store.unmarkedDropShipHistories(befor: cleanSinceDays)
             .forEach { store.delete($0) }
     }
 }

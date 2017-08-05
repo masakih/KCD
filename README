@@ -1,0 +1,21 @@
+艦娘は今日も元気です。(KCD)
+
+このソフトウェアは、DMM/KADOKAWAが提供するブラウザゲーム「艦隊これくしょん-艦これ-」をmacOSで快適にプレイするための簡易ブラウザです。
+
+
+ライセンス
+ 二条項BSDライセンス
+ 詳しくはLISENCEをごらんください
+
+----
+このソフトウェアは、Apache License, Version 2.0の元、以下のソースコードを利用しています。
+
+KCD/DefaultKey.swift
+KCD/DefaultKeys.swift
+KCD/DefaultSettings.swift
+  CotEditor
+  https://coteditor.com
+  Created by 1024jp on 2016-01-03.
+
+----
+

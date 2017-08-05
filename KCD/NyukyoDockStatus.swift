@@ -123,7 +123,7 @@ final class NyukyoDockStatus: NSObject {
         notification.title = String(format: format, name)
         notification.informativeText = notification.title
         
-        if UserDefaults.standard.playFinishNyukyoSound {
+        if UserDefaults.standard[.playFinishNyukyoSound] {
             
             notification.soundName = NSUserNotificationDefaultSoundName
         }

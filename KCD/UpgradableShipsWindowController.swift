@@ -80,14 +80,14 @@ final class UpgradableShipsWindowController: NSWindowController {
     
     var showLevelOneShipInUpgradableList: Bool {
         
-        get { return UserDefaults.standard.showLevelOneShipInUpgradableList }
-        set { UserDefaults.standard.showLevelOneShipInUpgradableList = newValue }
+        get { return UserDefaults.standard[.showLevelOneShipInUpgradableList] }
+        set { UserDefaults.standard[.showLevelOneShipInUpgradableList] = newValue }
     }
     
     var showsExcludedShipInUpgradableList: Bool {
         
-        get { return UserDefaults.standard.showsExcludedShipInUpgradableList }
-        set { UserDefaults.standard.showsExcludedShipInUpgradableList = newValue }
+        get { return UserDefaults.standard[.showsExcludedShipInUpgradableList] }
+        set { UserDefaults.standard[.showsExcludedShipInUpgradableList] = newValue }
     }
     
     var excludeShiIDs: [Int] {

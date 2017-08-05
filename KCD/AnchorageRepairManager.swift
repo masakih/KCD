@@ -47,8 +47,8 @@ final class AnchorageRepairManager: NSObject {
     
     private(set) var repairTime: Date {
         
-        get { return UserDefaults.standard.repairTime }
-        set { UserDefaults.standard.repairTime = newValue }
+        get { return UserDefaults.standard[.repairTime] }
+        set { UserDefaults.standard[.repairTime] = newValue }
     }
     
     private func reset() {

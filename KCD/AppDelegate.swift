@@ -54,10 +54,10 @@ final class AppDelegate: NSObject {
     var screenShotSaveDirectory: String {
         
         get {
-            return UserDefaults.standard.screenShotSaveDirectory ?? ApplicationDirecrories.pictures.path
+            return UserDefaults.standard[.screenShotSaveDirectory] ?? ApplicationDirecrories.pictures.path
         }
         set {
-            UserDefaults.standard.screenShotSaveDirectory = newValue
+            UserDefaults.standard[.screenShotSaveDirectory] = newValue
         }
     }
     
@@ -89,13 +89,13 @@ final class AppDelegate: NSObject {
         didLoadedMainMenu = true
         
         ValueTransformerRegister.registerAll()
-        UserDefaults.registerAllDefaults()
+        UserDefaults.standard.register(defaults: DefaultKeys.defaults)
         CustomHTTPProtocol.start()
         CommandRegister.register()
         
         windowManager.prepair()
         
-        if !UserDefaults.standard.showsDebugMenu { debugMenuItem.isHidden = true }
+        if !UserDefaults.standard[.showsDebugMenu] { debugMenuItem.isHidden = true }
         
         NotificationCenter.default
             .addObserver(forName: .Periodic, object: historyCleanNotifer, queue: nil) { _ in

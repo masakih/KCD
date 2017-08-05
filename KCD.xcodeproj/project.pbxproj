@@ -10,7 +10,9 @@
 		F4048A9D1E18D75E008ACFD6 /* DamageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4048A9C1E18D75E008ACFD6 /* DamageView.swift */; };
 		F4048A9F1E19308A008ACFD6 /* StrokeTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4048A9E1E19308A008ACFD6 /* StrokeTextFieldCell.swift */; };
 		F4048AA11E1951BB008ACFD6 /* SuppliesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4048AA01E1951BB008ACFD6 /* SuppliesCell.swift */; };
+		F404AF571F2CDD1C00A006B8 /* DefaultKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F404AF561F2CDD1C00A006B8 /* DefaultKey.swift */; };
 		F404AF5F1F2CE77500A006B8 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = F404AF5E1F2CE77500A006B8 /* LICENSE */; };
+		F404AF621F2D8CAE00A006B8 /* DefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F404AF611F2D8CAE00A006B8 /* DefaultKeys.swift */; };
 		F40ADA021CE6317500AE29B0 /* IgnoreCommand.plist in Resources */ = {isa = PBXBuildFile; fileRef = F40ADA011CE6317500AE29B0 /* IgnoreCommand.plist */; };
 		F40F976D1E6708F300AE81BB /* Graphics.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40F976C1E6708F300AE81BB /* Graphics.swift */; };
 		F40F976F1E67092600AE81BB /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40F976E1E67092600AE81BB /* ArrayExtensions.swift */; };
@@ -45,7 +47,6 @@
 		F42A8FEE1E435E330099DC1D /* Damage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A8FED1E435E330099DC1D /* Damage.swift */; };
 		F42CFE161E3BA1E1000B4F9B /* EnhancementListItem2.plist in Resources */ = {isa = PBXBuildFile; fileRef = F42CFE151E3BA1E1000B4F9B /* EnhancementListItem2.plist */; };
 		F42CFE181E3C12AA000B4F9B /* ScreenshotInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42CFE171E3C12AA000B4F9B /* ScreenshotInformation.swift */; };
-		F42CFE1A1E3C726D000B4F9B /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42CFE191E3C726D000B4F9B /* UserDefaultsExtension.swift */; };
 		F42CFE1C1E3CB495000B4F9B /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42CFE1B1E3CB495000B4F9B /* Bookmark.swift */; };
 		F42CFE1E1E3CCCC2000B4F9B /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42CFE1D1E3CCCC2000B4F9B /* Resource.swift */; };
 		F42CFE201E3CDE7E000B4F9B /* Basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42CFE1F1E3CDE7E000B4F9B /* Basic.swift */; };
@@ -150,6 +151,8 @@
 		F47C3EBA1E619CC400D97449 /* KenzoDockMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47C3EB91E619CC400D97449 /* KenzoDockMapper.swift */; };
 		F47C3EBC1E61AEC500D97449 /* AirBaseMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47C3EBB1E61AEC500D97449 /* AirBaseMapper.swift */; };
 		F47C3EBE1E62718E00D97449 /* BattleCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47C3EBD1E62718E00D97449 /* BattleCommand.swift */; };
+		F48883451F2E095F0069E0C3 /* DefaultSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48883441F2E095F0069E0C3 /* DefaultSettings.swift */; };
+		F48883471F2E2E9A0069E0C3 /* DefaultKeyExtendedValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48883461F2E2E9A0069E0C3 /* DefaultKeyExtendedValues.swift */; };
 		F490977B1E19C3910085A45D /* SuppliesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F490977A1E19C3910085A45D /* SuppliesView.swift */; };
 		F490977D1E19DF390085A45D /* SlotItemFrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F490977C1E19DF390085A45D /* SlotItemFrameView.swift */; };
 		F490977F1E19ED400085A45D /* StrengthenListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F490977E1E19ED400085A45D /* StrengthenListItemView.swift */; };
@@ -346,7 +349,10 @@
 		F4048A9C1E18D75E008ACFD6 /* DamageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DamageView.swift; sourceTree = "<group>"; };
 		F4048A9E1E19308A008ACFD6 /* StrokeTextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrokeTextFieldCell.swift; sourceTree = "<group>"; };
 		F4048AA01E1951BB008ACFD6 /* SuppliesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuppliesCell.swift; sourceTree = "<group>"; };
-		F404AF5E1F2CE77500A006B8 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE; path = LICENSE; sourceTree = SOURCE_ROOT; };
+		F404AF561F2CDD1C00A006B8 /* DefaultKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultKey.swift; sourceTree = "<group>"; };
+		F404AF5E1F2CE77500A006B8 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = SOURCE_ROOT; };
+		F404AF601F2CE85C00A006B8 /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = SOURCE_ROOT; };
+		F404AF611F2D8CAE00A006B8 /* DefaultKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultKeys.swift; sourceTree = "<group>"; };
 		F40ADA011CE6317500AE29B0 /* IgnoreCommand.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = IgnoreCommand.plist; sourceTree = "<group>"; };
 		F40F976C1E6708F300AE81BB /* Graphics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Graphics.swift; sourceTree = "<group>"; };
 		F40F976E1E67092600AE81BB /* ArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
@@ -379,7 +385,6 @@
 		F42CBB201D1ED41D004C2AE2 /* LocalData 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "LocalData 3.xcdatamodel"; sourceTree = "<group>"; };
 		F42CFE151E3BA1E1000B4F9B /* EnhancementListItem2.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = EnhancementListItem2.plist; sourceTree = "<group>"; };
 		F42CFE171E3C12AA000B4F9B /* ScreenshotInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenshotInformation.swift; sourceTree = "<group>"; };
-		F42CFE191E3C726D000B4F9B /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
 		F42CFE1B1E3CB495000B4F9B /* Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
 		F42CFE1D1E3CCCC2000B4F9B /* Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		F42CFE1F1E3CDE7E000B4F9B /* Basic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Basic.swift; sourceTree = "<group>"; };
@@ -490,6 +495,8 @@
 		F47C3EB91E619CC400D97449 /* KenzoDockMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KenzoDockMapper.swift; sourceTree = "<group>"; };
 		F47C3EBB1E61AEC500D97449 /* AirBaseMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirBaseMapper.swift; sourceTree = "<group>"; };
 		F47C3EBD1E62718E00D97449 /* BattleCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleCommand.swift; sourceTree = "<group>"; };
+		F48883441F2E095F0069E0C3 /* DefaultSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultSettings.swift; sourceTree = "<group>"; };
+		F48883461F2E2E9A0069E0C3 /* DefaultKeyExtendedValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultKeyExtendedValues.swift; sourceTree = "<group>"; };
 		F490977A1E19C3910085A45D /* SuppliesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuppliesView.swift; sourceTree = "<group>"; };
 		F490977C1E19DF390085A45D /* SlotItemFrameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlotItemFrameView.swift; sourceTree = "<group>"; };
 		F490977E1E19ED400085A45D /* StrengthenListItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrengthenListItemView.swift; sourceTree = "<group>"; };
@@ -932,7 +939,10 @@
 				F4FC3E931E44A5D600E41228 /* AppDelegate.swift */,
 				F47B06DC1E97ECD4006711D9 /* WindowManager.swift */,
 				F40F976E1E67092600AE81BB /* ArrayExtensions.swift */,
-				F42CFE191E3C726D000B4F9B /* UserDefaultsExtension.swift */,
+				F404AF561F2CDD1C00A006B8 /* DefaultKey.swift */,
+				F48883461F2E2E9A0069E0C3 /* DefaultKeyExtendedValues.swift */,
+				F404AF611F2D8CAE00A006B8 /* DefaultKeys.swift */,
+				F48883441F2E095F0069E0C3 /* DefaultSettings.swift */,
 				F40F97701E68536400AE81BB /* FileManagerExtension.swift */,
 				F491A4BB1E4B523C00D1E067 /* ApplicationDirecrories.swift */,
 				F44AA26A1E82AD2E00EED8BE /* NSObjectExtension.swift */,
@@ -990,6 +1000,7 @@
 				F40ADA011CE6317500AE29B0 /* IgnoreCommand.plist */,
 				F4A9B8D51B99D5B7005786C2 /* Taihi.txt */,
 				F404AF5E1F2CE77500A006B8 /* LICENSE */,
+				F404AF601F2CE85C00A006B8 /* README */,
 				F4BDEB5E187252F30069D0CE /* Images.xcassets */,
 			);
 			name = "Supporting Files";
@@ -1504,6 +1515,7 @@
 				F4CF25AA1E338ED000C02A66 /* JSONTracker.swift in Sources */,
 				F44BC6D11E224299004644E3 /* PortCommand.swift in Sources */,
 				F4FC3E901E437E1F00E41228 /* JSONReciever.swift in Sources */,
+				F404AF571F2CDD1C00A006B8 /* DefaultKey.swift in Sources */,
 				F45F3BE11E067A870009434E /* HistoryItemCleaner.swift in Sources */,
 				F47C3E981E5DB29300D97449 /* JSONMapper.swift in Sources */,
 				F4E5FF0C1E1645280026868C /* ScreenshotListViewController.swift in Sources */,
@@ -1541,10 +1553,12 @@
 				F4A0D7151E2FB11F00224DCE /* MapStartCommand.swift in Sources */,
 				F44BC6E51E23082B004644E3 /* CombinedCommand.swift in Sources */,
 				F4AA59401E1E23EC001667AF /* HistoryMarkTransformer.swift in Sources */,
+				F404AF621F2D8CAE00A006B8 /* DefaultKeys.swift in Sources */,
 				F44BC7131E28FDC4004644E3 /* MemberShipCommand.swift in Sources */,
 				F49097831E19F7760085A45D /* StrengthenListItemCellView.swift in Sources */,
 				F495462E1B1894DD00E0D8D0 /* Bookmark.xcdatamodeld in Sources */,
 				F44BC7091E279C41004644E3 /* KenzoMarkCommand.swift in Sources */,
+				F48883471F2E2E9A0069E0C3 /* DefaultKeyExtendedValues.swift in Sources */,
 				F40F97711E68536400AE81BB /* FileManagerExtension.swift in Sources */,
 				F47C3EAE1E5F26E900D97449 /* DeckMapper.swift in Sources */,
 				F4048AA11E1951BB008ACFD6 /* SuppliesCell.swift in Sources */,
@@ -1601,6 +1615,7 @@
 				F47C3E9A1E5DC90000D97449 /* MasterSTypeMapper.swift in Sources */,
 				F4E5FF101E17A83D0026868C /* ScreenshotListWindowController.swift in Sources */,
 				F44BC7031E252C4F004644E3 /* UpdateSlotItemCommand.swift in Sources */,
+				F48883451F2E095F0069E0C3 /* DefaultSettings.swift in Sources */,
 				F44BC73F1E2B1AD4004644E3 /* DummyShipCommand.swift in Sources */,
 				F44BC73D1E2A5D39004644E3 /* DropShipHistoryCommand.swift in Sources */,
 				F45771231E1BCC7C008A9215 /* PeriodicNotifier.swift in Sources */,
@@ -1613,7 +1628,6 @@
 				F47C3EB01E60500700D97449 /* MaterialMapper.swift in Sources */,
 				F4CF25B21E34799400C02A66 /* FleetManager.swift in Sources */,
 				F44BC6F71E23DA4A004644E3 /* DestroyShipCommand.swift in Sources */,
-				F42CFE1A1E3C726D000B4F9B /* UserDefaultsExtension.swift in Sources */,
 				F4AA59141E1C951F001667AF /* TimerCountFormatter.swift in Sources */,
 				F44BC6D91E2272F6004644E3 /* NyukyoStartCommand.swift in Sources */,
 				F44BC7411E2B263D004644E3 /* GuardShelterCommand.swift in Sources */,

@@ -78,27 +78,23 @@ final class GameViewController: NSViewController {
         
         adjustFlash()
         
-        let prevDate = UserDefaults.standard.prevReloadDate
-        if let prevDate = prevDate {
+        let prevDate = UserDefaults.standard[.prevReloadDate]
+        if Date(timeIntervalSinceNow: 0.0).timeIntervalSince(prevDate) < 1 * 60 {
             
-            let now = Date(timeIntervalSinceNow: 0.0)
-            if now.timeIntervalSince(prevDate) < 1 * 60 {
-                
-                let untilDate = prevDate.addingTimeInterval(1 * 60)
-                let date = DateFormatter.localizedString(from: untilDate, dateStyle: .none, timeStyle: .medium)
-                let alert = NSAlert()
-                alert.messageText = NSLocalizedString("Reload interval is too short?", comment: "")
-                let format = NSLocalizedString("Reload interval is too short.\nWait until %@.", comment: "")
-                alert.informativeText = String(format: format, date)
-                alert.runModal()
-                
-                return
-            }
+            let untilDate = prevDate.addingTimeInterval(1 * 60)
+            let date = DateFormatter.localizedString(from: untilDate, dateStyle: .none, timeStyle: .medium)
+            let alert = NSAlert()
+            alert.messageText = NSLocalizedString("Reload interval is too short?", comment: "")
+            let format = NSLocalizedString("Reload interval is too short.\nWait until %@.", comment: "")
+            alert.informativeText = String(format: format, date)
+            alert.runModal()
+            
+            return
         }
         
         webView.reload(sender)
         
-        UserDefaults.standard.prevReloadDate = Date(timeIntervalSinceNow: 0.0)
+        UserDefaults.standard[.prevReloadDate] = Date(timeIntervalSinceNow: 0.0)
     }
     
     @IBAction func deleteCacheAndReload(_ sender: AnyObject?) {
@@ -123,7 +119,7 @@ final class GameViewController: NSViewController {
     @IBAction func screenShot(_ sender: AnyObject?) {
         
         let frame = webView.visibleRect
-        let screenshotBorder = UserDefaults.standard.screenShotBorderWidth
+        let screenshotBorder = UserDefaults.standard[.screenShotBorderWidth]
         let f = frame.insetBy(dx: -screenshotBorder, dy: -screenshotBorder)
         
         guard let rep = webView.bitmapImageRepForCachingDisplay(in: f) else { return }

@@ -163,11 +163,11 @@ final class FleetViewController: NSViewController {
         didSet {
             switch sakutekiCalculator {
             case _ as SimpleCalculator:
-                UserDefaults.standard.sakutekiCalclationSterategy = .total
+                UserDefaults.standard[.sakutekiCalclationSterategy] = .total
                 
             case let f as Formula33:
-                UserDefaults.standard.sakutekiCalclationSterategy = .formula33
-                UserDefaults.standard.formula33Factor = Double(f.condition)
+                UserDefaults.standard[.sakutekiCalclationSterategy] = .formula33
+                UserDefaults.standard[.formula33Factor] = Double(f.condition)
                 
             default: ()
             }
@@ -211,12 +211,12 @@ final class FleetViewController: NSViewController {
         
         super.viewDidLoad()
         
-        switch UserDefaults.standard.sakutekiCalclationSterategy {
+        switch UserDefaults.standard[.sakutekiCalclationSterategy] {
         case .total:
             sakutekiCalculator = SimpleCalculator()
             
         case .formula33:
-            let factor = UserDefaults.standard.formula33Factor
+            let factor = UserDefaults.standard[.formula33Factor]
             sakutekiCalculator = Formula33(Int(factor))
         }
         

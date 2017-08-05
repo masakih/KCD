@@ -172,18 +172,18 @@ extension Ship {
     }
     dynamic var planColor: NSColor {
         
-        if !UserDefaults.standard.showsPlanColor { return NSColor.controlTextColor }
+        if !UserDefaults.standard[.showsPlanColor] { return NSColor.controlTextColor }
         
         guard let sally = sally_area
             else { return NSColor.controlTextColor }
         
         switch sally {
-        case 1: return UserDefaults.standard.plan01Color
-        case 2: return UserDefaults.standard.plan02Color
-        case 3: return UserDefaults.standard.plan03Color
-        case 4: return UserDefaults.standard.plan04Color
-        case 5: return UserDefaults.standard.plan05Color
-        case 6: return UserDefaults.standard.plan06Color
+        case 1: return UserDefaults.standard[.plan01Color]
+        case 2: return UserDefaults.standard[.plan02Color]
+        case 3: return UserDefaults.standard[.plan03Color]
+        case 4: return UserDefaults.standard[.plan04Color]
+        case 5: return UserDefaults.standard[.plan05Color]
+        case 6: return UserDefaults.standard[.plan06Color]
         default: return NSColor.controlTextColor
         }
     }

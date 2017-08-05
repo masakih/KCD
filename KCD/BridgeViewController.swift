@@ -57,7 +57,7 @@ extension BridgeViewController: NSSharingServicePickerDelegate, ScreenshotSharin
     
     private var appendKanColleTag: Bool {
         
-        return UserDefaults.standard.appendKanColleTag
+        return UserDefaults.standard[.appendKanColleTag]
     }
     
     private var tagString: String? {

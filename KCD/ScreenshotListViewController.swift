@@ -38,11 +38,11 @@ final class ScreenshotListViewController: NSViewController {
     @IBOutlet weak var standardView: NSView!
     @IBOutlet weak var editorView: NSView!
     
-    dynamic var zoom: Double = UserDefaults.standard.screenshotPreviewZoomValue {
+    dynamic var zoom: Double = UserDefaults.standard[.screenshotPreviewZoomValue] {
         
         didSet {
             collectionView.reloadData()
-            UserDefaults.standard.screenshotPreviewZoomValue = zoom
+            UserDefaults.standard[.screenshotPreviewZoomValue] = zoom
         }
     }
     dynamic var maxZoom: Double = 1.0
@@ -208,7 +208,7 @@ final class ScreenshotListViewController: NSViewController {
                     self.collectionView.selectionIndexPaths = set
                     
                     self.collectionView.scrollToItems(at: set, scrollPosition: .nearestHorizontalEdge)
-                    if UserDefaults.standard.showsListWindowAtScreenshot {
+                    if UserDefaults.standard[.showsListWindowAtScreenshot] {
                         
                         self.view.window?.makeKeyAndOrderFront(nil)
                     }

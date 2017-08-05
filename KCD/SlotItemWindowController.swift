@@ -29,11 +29,11 @@ final class SlotItemWindowController: NSWindowController {
     
     var showEquipmentType: Int {
         
-        get { return UserDefaults.standard.showEquipmentType.rawValue }
+        get { return UserDefaults.standard[.showEquipmentType].rawValue }
         set {
             notifyChangeValue(forKey: #keyPath(showEquipmentTypeTitle)) {
                 
-                UserDefaults.standard.showEquipmentType = ShowType(rawValue: newValue) ?? .all
+                UserDefaults.standard[.showEquipmentType] = ShowType(rawValue: newValue) ?? .all
             }
             slotItemController.fetchPredicate = filterPredicate
         }
@@ -41,7 +41,7 @@ final class SlotItemWindowController: NSWindowController {
     
     var filterPredicate: NSPredicate? {
         
-        switch UserDefaults.standard.showEquipmentType {
+        switch UserDefaults.standard[.showEquipmentType] {
         case .all:
             return nil
             
@@ -55,7 +55,7 @@ final class SlotItemWindowController: NSWindowController {
     
     var showEquipmentTypeTitle: String {
         
-        switch UserDefaults.standard.showEquipmentType {
+        switch UserDefaults.standard[.showEquipmentType] {
         case .all:
             return NSLocalizedString("All", comment: "show equipment type All")
             

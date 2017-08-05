@@ -42,8 +42,9 @@ final class TimeSignalNotifier: NSObject {
         
         defer { registerTimer() }
         
-        if !UserDefaults.standard.notifyTimeSignal { return }
-                
+        guard UserDefaults.standard[.notifyTimeSignal]
+            else { return }
+        
         let now = Date()
         let cal = Calendar.current
         let minutes = cal.component(.minute, from: now)
@@ -56,7 +57,7 @@ final class TimeSignalNotifier: NSObject {
         notification.title = String(format: format, hour + 1)
         notification.informativeText = notification.title
         
-        if UserDefaults.standard.playNotifyTimeSignalSound {
+        if UserDefaults.standard[.playNotifyTimeSignalSound] {
             
             notification.soundName = NSUserNotificationDefaultSoundName
             

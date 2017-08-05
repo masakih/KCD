@@ -96,7 +96,7 @@ final class KenzoDockStatus: NSObject {
         notification.title = String(format: format, number as NSNumber)
         notification.informativeText = notification.title
         
-        if UserDefaults.standard.playFinishKenzoSound {
+        if UserDefaults.standard[.playFinishKenzoSound] {
             
             notification.soundName = NSUserNotificationDefaultSoundName
         }
