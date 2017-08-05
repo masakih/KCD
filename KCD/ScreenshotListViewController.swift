@@ -142,10 +142,7 @@ final class ScreenshotListViewController: NSViewController {
             .asyncAfter(deadline: .now() + 0.0001 ) { self.reloadData() }
     }
     
-    override func observeValue(forKeyPath keyPath: String?,
-                               of object: Any?,
-                               change: [NSKeyValueChangeKey : Any]?,
-                               context: UnsafeMutableRawPointer?) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         
         if let object = object as? NSCollectionView,
             object == collectionView {
