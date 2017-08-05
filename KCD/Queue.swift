@@ -8,12 +8,12 @@
 
 import Cocoa
 
-final class Queue {
+final class Queue<T> {
     
-    private var contents: [Any] = []
+    private var contents: [T] = []
     private let lock = NSCondition()
     
-    func dequeue() -> Any {
+    func dequeue() -> T {
         
         lock.lock()
         defer { lock.unlock() }
@@ -26,7 +26,7 @@ final class Queue {
         return contents.popLast()!
     }
     
-    func enqueue(_ obj: Any) {
+    func enqueue(_ obj: T) {
         
         lock.lock()
         defer { lock.unlock() }

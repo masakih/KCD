@@ -10,7 +10,7 @@ import Cocoa
 
 final class JSONTracker {
     
-    private let queue: Queue
+    private let queue: Queue<APIResponse>
     private let reciever: JSONReciever
     
     init() {
@@ -28,12 +28,9 @@ final class JSONTracker {
     
     private func doAction() {
         
-        guard let item = queue.dequeue() as? APIResponse
-            else { return print("Dequeued item is not APIResponse") }
-        
         do {
             
-            try CommandRegister.command(for: item).execute()
+            try CommandRegister.command(for: queue.dequeue()).execute()
             
         } catch {
             

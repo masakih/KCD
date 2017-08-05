@@ -10,13 +10,13 @@ import Cocoa
 
 final class JSONReciever {
     
-    init(queue: Queue) {
+    init(queue: Queue<APIResponse>) {
         
         self.queue = queue
         CustomHTTPProtocol.classDelegate = self
     }
     
-    fileprivate let queue: Queue
+    fileprivate let queue: Queue<APIResponse>
     fileprivate var recievers: [URLProtocol: NSMutableData] = [:]
 }
 
