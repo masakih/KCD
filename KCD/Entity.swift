@@ -11,11 +11,6 @@ import CoreData
 struct Entity<T: NSManagedObject> {
     
     let name: String
-    
-    init(name: String, type: T.Type) {
-        
-        self.name = name
-    }
 }
 
 protocol EntityProvider {
@@ -30,7 +25,7 @@ extension EntityProvider {
     
     static var entity: Entity<ObjectType> {
         
-        return Entity(name: entityName, type: ObjectType.self)
+        return Entity<ObjectType>(name: entityName)
     }
 }
 

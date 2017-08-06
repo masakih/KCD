@@ -52,9 +52,13 @@ enum MenuItemTag: Int {
 
 class HistoryTableViewController: NSViewController {
     
-    var pickUpPredicateFormat: String { return "date = %@" }
-    var predicateFormat: String { return "" }
-    var entityType: NSManagedObject.Type? { return nil }
+    // Subbclass MUST override these.
+    var predicateFormat: String { fatalError("Subbclass MUST implement.") }
+    func objects(of predicate: NSPredicate?, in store: LocalDataStore) throws -> [NSManagedObject] {
+        
+        fatalError("Subbclass MUST implement.")
+    }
+    
     
     @IBOutlet var controller: NSArrayController!
     @IBOutlet var tableView: NSTableView!
@@ -79,21 +83,19 @@ class HistoryTableViewController: NSViewController {
     
     @IBAction func addMark(_ sender: AnyObject?) {
         
-        guard let entityType = entityType,
-            let clickedRow = tableView?.clickedRow,
+        guard let clickedRow = tableView?.clickedRow,
             let items = controller?.arrangedObjects as? [HistoryObject],
             case 0..<items.count = clickedRow
             else { return }
         
         let clickedObject = items[clickedRow]
-        let predicate = NSPredicate(format: pickUpPredicateFormat,
+        let predicate = NSPredicate(format: "date = %@",
                                     argumentArray: [clickedObject.date])
         
         let store = LocalDataStore.oneTimeEditor()
         
-        if let a = try? store.objects(with: Entity(name: entityType.entityName, type: entityType), predicate: predicate),
-            let item = a.first,
-            var history = item as? Markable {
+        if let items = try? objects(of: predicate, in: store),
+            var history = items.first as? Markable {
             
             history.marked = !history.marked
         }
@@ -146,17 +148,26 @@ extension HistoryTableViewController: NSTableViewDelegate {
 final class KaihatsuHistoryTableViewController: HistoryTableViewController {
     
     override var predicateFormat: String { return "name contains $value" }
-    override var entityType: NSManagedObject.Type? { return KaihatuHistory.self }
+    override func objects(of predicate: NSPredicate?, in store: LocalDataStore) throws -> [NSManagedObject] {
+        
+        return try store.objects(with: KaihatuHistory.entity, predicate: predicate)
+    }
 }
 
 final class KenzoHistoryTableViewController: HistoryTableViewController {
     
     override var predicateFormat: String { return "name contains $value" }
-    override var entityType: NSManagedObject.Type? { return KenzoHistory.self }
+    override func objects(of predicate: NSPredicate?, in store: LocalDataStore) throws -> [NSManagedObject] {
+        
+        return try store.objects(with: KenzoHistory.entity, predicate: predicate)
+    }
 }
 
 final class DropShipHistoryTableViewController: HistoryTableViewController {
     
     override var predicateFormat: String { return "shipName contains $value" }
-    override var entityType: NSManagedObject.Type? { return DropShipHistory.self }
+    override func objects(of predicate: NSPredicate?, in store: LocalDataStore) throws -> [NSManagedObject] {
+        
+        return try store.objects(with: DropShipHistory.entity, predicate: predicate)
+    }
 }
