@@ -10,7 +10,7 @@ import Cocoa
 
 fileprivate protocol Markable {
     
-    var marked: Bool { get set }
+    var mark: Bool { get set }
 }
 
 fileprivate protocol HistoryObject {
@@ -18,30 +18,9 @@ fileprivate protocol HistoryObject {
     var date: Date { get }
 }
 
-extension DropShipHistory: Markable, HistoryObject {
-    
-    var marked: Bool {
-        
-        get { return mark }
-        set { mark = newValue }
-    }
-}
-extension KenzoHistory: Markable, HistoryObject {
-    
-    var marked: Bool {
-        
-        get { return mark }
-        set { mark = newValue }
-    }
-}
-extension KaihatuHistory: Markable, HistoryObject {
-    
-    var marked: Bool {
-        
-        get { return mark }
-        set { mark = newValue }
-    }
-}
+extension DropShipHistory: Markable, HistoryObject {}
+extension KenzoHistory: Markable, HistoryObject {}
+extension KaihatuHistory: Markable, HistoryObject {}
 
 enum MenuItemTag: Int {
     
@@ -97,7 +76,7 @@ class HistoryTableViewController: NSViewController {
         if let items = try? objects(of: predicate, in: store),
             var history = items.first as? Markable {
             
-            history.marked = !history.marked
+            history.mark = !history.mark
         }
         
         store.save()
@@ -121,7 +100,7 @@ class HistoryTableViewController: NSViewController {
             
             let clickedObject = items[clickedRow]
             menuItem.isEnabled = true
-            if clickedObject.marked {
+            if clickedObject.mark {
                 
                 menuItem.title = NSLocalizedString("Remove mark", comment: "Remove history mark.")
                 
