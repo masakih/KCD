@@ -35,41 +35,46 @@ struct ApplicationDirecrories {
     }
 }
 
-func checkDirectory(_ url: URL) -> Bool {
-    
-    var success = true
+func createDirectory(_ url: URL) -> Bool {
     
     do {
         
-        let p = try url.resourceValues(forKeys: [.isDirectoryKey])
-        if !p.isDirectory! {
+        try FileManager.default.createDirectory(at: url,
+                                                withIntermediateDirectories: false,
+                                                attributes: nil)
+        
+        return true
+        
+    } catch {
+        
+        return false
+        
+    }
+}
+
+func checkDirectory(_ url: URL) -> Bool {
+    
+    do {
+        
+        let resourceValue = try url.resourceValues(forKeys: [.isDirectoryKey])
+        if !resourceValue.isDirectory! {
             
             print("Expected a folder to store application data, found a file \(url.path).")
-            success = false
+            
+            return false
         }
+        
+        return true
         
     } catch {
         
         let nserror = error as NSError
         if nserror.code == NSFileReadNoSuchFileError {
             
-            do {
-                
-                try FileManager
-                    .default
-                    .createDirectory(at: url,
-                                     withIntermediateDirectories: false,
-                                     attributes: nil)
-                
-            } catch {
-                
-                success = false
-            }
-        } else {
+            return createDirectory(url)
             
-            success = false
         }
+        
+        return false
     }
-    
-    return success
 }
