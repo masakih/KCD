@@ -24,7 +24,7 @@ final class TimerCountFormatter: Formatter {
         let minus = value < 0
         var interval = minus ? -value : value
         
-        let hour = Int(interval / ( 60 * 60))
+        let hour = Int(interval / (60 * 60))
         interval -= Double(hour * 60 * 60)
         let minutes = Int(interval / 60)
         interval -= Double(minutes * 60)
