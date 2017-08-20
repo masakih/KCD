@@ -135,9 +135,7 @@ extension Ship {
     }
     dynamic var status: Int {
         
-        let n = Double(nowhp)
-        let m = Double(maxhp)
-        let stat = n / m
+        let stat = Double(nowhp) / Double(maxhp)
         
         if stat <= 0.25 { return 3 }
         if stat <= 0.5 { return 2 }
@@ -311,46 +309,23 @@ extension Ship {
     }
 }
 
-
-fileprivate let seikuEffectiveTypes: [Int] = [6, 7, 8, 11, 45, 56, 57, 58]
-
-fileprivate let fighterTypes: [Int] = [6]
-fileprivate let bomberTypes: [Int] = [7]
-fileprivate let attackerTypes: [Int] = [8]
-fileprivate let floatplaneBomberTypes: [Int] = [11]
-fileprivate let floatplaneFighterTypes: [Int] = [45]
-fileprivate let jetFighter: [Int] = [56]
-fileprivate let jetBomberTypes: [Int] = [57]
-fileprivate let jetAttackerTypes: [Int] = [58]
-
 fileprivate let allPlaneTypes: [Int] = [6, 7, 8, 9, 10, 11, 25, 26, 41, 45, 56, 57, 58, 59]
-
-fileprivate let fighterBonus: [Double] = [0, 0, 2, 5, 9, 14, 14, 22]
-fileprivate let bomberBonus: [Double] = [0, 0, 0, 0, 0, 0, 0, 0]
-fileprivate let attackerBonus: [Double] = [0, 0, 0, 0, 0, 0, 0, 0]
-fileprivate let floatplaneBomberBonus: [Double] = [0, 0, 1, 1, 1, 3, 3, 6]
-fileprivate let floatplaneFighterBonus: [Double] = [0, 0, 2, 5, 9, 14, 14, 22]
-fileprivate let jetBomberBonus: [Double] = [0, 0, 0, 0, 0, 0, 0, 0]
-
-//                            sqrt 0, 1,     2.5,   4,     5.5,   7,     8.5,   10
-fileprivate let bonus: [Double] = [0, 1.000, 1.581, 2.000, 2.345, 2.645, 2.915, 3.162]
-
 
 extension Ship {
     
-    private func slotItemCount(_ index: Int) -> Int {
+    func setItem(_ id: Int, for slot: Int) {
         
-        switch index {
-        case 0: return onslot_0
-        case 1: return onslot_1
-        case 2: return onslot_2
-        case 3: return onslot_3
-        case 4: return onslot_4
-        default: return 0
+        switch slot {
+        case 0: slot_0 = id
+        case 1: slot_1 = id
+        case 2: slot_2 = id
+        case 3: slot_3 = id
+        case 4: slot_4 = id
+        default: fatalError("Ship: setItem out of bounds.")
         }
     }
     
-    private func slotItemId(_ index: Int) -> Int {
+    func slotItemId(_ index: Int) -> Int {
         
         switch index {
         case 0: return slot_0
@@ -362,15 +337,15 @@ extension Ship {
         }
     }
     
-    func setItem(_ id: Int, for slot: Int) {
+    func slotItemCount(_ index: Int) -> Int {
         
-        switch slot {
-        case 0: slot_0 = id
-        case 1: slot_1 = id
-        case 2: slot_2 = id
-        case 3: slot_3 = id
-        case 4: slot_4 = id
-        default: fatalError("Ship: setItem out of bounds.")
+        switch index {
+        case 0: return onslot_0
+        case 1: return onslot_1
+        case 2: return onslot_2
+        case 3: return onslot_3
+        case 4: return onslot_4
+        default: return 0
         }
     }
     
@@ -391,65 +366,6 @@ extension Ship {
         return ServerDataStore.default.slotItem(by: slotItemId(index))
     }
     
-    private func typeBonus(_ type: Int) -> [Double]? {
-        
-        switch type {
-        case let t where fighterTypes.contains(t): return fighterBonus
-        case let t where bomberTypes.contains(t): return bomberBonus
-        case let t where attackerTypes.contains(t): return attackerBonus
-        case let t where floatplaneBomberTypes.contains(t): return floatplaneBomberBonus
-        case let t where floatplaneFighterTypes.contains(t): return floatplaneFighterBonus
-        case let t where jetBomberTypes.contains(t): return jetBomberBonus
-        default: return nil
-        }
-    }
-    
-    private func normalSeiku(_ index: Int) -> Double {
-        
-        let itemCount = slotItemCount(index)
-        
-        if itemCount == 0 { return 0 }
-        
-        guard let item = slotItem(index)
-            else { return 0 }
-        
-        let type2 = item.master_slotItem.type_2
-        
-        guard seikuEffectiveTypes.contains(type2)
-            else { return 0 }
-        
-        let taiku = Double(item.master_slotItem.tyku)
-        let lv = Double(item.level)
-        let rate = bomberTypes.contains(type2) ? 0.25 : 0.2
-        
-        return (taiku + lv * rate) * sqrt(Double(itemCount))
-        
-    }
-    
-    private func extraSeiku(_ index: Int) -> Double {
-        
-        let itemCount = slotItemCount(index)
-        
-        if itemCount == 0 { return 0 }
-        
-        guard let item = slotItem(index)
-            else { return 0 }
-        
-        let type2 = item.master_slotItem.type_2
-        
-        guard let typeBonus = typeBonus(type2)
-            else { return 0 }
-        
-        let airLevel = item.alv
-        
-        return typeBonus[airLevel] + bonus[airLevel]
-    }
-    
-    private func seiku(_ index: Int) -> Int {
-        
-        return Int(normalSeiku(index) + extraSeiku(index))
-    }
-    
     dynamic var totalEquipment: Int {
         
         return (0...4).map(slotItemMax).reduce(0, +)
@@ -462,12 +378,7 @@ extension Ship {
     }
     dynamic var seiku: Int {
         
-        return (0...4).map(normalSeiku).map { Int($0) }.reduce(0, +)
-    }
-    
-    var extraSeiku: Int {
-        
-        return (0...4).map(extraSeiku).map { Int($0) }.reduce(0, +)
+        return SeikuCalclator(ship: self).seiku
     }
     
     class func keyPathsForValuesAffectingTotalSeiku() -> Set<String> {
@@ -476,7 +387,7 @@ extension Ship {
     }
     var totalSeiku: Int {
         
-        return (0...4).map(seiku).reduce(0, +)
+        return SeikuCalclator(ship: self).totalSeiku
     }
     
     var totalDrums: Int {
