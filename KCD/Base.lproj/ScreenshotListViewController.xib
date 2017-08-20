@@ -33,7 +33,7 @@
                         <rect key="frame" x="1" y="1" width="478" height="559"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView selectable="YES" allowsEmptySelection="NO" allowsMultipleSelection="YES" id="qg6-X7-FWD" customClass="CollectionView" customModule="KCD">
+                            <collectionView selectable="YES" allowsMultipleSelection="YES" id="qg6-X7-FWD" customClass="CollectionView" customModule="KCD">
                                 <rect key="frame" x="0.0" y="0.0" width="478" height="559"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="trf-hX-M9X">
