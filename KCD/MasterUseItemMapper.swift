@@ -14,7 +14,7 @@ final class MasterUseItemMapper: JSONMapper {
 
     let apiResponse: APIResponse
     let configuration = MappingConfiguration(entity: MasterUseItem.entity,
-                                             dataKeys: ["api_dat", "api_mst_useitem"],
+                                             dataKeys: ["api_data", "api_mst_useitem"],
                                              editorStore: ServerDataStore.oneTimeEditor())
     
     required init(_ apiResponse: APIResponse) {
