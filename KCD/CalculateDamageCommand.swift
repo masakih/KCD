@@ -86,6 +86,7 @@ final class CalculateDamageCommand: JSONCommand {
     
     func enemyCombinedBattle(battleType: BattleType) {
         
+        updateBattleCell()
         DamageCalculator(json, battleType).calcEnemyCombinedBattle()
     }
     
