@@ -278,9 +278,11 @@ final class FleetViewController: NSViewController {
                 case "equippedItem":
                     notifyChangeValue(forKey: #keyPath(totalSakuteki))
                     notifyChangeValue(forKey: #keyPath(totalDrums))
+                    notifyChangeValue(forKey: #keyPath(totalCalclatedSeiku))
                     
                 case "seiku":
                     notifyChangeValue(forKey: #keyPath(totalSeiku))
+                    notifyChangeValue(forKey: #keyPath(totalCalclatedSeiku))
                     
                 case "lv":
                     notifyChangeValue(forKey: #keyPath(totalLevel))
