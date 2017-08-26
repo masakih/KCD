@@ -383,10 +383,9 @@ extension Ship {
     
     class func keyPathsForValuesAffectingTotalSeiku() -> Set<String> {
         
-        return ["slot_0", "slot_1", "slot_2", "slot_3", "slot_4",
-                "onslot_0", "onslot_1", "onslot_2", "onslot_3", "onslot_4"]
+        return ["seiku"]
     }
-    var totalSeiku: Int {
+    dynamic var totalSeiku: Int {
         
         return SeikuCalclator(ship: self).totalSeiku
     }
