@@ -144,26 +144,6 @@ extension Ship {
         return 0
     }
     
-    class func keyPathsForValuesAffectingStatusColor() -> Set<String> {
-        
-        return ["status"]
-    }
-    dynamic var statusColor: NSColor {
-        
-        switch status {
-        case 0: return NSColor.controlTextColor
-        case 1: return NSColor.yellow
-        case 2: return NSColor.orange
-        case 3: return NSColor.red
-        default: fatalError("status is unknown value")
-        }
-    }
-    
-//    class func keyPathsForValuesAffectingConditionColor() -> Set<String> {
-//        return ["cond"]
-//    }
-    dynamic var conditionColor: NSColor { return NSColor.controlTextColor }
-    
     class func keyPathsForValuesAffectingPlanColor() -> Set<String> {
         
         return ["sally_area"]
