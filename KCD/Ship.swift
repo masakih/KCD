@@ -289,8 +289,6 @@ extension Ship {
     }
 }
 
-fileprivate let allPlaneTypes: [Int] = [6, 7, 8, 9, 10, 11, 25, 26, 41, 45, 56, 57, 58, 59]
-
 extension Ship {
     
     func setItem(_ id: Int, for slot: Int) {
@@ -329,7 +327,7 @@ extension Ship {
         }
     }
     
-    private func slotItemMax(_ index: Int) -> Int {
+    func slotItemMax(_ index: Int) -> Int {
         
         switch index {
         case 0: return master_ship.maxeq_0
@@ -341,7 +339,7 @@ extension Ship {
         }
     }
     
-    private func slotItem(_ index: Int) -> SlotItem? {
+    func slotItem(_ index: Int) -> SlotItem? {
         
         return ServerDataStore.default.slotItem(by: slotItemId(index))
     }
@@ -361,11 +359,7 @@ extension Ship {
         return SeikuCalclator(ship: self).seiku
     }
     
-    class func keyPathsForValuesAffectingTotalSeiku() -> Set<String> {
-        
-        return ["seiku"]
-    }
-    dynamic var totalSeiku: Int {
+    var totalSeiku: Int {
         
         return SeikuCalclator(ship: self).totalSeiku
     }
@@ -375,109 +369,4 @@ extension Ship {
         return (0...4).flatMap(slotItem).filter { $0.slotitem_id == 75 }.count
     }
     
-    // MARK: - Plane count strings
-    private enum PlaneState {
-        
-        case cannotEquip
-        case notEquip(Int)
-        case equiped(Int, Int)
-    }
-    
-    private func planState(_ index: Int) -> PlaneState {
-        
-        let itemId = slotItemId(index)
-        let maxCount = slotItemMax(index)
-        
-        if maxCount == 0 { return .cannotEquip }
-        if itemId == -1 { return .notEquip(maxCount) }
-        
-        if let item = slotItem(index),
-            allPlaneTypes.contains(item.master_slotItem.type_2) {
-            
-            return .equiped(slotItemCount(index), maxCount)
-        }
-        
-        return .notEquip(maxCount)
-    }
-    
-    private func planeString(_ index: Int) -> String? {
-        
-        switch planState(index) {
-        case .cannotEquip:
-            return nil
-        case .notEquip(let max):
-            return "\(max)"
-        case .equiped(let count, let max):
-            return "\(count)/\(max)"
-        }
-    }
-    
-    class func keyPathsForValuesAffectingPlaneString0() -> Set<String> {
-        
-        return ["onslot_0", "master_ship.maxeq_0", "equippedItem"]
-    }
-    dynamic var planeString0: String? { return planeString(0) }
-    
-    class func keyPathsForValuesAffectingPlaneString1() -> Set<String> {
-        
-        return ["onslot_1", "master_ship.maxeq_1", "equippedItem"]
-    }
-    dynamic var planeString1: String? { return planeString(1) }
-    
-    class func keyPathsForValuesAffectingPlaneString2() -> Set<String> {
-        
-        return ["onslot_2", "master_ship.maxeq_2", "equippedItem"]
-    }
-    dynamic var planeString2: String? { return planeString(2) }
-    
-    class func keyPathsForValuesAffectingPlaneString3() -> Set<String> {
-        
-        return ["onslot_3", "master_ship.maxeq_3", "equippedItem"]
-    }
-    dynamic var planeString3: String? { return planeString(3) }
-    
-    class func keyPathsForValuesAffectingPlaneString4() -> Set<String> {
-        
-        return ["onslot_4", "master_ship.maxeq_4", "equippedItem"]
-    }
-    dynamic var planeString4: String? { return planeString(4) }
-    
-    // MARK: - Plane count string color
-    private func planeStringColor(_ index: Int) -> NSColor {
-        switch planState(index) {
-        case .cannotEquip: return NSColor.controlTextColor
-        case .notEquip: return NSColor.disabledControlTextColor
-        case .equiped: return NSColor.controlTextColor
-        }
-    }
-    
-    class func keyPathsForValuesAffectingPlaneString0Color() -> Set<String> {
-        
-        return ["onslot_0", "master_ship.maxeq_0", "equippedItem"]
-    }
-    dynamic var planeString0Color: NSColor { return planeStringColor(0) }
-    
-    class func keyPathsForValuesAffectingPlaneString1Color() -> Set<String> {
-        
-        return ["onslot_1", "master_ship.maxeq_1", "equippedItem"]
-    }
-    dynamic var planeString1Color: NSColor { return planeStringColor(1) }
-    
-    class func keyPathsForValuesAffectingPlaneString2Color() -> Set<String> {
-        
-        return ["onslot_2", "master_ship.maxeq_2", "equippedItem"]
-    }
-    dynamic var planeString2Color: NSColor { return planeStringColor(2) }
-    
-    class func keyPathsForValuesAffectingPlaneString3Color() -> Set<String> {
-        
-        return ["onslot_3", "master_ship.maxeq_3", "equippedItem"]
-    }
-    dynamic var planeString3Color: NSColor { return planeStringColor(3) }
-    
-    class func keyPathsForValuesAffectingPlaneString4Color() -> Set<String> {
-        
-        return ["onslot_4", "master_ship.maxeq_4", "equippedItem"]
-    }
-    dynamic var planeString4Color: NSColor { return planeStringColor(4) }
 }
