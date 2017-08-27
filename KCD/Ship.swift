@@ -359,14 +359,4 @@ extension Ship {
         return SeikuCalclator(ship: self).seiku
     }
     
-    var totalSeiku: Int {
-        
-        return SeikuCalclator(ship: self).totalSeiku
-    }
-    
-    var totalDrums: Int {
-        
-        return (0...4).flatMap(slotItem).filter { $0.slotitem_id == 75 }.count
-    }
-    
 }

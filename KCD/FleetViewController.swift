@@ -176,10 +176,18 @@ final class FleetViewController: NSViewController {
     
     var totalSakuteki: Double { return sakutekiCalculator.calculate(ships) }
     var totalSeiku: Int { return ships.reduce(0) { $0 + $1.seiku } }
-    var totalCalclatedSeiku: Int { return ships.reduce(0) { $0 + $1.totalSeiku } }
+    var totalCalclatedSeiku: Int { return ships.reduce(0) { $0 + totalSeiku(of: $1) } }
     var totalLevel: Int { return ships.reduce(0) { $0 + $1.lv } }
-    var totalDrums: Int { return ships.reduce(0) { $0 + $1.totalDrums } }
+    var totalDrums: Int { return ships.reduce(0) { $0 + totalDrums(of: $1) } }
     
+    func totalSeiku(of ship: Ship) -> Int {
+        
+        return SeikuCalclator(ship: ship).totalSeiku
+    }
+    func totalDrums(of ship: Ship) -> Int {
+        
+        return (0...4).flatMap(ship.slotItem).filter { $0.slotitem_id == 75 }.count
+    }
     
     fileprivate var ships: [Ship] = [] {
         
