@@ -291,7 +291,7 @@ extension Ship {
 
 extension Ship {
     
-    func setItem(_ id: Int, for slot: Int) {
+    func setItem(_ id: Int, to slot: Int) {
         
         switch slot {
         case 0: slot_0 = id
