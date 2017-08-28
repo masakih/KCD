@@ -63,7 +63,7 @@ final class Fleet: NSObject {
     
     dynamic private(set) var ships: [Ship] = []
     private let deckController: NSObjectController
-    private weak var deck: Deck?
+    weak var deck: Deck?
     
     dynamic var name: String? { return deck?.name }
     class func keyPathsForValuesAffectingName() -> Set<String> {
