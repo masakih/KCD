@@ -162,7 +162,8 @@ extension DamageCalculator {
             switch battleType {
             case .eachCombinedWater: return .each
                 
-//            case .eachCombinedAir: return .second  // 1~12
+            case .eachCombinedAir: return .each
+                
             default: return .first
             }
         }
@@ -408,7 +409,15 @@ extension DamageCalculator {
         
         zip(targetPosLists, damageLists).enumerated().forEach { (i, list) in
             
-            if !isTargetFriend(eFlags: eFlags, index: i) { return }
+            if !isTargetFriend(eFlags: eFlags, index: i) {
+                
+                Debug.excute(level: .debug) {
+                    
+                    print("target is enemy")
+                }
+                
+                return
+            }
             
             zip(list.0, list.1).forEach { (targetPos, damage) in
                 
