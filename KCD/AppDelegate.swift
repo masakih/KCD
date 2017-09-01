@@ -27,7 +27,7 @@ final class AppDelegate: NSObject {
         return NSApplication.shared().delegate as! AppDelegate
     }
     
-    let appNameForUserAgent: String = "KCD(1.9b11) is not Safari/603.2.4"
+    let appNameForUserAgent: String = "KCD(1.9b16) is not Safari/603.3.8"
     let fleetManager: FleetManager = FleetManager()
     
     let windowManager = WindowManager()
