@@ -51,9 +51,9 @@ final class ScreenshotListViewController: NSViewController {
     fileprivate var reloadHandler: (() -> Void)?
     fileprivate var collectionSelectionDidChangeHandler: ((Int) -> Void)?
     fileprivate(set) var inLiveScrolling = false
-    fileprivate var arrangedInformations: [ScreenshotInformation]? {
+    fileprivate var arrangedInformations: [ScreenshotInformation] {
         
-        return screenshotsController.arrangedObjects as? [ScreenshotInformation]
+        return screenshotsController.arrangedObjects as? [ScreenshotInformation] ?? []
     }
     fileprivate var selectionInformations: [ScreenshotInformation] {
         
@@ -102,6 +102,8 @@ final class ScreenshotListViewController: NSViewController {
         return screenshotSaveDirectoryURL.appendingPathComponent("Cache.db")
     }
     
+    var indexPathsOfItemsBeingDragged: Set<IndexPath>?
+    
     // MARK: - Function
     override func viewDidLoad() {
         
@@ -135,6 +137,8 @@ final class ScreenshotListViewController: NSViewController {
             
             self.inLiveScrolling = false
         }
+        
+        collectionView.setDraggingSourceOperationMask([.move, .copy, .delete], forLocal: false)
         
         viewFrameDidChange(nil)
         
@@ -362,20 +366,19 @@ extension ScreenshotListViewController {
         saveCache()
         reloadHandler?()
         
-        guard var index = selectionIndexes.first,
-            let newInfos = arrangedInformations
+        guard var index = selectionIndexes.first
             else { return }
         
-        if newInfos.count <= index { index = newInfos.count - 1 }
+        if arrangedInformations.count <= index {
+            
+            index = arrangedInformations.count - 1
+        }
         collectionView.selectionIndexPaths = [NSIndexPath(forItem: index, inSection: 0) as IndexPath]
     }
     
     @IBAction func revealInFinder(_ sender: AnyObject?) {
         
-        guard let infos = arrangedInformations
-            else { return }
-        
-        let urls = infos.map { $0.url }
+        let urls = arrangedInformations.map { $0.url }
         NSWorkspace.shared().activateFileViewerSelecting(urls)
     }
 }
@@ -390,6 +393,38 @@ extension ScreenshotListViewController: NSCollectionViewDelegateFlowLayout {
         
         return NSSize(width: f, height: f)
     }
+    
+    
+    // Drag and Drop
+    func collectionView(_ collectionView: NSCollectionView, canDragItemsAt indexPaths: Set<IndexPath>, with event: NSEvent) -> Bool {
+        
+        return true
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, pasteboardWriterForItemAt indexPath: IndexPath) -> NSPasteboardWriting? {
+        
+        return arrangedInformations[indexPath.item].url.absoluteURL as NSURL
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, draggingSession session: NSDraggingSession, willBeginAt screenPoint: NSPoint, forItemsAt indexPaths: Set<IndexPath>) {
+        
+        indexPathsOfItemsBeingDragged = indexPaths
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, draggingSession session: NSDraggingSession, endedAt screenPoint: NSPoint, dragOperation operation: NSDragOperation) {
+        
+        defer { indexPathsOfItemsBeingDragged = nil }
+        
+        guard let dragged = indexPathsOfItemsBeingDragged,
+            operation.contains(.move) || operation.contains(.delete)
+            else { return }
+        
+        var indexes = IndexSet()
+        dragged.forEach { indexes.insert($0.item) }
+        
+        screenshotsController.remove(atArrangedObjectIndexes: indexes)
+    }
+    
 }
 
 @available(OSX 10.12.2, *)
@@ -437,13 +472,12 @@ extension ScreenshotListViewController: NSTouchBarDelegate {
             collectionVisibleDidChangeHandler = { [weak self] in
                 
                 guard let `self` = self,
-                    let objects = self.arrangedInformations,
                     let index = $0.first
                     else { return }
                 
                 let middle = index.item + $0.count / 2
                 
-                if middle < objects.count - 1 {
+                if middle < self.arrangedInformations.count - 1 {
                     
                     self.scrubber.scrollItem(at: middle, to: .none)
                 }
@@ -497,18 +531,15 @@ extension ScreenshotListViewController: NSScrubberDataSource, NSScrubberDelegate
     
     func numberOfItems(for scrubber: NSScrubber) -> Int {
         
-        return arrangedInformations?.count ?? 0
+        return arrangedInformations.count
     }
     
     func scrubber(_ scrubber: NSScrubber, viewForItemAt index: Int) -> NSScrubberItemView {
         
-        guard let objects = arrangedInformations
+        guard arrangedInformations.count > index
             else { return NSScrubberImageItemView() }
         
-        guard objects.count > index
-            else { return NSScrubberImageItemView() }
-        
-        let info = objects[index]
+        let info = arrangedInformations[index]
         let itemView = NSScrubberImageItemView()
         
         if let image = NSImage(contentsOf: info.url) {
