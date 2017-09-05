@@ -43,10 +43,16 @@ final class SeikuCalclator {
     
     var seiku: Int {
         
+        let guardEscaped = TemporaryDataStore.default.ensuredGuardEscaped(byShipId: ship.id)
+        guard guardEscaped == nil else { return 0 }
+        
         return (0...4).map(normalSeiku).map { Int($0) }.reduce(0, +)
     }
     
     var totalSeiku: Int {
+        
+        let guardEscaped = TemporaryDataStore.default.ensuredGuardEscaped(byShipId: ship.id)
+        guard guardEscaped == nil else { return 0 }
         
         return (0...4).map(seiku).reduce(0, +)
     }

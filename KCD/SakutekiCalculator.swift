@@ -53,16 +53,18 @@ final class Formula33: SakutekiCalculator {
     
     func calculate(_ ships: [Ship]) -> Double {
         
-        Debug.excute(level: .debug) {
+        Debug.excute(level: .full) {
             ships.forEach(printShipData)
         }
         
-        let saku1 = ships
+        let aliveShips = ships.filter(alive)
+        
+        let saku1 = aliveShips
             .map(normalSakuteki)
             .map(sqrt)
             .reduce(0, +)
         
-        let saku2 = ships
+        let saku2 = aliveShips
             .map(equipsSakuteki)
             .reduce(0, +)
         
@@ -71,6 +73,16 @@ final class Formula33: SakutekiCalculator {
         let saku4 = 2 * (6 - ships.count)
         
         return saku1 + saku2 - saku3 + Double(saku4)
+    }
+    
+    private func alive(_ ship: Ship) -> Bool {
+        
+        if let _ = TemporaryDataStore.default.ensuredGuardEscaped(byShipId: ship.id) {
+            
+            return false
+        }
+        
+        return true
     }
     
     private func normalSakuteki(_ ship: Ship) -> Double {
