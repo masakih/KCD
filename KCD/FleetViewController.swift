@@ -259,6 +259,18 @@ final class FleetViewController: NSViewController {
                 
                 self.notifyChangeValue(forKey: #keyPath(fleetNumber))
         }
+        
+        NotificationCenter
+            .default
+            .addObserver(forName: .DidUpdateGuardEscape, object: nil, queue: nil) { [weak self] _ in
+                
+                guard let `self` = self else { return }
+                
+                self.notifyChangeValue(forKey: #keyPath(totalSeiku))
+                self.notifyChangeValue(forKey: #keyPath(totalCalclatedSeiku))
+                self.notifyChangeValue(forKey: #keyPath(totalSakuteki))
+                self.notifyChangeValue(forKey: #keyPath(totalDrums))
+        }
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
