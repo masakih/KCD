@@ -9,7 +9,7 @@
 import Cocoa
 
 @objc
-enum ShipType: Int {
+enum ShipTabType: Int {
     
     case all = 0
     case destroyer = 1
@@ -35,7 +35,7 @@ class MainTabVIewItemViewController: NSViewController {
     ]
     
     dynamic var hasShipTypeSelector: Bool { return false }
-    dynamic var selectedShipType: ShipType = .all
+    dynamic var selectedShipType: ShipTabType = .all
     
     var shipTypePredicte: NSPredicate? {
         

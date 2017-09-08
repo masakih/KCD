@@ -21,7 +21,7 @@ final class PowerUpSupportViewController: MainTabVIewItemViewController {
     @IBOutlet weak var typeSegment: NSSegmentedControl!
     
     override var hasShipTypeSelector: Bool { return true }
-    override var selectedShipType: ShipType {
+    override var selectedShipType: ShipTabType {
         
         didSet {
             shipController.filterPredicate = customPredicate()
@@ -95,6 +95,6 @@ final class PowerUpSupportViewController: MainTabVIewItemViewController {
     
     @IBAction func changeCategory(_ sender: AnyObject?) {
         
-        ShipType(rawValue: typeSegment.selectedSegment).map { selectedShipType = $0 }
+        ShipTabType(rawValue: typeSegment.selectedSegment).map { selectedShipType = $0 }
     }
 }
