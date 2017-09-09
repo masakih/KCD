@@ -42,7 +42,7 @@ enum EquipmentType: Int {
     case armorPiercingShellMiddle = 27
     case armorPiercingShellLarge = 28
     case searchlight = 29
-    case caryer = 30
+    case carire = 30
     case repiarer = 31
     case submarinTorpedo = 32
     case chaf = 33
