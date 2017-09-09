@@ -28,6 +28,8 @@
 		F42539E21EB4A7950083EB9D /* AirPlanInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42539E11EB4A7950083EB9D /* AirPlanInfoView.swift */; };
 		F42546921EF8002E00BE297E /* EquitType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42546911EF8002E00BE297E /* EquitType.swift */; };
 		F42546931EFBE0D300BE297E /* EquitType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42546911EF8002E00BE297E /* EquitType.swift */; };
+		F429FAAE1F619927006299ED /* TPValueCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F429FAAD1F619927006299ED /* TPValueCalculator.swift */; };
+		F429FAB01F62D769006299ED /* ShipType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F429FAAF1F62D769006299ED /* ShipType.swift */; };
 		F42A8FCC1E3DA4DF0099DC1D /* MasterMission.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A8FCB1E3DA4DF0099DC1D /* MasterMission.swift */; };
 		F42A8FCE1E3DA7E90099DC1D /* MasterShip.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A8FCD1E3DA7E90099DC1D /* MasterShip.swift */; };
 		F42A8FD01E3DB49A0099DC1D /* MasterSlotItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42A8FCF1E3DB49A0099DC1D /* MasterSlotItem.swift */; };
@@ -366,6 +368,8 @@
 		F42185101DF461A600256590 /* ScreenshotTouchBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScreenshotTouchBar.xib; sourceTree = "<group>"; };
 		F42539E11EB4A7950083EB9D /* AirPlanInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirPlanInfoView.swift; sourceTree = "<group>"; };
 		F42546911EF8002E00BE297E /* EquitType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquitType.swift; sourceTree = "<group>"; };
+		F429FAAD1F619927006299ED /* TPValueCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPValueCalculator.swift; sourceTree = "<group>"; };
+		F429FAAF1F62D769006299ED /* ShipType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShipType.swift; sourceTree = "<group>"; };
 		F42A8FCB1E3DA4DF0099DC1D /* MasterMission.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterMission.swift; sourceTree = "<group>"; };
 		F42A8FCD1E3DA7E90099DC1D /* MasterShip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterShip.swift; sourceTree = "<group>"; };
 		F42A8FCF1E3DB49A0099DC1D /* MasterSlotItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterSlotItem.swift; sourceTree = "<group>"; };
@@ -950,6 +954,8 @@
 				F44AA26A1E82AD2E00EED8BE /* NSObjectExtension.swift */,
 				F44775881EF6AAD900287572 /* SakutekiCalculator.swift */,
 				F41A451A1F4917640066F83D /* SeikuCalclator.swift */,
+				F429FAAD1F619927006299ED /* TPValueCalculator.swift */,
+				F429FAAF1F62D769006299ED /* ShipType.swift */,
 				F42546911EF8002E00BE297E /* EquitType.swift */,
 				F4EE4AD71F18F43700AD92B4 /* DeckBuilderStructure.swift */,
 				F4EE4AD91F18F66A00AD92B4 /* DeckBuilder.swift */,
@@ -1606,6 +1612,7 @@
 				F4CF25BE1E361F4600C02A66 /* NyukyoDockStatus.swift in Sources */,
 				F490978B1E1B38F00085A45D /* TiledImageView.swift in Sources */,
 				F4A0D71B1E30D77B00224DCE /* JSONCommand.swift in Sources */,
+				F429FAB01F62D769006299ED /* ShipType.swift in Sources */,
 				F44BC6F51E23D593004644E3 /* PowerUpCommand.swift in Sources */,
 				F47C3EB81E61967C00D97449 /* SlotItemMapper.swift in Sources */,
 				F45F3BE31E06A60A0009434E /* UpgradableShipsWindowController.swift in Sources */,
@@ -1624,6 +1631,7 @@
 				F45771231E1BCC7C008A9215 /* PeriodicNotifier.swift in Sources */,
 				F4C3D1BF1F13A32D0084D0CA /* CalculateConditionPanelController.swift in Sources */,
 				F44AA2671E814A4400EED8BE /* ManagedObjectContextGenerator.swift in Sources */,
+				F429FAAE1F619927006299ED /* TPValueCalculator.swift in Sources */,
 				F44BC6C91E22314B004644E3 /* UnknownComand.swift in Sources */,
 				F47B06DD1E97ECD4006711D9 /* WindowManager.swift in Sources */,
 				F44BC6DD1E228345004644E3 /* UpdateQuestListCommand.swift in Sources */,

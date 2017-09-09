@@ -179,6 +179,14 @@ final class FleetViewController: NSViewController {
     var totalCalclatedSeiku: Int { return ships.reduce(0) { $0 + totalSeiku(of: $1) } }
     var totalLevel: Int { return ships.reduce(0) { $0 + $1.lv } }
     var totalDrums: Int { return ships.reduce(0) { $0 + totalDrums(of: $1) } }
+    var totalTPValue: Int {
+        
+        return ships
+            .map { ShipTPValueCalculator($0) }
+            .map { $0.value }
+            .reduce(0, +)
+        
+    }
     
     func totalSeiku(of ship: Ship) -> Int {
         
@@ -270,6 +278,7 @@ final class FleetViewController: NSViewController {
                 self.notifyChangeValue(forKey: #keyPath(totalCalclatedSeiku))
                 self.notifyChangeValue(forKey: #keyPath(totalSakuteki))
                 self.notifyChangeValue(forKey: #keyPath(totalDrums))
+                self.notifyChangeValue(forKey: #keyPath(totalTPValue))
         }
     }
     
@@ -299,6 +308,7 @@ final class FleetViewController: NSViewController {
                     notifyChangeValue(forKey: #keyPath(totalSakuteki))
                     notifyChangeValue(forKey: #keyPath(totalDrums))
                     notifyChangeValue(forKey: #keyPath(totalCalclatedSeiku))
+                    notifyChangeValue(forKey: #keyPath(totalTPValue))
                     
                 case "seiku":
                     notifyChangeValue(forKey: #keyPath(totalSeiku))
@@ -373,7 +383,8 @@ final class FleetViewController: NSViewController {
         ships = array.flatMap { $0 }
         
         [#keyPath(totalSakuteki), #keyPath(totalSeiku), #keyPath(totalCalclatedSeiku),
-         #keyPath(totalLevel), #keyPath(totalDrums), #keyPath(repairable)]
+         #keyPath(totalLevel), #keyPath(totalDrums), #keyPath(repairable),
+         #keyPath(totalTPValue)]
             .forEach { notifyChangeValue(forKey: $0) }
     }
 }
