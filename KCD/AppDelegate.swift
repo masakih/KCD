@@ -262,6 +262,13 @@ extension AppDelegate: NSApplicationDelegate {
     
     func applicationWillFinishLaunching(_ notification: Notification) {
         
+        if NSEvent.modifierFlags() == .option {
+            
+            removeDatabaseFile(nil)
+            
+            exit(0)
+        }
+        
         NSUserNotificationCenter.default.delegate = self
         Timer.scheduledTimer(timeInterval: 0.33,
                              target: self,
