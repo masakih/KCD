@@ -209,6 +209,8 @@
 		F4AA594E1E1E4A7C001667AF /* UITestWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AA594D1E1E4A7C001667AF /* UITestWindowController.swift */; };
 		F4AA59501E1E4D18001667AF /* ShipWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AA594F1E1E4D18001667AF /* ShipWindowController.swift */; };
 		F4AA59521E1E607F001667AF /* JSONViewWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AA59511E1E607F001667AF /* JSONViewWindowController.swift */; };
+		F4AAA1511F6D6DDC00975E87 /* NSTextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AAA1501F6D6DDC00975E87 /* NSTextFieldExtension.swift */; };
+		F4AAA1531F6D706E00975E87 /* FadeoutTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AAA1521F6D706E00975E87 /* FadeoutTextField.swift */; };
 		F4AC136D1E0802C000851147 /* PreferencePanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AC136C1E0802C000851147 /* PreferencePanelController.swift */; };
 		F4AC136F1E0963DB00851147 /* ProgressPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AC136E1E0963DB00851147 /* ProgressPanel.swift */; };
 		F4AC13711E096A7B00851147 /* HistoryWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AC13701E096A7B00851147 /* HistoryWindowController.swift */; };
@@ -564,6 +566,8 @@
 		F4AA594D1E1E4A7C001667AF /* UITestWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITestWindowController.swift; sourceTree = "<group>"; };
 		F4AA594F1E1E4D18001667AF /* ShipWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShipWindowController.swift; sourceTree = "<group>"; };
 		F4AA59511E1E607F001667AF /* JSONViewWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONViewWindowController.swift; sourceTree = "<group>"; };
+		F4AAA1501F6D6DDC00975E87 /* NSTextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSTextFieldExtension.swift; sourceTree = "<group>"; };
+		F4AAA1521F6D706E00975E87 /* FadeoutTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeoutTextField.swift; sourceTree = "<group>"; };
 		F4AC136C1E0802C000851147 /* PreferencePanelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencePanelController.swift; sourceTree = "<group>"; };
 		F4AC136E1E0963DB00851147 /* ProgressPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressPanel.swift; sourceTree = "<group>"; };
 		F4AC13701E096A7B00851147 /* HistoryWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryWindowController.swift; sourceTree = "<group>"; };
@@ -1053,6 +1057,7 @@
 			children = (
 				F40F976C1E6708F300AE81BB /* Graphics.swift */,
 				F40F97721E6989B300AE81BB /* NSViewExtension.swift */,
+				F4AAA1501F6D6DDC00975E87 /* NSTextFieldExtension.swift */,
 				F4A9E7F21D045B8800F91746 /* ScreenshotList */,
 				F4BDEB5B187252F30069D0CE /* MainMenu.xib */,
 				F4BEEFE31B0CD3C5004702B8 /* MainWindow */,
@@ -1194,6 +1199,7 @@
 				F4BEF00A1B11A5DE004702B8 /* ShipDetailViewController.xib */,
 				F4BEF0011B11A5C2004702B8 /* MediumShipViewController.xib */,
 				F49097841E1A15AF0085A45D /* SlotItemLevelView.swift */,
+				F4AAA1521F6D706E00975E87 /* FadeoutTextField.swift */,
 				F490978C1E1BA64E0085A45D /* GuardEscapedView.swift */,
 				F45FBB911E129BAE000E72B9 /* FleetViewController.swift */,
 				F4BEF0071B11A5D3004702B8 /* FleetViewController.xib */,
@@ -1524,6 +1530,7 @@
 				F4CF25AA1E338ED000C02A66 /* JSONTracker.swift in Sources */,
 				F44BC6D11E224299004644E3 /* PortCommand.swift in Sources */,
 				F4FC3E901E437E1F00E41228 /* JSONReciever.swift in Sources */,
+				F4AAA1511F6D6DDC00975E87 /* NSTextFieldExtension.swift in Sources */,
 				F404AF571F2CDD1C00A006B8 /* DefaultKey.swift in Sources */,
 				F45F3BE11E067A870009434E /* HistoryItemCleaner.swift in Sources */,
 				F47C3E981E5DB29300D97449 /* JSONMapper.swift in Sources */,
@@ -1622,6 +1629,7 @@
 				F4AA594A1E1E4863001667AF /* MapWindowController.swift in Sources */,
 				F4FC3E961E46AC3000E41228 /* TSVSupport.swift in Sources */,
 				F42A8FDA1E3DF2230099DC1D /* Ship.swift in Sources */,
+				F4AAA1531F6D706E00975E87 /* FadeoutTextField.swift in Sources */,
 				F47C3E9A1E5DC90000D97449 /* MasterSTypeMapper.swift in Sources */,
 				F4E5FF101E17A83D0026868C /* ScreenshotListWindowController.swift in Sources */,
 				F44BC7031E252C4F004644E3 /* UpdateSlotItemCommand.swift in Sources */,

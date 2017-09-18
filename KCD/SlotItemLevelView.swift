@@ -12,6 +12,7 @@ final class SlotItemLevelView: NSTextField {
     
     private static var sLevelMaskImage: CGImage?
     private static var sAirLevelMaskImage: CGImage?
+    private static var sCharacterProtrudeMaskImageMaskImage: CGImage?
     
     private let offset: CGFloat = 28
     private let padding: CGFloat = 4
@@ -70,6 +71,8 @@ final class SlotItemLevelView: NSTextField {
         if let alv = slotItemAlv as? Int, alv != 0 { return airLevelMaskImage }
         if let lv = slotItemLevel as? Int, lv != 0 { return levelMaskImage }
         
+        if isCharacterProtrude() { return characterProtrudeMaskImage }
+        
         return nil
     }
     
@@ -87,6 +90,13 @@ final class SlotItemLevelView: NSTextField {
         SlotItemLevelView.sAirLevelMaskImage = maskImage(middle1: 0.65, middle2: 0.75)
         
         return SlotItemLevelView.sAirLevelMaskImage!
+    }
+    private var characterProtrudeMaskImage: CGImage {
+        
+        if let r = SlotItemLevelView.sCharacterProtrudeMaskImageMaskImage { return r }
+        SlotItemLevelView.sCharacterProtrudeMaskImageMaskImage = maskImage(middle1: 0.9, middle2: 1.0)
+        
+        return SlotItemLevelView.sCharacterProtrudeMaskImageMaskImage!
     }
     
     private var levelOneBezierPath: NSBezierPath? {
@@ -255,39 +265,6 @@ final class SlotItemLevelView: NSTextField {
         
         drawLevel()
         drawAirLevel()
-    }
-    
-    private func maskImage(middle1: CGFloat, middle2: CGFloat) -> CGImage {
-        
-        let colorspace = CGColorSpaceCreateDeviceGray()
-        
-        guard let maskContext = CGContext(data: nil,
-                                          width: Int(bounds.width),
-                                          height: Int(bounds.height),
-                                          bitsPerComponent: 8,
-                                          bytesPerRow: Int(bounds.width),
-                                          space: colorspace,
-                                          bitmapInfo: 0)
-            else { fatalError("Can not create bitmap context") }
-        
-        let maskGraphicsContext = NSGraphicsContext(cgContext: maskContext, flipped: false)
-        
-        
-        NSGraphicsContext.saveGraphicsState()
-        defer { NSGraphicsContext.restoreGraphicsState() }
-        
-        NSGraphicsContext.setCurrent(maskGraphicsContext)
-        
-        let gradient = NSGradient(colorsAndLocations: (NSColor.white, 0.0),
-                                  (NSColor.white, middle1),
-                                  (NSColor.black, middle2),
-                                  (NSColor.black, 1.0))
-        gradient?.draw(in: bounds, angle: 0.0)
-        
-        guard let r = maskContext.makeImage()
-            else { fatalError(" can not create image from context") }
-        
-        return r
     }
     
     private func bezierPathForALevel(level: Int) -> NSBezierPath? {

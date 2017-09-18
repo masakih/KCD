@@ -34,7 +34,7 @@
                 <rect key="frame" x="1" y="1" width="265" height="127"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="Y34-Rg-VIJ">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="Y34-Rg-VIJ" customClass="FadeoutTextField" customModule="KCD" customModuleProvider="target">
                         <rect key="frame" x="17" y="106" width="109" height="19"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Prinz Eugen改" id="W58-Ho-kVQ">
@@ -502,7 +502,6 @@
                                     </textFieldCell>
                                     <connections>
                                         <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont11" id="mFd-Yt-QLh"/>
-                                        <binding destination="-2" name="textColor" keyPath="planeString3Color" id="gZe-bT-enR"/>
                                         <binding destination="-2" name="value" keyPath="planeString3" id="js3-nV-iBS">
                                             <dictionary key="options">
                                                 <string key="NSNoSelectionPlaceholder" base64-UTF8="YES">
@@ -510,6 +509,7 @@ IA
 </string>
                                             </dictionary>
                                         </binding>
+                                        <binding destination="-2" name="textColor" keyPath="planeString3Color" id="gZe-bT-enR"/>
                                     </connections>
                                 </textField>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="WhO-fO-H5s">
@@ -522,7 +522,6 @@ IA
                                     </textFieldCell>
                                     <connections>
                                         <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont11" id="kul-5E-0xA"/>
-                                        <binding destination="-2" name="textColor" keyPath="planeString2Color" id="92B-9I-0X1"/>
                                         <binding destination="-2" name="value" keyPath="planeString2" id="qkZ-9N-oqy">
                                             <dictionary key="options">
                                                 <string key="NSNoSelectionPlaceholder" base64-UTF8="YES">
@@ -530,6 +529,7 @@ IA
 </string>
                                             </dictionary>
                                         </binding>
+                                        <binding destination="-2" name="textColor" keyPath="planeString2Color" id="92B-9I-0X1"/>
                                     </connections>
                                 </textField>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="RcS-au-uGU">
@@ -542,7 +542,6 @@ IA
                                     </textFieldCell>
                                     <connections>
                                         <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont11" id="UGQ-Lq-cIy"/>
-                                        <binding destination="-2" name="textColor" keyPath="planeString1Color" id="yLs-nI-6Eh"/>
                                         <binding destination="-2" name="value" keyPath="planeString1" id="WxT-dq-WOY">
                                             <dictionary key="options">
                                                 <string key="NSNoSelectionPlaceholder" base64-UTF8="YES">
@@ -550,6 +549,7 @@ IA
 </string>
                                             </dictionary>
                                         </binding>
+                                        <binding destination="-2" name="textColor" keyPath="planeString1Color" id="yLs-nI-6Eh"/>
                                     </connections>
                                 </textField>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="Fv0-MW-cv7">
@@ -562,7 +562,6 @@ IA
                                     </textFieldCell>
                                     <connections>
                                         <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont11" id="IHy-kj-CyW"/>
-                                        <binding destination="-2" name="textColor" keyPath="planeString0Color" id="gra-3k-OxL"/>
                                         <binding destination="-2" name="value" keyPath="planeString0" id="pzf-s3-KKv">
                                             <dictionary key="options">
                                                 <string key="NSNoSelectionPlaceholder" base64-UTF8="YES">
@@ -570,6 +569,7 @@ IA
 </string>
                                             </dictionary>
                                         </binding>
+                                        <binding destination="-2" name="textColor" keyPath="planeString0Color" id="gra-3k-OxL"/>
                                     </connections>
                                 </textField>
                             </subviews>
