@@ -43,7 +43,7 @@ extension NSTextField {
         return r
     }
     
-    func isCharacterProtrude(kern: CGFloat = 0) -> Bool {
+    func isCharacterProtrude() -> Bool {
         
         guard let currentFont = font else {
             
@@ -53,7 +53,7 @@ extension NSTextField {
         }
         
         let string = stringValue as NSString
-        let size = string.size(withAttributes: [NSFontAttributeName: currentFont, NSKernAttributeName: kern])
+        let size = string.size(withAttributes: [NSFontAttributeName: currentFont])
         
         return bounds.size.width - size.width < 3
     }
