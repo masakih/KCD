@@ -52,7 +52,10 @@ class HistoryTableViewController: NSViewController {
         
         let selectedIndex = controller.selectionIndex
         selection
-            .forEach { store.delete(store.object(with: $0.objectID)) }
+            .lazy
+            .map { $0.objectID }
+            .map { store.object(with: $0) }
+            .forEach(store.delete)
         
         if selectedIndex > 1 {
             
@@ -129,7 +132,7 @@ final class KaihatsuHistoryTableViewController: HistoryTableViewController {
     override var predicateFormat: String { return "name contains $value" }
     override func objects(of predicate: NSPredicate?, in store: LocalDataStore) throws -> [NSManagedObject] {
         
-        return try store.objects(with: KaihatuHistory.entity, predicate: predicate)
+        return try store.objects(of: KaihatuHistory.entity, predicate: predicate)
     }
 }
 
@@ -138,7 +141,7 @@ final class KenzoHistoryTableViewController: HistoryTableViewController {
     override var predicateFormat: String { return "name contains $value" }
     override func objects(of predicate: NSPredicate?, in store: LocalDataStore) throws -> [NSManagedObject] {
         
-        return try store.objects(with: KenzoHistory.entity, predicate: predicate)
+        return try store.objects(of: KenzoHistory.entity, predicate: predicate)
     }
 }
 
@@ -147,6 +150,6 @@ final class DropShipHistoryTableViewController: HistoryTableViewController {
     override var predicateFormat: String { return "shipName contains $value" }
     override func objects(of predicate: NSPredicate?, in store: LocalDataStore) throws -> [NSManagedObject] {
         
-        return try store.objects(with: DropShipHistory.entity, predicate: predicate)
+        return try store.objects(of: DropShipHistory.entity, predicate: predicate)
     }
 }

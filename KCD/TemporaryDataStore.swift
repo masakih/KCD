@@ -50,7 +50,7 @@ extension TemporaryDataStore {
     
     func battles() -> [Battle] {
         
-        guard let battles = try? self.objects(with: Battle.entity)
+        guard let battles = try? self.objects(of: Battle.entity)
             else { return [] }
         
         return battles
@@ -70,7 +70,7 @@ extension TemporaryDataStore {
         
         let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
         
-        guard let damages = try? objects(with: Damage.entity, sortDescriptors: [sortDescriptor])
+        guard let damages = try? objects(of: Damage.entity, sortDescriptors: [sortDescriptor])
             else { return [] }
         
         return damages
@@ -78,7 +78,7 @@ extension TemporaryDataStore {
     
     func damages() -> [Damage] {
         
-        guard let damages = try? objects(with: Damage.entity)
+        guard let damages = try? objects(of: Damage.entity)
             else { return [] }
         
         return damages
@@ -91,7 +91,7 @@ extension TemporaryDataStore {
     
     func guardEscaped() -> [GuardEscaped] {
         
-        guard let escapeds = try? objects(with: GuardEscaped.entity)
+        guard let escapeds = try? objects(of: GuardEscaped.entity)
             else { return [] }
         
         return escapeds
@@ -101,7 +101,7 @@ extension TemporaryDataStore {
         
         let p = NSPredicate(format: "shipID = %ld AND ensured = TRUE", shipId)
         
-        guard let escapes = try? objects(with: GuardEscaped.entity, predicate: p)
+        guard let escapes = try? objects(of: GuardEscaped.entity, predicate: p)
             else { return nil }
         
         return escapes.first
@@ -111,7 +111,7 @@ extension TemporaryDataStore {
         
         let predicate = NSPredicate(format: "ensured = FALSE")
         
-        guard let escapeds = try? objects(with: GuardEscaped.entity, predicate: predicate)
+        guard let escapeds = try? objects(of: GuardEscaped.entity, predicate: predicate)
             else { return [] }
         
         return escapeds

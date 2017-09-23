@@ -50,7 +50,7 @@ final class MasterShipMapper: JSONMapper {
         guard let stype = masterSTypes.binarySearch(comparator: { $0.id ==? stypeID })
             else { return print("MasterShipMapper: Can not find MasterSType") }
         
-        guard let masterSType = configuration.editorStore.object(with: stype.objectID) as? MasterSType
+        guard let masterSType = configuration.editorStore.object(of: MasterSType.entity, with: stype.objectID)
             else { return print("MasterShipMapper: Can not convert to current moc object masterSType") }
         
         masterShip.stype = masterSType

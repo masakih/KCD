@@ -19,8 +19,8 @@ func remove(name: String) {
     
     ["", "-wal", "-shm"]
         .map { name + $0 }
-        .map { ApplicationDirecrories.support.appendingPathComponent($0) }
-        .forEach { removeDataFile(at: $0) }
+        .map(ApplicationDirecrories.support.appendingPathComponent)
+        .forEach(removeDataFile)
 }
 
 func genarate(_ config: CoreDataConfiguration) throws -> (model: NSManagedObjectModel, coordinator: NSPersistentStoreCoordinator, moc: NSManagedObjectContext) {
@@ -55,8 +55,8 @@ private func removeDataFile(at url: URL) {
 private  func createModel(_ config: CoreDataConfiguration) throws -> NSManagedObjectModel {
     
     guard let modelURL = Bundle.main.url(forResource: config.modelName, withExtension: "momd"),
-        let model = NSManagedObjectModel(contentsOf: modelURL)
-        else {
+        let model = NSManagedObjectModel(contentsOf: modelURL) else {
+            
             throw CoreDataError.couldNotCreateModel
     }
     

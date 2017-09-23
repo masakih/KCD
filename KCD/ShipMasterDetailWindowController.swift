@@ -65,7 +65,7 @@ final class ShipMasterDetailWindowController: NSWindowController {
         let store = ServerDataStore.oneTimeEditor()
         
         guard let i = selectedShip?.objectID,
-            let ship = store.object(with: i) as? Ship
+            let ship = store.object(of: Ship.entity, with: i)
             else { return }
         
         ship.sally_area = sally.integerValue as NSNumber

@@ -156,7 +156,7 @@ extension JSONMapper {
         
         let store = configuration.editorStore
         
-        guard let objects = try? store.objects(with: configuration.entity, sortDescriptors: sortDescriptors)
+        guard let objects = try? store.objects(of: configuration.entity, sortDescriptors: sortDescriptors)
             else { return print("Can not get entity named \(configuration.entity.name)") }
         
         let list = (data.type == .array ? data.arrayValue : [data])

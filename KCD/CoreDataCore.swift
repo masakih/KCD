@@ -92,8 +92,10 @@ protocol CoreDataAccessor: CoreDataProvider {
     
     func insertNewObject<T>(for entity: Entity<T>) -> T?
     func delete(_ object: NSManagedObject)
+    func object<T>(of entity: Entity<T>, with objectId: NSManagedObjectID) -> T?
+    func objects<T>(of entity: Entity<T>, sortDescriptors: [NSSortDescriptor]?, predicate: NSPredicate?) throws -> [T]
+    
     func object(with objectId: NSManagedObjectID) -> NSManagedObject
-    func objects<T>(with entity: Entity<T>, sortDescriptors: [NSSortDescriptor]?, predicate: NSPredicate?) throws -> [T]
 }
 
 protocol CoreDataManager {
@@ -185,17 +187,22 @@ extension CoreDataAccessor {
         context.delete(object)
     }
     
-    func object(with objectId: NSManagedObjectID) -> NSManagedObject {
+    func object<T>(of entity: Entity<T>, with objectId: NSManagedObjectID) -> T? {
         
-        return context.object(with: objectId)
+        return context.object(with: objectId) as? T
     }
     
-    func objects<T>(with entity: Entity<T>, sortDescriptors: [NSSortDescriptor]? = nil, predicate: NSPredicate? = nil) throws -> [T] {
+    func objects<T>(of entity: Entity<T>, sortDescriptors: [NSSortDescriptor]? = nil, predicate: NSPredicate? = nil) throws -> [T] {
         
         let req = NSFetchRequest<T>(entityName: entity.name)
         req.sortDescriptors = sortDescriptors
         req.predicate = predicate
         
         return try context.fetch(req)
+    }
+    
+    func object(with objectId: NSManagedObjectID) -> NSManagedObject {
+        
+        return context.object(with: objectId)
     }
 }

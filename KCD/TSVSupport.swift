@@ -126,7 +126,7 @@ final class TSVSupport {
         
         let sortDesc = NSSortDescriptor(key: sortBy, ascending: true)
         
-        guard let array = try? store.objects(with: entity, sortDescriptors: [sortDesc])
+        guard let array = try? store.objects(of: entity, sortDescriptors: [sortDesc])
             else {
                 print("Can not get \(entity.name)")
                 return []
@@ -241,7 +241,7 @@ final class TSVSupport {
             
             let p = NSPredicate(format: "date = %@", argumentArray: [date])
             
-            guard let oo = try? store.objects(with: KaihatuHistory.entity, predicate: p),
+            guard let oo = try? store.objects(of: KaihatuHistory.entity, predicate: p),
                 oo.count != 0
                 else { return }
             
@@ -284,7 +284,7 @@ final class TSVSupport {
             
             let p = NSPredicate(format: "date = %@", argumentArray: [date])
             
-            guard let oo = try? store.objects(with: KenzoHistory.entity, predicate: p),
+            guard let oo = try? store.objects(of: KenzoHistory.entity, predicate: p),
                 oo.count != 0
                 else { return }
             
@@ -329,7 +329,7 @@ final class TSVSupport {
             
             let p = NSPredicate(format: "date = %@", argumentArray: [date])
             
-            guard let oo = try? store.objects(with: KenzoMark.entity, predicate: p),
+            guard let oo = try? store.objects(of: KenzoMark.entity, predicate: p),
                 oo.count != 0
                 else { return }
             
@@ -368,7 +368,7 @@ final class TSVSupport {
             
             let p = NSPredicate(format: "date = %@", argumentArray: [date])
             
-            guard let oo = try? store.objects(with: DropShipHistory.entity, predicate: p),
+            guard let oo = try? store.objects(of: DropShipHistory.entity, predicate: p),
                 oo.count != 0
                 else { return }
             

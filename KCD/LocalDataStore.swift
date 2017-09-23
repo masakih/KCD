@@ -47,7 +47,7 @@ extension LocalDataStore {
         let predicate03 = NSPredicate(format: "mapArea IN %@", ["1", "2", "3", "4", "5", "6", "7", "8", "9"])
         let predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate01, predicate02, predicate03])
         
-        guard let dropHistories = try? objects(with: DropShipHistory.entity, predicate: predicate)
+        guard let dropHistories = try? objects(of: DropShipHistory.entity, predicate: predicate)
             else { return [] }
         
         return dropHistories
@@ -60,7 +60,7 @@ extension LocalDataStore {
     
     func kaihatuHistories() -> [KaihatuHistory] {
         
-        guard let kaihatuHistories = try? objects(with: KaihatuHistory.entity)
+        guard let kaihatuHistories = try? objects(of: KaihatuHistory.entity)
             else { return [] }
         
         return kaihatuHistories
@@ -73,7 +73,7 @@ extension LocalDataStore {
         let predicate02 = NSPredicate(format: "mark = 0 || mark = nil")
         let predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate01, predicate02])
         
-        guard let kaihatuHistories = try? objects(with: KaihatuHistory.entity, predicate: predicate)
+        guard let kaihatuHistories = try? objects(of: KaihatuHistory.entity, predicate: predicate)
             else { return [] }
         
         return kaihatuHistories
@@ -88,7 +88,7 @@ extension LocalDataStore {
         
         let predicate = NSPredicate(format: "kDockId = %ld", dockId)
         
-        guard let kenzoMarks = try? objects(with: KenzoMark.entity, predicate: predicate)
+        guard let kenzoMarks = try? objects(of: KenzoMark.entity, predicate: predicate)
             else { return nil }
         
         return kenzoMarks.first
@@ -101,7 +101,7 @@ extension LocalDataStore {
         let predicate = NSPredicate(format: "fuel = %ld AND bull = %ld AND steel = %ld AND bauxite = %ld AND kaihatusizai = %ld AND kDockId = %ld AND created_ship_id = %ld",
                                     fuel, bull, steel, bauxite, kaihatusizai, kDockId, shipId)
         
-        guard let kenzoMarks = try? objects(with: KenzoMark.entity, predicate: predicate)
+        guard let kenzoMarks = try? objects(of: KenzoMark.entity, predicate: predicate)
             else { return nil }
         
         return kenzoMarks.first
@@ -119,7 +119,7 @@ extension LocalDataStore {
         let predicate02 = NSPredicate(format: "mark = 0 || mark = nil")
         let predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate01, predicate02])
         
-        guard let kenzoHistories = try? objects(with: KenzoHistory.entity, predicate: predicate)
+        guard let kenzoHistories = try? objects(of: KenzoHistory.entity, predicate: predicate)
             else { return [] }
         
         return kenzoHistories
@@ -132,7 +132,7 @@ extension LocalDataStore {
     
     func hiddenDropShipHistories() -> [HiddenDropShipHistory] {
         
-        guard let dropShipHistories = try? objects(with: HiddenDropShipHistory.entity)
+        guard let dropShipHistories = try? objects(of: HiddenDropShipHistory.entity)
             else { return [] }
         
         return dropShipHistories
