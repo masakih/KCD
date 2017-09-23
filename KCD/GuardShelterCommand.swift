@@ -145,6 +145,9 @@ final class GuardShelterCommand: JSONCommand {
     
     private func notify() {
         
-        NotificationCenter.default.post(name: .DidUpdateGuardEscape, object: self)
+        DispatchQueue.main.async {
+            
+            NotificationCenter.default.post(name: .DidUpdateGuardEscape, object: self)
+        }
     }
 }
