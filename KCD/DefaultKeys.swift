@@ -46,7 +46,7 @@ import AppKit.NSColor
 import AppKit.NSControl
 
 
-func rangeReguletor<T: Comparable>(_ range: ClosedRange<T>) -> (T) -> T {
+func rangeReguletor<T>(_ range: ClosedRange<T>) -> (T) -> T {
     
     return {
         
