@@ -122,7 +122,6 @@
 		F4649FC91DBC51EF0097AEBF /* ScreenshotListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4649FCB1DBC51EF0097AEBF /* ScreenshotListViewController.xib */; };
 		F4649FCE1DBC52600097AEBF /* ScreenshotDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4649FD01DBC52600097AEBF /* ScreenshotDetailViewController.xib */; };
 		F4649FD31DBC52A50097AEBF /* ScreenshotEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4649FD51DBC52A50097AEBF /* ScreenshotEditorViewController.xib */; };
-		F4666C6B1B29E974001840DB /* EquipmentStrengthen.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4666C6A1B29E974001840DB /* EquipmentStrengthen.plist */; };
 		F46F104918ABAC910063E503 /* KCD.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F46F104718ABAC910063E503 /* KCD.xcdatamodeld */; };
 		F471784A1B6F9B5600F5E59D /* ResourceHistory.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F47178481B6F9B5600F5E59D /* ResourceHistory.xcdatamodeld */; };
 		F472159E1E1E6EE70083D3BC /* ShipMasterDetailWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F472159D1E1E6EE70083D3BC /* ShipMasterDetailWindowController.swift */; };
@@ -249,9 +248,6 @@
 		F4C041BA1875CAF5009273EB /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4C041B91875CAF5009273EB /* JavaScriptCore.framework */; };
 		F4C3D1BF1F13A32D0084D0CA /* CalculateConditionPanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C3D1BD1F13A32D0084D0CA /* CalculateConditionPanelController.swift */; };
 		F4C3D1C01F13A32D0084D0CA /* CalculateConditionPanelController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C3D1BE1F13A32D0084D0CA /* CalculateConditionPanelController.xib */; };
-		F4C5A22C1C37B8DB00533FB6 /* RequiredEquipmentSet.txt in Resources */ = {isa = PBXBuildFile; fileRef = F4C5A22B1C37B8DB00533FB6 /* RequiredEquipmentSet.txt */; };
-		F4C5A22E1C37CB5100533FB6 /* EnhancementListItem.txt in Resources */ = {isa = PBXBuildFile; fileRef = F4C5A22D1C37CB5100533FB6 /* EnhancementListItem.txt */; };
-		F4C5A23E1C380E0400533FB6 /* HMEnhancementListItem.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4C5A23D1C380E0400533FB6 /* HMEnhancementListItem.plist */; };
 		F4C668571C5450EB00601AFB /* BookmarkListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C668591C5450EB00601AFB /* BookmarkListViewController.xib */; };
 		F4C6685A1C54510E00601AFB /* BookmarkEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C6685C1C54510E00601AFB /* BookmarkEditorViewController.xib */; };
 		F4C6685D1C54515C00601AFB /* BrowserContentAdjuster.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C6685F1C54515C00601AFB /* BrowserContentAdjuster.xib */; };
@@ -471,7 +467,6 @@
 		F4649FD91DBC54270097AEBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ScreenshotListViewController.xib; sourceTree = "<group>"; };
 		F4649FDA1DBC54320097AEBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ScreenshotDetailViewController.xib; sourceTree = "<group>"; };
 		F4649FDB1DBC543A0097AEBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ScreenshotEditorViewController.xib; sourceTree = "<group>"; };
-		F4666C6A1B29E974001840DB /* EquipmentStrengthen.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EquipmentStrengthen.plist; sourceTree = "<group>"; };
 		F46F104818ABAC910063E503 /* KCD.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KCD.xcdatamodel; sourceTree = "<group>"; };
 		F47178491B6F9B5600F5E59D /* ResourceHistory.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ResourceHistory.xcdatamodel; sourceTree = "<group>"; };
 		F472159D1E1E6EE70083D3BC /* ShipMasterDetailWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShipMasterDetailWindowController.swift; sourceTree = "<group>"; };
@@ -602,7 +597,6 @@
 		F4C5A22B1C37B8DB00533FB6 /* RequiredEquipmentSet.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RequiredEquipmentSet.txt; sourceTree = "<group>"; };
 		F4C5A22D1C37CB5100533FB6 /* EnhancementListItem.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EnhancementListItem.txt; sourceTree = "<group>"; };
 		F4C5A2331C37F87500533FB6 /* EquipmentEnhancementListBuilder */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = EquipmentEnhancementListBuilder; sourceTree = BUILT_PRODUCTS_DIR; };
-		F4C5A23D1C380E0400533FB6 /* HMEnhancementListItem.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = HMEnhancementListItem.plist; sourceTree = "<group>"; };
 		F4CF25A71E325ABA00C02A66 /* APIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
 		F4CF25A91E338ED000C02A66 /* JSONTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONTracker.swift; sourceTree = "<group>"; };
 		F4CF25AB1E33AB4400C02A66 /* TimeSignalNotifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSignalNotifier.swift; sourceTree = "<group>"; };
@@ -1004,11 +998,9 @@
 				F4BDEB4F187252F30069D0CE /* InfoPlist.strings */,
 				F43E67B618BE02A10087E5B6 /* STypeShortName.plist */,
 				F43E67B818BE060E0087E5B6 /* LevelUpExp.plist */,
-				F4666C6A1B29E974001840DB /* EquipmentStrengthen.plist */,
 				F4C5A22B1C37B8DB00533FB6 /* RequiredEquipmentSet.txt */,
 				F4C5A22D1C37CB5100533FB6 /* EnhancementListItem.txt */,
 				F42CFE151E3BA1E1000B4F9B /* EnhancementListItem2.plist */,
-				F4C5A23D1C380E0400533FB6 /* HMEnhancementListItem.plist */,
 				F4A9B8D21B975029005786C2 /* SlotItemShortName.plist */,
 				F40ADA011CE6317500AE29B0 /* IgnoreCommand.plist */,
 				F4A9B8D51B99D5B7005786C2 /* Taihi.txt */,
@@ -1424,7 +1416,6 @@
 				F4B37EFF19FC8DCC002F371A /* UpgradableShipsWindowController.xib in Resources */,
 				F4C668571C5450EB00601AFB /* BookmarkListViewController.xib in Resources */,
 				F4F9470A1D5DBA3800F95998 /* EquipmentWindowController.xib in Resources */,
-				F4C5A22C1C37B8DB00533FB6 /* RequiredEquipmentSet.txt in Resources */,
 				F49688671B3EA16800D3CEDE /* RemoveDatabaseFileAndRestart.app in Resources */,
 				F494DC6A18C8BAB900AE97E4 /* PowerUpSupportViewController.xib in Resources */,
 				F49AABE61DFC48F300E0B24F /* MainTouchBar.xib in Resources */,
@@ -1432,7 +1423,6 @@
 				F43E67B918BE060E0087E5B6 /* LevelUpExp.plist in Resources */,
 				F4A9B8D71B99D5B7005786C2 /* Taihi.txt in Resources */,
 				F4B3DC3018E5C81E0011B4FC /* HistoryWindowController.xib in Resources */,
-				F4C5A22E1C37CB5100533FB6 /* EnhancementListItem.txt in Resources */,
 				F421850A1DF44AA900256590 /* AirBaseWindowController.xib in Resources */,
 				F4B3DC3618E5C8650011B4FC /* ShipWindowController.xib in Resources */,
 				F4C6685A1C54510E00601AFB /* BookmarkEditorViewController.xib in Resources */,
@@ -1473,13 +1463,11 @@
 				F4B3DC3F18E5C8870011B4FC /* BroserWindowController.xib in Resources */,
 				F4649FD31DBC52A50097AEBF /* ScreenshotEditorViewController.xib in Resources */,
 				F4C668661C5451AB00601AFB /* QuestListViewController.xib in Resources */,
-				F4666C6B1B29E974001840DB /* EquipmentStrengthen.plist in Resources */,
 				F404AF5F1F2CE77500A006B8 /* LICENSE in Resources */,
 				F4131EDE190FEBDB004F7F9A /* SlotItemWindowController.xib in Resources */,
 				F4C6685D1C54515C00601AFB /* BrowserContentAdjuster.xib in Resources */,
 				F49AABE81DFD33FB00E0B24F /* HistoryWindowTouchBar.xib in Resources */,
 				F4C668721C54525300601AFB /* CombileViewController.xib in Resources */,
-				F4C5A23E1C380E0400533FB6 /* HMEnhancementListItem.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
