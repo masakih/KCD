@@ -213,6 +213,7 @@
 		F4AC136D1E0802C000851147 /* PreferencePanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AC136C1E0802C000851147 /* PreferencePanelController.swift */; };
 		F4AC136F1E0963DB00851147 /* ProgressPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AC136E1E0963DB00851147 /* ProgressPanel.swift */; };
 		F4AC13711E096A7B00851147 /* HistoryWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AC13701E096A7B00851147 /* HistoryWindowController.swift */; };
+		F4AF56811F7BF0CF004F4F4E /* IntConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AF56801F7BF0CF004F4F4E /* IntConvertable.swift */; };
 		F4B15CBD1E21BA870078CFFC /* CommandRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B15CBC1E21BA870078CFFC /* CommandRegister.swift */; };
 		F4B37EFF19FC8DCC002F371A /* UpgradableShipsWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B37F0119FC8DCC002F371A /* UpgradableShipsWindowController.xib */; };
 		F4B3DC3018E5C81E0011B4FC /* HistoryWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B3DC3218E5C81E0011B4FC /* HistoryWindowController.xib */; };
@@ -566,6 +567,7 @@
 		F4AC136C1E0802C000851147 /* PreferencePanelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencePanelController.swift; sourceTree = "<group>"; };
 		F4AC136E1E0963DB00851147 /* ProgressPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressPanel.swift; sourceTree = "<group>"; };
 		F4AC13701E096A7B00851147 /* HistoryWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryWindowController.swift; sourceTree = "<group>"; };
+		F4AF56801F7BF0CF004F4F4E /* IntConvertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntConvertable.swift; sourceTree = "<group>"; };
 		F4B15CBC1E21BA870078CFFC /* CommandRegister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandRegister.swift; sourceTree = "<group>"; };
 		F4B3DC4B18F0C8A90011B4FC /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		F4B3DC4D18F0C8FF0011B4FC /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
@@ -942,22 +944,23 @@
 			children = (
 				F4FC3E931E44A5D600E41228 /* AppDelegate.swift */,
 				F47B06DC1E97ECD4006711D9 /* WindowManager.swift */,
-				F40F976E1E67092600AE81BB /* ArrayExtensions.swift */,
 				F404AF561F2CDD1C00A006B8 /* DefaultKey.swift */,
 				F48883461F2E2E9A0069E0C3 /* DefaultKeyExtendedValues.swift */,
 				F404AF611F2D8CAE00A006B8 /* DefaultKeys.swift */,
 				F48883441F2E095F0069E0C3 /* DefaultSettings.swift */,
-				F40F97701E68536400AE81BB /* FileManagerExtension.swift */,
 				F491A4BB1E4B523C00D1E067 /* ApplicationDirecrories.swift */,
+				F40F976E1E67092600AE81BB /* ArrayExtensions.swift */,
 				F44AA26A1E82AD2E00EED8BE /* NSObjectExtension.swift */,
+				F4AF56801F7BF0CF004F4F4E /* IntConvertable.swift */,
+				F40F97701E68536400AE81BB /* FileManagerExtension.swift */,
 				F44775881EF6AAD900287572 /* SakutekiCalculator.swift */,
 				F41A451A1F4917640066F83D /* SeikuCalclator.swift */,
+				F4BBA21E1F243CA900E68743 /* DamageCalculator.swift */,
 				F429FAAD1F619927006299ED /* TPValueCalculator.swift */,
 				F429FAAF1F62D769006299ED /* ShipType.swift */,
 				F42546911EF8002E00BE297E /* EquitType.swift */,
 				F4EE4AD71F18F43700AD92B4 /* DeckBuilderStructure.swift */,
 				F4EE4AD91F18F66A00AD92B4 /* DeckBuilder.swift */,
-				F4BBA21E1F243CA900E68743 /* DamageCalculator.swift */,
 				F4BEEFE21B0CD39B004702B8 /* Transformar&Formatter */,
 				F4C118F318A67B05005D5B25 /* CustomHTTPProtocol */,
 				F47215A11E1F38280083D3BC /* Queue.swift */,
@@ -1568,6 +1571,7 @@
 				F4048AA11E1951BB008ACFD6 /* SuppliesCell.swift in Sources */,
 				F490977D1E19DF390085A45D /* SlotItemFrameView.swift in Sources */,
 				F4E471291E46ECF1009B5AF4 /* CoreDataCore.swift in Sources */,
+				F4AF56811F7BF0CF004F4F4E /* IntConvertable.swift in Sources */,
 				F47C3EA01E5DE08F00D97449 /* MasterMapInfoMapper.swift in Sources */,
 				F4AA59481E1E3CBA001667AF /* AirbasePlaneStateTransformer.swift in Sources */,
 				F4E7802E18DC3AF00011BC4C /* LocalData.xcdatamodeld in Sources */,

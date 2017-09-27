@@ -397,8 +397,11 @@ extension DamageCalculator {
         let baseValue = json[baseKeyPath.components(separatedBy: ".")]
         
         guard let targetPosLists = hogekiTargets(baseValue["api_df_list"]),
-            let damageLists = hogekiDamages(baseValue["api_damage"])
-            else { return }
+            let damageLists = hogekiDamages(baseValue["api_damage"]) else {
+                
+                Debug.print("Cound not find api_df_list or api_damage for \(baseKeyPath)", level: .full)
+                return
+        }
         
         guard targetPosLists.count == damageLists.count
             else { return print("api_damage is wrong.") }
@@ -447,12 +450,25 @@ extension DamageCalculator {
         
         let baseValue = json[baseKeyPath.components(separatedBy: ".")]
         
-        guard let koukuDamages = baseValue["api_fdam"].arrayObject as? [Int]
-            else { return }
+        guard let fdamArray = baseValue["api_fdam"].arrayObject else {
+
+            Debug.print("Could not find api_fdam of \(baseKeyPath)", level: .full)
+            
+            return
+        }
+        
+        guard let IntFdamArray = fdamArray as? [IntConvertable] else {
+            
+            Debug.print("api_fdam value of \(baseKeyPath) is not [Int].", level: .debug)
+            Debug.print(baseValue, level: .debug)
+            
+            return
+        }
+        let frendDamages = IntFdamArray.map { $0.toInt() }
         
         Debug.print("Start FDam \(baseKeyPath)", level: .debug)
         
-        koukuDamages.enumerated().forEach { (idx, damage) in
+        frendDamages.enumerated().forEach { (idx, damage) in
             
             if idx == 0 { return }
             
