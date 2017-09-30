@@ -8,12 +8,12 @@
 
 import Cocoa
 
-fileprivate protocol Markable {
+private protocol Markable {
     
     var mark: Bool { get set }
 }
 
-fileprivate protocol HistoryObject {
+private protocol HistoryObject {
     
     var date: Date { get }
 }
@@ -123,7 +123,7 @@ extension HistoryTableViewController: NSTableViewDelegate {
         
         return tableColumn
             .flatMap { $0.identifier }
-            .flatMap { tableView.make(withIdentifier: $0, owner: nil) }
+            .flatMap { tableView.makeView(withIdentifier: $0, owner: nil) }
     }
 }
 

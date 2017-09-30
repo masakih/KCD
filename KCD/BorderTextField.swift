@@ -18,7 +18,7 @@ final class BorderTextField: NSTextField {
         let width = bounds.width
         let height = bounds.height
         NSColor.controlShadowColor.set()
-        NSBezierPath.setDefaultLineWidth(1.0)
+        NSBezierPath.defaultLineWidth = 1.0
         
         multiline(lines:
             [

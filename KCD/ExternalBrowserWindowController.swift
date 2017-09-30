@@ -9,7 +9,7 @@
 import Cocoa
 import WebKit
 
-fileprivate extension Selector {
+private extension Selector {
     
     static let addBookmark = #selector(ExternalBrowserWindowController.addBookmark(_:))
     static let showBookmark = #selector(ExternalBrowserWindowController.showBookmark(_:))
@@ -32,33 +32,33 @@ final class ExternalBrowserWindowController: NSWindowController {
     @IBOutlet var goSegment: NSSegmentedControl!
     @IBOutlet var bookmarkListView: NSView!
     
-    override var windowNibName: String! {
+    override var windowNibName: NSNib.Name {
         
-        return "ExternalBrowserWindowController"
+        return .nibName(instanceOf: self)
     }
     
-    dynamic var canResize: Bool = true {
+    @objc dynamic var canResize: Bool = true {
         
         willSet {
             guard let window = window else { return }
             
             if canResize == newValue { return }
             
-            var style = window.styleMask.rawValue
+            var styleMask = window.styleMask
             if newValue {
                 
-                style |= NSResizableWindowMask.rawValue
+                styleMask.insert(.resizable)
                 
             } else {
                 
-                style &= ~NSResizableWindowMask.rawValue
+                styleMask.remove(.resizable)
             }
             
-            window.styleMask = NSWindowStyleMask(rawValue: style)
+            window.styleMask = styleMask
         }
     }
     
-    dynamic var canScroll: Bool = true {
+    @objc dynamic var canScroll: Bool = true {
         
         willSet {
             guard let webView = webView else { return }
@@ -75,7 +75,7 @@ final class ExternalBrowserWindowController: NSWindowController {
             }
         }
     }
-    dynamic var canMovePage: Bool = true
+    @objc dynamic var canMovePage: Bool = true
     
     var urlString: String? {
         
@@ -108,10 +108,10 @@ final class ExternalBrowserWindowController: NSWindowController {
         set { webView.mainFrame.frameView.documentView.scrollToVisible(newValue) }
     }
     
-    fileprivate var bookmarkShowing: Bool = false
-    fileprivate var waitingBookmarkItem: Bookmark?
+    private var bookmarkShowing: Bool = false
+    private var waitingBookmarkItem: Bookmark?
     
-    fileprivate lazy var bookmarkListViwController: BookmarkListViewController? = { [weak self] in
+    private lazy var bookmarkListViwController: BookmarkListViewController? = { [weak self] in
         
         guard let `self` = self else { return nil }
         
@@ -170,7 +170,7 @@ final class ExternalBrowserWindowController: NSWindowController {
         }
     }
     
-    fileprivate func move(bookmark: Bookmark) {
+    private func move(bookmark: Bookmark) {
         
         if !canMovePage {
             
@@ -185,7 +185,7 @@ final class ExternalBrowserWindowController: NSWindowController {
         waitingBookmarkItem = bookmark
     }
     
-    fileprivate func showsBookmarkList() -> Bool {
+    private func showsBookmarkList() -> Bool {
         
         return webView.frame.origin.x > 0
     }
@@ -303,13 +303,13 @@ extension ExternalBrowserWindowController {
             newFrame.size.width = window.frame.size.width - 200
         }
         
-        let webAnime: [String: Any] = [
-            NSViewAnimationTargetKey: webView,
-            NSViewAnimationEndFrameKey: NSValue(rect: newFrame)
+        let webAnime: [NSViewAnimation.Key: Any] = [
+            .target: webView,
+            .endFrame: NSValue(rect: newFrame)
         ]
-        let bookmarkAnime: [String: Any] = [
-            NSViewAnimationTargetKey: bookmarkListView,
-            NSViewAnimationEndFrameKey: NSValue(rect: frame)
+        let bookmarkAnime: [NSViewAnimation.Key: Any] = [
+            .target: bookmarkListView,
+            .endFrame: NSValue(rect: frame)
         ]
         let anime = NSViewAnimation(viewAnimations: [webAnime, bookmarkAnime])
         anime.delegate = self
@@ -401,7 +401,7 @@ extension ExternalBrowserWindowController: NSAnimationDelegate {
 
 extension ExternalBrowserWindowController: WebFrameLoadDelegate, WebPolicyDelegate {
     
-    func updateContentVisibleRect(_ timer: Timer) {
+    @objc func updateContentVisibleRect(_ timer: Timer) {
         
         guard let item = timer.userInfo as? Bookmark
             else { return }

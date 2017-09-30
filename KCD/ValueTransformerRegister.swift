@@ -8,7 +8,7 @@
 
 import Cocoa
 
-fileprivate struct Register {
+private struct Register {
     
     let prototype: ValueTransformer
     

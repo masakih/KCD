@@ -16,7 +16,7 @@ protocol StrengthenListItem {
 
 protocol StrengthenListCellType {
     
-    static var cellIdentifier: String { get }
+    static var cellIdentifier: NSUserInterfaceItemIdentifier { get }
     static func estimateCellHeightForItem(item: StrengthenListItem, tableView: NSTableView) -> CGFloat
     static func makeCellWithItem(item: StrengthenListItem, tableView: NSTableView, owner: AnyObject?) -> NSTableCellView
 }
@@ -25,7 +25,7 @@ extension StrengthenListCellType {
     
     static func makeCellWithItem(item: StrengthenListItem, tableView: NSTableView, owner: AnyObject?) -> NSTableCellView {
         
-        let v = tableView.make(withIdentifier: cellIdentifier, owner: nil)
+        let v = tableView.makeView(withIdentifier: cellIdentifier, owner: nil)
         
         // swiftlint:disable:next force_cast
         return v as! NSTableCellView
@@ -34,7 +34,7 @@ extension StrengthenListCellType {
 
 struct StrengthenListGroupCellType: StrengthenListCellType {
     
-    static let cellIdentifier: String = "GroupCell"
+    static let cellIdentifier: NSUserInterfaceItemIdentifier = NSUserInterfaceItemIdentifier("GroupCell")
     
     static func estimateCellHeightForItem(item: StrengthenListItem, tableView: NSTableView) -> CGFloat {
         
@@ -44,7 +44,7 @@ struct StrengthenListGroupCellType: StrengthenListCellType {
 
 final class StrengthenListGroupItem: NSObject, StrengthenListItem {
     
-    let name: String
+    @objc let name: String
     let type: EquipmentType
     let cellType: StrengthenListCellType.Type = StrengthenListGroupCellType.self
     

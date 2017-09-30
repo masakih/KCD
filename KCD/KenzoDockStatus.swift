@@ -8,7 +8,7 @@
 
 import Cocoa
 
-fileprivate enum DockState: Int {
+private enum DockState: Int {
     
     case empty = 0
     case hasShip = 2
@@ -27,12 +27,12 @@ final class KenzoDockStatus: NSObject {
         didSet { time = realTime as NSNumber }
     }
     
-    dynamic var time: NSNumber?
-    dynamic var state: NSNumber? {
+    @objc dynamic var time: NSNumber?
+    @objc dynamic var state: NSNumber? {
         
         didSet { updateState() }
     }
-    dynamic var completeTime: NSNumber?
+    @objc dynamic var completeTime: NSNumber?
     
     init?(number: Int) {
         
@@ -50,8 +50,8 @@ final class KenzoDockStatus: NSObject {
         controller.automaticallyRearrangesObjects = true
         controller.fetch(nil)
         
-        bind(#keyPath(state), to: controller, withKeyPath: "selection.state")
-        bind(#keyPath(completeTime), to: controller, withKeyPath: "selection.complete_time")
+        bind(NSBindingName(#keyPath(state)), to: controller, withKeyPath: "selection.state")
+        bind(NSBindingName(#keyPath(completeTime)), to: controller, withKeyPath: "selection.complete_time")
     }
     
     private func updateState() {

@@ -17,7 +17,7 @@ final class SimpleCalculator: SakutekiCalculator {
     
     func calculate(_ ships: [Ship]) -> Double {
         
-        return Double(ships.reduce(0) { $0.0 + $0.1.sakuteki_0 })
+        return Double(ships.reduce(0) { $0 + $1.sakuteki_0 })
     }
 }
 
@@ -39,12 +39,12 @@ final class Formula33: SakutekiCalculator {
             .flatMap { $0 as? SlotItem }
             .reduce("") {
                 
-                let saku = $0.1.master_slotItem.saku ?? 0
-                let ratio = typeRatio($0.1)
-                let bounus = levelBounus($0.1)
-                let culcSaku = ratio * (Double(saku) + bounus)
+                let saku = $1.master_slotItem.saku ?? 0
+                let ratio = typeRatio($1)
+                let bounus = levelBounus($1)
+                let culcSaku = ratio * (Double(truncating: saku) + bounus)
                 
-                return $0.0 + "\n\t\($0.1.name)\tLv.\($0.1.level)\t\t\(saku)\t\(ratio)\t\(bounus)\t\(culcSaku)"
+                return $0 + "\n\t\($1.name)\tLv.\($1.level)\t\t\(saku)\t\(ratio)\t\(bounus)\t\(culcSaku)"
         }
         
         print("\(shipData)\(itemNames)\n")

@@ -8,7 +8,7 @@
 
 import Cocoa
 
-fileprivate enum SokuType: Int {
+private enum SokuType: Int {
     
     case slow = 5
     case fast = 10

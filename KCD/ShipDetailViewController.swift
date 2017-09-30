@@ -15,26 +15,26 @@ enum ShipDetailViewType {
     case minimum
 }
 
-private func nibNameFor(_ type: ShipDetailViewType) -> String {
+private func nibNameFor(_ type: ShipDetailViewType) -> NSNib.Name {
     
     switch type {
-    case .full: return "ShipDetailViewController"
-    case .medium: return "MediumShipViewController"
-    case .minimum: return "MediumShipViewController"
+    case .full: return ShipDetailViewController.nibName
+    case .medium: return NSNib.Name("MediumShipViewController")
+    case .minimum: return NSNib.Name("MediumShipViewController")
     }
 }
 
-fileprivate var shipContext: Int = 0
-fileprivate var equippedItem0Context: Int = 0
-fileprivate var equippedItem1Context: Int = 0
-fileprivate var equippedItem2Context: Int = 0
-fileprivate var equippedItem3Context: Int = 0
-fileprivate var equippedItem4Context: Int = 0
+private var shipContext: Int = 0
+private var equippedItem0Context: Int = 0
+private var equippedItem1Context: Int = 0
+private var equippedItem2Context: Int = 0
+private var equippedItem3Context: Int = 0
+private var equippedItem4Context: Int = 0
 
 final class ShipDetailViewController: NSViewController {
     
     let type: ShipDetailViewType
-    let managedObjectContext = ServerDataStore.default.context
+    @objc let managedObjectContext = ServerDataStore.default.context
     
     init?(type: ShipDetailViewType) {
         
@@ -60,10 +60,10 @@ final class ShipDetailViewController: NSViewController {
     deinit {
         
         NotificationCenter.default.removeObserver(self)
-        damageView.unbind(#keyPath(DamageView.damageType))
-        supply.unbind(#keyPath(SuppliesView.shipStatus))
+        damageView.unbind(NSBindingName(#keyPath(DamageView.damageType)))
+        supply.unbind(NSBindingName(#keyPath(SuppliesView.shipStatus)))
         [slot00Field, slot01Field, slot02Field, slot03Field]
-            .forEach { $0?.unbind(#keyPath(SlotItemLevelView.slotItemID)) }
+            .forEach { $0?.unbind(NSBindingName(#keyPath(SlotItemLevelView.slotItemID))) }
         
         shipController.removeObject(self)
     }
@@ -78,14 +78,14 @@ final class ShipDetailViewController: NSViewController {
     @IBOutlet weak var slot03Field: SlotItemLevelView!
     @IBOutlet var shipController: NSObjectController!
     
-    dynamic var guardEscaped: Bool = false {
+    @objc dynamic var guardEscaped: Bool = false {
         
         didSet {
             guardEscapedView.isHidden = !guardEscaped
         }
     }
     
-    dynamic var ship: Ship? {
+    @objc dynamic var ship: Ship? {
         
         get { return shipController.content as? Ship }
         set {
@@ -100,11 +100,11 @@ final class ShipDetailViewController: NSViewController {
         
         damageView.setFrameOrigin(.zero)
         view.addSubview(damageView)
-        damageView.bind(#keyPath(DamageView.damageType),
+        damageView.bind(NSBindingName(#keyPath(DamageView.damageType)),
                         to: shipController,
                         withKeyPath: "selection.status", options: nil)
         
-        supply.bind(#keyPath(SuppliesView.shipStatus),
+        supply.bind(NSBindingName(#keyPath(SuppliesView.shipStatus)),
                     to: shipController,
                     withKeyPath: "selection.self", options: nil)
         
@@ -121,7 +121,7 @@ final class ShipDetailViewController: NSViewController {
         let keypath = ["selection.slot_0", "selection.slot_1", "selection.slot_2", "selection.slot_3"]
         zip(fields, keypath).forEach {
             
-            $0.0?.bind(#keyPath(SlotItemLevelView.slotItemID), to: shipController, withKeyPath: $0.1, options: nil)
+            $0.0?.bind(NSBindingName(#keyPath(SlotItemLevelView.slotItemID)), to: shipController, withKeyPath: $0.1, options: nil)
         }
         
         // observe slotitems count
@@ -207,7 +207,7 @@ final class ShipDetailViewController: NSViewController {
 }
 
 
-fileprivate let allPlaneTypes: [Int] = [6, 7, 8, 9, 10, 11, 25, 26, 41, 45, 56, 57, 58, 59]
+private let allPlaneTypes: [Int] = [6, 7, 8, 9, 10, 11, 25, 26, 41, 45, 56, 57, 58, 59]
 
 
 extension ShipDetailViewController {
@@ -252,15 +252,15 @@ extension ShipDetailViewController {
         }
     }
     
-    dynamic var planeString0: String? { return planeString(0) }
+    @objc dynamic var planeString0: String? { return planeString(0) }
     
-    dynamic var planeString1: String? { return planeString(1) }
+    @objc dynamic var planeString1: String? { return planeString(1) }
     
-    dynamic var planeString2: String? { return planeString(2) }
+    @objc dynamic var planeString2: String? { return planeString(2) }
     
-    dynamic var planeString3: String? { return planeString(3) }
+    @objc dynamic var planeString3: String? { return planeString(3) }
     
-    dynamic var planeString4: String? { return planeString(4) }
+    @objc dynamic var planeString4: String? { return planeString(4) }
     
     // MARK: - Plane count string color
     private func planeStringColor(_ index: Int) -> NSColor {
@@ -272,13 +272,15 @@ extension ShipDetailViewController {
         }
     }
     
-    dynamic var planeString0Color: NSColor { return planeStringColor(0) }
+    @objc dynamic var planeString0Color: NSColor { return planeStringColor(0) }
     
-    dynamic var planeString1Color: NSColor { return planeStringColor(1) }
+    @objc dynamic var planeString1Color: NSColor { return planeStringColor(1) }
     
-    dynamic var planeString2Color: NSColor { return planeStringColor(2) }
+    @objc dynamic var planeString2Color: NSColor { return planeStringColor(2) }
     
-    dynamic var planeString3Color: NSColor { return planeStringColor(3) }
+    @objc dynamic var planeString3Color: NSColor { return planeStringColor(3) }
     
-    dynamic var planeString4Color: NSColor { return planeStringColor(4) }
+    @objc dynamic var planeString4Color: NSColor { return planeStringColor(4) }
 }
+
+extension ShipDetailViewController: NibLoadable {}

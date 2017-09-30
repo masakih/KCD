@@ -10,14 +10,14 @@ import Cocoa
 
 final class HistoryWindowController: NSWindowController {
     
-    fileprivate enum HistoryWindowTabIndex: Int {
+    private enum HistoryWindowTabIndex: Int {
         
         case kaihatuHistory = 0
         case kenzoHistory = 1
         case dropHistory = 2
     }
     
-    let manageObjectContext = LocalDataStore.default.context
+    @objc let manageObjectContext = LocalDataStore.default.context
     
     @IBOutlet var tabView: NSTabView!
     @IBOutlet var kaihatsuTableVC: KaihatsuHistoryTableViewController!
@@ -34,18 +34,18 @@ final class HistoryWindowController: NSWindowController {
             if let controller = currentSelection?.controller,
                 let predicateFormat = currentSelection?.predicateFormat {
                 
-                searchField.bind(NSPredicateBinding,
+                searchField.bind(.predicate,
                                  to: controller,
-                                 withKeyPath: NSFilterPredicateBinding,
-                                 options: [NSPredicateFormatBindingOption: predicateFormat])
+                                 withKeyPath: NSBindingName.filterPredicate.rawValue,
+                                 options: [.predicateFormat: predicateFormat])
             } else {
                 
-                searchField.unbind(NSPredicateBinding)
+                searchField.unbind(.predicate)
             }
         }
     }
     
-    var selectedTabIndex: Int = -1 {
+    @objc var selectedTabIndex: Int = -1 {
         
         didSet {
             guard let tabIndex = HistoryWindowTabIndex(rawValue: selectedTabIndex)
@@ -63,9 +63,9 @@ final class HistoryWindowController: NSWindowController {
             }
         }
     }
-    override var windowNibName: String! {
+    override var windowNibName: NSNib.Name {
         
-        return "HistoryWindowController"
+        return .nibName(instanceOf: self)
     }
     
     override func windowDidLoad() {
@@ -86,8 +86,8 @@ final class HistoryWindowController: NSWindowController {
 }
 
 @available(OSX 10.12.2, *)
-fileprivate var objectForTouchBar: [Int: NSTouchBar] = [:]
-fileprivate var object1ForTouchBar: [Int: NSButton] = [:]
+private var objectForTouchBar: [Int: NSTouchBar] = [:]
+private var object1ForTouchBar: [Int: NSButton] = [:]
 
 @available(OSX 10.12.2, *)
 extension HistoryWindowController {
@@ -111,8 +111,8 @@ extension HistoryWindowController {
                 
                 return myTouchBar
             }
-            var topLevel: NSArray = []
-            Bundle.main.loadNibNamed("HistoryWindowTouchBar",
+            var topLevel: NSArray?
+            Bundle.main.loadNibNamed(NSNib.Name("HistoryWindowTouchBar"),
                                      owner: self,
                                      topLevelObjects: &topLevel)
             

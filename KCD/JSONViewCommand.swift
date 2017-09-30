@@ -22,7 +22,7 @@ final class JSONViewCommand: JSONCommand {
         self.recieveDate = Date()
         self.parameterList = apiResponse
             .parameter
-            .map { ["key": $0.0, "value": $0.1] }
+           .map { ["key": $0, "value": $1] }
         self.jsonTree = JSONNode
             .nodeWithJSON(apiResponse.json)
             .map { [$0] }

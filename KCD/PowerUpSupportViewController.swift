@@ -10,11 +10,11 @@ import Cocoa
 
 final class PowerUpSupportViewController: MainTabVIewItemViewController {
     
-    let managedObjectContext = ServerDataStore.default.context
+    @objc let managedObjectContext = ServerDataStore.default.context
     
     deinit {
         
-        shipController.removeObserver(self, forKeyPath: NSSortDescriptorsBinding)
+        shipController.removeObserver(self, forKeyPath: NSBindingName.sortDescriptors.rawValue)
     }
     
     @IBOutlet var shipController: NSArrayController!
@@ -29,9 +29,9 @@ final class PowerUpSupportViewController: MainTabVIewItemViewController {
         }
     }
     
-    override var nibName: String! {
+    override var nibName: NSNib.Name {
         
-        return "PowerUpSupportViewController"
+        return .nibName(instanceOf: self)
     }
     
     var omitPredicate: NSPredicate? {
@@ -67,12 +67,12 @@ final class PowerUpSupportViewController: MainTabVIewItemViewController {
         }
         
         shipController.sortDescriptors = UserDefaults.standard[.powerupSupportSortDecriptors]
-        shipController.addObserver(self, forKeyPath: NSSortDescriptorsBinding, context: nil)
+        shipController.addObserver(self, forKeyPath: NSBindingName.sortDescriptors.rawValue, context: nil)
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         
-        if keyPath == NSSortDescriptorsBinding {
+        if keyPath == NSBindingName.sortDescriptors.rawValue {
             
             UserDefaults.standard[.powerupSupportSortDecriptors] = shipController.sortDescriptors
             
@@ -82,7 +82,7 @@ final class PowerUpSupportViewController: MainTabVIewItemViewController {
         super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
     }
     
-    fileprivate func customPredicate() -> NSPredicate? {
+    private func customPredicate() -> NSPredicate? {
         
         switch (shipTypePredicte, omitPredicate) {
             

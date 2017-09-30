@@ -206,13 +206,8 @@ extension DefaultKeys {
             
             return nil
         }
-        .reduce([String: Any]()) {
-            
-            var dict = $0.0
-            
-            dict[$0.1.key] = $0.1.value
-            
-            return dict
+        .reduce(into: [String: Any]()) { (dict: inout [String: Any], pair) in
+            dict[pair.key] = pair.value
     }
     
 }

@@ -15,8 +15,8 @@ enum FleetViewType: Int {
     case miniVierticalType = 2
 }
 
-fileprivate var shipKeysContext: Int = 0
-fileprivate var shipsContext: Int = 0
+private var shipKeysContext: Int = 0
+private var shipsContext: Int = 0
 
 final class FleetViewController: NSViewController {
     
@@ -49,7 +49,7 @@ final class FleetViewController: NSViewController {
     
     private static let maxFleetNumber: Int = 4
     
-    fileprivate let details: [ShipDetailViewController]
+    private let details: [ShipDetailViewController]
     private let shipKeys = ["ship_0", "ship_1", "ship_2", "ship_3", "ship_4", "ship_5"]
     private let type: FleetViewType
     private let fleetController = NSObjectController()
@@ -77,11 +77,11 @@ final class FleetViewController: NSViewController {
             return res
         }
         
-        let nibName: String = {
+        let nibName: NSNib.Name = {
             switch viewType {
-            case .detailViewType: return "FleetViewController"
-            case .minimumViewType: return "FleetMinimumViewController"
-            case .miniVierticalType: return "VerticalFleetViewController"
+            case .detailViewType: return FleetViewController.nibName
+            case .minimumViewType: return NSNib.Name("FleetMinimumViewController")
+            case .miniVierticalType: return NSNib.Name("VerticalFleetViewController")
             }
         }()
         
@@ -105,7 +105,7 @@ final class FleetViewController: NSViewController {
     @IBOutlet weak var placeholder05: NSView!
     @IBOutlet weak var placeholder06: NSView!
     
-    dynamic var fleetNumber: Int = 1 {
+    @objc dynamic var fleetNumber: Int = 1 {
         
         didSet {
             ServerDataStore.default
@@ -114,7 +114,7 @@ final class FleetViewController: NSViewController {
         }
     }
     
-    dynamic var fleet: Deck? {
+    @objc dynamic var fleet: Deck? {
         
         get { return representedObject as? Deck }
         set {
@@ -174,12 +174,12 @@ final class FleetViewController: NSViewController {
         }
     }
     
-    var totalSakuteki: Double { return sakutekiCalculator.calculate(ships) }
-    var totalSeiku: Int { return ships.reduce(0) { $0 + $1.seiku } }
-    var totalCalclatedSeiku: Int { return ships.reduce(0) { $0 + totalSeiku(of: $1) } }
-    var totalLevel: Int { return ships.reduce(0) { $0 + $1.lv } }
-    var totalDrums: Int { return ships.reduce(0) { $0 + totalDrums(of: $1) } }
-    var totalTPValue: Int {
+    @objc var totalSakuteki: Double { return sakutekiCalculator.calculate(ships) }
+    @objc var totalSeiku: Int { return ships.reduce(0) { $0 + $1.seiku } }
+    @objc var totalCalclatedSeiku: Int { return ships.reduce(0) { $0 + totalSeiku(of: $1) } }
+    @objc var totalLevel: Int { return ships.reduce(0) { $0 + $1.lv } }
+    @objc var totalDrums: Int { return ships.reduce(0) { $0 + totalDrums(of: $1) } }
+    @objc var totalTPValue: Int {
         
         return ships
             .map { ShipTPValueCalculator($0) }
@@ -197,7 +197,7 @@ final class FleetViewController: NSViewController {
         return (0...4).flatMap(ship.slotItem).filter { $0.slotitem_id == 75 }.count
     }
     
-    fileprivate var ships: [Ship] = [] {
+    private var ships: [Ship] = [] {
         
         willSet {
             ships.forEach { ship in
@@ -221,7 +221,7 @@ final class FleetViewController: NSViewController {
     
     private(set) var anchorageRepair = AnchorageRepairManager.default
     
-    dynamic fileprivate(set) var repairTime: NSNumber?
+    @objc dynamic private(set) var repairTime: NSNumber?
     
     override func viewDidLoad() {
         
@@ -236,7 +236,7 @@ final class FleetViewController: NSViewController {
             sakutekiCalculator = Formula33(Int(factor))
         }
         
-        fleetController.bind("content", to:self, withKeyPath:#keyPath(fleet), options:nil)
+        fleetController.bind(NSBindingName("content"), to:self, withKeyPath:#keyPath(fleet), options:nil)
         fleetController.addObserver(self, forKeyPath:"selection.name", context:nil)
         shipKeys.forEach {
             
@@ -402,7 +402,7 @@ extension FleetViewController {
             
             if let _ = sakutekiCalculator as? SimpleCalculator {
                 
-                menuItem.state = menuItem.tag == 0 ? NSOnState : NSOffState
+                menuItem.state = (menuItem.tag == 0 ? .on : .off)
                 
                 return true
                 
@@ -410,7 +410,7 @@ extension FleetViewController {
                 
                 let cond = 100 + sakuObj.condition
                 
-                menuItem.state = menuItem.tag == cond ? NSOnState : NSOffState
+                menuItem.state = (menuItem.tag == cond ? .on : .off)
                 
                 return true
             }
@@ -431,23 +431,23 @@ extension FleetViewController {
             return
         }
         
-        let views: [NSView] = details.map { $0.view }
-        let options: [NSAutoresizingMaskOptions] = views.map { $0.autoresizingMask }
+        let views = details.map { $0.view }
+        let options = views.map { $0.autoresizingMask }
         let reorderedOptions = order.map { options[$0] }
         zip(views, reorderedOptions).forEach { $0.0.autoresizingMask = $0.1 }
         
-        let frames: [NSRect] = views.map { $0.frame }
+        let frames = views.map { $0.frame }
         let reorderedFrames = order.map { frames[$0] }
         zip(views, reorderedFrames)
             .forEach { $0.0.setFrame($0.1, animate: enableAnimation) }
     }
     
-    fileprivate func reorderShipToDoubleLine() {
+    private func reorderShipToDoubleLine() {
         
         reorder(order: [0, 3, 1, 4, 2, 5])
     }
     
-    fileprivate func reorderShipToLeftToRight() {
+    private func reorderShipToLeftToRight() {
         
         reorder(order: [0, 2, 4, 1, 3, 5])
     }
@@ -477,7 +477,7 @@ extension FleetViewController {
     
     private var repairShipIds: [Int] { return [19] }
     
-    dynamic var repairable: Bool {
+    @objc dynamic var repairable: Bool {
         
         guard let flagShip = fleet?[0]
             else { return false }
@@ -485,3 +485,5 @@ extension FleetViewController {
         return repairShipIds.contains(flagShip.master_ship.stype.id)
     }
 }
+
+extension FleetViewController: NibLoadable {}

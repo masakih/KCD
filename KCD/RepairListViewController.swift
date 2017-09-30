@@ -10,11 +10,11 @@ import Cocoa
 
 final class RepairListViewController: MainTabVIewItemViewController {
     
-    let managedObjectContext = ServerDataStore.default.context
-    let fetchPredicate = NSPredicate(format: "NOT ndock_time = 0")
+    @objc let managedObjectContext = ServerDataStore.default.context
+    @objc let fetchPredicate = NSPredicate(format: "NOT ndock_time = 0")
     
-    override var nibName: String! {
+    override var nibName: NSNib.Name {
         
-        return "RepairListViewController"
+        return .nibName(instanceOf: self)
     }
 }

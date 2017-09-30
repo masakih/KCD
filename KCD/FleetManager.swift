@@ -22,7 +22,7 @@ final class FleetManager: NSObject {
         setupFleets()
     }
     
-    private(set) var fleets: [Fleet] = []
+    @objc private(set) var fleets: [Fleet] = []
     private var fleetController: NSArrayController!
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {

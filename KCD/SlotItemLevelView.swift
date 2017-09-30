@@ -23,38 +23,38 @@ final class SlotItemLevelView: NSTextField {
         
         super.init(frame: frameRect)
         
-        bind(#keyPath(slotItemLevel), to: slotItemController, withKeyPath: "selection.level", options: nil)
-        bind(#keyPath(slotItemAlv), to: slotItemController, withKeyPath: "selection.alv", options: nil)
+        bind(NSBindingName(#keyPath(slotItemLevel)), to: slotItemController, withKeyPath: "selection.level", options: nil)
+        bind(NSBindingName(#keyPath(slotItemAlv)), to: slotItemController, withKeyPath: "selection.alv", options: nil)
     }
     
     required init?(coder: NSCoder) {
         
         super.init(coder: coder)
         
-        bind(#keyPath(slotItemLevel), to: slotItemController, withKeyPath: "selection.level", options: nil)
-        bind(#keyPath(slotItemAlv), to: slotItemController, withKeyPath: "selection.alv", options: nil)
+        bind(NSBindingName(#keyPath(slotItemLevel)), to: slotItemController, withKeyPath: "selection.level", options: nil)
+        bind(NSBindingName(#keyPath(slotItemAlv)), to: slotItemController, withKeyPath: "selection.alv", options: nil)
     }
     
     deinit {
         
-        unbind(#keyPath(slotItemLevel))
-        unbind(#keyPath(slotItemAlv))
+        unbind(NSBindingName(#keyPath(slotItemLevel)))
+        unbind(NSBindingName(#keyPath(slotItemAlv)))
     }
     
     // MARK: - Variable
-    dynamic var slotItemController = NSObjectController()
-    dynamic var slotItemLevel: NSNumber? {
+    @objc dynamic var slotItemController = NSObjectController()
+    @objc dynamic var slotItemLevel: NSNumber? {
         
         didSet { needsDisplay = true }
     }
     
-    dynamic var slotItemAlv: NSNumber? {
+    @objc dynamic var slotItemAlv: NSNumber? {
         
         didSet { needsDisplay = true }
     }
     
     
-    var slotItemID: NSNumber? {
+    @objc var slotItemID: NSNumber? {
         didSet {
             slotItemController.content = nil
             
@@ -242,7 +242,7 @@ final class SlotItemLevelView: NSTextField {
     
     private var levelFont: NSFont {
         
-        return NSFont.monospacedDigitSystemFont(ofSize: NSFont.smallSystemFontSize(), weight: NSFontWeightRegular)
+        return NSFont.monospacedDigitSystemFont(ofSize: NSFont.smallSystemFontSize, weight: .regular)
     }
     
     private var levelColor: NSColor {
@@ -253,7 +253,7 @@ final class SlotItemLevelView: NSTextField {
     // MARK: - Function
     override func draw(_ dirtyRect: NSRect) {
         
-        guard let context = NSGraphicsContext.current()?.cgContext
+        guard let context = NSGraphicsContext.current?.cgContext
             else { fatalError("Con not get current CGContext") }
         
         context.saveGState()
@@ -326,8 +326,8 @@ final class SlotItemLevelView: NSTextField {
             else { return }
         
         let string: String = lv == 10 ? "max" : "★+\(lv)"
-        let attr: [String: Any] = [ NSFontAttributeName: levelFont,
-                                     NSForegroundColorAttributeName: levelColor ]
+        let attr: [NSAttributedStringKey: Any] = [.font: levelFont,
+                                                  .foregroundColor: levelColor]
         let attributedString = NSAttributedString(string: string, attributes: attr)
         let boundingRect = attributedString.boundingRect(with: bounds.size)
         var rect = bounds

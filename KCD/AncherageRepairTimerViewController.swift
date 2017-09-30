@@ -17,12 +17,14 @@ final class AncherageRepairTimerViewController: NSViewController {
     
     @IBOutlet var screenshotButton: NSButton!
     
-    dynamic var repairTime: NSNumber?
-    override var nibName: String! {
+    @objc dynamic var repairTime: NSNumber?
+    
+    override var nibName: NSNib.Name {
         
-        return "AncherageRepairTimerViewController"
+        return .nibName(instanceOf: self)
     }
-    var controlSize: NSControlSize = .regular {
+    
+    var controlSize: NSControl.ControlSize = .regular {
         
         willSet {
             if controlSize == newValue { return }
@@ -43,7 +45,7 @@ final class AncherageRepairTimerViewController: NSViewController {
         
         super.viewDidLoad()
         
-        AppDelegate.shared.addCounterUpdate { [weak self] _ in
+        AppDelegate.shared.addCounterUpdate { [weak self] in
             
             guard let `self` = self else { return }
             
@@ -53,12 +55,12 @@ final class AncherageRepairTimerViewController: NSViewController {
     
     override func mouseEntered(with event: NSEvent) {
         
-        screenshotButton.image = NSImage(named: "Camera")
+        screenshotButton.image = NSImage(named: NSImage.Name("Camera"))
     }
     
     override func mouseExited(with event: NSEvent) {
         
-        screenshotButton.image = NSImage(named: "CameraDisabled")
+        screenshotButton.image = NSImage(named: NSImage.Name("CameraDisabled"))
     }
     
     private func refleshTrackingArea() {

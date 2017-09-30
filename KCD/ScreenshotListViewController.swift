@@ -8,7 +8,7 @@
 
 import Cocoa
 
-fileprivate struct CacheVersionInfo {
+private struct CacheVersionInfo {
     
     let url: URL
     
@@ -21,6 +21,11 @@ fileprivate struct CacheVersionInfo {
     private(set) var version: Int
     
     mutating func incrementVersion() { version = version + 1 }
+}
+
+extension NSUserInterfaceItemIdentifier {
+    
+    static let item = NSUserInterfaceItemIdentifier("item")
 }
 
 final class ScreenshotListViewController: NSViewController {
@@ -38,24 +43,24 @@ final class ScreenshotListViewController: NSViewController {
     @IBOutlet weak var standardView: NSView!
     @IBOutlet weak var editorView: NSView!
     
-    dynamic var zoom: Double = UserDefaults.standard[.screenshotPreviewZoomValue] {
+    @objc dynamic var zoom: Double = UserDefaults.standard[.screenshotPreviewZoomValue] {
         
         didSet {
             collectionView.reloadData()
             UserDefaults.standard[.screenshotPreviewZoomValue] = zoom
         }
     }
-    dynamic var maxZoom: Double = 1.0
+    @objc dynamic var maxZoom: Double = 1.0
     
-    fileprivate var collectionVisibleDidChangeHandler: ((Set<IndexPath>) -> Void)?
-    fileprivate var reloadHandler: (() -> Void)?
-    fileprivate var collectionSelectionDidChangeHandler: ((Int) -> Void)?
-    fileprivate(set) var inLiveScrolling = false
-    fileprivate var arrangedInformations: [ScreenshotInformation] {
+    private var collectionVisibleDidChangeHandler: ((Set<IndexPath>) -> Void)?
+    private var reloadHandler: (() -> Void)?
+    private var collectionSelectionDidChangeHandler: ((Int) -> Void)?
+    private(set) var inLiveScrolling = false
+    private var arrangedInformations: [ScreenshotInformation] {
         
         return screenshotsController.arrangedObjects as? [ScreenshotInformation] ?? []
     }
-    fileprivate var selectionInformations: [ScreenshotInformation] {
+    private var selectionInformations: [ScreenshotInformation] {
         
         return screenshotsController.selectedObjects as? [ScreenshotInformation] ?? []
     }
@@ -111,29 +116,28 @@ final class ScreenshotListViewController: NSViewController {
         
         screenshots.screenshots = loadCache()
         
-        let nib = NSNib(nibNamed: "ScreenshotCollectionViewItem", bundle: nil)
-        collectionView.register(NSCollectionView.self, forItemWithIdentifier: "item")
-        collectionView.register(nib, forItemWithIdentifier: "item")
+        let nib = NSNib(nibNamed: ScreenshotCollectionViewItem.nibName, bundle: nil)
+        collectionView.register(nib, forItemWithIdentifier: .item)
         
-        screenshots.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-        collectionView.addObserver(self, forKeyPath: "selectionIndexPaths", context: nil)
+        screenshots.sortDescriptors = [NSSortDescriptor(key: #keyPath(ScreenshotInformation.creationDate), ascending: false)]
+        collectionView.addObserver(self, forKeyPath: #keyPath(NSCollectionView.selectionIndexPaths), context: nil)
         collectionView.postsFrameChangedNotifications = true
         
         let nc = NotificationCenter.default
         let scrollView = collectionView.enclosingScrollView
         
-        nc.addObserver(forName: .NSViewFrameDidChange, object: collectionView, queue: nil, using: viewFrameDidChange)
-        nc.addObserver(forName: .NSScrollViewDidLiveScroll,
+        nc.addObserver(forName: NSView.frameDidChangeNotification, object: collectionView, queue: nil, using: viewFrameDidChange)
+        nc.addObserver(forName: NSScrollView.didLiveScrollNotification,
                        object: collectionView.enclosingScrollView, queue: nil) { _ in
                         
             let visibleItems = self.collectionView.indexPathsForVisibleItems()
             self.collectionVisibleDidChangeHandler?(visibleItems)
         }
-        nc.addObserver(forName: .NSScrollViewWillStartLiveScroll, object: scrollView, queue: nil) { _ in
+        nc.addObserver(forName: NSScrollView.willStartLiveScrollNotification, object: scrollView, queue: nil) { _ in
             
             self.inLiveScrolling = true
         }
-        nc.addObserver(forName: .NSScrollViewDidEndLiveScroll, object: scrollView, queue: nil) { _ in
+        nc.addObserver(forName: NSScrollView.didEndLiveScrollNotification, object: scrollView, queue: nil) { _ in
             
             self.inLiveScrolling = false
         }
@@ -170,7 +174,7 @@ final class ScreenshotListViewController: NSViewController {
         vc.representedObject = screenshots
     }
     
-    func registerImage(_ image: NSImage?) {
+    @objc func registerImage(_ image: NSImage?) {
         
         image?.tiffRepresentation
             .flatMap { NSBitmapImageRep(data: $0) }
@@ -181,7 +185,7 @@ final class ScreenshotListViewController: NSViewController {
         
         DispatchQueue(label: "Screenshot queue").async {
             
-            guard let data = image.representation(using: .JPEG, properties: [:])
+            guard let data = image.representation(using: .jpeg, properties: [:])
                 else { return }
             
             let url = self.screenshotSaveDirectoryURL
@@ -224,7 +228,7 @@ final class ScreenshotListViewController: NSViewController {
         if zoom > maxZoom { zoom = maxZoom }
     }
     
-    fileprivate func realFromZoom(zoom: Double) -> CGFloat {
+    private func realFromZoom(zoom: Double) -> CGFloat {
         
         if zoom < 0.5 { return CGFloat(ScreenshotListViewController.def * zoom * 0.6) }
         
@@ -241,7 +245,7 @@ final class ScreenshotListViewController: NSViewController {
         return pow((w / ScreenshotListViewController.def - 0.2) / 0.8, 1.0 / 3.0)
     }
     
-    fileprivate func reloadData() {
+    private func reloadData() {
         
         guard let f = try? FileManager.default.contentsOfDirectory(at: screenshotSaveDirectoryURL, includingPropertiesForKeys: nil)
             else {
@@ -249,8 +253,8 @@ final class ScreenshotListViewController: NSViewController {
                 return
         }
         
-        let imageTypes = NSImage.imageTypes()
-        let ws = NSWorkspace.shared()
+        let imageTypes = NSImage.imageTypes
+        let ws = NSWorkspace.shared
         var current = screenshots.screenshots
         let newFiles: [URL] = f.flatMap {
             
@@ -280,7 +284,7 @@ final class ScreenshotListViewController: NSViewController {
         
     }
     
-    fileprivate func saveCache() {
+    private func saveCache() {
         
         let data = NSKeyedArchiver.archivedData(withRootObject: screenshots.screenshots)
         
@@ -303,7 +307,7 @@ final class ScreenshotListViewController: NSViewController {
                 return []
         }
         
-        guard let l = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data as NSData),
+        guard let l = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data),
             let loaded = l as? [ScreenshotInformation]
             else {
                 print("Can not decode \(cachURL)")
@@ -313,7 +317,7 @@ final class ScreenshotListViewController: NSViewController {
         return loaded
     }
     
-    fileprivate func incrementCacheVersion(forUrl url: URL) {
+    private func incrementCacheVersion(forUrl url: URL) {
         
         let infos = deletedPaths.filter { $0.url == url }
         
@@ -379,7 +383,7 @@ extension ScreenshotListViewController {
     @IBAction func revealInFinder(_ sender: AnyObject?) {
         
         let urls = arrangedInformations.map { $0.url }
-        NSWorkspace.shared().activateFileViewerSelecting(urls)
+        NSWorkspace.shared.activateFileViewerSelecting(urls)
     }
 }
 
@@ -428,17 +432,17 @@ extension ScreenshotListViewController: NSCollectionViewDelegateFlowLayout {
 }
 
 @available(OSX 10.12.2, *)
-fileprivate var kTouchBars: [Int: NSTouchBar] = [:]
+private var kTouchBars: [Int: NSTouchBar] = [:]
 @available(OSX 10.12.2, *)
-fileprivate var kScrubbers: [Int: NSScrubber] = [:]
+private var kScrubbers: [Int: NSScrubber] = [:]
 @available(OSX 10.12.2, *)
-fileprivate var kPickers: [Int: NSSharingServicePickerTouchBarItem] = [:]
+private var kPickers: [Int: NSSharingServicePickerTouchBarItem] = [:]
 
 @available(OSX 10.12.2, *)
 extension ScreenshotListViewController: NSTouchBarDelegate {
     
-    static let ServicesItemIdentifier: NSTouchBarItemIdentifier
-        = NSTouchBarItemIdentifier(rawValue: "com.masakih.sharingTouchBarItem")
+    static let ServicesItemIdentifier: NSTouchBarItem.Identifier
+        = NSTouchBarItem.Identifier(rawValue: "com.masakih.sharingTouchBarItem")
     
     @IBOutlet var screenshotTouchBar: NSTouchBar! {
         
@@ -460,9 +464,9 @@ extension ScreenshotListViewController: NSTouchBarDelegate {
     
     override func makeTouchBar() -> NSTouchBar? {
         
-        var array: NSArray = []
+        var array: NSArray?
         
-        Bundle.main.loadNibNamed("ScreenshotTouchBar", owner: self, topLevelObjects: &array)
+        Bundle.main.loadNibNamed(NSNib.Name("ScreenshotTouchBar"), owner: self, topLevelObjects: &array)
         let identifiers = self.screenshotTouchBar.defaultItemIdentifiers
             + [ScreenshotListViewController.ServicesItemIdentifier]
         screenshotTouchBar.defaultItemIdentifiers = identifiers
@@ -496,7 +500,7 @@ extension ScreenshotListViewController: NSTouchBarDelegate {
         
         if reloadHandler == nil {
             
-            reloadHandler = { [weak self] _ in
+            reloadHandler = { [weak self] in
                 
                 guard let `self` = self else { return }
                 
@@ -508,7 +512,7 @@ extension ScreenshotListViewController: NSTouchBarDelegate {
     }
     
     func touchBar(_ touchBar: NSTouchBar,
-                  makeItemForIdentifier identifier: NSTouchBarItemIdentifier) -> NSTouchBarItem? {
+                  makeItemForIdentifier identifier: NSTouchBarItem.Identifier) -> NSTouchBarItem? {
         
         guard identifier == ScreenshotListViewController.ServicesItemIdentifier
             else { return nil }

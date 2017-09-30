@@ -57,8 +57,7 @@ class KCManagedObject: NSManagedObject {
         
         if key.hasPrefix("api_") {
             
-            let four = key.index(key.startIndex, offsetBy: 4)
-            let k = key[four..<key.endIndex]
+/* MARK: CONVERT */            let k = String(key[key.index(key.startIndex, offsetBy: 4)...])
             
             return value(forKey: k)
         }
@@ -79,8 +78,7 @@ class KCManagedObject: NSManagedObject {
         
         if key.hasPrefix("api_") {
             
-            let four = key.index(key.startIndex, offsetBy: 4)
-            let k = key[four..<key.endIndex]
+/* MARK: CONVERT */            let k = String(key[key.index(key.startIndex, offsetBy: 4)...])
             setValue(value, forKey: k)
             
             return

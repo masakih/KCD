@@ -8,7 +8,7 @@
 
 import Cocoa
 
-fileprivate struct LFSeparateLine {
+private struct LFSeparateLine {
     
     static let empty = LFSeparateLine(line: "", empty: true)
     
@@ -65,7 +65,7 @@ final class TSVSupport {
         panel.allowedFileTypes = ["kcdlocaldata"]
         panel.begin {
             
-            guard $0 == NSModalResponseOK
+            guard $0 == .OK
                 else { return }
             
             panel.urls.forEach { url in
@@ -97,7 +97,7 @@ final class TSVSupport {
         panel.allowedFileTypes = ["kcdlocaldata"]
         panel.begin {
             
-            guard $0 == NSModalResponseOK,
+            guard $0 == .OK,
                 let url = panel.url
                 else { return }
             guard let kaihatuHistory = self.dataOfKaihatuHistory(),

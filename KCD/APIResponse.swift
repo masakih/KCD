@@ -24,7 +24,7 @@ extension JSON {
     }
 }
 
-fileprivate extension Data {
+private extension Data {
     
     var utf8String: String? { return String(data: self, encoding: .utf8) }
 }
@@ -37,7 +37,7 @@ func +<Key, Value> (lhs: [Key: Value], rhs: (Key, Value)) -> [Key: Value] {
     return new
 }
 
-fileprivate func splitJSON(_ data: Data) -> String? {
+private func splitJSON(_ data: Data) -> String? {
     
     let prefix = "svdata="
     
@@ -48,10 +48,10 @@ fileprivate func splitJSON(_ data: Data) -> String? {
             return nil
     }
     
-    return string[range.upperBound..<string.endIndex]
+/* MARK: CONVERT */    return String(string[range.upperBound...])
 }
 
-fileprivate func parseParameter(_ request: URLRequest) -> [String: String]? {
+private func parseParameter(_ request: URLRequest) -> [String: String]? {
     
     return request
         .httpBody?
@@ -60,8 +60,11 @@ fileprivate func parseParameter(_ request: URLRequest) -> [String: String]? {
         .components(separatedBy: "&")
         .map { $0.components(separatedBy: "=") }
         .filter { $0.count == 2 }
-        .map { ($0[0], $0[1]) }
-        .reduce([String: String]()) { $0 + $1 }
+        .map { (piar: [String]) -> (String, String) in (piar[0], piar[1]) }
+        .reduce(into: [String: String]()) { (dict: inout [String: String], value: (String, String)) in
+            
+            dict[value.0] = value.1
+    }
 }
 
 struct ParameterValue {

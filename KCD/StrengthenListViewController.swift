@@ -8,11 +8,11 @@
 
 import Cocoa
 
-fileprivate let resourceName = "EnhancementListItem2"
-fileprivate let resourceExtension = "plist"
+private let resourceName = "EnhancementListItem2"
+private let resourceExtension = "plist"
 
 
-fileprivate struct FilterCategories {
+private struct FilterCategories {
     
     static let allType: [EquipmentType] = (1...100).flatMap { EquipmentType(rawValue: $0) }
     static let canonType: [EquipmentType] = [.smallCaliberMainGun, .mediumCaliberMainGun,
@@ -67,12 +67,12 @@ final class StrengthenListViewController: MainTabVIewItemViewController {
     
     @IBOutlet weak var tableView: NSTableView!
     
-    dynamic var itemList: Any { return filteredItems as Any }
-    dynamic var offsetDay: Int = 0 {
+    @objc dynamic var itemList: Any { return filteredItems as Any }
+    @objc dynamic var offsetDay: Int = 0 {
         
         didSet { buildList() }
     }
-    dynamic var filterType: Int = 0 {
+    @objc dynamic var filterType: Int = 0 {
         
         didSet {
             if let t = FilterCategories.FilterType(rawValue: filterType) {
@@ -87,12 +87,12 @@ final class StrengthenListViewController: MainTabVIewItemViewController {
         }
     }
     
-    override var nibName: String! {
+    override var nibName: NSNib.Name {
         
-        return "StrengthenListViewController"
+        return .nibName(instanceOf: self)
     }
     
-    fileprivate var filteredItems: [StrengthenListItem] = [] {
+    private var filteredItems: [StrengthenListItem] = [] {
         
         willSet { willChangeValue(forKey: #keyPath(itemList)) }
         didSet { didChangeValue(forKey: #keyPath(itemList)) }
@@ -226,7 +226,7 @@ extension StrengthenListViewController: NSTableViewDelegate {
     }
 }
 
-fileprivate final class EnhancementListItemDownloader: NSObject, URLSessionDownloadDelegate {
+private final class EnhancementListItemDownloader: NSObject, URLSessionDownloadDelegate {
     
     override init() {
         

@@ -10,10 +10,10 @@ import Cocoa
 
 final class EquipmentWindowController: NSWindowController {
     
-    let managedObjectContext = ServerDataStore.default.context
+    @objc let managedObjectContext = ServerDataStore.default.context
     
-    override var windowNibName: String! {
+    override var windowNibName: NSNib.Name {
         
-        return "EquipmentWindowController"
+        return .nibName(instanceOf: self)
     }
 }

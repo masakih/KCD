@@ -8,7 +8,7 @@
 
 import Cocoa
 
-fileprivate extension Selector {
+private extension Selector {
     
     static let fireInAppDelegate = #selector(AppDelegate.fire(_:))
     
@@ -24,7 +24,7 @@ final class AppDelegate: NSObject {
     static var shared: AppDelegate {
         
         // swiftlint:disable force_cast
-        return NSApplication.shared().delegate as! AppDelegate
+        return NSApplication.shared.delegate as! AppDelegate
     }
     
     let appNameForUserAgent: String = "KCD(1.9b17) is not Safari/603.3.8"
@@ -48,7 +48,7 @@ final class AppDelegate: NSObject {
     
     private var browserWindowControllers: [ExternalBrowserWindowController] = []
     private var updaters: [() -> Void] = []
-    fileprivate var logedJSONViewWindowController: JSONViewWindowController?
+    private var logedJSONViewWindowController: JSONViewWindowController?
     private var didLoadedMainMenu = false
     
     var screenShotSaveDirectory: String {
@@ -66,19 +66,19 @@ final class AppDelegate: NSObject {
         return URL(fileURLWithPath: screenShotSaveDirectory)
     }
     
-    dynamic var monospaceSystemFont11: NSFont {
+    @objc dynamic var monospaceSystemFont11: NSFont {
         
-        return NSFont.monospacedDigitSystemFont(ofSize: 11, weight: NSFontWeightRegular)
+        return NSFont.monospacedDigitSystemFont(ofSize: 11, weight: .regular)
     }
     
-    dynamic var monospaceSystemFont12: NSFont {
+    @objc dynamic var monospaceSystemFont12: NSFont {
         
-        return NSFont.monospacedDigitSystemFont(ofSize: 12, weight: NSFontWeightRegular)
+        return NSFont.monospacedDigitSystemFont(ofSize: 12, weight: .regular)
     }
     
-    dynamic var monospaceSystemFont13: NSFont {
+    @objc dynamic var monospaceSystemFont13: NSFont {
         
-        return NSFont.monospacedDigitSystemFont(ofSize: 13, weight: NSFontWeightRegular)
+        return NSFont.monospacedDigitSystemFont(ofSize: 13, weight: .regular)
     }
     
     // MARK: - Function
@@ -124,7 +124,7 @@ final class AppDelegate: NSObject {
         windowManager.registerScreenshot(image, fromOnScreen: fromOnScreen)
     }
     
-    func fire(_ timer: Timer) {
+    @objc func fire(_ timer: Timer) {
         
         updaters.forEach { $0() }
     }
@@ -262,7 +262,7 @@ extension AppDelegate: NSApplicationDelegate {
     
     func applicationWillFinishLaunching(_ notification: Notification) {
         
-        if NSEvent.modifierFlags() == .option {
+        if NSEvent.modifierFlags == .option {
             
             removeDatabaseFile(nil)
             
@@ -292,7 +292,7 @@ extension AppDelegate: NSUserNotificationCenterDelegate {
 }
 
 @available(OSX 10.12.2, *)
-fileprivate var objectForTouchBar: [Int: NSTouchBar] = [:]
+private var objectForTouchBar: [Int: NSTouchBar] = [:]
 
 @available(OSX 10.12.2, *)
 extension AppDelegate: NSTouchBarProvider {
@@ -309,8 +309,8 @@ extension AppDelegate: NSTouchBarProvider {
             if windowManager.isMainWindowMostFront { return nil }
             if let _ = mainTouchBar { return mainTouchBar }
             
-            var topLevel: NSArray = []
-            Bundle.main.loadNibNamed("MainTouchBar", owner: self, topLevelObjects: &topLevel)
+            var topLevel: NSArray?
+            Bundle.main.loadNibNamed(NSNib.Name("MainTouchBar"), owner: self, topLevelObjects: &topLevel)
             
             return mainTouchBar
         }

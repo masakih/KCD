@@ -8,7 +8,7 @@
 
 import Cocoa
 
-fileprivate enum LengType: Int {
+private enum LengType: Int {
     
     case short = 1
     case middle

@@ -10,23 +10,23 @@ import Cocoa
 
 final class ScreenshotModel: NSObject {
     
-    dynamic var screenshots: [ScreenshotInformation] = []
-    dynamic var sortDescriptors: [NSSortDescriptor]?
-    dynamic var selectedIndexes: IndexSet?
-    dynamic var filterPredicate: NSPredicate?
+    @objc dynamic var screenshots: [ScreenshotInformation] = []
+    @objc dynamic var sortDescriptors: [NSSortDescriptor]?
+    @objc dynamic var selectedIndexes: IndexSet?
+    @objc dynamic var filterPredicate: NSPredicate?
 }
 
 final class ScreenshotInformation: NSObject, NSCoding {
     
-    let url: URL
+    @objc let url: URL
     
-    var creationDate: Date? {
+    @objc var creationDate: Date? {
         
         let attr = try? url.resourceValues(forKeys: [.creationDateKey])
         
         return attr?.creationDate
     }
-    var tags: [String]? {
+    @objc var tags: [String]? {
         
         get {
             let attr = try? url.resourceValues(forKeys: [.tagNamesKey])
@@ -85,7 +85,7 @@ final class ScreenshotInformation: NSObject, NSCoding {
     }
 }
 
-fileprivate let dateFormatter: DateFormatter = {
+private let dateFormatter: DateFormatter = {
     
     let f = DateFormatter()
     f.dateStyle = .short
@@ -97,14 +97,14 @@ fileprivate let dateFormatter: DateFormatter = {
 
 extension ScreenshotInformation {
     
-    var name: String? {
+    @objc var name: String? {
         
         let attr = try? url.resourceValues(forKeys: [.localizedNameKey])
         
         return attr?.localizedName
     }
     
-    var creationDateString: String? {
+    @objc var creationDateString: String? {
         
         return creationDate
             .map { dateFormatter.string(from: $0) }

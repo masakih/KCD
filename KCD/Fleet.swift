@@ -8,7 +8,7 @@
 
 import Cocoa
 
-fileprivate var pDeckContext = 0
+private var pDeckContext = 0
 
 final class Fleet: NSObject {
     
@@ -61,17 +61,17 @@ final class Fleet: NSObject {
         
     }
     
-    dynamic private(set) var ships: [Ship] = []
+    @objc dynamic private(set) var ships: [Ship] = []
     private let deckController: NSObjectController
-    weak var deck: Deck?
+    @objc weak var deck: Deck?
     
-    dynamic var name: String? { return deck?.name }
-    class func keyPathsForValuesAffectingName() -> Set<String> {
+    @objc dynamic var name: String? { return deck?.name }
+    @objc class func keyPathsForValuesAffectingName() -> Set<String> {
         
         return ["deck.name"]
     }
-    dynamic var id: NSNumber? { return deck?.id as NSNumber? }
-    class func keyPathesForValuesAffectiongId() -> Set<String> {
+    @objc dynamic var id: NSNumber? { return deck?.id as NSNumber? }
+    @objc class func keyPathesForValuesAffectiongId() -> Set<String> {
         
         return ["deck.id"]
     }

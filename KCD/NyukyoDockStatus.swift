@@ -8,7 +8,7 @@
 
 import Cocoa
 
-fileprivate enum DockState: Int {
+private enum DockState: Int {
     
     case empty = 0
     case hasShip = 1
@@ -24,17 +24,17 @@ final class NyukyoDockStatus: NSObject {
         didSet { time = realTime as NSNumber }
     }
     
-    dynamic var name: String?
-    dynamic var time: NSNumber?
-    dynamic var state: NSNumber? {
+    @objc dynamic var name: String?
+    @objc dynamic var time: NSNumber?
+    @objc dynamic var state: NSNumber? {
         
         didSet { updateState() }
     }
-    dynamic var shipId: NSNumber? {
+    @objc dynamic var shipId: NSNumber? {
         
         didSet { updateState() }
     }
-    dynamic var completeTime: NSNumber?
+    @objc dynamic var completeTime: NSNumber?
     
     init?(number: Int) {
         
@@ -52,16 +52,16 @@ final class NyukyoDockStatus: NSObject {
         controller.automaticallyRearrangesObjects = true
         controller.fetch(nil)
         
-        bind(#keyPath(state), to: controller, withKeyPath: "selection.state")
-        bind(#keyPath(shipId), to: controller, withKeyPath: "selection.ship_id")
-        bind(#keyPath(completeTime), to: controller, withKeyPath: "selection.complete_time")
+        bind(NSBindingName(#keyPath(state)), to: controller, withKeyPath: "selection.state")
+        bind(NSBindingName(#keyPath(shipId)), to: controller, withKeyPath: "selection.ship_id")
+        bind(NSBindingName(#keyPath(completeTime)), to: controller, withKeyPath: "selection.complete_time")
     }
     
     deinit {
         
-        unbind(#keyPath(state))
-        unbind(#keyPath(shipId))
-        unbind(#keyPath(completeTime))
+        unbind(NSBindingName(#keyPath(state)))
+        unbind(NSBindingName(#keyPath(shipId)))
+        unbind(NSBindingName(#keyPath(completeTime)))
     }
     
     private func updateState() {

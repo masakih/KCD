@@ -8,28 +8,28 @@
 
 import Foundation
 
-fileprivate let seikuEffectiveTypes = [6, 7, 8, 11, 45, 56, 57, 58]
+private let seikuEffectiveTypes = [6, 7, 8, 11, 45, 56, 57, 58]
 
-fileprivate let fighterTypes =              [ 6]
-fileprivate let bomberTypes =               [ 7]
-fileprivate let attackerTypes =             [ 8]
-fileprivate let floatplaneBomberTypes =     [11]
-fileprivate let floatplaneFighterTypes =    [45]
-fileprivate let jetFighter =                [56]
-fileprivate let jetBomberTypes =            [57]
-fileprivate let jetAttackerTypes =          [58]
+private let fighterTypes =              [ 6]
+private let bomberTypes =               [ 7]
+private let attackerTypes =             [ 8]
+private let floatplaneBomberTypes =     [11]
+private let floatplaneFighterTypes =    [45]
+private let jetFighter =                [56]
+private let jetBomberTypes =            [57]
+private let jetAttackerTypes =          [58]
 
 // swiftlint:disable comma
-fileprivate let fighterBonus: [Double] =            [0, 0, 2, 5, 9, 14, 14, 22]
-fileprivate let bomberBonus: [Double] =             [0, 0, 0, 0, 0,  0,  0,  0]
-fileprivate let attackerBonus: [Double] =           [0, 0, 0, 0, 0,  0,  0,  0]
-fileprivate let floatplaneBomberBonus: [Double] =   [0, 0, 1, 1, 1,  3,  3,  6]
-fileprivate let floatplaneFighterBonus: [Double] =  [0, 0, 2, 5, 9, 14, 14, 22]
-fileprivate let jetBomberBonus: [Double] =          [0, 0, 0, 0, 0,  0,  0,  0]
+private let fighterBonus: [Double] =            [0, 0, 2, 5, 9, 14, 14, 22]
+private let bomberBonus: [Double] =             [0, 0, 0, 0, 0,  0,  0,  0]
+private let attackerBonus: [Double] =           [0, 0, 0, 0, 0,  0,  0,  0]
+private let floatplaneBomberBonus: [Double] =   [0, 0, 1, 1, 1,  3,  3,  6]
+private let floatplaneFighterBonus: [Double] =  [0, 0, 2, 5, 9, 14, 14, 22]
+private let jetBomberBonus: [Double] =          [0, 0, 0, 0, 0,  0,  0,  0]
 // swiftlint:enable comma
 
 //                            sqrt 0, 1,     2.5,   4,     5.5,   7,     8.5,   10
-fileprivate let bonus: [Double] = [0, 1.000, 1.581, 2.000, 2.345, 2.645, 2.915, 3.162]
+private let bonus: [Double] = [0, 1.000, 1.581, 2.000, 2.345, 2.645, 2.915, 3.162]
 
 
 final class SeikuCalclator {

@@ -12,14 +12,14 @@ final class ScreenshotDetailViewController: BridgeViewController {
     
     deinit {
         
-        arrayController.removeObserver(self, forKeyPath: NSSelectionIndexesBinding)
+        arrayController.removeObserver(self, forKeyPath: NSBindingName.selectionIndexes.rawValue)
     }
     
     @IBOutlet var imageView: ImageView!
     
-    override var nibName: String! {
+    override var nibName: NSNib.Name {
         
-        return "ScreenshotDetailViewController"
+        return .nibName(instanceOf: self)
     }
     
     override var contentRect: NSRect {
@@ -33,13 +33,13 @@ final class ScreenshotDetailViewController: BridgeViewController {
         
         super.viewDidLoad()
         
-        arrayController.addObserver(self, forKeyPath: NSSelectionIndexesBinding, context: nil)
+        arrayController.addObserver(self, forKeyPath: NSBindingName.selectionIndexes.rawValue, context: nil)
         updateSelections()
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
         
-        if keyPath == NSSelectionIndexesBinding {
+        if keyPath == NSBindingName.selectionIndexes.rawValue {
             
             updateSelections()
             

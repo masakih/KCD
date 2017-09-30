@@ -10,8 +10,8 @@ import Cocoa
 
 final class ShipMasterDetailWindowController: NSWindowController {
     
-    let managedObjectContext = ServerDataStore.default.context
-    let fleetManager: FleetManager = {
+    @objc let managedObjectContext = ServerDataStore.default.context
+    @objc let fleetManager: FleetManager = {
         
         return AppDelegate.shared.fleetManager
     }()
@@ -28,18 +28,18 @@ final class ShipMasterDetailWindowController: NSWindowController {
     @IBOutlet weak var fleetMemberView: NSTableView!
     @IBOutlet weak var sally: NSTextField!
     
-    override var windowNibName: String! {
+    override var windowNibName: NSNib.Name {
         
-        return "ShipMasterDetailWindowController"
+        return .nibName(instanceOf: self)
     }
     
-    dynamic var selectedShip: Ship? {
+    @objc dynamic var selectedShip: Ship? {
         
         didSet { buildSpec() }
     }
-    dynamic var spec: [[String: AnyObject]] = []
+    @objc dynamic var spec: [[String: AnyObject]] = []
     
-    var equipments: NSArray?
+    @objc var equipments: NSArray?
     
     private func buildSpec() {
         

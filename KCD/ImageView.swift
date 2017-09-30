@@ -57,7 +57,7 @@ final class ImageView: NSView {
         NSBezierPath.stroke(bounds)
         
         NSColor.black.set()
-        NSBezierPath.setDefaultLineWidth(1.0)
+        NSBezierPath.defaultLineWidth = 1.0
         NSBezierPath.stroke(bounds)
         
         NSBezierPath.clip(bounds.insetBy(dx: 1, dy: 1))
@@ -79,7 +79,7 @@ final class ImageView: NSView {
             .forEach {
                 let offsetRect = rect.offsetBy(dx: offset * CGFloat($0.offset), dy: offset * CGFloat($0.offset))
                 let drawRect = imageRect(with: offsetRect, imageSize: $0.element.size)
-                $0.element.draw(in: drawRect, from: .zero, operation: NSCompositeSourceOver, fraction: CGFloat(alpha))
+                $0.element.draw(in: drawRect, from: .zero, operation: .sourceOver, fraction: CGFloat(alpha))
                 alpha /= alphaFactor
         }
     }

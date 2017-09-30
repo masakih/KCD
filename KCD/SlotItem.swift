@@ -24,32 +24,32 @@ final class SlotItem: KCManagedObject {
 
 extension SlotItem {
     
-    dynamic var name: String {
+    @objc dynamic var name: String {
         
         return master_slotItem.name
     }
     
-    dynamic var equippedShipName: String? {
+    @objc dynamic var equippedShipName: String? {
         
         return equippedShip?.name
     }
     
-    dynamic var equippedShipLv: NSNumber? {
+    @objc dynamic var equippedShipLv: NSNumber? {
         
         return equippedShip?.lv as NSNumber?
     }
     
-    dynamic var masterSlotItemRare: Int {
+    @objc dynamic var masterSlotItemRare: Int {
         
         return master_slotItem.rare
     }
     
-    dynamic var typeName: Int {
+    @objc dynamic var typeName: Int {
         
         return master_slotItem.type_2
     }
     
-    dynamic var isLocked: Bool {
+    @objc dynamic var isLocked: Bool {
         
         return locked
     }

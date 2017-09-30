@@ -154,7 +154,7 @@ final class RequiredEquipment: NSObject, NSCoding, NSCopying {
     
     let identifier: String
     let currentLevelString: String
-    let name: String
+    @objc let name: String
     let number: Int
     let screw: Int
     let ensureScrew: Int
@@ -220,7 +220,7 @@ final class RequiredEquipment: NSObject, NSCoding, NSCopying {
 
 extension RequiredEquipment {
     
-    dynamic var numberString: String? {
+    @objc dynamic var numberString: String? {
         
         if number == 0 { return nil }
         if number == -1 { return "-" }

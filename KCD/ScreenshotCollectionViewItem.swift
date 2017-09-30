@@ -79,3 +79,5 @@ extension ScreenshotCollectionViewItem: QLPreviewItem {
         return info?.url
     }
 }
+
+extension ScreenshotCollectionViewItem: NibLoadable { }

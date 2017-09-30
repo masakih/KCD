@@ -8,7 +8,7 @@
 
 import Cocoa
 
-fileprivate extension Selector {
+private extension Selector {
     
     static let showHideHistory = #selector(WindowManager.showHideHistory(_:))
     static let showHideSlotItemWindow = #selector(WindowManager.showHideSlotItemWindow(_:))
@@ -31,7 +31,7 @@ fileprivate extension Selector {
 
 final class WindowManager {
     
-    fileprivate let browserWindowController = BroserWindowController()
+    private let browserWindowController = BroserWindowController()
     
     #if ENABLE_JSON_LOG
     let jsonViewWindowController: JSONViewWindowController? = {
@@ -56,37 +56,37 @@ final class WindowManager {
     #endif
     
     // MARK: - Variable
-    fileprivate lazy var historyWindowController: HistoryWindowController = {
+    private lazy var historyWindowController: HistoryWindowController = {
         
         HistoryWindowController()
     }()
     
-    fileprivate lazy var slotItemWindowController: SlotItemWindowController = {
+    private lazy var slotItemWindowController: SlotItemWindowController = {
         
         SlotItemWindowController()
     }()
     
-    fileprivate lazy var preferencePanelController: PreferencePanelController = {
+    private lazy var preferencePanelController: PreferencePanelController = {
         
         PreferencePanelController()
     }()
     
-    fileprivate lazy var upgradableShipWindowController: UpgradableShipsWindowController = {
+    private lazy var upgradableShipWindowController: UpgradableShipsWindowController = {
         
         UpgradableShipsWindowController()
     }()
     
-    fileprivate lazy var airBaseWindowController: AirBaseWindowController = {
+    private lazy var airBaseWindowController: AirBaseWindowController = {
         
         AirBaseWindowController()
     }()
     
-    fileprivate lazy var browserContentAdjuster: BrowserContentAdjuster = {
+    private lazy var browserContentAdjuster: BrowserContentAdjuster = {
         
         BrowserContentAdjuster()
     }()
     
-    fileprivate(set) lazy var screenshotListWindowController: ScreenshotListWindowController = {
+    private(set) lazy var screenshotListWindowController: ScreenshotListWindowController = {
         
         let wc = ScreenshotListWindowController()
         _ = wc.window
@@ -94,29 +94,29 @@ final class WindowManager {
         return wc
     }()
     
-    fileprivate lazy var shipWindowController: ShipWindowController = {
+    private lazy var shipWindowController: ShipWindowController = {
         
         ShipWindowController()
     }()
     
-    fileprivate lazy var shipMDWindowController: ShipMasterDetailWindowController = {
+    private lazy var shipMDWindowController: ShipMasterDetailWindowController = {
         
         ShipMasterDetailWindowController()
     } ()
     
-    fileprivate lazy var equipmentWindowController: EquipmentWindowController = {
+    private lazy var equipmentWindowController: EquipmentWindowController = {
         
         EquipmentWindowController()
     }()
     
-    fileprivate lazy var mapWindowController: MapWindowController = {
+    private lazy var mapWindowController: MapWindowController = {
         
         MapWindowController()
     }()
     
     private var browserWindowControllers: [ExternalBrowserWindowController] = []
     private var updaters: [() -> Void] = []
-    fileprivate var logedJSONViewWindowController: JSONViewWindowController?
+    private var logedJSONViewWindowController: JSONViewWindowController?
     
     var canSaveLog: Bool {
         
@@ -147,7 +147,7 @@ final class WindowManager {
         var token: NSObjectProtocol! = nil
         
         token = NotificationCenter.default
-            .addObserver(forName: .NSWindowWillClose,
+            .addObserver(forName: NSWindow.willCloseNotification,
                          object: browser.window,
                          queue: nil) { [unowned self] notification in
                             
@@ -171,7 +171,7 @@ final class WindowManager {
 // MARK: - IBActions
 extension WindowManager {
     
-    fileprivate func isFrontMostWindow(_ window: NSWindow) -> Bool {
+    private func isFrontMostWindow(_ window: NSWindow) -> Bool {
         
         return window.isVisible && window.isMainWindow
     }
@@ -263,7 +263,7 @@ extension WindowManager {
         
         panel.begin {
             
-            guard $0 == NSModalResponseOK,
+            guard $0 == .OK,
                 let url = panel.url,
                 let array = self.jsonViewWindowController?.commands
                 else { return }
@@ -290,14 +290,14 @@ extension WindowManager {
         
         panel.begin {
             
-            guard $0 == NSModalResponseOK,
+            guard $0 == .OK,
                 let url = panel.url
                 else { return }
             
             do {
                 
                 let data = try Data(contentsOf: url)
-                let array = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data as NSData)
+                let array = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data)
                 guard let commands = array as? [[String: Any]]
                     else { return }
                 

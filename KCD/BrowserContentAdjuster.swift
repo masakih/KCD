@@ -10,8 +10,8 @@ import Cocoa
 
 final class BrowserContentAdjuster: NSWindowController {
     
-    override var windowNibName: String! {
+    override var windowNibName: NSNib.Name {
         
-        return "BrowserContentAdjuster"
+        return .nibName(instanceOf: self)
     }
 }

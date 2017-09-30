@@ -8,7 +8,7 @@
 
 import Cocoa
 
-fileprivate enum AirBaseActionKind: Int {
+private enum AirBaseActionKind: Int {
     
     case standBy
     case sortie

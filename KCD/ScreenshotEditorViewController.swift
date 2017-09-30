@@ -8,7 +8,7 @@
 
 import Cocoa
 
-fileprivate struct EditedImage {
+private struct EditedImage {
     
     var editedImage: NSImage
     var url: URL
@@ -22,8 +22,8 @@ fileprivate struct EditedImage {
 
 final class TrimRectInformation: NSObject {
     
-    fileprivate(set) var name: String
-    fileprivate(set) var rect: NSRect
+    @objc private(set) var name: String
+    private(set) var rect: NSRect
     
     fileprivate init(name: String, rect: NSRect) {
         
@@ -32,7 +32,7 @@ final class TrimRectInformation: NSObject {
     }
 }
 
-fileprivate extension Selector {
+private extension Selector {
     
     static let done = #selector(ScreenshotEditorViewController.done(_:))
     static let changeToDetail = #selector(ScreenshotListWindowController.changeToDetail(_:))
@@ -41,9 +41,9 @@ fileprivate extension Selector {
 
 final class ScreenshotEditorViewController: BridgeViewController {
     
-    let trimInfo: [TrimRectInformation]
+    @objc let trimInfo: [TrimRectInformation]
     
-    override init?(nibName: String?, bundle: Bundle?) {
+    override init(nibName: NSNib.Name?, bundle: Bundle?) {
         
         trimInfo = [
             TrimRectInformation(name: "Status", rect: NSRect(x: 328, y: 13, width: 470, height: 365)),
@@ -52,7 +52,7 @@ final class ScreenshotEditorViewController: BridgeViewController {
         ]
         currentTrimInfo = trimInfo[0]
         
-        super.init(nibName: "ScreenshotEditorViewController", bundle: nil)
+        super.init(nibName: ScreenshotEditorViewController.nibName, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -62,13 +62,13 @@ final class ScreenshotEditorViewController: BridgeViewController {
     
     deinit {
         
-        arrayController.removeObserver(self, forKeyPath: NSSelectionIndexesBinding)
+        arrayController.removeObserver(self, forKeyPath: NSBindingName.selectionIndexes.rawValue)
     }
     
     @IBOutlet weak var tiledImageView: TiledImageView!
     @IBOutlet weak var doneButton: NSButton!
     
-    var columnCount: Int {
+    @objc var columnCount: Int {
         
         get { return tiledImageView.columnCount }
         set {
@@ -82,7 +82,7 @@ final class ScreenshotEditorViewController: BridgeViewController {
         return tiledImageView.image
     }
     
-    dynamic var currentTrimInfoIndex: Int {
+    @objc dynamic var currentTrimInfoIndex: Int {
         
         get { return realiesCurrentTrimInforIndex }
         set {
@@ -116,7 +116,7 @@ final class ScreenshotEditorViewController: BridgeViewController {
         
         super.viewDidLoad()
         
-        arrayController.addObserver(self, forKeyPath: NSSelectionIndexesBinding, context: nil)
+        arrayController.addObserver(self, forKeyPath: NSBindingName.selectionIndexes.rawValue, context: nil)
         currentTrimInfoIndex = UserDefaults.standard[.scrennshotEditorType]
         updateSelections()
     }
@@ -128,7 +128,7 @@ final class ScreenshotEditorViewController: BridgeViewController {
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         
-        if keyPath == NSSelectionIndexesBinding {
+        if keyPath == NSBindingName.selectionIndexes.rawValue {
             
             updateSelections()
             
@@ -202,7 +202,7 @@ final class ScreenshotEditorViewController: BridgeViewController {
                 trimedImage.lockFocus()
                 originalImage.draw(at: .zero,
                                    from: self.currentTrimInfo.rect,
-                                   operation: NSCompositeCopy,
+                                   operation: .copy,
                                    fraction: 1.0)
                 trimedImage.unlockFocus()
                 
@@ -219,7 +219,9 @@ final class ScreenshotEditorViewController: BridgeViewController {
     // TODO: 外部から End Handlerを登録できるようにして依存をなくす
     @IBAction func done(_ sender: AnyObject?) {
         
-        NSApplication.shared().sendAction(.registerImage, to: nil, from: self.image)
-        NSApplication.shared().sendAction(.changeToDetail, to: nil, from: sender)
+        NSApplication.shared.sendAction(.registerImage, to: nil, from: self.image)
+        NSApplication.shared.sendAction(.changeToDetail, to: nil, from: sender)
     }
 }
+
+extension ScreenshotEditorViewController: NibLoadable {}

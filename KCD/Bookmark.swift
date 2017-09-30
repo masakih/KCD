@@ -44,12 +44,12 @@ extension Bookmark {
 
 extension Bookmark: NSPasteboardWriting {
     
-    func writableTypes(for pasteboard: NSPasteboard) -> [String] {
+    func writableTypes(for pasteboard: NSPasteboard) -> [NSPasteboard.PasteboardType] {
         
-        return ["com.masakih.KCD.BookmarkItem"]
+        return [NSPasteboard.PasteboardType("com.masakih.KCD.BookmarkItem")]
     }
     
-    func pasteboardPropertyList(forType type: String) -> Any? {
+    func pasteboardPropertyList(forType type: NSPasteboard.PasteboardType) -> Any? {
         
         let uri = objectID.uriRepresentation()
         

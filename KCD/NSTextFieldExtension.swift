@@ -29,12 +29,12 @@ extension NSTextField {
         NSGraphicsContext.saveGraphicsState()
         defer { NSGraphicsContext.restoreGraphicsState() }
         
-        NSGraphicsContext.setCurrent(maskGraphicsContext)
+        NSGraphicsContext.current = maskGraphicsContext
         
-        let gradient = NSGradient(colorsAndLocations: (NSColor.white, 0.0),
-                                  (NSColor.white, middle1),
-                                  (NSColor.black, middle2),
-                                  (NSColor.black, 1.0))
+        let gradient = NSGradient(colorsAndLocations: (.white, 0.0),
+                                  (.white, middle1),
+                                  (.black, middle2),
+                                  (.black, 1.0))
         gradient?.draw(in: bounds, angle: 0.0)
         
         guard let r = maskContext.makeImage()
@@ -53,7 +53,7 @@ extension NSTextField {
         }
         
         let string = stringValue as NSString
-        let size = string.size(withAttributes: [NSFontAttributeName: currentFont])
+        let size = string.size(withAttributes: [.font: currentFont])
         
         return bounds.size.width - size.width < 3
     }

@@ -17,7 +17,7 @@ protocol CustomHTTPProtocolDelegate: class {
     func customHTTPProtocol(_ proto: CustomHTTPProtocol, didFailWithError error: Error)
 }
 
-fileprivate final class ThreadOperator: NSObject {
+private final class ThreadOperator: NSObject {
     
     private let thread: Thread
     private let modes: [String]
@@ -51,7 +51,7 @@ fileprivate final class ThreadOperator: NSObject {
         self.operation = nil
     }
     
-    func operate() {
+    @objc func operate() {
         
         operation?()
     }
@@ -129,7 +129,7 @@ extension URLCache {
 
 final class CustomHTTPProtocol: URLProtocol {
     
-    fileprivate static let requestProperty = "com.masakih.KCD.requestProperty"
+    private static let requestProperty = "com.masakih.KCD.requestProperty"
     static var classDelegate: CustomHTTPProtocolDelegate?
     
     class func clearCache() { URLCache.kcd.removeAllCachedResponses() }
@@ -153,16 +153,16 @@ final class CustomHTTPProtocol: URLProtocol {
         return request
     }
     
-    fileprivate var delegate: CustomHTTPProtocolDelegate? { return CustomHTTPProtocol.classDelegate }
+    private var delegate: CustomHTTPProtocolDelegate? { return CustomHTTPProtocol.classDelegate }
     
-    fileprivate var session: URLSession?
-    fileprivate var dataTask: URLSessionDataTask?
-    fileprivate var cachePolicy: URLCache.StoragePolicy = .notAllowed
-    fileprivate var data: Data = Data()
-    fileprivate var didRetry: Bool = false
-    fileprivate var didRecieveData: Bool = false
+    private var session: URLSession?
+    private var dataTask: URLSessionDataTask?
+    private var cachePolicy: URLCache.StoragePolicy = .notAllowed
+    private var data: Data = Data()
+    private var didRetry: Bool = false
+    private var didRecieveData: Bool = false
     
-    fileprivate var threadOperator: ThreadOperator?
+    private var threadOperator: ThreadOperator?
     
     private func use(_ cache: CachedURLResponse) {
         

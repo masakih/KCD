@@ -38,17 +38,17 @@ final class StrokeTextFieldCell: NSTextFieldCell {
         
         let attribute = attributedString.attributes(at: 0, effectiveRange: nil)
         
-        guard let forgroundColor = attribute[NSForegroundColorAttributeName] as? NSColor
+        guard let forgroundColor = attribute[.foregroundColor] as? NSColor
             else { return }
         
-        if forgroundColor == NSColor.controlTextColor {
+        if forgroundColor == .controlTextColor {
             
             super.drawInterior(withFrame: cellFrame, in: controlView)
             
             return
         }
         
-        guard let font = attribute[NSFontAttributeName] as? NSFont
+        guard let font = attribute[.font] as? NSFont
             else { return }
         
         let textStorage = NSTextStorage(string: attributedString.string, attributes: attribute)

@@ -15,7 +15,7 @@ private extension Selector {
 
 final class UpgradableShipsWindowController: NSWindowController {
     
-    let managedObjectContext = ServerDataStore.default.context
+    @objc let managedObjectContext = ServerDataStore.default.context
     
     private static var excludeShiIDsCache: [Int] = []
     
@@ -24,7 +24,7 @@ final class UpgradableShipsWindowController: NSWindowController {
         return excludeShiIDsCache.contains(shipID)
     }
     
-    class func keyPathsForValuesAffectingFilterPredicate() -> Set<String> {
+    @objc class func keyPathsForValuesAffectingFilterPredicate() -> Set<String> {
         
         return [#keyPath(showLevelOneShipInUpgradableList), #keyPath(showsExcludedShipInUpgradableList)]
     }
@@ -45,12 +45,12 @@ final class UpgradableShipsWindowController: NSWindowController {
     @IBOutlet var tableView: NSTableView!
     @IBOutlet var shipsController: NSArrayController!
     
-    override var windowNibName: String! {
+    override var windowNibName: NSNib.Name {
         
-        return "UpgradableShipsWindowController"
+        return .nibName(instanceOf: self)
     }
     
-    dynamic var filterPredicate: NSPredicate? {
+    @objc dynamic var filterPredicate: NSPredicate? {
         
         var filterPredicate: NSPredicate?
         var excludeShip: NSPredicate?
@@ -78,13 +78,13 @@ final class UpgradableShipsWindowController: NSWindowController {
         return nil
     }
     
-    var showLevelOneShipInUpgradableList: Bool {
+    @objc var showLevelOneShipInUpgradableList: Bool {
         
         get { return UserDefaults.standard[.showLevelOneShipInUpgradableList] }
         set { UserDefaults.standard[.showLevelOneShipInUpgradableList] = newValue }
     }
     
-    var showsExcludedShipInUpgradableList: Bool {
+    @objc var showsExcludedShipInUpgradableList: Bool {
         
         get { return UserDefaults.standard[.showsExcludedShipInUpgradableList] }
         set { UserDefaults.standard[.showsExcludedShipInUpgradableList] = newValue }

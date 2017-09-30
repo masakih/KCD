@@ -31,9 +31,9 @@ final class PreferencePanelController: NSWindowController {
     @IBOutlet var generalPane: NSView!
     @IBOutlet var notificationPane: NSView!
     
-    override var windowNibName: String! {
+    override var windowNibName: NSNib.Name {
         
-        return "PreferencePanelController"
+        return .nibName(instanceOf: self)
     }
     
     private(set) var screenShotSaveDirectory: String {
@@ -48,7 +48,7 @@ final class PreferencePanelController: NSWindowController {
             guard let item = screenShotSaveDirectoryPopUp.item(at: index)
                 else { return }
             
-            let icon = NSWorkspace.shared().icon(forFile: newValue)
+            let icon = NSWorkspace.shared.icon(forFile: newValue)
             let iconSize = icon.size
             let height: Double = 16
             icon.size = NSSize(width: Double(iconSize.width) * height / Double(iconSize.height), height: height)
@@ -70,7 +70,7 @@ final class PreferencePanelController: NSWindowController {
             else { return }
         
         window.toolbar?.selectedItemIdentifier = item.itemIdentifier
-        NSApplication.shared().sendAction(.didChangeSelection,
+        NSApplication.shared.sendAction(.didChangeSelection,
                                           to: self,
                                           from: item)
         
@@ -93,7 +93,7 @@ final class PreferencePanelController: NSWindowController {
             self.screenShotSaveDirectoryPopUp
                 .selectItem(withTag: ScreenshotSaveDirectoryPopupMenuItemTag.saveDirectory.rawValue)
             
-            guard $0 != NSModalResponseCancel,
+            guard $0 != .cancel,
                 let path = panel.url?.path
                 else { return }
             

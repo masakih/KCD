@@ -44,7 +44,7 @@ struct ThreeItemsQueue<T> {
     }
 }
 
-fileprivate extension RequiredEquipment {
+private extension RequiredEquipment {
     
     convenience init?(lines: TabSeparatedLine) {
         
@@ -65,7 +65,7 @@ fileprivate extension RequiredEquipment {
     }
 }
 
-fileprivate extension RequiredEquipmentSet {
+private extension RequiredEquipmentSet {
     
     convenience init?(items: [RequiredEquipment]) {
         
@@ -83,7 +83,7 @@ fileprivate extension RequiredEquipmentSet {
     }
 }
 
-fileprivate extension EnhancementListItem {
+private extension EnhancementListItem {
     
     convenience init?(line: TabSeparatedLine, equSets: [RequiredEquipmentSet]) {
         

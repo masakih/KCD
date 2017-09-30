@@ -9,7 +9,7 @@
 import Cocoa
 
 
-fileprivate extension Selector {
+private extension Selector {
     
     static let reloadContent = #selector(BroserWindowController.reloadContent(_:))
     static let deleteCacheAndReload = #selector(BroserWindowController.deleteCacheAndReload(_:))
@@ -40,12 +40,12 @@ final class BroserWindowController: NSWindowController {
         case oldStyle = 0xffffffff
     }
     
-    class func keyPathsForValuesAffectingFlagShipName() -> Set<String> {
+    @objc class func keyPathsForValuesAffectingFlagShipName() -> Set<String> {
         
         return [#keyPath(flagShipID)]
     }
     
-    let managedObjectContext = ServerDataStore.default.context
+    @objc let managedObjectContext = ServerDataStore.default.context
     
     deinit {
         
@@ -60,27 +60,27 @@ final class BroserWindowController: NSWindowController {
     @IBOutlet weak var informations: NSTabView!
     @IBOutlet var deckContoller: NSArrayController!
     
-    override var windowNibName: String! {
+    override var windowNibName: NSNib.Name {
         
-        return "BroserWindowController"
+        return .nibName(instanceOf: self)
     }
     
-    var flagShipID: Int = 0
-    var flagShipName: String? {
+    @objc var flagShipID: Int = 0
+    @objc var flagShipName: String? {
         return ServerDataStore.default.ship(by: flagShipID)?.name
     }
     var changeMainTabHandler: ((Int) -> Void)?
-    dynamic var selectedMainTabIndex: Int = 0 {
+    @objc dynamic var selectedMainTabIndex: Int = 0 {
         
         didSet {
             changeMainTabHandler?(selectedMainTabIndex)
         }
     }
     
-    fileprivate var gameViewController: GameViewController!
-    fileprivate var fleetViewController: FleetViewController!
-    fileprivate var tabViewItemViewControllers: [MainTabVIewItemViewController] = []
-    fileprivate var ancherageRepariTimerViewController: AncherageRepairTimerViewController!
+    private var gameViewController: GameViewController!
+    private var fleetViewController: FleetViewController!
+    private var tabViewItemViewControllers: [MainTabVIewItemViewController] = []
+    private var ancherageRepariTimerViewController: AncherageRepairTimerViewController!
     private var resourceViewController: ResourceViewController!
     private var docksViewController: DocksViewController!
     private var shipViewController: ShipViewController!
@@ -89,8 +89,8 @@ final class BroserWindowController: NSWindowController {
     private var repairListViewController: RepairListViewController!
     private var combinedViewController: CombileViewController!
     
-    fileprivate var fleetViewPosition: FleetViewPosition = .above
-    fileprivate var isCombinedMode = false
+    private var fleetViewPosition: FleetViewPosition = .above
+    private var isCombinedMode = false
     
     // MARK: - Function
     override func windowDidLoad() {
@@ -128,7 +128,7 @@ final class BroserWindowController: NSWindowController {
         fleetViewController.shipOrder = UserDefaults.standard[.fleetViewShipOrder]
         fleetViewController.enableAnimation = true
         
-        bind(#keyPath(flagShipID), to: deckContoller, withKeyPath: "selection.ship_0", options: nil)
+        bind(NSBindingName(rawValue: #keyPath(flagShipID)), to: deckContoller, withKeyPath: "selection.ship_0", options: nil)
         
         NotificationCenter.default
             .addObserver(forName: .CombinedDidCange, object: nil, queue: nil) {
@@ -172,19 +172,19 @@ final class BroserWindowController: NSWindowController {
         }
     }
     
-    func windowWillClose(_ notification: Notification) {
+    @objc func windowWillClose(_ notification: Notification) {
         
         UserDefaults.standard[.lastHasCombinedView] = isCombinedMode
     }
     
-    fileprivate func replace(_ view: NSView, with viewController: NSViewController) {
+    private func replace(_ view: NSView, with viewController: NSViewController) {
         
         viewController.view.frame = view.frame
         viewController.view.autoresizingMask = view.autoresizingMask
         self.window?.contentView?.replaceSubview(view, with: viewController.view)
     }
     
-    fileprivate func showCombinedView() {
+    private func showCombinedView() {
         
         if isCombinedMode { return }
         
@@ -207,7 +207,7 @@ final class BroserWindowController: NSWindowController {
         window?.setFrame(winFrame, display: true, animate: true)
     }
     
-    fileprivate func hideCombinedView() {
+    private func hideCombinedView() {
         
         if !isCombinedMode { return }
         
@@ -269,7 +269,7 @@ extension BroserWindowController {
         
         let current = ancherageRepariTimerViewController.controlSize
         var diff = AncherageRepairTimerViewController.regularHeight - AncherageRepairTimerViewController.smallHeight
-        let newSize: NSControlSize = {
+        let newSize: NSControl.ControlSize = {
             
             if current == .regular {
                 
@@ -354,27 +354,27 @@ extension BroserWindowController {
             return true
             
         case Selector.fleetListAbove:
-            menuItem.state = fleetViewPosition == .above ? NSOnState : NSOffState
+            menuItem.state = (fleetViewPosition == .above ? .on : .off)
             return true
             
         case Selector.fleetListBelow:
-            menuItem.state = fleetViewPosition == .below ? NSOnState : NSOffState
+            menuItem.state = (fleetViewPosition == .below ? .on : .off)
             return true
             
         case Selector.fleetListDivide:
-            menuItem.state = fleetViewPosition == .divided ? NSOnState : NSOffState
+            menuItem.state = (fleetViewPosition == .divided ? .on : .off)
             return true
             
         case Selector.fleetListSimple:
-            menuItem.state = fleetViewPosition == .oldStyle ? NSOnState : NSOffState
+            menuItem.state = (fleetViewPosition == .oldStyle ? .on : .off)
             return true
             
         case Selector.reorderToDoubleLine:
-            menuItem.state = fleetViewController.shipOrder == .doubleLine ? NSOnState : NSOffState
+            menuItem.state = (fleetViewController.shipOrder == .doubleLine ? .on : .off)
             return true
             
         case Selector.reorderToLeftToRight:
-            menuItem.state = fleetViewController.shipOrder == .leftToRight ? NSOnState: NSOffState
+            menuItem.state = (fleetViewController.shipOrder == .leftToRight ? .on: .off)
             return true
             
         case Selector.clearQuestList:
@@ -523,7 +523,7 @@ extension BroserWindowController {
         return fleetListRect
     }
     
-    fileprivate func setFleetView(position newPosition: FleetViewPosition, animate: Bool) {
+    private func setFleetView(position newPosition: FleetViewPosition, animate: Bool) {
         
         guard let window = window else { return }
         
@@ -537,12 +537,12 @@ extension BroserWindowController {
         
         if animate {
             
-            let winAnime: [String: Any]  = [ NSViewAnimationTargetKey: window,
-                             NSViewAnimationEndFrameKey: NSValue(rect: winFrame) ]
-            let flashAnime: [String: Any] = [ NSViewAnimationTargetKey: gameViewController.view,
-                               NSViewAnimationEndFrameKey: NSValue(rect: flashRect) ]
-            let fleetAnime: [String: Any] = [ NSViewAnimationTargetKey: fleetViewController.view,
-                               NSViewAnimationEndFrameKey: NSValue(rect: fleetListRect) ]
+            let winAnime: [NSViewAnimation.Key: Any]  = [.target: window,
+                                                         .endFrame: NSValue(rect: winFrame) ]
+            let flashAnime: [NSViewAnimation.Key: Any] = [.target: gameViewController.view,
+                                                          .endFrame: NSValue(rect: flashRect) ]
+            let fleetAnime: [NSViewAnimation.Key: Any] = [.target: fleetViewController.view,
+                                                          .endFrame: NSValue(rect: fleetListRect) ]
             
             let anime = NSViewAnimation(viewAnimations: [winAnime, flashAnime, fleetAnime])
             
@@ -559,11 +559,11 @@ extension BroserWindowController {
 }
 
 @available(OSX 10.12.2, *)
-fileprivate var mainTouchBars: [Int: NSTouchBar] = [:]
+private var mainTouchBars: [Int: NSTouchBar] = [:]
 @available(OSX 10.12.2, *)
-fileprivate var shipTypeButtons: [Int: NSPopoverTouchBarItem] = [:]
+private var shipTypeButtons: [Int: NSPopoverTouchBarItem] = [:]
 @available(OSX 10.12.2, *)
-fileprivate var shipTypeSegments: [Int: NSSegmentedControl] = [:]
+private var shipTypeSegments: [Int: NSSegmentedControl] = [:]
 
 @available(OSX 10.12.2, *)
 extension BroserWindowController {
@@ -590,10 +590,10 @@ extension BroserWindowController {
         
         if let mainTouchBar = mainTouchBar { return mainTouchBar }
         
-        var array: NSArray = []
-        Bundle.main.loadNibNamed("BroswerTouchBar", owner: self, topLevelObjects: &array)
+        var array: NSArray?
+        Bundle.main.loadNibNamed(NSNib.Name("BroswerTouchBar"), owner: self, topLevelObjects: &array)
         
-        shipTypeSegment.bind(NSSelectedIndexBinding,
+        shipTypeSegment.bind(.selectedIndex,
                              to: tabViewItemViewControllers[0],
                              withKeyPath: #keyPath(MainTabVIewItemViewController.selectedShipType),
                              options: nil)
@@ -605,14 +605,14 @@ extension BroserWindowController {
             guard let `self` = self else { return }
             
             self.shipTypeButton.dismissPopover(nil)
-            self.shipTypeSegment.unbind(NSSelectedIndexBinding)
+            self.shipTypeSegment.unbind(.selectedIndex)
             
             guard let button = self.shipTypeButton.view as? NSButton
                 else { return }
             
             let vc = self.tabViewItemViewControllers[$0]
             button.isHidden = !vc.hasShipTypeSelector
-            self.shipTypeSegment.bind(NSSelectedIndexBinding,
+            self.shipTypeSegment.bind(.selectedIndex,
                                       to: vc,
                                       withKeyPath: #keyPath(MainTabVIewItemViewController.selectedShipType),
                                       options: nil)

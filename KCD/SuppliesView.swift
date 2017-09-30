@@ -8,7 +8,7 @@
 
 import Cocoa
 
-fileprivate var pShipStatusContext: Int = 0
+private var pShipStatusContext: Int = 0
 
 final class SuppliesView: NSControl {
     
@@ -44,7 +44,7 @@ final class SuppliesView: NSControl {
         }
     }
     
-    var shipStatus: Ship? {
+    @objc var shipStatus: Ship? {
         
         get { return suppliesCell.shipStatus }
         set {

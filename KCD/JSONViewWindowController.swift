@@ -12,34 +12,34 @@ final class JSONViewWindowController: NSWindowController {
     
     deinit {
         
-        unbind("arguments")
-        unbind("json")
+        unbind(NSBindingName(#keyPath(arguments)))
+        unbind(NSBindingName(#keyPath(json)))
     }
     
     @IBOutlet var argumentsView: NSTableView!
     @IBOutlet var jsonView: NSOutlineView!
     @IBOutlet var apis: NSArrayController!
     
-    override var windowNibName: String! {
+    override var windowNibName: NSNib.Name {
         
-        return "JSONViewWindowController"
+        return .nibName(instanceOf: self)
     }
     
-    var arguments: NSArray?
-    var json: AnyObject?
-    var commands: [[String: Any]] = []
+    @objc var arguments: NSArray?
+    @objc var json: AnyObject?
+    @objc var commands: [[String: Any]] = []
     
     override func windowDidLoad() {
         
         super.windowDidLoad()
         
-        bind("arguments", to: apis, withKeyPath: "selection.argument")
-        bind("json", to: apis, withKeyPath: "selection.json")
+        bind(NSBindingName(#keyPath(arguments)), to: apis, withKeyPath: "selection.argument")
+        bind(NSBindingName(#keyPath(json)), to: apis, withKeyPath: "selection.json")
     }
     
     func setCommand(_ command: [String: Any]) {
         
-        notifyChangeValue(forKey: "commands") {
+        notifyChangeValue(forKey: #keyPath(commands)) {
             
             commands += [command]
         }
@@ -47,7 +47,7 @@ final class JSONViewWindowController: NSWindowController {
     
     @IBAction func clearLog(_ sender: AnyObject?) {
         
-        notifyChangeValue(forKey: "commands") {
+        notifyChangeValue(forKey: #keyPath(commands)) {
             
             commands = []
         }

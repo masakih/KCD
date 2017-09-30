@@ -8,7 +8,7 @@
 
 import Cocoa
 
-fileprivate extension Selector {
+private extension Selector {
     
     static let notifyIfNeeded = #selector(ResourceHistoryManager.notifyIfNeeded(_:))
 }

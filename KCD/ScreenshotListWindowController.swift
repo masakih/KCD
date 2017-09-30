@@ -22,21 +22,21 @@ final class ScreenshotListWindowController: NSWindowController {
             return ScreenshotEditorViewController()
     }()
     private var viewControllers: [NSViewController] = []
-    fileprivate weak var currentRightViewController: BridgeViewController?
-    fileprivate lazy var listViewController: ScreenshotListViewController = {
+    private weak var currentRightViewController: BridgeViewController?
+    private lazy var listViewController: ScreenshotListViewController = {
             return ScreenshotListViewController()
     }()
     
-    var filterPredicate: NSPredicate? = nil {
+    @objc var filterPredicate: NSPredicate? = nil {
         
         didSet {
             listViewController.screenshots.filterPredicate = filterPredicate
         }
     }
     
-    override var windowNibName: String! {
+    override var windowNibName: NSNib.Name {
         
-        return "ScreenshotListWindowController"
+        return .nibName(instanceOf: self)
     }
     
     override func windowDidLoad() {

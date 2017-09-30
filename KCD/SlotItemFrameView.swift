@@ -18,7 +18,7 @@ final class SlotItemFrameView: NSBox {
         let width = bounds.width
         let height = bounds.height
         NSColor.gridColor.set()
-        NSBezierPath.setDefaultLineWidth(1.0)
+        NSBezierPath.defaultLineWidth = 1.0
         
         multiline(lines:
             [

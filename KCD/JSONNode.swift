@@ -62,11 +62,11 @@ class JSONNode: NSObject, NSCoding, NSCopying {
         return node
     }
     
-    var key: String?
-    var value: String?
+    @objc var key: String?
+    @objc var value: String?
     
-    var children: [JSONNode] = []
-    var isLeaf: Bool { return false }
+    @objc var children: [JSONNode] = []
+    @objc var isLeaf: Bool { return false }
     
     // MARK: - NSCoding, NSCopying
     required convenience init?(coder aDecoder: NSCoder) {

@@ -8,7 +8,7 @@
 
 import Cocoa
 
-fileprivate struct TitledImageCellInformation {
+private struct TitledImageCellInformation {
     
     let frame: NSRect
     
@@ -20,7 +20,7 @@ fileprivate struct TitledImageCellInformation {
 
 final class TiledImageView: NSView {
     
-    fileprivate static let privateDraggingUTI = "com.masakih.KCD.ScreenshotDDImte"
+    private static let privateDraggingUTI = "com.masakih.KCD.ScreenshotDDImte"
     
     required init?(coder: NSCoder) {
         
@@ -30,7 +30,7 @@ final class TiledImageView: NSView {
         
         super.init(coder: coder)
         
-        register(forDraggedTypes: [TiledImageView.privateDraggingUTI])
+        registerForDraggedTypes([NSPasteboard.PasteboardType(TiledImageView.privateDraggingUTI)])
     }
     
     override var frame: NSRect {
@@ -59,7 +59,7 @@ final class TiledImageView: NSView {
         }
     }
     
-    fileprivate var infos: [TitledImageCellInformation] = [] {
+    private var infos: [TitledImageCellInformation] = [] {
         
         didSet {
             if inLiveResize { return }
@@ -68,7 +68,7 @@ final class TiledImageView: NSView {
         }
     }
     
-    fileprivate var currentSelection: TitledImageCellInformation?
+    private var currentSelection: TitledImageCellInformation?
     
     private var imageCell: NSImageCell
     
@@ -77,7 +77,7 @@ final class TiledImageView: NSView {
         NSColor.controlBackgroundColor.setFill()
         NSColor.black.setStroke()
         NSBezierPath.fill(bounds)
-        NSBezierPath.setDefaultLineWidth(1.0)
+        NSBezierPath.defaultLineWidth = 1.0
         NSBezierPath.stroke(bounds)
         
         let cellRect = bounds.insetBy(dx: 1, dy: 1)
@@ -89,7 +89,7 @@ final class TiledImageView: NSView {
             
             let forcusRing = rect.insetBy(dx: 1, dy: 1)
             NSColor.keyboardFocusIndicatorColor.setStroke()
-            NSBezierPath.setDefaultLineWidth(2.0)
+            NSBezierPath.defaultLineWidth = 2.0
             NSBezierPath.stroke(forcusRing)
         }
     }
@@ -105,7 +105,7 @@ final class TiledImageView: NSView {
             defer { image.unlockFocus() }
             
             NSColor.white.setFill()
-            NSRectFill(NSRect(origin: .zero, size: size))
+            NSRect(origin: .zero, size: size).fill()
             NSColor.lightGray.setFill()
             let colTileNum: Int = Int(size.width / CGFloat(checkerSize))
             let rowTileNum: Int = Int(size.height / CGFloat(checkerSize))
@@ -116,13 +116,13 @@ final class TiledImageView: NSView {
                     
                     if i % 2 == 0 && j % 2 == 1 { continue }
                     if i % 2 == 1 && j % 2 == 0 { continue }
-                    NSRectFill(NSRect(x: i * checkerSize, y: j * checkerSize, width: checkerSize, height: checkerSize))
+                    NSRect(x: i * checkerSize, y: j * checkerSize, width: checkerSize, height: checkerSize).fill()
                 }
             }
         }
     }
     
-    fileprivate func calcImagePosition() {
+    private func calcImagePosition() {
         
         let imageCount = images.count
         if imageCount == 0 {
@@ -155,7 +155,7 @@ final class TiledImageView: NSView {
             tiledImage.lockFocus()
             zip(self.images, offset).forEach {
                 
-                $0.0.draw(at: $0.1, from: imageRect, operation: NSCompositeCopy, fraction: 1.0)
+                $0.0.draw(at: $0.1, from: imageRect, operation: .copy, fraction: 1.0)
             }
             tiledImage.unlockFocus()
             
@@ -208,12 +208,12 @@ final class TiledImageView: NSView {
             .map { TitledImageCellInformation(with: $0) }
     }
     
-    fileprivate func removeAllTrackingAreas() {
+    private func removeAllTrackingAreas() {
         
         trackingAreas.forEach(removeTrackingArea)
     }
     
-    fileprivate func setTrackingArea() {
+    private func setTrackingArea() {
         
         removeAllTrackingAreas()
         infos.forEach {
@@ -263,7 +263,7 @@ extension TiledImageView {
             if !NSMouseInRect(mouse, $0.element.frame, isFlipped) { return }
             
             guard let pItem = NSPasteboardItem(pasteboardPropertyList: $0.offset,
-                                               ofType: TiledImageView.privateDraggingUTI)
+                                               ofType: NSPasteboard.PasteboardType(TiledImageView.privateDraggingUTI))
                 else { fatalError() }
             
             let item = NSDraggingItem(pasteboardWriter: pItem)
@@ -291,7 +291,8 @@ extension TiledImageView: NSDraggingSource {
     
     override func draggingUpdated(_ sender: NSDraggingInfo) -> NSDragOperation {
         
-        guard let types = sender.draggingPasteboard().types, types.contains(TiledImageView.privateDraggingUTI)
+        guard let types = sender.draggingPasteboard().types,
+            types.contains(NSPasteboard.PasteboardType(TiledImageView.privateDraggingUTI))
             else { return [] }
         
         if !sender.draggingSourceOperationMask().contains(.move) { return [] }
@@ -320,7 +321,8 @@ extension TiledImageView: NSDraggingSource {
     
     override func prepareForDragOperation(_ sender: NSDraggingInfo) -> Bool {
         
-        guard let types = sender.draggingPasteboard().types, types.contains(TiledImageView.privateDraggingUTI)
+        guard let types = sender.draggingPasteboard().types,
+            types.contains(NSPasteboard.PasteboardType(TiledImageView.privateDraggingUTI))
             else { return false }
         
         currentSelection = nil
@@ -331,14 +333,15 @@ extension TiledImageView: NSDraggingSource {
     
     override func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
         
-        guard let types = sender.draggingPasteboard().types, types.contains(TiledImageView.privateDraggingUTI)
+        guard let types = sender.draggingPasteboard().types,
+            types.contains(NSPasteboard.PasteboardType(TiledImageView.privateDraggingUTI))
             else { return false }
         
         let pboard = sender.draggingPasteboard()
         
         guard let pbItems = pboard.pasteboardItems,
             !pbItems.isEmpty,
-            let index = pbItems.first?.propertyList(forType: TiledImageView.privateDraggingUTI) as? Int,
+            let index = pbItems.first?.propertyList(forType: NSPasteboard.PasteboardType(TiledImageView.privateDraggingUTI)) as? Int,
             case 0..<images.count = index
             else { return false }
         
@@ -358,7 +361,7 @@ extension TiledImageView: NSDraggingSource {
         return true
     }
     
-    override func draggingEnded(_ sender: NSDraggingInfo?) {
+    override func draggingEnded(_ sender: NSDraggingInfo) {
         
         setTrackingArea()
     }

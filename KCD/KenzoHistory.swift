@@ -27,5 +27,5 @@ final class KenzoHistory: NSManagedObject {
 
 extension KenzoHistory {
     
-    dynamic var isLarge: Bool { return fuel > 999 }
+    @objc dynamic var isLarge: Bool { return fuel > 999 }
 }

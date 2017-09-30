@@ -123,7 +123,7 @@ extension DefaultKeys {
     static let screenshotPreviewZoomValue = DefaultKey<Double>("screenshotPreviewZoomValue", regulator: rangeReguletor(0.2...0.99))
     static let screenshotEditorColumnCount = DefaultKey<Int>("screenshotEditorColumnCount", regulator: rangeReguletor(1...50))
     static let scrennshotEditorType = DefaultKey<Int>("scrennshotEditorType")
-    static let screenshotButtonSize = DefaultKey<NSControlSize>("screenshotButtonSize", alternative: .regular)
+    static let screenshotButtonSize = DefaultKey<NSControl.ControlSize>("screenshotButtonSize", alternative: .regular)
     static let useMask = DefaultKey<Bool>("useMask")
     static let screenShotBorderWidth = DefaultKey<CGFloat>("screenShotBorderWidth", regulator: rangeReguletor(0.0...20.0))
     static let screenShotSaveDirectory = DefaultKey<String?>("screenShotSaveDirectory")

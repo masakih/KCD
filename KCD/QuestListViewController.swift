@@ -10,11 +10,11 @@ import Cocoa
 
 final class QuestListViewController: NSViewController {
     
-    let managedObjectContext = ServerDataStore.default.context
-    let sortDesciptors = [NSSortDescriptor(key: "no", ascending: true)]
+    @objc let managedObjectContext = ServerDataStore.default.context
+    @objc let sortDesciptors = [NSSortDescriptor(key: "no", ascending: true)]
     
-    override var nibName: String! {
+    override var nibName: NSNib.Name {
         
-        return "QuestListViewController"
+        return .nibName(instanceOf: self)
     }
 }

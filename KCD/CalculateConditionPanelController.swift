@@ -10,12 +10,12 @@ import Cocoa
 
 final class CalculateConditionPanelController: NSWindowController {
     
-    override var windowNibName: String {
+    override var windowNibName: NSNib.Name {
         
-        return String(describing: type(of: self))
+        return .nibName(instanceOf: self)
     }
     
-    dynamic var condition: Double = 1
+    @objc dynamic var condition: Double = 1
     
     private var originalCondition: Double = 1
     

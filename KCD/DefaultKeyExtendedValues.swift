@@ -12,7 +12,7 @@ import AppKit.NSColor
 /// KeyedArchiving
 extension UserDefaults {
     
-    fileprivate func keyedArchivedObject(forKey key: String) -> Any? {
+    private func keyedArchivedObject(forKey key: String) -> Any? {
         
         guard let data = self.object(forKey: key) as? Data
             else { return nil }
@@ -20,7 +20,7 @@ extension UserDefaults {
         return NSKeyedUnarchiver.unarchiveObject(with: data)
     }
     
-    fileprivate func setKeyedArchived(_ object: Any?, forKey key: String) {
+    private func setKeyedArchived(_ object: Any?, forKey key: String) {
         
         guard let object = object else {
             self.removeObject(forKey: key)
@@ -88,9 +88,9 @@ extension UserDefaults {
         set { self.set(newValue.rawValue, forKey: key.rawValue) }
     }
     
-    subscript(key: DefaultKey<NSControlSize>) -> NSControlSize {
+    subscript(key: DefaultKey<NSControl.ControlSize>) -> NSControl.ControlSize {
         
-        get { return NSControlSize(rawValue: UInt(self.integer(forKey: key.rawValue))) ?? key.alternative }
+        get { return NSControl.ControlSize(rawValue: UInt(self.integer(forKey: key.rawValue))) ?? key.alternative }
         set { self.set(newValue.rawValue, forKey: key.rawValue) }
     }
     

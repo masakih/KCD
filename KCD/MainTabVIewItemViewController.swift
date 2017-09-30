@@ -34,8 +34,8 @@ class MainTabVIewItemViewController: NSViewController {
         [1, 15, 17, 19, 20, 21, 22]
     ]
     
-    dynamic var hasShipTypeSelector: Bool { return false }
-    dynamic var selectedShipType: ShipTabType = .all
+    @objc dynamic var hasShipTypeSelector: Bool { return false }
+    @objc dynamic var selectedShipType: ShipTabType = .all
     
     var shipTypePredicte: NSPredicate? {
         

@@ -10,15 +10,15 @@ import Cocoa
 
 final class ShipWindowController: NSWindowController {
     
-    let managedObjectContext = ServerDataStore.default.context
+    @objc let managedObjectContext = ServerDataStore.default.context
     
-    override var windowNibName: String! {
+    override var windowNibName: NSNib.Name {
         
-        return "ShipWindowController"
+        return .nibName(instanceOf: self)
     }
     
-    dynamic var missionFleetNumber: Int = 0
-    dynamic var missionTime: NSNumber?
+    @objc dynamic var missionFleetNumber: Int = 0
+    @objc dynamic var missionTime: NSNumber?
     
     @IBAction func changeMissionTime(_ sender: AnyObject?) {
         

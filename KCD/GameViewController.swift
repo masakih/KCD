@@ -10,7 +10,7 @@ import Cocoa
 import WebKit
 import JavaScriptCore
 
-fileprivate extension Selector {
+private extension Selector {
     
     static let reloadContent = #selector(GameViewController.reloadContent(_:))
     static let deleteCacheAndReload = #selector(GameViewController.deleteCacheAndReload(_:))
@@ -24,12 +24,12 @@ final class GameViewController: NSViewController {
     
     @IBOutlet var webView: WebView!
     
-    override var nibName: String! {
+    override var nibName: NSNib.Name {
         
-        return "GameViewController"
+        return .nibName(instanceOf: self)
     }
     
-    fileprivate var flashTopLeft = NSPoint(x: 2600, y: 1445)
+    private var flashTopLeft = NSPoint(x: 2600, y: 1445)
     private var clipView: NSClipView {
         
         return view as! NSClipView  // swiftlint:disable:this force_cast
@@ -109,7 +109,7 @@ final class GameViewController: NSViewController {
         panel.message = NSLocalizedString("Deleting caches...", comment: "Deleting caches...")
         panel.animate = true
         
-        window.beginSheet(panelWindow) { _ in NSSound(named: "Submarine")?.play() }
+        window.beginSheet(panelWindow) { _ in NSSound(named: NSSound.Name("Submarine"))?.play() }
         
         AppDelegate.shared.clearCache()
         

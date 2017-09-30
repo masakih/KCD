@@ -13,14 +13,14 @@ protocol BookmarkListViewControllerDelegate: class {
     func didSelectBookmark(_ bookmark: Bookmark)
 }
 
-fileprivate struct DragingType {
+extension NSPasteboard.PasteboardType {
     
-    static let bookmarkItem = "com.masakih.KCD.BookmarkItem"
+    static let bookmarkItem = NSPasteboard.PasteboardType("com.masakih.KCD.BookmarkItem")
 }
 
 final class BookmarkListViewController: NSViewController {
     
-    let managedObjectContext = BookmarkManager.shared().manageObjectContext
+    @objc let managedObjectContext = BookmarkManager.shared().manageObjectContext
     
     @IBOutlet var tableView: NSTableView!
     @IBOutlet var bookmarkController: NSArrayController!
@@ -33,9 +33,9 @@ final class BookmarkListViewController: NSViewController {
     // tableView support
     var objectRange: CountableClosedRange = 0...0
     
-    override var nibName: String! {
+    override var nibName: NSNib.Name {
         
-        return "BookmarkListViewController"
+        return .nibName(instanceOf: self)
     }
     
     override func viewDidLoad() {
@@ -45,7 +45,7 @@ final class BookmarkListViewController: NSViewController {
         editorController = BookmarkEditorViewController()
         popover.contentViewController = editorController
         
-        tableView.register(forDraggedTypes: [DragingType.bookmarkItem])
+        tableView.registerForDraggedTypes([.bookmarkItem])
         tableView.setDraggingSourceOperationMask(.move, forLocal: true)
     }
     
@@ -127,7 +127,7 @@ extension BookmarkListViewController: NSTableViewDelegate, NSTableViewDataSource
     func tableView(_ tableView: NSTableView,
                    validateDrop info: NSDraggingInfo,
                    proposedRow row: Int,
-                   proposedDropOperation dropOperation: NSTableViewDropOperation) -> NSDragOperation {
+                   proposedDropOperation dropOperation: NSTableView.DropOperation) -> NSDragOperation {
         
         guard dropOperation == .above,
             !(objectRange ~= row),
@@ -138,7 +138,7 @@ extension BookmarkListViewController: NSTableViewDelegate, NSTableViewDataSource
         return .move
     }
     
-    func tableView(_ tableView: NSTableView, acceptDrop info: NSDraggingInfo, row: Int, dropOperation: NSTableViewDropOperation) -> Bool {
+    func tableView(_ tableView: NSTableView, acceptDrop info: NSDraggingInfo, row: Int, dropOperation: NSTableView.DropOperation) -> Bool {
         
         tableView.beginUpdates()
         defer { tableView.endUpdates() }
@@ -159,7 +159,7 @@ extension BookmarkListViewController: NSTableViewDelegate, NSTableViewDataSource
         let store = BookmarkManager.shared().editorStore
         items.enumerated().forEach {
             
-            guard let data = $0.element.data(forType: DragingType.bookmarkItem),
+            guard let data = $0.element.data(forType: .bookmarkItem),
                 let uri = NSKeyedUnarchiver.unarchiveObject(with: data) as? URL,
                 let oID = managedObjectContext.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: uri),
                 let bookmark = store.object(of: Bookmark.entity, with: oID)

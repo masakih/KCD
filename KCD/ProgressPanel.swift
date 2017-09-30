@@ -14,8 +14,8 @@ final class ProgressPanel: NSWindowController {
     var message: String = ""
     var animate: Bool = false
     
-    override var windowNibName: String! {
+    override var windowNibName: NSNib.Name {
         
-        return "ProgressPanel"
+        return .nibName(instanceOf: self)
     }
 }

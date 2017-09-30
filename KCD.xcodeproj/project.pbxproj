@@ -214,6 +214,8 @@
 		F4AC136F1E0963DB00851147 /* ProgressPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AC136E1E0963DB00851147 /* ProgressPanel.swift */; };
 		F4AC13711E096A7B00851147 /* HistoryWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AC13701E096A7B00851147 /* HistoryWindowController.swift */; };
 		F4AF56811F7BF0CF004F4F4E /* IntConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AF56801F7BF0CF004F4F4E /* IntConvertable.swift */; };
+		F4AF56861F7F6EF9004F4F4E /* NSUserInterfaceItemIdentifierExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AF56841F7F6EF8004F4F4E /* NSUserInterfaceItemIdentifierExtension.swift */; };
+		F4AF56871F7F6EF9004F4F4E /* NSNibExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AF56851F7F6EF8004F4F4E /* NSNibExtension.swift */; };
 		F4B15CBD1E21BA870078CFFC /* CommandRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B15CBC1E21BA870078CFFC /* CommandRegister.swift */; };
 		F4B37EFF19FC8DCC002F371A /* UpgradableShipsWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B37F0119FC8DCC002F371A /* UpgradableShipsWindowController.xib */; };
 		F4B3DC3018E5C81E0011B4FC /* HistoryWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B3DC3218E5C81E0011B4FC /* HistoryWindowController.xib */; };
@@ -568,6 +570,8 @@
 		F4AC136E1E0963DB00851147 /* ProgressPanel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressPanel.swift; sourceTree = "<group>"; };
 		F4AC13701E096A7B00851147 /* HistoryWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryWindowController.swift; sourceTree = "<group>"; };
 		F4AF56801F7BF0CF004F4F4E /* IntConvertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntConvertable.swift; sourceTree = "<group>"; };
+		F4AF56841F7F6EF8004F4F4E /* NSUserInterfaceItemIdentifierExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSUserInterfaceItemIdentifierExtension.swift; sourceTree = "<group>"; };
+		F4AF56851F7F6EF8004F4F4E /* NSNibExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSNibExtension.swift; sourceTree = "<group>"; };
 		F4B15CBC1E21BA870078CFFC /* CommandRegister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandRegister.swift; sourceTree = "<group>"; };
 		F4B3DC4B18F0C8A90011B4FC /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		F4B3DC4D18F0C8FF0011B4FC /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
@@ -944,15 +948,17 @@
 			children = (
 				F4FC3E931E44A5D600E41228 /* AppDelegate.swift */,
 				F47B06DC1E97ECD4006711D9 /* WindowManager.swift */,
+				F491A4BB1E4B523C00D1E067 /* ApplicationDirecrories.swift */,
+				F44AA26A1E82AD2E00EED8BE /* NSObjectExtension.swift */,
+				F4AF56851F7F6EF8004F4F4E /* NSNibExtension.swift */,
+				F4AF56841F7F6EF8004F4F4E /* NSUserInterfaceItemIdentifierExtension.swift */,
+				F40F976E1E67092600AE81BB /* ArrayExtensions.swift */,
+				F40F97701E68536400AE81BB /* FileManagerExtension.swift */,
+				F4AF56801F7BF0CF004F4F4E /* IntConvertable.swift */,
 				F404AF561F2CDD1C00A006B8 /* DefaultKey.swift */,
 				F48883461F2E2E9A0069E0C3 /* DefaultKeyExtendedValues.swift */,
 				F404AF611F2D8CAE00A006B8 /* DefaultKeys.swift */,
 				F48883441F2E095F0069E0C3 /* DefaultSettings.swift */,
-				F491A4BB1E4B523C00D1E067 /* ApplicationDirecrories.swift */,
-				F40F976E1E67092600AE81BB /* ArrayExtensions.swift */,
-				F44AA26A1E82AD2E00EED8BE /* NSObjectExtension.swift */,
-				F4AF56801F7BF0CF004F4F4E /* IntConvertable.swift */,
-				F40F97701E68536400AE81BB /* FileManagerExtension.swift */,
 				F44775881EF6AAD900287572 /* SakutekiCalculator.swift */,
 				F41A451A1F4917640066F83D /* SeikuCalclator.swift */,
 				F4BBA21E1F243CA900E68743 /* DamageCalculator.swift */,
@@ -1378,7 +1384,7 @@
 				ORGANIZATIONNAME = "Hori,Masaki";
 				TargetAttributes = {
 					F4BDEB42187252F30069D0CE = {
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 0900;
 					};
 					F4BDEB63187252F30069D0CE = {
 						TestTargetID = F4BDEB42187252F30069D0CE;
@@ -1549,10 +1555,12 @@
 				F44BC7331E2A25E4004644E3 /* Start2Command.swift in Sources */,
 				F44BC6E31E230577004644E3 /* SlotDepriveCommand.swift in Sources */,
 				F42A8FCE1E3DA7E90099DC1D /* MasterShip.swift in Sources */,
+				F4AF56871F7F6EF9004F4F4E /* NSNibExtension.swift in Sources */,
 				F4FC3E8C1E43660400E41228 /* GuardEscaped.swift in Sources */,
 				F490977B1E19C3910085A45D /* SuppliesView.swift in Sources */,
 				F4AA59341E1D2512001667AF /* SlotItemShortNameTransformer.swift in Sources */,
 				F44BC73B1E2A5C34004644E3 /* MapInfoCommand.swift in Sources */,
+				F4AF56861F7F6EF9004F4F4E /* NSUserInterfaceItemIdentifierExtension.swift in Sources */,
 				F4AA593E1E1E0BFB001667AF /* DamageValueTransformer.swift in Sources */,
 				F44BC6E71E231534004644E3 /* SlotResetCommand.swift in Sources */,
 				F42A8FEC1E4354F50099DC1D /* Battle.swift in Sources */,
@@ -2253,7 +2261,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "KCD/KCD-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2279,7 +2288,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.masakih.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "KCD/KCD-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

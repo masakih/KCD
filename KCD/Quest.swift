@@ -34,7 +34,7 @@ extension Quest {
         return ["state", "progress_flag"]
     }
     
-    dynamic var compositStatus: Int {
+    @objc dynamic var compositStatus: Int {
         
         return progress_flag * 4 + state
     }

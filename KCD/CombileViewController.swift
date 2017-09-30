@@ -16,7 +16,7 @@ final class CombileViewController: NSViewController {
     @IBOutlet weak var placeholder1: NSView!
     @IBOutlet weak var placeholder2: NSView!
     
-    dynamic var fleet1TPValue: Int = 0 {
+    @objc dynamic var fleet1TPValue: Int = 0 {
         willSet {
             willChangeValue(forKey: #keyPath(TPValue))
             willChangeValue(forKey: #keyPath(BRankTPValue))
@@ -26,7 +26,7 @@ final class CombileViewController: NSViewController {
             didChangeValue(forKey: #keyPath(BRankTPValue))
         }
     }
-    dynamic var fleet2TPValue: Int = 0 {
+    @objc dynamic var fleet2TPValue: Int = 0 {
         willSet {
             willChangeValue(forKey: #keyPath(TPValue))
             willChangeValue(forKey: #keyPath(BRankTPValue))
@@ -36,10 +36,10 @@ final class CombileViewController: NSViewController {
             didChangeValue(forKey: #keyPath(BRankTPValue))
         }
     }
-    dynamic var TPValue: Int { return fleet1TPValue + fleet2TPValue }
-    dynamic var BRankTPValue: Int { return Int(floor(Double(TPValue) * 0.7)) }
+    @objc dynamic var TPValue: Int { return fleet1TPValue + fleet2TPValue }
+    @objc dynamic var BRankTPValue: Int { return Int(floor(Double(TPValue) * 0.7)) }
     
-    dynamic var fleet1Seiku: Int = 0 {
+    @objc dynamic var fleet1Seiku: Int = 0 {
         willSet {
             willChangeValue(forKey: #keyPath(seiku))
         }
@@ -47,7 +47,7 @@ final class CombileViewController: NSViewController {
             didChangeValue(forKey: #keyPath(seiku))
         }
     }
-    dynamic var fleet2Seiku: Int = 0 {
+    @objc dynamic var fleet2Seiku: Int = 0 {
         willSet {
             willChangeValue(forKey: #keyPath(seiku))
         }
@@ -55,9 +55,9 @@ final class CombileViewController: NSViewController {
             didChangeValue(forKey: #keyPath(seiku))
         }
     }
-    dynamic var seiku: Int { return fleet1Seiku + fleet2Seiku }
+    @objc dynamic var seiku: Int { return fleet1Seiku + fleet2Seiku }
     
-    dynamic var fleet1CalculatedSeiku: Int = 0 {
+    @objc dynamic var fleet1CalculatedSeiku: Int = 0 {
         willSet {
             willChangeValue(forKey: #keyPath(seiku))
         }
@@ -65,7 +65,7 @@ final class CombileViewController: NSViewController {
             didChangeValue(forKey: #keyPath(seiku))
         }
     }
-    dynamic var fleet2CalculatedSeiku: Int = 0 {
+    @objc dynamic var fleet2CalculatedSeiku: Int = 0 {
         willSet {
             willChangeValue(forKey: #keyPath(calculatedSeiku))
         }
@@ -73,11 +73,11 @@ final class CombileViewController: NSViewController {
             didChangeValue(forKey: #keyPath(calculatedSeiku))
         }
     }
-    dynamic var calculatedSeiku: Int { return fleet1CalculatedSeiku + fleet2CalculatedSeiku }
+    @objc dynamic var calculatedSeiku: Int { return fleet1CalculatedSeiku + fleet2CalculatedSeiku }
     
-    override var nibName: String! {
+    override var nibName: NSNib.Name {
         
-        return "CombileViewController"
+        return .nibName(instanceOf: self)
     }
     
     override func viewDidLoad() {
@@ -94,25 +94,25 @@ final class CombileViewController: NSViewController {
             $0.element.1.fleetNumber = $0.offset + 1
         }
         
-        bind(#keyPath(fleet1TPValue), to: fleet1, withKeyPath: "totalTPValue")
-        bind(#keyPath(fleet2TPValue), to: fleet2, withKeyPath: "totalTPValue")
+        bind(NSBindingName(#keyPath(fleet1TPValue)), to: fleet1, withKeyPath: "totalTPValue")
+        bind(NSBindingName(#keyPath(fleet2TPValue)), to: fleet2, withKeyPath: "totalTPValue")
         
-        bind(#keyPath(fleet1Seiku), to: fleet1, withKeyPath: "totalSeiku")
-        bind(#keyPath(fleet2Seiku), to: fleet2, withKeyPath: "totalSeiku")
+        bind(NSBindingName(#keyPath(fleet1Seiku)), to: fleet1, withKeyPath: "totalSeiku")
+        bind(NSBindingName(#keyPath(fleet2Seiku)), to: fleet2, withKeyPath: "totalSeiku")
         
-        bind(#keyPath(fleet1CalculatedSeiku), to: fleet1, withKeyPath: "totalCalclatedSeiku")
-        bind(#keyPath(fleet2CalculatedSeiku), to: fleet2, withKeyPath: "totalCalclatedSeiku")
+        bind(NSBindingName(#keyPath(fleet1CalculatedSeiku)), to: fleet1, withKeyPath: "totalCalclatedSeiku")
+        bind(NSBindingName(#keyPath(fleet2CalculatedSeiku)), to: fleet2, withKeyPath: "totalCalclatedSeiku")
     }
     
     deinit {
         
-        unbind(#keyPath(fleet1TPValue))
-        unbind(#keyPath(fleet2TPValue))
+        unbind(NSBindingName(#keyPath(fleet1TPValue)))
+        unbind(NSBindingName(#keyPath(fleet2TPValue)))
         
-        unbind(#keyPath(fleet1Seiku))
-        unbind(#keyPath(fleet2Seiku))
+        unbind(NSBindingName(#keyPath(fleet1Seiku)))
+        unbind(NSBindingName(#keyPath(fleet2Seiku)))
         
-        unbind(#keyPath(fleet1CalculatedSeiku))
-        unbind(#keyPath(fleet2CalculatedSeiku))
+        unbind(NSBindingName(#keyPath(fleet1CalculatedSeiku)))
+        unbind(NSBindingName(#keyPath(fleet2CalculatedSeiku)))
     }
 }

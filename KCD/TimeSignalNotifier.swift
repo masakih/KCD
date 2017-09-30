@@ -15,30 +15,30 @@ extension Selector {
 
 final class TimeSignalNotifier: NSObject {
     
-    let udController: NSUserDefaultsController = NSUserDefaultsController.shared()
+    let udController: NSUserDefaultsController = NSUserDefaultsController.shared
     
     override init() {
         
         super.init()
         
         registerTimer()
-        self.bind(#keyPath(notifyTimeBeforeTimeSignal),
-                  to: udController,
-                  withKeyPath: "values.notifyTimeBeforeTimeSignal")
+        bind(NSBindingName(#keyPath(notifyTimeBeforeTimeSignal)),
+             to: udController,
+             withKeyPath: "values.notifyTimeBeforeTimeSignal")
     }
     
     deinit {
         
-        self.unbind(#keyPath(notifyTimeBeforeTimeSignal))
+        unbind(NSBindingName(#keyPath(notifyTimeBeforeTimeSignal)))
     }
     
-    dynamic var notifyTimeBeforeTimeSignal: Int = 0 {
+    @objc dynamic var notifyTimeBeforeTimeSignal: Int = 0 {
         
         didSet { registerTimer() }
     }
     var timer: Timer?
     
-    func fire(_ timer: Timer) {
+    @objc func fire(_ timer: Timer) {
         
         defer { registerTimer() }
         

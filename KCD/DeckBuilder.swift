@@ -32,7 +32,7 @@ final class DeckBuilder {
         if let param = desc.addingPercentEncoding(withAllowedCharacters: characterSet),
             let url = URL(string: ss + param) {
             
-            NSWorkspace.shared().open(url)
+            NSWorkspace.shared.open(url)
         }
     }
     

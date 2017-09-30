@@ -10,19 +10,19 @@ import Cocoa
 
 final class AirBaseWindowController: NSWindowController {
     
-    let managedObjectContext = ServerDataStore.default.context
+    @objc let managedObjectContext = ServerDataStore.default.context
     
     @IBOutlet var areaMatrix: NSMatrix!
     @IBOutlet var squadronTab: NSSegmentedControl!
     @IBOutlet var planesTable: NSTableView!
     @IBOutlet var airBaseController: NSArrayController!
     
-    override var windowNibName: String! {
+    override var windowNibName: NSNib.Name {
         
-        return "AirBaseWindowController"
+        return .nibName(instanceOf: self)
     }
     
-    dynamic var areaId: Int = 0 {
+    @objc dynamic var areaId: Int = 0 {
         
         didSet {
             updatePredicate()
@@ -30,7 +30,7 @@ final class AirBaseWindowController: NSWindowController {
         }
     }
     
-    dynamic var rId: Int = 1 {
+    @objc dynamic var rId: Int = 1 {
         
         didSet {
             updatePredicate()
@@ -150,7 +150,7 @@ extension AirBaseWindowController: NSTableViewDelegate {
         guard let identifier = tableColumn?.identifier
             else { return nil }
         
-        return tableView.make(withIdentifier: identifier, owner: nil)
+        return tableView.makeView(withIdentifier: identifier, owner: nil)
     }
     
     func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {

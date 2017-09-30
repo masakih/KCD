@@ -25,7 +25,7 @@ final class DamageValueTransformer: ValueTransformer {
         return NSAttributedString(string: attributes.string, attributes: attributes.attr)
     }
     
-    private func attribute(for type: DamageType) -> (string: String, attr: [String: Any])? {
+    private func attribute(for type: DamageType) -> (string: String, attr: [NSAttributedStringKey: Any])? {
         
         switch type {
         case .none:
@@ -33,20 +33,17 @@ final class DamageValueTransformer: ValueTransformer {
             
         case .slightly:
             return ("●",
-                    [NSForegroundColorAttributeName: #colorLiteral(red: 1, green: 0.925, blue: 0, alpha: 1),
-                     NSParagraphStyleAttributeName: paragraphStyle]
+                    [.foregroundColor: #colorLiteral(red: 1, green: 0.925, blue: 0, alpha: 1), .paragraphStyle: paragraphStyle]
             )
             
         case .modest:
             return ("●",
-                    [NSForegroundColorAttributeName: #colorLiteral(red: 1, green: 0.32, blue: 0, alpha: 1),
-                     NSParagraphStyleAttributeName: paragraphStyle]
+                    [.foregroundColor: #colorLiteral(red: 1, green: 0.32, blue: 0, alpha: 1), .paragraphStyle: paragraphStyle]
             )
             
         case .badly:
             return ("◼︎",
-                    [NSForegroundColorAttributeName: #colorLiteral(red: 0.87, green: 0, blue: 0.036, alpha: 1),
-                     NSParagraphStyleAttributeName: paragraphStyle]
+                    [.foregroundColor: #colorLiteral(red: 0.87, green: 0, blue: 0.036, alpha: 1), .paragraphStyle: paragraphStyle]
             )
         }
     }

@@ -19,8 +19,7 @@ class BridgeViewController: NSViewController {
     
     deinit {
         
-        [NSContentArrayBinding, NSSortDescriptorsBinding,
-         NSSelectionIndexesBinding, NSFilterPredicateBinding]
+        [.contentArray, .sortDescriptors, .selectionIndexes, .filterPredicate]
             .forEach { arrayController.unbind($0) }
     }
     
@@ -30,10 +29,10 @@ class BridgeViewController: NSViewController {
             guard let representedObject = representedObject else { return }
             
             [
-                (NSContentArrayBinding, #keyPath(ScreenshotModel.screenshots)),
-                (NSSortDescriptorsBinding, #keyPath(ScreenshotModel.sortDescriptors)),
-                (NSSelectionIndexesBinding, #keyPath(ScreenshotModel.selectedIndexes)),
-                (NSFilterPredicateBinding, #keyPath(ScreenshotModel.filterPredicate))
+                (.contentArray, #keyPath(ScreenshotModel.screenshots)),
+                (.sortDescriptors, #keyPath(ScreenshotModel.sortDescriptors)),
+                (.selectionIndexes, #keyPath(ScreenshotModel.selectedIndexes)),
+                (.filterPredicate, #keyPath(ScreenshotModel.filterPredicate))
                 ]
                 .forEach {
                     arrayController.bind($0.0, to: representedObject, withKeyPath: $0.1, options: nil)
@@ -50,7 +49,7 @@ class BridgeViewController: NSViewController {
 
 extension BridgeViewController: NSSharingServicePickerDelegate, ScreenshotSharingProvider {
     
-    var contentRect: NSRect {
+    @objc var contentRect: NSRect {
         
         fatalError("Must implemente")
     }
@@ -78,7 +77,7 @@ extension BridgeViewController: NSSharingServicePickerDelegate, ScreenshotSharin
         picker.show(relativeTo: view.bounds, of: view, preferredEdge: .minX)
     }
     
-    fileprivate func itemsForShareingServicePicker() -> [AnyObject] {
+    private func itemsForShareingServicePicker() -> [AnyObject] {
         
         guard let informations = arrayController.selectedObjects as? [ScreenshotInformation]
             else { return [] }
@@ -116,7 +115,7 @@ extension BridgeViewController: NSSharingServiceDelegate {
     
     func sharingService(_ sharingService: NSSharingService,
                         sourceWindowForShareItems items: [Any],
-                        sharingContentScope: UnsafeMutablePointer<NSSharingContentScope>) -> NSWindow? {
+                        sharingContentScope: UnsafeMutablePointer<NSSharingService.SharingContentScope>) -> NSWindow? {
         
         return view.window
     }

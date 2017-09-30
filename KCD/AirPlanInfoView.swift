@@ -21,7 +21,7 @@ final class AirPlanInfoView: NSTableCellView {
     @IBOutlet var conditionBox: NSBox!
     @IBOutlet var needSupplyField: NSTextField!
     
-    dynamic var condition: Int = 1 {
+    @objc dynamic var condition: Int = 1 {
         
         didSet {
             guard let cond = Condition(rawValue: condition)
@@ -32,17 +32,17 @@ final class AirPlanInfoView: NSTableCellView {
         }
     }
     
-    dynamic var slotId: NSNumber? {
+    @objc dynamic var slotId: NSNumber? {
         
         didSet { planNameVew.slotItemID = slotId }
     }
     
-    dynamic var maxCount: Int = 0 {
+    @objc dynamic var maxCount: Int = 0 {
         
         didSet { needSupplyField.isHidden = !needSupply() }
     }
     
-    dynamic var count: Int = 0 {
+    @objc dynamic var count: Int = 0 {
         
         didSet { needSupplyField.isHidden = !needSupply() }
     }
@@ -77,24 +77,24 @@ final class AirPlanInfoView: NSTableCellView {
     
     deinit {
         
-        unbind(#keyPath(AirPlanInfoView.condition))
-        unbind(#keyPath(AirPlanInfoView.slotId))
-        unbind(#keyPath(AirPlanInfoView.maxCount))
-        unbind(#keyPath(AirPlanInfoView.count))
+        unbind(NSBindingName(#keyPath(AirPlanInfoView.condition)))
+        unbind(NSBindingName(#keyPath(AirPlanInfoView.slotId)))
+        unbind(NSBindingName(#keyPath(AirPlanInfoView.maxCount)))
+        unbind(NSBindingName(#keyPath(AirPlanInfoView.count)))
     }
     
     override func awakeFromNib() {
         
-        bind(#keyPath(AirPlanInfoView.condition),
+        bind(NSBindingName(#keyPath(AirPlanInfoView.condition)),
              to: self,
              withKeyPath: "objectValue.cond")
-        bind(#keyPath(AirPlanInfoView.slotId),
+        bind(NSBindingName(#keyPath(AirPlanInfoView.slotId)),
              to: self,
              withKeyPath: "objectValue.slotid")
-        bind(#keyPath(AirPlanInfoView.maxCount),
+        bind(NSBindingName(#keyPath(AirPlanInfoView.maxCount)),
              to: self,
              withKeyPath: "objectValue.max_count")
-        bind(#keyPath(AirPlanInfoView.count),
+        bind(NSBindingName(#keyPath(AirPlanInfoView.count)),
              to: self,
              withKeyPath: "objectValue.count")
     }

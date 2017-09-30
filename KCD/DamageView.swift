@@ -18,11 +18,11 @@ enum DamageType: Int {
 
 final class DamageView: NSView {
     
-    dynamic var damageType: Int = 0 {
+    @objc dynamic var damageType: Int = 0 {
         
         willSet {
             guard let v = DamageType(rawValue: newValue) else {
-                self.print("Can not set damageType")
+                print("Can not set damageType")
                 return
             }
             
@@ -32,7 +32,7 @@ final class DamageView: NSView {
         }
     }
     
-    var controlSize: NSControlSize = .regular
+    var controlSize: NSControl.ControlSize = .regular
     private var innerDamageType: DamageType = .none
     private var color: NSColor? {
         

@@ -12,9 +12,9 @@ final class UITestWindowController: NSWindowController {
     
     @IBOutlet var testViewPlaceholder: NSView!
     
-    override var windowNibName: String! {
+    override var windowNibName: NSNib.Name {
         
-        return "UITestWindowController"
+        return .nibName(instanceOf: self)
     }
     
     private var testViewController: NSViewController?

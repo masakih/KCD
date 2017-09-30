@@ -22,7 +22,7 @@ final class GuardEscapedView: NSView {
          return taihiString
     }()
     
-    var controlSize: NSControlSize = .regular
+    var controlSize: NSControl.ControlSize = .regular
     private var taiString: String {
         
         let s = GuardEscapedView.taihiStrings
@@ -77,8 +77,8 @@ final class GuardEscapedView: NSView {
         borderPath.stroke()
         
         let fontSize = NSFont.boldSystemFont(ofSize: CGFloat(width - 10))
-        let attributes = [ NSForegroundColorAttributeName: NSColor.lightGray,
-                           NSFontAttributeName: fontSize ]
+        let attributes = [ NSAttributedStringKey.foregroundColor: NSColor.lightGray,
+                           NSAttributedStringKey.font: fontSize ]
         let tai = NSAttributedString(string: taiString, attributes: attributes)
         let hi = NSAttributedString(string: hiString, attributes: attributes)
         
@@ -110,8 +110,8 @@ final class GuardEscapedView: NSView {
         borderPath.stroke()
         
         let fontSize = NSFont.boldSystemFont(ofSize: CGFloat(height - 14))
-        let attributes = [ NSForegroundColorAttributeName: NSColor.lightGray,
-                           NSFontAttributeName: fontSize ]
+        let attributes = [ NSAttributedStringKey.foregroundColor: NSColor.lightGray,
+                           NSAttributedStringKey.font: fontSize ]
         let tai = NSAttributedString(string: taiString, attributes: attributes)
         let hi = NSAttributedString(string: hiString, attributes: attributes)
         

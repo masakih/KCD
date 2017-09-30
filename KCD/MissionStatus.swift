@@ -9,7 +9,7 @@
 
 import Cocoa
 
-fileprivate enum State: Int {
+private enum State: Int {
     
     case none = 0
     case hasMission = 1
@@ -27,15 +27,15 @@ final class MissionStatus: NSObject {
         didSet { time = realTime as NSNumber }
     }
     
-    dynamic var name: String?
-    dynamic var time: NSNumber?
-    dynamic var state: NSNumber?
-    dynamic var missionId: NSNumber? {
+    @objc dynamic var name: String?
+    @objc dynamic var time: NSNumber?
+    @objc dynamic var state: NSNumber?
+    @objc dynamic var missionId: NSNumber? {
         
         didSet { updateState() }
     }
-    dynamic var milliseconds: NSNumber?
-    dynamic var fleetName: String?
+    @objc dynamic var milliseconds: NSNumber?
+    @objc dynamic var fleetName: String?
     
     init?(number: Int) {
         
@@ -53,18 +53,18 @@ final class MissionStatus: NSObject {
         controller.automaticallyRearrangesObjects = true
         controller.fetch(nil)
         
-        bind(#keyPath(state), to: controller, withKeyPath: "selection.mission_0")
-        bind(#keyPath(missionId), to: controller, withKeyPath: "selection.mission_1")
-        bind(#keyPath(milliseconds), to: controller, withKeyPath: "selection.mission_2")
-        bind(#keyPath(fleetName), to: controller, withKeyPath: "selection.name")
+        bind(NSBindingName(#keyPath(state)), to: controller, withKeyPath: "selection.mission_0")
+        bind(NSBindingName(#keyPath(missionId)), to: controller, withKeyPath: "selection.mission_1")
+        bind(NSBindingName(#keyPath(milliseconds)), to: controller, withKeyPath: "selection.mission_2")
+        bind(NSBindingName(#keyPath(fleetName)), to: controller, withKeyPath: "selection.name")
     }
     
     deinit {
         
-        unbind(#keyPath(state))
-        unbind(#keyPath(missionId))
-        unbind(#keyPath(milliseconds))
-        unbind(#keyPath(fleetName))
+        unbind(NSBindingName(#keyPath(state)))
+        unbind(NSBindingName(#keyPath(missionId)))
+        unbind(NSBindingName(#keyPath(milliseconds)))
+        unbind(NSBindingName(#keyPath(fleetName)))
     }
     
     private func updateState() {

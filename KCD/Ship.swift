@@ -65,7 +65,7 @@ final class Ship: KCManagedObject {
 }
 // swiftlint:eable variable_name
 
-fileprivate let shortSTypeNames: [String] = {
+private let shortSTypeNames: [String] = {
     
     guard let url = Bundle.main.url(forResource: "STypeShortName", withExtension: "plist"),
         let array = NSArray(contentsOf: url) as? [String]
@@ -77,7 +77,7 @@ fileprivate let shortSTypeNames: [String] = {
     return array
 }()
 
-fileprivate let levelUpExps: [Int] = {
+private let levelUpExps: [Int] = {
     
     guard let url = Bundle.main.url(forResource: "LevelUpExp", withExtension: "plist"),
         let array = NSArray(contentsOf: url) as? [Int]
@@ -95,13 +95,13 @@ extension Ship {
         
         return ["ship_id"]
     }
-    dynamic var name: String { return master_ship.name }
+    @objc dynamic var name: String { return master_ship.name }
     
     class func keyPathsForValuesAffectingShortTypeName() -> Set<String> {
         
         return ["ship_id"]
     }
-    dynamic var shortTypeName: String? {
+    @objc dynamic var shortTypeName: String? {
         
         let index = master_ship.stype.id - 1
         
@@ -115,7 +115,7 @@ extension Ship {
         
         return ["exp"]
     }
-    dynamic var next: NSNumber? {
+    @objc dynamic var next: NSNumber? {
         
         guard case 0..<levelUpExps.count = lv
             else { return nil }
@@ -133,7 +133,7 @@ extension Ship {
         
         return ["nowhp", "maxph"]
     }
-    dynamic var status: Int {
+    @objc dynamic var status: Int {
         
         let stat = Double(nowhp) / Double(maxhp)
         
@@ -148,7 +148,7 @@ extension Ship {
         
         return ["sally_area"]
     }
-    dynamic var planColor: NSColor {
+    @objc dynamic var planColor: NSColor {
         
         if !UserDefaults.standard[.showsPlanColor] { return NSColor.controlTextColor }
         
@@ -170,14 +170,14 @@ extension Ship {
 
 extension Ship {
     
-    dynamic var maxBull: Int { return master_ship.bull_max }
-    dynamic var maxFuel: Int { return master_ship.fuel_max }
+    @objc dynamic var maxBull: Int { return master_ship.bull_max }
+    @objc dynamic var maxFuel: Int { return master_ship.fuel_max }
     
     class func keyPathsForValuesAffectingIsMaxKaryoku() -> Set<String> {
         
         return ["karyoku_1", "kyouka_0"]
     }
-    dynamic var isMaxKaryoku: Bool {
+    @objc dynamic var isMaxKaryoku: Bool {
         
         let initial = master_ship.houg_0
         let max = karyoku_1
@@ -190,7 +190,7 @@ extension Ship {
         
         return ["raisou_1", "kyouka_1"]
     }
-    dynamic var isMaxRaisou: Bool {
+    @objc dynamic var isMaxRaisou: Bool {
         
         let initial = master_ship.raig_0
         let max = raisou_1
@@ -203,7 +203,7 @@ extension Ship {
         
         return ["taiku_1", "kyouka_2"]
     }
-    dynamic var isMaxTaiku: Bool {
+    @objc dynamic var isMaxTaiku: Bool {
         
         let initial = master_ship.tyku_0
         let max = taiku_1
@@ -216,7 +216,7 @@ extension Ship {
         
         return ["soukou_1", "kyouka_3"]
     }
-    dynamic var isMaxSoukou: Bool {
+    @objc dynamic var isMaxSoukou: Bool {
         
         let initial = master_ship.souk_0
         let max = soukou_1
@@ -229,7 +229,7 @@ extension Ship {
         
         return ["lucky_1", "kyouka_4"]
     }
-    dynamic var isMaxLucky: Bool {
+    @objc dynamic var isMaxLucky: Bool {
         
         let initial = master_ship.luck_0
         let max = lucky_1
@@ -242,13 +242,13 @@ extension Ship {
         
         return ["ship_id"]
     }
-    dynamic var upgradeLevel: Int { return master_ship.afterlv }
+    @objc dynamic var upgradeLevel: Int { return master_ship.afterlv }
     
     class func keyPathsForValuesAffectingUpgradeExp() -> Set<String> {
         
         return ["exp"]
     }
-    dynamic var upgradeExp: NSNumber? {
+    @objc dynamic var upgradeExp: NSNumber? {
         
         let upgradeLv = upgradeLevel
         
@@ -260,7 +260,7 @@ extension Ship {
         return upExp < 0 ? 0 : upExp as NSNumber
     }
     
-    dynamic var guardEscaped: Bool {
+    @objc dynamic var guardEscaped: Bool {
         
         let store = TemporaryDataStore.default
         
@@ -274,7 +274,7 @@ extension Ship {
         
         return ["nowhp"]
     }
-    dynamic var steelRequiredInRepair: Int {
+    @objc dynamic var steelRequiredInRepair: Int {
         
         return Int(Double(maxFuel) * 0.06 * Double(maxhp - nowhp))
     }
@@ -283,7 +283,7 @@ extension Ship {
         
         return ["nowhp"]
     }
-    dynamic var fuelRequiredInRepair: Int {
+    @objc dynamic var fuelRequiredInRepair: Int {
         
         return Int(Double(maxFuel) * 0.032 * Double(maxhp - nowhp))
     }
@@ -344,7 +344,7 @@ extension Ship {
         return ServerDataStore.default.slotItem(by: slotItemId(index))
     }
     
-    dynamic var totalEquipment: Int {
+    @objc dynamic var totalEquipment: Int {
         
         return (0...4).map(slotItemMax).reduce(0, +)
     }
@@ -354,7 +354,7 @@ extension Ship {
         return ["slot_0", "slot_1", "slot_2", "slot_3", "slot_4",
                    "onslot_0", "onslot_1", "onslot_2", "onslot_3", "onslot_4"]
     }
-    dynamic var seiku: Int {
+    @objc dynamic var seiku: Int {
         
         return SeikuCalclator(ship: self).seiku
     }

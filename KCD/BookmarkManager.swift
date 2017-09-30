@@ -8,7 +8,7 @@
 
 import Cocoa
 
-fileprivate enum BookmarkMenuTag: Int {
+private enum BookmarkMenuTag: Int {
     
     case bookmark = 5000
     
@@ -38,7 +38,7 @@ final class BookmarkManager: NSObject, NSMenuDelegate {
         let sort = NSSortDescriptor(key: "order", ascending: true)
         bookmarksController.sortDescriptors = [sort]
         
-        let mainMenu = NSApplication.shared().mainMenu
+        let mainMenu = NSApplication.shared.mainMenu
         let bItem = mainMenu?.item(withTag: BookmarkMenuTag.bookmark.rawValue)
         bookmarkMenu = bItem?.submenu
         bookmarkMenu?.delegate = self

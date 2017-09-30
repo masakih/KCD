@@ -16,8 +16,8 @@ final class JSONReciever {
         CustomHTTPProtocol.classDelegate = self
     }
     
-    fileprivate let queue: Queue<APIResponse>
-    fileprivate var recievers: [URLProtocol: NSMutableData] = [:]
+    private let queue: Queue<APIResponse>
+    private var recievers: [URLProtocol: NSMutableData] = [:]
 }
 
 extension JSONReciever: CustomHTTPProtocolDelegate {

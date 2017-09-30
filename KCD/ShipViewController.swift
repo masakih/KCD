@@ -8,7 +8,7 @@
 
 import Cocoa
 
-fileprivate enum ViewType: Int {
+private enum ViewType: Int {
     
     case exp
     case power
@@ -18,7 +18,7 @@ fileprivate enum ViewType: Int {
 
 final class ShipViewController: MainTabVIewItemViewController {
     
-    let managedObjectContext = ServerDataStore.default.context
+    @objc let managedObjectContext = ServerDataStore.default.context
     
     deinit {
         
@@ -32,9 +32,9 @@ final class ShipViewController: MainTabVIewItemViewController {
     @IBOutlet var power3TableView: NSScrollView!
     @IBOutlet weak var standardDeviationField: NSTextField!
     
-    override var nibName: String! {
+    override var nibName: NSNib.Name {
         
-        return "ShipViewController"
+        return .nibName(instanceOf: self)
     }
     
     override var hasShipTypeSelector: Bool { return true }
@@ -46,7 +46,7 @@ final class ShipViewController: MainTabVIewItemViewController {
         }
     }
     
-    var standardDeviation: Double {
+    @objc var standardDeviation: Double {
         
         guard let ships = shipController.arrangedObjects as? [Ship],
             !ships.isEmpty,
@@ -63,7 +63,7 @@ final class ShipViewController: MainTabVIewItemViewController {
         return sqrt(total / Double(ships.count))
     }
     
-    fileprivate weak var currentTableView: NSView?
+    private weak var currentTableView: NSView?
     
     override func viewDidLoad() {
         
@@ -82,7 +82,7 @@ final class ShipViewController: MainTabVIewItemViewController {
         }
         
         shipController.sortDescriptors = UserDefaults.standard[.shipviewSortDescriptors]
-        shipController.addObserver(self, forKeyPath: NSSortDescriptorsBinding, context: nil)
+        shipController.addObserver(self, forKeyPath: NSBindingName.sortDescriptors.rawValue, context: nil)
         shipController.addObserver(self, forKeyPath: "arrangedObjects", context: nil)
         
         let tableViews = [expTableView, powerTableView, power2TableView, power3TableView]
@@ -90,7 +90,7 @@ final class ShipViewController: MainTabVIewItemViewController {
             .forEach {
                 
                 NotificationCenter.default
-                    .addObserver(forName: .NSScrollViewDidEndLiveScroll, object: $0, queue: nil) {
+                    .addObserver(forName: NSScrollView.didEndLiveScrollNotification, object: $0, queue: nil) {
                         
                         guard let target = $0.object as? NSScrollView
                             else { return }
@@ -108,7 +108,7 @@ final class ShipViewController: MainTabVIewItemViewController {
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
         
-        if keyPath == NSSortDescriptorsBinding {
+        if keyPath == NSBindingName.sortDescriptors.rawValue {
             
             UserDefaults.standard[.shipviewSortDescriptors] = shipController.sortDescriptors
             
@@ -125,7 +125,7 @@ final class ShipViewController: MainTabVIewItemViewController {
         super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
     }
     
-    fileprivate func showView(with type: ViewType) {
+    private func showView(with type: ViewType) {
         
         let newSelection: NSView = {
             
@@ -179,6 +179,6 @@ extension ShipViewController: NSTableViewDelegate {
         guard let identifier = tableColumn?.identifier
             else { return nil }
         
-        return tableView.make(withIdentifier: identifier, owner: nil)
+        return tableView.makeView(withIdentifier: identifier, owner: nil)
     }
 }

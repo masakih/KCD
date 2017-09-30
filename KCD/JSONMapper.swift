@@ -53,9 +53,7 @@ extension String {
         
         if self.characters.count < 5 { return self }
         
-        let s = self.index(self.startIndex, offsetBy: 4)
-        
-        return self[s..<self.endIndex]
+/* MARK: CONVERT */        return String(self[index(startIndex, offsetBy: 4)...])
     }
 }
 

@@ -10,10 +10,10 @@ import Cocoa
 
 final class MapWindowController: NSWindowController {
     
-    let managedObjectContext = ServerDataStore.default.context
+    @objc let managedObjectContext = ServerDataStore.default.context
     
-    override var windowNibName: String! {
+    override var windowNibName: NSNib.Name {
         
-        return "MapWindowController"
+        return .nibName(instanceOf: self)
     }
 }

@@ -17,17 +17,17 @@ final class SlotItemWindowController: NSWindowController {
         case equiped = 1
     }
     
-    let managedObjectContext = ServerDataStore.default.context
+    @objc let managedObjectContext = ServerDataStore.default.context
     
     @IBOutlet var slotItemController: NSArrayController!
     @IBOutlet var searchField: NSSearchField!
     
-    override var windowNibName: String! {
+    override var windowNibName: NSNib.Name {
         
-        return "SlotItemWindowController"
+        return .nibName(instanceOf: self)
     }
     
-    var showEquipmentType: Int {
+    @objc var showEquipmentType: Int {
         
         get { return UserDefaults.standard[.showEquipmentType].rawValue }
         set {
@@ -53,7 +53,7 @@ final class SlotItemWindowController: NSWindowController {
         }
     }
     
-    var showEquipmentTypeTitle: String {
+    @objc var showEquipmentTypeTitle: String {
         
         switch UserDefaults.standard[.showEquipmentType] {
         case .all:
@@ -79,7 +79,7 @@ final class SlotItemWindowController: NSWindowController {
 
 
 @available(OSX 10.12.2, *)
-fileprivate var objectForTouchBar: [Int: NSTouchBar] = [:]
+private var objectForTouchBar: [Int: NSTouchBar] = [:]
 
 @available(OSX 10.12.2, *)
 extension SlotItemWindowController {
@@ -98,8 +98,8 @@ extension SlotItemWindowController {
                 return myTouchBar
             }
             
-            var topLevel: NSArray = []
-            Bundle.main.loadNibNamed("SlotItemWindowTouchBar",
+            var topLevel: NSArray?
+            Bundle.main.loadNibNamed(NSNib.Name("SlotItemWindowTouchBar"),
                                      owner: self,
                                      topLevelObjects: &topLevel)
             return myTouchBar

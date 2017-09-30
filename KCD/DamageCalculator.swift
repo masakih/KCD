@@ -18,10 +18,10 @@ enum BattleFleet {
 
 final class DamageCalculator {
     
-    fileprivate let store = TemporaryDataStore.oneTimeEditor()
+    private let store = TemporaryDataStore.oneTimeEditor()
     
-    fileprivate let json: JSON
-    fileprivate let battleType: BattleType
+    private let json: JSON
+    private let battleType: BattleType
     
     init(_ json: JSON, _ battleType: BattleType = .normal) {
         
@@ -81,7 +81,7 @@ extension DamageCalculator {
 // MARK: - Battle phase
 extension DamageCalculator {
     
-    fileprivate func calcKouku() {
+    private func calcKouku() {
         
         calculateFDam(baseKeyPath: "api_data.api_kouku.api_stage3")
         calculateFDam(baseKeyPath: "api_data.api_kouku2.api_stage3")
@@ -106,7 +106,7 @@ extension DamageCalculator {
         
     }
     
-    fileprivate func calcOpeningAttack() {
+    private func calcOpeningAttack() {
         
         // 艦隊　戦闘艦隊
         // 連合vs通常（水上）　第２
@@ -125,7 +125,7 @@ extension DamageCalculator {
         }
     }
     
-    fileprivate func calcOpeningTaisen() {
+    private func calcOpeningTaisen() {
         
         calculateHogeki(baseKeyPath: "api_data.api_opening_taisen") {
             
@@ -133,7 +133,7 @@ extension DamageCalculator {
         }
     }
     
-    fileprivate func calcHougeki1() {
+    private func calcHougeki1() {
         
         // 艦隊　戦闘艦隊
         // 連合vs通常（水上）　第１
@@ -150,7 +150,7 @@ extension DamageCalculator {
         }
     }
     
-    fileprivate func calcHougeki2() {
+    private func calcHougeki2() {
         
         // 艦隊　戦闘艦隊
         // 連合vs通常（水上）　第１
@@ -169,7 +169,7 @@ extension DamageCalculator {
         }
     }
     
-    fileprivate func calcHougeki3() {
+    private func calcHougeki3() {
         
         // 艦隊　戦闘艦隊
         // 連合vs通常（水上）　第２
@@ -189,7 +189,7 @@ extension DamageCalculator {
         }
     }
     
-    fileprivate func calcRaigeki() {
+    private func calcRaigeki() {
         
         // 艦隊　戦闘艦隊
         // 連合vs通常（水上）　第２
@@ -208,7 +208,7 @@ extension DamageCalculator {
         }
     }
     
-    fileprivate func calculateMidnightBattle() {
+    private func calculateMidnightBattle() {
         
         // 艦隊　戦闘艦隊
         // 連合vs通常（水上）　第２
@@ -225,7 +225,7 @@ extension DamageCalculator {
 // MARK: - Properties
 extension DamageCalculator {
     
-    fileprivate var damages: [Damage] {
+    private var damages: [Damage] {
         
         let array = store.sortedDamagesById()
         
@@ -247,7 +247,7 @@ extension DamageCalculator {
         return array
     }
     
-    fileprivate var isCombinedBattle: Bool {
+    private var isCombinedBattle: Bool {
         
         switch battleType {
         case .combinedAir, .combinedWater, .eachCombinedAir, .eachCombinedWater:
@@ -258,7 +258,7 @@ extension DamageCalculator {
         }
     }
     
-    fileprivate func buildDamagedEntity() {
+    private func buildDamagedEntity() {
         
         guard let battle = store.battle()
             else { return print("Battle is invalid.") }
@@ -387,12 +387,12 @@ extension DamageCalculator {
         damage.hp = newHP
     }
     
-    fileprivate func calculateHogeki(baseKeyPath: String, _ bf: () -> BattleFleet) {
+    private func calculateHogeki(baseKeyPath: String, _ bf: () -> BattleFleet) {
         
         calculateHogeki(baseKeyPath: baseKeyPath, battleFleet: bf())
     }
     
-    fileprivate func calculateHogeki(baseKeyPath: String, battleFleet: BattleFleet = .first) {
+    private func calculateHogeki(baseKeyPath: String, battleFleet: BattleFleet = .first) {
         
         let baseValue = json[baseKeyPath.components(separatedBy: ".")]
         
@@ -441,12 +441,12 @@ extension DamageCalculator {
         }
     }
     
-    fileprivate func calculateFDam(baseKeyPath: String, _ bf: () -> BattleFleet) {
+    private func calculateFDam(baseKeyPath: String, _ bf: () -> BattleFleet) {
         
         calculateFDam(baseKeyPath: baseKeyPath, battleFleet: bf())
     }
     
-    fileprivate func calculateFDam(baseKeyPath: String, battleFleet: BattleFleet = .first) {
+    private func calculateFDam(baseKeyPath: String, battleFleet: BattleFleet = .first) {
         
         let baseValue = json[baseKeyPath.components(separatedBy: ".")]
         
@@ -490,7 +490,7 @@ extension DamageCalculator {
 // MARK: - Damage control
 extension DamageCalculator {
     
-    fileprivate func damageControlIfPossible(nowhp: Int, ship: Ship) -> Int {
+    private func damageControlIfPossible(nowhp: Int, ship: Ship) -> Int {
         
         var nowHp = nowhp
         if nowHp < 0 { nowHp = 0 }
