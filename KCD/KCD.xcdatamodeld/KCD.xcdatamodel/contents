@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16E195" minimumToolsVersion="Xcode 4.3" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13240" systemVersion="16G29" minimumToolsVersion="Xcode 4.3" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="AirBase" representedClassName="KCD.AirBase" syncable="YES">
         <attribute name="action_kind" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="area_id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
@@ -305,6 +305,8 @@
         <attribute name="kyouka_2" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="kyouka_3" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="kyouka_4" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="kyouka_5" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="kyouka_6" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="leng" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="locked" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="locked_equip" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
@@ -373,7 +375,7 @@
         <element name="Material" positionX="0" positionY="0" width="128" height="165"/>
         <element name="NyukyoDock" positionX="0" positionY="0" width="128" height="195"/>
         <element name="Quest" positionX="0" positionY="0" width="128" height="240"/>
-        <element name="Ship" positionX="0" positionY="0" width="128" height="840"/>
+        <element name="Ship" positionX="0" positionY="0" width="128" height="870"/>
         <element name="SlotItem" positionX="0" positionY="0" width="128" height="165"/>
     </elements>
 </model>
