@@ -123,6 +123,8 @@
 		F4649FCE1DBC52600097AEBF /* ScreenshotDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4649FD01DBC52600097AEBF /* ScreenshotDetailViewController.xib */; };
 		F4649FD31DBC52A50097AEBF /* ScreenshotEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4649FD51DBC52A50097AEBF /* ScreenshotEditorViewController.xib */; };
 		F46F104918ABAC910063E503 /* KCD.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F46F104718ABAC910063E503 /* KCD.xcdatamodeld */; };
+		F46FEA3F1F81285D00E2427C /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46FEA3E1F81285D00E2427C /* Localizable.swift */; };
+		F46FEA411F8128BB00E2427C /* LocalizedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46FEA401F8128BB00E2427C /* LocalizedStrings.swift */; };
 		F471784A1B6F9B5600F5E59D /* ResourceHistory.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F47178481B6F9B5600F5E59D /* ResourceHistory.xcdatamodeld */; };
 		F472159E1E1E6EE70083D3BC /* ShipMasterDetailWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F472159D1E1E6EE70083D3BC /* ShipMasterDetailWindowController.swift */; };
 		F47215A01E1E90C10083D3BC /* JSONNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F472159F1E1E90C10083D3BC /* JSONNode.swift */; };
@@ -471,6 +473,8 @@
 		F4649FDA1DBC54320097AEBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ScreenshotDetailViewController.xib; sourceTree = "<group>"; };
 		F4649FDB1DBC543A0097AEBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ScreenshotEditorViewController.xib; sourceTree = "<group>"; };
 		F46F104818ABAC910063E503 /* KCD.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KCD.xcdatamodel; sourceTree = "<group>"; };
+		F46FEA3E1F81285D00E2427C /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
+		F46FEA401F8128BB00E2427C /* LocalizedStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedStrings.swift; sourceTree = "<group>"; };
 		F47178491B6F9B5600F5E59D /* ResourceHistory.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ResourceHistory.xcdatamodel; sourceTree = "<group>"; };
 		F472159D1E1E6EE70083D3BC /* ShipMasterDetailWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShipMasterDetailWindowController.swift; sourceTree = "<group>"; };
 		F472159F1E1E90C10083D3BC /* JSONNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONNode.swift; sourceTree = "<group>"; };
@@ -959,6 +963,8 @@
 				F48883461F2E2E9A0069E0C3 /* DefaultKeyExtendedValues.swift */,
 				F404AF611F2D8CAE00A006B8 /* DefaultKeys.swift */,
 				F48883441F2E095F0069E0C3 /* DefaultSettings.swift */,
+				F46FEA3E1F81285D00E2427C /* Localizable.swift */,
+				F46FEA401F8128BB00E2427C /* LocalizedStrings.swift */,
 				F44775881EF6AAD900287572 /* SakutekiCalculator.swift */,
 				F41A451A1F4917640066F83D /* SeikuCalclator.swift */,
 				F4BBA21E1F243CA900E68743 /* DamageCalculator.swift */,
@@ -1525,6 +1531,7 @@
 				F4048A9F1E19308A008ACFD6 /* StrokeTextFieldCell.swift in Sources */,
 				F42A8FEA1E43476F0099DC1D /* KenzoMark.swift in Sources */,
 				F4CF25AA1E338ED000C02A66 /* JSONTracker.swift in Sources */,
+				F46FEA411F8128BB00E2427C /* LocalizedStrings.swift in Sources */,
 				F44BC6D11E224299004644E3 /* PortCommand.swift in Sources */,
 				F4FC3E901E437E1F00E41228 /* JSONReciever.swift in Sources */,
 				F4AAA1511F6D6DDC00975E87 /* NSTextFieldExtension.swift in Sources */,
@@ -1534,6 +1541,7 @@
 				F4E5FF0C1E1645280026868C /* ScreenshotListViewController.swift in Sources */,
 				F4CF25B01E3455EA00C02A66 /* Fleet.swift in Sources */,
 				F44BC71B1E29DCB4004644E3 /* MemberKDockCommand.swift in Sources */,
+				F46FEA3F1F81285D00E2427C /* Localizable.swift in Sources */,
 				F4AC136F1E0963DB00851147 /* ProgressPanel.swift in Sources */,
 				F4AA592A1E1D1387001667AF /* IgnoreZeroTransformer.swift in Sources */,
 				F4AC136D1E0802C000851147 /* PreferencePanelController.swift in Sources */,
