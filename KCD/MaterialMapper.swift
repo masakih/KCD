@@ -41,8 +41,7 @@ final class MaterialMapper: JSONMapper {
     
     private class func dataKeys(_ apiResponse: APIResponse) -> [String] {
         
-        guard let materialApi = MaterialAPI(rawValue: apiResponse.api)
-            else { return ["api_data"] }
+        guard let materialApi = MaterialAPI(rawValue: apiResponse.api) else { return ["api_data"] }
         
         switch materialApi {
         case .port: return ["api_data", "api_material"]
@@ -60,8 +59,11 @@ final class MaterialMapper: JSONMapper {
     func commit() {
         
         guard let store = configuration.editorStore as? ServerDataStore,
-            let material = store.material() ?? store.createMaterial()
-            else { return print("Can not create Material") }
+            let material = store.material() ?? store.createMaterial() else {
+                
+                print("Can not create Material")
+                return
+        }
         
         if let _ = data[0].int {
             
@@ -93,11 +95,8 @@ final class MaterialMapper: JSONMapper {
         
         data.forEach {
             
-            guard let i = $0["api_id"].int,
-                i != 0,
-                i - 1 < keys.count,
-                let newValue = $0["api_value"].int
-                else { return }
+            guard let i = $0["api_id"].int, case 1..<keys.count = i else { return }
+            guard let newValue = $0["api_value"].int else { return }
             
             material.setValue(newValue as NSNumber, forKey: keys[i - 1])
         }

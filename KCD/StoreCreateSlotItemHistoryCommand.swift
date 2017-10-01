@@ -16,8 +16,11 @@ final class StoreCreateSlotItemHistoryCommand: JSONCommand {
         guard let fuel = parameter["api_item1"].int,
             let bull = parameter["api_item2"].int,
             let steel = parameter["api_item3"].int,
-            let bauxite = parameter["api_item4"].int
-            else { return print("Parameter is Wrong") }
+            let bauxite = parameter["api_item4"].int else {
+                
+                print("Parameter is Wrong")
+                return
+        }
         
         let success = data["api_create_flag"].int ?? 0
         let name = masterSlotItemName(sccess: success, data: data)
@@ -25,18 +28,21 @@ final class StoreCreateSlotItemHistoryCommand: JSONCommand {
         
         let store = ServerDataStore.default
         
-        guard let flagShip = store.deck(by: 1)
-            .map({ $0.ship_0 })
-            .flatMap({ store.ship(by: $0) })
-            else { return print("Flagship is not found") }
+        guard let flagShip = store.deck(by: 1).map({ $0.ship_0 }).flatMap({ store.ship(by: $0) }) else {
+            
+            print("Flagship is not found")
+            return
+        }
         
-        guard let basic = store.basic()
-            else { return print("Basic is wrong") }
+        guard let basic = store.basic() else { return print("Basic is wrong") }
         
         let localStore = LocalDataStore.oneTimeEditor()
         
-        guard let newHistory = localStore.createKaihatuHistory()
-            else { return print("Can not create new KaihatuHistory entry") }
+        guard let newHistory = localStore.createKaihatuHistory() else {
+            
+            print("Can not create new KaihatuHistory entry")
+            return
+        }
         
         newHistory.name = name
         newHistory.fuel = fuel
@@ -58,10 +64,10 @@ final class StoreCreateSlotItemHistoryCommand: JSONCommand {
             
         }
         
-        guard let slotItemId = data["api_slot_item"]["api_slotitem_id"].int
-            else {
-                print("api_slotitem_id is wrong")
-                return ""
+        guard let slotItemId = data["api_slot_item"]["api_slotitem_id"].int else {
+            
+            print("api_slotitem_id is wrong")
+            return ""
         }
         
         return ServerDataStore.default.masterSlotItem(by: slotItemId)?.name ?? ""

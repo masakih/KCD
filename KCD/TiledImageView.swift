@@ -241,8 +241,7 @@ extension TiledImageView {
     
     override func mouseEntered(with event: NSEvent) {
         
-        guard let entered = event.trackingArea?.userInfo?["info"] as? TitledImageCellInformation
-            else { return }
+        guard let entered = event.trackingArea?.userInfo?["info"] as? TitledImageCellInformation else { return }
         
         currentSelection = entered
         needsDisplay = true
@@ -263,8 +262,10 @@ extension TiledImageView {
             if !NSMouseInRect(mouse, $0.element.frame, isFlipped) { return }
             
             guard let pItem = NSPasteboardItem(pasteboardPropertyList: $0.offset,
-                                               ofType: NSPasteboard.PasteboardType(TiledImageView.privateDraggingUTI))
-                else { fatalError() }
+                                               ofType: NSPasteboard.PasteboardType(TiledImageView.privateDraggingUTI)) else {
+                    
+                    fatalError()
+            }
             
             let item = NSDraggingItem(pasteboardWriter: pItem)
             item.setDraggingFrame($0.element.frame, contents: images[$0.offset])
@@ -292,8 +293,10 @@ extension TiledImageView: NSDraggingSource {
     override func draggingUpdated(_ sender: NSDraggingInfo) -> NSDragOperation {
         
         guard let types = sender.draggingPasteboard().types,
-            types.contains(NSPasteboard.PasteboardType(TiledImageView.privateDraggingUTI))
-            else { return [] }
+            types.contains(NSPasteboard.PasteboardType(TiledImageView.privateDraggingUTI)) else {
+                
+                return []
+        }
         
         if !sender.draggingSourceOperationMask().contains(.move) { return [] }
         
@@ -322,8 +325,10 @@ extension TiledImageView: NSDraggingSource {
     override func prepareForDragOperation(_ sender: NSDraggingInfo) -> Bool {
         
         guard let types = sender.draggingPasteboard().types,
-            types.contains(NSPasteboard.PasteboardType(TiledImageView.privateDraggingUTI))
-            else { return false }
+            types.contains(NSPasteboard.PasteboardType(TiledImageView.privateDraggingUTI)) else {
+                
+                return false
+        }
         
         currentSelection = nil
         needsDisplay = true
@@ -334,23 +339,25 @@ extension TiledImageView: NSDraggingSource {
     override func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
         
         guard let types = sender.draggingPasteboard().types,
-            types.contains(NSPasteboard.PasteboardType(TiledImageView.privateDraggingUTI))
-            else { return false }
+            types.contains(NSPasteboard.PasteboardType(TiledImageView.privateDraggingUTI)) else {
+                
+                return false
+        }
         
         let pboard = sender.draggingPasteboard()
         
-        guard let pbItems = pboard.pasteboardItems,
-            !pbItems.isEmpty,
-            let index = pbItems.first?.propertyList(forType: NSPasteboard.PasteboardType(TiledImageView.privateDraggingUTI)) as? Int,
-            case 0..<images.count = index
-            else { return false }
+        guard let pbItems = pboard.pasteboardItems, !pbItems.isEmpty else { return false }
+        guard let index = pbItems.first?.propertyList(forType: NSPasteboard.PasteboardType(TiledImageView.privateDraggingUTI)) as? Int,
+            case 0..<images.count = index else {
+                
+                return false
+        }
         
         let mouse = convert(sender.draggingLocation(), from: nil)
         
         let underMouse = infos.enumerated().filter { NSMouseInRect(mouse, $0.element.frame, isFlipped) }
         
-        guard !underMouse.isEmpty
-            else { return false }
+        guard !underMouse.isEmpty else { return false }
         
         var newImages = images
         let image = images[index]

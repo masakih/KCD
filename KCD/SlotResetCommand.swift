@@ -21,13 +21,16 @@ final class SlotResetCommand: JSONCommand {
         
         let store = ServerDataStore.oneTimeEditor()
         
-        guard let ship = parameter["api_id"]
-            .int
-            .flatMap({ store.ship(by: $0) })
-            else { return print("api_id is wrong") }
-        
-        guard let slotItems = data["api_slot"].arrayObject as? [Int]
-            else { return print("Can not parse api_data.api_slot") }
+        guard let ship = parameter["api_id"].int.flatMap({ store.ship(by: $0) }) else {
+            
+            print("api_id is wrong")
+            return
+        }
+        guard let slotItems = data["api_slot"].arrayObject as? [Int] else {
+            
+            print("Can not parse api_data.api_slot")
+            return
+        }
         
         slotItems.enumerated().forEach { ship.setItem($0.element, to: $0.offset) }
         

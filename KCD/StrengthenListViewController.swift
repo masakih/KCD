@@ -111,10 +111,10 @@ final class StrengthenListViewController: MainTabVIewItemViewController {
         if let url = Bundle.main.url(forResource: resourceName, withExtension: resourceExtension),
             let data = try? Data(contentsOf: url) {
             
-            guard let array = NSKeyedUnarchiver.unarchiveObject(with: data) as? [EnhancementListItem]
-                else {
-                    print("\(resourceName).\(resourceExtension) not found.")
-                    return
+            guard let array = NSKeyedUnarchiver.unarchiveObject(with: data) as? [EnhancementListItem] else {
+                
+                print("\(resourceName).\(resourceExtension) not found.")
+                return
             }
             
             equipmentStrengthenList = array
@@ -156,8 +156,7 @@ final class StrengthenListViewController: MainTabVIewItemViewController {
     
     private func convert(items: [EnhancementListItem]) -> [StrengthenListItem] {
         
-        guard let item = items.first
-            else { return [] }
+        guard let item = items.first else { return [] }
         
         let group: StrengthenListItem = StrengthenListGroupItem(type: item.equipmentType)
         let items: [StrengthenListItem] = items.map(StrengthenListEnhancementItem.init(item:))
@@ -253,8 +252,7 @@ private final class EnhancementListItemDownloader: NSObject, URLSessionDownloadD
         
         if let _ = plistDownloadTask { return }
         
-        guard let plistURL = URL(string: "http://git.osdn.jp/view?p=kcd/KCD.git;a=blob;f=KCD/\(resourceName).\(resourceExtension);hb=HEAD")
-            else { return }
+        guard let plistURL = URL(string: "http://git.osdn.jp/view?p=kcd/KCD.git;a=blob;f=KCD/\(resourceName).\(resourceExtension);hb=HEAD") else { return }
         
         finishOperation = completeHandler
         plistDownloadTask = plistDownloadSession.downloadTask(with: plistURL)
@@ -265,9 +263,8 @@ private final class EnhancementListItemDownloader: NSObject, URLSessionDownloadD
         
         plistDownloadTask = nil
         
-        guard let data = try? Data(contentsOf: location, options: []),
-            let list = NSKeyedUnarchiver.unarchiveObject(with: data as Data) as? [EnhancementListItem]
-            else { return }
+        guard let data = try? Data(contentsOf: location, options: []) else { return }
+        guard let list = NSKeyedUnarchiver.unarchiveObject(with: data as Data) as? [EnhancementListItem] else { return }
         
         finishOperation?(list)
     }

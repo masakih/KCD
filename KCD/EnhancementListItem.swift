@@ -71,8 +71,11 @@ final class EnhancementListItem: NSObject, NSCoding, NSCopying {
             let e = EquipmentType(rawValue: aDecoder.decodeInteger(forKey: CodeKey.equipmentType)),
             let t = aDecoder.decodeObject(forKey: CodeKey.targetEquipment) as? String,
             let req = aDecoder.decodeObject(forKey: CodeKey.requiredEquipments) as? RequiredEquipmentSet,
-            let s = aDecoder.decodeObject(forKey: CodeKey.secondsShipNames) as? [String]
-            else { print("Can not decode EnhancementListItem"); return nil }
+            let s = aDecoder.decodeObject(forKey: CodeKey.secondsShipNames) as? [String] else {
+                
+                print("Can not decode EnhancementListItem")
+                return nil
+        }
         
         let w = aDecoder.decodeInteger(forKey: CodeKey.weekday)
         let rem = aDecoder.decodeObject(forKey: CodeKey.remodelEquipment) as? String
@@ -131,8 +134,11 @@ final class RequiredEquipmentSet: NSObject, NSCoding, NSCopying {
     required convenience init?(coder aDecoder: NSCoder) {
         
         guard let i = aDecoder.decodeObject(forKey: CodeKey.identifier) as? String,
-            let r = aDecoder.decodeObject(forKey: CodeKey.requiredEquipments) as? [RequiredEquipment]
-            else { print("Can not decode RequiredEquipmentSet"); return nil }
+            let r = aDecoder.decodeObject(forKey: CodeKey.requiredEquipments) as? [RequiredEquipment] else {
+                
+                print("Can not decode RequiredEquipmentSet")
+                return nil
+        }
         
         self.init(identifier: i, requiredEquipments: r)
     }
@@ -185,10 +191,12 @@ final class RequiredEquipment: NSObject, NSCoding, NSCopying {
     required convenience init?(coder aDecoder: NSCoder) {
         
         guard let i = aDecoder.decodeObject(forKey: CodeKey.identifier) as? String,
-            
-        let c = aDecoder.decodeObject(forKey: CodeKey.currentLevelString) as? String,
-        let na = aDecoder.decodeObject(forKey: CodeKey.name) as? String
-            else { print("Can not decode RequiredEquipment"); return nil }
+            let c = aDecoder.decodeObject(forKey: CodeKey.currentLevelString) as? String,
+            let na = aDecoder.decodeObject(forKey: CodeKey.name) as? String else {
+                
+                print("Can not decode RequiredEquipment")
+                return nil
+        }
         
         let nu = aDecoder.decodeInteger(forKey: CodeKey.number)
         let s = aDecoder.decodeInteger(forKey: CodeKey.screw)

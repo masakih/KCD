@@ -24,16 +24,17 @@ private func cacheable(status: Int) -> Bool {
 private func cacheable(response: HTTPURLResponse) -> Bool {
     
     guard let cc = response.allHeaderFields["Cache-Control"] as? String,
-        let _ = cc.lowercased().range(of: "no-store")
-        else { return true }
+        let _ = cc.lowercased().range(of: "no-store") else {
+            
+            return true
+    }
     
     return false
 }
 
 private func cacheable(request: URLRequest) -> Bool {
     
-    guard let cc: String = request.allHTTPHeaderFields?["Cache-Control"]
-        else { return true }
+    guard let cc: String = request.allHTTPHeaderFields?["Cache-Control"] else { return true }
     
     if let _ = cc.lowercased().range(of: "no-store") { return false }
     if let _ = cc.lowercased().range(of: "no-cache") { return false }

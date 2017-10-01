@@ -133,9 +133,8 @@ final class BroserWindowController: NSWindowController {
         NotificationCenter.default
             .addObserver(forName: .CombinedDidCange, object: nil, queue: nil) {
                 
-                guard UserDefaults.standard[.autoCombinedView],
-                    let type = $0.userInfo?[CombinedCommand.userInfoKey] as? CombineType
-                    else { return }
+                guard UserDefaults.standard[.autoCombinedView] else { return }
+                guard let type = $0.userInfo?[CombinedCommand.userInfoKey] as? CombineType else { return }
                 
                 if !Thread.isMainThread { Thread.sleep(forTimeInterval: 0.1) }
                 
@@ -156,8 +155,7 @@ final class BroserWindowController: NSWindowController {
     
     override func swipe(with event: NSEvent) {
         
-        guard UserDefaults.standard[.useSwipeChangeCombinedView]
-            else { return }
+        guard UserDefaults.standard[.useSwipeChangeCombinedView] else { return }
         
         if event.deltaX > 0 {
             
@@ -419,8 +417,7 @@ extension BroserWindowController {
         
         let type: FleetViewType = (newPosition == .oldStyle) ? .minimumViewType : .detailViewType
         
-        guard let newController = FleetViewController(viewType: type)
-            else { return }
+        guard let newController = FleetViewController(viewType: type) else { return }
         
         newController.enableAnimation = true
         newController.shipOrder = fleetViewController.shipOrder
@@ -430,8 +427,7 @@ extension BroserWindowController {
     
     private func windowHeightForFleetViewPosition(position newPosition: FleetViewPosition) -> CGFloat {
         
-        guard var contentHeight = window!.contentView?.frame.size.height
-            else { return 0.0 }
+        guard var contentHeight = window!.contentView?.frame.size.height else { return 0.0 }
         
         if fleetViewPosition == newPosition { return contentHeight }
         if fleetViewPosition == .oldStyle {
@@ -607,8 +603,7 @@ extension BroserWindowController {
             self.shipTypeButton.dismissPopover(nil)
             self.shipTypeSegment.unbind(.selectedIndex)
             
-            guard let button = self.shipTypeButton.view as? NSButton
-                else { return }
+            guard let button = self.shipTypeButton.view as? NSButton else { return }
             
             let vc = self.tabViewItemViewControllers[$0]
             button.isHidden = !vc.hasShipTypeSelector

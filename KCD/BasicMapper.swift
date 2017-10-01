@@ -31,8 +31,7 @@ final class BasicMapper: JSONMapper {
     
     private class func dataKeys(_ apiResponse: APIResponse) -> [String] {
         
-        guard let basicApi = BasicAPI(rawValue: apiResponse.api)
-            else { return ["api_data"] }
+        guard let basicApi = BasicAPI(rawValue: apiResponse.api) else { return ["api_data"] }
         
         switch basicApi {
         case .port: return ["api_data", "api_basic"]
@@ -45,8 +44,11 @@ final class BasicMapper: JSONMapper {
         
         let store = ServerDataStore.oneTimeEditor()
         
-        guard let basic = store.basic() ?? store.createBasic()
-            else { return print("Can not Get Basic") }
+        guard let basic = store.basic() ?? store.createBasic() else {
+            
+            print("Can not Get Basic")
+            return
+        }
         
         registerElement(data, to: basic)
     }

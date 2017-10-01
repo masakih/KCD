@@ -39,8 +39,7 @@ final class MissionStatus: NSObject {
     
     init?(number: Int) {
         
-        guard case 2...4 = number
-            else { return nil }
+        guard case 2...4 = number else { return nil }
         
         self.number = number
         controller = NSArrayController()
@@ -70,8 +69,11 @@ final class MissionStatus: NSObject {
     private func updateState() {
         
         guard let state = state as? Int,
-            let stat = State(rawValue: state)
-            else { return print("unknown State") }
+            let stat = State(rawValue: state) else {
+                
+                print("unknown State")
+                return
+        }
         
         if stat == .none || stat == .finish {
             
@@ -83,17 +85,16 @@ final class MissionStatus: NSObject {
             return
         }
         
-        guard let missionId = self.missionId as? Int
-            else { return }
+        guard let missionId = self.missionId as? Int else { return }
         
-        guard let mission = ServerDataStore.default.masterMission(by: missionId)
-            else {
-                name = "Unknown"
-                DispatchQueue(label: "MissionStatus")
-                    .asyncAfter(deadline: .now() + 0.33) {
-                        self.updateState()
-                }
-                return
+        guard let mission = ServerDataStore.default.masterMission(by: missionId) else {
+            
+            name = "Unknown"
+            DispatchQueue(label: "MissionStatus")
+                .asyncAfter(deadline: .now() + 0.33) {
+                    self.updateState()
+            }
+            return
         }
         
         name = mission.name
@@ -108,11 +109,11 @@ final class MissionStatus: NSObject {
             return
         }
         
-        guard let milliSeconds = milliseconds as? Int
-            else {
-                name = nil
-                time = nil
-                return
+        guard let milliSeconds = milliseconds as? Int else {
+            
+            name = nil
+            time = nil
+            return
         }
         
         let compTime = TimeInterval(Int(milliSeconds / 1_000))
@@ -123,8 +124,7 @@ final class MissionStatus: NSObject {
         if didNotify { return }
         if diff >= 1 * 60 { return }
         
-        guard let fleetName = fleetName
-            else { return }
+        guard let fleetName = fleetName else { return }
         
         let notification = NSUserNotification()
         let format = NSLocalizedString("%@ Will Return From Mission.", comment: "%@ Will Return From Mission.")

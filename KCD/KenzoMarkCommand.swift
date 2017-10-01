@@ -12,13 +12,19 @@ final class KenzoMarkCommand: JSONCommand {
     
     override func execute() {
         
-        guard let kdockId = parameter["api_kdock_id"].int
-            else { return print("api_kdock_id is wrong") }
+        guard let kdockId = parameter["api_kdock_id"].int else {
+            
+            print("api_kdock_id is wrong")
+            return
+        }
         
         let store = ServerDataStore.default
         
-        guard let kenzoDock = store.kenzoDock(by: kdockId)
-            else { return print("KenzoDock is not fount") }
+        guard let kenzoDock = store.kenzoDock(by: kdockId) else {
+            
+            print("KenzoDock is not fount")
+            return
+        }
         
         let fuel = kenzoDock.item1
         let bull = kenzoDock.item2
@@ -27,12 +33,18 @@ final class KenzoMarkCommand: JSONCommand {
         let kaihatu = kenzoDock.item5
         let shipId = kenzoDock.created_ship_id
         
-        guard let flagShip = store.masterShip(by: shipId)
-            else { return print("MasterShip is not found") }
+        guard let flagShip = store.masterShip(by: shipId) else {
+            
+            print("MasterShip is not found")
+            return
+        }
         
         let localStore = LocalDataStore.oneTimeEditor()
-        guard let new = localStore.createKenzoHistory()
-            else { return print("Can not create KenzoHistory") }
+        guard let new = localStore.createKenzoHistory() else {
+            
+            print("Can not create KenzoHistory")
+            return
+        }
         
         new.name = flagShip.name
         new.sTypeId = flagShip.stype.id

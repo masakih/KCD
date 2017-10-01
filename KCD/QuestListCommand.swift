@@ -20,14 +20,14 @@ final class QuestListCommand: JSONCommand {
     override func execute() {
         
         // 左のタブがAllじゃない時は無視する
-        guard let tab = parameter["api_tab_id"].int,
-            tab == 0
-            else { return }
-        
+        guard let tab = parameter["api_tab_id"].int, tab == 0 else { return }
         guard let ql0No = data["api_list"][0]["api_no"].int,
             let pageCount = data["api_page_count"].int,
-            let page = data["api_disp_page"].int
-            else { return print("data is wrong") }
+            let page = data["api_disp_page"].int else {
+                
+                print("data is wrong")
+                return
+        }
         
         let store = ServerDataStore.oneTimeEditor()
         
@@ -41,13 +41,15 @@ final class QuestListCommand: JSONCommand {
         let quests = store.sortedQuestByNo()
         data["api_list"].forEach { _, quest in
             
-            guard let no = quest["api_no"].int
-                else { return }
+            guard let no = quest["api_no"].int else { return }
             
             let t = quests.binarySearch { $0.no ==? no }
             
-            guard let new = t ?? store.createQuest()
-                else { return print("Can not create Quest") }
+            guard let new = t ?? store.createQuest() else {
+                
+                print("Can not create Quest")
+                return
+            }
             
             new.bonus_flag = quest["api_bonus_flag"].int.map { $0 != 0 } ?? false
             new.category = quest["api_category"].int ?? 0

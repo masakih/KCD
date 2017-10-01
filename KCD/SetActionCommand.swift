@@ -19,16 +19,27 @@ final class SetActionCommand: JSONCommand {
     
     override func execute() {
         
-        guard let areaId = parameter["api_area_id"].int,
-            let rIds = parameter["api_base_id"]
-                .string?
-                .components(separatedBy: ",")
-                .map({ Int($0) ?? -1 }),
-            let actions = parameter["api_action_kind"]
-                .string?
-                .components(separatedBy: ",")
-                .map({ Int($0) ?? -1 })
-            else { return print("Argument is rwong") }
+        guard let areaId = parameter["api_area_id"].int else {
+            
+            print("api_area_id is wrong.")
+            return
+        }
+        guard let rIds = parameter["api_base_id"]
+            .string?
+            .components(separatedBy: ",")
+            .map({ Int($0) ?? -1 }) else {
+                
+                print("api_base_id is wrong.")
+                return
+        }
+        guard let actions = parameter["api_action_kind"]
+            .string?
+            .components(separatedBy: ",")
+            .map({ Int($0) ?? -1 }) else {
+                
+                print("api_action_kind is rwong")
+                return
+        }
         
         if rIds.count != actions.count { print("missmatch count") }
         

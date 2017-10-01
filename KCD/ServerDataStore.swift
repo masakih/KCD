@@ -41,8 +41,7 @@ extension ServerDataStore {
     
     func airBases() -> [AirBase] {
         
-        guard let airbase = try? objects(of: AirBase.entity)
-            else { return [] }
+        guard let airbase = try? objects(of: AirBase.entity) else { return [] }
         
         return airbase
     }
@@ -51,8 +50,7 @@ extension ServerDataStore {
         
         let p = NSPredicate(format: "area_id == %ld AND rid == %ld", area, base)
         
-        guard let airBases = try? objects(of: AirBase.entity, predicate: p)
-            else { return nil }
+        guard let airBases = try? objects(of: AirBase.entity, predicate: p) else { return nil }
         
         return airBases.first
     }
@@ -64,8 +62,7 @@ extension ServerDataStore {
     
     func basic() -> Basic? {
         
-        guard let basics = try? objects(of: Basic.entity)
-            else { return nil }
+        guard let basics = try? objects(of: Basic.entity) else { return nil }
         
         return basics.first
     }
@@ -79,8 +76,7 @@ extension ServerDataStore {
         
         let sortDec = NSSortDescriptor(key: "id", ascending: true)
         
-        guard let decks = try? objects(of: Deck.entity, sortDescriptors: [sortDec])
-            else { return [] }
+        guard let decks = try? objects(of: Deck.entity, sortDescriptors: [sortDec]) else { return [] }
         
         return decks
     }
@@ -89,8 +85,7 @@ extension ServerDataStore {
         
         let p = NSPredicate(format: "id = %ld", id)
         
-        guard let decks = try? objects(of: Deck.entity, predicate: p)
-            else { return nil }
+        guard let decks = try? objects(of: Deck.entity, predicate: p) else { return nil }
         
         return decks.first
     }
@@ -99,16 +94,15 @@ extension ServerDataStore {
         
         let dockPredicate = NSPredicate(format: "id = %ld", dockId)
         
-        guard let kenzoDocks = try? objects(of: KenzoDock.entity, predicate: dockPredicate)
-            else { return nil }
+        guard let kenzoDocks = try? objects(of: KenzoDock.entity, predicate: dockPredicate) else { return nil }
         
         return kenzoDocks.first
     }
     
     func mapArea(by id: Int) -> MasterMapArea? {
         let predicate = NSPredicate(format: "id = %ld", id)
-        guard let mapAreas = try? objects(of: MasterMapArea.entity, predicate: predicate)
-            else { return nil }
+        guard let mapAreas = try? objects(of: MasterMapArea.entity, predicate: predicate) else { return nil }
+        
         return mapAreas.first
     }
     
@@ -116,8 +110,7 @@ extension ServerDataStore {
         
         let predicate = NSPredicate(format: "maparea_id = %ld AND %K = %ld", area, "no", no)
         
-        guard let mapInfos = try? objects(of: MasterMapInfo.entity, predicate: predicate)
-            else { return nil }
+        guard let mapInfos = try? objects(of: MasterMapInfo.entity, predicate: predicate) else { return nil }
         
         return mapInfos.first
     }
@@ -126,16 +119,14 @@ extension ServerDataStore {
         
         let p = NSPredicate(format: "id = %ld", id)
         
-        guard let missions = try? objects(of: MasterMission.entity, predicate: p)
-            else { return nil }
+        guard let missions = try? objects(of: MasterMission.entity, predicate: p) else { return nil }
         
         return missions.first
     }
     
     func masterShips() -> [MasterShip] {
         
-        guard let ships = try? objects(of: MasterShip.entity)
-            else { return [] }
+        guard let ships = try? objects(of: MasterShip.entity) else { return [] }
         
         return ships
     }
@@ -144,8 +135,7 @@ extension ServerDataStore {
         
         let sortDesc = NSSortDescriptor(key: "id", ascending: true)
         
-        guard let ships = try? objects(of: MasterShip.entity, sortDescriptors: [sortDesc])
-            else { return [] }
+        guard let ships = try? objects(of: MasterShip.entity, sortDescriptors: [sortDesc]) else { return [] }
         
         return ships
     }
@@ -154,8 +144,7 @@ extension ServerDataStore {
         
         let p = NSPredicate(format: "id = %ld", id)
         
-        guard let ships = try? objects(of: MasterShip.entity, predicate: p)
-            else { return nil }
+        guard let ships = try? objects(of: MasterShip.entity, predicate: p) else { return nil }
         
         return ships.first
     }
@@ -164,16 +153,14 @@ extension ServerDataStore {
         
         let sortDesc = NSSortDescriptor(key: "id", ascending: true)
         
-        guard let masterSlotItems = try? objects(of: MasterSlotItem.entity, sortDescriptors: [sortDesc])
-            else { return [] }
+        guard let masterSlotItems = try? objects(of: MasterSlotItem.entity, sortDescriptors: [sortDesc]) else { return [] }
         
         return masterSlotItems
     }
     
     func masterSlotItems() -> [MasterSlotItem] {
         
-        guard let masterSlotItems = try? objects(of: MasterSlotItem.entity)
-            else { return [] }
+        guard let masterSlotItems = try? objects(of: MasterSlotItem.entity) else { return [] }
         
         return masterSlotItems
     }
@@ -182,8 +169,7 @@ extension ServerDataStore {
         
         let p = NSPredicate(format: "id = %ld", id)
         
-        guard let masterSlotItems = try? objects(of: MasterSlotItem.entity, predicate: p)
-            else { return nil }
+        guard let masterSlotItems = try? objects(of: MasterSlotItem.entity, predicate: p) else { return nil }
         
         return masterSlotItems.first
     }
@@ -192,16 +178,14 @@ extension ServerDataStore {
         
         let predicate = NSPredicate(format: "id = %ld", id)
         
-        guard let types = try? objects(of: MasterSlotItemEquipType.entity, predicate: predicate)
-            else { return nil }
+        guard let types = try? objects(of: MasterSlotItemEquipType.entity, predicate: predicate) else { return nil }
         
         return types.first
     }
     
     func masterSTypes() -> [MasterSType] {
         
-        guard let masterSTypes = try? objects(of: MasterSType.entity)
-            else { return [] }
+        guard let masterSTypes = try? objects(of: MasterSType.entity) else { return [] }
         
         return masterSTypes
     }
@@ -210,16 +194,14 @@ extension ServerDataStore {
         
         let sortDesc = NSSortDescriptor(key: "id", ascending: true)
         
-        guard let masterSTypes = try? objects(of: MasterSType.entity, sortDescriptors: [sortDesc])
-            else { return [] }
+        guard let masterSTypes = try? objects(of: MasterSType.entity, sortDescriptors: [sortDesc]) else { return [] }
         
         return masterSTypes
     }
     
     func material() -> Material? {
         
-        guard let materials = try? objects(of: Material.entity)
-            else { return nil }
+        guard let materials = try? objects(of: Material.entity) else { return nil }
         
         return materials.first
     }
@@ -233,8 +215,7 @@ extension ServerDataStore {
         
         let p = NSPredicate(format: "id = %ld", id)
         
-        guard let ndocks = try? objects(of: NyukyoDock.entity, predicate: p)
-            else { return nil }
+        guard let ndocks = try? objects(of: NyukyoDock.entity, predicate: p) else { return nil }
         
         return ndocks.first
     }
@@ -243,9 +224,8 @@ extension ServerDataStore {
         
         let predicate = NSPredicate(format: "id = %d", deckId)
         
-        guard let decks = try? objects(of: Deck.entity, predicate: predicate),
-            let deck = decks.first
-            else { return [] }
+        guard let decks = try? objects(of: Deck.entity, predicate: predicate) else { return [] }
+        guard let deck = decks.first else { return [] }
         
         return deck[0...5]
     }
@@ -256,8 +236,7 @@ extension ServerDataStore {
         
         let predicate = NSPredicate(format: "id = %d", shipId)
         
-        guard let ships = try? objects(of: Ship.entity, predicate: predicate)
-            else { return nil }
+        guard let ships = try? objects(of: Ship.entity, predicate: predicate) else { return nil }
         
         return ships.first
     }
@@ -266,8 +245,7 @@ extension ServerDataStore {
         
         let predicate = NSPredicate(format: "id = %d", shipId)
         
-        guard let ships = try? objects(of: Ship.entity, predicate: predicate)
-            else { return [] }
+        guard let ships = try? objects(of: Ship.entity, predicate: predicate) else { return [] }
         
         return ships
     }
@@ -276,8 +254,7 @@ extension ServerDataStore {
         
         let predicate = NSPredicate(format: "NOT id IN %@", shipIds)
         
-        guard let ships = try? objects(of: Ship.entity, predicate: predicate)
-            else { return [] }
+        guard let ships = try? objects(of: Ship.entity, predicate: predicate) else { return [] }
         
         return ships
     }
@@ -286,8 +263,7 @@ extension ServerDataStore {
         
         let predicate = NSPredicate(format: "NOT fleet = 0")
         
-        guard let ships = try? objects(of: Ship.entity, predicate: predicate)
-            else { return [] }
+        guard let ships = try? objects(of: Ship.entity, predicate: predicate) else { return [] }
         
         return ships
     }
@@ -303,9 +279,8 @@ extension ServerDataStore {
         
         let predicate = NSPredicate(format: "id = %d", argumentArray: [slotItemId])
         
-        guard let slotItems = try? objects(of: SlotItem.entity, predicate: predicate),
-            let slotItem = slotItems.first
-            else { return 0 }
+        guard let slotItems = try? objects(of: SlotItem.entity, predicate: predicate) else { return 0 }
+        guard let slotItem = slotItems.first else { return 0 }
         
         return slotItem.master_slotItem.id
     }
@@ -314,8 +289,7 @@ extension ServerDataStore {
         
         let p = NSPredicate(format: "id = %ld", itemId)
         
-        guard let slotItems = try? objects(of: SlotItem.entity, predicate: p)
-            else { return nil }
+        guard let slotItems = try? objects(of: SlotItem.entity, predicate: p) else { return nil }
         
         return slotItems.first
     }
@@ -324,16 +298,14 @@ extension ServerDataStore {
         
         let sortDesc = NSSortDescriptor(key: "id", ascending: true)
         
-        guard let slotItems = try? objects(of: SlotItem.entity, sortDescriptors: [sortDesc])
-            else { return [] }
+        guard let slotItems = try? objects(of: SlotItem.entity, sortDescriptors: [sortDesc]) else { return [] }
         
         return slotItems
     }
     
     func slotItems() -> [SlotItem] {
         
-        guard let slotItems = try? objects(of: SlotItem.entity)
-            else { return [] }
+        guard let slotItems = try? objects(of: SlotItem.entity) else { return [] }
         
         return slotItems
     }
@@ -342,8 +314,7 @@ extension ServerDataStore {
         
         let predicate = NSPredicate(format: "id IN %@", itemIds)
         
-        guard let slotItems = try? objects(of: SlotItem.entity, predicate: predicate)
-            else { return [] }
+        guard let slotItems = try? objects(of: SlotItem.entity, predicate: predicate) else { return [] }
         
         return slotItems
     }
@@ -352,8 +323,7 @@ extension ServerDataStore {
         
         let predicate = NSPredicate(format: "NOT id IN %@", itemIds)
         
-        guard let slotItems = try? objects(of: SlotItem.entity, predicate: predicate)
-            else { return [] }
+        guard let slotItems = try? objects(of: SlotItem.entity, predicate: predicate) else { return [] }
         
         return slotItems
     }
@@ -365,8 +335,7 @@ extension ServerDataStore {
     
     func quests() -> [Quest] {
         
-        guard let quests = try? objects(of: Quest.entity)
-            else { return [] }
+        guard let quests = try? objects(of: Quest.entity) else { return [] }
         
         return quests
     }
@@ -375,8 +344,7 @@ extension ServerDataStore {
         
         let p = NSPredicate(format: "%K = %ld", "no", no)
         
-        guard let quests = try? objects(of: Quest.entity, predicate: p)
-            else { return nil }
+        guard let quests = try? objects(of: Quest.entity, predicate: p) else { return nil }
         
         return quests.first
     }
@@ -385,8 +353,7 @@ extension ServerDataStore {
         
         let p = NSPredicate(format: "%K In %@", "no", range.map {$0})
         
-        guard let quests = try? objects(of: Quest.entity, predicate: p)
-            else { return [] }
+        guard let quests = try? objects(of: Quest.entity, predicate: p) else { return [] }
         
         return quests
     }
@@ -395,8 +362,7 @@ extension ServerDataStore {
         
         let sortDesc = NSSortDescriptor(key: "no", ascending: true)
         
-        guard let quests = try? objects(of: Quest.entity, sortDescriptors: [sortDesc])
-            else { return [] }
+        guard let quests = try? objects(of: Quest.entity, sortDescriptors: [sortDesc]) else { return [] }
         
         return quests
     }

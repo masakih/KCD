@@ -28,32 +28,28 @@ final class SuppliesCell: NSCell {
     
     private var fuelStatusColor: NSColor {
         
-        guard let s = shipStatus
-            else { return redColor }
+        guard let s = shipStatus else { return redColor }
         
         return statusColor(withValue: s.fuel, max: s.maxFuel)
     }
     
     private var bullStatusColor: NSColor {
         
-        guard let s = shipStatus
-            else { return redColor }
+        guard let s = shipStatus else { return redColor }
         
         return statusColor(withValue: s.bull, max: s.maxBull)
     }
     
     private var numberOfFuelColoredCell: Int {
         
-        guard let s = shipStatus
-            else { return 0 }
+        guard let s = shipStatus else { return 0 }
         
         return numberOfColoredCell(withValue: s.fuel, max: s.maxFuel)
     }
     
     private var numberOgBullColoredCell: Int {
         
-        guard let s = shipStatus
-            else { return 0 }
+        guard let s = shipStatus else { return 0 }
         
         return numberOfColoredCell(withValue: s.bull, max: s.maxBull)
     }

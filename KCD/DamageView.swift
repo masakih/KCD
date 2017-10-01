@@ -22,6 +22,7 @@ final class DamageView: NSView {
         
         willSet {
             guard let v = DamageType(rawValue: newValue) else {
+                
                 print("Can not set damageType")
                 return
             }

@@ -21,28 +21,42 @@ final class SetPlaneCommand: JSONCommand {
         
         guard let areaId = parameter["api_area_id"].int,
             let rId = parameter["api_base_id"].int,
-            let squadronId = parameter["api_squadron_id"].int
-            else { return print("SetPlaneCommand: Argument is wrong") }
-        
-        guard let distance = data["api_distance"].int
-            else { return print("SetPlaneCommand: JSON is wrong") }
+            let squadronId = parameter["api_squadron_id"].int else {
+                
+                print("SetPlaneCommand: Argument is wrong")
+                return
+        }
+        guard let distance = data["api_distance"].int else {
+            
+            print("SetPlaneCommand: JSON is wrong")
+            return
+        }
         
         let planInfo = data["api_plane_info"][0]
         
         guard let slotid = planInfo["api_slotid"].int,
-            let state = planInfo["api_state"].int
-            else { return print("api_plane_info is wrong") }
+            let state = planInfo["api_state"].int else {
+                
+                print("api_plane_info is wrong")
+                return
+        }
         
         let store = ServerDataStore.oneTimeEditor()
         
-        guard let airbase = store.airBase(area: areaId, base: rId)
-            else { return print("AirBase is not found") }
+        guard let airbase = store.airBase(area: areaId, base: rId) else {
+            
+            print("AirBase is not found")
+            return
+        }
         
         let planes = airbase.planeInfo
         
         guard planes.count >= squadronId,
-            let plane = planes[squadronId - 1] as? AirBasePlaneInfo
-            else { return print("AirBase is wrong") }
+            let plane = planes[squadronId - 1] as? AirBasePlaneInfo else {
+                
+                print("AirBase is wrong")
+                return
+        }
         
         // TODO: state が 2 の時のみ cond, count, max_count がnilであることを許すようにする
         plane.cond = planInfo["api_cond"].int ?? 0

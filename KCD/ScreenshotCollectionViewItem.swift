@@ -22,8 +22,7 @@ final class ScreenshotCollectionViewItem: NSCollectionViewItem {
     
     var imageFrame: NSRect {
         
-        guard let imageView = imageView
-            else { fatalError("ScreenshotCollectionViewItem: imageView is nil") }
+        guard let imageView = imageView else { fatalError("ScreenshotCollectionViewItem: imageView is nil") }
         
         let frame = centerFitRect(imageView.image, target: imageView.frame)
         

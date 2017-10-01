@@ -53,9 +53,8 @@ final class BookmarkListViewController: NSViewController {
         
         let clickedRow = tableView.clickedRow
         
-        guard let bookmarks = bookmarkController.arrangedObjects as? [Any],
-            case 0..<bookmarks.count = clickedRow
-            else { return }
+        guard let bookmarks = bookmarkController.arrangedObjects as? [Any] else { return }
+        guard case 0..<bookmarks.count = clickedRow else { return }
         
         editorController?.representedObject = bookmarks[clickedRow]
         popover.show(relativeTo: tableView.rect(ofRow: clickedRow), of: tableView, preferredEdge: .minY)
@@ -65,9 +64,8 @@ final class BookmarkListViewController: NSViewController {
         
         let clickedRow = tableView.clickedRow
         
-        guard let bookmarks = bookmarkController.arrangedObjects as? [Any],
-            case 0..<bookmarks.count = clickedRow
-            else { return }
+        guard let bookmarks = bookmarkController.arrangedObjects as? [Any] else { return }
+        guard case 0..<bookmarks.count = clickedRow else { return }
         
         bookmarkController.remove(atArrangedObjectIndex: clickedRow)
     }
@@ -77,8 +75,7 @@ extension BookmarkListViewController: NSTableViewDelegate, NSTableViewDataSource
     
     func reorderingBoolmarks() {
         
-        guard let objects = bookmarkController.arrangedObjects as? [Bookmark]
-            else { return }
+        guard let objects = bookmarkController.arrangedObjects as? [Bookmark] else { return }
         
         var order = 100
         objects.forEach {
@@ -89,32 +86,28 @@ extension BookmarkListViewController: NSTableViewDelegate, NSTableViewDataSource
     
     func tableViewSelectionDidChange(_ notification: Notification) {
         
-        guard let tableView = notification.object as? NSTableView,
-            let bookmarks = bookmarkController.arrangedObjects as? [Bookmark]
-            else { return }
+        guard let tableView = notification.object as? NSTableView else { return }
+        guard let bookmarks = bookmarkController.arrangedObjects as? [Bookmark] else { return }
         
         let selection = tableView.selectedRow
         tableView.deselectAll(nil)
         
-        guard case 0..<bookmarks.count = selection
-            else { return }
+        guard case 0..<bookmarks.count = selection else { return }
         
         delegate?.didSelectBookmark(bookmarks[selection])
     }
     
     func tableView(_ tableView: NSTableView, pasteboardWriterForRow row: Int) -> NSPasteboardWriting? {
         
-        guard let objects = bookmarkController.arrangedObjects as? [NSPasteboardWriting]
-            else { return nil }
+        guard let objects = bookmarkController.arrangedObjects as? [NSPasteboardWriting] else { return nil }
         
         return objects[row]
     }
     
     func tableView(_ tableView: NSTableView, draggingSession session: NSDraggingSession, willBeginAt screenPoint: NSPoint, forRowIndexes rowIndexes: IndexSet) {
         
-        guard let first = rowIndexes.first,
-            let last = rowIndexes.last
-            else { return }
+        guard let first = rowIndexes.first else { return }
+        guard let last = rowIndexes.last else { return }
         
         objectRange = first...last
     }
@@ -129,11 +122,9 @@ extension BookmarkListViewController: NSTableViewDelegate, NSTableViewDataSource
                    proposedRow row: Int,
                    proposedDropOperation dropOperation: NSTableView.DropOperation) -> NSDragOperation {
         
-        guard dropOperation == .above,
-            !(objectRange ~= row),
-            let tableView = info.draggingSource() as? NSTableView,
-            tableView == self.tableView
-            else { return [] }
+        guard dropOperation == .above else { return [] }
+        guard !(objectRange ~= row) else { return [] }
+        guard let tableView = info.draggingSource() as? NSTableView, tableView == self.tableView else { return [] }
         
         return .move
     }
@@ -147,23 +138,23 @@ extension BookmarkListViewController: NSTableViewDelegate, NSTableViewDataSource
             
             guard let objects = bookmarkController.arrangedObjects as? [Any],
                 case 1...objects.count = row,
-                let target = objects[row - 1] as? Bookmark
-                else { return 0 }
+                let target = objects[row - 1] as? Bookmark else {
+                    
+                    return 0
+            }
             
             return target.order
         }()
         
-        guard let items = info.draggingPasteboard().pasteboardItems
-            else { return false }
+        guard let items = info.draggingPasteboard().pasteboardItems else { return false }
         
         let store = BookmarkManager.shared().editorStore
         items.enumerated().forEach {
             
-            guard let data = $0.element.data(forType: .bookmarkItem),
-                let uri = NSKeyedUnarchiver.unarchiveObject(with: data) as? URL,
-                let oID = managedObjectContext.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: uri),
-                let bookmark = store.object(of: Bookmark.entity, with: oID)
-                else { return }
+            guard let data = $0.element.data(forType: .bookmarkItem) else { return }
+            guard let uri = NSKeyedUnarchiver.unarchiveObject(with: data) as? URL else { return }
+            guard let oID = managedObjectContext.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: uri) else { return }
+            guard let bookmark = store.object(of: Bookmark.entity, with: oID) else { return }
             
             bookmark.order = targetOrder + $0.offset + 1
         }

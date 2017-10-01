@@ -40,8 +40,7 @@ final class AirBaseWindowController: NSWindowController {
     
     private var areas: [Int] {
         
-        guard let content = airBaseController.content as? [AirBase]
-            else { return [] }
+        guard let content = airBaseController.content as? [AirBase] else { return [] }
         
         return content
             .flatMap { $0.area_id }
@@ -59,6 +58,7 @@ final class AirBaseWindowController: NSWindowController {
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
         
         guard keyPath == "content" else {
+            
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
             return
         }
@@ -126,8 +126,7 @@ final class AirBaseWindowController: NSWindowController {
     
     private func updatePlaneSegment() {
         
-        guard let content = airBaseController.content as? [AirBase]
-            else { return }
+        guard let content = airBaseController.content as? [AirBase] else { return }
         
         let area = NSCountedSet()
         content.forEach { area.add($0.area_id) }
@@ -147,8 +146,7 @@ extension AirBaseWindowController: NSTableViewDelegate {
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         
-        guard let identifier = tableColumn?.identifier
-            else { return nil }
+        guard let identifier = tableColumn?.identifier else { return nil }
         
         return tableView.makeView(withIdentifier: identifier, owner: nil)
     }

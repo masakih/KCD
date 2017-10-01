@@ -136,8 +136,7 @@ extension JSONMapper {
             // TODO: replace to forEach
             for piar in keyPiar {
                 
-                guard let v1 = $0.value(forKey: piar.key)
-                    else { return .orderedAscending }
+                guard let v1 = $0.value(forKey: piar.key) else { return .orderedAscending }
                 
                 if element[piar.apiKey].type == .null { return .orderedDescending }
                 
@@ -154,8 +153,11 @@ extension JSONMapper {
         
         let store = configuration.editorStore
         
-        guard let objects = try? store.objects(of: configuration.entity, sortDescriptors: sortDescriptors)
-            else { return print("Can not get entity named \(configuration.entity.name)") }
+        guard let objects = try? store.objects(of: configuration.entity, sortDescriptors: sortDescriptors) else {
+            
+            print("Can not get entity named \(configuration.entity.name)")
+            return
+        }
         
         let list = (data.type == .array ? data.arrayValue : [data])
         list.forEach {

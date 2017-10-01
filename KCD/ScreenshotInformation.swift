@@ -73,8 +73,7 @@ final class ScreenshotInformation: NSObject, NSCoding {
     
     required convenience init?(coder aDecoder: NSCoder) {
         
-        guard let u = aDecoder.decodeObject(forKey: CodingKey.url) as? URL
-            else { return nil }
+        guard let u = aDecoder.decodeObject(forKey: CodingKey.url) as? URL else { return nil }
         
         self.init(url: u)
     }

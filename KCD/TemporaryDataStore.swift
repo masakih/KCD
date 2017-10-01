@@ -50,8 +50,7 @@ extension TemporaryDataStore {
     
     func battles() -> [Battle] {
         
-        guard let battles = try? self.objects(of: Battle.entity)
-            else { return [] }
+        guard let battles = try? self.objects(of: Battle.entity) else { return [] }
         
         return battles
     }
@@ -70,16 +69,14 @@ extension TemporaryDataStore {
         
         let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
         
-        guard let damages = try? objects(of: Damage.entity, sortDescriptors: [sortDescriptor])
-            else { return [] }
+        guard let damages = try? objects(of: Damage.entity, sortDescriptors: [sortDescriptor]) else { return [] }
         
         return damages
     }
     
     func damages() -> [Damage] {
         
-        guard let damages = try? objects(of: Damage.entity)
-            else { return [] }
+        guard let damages = try? objects(of: Damage.entity) else { return [] }
         
         return damages
     }
@@ -91,8 +88,7 @@ extension TemporaryDataStore {
     
     func guardEscaped() -> [GuardEscaped] {
         
-        guard let escapeds = try? objects(of: GuardEscaped.entity)
-            else { return [] }
+        guard let escapeds = try? objects(of: GuardEscaped.entity) else { return [] }
         
         return escapeds
     }
@@ -101,8 +97,7 @@ extension TemporaryDataStore {
         
         let p = NSPredicate(format: "shipID = %ld AND ensured = TRUE", shipId)
         
-        guard let escapes = try? objects(of: GuardEscaped.entity, predicate: p)
-            else { return nil }
+        guard let escapes = try? objects(of: GuardEscaped.entity, predicate: p) else { return nil }
         
         return escapes.first
     }
@@ -111,8 +106,7 @@ extension TemporaryDataStore {
         
         let predicate = NSPredicate(format: "ensured = FALSE")
         
-        guard let escapeds = try? objects(of: GuardEscaped.entity, predicate: predicate)
-            else { return [] }
+        guard let escapeds = try? objects(of: GuardEscaped.entity, predicate: predicate) else { return [] }
         
         return escapeds
     }

@@ -124,8 +124,7 @@ final class Formula33: SakutekiCalculator {
         
         let type2 = item.master_slotItem.type_2
         
-        guard let eqType = EquipmentType(rawValue: type2)
-            else { return 1 }
+        guard let eqType = EquipmentType(rawValue: type2) else { return 1 }
         
         switch eqType {
         case .fighter: return 0.6
@@ -164,8 +163,7 @@ final class Formula33: SakutekiCalculator {
         
         let type2 = item.master_slotItem.type_2
         
-        guard let eqType = EquipmentType(rawValue: type2)
-            else { return 1 }
+        guard let eqType = EquipmentType(rawValue: type2) else { return 1 }
         
         switch eqType {
         case .smallRadar: return 1.25
@@ -177,8 +175,7 @@ final class Formula33: SakutekiCalculator {
     
     private func shireiSakuteki() -> Double {
         
-        guard let basic = ServerDataStore.default.basic()
-            else { return 0 }
+        guard let basic = ServerDataStore.default.basic() else { return 0 }
         
         return ceil(0.4 * Double(basic.level))
     }

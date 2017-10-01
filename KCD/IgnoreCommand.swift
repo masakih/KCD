@@ -13,8 +13,10 @@ final class IgnoreCommand: JSONCommand {
     private static let ignores: [String] = {
         
         guard let url = Bundle.main.url(forResource: "IgnoreCommand", withExtension: "plist"),
-            let array = NSArray(contentsOf: url) as? [String]
-            else { fatalError("Can not read IgnoreCommand.plist") }
+            let array = NSArray(contentsOf: url) as? [String] else {
+                
+                fatalError("Can not read IgnoreCommand.plist")
+        }
         
         return array
     }()

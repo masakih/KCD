@@ -17,8 +17,7 @@ final class MillisecondTransformer: ValueTransformer {
     
     override func transformedValue(_ value: Any?) -> Any? {
         
-        guard let v = value as? Double
-            else { return nil }
+        guard let v = value as? Double else { return nil }
         
         return v / 1_000.0
     }

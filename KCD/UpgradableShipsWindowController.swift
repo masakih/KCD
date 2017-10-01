@@ -135,9 +135,8 @@ final class UpgradableShipsWindowController: NSWindowController {
         
         let row = tableView.clickedRow
         
-        guard let ships = shipsController.arrangedObjects as? [Ship],
-            case 0..<ships.count = row
-            else { return }
+        guard let ships = shipsController.arrangedObjects as? [Ship] else { return }
+        guard case 0..<ships.count = row else { return }
         
         let shipID = ships[row].id
         if isExcludeShipID(shipID) {
@@ -156,9 +155,8 @@ final class UpgradableShipsWindowController: NSWindowController {
             
             let row = tableView.clickedRow
             
-            guard let ships = shipsController.arrangedObjects as? [Ship],
-                case 0..<ships.count = row
-                else { return false }
+            guard let ships = shipsController.arrangedObjects as? [Ship] else { return false }
+            guard case 0..<ships.count = row else { return false }
             
             let shipID = ships[row].id
             if isExcludeShipID(shipID) {

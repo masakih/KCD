@@ -69,8 +69,10 @@ final class ScreenshotListViewController: NSViewController {
     private var dirName: String {
         
         guard let name = Bundle.main.localizedInfoDictionary?["CFBundleName"] as? String,
-            !name.isEmpty
-            else { return "KCD" }
+            !name.isEmpty else {
+                
+                return "KCD"
+        }
         
         return name
     }
@@ -185,8 +187,7 @@ final class ScreenshotListViewController: NSViewController {
         
         DispatchQueue(label: "Screenshot queue").async {
             
-            guard let data = image.representation(using: .jpeg, properties: [:])
-                else { return }
+            guard let data = image.representation(using: .jpeg, properties: [:]) else { return }
             
             let url = self.screenshotSaveDirectoryURL
                 .appendingPathComponent(self.dirName)
@@ -247,10 +248,10 @@ final class ScreenshotListViewController: NSViewController {
     
     private func reloadData() {
         
-        guard let f = try? FileManager.default.contentsOfDirectory(at: screenshotSaveDirectoryURL, includingPropertiesForKeys: nil)
-            else {
-                print("can not read list of screenshot directory")
-                return
+        guard let f = try? FileManager.default.contentsOfDirectory(at: screenshotSaveDirectoryURL, includingPropertiesForKeys: nil) else {
+            
+            print("can not read list of screenshot directory")
+            return
         }
         
         let imageTypes = NSImage.imageTypes
@@ -258,8 +259,7 @@ final class ScreenshotListViewController: NSViewController {
         var current = screenshots.screenshots
         let newFiles: [URL] = f.flatMap {
             
-            guard let type = try? ws.type(ofFile: $0.path)
-                else { return nil }
+            guard let type = try? ws.type(ofFile: $0.path) else { return nil }
             
             return imageTypes.contains(type) ? $0 : nil
         }
@@ -301,15 +301,15 @@ final class ScreenshotListViewController: NSViewController {
     
     private func loadCache() -> [ScreenshotInformation] {
         
-        guard let data = try? Data(contentsOf: cachURL)
-            else {
-                print("can not load cach \(cachURL)")
-                return []
+        guard let data = try? Data(contentsOf: cachURL) else {
+            
+            print("can not load cach \(cachURL)")
+            return []
         }
         
         guard let l = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data),
-            let loaded = l as? [ScreenshotInformation]
-            else {
+            let loaded = l as? [ScreenshotInformation] else {
+                
                 print("Can not decode \(cachURL)")
                 return []
         }
@@ -359,8 +359,7 @@ extension ScreenshotListViewController {
         + "    delete { \(list) }\n"
         + "end tell"
         
-        guard let aps = NSAppleScript(source: script)
-            else { return }
+        guard let aps = NSAppleScript(source: script) else { return }
         
         aps.executeAndReturnError(nil)
         
@@ -370,8 +369,7 @@ extension ScreenshotListViewController {
         saveCache()
         reloadHandler?()
         
-        guard var index = selectionIndexes.first
-            else { return }
+        guard var index = selectionIndexes.first else { return }
         
         if arrangedInformations.count <= index {
             
@@ -419,9 +417,8 @@ extension ScreenshotListViewController: NSCollectionViewDelegateFlowLayout {
         
         defer { indexPathsOfItemsBeingDragged = nil }
         
-        guard let dragged = indexPathsOfItemsBeingDragged,
-            operation.contains(.move) || operation.contains(.delete)
-            else { return }
+        guard let dragged = indexPathsOfItemsBeingDragged else { return }
+        guard operation.contains(.move) || operation.contains(.delete) else { return }
         
         var indexes = IndexSet()
         dragged.forEach { indexes.insert($0.item) }
@@ -475,9 +472,8 @@ extension ScreenshotListViewController: NSTouchBarDelegate {
             
             collectionVisibleDidChangeHandler = { [weak self] in
                 
-                guard let `self` = self,
-                    let index = $0.first
-                    else { return }
+                guard let `self` = self else { return }
+                guard let index = $0.first else { return }
                 
                 let middle = index.item + $0.count / 2
                 
@@ -514,8 +510,7 @@ extension ScreenshotListViewController: NSTouchBarDelegate {
     func touchBar(_ touchBar: NSTouchBar,
                   makeItemForIdentifier identifier: NSTouchBarItem.Identifier) -> NSTouchBarItem? {
         
-        guard identifier == ScreenshotListViewController.ServicesItemIdentifier
-            else { return nil }
+        guard identifier == ScreenshotListViewController.ServicesItemIdentifier else { return nil }
         
         if sharingItem == nil {
             
@@ -540,8 +535,7 @@ extension ScreenshotListViewController: NSScrubberDataSource, NSScrubberDelegate
     
     func scrubber(_ scrubber: NSScrubber, viewForItemAt index: Int) -> NSScrubberItemView {
         
-        guard arrangedInformations.count > index
-            else { return NSScrubberImageItemView() }
+        guard arrangedInformations.count > index else { return NSScrubberImageItemView() }
         
         let info = arrangedInformations[index]
         let itemView = NSScrubberImageItemView()

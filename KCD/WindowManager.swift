@@ -263,10 +263,9 @@ extension WindowManager {
         
         panel.begin {
             
-            guard $0 == .OK,
-                let url = panel.url,
-                let array = self.jsonViewWindowController?.commands
-                else { return }
+            guard $0 == .OK else { return }
+            guard let url = panel.url else { return }
+            guard let array = self.jsonViewWindowController?.commands else { return }
             
             let data = NSKeyedArchiver.archivedData(withRootObject: array)
             
@@ -290,16 +289,14 @@ extension WindowManager {
         
         panel.begin {
             
-            guard $0 == .OK,
-                let url = panel.url
-                else { return }
+            guard $0 == .OK else { return }
+            guard let url = panel.url else { return }
             
             do {
                 
                 let data = try Data(contentsOf: url)
                 let array = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data)
-                guard let commands = array as? [[String: Any]]
-                    else { return }
+                guard let commands = array as? [[String: Any]] else { return }
                 
                 self.logedJSONViewWindowController = JSONViewWindowController()
                 self.logedJSONViewWindowController?.commands = commands

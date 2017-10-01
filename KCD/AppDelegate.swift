@@ -180,8 +180,12 @@ extension AppDelegate {
     
     @IBAction func removeDatabaseFile(_ sender: AnyObject?) {
         
-        guard let path = Bundle.main.path(forResource: "RemoveDatabaseFileAndRestart", ofType: "app")
-            else { return print("Can not find RemoveDatabaseFileAndRestart.app") }
+        guard let path = Bundle.main.path(forResource: "RemoveDatabaseFileAndRestart", ofType: "app") else {
+            
+            print("Can not find RemoveDatabaseFileAndRestart.app")
+            return
+        }
+        
         let process = Process()
         process.launchPath = "/usr/bin/open"
         process.arguments = [path]

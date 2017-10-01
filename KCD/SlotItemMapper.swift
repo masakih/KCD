@@ -34,8 +34,7 @@ final class SlotItemMapper: JSONMapper {
     
     private class func dataKeys(_ apiResponse: APIResponse) -> [String] {
         
-        guard let slotItemApi = SlotItemAPI(rawValue: apiResponse.api)
-            else { return ["api_data"] }
+        guard let slotItemApi = SlotItemAPI(rawValue: apiResponse.api) else { return ["api_data"] }
         
         switch slotItemApi {
         case .kousyouGetShip: return ["api_data", "api_slotitem"]
@@ -90,8 +89,7 @@ final class SlotItemMapper: JSONMapper {
             
         }
         
-        guard let store = configuration.editorStore as? ServerDataStore
-            else { return }
+        guard let store = configuration.editorStore as? ServerDataStore else { return }
         
         store.slotItems(exclude: registerIds).forEach { store.delete($0) }
     }
@@ -102,12 +100,18 @@ final class SlotItemMapper: JSONMapper {
         
         if slotItem.slotitem_id == masterId { return }
         
-        guard let mSlotItem = masterSlotItems.binarySearch(comparator: { $0.id ==? masterId })
-            else { return print("Can not find MasterSlotItem") }
+        guard let mSlotItem = masterSlotItems.binarySearch(comparator: { $0.id ==? masterId }) else {
+            
+            print("Can not find MasterSlotItem")
+            return
+        }
         
         guard let moc = slotItem.managedObjectContext,
-            let masterSlotItem = moc.object(with: mSlotItem.objectID) as? MasterSlotItem
-            else { return print("Can not convert to current moc object") }
+            let masterSlotItem = moc.object(with: mSlotItem.objectID) as? MasterSlotItem else {
+                
+                print("Can not convert to current moc object")
+                return
+        }
         
         slotItem.master_slotItem = masterSlotItem
         slotItem.slotitem_id = masterId

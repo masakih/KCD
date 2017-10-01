@@ -24,8 +24,7 @@ final class AirPlanInfoView: NSTableCellView {
     @objc dynamic var condition: Int = 1 {
         
         didSet {
-            guard let cond = Condition(rawValue: condition)
-                else { return }
+            guard let cond = Condition(rawValue: condition) else { return }
             
             conditionBox.fillColor = conditionColor(cond)
             conditionBox.borderColor = borderColor(cond)

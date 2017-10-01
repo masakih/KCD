@@ -65,18 +65,15 @@ final class TSVSupport {
         panel.allowedFileTypes = ["kcdlocaldata"]
         panel.begin {
             
-            guard $0 == .OK
-                else { return }
+            guard $0 == .OK else { return }
             
             panel.urls.forEach { url in
                 
-                guard let fileW = try? FileWrapper(url: url)
-                    else { return }
+                guard let fileW = try? FileWrapper(url: url) else { return }
                 
                 fileW.fileWrappers?.forEach {
                     
-                    guard let data = $0.value.regularFileContents
-                        else { return }
+                    guard let data = $0.value.regularFileContents else { return }
                     
                     switch $0.key {
                     case "kaihatu.tsv": self.registerKaihatuHistory(data)
@@ -97,14 +94,12 @@ final class TSVSupport {
         panel.allowedFileTypes = ["kcdlocaldata"]
         panel.begin {
             
-            guard $0 == .OK,
-                let url = panel.url
-                else { return }
-            guard let kaihatuHistory = self.dataOfKaihatuHistory(),
-                let kenzoHistory = self.dataOfKenzoHistory(),
-                let kenzoMark = self.dataOfKenzoMark(),
-                let dropShipHistory = self.dataOfDropShipHistory()
-                else { return }
+            guard $0 == .OK else { return }
+            guard let url = panel.url else { return }
+            guard let kaihatuHistory = self.dataOfKaihatuHistory() else { return }
+            guard let kenzoHistory = self.dataOfKenzoHistory() else { return }
+            guard let kenzoMark = self.dataOfKenzoMark() else { return }
+            guard let dropShipHistory = self.dataOfDropShipHistory() else { return }
             
             let fileW = FileWrapper(directoryWithFileWrappers: [:])
             fileW.addRegularFile(withContents: kaihatuHistory, preferredFilename: "kaihatu.tsv")
@@ -126,10 +121,10 @@ final class TSVSupport {
         
         let sortDesc = NSSortDescriptor(key: sortBy, ascending: true)
         
-        guard let array = try? store.objects(of: entity, sortDescriptors: [sortDesc])
-            else {
-                print("Can not get \(entity.name)")
-                return []
+        guard let array = try? store.objects(of: entity, sortDescriptors: [sortDesc]) else {
+            
+            print("Can not get \(entity.name)")
+            return []
         }
         
         return array
@@ -228,25 +223,21 @@ final class TSVSupport {
             
             let attr = $0.components(separatedBy: "\t")
             
-            guard attr.count == 10,
-                let date = dateFomatter.date(from: attr[0]),
-                let fuel = Int(attr[1]),
-                let bull = Int(attr[2]),
-                let steel = Int(attr[3]),
-                let bauxite = Int(attr[4]),
-                let kaihatu = Int(attr[5]),
-                let flagLv = Int(attr[8]),
-                let commandLv = Int(attr[9])
-                else { return }
+            guard attr.count == 10 else { return }
+            guard let date = dateFomatter.date(from: attr[0]) else { return }
+            guard let fuel = Int(attr[1]) else { return }
+            guard let bull = Int(attr[2]) else { return }
+            guard let steel = Int(attr[3]) else { return }
+            guard let bauxite = Int(attr[4]) else { return }
+            guard let kaihatu = Int(attr[5]) else { return }
+            guard let flagLv = Int(attr[8]) else { return }
+            guard let commandLv = Int(attr[9]) else { return }
             
             let p = NSPredicate(format: "date = %@", argumentArray: [date])
             
-            guard let oo = try? store.objects(of: KaihatuHistory.entity, predicate: p),
-                oo.count != 0
-                else { return }
-            
-            guard let obj = store.insertNewObject(for: KaihatuHistory.entity)
-                else { return }
+            guard let oo = try? store.objects(of: KaihatuHistory.entity, predicate: p) else { return }
+            guard oo.count != 0 else { return }
+            guard let obj = store.insertNewObject(for: KaihatuHistory.entity) else { return }
             
             obj.date = date
             obj.fuel = fuel
@@ -270,26 +261,22 @@ final class TSVSupport {
             
             let attr = $0.components(separatedBy: "\t")
             
-            guard attr.count == 11,
-                let date = dateFomatter.date(from: attr[0]),
-                let fuel = Int(attr[1]),
-                let bull = Int(attr[2]),
-                let steel = Int(attr[3]),
-                let bauxite = Int(attr[4]),
-                let kaihatu = Int(attr[5]),
-                let sType = Int(attr[7]),
-                let flagLv = Int(attr[9]),
-                let commandLv = Int(attr[10])
-                else { return }
+            guard attr.count == 11 else { return }
+            guard let date = dateFomatter.date(from: attr[0]) else { return }
+            guard let fuel = Int(attr[1]) else { return }
+            guard let bull = Int(attr[2]) else { return }
+            guard let steel = Int(attr[3]) else { return }
+            guard let bauxite = Int(attr[4]) else { return }
+            guard let kaihatu = Int(attr[5]) else { return }
+            guard let sType = Int(attr[7]) else { return }
+            guard let flagLv = Int(attr[9]) else { return }
+            guard let commandLv = Int(attr[10]) else { return }
             
             let p = NSPredicate(format: "date = %@", argumentArray: [date])
             
-            guard let oo = try? store.objects(of: KenzoHistory.entity, predicate: p),
-                oo.count != 0
-                else { return }
-            
-            guard let obj = store.insertNewObject(for: KenzoHistory.entity)
-                else { return }
+            guard let oo = try? store.objects(of: KenzoHistory.entity, predicate: p) else { return }
+            guard oo.count != 0 else { return }
+            guard let obj = store.insertNewObject(for: KenzoHistory.entity) else { return }
             
             obj.date = date
             obj.fuel = fuel
@@ -314,27 +301,23 @@ final class TSVSupport {
             
             let attr = $0.components(separatedBy: "\t")
             
-            guard attr.count == 11,
-                let date = dateFomatter.date(from: attr[0]),
-                let fuel = Int(attr[1]),
-                let bull = Int(attr[2]),
-                let steel = Int(attr[3]),
-                let bauxite = Int(attr[4]),
-                let kaihatu = Int(attr[5]),
-                let shiId = Int(attr[6]),
-                let kDock = Int(attr[7]),
-                let flagLv = Int(attr[9]),
-                let commandLv = Int(attr[10])
-                else { return }
+            guard attr.count == 11 else { return }
+            guard let date = dateFomatter.date(from: attr[0]) else { return }
+            guard let fuel = Int(attr[1]) else { return }
+            guard let bull = Int(attr[2]) else { return }
+            guard let steel = Int(attr[3]) else { return }
+            guard let bauxite = Int(attr[4]) else { return }
+            guard let kaihatu = Int(attr[5]) else { return }
+            guard let shiId = Int(attr[6]) else { return }
+            guard let kDock = Int(attr[7]) else { return }
+            guard let flagLv = Int(attr[9]) else { return }
+            guard let commandLv = Int(attr[10]) else { return }
             
             let p = NSPredicate(format: "date = %@", argumentArray: [date])
             
-            guard let oo = try? store.objects(of: KenzoMark.entity, predicate: p),
-                oo.count != 0
-                else { return }
-            
-            guard let obj = store.insertNewObject(for: KenzoMark.entity)
-                else { return }
+            guard let oo = try? store.objects(of: KenzoMark.entity, predicate: p) else { return }
+            guard oo.count != 0 else { return }
+            guard let obj = store.insertNewObject(for: KenzoMark.entity) else { return }
             
             obj.date = date
             obj.fuel = fuel
@@ -359,21 +342,17 @@ final class TSVSupport {
             
             let attr = $0.components(separatedBy: "\t")
             
-            guard attr.count == 9,
-                let date = dateFomatter.date(from: attr[0]),
-                let mapInfo = Int(attr[3]),
-                let mapCell = Int(attr[4]),
-                let mark = Int(attr[7])
-                else { return }
+            guard attr.count == 9 else { return }
+            guard let date = dateFomatter.date(from: attr[0]) else { return }
+            guard let mapInfo = Int(attr[3]) else { return }
+            guard let mapCell = Int(attr[4]) else { return }
+            guard let mark = Int(attr[7]) else { return }
             
             let p = NSPredicate(format: "date = %@", argumentArray: [date])
             
-            guard let oo = try? store.objects(of: DropShipHistory.entity, predicate: p),
-                oo.count != 0
-                else { return }
-            
-            guard let obj = store.insertNewObject(for: DropShipHistory.entity)
-                else { return }
+            guard let oo = try? store.objects(of: DropShipHistory.entity, predicate: p) else { return }
+            guard oo.count != 0 else { return }
+            guard let obj = store.insertNewObject(for: DropShipHistory.entity) else { return }
             
             obj.date = date
             obj.shipName = attr[1]

@@ -72,8 +72,11 @@ final class ChangeHenseiCommand: JSONCommand {
         
         guard let deckNumber = parameter["api_id"].int,
             let shipId = parameter["api_ship_id"].int,
-            let shipIndex = parameter["api_ship_idx"].int
-            else { return print("parameter is wrong") }
+            let shipIndex = parameter["api_ship_idx"].int else {
+                
+                print("parameter is wrong")
+                return
+        }
         
         if shipId == -2 {
             
@@ -95,14 +98,12 @@ final class ChangeHenseiCommand: JSONCommand {
         // 配置しようとする位置に今配置されている艦娘
         let replaceIndex = (deckNumber - 1) * 6 + shipIndex
         
-        guard case 0..<shipIds.count = replaceIndex
-            else { return }
+        guard case 0..<shipIds.count = replaceIndex else { return }
         
         let replaceShipId = shipIds[replaceIndex]
         
         // 艦隊に配備
-        guard case 0..<decks.count = (deckNumber - 1)
-            else { return }
+        guard case 0..<decks.count = (deckNumber - 1) else { return }
         
         decks[deckNumber - 1].setShip(id: shipId, for: shipIndex)
         
@@ -145,8 +146,11 @@ final class ChangeHenseiCommand: JSONCommand {
         
         let store = ServerDataStore.oneTimeEditor()
         
-        guard let deck = store.deck(by: deckNumber)
-            else { return print("Deck not found") }
+        guard let deck = store.deck(by: deckNumber) else {
+            
+            print("Deck not found")
+            return
+        }
         
         (1..<6).forEach { deck.setShip(id: -1, for: $0) }
     }

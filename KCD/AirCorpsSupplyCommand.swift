@@ -21,11 +21,10 @@ final class AirCorpsSupplyCommand: JSONCommand {
         
         let store = ServerDataStore.oneTimeEditor()
         
-        guard let areaId = parameter["api_area_id"].int,
-            let rId = parameter["api_base_id"].int,
-            let squadronIdsString = parameter["api_squadron_id"].string,
-            let airBase = store.airBase(area: areaId, base: rId)
-            else { return }
+        guard let areaId = parameter["api_area_id"].int else { return }
+        guard let rId = parameter["api_base_id"].int else { return }
+        guard let squadronIdsString = parameter["api_squadron_id"].string else { return }
+        guard let airBase = store.airBase(area: areaId, base: rId) else { return }
         
         let planeInfos = data["api_plane_info"]
         let planes = airBase.planeInfo
@@ -35,10 +34,9 @@ final class AirCorpsSupplyCommand: JSONCommand {
         
         squadronIds.enumerated().forEach {
             
-            guard planes.count >= $0.element,
-                planeInfos.count > $0.offset,
-                let plane = planes[$0.element - 1] as? AirBasePlaneInfo
-                else { return }
+            guard planes.count >= $0.element else { return }
+            guard planeInfos.count > $0.offset else { return }
+            guard let plane = planes[$0.element - 1] as? AirBasePlaneInfo else { return }
             
             let planeInfo = planeInfos[$0.offset]
             
@@ -51,8 +49,7 @@ final class AirCorpsSupplyCommand: JSONCommand {
         
         if let v = data["api_distance"].int { airBase.distance = v }
         
-        guard let material = store.material()
-            else { return }
+        guard let material = store.material() else { return }
         
         if let v = data["api_after_bauxite"].int { material.bauxite = v }
         if let v = data["api_after_fuel"].int { material.fuel = v }

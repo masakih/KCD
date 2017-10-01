@@ -235,10 +235,10 @@ extension DamageCalculator {
             
             let newDamages = store.sortedDamagesById()
             
-            guard newDamages.count == 12
-                else {
-                    print("ERROR!!!! CAN NOT CREATE DAMAGE OBJECT")
-                    return []
+            guard newDamages.count == 12 else {
+                
+                print("ERROR!!!! CAN NOT CREATE DAMAGE OBJECT")
+                return []
             }
             
             return newDamages
@@ -260,8 +260,7 @@ extension DamageCalculator {
     
     private func buildDamagedEntity() {
         
-        guard let battle = store.battle()
-            else { return print("Battle is invalid.") }
+        guard let battle = store.battle() else { return print("Battle is invalid.") }
         
         let aStore = ServerDataStore.default
         var ships: [Any] = []
@@ -288,8 +287,11 @@ extension DamageCalculator {
         
         ships.enumerated().forEach {
             
-            guard let damage = store.createDamage()
-                else { return print("Can not create Damage") }
+            guard let damage = store.createDamage() else {
+                
+                print("Can not create Damage")
+                return
+            }
             
             damage.battle = battle
             damage.id = $0.offset
@@ -310,13 +312,15 @@ extension DamageCalculator {
         
         guard let targetArraysArray = list
             .array?
-            .flatMap({ $0.array?.flatMap { $0.int } })
-            else { return nil }
-        
-        guard list.count - 1 == targetArraysArray.count
-            else {
-                print("api_df_list is wrong")
+            .flatMap({ $0.array?.flatMap { $0.int } }) else {
+                
                 return nil
+        }
+        
+        guard list.count - 1 == targetArraysArray.count else {
+            
+            print("api_df_list is wrong")
+            return nil
         }
         
         return targetArraysArray
@@ -355,8 +359,7 @@ extension DamageCalculator {
         
         let damagePos = pos - 1 + shipOffset
         
-        guard case 0..<damages.count = damagePos
-            else { return nil }
+        guard case 0..<damages.count = damagePos else { return nil }
         
         return damagePos
     }
@@ -403,8 +406,7 @@ extension DamageCalculator {
                 return
         }
         
-        guard targetPosLists.count == damageLists.count
-            else { return print("api_damage is wrong.") }
+        guard targetPosLists.count == damageLists.count else { return print("api_damage is wrong.") }
         
         let eFlags = enemyFlags(baseValue["api_at_eflag"])
         
@@ -424,11 +426,13 @@ extension DamageCalculator {
             
             zip(list.0, list.1).forEach { (targetPos, damage) in
                 
-                guard validTargetPos(targetPos, in: battleFleet)
-                    else { return }
+                guard validTargetPos(targetPos, in: battleFleet) else { return }
                 
-                guard let damagePos = position(targetPos, in: battleFleet)
-                    else { return print("damage pos is larger than damage count") }
+                guard let damagePos = position(targetPos, in: battleFleet) else {
+                    
+                    print("damage pos is larger than damage count")
+                    return
+                }
                 
                 calcHP(damage: damages[damagePos], receive: damage)
                 
@@ -472,8 +476,7 @@ extension DamageCalculator {
             
             if idx == 0 { return }
             
-            guard let damagePos = position(idx, in: battleFleet)
-                else { return }
+            guard let damagePos = position(idx, in: battleFleet) else { return }
             
             calcHP(damage: damages[damagePos], receive: damage)
             
@@ -502,13 +505,11 @@ extension DamageCalculator {
             
             if useDamageControl { return }
             
-            guard let master = $0 as? SlotItem
-                else { return }
+            guard let master = $0 as? SlotItem else { return }
             
             let masterSlotItemId = store.masterSlotItemID(by: master.id)
             
-            guard let type = DamageControlID(rawValue: masterSlotItemId)
-                else { return }
+            guard let type = DamageControlID(rawValue: masterSlotItemId) else { return }
             
             switch type {
             case .damageControl:
@@ -526,8 +527,7 @@ extension DamageCalculator {
         // check extra slot
         let exItemId = store.masterSlotItemID(by: ship.slot_ex)
         
-        guard let exType = DamageControlID(rawValue: exItemId)
-            else { return nowHp }
+        guard let exType = DamageControlID(rawValue: exItemId) else { return nowHp }
         
         switch exType {
         case .damageControl:

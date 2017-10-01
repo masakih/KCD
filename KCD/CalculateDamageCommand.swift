@@ -29,8 +29,7 @@ final class CalculateDamageCommand: JSONCommand {
     
     override func execute() {
         
-        guard let battleApi = BattleAPI(rawValue: api)
-            else { return }
+        guard let battleApi = BattleAPI(rawValue: api) else { return }
         
         switch battleApi {
         case .battle, .airBattle, .ldAirBattle:
@@ -111,15 +110,17 @@ extension CalculateDamageCommand {
         
         let totalDamages = store.sortedDamagesById()
         
-        guard totalDamages.count == 12
-            else { return print("Damages count is invalid. count is \(totalDamages.count).") }
+        guard totalDamages.count == 12 else {
+            
+            print("Damages count is invalid. count is \(totalDamages.count).")
+            return
+        }
         
         let aStore = ServerDataStore.oneTimeEditor()
         
         totalDamages.forEach {
             
-            guard let ship = aStore.ship(by: $0.shipID)
-                else { return }
+            guard let ship = aStore.ship(by: $0.shipID) else { return }
             
             if ship.nowhp != $0.hp {
                 
@@ -138,8 +139,11 @@ extension CalculateDamageCommand {
         
         let store = TemporaryDataStore.default
         
-        guard let battle = store.battle()
-            else { return print("Battle is invalid.") }
+        guard let battle = store.battle() else {
+            
+            print("Battle is invalid.")
+            return
+        }
         
         battle.battleCell = (battle.no == 0 ? nil : battle.no as NSNumber)
         
@@ -183,13 +187,11 @@ extension CalculateDamageCommand {
             
             if useDamageControl { return }
             
-            guard let master = $0 as? SlotItem
-                else { return }
+            guard let master = $0 as? SlotItem else { return }
             
             let masterSlotItemId = store.masterSlotItemID(by: master.id)
             
-            guard let type = DamageControlID(rawValue: masterSlotItemId)
-                else { return }
+            guard let type = DamageControlID(rawValue: masterSlotItemId) else { return }
             
             switch type {
             case .goddes:
@@ -213,8 +215,7 @@ extension CalculateDamageCommand {
         // check extra slot
         let exItemId = store.masterSlotItemID(by: ship.slot_ex)
         
-        guard let exType = DamageControlID(rawValue: exItemId)
-            else { return }
+        guard let exType = DamageControlID(rawValue: exItemId) else { return }
         
         switch exType {
         case .goddes:

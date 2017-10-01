@@ -48,13 +48,11 @@ private extension RequiredEquipment {
     
     convenience init?(lines: TabSeparatedLine) {
         
-        guard lines.count == 6
-            else { return nil }
+        guard lines.count == 6 else { return nil }
         
-        guard let nu = Int(lines[3]),
-            let s = Int(lines[4]),
-            let e = Int(lines[5])
-            else { return nil }
+        guard let nu = Int(lines[3]) else { return nil }
+        guard let s = Int(lines[4]) else { return nil }
+        guard let e = Int(lines[5]) else { return nil }
         
         self.init(identifier: lines[0],
                   levelRange: lines[1],
@@ -69,12 +67,10 @@ private extension RequiredEquipmentSet {
     
     convenience init?(items: [RequiredEquipment]) {
         
-        guard items.count == 3
-            else { return nil }
+        guard items.count == 3 else { return nil }
         
-        guard items[0].identifier == items[1].identifier,
-            items[1].identifier == items[2].identifier
-            else { return nil }
+        guard items[0].identifier == items[1].identifier else { return nil }
+        guard items[1].identifier == items[2].identifier else { return nil }
         
         self.init(identifier: items[0].identifier,
                   requiredEquipments: items)
@@ -87,21 +83,21 @@ private extension EnhancementListItem {
     
     convenience init?(line: TabSeparatedLine, equSets: [RequiredEquipmentSet]) {
         
-        guard line.count == 6
-            else {
-                print("count not 6")
-                return nil
+        guard line.count == 6 else {
+            
+            print("count not 6")
+            return nil
         }
         
-        guard let i = equSets.index(where: { $0.identifier == line[0] })
-            else {
-                print("Do not find \(line[0]) in EnhancementListItem.txt")
-                return nil
+        guard let i = equSets.index(where: { $0.identifier == line[0] }) else {
+            
+            print("Do not find \(line[0]) in EnhancementListItem.txt")
+            return nil
         }
-        guard let w = Int(line[1]),
-            let raw = Int(line[2]),
-            let type = EquipmentType(rawValue: raw)
-            else { return nil }
+        
+        guard let w = Int(line[1]) else { return nil }
+        guard let raw = Int(line[2]) else { return nil }
+        guard let type = EquipmentType(rawValue: raw) else { return nil }
         
         self.init(identifier: line[0],
                   weekday: w,
@@ -136,16 +132,15 @@ func loadFile(path: String) -> String? {
 
 // MARK: ここから
 let arguments = CommandLine.arguments
-guard arguments.count > 1
-    else {
+guard arguments.count > 1 else {
+    
         print("argument too few")
         fatalError()
 }
 
 let targetDirectory = arguments[1] as NSString
 let requiredEquipmentSetPath = targetDirectory.appendingPathComponent("RequiredEquipmentSet.txt")
-guard let requiredEquipmentSetText = loadFile(path: requiredEquipmentSetPath)
-    else { fatalError() }
+guard let requiredEquipmentSetText = loadFile(path: requiredEquipmentSetPath else { fatalError() }
 
 //
 var threeLines = ThreeItemsQueue<TabSeparatedLine>()
@@ -161,8 +156,7 @@ let requiredEquipmentSet = requiredEquipmentSetText
 
 //
 let enhancementListItemPath = targetDirectory.appendingPathComponent("EnhancementListItem.txt")
-guard let enhancementListText = loadFile(path: enhancementListItemPath)
-    else { fatalError() }
+guard let enhancementListText = loadFile(path: enhancementListItemPath else { fatalError() }
 let listItems = enhancementListText
     .components(separatedBy: "\n")
     .map { TabSeparatedLine(value: $0) }

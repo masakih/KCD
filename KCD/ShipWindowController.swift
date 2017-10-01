@@ -26,9 +26,8 @@ final class ShipWindowController: NSWindowController {
         
         let store = ServerDataStore.oneTimeEditor()
         
-        guard let deck = store.deck(by: missionFleetNumber),
-            let t = missionTime as? Double
-            else { return }
+        guard let deck = store.deck(by: missionFleetNumber) else { return }
+        guard let t = missionTime as? Double else { return }
         
         let time = Date(timeIntervalSinceNow: t).timeIntervalSince1970 * 1_000
         deck.mission_2 = Int(time)

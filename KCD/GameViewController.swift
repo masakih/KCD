@@ -56,10 +56,10 @@ final class GameViewController: NSViewController {
     
     @IBAction func reloadContent(_ sender: AnyObject?) {
         
-        guard let _ = webView.mainFrameURL
-            else {
-                webView.mainFrameURL = GameViewController.gamePageURL
-                return
+        guard let _ = webView.mainFrameURL else {
+            
+            webView.mainFrameURL = GameViewController.gamePageURL
+            return
         }
         
         // ゲームページでない場合はゲームページを表示する
@@ -101,9 +101,8 @@ final class GameViewController: NSViewController {
         
         let panel = ProgressPanel()
         
-        guard let window = view.window,
-            let panelWindow = panel.window
-            else { return }
+        guard let window = view.window else { return }
+        guard let panelWindow = panel.window else { return }
         
         panel.title = ""
         panel.message = NSLocalizedString("Deleting caches...", comment: "Deleting caches...")
@@ -132,9 +131,8 @@ final class GameViewController: NSViewController {
         
         if menuItem.action == .reloadContent {
             
-            guard let _ = webView.mainFrame,
-                let frameURL = webView.mainFrameURL
-                else { return true }
+            guard let _ = webView.mainFrame else { return true }
+            guard let frameURL = webView.mainFrameURL else { return true }
             
             switch frameURL {
             case GameViewController.gamePageURL:
@@ -179,8 +177,7 @@ extension GameViewController: WebFrameLoadDelegate, WebUIDelegate {
     
     func webView(_ sender: WebView!, didFinishLoadFor frame: WebFrame!) {
         
-        guard let path = frame.dataSource?.initialRequest.url?.path
-            else { return }
+        guard let path = frame.dataSource?.initialRequest.url?.path else { return }
         
         let handler: (JSContext?, JSValue?) -> Void = { (_, exception) in
             
@@ -197,8 +194,7 @@ extension GameViewController: WebFrameLoadDelegate, WebUIDelegate {
         
         if path.hasSuffix("gadgets/ifr") {
             
-            guard let context = frame.javaScriptContext
-                else { return }
+            guard let context = frame.javaScriptContext else { return }
             
             context.exceptionHandler = handler
             context.evaluateScript(
@@ -215,8 +211,7 @@ extension GameViewController: WebFrameLoadDelegate, WebUIDelegate {
         
         if path.hasSuffix("app_id=854854") {
             
-            guard let context = frame.javaScriptContext
-                else { return }
+            guard let context = frame.javaScriptContext else { return }
             
             context.exceptionHandler = handler
             context.evaluateScript(
@@ -232,8 +227,7 @@ extension GameViewController: WebFrameLoadDelegate, WebUIDelegate {
             )
             let validIframe = context.objectForKeyedSubscript("validIframe").toInt32()
             
-            guard validIframe != 0
-                else { return }
+            guard validIframe != 0 else { return }
             
             let top = context.objectForKeyedSubscript("atop").toDouble()
             let left = context.objectForKeyedSubscript("aleft").toDouble()
@@ -245,8 +239,7 @@ extension GameViewController: WebFrameLoadDelegate, WebUIDelegate {
     
     func webView(_ sender: WebView!, contextMenuItemsForElement element: [AnyHashable: Any]!, defaultMenuItems: [Any]!) -> [Any]! {
         
-        guard let menuItems = defaultMenuItems as? [NSMenuItem]
-            else { return [] }
+        guard let menuItems = defaultMenuItems as? [NSMenuItem] else { return [] }
         
         return menuItems.filter { !GameViewController.excludeMenuItemTag.contains($0.tag) }
     }

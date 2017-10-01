@@ -226,8 +226,7 @@ extension ExternalBrowserWindowController {
     
     @IBAction func selectBookmark(_ sender: AnyObject?) {
         
-        guard let item = sender?.representedObject as? Bookmark
-            else { return }
+        guard let item = sender?.representedObject as? Bookmark else { return }
         
         move(bookmark: item)
     }
@@ -244,8 +243,7 @@ extension ExternalBrowserWindowController {
     
     @IBAction func clickGoBackSegment(_ sender: AnyObject?) {
         
-        guard let cell = goSegment.cell as? NSSegmentedCell
-            else { return }
+        guard let cell = goSegment.cell as? NSSegmentedCell else { return }
         
         let tag = cell.tag(forSegment: cell.selectedSegment)
         switch tag {
@@ -262,9 +260,8 @@ extension ExternalBrowserWindowController {
     
     @IBAction func addBookmark(_ sender: AnyObject?) {
         
-        guard let window = window,
-            let bookmark = BookmarkManager.shared().createNewBookmark()
-            else { return }
+        guard let window = window else { return }
+        guard let bookmark = BookmarkManager.shared().createNewBookmark() else { return }
         
         bookmark.name = window.title
         bookmark.urlString = webView.mainFrameURL
@@ -277,10 +274,9 @@ extension ExternalBrowserWindowController {
     
     @IBAction func showBookmark(_ sender: AnyObject?) {
         
-        guard let window = window,
-            let _ = bookmarkListViwController,
-            !bookmarkShowing
-            else { return }
+        guard let window = window else { return }
+        guard let _ = bookmarkListViwController else { return }
+        guard !bookmarkShowing else { return }
         
         bookmarkShowing = true
         
@@ -403,8 +399,7 @@ extension ExternalBrowserWindowController: WebFrameLoadDelegate, WebPolicyDelega
     
     @objc func updateContentVisibleRect(_ timer: Timer) {
         
-        guard let item = timer.userInfo as? Bookmark
-            else { return }
+        guard let item = timer.userInfo as? Bookmark else { return }
         
         contentVisibleRect = item.contentVisibleRect
     }

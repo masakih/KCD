@@ -13,13 +13,14 @@ final class SlotItemShortNameTransformer: ValueTransformer {
     private static var slotItemShortName: [Int: String] = {
         
         guard let url = Bundle.main.url(forResource: "SlotItemShortName", withExtension: "plist"),
-            let dict = NSDictionary(contentsOf: url) as? [String: String]
-            else { fatalError("Can not load SlotItemShortName.plist") }
+            let dict = NSDictionary(contentsOf: url) as? [String: String] else {
+                
+                fatalError("Can not load SlotItemShortName.plist")
+        }
         
         return dict.reduce([Int: String]()) {
             
-            guard let k = Int($1.0)
-                else { return $0 }
+            guard let k = Int($1.0) else { return $0 }
             
             var d = $0
             d[k] = $1.1
@@ -34,11 +35,9 @@ final class SlotItemShortNameTransformer: ValueTransformer {
     
     override func transformedValue(_ value: Any?) -> Any? {
         
-        guard let id = value as? Int, id != 0, id != -1
-            else { return nil }
+        guard let id = value as? Int, id != 0, id != -1 else { return nil }
         
-        guard let item = ServerDataStore.default.slotItem(by: id)
-            else { return nil }
+        guard let item = ServerDataStore.default.slotItem(by: id) else { return nil }
         
         let itemId = item.master_slotItem.id
         

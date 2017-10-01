@@ -48,10 +48,8 @@ final class ShipViewController: MainTabVIewItemViewController {
     
     @objc var standardDeviation: Double {
         
-        guard let ships = shipController.arrangedObjects as? [Ship],
-            !ships.isEmpty,
-            let avg = shipController.value(forKeyPath: "arrangedObjects.@avg.lv") as? Double
-            else { return 0.0 }
+        guard let ships = shipController.arrangedObjects as? [Ship], !ships.isEmpty else { return 0.0 }
+        guard let avg = shipController.value(forKeyPath: "arrangedObjects.@avg.lv") as? Double else { return 0.0 }
         
         let total = ships.reduce(0.0) {
             
@@ -92,8 +90,7 @@ final class ShipViewController: MainTabVIewItemViewController {
                 NotificationCenter.default
                     .addObserver(forName: NSScrollView.didEndLiveScrollNotification, object: $0, queue: nil) {
                         
-                        guard let target = $0.object as? NSScrollView
-                            else { return }
+                        guard let target = $0.object as? NSScrollView else { return }
                         
                         let visibleRect = target.documentVisibleRect
                         tableViews
@@ -139,8 +136,7 @@ final class ShipViewController: MainTabVIewItemViewController {
         
         if currentTableView == newSelection { return }
         
-        guard let tableView = currentTableView
-            else { return }
+        guard let tableView = currentTableView else { return }
         
         newSelection.frame = tableView.frame
         newSelection.autoresizingMask = tableView.autoresizingMask
@@ -176,8 +172,7 @@ extension ShipViewController: NSTableViewDelegate {
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         
-        guard let identifier = tableColumn?.identifier
-            else { return nil }
+        guard let identifier = tableColumn?.identifier else { return nil }
         
         return tableView.makeView(withIdentifier: identifier, owner: nil)
     }

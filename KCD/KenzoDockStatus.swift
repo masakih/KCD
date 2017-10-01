@@ -36,8 +36,7 @@ final class KenzoDockStatus: NSObject {
     
     init?(number: Int) {
         
-        guard case 1...4 = number
-            else { return nil }
+        guard case 1...4 = number else { return nil }
         
         self.number = number
         controller = NSArrayController()
@@ -57,8 +56,11 @@ final class KenzoDockStatus: NSObject {
     private func updateState() {
         
         guard let state = state as? Int,
-            let s = DockState(rawValue: state)
-            else { return print("unknown State") }
+            let s = DockState(rawValue: state) else {
+                
+                print("unknown State")
+                return
+        }
         
         switch s {
         case .empty, .notOpen:
@@ -77,10 +79,10 @@ final class KenzoDockStatus: NSObject {
             time = nil
             return
         }
-        guard let completeTime = completeTime as? Int
-            else {
-                time = nil
-                return
+        guard let completeTime = completeTime as? Int else {
+            
+            time = nil
+            return
         }
         
         let compTime = TimeInterval(Int(completeTime / 1_000))

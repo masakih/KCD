@@ -68,8 +68,8 @@ final class Ship: KCManagedObject {
 private let shortSTypeNames: [String] = {
     
     guard let url = Bundle.main.url(forResource: "STypeShortName", withExtension: "plist"),
-        let array = NSArray(contentsOf: url) as? [String]
-        else {
+        let array = NSArray(contentsOf: url) as? [String] else {
+            
             print("Can not load STypeShortName.plist.")
             return []
     }
@@ -80,8 +80,8 @@ private let shortSTypeNames: [String] = {
 private let levelUpExps: [Int] = {
     
     guard let url = Bundle.main.url(forResource: "LevelUpExp", withExtension: "plist"),
-        let array = NSArray(contentsOf: url) as? [Int]
-        else {
+        let array = NSArray(contentsOf: url) as? [Int] else {
+            
             print("Can not load LevelUpExp.plist.")
             return []
     }
@@ -105,8 +105,7 @@ extension Ship {
         
         let index = master_ship.stype.id - 1
         
-        guard case 0..<shortSTypeNames.count = index
-            else { return nil }
+        guard case 0..<shortSTypeNames.count = index else { return nil }
         
         return shortSTypeNames[index]
     }
@@ -117,8 +116,7 @@ extension Ship {
     }
     @objc dynamic var next: NSNumber? {
         
-        guard case 0..<levelUpExps.count = lv
-            else { return nil }
+        guard case 0..<levelUpExps.count = lv else { return nil }
         
         if lv == 99 { return nil }
         
@@ -152,8 +150,7 @@ extension Ship {
         
         if !UserDefaults.standard[.showsPlanColor] { return NSColor.controlTextColor }
         
-        guard let sally = sally_area
-            else { return NSColor.controlTextColor }
+        guard let sally = sally_area else { return .controlTextColor }
         
         switch sally {
         case 1: return UserDefaults.standard[.plan01Color]
@@ -264,8 +261,7 @@ extension Ship {
         
         let store = TemporaryDataStore.default
         
-        guard let _ = store.ensuredGuardEscaped(byShipId: id)
-            else { return false }
+        guard let _ = store.ensuredGuardEscaped(byShipId: id) else { return false }
         
         return true
     }

@@ -43,8 +43,7 @@ extension ResourceHistoryDataStore {
         
         let p = NSPredicate(format: "minute IN %@ AND date < %@", minites, older as NSDate)
         
-        guard let resources = try? objects(of: Resource.entity, predicate: p)
-            else { return [] }
+        guard let resources = try? objects(of: Resource.entity, predicate: p) else { return [] }
         
         return resources
     }

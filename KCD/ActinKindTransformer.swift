@@ -27,8 +27,10 @@ final class ActinKindTransformer: ValueTransformer {
     override func transformedValue(_ value: Any?) -> Any? {
         
         guard let v = value as? Int,
-            let type = AirBaseActionKind(rawValue: v)
-            else { return nil }
+            let type = AirBaseActionKind(rawValue: v) else {
+                
+                return nil
+        }
         
         switch type {
         case .standBy:

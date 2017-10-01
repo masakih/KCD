@@ -25,9 +25,8 @@ final class AnchorageRepairManager: NSObject {
         let nc = NotificationCenter.default
         nc.addObserver(forName: .HenseiDidChange, object: nil, queue: nil) { notification in
             
-            guard let userInfo = notification.userInfo,
-                let info = userInfo[ChangeHenseiCommand.userInfoKey] as? HenseiDidChangeUserInfo
-                else { return }
+            guard let userInfo = notification.userInfo else { return }
+            guard let info = userInfo[ChangeHenseiCommand.userInfoKey] as? HenseiDidChangeUserInfo else { return }
             
             self.resetIfNeeds(info: info)
         }
@@ -58,9 +57,8 @@ final class AnchorageRepairManager: NSObject {
     
     private func shipTypeId(fleetNumber: Int, position: Int) -> Int? {
         
-        guard case 1...4 = fleetNumber,
-             case 0...5 = position
-            else { return nil }
+        guard case 1...4 = fleetNumber else { return nil }
+        guard case 0...5 = position else { return nil }
         
         let ship = fleetManager.fleets[fleetNumber - 1][position]
         

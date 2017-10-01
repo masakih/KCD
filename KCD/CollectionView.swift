@@ -50,9 +50,8 @@ extension CollectionView {
         
         let mouse = convert(event.locationInWindow, from: nil)
         
-        guard let indexPath = indexPathForItem(at: mouse),
-            let _ = item(at: indexPath)
-            else { return }
+        guard let indexPath = indexPathForItem(at: mouse) else { return }
+        guard let _ = item(at: indexPath) else { return }
         
         if !selectionIndexPaths.contains(indexPath) {
             
@@ -136,9 +135,8 @@ extension CollectionView: QLPreviewPanelDataSource, QLPreviewPanelDelegate {
         
         let selections = selectionIndexPaths.flatMap { item(at: $0) }
         
-        guard case 0..<selections.count = index,
-            let item = selections[index] as? QLPreviewItem
-            else { return nil }
+        guard case 0..<selections.count = index else { return nil }
+        guard let item = selections[index] as? QLPreviewItem else { return nil}
         
         return item
     }
@@ -157,8 +155,7 @@ extension CollectionView: QLPreviewPanelDataSource, QLPreviewPanelDelegate {
     
     func previewPanel(_ panel: QLPreviewPanel!, sourceFrameOnScreenFor item: QLPreviewItem!) -> NSRect {
         
-        guard let item = item as? ScreenshotCollectionViewItem
-            else { return .zero }
+        guard let item = item as? ScreenshotCollectionViewItem else { return .zero }
         
         let frame = convert(item.imageFrame, from: item.view)
         let byWindow = convert(frame, to: nil)

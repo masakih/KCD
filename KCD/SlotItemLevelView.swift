@@ -58,8 +58,7 @@ final class SlotItemLevelView: NSTextField {
         didSet {
             slotItemController.content = nil
             
-            guard let itemId = slotItemID as? Int
-                else { return }
+            guard let itemId = slotItemID as? Int else { return }
             
             slotItemController.content = ServerDataStore.default.slotItem(by: itemId)
             needsDisplay = true
@@ -253,8 +252,7 @@ final class SlotItemLevelView: NSTextField {
     // MARK: - Function
     override func draw(_ dirtyRect: NSRect) {
         
-        guard let context = NSGraphicsContext.current?.cgContext
-            else { fatalError("Con not get current CGContext") }
+        guard let context = NSGraphicsContext.current?.cgContext else { fatalError("Con not get current CGContext") }
         
         context.saveGState()
         maskImage.map { context.clip(to: bounds, mask: $0) }
@@ -312,8 +310,7 @@ final class SlotItemLevelView: NSTextField {
     
     private func drawAirLevel() {
         
-        guard let alv = slotItemAlv as? Int
-            else { return }
+        guard let alv = slotItemAlv as? Int else { return }
         
         colorForALevel(level: alv)?.set()
         shadowForALevel(level: alv)?.set()
@@ -322,8 +319,7 @@ final class SlotItemLevelView: NSTextField {
     
     private func drawLevel() {
         
-        guard let lv = slotItemLevel as? Int, lv != 0
-            else { return }
+        guard let lv = slotItemLevel as? Int, lv != 0 else { return }
         
         let string: String = lv == 10 ? "max" : "★+\(lv)"
         let attr: [NSAttributedStringKey: Any] = [.font: levelFont,

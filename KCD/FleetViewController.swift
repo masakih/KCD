@@ -69,8 +69,7 @@ final class FleetViewController: NSViewController {
         }()
         details = (1...6).map {
             
-            guard let res = ShipDetailViewController(type: shipiewType)
-                else { fatalError("Can not create ShipDetailViewController") }
+            guard let res = ShipDetailViewController(type: shipiewType) else { fatalError("Can not create ShipDetailViewController") }
             
             res.title = "\($0)"
             
@@ -341,8 +340,7 @@ final class FleetViewController: NSViewController {
     
     @IBAction func changeSakutekiCalculator(_ sender: Any?) {
         
-        guard let menuItem = sender as? NSMenuItem
-            else { return }
+        guard let menuItem = sender as? NSMenuItem else { return }
         
         switch menuItem.tag {
         case 0:
@@ -393,8 +391,7 @@ extension FleetViewController {
     
     override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
         
-        guard let action = menuItem.action
-            else { return false }
+        guard let action = menuItem.action else { return false }
         
         switch action {
             
@@ -427,6 +424,7 @@ extension FleetViewController {
     private func reorder(order: [Int]) {
         
         guard order.count == 6 else {
+            
             print("FleetViewController: order count is not 6.")
             return
         }
@@ -479,8 +477,7 @@ extension FleetViewController {
     
     @objc dynamic var repairable: Bool {
         
-        guard let flagShip = fleet?[0]
-            else { return false }
+        guard let flagShip = fleet?[0] else { return false }
         
         return repairShipIds.contains(flagShip.master_ship.stype.id)
     }

@@ -32,10 +32,10 @@ final class MasterShipMapper: JSONMapper {
         
         if key != "api_stype" { return false }
         
-        guard let sType = value.int
-            else {
-                print("MasterShipMapper: value is not Int")
-                return false
+        guard let sType = value.int else {
+            
+            print("MasterShipMapper: value is not Int")
+            return false
         }
         
         setStype(sType, to: masterShip)
@@ -47,11 +47,17 @@ final class MasterShipMapper: JSONMapper {
         
         if masterShip.stype.id == stypeID { return }
         
-        guard let stype = masterSTypes.binarySearch(comparator: { $0.id ==? stypeID })
-            else { return print("MasterShipMapper: Can not find MasterSType") }
+        guard let stype = masterSTypes.binarySearch(comparator: { $0.id ==? stypeID }) else {
+            
+            print("MasterShipMapper: Can not find MasterSType")
+            return
+        }
         
-        guard let masterSType = configuration.editorStore.object(of: MasterSType.entity, with: stype.objectID)
-            else { return print("MasterShipMapper: Can not convert to current moc object masterSType") }
+        guard let masterSType = configuration.editorStore.object(of: MasterSType.entity, with: stype.objectID) else {
+            
+            print("MasterShipMapper: Can not convert to current moc object masterSType")
+            return
+        }
         
         masterShip.stype = masterSType
     }

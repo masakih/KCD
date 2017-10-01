@@ -58,8 +58,10 @@ extension JSONReciever: CustomHTTPProtocolDelegate {
         defer { clearProtocol(proto) }
         
         guard let data = self.data(proto),
-            let response = APIResponse(request: proto.request, data: data as Data)
-            else { return }
+            let response = APIResponse(request: proto.request, data: data as Data) else {
+                
+                return
+        }
         
         queue.enqueue(response)
     }

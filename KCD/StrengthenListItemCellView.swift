@@ -72,18 +72,14 @@ final class StrengthenListItemCellView: NSTableCellView {
     
     @objc var requiredEquipment02: RequiredEquipment? {
         
-        guard let req = item?.requiredEquipments.requiredEquipments,
-            req.count > 1
-            else { return nil }
+        guard let req = item?.requiredEquipments.requiredEquipments, req.count > 1 else { return nil }
         
         return req[1]
     }
     
     @objc var requiredEquipment03: RequiredEquipment? {
         
-        guard let req = item?.requiredEquipments.requiredEquipments,
-            req.count > 2
-            else { return nil }
+        guard let req = item?.requiredEquipments.requiredEquipments, req.count > 2 else { return nil }
         
         return req[2]
     }
@@ -114,10 +110,9 @@ final class StrengthenListItemCellView: NSTableCellView {
     
     private func needsScrewString(screw: Int?, ensureScrew: Int?) -> String? {
         
-        guard let screw = screw,
-            let ensureScrew = ensureScrew,
-            ensureScrew != 0
-            else { return nil }
+        guard let screw = screw else { return nil }
+        guard let ensureScrew = ensureScrew else { return nil }
+        guard ensureScrew != 0 else { return nil }
         
         let screwString = (screw == -1) ? "-" : "\(screw)"
         let ensureScrewString = (ensureScrew == -1) ? "-" : "\(ensureScrew)"

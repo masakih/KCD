@@ -17,8 +17,7 @@ final class MapAreaTransformaer: ValueTransformer {
     
     override func transformedValue(_ value: Any?) -> Any? {
         
-        guard let v = value as? String, let areaId = Int(v)
-            else { return nil }
+        guard let v = value as? String, let areaId = Int(v) else { return nil }
         
         return areaId > 10 ? "E" : "\(areaId)"
     }

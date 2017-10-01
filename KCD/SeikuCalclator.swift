@@ -82,13 +82,11 @@ final class SeikuCalclator {
         
         if itemCount == 0 { return 0 }
         
-        guard let item = slotItem(index)
-            else { return 0 }
+        guard let item = slotItem(index) else { return 0 }
         
         let type2 = item.master_slotItem.type_2
         
-        guard seikuEffectiveTypes.contains(type2)
-            else { return 0 }
+        guard seikuEffectiveTypes.contains(type2) else { return 0 }
         
         let taiku = Double(item.master_slotItem.tyku)
         let lv = Double(item.level)
@@ -104,13 +102,11 @@ final class SeikuCalclator {
         
         if itemCount == 0 { return 0 }
         
-        guard let item = slotItem(index)
-            else { return 0 }
+        guard let item = slotItem(index) else { return 0 }
         
         let type2 = item.master_slotItem.type_2
         
-        guard let typeBonus = typeBonus(type2)
-            else { return 0 }
+        guard let typeBonus = typeBonus(type2) else { return 0 }
         
         let airLevel = item.alv
         

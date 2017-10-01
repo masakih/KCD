@@ -90,8 +90,7 @@ final class EquipmentTPValueCalculator: TPValueCalculator {
     
     var value: Int {
         
-        guard let type = EquipmentType(rawValue: slotItem.master_slotItem.type_2)
-            else { return 0 }
+        guard let type = EquipmentType(rawValue: slotItem.master_slotItem.type_2) else { return 0 }
         
         switch type {
             

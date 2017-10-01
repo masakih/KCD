@@ -93,8 +93,7 @@ final class DocksViewController: MainTabVIewItemViewController {
     
     var fleetName: String? {
         
-        guard let deckId = battleContoller.value(forKeyPath: "content.deckId") as? Int
-            else { return nil }
+        guard let deckId = battleContoller.value(forKeyPath: "content.deckId") as? Int else { return nil }
         
         return ServerDataStore.default.deck(by: deckId)?.name
     }
@@ -103,8 +102,7 @@ final class DocksViewController: MainTabVIewItemViewController {
         
         let mapArea: String = {
             
-            guard let mapArea = battleContoller.value(forKeyPath: "content.mapArea") as? Int
-                else { return "" }
+            guard let mapArea = battleContoller.value(forKeyPath: "content.mapArea") as? Int else { return "" }
             
             if mapArea > 10 { return "E" }
             
@@ -113,17 +111,15 @@ final class DocksViewController: MainTabVIewItemViewController {
         
         guard mapArea != "" else { return nil }
         
-        guard let mapInfo = battleContoller.value(forKeyPath: "content.mapInfo") as? Int
-            else { return "" }
+        guard let mapInfo = battleContoller.value(forKeyPath: "content.mapInfo") as? Int else { return "" }
         
         return "\(mapArea)-\(mapInfo)"
     }
     
     var areaName: String? {
         
-        guard let mapArea = battleContoller.value(forKeyPath: "content.mapArea") as? Int,
-            let mapInfo = battleContoller.value(forKeyPath: "content.mapInfo") as? Int
-            else { return nil }
+        guard let mapArea = battleContoller.value(forKeyPath: "content.mapArea") as? Int else { return nil }
+        guard let mapInfo = battleContoller.value(forKeyPath: "content.mapInfo") as? Int else { return nil }
         
         return ServerDataStore.default.mapInfo(area: mapArea, no: mapInfo)?.name
     }
@@ -132,8 +128,7 @@ final class DocksViewController: MainTabVIewItemViewController {
         
         guard let fleetName = self.fleetName,
             let areaName = self.areaName,
-            let areaNumber = self.areaNumber
-            else { return nil }
+            let areaNumber = self.areaNumber else { return nil }
         
         if battleCellNumber == 0 {
             

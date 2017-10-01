@@ -17,8 +17,7 @@ final class HistoryMarkTransformer: ValueTransformer {
     
     override func transformedValue(_ value: Any?) -> Any? {
         
-        guard let v = value as? Bool
-            else { return nil }
+        guard let v = value as? Bool else { return nil }
         
         return v ? HistoryMarkTransformer.markImage : nil
     }

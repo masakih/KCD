@@ -25,8 +25,7 @@ final class UITestWindowController: NSWindowController {
         
         testViewController = viewController()
         
-        guard let vc = testViewController
-            else { return }
+        guard let vc = testViewController else { return }
         
         window?.setContentSize(vc.view.frame.size)
         vc.view.autoresizingMask = testViewPlaceholder.autoresizingMask

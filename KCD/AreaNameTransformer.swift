@@ -17,8 +17,7 @@ final class AreaNameTransformer: ValueTransformer {
     
     override func transformedValue(_ value: Any?) -> Any? {
         
-        guard let id = value as? Int
-            else { return nil }
+        guard let id = value as? Int else { return nil }
         
         return ServerDataStore.default.mapArea(by: id)?.name
     }

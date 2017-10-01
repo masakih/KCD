@@ -46,9 +46,8 @@ class HistoryTableViewController: NSViewController {
         
         let store = LocalDataStore.oneTimeEditor()
         
-        guard let controller = controller,
-            let selection = controller.selectedObjects as? [NSManagedObject]
-            else { return }
+        guard let controller = controller else { return }
+        guard let selection = controller.selectedObjects as? [NSManagedObject] else { return }
         
         let selectedIndex = controller.selectionIndex
         selection
@@ -65,10 +64,9 @@ class HistoryTableViewController: NSViewController {
     
     @IBAction func addMark(_ sender: AnyObject?) {
         
-        guard let clickedRow = tableView?.clickedRow,
-            let items = controller?.arrangedObjects as? [HistoryObject],
-            case 0..<items.count = clickedRow
-            else { return }
+        guard let clickedRow = tableView?.clickedRow else { return }
+        guard let items = controller?.arrangedObjects as? [HistoryObject] else { return }
+        guard case 0..<items.count = clickedRow else { return }
         
         let clickedObject = items[clickedRow]
         let predicate = NSPredicate(format: "date = %@",
@@ -87,8 +85,7 @@ class HistoryTableViewController: NSViewController {
     
     override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
         
-        guard let itemTag = MenuItemTag(rawValue: menuItem.tag)
-            else { return false }
+        guard let itemTag = MenuItemTag(rawValue: menuItem.tag) else { return false }
         
         switch itemTag {
         case .delete:
@@ -96,10 +93,9 @@ class HistoryTableViewController: NSViewController {
             
         case .addMark:
             menuItem.isEnabled = false
-            guard let clickedRow = tableView?.clickedRow,
-                let items = controller?.arrangedObjects as? [Markable],
-                case 0..<items.count = clickedRow
-                else { return false }
+            guard let clickedRow = tableView?.clickedRow else { return false }
+            guard let items = controller?.arrangedObjects as? [Markable] else { return false }
+            guard case 0..<items.count = clickedRow else { return false }
             
             let clickedObject = items[clickedRow]
             menuItem.isEnabled = true

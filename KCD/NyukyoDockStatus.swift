@@ -38,8 +38,7 @@ final class NyukyoDockStatus: NSObject {
     
     init?(number: Int) {
         
-        guard case 1...4 = number
-            else { return nil }
+        guard case 1...4 = number else { return nil }
         
         self.number = number
         controller = NSArrayController()
@@ -67,8 +66,11 @@ final class NyukyoDockStatus: NSObject {
     private func updateState() {
         
         guard let state = state as? Int,
-            let stat = DockState(rawValue: state)
-            else { return print("unknown State") }
+            let stat = DockState(rawValue: state) else {
+                
+                print("unknown State")
+                return
+        }
         
         if stat == .empty {
             
@@ -79,18 +81,16 @@ final class NyukyoDockStatus: NSObject {
             return
         }
         
-        guard let shipId = shipId as? Int,
-            shipId != 0
-            else { return }
+        guard let shipId = shipId as? Int, shipId != 0 else { return }
         
-        guard let ship = ServerDataStore.default.ship(by: shipId)
-            else {
-                name = "Unknown"
-                DispatchQueue(label: "NyukyoDockStatus")
-                    .asyncAfter(deadline: .now() + 0.33) {
-                        self.updateState()
-                }
-                return
+        guard let ship = ServerDataStore.default.ship(by: shipId) else {
+            
+            name = "Unknown"
+            DispatchQueue(label: "NyukyoDockStatus")
+                .asyncAfter(deadline: .now() + 0.33) {
+                    self.updateState()
+            }
+            return
         }
         
         name = ship.name
@@ -99,15 +99,16 @@ final class NyukyoDockStatus: NSObject {
     func update() {
         
         guard let name = name else {
+            
             time = nil
             return
         }
         
-        guard let completeTime = completeTime as? Int
-            else {
-                self.name = nil
-                time = nil
-                return
+        guard let completeTime = completeTime as? Int else {
+            
+            self.name = nil
+            time = nil
+            return
         }
         
         let compTime = TimeInterval(Int(completeTime / 1_000))

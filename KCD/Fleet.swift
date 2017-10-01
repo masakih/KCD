@@ -21,10 +21,10 @@ final class Fleet: NSObject {
     
     init?(number: Int) {
         
-        guard case 1...4 = number
-            else {
-                print("Fleet number out of range")
-                return nil
+        guard case 1...4 = number else {
+            
+            print("Fleet number out of range")
+            return nil
         }
         
         fleetNumber = number

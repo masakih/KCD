@@ -20,27 +20,38 @@ final class DropShipHistoryCommand: JSONCommand {
         
         if !api.hasSuffix("battleresult") { return }
         
-        guard let shipName = data["api_get_ship"]["api_ship_name"].string,
-            let winRank = data["api_win_rank"].string
-            else { return }
+        guard let shipName = data["api_get_ship"]["api_ship_name"].string else { return }
+        guard let winRank = data["api_win_rank"].string else { return }
         
-        guard let battle = TemporaryDataStore.default.battle()
-            else { return print("Can not get Battle") }
+        guard let battle = TemporaryDataStore.default.battle() else {
+            
+            print("Can not get Battle")
+            return
+        }
         
         let mapAreaId = battle.mapArea
         
         let store = ServerDataStore.default
         
-        guard let mapInfo = store.mapInfo(area: mapAreaId, no: battle.mapInfo)
-            else { return print("KCMasterMapInfo is not found") }
+        guard let mapInfo = store.mapInfo(area: mapAreaId, no: battle.mapInfo) else {
+            
+            print("KCMasterMapInfo is not found")
+            return
+        }
         
-        guard let mapArea = store.mapArea(by: mapAreaId)
-            else { return print("KCMasterMapArea is not found") }
+        guard let mapArea = store.mapArea(by: mapAreaId) else {
+            
+            print("KCMasterMapArea is not found")
+            return
+        }
         
         
         let localStore = LocalDataStore.oneTimeEditor()
-        guard let new = localStore.createHiddenDropShipHistory()
-            else { return print("Can not create HiddenDropShipHistory") }
+        guard let new = localStore.createHiddenDropShipHistory() else {
+            
+            print("Can not create HiddenDropShipHistory")
+            return
+        }
         
         new.shipName = shipName
         new.mapArea = "\(mapAreaId)"
@@ -59,8 +70,11 @@ final class DropShipHistoryCommand: JSONCommand {
         store.hiddenDropShipHistories()
             .forEach {
                 
-                guard let new = store.createDropShipHistory()
-                    else { return print("Can not create DropShipHistory") }
+                guard let new = store.createDropShipHistory() else {
+                    
+                    print("Can not create DropShipHistory")
+                    return
+                }
                 
                 new.shipName = $0.shipName
                 new.mapArea = $0.mapArea

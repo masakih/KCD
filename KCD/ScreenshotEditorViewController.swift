@@ -86,8 +86,7 @@ final class ScreenshotEditorViewController: BridgeViewController {
         
         get { return realiesCurrentTrimInforIndex }
         set {
-            guard 0..<trimInfo.count ~= newValue
-                else { return }
+            guard 0..<trimInfo.count ~= newValue else { return }
             
             realiesCurrentTrimInforIndex = newValue
             currentTrimInfo = trimInfo[newValue]
@@ -140,8 +139,7 @@ final class ScreenshotEditorViewController: BridgeViewController {
     
     private func updateSelections() {
         
-        guard let selection = arrayController.selectedObjects as? [ScreenshotInformation]
-            else { return }
+        guard let selection = arrayController.selectedObjects as? [ScreenshotInformation] else { return }
         
         if selection == currentSelection { return }
         
@@ -186,6 +184,7 @@ final class ScreenshotEditorViewController: BridgeViewController {
     private func makeEditedImage() {
         
         guard !editedImages.isEmpty else {
+            
             tiledImageView.images = []
             return
         }
@@ -194,8 +193,7 @@ final class ScreenshotEditorViewController: BridgeViewController {
             
             let images: [NSImage] = self.editedImages.flatMap {
                 
-                guard let originalImage = NSImage(contentsOf: $0.url)
-                    else { return nil }
+                guard let originalImage = NSImage(contentsOf: $0.url) else { return nil }
                 
                 let trimedImage = NSImage(size: self.currentTrimInfo.rect.size)
                 

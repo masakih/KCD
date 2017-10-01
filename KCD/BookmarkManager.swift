@@ -53,24 +53,23 @@ final class BookmarkManager: NSObject, NSMenuDelegate {
         
         bookmarksController.fetch(nil)
         
-        guard let items = bookmarksController.arrangedObjects as? [Bookmark]
-            else { return [] }
+        guard let items = bookmarksController.arrangedObjects as? [Bookmark] else { return [] }
         
         return items
     }
     
     func createNewBookmark() -> Bookmark? {
         
-        guard let maxOrder = bookmarksController.value(forKeyPath: "arrangedObjects.@max.order") as? Int
-            else {
-                print("BookmarkManager: Can no convert max order to Int")
-                return nil
+        guard let maxOrder = bookmarksController.value(forKeyPath: "arrangedObjects.@max.order") as? Int else {
+            
+            print("BookmarkManager: Can no convert max order to Int")
+            return nil
         }
         
-        guard let new = editorStore.createBookmark()
-            else {
-                print("BookmarkManager: Can not insert BookMarkItem")
-                return nil
+        guard let new = editorStore.createBookmark() else {
+            
+            print("BookmarkManager: Can not insert BookMarkItem")
+            return nil
         }
         
         new.identifier = String(format: "B%@", arguments: [NSDate()])

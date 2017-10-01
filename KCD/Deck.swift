@@ -59,23 +59,20 @@ extension Deck {
     
     private func ship(ofId identifier: Int) -> Ship? {
         
-        guard let moc = self.managedObjectContext
-            else { return nil }
+        guard let moc = self.managedObjectContext else { return nil }
         
         let req = NSFetchRequest<Ship>(entityName: "Ship")
         req.predicate = NSPredicate(format: "id = %ld", identifier)
         
-        guard let ships = try? moc.fetch(req),
-            let ship = ships.first
-            else { return nil }
+        guard let ships = try? moc.fetch(req) else { return nil }
+        guard let ship = ships.first else { return nil }
         
         return ship as Ship
     }
     
     subscript(_ index: Int) -> Ship? {
         
-        guard let shipId = shipId(of: index)
-            else { return nil }
+        guard let shipId = shipId(of: index) else { return nil }
         
         return ship(ofId: shipId)
     }

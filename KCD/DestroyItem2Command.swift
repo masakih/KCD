@@ -22,19 +22,26 @@ final class DestroyItem2Command: JSONCommand {
         guard let itemIds = parameter["api_slotitem_ids"]
             .string?
             .components(separatedBy: ",")
-            .flatMap({ Int($0) })
-            else { return print("api_slotitem_ids is wrong") }
+            .flatMap({ Int($0) }) else {
+                
+                print("api_slotitem_ids is wrong")
+                return
+        }
         
         let store = ServerDataStore.oneTimeEditor()
         
-        store.slotItems(in: itemIds)
-            .forEach { store.delete($0) }
+        store.slotItems(in: itemIds).forEach { store.delete($0) }
         
-        guard let material = store.material()
-            else { return print("Material is not found") }
-        
-        guard let gm = data["api_get_material"].arrayObject as? [Int]
-            else { return print("api_get_material is wrong") }
+        guard let material = store.material() else {
+            
+            print("Material is not found")
+            return
+        }
+        guard let gm = data["api_get_material"].arrayObject as? [Int] else {
+            
+            print("api_get_material is wrong")
+            return
+        }
         
         let resouces = ["fuel", "bull", "steel", "bauxite"]
         

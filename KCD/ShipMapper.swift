@@ -72,8 +72,7 @@ final class ShipMapper: JSONMapper {
     
     private class func dataKeys(_ apiResponse: APIResponse) -> [String] {
         
-        guard let shipApi = ShipAPI(rawValue: apiResponse.api)
-            else { return ["api_data"] }
+        guard let shipApi = ShipAPI(rawValue: apiResponse.api) else { return ["api_data"] }
         
         switch shipApi {
         case .port: return ["api_data", "api_ship"]
@@ -103,8 +102,7 @@ final class ShipMapper: JSONMapper {
     }()
     private var isDeleteNotExist: Bool {
         
-        guard let shipApi = ShipAPI(rawValue: apiResponse.api)
-            else { return true }
+        guard let shipApi = ShipAPI(rawValue: apiResponse.api) else { return true }
         
         switch shipApi {
         case .getMemberShip3, .kousyouGetShip, .getMemberShipDeck,
@@ -131,8 +129,7 @@ final class ShipMapper: JSONMapper {
         // 取得後破棄した装備のデータを削除するため保有IDを保存
         if key == "api_id" {
             
-            guard let id = value.int
-                else { return false }
+            guard let id = value.int else { return false }
             
             registerIds.append(id)
             
@@ -141,8 +138,7 @@ final class ShipMapper: JSONMapper {
         
         if key == "api_ship_id" {
             
-            guard let masterId = value.int
-                else { return false }
+            guard let masterId = value.int else { return false }
             
             setMaster(masterId, to: ship)
             
@@ -151,8 +147,7 @@ final class ShipMapper: JSONMapper {
         
         if key == "api_exp" {
             
-            guard let exp = value[0].int
-                else { return false }
+            guard let exp = value[0].int else { return false }
             
             ship.exp = exp
             
@@ -168,8 +163,7 @@ final class ShipMapper: JSONMapper {
         
         if key == "api_slot_ex" {
             
-            guard let ex = value.int
-                else { return false }
+            guard let ex = value.int else { return false }
             
             setExtraSlot(ex, to: ship)
             
@@ -191,8 +185,11 @@ final class ShipMapper: JSONMapper {
         if ship.ship_id == masterId { return }
         
         guard let mShip = masterShips.binarySearch(comparator: { $0.id ==? masterId }),
-            let masterShip = store?.object(of: MasterShip.entity, with: mShip.objectID)
-            else { return print("Can not convert to current moc object masterShip") }
+            let masterShip = store?.object(of: MasterShip.entity, with: mShip.objectID) else {
+                
+                print("Can not convert to current moc object masterShip")
+                return
+        }
         
         ship.master_ship = masterShip
         ship.ship_id = masterId
@@ -200,9 +197,8 @@ final class ShipMapper: JSONMapper {
     
     private func setSlot(_ slotItems: JSON, to ship: Ship) {
         
-        guard let converSlotItems = slotItems.arrayObject as? [Int],
-            let store = store
-            else { return }
+        guard let converSlotItems = slotItems.arrayObject as? [Int] else { return }
+        guard let store = store else { return }
         
         let newItems: [SlotItem] =
             converSlotItems.flatMap { item in
@@ -210,8 +206,7 @@ final class ShipMapper: JSONMapper {
                 if item == 0 || item == -1 { return nil }
                 
                 guard let found = self.slotItems.binarySearch(comparator: { $0.id ==? item }),
-                    let slotItem = store.object(of: SlotItem.entity, with: found.objectID)
-                    else {
+                    let slotItem = store.object(of: SlotItem.entity, with: found.objectID) else {
                         
                         let maxV = converSlotItems.last
                         if maxV != nil, maxV! < item {
@@ -233,13 +228,13 @@ final class ShipMapper: JSONMapper {
     
     private func setExtraSlot(_ exSlotItem: Int, to ship: Ship) {
         
-        guard exSlotItem != -1,
-            exSlotItem != 0
-            else { return }
-        
+        guard exSlotItem != -1, exSlotItem != 0 else { return }
         guard let found = slotItems.binarySearch(comparator: { $0.id ==? exSlotItem }),
-            let ex = store?.object(of: SlotItem.entity, with: found.objectID)
-            else { return print("Can not convert to current moc object") }
+            let ex = store?.object(of: SlotItem.entity, with: found.objectID) else {
+                
+                print("Can not convert to current moc object")
+                return
+        }
         
         ship.extraItem = ex
     }

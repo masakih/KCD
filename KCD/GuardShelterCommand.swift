@@ -57,8 +57,7 @@ final class GuardShelterCommand: JSONCommand {
     
     private func fleetMembers(fleetId: Int) -> [Int]? {
         
-        guard let deck = ServerDataStore.default.deck(by: fleetId)
-            else { return nil }
+        guard let deck = ServerDataStore.default.deck(by: fleetId) else { return nil }
         
         return [deck.ship_0, deck.ship_1, deck.ship_2,
                 deck.ship_3, deck.ship_4, deck.ship_5]
@@ -85,29 +84,41 @@ final class GuardShelterCommand: JSONCommand {
         
         let escape = data["api_escape"]
         
-        guard let guardianPos = escape["api_tow_idx"][0].int
-            else { return }
+        guard let guardianPos = escape["api_tow_idx"][0].int else { return }
         
         let fixedGuardianPos = guardianPos - 6 - 1
         
         guard case 0..<6 = fixedGuardianPos,
-            let guardianId = fleetMembers(fleetId: 2)?[fixedGuardianPos]
-            else { return print("guardianPos is wrong") }
+            let guardianId = fleetMembers(fleetId: 2)?[fixedGuardianPos] else {
+                
+                print("guardianPos is wrong")
+                return
+                
+        }
         
         guard let escapeIdx = escape["api_escape_idx"][0].int,
-            let damagedId = damagedShipId(damagedPos: escapeIdx)
-            else { return print("damagedPos is wrong") }
+            let damagedId = damagedShipId(damagedPos: escapeIdx) else {
+                
+                print("damagedPos is wrong")
+                return
+        }
         
         let store = TemporaryDataStore.oneTimeEditor()
         
-        guard let guardian = store.createGuardEscaped()
-            else { return print("Can not create GuardEscaped for guardinan") }
+        guard let guardian = store.createGuardEscaped() else {
+            
+            print("Can not create GuardEscaped for guardinan")
+            return
+        }
         
         guardian.shipID = guardianId
         guardian.ensured = false
         
-        guard let damaged = store.createGuardEscaped()
-            else { return print("Can not create GuardEscaped for damaged") }
+        guard let damaged = store.createGuardEscaped() else {
+            
+            print("Can not create GuardEscaped for damaged")
+            return
+        }
         
         damaged.shipID = damagedId
         damaged.ensured = false

@@ -18,8 +18,7 @@ final class TimerCountFormatter: Formatter {
             return nil
         }()
         
-        guard let value = v
-            else { return "" }
+        guard let value = v else { return "" }
         
         let minus = value < 0
         var interval = minus ? -value : value

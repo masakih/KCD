@@ -48,8 +48,7 @@ final class HistoryWindowController: NSWindowController {
     @objc var selectedTabIndex: Int = -1 {
         
         didSet {
-            guard let tabIndex = HistoryWindowTabIndex(rawValue: selectedTabIndex)
-                else { return }
+            guard let tabIndex = HistoryWindowTabIndex(rawValue: selectedTabIndex) else { return }
             
             switch tabIndex {
             case .kaihatuHistory:

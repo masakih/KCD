@@ -69,8 +69,7 @@ extension BridgeViewController: NSSharingServicePickerDelegate, ScreenshotSharin
     
     @IBAction func share(_ sender: AnyObject?) {
         
-        guard let view = sender as? NSView
-            else { return }
+        guard let view = sender as? NSView else { return }
         
         let picker = NSSharingServicePicker(items: itemsForShareingServicePicker())
         picker.delegate = self
@@ -79,8 +78,7 @@ extension BridgeViewController: NSSharingServicePickerDelegate, ScreenshotSharin
     
     private func itemsForShareingServicePicker() -> [AnyObject] {
         
-        guard let informations = arrayController.selectedObjects as? [ScreenshotInformation]
-            else { return [] }
+        guard let informations = arrayController.selectedObjects as? [ScreenshotInformation] else { return [] }
         
         let images: [NSImage] = informations.flatMap { NSImage(contentsOf: $0.url) }
         if !appendKanColleTag { return images }

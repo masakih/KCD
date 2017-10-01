@@ -19,8 +19,10 @@ final class DamageValueTransformer: ValueTransformer {
         
         guard let v = value as? Int,
             let type = DamageType(rawValue: v),
-            let attributes = attribute(for: type)
-            else { return nil }
+            let attributes = attribute(for: type) else {
+                
+                return nil
+        }
         
         return NSAttributedString(string: attributes.string, attributes: attributes.attr)
     }

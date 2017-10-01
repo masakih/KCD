@@ -45,8 +45,7 @@ final class PreferencePanelController: NSWindowController {
             let index = screenShotSaveDirectoryPopUp
                 .indexOfItem(withTag: ScreenshotSaveDirectoryPopupMenuItemTag.saveDirectory.rawValue)
             
-            guard let item = screenShotSaveDirectoryPopUp.item(at: index)
-                else { return }
+            guard let item = screenShotSaveDirectoryPopUp.item(at: index) else { return }
             
             let icon = NSWorkspace.shared.icon(forFile: newValue)
             let iconSize = icon.size
@@ -64,10 +63,8 @@ final class PreferencePanelController: NSWindowController {
         
         screenShotSaveDirectory = AppDelegate.shared.screenShotSaveDirectory
         
-        guard let window = window,
-            let items = window.toolbar?.items,
-            let item = items.first
-            else { return }
+        guard let window = window else { return }
+        guard let item = window.toolbar?.items.first else { return }
         
         window.toolbar?.selectedItemIdentifier = item.itemIdentifier
         NSApplication.shared.sendAction(.didChangeSelection,
@@ -79,11 +76,10 @@ final class PreferencePanelController: NSWindowController {
     
     @IBAction func selectScreenShotSaveDirectoryPopUp(_ sender: AnyObject?) {
         
-        guard let window = window,
-            let tag = sender?.tag,
-            let itemTag = ScreenshotSaveDirectoryPopupMenuItemTag(rawValue: tag),
-            itemTag == .selectDiretory
-            else { return }
+        guard let window = window else { return }
+        guard let tag = sender?.tag else { return }
+        guard let itemTag = ScreenshotSaveDirectoryPopupMenuItemTag(rawValue: tag) else { return }
+        guard itemTag == .selectDiretory else { return }
         
         let panel = NSOpenPanel()
         panel.canChooseDirectories = true
@@ -93,9 +89,8 @@ final class PreferencePanelController: NSWindowController {
             self.screenShotSaveDirectoryPopUp
                 .selectItem(withTag: ScreenshotSaveDirectoryPopupMenuItemTag.saveDirectory.rawValue)
             
-            guard $0 != .cancel,
-                let path = panel.url?.path
-                else { return }
+            guard $0 != .cancel else { return }
+            guard let path = panel.url?.path else { return }
             
             self.screenShotSaveDirectory = path
         }
@@ -103,9 +98,8 @@ final class PreferencePanelController: NSWindowController {
     
     @IBAction func didChangeSelection(_ sender: AnyObject?) {
         
-        guard let tag = sender?.tag,
-            let paneType = PreferencesPaneType(rawValue: tag)
-            else { return }
+        guard let tag = sender?.tag else { return }
+        guard let paneType = PreferencesPaneType(rawValue: tag) else { return }
         
         let pane: NSView = {
             
@@ -115,9 +109,8 @@ final class PreferencePanelController: NSWindowController {
             }
         }()
 
-        guard let item = sender as? NSToolbarItem,
-            let window = self.window
-            else { return }
+        guard let item = sender as? NSToolbarItem else { return }
+        guard let window = self.window else { return }
         
         window.title = item.label
         window.contentView?.subviews.forEach { $0.removeFromSuperview() }

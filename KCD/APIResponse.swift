@@ -42,8 +42,8 @@ private func splitJSON(_ data: Data) -> String? {
     let prefix = "svdata="
     
     guard let string = data.utf8String,
-        let range = string.range(of: prefix)
-        else {
+        let range = string.range(of: prefix) else {
+            
             print("data is wrong")
             return nil
     }
@@ -76,8 +76,7 @@ struct ParameterValue {
     var string: String? { return rawValue }
     var bool: Bool? {
         
-        guard let _ = rawValue
-            else { return nil }
+        guard let _ = rawValue else { return nil }
         
         if let i = self.int {
             
@@ -115,8 +114,7 @@ struct Parameter {
     
     init?(_ request: URLRequest) {
         
-        guard let paramList = parseParameter(request)
-            else { return nil }
+        guard let paramList = parseParameter(request) else { return nil }
         
         self.init(paramList)
     }
@@ -149,26 +147,26 @@ struct APIResponse {
         
         date = Date()
         
-        guard let josn = splitJSON(data)
-            else {
-                print("Can not parse JSON")
-                return nil
+        guard let josn = splitJSON(data) else {
+            
+            print("Can not parse JSON")
+            return nil
         }
         
         self.json = JSON(parseJSON: josn)
         
-        guard let parameter = Parameter(request)
-            else {
-                print("Can not parse Parameter")
-                return nil
+        guard let parameter = Parameter(request) else {
+            
+            print("Can not parse Parameter")
+            return nil
         }
         
         self.parameter = parameter
         
-        guard let api = request.url?.path
-            else {
-                print("URLRequest is wrong")
-                return nil
+        guard let api = request.url?.path else {
+            
+            print("URLRequest is wrong")
+            return nil
         }
         
         self.api = api

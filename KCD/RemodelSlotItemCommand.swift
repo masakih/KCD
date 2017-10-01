@@ -12,18 +12,21 @@ final class RemodelSlotItemCommand: JSONCommand {
     
     override func execute() {
         
-        guard let success = data["api_remodel_flag"].int,
-            success != 0
-            else { return }
-        
-        guard let slotItemId = parameter["api_slot_id"].int
-            else { return print("api_slot_id is wrong") }
+        guard let success = data["api_remodel_flag"].int, success != 0 else { return }
+        guard let slotItemId = parameter["api_slot_id"].int else {
+            
+            print("api_slot_id is wrong")
+            return
+        }
         
         let afterSlot = data["api_after_slot"]
         let store = ServerDataStore.oneTimeEditor()
         
-        guard let slotItem = store.slotItem(by: slotItemId)
-            else { return print("SlotItem not found") }
+        guard let slotItem = store.slotItem(by: slotItemId) else {
+            
+            print("SlotItem not found")
+            return
+        }
 
         if let locked = afterSlot["api_locked"].int {
             
@@ -45,8 +48,7 @@ final class RemodelSlotItemCommand: JSONCommand {
         }
         
         // remove used slot items.
-        guard let useSlot = data["api_use_slot_id"].arrayObject as? [Int]
-            else { return }
+        guard let useSlot = data["api_use_slot_id"].arrayObject as? [Int] else { return }
         
         store.slotItems(in: useSlot).forEach { store.delete($0) }
     }

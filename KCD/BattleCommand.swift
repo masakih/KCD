@@ -44,8 +44,7 @@ final class BattleCommand: JSONCommand {
         
         CalculateDamageCommand(apiResponse: apiResponse).execute()
         
-        guard let battleApi = BattleAPI(rawValue: apiResponse.api)
-            else { return }
+        guard let battleApi = BattleAPI(rawValue: apiResponse.api) else { return }
         
         switch battleApi {
         case .battleResult, .combinedBattleResult:

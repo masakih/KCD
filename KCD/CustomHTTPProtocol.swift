@@ -178,8 +178,10 @@ final class CustomHTTPProtocol: URLProtocol {
     
     override func startLoading() {
         
-        guard let newRequest = (request as NSObject).mutableCopy() as? NSMutableURLRequest
-            else { fatalError("Can not convert to NSMutableURLRequest") }
+        guard let newRequest = (request as NSObject).mutableCopy() as? NSMutableURLRequest else {
+            
+            fatalError("Can not convert to NSMutableURLRequest")
+        }
         
         URLProtocol.setProperty(true,
                                 forKey: CustomHTTPProtocol.requestProperty,
@@ -285,8 +287,10 @@ extension CustomHTTPProtocol: URLSessionDataDelegate {
         
         guard error.code == Int(CFNetworkErrors.cfurlErrorNetworkConnectionLost.rawValue),
             !didRetry,
-            !didRecieveData
-            else { return false }
+            !didRecieveData else {
+                
+                return false
+        }
         
         print("Retry download...")
         

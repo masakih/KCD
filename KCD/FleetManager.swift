@@ -47,7 +47,11 @@ final class FleetManager: NSObject {
         
         fleets = (1...4).flatMap { Fleet(number: $0) }
         
-        guard fleets.count == 4 else { return print("Can not create Fleet") }
+        guard fleets.count == 4 else {
+            
+            print("Can not create Fleet")
+            return
+        }
         
         if fleets[0].ships.isEmpty {
             

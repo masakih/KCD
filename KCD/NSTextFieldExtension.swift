@@ -20,8 +20,10 @@ extension NSTextField {
                                           bitsPerComponent: 8,
                                           bytesPerRow: Int(bounds.width),
                                           space: colorspace,
-                                          bitmapInfo: 0)
-            else { fatalError("Can not create bitmap context") }
+                                          bitmapInfo: 0) else {
+                                            
+                                            fatalError("Can not create bitmap context")
+        }
         
         let maskGraphicsContext = NSGraphicsContext(cgContext: maskContext, flipped: false)
         
@@ -37,8 +39,7 @@ extension NSTextField {
                                   (.black, 1.0))
         gradient?.draw(in: bounds, angle: 0.0)
         
-        guard let r = maskContext.makeImage()
-            else { fatalError(" can not create image from context") }
+        guard let r = maskContext.makeImage() else { fatalError(" can not create image from context") }
         
         return r
     }

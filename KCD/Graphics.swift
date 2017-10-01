@@ -24,8 +24,7 @@ func polygon(_ point: () -> [NSPoint]) -> NSBezierPath? {
 
 func polygon(points: [NSPoint]) -> NSBezierPath? {
     
-    guard points.count > 2
-        else { return nil }
+    guard points.count > 2 else { return nil }
     
     let path = polyline(points: points)
     path?.close()
@@ -40,8 +39,7 @@ func polyline(_ point: () -> [NSPoint]) -> NSBezierPath? {
 
 func polyline(points: [NSPoint]) -> NSBezierPath? {
     
-    guard points.count > 1
-        else { return nil }
+    guard points.count > 1 else { return nil }
     
     return points.dropFirst().reduce(NSBezierPath(start: points[0]), lineToPoint)
 }

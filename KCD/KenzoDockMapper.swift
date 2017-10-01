@@ -33,8 +33,7 @@ final class KenzoDockMapper: JSONMapper {
     
     private class func dataKeys(_ apiResponse: APIResponse) -> [String] {
         
-        guard let kenzoDockApi = KenzoDockAPI(rawValue: apiResponse.api)
-            else { return ["api_data"] }
+        guard let kenzoDockApi = KenzoDockAPI(rawValue: apiResponse.api) else { return ["api_data"] }
         
         switch kenzoDockApi {
         case .kousyouGetShip: return ["api_data", "api_kdock"]

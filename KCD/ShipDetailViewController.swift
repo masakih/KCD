@@ -222,8 +222,7 @@ extension ShipDetailViewController {
     
     private func planState(_ index: Int) -> PlaneState {
         
-        guard let ship = ship
-            else { return .cannotEquip }
+        guard let ship = ship else { return .cannotEquip }
         
         let itemId = ship.slotItemId(index)
         let maxCount = ship.slotItemMax(index)

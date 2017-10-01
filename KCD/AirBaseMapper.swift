@@ -42,27 +42,23 @@ final class AirBaseMapper: JSONMapper {
             }
         }
         
-        guard let planeInfos = value.array
-            else {
-                print("value is wrong")
-                return false
+        guard let planeInfos = value.array else {
+            
+            print("value is wrong")
+            return false
         }
         
-        guard let infos = airbase.planeInfo.array as? [AirBasePlaneInfo]
-            else {
-                print("airbase is wrong")
-                return false
+        guard let infos = airbase.planeInfo.array as? [AirBasePlaneInfo] else {
+            
+            print("airbase is wrong")
+            return false
         }
         
         zip(infos, planeInfos).forEach { (info, dict) in
             
-            guard let slotid = dict["api_slotid"].int,
-                slotid != 0
-                else { return }
-            
-            guard let state = dict["api_state"].int,
-                let squadronid = dict["api_squadron_id"].int
-                else { return }
+            guard let slotid = dict["api_slotid"].int, slotid != 0 else { return }
+            guard let state = dict["api_state"].int else { return }
+            guard let squadronid = dict["api_squadron_id"].int else { return }
             
             if state == 2 {
                 
@@ -77,10 +73,21 @@ final class AirBaseMapper: JSONMapper {
                 return
             }
 
-            guard let cond = dict["api_cond"].int,
-                let count = dict["api_count"].int,
-                let maxCount = dict["api_max_count"].int
-                else { return print("planeInfos is wrong") }
+            guard let cond = dict["api_cond"].int else {
+                
+                print("api_cond is wrong.")
+                return
+            }
+            guard let count = dict["api_count"].int else {
+                
+                print("api_cond is wrong.")
+                return
+            }
+            guard let maxCount = dict["api_max_count"].int else {
+                
+                print("api_max_count is wrong")
+                return
+            }
             
             info.cond = cond
             info.count = count

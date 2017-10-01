@@ -47,8 +47,11 @@ final class ResourceHistoryManager: NSObject {
             .flatMap { ($0 + 2) / 5 }
             .flatMap { $0 * 5 }
         
-        guard let notifyDate = Calendar.current.date(from: nowComp)
-            else { return print("ResourceHistoryManager: Can not create notify date") }
+        guard let notifyDate = Calendar.current.date(from: nowComp) else {
+            
+            print("ResourceHistoryManager: Can not create notify date")
+            return
+        }
         
         let notifyTime = notifyDate.timeIntervalSinceNow
         self.timer = Timer.scheduledTimer(timeInterval: notifyTime,
@@ -62,16 +65,25 @@ final class ResourceHistoryManager: NSObject {
         
         let store = ServerDataStore.default
         
-        guard let material = store.material()
-            else { return print("ResourceHistoryManager: Can not get Material") }
+        guard let material = store.material() else {
+            
+            print("ResourceHistoryManager: Can not get Material")
+            return
+        }
         
-        guard let basic = store.basic()
-            else { return print("ResourceHistoryManager: Can not get Basic") }
+        guard let basic = store.basic() else {
+            
+            print("ResourceHistoryManager: Can not get Basic")
+            return
+        }
         
         let historyStore = ResourceHistoryDataStore.oneTimeEditor()
         
-        guard let newHistory = historyStore.cerateResource()
-            else { return print("ResourceHistoryManager: Can not create ResourceHIstory") }
+        guard let newHistory = historyStore.cerateResource() else {
+            
+            print("ResourceHistoryManager: Can not create ResourceHIstory")
+            return
+        }
         
         let now = Date()
         var nowComp = Calendar.current

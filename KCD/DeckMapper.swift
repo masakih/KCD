@@ -38,8 +38,7 @@ final class DeckMapper: JSONMapper {
     
     private class func dataKeys(_ apiResponse: APIResponse) -> [String] {
         
-        guard let deckApi = DeckAPI(rawValue: apiResponse.api)
-            else { return ["api_data"] }
+        guard let deckApi = DeckAPI(rawValue: apiResponse.api) else { return ["api_data"] }
         
         switch deckApi {
         case .port: return ["api_data", "api_deck_port"]

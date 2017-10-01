@@ -25,8 +25,7 @@ final class SokuTransformer: ValueTransformer {
     
     override func transformedValue(_ value: Any?) -> Any? {
         
-        guard let v = value as? Int, let type = SokuType(rawValue: v)
-            else { return nil }
+        guard let v = value as? Int, let type = SokuType(rawValue: v) else { return nil }
         
         switch type {
         case .slow:
