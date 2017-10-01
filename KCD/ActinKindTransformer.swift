@@ -33,20 +33,15 @@ final class ActinKindTransformer: ValueTransformer {
         }
         
         switch type {
-        case .standBy:
-            return NSLocalizedString("StandBy", comment: "Airbase action kind")
+        case .standBy: return LocalizedStrings.standBy.string
             
-        case .sortie:
-            return NSLocalizedString("Sortie", comment: "Airbase action kind")
+        case .sortie: return LocalizedStrings.sortie.string
             
-        case .airDifence:
-            return NSLocalizedString("Air Difence", comment: "Airbase action kind")
+        case .airDifence: return LocalizedStrings.airDifense.string
             
-        case .shelter:
-            return NSLocalizedString("Shelter", comment: "Airbase action kind")
+        case .shelter: return LocalizedStrings.shelter.string
             
-        case .rest:
-            return NSLocalizedString("Rest", comment: "Airbase action kind")
+        case .rest: return LocalizedStrings.rest.string
         }
     }
 }

@@ -52,7 +52,7 @@ final class TimeSignalNotifier: NSObject {
         
         let notification = NSUserNotification()
         let hour = cal.component(.hour, from: now)
-        let format = NSLocalizedString("It is soon %zd o'clock.", comment: "It is soon %zd o'clock.")
+        let format = LocalizedStrings.timerSIgnalMessage.string
         notification.title = String(format: format, hour + 1)
         notification.informativeText = notification.title
         

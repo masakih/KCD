@@ -19,6 +19,6 @@ final class AirbasePlaneStateTransformer: ValueTransformer {
         
         guard let v = value as? Int, v == 2 else { return nil }
         
-        return NSLocalizedString("rotating", comment: "AirbasePlaneStateTransformer")
+        return LocalizedStrings.rotating.string
     }
 }

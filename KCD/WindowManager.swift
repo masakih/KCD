@@ -332,36 +332,36 @@ extension WindowManager {
         case Selector.showHideHistory:
             setTitle(menuItem,
                      historyWindowController.window,
-                     NSLocalizedString("Show History", comment: "Show History"),
-                     NSLocalizedString("Hide History", comment: "Hide History"))
+                     LocalizedStrings.showHistory.string,
+                     LocalizedStrings.hideHistory.string)
             return true
             
         case Selector.showHideSlotItemWindow:
             setTitle(menuItem,
                      slotItemWindowController.window,
-                     NSLocalizedString("Show Slot Item", comment: "Show Slot Item"),
-                     NSLocalizedString("Hide Slot Item", comment: "Hide Slot Item"))
+                     LocalizedStrings.showSlotItem.string,
+                     LocalizedStrings.hideSlotItem.string)
             return true
             
         case Selector.showHideUpgradableShipWindow:
             setTitle(menuItem,
                      upgradableShipWindowController.window,
-                     NSLocalizedString("Show Upgradable Ships", comment: "Show Upgradable Ships"),
-                     NSLocalizedString("Hide Upgradable Ships", comment: "Hide Upgradable Ships"))
+                     LocalizedStrings.showUpgradableShips.string,
+                     LocalizedStrings.hideUpgradableShips.string)
             return true
             
         case Selector.showHideScreenshotListWindow:
             setTitle(menuItem,
                      screenshotListWindowController.window,
-                     NSLocalizedString("Show Screenshot List", comment: "Show Screenshot List"),
-                     NSLocalizedString("Hide Screenshot List", comment: "Hide Screenshot List"))
+                     LocalizedStrings.showScreenshotList.string,
+                     LocalizedStrings.hideScreenshotList.string)
             return true
             
         case Selector.showHideAirBaseInfoWindow:
             setTitle(menuItem,
                      airBaseWindowController.window,
-                     NSLocalizedString("Show Air Base Info", comment: "Show Air Base Info"),
-                     NSLocalizedString("Hide Air Base Info", comment: "Hide Air Base Info"))
+                     LocalizedStrings.showAirbaseInfo.string,
+                     LocalizedStrings.hideAirbaseInfo.string)
             return true
             
         case Selector.showHidePreferencePanle:

@@ -132,18 +132,18 @@ final class DocksViewController: MainTabVIewItemViewController {
         
         if battleCellNumber == 0 {
             
-            let format = NSLocalizedString("%@ in sortie into %@ (%@)", comment: "Sortie")
+            let format = LocalizedStrings.sortieInfomation.string
             
             return String(format: format, arguments: [fleetName, areaName, areaNumber])
         }
         if isBossCell {
             
-            let format = NSLocalizedString("%@ battle against the enemy main fleet at %@ war zone in %@ (%@) now", comment: "Sortie")
+            let format = LocalizedStrings.battleWithBOSS.string
             
             return String(format: format, arguments: [fleetName, battleCellNumber as NSNumber, areaName, areaNumber])
         }
         
-        let format = NSLocalizedString("%@ battle at %@ war zone in %@ (%@) now", comment: "Sortie")
+        let format = LocalizedStrings.battleInformation.string
         
         return String(format: format, arguments: [fleetName, battleCellNumber as NSNumber, areaName, areaNumber])
     }

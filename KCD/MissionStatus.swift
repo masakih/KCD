@@ -127,9 +127,9 @@ final class MissionStatus: NSObject {
         guard let fleetName = fleetName else { return }
         
         let notification = NSUserNotification()
-        let format = NSLocalizedString("%@ Will Return From Mission.", comment: "%@ Will Return From Mission.")
+        let format = LocalizedStrings.missionWillReturnMessage.string
         notification.title = String(format: format, fleetName)
-        let txtFormat = NSLocalizedString("%@ Will Return From %@.", comment: "%@ Will Return From %@.")
+        let txtFormat = LocalizedStrings.missionWillReturnInformation.string
         notification.informativeText = String(format: txtFormat, fleetName, name!)
         
         if UserDefaults.standard[.playFinishMissionSound] {

@@ -28,17 +28,13 @@ final class LengTransformer: ValueTransformer {
         guard let v = value as? Int, let type = LengType(rawValue: v) else { return nil }
         
         switch type {
-        case .short:
-            return NSLocalizedString("Short", comment: "Range, short")
+        case .short: return LocalizedStrings.short.string
             
-        case .middle:
-            return NSLocalizedString("Middle", comment: "Range, middle")
+        case .middle: return LocalizedStrings.middle.string
             
-        case .long:
-            return NSLocalizedString("Long", comment: "Range, long")
+        case .long: return LocalizedStrings.long.string
             
-        case .overLong:
-            return NSLocalizedString("Very Long", comment: "Range, very long")
+        case .overLong: return LocalizedStrings.overLong.string
         }
     }
 }

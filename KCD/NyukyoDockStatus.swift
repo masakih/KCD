@@ -120,7 +120,7 @@ final class NyukyoDockStatus: NSObject {
         if diff >= 1 * 60 { return }
         
         let notification = NSUserNotification()
-        let format = NSLocalizedString("%@ Will Finish Docking.", comment: "%@ Will Finish Docking.")
+        let format = LocalizedStrings.dockingWillFinish.string
         notification.title = String(format: format, name)
         notification.informativeText = notification.title
         

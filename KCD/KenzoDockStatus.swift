@@ -94,7 +94,7 @@ final class KenzoDockStatus: NSObject {
         if diff > 0 { return }
         
         let notification = NSUserNotification()
-        let format = NSLocalizedString("It Will Finish Build at No.%@.", comment: "It Will Finish Build at No.%@.")
+        let format = LocalizedStrings.buildingWillFinish.string
         notification.title = String(format: format, number as NSNumber)
         notification.informativeText = notification.title
         

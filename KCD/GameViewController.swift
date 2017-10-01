@@ -84,8 +84,8 @@ final class GameViewController: NSViewController {
             let untilDate = prevDate.addingTimeInterval(1 * 60)
             let date = DateFormatter.localizedString(from: untilDate, dateStyle: .none, timeStyle: .medium)
             let alert = NSAlert()
-            alert.messageText = NSLocalizedString("Reload interval is too short?", comment: "")
-            let format = NSLocalizedString("Reload interval is too short.\nWait until %@.", comment: "")
+            alert.messageText = LocalizedStrings.reloadTimeShortenMessage.string
+            let format = LocalizedStrings.reloadTimeShortenInfo.string
             alert.informativeText = String(format: format, date)
             alert.runModal()
             
@@ -105,7 +105,7 @@ final class GameViewController: NSViewController {
         guard let panelWindow = panel.window else { return }
         
         panel.title = ""
-        panel.message = NSLocalizedString("Deleting caches...", comment: "Deleting caches...")
+        panel.message = LocalizedStrings.deletingCacheInfo.string
         panel.animate = true
         
         window.beginSheet(panelWindow) { _ in NSSound(named: NSSound.Name("Submarine"))?.play() }
@@ -136,13 +136,13 @@ final class GameViewController: NSViewController {
             
             switch frameURL {
             case GameViewController.gamePageURL:
-                menuItem.title = NSLocalizedString("Reload", comment: "Reload menu, reload")
+                menuItem.title = LocalizedStrings.reload.string
                 
             case let s where s.hasPrefix(GameViewController.loginPageURLPrefix):
-                menuItem.title = NSLocalizedString("Reload", comment: "Reload menu, reload")
+                menuItem.title = LocalizedStrings.reload.string
                 
             default:
-                menuItem.title = NSLocalizedString("Back To Game", comment: "Reload menu, back to game")
+                menuItem.title = LocalizedStrings.backToGame.string
             }
             
             return true

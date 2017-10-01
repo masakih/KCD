@@ -161,11 +161,11 @@ final class UpgradableShipsWindowController: NSWindowController {
             let shipID = ships[row].id
             if isExcludeShipID(shipID) {
                 
-                menuItem.title = NSLocalizedString("Show Kanmusu", comment: "UpgradableShipsWindowController menu item")
+                menuItem.title = LocalizedStrings.showKanmusu.string
                 
             } else {
                 
-                menuItem.title = NSLocalizedString("Hide Kanmusu", comment: "UpgradableShipsWindowController menu item")
+                menuItem.title = LocalizedStrings.hideKanmusu.string
             }
             
             return true

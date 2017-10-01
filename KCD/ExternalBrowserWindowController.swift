@@ -205,11 +205,11 @@ extension ExternalBrowserWindowController {
         case Selector.showBookmark:
             if showsBookmarkList() {
                 
-                menuItem.title = NSLocalizedString("Hide Bookmark", comment: "Menu item title, Hide Bookmark")
+                menuItem.title = LocalizedStrings.hideBookmark.string
                 
             } else {
                 
-                menuItem.title = NSLocalizedString("Show Bookmark", comment: "Menu item title, Show Bookmark")
+                menuItem.title = LocalizedStrings.showBookmark.string
             }
             return true
             

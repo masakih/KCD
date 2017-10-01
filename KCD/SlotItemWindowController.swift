@@ -56,14 +56,12 @@ final class SlotItemWindowController: NSWindowController {
     @objc var showEquipmentTypeTitle: String {
         
         switch UserDefaults.standard[.showEquipmentType] {
-        case .all:
-            return NSLocalizedString("All", comment: "show equipment type All")
             
-        case .nonEquiped:
-            return NSLocalizedString("Unequiped", comment: "show equipment type Unequiped")
+        case .all: return LocalizedStrings.allEquipment.string
             
-        case .equiped:
-            return NSLocalizedString("Equiped", comment: "show equipment type Equiped")
+        case .nonEquiped: return LocalizedStrings.unequiped.string
+            
+        case .equiped: return LocalizedStrings.equiped.string
         }
     }
     

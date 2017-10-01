@@ -60,7 +60,7 @@ final class StoreCreateSlotItemHistoryCommand: JSONCommand {
         
         if sccess == 0 {
             
-            return NSLocalizedString("fail to develop", comment: "fail to develop")
+            return LocalizedStrings.failDevelop.string
             
         }
         

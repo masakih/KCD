@@ -381,11 +381,11 @@ extension BroserWindowController {
         case Selector.showHideCombinedView:
             if isCombinedMode {
                 
-                menuItem.title = NSLocalizedString("Hide Combined View", comment: "View menu, hide combined view")
+                menuItem.title = LocalizedStrings.hideCombinedView.string
                 
             } else {
                 
-                menuItem.title = NSLocalizedString("Show Combined View", comment: "View menu, show combined view")
+                menuItem.title = LocalizedStrings.showCombinedView.string
                 
             }
             if fleetViewPosition == .oldStyle { return false }

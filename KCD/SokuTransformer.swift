@@ -28,17 +28,13 @@ final class SokuTransformer: ValueTransformer {
         guard let v = value as? Int, let type = SokuType(rawValue: v) else { return nil }
         
         switch type {
-        case .slow:
-            return NSLocalizedString("Slow", comment: "Speed, slow")
+        case .slow: return LocalizedStrings.slow.string
             
-        case .fast:
-            return NSLocalizedString("Fast", comment: "Speed, fast")
+        case .fast: return LocalizedStrings.fast.string
             
-        case .faster:
-            return NSLocalizedString("Faster", comment: "Speed, faster")
+        case .faster: return LocalizedStrings.faster.string
             
-        case .fastest:
-            return NSLocalizedString("Fastest", comment: "Speed, fastest")
+        case .fastest: return LocalizedStrings.fastest.string
         }
     }
 }

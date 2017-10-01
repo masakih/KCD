@@ -101,11 +101,11 @@ class HistoryTableViewController: NSViewController {
             menuItem.isEnabled = true
             if clickedObject.mark {
                 
-                menuItem.title = NSLocalizedString("Remove mark", comment: "Remove history mark.")
+                menuItem.title = LocalizedStrings.removeMark.string
                 
             } else {
                 
-                menuItem.title = NSLocalizedString("Add mark", comment: "Add history mark.")
+                menuItem.title = LocalizedStrings.addMark.string
             }
         }
         

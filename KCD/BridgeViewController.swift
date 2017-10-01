@@ -61,7 +61,7 @@ extension BridgeViewController: NSSharingServicePickerDelegate, ScreenshotSharin
     
     private var tagString: String? {
         
-        let tag = NSLocalizedString("kancolle", comment: "kancolle twitter hash tag")
+        let tag = LocalizedStrings.tweetTag.string
         if tag == "" { return "" }
         
         return "#\(tag)"
