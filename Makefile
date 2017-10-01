@@ -9,13 +9,7 @@ APP_NAME=$(BUILD_PATH)/$(DEPLOYMENT)/$(PRODUCT_NAME)
 SCHEME=KCD
 INFO_PLIST=KCD/KCD-Info.plist
 
-LOCALIZE_FILES=KCD/BroserWindowController.m KCD/ServerDataStore.m KCD/KenzoDockStatus.m \
-KCD/MissionStatus.m KCD/NyukyoDockStatus.m KCD/CreateSlotItemCommand.m KCD/AppDelegate.m \
-KCD/StoreCreateSlotItemHistoryCommand.m KCD/DocksViewController.m KCD/SlotItemWindowController.m \
-KCD/BroserWindowController.m KCD/ExternalBrowserWindowController.m KCD/LengTransformer.m \
-KCD/SokuTransformer.m KCD/GameViewController.m KCD/UpgradableShipsWindowController.m \
-KCD/ScreenshotListWindowController.m KCD/HistoryWindowController.m KCD/BridgeViewController.m \
-KCD/TimeSignalNotifier.m KCD/ActinKindTransformer.m KCD/AirbasePlaneStateTransformer.m
+LOCALIZE_FILES=KCD/LocalizedStrings.swift
 
 VER_CMD=grep -A1 'CFBundleShortVersionString' $(INFO_PLIST) | tail -1 | tr -d "'\t</string>" 
 VERSION=$(shell $(VER_CMD))
@@ -23,11 +17,11 @@ VERSION=$(shell $(VER_CMD))
 all: package
 
 Localizable: $(LOCALIZE_FILES)
-	genstrings -o KCD/ja.lproj $^
+	genstrings -s LocalizedString -o KCD/ja.lproj $^
 	(cd KCD/ja.lproj; ${MAKE} $@;)
-#	genstrings -o KCD/en.lproj $^
+#	genstrings -s LocalizedString  -o KCD/en.lproj $^
 #	(cd KCD/en.lproj; ${MAKE} $@;)
-	genstrings -o KCD/zh-Hant-TW.lproj $^
+	genstrings -s LocalizedString  -o KCD/zh-Hant-TW.lproj $^
 	(cd KCD/zh-Hant-TW.lproj; ${MAKE} $@;)
 
 
