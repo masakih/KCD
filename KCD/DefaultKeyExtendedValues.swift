@@ -12,12 +12,12 @@ import AppKit.NSColor
 /// KeyedArchiving
 extension UserDefaults {
     
-    private func keyedArchivedObject(forKey key: String) -> Any? {
+    private func keyedArchivedObject<T>(forKey key: String) -> T? {
         
         guard let data = self.object(forKey: key) as? Data
             else { return nil }
         
-        return NSKeyedUnarchiver.unarchiveObject(with: data)
+        return NSKeyedUnarchiver.unarchiveObject(with: data) as? T
     }
     
     private func setKeyedArchived(_ object: Any?, forKey key: String) {
@@ -37,19 +37,19 @@ extension UserDefaults {
     
     subscript(key: DefaultKey<[NSSortDescriptor]>) -> [NSSortDescriptor] {
         
-        get { return keyedArchivedObject(forKey: key.rawValue) as? [NSSortDescriptor] ?? [] }
+        get { return keyedArchivedObject(forKey: key.rawValue) ?? [] }
         set { self.setKeyedArchived(newValue, forKey: key.rawValue) }
     }
     
     subscript(key: DefaultKey<NSColor>) -> NSColor {
         
-        get { return keyedArchivedObject(forKey: key.rawValue) as? NSColor ?? key.alternative }
+        get { return keyedArchivedObject(forKey: key.rawValue) ?? key.alternative }
         set { self.setKeyedArchived(newValue, forKey: key.rawValue) }
     }
     
     subscript(key: DefaultKey<Date>) -> Date {
         
-        get { return keyedArchivedObject(forKey: key.rawValue) as? Date ?? key.alternative }
+        get { return keyedArchivedObject(forKey: key.rawValue) ?? key.alternative }
         set { self.setKeyedArchived(newValue, forKey: key.rawValue) }
     }
     
