@@ -29,7 +29,7 @@ final class Quest: KCManagedObject {
 
 extension Quest {
     
-    class func keyPathsForValuesAffectingCompositStatus() -> Set<String> {
+    @objc class func keyPathsForValuesAffectingCompositStatus() -> Set<String> {
         
         return ["state", "progress_flag"]
     }
