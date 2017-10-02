@@ -65,9 +65,8 @@ extension Deck {
         req.predicate = NSPredicate(format: "id = %ld", identifier)
         
         guard let ships = try? moc.fetch(req) else { return nil }
-        guard let ship = ships.first else { return nil }
         
-        return ship as Ship
+        return ships.first
     }
     
     subscript(_ index: Int) -> Ship? {
