@@ -52,12 +52,12 @@ final class AirBaseWindowController: NSWindowController {
         
         super.windowDidLoad()
         
-        airBaseController.addObserver(self, forKeyPath: "content", context: nil)
+        airBaseController.addObserver(self, forKeyPath: #keyPath(airBaseController.content), context: nil)
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
         
-        guard keyPath == "content" else {
+        guard keyPath == #keyPath(airBaseController.content) else {
             
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
             return
