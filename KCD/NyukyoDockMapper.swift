@@ -10,8 +10,6 @@ import Cocoa
 
 final class NyukyoDockMapper: JSONMapper {
     
-    typealias ObjectType = NyukyoDock
-
     let apiResponse: APIResponse
     let configuration: MappingConfiguration<NyukyoDock>
     

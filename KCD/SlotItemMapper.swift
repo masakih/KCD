@@ -10,9 +10,7 @@ import Cocoa
 import SwiftyJSON
 
 final class SlotItemMapper: JSONMapper {
-    
-    typealias ObjectType = SlotItem
-    
+        
     let apiResponse: APIResponse
     let configuration: MappingConfiguration<SlotItem>
     

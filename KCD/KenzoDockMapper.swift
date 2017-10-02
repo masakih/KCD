@@ -9,9 +9,7 @@
 import Cocoa
 
 final class KenzoDockMapper: JSONMapper {
-    
-    typealias ObjectType = KenzoDock
-    
+        
     let apiResponse: APIResponse
     let configuration: MappingConfiguration<KenzoDock>
     

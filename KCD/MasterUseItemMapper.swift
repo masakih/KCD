@@ -10,8 +10,6 @@ import Cocoa
 
 final class MasterUseItemMapper: JSONMapper {
     
-    typealias ObjectType = MasterUseItem
-
     let apiResponse: APIResponse
     let configuration = MappingConfiguration(entity: MasterUseItem.entity,
                                              dataKeys: ["api_data", "api_mst_useitem"],

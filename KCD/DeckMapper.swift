@@ -9,9 +9,7 @@
 import Cocoa
 
 final class DeckMapper: JSONMapper {
-    
-    typealias ObjectType = Deck
-    
+        
     let apiResponse: APIResponse
     let configuration: MappingConfiguration<Deck>
     

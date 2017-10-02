@@ -10,8 +10,6 @@ import Cocoa
 
 final class MasterFurnitureMapper: JSONMapper {
     
-    typealias ObjectType = MasterFurniture
-
     let apiResponse: APIResponse
     let configuration = MappingConfiguration(entity: MasterFurniture.entity,
                                              dataKeys: ["api_data", "api_mst_furniture"],

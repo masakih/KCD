@@ -10,9 +10,7 @@ import Cocoa
 import SwiftyJSON
 
 final class MaterialMapper: JSONMapper {
-    
-    typealias ObjectType = Material
-    
+        
     let apiResponse: APIResponse
     let configuration: MappingConfiguration<Material>
     

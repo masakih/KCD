@@ -9,9 +9,7 @@
 import Cocoa
 
 final class BasicMapper: JSONMapper {
-    
-    typealias ObjectType = Basic
-    
+        
     let apiResponse: APIResponse
     let configuration: MappingConfiguration<Basic>
     

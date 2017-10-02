@@ -10,9 +10,7 @@ import Cocoa
 import SwiftyJSON
 
 final class MasterShipMapper: JSONMapper {
-    
-    typealias ObjectType = MasterShip
-    
+        
     let apiResponse: APIResponse
     let configuration = MappingConfiguration(entity: MasterShip.entity,
                                              dataKeys: ["api_data", "api_mst_ship"],

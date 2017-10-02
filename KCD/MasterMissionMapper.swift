@@ -10,8 +10,6 @@ import Cocoa
 
 final class MasterMissionMapper: JSONMapper {
     
-    typealias ObjectType = MasterMission
-
     let apiResponse: APIResponse
     let configuration = MappingConfiguration(entity: MasterMission.entity,
                                              dataKeys: ["api_data", "api_mst_mission"],

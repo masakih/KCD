@@ -23,7 +23,6 @@ extension MappingConfiguration {
 
 final class ShipMapper: JSONMapper {
     
-    typealias ObjectType = Ship
     let apiResponse: APIResponse
     let configuration: MappingConfiguration<Ship>
     

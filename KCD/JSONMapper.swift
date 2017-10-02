@@ -48,12 +48,12 @@ protocol JSONMapper {
 }
 
 extension String {
-    
+    // delete api_ prefix.
     func keyByDeletingPrefix() -> String {
         
         if self.characters.count < 5 { return self }
         
-/* MARK: CONVERT */        return String(self[index(startIndex, offsetBy: 4)...])
+        return String(self[index(startIndex, offsetBy: 4)...])
     }
 }
 

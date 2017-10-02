@@ -10,9 +10,7 @@ import Cocoa
 import SwiftyJSON
 
 final class AirBaseMapper: JSONMapper {
-    
-    typealias ObjectType = AirBase
-    
+        
     let apiResponse: APIResponse
     let configuration = MappingConfiguration(entity: AirBase.entity,
                                              dataKeys: ["api_data", "api_air_base"],
