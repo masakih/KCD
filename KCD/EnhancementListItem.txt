@@ -167,6 +167,10 @@
 134A	5	4	OTO 152mm三連装速射砲		Roma
 134A	6	4	OTO 152mm三連装速射砲		Roma
 134A	7	4	OTO 152mm三連装速射砲		Littorio
+247A	2	4	15.2cm三連装砲		Richelieu
+247A	3	4	15.2cm三連装砲		Richelieu
+247A	4	4	15.2cm三連装砲		Richelieu
+247A	5	4	15.2cm三連装砲		Richelieu
 10A	1	4	12.7cm連装高角砲	8cm高角砲	鈴谷,熊野
 10A	2	4	12.7cm連装高角砲	8cm高角砲	熊野
 10A	6	4	12.7cm連装高角砲	8cm高角砲	摩耶改二,鈴谷
@@ -266,16 +270,22 @@
 157A	6	6	零式艦戦53型(岩本隊)		瑞鶴
 157A	7	6	零式艦戦53型(岩本隊)		瑞鶴
 197A	1	6	F4F-3	F4F-4	Saratoga（改は除く）
+197A	2	6	F4F-3	F4F-4	Saratoga MK.II（mod. 2は除く）
+197A	3	6	F4F-3	F4F-4	Saratoga MK.II（mod. 2は除く）
 197A	4	6	F4F-3	F4F-4	Saratoga（改は除く）
-197A	5	6	F4F-3	F4F-4	Saratoga（改は除く）
-197A	6	6	F4F-3	F4F-4	Saratoga
-197A	7	6	F4F-3	F4F-4	Saratoga
-198A	2	6	F4F-4	F6F-3	Saratoga
-198A	3	6	F4F-4	F6F-3	Saratoga
-198A	4	6	F4F-4	F6F-3	Saratoga改
-205A	3	6	F6F-3		Saratoga改
-205A	4	6	F6F-3		Saratoga改
-205A	5	6	F6F-3		Saratoga改
+197A	5	6	F4F-3	F4F-4	Saratoga
+197A	6	6	F4F-3	F4F-4	Saratoga（MK.IIは除く）
+197A	7	6	F4F-3	F4F-4	Saratoga（MK.IIは除く）
+198A	2	6	F4F-4	F6F-3	Saratoga MK.II（mod. 2は除く）
+198A	3	6	F4F-4	F6F-3	Saratoga（MK.IIは除く）
+198A	4	6	F4F-4	F6F-3	Saratoga改（MK.IIは除く）
+198A	5	6	F4F-4	F6F-3	Saratoga MK.II（mod. 2は除く）
+205A	3	6	F6F-3	F6F-5	Saratoga改
+205A	4	6	F6F-3	F6F-5	Saratoga改
+205A	5	6	F6F-3	F6F-5	Saratoga改
+206A	3	6	F6F-5		Saratoga MK.II
+206A	4	6	F6F-5		Saratoga MK.II
+206A	5	6	F6F-5		Saratoga MK.II
 60A	1	7	零式艦戦62型(爆戦)		翔鶴,隼鷹,鈴谷航改二
 60A	2	7	零式艦戦62型(爆戦)		翔鶴,鈴谷航改二
 60A	6	7	零式艦戦62型(爆戦)		隼鷹
