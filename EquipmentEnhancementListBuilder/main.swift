@@ -140,7 +140,7 @@ guard arguments.count > 1 else {
 
 let targetDirectory = arguments[1] as NSString
 let requiredEquipmentSetPath = targetDirectory.appendingPathComponent("RequiredEquipmentSet.txt")
-guard let requiredEquipmentSetText = loadFile(path: requiredEquipmentSetPath else { fatalError() }
+guard let requiredEquipmentSetText = loadFile(path: requiredEquipmentSetPath) else { fatalError() }
 
 //
 var threeLines = ThreeItemsQueue<TabSeparatedLine>()
@@ -156,7 +156,7 @@ let requiredEquipmentSet = requiredEquipmentSetText
 
 //
 let enhancementListItemPath = targetDirectory.appendingPathComponent("EnhancementListItem.txt")
-guard let enhancementListText = loadFile(path: enhancementListItemPath else { fatalError() }
+guard let enhancementListText = loadFile(path: enhancementListItemPath) else { fatalError() }
 let listItems = enhancementListText
     .components(separatedBy: "\n")
     .map { TabSeparatedLine(value: $0) }
