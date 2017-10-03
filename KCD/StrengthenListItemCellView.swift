@@ -10,49 +10,19 @@ import Cocoa
 
 final class StrengthenListItemCellView: NSTableCellView {
     
-    @objc class func keyPathsForValuesAffectingSecondsShipList() -> Set<String> {
+    @objc override class func keyPathsForValuesAffectingValue(forKey key: String) -> Set<String> {
         
-        return [#keyPath(objectValue)]
-    }
-    
-    @objc class func keyPathsForValuesAffectingRequiredEquipment01() -> Set<String> {
-        
-        return [#keyPath(objectValue)]
-    }
-    
-    @objc class func keyPathsForValuesAffectingRequiredEquipment02() -> Set<String> {
-        
-        return [#keyPath(objectValue)]
-    }
-    
-    @objc class func keyPathsForValuesAffectingRequiredEquipment03() -> Set<String> {
-        
-        return [#keyPath(objectValue)]
-    }
-    
-    @objc class func keyPathsForValuesAffectingTargetEquipment() -> Set<String> {
-        
-        return [#keyPath(objectValue)]
-    }
-    
-    @objc class func keyPathsForValuesAffectingRemodelEquipment() -> Set<String> {
-        
-        return [#keyPath(objectValue)]
-    }
-    
-    @objc class func keyPathsForValuesAffectingNeedsScrewString01() -> Set<String> {
-        
-        return [#keyPath(objectValue)]
-    }
-    
-    @objc class func keyPathsForValuesAffectingNeedsScrewString02() -> Set<String> {
-        
-        return [#keyPath(objectValue)]
-    }
-    
-    @objc class func keyPathsForValuesAffectingNeedsScrewString03() -> Set<String> {
-        
-        return [#keyPath(objectValue)]
+        switch key {
+            
+        case #keyPath(secondsShipList),
+             #keyPath(requiredEquipment01), #keyPath(requiredEquipment02), #keyPath(requiredEquipment03),
+             #keyPath(targetEquipment), #keyPath(remodelEquipment),
+             #keyPath(needsScrewString01), #keyPath(needsScrewString02), #keyPath(needsScrewString03):
+            
+            return [#keyPath(objectValue)]
+            
+        default: return []
+        }
     }
     
     private var item: StrengthenListEnhancementItem? {

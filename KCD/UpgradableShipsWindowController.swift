@@ -24,9 +24,14 @@ final class UpgradableShipsWindowController: NSWindowController {
         return excludeShiIDsCache.contains(shipID)
     }
     
-    @objc class func keyPathsForValuesAffectingFilterPredicate() -> Set<String> {
+    @objc override class func keyPathsForValuesAffectingValue(forKey key: String) -> Set<String> {
         
-        return [#keyPath(showLevelOneShipInUpgradableList), #keyPath(showsExcludedShipInUpgradableList)]
+        switch key {
+            
+        case #keyPath(filterPredicate): return [#keyPath(showLevelOneShipInUpgradableList), #keyPath(showsExcludedShipInUpgradableList)]
+        
+        default: return []
+        }
     }
     
     private var excludeShiIDsCache: [Int] {

@@ -91,16 +91,48 @@ private let levelUpExps: [Int] = {
 
 extension Ship {
     
-    @objc class func keyPathsForValuesAffectingName() -> Set<String> {
+    @objc override class func keyPathsForValuesAffectingValue(forKey key: String) -> Set<String> {
         
-        return ["ship_id"]
+        switch key {
+            
+        case #keyPath(name): return [#keyPath(ship_id)]
+            
+        case #keyPath(shortTypeName): return [#keyPath(ship_id)]
+            
+        case #keyPath(next): return [#keyPath(exp)]
+            
+        case #keyPath(status): return [#keyPath(nowhp), #keyPath(maxhp)]
+        
+        case #keyPath(planColor): return [#keyPath(sally_area)]
+            
+        case #keyPath(isMaxKaryoku): return [#keyPath(karyoku_1), #keyPath(kyouka_0)]
+            
+        case #keyPath(isMaxRaisou): return [#keyPath(raisou_1), #keyPath(kyouka_1)]
+            
+        case #keyPath(isMaxTaiku): return [#keyPath(taiku_1), #keyPath(kyouka_2)]
+            
+        case #keyPath(isMaxSoukou): return [#keyPath(soukou_1), #keyPath(kyouka_3)]
+            
+        case #keyPath(isMaxLucky): return [#keyPath(lucky_1), #keyPath(kyouka_4)]
+            
+        case #keyPath(upgradeLevel): return [#keyPath(ship_id)]
+            
+        case #keyPath(upgradeExp): return [#keyPath(exp)]
+            
+        case #keyPath(steelRequiredInRepair): return [#keyPath(nowhp)]
+            
+        case #keyPath(fuelRequiredInRepair): return [#keyPath(nowhp)]
+            
+        case #keyPath(seiku): return [#keyPath(slot_0), #keyPath(slot_1), #keyPath(slot_2), #keyPath(slot_3), #keyPath(slot_4),
+                                      #keyPath(onslot_0), #keyPath(onslot_1), #keyPath(onslot_2), #keyPath(onslot_3), #keyPath(onslot_4)]
+            
+        default: return []
+            
+        }
     }
+    
     @objc dynamic var name: String { return master_ship.name }
     
-    @objc class func keyPathsForValuesAffectingShortTypeName() -> Set<String> {
-        
-        return ["ship_id"]
-    }
     @objc dynamic var shortTypeName: String? {
         
         let index = master_ship.stype.id - 1
@@ -110,10 +142,6 @@ extension Ship {
         return shortSTypeNames[index]
     }
     
-    @objc class func keyPathsForValuesAffectingNext() -> Set<String> {
-        
-        return ["exp"]
-    }
     @objc dynamic var next: NSNumber? {
         
         guard case 0..<levelUpExps.count = lv else { return nil }
@@ -127,10 +155,6 @@ extension Ship {
         return (1_000_000 + nextExp - exp) as NSNumber
     }
     
-    @objc class func keyPathsForValuesAffectingStatus() -> Set<String> {
-        
-        return ["nowhp", "maxph"]
-    }
     @objc dynamic var status: Int {
         
         let stat = Double(nowhp) / Double(maxhp)
@@ -142,10 +166,6 @@ extension Ship {
         return 0
     }
     
-    @objc class func keyPathsForValuesAffectingPlanColor() -> Set<String> {
-        
-        return ["sally_area"]
-    }
     @objc dynamic var planColor: NSColor {
         
         if !UserDefaults.standard[.showsPlanColor] { return NSColor.controlTextColor }
@@ -170,10 +190,6 @@ extension Ship {
     @objc dynamic var maxBull: Int { return master_ship.bull_max }
     @objc dynamic var maxFuel: Int { return master_ship.fuel_max }
     
-    @objc class func keyPathsForValuesAffectingIsMaxKaryoku() -> Set<String> {
-        
-        return ["karyoku_1", "kyouka_0"]
-    }
     @objc dynamic var isMaxKaryoku: Bool {
         
         let initial = master_ship.houg_0
@@ -183,10 +199,6 @@ extension Ship {
         return initial + growth >= max
     }
     
-    @objc class func keyPathsForValuesAffectingIsMaxRaisou() -> Set<String> {
-        
-        return ["raisou_1", "kyouka_1"]
-    }
     @objc dynamic var isMaxRaisou: Bool {
         
         let initial = master_ship.raig_0
@@ -196,10 +208,6 @@ extension Ship {
         return initial + growth >= max
     }
     
-    @objc class func keyPathsForValuesAffectingIsMaxTaiku() -> Set<String> {
-        
-        return ["taiku_1", "kyouka_2"]
-    }
     @objc dynamic var isMaxTaiku: Bool {
         
         let initial = master_ship.tyku_0
@@ -209,10 +217,6 @@ extension Ship {
         return initial + growth >= max
     }
     
-    @objc class func keyPathsForValuesAffectingIsMaxSoukou() -> Set<String> {
-        
-        return ["soukou_1", "kyouka_3"]
-    }
     @objc dynamic var isMaxSoukou: Bool {
         
         let initial = master_ship.souk_0
@@ -222,10 +226,6 @@ extension Ship {
         return initial + growth >= max
     }
     
-    @objc class func keyPathsForValuesAffectingIsMaxLucky() -> Set<String> {
-        
-        return ["lucky_1", "kyouka_4"]
-    }
     @objc dynamic var isMaxLucky: Bool {
         
         let initial = master_ship.luck_0
@@ -235,16 +235,8 @@ extension Ship {
         return initial + growth >= max
     }
     
-    @objc class func keyPathsForValuesAffectingUpgradeLevel() -> Set<String> {
-        
-        return ["ship_id"]
-    }
     @objc dynamic var upgradeLevel: Int { return master_ship.afterlv }
     
-    @objc class func keyPathsForValuesAffectingUpgradeExp() -> Set<String> {
-        
-        return ["exp"]
-    }
     @objc dynamic var upgradeExp: NSNumber? {
         
         let upgradeLv = upgradeLevel
@@ -266,19 +258,11 @@ extension Ship {
         return true
     }
     
-    @objc class func keyPathsForValuesAffectingSteelRequiredInRepair() -> Set<String> {
-        
-        return ["nowhp"]
-    }
     @objc dynamic var steelRequiredInRepair: Int {
         
         return Int(Double(maxFuel) * 0.06 * Double(maxhp - nowhp))
     }
     
-    @objc class func keyPathsForValuesAffectingFuelRequiredInRepair() -> Set<String> {
-        
-        return ["nowhp"]
-    }
     @objc dynamic var fuelRequiredInRepair: Int {
         
         return Int(Double(maxFuel) * 0.032 * Double(maxhp - nowhp))
@@ -345,11 +329,6 @@ extension Ship {
         return (0...4).map(slotItemMax).reduce(0, +)
     }
     
-    @objc class func keyPathsForValuesAffectingSeiku() -> Set<String> {
-        
-        return ["slot_0", "slot_1", "slot_2", "slot_3", "slot_4",
-                   "onslot_0", "onslot_1", "onslot_2", "onslot_3", "onslot_4"]
-    }
     @objc dynamic var seiku: Int {
         
         return SeikuCalclator(ship: self).seiku

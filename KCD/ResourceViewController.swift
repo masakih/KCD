@@ -10,9 +10,14 @@ import Cocoa
 
 final class ResourceViewController: NSViewController {
     
-    @objc class func keyPathsForValuesAffectingShipNumberColor() -> Set<String> {
+    @objc override class func keyPathsForValuesAffectingValue(forKey key: String) -> Set<String> {
         
-        return [#keyPath(maxChara), #keyPath(shipCount), #keyPath(minimumColoredShipCount)]
+        switch key {
+            
+        case #keyPath(shipNumberColor): return [#keyPath(maxChara), #keyPath(shipCount), #keyPath(minimumColoredShipCount)]
+            
+        default: return []
+        }
     }
     
     @objc let managedObjectContext = ServerDataStore.default.context

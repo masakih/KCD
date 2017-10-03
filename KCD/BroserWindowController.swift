@@ -40,9 +40,14 @@ final class BroserWindowController: NSWindowController {
         case oldStyle = 0xffffffff
     }
     
-    @objc class func keyPathsForValuesAffectingFlagShipName() -> Set<String> {
+    @objc override class func keyPathsForValuesAffectingValue(forKey key: String) -> Set<String> {
         
-        return [#keyPath(flagShipID)]
+        switch key {
+            
+        case #keyPath(flagShipName): return [#keyPath(flagShipID)]
+            
+        default: return []
+        }
     }
     
     @objc let managedObjectContext = ServerDataStore.default.context

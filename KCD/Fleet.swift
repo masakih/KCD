@@ -61,20 +61,24 @@ final class Fleet: NSObject {
         
     }
     
+    @objc override class func keyPathsForValuesAffectingValue(forKey key: String) -> Set<String> {
+        
+        switch key {
+            
+        case #keyPath(name): return ["deck.name"]
+            
+        case #keyPath(id): return ["deck.id"]
+            
+        default: return []
+        }
+    }
+    
     @objc dynamic private(set) var ships: [Ship] = []
     private let deckController: NSObjectController
     @objc weak var deck: Deck?
     
     @objc dynamic var name: String? { return deck?.name }
-    @objc class func keyPathsForValuesAffectingName() -> Set<String> {
-        
-        return ["deck.name"]
-    }
     @objc dynamic var id: NSNumber? { return deck?.id as NSNumber? }
-    @objc class func keyPathesForValuesAffectiongId() -> Set<String> {
-        
-        return ["deck.id"]
-    }
     
     subscript(_ index: Int) -> Ship? { return deck?[index] }
     

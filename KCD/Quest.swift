@@ -29,9 +29,14 @@ final class Quest: KCManagedObject {
 
 extension Quest {
     
-    @objc class func keyPathsForValuesAffectingCompositStatus() -> Set<String> {
+    @objc override class func keyPathsForValuesAffectingValue(forKey key: String) -> Set<String> {
         
-        return ["state", "progress_flag"]
+        switch key {
+            
+        case #keyPath(compositStatus): return [#keyPath(state), #keyPath(progress_flag)]
+            
+        default: return []
+        }
     }
     
     @objc dynamic var compositStatus: Int {
