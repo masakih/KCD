@@ -153,51 +153,51 @@ final class ShipDetailViewController: NSViewController {
         
         if context == &shipContext {
             
-            notifyChangeValue(forKey: "planeString0")
-            notifyChangeValue(forKey: "planeString0Color")
-            notifyChangeValue(forKey: "planeString1")
-            notifyChangeValue(forKey: "planeString1Color")
-            notifyChangeValue(forKey: "planeString2")
-            notifyChangeValue(forKey: "planeString2Color")
-            notifyChangeValue(forKey: "planeString3")
-            notifyChangeValue(forKey: "planeString3Color")
-            notifyChangeValue(forKey: "planeString4")
-            notifyChangeValue(forKey: "planeString4Color")
+            notifyChangeValue(forKey: #keyPath(planeString0))
+            notifyChangeValue(forKey: #keyPath(planeString0Color))
+            notifyChangeValue(forKey: #keyPath(planeString1))
+            notifyChangeValue(forKey: #keyPath(planeString1Color))
+            notifyChangeValue(forKey: #keyPath(planeString2))
+            notifyChangeValue(forKey: #keyPath(planeString2Color))
+            notifyChangeValue(forKey: #keyPath(planeString3))
+            notifyChangeValue(forKey: #keyPath(planeString3Color))
+            notifyChangeValue(forKey: #keyPath(planeString4))
+            notifyChangeValue(forKey: #keyPath(planeString4Color))
             
             return
         }
         if context == &equippedItem0Context {
             
-            notifyChangeValue(forKey: "planeString0")
-            notifyChangeValue(forKey: "planeString0Color")
+            notifyChangeValue(forKey: #keyPath(planeString0))
+            notifyChangeValue(forKey: #keyPath(planeString0Color))
             
             return
         }
         if context == &equippedItem1Context {
             
-            notifyChangeValue(forKey: "planeString1")
-            notifyChangeValue(forKey: "planeString1Color")
+            notifyChangeValue(forKey: #keyPath(planeString1))
+            notifyChangeValue(forKey: #keyPath(planeString1Color))
             
             return
         }
         if context == &equippedItem2Context {
             
-            notifyChangeValue(forKey: "planeString2")
-            notifyChangeValue(forKey: "planeString2Color")
+            notifyChangeValue(forKey: #keyPath(planeString2))
+            notifyChangeValue(forKey: #keyPath(planeString2Color))
             
             return
         }
         if context == &equippedItem3Context {
             
-            notifyChangeValue(forKey: "planeString3")
-            notifyChangeValue(forKey: "planeString3Color")
+            notifyChangeValue(forKey: #keyPath(planeString3))
+            notifyChangeValue(forKey: #keyPath(planeString3Color))
             
             return
         }
         if context == &equippedItem4Context {
             
-            notifyChangeValue(forKey: "planeString4")
-            notifyChangeValue(forKey: "planeString4Color")
+            notifyChangeValue(forKey: #keyPath(planeString4))
+            notifyChangeValue(forKey: #keyPath(planeString4Color))
             
             return
         }

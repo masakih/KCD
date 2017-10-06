@@ -67,7 +67,7 @@ extension TemporaryDataStore {
     
     func sortedDamagesById() -> [Damage] {
         
-        let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
+        let sortDescriptor = NSSortDescriptor(key: #keyPath(Damage.id), ascending: true)
         
         guard let damages = try? objects(of: Damage.entity, sortDescriptors: [sortDescriptor]) else { return [] }
         

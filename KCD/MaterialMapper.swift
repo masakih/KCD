@@ -15,8 +15,8 @@ final class MaterialMapper: JSONMapper {
     let configuration: MappingConfiguration<Material>
     
     private let keys = [
-        "fuel", "bull", "steel", "bauxite",
-        "kousokukenzo", "kousokushuhuku", "kaihatusizai", "screw"
+        #keyPath(Material.fuel), #keyPath(Material.bull), #keyPath(Material.steel), #keyPath(Material.bauxite),
+        #keyPath(Material.kousokukenzo), #keyPath(Material.kousokushuhuku), #keyPath(Material.kaihatusizai), #keyPath(Material.screw)
     ]
     
     required init(_ apiResponse: APIResponse) {

@@ -94,14 +94,14 @@ final class CombileViewController: NSViewController {
             $0.element.1.fleetNumber = $0.offset + 1
         }
         
-        bind(NSBindingName(#keyPath(fleet1TPValue)), to: fleet1, withKeyPath: "totalTPValue")
-        bind(NSBindingName(#keyPath(fleet2TPValue)), to: fleet2, withKeyPath: "totalTPValue")
+        bind(NSBindingName(#keyPath(fleet1TPValue)), to: fleet1, withKeyPath: #keyPath(FleetViewController.totalTPValue))
+        bind(NSBindingName(#keyPath(fleet2TPValue)), to: fleet2, withKeyPath: #keyPath(FleetViewController.totalTPValue))
         
-        bind(NSBindingName(#keyPath(fleet1Seiku)), to: fleet1, withKeyPath: "totalSeiku")
-        bind(NSBindingName(#keyPath(fleet2Seiku)), to: fleet2, withKeyPath: "totalSeiku")
+        bind(NSBindingName(#keyPath(fleet1Seiku)), to: fleet1, withKeyPath: #keyPath(FleetViewController.totalSeiku))
+        bind(NSBindingName(#keyPath(fleet2Seiku)), to: fleet2, withKeyPath: #keyPath(FleetViewController.totalSeiku))
         
-        bind(NSBindingName(#keyPath(fleet1CalculatedSeiku)), to: fleet1, withKeyPath: "totalCalclatedSeiku")
-        bind(NSBindingName(#keyPath(fleet2CalculatedSeiku)), to: fleet2, withKeyPath: "totalCalclatedSeiku")
+        bind(NSBindingName(#keyPath(fleet1CalculatedSeiku)), to: fleet1, withKeyPath: #keyPath(FleetViewController.totalCalclatedSeiku))
+        bind(NSBindingName(#keyPath(fleet2CalculatedSeiku)), to: fleet2, withKeyPath: #keyPath(FleetViewController.totalCalclatedSeiku))
     }
     
     deinit {

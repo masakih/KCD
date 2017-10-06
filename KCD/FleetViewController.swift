@@ -50,10 +50,10 @@ final class FleetViewController: NSViewController {
     private static let maxFleetNumber: Int = 4
     
     private let details: [ShipDetailViewController]
-    private let shipKeys = ["ship_0", "ship_1", "ship_2", "ship_3", "ship_4", "ship_5"]
+    private let shipKeys = [#keyPath(Deck.ship_0), #keyPath(Deck.ship_1), #keyPath(Deck.ship_2), #keyPath(Deck.ship_3), #keyPath(Deck.ship_4), #keyPath(Deck.ship_5)]
     private let type: FleetViewType
     private let fleetController = NSObjectController()
-    private let shipObserveKeys = ["seiku", "lv", "equippedItem"]
+    private let shipObserveKeys = [#keyPath(Ship.seiku), #keyPath(Ship.lv), #keyPath(Ship.equippedItem)]
     
     init?(viewType: FleetViewType) {
         
@@ -235,7 +235,7 @@ final class FleetViewController: NSViewController {
             sakutekiCalculator = Formula33(Int(factor))
         }
         
-        fleetController.bind(NSBindingName("content"), to:self, withKeyPath:#keyPath(fleet), options:nil)
+        fleetController.bind(NSBindingName(#keyPath(NSArrayController.content)), to:self, withKeyPath:#keyPath(fleet), options:nil)
         fleetController.addObserver(self, forKeyPath:"selection.name", context:nil)
         shipKeys.forEach {
             
@@ -303,17 +303,17 @@ final class FleetViewController: NSViewController {
             if context == &shipsContext {
                 
                 switch keyPath {
-                case "equippedItem":
+                case #keyPath(Ship.equippedItem):
                     notifyChangeValue(forKey: #keyPath(totalSakuteki))
                     notifyChangeValue(forKey: #keyPath(totalDrums))
                     notifyChangeValue(forKey: #keyPath(totalCalclatedSeiku))
                     notifyChangeValue(forKey: #keyPath(totalTPValue))
                     
-                case "seiku":
+                case #keyPath(Ship.seiku):
                     notifyChangeValue(forKey: #keyPath(totalSeiku))
                     notifyChangeValue(forKey: #keyPath(totalCalclatedSeiku))
                     
-                case "lv":
+                case #keyPath(Ship.lv):
                     notifyChangeValue(forKey: #keyPath(totalLevel))
                     
                 default: break

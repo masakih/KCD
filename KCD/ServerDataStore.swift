@@ -133,7 +133,7 @@ extension ServerDataStore {
     
     func sortedMasterShipsById() -> [MasterShip] {
         
-        let sortDesc = NSSortDescriptor(key: "id", ascending: true)
+        let sortDesc = NSSortDescriptor(key: #keyPath(MasterShip.id), ascending: true)
         
         guard let ships = try? objects(of: MasterShip.entity, sortDescriptors: [sortDesc]) else { return [] }
         
@@ -151,7 +151,7 @@ extension ServerDataStore {
     
     func sortedMasterSlotItemsById() -> [MasterSlotItem] {
         
-        let sortDesc = NSSortDescriptor(key: "id", ascending: true)
+        let sortDesc = NSSortDescriptor(key: #keyPath(MasterSlotItem.id), ascending: true)
         
         guard let masterSlotItems = try? objects(of: MasterSlotItem.entity, sortDescriptors: [sortDesc]) else { return [] }
         
@@ -192,7 +192,7 @@ extension ServerDataStore {
     
     func sortedMasterSTypesById() -> [MasterSType] {
         
-        let sortDesc = NSSortDescriptor(key: "id", ascending: true)
+        let sortDesc = NSSortDescriptor(key: #keyPath(MasterSType.id), ascending: true)
         
         guard let masterSTypes = try? objects(of: MasterSType.entity, sortDescriptors: [sortDesc]) else { return [] }
         
@@ -296,7 +296,7 @@ extension ServerDataStore {
     
     func sortedSlotItemsById() -> [SlotItem] {
         
-        let sortDesc = NSSortDescriptor(key: "id", ascending: true)
+        let sortDesc = NSSortDescriptor(key: #keyPath(SlotItem.id), ascending: true)
         
         guard let slotItems = try? objects(of: SlotItem.entity, sortDescriptors: [sortDesc]) else { return [] }
         
@@ -342,7 +342,7 @@ extension ServerDataStore {
     
     func quest(by no: Int) -> Quest? {
         
-        let p = NSPredicate(format: "%K = %ld", "no", no)
+        let p = NSPredicate(format: "%K = %ld", #keyPath(Quest.no), no)
         
         guard let quests = try? objects(of: Quest.entity, predicate: p) else { return nil }
         
@@ -351,7 +351,7 @@ extension ServerDataStore {
     
     func quests(in range: CountableClosedRange<Int>) -> [Quest] {
         
-        let p = NSPredicate(format: "%K In %@", "no", range.map {$0})
+        let p = NSPredicate(format: "%K In %@", #keyPath(Quest.no), range.map {$0})
         
         guard let quests = try? objects(of: Quest.entity, predicate: p) else { return [] }
         
@@ -360,7 +360,7 @@ extension ServerDataStore {
     
     func sortedQuestByNo() -> [Quest] {
         
-        let sortDesc = NSSortDescriptor(key: "no", ascending: true)
+        let sortDesc = NSSortDescriptor(key: #keyPath(Quest.no), ascending: true)
         
         guard let quests = try? objects(of: Quest.entity, sortDescriptors: [sortDesc]) else { return [] }
         

@@ -61,7 +61,7 @@ extension Deck {
         
         guard let moc = self.managedObjectContext else { return nil }
         
-        let req = NSFetchRequest<Ship>(entityName: "Ship")
+        let req = NSFetchRequest<Ship>(entityName: Ship.entityName)
         req.predicate = NSPredicate(format: "id = %ld", identifier)
         
         guard let ships = try? moc.fetch(req) else { return nil }

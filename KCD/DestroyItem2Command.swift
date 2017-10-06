@@ -43,7 +43,7 @@ final class DestroyItem2Command: JSONCommand {
             return
         }
         
-        let resouces = ["fuel", "bull", "steel", "bauxite"]
+        let resouces = [#keyPath(Material.fuel), #keyPath(Material.bull), #keyPath(Material.steel), #keyPath(Material.bauxite)]
         
         zip(gm, resouces).forEach {
             

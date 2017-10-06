@@ -35,7 +35,7 @@ final class BookmarkManager: NSObject, NSMenuDelegate {
         
         bookmarksController.managedObjectContext = self.manageObjectContext
         bookmarksController.entityName = Bookmark.entityName
-        let sort = NSSortDescriptor(key: "order", ascending: true)
+        let sort = NSSortDescriptor(key: #keyPath(Bookmark.order), ascending: true)
         bookmarksController.sortDescriptors = [sort]
         
         let mainMenu = NSApplication.shared.mainMenu
