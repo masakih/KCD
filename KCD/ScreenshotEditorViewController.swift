@@ -35,8 +35,6 @@ final class TrimRectInformation: NSObject {
 private extension Selector {
     
     static let done = #selector(ScreenshotEditorViewController.done(_:))
-    static let changeToDetail = #selector(ScreenshotListWindowController.changeToDetail(_:))
-    static let registerImage = #selector(ScreenshotListViewController.registerImage(_:))
 }
 
 final class ScreenshotEditorViewController: BridgeViewController {
@@ -108,6 +106,8 @@ final class ScreenshotEditorViewController: BridgeViewController {
     }
     
     private var selectionObservation: NSKeyValueObservation?
+    
+    var completeHandler: ((NSImage?) -> Void)?
     
     override func viewDidLoad() {
         
@@ -204,11 +204,9 @@ final class ScreenshotEditorViewController: BridgeViewController {
         }
     }
     
-    // TODO: 外部から End Handlerを登録できるようにして依存をなくす
     @IBAction func done(_ sender: AnyObject?) {
         
-        NSApplication.shared.sendAction(.registerImage, to: nil, from: self.image)
-        NSApplication.shared.sendAction(.changeToDetail, to: nil, from: sender)
+        completeHandler?(self.image)
     }
 }
 

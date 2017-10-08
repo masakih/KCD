@@ -169,7 +169,7 @@ final class ScreenshotListViewController: NSViewController {
         vc.representedObject = screenshots
     }
     
-    @objc func registerImage(_ image: NSImage?) {
+    func registerImage(_ image: NSImage?) {
         
         image?.tiffRepresentation
             .flatMap { NSBitmapImageRep(data: $0) }

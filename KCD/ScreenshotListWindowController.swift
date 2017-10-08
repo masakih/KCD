@@ -18,9 +18,7 @@ final class ScreenshotListWindowController: NSWindowController {
     private lazy var detailViewController: ScreenshotDetailViewController = {
         return ScreenshotDetailViewController()
     }()
-    private var editorViewController: ScreenshotEditorViewController = {
-            return ScreenshotEditorViewController()
-    }()
+    private var editorViewController: ScreenshotEditorViewController!
     private var viewControllers: [NSViewController] = []
     private weak var currentRightViewController: BridgeViewController?
     private lazy var listViewController: ScreenshotListViewController = {
@@ -52,6 +50,7 @@ final class ScreenshotListWindowController: NSWindowController {
         replaceView(right, viewController: detailViewController)
         detailViewController.representedObject = listViewController.screenshots
         
+        editorViewController = createEditor()
         rightController.addChildViewController(editorViewController)
         // force load view.
         _ = editorViewController.view
@@ -73,6 +72,20 @@ final class ScreenshotListWindowController: NSWindowController {
     func registerScreenshot(_ image: NSBitmapImageRep, fromOnScreen: NSRect) {
         
         listViewController.registerScreenshot(image, fromOnScreen: fromOnScreen)
+    }
+    
+    private func createEditor() -> ScreenshotEditorViewController {
+        
+        let editor = ScreenshotEditorViewController()
+        editor.completeHandler = { [weak self] in
+            
+            defer { self?.changeToDetail(nil) }
+            
+            guard let image = $0 else { return }
+            self?.listViewController.registerImage(image)
+        }
+        
+        return editor
     }
     
     @IBAction func share(_ sender: AnyObject?) {
