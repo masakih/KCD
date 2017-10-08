@@ -46,10 +46,13 @@ final class SlotItemWindowController: NSWindowController {
             return nil
             
         case .nonEquiped:
-            return NSPredicate(format: "equippedShip.lv = NULL && extraEquippedShip.lv = NULL")
+            return NSPredicate.isNil(#keyPath(SlotItem.equippedShip.lv))
+                .and(.isNil(#keyPath(SlotItem.extraEquippedShip.lv)))
             
         case .equiped:
-            return NSPredicate(format: "equippedShip.lv != NULL || extraEquippedShip.lv != NULL")
+            return NSPredicate.empty
+                .and(.isNotNil(#keyPath(SlotItem.equippedShip.lv)))
+                .or(.isNotNil(#keyPath(SlotItem.extraEquippedShip.lv)))
         }
     }
     

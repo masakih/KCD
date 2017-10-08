@@ -37,17 +37,17 @@ final class PowerUpSupportViewController: MainTabVIewItemViewController {
     var omitPredicate: NSPredicate? {
         
         let sd = UserDefaults.standard
-        let hideKyes = [(Bool, String)]()
-            .appended { (sd[.hideMaxKaryoku], "isMaxKaryoku != TRUE") }
-            .appended { (sd[.hideMaxRaisou], "isMaxRaisou != TRUE") }
-            .appended { (sd[.hideMaxTaiku], "isMaxTaiku != TRUE") }
-            .appended { (sd[.hideMaxSoukou], "isMaxSoukou != TRUE") }
-            .appended { (sd[.hideMaxLucky], "isMaxLucky != TRUE") }
+        let predicates = [(Bool, NSPredicate)]()
+            .appended { (sd[.hideMaxKaryoku], .false(#keyPath(Ship.isMaxKaryoku))) }
+            .appended { (sd[.hideMaxRaisou], .false(#keyPath(Ship.isMaxRaisou))) }
+            .appended { (sd[.hideMaxTaiku], .false(#keyPath(Ship.isMaxTaiku))) }
+            .appended { (sd[.hideMaxSoukou], .false(#keyPath(Ship.isMaxSoukou))) }
+            .appended { (sd[.hideMaxLucky], .false(#keyPath(Ship.isMaxLucky))) }
             .flatMap { (b, s) in b ? s : nil }
         
-        if hideKyes.isEmpty { return nil }
+        if predicates.isEmpty { return nil }
         
-        return NSPredicate(format: hideKyes.joined(separator: " AND "))
+        return .and(predicates)
     }
     
     override func viewDidLoad() {
@@ -86,7 +86,7 @@ final class PowerUpSupportViewController: MainTabVIewItemViewController {
         
         switch (shipTypePredicte, omitPredicate) {
             
-        case let (s?, o?): return NSCompoundPredicate(type: .and, subpredicates: [o, s])
+        case let (s?, o?): return .and([o, s])
         case let (s?, nil): return s
         case let (nil, o?): return o
         default: return nil

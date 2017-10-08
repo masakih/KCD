@@ -48,7 +48,7 @@ final class MissionStatus: NSObject {
         
         controller.managedObjectContext = ServerDataStore.default.context
         controller.entityName = Deck.entityName
-        controller.fetchPredicate = NSPredicate(format: "id = %ld", number)
+        controller.fetchPredicate = NSPredicate(#keyPath(Deck.id), equal: number)
         controller.automaticallyRearrangesObjects = true
         controller.fetch(nil)
         

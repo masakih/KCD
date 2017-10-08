@@ -45,14 +45,14 @@ class MainTabVIewItemViewController: NSViewController {
             
         case .destroyer, .lightCruiser, .heavyCruiser,
              .aircraftCarrier, .battleShip, .submarine:
-            return NSPredicate(format: "master_ship.stype.id IN %@", shipTypeCategories[selectedShipType.rawValue])
+            return NSPredicate(#keyPath(Ship.master_ship.stype.id), valuesIn: shipTypeCategories[selectedShipType.rawValue])
             
         case .other:
             let omitTypes = shipTypeCategories
                 .enumerated()
                 .filter { $0.offset != 0 && $0.offset != 7 }
                 .flatMap { $0.element }
-            return NSPredicate(format: "NOT master_ship.stype.id IN %@", omitTypes)
+            return .not(NSPredicate(#keyPath(Ship.master_ship.stype.id), valuesIn: omitTypes))
         }
     }
 }

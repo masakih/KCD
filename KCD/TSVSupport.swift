@@ -233,7 +233,7 @@ final class TSVSupport {
             guard let flagLv = Int(attr[8]) else { return }
             guard let commandLv = Int(attr[9]) else { return }
             
-            let p = NSPredicate(format: "date = %@", argumentArray: [date])
+            let p = NSPredicate(#keyPath(KaihatuHistory.date), equal: date)
             
             guard let oo = try? store.objects(of: KaihatuHistory.entity, predicate: p) else { return }
             guard oo.count != 0 else { return }
@@ -272,7 +272,7 @@ final class TSVSupport {
             guard let flagLv = Int(attr[9]) else { return }
             guard let commandLv = Int(attr[10]) else { return }
             
-            let p = NSPredicate(format: "date = %@", argumentArray: [date])
+            let p = NSPredicate(#keyPath(KenzoHistory.date), equal: date)
             
             guard let oo = try? store.objects(of: KenzoHistory.entity, predicate: p) else { return }
             guard oo.count != 0 else { return }
@@ -313,7 +313,7 @@ final class TSVSupport {
             guard let flagLv = Int(attr[9]) else { return }
             guard let commandLv = Int(attr[10]) else { return }
             
-            let p = NSPredicate(format: "date = %@", argumentArray: [date])
+            let p = NSPredicate(#keyPath(KenzoMark.date), equal: date)
             
             guard let oo = try? store.objects(of: KenzoMark.entity, predicate: p) else { return }
             guard oo.count != 0 else { return }
@@ -348,7 +348,7 @@ final class TSVSupport {
             guard let mapCell = Int(attr[4]) else { return }
             guard let mark = Int(attr[7]) else { return }
             
-            let p = NSPredicate(format: "date = %@", argumentArray: [date])
+            let p = NSPredicate(#keyPath(DropShipHistory.date), equal: date)
             
             guard let oo = try? store.objects(of: DropShipHistory.entity, predicate: p) else { return }
             guard oo.count != 0 else { return }

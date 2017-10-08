@@ -62,13 +62,13 @@ final class UpgradableShipsWindowController: NSWindowController {
         
         if showLevelOneShipInUpgradableList == false {
             
-            filterPredicate = NSPredicate(format: "lv != 1")
+            filterPredicate = NSPredicate(#keyPath(Ship.lv), notEqual: 1)
         }
         
         if showsExcludedShipInUpgradableList == false,
             excludeShiIDs.count != 0 {
             
-            excludeShip = NSPredicate(format: "NOT id IN %@", excludeShiIDs)
+            excludeShip = .not(NSPredicate(#keyPath(Ship.id), valuesIn: excludeShiIDs))
         }
         
         if let filterPredicate = filterPredicate,

@@ -47,7 +47,7 @@ final class NyukyoDockStatus: NSObject {
         
         controller.managedObjectContext = ServerDataStore.default.context
         controller.entityName = NyukyoDock.entityName
-        controller.fetchPredicate = NSPredicate(format: "id = %ld", number)
+        controller.fetchPredicate = NSPredicate(#keyPath(NyukyoDock.id), equal: number)
         controller.automaticallyRearrangesObjects = true
         controller.fetch(nil)
         

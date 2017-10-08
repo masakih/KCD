@@ -136,7 +136,9 @@ final class AirBaseWindowController: NSWindowController {
     
     private func updatePredicate() {
         
-        airBaseController.filterPredicate = NSPredicate(format: "area_id = %ld AND rid = %ld", areaId, rId)
+        airBaseController.filterPredicate = NSPredicate.empty
+            .and(NSPredicate(#keyPath(AirBase.area_id), equal: areaId))
+            .and(NSPredicate(#keyPath(AirBase.rid), equal: rId))
         airBaseController.setSelectionIndex(0)
         planesTable.deselectAll(nil)
     }

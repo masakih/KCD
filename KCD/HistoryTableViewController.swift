@@ -69,8 +69,7 @@ class HistoryTableViewController: NSViewController {
         guard case 0..<items.count = clickedRow else { return }
         
         let clickedObject = items[clickedRow]
-        let predicate = NSPredicate(format: "date = %@",
-                                    argumentArray: [clickedObject.date])
+        let predicate = NSPredicate(#keyPath(KenzoMark.date), equal: clickedObject.date)
         
         let store = LocalDataStore.oneTimeEditor()
         

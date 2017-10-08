@@ -215,14 +215,14 @@ final class DocksViewController: MainTabVIewItemViewController {
         ]
         zip(ndockStatus, ndockKeys).forEach {
             
-            bind(NSBindingName(rawValue: $0.1.0), to: $0.0, withKeyPath: #keyPath(MissionStatus.time), options: nil)
-            bind(NSBindingName(rawValue: $0.1.1), to: $0.0, withKeyPath: #keyPath(MissionStatus.name), options: nil)
+            bind(NSBindingName(rawValue: $0.1.0), to: $0.0, withKeyPath: #keyPath(NyukyoDockStatus.time), options: nil)
+            bind(NSBindingName(rawValue: $0.1.1), to: $0.0, withKeyPath: #keyPath(NyukyoDockStatus.name), options: nil)
         }
         
         let kdockKeys = [#keyPath(kDock1Time), #keyPath(kDock2Time), #keyPath(kDock3Time), #keyPath(kDock4Time)]
         zip(kdockStatus, kdockKeys).forEach {
             
-            bind(NSBindingName(rawValue: $0.1), to: $0.0, withKeyPath: #keyPath(MissionStatus.time), options: nil)
+            bind(NSBindingName(rawValue: $0.1), to: $0.0, withKeyPath: #keyPath(KenzoDockStatus.time), options: nil)
         }
     }
     

@@ -95,7 +95,9 @@ extension TemporaryDataStore {
     
     func ensuredGuardEscaped(byShipId shipId: Int) -> GuardEscaped? {
         
-        let p = NSPredicate(format: "shipID = %ld AND ensured = TRUE", shipId)
+        let p = NSPredicate.empty
+            .and(NSPredicate(#keyPath(GuardEscaped.shipID), equal: shipId))
+            .and(.false(#keyPath(GuardEscaped.ensured)))
         
         guard let escapes = try? objects(of: GuardEscaped.entity, predicate: p) else { return nil }
         
@@ -104,7 +106,7 @@ extension TemporaryDataStore {
     
     func notEnsuredGuardEscaped() -> [GuardEscaped] {
         
-        let predicate = NSPredicate(format: "ensured = FALSE")
+        let predicate = NSPredicate.false(#keyPath(GuardEscaped.ensured))
         
         guard let escapeds = try? objects(of: GuardEscaped.entity, predicate: predicate) else { return [] }
         

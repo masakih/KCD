@@ -11,7 +11,7 @@ import Cocoa
 final class RepairListViewController: MainTabVIewItemViewController {
     
     @objc let managedObjectContext = ServerDataStore.default.context
-    @objc let fetchPredicate = NSPredicate(format: "NOT ndock_time = 0")
+    @objc let fetchPredicate = NSPredicate.not(NSPredicate(#keyPath(Ship.ndock_time), equal: 0))
     
     override var nibName: NSNib.Name {
         

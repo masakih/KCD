@@ -90,7 +90,7 @@ final class ShipDetailViewController: NSViewController {
         get { return shipController.content as? Ship }
         set {
             
-            shipController.fetchPredicate = NSPredicate(format: "id = %ld", newValue?.id ?? 0)
+            shipController.fetchPredicate = NSPredicate(#keyPath(Ship.id), equal: newValue?.id ?? 0)
         }
     }
     

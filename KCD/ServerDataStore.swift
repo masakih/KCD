@@ -48,7 +48,9 @@ extension ServerDataStore {
     
     func airBase(area: Int, base: Int) -> AirBase? {
         
-        let p = NSPredicate(format: "area_id == %ld AND rid == %ld", area, base)
+        let p = NSPredicate.empty
+            .and(NSPredicate(#keyPath(AirBase.area_id), equal: area))
+            .and(NSPredicate(#keyPath(AirBase.rid), equal: base))
         
         guard let airBases = try? objects(of: AirBase.entity, predicate: p) else { return nil }
         
@@ -83,7 +85,7 @@ extension ServerDataStore {
     
     func deck(by id: Int) -> Deck? {
         
-        let p = NSPredicate(format: "id = %ld", id)
+        let p = NSPredicate(#keyPath(Deck.id), equal: id)
         
         guard let decks = try? objects(of: Deck.entity, predicate: p) else { return nil }
         
@@ -92,7 +94,7 @@ extension ServerDataStore {
     
     func kenzoDock(by dockId: Int) -> KenzoDock? {
         
-        let dockPredicate = NSPredicate(format: "id = %ld", dockId)
+        let dockPredicate = NSPredicate(#keyPath(KenzoDock.id), equal: dockId)
         
         guard let kenzoDocks = try? objects(of: KenzoDock.entity, predicate: dockPredicate) else { return nil }
         
@@ -100,7 +102,8 @@ extension ServerDataStore {
     }
     
     func mapArea(by id: Int) -> MasterMapArea? {
-        let predicate = NSPredicate(format: "id = %ld", id)
+        
+        let predicate = NSPredicate(#keyPath(MasterMapArea.id), equal: id)
         guard let mapAreas = try? objects(of: MasterMapArea.entity, predicate: predicate) else { return nil }
         
         return mapAreas.first
@@ -108,7 +111,9 @@ extension ServerDataStore {
     
     func mapInfo(area: Int, no: Int) -> MasterMapInfo? {
         
-        let predicate = NSPredicate(format: "maparea_id = %ld AND %K = %ld", area, "no", no)
+        let predicate = NSPredicate.empty
+            .and(NSPredicate(#keyPath(MasterMapInfo.maparea_id), equal: area))
+            .and(NSPredicate(#keyPath(MasterMapInfo.no), equal: no))
         
         guard let mapInfos = try? objects(of: MasterMapInfo.entity, predicate: predicate) else { return nil }
         
@@ -117,7 +122,7 @@ extension ServerDataStore {
     
     func masterMission(by id: Int) -> MasterMission? {
         
-        let p = NSPredicate(format: "id = %ld", id)
+        let p = NSPredicate(#keyPath(MasterMission.id), equal: id)
         
         guard let missions = try? objects(of: MasterMission.entity, predicate: p) else { return nil }
         
@@ -142,7 +147,7 @@ extension ServerDataStore {
     
     func masterShip(by id: Int) -> MasterShip? {
         
-        let p = NSPredicate(format: "id = %ld", id)
+        let p = NSPredicate(#keyPath(MasterShip.id), equal: id)
         
         guard let ships = try? objects(of: MasterShip.entity, predicate: p) else { return nil }
         
@@ -167,7 +172,7 @@ extension ServerDataStore {
     
     func masterSlotItem(by id: Int) -> MasterSlotItem? {
         
-        let p = NSPredicate(format: "id = %ld", id)
+        let p = NSPredicate(#keyPath(MasterSlotItem.id), equal: id)
         
         guard let masterSlotItems = try? objects(of: MasterSlotItem.entity, predicate: p) else { return nil }
         
@@ -176,7 +181,7 @@ extension ServerDataStore {
     
     func masterSlotItemEquipType(by id: Int) -> MasterSlotItemEquipType? {
         
-        let predicate = NSPredicate(format: "id = %ld", id)
+        let predicate = NSPredicate(#keyPath(MasterSlotItemEquipType.id), equal: id)
         
         guard let types = try? objects(of: MasterSlotItemEquipType.entity, predicate: predicate) else { return nil }
         
@@ -213,7 +218,7 @@ extension ServerDataStore {
     
     func nyukyoDock(by id: Int) -> NyukyoDock? {
         
-        let p = NSPredicate(format: "id = %ld", id)
+        let p = NSPredicate(#keyPath(NyukyoDock.id), equal: id)
         
         guard let ndocks = try? objects(of: NyukyoDock.entity, predicate: p) else { return nil }
         
@@ -222,7 +227,7 @@ extension ServerDataStore {
     
     func ships(byDeckId deckId: Int) -> [Ship] {
         
-        let predicate = NSPredicate(format: "id = %d", deckId)
+        let predicate = NSPredicate(#keyPath(Ship.id), equal: deckId)
         
         guard let decks = try? objects(of: Deck.entity, predicate: predicate) else { return [] }
         guard let deck = decks.first else { return [] }
@@ -234,7 +239,7 @@ extension ServerDataStore {
         
         if shipId < 1 { return nil }
         
-        let predicate = NSPredicate(format: "id = %d", shipId)
+        let predicate = NSPredicate(#keyPath(Ship.id), equal: shipId)
         
         guard let ships = try? objects(of: Ship.entity, predicate: predicate) else { return nil }
         
@@ -243,7 +248,7 @@ extension ServerDataStore {
     
     func ships(by shipId: Int) -> [Ship] {
         
-        let predicate = NSPredicate(format: "id = %d", shipId)
+        let predicate = NSPredicate(#keyPath(Ship.id), equal: shipId)
         
         guard let ships = try? objects(of: Ship.entity, predicate: predicate) else { return [] }
         
@@ -252,7 +257,7 @@ extension ServerDataStore {
     
     func ships(exclude shipIds: [Int]) -> [Ship] {
         
-        let predicate = NSPredicate(format: "NOT id IN %@", shipIds)
+        let predicate = NSPredicate.not(NSPredicate(#keyPath(Ship.id), valuesIn: shipIds))
         
         guard let ships = try? objects(of: Ship.entity, predicate: predicate) else { return [] }
         
@@ -261,7 +266,7 @@ extension ServerDataStore {
     
     func shipsInFleet() -> [Ship] {
         
-        let predicate = NSPredicate(format: "NOT fleet = 0")
+        let predicate = NSPredicate(#keyPath(Ship.fleet), notEqual: 0)
         
         guard let ships = try? objects(of: Ship.entity, predicate: predicate) else { return [] }
         
@@ -277,7 +282,7 @@ extension ServerDataStore {
         
         if slotItemId < 1 { return 0 }
         
-        let predicate = NSPredicate(format: "id = %d", argumentArray: [slotItemId])
+        let predicate = NSPredicate(#keyPath(SlotItem.id), equal: slotItemId)
         
         guard let slotItems = try? objects(of: SlotItem.entity, predicate: predicate) else { return 0 }
         guard let slotItem = slotItems.first else { return 0 }
@@ -287,7 +292,7 @@ extension ServerDataStore {
     
     func slotItem(by itemId: Int) -> SlotItem? {
         
-        let p = NSPredicate(format: "id = %ld", itemId)
+        let p = NSPredicate(#keyPath(SlotItem.id), equal: itemId)
         
         guard let slotItems = try? objects(of: SlotItem.entity, predicate: p) else { return nil }
         
@@ -312,7 +317,7 @@ extension ServerDataStore {
     
     func slotItems(in itemIds: [Int]) -> [SlotItem] {
         
-        let predicate = NSPredicate(format: "id IN %@", itemIds)
+        let predicate = NSPredicate(#keyPath(SlotItem.id), valuesIn: itemIds)
         
         guard let slotItems = try? objects(of: SlotItem.entity, predicate: predicate) else { return [] }
         
@@ -321,7 +326,7 @@ extension ServerDataStore {
     
     func slotItems(exclude itemIds: [Int]) -> [SlotItem] {
         
-        let predicate = NSPredicate(format: "NOT id IN %@", itemIds)
+        let predicate = NSPredicate.not(NSPredicate(#keyPath(SlotItem.id), valuesIn: itemIds))
         
         guard let slotItems = try? objects(of: SlotItem.entity, predicate: predicate) else { return [] }
         
@@ -342,7 +347,7 @@ extension ServerDataStore {
     
     func quest(by no: Int) -> Quest? {
         
-        let p = NSPredicate(format: "%K = %ld", #keyPath(Quest.no), no)
+        let p = NSPredicate(#keyPath(Quest.no), equal: no)
         
         guard let quests = try? objects(of: Quest.entity, predicate: p) else { return nil }
         
@@ -351,7 +356,7 @@ extension ServerDataStore {
     
     func quests(in range: CountableClosedRange<Int>) -> [Quest] {
         
-        let p = NSPredicate(format: "%K In %@", #keyPath(Quest.no), range.map {$0})
+        let p = NSPredicate(#keyPath(Quest.no), valuesIn: range.map {$0})
         
         guard let quests = try? objects(of: Quest.entity, predicate: p) else { return [] }
         
