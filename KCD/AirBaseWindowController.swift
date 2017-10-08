@@ -17,6 +17,8 @@ final class AirBaseWindowController: NSWindowController {
     @IBOutlet var planesTable: NSTableView!
     @IBOutlet var airBaseController: NSArrayController!
     
+    private var contentObservation: NSKeyValueObservation?
+    
     override var windowNibName: NSNib.Name {
         
         return .nibName(instanceOf: self)
@@ -51,25 +53,19 @@ final class AirBaseWindowController: NSWindowController {
     override func windowDidLoad() {
         
         super.windowDidLoad()
-        
-        airBaseController.addObserver(self, forKeyPath: #keyPath(NSArrayController.content), context: nil)
-    }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
-        
-        guard keyPath == #keyPath(NSArrayController.content) else {
+                
+        contentObservation = airBaseController.observe(\NSArrayController.content) { [weak self] _, _ in
             
-            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
-            return
-        }
-        
-        updateAreaRadio()
-        updatePlaneSegment()
-        
-        if areaId == 0 {
+            guard let `self` = self else { return }
             
-            areaId = areas.first ?? 0
-            updatePredicate()
+            self.updateAreaRadio()
+            self.updatePlaneSegment()
+            
+            if self.areaId == 0 {
+                
+                self.areaId = self.areas.first ?? 0
+                self.updatePredicate()
+            }
         }
     }
     

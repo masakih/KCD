@@ -32,6 +32,9 @@ final class ShipViewController: MainTabVIewItemViewController {
     @IBOutlet var power3TableView: NSScrollView!
     @IBOutlet weak var standardDeviationField: NSTextField!
     
+    private var sortDescriptorsObservation: NSKeyValueObservation?
+    private var arrangedObjectsObservation: NSKeyValueObservation?
+    
     override var nibName: NSNib.Name {
         
         return .nibName(instanceOf: self)
@@ -80,8 +83,15 @@ final class ShipViewController: MainTabVIewItemViewController {
         }
         
         shipController.sortDescriptors = UserDefaults.standard[.shipviewSortDescriptors]
-        shipController.addObserver(self, forKeyPath: NSBindingName.sortDescriptors.rawValue, context: nil)
-        shipController.addObserver(self, forKeyPath: #keyPath(NSArrayController.arrangedObjects), context: nil)
+        
+        sortDescriptorsObservation = shipController.observe(\NSArrayController.sortDescriptors) { [weak self] _, _ in
+            
+            UserDefaults.standard[.shipviewSortDescriptors] = self?.shipController.sortDescriptors ?? []
+        }
+        arrangedObjectsObservation = shipController.observe(\NSArrayController.arrangedObjects) { [weak self] _, _ in
+            
+            self?.notifyChangeValue(forKey: #keyPath(standardDeviation))
+        }
         
         let tableViews = [expTableView, powerTableView, power2TableView, power3TableView]
         tableViews
@@ -101,25 +111,6 @@ final class ShipViewController: MainTabVIewItemViewController {
         #if DEBUG
             standardDeviationField.isHidden = false
         #endif
-    }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
-        
-        if keyPath == NSBindingName.sortDescriptors.rawValue {
-            
-            UserDefaults.standard[.shipviewSortDescriptors] = shipController.sortDescriptors
-            
-            return
-        }
-        
-        if keyPath == #keyPath(NSArrayController.arrangedObjects) {
-            
-            notifyChangeValue(forKey: #keyPath(standardDeviation))
-            
-            return
-        }
-        
-        super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
     }
     
     private func showView(with type: ViewType) {

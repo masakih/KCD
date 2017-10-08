@@ -12,13 +12,10 @@ final class PowerUpSupportViewController: MainTabVIewItemViewController {
     
     @objc let managedObjectContext = ServerDataStore.default.context
     
-    deinit {
-        
-        shipController.removeObserver(self, forKeyPath: NSBindingName.sortDescriptors.rawValue)
-    }
-    
     @IBOutlet var shipController: NSArrayController!
     @IBOutlet weak var typeSegment: NSSegmentedControl!
+    
+    private var sortDescriptorsObservation: NSKeyValueObservation?
     
     override var hasShipTypeSelector: Bool { return true }
     override var selectedShipType: ShipTabType {
@@ -67,19 +64,10 @@ final class PowerUpSupportViewController: MainTabVIewItemViewController {
         }
         
         shipController.sortDescriptors = UserDefaults.standard[.powerupSupportSortDecriptors]
-        shipController.addObserver(self, forKeyPath: NSBindingName.sortDescriptors.rawValue, context: nil)
-    }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        
-        if keyPath == NSBindingName.sortDescriptors.rawValue {
+        sortDescriptorsObservation = shipController.observe(\NSArrayController.sortDescriptors) { [weak self] _, _ in
             
-            UserDefaults.standard[.powerupSupportSortDecriptors] = shipController.sortDescriptors
-            
-            return
+            UserDefaults.standard[.powerupSupportSortDecriptors] = self?.shipController.sortDescriptors ?? []
         }
-        
-        super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
     }
     
     private func customPredicate() -> NSPredicate? {

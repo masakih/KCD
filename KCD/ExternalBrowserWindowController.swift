@@ -22,15 +22,12 @@ final class ExternalBrowserWindowController: NSWindowController {
     
     let managedObjectContext = BookmarkManager.shared().manageObjectContext
     
-    deinit {
-        
-        webView.removeObserver(self, forKeyPath: #keyPath(webView.canGoBack))
-        webView.removeObserver(self, forKeyPath: #keyPath(webView.canGoForward))
-    }
-    
     @IBOutlet var webView: WebView!
     @IBOutlet var goSegment: NSSegmentedControl!
     @IBOutlet var bookmarkListView: NSView!
+    
+    private var canGoBackObservation: NSKeyValueObservation?
+    private var canGoForwardObservation: NSKeyValueObservation?
     
     override var windowNibName: NSNib.Name {
         
@@ -132,29 +129,21 @@ final class ExternalBrowserWindowController: NSWindowController {
         
         super.windowDidLoad()
         
-        webView.addObserver(self, forKeyPath: #keyPath(webView.canGoBack), context: nil)
-        webView.addObserver(self, forKeyPath: #keyPath(webView.canGoForward), context: nil)
+        canGoBackObservation = webView.observe(\WebView.canGoBack) { [weak self] _, _ in
+            
+            guard let `self` = self else { return }
+            
+            self.goSegment.setEnabled(self.webView.canGoBack, forSegment: 0)
+        }
+        canGoForwardObservation = webView.observe(\WebView.canGoForward) { [weak self] _, _ in
+            
+            guard let `self` = self else { return }
+            
+            self.goSegment.setEnabled(self.webView.canGoForward, forSegment: 1)
+        }
+        
         webView.applicationNameForUserAgent = AppDelegate.shared.appNameForUserAgent
         webView.frameLoadDelegate = self
-    }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
-        
-        if keyPath == #keyPath(webView.canGoBack) {
-            
-            goSegment.setEnabled(webView.canGoBack, forSegment: 0)
-            
-            return
-        }
-        
-        if keyPath == #keyPath(webView.canGoForward) {
-            
-            goSegment.setEnabled(webView.canGoForward, forSegment: 1)
-            
-            return
-        }
-        
-        super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
     }
     
     override func swipe(with event: NSEvent) {
