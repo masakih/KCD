@@ -76,7 +76,7 @@ extension ServerDataStore {
     
     func decksSortedById() -> [Deck] {
         
-        let sortDec = NSSortDescriptor(key: "id", ascending: true)
+        let sortDec = NSSortDescriptor(key: #keyPath(Deck.id), ascending: true)
         
         guard let decks = try? objects(of: Deck.entity, sortDescriptors: [sortDec]) else { return [] }
         
