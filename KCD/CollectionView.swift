@@ -11,21 +11,13 @@ import Quartz
 
 final class CollectionView: NSCollectionView {
     
+    private var selectionObservation: NSKeyValueObservation?
+    
     required init?(coder: NSCoder) {
         
         super.init(coder: coder)
         
-        self.addObserver(self, forKeyPath: #keyPath(selectionIndexPaths), context: nil)
-    }
-    
-    deinit {
-        
-        self.removeObserver(self, forKeyPath: #keyPath(selectionIndexPaths))
-    }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
-        
-        if let o = object as? CollectionView, o == self {
+        selectionObservation = observe(\CollectionView.selectionIndexPaths) { (_, _) in
             
             if !QLPreviewPanel.sharedPreviewPanelExists() { return }
             if !QLPreviewPanel.shared().isVisible { return }
@@ -34,12 +26,9 @@ final class CollectionView: NSCollectionView {
                 
                 QLPreviewPanel.shared().reloadData()
             }
-            
-            return
         }
-        
-        super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
     }
+    
 }
 
 extension CollectionView {

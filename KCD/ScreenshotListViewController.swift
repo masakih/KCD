@@ -43,6 +43,8 @@ final class ScreenshotListViewController: NSViewController {
     @IBOutlet weak var standardView: NSView!
     @IBOutlet weak var editorView: NSView!
     
+    private var selectionObservation: NSKeyValueObservation?
+    
     @objc dynamic var zoom: Double = UserDefaults.standard[.screenshotPreviewZoomValue] {
         
         didSet {
@@ -122,7 +124,15 @@ final class ScreenshotListViewController: NSViewController {
         collectionView.register(nib, forItemWithIdentifier: .item)
         
         screenshots.sortDescriptors = [NSSortDescriptor(key: #keyPath(ScreenshotInformation.creationDate), ascending: false)]
-        collectionView.addObserver(self, forKeyPath: #keyPath(NSCollectionView.selectionIndexPaths), context: nil)
+        selectionObservation = collectionView.observe(\NSCollectionView.selectionIndexPaths) { [weak self] (_, _) in
+            
+            guard let `self` = self else { return }
+            
+            let selections = self.collectionView.selectionIndexPaths
+            let selectionIndexes = selections.reduce(into: IndexSet()) { $0.insert($1.item) }
+            self.screenshots.selectedIndexes = selectionIndexes
+            selectionIndexes.first.map { self.collectionSelectionDidChangeHandler?($0) }
+        }
         collectionView.postsFrameChangedNotifications = true
         
         let nc = NotificationCenter.default
@@ -150,23 +160,6 @@ final class ScreenshotListViewController: NSViewController {
         
         DispatchQueue.main
             .asyncAfter(deadline: .now() + 0.0001 ) { self.reloadData() }
-    }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        
-        if let object = object as? NSCollectionView,
-            object == collectionView {
-            
-            let selections = collectionView.selectionIndexPaths
-            var selectionIndexes = IndexSet()
-            selections.forEach { selectionIndexes.insert($0.item) }
-            screenshots.selectedIndexes = selectionIndexes
-            selectionIndexes.first.map { collectionSelectionDidChangeHandler?($0) }
-            
-            return
-        }
-        
-        super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
     }
     
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {

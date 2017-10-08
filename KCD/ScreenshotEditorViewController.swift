@@ -60,10 +60,6 @@ final class ScreenshotEditorViewController: BridgeViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    deinit {
-        
-        arrayController.removeObserver(self, forKeyPath: NSBindingName.selectionIndexes.rawValue)
-    }
     
     @IBOutlet weak var tiledImageView: TiledImageView!
     @IBOutlet weak var doneButton: NSButton!
@@ -111,11 +107,17 @@ final class ScreenshotEditorViewController: BridgeViewController {
         }
     }
     
+    private var selectionObservation: NSKeyValueObservation?
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
-        arrayController.addObserver(self, forKeyPath: NSBindingName.selectionIndexes.rawValue, context: nil)
+        selectionObservation = arrayController.observe(\NSArrayController.selectionIndexes) { [weak self] (_, _) in
+            
+            self?.updateSelections()
+        }
+        
         currentTrimInfoIndex = UserDefaults.standard[.scrennshotEditorType]
         updateSelections()
     }
@@ -123,18 +125,6 @@ final class ScreenshotEditorViewController: BridgeViewController {
     override func viewWillAppear() {
         
         doneButton.action = .done
-    }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        
-        if keyPath == NSBindingName.selectionIndexes.rawValue {
-            
-            updateSelections()
-            
-            return
-        }
-        
-        super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
     }
     
     private func updateSelections() {
