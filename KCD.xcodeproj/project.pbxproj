@@ -263,6 +263,7 @@
 		F4C6686C1C5451ED00601AFB /* StrengthenListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C6686E1C5451ED00601AFB /* StrengthenListViewController.xib */; };
 		F4C6686F1C54524900601AFB /* VerticalFleetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C668711C54524900601AFB /* VerticalFleetViewController.xib */; };
 		F4C668721C54525300601AFB /* CombileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C668741C54525300601AFB /* CombileViewController.xib */; };
+		F4CC5C091F88DBD50006B3FA /* NSPredicateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CC5C081F88DBD50006B3FA /* NSPredicateExtension.swift */; };
 		F4CF25A81E325ABA00C02A66 /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CF25A71E325ABA00C02A66 /* APIResponse.swift */; };
 		F4CF25AA1E338ED000C02A66 /* JSONTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CF25A91E338ED000C02A66 /* JSONTracker.swift */; };
 		F4CF25AC1E33AB4400C02A66 /* TimeSignalNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CF25AB1E33AB4400C02A66 /* TimeSignalNotifier.swift */; };
@@ -607,6 +608,7 @@
 		F4C5A22B1C37B8DB00533FB6 /* RequiredEquipmentSet.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RequiredEquipmentSet.txt; sourceTree = "<group>"; };
 		F4C5A22D1C37CB5100533FB6 /* EnhancementListItem.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EnhancementListItem.txt; sourceTree = "<group>"; };
 		F4C5A2331C37F87500533FB6 /* EquipmentEnhancementListBuilder */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = EquipmentEnhancementListBuilder; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4CC5C081F88DBD50006B3FA /* NSPredicateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSPredicateExtension.swift; sourceTree = "<group>"; };
 		F4CF25A71E325ABA00C02A66 /* APIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
 		F4CF25A91E338ED000C02A66 /* JSONTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONTracker.swift; sourceTree = "<group>"; };
 		F4CF25AB1E33AB4400C02A66 /* TimeSignalNotifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSignalNotifier.swift; sourceTree = "<group>"; };
@@ -956,6 +958,7 @@
 				F44AA26A1E82AD2E00EED8BE /* NSObjectExtension.swift */,
 				F4AF56851F7F6EF8004F4F4E /* NSNibExtension.swift */,
 				F4AF56841F7F6EF8004F4F4E /* NSUserInterfaceItemIdentifierExtension.swift */,
+				F4CC5C081F88DBD50006B3FA /* NSPredicateExtension.swift */,
 				F40F976E1E67092600AE81BB /* ArrayExtensions.swift */,
 				F40F97701E68536400AE81BB /* FileManagerExtension.swift */,
 				F4AF56801F7BF0CF004F4F4E /* IntConvertable.swift */,
@@ -1522,6 +1525,7 @@
 				F44BC70B1E27B456004644E3 /* MemberRequireInfoCommand.swift in Sources */,
 				F4D05BD91E0F748900688D66 /* QuestListViewController.swift in Sources */,
 				F4AA59381E1DC4C3001667AF /* MapAreaTransformaer.swift in Sources */,
+				F4CC5C091F88DBD50006B3FA /* NSPredicateExtension.swift in Sources */,
 				F47215A21E1F38280083D3BC /* Queue.swift in Sources */,
 				F42CFE261E3D91FD000B4F9B /* MasterMapArea.swift in Sources */,
 				F42A8FE01E40CC050099DC1D /* AirBase.swift in Sources */,
