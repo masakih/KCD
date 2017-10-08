@@ -52,17 +52,9 @@ final class ScreenshotCollectionViewItem: NSCollectionViewItem {
         
         let imageSize = image.size
         
-        var ratio: CGFloat = 1
         let ratioX = target.size.height / imageSize.height
         let ratioY = target.size.width / imageSize.width
-        if ratioX > ratioY {
-            
-            ratio = ratioY
-            
-        } else {
-            
-            ratio = ratioX
-        }
+        let ratio = min(ratioY, ratioX)
         let fitSize = NSSize(width: imageSize.width * ratio, height: imageSize.height * ratio)
         let left = (target.size.width - fitSize.width) * 0.5
         let bottom = (target.size.height - fitSize.height) * 0.5
