@@ -12,10 +12,6 @@ private extension Selector {
     
     static let fireInAppDelegate = #selector(AppDelegate.fire(_:))
     
-    static let saveLocalData = #selector(AppDelegate.saveLocalData(_:))
-    static let loadLocalData = #selector(AppDelegate.loadLocalData(_:))
-    
-    static let removeDatabaseFile = #selector(AppDelegate.removeDatabaseFile(_:))
 }
 
 @NSApplicationMain
@@ -23,7 +19,7 @@ final class AppDelegate: NSObject {
     
     static var shared: AppDelegate {
         
-        // swiftlint:disable force_cast
+        // swiftlint:disable:next force_cast
         return NSApplication.shared.delegate as! AppDelegate
     }
     
@@ -247,10 +243,13 @@ extension AppDelegate {
         guard let action = menuItem.action else { return false }
         
         switch action {
-        case Selector.saveLocalData, Selector.loadLocalData:
+            
+        case #selector(AppDelegate.saveLocalData(_:)),
+             #selector(AppDelegate.loadLocalData(_:)):
+            
             return true
             
-        case Selector.removeDatabaseFile:
+        case #selector(AppDelegate.removeDatabaseFile(_:)):
             return true
             
         case #selector(openInDeckBuilder(_:)):

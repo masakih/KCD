@@ -8,28 +8,6 @@
 
 import Cocoa
 
-
-private extension Selector {
-    
-    static let reloadContent = #selector(BroserWindowController.reloadContent(_:))
-    static let deleteCacheAndReload = #selector(BroserWindowController.deleteCacheAndReload(_:))
-    static let clearQuestList = #selector(BroserWindowController.clearQuestList(_:))
-    static let selectView = #selector(BroserWindowController.selectView(_:))
-    static let changeMainTab = #selector(BroserWindowController.changeMainTab(_:))
-    static let screenShot = #selector(BroserWindowController.screenShot(_:))
-    static let toggleAnchorageSize = #selector(BroserWindowController.toggleAnchorageSize(_:))
-    static let showHideCombinedView = #selector(BroserWindowController.showHideCombinedView(_:))
-    static let fleetListAbove = #selector(BroserWindowController.fleetListAbove(_:))
-    static let fleetListBelow = #selector(BroserWindowController.fleetListBelow(_:))
-    static let fleetListDivide = #selector(BroserWindowController.fleetListDivide(_:))
-    static let fleetListSimple = #selector(BroserWindowController.fleetListSimple(_:))
-    static let reorderToDoubleLine = #selector(BroserWindowController.reorderToDoubleLine(_:))
-    static let reorderToLeftToRight = #selector(BroserWindowController.reorderToLeftToRight(_:))
-    static let selectNextFleet = #selector(BroserWindowController.selectNextFleet(_:))
-    static let selectPreviousFleet = #selector(BroserWindowController.selectPreviousFleet(_:))
-    static let changeSakutekiCalculator = #selector(BroserWindowController.changeSakutekiCalculator(_:))
-}
-
 final class BroserWindowController: NSWindowController {
     
     enum FleetViewPosition: Int {
@@ -165,13 +143,11 @@ final class BroserWindowController: NSWindowController {
         if event.deltaX > 0 {
             
             showCombinedView()
-            
         }
         
         if event.deltaX < 0 {
             
             hideCombinedView()
-            
         }
     }
     
@@ -350,40 +326,47 @@ extension BroserWindowController {
         guard let action: Selector = menuItem.action else { return false }
         
         switch action {
-        case Selector.reloadContent, Selector.screenShot, Selector.deleteCacheAndReload:
+            
+        case #selector(BroserWindowController.reloadContent(_:)),
+             #selector(BroserWindowController.screenShot(_:)),
+             #selector(BroserWindowController.deleteCacheAndReload(_:)):
+            
             return gameViewController.validateMenuItem(menuItem)
             
-        case Selector.selectView, Selector.selectNextFleet, Selector.selectPreviousFleet:
+        case #selector(BroserWindowController.selectView(_:)),
+             #selector(BroserWindowController.selectNextFleet(_:)),
+             #selector(BroserWindowController.selectPreviousFleet(_:)):
+            
             return true
             
-        case Selector.fleetListAbove:
+        case #selector(BroserWindowController.fleetListAbove(_:)):
             menuItem.state = (fleetViewPosition == .above ? .on : .off)
             return true
             
-        case Selector.fleetListBelow:
+        case #selector(BroserWindowController.fleetListBelow(_:)):
             menuItem.state = (fleetViewPosition == .below ? .on : .off)
             return true
             
-        case Selector.fleetListDivide:
+        case #selector(BroserWindowController.fleetListDivide(_:)):
             menuItem.state = (fleetViewPosition == .divided ? .on : .off)
             return true
             
-        case Selector.fleetListSimple:
+        case #selector(BroserWindowController.fleetListSimple(_:)):
             menuItem.state = (fleetViewPosition == .oldStyle ? .on : .off)
             return true
             
-        case Selector.reorderToDoubleLine:
+        case #selector(BroserWindowController.reorderToDoubleLine(_:)):
             menuItem.state = (fleetViewController.shipOrder == .doubleLine ? .on : .off)
             return true
             
-        case Selector.reorderToLeftToRight:
+        case #selector(BroserWindowController.reorderToLeftToRight(_:)):
             menuItem.state = (fleetViewController.shipOrder == .leftToRight ? .on: .off)
             return true
             
-        case Selector.clearQuestList:
+        case #selector(BroserWindowController.clearQuestList(_:)):
             return true
             
-        case Selector.showHideCombinedView:
+        case #selector(BroserWindowController.showHideCombinedView(_:)):
             if isCombinedMode {
                 
                 menuItem.title = LocalizedStrings.hideCombinedView.string
@@ -397,10 +380,10 @@ extension BroserWindowController {
             
             return true
             
-        case Selector.toggleAnchorageSize:
+        case #selector(BroserWindowController.toggleAnchorageSize(_:)):
             return true
             
-        case Selector.changeSakutekiCalculator:
+        case #selector(BroserWindowController.changeSakutekiCalculator(_:)):
             return fleetViewController.validateMenuItem(menuItem)
             
         default:

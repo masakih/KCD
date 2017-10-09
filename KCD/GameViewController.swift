@@ -10,13 +10,6 @@ import Cocoa
 import WebKit
 import JavaScriptCore
 
-private extension Selector {
-    
-    static let reloadContent = #selector(GameViewController.reloadContent(_:))
-    static let deleteCacheAndReload = #selector(GameViewController.deleteCacheAndReload(_:))
-    static let screenShot = #selector(GameViewController.screenShot(_:))
-}
-
 final class GameViewController: NSViewController {
     
     private static let gamePageURL = "http://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/"
@@ -129,8 +122,11 @@ final class GameViewController: NSViewController {
     
     override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
         
-        if menuItem.action == .reloadContent {
+        guard let action: Selector = menuItem.action else { return false }
+        
+        switch action {
             
+        case #selector(GameViewController.reloadContent(_:)):
             guard let _ = webView.mainFrame else { return true }
             guard let frameURL = webView.mainFrameURL else { return true }
             
@@ -146,19 +142,15 @@ final class GameViewController: NSViewController {
             }
             
             return true
-        }
-        
-        if menuItem.action == .deleteCacheAndReload {
             
+        case #selector(GameViewController.deleteCacheAndReload(_:)):
             return true
-        }
-        
-        if menuItem.action == .screenShot {
             
+        case #selector(GameViewController.screenShot(_:)):
             return true
+            
+        default: return false
         }
-        
-        return false
     }
 }
 

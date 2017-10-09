@@ -8,27 +8,6 @@
 
 import Cocoa
 
-private extension Selector {
-    
-    static let showHideHistory = #selector(WindowManager.showHideHistory(_:))
-    static let showHideSlotItemWindow = #selector(WindowManager.showHideSlotItemWindow(_:))
-    static let showHideUpgradableShipWindow = #selector(WindowManager.showHideUpgradableShipWindow(_:))
-    static let showHideScreenshotListWindow = #selector(WindowManager.showHideScreenshotListWindow(_:))
-    static let showHideAirBaseInfoWindow = #selector(WindowManager.showHideAirBaseInfoWindow(_:))
-    static let showHidePreferencePanle = #selector(WindowManager.showHidePreferencePanle(_:))
-    static let openNewBrowser = #selector(WindowManager.openNewBrowser(_:))
-    static let selectBookmark = #selector(WindowManager.selectBookmark(_:))
-    static let showWindowAduster = #selector(WindowManager.showWindowAduster(_:))
-    
-    static let showShipWindow = #selector(WindowManager.showShipWindow(_:))
-    static let showEquipmentWindow = #selector(WindowManager.showEquipmentWindow(_:))
-    static let showMapWindow = #selector(WindowManager.showMapWindow(_:))
-    static let showOwnershipShipWindow = #selector(WindowManager.showOwnershipShipWindow(_:))
-    
-    static let saveDocument = #selector(WindowManager.saveDocument(_:))
-    static let openDocument = #selector(WindowManager.openDocument(_:))
-}
-
 final class WindowManager {
     
     private let browserWindowController = BroserWindowController()
@@ -329,58 +308,64 @@ extension WindowManager {
         guard let action = menuItem.action else { return false }
         
         switch action {
-        case Selector.showHideHistory:
+            
+        case #selector(WindowManager.showHideHistory(_:)):
             setTitle(menuItem,
                      historyWindowController.window,
                      LocalizedStrings.showHistory.string,
                      LocalizedStrings.hideHistory.string)
             return true
             
-        case Selector.showHideSlotItemWindow:
+        case #selector(WindowManager.showHideSlotItemWindow(_:)):
             setTitle(menuItem,
                      slotItemWindowController.window,
                      LocalizedStrings.showSlotItem.string,
                      LocalizedStrings.hideSlotItem.string)
             return true
             
-        case Selector.showHideUpgradableShipWindow:
+        case #selector(WindowManager.showHideUpgradableShipWindow(_:)):
             setTitle(menuItem,
                      upgradableShipWindowController.window,
                      LocalizedStrings.showUpgradableShips.string,
                      LocalizedStrings.hideUpgradableShips.string)
             return true
             
-        case Selector.showHideScreenshotListWindow:
+        case #selector(WindowManager.showHideScreenshotListWindow(_:)):
             setTitle(menuItem,
                      screenshotListWindowController.window,
                      LocalizedStrings.showScreenshotList.string,
                      LocalizedStrings.hideScreenshotList.string)
             return true
             
-        case Selector.showHideAirBaseInfoWindow:
+        case #selector(WindowManager.showHideAirBaseInfoWindow(_:)):
             setTitle(menuItem,
                      airBaseWindowController.window,
                      LocalizedStrings.showAirbaseInfo.string,
                      LocalizedStrings.hideAirbaseInfo.string)
             return true
             
-        case Selector.showHidePreferencePanle:
+        case #selector(WindowManager.showHidePreferencePanle(_:)):
             return true
             
-        case Selector.openNewBrowser:
+        case #selector(WindowManager.openNewBrowser(_:)):
             return true
             
-        case Selector.selectBookmark:
+        case #selector(WindowManager.selectBookmark(_:)):
             return true
             
-        case Selector.showWindowAduster:
+        case #selector(WindowManager.showWindowAduster(_:)):
             return true
             
-        case Selector.showShipWindow, Selector.showEquipmentWindow,
-             Selector.showMapWindow, Selector.showOwnershipShipWindow:
+        case #selector(WindowManager.showShipWindow(_:)),
+             #selector(WindowManager.showEquipmentWindow(_:)),
+             #selector(WindowManager.showMapWindow(_:)),
+             #selector(WindowManager.showOwnershipShipWindow(_:)):
+            
             return true
             
-        case Selector.saveDocument, Selector.openDocument:
+        case #selector(WindowManager.saveDocument(_:)),
+             #selector(WindowManager.openDocument(_:)):
+            
             return canSaveLog
             
         default:

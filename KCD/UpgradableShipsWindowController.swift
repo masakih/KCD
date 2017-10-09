@@ -8,11 +8,6 @@
 
 import Cocoa
 
-private extension Selector {
-    
-    static let showHideShip = #selector(UpgradableShipsWindowController.showHideShip(_:))
-}
-
 final class UpgradableShipsWindowController: NSWindowController {
     
     @objc let managedObjectContext = ServerDataStore.default.context
@@ -156,15 +151,18 @@ final class UpgradableShipsWindowController: NSWindowController {
     
     override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
         
-        if menuItem.action == .showHideShip {
+        guard let action = menuItem.action else { return false }
+        
+        switch action {
+            
+        case #selector(UpgradableShipsWindowController.showHideShip(_:)):
             
             let row = tableView.clickedRow
             
             guard let ships = shipsController.arrangedObjects as? [Ship] else { return false }
             guard case 0..<ships.count = row else { return false }
             
-            let shipID = ships[row].id
-            if isExcludeShipID(shipID) {
+            if isExcludeShipID(ships[row].id) {
                 
                 menuItem.title = LocalizedStrings.showKanmusu.string
                 
@@ -174,8 +172,8 @@ final class UpgradableShipsWindowController: NSWindowController {
             }
             
             return true
+            
+        default: return false
         }
-        
-        return false
     }
 }

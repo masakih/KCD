@@ -11,10 +11,6 @@ import WebKit
 
 private extension Selector {
     
-    static let addBookmark = #selector(ExternalBrowserWindowController.addBookmark(_:))
-    static let showBookmark = #selector(ExternalBrowserWindowController.showBookmark(_:))
-    static let selectBookmark = #selector(ExternalBrowserWindowController.selectBookmark(_:))
-    static let reloadContent = #selector(ExternalBrowserWindowController.reloadContent(_:))
     static let updateContentVisibleRect = #selector(ExternalBrowserWindowController.updateContentVisibleRect(_:))
 }
 
@@ -188,10 +184,11 @@ extension ExternalBrowserWindowController {
         guard let action = menuItem.action else { return false }
         
         switch action {
-        case Selector.addBookmark:
+            
+        case #selector(ExternalBrowserWindowController.addBookmark(_:)):
             return webView.mainFrameURL != nil
             
-        case Selector.showBookmark:
+        case #selector(ExternalBrowserWindowController.showBookmark(_:)):
             if showsBookmarkList() {
                 
                 menuItem.title = LocalizedStrings.hideBookmark.string
@@ -202,10 +199,10 @@ extension ExternalBrowserWindowController {
             }
             return true
             
-        case Selector.selectBookmark:
+        case #selector(ExternalBrowserWindowController.selectBookmark(_:)):
             return true
             
-        case Selector.reloadContent:
+        case #selector(ExternalBrowserWindowController.reloadContent(_:)):
             return true
             
         default:
