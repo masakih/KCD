@@ -58,14 +58,7 @@ final class ExternalBrowserWindowController: NSWindowController {
             
             if canScroll == newValue { return }
             
-            if newValue {
-                
-                webView.mainFrame.frameView.allowsScrolling = true
-                
-            } else {
-                
-                webView.mainFrame.frameView.allowsScrolling = false
-            }
+            webView.mainFrame.frameView.allowsScrolling = newValue
         }
     }
     @objc dynamic var canMovePage: Bool = true
