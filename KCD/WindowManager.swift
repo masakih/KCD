@@ -94,7 +94,6 @@ final class WindowManager {
     }()
     
     private var browserWindowControllers: [ExternalBrowserWindowController] = []
-    private var updaters: [() -> Void] = []
     private var logedJSONViewWindowController: JSONViewWindowController?
     
     var canSaveLog: Bool {
