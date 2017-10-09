@@ -19,24 +19,21 @@ class BridgeViewController: NSViewController {
     
     deinit {
         
-        [.contentArray, .sortDescriptors, .selectionIndexes, .filterPredicate]
-            .forEach { arrayController.unbind($0) }
+        arrayController.unbind(.contentArray)
+        arrayController.unbind(.sortDescriptors)
+        arrayController.unbind(.selectionIndexes)
+        arrayController.unbind(.filterPredicate)
     }
     
     override var representedObject: Any? {
         
         didSet {
-            guard let representedObject = representedObject else { return }
+            guard let representedObject = representedObject as? ScreenshotModel else { return }
             
-            [
-                (.contentArray, #keyPath(ScreenshotModel.screenshots)),
-                (.sortDescriptors, #keyPath(ScreenshotModel.sortDescriptors)),
-                (.selectionIndexes, #keyPath(ScreenshotModel.selectedIndexes)),
-                (.filterPredicate, #keyPath(ScreenshotModel.filterPredicate))
-                ]
-                .forEach {
-                    arrayController.bind($0.0, to: representedObject, withKeyPath: $0.1, options: nil)
-            }
+            arrayController.bind(.contentArray, to: representedObject, withKeyPath: #keyPath(ScreenshotModel.screenshots))
+            arrayController.bind(.sortDescriptors, to: representedObject, withKeyPath: #keyPath(ScreenshotModel.sortDescriptors))
+            arrayController.bind(.selectionIndexes, to: representedObject, withKeyPath: #keyPath(ScreenshotModel.selectedIndexes))
+            arrayController.bind(.filterPredicate, to: representedObject, withKeyPath: #keyPath(ScreenshotModel.filterPredicate))
         }
     }
     
