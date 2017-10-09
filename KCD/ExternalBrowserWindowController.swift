@@ -15,9 +15,7 @@ private extension Selector {
 }
 
 final class ExternalBrowserWindowController: NSWindowController {
-    
-    let managedObjectContext = BookmarkManager.shared().manageObjectContext
-    
+        
     @IBOutlet var webView: WebView!
     @IBOutlet var goSegment: NSSegmentedControl!
     @IBOutlet var bookmarkListView: NSView!
