@@ -167,6 +167,17 @@ final class ExternalBrowserWindowController: NSWindowController {
     }
 }
 
+extension ExternalBrowserWindowController: NSWindowDelegate {
+    
+    func windowWillClose(_ notification: Notification) {
+        
+        webView.policyDelegate = nil
+        webView.uiDelegate = nil
+        webView.downloadDelegate = nil
+        webView.frameLoadDelegate = nil
+    }
+}
+
 // MARK: - IBAction
 extension ExternalBrowserWindowController {
     
