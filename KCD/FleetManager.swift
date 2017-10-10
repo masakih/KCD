@@ -56,7 +56,7 @@ final class FleetManager: NSObject {
         if fleets[0].ships.isEmpty {
             
             let center = NotificationCenter.default
-            var token: NSObjectProtocol!
+            weak var token: NSObjectProtocol!
             token = center.addObserver(forName: .PortAPIReceived, object: nil, queue: nil) {_ in
                 
                 center.removeObserver(token)
