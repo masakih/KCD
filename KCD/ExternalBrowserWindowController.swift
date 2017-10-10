@@ -235,14 +235,12 @@ extension ExternalBrowserWindowController {
         
         let tag = cell.tag(forSegment: cell.selectedSegment)
         switch tag {
-        case 0:
-            webView.goBack(nil)
             
-        case 1:
-            webView.goForward(nil)
+        case 0: webView.goBack(nil)
             
-        default:
-            break
+        case 1: webView.goForward(nil)
+            
+        default: break
         }
     }
     

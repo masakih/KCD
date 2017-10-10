@@ -179,7 +179,7 @@ extension Ship {
         case 4: return UserDefaults.standard[.plan04Color]
         case 5: return UserDefaults.standard[.plan05Color]
         case 6: return UserDefaults.standard[.plan06Color]
-        default: return NSColor.controlTextColor
+        default: return .controlTextColor
         }
     }
 }

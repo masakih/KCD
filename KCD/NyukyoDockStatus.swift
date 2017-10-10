@@ -86,9 +86,9 @@ final class NyukyoDockStatus: NSObject {
         guard let ship = ServerDataStore.default.ship(by: shipId) else {
             
             name = "Unknown"
-            DispatchQueue(label: "NyukyoDockStatus")
-                .asyncAfter(deadline: .now() + 0.33) {
-                    self.updateState()
+            DispatchQueue(label: "NyukyoDockStatus").asyncAfter(deadline: .now() + 0.33) {
+                
+                self.updateState()
             }
             return
         }

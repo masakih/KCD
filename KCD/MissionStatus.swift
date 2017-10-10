@@ -90,9 +90,9 @@ final class MissionStatus: NSObject {
         guard let mission = ServerDataStore.default.masterMission(by: missionId) else {
             
             name = "Unknown"
-            DispatchQueue(label: "MissionStatus")
-                .asyncAfter(deadline: .now() + 0.33) {
-                    self.updateState()
+            DispatchQueue(label: "MissionStatus").asyncAfter(deadline: .now() + 0.33) {
+                
+                self.updateState()
             }
             return
         }

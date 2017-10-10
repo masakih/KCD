@@ -73,7 +73,6 @@ final class DefaultKey<T>: DefaultKeys {
     
     let regulator: (T) -> T
     
-    
     init(_ rawValue: String, alternative value: T? = nil, regulator: @escaping (T) -> T = { $0 }) {
         
         self.rawAlternativeValue = value

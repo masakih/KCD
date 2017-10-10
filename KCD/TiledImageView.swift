@@ -170,7 +170,7 @@ final class TiledImageView: NSView {
             }
         }
     }
-    // swiftlint:disable:next line_length
+    
     private func calcurated(trackingAreaInfo originalInfos: [TitledImageCellInformation]) -> [TitledImageCellInformation] {
         
         guard let size = imageCell.image?.size else { return originalInfos }
@@ -309,7 +309,6 @@ extension TiledImageView: NSDraggingSource {
         } else {
             
             currentSelection = underMouse[0]
-            
         }
         needsDisplay = true
         

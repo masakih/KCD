@@ -41,17 +41,14 @@ final class GuardShelterCommand: JSONCommand {
         if let m = MapAPI(rawValue: api), m == .next {
             
             removeInvalidEntry()
-            
         }
         if let _ = GuardEscapeAPI(rawValue: api) {
             
             ensureGuardShelter()
-            
         }
         if let _ = PortAPI(rawValue: api) {
             
             removeAllEntry()
-            
         }
     }
     
@@ -93,7 +90,6 @@ final class GuardShelterCommand: JSONCommand {
                 
                 print("guardianPos is wrong")
                 return
-                
         }
         
         guard let escapeIdx = escape["api_escape_idx"][0].int,

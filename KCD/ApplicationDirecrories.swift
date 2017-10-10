@@ -72,7 +72,6 @@ func checkDirectory(_ url: URL) -> Bool {
         if nserror.code == NSFileReadNoSuchFileError {
             
             return createDirectory(url)
-            
         }
         
         return false

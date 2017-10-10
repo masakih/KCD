@@ -34,7 +34,6 @@ final class FleetViewController: NSViewController {
         case formula33Parameter1 = 101
         case formula33Parameter3 = 103
         case formula33Parameter4 = 104
-        
     }
     
     enum SakutekiCalclationSterategy: Int {
@@ -201,10 +200,7 @@ final class FleetViewController: NSViewController {
         willSet {
             ships.forEach { ship in
                 
-                shipObserveKeys.forEach {
-                    
-                    ship.removeObserver(self, forKeyPath: $0)
-                }
+                shipObserveKeys.forEach { ship.removeObserver(self, forKeyPath: $0) }
             }
         }
         didSet {
@@ -245,8 +241,7 @@ final class FleetViewController: NSViewController {
         
         buildAnchorageRepairHolder()
         
-        [placeholder01, placeholder02, placeholder03,
-         placeholder04, placeholder05, placeholder06]
+        [placeholder01, placeholder02, placeholder03, placeholder04, placeholder05, placeholder06]
             .enumerated()
             .forEach {
                 
@@ -436,8 +431,7 @@ extension FleetViewController {
         
         let frames = views.map { $0.frame }
         let reorderedFrames = order.map { frames[$0] }
-        zip(views, reorderedFrames)
-            .forEach { $0.0.setFrame($0.1, animate: enableAnimation) }
+        zip(views, reorderedFrames).forEach { $0.0.setFrame($0.1, animate: enableAnimation) }
     }
     
     private func reorderShipToDoubleLine() {

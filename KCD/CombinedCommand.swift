@@ -58,8 +58,6 @@ final class CombinedCommand: JSONCommand {
         
         let userInfo = [CombinedCommand.userInfoKey: type]
         
-        NotificationCenter
-            .default
-            .post(name: .CombinedDidCange, object: self, userInfo: userInfo)
+        NotificationCenter.default.post(name: .CombinedDidCange, object: self, userInfo: userInfo)
     }
 }

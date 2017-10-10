@@ -72,8 +72,7 @@ final class HistoryWindowController: NSWindowController {
         super.windowDidLoad()
         
         let vcs: [NSViewController] = [kaihatsuTableVC, kenzoTableVC, dropShipTableVC]
-        zip(vcs, tabView.tabViewItems)
-            .forEach { $0.1.viewController = $0.0 }
+        zip(vcs, tabView.tabViewItems).forEach { $0.1.viewController = $0.0 }
         
         selectedTabIndex = 0
     }

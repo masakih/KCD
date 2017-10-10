@@ -34,12 +34,12 @@ extension Deck {
     func setShip(id: Int, for position: Int) {
         
         switch position {
-        case 0: return ship_0 = id
-        case 1: return ship_1 = id
-        case 2: return ship_2 = id
-        case 3: return ship_3 = id
-        case 4: return ship_4 = id
-        case 5: return ship_5 = id
+        case 0: ship_0 = id
+        case 1: ship_1 = id
+        case 2: ship_2 = id
+        case 3: ship_3 = id
+        case 4: ship_4 = id
+        case 5: ship_5 = id
         default: fatalError("Deck.setShip: position out of range.")
         }
     }

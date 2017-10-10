@@ -79,7 +79,6 @@ extension JSONMapper {
         } catch {
             
             return
-            
         }
         
         let old = object.value(forKey: key)
@@ -88,7 +87,6 @@ extension JSONMapper {
             object.notifyChangeValue(forKey: key) {
                 
                 object.setValue(validValue, forKey: key)
-                
             }
         }
     }
@@ -173,7 +171,6 @@ extension JSONMapper {
             } else {
                 
                 fatalError("Can not get entity named \(configuration.entity.name)")
-                
             }
         }
         

@@ -43,8 +43,7 @@ final class ShipMapper: JSONMapper {
              "api_fuel_max", "api_bull_max"])
         
         // kaisouSlotDepriveでは同時に２種類のデータが入る
-        if let api = ShipAPI(rawValue: apiResponse.api),
-            api == .kaisouSlotDeprive {
+        if let api = ShipAPI(rawValue: apiResponse.api), api == .kaisouSlotDeprive {
             
             let conf = self.configuration.change(dataKeys: ["api_data", "api_ship_data", "api_unset_ship"])
             ShipMapper(apiResponse, configuration: conf).commit()

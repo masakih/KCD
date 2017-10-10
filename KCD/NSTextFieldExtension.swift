@@ -27,7 +27,6 @@ extension NSTextField {
         
         let maskGraphicsContext = NSGraphicsContext(cgContext: maskContext, flipped: false)
         
-        
         NSGraphicsContext.saveGraphicsState()
         defer { NSGraphicsContext.restoreGraphicsState() }
         

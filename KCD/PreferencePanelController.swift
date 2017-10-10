@@ -67,9 +67,7 @@ final class PreferencePanelController: NSWindowController {
         guard let item = window.toolbar?.items.first else { return }
         
         window.toolbar?.selectedItemIdentifier = item.itemIdentifier
-        NSApplication.shared.sendAction(.didChangeSelection,
-                                          to: self,
-                                          from: item)
+        NSApplication.shared.sendAction(.didChangeSelection, to: self, from: item)
         
         window.center()
     }

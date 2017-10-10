@@ -41,7 +41,7 @@ class FadeoutTextField: NSTextField {
         maskImage.map { context.clip(to: bounds, mask: $0) }
         
         super.draw(dirtyRect)
-
+        
         context.restoreGState()
     }
     

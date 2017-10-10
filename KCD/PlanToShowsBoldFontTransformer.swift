@@ -10,7 +10,7 @@ import Cocoa
 
 final class PlanToShowsBoldFontTransformer: ValueTransformer {
     
-    override class func transformedValueClass() -> Swift.AnyClass {
+    override class func transformedValueClass() -> AnyClass {
         
         return NSNumber.self
     }

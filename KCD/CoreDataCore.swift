@@ -166,11 +166,9 @@ extension CoreDataProvider {
     static func context(for type: CoreDataManagerType) -> NSManagedObjectContext {
         
         switch type {
-        case .reader:
-            return core.parentContext
+        case .reader: return core.parentContext
             
-        case .editor:
-            return core.editorContext()
+        case .editor: return core.editorContext()
         }
     }
 }
