@@ -32,6 +32,6 @@ final class KaisouLockCommand: JSONCommand {
         
         let store = ServerDataStore.oneTimeEditor()
         
-        store.slotItem(by: slotId)?.locked = locked != 0
+        store.slotItem(by: slotId)?.locked = (locked != 0)
     }
 }

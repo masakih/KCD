@@ -24,7 +24,7 @@ final class StoreCreateSlotItemHistoryCommand: JSONCommand {
         
         let success = data["api_create_flag"].int ?? 0
         let name = masterSlotItemName(sccess: success, data: data)
-        let numberOfUsedKaihatuSizai = success != 0 ? 1 : 0
+        let numberOfUsedKaihatuSizai = (success != 0 ? 1 : 0)
         
         let store = ServerDataStore.default
         
