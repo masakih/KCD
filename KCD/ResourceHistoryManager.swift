@@ -72,7 +72,7 @@ final class ResourceHistoryManager: NSObject {
         
         let historyStore = ResourceHistoryDataStore.oneTimeEditor()
         
-        guard let newHistory = historyStore.cerateResource() else {
+        guard let newHistory = historyStore.createResource() else {
             
             print("ResourceHistoryManager: Can not create ResourceHIstory")
             return

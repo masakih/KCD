@@ -50,7 +50,7 @@ extension ResourceHistoryDataStore {
         return resources
     }
     
-    func cerateResource() -> Resource? {
+    func createResource() -> Resource? {
         
         return insertNewObject(for: Resource.entity)
     }
