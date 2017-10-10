@@ -68,12 +68,11 @@ private func getCoordinator(_ config: CoreDataConfiguration, _ model: NSManagedO
         
         return try createCoordinator(config, model)
         
-    } catch {
+    } catch (let error as NSError) {
         
-        let nserror = error as NSError
         // Data Modelが更新されていたらストアファイルを削除してもう一度
-        if nserror.domain == NSCocoaErrorDomain,
-            (nserror.code == 134130 || nserror.code == 134110),
+        if error.domain == NSCocoaErrorDomain,
+            (error.code == 134130 || error.code == 134110),
             config.tryRemake {
             
             remove(name: config.fileName)
