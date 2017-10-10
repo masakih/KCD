@@ -65,16 +65,16 @@ final class Fleet: NSObject {
         
         switch key {
             
-        case #keyPath(name): return ["deck.name"]
+        case #keyPath(name): return [#keyPath(deck.name)]
             
-        case #keyPath(id): return ["deck.id"]
+        case #keyPath(id): return [#keyPath(deck.id)]
             
         default: return []
         }
     }
     
     @objc dynamic private(set) var ships: [Ship] = []
-    @objc weak var deck: Deck?
+    @objc var deck: Deck?
     
     @objc dynamic var name: String? { return deck?.name }
     @objc dynamic var id: NSNumber? { return deck?.id as NSNumber? }
