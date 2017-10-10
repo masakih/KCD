@@ -72,7 +72,7 @@ extension HTTPURLResponse {
         
         if let cc = (allHeaderFields["Cache-Control"] as? String)?.lowercased(),
             let range = cc.range(of: "max-age="),
-            let s = cc[range.upperBound..<cc.endIndex]
+            let s = cc[range.upperBound...]
                 .components(separatedBy: ",")
                 .first,
             let age = TimeInterval(s) {

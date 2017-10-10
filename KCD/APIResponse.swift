@@ -48,7 +48,7 @@ private func splitJSON(_ data: Data) -> String? {
             return nil
     }
     
-/* MARK: CONVERT */    return String(string[range.upperBound...])
+    return String(string[range.upperBound...])
 }
 
 private func parseParameter(_ request: URLRequest) -> [String: String]? {
