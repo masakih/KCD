@@ -18,13 +18,7 @@ private enum BookmarkMenuTag: Int {
 
 final class BookmarkManager: NSObject, NSMenuDelegate {
     
-    private static let sharedInstance: BookmarkManager = BookmarkManager()
-    
-    class func shared() -> BookmarkManager {
-        
-        return sharedInstance
-    }
-    
+    static let shared = BookmarkManager()
     
     private override init() {
         

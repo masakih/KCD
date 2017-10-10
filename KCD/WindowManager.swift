@@ -110,7 +110,7 @@ final class WindowManager {
     
     func prepair() {
         
-        _ = BookmarkManager.shared()
+        _ = BookmarkManager.shared
         _ = screenshotListWindowController
         
         browserWindowController.showWindow(nil)

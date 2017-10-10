@@ -20,7 +20,7 @@ extension NSPasteboard.PasteboardType {
 
 final class BookmarkListViewController: NSViewController {
     
-    @objc let managedObjectContext = BookmarkManager.shared().manageObjectContext
+    @objc let managedObjectContext = BookmarkManager.shared.manageObjectContext
     
     @IBOutlet var tableView: NSTableView!
     @IBOutlet var bookmarkController: NSArrayController!
@@ -148,7 +148,7 @@ extension BookmarkListViewController: NSTableViewDelegate, NSTableViewDataSource
         
         guard let items = info.draggingPasteboard().pasteboardItems else { return false }
         
-        let store = BookmarkManager.shared().editorStore
+        let store = BookmarkManager.shared.editorStore
         items.enumerated().forEach {
             
             guard let data = $0.element.data(forType: .bookmarkItem) else { return }

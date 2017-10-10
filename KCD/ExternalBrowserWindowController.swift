@@ -247,7 +247,7 @@ extension ExternalBrowserWindowController {
     @IBAction func addBookmark(_ sender: AnyObject?) {
         
         guard let window = window else { return }
-        guard let bookmark = BookmarkManager.shared().createNewBookmark() else { return }
+        guard let bookmark = BookmarkManager.shared.createNewBookmark() else { return }
         
         bookmark.name = window.title
         bookmark.urlString = webView.mainFrameURL
