@@ -17,7 +17,7 @@ private enum DockState: Int {
 final class NyukyoDockStatus: NSObject {
     
     private let number: Int
-    private let controller: NSArrayController
+    private let controller = NSArrayController()
     private var didNotify = false
     private var realTime: TimeInterval = 0.0 {
         
@@ -41,7 +41,6 @@ final class NyukyoDockStatus: NSObject {
         guard case 1...4 = number else { return nil }
         
         self.number = number
-        controller = NSArrayController()
         
         super.init()
         

@@ -13,13 +13,11 @@ final class AnchorageRepairManager: NSObject {
     
     static let `default`: AnchorageRepairManager = AnchorageRepairManager()
     
-    private let fleetManager: FleetManager
+    private let fleetManager = AppDelegate.shared.fleetManager
     private let repairShipTypeIds: [Int] = [19]
     
     override init() {
-        
-        fleetManager = AppDelegate.shared.fleetManager
-        
+                
         super.init()
         
         let nc = NotificationCenter.default
@@ -67,8 +65,7 @@ final class AnchorageRepairManager: NSObject {
     
     private func shipTypeId(shipId: Int) -> Int? {
         
-        return ServerDataStore.default
-            .ship(by: shipId)?.master_ship.stype.id
+        return ServerDataStore.default.ship(by: shipId)?.master_ship.stype.id
     }
     
     private func needsReset(info: HenseiDidChangeUserInfo) -> Bool {

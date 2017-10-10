@@ -22,9 +22,10 @@ final class TiledImageView: NSView {
     
     private static let privateDraggingUTI = "com.masakih.KCD.ScreenshotDDImte"
     
+    private let imageCell = NSImageCell()
+    
     required init?(coder: NSCoder) {
         
-        imageCell = NSImageCell()
         imageCell.imageAlignment = .alignCenter
         imageCell.imageScaling = .scaleProportionallyDown
         
@@ -69,8 +70,6 @@ final class TiledImageView: NSView {
     }
     
     private var currentSelection: TitledImageCellInformation?
-    
-    private var imageCell: NSImageCell
     
     override func draw(_ dirtyRect: NSRect) {
         

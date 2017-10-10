@@ -12,14 +12,11 @@ final class StrokeTextFieldCell: NSTextFieldCell {
     
     private static let boarderWidth: CGFloat = 2.0
     
-    private let layoutManager: NSLayoutManager
-    private let textContainer: NSTextContainer
+    private let layoutManager = NSLayoutManager()
+    private let textContainer = NSTextContainer()
     
     required init(coder: NSCoder) {
-        
-        layoutManager = NSLayoutManager()
-        textContainer = NSTextContainer()
-        
+                
         super.init(coder: coder)
         
         layoutManager.addTextContainer(textContainer)

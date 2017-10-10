@@ -25,11 +25,8 @@ final class BookmarkManager: NSObject, NSMenuDelegate {
         return sharedInstance
     }
     
-    private let bookmarksController: NSArrayController
     
     private override init() {
-        
-        bookmarksController = NSArrayController()
         
         super.init()
         
@@ -45,9 +42,11 @@ final class BookmarkManager: NSObject, NSMenuDelegate {
         buildBookmarkMenu()
     }
     
-    private(set) var editorStore: BookmarkDataStore = BookmarkDataStore.oneTimeEditor()
+    let editorStore: BookmarkDataStore = BookmarkDataStore.oneTimeEditor()
+    let manageObjectContext = BookmarkDataStore.default.context
+    private let bookmarksController = NSArrayController()
+    
     private var bookmarkMenu: NSMenu!
-    var manageObjectContext = BookmarkDataStore.default.context
     
     var bookmarks: [Bookmark] {
         

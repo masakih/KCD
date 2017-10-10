@@ -13,6 +13,7 @@ private var pDeckContext = 0
 final class Fleet: NSObject {
     
     let fleetNumber: Int
+    private let deckController = NSObjectController()
     
     private let deckObserveKeys = [
         "selection.ship_0", "selection.ship_1", "selection.ship_2",
@@ -28,7 +29,6 @@ final class Fleet: NSObject {
         }
         
         fleetNumber = number
-        deckController = NSObjectController()
         
         super.init()
         
@@ -74,7 +74,6 @@ final class Fleet: NSObject {
     }
     
     @objc dynamic private(set) var ships: [Ship] = []
-    private let deckController: NSObjectController
     @objc weak var deck: Deck?
     
     @objc dynamic var name: String? { return deck?.name }

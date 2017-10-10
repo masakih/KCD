@@ -15,11 +15,9 @@ private extension Selector {
 
 final class ResourceHistoryManager: NSObject {
     
-    private let periodicNotification: PeriodicNotifier
+    private let periodicNotification = PeriodicNotifier(hour: 23, minutes: 3)
     
     override init() {
-        
-        periodicNotification = PeriodicNotifier(hour: 23, minutes: 3)
         
         super.init()
         
