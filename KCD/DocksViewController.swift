@@ -26,9 +26,7 @@ final class DocksViewController: MainTabVIewItemViewController {
             .forEach(unbind)
         
         ["selection", "selection.no", "content.battleCell"]
-            .forEach {
-            battleContoller.removeObserver(self, forKeyPath: $0)
-        }
+            .forEach { battleContoller.removeObserver(self, forKeyPath: $0) }
     }
     
     @objc let managedObjectContext = ServerDataStore.default.context
@@ -166,9 +164,7 @@ final class DocksViewController: MainTabVIewItemViewController {
         questListViewPlaceholder.superview?.replaceSubview(questListViewPlaceholder, with: questListViewController.view)
         
         ["selection", "selection.no", "content.battleCell"]
-            .forEach {
-                battleContoller.addObserver(self, forKeyPath: $0, context: nil)
-        }
+            .forEach { battleContoller.addObserver(self, forKeyPath: $0, context: nil) }
         
         #if DEBUG
             cellNumberField.isHidden = false
