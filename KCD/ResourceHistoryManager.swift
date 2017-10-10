@@ -8,11 +8,6 @@
 
 import Cocoa
 
-private extension Selector {
-    
-    static let notifyIfNeeded = #selector(ResourceHistoryManager.notifyIfNeeded(_:))
-}
-
 final class ResourceHistoryManager: NSObject {
     
     private let periodicNotification = PeriodicNotifier(hour: 23, minutes: 3)
@@ -54,7 +49,7 @@ final class ResourceHistoryManager: NSObject {
         let notifyTime = notifyDate.timeIntervalSinceNow
         self.timer = Timer.scheduledTimer(timeInterval: notifyTime,
                                           target: self,
-                                          selector: .notifyIfNeeded,
+                                          selector: #selector(ResourceHistoryManager.notifyIfNeeded(_:)),
                                           userInfo: nil,
                                           repeats: false)
     }

@@ -13,11 +13,6 @@ extension Notification.Name {
     static let Periodic = Notification.Name("com.masakih.KCD.Notification.Periodic")
 }
 
-private extension Selector {
-    
-    static let notifyIfNeeded = #selector(PeriodicNotifier.notifyIfNeeded(_:))
-}
-
 final class PeriodicNotifier: NSObject {
     
     private let hour: Int
@@ -73,7 +68,7 @@ final class PeriodicNotifier: NSObject {
         let nextNotifyTime = nextNotifyDate.timeIntervalSinceNow + 0.1
         Timer.scheduledTimer(timeInterval: nextNotifyTime,
                              target: self,
-                             selector: .notifyIfNeeded,
+                             selector: #selector(PeriodicNotifier.notifyIfNeeded(_:)),
                              userInfo: nil,
                              repeats: false)
     }

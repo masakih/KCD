@@ -8,11 +8,6 @@
 
 import Cocoa
 
-extension Selector {
-    
-    static let fire = #selector(TimeSignalNotifier.fire(_:))
-}
-
 final class TimeSignalNotifier: NSObject {
     
     let udController: NSUserDefaultsController = NSUserDefaultsController.shared
@@ -87,7 +82,7 @@ final class TimeSignalNotifier: NSObject {
         
         timer = Timer.scheduledTimer(timeInterval: notifyDate.timeIntervalSinceNow,
                                      target: self,
-                                     selector: .fire,
+                                     selector: #selector(TimeSignalNotifier.fire(_:)),
                                      userInfo: nil,
                                      repeats: false)
     }
