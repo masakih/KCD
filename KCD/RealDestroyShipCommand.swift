@@ -16,7 +16,7 @@ final class RealDestroyShipCommand: JSONCommand {
         
         parameter["api_ship_id"]
             .int
-            .flatMap { store.ship(by: $0) }
-            .flatMap { store.delete($0) }
+            .flatMap(store.ship(by:))
+            .flatMap(store.delete)
     }
 }

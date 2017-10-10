@@ -38,8 +38,7 @@ final class CombinedCommand: JSONCommand {
             
             if let t = data["api_combined_flag"].int {
                 
-                CombineType(rawValue: t)
-                    .map { postNotification(withType: $0) }
+                CombineType(rawValue: t).map(postNotification(withType:))
                 
             } else {
                 
@@ -52,7 +51,7 @@ final class CombinedCommand: JSONCommand {
         parameter["api_combined_type"]
             .int
             .flatMap { CombineType(rawValue: $0) }
-            .map { postNotification(withType: $0) }
+            .map(postNotification(withType:))
     }
     
     private func postNotification(withType type: CombineType) {

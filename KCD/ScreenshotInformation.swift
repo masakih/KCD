@@ -105,7 +105,6 @@ extension ScreenshotInformation {
     
     @objc var creationDateString: String? {
         
-        return creationDate
-            .map { dateFormatter.string(from: $0) }
+        return creationDate.map(dateFormatter.string(from:))
     }
 }

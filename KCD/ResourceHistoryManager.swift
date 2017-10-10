@@ -107,7 +107,7 @@ final class ResourceHistoryManager: NSObject {
     
     private func reduceResourceByConditions(_ store: ResourceHistoryDataStore, _ target: [Int], _ ago: Date) {
         
-        store.resources(in: target, older: ago).forEach { store.delete($0) }
+        store.resources(in: target, older: ago).forEach(store.delete)
     }
     
     private func dateOfMonth(_ month: Int) -> Date {

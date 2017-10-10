@@ -89,7 +89,7 @@ final class SlotItemMapper: JSONMapper {
         
         guard let store = configuration.editorStore as? ServerDataStore else { return }
         
-        store.slotItems(exclude: registerIds).forEach { store.delete($0) }
+        store.slotItems(exclude: registerIds).forEach(store.delete)
     }
     
     private func setMaster(_ masterId: Int, to slotItem: SlotItem?) {

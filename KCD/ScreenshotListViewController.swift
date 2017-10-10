@@ -158,8 +158,7 @@ final class ScreenshotListViewController: NSViewController {
         
         viewFrameDidChange(nil)
         
-        DispatchQueue.main
-            .asyncAfter(deadline: .now() + 0.0001 ) { self.reloadData() }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.0001, execute: self.reloadData)
     }
     
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {

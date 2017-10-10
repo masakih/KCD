@@ -30,7 +30,7 @@ final class DestroyItem2Command: JSONCommand {
         
         let store = ServerDataStore.oneTimeEditor()
         
-        store.slotItems(in: itemIds).forEach { store.delete($0) }
+        store.slotItems(in: itemIds).forEach(store.delete)
         
         guard let material = store.material() else {
             

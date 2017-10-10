@@ -222,7 +222,7 @@ extension BroserWindowController {
     @IBAction func clearQuestList(_ sender: AnyObject?) {
         
         let store = ServerDataStore.oneTimeEditor()
-        store.quests().forEach { store.delete($0) }
+        store.quests().forEach(store.delete)
     }
     
     @IBAction func selectView(_ sender: AnyObject?) {

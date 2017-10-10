@@ -41,7 +41,7 @@ final class DummyShipCommand: JSONCommand {
         
         let store = ServerDataStore.oneTimeEditor()
         
-        store.ships(by: -2).forEach { store.delete($0) }
+        store.ships(by: -2).forEach(store.delete)
         DummyShipCommand.needsEnterDummy = false
     }
 }

@@ -14,6 +14,6 @@ final class ResetSortie {
         
         let store = TemporaryDataStore.oneTimeEditor()
         
-        store.battles().forEach { store.delete($0) }
+        store.battles().forEach(store.delete)
     }
 }

@@ -65,8 +65,7 @@ final class AncherageRepairTimerViewController: NSViewController {
     
     private func refleshTrackingArea() {
         
-        view.trackingAreas
-            .forEach { view.removeTrackingArea($0) }
+        view.trackingAreas.forEach(view.removeTrackingArea)
         trackingArea = NSTrackingArea(rect: screenshotButton.frame,
                                       options: [.mouseEnteredAndExited, .activeInActiveApp],
                                       owner: self,

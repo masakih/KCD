@@ -15,15 +15,15 @@ final class DocksViewController: MainTabVIewItemViewController {
         [NSBindingName(#keyPath(deck2Time)), NSBindingName(#keyPath(mission2Name)),
          NSBindingName(#keyPath(deck3Time)), NSBindingName(#keyPath(mission3Name)),
          NSBindingName(#keyPath(deck4Time)), NSBindingName(#keyPath(mission4Name))]
-            .forEach { unbind($0) }
+            .forEach(unbind)
         [NSBindingName(#keyPath(nDock1Time)), NSBindingName(#keyPath(nDock1ShipName)),
          NSBindingName(#keyPath(nDock2Time)), NSBindingName(#keyPath(nDock2ShipName)),
          NSBindingName(#keyPath(nDock3Time)), NSBindingName(#keyPath(nDock3ShipName)),
          NSBindingName(#keyPath(nDock4Time)), NSBindingName(#keyPath(nDock4ShipName))]
-            .forEach { unbind($0) }
+            .forEach(unbind)
         [NSBindingName(#keyPath(kDock1Time)), NSBindingName(#keyPath(kDock2Time)),
          NSBindingName(#keyPath(kDock3Time)), NSBindingName(#keyPath(kDock4Time))]
-            .forEach { unbind($0) }
+            .forEach(unbind)
         
         ["selection", "selection.no", "content.battleCell"]
             .forEach {

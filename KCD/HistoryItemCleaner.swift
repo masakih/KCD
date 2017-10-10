@@ -17,11 +17,8 @@ final class HistoryItemCleaner {
         let store = LocalDataStore.oneTimeEditor()
         let cleanSinceDays = UserDefaults.standard[.cleanSinceDays]
         
-        store.unmarkedKaihatuHistories(befor: cleanSinceDays)
-            .forEach { store.delete($0) }
-        store.unmarkedKenzoHistories(befor: cleanSinceDays)
-            .forEach { store.delete($0) }
-        store.unmarkedDropShipHistories(befor: cleanSinceDays)
-            .forEach { store.delete($0) }
+        store.unmarkedKaihatuHistories(befor: cleanSinceDays).forEach(store.delete)
+        store.unmarkedKenzoHistories(befor: cleanSinceDays).forEach(store.delete)
+        store.unmarkedDropShipHistories(befor: cleanSinceDays).forEach(store.delete)
     }
 }

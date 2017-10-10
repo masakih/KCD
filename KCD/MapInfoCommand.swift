@@ -21,7 +21,7 @@ final class MapInfoCommand: JSONCommand {
         
         let store = ServerDataStore.oneTimeEditor()
         
-        store.airBases().forEach { store.delete($0) }
+        store.airBases().forEach(store.delete)
         store.save()
         
         AirBaseMapper(apiResponse).commit()

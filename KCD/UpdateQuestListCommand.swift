@@ -16,7 +16,7 @@ final class UpdateQuestListCommand: JSONCommand {
         
         parameter["api_quest_id"]
             .int
-            .flatMap { store.quest(by: $0) }
+            .flatMap(store.quest(by:))
             .map {
                 $0.progress_flag = 0
                 $0.state = 1

@@ -21,7 +21,7 @@ final class SlotResetCommand: JSONCommand {
         
         let store = ServerDataStore.oneTimeEditor()
         
-        guard let ship = parameter["api_id"].int.flatMap({ store.ship(by: $0) }) else {
+        guard let ship = parameter["api_id"].int.flatMap(store.ship(by:)) else {
             
             print("api_id is wrong")
             return
@@ -32,7 +32,7 @@ final class SlotResetCommand: JSONCommand {
             return
         }
         
-        slotItems.enumerated().forEach { ship.setItem($0.element, to: $0.offset) }
+        zip(slotItems, 0...).forEach(ship.setItem)
         
         let storedSlotItems = store.sortedSlotItemsById()
         let newSet = slotItems

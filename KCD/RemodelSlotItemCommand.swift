@@ -50,6 +50,6 @@ final class RemodelSlotItemCommand: JSONCommand {
         // remove used slot items.
         guard let useSlot = data["api_use_slot_id"].arrayObject as? [Int] else { return }
         
-        store.slotItems(in: useSlot).forEach { store.delete($0) }
+        store.slotItems(in: useSlot).forEach(store.delete)
     }
 }

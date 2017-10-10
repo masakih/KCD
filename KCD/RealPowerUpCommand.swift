@@ -18,7 +18,7 @@ final class RealPowerUpCommand: JSONCommand {
             .string?
             .components(separatedBy: ",")
             .flatMap { Int($0) }
-            .flatMap { store.ship(by: $0) }
-            .forEach { store.delete($0) }
+            .flatMap(store.ship(by:))
+            .forEach(store.delete)
     }
 }
