@@ -35,7 +35,7 @@ final class CreateShipCommand: JSONCommand {
         let store = ServerDataStore.default
         
         guard let kenzoDock = store.kenzoDock(by: dockId),
-            let flagShip = store.deck(by: 1).flatMap({ store.ship(by: $0.ship_0) }),
+            let flagShip = store.deck(by: 1)?[0],
             let basic = store.basic() else {
                 
                 print("CreateShipCommand: CoreData is wrong")

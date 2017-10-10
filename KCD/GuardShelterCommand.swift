@@ -52,29 +52,15 @@ final class GuardShelterCommand: JSONCommand {
         }
     }
     
-    private func fleetMembers(fleetId: Int) -> [Int]? {
-        
-        guard let deck = ServerDataStore.default.deck(by: fleetId) else { return nil }
-        
-        return [deck.ship_0, deck.ship_1, deck.ship_2,
-                deck.ship_3, deck.ship_4, deck.ship_5]
-    }
-    
     private func damagedShipId(damagedPos: Int) -> Int? {
         
-        func fleetAndPos(_ pos: Int) -> ([Int]?, Int) {
-            switch pos {
-            case 1...6: return (fleetMembers(fleetId: 1), pos - 1)
-                
-            case 7...12: return (fleetMembers(fleetId: 2), pos - 6 - 1)
-                
-            default: return (nil, -1)
-            }
+        let store = ServerDataStore.default
+        
+        switch damagedPos {
+        case 1...6: return store.deck(by: 1)?.shipId(of:damagedPos - 1)
+        case 7...12: return store.deck(by: 2)?.shipId(of: damagedPos - 6 - 1)
+        default: return nil
         }
-        
-        let (fleet, pos) = fleetAndPos(damagedPos)
-        
-        return fleet?[pos]
     }
     
     private func registerReserve() {
@@ -84,9 +70,8 @@ final class GuardShelterCommand: JSONCommand {
         guard let guardianPos = escape["api_tow_idx"][0].int else { return }
         
         let fixedGuardianPos = guardianPos - 6 - 1
-        
-        guard case 0..<6 = fixedGuardianPos,
-            let guardianId = fleetMembers(fleetId: 2)?[fixedGuardianPos] else {
+                
+        guard let guardianId = ServerDataStore.default.deck(by: 2)?.shipId(of: fixedGuardianPos) else {
                 
                 print("guardianPos is wrong")
                 return

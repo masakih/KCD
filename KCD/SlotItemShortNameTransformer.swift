@@ -18,13 +18,11 @@ final class SlotItemShortNameTransformer: ValueTransformer {
                 fatalError("Can not load SlotItemShortName.plist")
         }
         
-        return dict.reduce([Int: String]()) {
+        return dict.reduce(into: [Int: String]()) {
             
-            guard let k = Int($1.0) else { return $0 }
+            guard let k = Int($1.0) else { return }
             
-            var d = $0
-            d[k] = $1.1
-            return d
+            $0[k] = $1.1
         }
     }()
     
