@@ -37,11 +37,6 @@ final class AnchorageRepairManager: NSObject {
         }
     }
     
-    deinit {
-        
-        NotificationCenter.default.removeObserver(self)
-    }
-    
     private(set) var repairTime: Date {
         
         get { return UserDefaults.standard[.repairTime] }

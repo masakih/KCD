@@ -33,11 +33,6 @@ final class PeriodicNotifier: NSObject {
         notifyIfNeeded(nil)
     }
     
-    deinit {
-        
-        NotificationCenter.default.removeObserver(self)
-    }
-    
     private func notify(_ notification: Notification) {
         
         notifyIfNeeded(nil)
