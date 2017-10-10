@@ -93,7 +93,7 @@ final class MaterialMapper: JSONMapper {
         
         data.forEach {
             
-            guard let i = $0["api_id"].int, case 1..<keys.count = i else { return }
+            guard let i = $0["api_id"].int, case 1...keys.count = i else { return }
             guard let newValue = $0["api_value"].int else { return }
             
             material.setValue(newValue as NSNumber, forKey: keys[i - 1])
