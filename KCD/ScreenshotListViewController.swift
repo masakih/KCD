@@ -218,7 +218,7 @@ final class ScreenshotListViewController: NSViewController {
     func viewFrameDidChange(_ notification: Notification?) {
         
         maxZoom = self.maxZoom(width: collectionView.frame.size.width)
-        if zoom > maxZoom { zoom = maxZoom }
+        zoom = min(zoom, maxZoom)
     }
     
     private func realFromZoom(zoom: Double) -> CGFloat {
@@ -262,9 +262,8 @@ final class ScreenshotListViewController: NSViewController {
         // 新しいものを追加
         let new: [ScreenshotInformation] = newFiles.flatMap { url in
             
-            let index = current.index { url == $0.url }
-            
-            return index == nil ? ScreenshotInformation(url: url) : nil
+            if current.contains(where: { url == $0.url }) { return nil }
+            return ScreenshotInformation(url: url)
         }
         
         screenshots.screenshots = current + new
@@ -287,7 +286,6 @@ final class ScreenshotListViewController: NSViewController {
         } catch {
             
             print("Can not write cache: \(error)")
-            
         }
     }
     
@@ -320,7 +318,6 @@ final class ScreenshotListViewController: NSViewController {
         } else {
             
             deletedPaths.append(CacheVersionInfo(url: url))
-            
         }
     }
     
