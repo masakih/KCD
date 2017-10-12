@@ -321,7 +321,7 @@ final class SlotItemLevelView: NSTextField {
         
         guard let lv = slotItemLevel as? Int, lv != 0 else { return }
         
-        let string: String = lv == 10 ? "max" : "★+\(lv)"
+        let string = (lv == 10 ? "max" : "★+\(lv)")
         let attr: [NSAttributedStringKey: Any] = [.font: levelFont,
                                                   .foregroundColor: levelColor]
         let attributedString = NSAttributedString(string: string, attributes: attr)

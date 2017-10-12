@@ -320,13 +320,13 @@ final class FleetViewController: NSViewController {
     @IBAction func selectNextFleet(_ sender: AnyObject?) {
         
         let next = fleetNumber + 1
-        fleetNumber = next <= FleetViewController.maxFleetNumber ? next : 1
+        fleetNumber = (next <= FleetViewController.maxFleetNumber ? next : 1)
     }
     
     @IBAction func selectPreviousFleet(_ sender: AnyObject?) {
         
         let prev = fleetNumber - 1
-        fleetNumber = prev > 0 ? prev : 4
+        fleetNumber = (prev > 0 ? prev : 4)
     }
     
     @IBAction func changeSakutekiCalculator(_ sender: Any?) {
