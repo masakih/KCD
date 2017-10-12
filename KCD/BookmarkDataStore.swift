@@ -13,7 +13,7 @@ extension CoreDataConfiguration {
     static let bookmark = CoreDataConfiguration("Bookmark")
 }
 
-final class BookmarkDataStore: CoreDataAccessor, CoreDataManager {
+final class BookmarkDataStore: CoreDataManager {
     
     static let core = CoreDataCore(.bookmark)
     

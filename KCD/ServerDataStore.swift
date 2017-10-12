@@ -13,7 +13,7 @@ extension CoreDataConfiguration {
     static let kcd = CoreDataConfiguration("KCD", tryRemake: true)
 }
 
-final class ServerDataStore: CoreDataAccessor, CoreDataManager {
+final class ServerDataStore: CoreDataManager {
     
     static let core = CoreDataCore(.kcd)
     

@@ -98,7 +98,7 @@ protocol CoreDataAccessor: CoreDataProvider {
     func object(with objectId: NSManagedObjectID) -> NSManagedObject
 }
 
-protocol CoreDataManager {
+protocol CoreDataManager: CoreDataAccessor {
     
     associatedtype InstanceType = Self
     

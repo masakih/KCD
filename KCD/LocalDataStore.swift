@@ -13,7 +13,7 @@ extension CoreDataConfiguration {
     static let local = CoreDataConfiguration("LocalData")
 }
 
-final class LocalDataStore: CoreDataAccessor, CoreDataManager {
+final class LocalDataStore: CoreDataManager {
     
     static let core = CoreDataCore(.local)
     

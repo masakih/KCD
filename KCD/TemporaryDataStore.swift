@@ -17,7 +17,7 @@ extension CoreDataConfiguration {
     )
 }
 
-final class TemporaryDataStore: CoreDataAccessor, CoreDataManager {
+final class TemporaryDataStore: CoreDataManager {
     
     static let core = CoreDataCore(.temporary)
     

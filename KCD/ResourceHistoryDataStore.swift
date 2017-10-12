@@ -13,7 +13,7 @@ extension CoreDataConfiguration {
     static let resourceHistory = CoreDataConfiguration("ResourceHistory")
 }
 
-final class ResourceHistoryDataStore: CoreDataAccessor, CoreDataManager {
+final class ResourceHistoryDataStore: CoreDataManager {
     
     static let core = CoreDataCore(.resourceHistory)
     
