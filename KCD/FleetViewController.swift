@@ -257,22 +257,18 @@ final class FleetViewController: NSViewController {
         NotificationCenter.default
             .addObserver(forName: .DidPrepareFleet, object: nil, queue: nil) { [weak self] _ in
                 
-                guard let `self` = self else { return }
-                
-                self.notifyChangeValue(forKey: #keyPath(fleetNumber))
+                self?.notifyChangeValue(forKey: #keyPath(fleetNumber))
         }
         
         NotificationCenter
             .default
             .addObserver(forName: .DidUpdateGuardEscape, object: nil, queue: nil) { [weak self] _ in
                 
-                guard let `self` = self else { return }
-                
-                self.notifyChangeValue(forKey: #keyPath(totalSeiku))
-                self.notifyChangeValue(forKey: #keyPath(totalCalclatedSeiku))
-                self.notifyChangeValue(forKey: #keyPath(totalSakuteki))
-                self.notifyChangeValue(forKey: #keyPath(totalDrums))
-                self.notifyChangeValue(forKey: #keyPath(totalTPValue))
+                self?.notifyChangeValue(forKey: #keyPath(totalSeiku))
+                self?.notifyChangeValue(forKey: #keyPath(totalCalclatedSeiku))
+                self?.notifyChangeValue(forKey: #keyPath(totalSakuteki))
+                self?.notifyChangeValue(forKey: #keyPath(totalDrums))
+                self?.notifyChangeValue(forKey: #keyPath(totalTPValue))
         }
     }
     
@@ -378,7 +374,7 @@ final class FleetViewController: NSViewController {
         [#keyPath(totalSakuteki), #keyPath(totalSeiku), #keyPath(totalCalclatedSeiku),
          #keyPath(totalLevel), #keyPath(totalDrums), #keyPath(repairable),
          #keyPath(totalTPValue)]
-            .forEach { notifyChangeValue(forKey: $0) }
+            .forEach(notifyChangeValue(forKey:))
     }
 }
 
