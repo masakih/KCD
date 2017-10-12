@@ -76,13 +76,13 @@ final class SuppliesCell: NSCell {
     
     private func drawResource(withFrame cellFrame: NSRect, border: Int, type: ResourceType) {
         
-        let height: CGFloat = (cellFrame.height - 3.0) / 2.0
-        let width: CGFloat = (cellFrame.width - CGFloat(numberOfCell) - 1.0) / CGFloat(numberOfCell)
-        let y: CGFloat = type == .fuel ? height + 2.0 : 1.0
+        let height = (cellFrame.height - 3.0) / 2.0
+        let width = (cellFrame.width - CGFloat(numberOfCell) - 1.0) / CGFloat(numberOfCell)
+        let y = type == .fuel ? height + 2.0 : 1.0
         
         (0...numberOfCell).forEach {
             
-            let x: CGFloat = CGFloat(1 + $0) + width * CGFloat($0)
+            let x = CGFloat(1 + $0) + width * CGFloat($0)
             let cellRect = NSRect(x: x, y: y, width: width, height: height)
             color(of: type, position: $0, border: border).set()
             NSBezierPath(rect: cellRect).fill()
