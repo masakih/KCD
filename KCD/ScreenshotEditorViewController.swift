@@ -75,7 +75,7 @@ final class ScreenshotEditorViewController: BridgeViewController {
         
         get { return realiesCurrentTrimInforIndex }
         set {
-            guard 0..<trimInfo.count ~= newValue else { return }
+            guard case 0..<trimInfo.count = newValue else { return }
             
             realiesCurrentTrimInforIndex = newValue
             currentTrimInfo = trimInfo[newValue]
