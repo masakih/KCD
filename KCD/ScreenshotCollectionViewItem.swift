@@ -36,11 +36,11 @@ final class ScreenshotCollectionViewItem: NSCollectionViewItem {
                 
                 if isSelected {
                     
-                    return (NSColor.controlHighlightColor, NSColor.white, NSColor.alternateSelectedControlColor)
+                    return (.controlHighlightColor, .white, .alternateSelectedControlColor)
                     
                 } else {
                     
-                    return (NSColor.white, NSColor.black, NSColor.white)
+                    return (.white, .black, .white)
                 }
             }()
         }
