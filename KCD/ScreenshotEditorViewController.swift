@@ -32,11 +32,6 @@ final class TrimRectInformation: NSObject {
     }
 }
 
-private extension Selector {
-    
-    static let done = #selector(ScreenshotEditorViewController.done(_:))
-}
-
 final class ScreenshotEditorViewController: BridgeViewController {
     
     @objc let trimInfo: [TrimRectInformation]
@@ -124,7 +119,7 @@ final class ScreenshotEditorViewController: BridgeViewController {
     
     override func viewWillAppear() {
         
-        doneButton.action = .done
+        doneButton.action = #selector(ScreenshotEditorViewController.done(_:))
     }
     
     private func updateSelections() {
