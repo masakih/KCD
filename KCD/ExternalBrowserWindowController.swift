@@ -9,11 +9,6 @@
 import Cocoa
 import WebKit
 
-private extension Selector {
-    
-    static let updateContentVisibleRect = #selector(ExternalBrowserWindowController.updateContentVisibleRect(_:))
-}
-
 final class ExternalBrowserWindowController: NSWindowController {
         
     @IBOutlet var webView: WebView!
@@ -396,7 +391,7 @@ extension ExternalBrowserWindowController: WebFrameLoadDelegate, WebPolicyDelega
             
             Timer.scheduledTimer(timeInterval: waitingBookmarkItem.scrollDelay,
                                  target: self,
-                                 selector: .updateContentVisibleRect,
+                                 selector: #selector(ExternalBrowserWindowController.updateContentVisibleRect(_:)),
                                  userInfo: waitingBookmarkItem,
                                  repeats: false)
         }
