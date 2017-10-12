@@ -14,7 +14,6 @@ final class StrengthenListItemView: NSBox {
         
         super.draw(dirtyRect)
         
-        let bounds = self.bounds
         let width = bounds.width
         let height = bounds.height
         

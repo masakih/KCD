@@ -60,7 +60,6 @@ final class PowerUpSupportViewController: MainTabVIewItemViewController {
         } catch {
             
             fatalError("PowerUpSupportViewController: can not fetch. \(error)")
-            
         }
         
         shipController.sortDescriptors = UserDefaults.standard[.powerupSupportSortDecriptors]

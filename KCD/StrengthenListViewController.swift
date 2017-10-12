@@ -124,16 +124,12 @@ final class StrengthenListViewController: MainTabVIewItemViewController {
         let nc = NotificationCenter.default
         nc.addObserver(forName: .Periodic, object: notifier, queue: nil) { [weak self] _ in
             
-            guard let `self` = self else { return }
-            
-            self.buildList()
+            self?.buildList()
         }
         
         nc.addObserver(forName: .Periodic, object: plistDownloadNotifier, queue: nil) { [weak self] _ in
             
-            guard let `self` = self else { return }
-            
-            self.downloadPList()
+            self?.downloadPList()
         }
         
         #if DEBUG
