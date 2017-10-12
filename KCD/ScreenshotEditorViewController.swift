@@ -34,15 +34,14 @@ final class TrimRectInformation: NSObject {
 
 final class ScreenshotEditorViewController: BridgeViewController {
     
-    @objc let trimInfo: [TrimRectInformation]
+    @objc let trimInfo = [
+        TrimRectInformation(name: "Status", rect: NSRect(x: 328, y: 13, width: 470, height: 365)),
+        TrimRectInformation(name: "List", rect: NSRect(x: 362, y: 15, width: 438, height: 368)),
+        TrimRectInformation(name: "AirplaneBase", rect: NSRect(x: 575, y: 13, width: 225, height: 358))
+    ]
     
     override init(nibName: NSNib.Name?, bundle: Bundle?) {
         
-        trimInfo = [
-            TrimRectInformation(name: "Status", rect: NSRect(x: 328, y: 13, width: 470, height: 365)),
-            TrimRectInformation(name: "List", rect: NSRect(x: 362, y: 15, width: 438, height: 368)),
-            TrimRectInformation(name: "AirplaneBase", rect: NSRect(x: 575, y: 13, width: 225, height: 358))
-        ]
         currentTrimInfo = trimInfo[0]
         
         super.init(nibName: ScreenshotEditorViewController.nibName, bundle: nil)
