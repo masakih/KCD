@@ -155,6 +155,7 @@
 		F47C3EBA1E619CC400D97449 /* KenzoDockMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47C3EB91E619CC400D97449 /* KenzoDockMapper.swift */; };
 		F47C3EBC1E61AEC500D97449 /* AirBaseMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47C3EBB1E61AEC500D97449 /* AirBaseMapper.swift */; };
 		F47C3EBE1E62718E00D97449 /* BattleCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47C3EBD1E62718E00D97449 /* BattleCommand.swift */; };
+		F481D63F1F9105CB007E2CBE /* Entities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F481D63E1F9105CB007E2CBE /* Entities.swift */; };
 		F48883451F2E095F0069E0C3 /* DefaultSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48883441F2E095F0069E0C3 /* DefaultSettings.swift */; };
 		F48883471F2E2E9A0069E0C3 /* DefaultKeyExtendedValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48883461F2E2E9A0069E0C3 /* DefaultKeyExtendedValues.swift */; };
 		F490977B1E19C3910085A45D /* SuppliesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F490977A1E19C3910085A45D /* SuppliesView.swift */; };
@@ -506,6 +507,7 @@
 		F47C3EB91E619CC400D97449 /* KenzoDockMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KenzoDockMapper.swift; sourceTree = "<group>"; };
 		F47C3EBB1E61AEC500D97449 /* AirBaseMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirBaseMapper.swift; sourceTree = "<group>"; };
 		F47C3EBD1E62718E00D97449 /* BattleCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleCommand.swift; sourceTree = "<group>"; };
+		F481D63E1F9105CB007E2CBE /* Entities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entities.swift; sourceTree = "<group>"; };
 		F48883441F2E095F0069E0C3 /* DefaultSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultSettings.swift; sourceTree = "<group>"; };
 		F48883461F2E2E9A0069E0C3 /* DefaultKeyExtendedValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultKeyExtendedValues.swift; sourceTree = "<group>"; };
 		F490977A1E19C3910085A45D /* SuppliesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuppliesView.swift; sourceTree = "<group>"; };
@@ -1052,6 +1054,7 @@
 				F4BDEEB11E73FE2000D689AE /* Entity.swift */,
 				F4E471281E46ECF1009B5AF4 /* CoreDataCore.swift */,
 				F44AA2661E814A4400EED8BE /* ManagedObjectContextGenerator.swift */,
+				F481D63E1F9105CB007E2CBE /* Entities.swift */,
 				F4FC3E8D1E4368BB00E41228 /* KCManagedObject.swift */,
 				F4F9F8911C6BA26400D0EE76 /* KCD */,
 				F4F9F8921C6BA28200D0EE76 /* Local */,
@@ -1547,6 +1550,7 @@
 				F44BC71B1E29DCB4004644E3 /* MemberKDockCommand.swift in Sources */,
 				F46FEA3F1F81285D00E2427C /* Localizable.swift in Sources */,
 				F4AC136F1E0963DB00851147 /* ProgressPanel.swift in Sources */,
+				F481D63F1F9105CB007E2CBE /* Entities.swift in Sources */,
 				F4AA592A1E1D1387001667AF /* IgnoreZeroTransformer.swift in Sources */,
 				F4AC136D1E0802C000851147 /* PreferencePanelController.swift in Sources */,
 				F44BC6E91E232B15004644E3 /* KaisouLockCommand.swift in Sources */,
