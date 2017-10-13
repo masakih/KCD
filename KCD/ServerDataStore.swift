@@ -23,7 +23,7 @@ final class ServerDataStore: CoreDataManager {
         
         return ServerDataStore(type: .editor)
     }
-        
+    
     required init(type: CoreDataManagerType) {
         
         context = ServerDataStore.context(for: type)

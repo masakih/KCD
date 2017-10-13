@@ -168,7 +168,7 @@ extension Ship {
     
     @objc dynamic var planColor: NSColor {
         
-        if !UserDefaults.standard[.showsPlanColor] { return NSColor.controlTextColor }
+        if !UserDefaults.standard[.showsPlanColor] { return .controlTextColor }
         
         guard let sally = sally_area else { return .controlTextColor }
         
