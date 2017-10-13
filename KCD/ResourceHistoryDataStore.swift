@@ -8,14 +8,9 @@
 
 import Cocoa
 
-extension CoreDataConfiguration {
-    
-    static let resourceHistory = CoreDataConfiguration("ResourceHistory")
-}
-
 final class ResourceHistoryDataStore: CoreDataManager {
     
-    static let core = CoreDataCore(.resourceHistory)
+    static let core = CoreDataCore(CoreDataConfiguration("ResourceHistory"))
     
     static let `default` = ResourceHistoryDataStore(type: .reader)
     

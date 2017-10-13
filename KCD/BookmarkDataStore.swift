@@ -8,14 +8,9 @@
 
 import Cocoa
 
-extension CoreDataConfiguration {
-    
-    static let bookmark = CoreDataConfiguration("Bookmark")
-}
-
 final class BookmarkDataStore: CoreDataManager {
     
-    static let core = CoreDataCore(.bookmark)
+    static let core = CoreDataCore(CoreDataConfiguration("Bookmark"))
     
     static let `default` = BookmarkDataStore(type: .reader)
     

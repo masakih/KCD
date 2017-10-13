@@ -8,14 +8,9 @@
 
 import Cocoa
 
-extension CoreDataConfiguration {
-    
-    static let local = CoreDataConfiguration("LocalData")
-}
-
 final class LocalDataStore: CoreDataManager {
     
-    static let core = CoreDataCore(.local)
+    static let core = CoreDataCore(CoreDataConfiguration("LocalData"))
     
     static let `default` = LocalDataStore(type: .reader)
     

@@ -8,18 +8,12 @@
 
 import Cocoa
 
-extension CoreDataConfiguration {
-    
-    static let temporary = CoreDataConfiguration("Temporary",
-                                                 fileName: ":memory:",
-                                                 options: [:],
-                                                 type: NSInMemoryStoreType
-    )
-}
-
 final class TemporaryDataStore: CoreDataManager {
     
-    static let core = CoreDataCore(.temporary)
+    static let core = CoreDataCore(CoreDataConfiguration("Temporary",
+                                                         fileName: ":memory:",
+                                                         options: [:],
+                                                         type: NSInMemoryStoreType))
     
     static let `default` = TemporaryDataStore(type: .reader)
     

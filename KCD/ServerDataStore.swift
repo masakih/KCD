@@ -8,14 +8,9 @@
 
 import Cocoa
 
-extension CoreDataConfiguration {
-    
-    static let kcd = CoreDataConfiguration("KCD", tryRemake: true)
-}
-
 final class ServerDataStore: CoreDataManager {
     
-    static let core = CoreDataCore(.kcd)
+    static let core = CoreDataCore(CoreDataConfiguration("KCD", tryRemake: true))
     
     static let `default` = ServerDataStore(type: .reader)
     
