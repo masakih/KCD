@@ -38,7 +38,6 @@ final class ResourceViewController: NSViewController {
         if shipCount > maxChara - minimumColoredShipCount {
             
             return .orange
-            
         }
         
         return .controlTextColor

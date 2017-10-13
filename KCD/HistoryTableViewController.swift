@@ -38,7 +38,6 @@ class HistoryTableViewController: NSViewController {
         fatalError("Subbclass MUST implement.")
     }
     
-    
     @IBOutlet var controller: NSArrayController!
     @IBOutlet var tableView: NSTableView!
     
