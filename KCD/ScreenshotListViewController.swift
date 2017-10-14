@@ -248,7 +248,7 @@ final class ScreenshotListViewController: NSViewController {
         
         let imageTypes = NSImage.imageTypes
         let ws = NSWorkspace.shared
-        var current = screenshots.screenshots
+        let current = screenshots.screenshots
         let newFiles: [URL] = f.flatMap {
             
             guard let type = try? ws.type(ofFile: $0.path) else { return nil }
@@ -257,16 +257,16 @@ final class ScreenshotListViewController: NSViewController {
         }
         
         // なくなっているものを削除
-        current = current.filter { newFiles.contains($0.url) }
+        let itemWithoutDeleting = current.filter { newFiles.contains($0.url) }
         
         // 新しいものを追加
         let new: [ScreenshotInformation] = newFiles.flatMap { url in
             
-            if current.contains(where: { url == $0.url }) { return nil }
+            if itemWithoutDeleting.contains(where: { url == $0.url }) { return nil }
             return ScreenshotInformation(url: url)
         }
         
-        screenshots.screenshots = current + new
+        screenshots.screenshots = itemWithoutDeleting + new
         
         collectionView.selectionIndexPaths = [NSIndexPath(forItem: 0, inSection: 0) as IndexPath]
         

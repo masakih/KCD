@@ -189,7 +189,7 @@ extension DefaultKeys {
     static let defaults: [String: Any] = settings
         .flatMap { (k: DefaultKeys, v: Any?) -> (key: String, value: Any)? in
             
-            guard var value = v else { return nil }
+            guard let value = v else { return nil }
             
             if isDefaultValuePrimitive(value) {
                 
