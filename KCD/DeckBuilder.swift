@@ -20,8 +20,7 @@ final class DeckBuilder {
     func openDeckBuilder() {
         
         // use for encodeURIComponent() of Javascript
-        var characterSet = CharacterSet.alphanumerics
-        characterSet.insert(charactersIn: "-_.!~*'()")
+        let characterSet = CharacterSet.alphanumerics.union(CharacterSet(charactersIn: "-_.!~*'()"))
         
         let desc = structure.deckDescription
         
