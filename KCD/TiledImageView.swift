@@ -106,15 +106,14 @@ final class TiledImageView: NSView {
             NSColor.white.setFill()
             NSRect(origin: .zero, size: size).fill()
             NSColor.lightGray.setFill()
-            let colTileNum: Int = Int(size.width / CGFloat(checkerSize))
-            let rowTileNum: Int = Int(size.height / CGFloat(checkerSize))
+            let colTileNum = Int(ceil(size.width / CGFloat(checkerSize)))
+            let rowTileNum = Int(ceil(size.height / CGFloat(checkerSize)))
             
             for i in 0..<colTileNum {
                 
                 for j in 0..<rowTileNum {
                     
-                    if i % 2 == 0 && j % 2 == 1 { continue }
-                    if i % 2 == 1 && j % 2 == 0 { continue }
+                    if (i + j) % 2 == 1 { continue }
                     NSRect(x: i * checkerSize, y: j * checkerSize, width: checkerSize, height: checkerSize).fill()
                 }
             }
