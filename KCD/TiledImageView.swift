@@ -255,22 +255,26 @@ extension TiledImageView {
         
         let mouse = convert(event.locationInWindow, from: nil)
         
-        infos.enumerated().forEach {
+        let items = infos.enumerated().flatMap { (offset, element) -> NSDraggingItem? in
             
-            if !NSMouseInRect(mouse, $0.element.frame, isFlipped) { return }
+            if !NSMouseInRect(mouse, element.frame, isFlipped) { return nil }
             
-            guard let pItem = NSPasteboardItem(pasteboardPropertyList: $0.offset,
+            guard let pItem = NSPasteboardItem(pasteboardPropertyList: offset,
                                                ofType: NSPasteboard.PasteboardType(TiledImageView.privateDraggingUTI)) else {
                     
                     fatalError()
             }
             
             let item = NSDraggingItem(pasteboardWriter: pItem)
-            item.setDraggingFrame($0.element.frame, contents: images[$0.offset])
-            let session = beginDraggingSession(with: [item], event: event, source: self)
-            session.animatesToStartingPositionsOnCancelOrFail = true
-            session.draggingFormation = .none
+            item.setDraggingFrame(element.frame, contents: images[offset])
+            
+            return item
         }
+        
+        let session = beginDraggingSession(with: items, event: event, source: self)
+        session.animatesToStartingPositionsOnCancelOrFail = true
+        session.draggingFormation = .none
+        
         // ドラッグ中の全てのmouseEnterイベントがドラッグ後に一気にくるため一時的にTrackingを無効化
         removeAllTrackingAreas()
     }
