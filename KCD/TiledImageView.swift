@@ -8,7 +8,7 @@
 
 import Cocoa
 
-private struct TitledImageCellInformation {
+private struct TiledImageCellInformation {
     
     let frame: NSRect
     
@@ -60,7 +60,7 @@ final class TiledImageView: NSView {
         }
     }
     
-    private var infos: [TitledImageCellInformation] = [] {
+    private var infos: [TiledImageCellInformation] = [] {
         
         didSet {
             if inLiveResize { return }
@@ -69,7 +69,7 @@ final class TiledImageView: NSView {
         }
     }
     
-    private var currentSelection: TitledImageCellInformation?
+    private var currentSelection: TiledImageCellInformation?
     
     override func draw(_ dirtyRect: NSRect) {
         
@@ -159,7 +159,7 @@ final class TiledImageView: NSView {
             tiledImage.unlockFocus()
             
             
-            let newInfos = offset.map { TitledImageCellInformation(with: NSRect(origin: $0, size: size)) }
+            let newInfos = offset.map { TiledImageCellInformation(with: NSRect(origin: $0, size: size)) }
             
             DispatchQueue.main.sync {
                 
@@ -170,7 +170,7 @@ final class TiledImageView: NSView {
         }
     }
     
-    private func calcurated(trackingAreaInfo originalInfos: [TitledImageCellInformation]) -> [TitledImageCellInformation] {
+    private func calcurated(trackingAreaInfo originalInfos: [TiledImageCellInformation]) -> [TiledImageCellInformation] {
         
         guard let size = imageCell.image?.size else { return originalInfos }
         
@@ -204,7 +204,7 @@ final class TiledImageView: NSView {
                    width: $0.frame.width * ratio,
                    height: $0.frame.height * ratio)
             }
-            .map { TitledImageCellInformation(with: $0) }
+            .map { TiledImageCellInformation(with: $0) }
     }
     
     private func removeAllTrackingAreas() {
@@ -240,7 +240,7 @@ extension TiledImageView {
     
     override func mouseEntered(with event: NSEvent) {
         
-        guard let entered = event.trackingArea?.userInfo?["info"] as? TitledImageCellInformation else { return }
+        guard let entered = event.trackingArea?.userInfo?["info"] as? TiledImageCellInformation else { return }
         
         currentSelection = entered
         needsDisplay = true
