@@ -21,13 +21,13 @@ final class TimerCountFormatter: Formatter {
         guard let value = v else { return "" }
         
         let minus = value < 0
-        var interval = minus ? -value : value
+        let interval = minus ? -value : value
         
         let hour = Int(interval / (60 * 60))
-        interval -= Double(hour * 60 * 60)
-        let minutes = Int(interval / 60)
-        interval -= Double(minutes * 60)
-        let seconds = Int(interval)
+        let minComp = interval - Double(hour * 60 * 60)
+        let minutes = Int(minComp / 60)
+        let secComp = minComp - Double(minutes * 60)
+        let seconds = Int(secComp)
         
         return String(format: "%@%02ld:%02ld:%02ld", arguments: [(minus ? "-" : ""), hour, minutes, seconds])
     }
