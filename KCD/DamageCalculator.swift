@@ -367,27 +367,23 @@ extension DamageCalculator {
     private func calcHP(damage: Damage, receive: Int) {
         
         let hp = damage.hp as Int
-        
-        var newHP = hp - receive
-        
-        if newHP <= 0 {
-            
-            let shipId = damage.shipID
-            
-            if let ship = ServerDataStore.default.ship(by: shipId) {
-                
-                let efectiveHP = damageControlIfPossible(nowhp: newHP, ship: ship)
-                
-                if efectiveHP != 0, efectiveHP != newHP {
-                    
-                    damage.useDamageControl = true
-                }
-                
-                newHP = efectiveHP
-            }
-        }
+        let newHP = hp - receive
         
         damage.hp = newHP
+        
+        if newHP > 0 { return }
+        
+        let shipId = damage.shipID
+        
+        guard let ship = ServerDataStore.default.ship(by: shipId) else { return }
+        
+        let efectiveHP = damageControlIfPossible(nowhp: newHP, ship: ship)
+        if efectiveHP != 0, efectiveHP != newHP {
+            
+            damage.useDamageControl = true
+        }
+        
+        damage.hp = efectiveHP
     }
     
     private func calculateHogeki(baseKeyPath: String, _ bf: () -> BattleFleet) {
