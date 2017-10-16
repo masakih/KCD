@@ -258,50 +258,36 @@ extension DamageCalculator {
         }
     }
     
+    private func buildDamagesOfFleet(fleet: Int, ships: [Ship]) {
+        
+        guard case 0...1 = fleet else { return print("fleet must 0 or 1.") }
+        guard let battle = store.battle() else { return print("Battle is invalid.") }
+        
+        (0..<6).forEach {
+            
+            guard let damage = store.createDamage() else { return print("Can not create Damage") }
+            
+            damage.battle = battle
+            damage.id = $0 + fleet * 6
+            
+            guard case 0..<ships.count = $0 else { return }
+            
+            damage.hp = ships[$0].nowhp
+            damage.shipID = ships[$0].id
+        }
+    }
+    
     private func buildDamagedEntity() {
         
         guard let battle = store.battle() else { return print("Battle is invalid.") }
         
-        let aStore = ServerDataStore.default
-        var ships: [Any] = []
-        
         // 第一艦隊
-        let firstFleetShips = aStore.ships(byDeckId: battle.deckId)
-        
-        ships += (firstFleetShips as [Any])
-        
-        while ships.count != 6 {
-            
-            ships.append(0)
-        }
+        let firstFleetShips = ServerDataStore.default.ships(byDeckId: battle.deckId)
+        buildDamagesOfFleet(fleet: 0, ships: firstFleetShips)
         
         // 第二艦隊
-        let secondFleetShips = aStore.ships(byDeckId: 2)
-        
-        ships += (secondFleetShips as [Any])
-        
-        while ships.count != 12 {
-            
-            ships.append(0)
-        }
-        
-        ships.enumerated().forEach {
-            
-            guard let damage = store.createDamage() else {
-                
-                print("Can not create Damage")
-                return
-            }
-            
-            damage.battle = battle
-            damage.id = $0.offset
-            
-            if let ship = $0.element as? Ship {
-                
-                damage.hp = ship.nowhp
-                damage.shipID = ship.id
-            }
-        }
+        let secondFleetShips = ServerDataStore.default.ships(byDeckId: 2)
+        buildDamagesOfFleet(fleet: 1, ships: secondFleetShips)
     }
 }
 
