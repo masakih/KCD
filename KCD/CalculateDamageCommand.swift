@@ -178,39 +178,33 @@ extension CalculateDamageCommand {
     
     func removeFirstDamageControl(of ship: Ship) {
         
-        let equiped = ship.equippedItem
-        let newEquiped = equiped.array
         let store = ServerDataStore.default
-        var useDamageControl = false
         
-        equiped.forEach {
+        let (item, damageControl) = ship
+            .equippedItem
+            .lazy
+            .flatMap { $0 as? SlotItem }
+            .map { ($0, store.masterSlotItemID(by: $0.id)) }
+            .map { ($0.0, DamageControlID(rawValue: $0.1)) }
+            .filter { $0.1 != nil }
+            .first ?? (nil, nil)
+        
+        if let validDamageControl = damageControl {
             
-            if useDamageControl { return }
-            
-            guard let master = $0 as? SlotItem else { return }
-            
-            let masterSlotItemId = store.masterSlotItemID(by: master.id)
-            
-            guard let type = DamageControlID(rawValue: masterSlotItemId) else { return }
-            
-            switch type {
+            switch validDamageControl {
+            case .damageControl: break
+                
             case .goddes:
                 ship.fuel = ship.maxFuel
                 ship.bull = ship.maxBull
-                fallthrough
-                
-            case .damageControl:
-                if var equiped = newEquiped as? [SlotItem],
-                    let index = equiped.index(of: master) {
-                    
-                    equiped[index...index] = []
-                    ship.equippedItem = NSOrderedSet(array: equiped)
-                    useDamageControl = true
-                }
             }
+            
+            guard let equiped = ship.equippedItem.array as? [SlotItem] else { return }
+                
+            ship.equippedItem = NSOrderedSet(array: equiped.filter { $0 != item })
+            
+            return
         }
-        
-        if useDamageControl { return }
         
         // check extra slot
         let exItemId = store.masterSlotItemID(by: ship.slot_ex)
@@ -218,13 +212,13 @@ extension CalculateDamageCommand {
         guard let exType = DamageControlID(rawValue: exItemId) else { return }
         
         switch exType {
+        case .damageControl: break
+            
         case .goddes:
             ship.fuel = ship.maxFuel
             ship.bull = ship.maxBull
-            fallthrough
-            
-        case .damageControl:
-            ship.slot_ex = -1
         }
+        
+        ship.slot_ex = -1
     }
 }

@@ -464,54 +464,43 @@ extension DamageCalculator {
     }
 }
 
-
 // MARK: - Damage control
 extension DamageCalculator {
     
-    private func damageControlIfPossible(nowhp: Int, ship: Ship) -> Int {
+    private func damageControlIfPossible(ship: Ship) -> Int {
         
-        var nowHp = nowhp
-        if nowHp < 0 { nowHp = 0 }
-        let maxhp = ship.maxhp
         let store = ServerDataStore.default
-        var useDamageControl = false
         
-        ship.equippedItem.forEach {
+        let damageControl = ship
+            .equippedItem
+            .lazy
+            .flatMap { $0 as? SlotItem }
+            .map { store.masterSlotItemID(by: $0.id) }
+            .flatMap { DamageControlID(rawValue: $0) }
+            .first
+        
+        if let validDamageControl = damageControl {
             
-            if useDamageControl { return }
-            
-            guard let master = $0 as? SlotItem else { return }
-            
-            let masterSlotItemId = store.masterSlotItemID(by: master.id)
-            
-            guard let type = DamageControlID(rawValue: masterSlotItemId) else { return }
-            
-            switch type {
+            switch validDamageControl {
             case .damageControl:
-                nowHp = Int(Double(maxhp) * 0.2)
-                useDamageControl = true
+                return Int(Double(ship.maxhp) * 0.2)
                 
             case .goddes:
-                nowHp = maxhp
-                useDamageControl = true
+                return ship.maxhp
             }
         }
-        
-        if useDamageControl { return nowHp }
         
         // check extra slot
         let exItemId = store.masterSlotItemID(by: ship.slot_ex)
         
-        guard let exType = DamageControlID(rawValue: exItemId) else { return nowHp }
+        guard let exType = DamageControlID(rawValue: exItemId) else { return 0 }
         
         switch exType {
         case .damageControl:
-            nowHp = Int(Double(maxhp) * 0.2)
+            return Int(Double(ship.maxhp) * 0.2)
             
         case .goddes:
-            nowHp = maxhp
+            return ship.maxhp
         }
-        
-        return nowHp
     }
 }
