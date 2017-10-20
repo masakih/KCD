@@ -130,6 +130,13 @@ struct Parameter {
     }
 }
 
+extension Parameter: Equatable {
+    
+    public static func == (lhs: Parameter, rhs: Parameter) -> Bool {
+        return lhs.rawValue == rhs.rawValue
+    }
+}
+
 struct APIResponse {
     
     let api: String
