@@ -143,6 +143,14 @@ struct APIResponse {
         return false
     }
     
+    init(api: String, parameter: Parameter, json: JSON) {
+        
+        self.api = api
+        self.parameter = parameter
+        self.json = json
+        self.date = Date()
+    }
+    
     init?(request: URLRequest, data: Data) {
         
         date = Date()
