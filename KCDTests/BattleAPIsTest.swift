@@ -89,7 +89,7 @@ class BattleAPIsTest: XCTestCase {
             XCTAssertNotNil(battle)
         }
         
-        // 戦闘
+        // 戦闘（昼戦）
         do {
             let rawValue: [String: Any] = [
                 "api_result": 1,
@@ -131,6 +131,31 @@ class BattleAPIsTest: XCTestCase {
             command.execute()
         }
         
+        // 戦闘（夜戦）
+        do {
+            let rawValue: [String: Any] = [
+                "api_result": 1,
+                "api_data": [
+                    "api_hougeki": [
+                        "api_df_list": [
+                            -1,
+                            [5, 5]
+                        ],
+                        "api_damage": [
+                            -1,
+                            [5, 1]
+                        ]
+                    ]
+                ]
+            ]
+            guard let json = JSON(rawValue: rawValue) else { return XCTFail("json is nil") }
+            let param = Parameter(["Test": "Test"])
+            let api = APIResponse(api: BattleAPI.midnightBattle.rawValue, parameter: param, json: json)
+            
+            let command = BattleCommand(apiResponse: api)
+            command.execute()
+        }
+        
         // 艦娘HP更新
         do {
             let rawValue: [String: Any] = [
@@ -139,7 +164,7 @@ class BattleAPIsTest: XCTestCase {
             guard let json = JSON(rawValue: rawValue) else { return XCTFail("json is nil") }
             let param = Parameter(["Test": "Test"])
             let api = APIResponse(api: BattleAPI.battleResult.rawValue, parameter: param, json: json)
-
+            
             let command = BattleCommand(apiResponse: api)
             command.execute()
         }
@@ -155,9 +180,8 @@ class BattleAPIsTest: XCTestCase {
             XCTAssertEqual(ships[1].nowhp, 25)
             XCTAssertEqual(ships[2].nowhp, 29)
             XCTAssertEqual(ships[3].nowhp, 30)
-            XCTAssertEqual(ships[4].nowhp, 36)
+            XCTAssertEqual(ships[4].nowhp, 30)
             XCTAssertEqual(ships[5].nowhp, 30)
         }
     }
-
 }
