@@ -317,6 +317,8 @@
 		F4FC3E901E437E1F00E41228 /* JSONReciever.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FC3E8F1E437E1F00E41228 /* JSONReciever.swift */; };
 		F4FC3E941E44A5D600E41228 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FC3E931E44A5D600E41228 /* AppDelegate.swift */; };
 		F4FC3E961E46AC3000E41228 /* TSVSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FC3E951E46AC3000E41228 /* TSVSupport.swift */; };
+		F4FF44C71F98DA6600039F21 /* BattleAPIsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FF44C61F98DA6600039F21 /* BattleAPIsTest.swift */; };
+		F4FF44C81F98DB1D00039F21 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EFBCA21E7D439A00DE4A58 /* SwiftyJSON.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -692,6 +694,7 @@
 		F4FC3E8F1E437E1F00E41228 /* JSONReciever.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONReciever.swift; sourceTree = "<group>"; };
 		F4FC3E931E44A5D600E41228 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4FC3E951E46AC3000E41228 /* TSVSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSVSupport.swift; sourceTree = "<group>"; };
+		F4FF44C61F98DA6600039F21 /* BattleAPIsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleAPIsTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -714,6 +717,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4BDEB67187252F30069D0CE /* Cocoa.framework in Frameworks */,
+				F4FF44C81F98DB1D00039F21 /* SwiftyJSON.framework in Frameworks */,
 				F4BDEB66187252F30069D0CE /* XCTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1035,6 +1039,7 @@
 			isa = PBXGroup;
 			children = (
 				F4BDEB6B187252F30069D0CE /* Supporting Files */,
+				F4FF44C61F98DA6600039F21 /* BattleAPIsTest.swift */,
 			);
 			path = KCDTests;
 			sourceTree = "<group>";
@@ -1399,6 +1404,7 @@
 						LastSwiftMigration = 0900;
 					};
 					F4BDEB63187252F30069D0CE = {
+						LastSwiftMigration = 0900;
 						TestTargetID = F4BDEB42187252F30069D0CE;
 					};
 					F4C5A2321C37F87500533FB6 = {
@@ -1772,6 +1778,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4FF44C71F98DA6600039F21 /* BattleAPIsTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2325,10 +2332,12 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/KCD.app/Contents/MacOS/KCD";
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KCD/KCD-Prefix.pch";
@@ -2337,8 +2346,11 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "KCDTests/KCDTests-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.masakih.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -2349,16 +2361,20 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/KCD.app/Contents/MacOS/KCD";
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KCD/KCD-Prefix.pch";
 				INFOPLIST_FILE = "KCDTests/KCDTests-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.masakih.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
