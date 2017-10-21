@@ -14,11 +14,7 @@ import SwiftyJSON
 
 class BattleAPIsTest: XCTestCase {
 
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        
-    }
+    var shipsHp: [Int] = []
     
     override func tearDown() {
         
@@ -40,8 +36,8 @@ class BattleAPIsTest: XCTestCase {
         }
         super.tearDown()
     }
-
-    func testNormalBattle() {
+    
+    func initFleet() {
         
         // 艦隊を設定
         do {
@@ -51,6 +47,7 @@ class BattleAPIsTest: XCTestCase {
             
             store.ships(byDeckId: 1).forEach {
                 $0.nowhp = $0.maxhp
+                shipsHp += [$0.nowhp]
             }
         }
         
@@ -88,6 +85,11 @@ class BattleAPIsTest: XCTestCase {
             let battle = store.battle()
             XCTAssertNotNil(battle)
         }
+    }
+
+    func testNormalBattle() {
+        
+        initFleet()
         
         // 戦闘（昼戦）
         do {
@@ -139,11 +141,11 @@ class BattleAPIsTest: XCTestCase {
                     "api_hougeki": [
                         "api_df_list": [
                             -1,
-                            [5, 5]
+                            [5]
                         ],
                         "api_damage": [
                             -1,
-                            [5, 1]
+                            [5]
                         ]
                     ]
                 ]
@@ -176,12 +178,88 @@ class BattleAPIsTest: XCTestCase {
             
             XCTAssertEqual(ships.count, 6)
             
-            XCTAssertEqual(ships[0].nowhp, 27)
-            XCTAssertEqual(ships[1].nowhp, 25)
-            XCTAssertEqual(ships[2].nowhp, 29)
-            XCTAssertEqual(ships[3].nowhp, 30)
-            XCTAssertEqual(ships[4].nowhp, 30)
-            XCTAssertEqual(ships[5].nowhp, 30)
+            XCTAssertEqual(ships[0].nowhp, shipsHp[0] - 3)
+            XCTAssertEqual(ships[1].nowhp, shipsHp[1] - 3)
+            XCTAssertEqual(ships[2].nowhp, shipsHp[2] - 1)
+            XCTAssertEqual(ships[3].nowhp, shipsHp[3] - 1)
+            XCTAssertEqual(ships[4].nowhp, shipsHp[4] - 5)
+            XCTAssertEqual(ships[5].nowhp, shipsHp[5])
+        }
+    }
+    
+    func testDamageControl() {
+        
+        initFleet()
+        
+        // ダメコンを設定
+        do {
+            let store = ServerDataStore.oneTimeEditor()
+            
+            store.ship(by: 5).flatMap {
+                $0.nowhp = $0.maxhp
+                $0.slot_ex = 63765  // 女神
+            }
+            store.ship(by: 6).flatMap {
+                $0.nowhp = $0.maxhp
+                $0.slot_ex = 72418  // ダメコン
+            }
+        }
+        
+        // 戦闘（夜戦）
+        do {
+            let rawValue: [String: Any] = [
+                "api_result": 1,
+                "api_data": [
+                    "api_hougeki": [
+                        "api_df_list": [
+                            -1,
+                            [4],
+                            [5],
+                            [6]
+                        ],
+                        "api_damage": [
+                            -1,
+                            [50],
+                            [50],
+                            [50]
+                        ]
+                    ]
+                ]
+            ]
+            guard let json = JSON(rawValue: rawValue) else { return XCTFail("json is nil") }
+            let param = Parameter(["Test": "Test"])
+            let api = APIResponse(api: BattleAPI.midnightBattle.rawValue, parameter: param, json: json)
+            
+            let command = BattleCommand(apiResponse: api)
+            command.execute()
+        }
+        
+        // 艦娘HP更新
+        do {
+            let rawValue: [String: Any] = [
+                "api_result": 1
+            ]
+            guard let json = JSON(rawValue: rawValue) else { return XCTFail("json is nil") }
+            let param = Parameter(["Test": "Test"])
+            let api = APIResponse(api: BattleAPI.battleResult.rawValue, parameter: param, json: json)
+            
+            let command = BattleCommand(apiResponse: api)
+            command.execute()
+        }
+        
+        // HPチェック
+        do {
+            let store = ServerDataStore.oneTimeEditor()
+            let ships = store.ships(byDeckId: 1)
+            
+            XCTAssertEqual(ships.count, 6)
+            
+            XCTAssertEqual(ships[0].nowhp, shipsHp[0])
+            XCTAssertEqual(ships[1].nowhp, shipsHp[1])
+            XCTAssertEqual(ships[2].nowhp, shipsHp[2])
+            XCTAssertEqual(ships[3].nowhp, 0)
+            XCTAssertEqual(ships[4].nowhp, shipsHp[4])
+            XCTAssertEqual(ships[5].nowhp, Int(Double(shipsHp[5]) * 0.2))
         }
     }
 }
