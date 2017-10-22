@@ -14,30 +14,19 @@ import SwiftyJSON
 
 class BattleAPIsTest: XCTestCase {
 
+    var savedShips: [Ship] = []
     var shipsHp: [Int] = []
+    var shipEquipments: [NSOrderedSet] = []
+    var shipExSlot: [Int] = []
     
-    override func tearDown() {
+    override func setUp() {
         
-        do {
-            ResetSortie().reset()
-        }
+        super.setUp()
         
-        do {
-            let store = TemporaryDataStore.default
-            let battle = store.battle()
-            XCTAssertNil(battle)
-        }
-        
-        do {
-            let store = ServerDataStore.oneTimeEditor()
-            store.ships(byDeckId: 1).forEach {
-                $0.nowhp = $0.maxhp
-            }
-        }
-        super.tearDown()
-    }
-    
-    func initFleet() {
+        savedShips = []
+        shipsHp = []
+        shipEquipments = []
+        shipExSlot = []
         
         // 艦隊を設定
         do {
@@ -47,7 +36,11 @@ class BattleAPIsTest: XCTestCase {
             
             store.ships(byDeckId: 1).forEach {
                 $0.nowhp = $0.maxhp
+                
+                savedShips += [$0]
                 shipsHp += [$0.nowhp]
+                shipEquipments += [$0.equippedItem]
+                shipExSlot += [$0.slot_ex]
             }
         }
         
@@ -86,10 +79,36 @@ class BattleAPIsTest: XCTestCase {
             XCTAssertNotNil(battle)
         }
     }
+    
+    override func tearDown() {
+        
+        do {
+            ResetSortie().reset()
+        }
+        
+        do {
+            let store = TemporaryDataStore.default
+            let battle = store.battle()
+            XCTAssertNil(battle)
+        }
+        
+        do {
+            let store = ServerDataStore.oneTimeEditor()
+            
+            guard let deck = store.deck(by: 1) else { return XCTFail("Can not get Deck.") }
+            savedShips.enumerated().forEach { deck.setShip(id: $0.element.id, for: $0.offset) }
+            
+            
+            let ships = store.ships(byDeckId: 1)
+                
+            zip(ships, shipsHp).forEach { $0.nowhp = $1 }
+            zip(ships, shipEquipments).forEach { $0.equippedItem = $1 }
+            zip(ships, shipExSlot).forEach { $0.slot_ex = $1 }
+        }
+        super.tearDown()
+    }
 
     func testNormalBattle() {
-        
-        initFleet()
         
         // 戦闘（昼戦）
         do {
@@ -188,8 +207,6 @@ class BattleAPIsTest: XCTestCase {
     }
     
     func testDamageControl() {
-        
-        initFleet()
         
         // ダメコンを設定
         do {
