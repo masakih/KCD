@@ -317,7 +317,7 @@
 		F4FC3E901E437E1F00E41228 /* JSONReciever.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FC3E8F1E437E1F00E41228 /* JSONReciever.swift */; };
 		F4FC3E941E44A5D600E41228 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FC3E931E44A5D600E41228 /* AppDelegate.swift */; };
 		F4FC3E961E46AC3000E41228 /* TSVSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FC3E951E46AC3000E41228 /* TSVSupport.swift */; };
-		F4FF44C71F98DA6600039F21 /* BattleAPIsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FF44C61F98DA6600039F21 /* BattleAPIsTest.swift */; };
+		F4FF44C71F98DA6600039F21 /* NormalBattleAPIsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FF44C61F98DA6600039F21 /* NormalBattleAPIsTest.swift */; };
 		F4FF44C81F98DB1D00039F21 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EFBCA21E7D439A00DE4A58 /* SwiftyJSON.framework */; };
 /* End PBXBuildFile section */
 
@@ -694,7 +694,7 @@
 		F4FC3E8F1E437E1F00E41228 /* JSONReciever.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONReciever.swift; sourceTree = "<group>"; };
 		F4FC3E931E44A5D600E41228 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4FC3E951E46AC3000E41228 /* TSVSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSVSupport.swift; sourceTree = "<group>"; };
-		F4FF44C61F98DA6600039F21 /* BattleAPIsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleAPIsTest.swift; sourceTree = "<group>"; };
+		F4FF44C61F98DA6600039F21 /* NormalBattleAPIsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalBattleAPIsTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1039,7 +1039,7 @@
 			isa = PBXGroup;
 			children = (
 				F4BDEB6B187252F30069D0CE /* Supporting Files */,
-				F4FF44C61F98DA6600039F21 /* BattleAPIsTest.swift */,
+				F4FF44C61F98DA6600039F21 /* NormalBattleAPIsTest.swift */,
 			);
 			path = KCDTests;
 			sourceTree = "<group>";
@@ -1778,7 +1778,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4FF44C71F98DA6600039F21 /* BattleAPIsTest.swift in Sources */,
+				F4FF44C71F98DA6600039F21 /* NormalBattleAPIsTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,5 +1,5 @@
 //
-//  BattleAPIsTest.swift
+//  NormalBattleAPIsTest.swift
 //  KCDTests
 //
 //  Created by Hori,Masaki on 2017/10/19.
@@ -12,7 +12,7 @@ import XCTest
 
 import SwiftyJSON
 
-class BattleAPIsTest: XCTestCase {
+class NormalBattleAPIsTest: XCTestCase {
 
     var savedShips: [Ship] = []
     var shipsHp: [Int] = []
@@ -95,15 +95,14 @@ class BattleAPIsTest: XCTestCase {
         do {
             let store = ServerDataStore.oneTimeEditor()
             
-            guard let deck = store.deck(by: 1) else { return XCTFail("Can not get Deck.") }
-            savedShips.enumerated().forEach { deck.setShip(id: $0.element.id, for: $0.offset) }
-            
-            
             let ships = store.ships(byDeckId: 1)
-                
+            
             zip(ships, shipsHp).forEach { $0.nowhp = $1 }
             zip(ships, shipEquipments).forEach { $0.equippedItem = $1 }
             zip(ships, shipExSlot).forEach { $0.slot_ex = $1 }
+            
+            guard let deck = store.deck(by: 1) else { return XCTFail("Can not get Deck.") }
+            savedShips.enumerated().forEach { deck.setShip(id: $0.element.id, for: $0.offset) }
         }
         super.tearDown()
     }
