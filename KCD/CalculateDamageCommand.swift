@@ -118,7 +118,8 @@ extension CalculateDamageCommand {
         
         let aStore = ServerDataStore.oneTimeEditor()
         
-        totalDamages.forEach {
+        // 第二艦隊単独出撃で正しくデータが反映されるように逆順にして計算
+        totalDamages.reversed().forEach {
             
             guard let ship = aStore.ship(by: $0.shipID) else { return }
             
