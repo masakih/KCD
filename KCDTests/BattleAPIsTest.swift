@@ -201,7 +201,8 @@ class BattleAPIsTest: XCTestCase {
             }
             store.ship(by: 6).flatMap {
                 $0.nowhp = $0.maxhp
-                $0.slot_ex = 72418  // ダメコン
+                // ダメコン
+                $0.equippedItem = store.slotItem(by: 72418).map { NSOrderedSet(array: [$0]) } ?? []
             }
         }
         
