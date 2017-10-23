@@ -90,12 +90,6 @@ class NormalBattleTest: XCTestCase {
         }
         
         do {
-            let store = TemporaryDataStore.default
-            let battle = store.battle()
-            XCTAssertNil(battle)
-        }
-        
-        do {
             let store = ServerDataStore.oneTimeEditor()
             
             let ships = store.ships(byDeckId: fleet)
@@ -106,6 +100,12 @@ class NormalBattleTest: XCTestCase {
             
             guard let deck = store.deck(by: fleet) else { return XCTFail("Can not get Deck.") }
             savedShips.enumerated().forEach { deck.setShip(id: $0.element.id, for: $0.offset) }
+        }
+        
+        do {
+            let store = TemporaryDataStore.default
+            let battle = store.battle()
+            XCTAssertNil(battle)
         }
     }
     
