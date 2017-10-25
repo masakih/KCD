@@ -101,7 +101,7 @@ extension CalculateDamageCommand {
         
         let store = TemporaryDataStore.oneTimeEditor()
         
-        store.damages().forEach { store.delete($0) }
+        store.damages().forEach(store.delete)
     }
     
     func applyDamage() {
