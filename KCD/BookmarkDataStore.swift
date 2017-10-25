@@ -31,11 +31,3 @@ final class BookmarkDataStore: CoreDataManager {
     
     let context: NSManagedObjectContext
 }
-
-extension BookmarkDataStore {
-    
-    func createBookmark() -> Bookmark? {
-        
-        return insertNewObject(for: Bookmark.entity)
-    }
-}

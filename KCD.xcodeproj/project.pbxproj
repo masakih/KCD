@@ -320,6 +320,11 @@
 		F4FF44C71F98DA6600039F21 /* NormalBattleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FF44C61F98DA6600039F21 /* NormalBattleTest.swift */; };
 		F4FF44C81F98DB1D00039F21 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EFBCA21E7D439A00DE4A58 /* SwiftyJSON.framework */; };
 		F4FF44CC1F9E41F600039F21 /* ShipStatusTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FF44CB1F9E41F600039F21 /* ShipStatusTest.swift */; };
+		F4FF44CE1FA0BA1D00039F21 /* ServerDataStoreAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FF44CD1FA0BA1D00039F21 /* ServerDataStoreAccessor.swift */; };
+		F4FF44D01FA0BAAD00039F21 /* LocalDataStoreAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FF44CF1FA0BAAD00039F21 /* LocalDataStoreAccessor.swift */; };
+		F4FF44D21FA0BB1C00039F21 /* TemporaryDataStoreAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FF44D11FA0BB1C00039F21 /* TemporaryDataStoreAccessor.swift */; };
+		F4FF44D41FA0BB4D00039F21 /* BookmarkDataStoreAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FF44D31FA0BB4D00039F21 /* BookmarkDataStoreAccessor.swift */; };
+		F4FF44D61FA0BB7200039F21 /* ResourceHistoryDataStoreAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FF44D51FA0BB7200039F21 /* ResourceHistoryDataStoreAccessor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -697,6 +702,11 @@
 		F4FC3E951E46AC3000E41228 /* TSVSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSVSupport.swift; sourceTree = "<group>"; };
 		F4FF44C61F98DA6600039F21 /* NormalBattleTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalBattleTest.swift; sourceTree = "<group>"; };
 		F4FF44CB1F9E41F600039F21 /* ShipStatusTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipStatusTest.swift; sourceTree = "<group>"; };
+		F4FF44CD1FA0BA1D00039F21 /* ServerDataStoreAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerDataStoreAccessor.swift; sourceTree = "<group>"; };
+		F4FF44CF1FA0BAAD00039F21 /* LocalDataStoreAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataStoreAccessor.swift; sourceTree = "<group>"; };
+		F4FF44D11FA0BB1C00039F21 /* TemporaryDataStoreAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryDataStoreAccessor.swift; sourceTree = "<group>"; };
+		F4FF44D31FA0BB4D00039F21 /* BookmarkDataStoreAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkDataStoreAccessor.swift; sourceTree = "<group>"; };
+		F4FF44D51FA0BB7200039F21 /* ResourceHistoryDataStoreAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceHistoryDataStoreAccessor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1244,6 +1254,7 @@
 			children = (
 				F46F104718ABAC910063E503 /* KCD.xcdatamodeld */,
 				F47215AF1E1FEACC0083D3BC /* ServerDataStore.swift */,
+				F4FF44CD1FA0BA1D00039F21 /* ServerDataStoreAccessor.swift */,
 				F42A8FDF1E40CC050099DC1D /* AirBase.swift */,
 				F42A8FE11E40D0900099DC1D /* AirBasePlaneInfo.swift */,
 				F42CFE1F1E3CDE7E000B4F9B /* Basic.swift */,
@@ -1272,6 +1283,7 @@
 			children = (
 				F4E7802C18DC3AF00011BC4C /* LocalData.xcdatamodeld */,
 				F47215A51E1F84B40083D3BC /* LocalDataStore.swift */,
+				F4FF44CF1FA0BAAD00039F21 /* LocalDataStoreAccessor.swift */,
 				F42A8FE31E41FD6F0099DC1D /* DropShipHistory.swift */,
 				F4BDEEB71E740D9300D689AE /* HiddenDropShipHistory.swift */,
 				F42A8FE51E420A360099DC1D /* KaihatuHistory.swift */,
@@ -1286,6 +1298,7 @@
 			children = (
 				F4AA05F9192B92C700844688 /* Temporary.xcdatamodeld */,
 				F47215AB1E1FA2460083D3BC /* TemporaryDataStore.swift */,
+				F4FF44D11FA0BB1C00039F21 /* TemporaryDataStoreAccessor.swift */,
 				F42A8FEB1E4354F50099DC1D /* Battle.swift */,
 				F42A8FED1E435E330099DC1D /* Damage.swift */,
 				F4FC3E8B1E43660400E41228 /* GuardEscaped.swift */,
@@ -1298,6 +1311,7 @@
 			children = (
 				F495462C1B1894DD00E0D8D0 /* Bookmark.xcdatamodeld */,
 				F47215A71E1F947A0083D3BC /* BookmarkDataStore.swift */,
+				F4FF44D31FA0BB4D00039F21 /* BookmarkDataStoreAccessor.swift */,
 				F42CFE1B1E3CB495000B4F9B /* Bookmark.swift */,
 			);
 			name = Bookmark;
@@ -1308,6 +1322,7 @@
 			children = (
 				F47178481B6F9B5600F5E59D /* ResourceHistory.xcdatamodeld */,
 				F47215A91E1F96B60083D3BC /* ResourceHistoryDataStore.swift */,
+				F4FF44D51FA0BB7200039F21 /* ResourceHistoryDataStoreAccessor.swift */,
 				F42CFE1D1E3CCCC2000B4F9B /* Resource.swift */,
 			);
 			name = ResourceHistory;
@@ -1563,6 +1578,7 @@
 				F4AA592A1E1D1387001667AF /* IgnoreZeroTransformer.swift in Sources */,
 				F4AC136D1E0802C000851147 /* PreferencePanelController.swift in Sources */,
 				F44BC6E91E232B15004644E3 /* KaisouLockCommand.swift in Sources */,
+				F4FF44D41FA0BB4D00039F21 /* BookmarkDataStoreAccessor.swift in Sources */,
 				F44BC6EF1E239FB1004644E3 /* RemodelSlotCommand.swift in Sources */,
 				F42A8FD41E3DD57E0099DC1D /* MasterSlotItemEquipType.swift in Sources */,
 				F4AA59161E1C9C5D001667AF /* ValueTransformerRegister.swift in Sources */,
@@ -1570,6 +1586,7 @@
 				F42A8FD61E3DE2C60099DC1D /* Material.swift in Sources */,
 				F491A4BC1E4B523C00D1E067 /* ApplicationDirecrories.swift in Sources */,
 				F4E5FF141E17F93B0026868C /* BroserWindowController.swift in Sources */,
+				F4FF44D01FA0BAAD00039F21 /* LocalDataStoreAccessor.swift in Sources */,
 				F4CF25BA1E34EB6600C02A66 /* BookmarkManager.swift in Sources */,
 				F44BC7051E2660E4004644E3 /* StoreCreateSlotItemHistoryCommand.swift in Sources */,
 				F4EE4ADA1F18F66A00AD92B4 /* DeckBuilder.swift in Sources */,
@@ -1590,6 +1607,7 @@
 				F44BC6E71E231534004644E3 /* SlotResetCommand.swift in Sources */,
 				F42A8FEC1E4354F50099DC1D /* Battle.swift in Sources */,
 				F4AA59321E1D211C001667AF /* SlotitemNameTransformer.swift in Sources */,
+				F4FF44CE1FA0BA1D00039F21 /* ServerDataStoreAccessor.swift in Sources */,
 				F4A0D7151E2FB11F00224DCE /* MapStartCommand.swift in Sources */,
 				F44BC6E51E23082B004644E3 /* CombinedCommand.swift in Sources */,
 				F4AA59401E1E23EC001667AF /* HistoryMarkTransformer.swift in Sources */,
@@ -1697,6 +1715,7 @@
 				F4048A9D1E18D75E008ACFD6 /* DamageView.swift in Sources */,
 				F44BC6ED1E238577004644E3 /* ShipDeckCommand.swift in Sources */,
 				F490978D1E1BA64E0085A45D /* GuardEscapedView.swift in Sources */,
+				F4FF44D61FA0BB7200039F21 /* ResourceHistoryDataStoreAccessor.swift in Sources */,
 				F4FC3E941E44A5D600E41228 /* AppDelegate.swift in Sources */,
 				F44BC71D1E29DF32004644E3 /* MemberNDockCommand.swift in Sources */,
 				F42CFE1E1E3CCCC2000B4F9B /* Resource.swift in Sources */,
@@ -1715,6 +1734,7 @@
 				F4BDEEB01E72D2D700D689AE /* HistoryTableViewController.swift in Sources */,
 				F4EE4AD81F18F43700AD92B4 /* DeckBuilderStructure.swift in Sources */,
 				F45FBB921E129BAE000E72B9 /* FleetViewController.swift in Sources */,
+				F4FF44D21FA0BB1C00039F21 /* TemporaryDataStoreAccessor.swift in Sources */,
 				F4AA59501E1E4D18001667AF /* ShipWindowController.swift in Sources */,
 				F42CFE181E3C12AA000B4F9B /* ScreenshotInformation.swift in Sources */,
 				F44BC7371E2A4258004644E3 /* SetPlaneCommand.swift in Sources */,
