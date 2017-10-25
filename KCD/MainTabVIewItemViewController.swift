@@ -49,6 +49,7 @@ class MainTabVIewItemViewController: NSViewController {
             
         case .other:
             let omitTypes = shipTypeCategories
+                .lazy
                 .enumerated()
                 .filter { $0.offset != 0 && $0.offset != 7 }
                 .flatMap { $0.element }
