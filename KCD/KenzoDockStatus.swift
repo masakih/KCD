@@ -87,7 +87,7 @@ final class KenzoDockStatus: NSObject {
         let compTime = TimeInterval(Int(completeTime / 1_000))
         let diff = compTime - Date().timeIntervalSince1970
         
-        realTime = diff < 0 ? 0 : diff
+        realTime = max(0, diff)
         
         if didNotify { return }
         if diff > 0 { return }
