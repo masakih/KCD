@@ -104,8 +104,7 @@ final class SlotItemMapper: JSONMapper {
             return
         }
         
-        guard let moc = slotItem.managedObjectContext,
-            let masterSlotItem = moc.object(with: mSlotItem.objectID) as? MasterSlotItem else {
+        guard let masterSlotItem = configuration.editorStore.object(of: MasterSlotItem.entity, with: mSlotItem.objectID) else {
                 
                 print("Can not convert to current moc object")
                 return
