@@ -8,35 +8,21 @@
 
 import Cocoa
 
-enum CoreDataError: Error {
+func genarate(_ config: CoreDataConfiguration) throws -> (model: NSManagedObjectModel, coordinator: NSPersistentStoreCoordinator, moc: NSManagedObjectContext) {
     
-    case applicationDirectoryIsFile
-    case couldNotCreateModel
-    case couldNotCreateCoordinator(String)
+    let model = try createModel(config)
+    let coordinator = try getCoordinator(config, model)
+    let moc = createContext(coordinator)
+    
+    return (model: model, coordinator: coordinator, moc: moc)
 }
 
-func remove(name: String) {
+func removeAllDataFile(named name: String) {
     
     ["", "-wal", "-shm"]
         .map { name + $0 }
         .map(ApplicationDirecrories.support.appendingPathComponent)
         .forEach(removeDataFile)
-}
-
-func genarate(_ config: CoreDataConfiguration) throws -> (model: NSManagedObjectModel, coordinator: NSPersistentStoreCoordinator, moc: NSManagedObjectContext) {
-    
-    do {
-        
-        let model = try createModel(config)
-        let coordinator = try getCoordinator(config, model)
-        let moc = createContext(coordinator)
-        
-        return (model: model, coordinator: coordinator, moc: moc)
-        
-    } catch {
-        
-        throw error
-    }
 }
 
 private func removeDataFile(at url: URL) {
@@ -62,6 +48,7 @@ private  func createModel(_ config: CoreDataConfiguration) throws -> NSManagedOb
     
     return model
 }
+
 private func getCoordinator(_ config: CoreDataConfiguration, _ model: NSManagedObjectModel) throws -> NSPersistentStoreCoordinator {
     
     do {
@@ -75,7 +62,7 @@ private func getCoordinator(_ config: CoreDataConfiguration, _ model: NSManagedO
             (error.code == 134130 || error.code == 134110),
             config.tryRemake {
             
-            remove(name: config.fileName)
+            removeAllDataFile(named: config.fileName)
             
             do {
                 
@@ -83,7 +70,7 @@ private func getCoordinator(_ config: CoreDataConfiguration, _ model: NSManagedO
                 
             } catch {
                 
-                print("Fail crrate NSPersistentStoreCoordinator twice.")
+                print("Fail to create NSPersistentStoreCoordinator twice.")
             }
         }
         
@@ -103,17 +90,10 @@ private func createCoordinator(_ config: CoreDataConfiguration, _ model: NSManag
     let coordinator: NSPersistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
     let url = ApplicationDirecrories.support.appendingPathComponent(config.fileName)
     
-    do {
-        
-        try coordinator.addPersistentStore(ofType: config.type,
-                                           configurationName: nil,
-                                           at: url,
-                                           options: config.options)
-        
-    } catch {
-        
-        throw error
-    }
+    try coordinator.addPersistentStore(ofType: config.type,
+                                       configurationName: nil,
+                                       at: url,
+                                       options: config.options)
     
     return coordinator
 }

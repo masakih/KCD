@@ -29,7 +29,6 @@ extension EntityProvider {
     }
 }
 
-// MARK: - Implementations
 extension NSManagedObject {
     
     class var entityName: String { return String(describing: self) }

@@ -325,6 +325,7 @@
 		F4FF44D21FA0BB1C00039F21 /* TemporaryDataStoreAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FF44D11FA0BB1C00039F21 /* TemporaryDataStoreAccessor.swift */; };
 		F4FF44D41FA0BB4D00039F21 /* BookmarkDataStoreAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FF44D31FA0BB4D00039F21 /* BookmarkDataStoreAccessor.swift */; };
 		F4FF44D61FA0BB7200039F21 /* ResourceHistoryDataStoreAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FF44D51FA0BB7200039F21 /* ResourceHistoryDataStoreAccessor.swift */; };
+		F4FF44D81FA21BF200039F21 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FF44D71FA21BF200039F21 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -707,6 +708,7 @@
 		F4FF44D11FA0BB1C00039F21 /* TemporaryDataStoreAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryDataStoreAccessor.swift; sourceTree = "<group>"; };
 		F4FF44D31FA0BB4D00039F21 /* BookmarkDataStoreAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkDataStoreAccessor.swift; sourceTree = "<group>"; };
 		F4FF44D51FA0BB7200039F21 /* ResourceHistoryDataStoreAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceHistoryDataStoreAccessor.swift; sourceTree = "<group>"; };
+		F4FF44D71FA21BF200039F21 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1071,6 +1073,7 @@
 			children = (
 				F4BDEEB11E73FE2000D689AE /* Entity.swift */,
 				F4E471281E46ECF1009B5AF4 /* CoreDataCore.swift */,
+				F4FF44D71FA21BF200039F21 /* CoreDataManager.swift */,
 				F44AA2661E814A4400EED8BE /* ManagedObjectContextGenerator.swift */,
 				F481D63E1F9105CB007E2CBE /* Entities.swift */,
 				F4FC3E8D1E4368BB00E41228 /* KCManagedObject.swift */,
@@ -1646,6 +1649,7 @@
 				F47C3EAC1E5F1AD900D97449 /* ShipMapper.swift in Sources */,
 				F44BC7351E2A295E004644E3 /* SetActionCommand.swift in Sources */,
 				F472159E1E1E6EE70083D3BC /* ShipMasterDetailWindowController.swift in Sources */,
+				F4FF44D81FA21BF200039F21 /* CoreDataManager.swift in Sources */,
 				F44BC6D71E226CB1004644E3 /* HokyuChargeCommand.swift in Sources */,
 				F4CF25BC1E34F67400C02A66 /* KenzoDockStatus.swift in Sources */,
 				F44BC6F91E23DAC5004644E3 /* RealDestroyShipCommand.swift in Sources */,
