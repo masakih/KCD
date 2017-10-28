@@ -8,12 +8,6 @@
 
 import Cocoa
 
-private extension Selector {
-    
-    static let fireInAppDelegate = #selector(AppDelegate.fire(_:))
-    
-}
-
 @NSApplicationMain
 final class AppDelegate: NSObject {
     
@@ -275,7 +269,7 @@ extension AppDelegate: NSApplicationDelegate {
         NSUserNotificationCenter.default.delegate = self
         Timer.scheduledTimer(timeInterval: 0.33,
                              target: self,
-                             selector: .fireInAppDelegate,
+                             selector: #selector(AppDelegate.fire(_:)),
                              userInfo: nil,
                              repeats: true)
     }
