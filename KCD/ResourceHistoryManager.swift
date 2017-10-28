@@ -60,22 +60,19 @@ final class ResourceHistoryManager: NSObject {
         
         guard let material = store.material() else {
             
-            print("ResourceHistoryManager: Can not get Material")
-            return
+            return Logger.shared.log("ResourceHistoryManager: Can not get Material")
         }
         
         guard let basic = store.basic() else {
             
-            print("ResourceHistoryManager: Can not get Basic")
-            return
+            return Logger.shared.log("ResourceHistoryManager: Can not get Basic")
         }
         
         let historyStore = ResourceHistoryDataStore.oneTimeEditor()
         
         guard let newHistory = historyStore.createResource() else {
             
-            print("ResourceHistoryManager: Can not create ResourceHIstory")
-            return
+            return Logger.shared.log("ResourceHistoryManager: Can not create ResourceHIstory")
         }
         
         let now = Date()

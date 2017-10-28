@@ -28,8 +28,7 @@ final class CreateShipCommand: JSONCommand {
         
         guard let dockId = parameter["api_kdock_id"].int else {
             
-            print("api_kdock_id is wrong")
-            return
+            return Logger.shared.log("api_kdock_id is wrong")
         }
         
         let store = ServerDataStore.default
@@ -38,16 +37,14 @@ final class CreateShipCommand: JSONCommand {
             let flagShip = store.deck(by: 1)?[0],
             let basic = store.basic() else {
                 
-                print("CreateShipCommand: CoreData is wrong")
-                return
+                return Logger.shared.log("CreateShipCommand: CoreData is wrong")
         }
         
         let localStore = LocalDataStore.oneTimeEditor()
         
         guard let newMark = localStore.kenzoMark(byDockId: dockId) ?? localStore.createKenzoMark() else {
             
-            print("Can not create KenzoMark")
-            return
+            return Logger.shared.log("Can not create KenzoMark")
         }
         
         newMark.fuel = kenzoDock.item1

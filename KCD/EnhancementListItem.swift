@@ -73,7 +73,7 @@ final class EnhancementListItem: NSObject, NSCoding, NSCopying {
             let req = aDecoder.decodeObject(forKey: CodeKey.requiredEquipments) as? RequiredEquipmentSet,
             let s = aDecoder.decodeObject(forKey: CodeKey.secondsShipNames) as? [String] else {
                 
-                print("Can not decode EnhancementListItem")
+                Logger.shared.log("Can not decode EnhancementListItem")
                 return nil
         }
         
@@ -136,7 +136,7 @@ final class RequiredEquipmentSet: NSObject, NSCoding, NSCopying {
         guard let i = aDecoder.decodeObject(forKey: CodeKey.identifier) as? String,
             let r = aDecoder.decodeObject(forKey: CodeKey.requiredEquipments) as? [RequiredEquipment] else {
                 
-                print("Can not decode RequiredEquipmentSet")
+                Logger.shared.log("Can not decode RequiredEquipmentSet")
                 return nil
         }
         
@@ -194,7 +194,7 @@ final class RequiredEquipment: NSObject, NSCoding, NSCopying {
             let c = aDecoder.decodeObject(forKey: CodeKey.currentLevelString) as? String,
             let na = aDecoder.decodeObject(forKey: CodeKey.name) as? String else {
                 
-                print("Can not decode RequiredEquipment")
+                Logger.shared.log("Can not decode RequiredEquipment")
                 return nil
         }
         

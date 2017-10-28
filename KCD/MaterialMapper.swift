@@ -59,8 +59,7 @@ final class MaterialMapper: JSONMapper {
         guard let store = configuration.editorStore as? ServerDataStore,
             let material = store.material() ?? store.createMaterial() else {
                 
-                print("Can not create Material")
-                return
+                return Logger.shared.log("Can not create Material")
         }
         
         if let _ = data[0].int {

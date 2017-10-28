@@ -113,8 +113,7 @@ final class StrengthenListViewController: MainTabVIewItemViewController {
             
             guard let array = NSKeyedUnarchiver.unarchiveObject(with: data) as? [EnhancementListItem] else {
                 
-                print("\(resourceName).\(resourceExtension) not found.")
-                return
+                return Logger.shared.log("\(resourceName).\(resourceExtension) not found.")
             }
             
             equipmentStrengthenList = array

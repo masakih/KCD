@@ -18,22 +18,19 @@ final class UpdateSlotItemCommand: JSONCommand {
         
         guard let newSlotItemId = data["api_id"].int else {
             
-            print("api_id is wrong")
-            return
+            return Logger.shared.log("api_id is wrong")
         }
         
         let store = ServerDataStore.oneTimeEditor()
         
         guard let masterSlotItem = store.masterSlotItem(by: slotItemId) else {
             
-            print("MasterSlotItem is not found")
-            return
+            return Logger.shared.log("MasterSlotItem is not found")
         }
         
         guard let new = store.createSlotItem() else {
             
-            print("Can not create new SlotItem")
-            return
+            return Logger.shared.log("Can not create new SlotItem")
         }
         
         new.id = newSlotItemId

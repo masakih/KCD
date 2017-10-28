@@ -242,8 +242,7 @@ final class ScreenshotListViewController: NSViewController {
         
         guard let f = try? FileManager.default.contentsOfDirectory(at: screenshotSaveDirectoryURL, includingPropertiesForKeys: nil) else {
             
-            print("can not read list of screenshot directory")
-            return
+            return Logger.shared.log("can not read list of screenshot directory")
         }
         
         let imageTypes = NSImage.imageTypes
@@ -293,15 +292,13 @@ final class ScreenshotListViewController: NSViewController {
         
         guard let data = try? Data(contentsOf: cachURL) else {
             
-            print("can not load cach \(cachURL)")
-            return []
+            return Logger.shared.log("can not load cach \(cachURL)", value: [])
         }
         
         guard let l = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data),
             let loaded = l as? [ScreenshotInformation] else {
                 
-                print("Can not decode \(cachURL)")
-                return []
+                return Logger.shared.log("Can not decode \(cachURL)", value: [])
         }
         
         return loaded

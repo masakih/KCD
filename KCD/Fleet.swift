@@ -24,7 +24,7 @@ final class Fleet: NSObject {
         
         guard case 1...4 = number else {
             
-            print("Fleet number out of range")
+            Logger.shared.log("Fleet number out of range")
             return nil
         }
         
@@ -46,7 +46,7 @@ final class Fleet: NSObject {
             
         } catch {
             
-            print("Fetch error")
+            Logger.shared.log("Fetch error")
             return nil
             
         }

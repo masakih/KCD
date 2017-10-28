@@ -74,8 +74,7 @@ final class ChangeHenseiCommand: JSONCommand {
             let shipId = parameter["api_ship_id"].int,
             let shipIndex = parameter["api_ship_idx"].int else {
                 
-                print("parameter is wrong")
-                return
+                return Logger.shared.log("parameter is wrong")
         }
         
         if shipId == -2 {
@@ -148,8 +147,7 @@ final class ChangeHenseiCommand: JSONCommand {
         
         guard let deck = store.deck(by: deckNumber) else {
             
-            print("Deck not found")
-            return
+            return Logger.shared.log("Deck not found")
         }
         
         (1..<6).forEach { deck.setShip(id: -1, for: $0) }

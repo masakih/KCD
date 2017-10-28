@@ -25,8 +25,7 @@ final class QuestListCommand: JSONCommand {
             let pageCount = data["api_page_count"].int,
             let page = data["api_disp_page"].int else {
                 
-                print("data is wrong")
-                return
+                return Logger.shared.log("data is wrong")
         }
         
         let store = ServerDataStore.oneTimeEditor()
@@ -45,11 +44,7 @@ final class QuestListCommand: JSONCommand {
             
             let t = quests.binarySearch { $0.no ==? no }
             
-            guard let new = t ?? store.createQuest() else {
-                
-                print("Can not create Quest")
-                return
-            }
+            guard let new = t ?? store.createQuest() else { return Logger.shared.log("Can not create Quest") }
             
             new.bonus_flag = quest["api_bonus_flag"].int.map { $0 != 0 } ?? false
             new.category = quest["api_category"].int ?? 0

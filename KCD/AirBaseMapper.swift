@@ -42,14 +42,12 @@ final class AirBaseMapper: JSONMapper {
         
         guard let planeInfos = value.array else {
             
-            print("value is wrong")
-            return false
+            return Logger.shared.log("value is wrong", value: false)
         }
         
         guard let infos = airbase.planeInfo.array as? [AirBasePlaneInfo] else {
             
-            print("airbase is wrong")
-            return false
+            return Logger.shared.log("airbase is wrong", value: false)
         }
         
         zip(infos, planeInfos).forEach { (info, dict) in
@@ -73,18 +71,15 @@ final class AirBaseMapper: JSONMapper {
 
             guard let cond = dict["api_cond"].int else {
                 
-                print("api_cond is wrong.")
-                return
+                return Logger.shared.log("api_cond is wrong.")
             }
             guard let count = dict["api_count"].int else {
                 
-                print("api_cond is wrong.")
-                return
+                return Logger.shared.log("api_cond is wrong.")
             }
             guard let maxCount = dict["api_max_count"].int else {
                 
-                print("api_max_count is wrong")
-                return
+                return Logger.shared.log("api_max_count is wrong")
             }
             
             info.cond = cond

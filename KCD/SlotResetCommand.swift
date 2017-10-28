@@ -23,13 +23,11 @@ final class SlotResetCommand: JSONCommand {
         
         guard let ship = parameter["api_id"].int.flatMap(store.ship(by:)) else {
             
-            print("api_id is wrong")
-            return
+            return Logger.shared.log("api_id is wrong")
         }
         guard let slotItems = data["api_slot"].arrayObject as? [Int] else {
             
-            print("Can not parse api_data.api_slot")
-            return
+            return Logger.shared.log("Can not parse api_data.api_slot")
         }
         
         zip(slotItems, 0...).forEach(ship.setItem)

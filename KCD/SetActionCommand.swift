@@ -21,24 +21,21 @@ final class SetActionCommand: JSONCommand {
         
         guard let areaId = parameter["api_area_id"].int else {
             
-            print("api_area_id is wrong.")
-            return
+            return Logger.shared.log("api_area_id is wrong.")
         }
         guard let rIds = parameter["api_base_id"]
             .string?
             .components(separatedBy: ",")
             .map({ Int($0) ?? -1 }) else {
                 
-                print("api_base_id is wrong.")
-                return
+                return Logger.shared.log("api_base_id is wrong.")
         }
         guard let actions = parameter["api_action_kind"]
             .string?
             .components(separatedBy: ",")
             .map({ Int($0) ?? -1 }) else {
                 
-                print("api_action_kind is rwong")
-                return
+                return Logger.shared.log("api_action_kind is rwong")
         }
         
         if rIds.count != actions.count { print("missmatch count") }

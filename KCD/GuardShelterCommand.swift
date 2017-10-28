@@ -73,23 +73,20 @@ final class GuardShelterCommand: JSONCommand {
                 
         guard let guardianId = ServerDataStore.default.deck(by: 2)?.shipId(of: fixedGuardianPos) else {
                 
-                print("guardianPos is wrong")
-                return
+                return Logger.shared.log("guardianPos is wrong")
         }
         
         guard let escapeIdx = escape["api_escape_idx"][0].int,
             let damagedId = damagedShipId(damagedPos: escapeIdx) else {
                 
-                print("damagedPos is wrong")
-                return
+                return Logger.shared.log("damagedPos is wrong")
         }
         
         let store = TemporaryDataStore.oneTimeEditor()
         
         guard let guardian = store.createGuardEscaped() else {
             
-            print("Can not create GuardEscaped for guardinan")
-            return
+            return Logger.shared.log("Can not create GuardEscaped for guardinan")
         }
         
         guardian.shipID = guardianId
@@ -97,8 +94,7 @@ final class GuardShelterCommand: JSONCommand {
         
         guard let damaged = store.createGuardEscaped() else {
             
-            print("Can not create GuardEscaped for damaged")
-            return
+            return Logger.shared.log("Can not create GuardEscaped for damaged")
         }
         
         damaged.shipID = damagedId

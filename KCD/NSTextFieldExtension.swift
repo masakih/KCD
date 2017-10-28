@@ -45,12 +45,7 @@ extension NSTextField {
     
     func isCharacterProtrude() -> Bool {
         
-        guard let currentFont = font else {
-            
-            Swift.print("TextField dose not set font")
-            
-            return false
-        }
+        guard let currentFont = font else { return Logger.shared.log("TextField dose not set font", value: false) }
         
         let string = stringValue as NSString
         let size = string.size(withAttributes: [.font: currentFont])

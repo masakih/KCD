@@ -414,11 +414,7 @@ extension FleetViewController {
     
     private func reorder(order: [Int]) {
         
-        guard order.count == 6 else {
-            
-            print("FleetViewController: order count is not 6.")
-            return
-        }
+        guard order.count == 6 else { return Logger.shared.log("FleetViewController: order count is not 6.") }
         
         let views = details.map { $0.view }
         let options = views.map { $0.autoresizingMask }

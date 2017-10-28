@@ -21,13 +21,11 @@ final class KaisouLockCommand: JSONCommand {
         
         guard let slotId = parameter["api_slotitem_id"].int else {
             
-            print("api_slotitem_id is wrong")
-            return
+            return Logger.shared.log("api_slotitem_id is wrong")
         }
         guard let locked = data["api_locked"].int else {
             
-            print("api_locked is wrong")
-            return
+            return Logger.shared.log("api_locked is wrong")
         }
         
         let store = ServerDataStore.oneTimeEditor()

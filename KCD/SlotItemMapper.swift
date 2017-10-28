@@ -100,14 +100,12 @@ final class SlotItemMapper: JSONMapper {
         
         guard let mSlotItem = masterSlotItems.binarySearch(comparator: { $0.id ==? masterId }) else {
             
-            print("Can not find MasterSlotItem")
-            return
+            return Logger.shared.log("Can not find MasterSlotItem")
         }
         
         guard let masterSlotItem = configuration.editorStore.object(of: MasterSlotItem.entity, with: mSlotItem.objectID) else {
                 
-                print("Can not convert to current moc object")
-                return
+                return Logger.shared.log("Can not convert to current moc object")
         }
         
         slotItem.master_slotItem = masterSlotItem

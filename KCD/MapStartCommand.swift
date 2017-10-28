@@ -47,20 +47,17 @@ final class MapStartCommand: JSONCommand {
             let mapArea = parameter["api_maparea_id"].int,
             let mapInfo = parameter["api_mapinfo_no"].int else {
                 
-                print("startBattle Arguments is wrong")
-                return
+                return Logger.shared.log("startBattle Arguments is wrong")
         }
         
         guard let no = data["api_no"].int else {
             
-            print("startBattle JSON is wrong")
-            return
+            return Logger.shared.log("startBattle JSON is wrong")
         }
         
         guard let battle = store.createBattle() else {
             
-            print("Can not create Battle")
-            return
+            return Logger.shared.log("Can not create Battle")
         }
         
         battle.deckId = deckId
@@ -74,11 +71,10 @@ final class MapStartCommand: JSONCommand {
         guard let cellNumber = data["api_no"].int,
             let eventId = data["api_event_id"].int else {
                 
-                print("updateBattleCell JSON is wrong")
-                return
+                return Logger.shared.log("updateBattleCell JSON is wrong")
         }
         
-        guard let battle = store.battle() else { return print("Battle is invalid.") }
+        guard let battle = store.battle() else { return Logger.shared.log("Battle is invalid.") }
         
         battle.no = cellNumber
         battle.isBossCell = (eventId == 5)

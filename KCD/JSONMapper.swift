@@ -153,8 +153,7 @@ extension JSONMapper {
         
         guard let objects = try? store.objects(of: configuration.entity, sortDescriptors: sortDescriptors) else {
             
-            print("Can not get entity named \(configuration.entity.name)")
-            return
+            return Logger.shared.log("Can not get entity named \(configuration.entity.name)")
         }
         
         let list = (data.type == .array ? data.arrayValue : [data])

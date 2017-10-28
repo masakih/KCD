@@ -76,8 +76,7 @@ final class TimeSignalNotifier: NSObject {
         comp.minute = 60 - notifyTimeBeforeTimeSignal
         guard let notifyDate = cal.date(from: comp) else {
             
-            print("Can not create notify date")
-            return
+            return Logger.shared.log("Can not create notify date")
         }
         
         timer = Timer.scheduledTimer(timeInterval: notifyDate.timeIntervalSinceNow,

@@ -49,8 +49,7 @@ final class FleetManager: NSObject {
         
         guard fleets.count == 4 else {
             
-            print("Can not create Fleet")
-            return
+            return Logger.shared.log("Can not create Fleet")
         }
         
         if fleets[0].ships.isEmpty {

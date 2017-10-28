@@ -24,8 +24,7 @@ final class DestroyItem2Command: JSONCommand {
             .components(separatedBy: ",")
             .flatMap({ Int($0) }) else {
                 
-                print("api_slotitem_ids is wrong")
-                return
+                return Logger.shared.log("api_slotitem_ids is wrong")
         }
         
         let store = ServerDataStore.oneTimeEditor()
@@ -34,13 +33,11 @@ final class DestroyItem2Command: JSONCommand {
         
         guard let material = store.material() else {
             
-            print("Material is not found")
-            return
+            return Logger.shared.log("Material is not found")
         }
         guard let gm = data["api_get_material"].arrayObject as? [Int] else {
             
-            print("api_get_material is wrong")
-            return
+            return Logger.shared.log("api_get_material is wrong")
         }
         
         let resouces = [#keyPath(Material.fuel), #keyPath(Material.bull), #keyPath(Material.steel), #keyPath(Material.bauxite)]

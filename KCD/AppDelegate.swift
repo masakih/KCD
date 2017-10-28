@@ -16,7 +16,7 @@ final class AppDelegate: NSObject {
         // swiftlint:disable:next force_cast
         return NSApplication.shared.delegate as! AppDelegate
     }
-    
+        
     let appNameForUserAgent: String = "KCD(1.9b17) is not Safari/603.3.8"
     let fleetManager: FleetManager = FleetManager()
     
@@ -172,8 +172,7 @@ extension AppDelegate {
         
         guard let path = Bundle.main.path(forResource: "RemoveDatabaseFileAndRestart", ofType: "app") else {
             
-            print("Can not find RemoveDatabaseFileAndRestart.app")
-            return
+            return Logger.shared.log("Can not find RemoveDatabaseFileAndRestart.app")
         }
         
         let process = Process()

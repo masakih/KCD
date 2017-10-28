@@ -57,8 +57,7 @@ final class KenzoDockStatus: NSObject {
         guard let state = state as? Int,
             let s = DockState(rawValue: state) else {
                 
-                print("unknown State")
-                return
+                return Logger.shared.log("unknown State")
         }
         
         switch s {

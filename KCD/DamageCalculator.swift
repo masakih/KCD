@@ -237,8 +237,7 @@ extension DamageCalculator {
             
             guard newDamages.count == 12 else {
                 
-                print("ERROR!!!! CAN NOT CREATE DAMAGE OBJECT")
-                return []
+                return Logger.shared.log("ERROR!!!! CAN NOT CREATE DAMAGE OBJECT", value: [])
             }
             
             return newDamages
@@ -260,12 +259,12 @@ extension DamageCalculator {
     
     private func buildDamagesOfFleet(fleet: Int, ships: [Ship]) {
         
-        guard case 0...1 = fleet else { return print("fleet must 0 or 1.") }
-        guard let battle = store.battle() else { return print("Battle is invalid.") }
+        guard case 0...1 = fleet else { return Logger.shared.log("fleet must 0 or 1.") }
+        guard let battle = store.battle() else { return Logger.shared.log("Battle is invalid.") }
         
         (0..<6).forEach {
             
-            guard let damage = store.createDamage() else { return print("Can not create Damage") }
+            guard let damage = store.createDamage() else { return Logger.shared.log("Can not create Damage") }
             
             damage.battle = battle
             damage.id = $0 + fleet * 6
@@ -279,7 +278,7 @@ extension DamageCalculator {
     
     private func buildDamagedEntity() {
         
-        guard let battle = store.battle() else { return print("Battle is invalid.") }
+        guard let battle = store.battle() else { return Logger.shared.log("Battle is invalid.") }
         
         // 第一艦隊
         let firstFleetShips = ServerDataStore.default.ships(byDeckId: battle.deckId)
@@ -305,8 +304,7 @@ extension DamageCalculator {
         
         guard list.count - 1 == targetArraysArray.count else {
             
-            print("api_df_list is wrong")
-            return nil
+            return Logger.shared.log("api_df_list is wrong", value: nil)
         }
         
         return targetArraysArray
@@ -381,7 +379,7 @@ extension DamageCalculator {
                 return
         }
         
-        guard targetPosLists.count == damageLists.count else { return print("api_damage is wrong.") }
+        guard targetPosLists.count == damageLists.count else { return Logger.shared.log("api_damage is wrong.") }
         
         let eFlags = enemyFlags(baseValue["api_at_eflag"])
         
@@ -405,8 +403,7 @@ extension DamageCalculator {
                 
                 guard let damagePos = position(targetPos, in: battleFleet) else {
                     
-                    print("damage pos is larger than damage count")
-                    return
+                    return Logger.shared.log("damage pos is larger than damage count")
                 }
                 
                 calcHP(damage: damages[damagePos], receive: damage)

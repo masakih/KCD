@@ -112,8 +112,7 @@ extension CalculateDamageCommand {
         
         guard totalDamages.count == 12 else {
             
-            print("Damages count is invalid. count is \(totalDamages.count).")
-            return
+            return Logger.shared.log("Damages count is invalid. count is \(totalDamages.count).")
         }
         
         let aStore = ServerDataStore.oneTimeEditor()
@@ -142,8 +141,7 @@ extension CalculateDamageCommand {
         
         guard let battle = store.battle() else {
             
-            print("Battle is invalid.")
-            return
+            return Logger.shared.log("Battle is invalid.")
         }
         
         battle.battleCell = (battle.no == 0 ? nil : battle.no as NSNumber)

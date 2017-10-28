@@ -70,8 +70,7 @@ private let shortSTypeNames: [String] = {
     guard let url = Bundle.main.url(forResource: "STypeShortName", withExtension: "plist"),
         let array = NSArray(contentsOf: url) as? [String] else {
             
-            print("Can not load STypeShortName.plist.")
-            return []
+            return Logger.shared.log("Can not load STypeShortName.plist.", value: [])
     }
     
     return array
@@ -82,8 +81,7 @@ private let levelUpExps: [Int] = {
     guard let url = Bundle.main.url(forResource: "LevelUpExp", withExtension: "plist"),
         let array = NSArray(contentsOf: url) as? [Int] else {
             
-            print("Can not load LevelUpExp.plist.")
-            return []
+            return Logger.shared.log("Can not load LevelUpExp.plist.", value: [])
     }
     
     return array

@@ -15,8 +15,7 @@ final class RemodelSlotItemCommand: JSONCommand {
         guard let success = data["api_remodel_flag"].int, success != 0 else { return }
         guard let slotItemId = parameter["api_slot_id"].int else {
             
-            print("api_slot_id is wrong")
-            return
+            return Logger.shared.log("api_slot_id is wrong")
         }
         
         let afterSlot = data["api_after_slot"]
@@ -24,8 +23,7 @@ final class RemodelSlotItemCommand: JSONCommand {
         
         guard let slotItem = store.slotItem(by: slotItemId) else {
             
-            print("SlotItem not found")
-            return
+            return Logger.shared.log("SlotItem not found")
         }
 
         if let locked = afterSlot["api_locked"].int {

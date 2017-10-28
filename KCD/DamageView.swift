@@ -21,11 +21,7 @@ final class DamageView: NSView {
     @objc dynamic var damageType: Int = 0 {
         
         willSet {
-            guard let v = DamageType(rawValue: newValue) else {
-                
-                print("Can not set damageType")
-                return
-            }
+            guard let v = DamageType(rawValue: newValue) else { return Logger.shared.log("Can not set damageType") }
             
             if innerDamageType != v { needsDisplay = true }
             

@@ -44,8 +44,7 @@ final class BasicMapper: JSONMapper {
         
         guard let basic = store.basic() ?? store.createBasic() else {
             
-            print("Can not Get Basic")
-            return
+            return Logger.shared.log("Can not Get Basic")
         }
         
         registerElement(data, to: basic)

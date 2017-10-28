@@ -251,7 +251,7 @@ extension WindowManager {
                 
             } catch {
                 
-                print("Can not write to \(url)")
+                Logger.shared.log("Can not write to \(url)")
             }
         }
     }
@@ -282,7 +282,7 @@ extension WindowManager {
                 
             } catch {
                 
-                print("Can not load \(url)")
+                Logger.shared.log("Can not load \(url)")
             }
         }
     }

@@ -67,8 +67,7 @@ final class NyukyoDockStatus: NSObject {
         guard let state = state as? Int,
             let stat = DockState(rawValue: state) else {
                 
-                print("unknown State")
-                return
+                return Logger.shared.log("unknown State")
         }
         
         if stat == .empty {

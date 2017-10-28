@@ -25,8 +25,7 @@ final class DropShipHistoryCommand: JSONCommand {
         
         guard let battle = TemporaryDataStore.default.battle() else {
             
-            print("Can not get Battle")
-            return
+            return Logger.shared.log("Can not get Battle")
         }
         
         let mapAreaId = battle.mapArea
@@ -35,22 +34,19 @@ final class DropShipHistoryCommand: JSONCommand {
         
         guard let mapInfo = store.mapInfo(area: mapAreaId, no: battle.mapInfo) else {
             
-            print("KCMasterMapInfo is not found")
-            return
+            return Logger.shared.log("KCMasterMapInfo is not found")
         }
         
         guard let mapArea = store.mapArea(by: mapAreaId) else {
             
-            print("KCMasterMapArea is not found")
-            return
+            return Logger.shared.log("KCMasterMapArea is not found")
         }
         
         
         let localStore = LocalDataStore.oneTimeEditor()
         guard let new = localStore.createHiddenDropShipHistory() else {
             
-            print("Can not create HiddenDropShipHistory")
-            return
+            return Logger.shared.log("Can not create HiddenDropShipHistory")
         }
         
         new.shipName = shipName
@@ -72,8 +68,7 @@ final class DropShipHistoryCommand: JSONCommand {
                 
                 guard let new = store.createDropShipHistory() else {
                     
-                    print("Can not create DropShipHistory")
-                    return
+                    return Logger.shared.log("Can not create DropShipHistory")
                 }
                 
                 new.shipName = $0.shipName
