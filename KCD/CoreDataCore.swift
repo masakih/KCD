@@ -14,6 +14,8 @@ struct CoreDataConfiguration {
     let fileName: String
     let options: [AnyHashable: Any]
     let type: String
+    
+    // try remake data file, if model file modified.
     let tryRemake: Bool
     
     private static let defaultOptions: [AnyHashable: Any] = [
