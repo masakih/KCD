@@ -32,7 +32,6 @@ protocol CoreDataProvider {
     
     func save(errorHandler: (Error) -> Void)
     func save() throws
-    func removeDataFile()
 }
 
 protocol CoreDataAccessor: CoreDataProvider {
@@ -115,11 +114,6 @@ extension CoreDataProvider {
             throw CoreDataError.couldNotSave(error.localizedDescription)
             
         }
-    }
-    
-    func removeDataFile() {
-        
-        MOCGenerator(type(of: self).core.config).removeDataFile()
     }
     
     func presentOnMainThread(_ error: Error) {
