@@ -112,6 +112,8 @@
 		F44BC73D1E2A5D39004644E3 /* DropShipHistoryCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44BC73C1E2A5D39004644E3 /* DropShipHistoryCommand.swift */; };
 		F44BC73F1E2B1AD4004644E3 /* DummyShipCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44BC73E1E2B1AD4004644E3 /* DummyShipCommand.swift */; };
 		F44BC7411E2B263D004644E3 /* GuardShelterCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44BC7401E2B263D004644E3 /* GuardShelterCommand.swift */; };
+		F455DDC11FA4A6CD00CDE64D /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F455DDC01FA4A6CD00CDE64D /* Logger.swift */; };
+		F455DDC31FA4A9E400CDE64D /* LoggerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F455DDC21FA4A9E400CDE64D /* LoggerExtension.swift */; };
 		F45771231E1BCC7C008A9215 /* PeriodicNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45771221E1BCC7C008A9215 /* PeriodicNotifier.swift */; };
 		F45F3BE11E067A870009434E /* HistoryItemCleaner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45F3BE01E067A870009434E /* HistoryItemCleaner.swift */; };
 		F45F3BE31E06A60A0009434E /* UpgradableShipsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45F3BE21E06A60A0009434E /* UpgradableShipsWindowController.swift */; };
@@ -467,6 +469,8 @@
 		F44BC73C1E2A5D39004644E3 /* DropShipHistoryCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropShipHistoryCommand.swift; sourceTree = "<group>"; };
 		F44BC73E1E2B1AD4004644E3 /* DummyShipCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyShipCommand.swift; sourceTree = "<group>"; };
 		F44BC7401E2B263D004644E3 /* GuardShelterCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuardShelterCommand.swift; sourceTree = "<group>"; };
+		F455DDC01FA4A6CD00CDE64D /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		F455DDC21FA4A9E400CDE64D /* LoggerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerExtension.swift; sourceTree = "<group>"; };
 		F45771221E1BCC7C008A9215 /* PeriodicNotifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodicNotifier.swift; sourceTree = "<group>"; };
 		F45F3BDD1E0679D80009434E /* KCD-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KCD-Bridging-Header.h"; sourceTree = "<group>"; };
 		F45F3BE01E067A870009434E /* HistoryItemCleaner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryItemCleaner.swift; sourceTree = "<group>"; };
@@ -975,6 +979,8 @@
 				F4FC3E931E44A5D600E41228 /* AppDelegate.swift */,
 				F47B06DC1E97ECD4006711D9 /* WindowManager.swift */,
 				F491A4BB1E4B523C00D1E067 /* ApplicationDirecrories.swift */,
+				F455DDC01FA4A6CD00CDE64D /* Logger.swift */,
+				F455DDC21FA4A9E400CDE64D /* LoggerExtension.swift */,
 				F44AA26A1E82AD2E00EED8BE /* NSObjectExtension.swift */,
 				F4AF56851F7F6EF8004F4F4E /* NSNibExtension.swift */,
 				F4AF56841F7F6EF8004F4F4E /* NSUserInterfaceItemIdentifierExtension.swift */,
@@ -1582,6 +1588,7 @@
 				F4AC136D1E0802C000851147 /* PreferencePanelController.swift in Sources */,
 				F44BC6E91E232B15004644E3 /* KaisouLockCommand.swift in Sources */,
 				F4FF44D41FA0BB4D00039F21 /* BookmarkDataStoreAccessor.swift in Sources */,
+				F455DDC11FA4A6CD00CDE64D /* Logger.swift in Sources */,
 				F44BC6EF1E239FB1004644E3 /* RemodelSlotCommand.swift in Sources */,
 				F42A8FD41E3DD57E0099DC1D /* MasterSlotItemEquipType.swift in Sources */,
 				F4AA59161E1C9C5D001667AF /* ValueTransformerRegister.swift in Sources */,
@@ -1656,6 +1663,7 @@
 				F44BC7071E2670BB004644E3 /* CreateShipCommand.swift in Sources */,
 				F4CF25B61E34BAD500C02A66 /* AnchorageRepairManager.swift in Sources */,
 				F44BC6D31E22581D004644E3 /* ApplySuppliesCommand.swift in Sources */,
+				F455DDC31FA4A9E400CDE64D /* LoggerExtension.swift in Sources */,
 				F4D05BDB1E0F76A800688D66 /* ResourceViewController.swift in Sources */,
 				F47C3EA21E5EFCC800D97449 /* MasterUseItemMapper.swift in Sources */,
 				F4CF25AC1E33AB4400C02A66 /* TimeSignalNotifier.swift in Sources */,
