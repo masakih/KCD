@@ -119,7 +119,7 @@ extension CoreDataProvider {
     
     func removeDataFile() {
         
-        MOCGenerator.removeDataFile(type(of: self).core.config)
+        MOCGenerator(type(of: self).core.config).removeDataFile()
     }
     
     func presentOnMainThread(_ error: Error) {

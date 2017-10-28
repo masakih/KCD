@@ -26,7 +26,7 @@ final class MOCGenerator {
         return (model: model, coordinator: coordinator, moc: moc)
     }
     
-    static func removeDataFile(_ config: CoreDataConfiguration) {
+    func removeDataFile() {
         
         ["", "-wal", "-shm"]
             .map { config.fileName + $0 }
@@ -34,7 +34,7 @@ final class MOCGenerator {
             .forEach(removeFile)
     }
     
-    private static func removeFile(at url: URL) {
+    private func removeFile(at url: URL) {
         
         do {
             
@@ -76,7 +76,7 @@ final class MOCGenerator {
                 (error.code == 134130 || error.code == 134110),
                 config.tryRemake {
                 
-                MOCGenerator.removeDataFile(config)
+                removeDataFile()
                 
                 do {
                     
