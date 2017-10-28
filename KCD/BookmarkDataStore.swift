@@ -26,7 +26,7 @@ final class BookmarkDataStore: CoreDataManager {
     
     deinit {
         
-        save()
+        save(errorHandler: presentOnMainThread)
     }
     
     let context: NSManagedObjectContext

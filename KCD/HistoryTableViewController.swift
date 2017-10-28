@@ -78,7 +78,7 @@ class HistoryTableViewController: NSViewController {
             history.mark = !history.mark
         }
         
-        store.save()
+        store.save(errorHandler: store.presentOnMainThread)
     }
     
     override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {

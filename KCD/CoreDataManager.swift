@@ -16,9 +16,10 @@ enum CoreDataManagerType {
 
 enum CoreDataError: Error {
     
-    case applicationDirectoryIsFile
+    case saveLocationIsUnuseable
     case couldNotCreateModel
     case couldNotCreateCoordinator(String)
+    case couldNotSave(String)
 }
 
 protocol CoreDataProvider {
@@ -29,7 +30,8 @@ protocol CoreDataProvider {
     
     var context: NSManagedObjectContext { get }
     
-    func save()
+    func save(errorHandler: (Error) -> Void)
+    func save() throws
     func removeDataFile()
 }
 
@@ -55,45 +57,72 @@ protocol CoreDataManager: CoreDataAccessor {
 // MARK: - Extension
 extension CoreDataProvider {
     
-    func save() {
+    static func context(for type: CoreDataManagerType) -> NSManagedObjectContext {
         
-        if !context.commitEditing() {
+        switch type {
+        case .reader: return core.parentContext
             
-            print("\(String(describing: type(of: self))) unable to commit editing before saveing")
+        case .editor: return core.editorContext()
+        }
+    }
+    
+    func save(errorHandler: (Error) -> Void) {
+        
+        do {
             
-            return
+            try save()
+            
+        } catch {
+            
+            errorHandler(error)
+        }
+    }
+    
+    func save() throws {
+        
+        guard context.commitEditing() else {
+            
+            throw CoreDataError.couldNotSave("\(String(describing: type(of: self))) unable to commit editing before saveing")
         }
         
         do {
             
             try context.save()
             
-        } catch {
+        } catch (let error as NSError) {
             
-            presentOnMainThread(error)
+            throw CoreDataError.couldNotSave(error.localizedDescription)
         }
         
-        if let p = context.parent {
+        guard let parent = context.parent else { return }
+        
+        // save parent context
+        var catchedError: NSError? = nil
+        parent.performAndWait {
             
-            p.performAndWait {
-                do {
-                    
-                    try p.save()
-                    
-                } catch {
-                    
-                    self.presentOnMainThread(error)
-                }
+            do {
+                
+                try parent.save()
+                
+            } catch (let error as NSError) {
+                
+                catchedError = error
             }
+        }
+        
+        if let error = catchedError {
+            
+            throw CoreDataError.couldNotSave(error.localizedDescription)
+            
         }
     }
     
     func removeDataFile() {
         
-        removeAllDataFile(named: type(of: self).core.config.fileName)
+        MOCGenerator.removeDataFile(type(of: self).core.config)
     }
     
-    private func presentOnMainThread(_ error: Error) {
+    func presentOnMainThread(_ error: Error) {
         
         if Thread.isMainThread {
             
@@ -105,15 +134,6 @@ extension CoreDataProvider {
                 
                 _ = NSApp.presentError(error)
             }
-        }
-    }
-    
-    static func context(for type: CoreDataManagerType) -> NSManagedObjectContext {
-        
-        switch type {
-        case .reader: return core.parentContext
-            
-        case .editor: return core.editorContext()
         }
     }
 }

@@ -26,7 +26,7 @@ final class LocalDataStore: CoreDataManager {
     
     deinit {
         
-        save()
+        save(errorHandler: presentOnMainThread)
     }
     
     let context: NSManagedObjectContext

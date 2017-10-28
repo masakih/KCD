@@ -8,101 +8,108 @@
 
 import Cocoa
 
-func genarate(_ config: CoreDataConfiguration) throws -> (model: NSManagedObjectModel, coordinator: NSPersistentStoreCoordinator, moc: NSManagedObjectContext) {
+final class MOCGenerator {
     
-    let model = try createModel(config)
-    let coordinator = try getCoordinator(config, model)
-    let moc = createContext(coordinator)
+    let config: CoreDataConfiguration
     
-    return (model: model, coordinator: coordinator, moc: moc)
-}
-
-func removeAllDataFile(named name: String) {
-    
-    ["", "-wal", "-shm"]
-        .map { name + $0 }
-        .map(ApplicationDirecrories.support.appendingPathComponent)
-        .forEach(removeDataFile)
-}
-
-private func removeDataFile(at url: URL) {
-    
-    do {
+    init(_ config: CoreDataConfiguration) {
         
-        try FileManager.default.removeItem(at: url)
-        
-    } catch {
-        
-        print("Could not remove file for URL (\(url))")
-    }
-}
-
-// MARK: - NSManagedObjectContext and ...
-private  func createModel(_ config: CoreDataConfiguration) throws -> NSManagedObjectModel {
-    
-    guard let modelURL = Bundle.main.url(forResource: config.modelName, withExtension: "momd"),
-        let model = NSManagedObjectModel(contentsOf: modelURL) else {
-            
-            throw CoreDataError.couldNotCreateModel
+        self.config = config
     }
     
-    return model
-}
-
-private func getCoordinator(_ config: CoreDataConfiguration, _ model: NSManagedObjectModel) throws -> NSPersistentStoreCoordinator {
+    func genarate() throws -> (model: NSManagedObjectModel, coordinator: NSPersistentStoreCoordinator, moc: NSManagedObjectContext) {
+        
+        let model = try createModel()
+        let coordinator = try createCoordinator(model)
+        let moc = createContext(coordinator)
+        
+        return (model: model, coordinator: coordinator, moc: moc)
+    }
     
-    do {
+    static func removeDataFile(_ config: CoreDataConfiguration) {
         
-        return try createCoordinator(config, model)
+        ["", "-wal", "-shm"]
+            .map { config.fileName + $0 }
+            .map(ApplicationDirecrories.support.appendingPathComponent)
+            .forEach(removeFile)
+    }
+    
+    private static func removeFile(at url: URL) {
         
-    } catch (let error as NSError) {
-        
-        // Data Modelが更新されていたらストアファイルを削除してもう一度
-        if error.domain == NSCocoaErrorDomain,
-            (error.code == 134130 || error.code == 134110),
-            config.tryRemake {
+        do {
             
-            removeAllDataFile(named: config.fileName)
+            try FileManager.default.removeItem(at: url)
             
-            do {
+        } catch {
+            
+            print("Could not remove file for URL (\(url))")
+        }
+    }
+    
+    // MARK: - NSManagedObjectContext and ...
+    private func createModel() throws -> NSManagedObjectModel {
+        
+        guard let modelURL = Bundle.main.url(forResource: config.modelName, withExtension: "momd"),
+            let model = NSManagedObjectModel(contentsOf: modelURL) else {
                 
-                return try createCoordinator(config, model)
-                
-            } catch {
-                
-                print("Fail to create NSPersistentStoreCoordinator twice.")
-            }
+                throw CoreDataError.couldNotCreateModel
         }
         
-        throw error
-    }
-}
-
-private func createCoordinator(_ config: CoreDataConfiguration, _ model: NSManagedObjectModel) throws -> NSPersistentStoreCoordinator {
-    
-    if !checkDirectory(ApplicationDirecrories.support) {
-        
-        let failureReason = "Can not use directory \(ApplicationDirecrories.support.path)"
-        
-        throw CoreDataError.couldNotCreateCoordinator(failureReason)
+        return model
     }
     
-    let coordinator: NSPersistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
-    let url = ApplicationDirecrories.support.appendingPathComponent(config.fileName)
+    private func createCoordinator(_ model: NSManagedObjectModel) throws -> NSPersistentStoreCoordinator {
+        
+        if !checkDirectory(ApplicationDirecrories.support) {
+            
+            throw CoreDataError.saveLocationIsUnuseable
+        }
+        
+        do {
+            
+            return try makeCoordinator(model)
+            
+        } catch (let error as NSError) {
+            
+            // Data Modelが更新されていたらストアファイルを削除してもう一度
+            if error.domain == NSCocoaErrorDomain,
+                (error.code == 134130 || error.code == 134110),
+                config.tryRemake {
+                
+                MOCGenerator.removeDataFile(config)
+                
+                do {
+                    
+                    return try makeCoordinator(model)
+                    
+                } catch {
+                    
+                    print("Fail to create NSPersistentStoreCoordinator twice.")
+                }
+            }
+            
+            throw CoreDataError.couldNotCreateCoordinator(error.localizedDescription)
+        }
+    }
     
-    try coordinator.addPersistentStore(ofType: config.type,
-                                       configurationName: nil,
-                                       at: url,
-                                       options: config.options)
+    private func makeCoordinator(_ model: NSManagedObjectModel) throws -> NSPersistentStoreCoordinator {
+        
+        let coordinator: NSPersistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
+        let url = ApplicationDirecrories.support.appendingPathComponent(config.fileName)
+        try coordinator.addPersistentStore(ofType: config.type,
+                                           configurationName: nil,
+                                           at: url,
+                                           options: config.options)
+        
+        return coordinator
+    }
     
-    return coordinator
-}
-
-private func createContext(_ coordinator: NSPersistentStoreCoordinator) -> NSManagedObjectContext {
-    
-    let moc = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-    moc.persistentStoreCoordinator = coordinator
-    moc.undoManager = nil
-    
-    return moc
+    private func createContext(_ coordinator: NSPersistentStoreCoordinator) -> NSManagedObjectContext {
+        
+        let moc = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        moc.persistentStoreCoordinator = coordinator
+        moc.undoManager = nil
+        
+        return moc
+    }
 }

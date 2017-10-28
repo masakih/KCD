@@ -48,7 +48,8 @@ struct CoreDataCore {
         
         do {
             
-            (model, coordinator, parentContext) = try genarate(config)
+            let generator = MOCGenerator(config)
+            (model, coordinator, parentContext) = try generator.genarate()
             
         } catch {
             

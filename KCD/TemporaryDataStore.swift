@@ -29,7 +29,7 @@ final class TemporaryDataStore: CoreDataManager {
     
     deinit {
         
-        save()
+        save(errorHandler: presentOnMainThread)
     }
     
     let context: NSManagedObjectContext

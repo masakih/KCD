@@ -70,7 +70,7 @@ final class BookmarkManager: NSObject, NSMenuDelegate {
         
         DispatchQueue.main.asyncAfter(deadline: .now()) {
             
-            self.editorStore.save()
+            self.editorStore.save(errorHandler: self.editorStore.presentOnMainThread)
         }
         
         return new

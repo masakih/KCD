@@ -26,7 +26,7 @@ final class ResourceHistoryDataStore: CoreDataManager {
     
     deinit {
         
-        save()
+        save(errorHandler: presentOnMainThread)
     }
     
     let context: NSManagedObjectContext

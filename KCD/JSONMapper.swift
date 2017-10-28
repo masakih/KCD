@@ -175,7 +175,7 @@ extension JSONMapper {
         }
         
         finishOperating()
-        store.save()
+        store.save(errorHandler: store.presentOnMainThread)
     }
     
     func beginRegister(_ object: ObjectType) {}
