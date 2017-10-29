@@ -48,13 +48,11 @@ final class FleetManager: NSObject {
         
         if fleets[0].ships.isEmpty {
             
-            let center = NotificationCenter.default
-            weak var token: NSObjectProtocol!
-            token = center.addObserver(forName: .PortAPIReceived, object: nil, queue: nil) {_ in
-                
-                center.removeObserver(token)
-                DispatchQueue.main.async(execute: self.setupFleetController)
-                DispatchQueue.main.async(execute: self.setNewFleetNumberToShip)
+            NotificationCenter.default
+                .addObserverOnce(forName: .PortAPIReceived, object: nil, queue: nil) { _ in
+                    
+                    DispatchQueue.main.async(execute: self.setupFleetController)
+                    DispatchQueue.main.async(execute: self.setNewFleetNumberToShip)
             }
             
         } else {

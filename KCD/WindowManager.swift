@@ -122,12 +122,9 @@ final class WindowManager {
         browserWindowControllers.append(browser)
         browser.window?.makeKeyAndOrderFront(nil)
         
-        weak var token: NSObjectProtocol! = nil
-        
-        token = NotificationCenter.default
-            .addObserver(forName: NSWindow.willCloseNotification, object: browser.window, queue: nil) { [unowned self] notification in
+        NotificationCenter.default
+            .addObserverOnce(forName: NSWindow.willCloseNotification, object: browser.window, queue: nil) { [unowned self] notification in
                 
-                NotificationCenter.default.removeObserver(token)
                 if let obj = notification.object as? NSWindow,
                     let index = self.browserWindowControllers.index(where: { $0.window == obj }) {
                     
