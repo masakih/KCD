@@ -13,10 +13,10 @@ extension NotificationCenter {
     func addObserverOnce(forName name: NSNotification.Name?, object obj: Any?, queue: OperationQueue?, using block: @escaping (Notification) -> Void) {
         
         weak var token: NSObjectProtocol?
-        token = addObserver(forName: name, object: obj, queue: queue) {
+        token = addObserver(forName: name, object: obj, queue: queue) { [weak self] notification in
             
-            token.map(self.removeObserver)
-            block($0)
+            self.map { me in token.map(me.removeObserver) }
+            block(notification)
         }
     }
 }
