@@ -54,7 +54,6 @@ final class TimeSignalNotifier: NSObject {
         if UserDefaults.standard[.playNotifyTimeSignalSound] {
             
             notification.soundName = NSUserNotificationDefaultSoundName
-            
         }
         
         NSUserNotificationCenter.default.deliver(notification)

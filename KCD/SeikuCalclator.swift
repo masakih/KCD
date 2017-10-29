@@ -57,7 +57,6 @@ final class SeikuCalclator {
         return (0...4).map(seiku).reduce(0, +)
     }
     
-    
     private func slotItem(_ index: Int) -> SlotItem? {
         
         return ServerDataStore.default.slotItem(by: ship.slotItemId(index))
@@ -93,7 +92,6 @@ final class SeikuCalclator {
         let rate = bomberTypes.contains(type2) ? 0.25 : 0.2
         
         return (taiku + lv * rate) * sqrt(Double(itemCount))
-        
     }
     
     private func extraSeiku(_ index: Int) -> Double {

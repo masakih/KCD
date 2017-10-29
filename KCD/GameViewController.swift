@@ -180,7 +180,6 @@ extension GameViewController: WebFrameLoadDelegate, WebUIDelegate {
             } else {
                 
                 print("Caught exception in evaluteScript")
-                
             }
         }
         

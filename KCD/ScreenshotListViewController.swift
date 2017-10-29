@@ -271,7 +271,6 @@ final class ScreenshotListViewController: NSViewController {
         
         reloadHandler?()
         saveCache()
-        
     }
     
     private func saveCache() {

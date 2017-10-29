@@ -35,7 +35,6 @@ final class JSONTracker {
         } catch {
             
             print("JSONTracker Cought Exception -> \(error)")
-            
         }
     }
     
