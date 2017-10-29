@@ -29,14 +29,19 @@ extension SlotItem {
         return master_slotItem.name
     }
     
+    private var equippedOrExShip: Ship? {
+        
+        return [equippedShip, extraEquippedShip].flatMap { $0 }.first
+    }
+    
     @objc dynamic var equippedShipName: String? {
         
-        return equippedShip?.name
+        return equippedOrExShip?.name
     }
     
     @objc dynamic var equippedShipLv: NSNumber? {
         
-        return equippedShip?.lv as NSNumber?
+        return equippedOrExShip?.lv as NSNumber?
     }
     
     @objc dynamic var masterSlotItemRare: Int {
