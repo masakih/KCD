@@ -177,6 +177,7 @@
 		F494DC6A18C8BAB900AE97E4 /* PowerUpSupportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F494DC6818C8BAB900AE97E4 /* PowerUpSupportViewController.xib */; };
 		F495462E1B1894DD00E0D8D0 /* Bookmark.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F495462C1B1894DD00E0D8D0 /* Bookmark.xcdatamodeld */; };
 		F49688671B3EA16800D3CEDE /* RemoveDatabaseFileAndRestart.app in Resources */ = {isa = PBXBuildFile; fileRef = F49688661B3EA16800D3CEDE /* RemoveDatabaseFileAndRestart.app */; };
+		F49748CA1FA5A90F00ECF138 /* NotificationCenterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49748C91FA5A90F00ECF138 /* NotificationCenterExtension.swift */; };
 		F49AABE61DFC48F300E0B24F /* MainTouchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = F49AABE51DFC48F300E0B24F /* MainTouchBar.xib */; };
 		F49AABE81DFD33FB00E0B24F /* HistoryWindowTouchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = F49AABE71DFD33FB00E0B24F /* HistoryWindowTouchBar.xib */; };
 		F49AABF21DFD53A300E0B24F /* SlotItemWindowTouchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = F49AABF11DFD53A300E0B24F /* SlotItemWindowTouchBar.xib */; };
@@ -542,6 +543,7 @@
 		F494DC5918C23E4400AE97E4 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F495462D1B1894DD00E0D8D0 /* Bookmark.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bookmark.xcdatamodel; sourceTree = "<group>"; };
 		F49688661B3EA16800D3CEDE /* RemoveDatabaseFileAndRestart.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = RemoveDatabaseFileAndRestart.app; sourceTree = "<group>"; };
+		F49748C91FA5A90F00ECF138 /* NotificationCenterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterExtension.swift; sourceTree = "<group>"; };
 		F497F6231D5B7CCA00A8F609 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/MainMenu.strings"; sourceTree = "<group>"; };
 		F497F63A1D5B7CE300A8F609 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/Makefile"; sourceTree = "<group>"; };
 		F497F63B1D5B7CE400A8F609 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/Localizable.strings.sed"; sourceTree = "<group>"; };
@@ -770,6 +772,7 @@
 				F4AF56851F7F6EF8004F4F4E /* NSNibExtension.swift */,
 				F4AF56841F7F6EF8004F4F4E /* NSUserInterfaceItemIdentifierExtension.swift */,
 				F4CC5C081F88DBD50006B3FA /* NSPredicateExtension.swift */,
+				F49748C91FA5A90F00ECF138 /* NotificationCenterExtension.swift */,
 			);
 			name = Mics;
 			sourceTree = "<group>";
@@ -1768,6 +1771,7 @@
 				F44BC7371E2A4258004644E3 /* SetPlaneCommand.swift in Sources */,
 				F4BDEEB41E74017800D689AE /* MasterFurniture.swift in Sources */,
 				F42CFE281E3D9A02000B4F9B /* MasterMapInfo.swift in Sources */,
+				F49748CA1FA5A90F00ECF138 /* NotificationCenterExtension.swift in Sources */,
 				F4AA594C1E1E497C001667AF /* EquipmentWindowController.swift in Sources */,
 				F4BDEEB61E74025700D689AE /* MasterUseItem.swift in Sources */,
 				F4CF25B41E34A38F00C02A66 /* ResourceHistoryManager.swift in Sources */,
