@@ -8,11 +8,6 @@
 
 import Cocoa
 
-extension Notification.Name {
-    
-    static let DidPrepareFleet = Notification.Name("com.masakih.KCD.Notification.DidPrepareFleet")
-}
-
 final class FleetManager: NSObject {
     
     override init() {
@@ -31,7 +26,6 @@ final class FleetManager: NSObject {
             
             setNewFleetNumberToShip()
             return
-            
         }
         
         super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
@@ -59,14 +53,13 @@ final class FleetManager: NSObject {
             token = center.addObserver(forName: .PortAPIReceived, object: nil, queue: nil) {_ in
                 
                 center.removeObserver(token)
-                self.setupFleetController()
-                center.post(name: .DidPrepareFleet, object: self)
+                DispatchQueue.main.async(execute: self.setupFleetController)
+                DispatchQueue.main.async(execute: self.setNewFleetNumberToShip)
             }
             
         } else {
             
             setupFleetController()
-            
         }
     }
     

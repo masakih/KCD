@@ -79,12 +79,13 @@ extension ShipMasterDetailWindowController: NSTableViewDelegate {
             (shipsView, shipController),
             (fleetMemberView, fleetMemberController)
             ]
+            .lazy
             .filter { $0.0 == tableView }
+            .flatMap { $0.1 }
             .first
         
-        guard let selectedObjects = controller?.1.selectedObjects as? [Ship] else { return }
-        guard selectedObjects.count != 0 else { return }
+        guard let selectedObjects = controller?.selectedObjects as? [Ship] else { return }
         
-        selectedShip = selectedObjects[0]
+        selectedShip = selectedObjects.first
     }
 }

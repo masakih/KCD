@@ -750,6 +750,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F455DDC41FA4C81C00CDE64D /* Mics */ = {
+			isa = PBXGroup;
+			children = (
+				F45771221E1BCC7C008A9215 /* PeriodicNotifier.swift */,
+				F47215A11E1F38280083D3BC /* Queue.swift */,
+				F491A4BB1E4B523C00D1E067 /* ApplicationDirecrories.swift */,
+				F455DDC01FA4A6CD00CDE64D /* Logger.swift */,
+				F455DDC21FA4A9E400CDE64D /* LoggerExtension.swift */,
+				F40F976E1E67092600AE81BB /* ArrayExtensions.swift */,
+				F404AF561F2CDD1C00A006B8 /* DefaultKey.swift */,
+				F404AF611F2D8CAE00A006B8 /* DefaultKeys.swift */,
+				F48883461F2E2E9A0069E0C3 /* DefaultKeyExtendedValues.swift */,
+				F48883441F2E095F0069E0C3 /* DefaultSettings.swift */,
+				F46FEA3E1F81285D00E2427C /* Localizable.swift */,
+				F46FEA401F8128BB00E2427C /* LocalizedStrings.swift */,
+				F40F97701E68536400AE81BB /* FileManagerExtension.swift */,
+				F44AA26A1E82AD2E00EED8BE /* NSObjectExtension.swift */,
+				F4AF56851F7F6EF8004F4F4E /* NSNibExtension.swift */,
+				F4AF56841F7F6EF8004F4F4E /* NSUserInterfaceItemIdentifierExtension.swift */,
+				F4CC5C081F88DBD50006B3FA /* NSPredicateExtension.swift */,
+			);
+			name = Mics;
+			sourceTree = "<group>";
+		};
+		F455DDC51FA4C8F900CDE64D /* DeckBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				F4EE4AD71F18F43700AD92B4 /* DeckBuilderStructure.swift */,
+				F4EE4AD91F18F66A00AD92B4 /* DeckBuilder.swift */,
+			);
+			name = DeckBuilder;
+			sourceTree = "<group>";
+		};
 		F45F3BDC1E0575170009434E /* TouchBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -978,52 +1011,35 @@
 			children = (
 				F4FC3E931E44A5D600E41228 /* AppDelegate.swift */,
 				F47B06DC1E97ECD4006711D9 /* WindowManager.swift */,
-				F491A4BB1E4B523C00D1E067 /* ApplicationDirecrories.swift */,
-				F455DDC01FA4A6CD00CDE64D /* Logger.swift */,
-				F455DDC21FA4A9E400CDE64D /* LoggerExtension.swift */,
-				F44AA26A1E82AD2E00EED8BE /* NSObjectExtension.swift */,
-				F4AF56851F7F6EF8004F4F4E /* NSNibExtension.swift */,
-				F4AF56841F7F6EF8004F4F4E /* NSUserInterfaceItemIdentifierExtension.swift */,
-				F4CC5C081F88DBD50006B3FA /* NSPredicateExtension.swift */,
-				F40F976E1E67092600AE81BB /* ArrayExtensions.swift */,
-				F40F97701E68536400AE81BB /* FileManagerExtension.swift */,
 				F4AF56801F7BF0CF004F4F4E /* IntConvertable.swift */,
-				F404AF561F2CDD1C00A006B8 /* DefaultKey.swift */,
-				F48883461F2E2E9A0069E0C3 /* DefaultKeyExtendedValues.swift */,
-				F404AF611F2D8CAE00A006B8 /* DefaultKeys.swift */,
-				F48883441F2E095F0069E0C3 /* DefaultSettings.swift */,
-				F46FEA3E1F81285D00E2427C /* Localizable.swift */,
-				F46FEA401F8128BB00E2427C /* LocalizedStrings.swift */,
-				F44775881EF6AAD900287572 /* SakutekiCalculator.swift */,
-				F41A451A1F4917640066F83D /* SeikuCalclator.swift */,
-				F4BBA21E1F243CA900E68743 /* DamageCalculator.swift */,
-				F429FAAD1F619927006299ED /* TPValueCalculator.swift */,
 				F429FAAF1F62D769006299ED /* ShipType.swift */,
 				F42546911EF8002E00BE297E /* EquitType.swift */,
-				F4EE4AD71F18F43700AD92B4 /* DeckBuilderStructure.swift */,
-				F4EE4AD91F18F66A00AD92B4 /* DeckBuilder.swift */,
+				F455DDC41FA4C81C00CDE64D /* Mics */,
 				F4BEEFE21B0CD39B004702B8 /* Transformar&Formatter */,
 				F4C118F318A67B05005D5B25 /* CustomHTTPProtocol */,
-				F47215A11E1F38280083D3BC /* Queue.swift */,
 				F4FC3E8F1E437E1F00E41228 /* JSONReciever.swift */,
 				F4CF25A91E338ED000C02A66 /* JSONTracker.swift */,
 				F4CF25A71E325ABA00C02A66 /* APIResponse.swift */,
 				F4CF25BF1E36428400C02A66 /* MissionStatus.swift */,
 				F4CF25BD1E361F4600C02A66 /* NyukyoDockStatus.swift */,
+				F44775881EF6AAD900287572 /* SakutekiCalculator.swift */,
+				F41A451A1F4917640066F83D /* SeikuCalclator.swift */,
+				F4BBA21E1F243CA900E68743 /* DamageCalculator.swift */,
+				F429FAAD1F619927006299ED /* TPValueCalculator.swift */,
 				F4CF25BB1E34F67400C02A66 /* KenzoDockStatus.swift */,
 				F4CF25B91E34EB6600C02A66 /* BookmarkManager.swift */,
-				F45771221E1BCC7C008A9215 /* PeriodicNotifier.swift */,
 				F4CF25B51E34BAD500C02A66 /* AnchorageRepairManager.swift */,
 				F4CF25B31E34A38F00C02A66 /* ResourceHistoryManager.swift */,
 				F4CF25AF1E3455EA00C02A66 /* Fleet.swift */,
 				F4CF25B11E34799400C02A66 /* FleetManager.swift */,
 				F45F3BE01E067A870009434E /* HistoryItemCleaner.swift */,
 				F4CF25AB1E33AB4400C02A66 /* TimeSignalNotifier.swift */,
-				F45F3BDC1E0575170009434E /* TouchBar */,
+				F4BEEEA818D88FF30006F70C /* CoreData */,
 				F47C3EBF1E62A4C800D97449 /* JSONMapper */,
 				F4D2CBBF18ACE7D7000EBC59 /* Command */,
 				F4BEEEA918D890660006F70C /* UI */,
-				F4BEEEA818D88FF30006F70C /* CoreData */,
+				F45F3BDC1E0575170009434E /* TouchBar */,
+				F455DDC51FA4C8F900CDE64D /* DeckBuilder */,
 				F4BDEB4D187252F30069D0CE /* Supporting Files */,
 				F45F3BDD1E0679D80009434E /* KCD-Bridging-Header.h */,
 			);

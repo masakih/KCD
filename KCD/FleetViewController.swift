@@ -254,10 +254,13 @@ final class FleetViewController: NSViewController {
         }
         fleetNumber = 1
         
-        NotificationCenter.default
-            .addObserver(forName: .DidPrepareFleet, object: nil, queue: nil) { [weak self] _ in
+        // 初回起動時などデータがまだない時はportAPIを受信後設定する
+        weak var token: NSObjectProtocol?
+        token = NotificationCenter.default
+            .addObserver(forName: .PortAPIReceived, object: nil, queue: nil) { [weak self] _ in
                 
-                self?.notifyChangeValue(forKey: #keyPath(fleetNumber))
+                token.map(NotificationCenter.default.removeObserver)
+                self?.fleetNumber = 1
         }
         
         NotificationCenter

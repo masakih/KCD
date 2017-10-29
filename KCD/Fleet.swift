@@ -48,7 +48,6 @@ final class Fleet: NSObject {
             
             Logger.shared.log("Fetch error")
             return nil
-            
         }
         
         deck = deckController.content as? Deck
@@ -58,7 +57,6 @@ final class Fleet: NSObject {
     deinit {
         
         deckObserveKeys.forEach { deckController.removeObserver(self, forKeyPath: $0) }
-        
     }
     
     @objc override class func keyPathsForValuesAffectingValue(forKey key: String) -> Set<String> {
@@ -85,7 +83,7 @@ final class Fleet: NSObject {
         
         if context == &pDeckContext {
             
-            ships = (0..<6).flatMap { return self[$0] }
+            ships = (0..<6).flatMap { self[$0] }
             
             return
         }
