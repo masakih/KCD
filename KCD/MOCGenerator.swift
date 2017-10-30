@@ -58,6 +58,20 @@ final class MOCGenerator {
         return model
     }
     
+    private func isMigrationError(_ code: Int) -> Bool {
+        return [
+            NSPersistentStoreIncompatibleVersionHashError,
+            NSMigrationError,
+            NSMigrationConstraintViolationError,
+            NSMigrationCancelledError,
+            NSMigrationMissingSourceModelError,
+            NSMigrationMissingMappingModelError,
+            NSMigrationManagerSourceStoreError,
+            NSMigrationManagerDestinationStoreError,
+            NSEntityMigrationPolicyError
+        ].contains(code)
+    }
+    
     private func createCoordinator(_ model: NSManagedObjectModel) throws -> NSPersistentStoreCoordinator {
         
         if !checkDirectory(ApplicationDirecrories.support) {
@@ -73,7 +87,7 @@ final class MOCGenerator {
             
             // Data Modelが更新されていたらストアファイルを削除してもう一度
             if error.domain == NSCocoaErrorDomain,
-                (error.code == 134130 || error.code == 134110),
+                isMigrationError(error.code),
                 config.tryRemake {
                 
                 removeDataFile()
