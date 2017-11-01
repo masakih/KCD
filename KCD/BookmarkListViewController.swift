@@ -31,7 +31,7 @@ final class BookmarkListViewController: NSViewController {
     var editorController: BookmarkEditorViewController?
     
     // tableView support
-    var objectRange: CountableClosedRange = 0...0
+    var draggingRange: CountableClosedRange = 0...0
     
     override var nibName: NSNib.Name {
         
@@ -109,12 +109,12 @@ extension BookmarkListViewController: NSTableViewDelegate, NSTableViewDataSource
         guard let first = rowIndexes.first else { return }
         guard let last = rowIndexes.last else { return }
         
-        objectRange = first...last
+        draggingRange = first...last
     }
     
     func tableView(_ tableView: NSTableView, draggingSession session: NSDraggingSession, endedAt screenPoint: NSPoint, operation: NSDragOperation) {
         
-        objectRange = 0...0
+        draggingRange = 0...0
     }
     
     func tableView(_ tableView: NSTableView,
@@ -123,7 +123,7 @@ extension BookmarkListViewController: NSTableViewDelegate, NSTableViewDataSource
                    proposedDropOperation dropOperation: NSTableView.DropOperation) -> NSDragOperation {
         
         guard dropOperation == .above else { return [] }
-        guard !(objectRange ~= row) else { return [] }
+        guard !(draggingRange ~= row) else { return [] }
         guard let tableView = info.draggingSource() as? NSTableView, tableView == self.tableView else { return [] }
         
         return .move
