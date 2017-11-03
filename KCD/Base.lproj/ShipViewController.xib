@@ -342,7 +342,7 @@
                     </connections>
                 </textField>
                 <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="y27-Oc-ZPX">
-                    <rect key="frame" x="62" y="399" width="44" height="17"/>
+                    <rect key="frame" x="75" y="399" width="44" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="ZnJ-Q2-7ID">
                         <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" maximumFractionDigits="3" id="qbi-EQ-2Ta"/>
@@ -355,15 +355,15 @@
                     </connections>
                 </textField>
                 <segmentedControl verticalHuggingPriority="750" misplaced="YES" id="ii6-Wq-Zpd">
-                    <rect key="frame" x="110" y="396" width="209" height="21"/>
+                    <rect key="frame" x="123" y="396" width="196" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <segmentedCell key="cell" controlSize="small" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="fvt-PE-zAC">
                         <font key="font" metaFont="smallSystem"/>
                         <segments>
-                            <segment label="経験値" width="40" selected="YES"/>
-                            <segment label="能力値1" width="53" tag="1"/>
-                            <segment label="能力値2" width="55" tag="2"/>
-                            <segment label="能力値3" width="55" tag="3"/>
+                            <segment label="経験値" width="43" selected="YES"/>
+                            <segment label="能力値1" width="49" tag="1"/>
+                            <segment label="能力値2" width="49" tag="2"/>
+                            <segment label="能力値3" width="49" tag="3"/>
                         </segments>
                     </segmentedCell>
                     <connections>
