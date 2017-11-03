@@ -329,6 +329,11 @@ final class ScreenshotListViewController: NSViewController {
 // MARK: - IBAction
 extension ScreenshotListViewController {
     
+    @IBAction func reloadContent(_ sender: AnyObject?) {
+        
+        reloadData()
+    }
+    
     @IBAction func reloadData(_ sender: AnyObject?) {
         
         reloadData()
@@ -380,7 +385,6 @@ extension ScreenshotListViewController: NSCollectionViewDelegateFlowLayout {
         
         return NSSize(width: f, height: f)
     }
-    
     
     // Drag and Drop
     func collectionView(_ collectionView: NSCollectionView, canDragItemsAt indexPaths: Set<IndexPath>, with event: NSEvent) -> Bool {
