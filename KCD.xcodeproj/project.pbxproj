@@ -306,6 +306,9 @@
 		F4E5FF101E17A83D0026868C /* ScreenshotListWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5FF0F1E17A83D0026868C /* ScreenshotListWindowController.swift */; };
 		F4E5FF121E17D6850026868C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5FF111E17D6850026868C /* GameViewController.swift */; };
 		F4E5FF141E17F93B0026868C /* BroserWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5FF131E17F93B0026868C /* BroserWindowController.swift */; };
+		F4E6D5D91FAC6F2F009DA577 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F455DDC01FA4A6CD00CDE64D /* Logger.swift */; };
+		F4E6D5DA1FAC6F34009DA577 /* ApplicationDirecrories.swift in Sources */ = {isa = PBXBuildFile; fileRef = F491A4BB1E4B523C00D1E067 /* ApplicationDirecrories.swift */; };
+		F4E6D5DB1FAC6F5B009DA577 /* LoggerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F455DDC21FA4A9E400CDE64D /* LoggerExtension.swift */; };
 		F4E7802E18DC3AF00011BC4C /* LocalData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4E7802C18DC3AF00011BC4C /* LocalData.xcdatamodeld */; };
 		F4EE4AD81F18F43700AD92B4 /* DeckBuilderStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EE4AD71F18F43700AD92B4 /* DeckBuilderStructure.swift */; };
 		F4EE4ADA1F18F66A00AD92B4 /* DeckBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EE4AD91F18F66A00AD92B4 /* DeckBuilder.swift */; };
@@ -1842,9 +1845,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F42546931EFBE0D300BE297E /* EquitType.swift in Sources */,
-				F4CF25DF1E3A1D4100C02A66 /* EnhancementListItem.swift in Sources */,
 				F4CF25DC1E376D6600C02A66 /* main.swift in Sources */,
+				F4CF25DF1E3A1D4100C02A66 /* EnhancementListItem.swift in Sources */,
+				F42546931EFBE0D300BE297E /* EquitType.swift in Sources */,
+				F4E6D5D91FAC6F2F009DA577 /* Logger.swift in Sources */,
+				F4E6D5DB1FAC6F5B009DA577 /* LoggerExtension.swift in Sources */,
+				F4E6D5DA1FAC6F34009DA577 /* ApplicationDirecrories.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2447,12 +2453,12 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "EquipmentEnhancementListBuilder/EquipmentEnhancementListBuilder-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -2466,11 +2472,11 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "EquipmentEnhancementListBuilder/EquipmentEnhancementListBuilder-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
