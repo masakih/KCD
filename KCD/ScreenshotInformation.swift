@@ -20,6 +20,12 @@ final class ScreenshotInformation: NSObject, NSCoding {
     
     @objc let url: URL
     
+    @objc lazy var image: NSImage? = {
+        
+        guard let image = NSImage(contentsOf: url) else { return Logger.shared.log("Can not load image", value: nil) }
+        return image
+    }()
+    
     @objc var creationDate: Date? {
         
         let attr = try? url.resourceValues(forKeys: [.creationDateKey])
