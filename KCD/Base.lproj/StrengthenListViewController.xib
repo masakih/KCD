@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13529"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -68,7 +68,7 @@
                                 <tableViewGridLines key="gridStyleMask" horizontal="YES"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn width="306" minWidth="40" maxWidth="1000" id="j4m-Vi-Tl9">
+                                    <tableColumn identifier="" width="306" minWidth="40" maxWidth="1000" id="j4m-Vi-Tl9">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -368,17 +368,17 @@
                     </scroller>
                 </scrollView>
                 <segmentedControl verticalHuggingPriority="750" misplaced="YES" id="K6N-di-SOa">
-                    <rect key="frame" x="4" y="346" width="315" height="20"/>
+                    <rect key="frame" x="4" y="346" width="315" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <segmentedCell key="cell" controlSize="small" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="Ury-Lz-cPA">
                         <font key="font" metaFont="smallSystem"/>
                         <segments>
-                            <segment label="All" width="41" selected="YES"/>
-                            <segment label="主砲" width="42" tag="1"/>
-                            <segment label="副砲/魚雷/機銃" width="74"/>
-                            <segment label="航空機"/>
-                            <segment label="電探/対潜" width="53"/>
-                            <segment label="そのた"/>
+                            <segment label="All" width="37" selected="YES"/>
+                            <segment label="主砲" width="40" tag="1"/>
+                            <segment label="副砲/魚雷/機銃" width="88"/>
+                            <segment label="航空機" width="43"/>
+                            <segment label="電探/対潜" width="60"/>
+                            <segment label="そのた" width="41"/>
                         </segments>
                     </segmentedCell>
                     <connections>

@@ -62,7 +62,7 @@
                 <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yAb-DI-6ut">
                     <rect key="frame" x="207" y="6" width="267" height="21"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="17" id="hwt-Fn-wJs"/>
+                        <constraint firstAttribute="height" constant="17" id="XIp-hm-YVf"/>
                     </constraints>
                     <sliderCell key="cell" continuous="YES" refusesFirstResponder="YES" state="on" alignment="left" minValue="0.20000000000000001" maxValue="0.90000000000000002" doubleValue="0.90000000000000002" tickMarkPosition="above" sliderType="linear" id="hO7-4z-A2O"/>
                     <connections>
@@ -73,8 +73,9 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vkb-uY-8tN">
                     <rect key="frame" x="6" y="8" width="197" height="17"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="193" id="Dzl-ia-8qS"/>
-                        <constraint firstAttribute="height" constant="17" id="guK-c8-dLQ"/>
+                        <constraint firstAttribute="width" constant="193" id="Ifi-Y0-SQ0"/>
+                        <constraint firstAttribute="height" constant="17" id="dWO-hq-MmN"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="193" id="i0z-t7-7Pe"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="rWY-Vt-N4T">
                         <font key="font" metaFont="system"/>
@@ -91,15 +92,15 @@
                 </textField>
             </subviews>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="vkb-uY-8tN" secondAttribute="bottom" constant="8" id="PfF-7V-b9m"/>
-                <constraint firstItem="vkb-uY-8tN" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="8" id="U2X-gh-3E4"/>
+                <constraint firstAttribute="bottom" secondItem="vkb-uY-8tN" secondAttribute="bottom" constant="8" id="2zb-uv-Uh7"/>
+                <constraint firstItem="vkb-uY-8tN" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="8" id="RjQ-sf-DLj"/>
                 <constraint firstAttribute="trailing" secondItem="7U1-Yk-pgg" secondAttribute="trailing" id="Wx3-wj-ptE"/>
                 <constraint firstItem="7U1-Yk-pgg" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="Yix-uG-z25"/>
                 <constraint firstItem="7U1-Yk-pgg" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="Zdh-8d-J9U"/>
-                <constraint firstAttribute="trailing" secondItem="yAb-DI-6ut" secondAttribute="trailing" constant="8" id="aGW-zm-Jyq"/>
                 <constraint firstAttribute="bottom" secondItem="7U1-Yk-pgg" secondAttribute="bottom" constant="33" id="jlB-Hy-hgZ"/>
-                <constraint firstItem="yAb-DI-6ut" firstAttribute="leading" secondItem="vkb-uY-8tN" secondAttribute="trailing" constant="8" id="qnm-O9-zdZ"/>
-                <constraint firstAttribute="bottom" secondItem="yAb-DI-6ut" secondAttribute="bottom" constant="8" id="wQw-rB-Vex"/>
+                <constraint firstAttribute="bottom" secondItem="yAb-DI-6ut" secondAttribute="bottom" constant="8" id="jqK-sB-xEP"/>
+                <constraint firstItem="yAb-DI-6ut" firstAttribute="leading" secondItem="vkb-uY-8tN" secondAttribute="trailing" constant="8" id="kXa-oy-UWz"/>
+                <constraint firstAttribute="trailing" secondItem="yAb-DI-6ut" secondAttribute="trailing" constant="8" id="kYI-5T-hXR"/>
             </constraints>
             <point key="canvasLocation" x="72" y="135"/>
         </customView>
