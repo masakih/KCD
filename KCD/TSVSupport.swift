@@ -47,7 +47,6 @@ private struct LFSeparateLine {
     }
 }
 
-// swiftlint:disable type_body_length
 final class TSVSupport {
     
     private let store = LocalDataStore.oneTimeEditor()

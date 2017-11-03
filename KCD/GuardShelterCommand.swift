@@ -57,7 +57,7 @@ final class GuardShelterCommand: JSONCommand {
         let store = ServerDataStore.default
         
         switch damagedPos {
-        case 1...6: return store.deck(by: 1)?.shipId(of:damagedPos - 1)
+        case 1...6: return store.deck(by: 1)?.shipId(of: damagedPos - 1)
         case 7...12: return store.deck(by: 2)?.shipId(of: damagedPos - 6 - 1)
         default: return nil
         }

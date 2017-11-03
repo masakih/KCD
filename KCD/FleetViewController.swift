@@ -231,12 +231,12 @@ final class FleetViewController: NSViewController {
             sakutekiCalculator = Formula33(Int(factor))
         }
         
-        fleetController.bind(NSBindingName(#keyPath(NSArrayController.content)), to:self, withKeyPath:#keyPath(fleet), options:nil)
-        fleetController.addObserver(self, forKeyPath:"selection.name", context:nil)
+        fleetController.bind(NSBindingName(#keyPath(NSArrayController.content)), to: self, withKeyPath: #keyPath(fleet), options: nil)
+        fleetController.addObserver(self, forKeyPath: "selection.name", context: nil)
         shipKeys.forEach {
             
             let keyPath = "selection.\($0)"
-            fleetController.addObserver(self, forKeyPath:keyPath, context:&shipKeysContext)
+            fleetController.addObserver(self, forKeyPath: keyPath, context: &shipKeysContext)
         }
         
         buildAnchorageRepairHolder()
