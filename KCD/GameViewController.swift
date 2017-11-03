@@ -110,13 +110,34 @@ final class GameViewController: NSViewController {
     
     @IBAction func screenShot(_ sender: AnyObject?) {
         
-        let frame = webView.visibleRect
-        let screenshotBorder = UserDefaults.standard[.screenShotBorderWidth]
-        let f = frame.insetBy(dx: -screenshotBorder, dy: -screenshotBorder)
+        let frame = view.visibleRect
+//        let screenshotBorder = UserDefaults.standard[.screenShotBorderWidth]
+//        let f = frame.insetBy(dx: -screenshotBorder, dy: -screenshotBorder)
         
-        guard let rep = webView.bitmapImageRepForCachingDisplay(in: f) else { return }
+        guard let window = view.window else { return Logger.shared.log("Can not get window") }
         
-        webView.cacheDisplay(in: frame, to: rep)
+        let windowCoordinateFrame = view.convert(frame, to: nil)
+        
+        let screenCoordinsteFrame = window.convertToScreen(windowCoordinateFrame)
+        
+        guard let screen = NSScreen.main else { return Logger.shared.log("Can not get Screen") }
+        let scFrame = screen.frame
+        
+        guard let cxt = window.graphicsContext?.cgContext else { return Logger.shared.log("Cannot get Context") }
+        let deviceCoordinateFrame = cxt.convertToDeviceSpace(screenCoordinsteFrame)
+        let raio = deviceCoordinateFrame.size.width / screenCoordinsteFrame.size.width
+        
+        let trimRect = CGRect(x: raio * screenCoordinsteFrame.origin.x,
+                              y: raio * (scFrame.size.height - screenCoordinsteFrame.origin.y - screenCoordinsteFrame.size.height),
+                              width: raio * screenCoordinsteFrame.size.width,
+                              height: raio * screenCoordinsteFrame.size.height)
+        
+        guard let fullSizeImage = CGDisplayCreateImage(CGMainDisplayID()) else { return Logger.shared.log("Can not get Image") }
+        
+        guard let image = fullSizeImage.cropping(to: trimRect) else { return Logger.shared.log("Can not trim image") }
+        
+        let rep = NSBitmapImageRep(cgImage: image)
+        
         AppDelegate.shared.registerScreenshot(rep, fromOnScreen: .zero)
     }
     
