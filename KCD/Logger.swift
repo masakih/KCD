@@ -56,10 +56,7 @@ final class Logger {
     }
     func log<T>(_ message: String, value: T, function: String = #function, file: String = #file, line: Int = #line) -> T {
         
-        let logMessage = stringRepresentation(message, function: function, file: file, line: line)
-        
-        printToConsole(logMessage)
-        printToDestination(logMessage)
+        log(message, function: function, file: file, line: line)
         
         return value
     }
