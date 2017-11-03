@@ -108,16 +108,27 @@ final class GameViewController: NSViewController {
         window.endSheet(panelWindow)
     }
     
-    @IBAction func screenShot(_ sender: AnyObject?) {
+    func screenshotOld() {
+        
+        let frame = webView.visibleRect
+        let screenshotBorder = UserDefaults.standard[.screenShotBorderWidth]
+        let f = frame.insetBy(dx: -screenshotBorder, dy: -screenshotBorder)
+        
+        guard let rep = webView.bitmapImageRepForCachingDisplay(in: f) else { return }
+        
+        webView.cacheDisplay(in: frame, to: rep)
+        AppDelegate.shared.registerScreenshot(rep, fromOnScreen: .zero)
+    }
+    
+    @available(OSX 10.13, *)
+    func screenshot() {
         
         let frame = view.visibleRect
-//        let screenshotBorder = UserDefaults.standard[.screenShotBorderWidth]
-//        let f = frame.insetBy(dx: -screenshotBorder, dy: -screenshotBorder)
+        let screenshotBorder = UserDefaults.standard[.screenShotBorderWidth]
+        let f = frame.insetBy(dx: -screenshotBorder, dy: -screenshotBorder)
+        let windowCoordinateFrame = view.convert(f, to: nil)
         
         guard let window = view.window else { return Logger.shared.log("Can not get window") }
-        
-        let windowCoordinateFrame = view.convert(frame, to: nil)
-        
         let screenCoordinsteFrame = window.convertToScreen(windowCoordinateFrame)
         
         guard let screen = NSScreen.main else { return Logger.shared.log("Can not get Screen") }
@@ -139,6 +150,18 @@ final class GameViewController: NSViewController {
         let rep = NSBitmapImageRep(cgImage: image)
         
         AppDelegate.shared.registerScreenshot(rep, fromOnScreen: .zero)
+    }
+    
+    @IBAction func screenShot(_ sender: AnyObject?) {
+        
+        if #available(OSX 10.13, *) {
+            
+            screenshot()
+            
+        } else {
+            
+            screenshotOld()
+        }
     }
     
     override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
