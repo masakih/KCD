@@ -51,7 +51,7 @@ extension String {
     // delete api_ prefix.
     func keyByDeletingPrefix() -> String {
         
-        if self.characters.count < 5 { return self }
+        if self.count < 5 { return self }
         
         return String(self[index(startIndex, offsetBy: 4)...])
     }
