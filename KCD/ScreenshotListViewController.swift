@@ -473,9 +473,7 @@ extension ScreenshotListViewController: NSTouchBarDelegate {
             
             collectionSelectionDidChangeHandler = { [weak self] in
                 
-                guard let `self` = self else { return }
-                
-                self.scrubber.selectedIndex = $0
+                self?.scrubber.selectedIndex = $0
             }
         }
         
@@ -483,9 +481,7 @@ extension ScreenshotListViewController: NSTouchBarDelegate {
             
             reloadHandler = { [weak self] in
                 
-                guard let `self` = self else { return }
-                
-                self.scrubber.reloadData()
+                self?.scrubber.reloadData()
             }
         }
         
