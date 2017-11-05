@@ -9,6 +9,12 @@
 import Cocoa
 import Quartz
 
+protocol Previewable {
+    
+    var imageFrame: NSRect { get }
+    var view: NSView { get }
+}
+
 final class CollectionView: NSCollectionView {
     
     private var selectionObservation: NSKeyValueObservation?
@@ -144,7 +150,7 @@ extension CollectionView: QLPreviewPanelDataSource, QLPreviewPanelDelegate {
     
     func previewPanel(_ panel: QLPreviewPanel!, sourceFrameOnScreenFor item: QLPreviewItem!) -> NSRect {
         
-        guard let item = item as? ScreenshotCollectionViewItem else { return .zero }
+        guard let item = item as? Previewable else { return .zero }
         
         let frame = convert(item.imageFrame, from: item.view)
         let byWindow = convert(frame, to: nil)

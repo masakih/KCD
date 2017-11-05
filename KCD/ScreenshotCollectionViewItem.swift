@@ -63,7 +63,7 @@ final class ScreenshotCollectionViewItem: NSCollectionViewItem {
     }
 }
 
-extension ScreenshotCollectionViewItem: QLPreviewItem {
+extension ScreenshotCollectionViewItem: QLPreviewItem, Previewable {
     
     var previewItemURL: URL! {
         
