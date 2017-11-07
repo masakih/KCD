@@ -217,8 +217,8 @@ final class ScreenshotListViewController: NSViewController {
     
     func viewFrameDidChange(_ notification: Notification?) {
         
-        maxZoom = self.maxZoom(width: collectionView.frame.size.width)
-        zoom = min(zoom, maxZoom)
+        maxZoom = maxZoom(width: collectionView.frame.size.width)
+        if zoom > maxZoom { zoom = maxZoom }
     }
     
     private func realFromZoom(zoom: Double) -> CGFloat {
