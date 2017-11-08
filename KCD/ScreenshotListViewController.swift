@@ -8,21 +8,6 @@
 
 import Cocoa
 
-private struct CacheVersionInfo {
-    
-    let url: URL
-    
-    init(url: URL, version: Int = 0) {
-        
-        self.url = url
-        self.version = version
-    }
-    
-    private(set) var version: Int
-    
-    mutating func incrementVersion() { version = version + 1 }
-}
-
 extension NSUserInterfaceItemIdentifier {
     
     static let item = NSUserInterfaceItemIdentifier("item")
@@ -67,7 +52,6 @@ final class ScreenshotListViewController: NSViewController {
         return screenshotsController.selectedObjects as? [ScreenshotInformation] ?? []
     }
     
-    private var deletedPaths: [CacheVersionInfo] = []
     private var dirName: String {
         
         guard let name = Bundle.main.localizedInfoDictionary?["CFBundleName"] as? String,
@@ -106,19 +90,12 @@ final class ScreenshotListViewController: NSViewController {
         return url
     }
     
-    private var cachURL: URL {
-        
-        return screenshotSaveDirectoryURL.appendingPathComponent("Cache.db")
-    }
-    
     var indexPathsOfItemsBeingDragged: Set<IndexPath>?
     
     // MARK: - Function
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        screenshots.screenshots = loadCache()
         
         let nib = NSNib(nibNamed: ScreenshotCollectionViewItem.nibName, bundle: nil)
         collectionView.register(nib, forItemWithIdentifier: .item)
@@ -177,40 +154,20 @@ final class ScreenshotListViewController: NSViewController {
     
     func registerScreenshot(_ image: NSBitmapImageRep, fromOnScreen: NSRect) {
         
-        DispatchQueue(label: "Screenshot queue").async {
+        let register = ScreenshotRegister(screenshotSaveDirectoryURL)
+        
+        register.registerScreenshot(image, name: dirName) { url in
             
-            guard let data = image.representation(using: .jpeg, properties: [:]) else { return }
+            let info = ScreenshotInformation(url: url)
             
-            let url = self.screenshotSaveDirectoryURL
-                .appendingPathComponent(self.dirName)
-                .appendingPathExtension("jpg")
-            let pathURL = FileManager.default.uniqueFileURL(url)
+            self.screenshotsController.insert(info, atArrangedObjectIndex: 0)
+            let set: Set<IndexPath> = [NSIndexPath(forItem: 0, inSection: 0) as IndexPath]
+            self.collectionView.selectionIndexPaths = set
             
-            do {
+            self.collectionView.scrollToItems(at: set, scrollPosition: .nearestHorizontalEdge)
+            if UserDefaults.standard[.showsListWindowAtScreenshot] {
                 
-                try data.write(to: pathURL)
-                
-            } catch {
-                
-                print("Can not write image")
-                return
-            }
-            
-            DispatchQueue.main.async {
-                
-                let info = ScreenshotInformation(url: pathURL, version: self.cacheVersion(forUrl: pathURL))
-                
-                self.screenshotsController.insert(info, atArrangedObjectIndex: 0)
-                let set: Set<IndexPath> = [NSIndexPath(forItem: 0, inSection: 0) as IndexPath]
-                self.collectionView.selectionIndexPaths = set
-                
-                self.collectionView.scrollToItems(at: set, scrollPosition: .nearestHorizontalEdge)
-                if UserDefaults.standard[.showsListWindowAtScreenshot] {
-                    
-                    self.view.window?.makeKeyAndOrderFront(nil)
-                }
-                
-                self.saveCache()
+                self.view.window?.makeKeyAndOrderFront(nil)
             }
         }
     }
@@ -240,90 +197,13 @@ final class ScreenshotListViewController: NSViewController {
     
     private func reloadData() {
         
-        guard let f = try? FileManager.default.contentsOfDirectory(at: screenshotSaveDirectoryURL, includingPropertiesForKeys: nil) else {
-            
-            return Logger.shared.log("can not read list of screenshot directory")
-        }
-        
-        let imageTypes = NSImage.imageTypes
-        let ws = NSWorkspace.shared
-        let current = screenshots.screenshots
-        let newFiles: [URL] = f.flatMap {
-            
-            guard let type = try? ws.type(ofFile: $0.path) else { return nil }
-            
-            return imageTypes.contains(type) ? $0 : nil
-        }
-        
-        // なくなっているものを削除
-        let itemWithoutDeleting = current.filter { newFiles.contains($0.url) }
-        
-        // 新しいものを追加
-        let new: [ScreenshotInformation] = newFiles.flatMap { url in
-            
-            if itemWithoutDeleting.contains(where: { url == $0.url }) { return nil }
-            return ScreenshotInformation(url: url)
-        }
-        
-        screenshots.screenshots = itemWithoutDeleting + new
+        screenshots.screenshots = ScreenshotLoader(screenshotSaveDirectoryURL).merge(screenshots: [])
         
         collectionView.selectionIndexPaths = [NSIndexPath(forItem: 0, inSection: 0) as IndexPath]
         
         reloadHandler?()
-        saveCache()
     }
     
-    private func saveCache() {
-        
-        let data = NSKeyedArchiver.archivedData(withRootObject: screenshots.screenshots)
-        
-        do {
-            
-            try data.write(to: cachURL)
-            
-        } catch {
-            
-            print("Can not write cache: \(error)")
-        }
-    }
-    
-    private func loadCache() -> [ScreenshotInformation] {
-        
-        guard let data = try? Data(contentsOf: cachURL) else {
-            
-            return Logger.shared.log("can not load cach \(cachURL)", value: [])
-        }
-        
-        guard let l = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data),
-            let loaded = l as? [ScreenshotInformation] else {
-                
-                return Logger.shared.log("Can not decode \(cachURL)", value: [])
-        }
-        
-        return loaded
-    }
-    
-    private func incrementCacheVersion(forUrl url: URL) {
-        
-        let infos = deletedPaths.filter { $0.url == url }
-        
-        if var info = infos.first {
-            
-            info.incrementVersion()
-            
-        } else {
-            
-            deletedPaths.append(CacheVersionInfo(url: url))
-        }
-    }
-    
-    private func cacheVersion(forUrl url: URL) -> Int {
-        
-        return deletedPaths
-            .filter { $0.url == url }
-            .first?
-            .version ?? 0
-    }
 }
 
 // MARK: - IBAction
@@ -339,24 +219,26 @@ extension ScreenshotListViewController {
         reloadData()
     }
     
-    @IBAction func delete(_ sender: AnyObject?) {
+    private func moveToTrash(_ urls: [URL]) {
         
-        let list = selectionInformations
-            .map { $0.url.path }
+        let list = urls.map { $0.path }
             .map { "(\"\($0)\" as POSIX file)" }
             .joined(separator: " , ")
         let script = "tell application \"Finder\"\n"
-        + "    delete { \(list) }\n"
-        + "end tell"
+            + "    delete { \(list) }\n"
+            + "end tell"
         
         guard let aps = NSAppleScript(source: script) else { return }
         
         aps.executeAndReturnError(nil)
+    }
+    
+    @IBAction func delete(_ sender: AnyObject?) {
+        
+        let selectionURLs = selectionInformations.map { $0.url }
         
         let selectionIndexes = screenshotsController.selectionIndexes
         screenshotsController.remove(atArrangedObjectIndexes: selectionIndexes)
-        selectionInformations.forEach { incrementCacheVersion(forUrl: $0.url) }
-        saveCache()
         reloadHandler?()
         
         guard var index = selectionIndexes.first else { return }
@@ -366,11 +248,13 @@ extension ScreenshotListViewController {
             index = arrangedInformations.count - 1
         }
         collectionView.selectionIndexPaths = [NSIndexPath(forItem: index, inSection: 0) as IndexPath]
+        
+        moveToTrash(selectionURLs)
     }
     
     @IBAction func revealInFinder(_ sender: AnyObject?) {
         
-        let urls = arrangedInformations.map { $0.url }
+        let urls = selectionInformations.map { $0.url }
         NSWorkspace.shared.activateFileViewerSelecting(urls)
     }
 }
@@ -520,7 +404,7 @@ extension ScreenshotListViewController: NSScrubberDataSource, NSScrubberDelegate
     
     func scrubber(_ scrubber: NSScrubber, viewForItemAt index: Int) -> NSScrubberItemView {
         
-        guard arrangedInformations.count > index else { return NSScrubberImageItemView() }
+        guard case 0..<arrangedInformations.count = index else { return NSScrubberImageItemView() }
         
         let info = arrangedInformations[index]
         let itemView = NSScrubberImageItemView()
