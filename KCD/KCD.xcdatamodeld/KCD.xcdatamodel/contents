@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13240" systemVersion="16G29" minimumToolsVersion="Xcode 4.3" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="17B48" minimumToolsVersion="Xcode 4.3" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="AirBase" representedClassName="KCD.AirBase" syncable="YES">
         <attribute name="action_kind" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="area_id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
@@ -128,6 +128,7 @@
         <attribute name="required_defeat_count" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="sally_flag_0" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="sally_flag_1" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="sally_flag_2" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
     </entity>
     <entity name="MasterMission" representedClassName="KCD.MasterMission" syncable="YES">
         <attribute name="details" optional="YES" attributeType="String" syncable="YES"/>
@@ -365,7 +366,7 @@
         <element name="MasterFurniture" positionX="0" positionY="0" width="128" height="30"/>
         <element name="MasterMapArea" positionX="0" positionY="0" width="128" height="90"/>
         <element name="MasterMapCell" positionX="0" positionY="0" width="128" height="135"/>
-        <element name="MasterMapInfo" positionX="0" positionY="0" width="128" height="270"/>
+        <element name="MasterMapInfo" positionX="0" positionY="0" width="128" height="285"/>
         <element name="MasterMission" positionX="0" positionY="0" width="128" height="240"/>
         <element name="MasterShip" positionX="0" positionY="0" width="128" height="30"/>
         <element name="MasterSlotItem" positionX="0" positionY="0" width="128" height="585"/>
