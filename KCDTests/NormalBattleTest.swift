@@ -119,28 +119,28 @@ class NormalBattleTest: XCTestCase {
                     "api_kouku": [
                         "api_stage3": [
                             "api_fdam": [
-                                -1, 3, 0, 0, 0, 0, 0
+                                1, 0, 0
                             ]
                         ]
                     ],
                     "api_opening_atack": [
                         "api_fdam": [
-                            -1, 0, 3, 0, 0, 0, 0
+                            0, 2
                         ]
                     ],
                     "api_hougeki1": [
                         "api_df_list": [
-                            -1,
-                            [3, 3]
+                            [2, 2],
+                            [7, 7]
                         ],
                         "api_damage": [
-                            -1,
-                            [0, 1]
+                            [0, 3],
+                            [10, 10]
                         ]
                     ],
                     "api_raigeki": [
                         "api_fdam": [
-                            -1, 0, 0, 0, 1, 0, 0
+                            0, 0, 0, 4, 0, 6
                         ]
                     ]
                 ]
@@ -160,11 +160,9 @@ class NormalBattleTest: XCTestCase {
                 "api_data": [
                     "api_hougeki": [
                         "api_df_list": [
-                            -1,
-                            [5]
+                            [4]
                         ],
                         "api_damage": [
-                            -1,
                             [5]
                         ]
                     ]
@@ -198,12 +196,12 @@ class NormalBattleTest: XCTestCase {
             
             XCTAssertEqual(ships.count, 6)
             
-            XCTAssertEqual(ships[0].nowhp, shipsHp[0] - 3)
-            XCTAssertEqual(ships[1].nowhp, shipsHp[1] - 3)
-            XCTAssertEqual(ships[2].nowhp, shipsHp[2] - 1)
-            XCTAssertEqual(ships[3].nowhp, shipsHp[3] - 1)
+            XCTAssertEqual(ships[0].nowhp, shipsHp[0] - 1)
+            XCTAssertEqual(ships[1].nowhp, shipsHp[1] - 2)
+            XCTAssertEqual(ships[2].nowhp, shipsHp[2] - 3)
+            XCTAssertEqual(ships[3].nowhp, shipsHp[3] - 4)
             XCTAssertEqual(ships[4].nowhp, shipsHp[4] - 5)
-            XCTAssertEqual(ships[5].nowhp, shipsHp[5])
+            XCTAssertEqual(ships[5].nowhp, shipsHp[5] - 6)
         }
     }
     
@@ -231,16 +229,16 @@ class NormalBattleTest: XCTestCase {
                 "api_data": [
                     "api_hougeki": [
                         "api_df_list": [
-                            -1,
+                            [3],
                             [4],
                             [5],
-                            [6]
+                            [10]
                         ],
                         "api_damage": [
-                            -1,
                             [50],
                             [50],
-                            [50]
+                            [50],
+                            [20]
                         ]
                     ]
                 ]
