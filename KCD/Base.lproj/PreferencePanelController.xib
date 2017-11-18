@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13529"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -58,20 +58,20 @@
                 <userLayoutGuide location="201" affinity="minX"/>
             </userGuides>
             <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="tlH-Nm-il8">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="tlH-Nm-il8">
                     <rect key="frame" x="18" y="104" width="186" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="通知音を鳴らす：" id="KUF-ch-Mbw">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="通知音を鳴らす:" id="KUF-ch-Mbw">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="g4L-3q-nDD">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="g4L-3q-nDD">
                     <rect key="frame" x="18" y="69" width="186" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="時報前に通知する：" id="Q8p-Km-La7">
-                        <font key="font" size="13" name=".HiraKakuInterface-W3"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="時報前に通知する:" id="Q8p-Km-La7">
+                        <font key="font" usesAppearanceFont="YES"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -109,7 +109,7 @@
                         <binding destination="DTu-dT-pUA" name="value" keyPath="values.playFinishKenzoSound" id="pd6-Xj-i6f"/>
                     </connections>
                 </button>
-                <textField verticalHuggingPriority="750" id="haN-Ro-cP0">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="haN-Ro-cP0">
                     <rect key="frame" x="230" y="42" width="25" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" title="50" drawsBackground="YES" id="XSz-IL-ZdX">
@@ -125,11 +125,11 @@
                         <binding destination="DTu-dT-pUA" name="value" keyPath="values.notifyTimeBeforeTimeSignal" id="hLM-Tq-fQu"/>
                     </connections>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="AmI-fQ-lQ8">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="AmI-fQ-lQ8">
                     <rect key="frame" x="255" y="42" width="65" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="分前に通知" id="pDK-az-0ve">
-                        <font key="font" size="13" name=".HiraKakuInterface-W3"/>
+                        <font key="font" usesAppearanceFont="YES"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -139,7 +139,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="通知を行う" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="qQm-5V-vWT">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" size="13" name=".HiraKakuInterface-W3"/>
+                        <font key="font" usesAppearanceFont="YES"/>
                     </buttonCell>
                     <connections>
                         <binding destination="DTu-dT-pUA" name="value" keyPath="values.notifyTimeSignal" id="AJl-Gr-60d"/>
@@ -150,7 +150,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="通知音を鳴らす" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="k5r-Jr-bbg">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" size="13" name=".HiraKakuInterface-W3"/>
+                        <font key="font" usesAppearanceFont="YES"/>
                     </buttonCell>
                     <connections>
                         <binding destination="DTu-dT-pUA" name="value" keyPath="values.playNotifyTimeSignalSound" id="PXS-Ac-LWY"/>
@@ -166,10 +166,10 @@
                 <userLayoutGuide location="201" affinity="minX"/>
             </userGuides>
             <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="KN7-sy-a0j">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="KN7-sy-a0j">
                     <rect key="frame" x="18" y="354" width="186" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="スクリーンショットの保存先：" id="nxM-71-Zg6">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="スクリーンショットの保存先:" id="nxM-71-Zg6">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -194,10 +194,10 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="otX-MN-x7l">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="otX-MN-x7l">
                     <rect key="frame" x="18" y="262" width="186" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="参加作戦カラー：" id="6kd-P6-Bwt">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="参加作戦カラー:" id="6kd-P6-Bwt">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -226,16 +226,16 @@
                         </binding>
                     </connections>
                 </colorWell>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="5PE-z1-0Ij">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="5PE-z1-0Ij">
                     <rect key="frame" x="229" y="235" width="30" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="１：" id="WNG-o8-8aW">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="１:" id="WNG-o8-8aW">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="4gn-qG-kfh">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="4gn-qG-kfh">
                     <rect key="frame" x="269" y="84" width="181" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="日以上経過した履歴を削除" id="hCo-S7-Bxv">
@@ -256,10 +256,10 @@
                         </binding>
                     </connections>
                 </colorWell>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="p6j-a1-mSb">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="p6j-a1-mSb">
                     <rect key="frame" x="310" y="235" width="30" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="２：" id="Pzg-hJ-M2Q">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="２:" id="Pzg-hJ-M2Q">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -277,10 +277,10 @@
                         </binding>
                     </connections>
                 </colorWell>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="h3d-pw-NLI">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="h3d-pw-NLI">
                     <rect key="frame" x="391" y="235" width="30" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="３：" id="yiJ-tP-64S">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="３:" id="yiJ-tP-64S">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -309,10 +309,10 @@
                         </binding>
                     </connections>
                 </colorWell>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="OSN-EO-NJW">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="OSN-EO-NJW">
                     <rect key="frame" x="229" y="206" width="30" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="４：" id="gvs-zZ-7bl">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="４:" id="gvs-zZ-7bl">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -330,10 +330,10 @@
                         </binding>
                     </connections>
                 </colorWell>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="wrP-ky-n1g">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="wrP-ky-n1g">
                     <rect key="frame" x="310" y="206" width="30" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="５：" id="Qqm-cr-nBv">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="５:" id="Qqm-cr-nBv">
                         <font key="font" size="13" name="HiraKakuProN-W3"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -351,28 +351,28 @@
                         </binding>
                     </connections>
                 </colorWell>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="oUs-l4-bGp">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="oUs-l4-bGp">
                     <rect key="frame" x="391" y="206" width="30" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="６：" id="heb-je-e2Z">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="６:" id="heb-je-e2Z">
                         <font key="font" size="13" name="HiraKakuProN-W3"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="UVY-fV-YyH">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="UVY-fV-YyH">
                     <rect key="frame" x="18" y="168" width="186" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="連合艦隊表示：" id="tWu-Vc-uAA">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="連合艦隊表示:" id="tWu-Vc-uAA">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="755-fu-Xei">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="755-fu-Xei">
                     <rect key="frame" x="18" y="111" width="186" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="履歴：" id="fNC-6f-cqh">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="履歴:" id="fNC-6f-cqh">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -426,10 +426,10 @@
                         <binding destination="DTu-dT-pUA" name="value" keyPath="values.useSwipeChangeCombinedView" id="Rp3-Kb-2iV"/>
                     </connections>
                 </button>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="lsH-gX-tj2">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="lsH-gX-tj2">
                     <rect key="frame" x="18" y="296" width="186" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="スクリーンショットのツイート：" id="2Ab-V5-xRA">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="スクリーンショットのツイート:" id="2Ab-V5-xRA">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -446,7 +446,7 @@
                         <binding destination="DTu-dT-pUA" name="value" keyPath="values.appendKanColleTag" id="rYq-tJ-itc"/>
                     </connections>
                 </button>
-                <textField verticalHuggingPriority="750" id="vfF-Ib-CIc">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="vfF-Ib-CIc">
                     <rect key="frame" x="231" y="82" width="39" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="1000" drawsBackground="YES" id="vxw-Px-bUr">
@@ -458,7 +458,7 @@
                         <binding destination="DTu-dT-pUA" name="value" keyPath="values.cleanSiceDays" id="pCZ-Gk-0OI"/>
                     </connections>
                 </textField>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="Y4e-kx-BC6">
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" allowsCharacterPickerTouchBarItem="YES" id="Y4e-kx-BC6">
                     <rect key="frame" x="258" y="43" width="170" height="33"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="マークが付いた履歴とイベント海域のドロップ履歴は削除されません" id="NiL-Wb-wFs">
@@ -467,7 +467,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" id="4kc-Do-EnQ">
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" allowsCharacterPickerTouchBarItem="YES" id="4kc-Do-EnQ">
                     <rect key="frame" x="46" y="10" width="278" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="艦娘や装備のデータがおかしくなった時に使用します。" id="rTT-JC-pFN">
