@@ -229,16 +229,11 @@ extension DamageCalculator {
         
         let array = store.sortedDamagesById()
         
-        if array.count != 12 {
+        if array.isEmpty {
             
             buildDamagedEntity()
             
             let newDamages = store.sortedDamagesById()
-            
-            guard newDamages.count == 12 else {
-                
-                return Logger.shared.log("ERROR!!!! CAN NOT CREATE DAMAGE OBJECT", value: [])
-            }
             
             return newDamages
         }
@@ -264,13 +259,12 @@ extension DamageCalculator {
         
         (0..<6).forEach {
             
+            guard case 0..<ships.count = $0 else { return }
+            
             guard let damage = store.createDamage() else { return Logger.shared.log("Can not create Damage") }
             
             damage.battle = battle
             damage.id = $0 + fleet * 6
-            
-            guard case 0..<ships.count = $0 else { return }
-            
             damage.hp = ships[$0].nowhp
             damage.shipID = ships[$0].id
         }
@@ -302,7 +296,7 @@ extension DamageCalculator {
                 return nil
         }
         
-        guard list.count - 1 == targetArraysArray.count else {
+        guard list.count == targetArraysArray.count else {
             
             return Logger.shared.log("api_df_list is wrong", value: nil)
         }
@@ -317,7 +311,7 @@ extension DamageCalculator {
     
     private func enemyFlags(_ list: JSON) -> [Int]? {
         
-        return list.array?.flatMap { $0.int }.filter { $0 != -1 }
+        return list.array?.flatMap { $0.int }
     }
     
     private func isTargetFriend(eFlags: [Int]?, index: Int) -> Bool {
@@ -334,14 +328,14 @@ extension DamageCalculator {
         
         let upper = (battleFleet == .each ? 12 : 6)
         
-        return 1...upper ~= targetPos
+        return 0..<upper ~= targetPos
     }
     
     private func position(_ pos: Int, in fleet: BattleFleet) -> Int? {
         
         let shipOffset = (fleet == .second) ? 6 : 0
         
-        let damagePos = pos - 1 + shipOffset
+        let damagePos = pos + shipOffset
         
         guard case 0..<damages.count = damagePos else { return nil }
         
@@ -399,7 +393,7 @@ extension DamageCalculator {
             
             zip(list.0, list.1).forEach { (targetPos, damage) in
                 
-                guard validTargetPos(targetPos, in: battleFleet) else { return }
+                guard validTargetPos(targetPos, in: battleFleet) else { return Logger.shared.log("invalid position \(targetPos)") }
                 
                 guard let damagePos = position(targetPos, in: battleFleet) else {
                     
@@ -446,7 +440,7 @@ extension DamageCalculator {
         
         frendDamages.enumerated().forEach { (idx, damage) in
             
-            if idx == 0 { return }
+//            if idx == 0 { return }
             
             guard let damagePos = position(idx, in: battleFleet) else { return }
             
@@ -480,9 +474,11 @@ extension DamageCalculator {
             
             switch validDamageControl {
             case .damageControl:
+                Debug.print("Damage Control", level: .debug)
                 return Int(Double(ship.maxhp) * 0.2)
                 
             case .goddes:
+                Debug.print("Goddes", level: .debug)
                 return ship.maxhp
             }
         }
@@ -494,9 +490,11 @@ extension DamageCalculator {
         
         switch exType {
         case .damageControl:
+            Debug.print("Damage Control", level: .debug)
             return Int(Double(ship.maxhp) * 0.2)
             
         case .goddes:
+            Debug.print("Goddes", level: .debug)
             return ship.maxhp
         }
     }
