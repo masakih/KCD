@@ -45,12 +45,12 @@ final class SlotItemLevelView: NSTextField {
     @objc dynamic var slotItemController = NSObjectController()
     @objc dynamic var slotItemLevel: NSNumber? {
         
-        didSet { needsDisplay = true }
+        didSet { needsDisplayInMainThread() }
     }
     
     @objc dynamic var slotItemAlv: NSNumber? {
         
-        didSet { needsDisplay = true }
+        didSet { needsDisplayInMainThread() }
     }
     
     
@@ -61,7 +61,7 @@ final class SlotItemLevelView: NSTextField {
             guard let itemId = slotItemID as? Int else { return }
             
             slotItemController.content = ServerDataStore.default.slotItem(by: itemId)
-            needsDisplay = true
+            needsDisplayInMainThread()
         }
     }
     

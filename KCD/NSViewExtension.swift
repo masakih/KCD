@@ -14,4 +14,9 @@ extension NSView {
         
         (animate ? self.animator() : self).frame = frame
     }
+    
+    func needsDisplayInMainThread() {
+        
+        DispatchQueue.main.async { self.needsDisplay = true }
+    }
 }
