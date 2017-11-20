@@ -33,3 +33,11 @@ extension NSNumber: IntConvertable {
         return self.intValue
     }
 }
+
+extension NSNull: IntConvertable {
+    
+    func toInt() -> Int {
+        
+        return 0
+    }
+}
