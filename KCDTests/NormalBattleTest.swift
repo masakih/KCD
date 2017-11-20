@@ -136,6 +136,10 @@ class NormalBattleTest: XCTestCase {
                         "api_damage": [
                             [0, 3],
                             [10, 10]
+                        ],
+                        "api_at_eflag": [
+                            1,
+                            0
                         ]
                     ],
                     "api_raigeki": [
@@ -164,6 +168,9 @@ class NormalBattleTest: XCTestCase {
                         ],
                         "api_damage": [
                             [5]
+                        ],
+                        "api_at_eflag": [
+                            1
                         ]
                     ]
                 ]
@@ -239,6 +246,12 @@ class NormalBattleTest: XCTestCase {
                             [50],
                             [50],
                             [20]
+                        ],
+                        "api_at_eflag": [
+                            1,
+                            1,
+                            1,
+                            0
                         ]
                     ]
                 ]
