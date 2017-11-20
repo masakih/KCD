@@ -134,10 +134,7 @@ extension CalculateDamageCommand {
         
         let store = TemporaryDataStore.default
         
-        guard let battle = store.battle() else {
-            
-            return Logger.shared.log("Battle is invalid.")
-        }
+        guard let battle = store.battle() else { return Logger.shared.log("Battle is invalid.") }
         
         battle.battleCell = (battle.no == 0 ? nil : battle.no as NSNumber)
         

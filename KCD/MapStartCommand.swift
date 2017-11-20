@@ -60,10 +60,13 @@ final class MapStartCommand: JSONCommand {
             return Logger.shared.log("Can not create Battle")
         }
         
+        let kcd = ServerDataStore.default
+        
         battle.deckId = deckId
         battle.mapArea = mapArea
         battle.mapInfo = mapInfo
         battle.no = no
+        battle.firstFleetShipsCount = kcd.ships(byDeckId: deckId).count
     }
     
     private func nextCell() {

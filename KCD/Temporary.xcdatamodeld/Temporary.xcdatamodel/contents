@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16D32" minimumToolsVersion="Xcode 4.3" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="17B48" minimumToolsVersion="Xcode 4.3" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
     <entity name="Battle" representedClassName="KCD.Battle" syncable="YES">
         <attribute name="battleCell" optional="YES" attributeType="Integer 64" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="deckId" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="firstFleetShipsCount" optional="YES" attributeType="Integer 64" defaultValueString="1" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="isBossCell" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="mapArea" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="mapInfo" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
@@ -21,7 +22,7 @@
         <attribute name="shipID" attributeType="Integer 64" defaultValueString="-1" usesScalarValueType="NO" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Battle" positionX="-63" positionY="-18" width="128" height="150"/>
+        <element name="Battle" positionX="-63" positionY="-18" width="128" height="165"/>
         <element name="Damage" positionX="-54" positionY="18" width="128" height="120"/>
         <element name="GuardEscaped" positionX="-54" positionY="27" width="128" height="75"/>
     </elements>

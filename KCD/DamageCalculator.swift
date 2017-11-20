@@ -233,9 +233,7 @@ extension DamageCalculator {
             
             buildDamagedEntity()
             
-            let newDamages = store.sortedDamagesById()
-            
-            return newDamages
+            return store.sortedDamagesById()
         }
         
         return array
@@ -257,16 +255,14 @@ extension DamageCalculator {
         guard case 0...1 = fleet else { return Logger.shared.log("fleet must 0 or 1.") }
         guard let battle = store.battle() else { return Logger.shared.log("Battle is invalid.") }
         
-        (0..<6).forEach {
-            
-            guard case 0..<ships.count = $0 else { return }
+        zip(ships, (0...)).forEach { ship, index in
             
             guard let damage = store.createDamage() else { return Logger.shared.log("Can not create Damage") }
             
             damage.battle = battle
-            damage.id = $0 + fleet * 6
-            damage.hp = ships[$0].nowhp
-            damage.shipID = ships[$0].id
+            damage.hp = ship.nowhp
+            damage.shipID = ship.id
+            damage.id = index
         }
     }
     
@@ -279,8 +275,11 @@ extension DamageCalculator {
         buildDamagesOfFleet(fleet: 0, ships: firstFleetShips)
         
         // 第二艦隊
-        let secondFleetShips = ServerDataStore.default.ships(byDeckId: 2)
-        buildDamagesOfFleet(fleet: 1, ships: secondFleetShips)
+        if isCombinedBattle {
+            
+            let secondFleetShips = ServerDataStore.default.ships(byDeckId: 2)
+            buildDamagesOfFleet(fleet: 1, ships: secondFleetShips)
+        }
     }
 }
 
@@ -314,26 +313,19 @@ extension DamageCalculator {
         return list.array?.flatMap { $0.int }
     }
     
-    private func isTargetFriend(eFlags: [Int]?, index: Int) -> Bool {
-        
-        if let eFlags = eFlags, 0..<eFlags.count ~= index {
-            
-            return eFlags[index] == 1
-        }
-        
-        return true
-    }
-    
     private func validTargetPos(_ targetPos: Int, in battleFleet: BattleFleet) -> Bool {
         
-        let upper = (battleFleet == .each ? 12 : 6)
+        return 0..<damages.count ~= targetPos
+    }
+    
+    private func firstFleetShipsCount() -> Int {
         
-        return 0..<upper ~= targetPos
+        return store.battle()?.firstFleetShipsCount ?? 6
     }
     
     private func position(_ pos: Int, in fleet: BattleFleet) -> Int? {
         
-        let shipOffset = (fleet == .second) ? 6 : 0
+        let shipOffset = (fleet == .second) ? firstFleetShipsCount() : 0
         
         let damagePos = pos + shipOffset
         
@@ -351,15 +343,20 @@ extension DamageCalculator {
         guard let ship = ServerDataStore.default.ship(by: damage.shipID) else { return }
         
         damage.hp = damageControlIfPossible(ship: ship)
-        if damage.hp != 0 {
-            
-            damage.useDamageControl = true
-        }
+        damage.useDamageControl = (damage.hp != 0)
+        
     }
     
     private func calculateHogeki(baseKeyPath: String, _ bf: () -> BattleFleet) {
         
         calculateHogeki(baseKeyPath: baseKeyPath, battleFleet: bf())
+    }
+    
+    private func omitEnemyDamage(targetPosLists: [[Int]], damageLists: [[Int]], eFlags: [Int]?) -> [([Int], [Int])] {
+        
+        guard let eFlags = eFlags else { return zip(targetPosLists, damageLists).map { $0 } }
+        
+        return zip(zip(targetPosLists, damageLists), eFlags).filter { $0.1 == 1 }.map { $0.0 }
     }
     
     private func calculateHogeki(baseKeyPath: String, battleFleet: BattleFleet = .first) {
@@ -375,23 +372,15 @@ extension DamageCalculator {
         
         guard targetPosLists.count == damageLists.count else { return Logger.shared.log("api_damage is wrong.") }
         
-        let eFlags = enemyFlags(baseValue["api_at_eflag"])
-        
         Debug.print("Start Hougeki \(baseKeyPath)", level: .debug)
         
-        zip(targetPosLists, damageLists).enumerated().forEach { (i, list) in
+        let enemyOmitedDamages = omitEnemyDamage(targetPosLists: targetPosLists,
+                                                 damageLists: damageLists,
+                                                 eFlags: enemyFlags(baseValue["api_at_eflag"]))
+        
+        enemyOmitedDamages.forEach { (targetPosList, damageList) in
             
-            if !isTargetFriend(eFlags: eFlags, index: i) {
-                
-                Debug.excute(level: .debug) {
-                    
-                    print("target is enemy")
-                }
-                
-                return
-            }
-            
-            zip(list.0, list.1).forEach { (targetPos, damage) in
+            zip(targetPosList, damageList).forEach { (targetPos, damage) in
                 
                 guard validTargetPos(targetPos, in: battleFleet) else { return Logger.shared.log("invalid position \(targetPos)") }
                 
@@ -404,7 +393,7 @@ extension DamageCalculator {
                 
                 Debug.excute(level: .debug) {
                     
-                    let shipOffset = (battleFleet == .second) ? 6 : 0
+                    let shipOffset = (battleFleet == .second) ? firstFleetShipsCount() : 0
                     print("Hougeki \(targetPos + shipOffset) -> \(damage)")
                 }
             }
@@ -440,15 +429,13 @@ extension DamageCalculator {
         
         frendDamages.enumerated().forEach { (idx, damage) in
             
-//            if idx == 0 { return }
-            
             guard let damagePos = position(idx, in: battleFleet) else { return }
             
             calcHP(damage: damages[damagePos], receive: damage)
             
             Debug.excute(level: .debug) {
                 
-                let shipOffset = (battleFleet == .second) ? 6 : 0
+                let shipOffset = (battleFleet == .second) ? firstFleetShipsCount() : 0
                 print("FDam \(idx + shipOffset) -> \(damage)")
             }
         }

@@ -16,5 +16,6 @@ class Battle: KCManagedObject {
     @NSManaged var mapArea: Int
     @NSManaged var mapInfo: Int
     @NSManaged var no: Int
+    @NSManaged var firstFleetShipsCount: Int
     @NSManaged var damages: NSOrderedSet
 }
