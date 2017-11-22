@@ -40,7 +40,7 @@ extension Deck {
         case 3: ship_3 = id
         case 4: ship_4 = id
         case 5: ship_5 = id
-        default: fatalError("Deck.setShip: position out of range.")
+        default: break // fatalError("Deck.setShip: position out of range.")
         }
     }
     
