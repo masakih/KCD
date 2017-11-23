@@ -38,6 +38,7 @@ final class BroserWindowController: NSWindowController {
     @IBOutlet weak var placeholder: NSView!
     @IBOutlet weak var combinedViewPlaceholder: NSView!
     @IBOutlet weak var deckPlaceholder: NSView!
+    @IBOutlet weak var stokerContainer: NSView!
     @IBOutlet weak var resourcePlaceholder: NSView!
     @IBOutlet weak var ancherageRepariTimerPlaceholder: NSView!
     @IBOutlet weak var informations: NSTabView!
@@ -74,6 +75,7 @@ final class BroserWindowController: NSWindowController {
     
     private var fleetViewPosition: FleetViewPosition = .above
     private var isCombinedMode = false
+    private var isExtShpMode = false
     
     // MARK: - Function
     override func windowDidLoad() {
@@ -110,6 +112,7 @@ final class BroserWindowController: NSWindowController {
         fleetViewController.enableAnimation = false
         fleetViewController.shipOrder = UserDefaults.standard[.fleetViewShipOrder]
         fleetViewController.enableAnimation = true
+        fleetViewController.delegate = self
         
         bind(NSBindingName(rawValue: #keyPath(flagShipID)), to: deckContoller, withKeyPath: "selection.ship_0", options: nil)
         
@@ -160,7 +163,7 @@ final class BroserWindowController: NSWindowController {
         
         viewController.view.frame = view.frame
         viewController.view.autoresizingMask = view.autoresizingMask
-        self.window?.contentView?.replaceSubview(view, with: viewController.view)
+        view.superview?.replaceSubview(view, with: viewController.view)
     }
     
     private func showCombinedView() {
@@ -540,6 +543,50 @@ extension BroserWindowController {
         }
     }
     
+}
+
+extension BroserWindowController: FleetViewControllerDelegate {
+    
+    func changeShowsExtShip(_ fleetViewController: FleetViewController, showsExtShip: Bool) {
+        
+        guard self.fleetViewController == fleetViewController else { return }
+        
+        if isExtShpMode && !showsExtShip {
+            // hide
+            print("hide ext ship")
+            
+            let diffHeight = fleetViewController.shipViewSize.height
+            
+            var iFrame = informations.frame
+            iFrame.origin.y -= diffHeight
+            iFrame.size.height += diffHeight
+            informations.animator().frame = iFrame
+            
+            var sFrame = stokerContainer.frame
+            sFrame.origin.y -= diffHeight
+            stokerContainer.animator().frame = sFrame
+            
+            isExtShpMode = false
+            
+        } else if !isExtShpMode && showsExtShip {
+            
+            //show
+            print("show ext shp")
+            
+            let diffHeight = fleetViewController.shipViewSize.height
+            
+            var iFrame = informations.frame
+            iFrame.origin.y += diffHeight
+            iFrame.size.height -= diffHeight
+            informations.animator().frame = iFrame
+            
+            var sFrame = stokerContainer.frame
+            sFrame.origin.y += diffHeight
+            stokerContainer.animator().frame = sFrame
+
+            isExtShpMode = true
+        }
+    }
 }
 
 @available(OSX 10.12.2, *)

@@ -18,6 +18,11 @@ enum FleetViewType: Int {
 private var shipKeysContext: Int = 0
 private var shipsContext: Int = 0
 
+protocol FleetViewControllerDelegate: class {
+    
+    func changeShowsExtShip(_ fleetViewController: FleetViewController, showsExtShip: Bool)
+}
+
 final class FleetViewController: NSViewController {
     
     enum ShipOrder: Int {
@@ -49,7 +54,8 @@ final class FleetViewController: NSViewController {
     private static let maxFleetNumber: Int = 4
     
     private let details: [ShipDetailViewController]
-    private let shipKeys = [#keyPath(Deck.ship_0), #keyPath(Deck.ship_1), #keyPath(Deck.ship_2), #keyPath(Deck.ship_3), #keyPath(Deck.ship_4), #keyPath(Deck.ship_5)]
+    private let shipKeys = [#keyPath(Deck.ship_0), #keyPath(Deck.ship_1), #keyPath(Deck.ship_2), #keyPath(Deck.ship_3),
+                            #keyPath(Deck.ship_4), #keyPath(Deck.ship_5), #keyPath(Deck.ship_6)]
     private let type: FleetViewType
     private let fleetController = NSObjectController()
     private let shipObserveKeys = [#keyPath(Ship.seiku), #keyPath(Ship.lv), #keyPath(Ship.equippedItem)]
@@ -118,9 +124,13 @@ final class FleetViewController: NSViewController {
         set {
             representedObject = newValue
             title = newValue?.name
+            checkExtShip()
             setupShips()
         }
     }
+    
+    var extDetail: ShipDetailViewController?
+    weak var delegate: FleetViewControllerDelegate?
     
     var enableAnimation: Bool = false
     
@@ -183,7 +193,6 @@ final class FleetViewController: NSViewController {
             .map { ShipTPValueCalculator($0) }
             .map { $0.value }
             .reduce(0, +)
-        
     }
     
     func totalSeiku(of ship: Ship) -> Int {
@@ -285,6 +294,7 @@ final class FleetViewController: NSViewController {
         
         if context == &shipKeysContext {
             
+            checkExtShip()
             setupShips()
             
             return
@@ -370,7 +380,10 @@ final class FleetViewController: NSViewController {
         
         let array: [Ship?] = (0..<6).map { fleet?[$0] }
         zip(details, array).forEach { $0.0.ship = $0.1 }
-        ships = array.flatMap { $0 }
+        
+        let extShip = fleet?[6]
+        extShip.map { extDetail?.ship = $0 }
+        ships = array.flatMap { $0 } + [extShip].flatMap { $0 }
         
         [#keyPath(totalSakuteki), #keyPath(totalSeiku), #keyPath(totalCalclatedSeiku),
          #keyPath(totalLevel), #keyPath(totalDrums), #keyPath(repairable),
@@ -467,6 +480,74 @@ extension FleetViewController {
         guard let flagShip = fleet?[0] else { return false }
         
         return repairShipIds.contains(flagShip.master_ship.stype.id)
+    }
+}
+
+extension FleetViewController {
+    
+    var shipViewSize: NSSize { return details[0].view.frame.size }
+    
+    private func showExtShip() {
+        
+        print("show ext shp")
+        
+        guard type == .detailViewType else { return }
+        guard extDetail == nil else { return }
+        guard let _ = fleet?[6] else { return }
+        
+        extDetail = ShipDetailViewController(type: .full)
+        guard let extDetail = extDetail else { return }
+        
+        extDetail.title = "7"
+        extDetail.view.autoresizingMask = [.minXMargin]
+        
+        let width = extDetail.view.frame.width - 1
+        var frame = view.frame
+        frame.size.width += width
+        
+        extDetail.view.frame = details[5].view.frame
+        view.addSubview(extDetail.view, positioned: .below, relativeTo: details[5].view)
+        view.animator().frame = frame
+        
+        delegate?.changeShowsExtShip(self, showsExtShip: true)
+    }
+    
+    private func hideExtShip() {
+        
+        print("hide ext ship")
+        guard type == .detailViewType else { return }
+        
+        guard let extDetail = extDetail else { return }
+        
+        var frame = view.frame
+        frame.size.width -= extDetail.view.frame.width - 1
+        view.animator().frame = frame
+        
+        ships.removeLast()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            extDetail.view.removeFromSuperview()
+        }
+        
+        self.extDetail = nil
+        
+        delegate?.changeShowsExtShip(self, showsExtShip: false)
+    }
+    
+    private func checkExtShip() {
+        
+        fleet.map { print($0) }
+        
+        guard type == .detailViewType else { return }
+        
+        if fleet?[6] != nil {
+            
+            showExtShip()
+            
+        } else {
+            
+            hideExtShip()
+        }
     }
 }
 
