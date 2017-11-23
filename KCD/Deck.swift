@@ -32,6 +32,8 @@ final class Deck: KCManagedObject {
 
 extension Deck {
     
+    static var maxShipCount: Int = 7
+    
     func setShip(id: Int, for position: Int) {
         
         switch position {
