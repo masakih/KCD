@@ -41,6 +41,7 @@ extension Deck {
         case 3: ship_3 = id
         case 4: ship_4 = id
         case 5: ship_5 = id
+        case 6: ship_6 = id
         default: break // fatalError("Deck.setShip: position out of range.")
         }
     }
@@ -54,6 +55,7 @@ extension Deck {
         case 3: return ship_3
         case 4: return ship_4
         case 5: return ship_5
+        case 6: return ship_6
         default: return nil
         }
     }
