@@ -201,7 +201,7 @@ extension ServerDataStore {
         guard let decks = try? objects(of: Deck.entity, predicate: predicate) else { return [] }
         guard let deck = decks.first else { return [] }
         
-        return deck[0...5]
+        return deck[0..<Deck.maxShipCount]
     }
     
     func ship(by shipId: Int) -> Ship? {
