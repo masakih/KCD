@@ -85,4 +85,9 @@ extension Deck {
         
         return range.flatMap { self[$0] }
     }
+    
+    subscript(_ range: CountableRange<Int>) -> [Ship] {
+        
+        return range.flatMap { self[$0] }
+    }
 }

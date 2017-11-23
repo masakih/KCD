@@ -17,7 +17,8 @@ final class Fleet: NSObject {
     
     private let deckObserveKeys = [
         "selection.ship_0", "selection.ship_1", "selection.ship_2",
-        "selection.ship_3", "selection.ship_4", "selection.ship_5"
+        "selection.ship_3", "selection.ship_4", "selection.ship_5",
+        "selection.ship_6"
     ]
     
     init?(number: Int) {
@@ -83,7 +84,7 @@ final class Fleet: NSObject {
         
         if context == &pDeckContext {
             
-            ships = (0..<6).flatMap { self[$0] }
+            ships = (0..<Deck.maxShipCount).flatMap { self[$0] }
             
             return
         }
