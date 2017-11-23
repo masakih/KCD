@@ -65,7 +65,28 @@ final class ShipDetailViewController: NSViewController {
         [slot00Field, slot01Field, slot02Field, slot03Field]
             .forEach { $0?.unbind(NSBindingName(#keyPath(SlotItemLevelView.slotItemID))) }
         
-        shipController.removeObject(self)
+        shipController.removeObserver(self, forKeyPath: "selection")
+        
+        shipController.removeObserver(self, forKeyPath: "selection.slot_0")
+        shipController.removeObserver(self, forKeyPath: "selection.onslot_0")
+        shipController.removeObserver(self, forKeyPath: "selection.master_ship.maxeq_0")
+        
+        shipController.removeObserver(self, forKeyPath: "selection.slot_1")
+        shipController.removeObserver(self, forKeyPath: "selection.onslot_1")
+        shipController.removeObserver(self, forKeyPath: "selection.master_ship.maxeq_1")
+
+        shipController.removeObserver(self, forKeyPath: "selection.slot_2")
+        shipController.removeObserver(self, forKeyPath: "selection.onslot_2")
+        shipController.removeObserver(self, forKeyPath: "selection.master_ship.maxeq_2")
+        
+        shipController.removeObserver(self, forKeyPath: "selection.slot_3")
+        shipController.removeObserver(self, forKeyPath: "selection.onslot_3")
+        shipController.removeObserver(self, forKeyPath: "selection.master_ship.maxeq_3")
+        
+        shipController.removeObserver(self, forKeyPath: "selection.slot_4")
+        shipController.removeObserver(self, forKeyPath: "selection.onslot_4")
+        shipController.removeObserver(self, forKeyPath: "selection.master_ship.maxeq_4")
+
     }
     
     
