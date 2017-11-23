@@ -75,6 +75,7 @@
         <attribute name="ship_3" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="ship_4" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="ship_5" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="ship_6" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
     </entity>
     <entity name="KenzoDock" representedClassName="KCD.KenzoDock" syncable="YES">
         <attribute name="complete_time" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
@@ -361,7 +362,7 @@
         <element name="AirBase" positionX="9" positionY="153" width="128" height="135"/>
         <element name="AirBasePlaneInfo" positionX="18" positionY="162" width="128" height="150"/>
         <element name="Basic" positionX="0" positionY="0" width="128" height="645"/>
-        <element name="Deck" positionX="0" positionY="0" width="128" height="270"/>
+        <element name="Deck" positionX="0" positionY="0" width="128" height="285"/>
         <element name="KenzoDock" positionX="0" positionY="0" width="128" height="210"/>
         <element name="MasterFurniture" positionX="0" positionY="0" width="128" height="30"/>
         <element name="MasterMapArea" positionX="0" positionY="0" width="128" height="90"/>

@@ -26,6 +26,7 @@ final class Deck: KCManagedObject {
     @NSManaged var ship_3: Int
     @NSManaged var ship_4: Int
     @NSManaged var ship_5: Int
+    @NSManaged var ship_6: Int
 }
 // swiftlint:eable variable_name
 
