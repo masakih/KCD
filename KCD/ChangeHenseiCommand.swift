@@ -158,22 +158,13 @@ final class ChangeHenseiCommand: JSONCommand {
         store.decksSortedById()
             .forEach { deck in
                 
-                var needsPack = false
-                (0..<6).forEach {
+                var ships = deck[0..<Deck.maxShipCount]
+                
+                (0..<Deck.maxShipCount).forEach {
                     
-                    let shipId = deck.shipId(of: $0)
-                    // TODO: うまいことする　強制アンラップを消す
-                    if (shipId == nil || shipId! == -1), !needsPack {
-                        
-                        needsPack = true
-                        
-                        return
-                    }
-                    if needsPack {
-                        
-                        deck.setShip(id: shipId!, for: $0 - 1)
-                        if $0 == 5 { deck.setShip(id: -1, for: 5) }
-                    }
+                    let shipId = ships.first?.id ?? -1
+                    deck.setShip(id: shipId, for: $0)
+                    if !ships.isEmpty { ships.removeFirst() }
                 }
         }
     }
