@@ -414,6 +414,7 @@ extension BroserWindowController {
         newController.shipOrder = fleetViewController.shipOrder
         replace(fleetViewController.view, with: newController)
         fleetViewController = newController
+        fleetViewController.delegate = self
     }
     
     private func windowHeightForFleetViewPosition(position newPosition: FleetViewPosition) -> CGFloat {
@@ -552,9 +553,8 @@ extension BroserWindowController: FleetViewControllerDelegate {
         guard self.fleetViewController == fleetViewController else { return }
         
         if isExtShpMode && !showsExtShip {
-            // hide
-            print("hide ext ship")
             
+            // hide
             let diffHeight = fleetViewController.shipViewSize.height
             
             var iFrame = informations.frame
@@ -571,8 +571,6 @@ extension BroserWindowController: FleetViewControllerDelegate {
         } else if !isExtShpMode && showsExtShip {
             
             //show
-            print("show ext shp")
-            
             let diffHeight = fleetViewController.shipViewSize.height
             
             var iFrame = informations.frame

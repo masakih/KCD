@@ -130,6 +130,7 @@ final class FleetViewController: NSViewController {
     }
     
     var extDetail: ShipDetailViewController?
+    var extShipAnimating: Bool = false
     weak var delegate: FleetViewControllerDelegate?
     
     var enableAnimation: Bool = false
@@ -489,45 +490,69 @@ extension FleetViewController {
     
     private func showExtShip() {
         
-        print("show ext shp")
-        
         guard type == .detailViewType else { return }
         guard extDetail == nil else { return }
         guard let _ = fleet?[6] else { return }
         
-        extDetail = ShipDetailViewController(type: .full)
-        guard let extDetail = extDetail else { return }
+        if extShipAnimating {
+            DispatchQueue.main.async(execute: showExtShip)
+            return
+        }
         
-        extDetail.title = "7"
-        extDetail.view.autoresizingMask = [.minXMargin]
+        extShipAnimating = true
         
-        let width = extDetail.view.frame.width - 1
-        var frame = view.frame
-        frame.size.width += width
-        
-        extDetail.view.frame = details[5].view.frame
-        view.addSubview(extDetail.view, positioned: .below, relativeTo: details[5].view)
-        view.animator().frame = frame
+        NSAnimationContext.runAnimationGroup({ _ in
+            
+            extDetail = ShipDetailViewController(type: .full)
+            guard let extDetail = extDetail else { return }
+            
+            extDetail.title = "7"
+            extDetail.view.autoresizingMask = [.minXMargin]
+            
+            let width = extDetail.view.frame.width - 1
+            var frame = view.frame
+            frame.size.width += width
+            
+            extDetail.view.frame = details[5].view.frame
+            view.addSubview(extDetail.view, positioned: .below, relativeTo: details[5].view)
+            view.animator().frame = frame
+            
+        }, completionHandler: { [weak self] in
+            
+            self?.extShipAnimating = false
+        })
         
         delegate?.changeShowsExtShip(self, showsExtShip: true)
     }
     
     private func hideExtShip() {
         
-        print("hide ext ship")
         guard type == .detailViewType else { return }
+        
+        if extShipAnimating {
+            DispatchQueue.main.async(execute: hideExtShip)
+            return
+        }
         
         guard let extDetail = extDetail else { return }
         
-        var frame = view.frame
-        frame.size.width -= extDetail.view.frame.width - 1
-        view.animator().frame = frame
+        extShipAnimating = true
         
-        ships.removeLast()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        NSAnimationContext.runAnimationGroup({ _ in
+            
+            var frame = view.frame
+            frame.size.width -= extDetail.view.frame.width - 1
+            view.animator().frame = frame
+            
+            ships.removeLast()
+            
+        }, completionHandler: { [weak self] in
+            
             extDetail.view.removeFromSuperview()
-        }
+            
+            self?.extShipAnimating = false
+            
+        })
         
         self.extDetail = nil
         
@@ -535,9 +560,7 @@ extension FleetViewController {
     }
     
     private func checkExtShip() {
-        
-        fleet.map { print($0) }
-        
+                
         guard type == .detailViewType else { return }
         
         if fleet?[6] != nil {
