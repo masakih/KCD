@@ -117,17 +117,29 @@ extension CalculateDamageCommand {
             
             guard let ship = aStore.ship(by: $0.shipID) else { return }
             
-            if ship.nowhp != $0.hp {
-                
-                Debug.print("\(ship.name)(\(ship.id)),HP \(ship.nowhp) -> \($0.hp)", level: .debug)
-            }
-            
             ship.nowhp = $0.hp
             
             if $0.useDamageControl { removeFirstDamageControl(of: ship) }
         }
         
-        Debug.print("------- End Battle", level: .debug)
+        Debug.excute(level: .debug) {
+            
+            print("-------")
+            
+            totalDamages.forEach {
+                
+                guard let ship = aStore.ship(by: $0.shipID) else { return }
+                
+                if ship.nowhp != $0.hp {
+                    
+                    print("\(ship.name)(\(ship.id)),HP \(ship.nowhp) -> \($0.hp)")
+                }
+            }
+            
+
+            print("------- End Battle")
+        }
+        
     }
     
     func updateBattleCell() {
