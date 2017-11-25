@@ -196,7 +196,7 @@ extension ServerDataStore {
     
     func ships(byDeckId deckId: Int) -> [Ship] {
         
-        let predicate = NSPredicate(#keyPath(Ship.id), equal: deckId)
+        let predicate = NSPredicate(#keyPath(Deck.id), equal: deckId)
         
         guard let decks = try? objects(of: Deck.entity, predicate: predicate) else { return [] }
         guard let deck = decks.first else { return [] }
