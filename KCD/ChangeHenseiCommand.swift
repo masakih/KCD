@@ -77,6 +77,14 @@ final class ChangeHenseiCommand: JSONCommand {
                 return Logger.shared.log("parameter is wrong")
         }
         
+        if shipId == -1 {
+            guard let ship = removeShip(deckNumber: deckNumber, index: shipIndex) else { return }
+            
+            notify(type: .remove, fleetNumber: deckNumber, position: shipIndex, shipID: ship.id)
+            
+            return
+        }
+        
         if shipId == -2 {
             
             excludeShipsWithoutFlagShip(deckNumber: deckNumber)
@@ -86,59 +94,70 @@ final class ChangeHenseiCommand: JSONCommand {
         }
         
         let store = ServerDataStore.oneTimeEditor()
-        let decks = store.decksSortedById()
-        let shipIds = decks.flatMap { deck in (0..<6).map { deck.shipId(of: $0) ?? -1 } }
+        guard let deck = store.deck(by: deckNumber),
+            case 0..<Deck.maxShipCount = shipIndex
+            else { return }
         
         // すでに編成されているか？ どこに？
-        let currentIndex = shipIds.index(of: shipId)
-        let shipDeckNumber = currentIndex.map { $0 / 6 } ?? -1
-        let shipDeckIndex = currentIndex.map { $0 % 6 } ?? -1
+        let (shipDeckNumber, shipDeckIndex) = position(of: shipId)
         
         // 配置しようとする位置に今配置されている艦娘
-        let replaceIndex = (deckNumber - 1) * 6 + shipIndex
-        
-        guard case 0..<shipIds.count = replaceIndex else { return }
-        
-        let replaceShipId = shipIds[replaceIndex]
+        let replaceShipId = deck[shipIndex]?.id
         
         // 艦隊に配備
-        guard case 0..<decks.count = (deckNumber - 1) else { return }
-        
-        decks[deckNumber - 1].setShip(id: shipId, for: shipIndex)
+        deck.setShip(id: shipId, for: shipIndex)
         
         // 入れ替え
-        if currentIndex != nil, shipId != -1, case 0..<decks.count = shipDeckNumber {
+        if shipDeckNumber != nil {
             
-            decks[shipDeckNumber].setShip(id: replaceShipId, for: shipDeckIndex)
+            let shipDeck = store.deck(by: shipDeckNumber!)
+            shipDeck?.setShip(id: replaceShipId ?? -1, for: shipDeckIndex)
+            packFleet(store: store, deck: shipDeck)
         }
         
-        packFleet(store: store)
+        packFleet(store: store, deck: deck)
         
         // Notify
-        if currentIndex != nil, shipId == -1 {
-            
-            notify(type: .remove,
-                   fleetNumber: deckNumber,
-                   position: shipIndex,
-                   shipID: replaceShipId)
-            
-        } else if currentIndex != nil {
+        if shipDeckNumber != nil {
             
             notify(type: .replace,
                    fleetNumber: deckNumber,
                    position: shipIndex,
                    shipID: shipId,
-                   replaceFleetNumber: shipDeckNumber + 1,
+                   replaceFleetNumber: shipDeckNumber!,
                    replacePosition: shipDeckIndex,
                    replaceShipID: replaceShipId)
             
         } else {
             
-            notify(type: .append,
-                   fleetNumber: deckNumber,
-                   position: shipIndex,
-                   shipID: shipId)
+            notify(type: .append, fleetNumber: deckNumber, position: shipIndex, shipID: shipId)
         }
+    }
+    
+    private func position(of shipId: Int) -> (deckNumber: Int?, shipId: Int) {
+        
+        return ServerDataStore.default
+            .decksSortedById()
+            .lazy
+            .enumerated()
+            .map { (idx, deck) -> (Int, [Ship]) in (idx + 1, deck[0..<Deck.maxShipCount]) }
+            .filter { $0.1.contains { $0.id == shipId } }
+            .map { (deck, ships) in (deck, ships.index(where: { $0.id == shipId })!) }
+            .first ?? (nil, -1)
+    }
+    
+    private func removeShip(deckNumber: Int, index: Int) -> Ship? {
+        
+        let store = ServerDataStore.oneTimeEditor()
+        
+        guard let deck = store.deck(by: deckNumber) else { return Logger.shared.log("Deck not found", value: nil) }
+        
+        let shipId = deck[index]?.id ?? -1
+        deck.setShip(id: -1, for: index)
+        
+        packFleet(store: store, deck: deck)
+        
+        return ServerDataStore.default.ship(by: shipId)
     }
     
     private func excludeShipsWithoutFlagShip(deckNumber: Int) {
@@ -150,22 +169,20 @@ final class ChangeHenseiCommand: JSONCommand {
             return Logger.shared.log("Deck not found")
         }
         
-        (1..<6).forEach { deck.setShip(id: -1, for: $0) }
+        (1..<Deck.maxShipCount).forEach { deck.setShip(id: -1, for: $0) }
     }
     
-    private func packFleet(store: ServerDataStore) {
+    private func packFleet(store: ServerDataStore, deck: Deck?) {
         
-        store.decksSortedById()
-            .forEach { deck in
-                
-                var ships = deck[0..<Deck.maxShipCount]
-                
-                (0..<Deck.maxShipCount).forEach {
-                    
-                    let shipId = ships.first?.id ?? -1
-                    deck.setShip(id: shipId, for: $0)
-                    if !ships.isEmpty { ships.removeFirst() }
-                }
+        guard let deck = deck else { return }
+        
+        var ships = deck[0..<Deck.maxShipCount]
+        
+        (0..<Deck.maxShipCount).forEach {
+            
+            let shipId = ships.first?.id ?? -1
+            deck.setShip(id: shipId, for: $0)
+            if !ships.isEmpty { ships.removeFirst() }
         }
     }
     
