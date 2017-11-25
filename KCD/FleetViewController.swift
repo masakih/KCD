@@ -268,7 +268,13 @@ final class FleetViewController: NSViewController {
         NotificationCenter.default
             .addObserverOnce(forName: .PortAPIReceived, object: nil, queue: nil) { [weak self] _ in
                 
-                self?.fleetNumber = 1
+                if let current = self?.fleetNumber {
+                    
+                    self?.fleetNumber = current
+                } else {
+                    
+                    self?.fleetNumber = 1
+                }
         }
         
         NotificationCenter
