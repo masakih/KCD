@@ -78,10 +78,9 @@ final class ChangeHenseiCommand: JSONCommand {
         }
         
         if shipId == -1 {
+            
             guard let ship = removeShip(deckNumber: deckNumber, index: shipIndex) else { return }
-            
             notify(type: .remove, fleetNumber: deckNumber, position: shipIndex, shipID: ship.id)
-            
             return
         }
         
@@ -89,14 +88,13 @@ final class ChangeHenseiCommand: JSONCommand {
             
             excludeShipsWithoutFlagShip(deckNumber: deckNumber)
             notify(type: .removeAllWithoutFlagship)
-            
             return
         }
         
+        guard case 0..<Deck.maxShipCount = shipIndex else { return }
+        
         let store = ServerDataStore.oneTimeEditor()
-        guard let deck = store.deck(by: deckNumber),
-            case 0..<Deck.maxShipCount = shipIndex
-            else { return }
+        guard let deck = store.deck(by: deckNumber) else { return }
         
         // すでに編成されているか？ どこに？
         let (shipDeckNumber, shipDeckIndex) = position(of: shipId)
@@ -112,7 +110,7 @@ final class ChangeHenseiCommand: JSONCommand {
             
             let shipDeck = store.deck(by: shipDeckNumber!)
             shipDeck?.setShip(id: replaceShipId ?? -1, for: shipDeckIndex)
-            packFleet(store: store, deck: shipDeck)
+            shipDeck.map { packFleet(store: store, deck: $0) }
         }
         
         packFleet(store: store, deck: deck)
@@ -172,18 +170,20 @@ final class ChangeHenseiCommand: JSONCommand {
         (1..<Deck.maxShipCount).forEach { deck.setShip(id: -1, for: $0) }
     }
     
-    private func packFleet(store: ServerDataStore, deck: Deck?) {
+    private func packFleet(store: ServerDataStore, deck: Deck) {
         
-        guard let deck = deck else { return }
-        
-        var ships = deck[0..<Deck.maxShipCount]
-        
-        (0..<Deck.maxShipCount).forEach {
+        func set(_ ships: [Ship], at index: Int, in deck: Deck) {
             
-            let shipId = ships.first?.id ?? -1
-            deck.setShip(id: shipId, for: $0)
-            if !ships.isEmpty { ships.removeFirst() }
+            guard index < Deck.maxShipCount else { return }
+            
+            deck.setShip(id: ships.first?.id ?? -1, for: index)
+            
+            let newShips = ships.isEmpty ? [] : Array(ships[1...])
+            
+            set(newShips, at: index + 1, in: deck)
         }
+        
+        set(deck[0..<Deck.maxShipCount], at: 0, in: deck)
     }
     
     private func notify(type: ChangeHenseiType,
