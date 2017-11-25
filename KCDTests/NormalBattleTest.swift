@@ -30,11 +30,8 @@ class NormalBattleTest: XCTestCase {
         do {
             let store = ServerDataStore.oneTimeEditor()
             
-            guard let secondFleet = store.deck(by: 2) else { return XCTFail("Can not get Deck.") }
-            (0...5).forEach { secondFleet.setShip(id: $0 + 10, for: $0) }
-            
             guard let deck = store.deck(by: fleet) else { return XCTFail("Can not get Deck.") }
-            (0...5).forEach { deck.setShip(id: $0 + 1, for: $0) }
+            (0...6).forEach { deck.setShip(id: $0 + 1, for: $0) }
             
             store.ships(byDeckId: fleet).forEach {
                 $0.nowhp = $0.maxhp
@@ -164,12 +161,15 @@ class NormalBattleTest: XCTestCase {
                 "api_data": [
                     "api_hougeki": [
                         "api_df_list": [
-                            [4]
+                            [4],
+                            [6]
                         ],
                         "api_damage": [
-                            [5]
+                            [5],
+                            [7]
                         ],
                         "api_at_eflag": [
+                            1,
                             1
                         ]
                     ]
@@ -201,7 +201,7 @@ class NormalBattleTest: XCTestCase {
             let store = ServerDataStore.oneTimeEditor()
             let ships = store.ships(byDeckId: fleet)
             
-            XCTAssertEqual(ships.count, 6)
+            XCTAssertEqual(ships.count, 7)
             
             XCTAssertEqual(ships[0].nowhp, shipsHp[0] - 1)
             XCTAssertEqual(ships[1].nowhp, shipsHp[1] - 2)
@@ -209,6 +209,7 @@ class NormalBattleTest: XCTestCase {
             XCTAssertEqual(ships[3].nowhp, shipsHp[3] - 4)
             XCTAssertEqual(ships[4].nowhp, shipsHp[4] - 5)
             XCTAssertEqual(ships[5].nowhp, shipsHp[5] - 6)
+            XCTAssertEqual(ships[6].nowhp, shipsHp[6] - 7)
         }
     }
     
@@ -282,7 +283,7 @@ class NormalBattleTest: XCTestCase {
             let store = ServerDataStore.oneTimeEditor()
             let ships = store.ships(byDeckId: fleet)
             
-            XCTAssertEqual(ships.count, 6)
+            XCTAssertEqual(ships.count, 7)
             
             XCTAssertEqual(ships[0].nowhp, shipsHp[0])
             XCTAssertEqual(ships[1].nowhp, shipsHp[1])
