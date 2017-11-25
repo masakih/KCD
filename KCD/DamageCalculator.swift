@@ -250,20 +250,46 @@ extension DamageCalculator {
         }
     }
     
-    private func buildDamagesOfFleet(fleet: Int, ships: [Ship]) {
+    private func makeDamage(num: Int) -> [Damage] {
         
-        guard case 0...1 = fleet else { return Logger.shared.log("fleet must 0 or 1.") }
-        guard let battle = store.battle() else { return Logger.shared.log("Battle is invalid.") }
+        guard let battle = store.battle() else { return Logger.shared.log("Battle is invalid.", value: []) }
         
-        zip(ships, (0...)).forEach { ship, index in
+        return (0..<num).flatMap {
             
-            guard let damage = store.createDamage() else { return Logger.shared.log("Can not create Damage") }
+            guard let damage = store.createDamage() else { return Logger.shared.log("Can not create Damage", value: nil) }
             
             damage.battle = battle
-            damage.hp = ship.nowhp
-            damage.shipID = ship.id
-            damage.id = index
+            damage.id = $0
+            
+            return damage
         }
+    }
+    
+    private func buildDamages(first: [Ship], second: [Ship]?) {
+        
+        guard let battle = store.battle() else { return Logger.shared.log("Battle is invalid.") }
+        
+        let damages = makeDamage(num: 12)
+        
+        func setShip(_ ship: Ship, into damage: Damage) {
+            
+            damage.shipID = ship.id
+            damage.hp = ship.nowhp
+            
+            Debug.excute(level: .debug) {
+                
+                print("add Damage entity of \(ship.name) at \(damage.id)")
+            }
+        }
+        
+        zip(first, damages).forEach(setShip)
+
+        if let second = second {
+
+            let secondsDamage = damages[6...]
+            zip(second, secondsDamage).forEach(setShip)
+        }
+        
     }
     
     private func buildDamagedEntity() {
@@ -272,13 +298,15 @@ extension DamageCalculator {
         
         // 第一艦隊
         let firstFleetShips = ServerDataStore.default.ships(byDeckId: battle.deckId)
-        buildDamagesOfFleet(fleet: 0, ships: firstFleetShips)
         
         // 第二艦隊
         if isCombinedBattle {
             
             let secondFleetShips = ServerDataStore.default.ships(byDeckId: 2)
-            buildDamagesOfFleet(fleet: 1, ships: secondFleetShips)
+            buildDamages(first: firstFleetShips, second: secondFleetShips)
+        } else {
+            
+            buildDamages(first: firstFleetShips, second: nil)
         }
     }
 }
@@ -318,23 +346,22 @@ extension DamageCalculator {
         return 0..<damages.count ~= targetPos
     }
     
-    private func firstFleetShipsCount() -> Int {
-        
-        return store.battle()?.firstFleetShipsCount ?? 6
-    }
-    
     private func position(_ pos: Int, in fleet: BattleFleet) -> Int? {
         
-        let shipOffset = (fleet == .second) ? firstFleetShipsCount() : 0
+        guard case 0..<damages.count = pos else { return nil }
         
-        let damagePos = pos + shipOffset
-        
-        guard case 0..<damages.count = damagePos else { return nil }
-        
-        return damagePos
+        return pos
     }
     
     private func calcHP(damage: Damage, receive: Int) {
+        
+        Debug.excute(level: .debug) {
+            
+            if receive != 0, let ship = ServerDataStore.default.ship(by: damage.shipID) {
+                
+                print("\(ship.name) recieve Damage \(receive)")
+            }
+        }
         
         damage.hp -= receive
         
@@ -393,8 +420,7 @@ extension DamageCalculator {
                 
                 Debug.excute(level: .debug) {
                     
-                    let shipOffset = (battleFleet == .second) ? firstFleetShipsCount() : 0
-                    print("Hougeki \(targetPos + shipOffset) -> \(damage)")
+                    print("Hougeki \(targetPos) -> \(damage)")
                 }
             }
         }
@@ -435,8 +461,7 @@ extension DamageCalculator {
             
             Debug.excute(level: .debug) {
                 
-                let shipOffset = (battleFleet == .second) ? firstFleetShipsCount() : 0
-                print("FDam \(idx + shipOffset) -> \(damage)")
+                print("FDam \(idx) -> \(damage)")
             }
         }
     }

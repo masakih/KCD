@@ -112,16 +112,6 @@ extension CalculateDamageCommand {
         
         let aStore = ServerDataStore.oneTimeEditor()
         
-        // 第二艦隊単独出撃で正しくデータが反映されるように逆順にして計算
-        totalDamages.reversed().forEach {
-            
-            guard let ship = aStore.ship(by: $0.shipID) else { return }
-            
-            ship.nowhp = $0.hp
-            
-            if $0.useDamageControl { removeFirstDamageControl(of: ship) }
-        }
-        
         Debug.excute(level: .debug) {
             
             print("-------")
@@ -136,8 +126,18 @@ extension CalculateDamageCommand {
                 }
             }
             
-
+            
             print("------- End Battle")
+        }
+        
+        // 第二艦隊単独出撃で正しくデータが反映されるように逆順にして計算
+        totalDamages.reversed().forEach {
+            
+            guard let ship = aStore.ship(by: $0.shipID) else { return }
+            
+            ship.nowhp = $0.hp
+            
+            if $0.useDamageControl { removeFirstDamageControl(of: ship) }
         }
         
     }
