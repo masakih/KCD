@@ -94,8 +94,10 @@ extension DamageCalculator {
         let bf: () -> BattleFleet = {
             
             switch self.battleType {
-            case .combinedWater, .combinedAir,
-                 .eachCombinedWater, .eachCombinedAir:
+            case .combinedWater,
+                 .combinedAir,
+                 .eachCombinedWater,
+                 .eachCombinedAir:
                 return .second
                 
             default: return .first
@@ -113,24 +115,26 @@ extension DamageCalculator {
         // 連合vs通常（機動）　第２
         // 連合vs連合（水上）　第２　全体
         // 連合vs連合（機動）　第２　全体
-        calculateFDam(baseKeyPath: "api_data.api_opening_atack") {
-            
-            switch battleType {
-            case .combinedWater, .combinedAir: return .second
-                
-            case .eachCombinedWater, .eachCombinedAir: return .each
-                
-            default: return .first
-            }
-        }
+        calculateFDam(baseKeyPath: "api_data.api_opening_atack")
+//        {
+//
+//            switch battleType {
+//            case .combinedWater, .combinedAir: return .second
+//
+//            case .eachCombinedWater, .eachCombinedAir: return .each
+//
+//            default: return .first
+//            }
+//        }
     }
     
     private func calcOpeningTaisen() {
         
-        calculateHogeki(baseKeyPath: "api_data.api_opening_taisen") {
-            
-            isCombinedBattle ? .second : .first
-        }
+        calculateHogeki(baseKeyPath: "api_data.api_opening_taisen")
+//        {
+//
+//            isCombinedBattle ? .second : .first
+//        }
     }
     
     private func calcHougeki1() {
@@ -140,14 +144,15 @@ extension DamageCalculator {
         // 連合vs通常（機動）　第２
         // 連合vs連合（水上）　第１
         // 連合vs連合（機動）　第１
-        calculateHogeki(baseKeyPath: "api_data.api_hougeki1") {
-            
-            switch battleType {
-            case .combinedAir: return .second
-                
-            default: return .first
-            }
-        }
+        calculateHogeki(baseKeyPath: "api_data.api_hougeki1")
+//        {
+//
+//            switch battleType {
+//            case .combinedAir: return .second
+//
+//            default: return .first
+//            }
+//        }
     }
     
     private func calcHougeki2() {
@@ -157,16 +162,17 @@ extension DamageCalculator {
         // 連合vs通常（機動）　第１
         // 連合vs連合（水上）　第１　全体
         // 連合vs連合（機動）　第２
-        calculateHogeki(baseKeyPath: "api_data.api_hougeki2") {
-            
-            switch battleType {
-            case .eachCombinedWater: return .each
-                
-            case .eachCombinedAir: return .each
-                
-            default: return .first
-            }
-        }
+        calculateHogeki(baseKeyPath: "api_data.api_hougeki2")
+//        {
+//
+//            switch battleType {
+//            case .eachCombinedWater: return .each
+//
+//            case .eachCombinedAir: return .each
+//
+//            default: return .first
+//            }
+//        }
     }
     
     private func calcHougeki3() {
@@ -176,17 +182,18 @@ extension DamageCalculator {
         // 連合vs通常（機動）　第１
         // 連合vs連合（水上）　第２
         // 連合vs連合（機動）　第１　全体
-        calculateHogeki(baseKeyPath: "api_data.api_hougeki3") {
-            
-            switch battleType {
-            case .combinedWater: return .second
-                
-//            case .eachCombinedWater: return .second  // 1~12
-            case .eachCombinedAir: return .each
-                
-            default: return .first
-            }
-        }
+        calculateHogeki(baseKeyPath: "api_data.api_hougeki3")
+//        {
+//
+//            switch battleType {
+//            case .combinedWater: return .second
+//
+////            case .eachCombinedWater: return .second  // 1~12
+//            case .eachCombinedAir: return .each
+//
+//            default: return .first
+//            }
+//        }
     }
     
     private func calcRaigeki() {
@@ -196,16 +203,17 @@ extension DamageCalculator {
         // 連合vs通常（機動）　第２
         // 連合vs連合（水上）　第２　全体
         // 連合vs連合（機動）　第２　全体
-        calculateFDam(baseKeyPath: "api_data.api_raigeki") {
-            
-            switch battleType {
-            case .combinedWater, .combinedAir: return .second
-                
-            case .eachCombinedWater, .eachCombinedAir: return .each
-                
-            default: return .first
-            }
-        }
+        calculateFDam(baseKeyPath: "api_data.api_raigeki")
+//        {
+//
+//            switch battleType {
+//            case .combinedWater, .combinedAir: return .second
+//
+//            case .eachCombinedWater, .eachCombinedAir: return .each
+//
+//            default: return .first
+//            }
+//        }
     }
     
     private func calculateMidnightBattle() {
@@ -215,10 +223,11 @@ extension DamageCalculator {
         // 連合vs通常（機動）　第２
         // 連合vs連合（水上）　第２
         // 連合vs連合（機動）　第２
-        calculateHogeki(baseKeyPath: "api_data.api_hougeki") {
-            
-            isCombinedBattle ? .second : .first
-        }
+        calculateHogeki(baseKeyPath: "api_data.api_hougeki")
+//        {
+//
+//            isCombinedBattle ? .second : .first
+//        }
     }
 }
 
@@ -348,9 +357,11 @@ extension DamageCalculator {
     
     private func position(_ pos: Int, in fleet: BattleFleet) -> Int? {
         
-        guard case 0..<damages.count = pos else { return nil }
+        let damagePos = (fleet == .second ? pos + 6 : pos)
         
-        return pos
+        guard case 0..<damages.count = damagePos else { return nil }
+        
+        return damagePos
     }
     
     private func calcHP(damage: Damage, receive: Int) {
