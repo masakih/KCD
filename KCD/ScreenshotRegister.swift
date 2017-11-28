@@ -22,11 +22,6 @@ class ScreenshotRegister {
         
         DispatchQueue(label: "Screenshot queue").async {
             
-            let size = image.size
-            if size != NSSize(width: 800, height: 480) {
-                image.size = NSSize(width: 800, height: 480)
-            }
-            
             guard let data = image.representation(using: .jpeg, properties: [:]) else { return }
             
             let url = self.url

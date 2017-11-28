@@ -149,6 +149,10 @@ final class GameViewController: NSViewController {
         
         let rep = NSBitmapImageRep(cgImage: image)
         
+        if rep.size != NSSize(width: 800, height: 480) {
+            rep.size = NSSize(width: 800, height: 480)
+        }
+        
         AppDelegate.shared.registerScreenshot(rep, fromOnScreen: .zero)
     }
     
