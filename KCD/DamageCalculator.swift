@@ -435,13 +435,14 @@ extension DamageCalculator {
         
         Debug.print("Start Hougeki \(baseKeyPath)", level: .debug)
         
-        let enemyOmitedDamages = omitEnemyDamage(targetPosLists: targetPosLists,
-                                                 damageLists: damageLists,
-                                                 eFlags: enemyFlags(baseValue["api_at_eflag"]))
-        
-        enemyOmitedDamages.forEach { (targetPosList, damageList) in
-            
-            zip(targetPosList, damageList).forEach { (targetPos, damage) in
+        omitEnemyDamage(targetPosLists: targetPosLists, damageLists: damageLists, eFlags: enemyFlags(baseValue["api_at_eflag"]))
+            .map { (targetPosList, damageList) -> (Int, Int) in
+                
+                guard let pos = targetPosList.first else { return (0, 0) }
+                
+                return (pos, damageList.reduce(0, +))
+            }
+            .forEach { (targetPos, damage) in
                 
                 guard validTargetPos(targetPos, in: battleFleet) else { return Logger.shared.log("invalid position \(targetPos)") }
                 
@@ -456,7 +457,6 @@ extension DamageCalculator {
                     
                     print("Hougeki \(targetPos) -> \(damage)")
                 }
-            }
         }
     }
     
