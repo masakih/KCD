@@ -66,6 +66,19 @@ extension DamageCalculator {
         calcHougeki3()
     }
     
+    func calcEachNightToDay() {
+        
+        calcNightHogeki1()
+        calcNightHogeki2()
+        calcKouku()
+        calcOpeningTaisen()
+        calcOpeningAttack()
+        calcHougeki1()
+        calcHougeki2()
+        calcRaigeki()
+        calcHougeki3()
+    }
+    
     func calcEnemyCombinedBattle() {
         
         // same phase as combined air
@@ -194,6 +207,16 @@ extension DamageCalculator {
 //            default: return .first
 //            }
 //        }
+    }
+    
+    private func calcNightHogeki1() {
+        
+        calculateHogeki(baseKeyPath: "api_data.api_n_hougeki1")
+    }
+    
+    private func calcNightHogeki2() {
+        
+        calculateHogeki(baseKeyPath: "api_data.api_n_hougeki2")
     }
     
     private func calcRaigeki() {

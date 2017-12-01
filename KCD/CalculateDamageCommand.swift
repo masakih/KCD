@@ -50,6 +50,9 @@ final class CalculateDamageCommand: JSONCommand {
         case .combinedEachBattleWater:
             normalBattle(battleType: .eachCombinedWater)
             
+        case .combinedEachNightToDay:
+            eachNightToDayBattle(battleType: .normal)
+            
         case .midnightBattle, .midnightSpMidnight:
             midnightBattle(battleType: .normal)
             
@@ -81,6 +84,12 @@ final class CalculateDamageCommand: JSONCommand {
         
         updateBattleCell()
         DamageCalculator(json, battleType).calcEachBattleAir()
+    }
+    
+    func eachNightToDayBattle(battleType: BattleType) {
+        
+        updateBattleCell()
+        DamageCalculator(json, battleType).calcEachNightToDay()
     }
     
     func enemyCombinedBattle(battleType: BattleType) {

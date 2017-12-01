@@ -19,6 +19,8 @@ enum BattleAPI: String {
     case combinedEachBattle = "/kcsapi/api_req_combined_battle/each_battle"
     case combinedEachBattleWater = "/kcsapi/api_req_combined_battle/each_battle_water"
     
+    case combinedEachNightToDay = "/kcsapi/api_req_combined_battle/ec_night_to_day"
+    
     case airBattle = "/kcsapi/api_req_sortie/airbattle"
     case ldAirBattle = "/kcsapi/api_req_sortie/ld_airbattle"
     case combinedLdAirBattle = "/kcsapi/api_req_combined_battle/ld_airbattle"
