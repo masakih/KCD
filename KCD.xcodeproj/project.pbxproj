@@ -272,6 +272,7 @@
 		F4CB371D1FCC5FCC0086999C /* CombinedBattleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CB371C1FCC5FCC0086999C /* CombinedBattleTest.swift */; };
 		F4CB37201FD046E10086999C /* BattleInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CB371E1FD046E10086999C /* BattleInformationViewController.swift */; };
 		F4CB37211FD046E10086999C /* BattleInformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4CB371F1FD046E10086999C /* BattleInformationViewController.xib */; };
+		F4CB37291FD3C1A00086999C /* GuardEscapeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CB37281FD3C1A00086999C /* GuardEscapeTest.swift */; };
 		F4CC5C091F88DBD50006B3FA /* NSPredicateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CC5C081F88DBD50006B3FA /* NSPredicateExtension.swift */; };
 		F4CF25A81E325ABA00C02A66 /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CF25A71E325ABA00C02A66 /* APIResponse.swift */; };
 		F4CF25AA1E338ED000C02A66 /* JSONTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CF25A91E338ED000C02A66 /* JSONTracker.swift */; };
@@ -638,6 +639,7 @@
 		F4CB371C1FCC5FCC0086999C /* CombinedBattleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CombinedBattleTest.swift; sourceTree = "<group>"; };
 		F4CB371E1FD046E10086999C /* BattleInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleInformationViewController.swift; sourceTree = "<group>"; };
 		F4CB371F1FD046E10086999C /* BattleInformationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BattleInformationViewController.xib; sourceTree = "<group>"; };
+		F4CB37281FD3C1A00086999C /* GuardEscapeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuardEscapeTest.swift; sourceTree = "<group>"; };
 		F4CC5C081F88DBD50006B3FA /* NSPredicateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSPredicateExtension.swift; sourceTree = "<group>"; };
 		F4CF25A71E325ABA00C02A66 /* APIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
 		F4CF25A91E338ED000C02A66 /* JSONTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONTracker.swift; sourceTree = "<group>"; };
@@ -1096,6 +1098,7 @@
 				F4FF44C61F98DA6600039F21 /* NormalBattleTest.swift */,
 				F4CB371C1FCC5FCC0086999C /* CombinedBattleTest.swift */,
 				F4FF44CB1F9E41F600039F21 /* ShipStatusTest.swift */,
+				F4CB37281FD3C1A00086999C /* GuardEscapeTest.swift */,
 			);
 			path = KCDTests;
 			sourceTree = "<group>";
@@ -1855,6 +1858,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4CB37291FD3C1A00086999C /* GuardEscapeTest.swift in Sources */,
 				F4CB371D1FCC5FCC0086999C /* CombinedBattleTest.swift in Sources */,
 				F4FF44C71F98DA6600039F21 /* NormalBattleTest.swift in Sources */,
 				F4FF44CC1F9E41F600039F21 /* ShipStatusTest.swift in Sources */,
