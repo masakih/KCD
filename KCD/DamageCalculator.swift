@@ -11,9 +11,8 @@ import SwiftyJSON
 
 enum BattleFleet {
     
-    case first
-    case second
-    case each
+    case normal
+    case secondOnly
 }
 
 final class DamageCalculator {
@@ -99,11 +98,6 @@ extension DamageCalculator {
         calculateFDam(baseKeyPath: "api_data.api_kouku.api_stage3")
         calculateFDam(baseKeyPath: "api_data.api_kouku2.api_stage3")
         
-        // 艦隊　戦闘艦隊
-        // 連合vs通常（水上）　第２
-        // 連合vs通常（機動）　第２
-        // 連合vs連合（水上）　第２　全体 use kouku nor kouku2
-        // 連合vs連合（機動）　第１　全体 use kouku nor kouku2
         let bf: () -> BattleFleet = {
             
             switch self.battleType {
@@ -111,9 +105,9 @@ extension DamageCalculator {
                  .combinedAir,
                  .eachCombinedWater,
                  .eachCombinedAir:
-                return .second
+                return .secondOnly
                 
-            default: return .first
+            default: return .normal
             }
         }
         calculateFDam(baseKeyPath: "api_data.api_kouku.api_stage3_combined", bf)
@@ -123,90 +117,27 @@ extension DamageCalculator {
     
     private func calcOpeningAttack() {
         
-        // 艦隊　戦闘艦隊
-        // 連合vs通常（水上）　第２
-        // 連合vs通常（機動）　第２
-        // 連合vs連合（水上）　第２　全体
-        // 連合vs連合（機動）　第２　全体
         calculateFDam(baseKeyPath: "api_data.api_opening_atack")
-//        {
-//
-//            switch battleType {
-//            case .combinedWater, .combinedAir: return .second
-//
-//            case .eachCombinedWater, .eachCombinedAir: return .each
-//
-//            default: return .first
-//            }
-//        }
     }
     
     private func calcOpeningTaisen() {
         
         calculateHogeki(baseKeyPath: "api_data.api_opening_taisen")
-//        {
-//
-//            isCombinedBattle ? .second : .first
-//        }
     }
     
     private func calcHougeki1() {
         
-        // 艦隊　戦闘艦隊
-        // 連合vs通常（水上）　第１
-        // 連合vs通常（機動）　第２
-        // 連合vs連合（水上）　第１
-        // 連合vs連合（機動）　第１
         calculateHogeki(baseKeyPath: "api_data.api_hougeki1")
-//        {
-//
-//            switch battleType {
-//            case .combinedAir: return .second
-//
-//            default: return .first
-//            }
-//        }
     }
     
     private func calcHougeki2() {
         
-        // 艦隊　戦闘艦隊
-        // 連合vs通常（水上）　第１
-        // 連合vs通常（機動）　第１
-        // 連合vs連合（水上）　第１　全体
-        // 連合vs連合（機動）　第２
         calculateHogeki(baseKeyPath: "api_data.api_hougeki2")
-//        {
-//
-//            switch battleType {
-//            case .eachCombinedWater: return .each
-//
-//            case .eachCombinedAir: return .each
-//
-//            default: return .first
-//            }
-//        }
     }
     
     private func calcHougeki3() {
         
-        // 艦隊　戦闘艦隊
-        // 連合vs通常（水上）　第２
-        // 連合vs通常（機動）　第１
-        // 連合vs連合（水上）　第２
-        // 連合vs連合（機動）　第１　全体
         calculateHogeki(baseKeyPath: "api_data.api_hougeki3")
-//        {
-//
-//            switch battleType {
-//            case .combinedWater: return .second
-//
-////            case .eachCombinedWater: return .second  // 1~12
-//            case .eachCombinedAir: return .each
-//
-//            default: return .first
-//            }
-//        }
     }
     
     private func calcNightHogeki1() {
@@ -221,36 +152,12 @@ extension DamageCalculator {
     
     private func calcRaigeki() {
         
-        // 艦隊　戦闘艦隊
-        // 連合vs通常（水上）　第２
-        // 連合vs通常（機動）　第２
-        // 連合vs連合（水上）　第２　全体
-        // 連合vs連合（機動）　第２　全体
         calculateFDam(baseKeyPath: "api_data.api_raigeki")
-//        {
-//
-//            switch battleType {
-//            case .combinedWater, .combinedAir: return .second
-//
-//            case .eachCombinedWater, .eachCombinedAir: return .each
-//
-//            default: return .first
-//            }
-//        }
     }
     
     private func calculateMidnightBattle() {
         
-        // 艦隊　戦闘艦隊
-        // 連合vs通常（水上）　第２
-        // 連合vs通常（機動）　第２
-        // 連合vs連合（水上）　第２
-        // 連合vs連合（機動）　第２
         calculateHogeki(baseKeyPath: "api_data.api_hougeki")
-//        {
-//
-//            isCombinedBattle ? .second : .first
-//        }
     }
 }
 
@@ -380,7 +287,7 @@ extension DamageCalculator {
     
     private func position(_ pos: Int, in fleet: BattleFleet) -> Int? {
         
-        let damagePos = (fleet == .second ? pos + 6 : pos)
+        let damagePos = (fleet == .secondOnly ? pos + 6 : pos)
         
         guard case 0..<damages.count = damagePos else { return nil }
         
@@ -420,7 +327,7 @@ extension DamageCalculator {
         return zip(zip(targetPosLists, damageLists), eFlags).filter { $0.1 == 1 }.map { $0.0 }
     }
     
-    private func calculateHogeki(baseKeyPath: String, battleFleet: BattleFleet = .first) {
+    private func calculateHogeki(baseKeyPath: String, battleFleet: BattleFleet = .normal) {
         
         let baseValue = json[baseKeyPath.components(separatedBy: ".")]
         
@@ -453,10 +360,7 @@ extension DamageCalculator {
                 
                 calcHP(damage: damages[damagePos], receive: damage)
                 
-                Debug.excute(level: .debug) {
-                    
-                    print("Hougeki \(targetPos) -> \(damage)")
-                }
+                Debug.print("Hougeki \(targetPos) -> \(damage)", level: .debug)
         }
     }
     
@@ -465,7 +369,7 @@ extension DamageCalculator {
         calculateFDam(baseKeyPath: baseKeyPath, battleFleet: bf())
     }
     
-    private func calculateFDam(baseKeyPath: String, battleFleet: BattleFleet = .first) {
+    private func calculateFDam(baseKeyPath: String, battleFleet: BattleFleet = .normal) {
         
         let baseValue = json[baseKeyPath.components(separatedBy: ".")]
         
@@ -493,10 +397,7 @@ extension DamageCalculator {
             
             calcHP(damage: damages[damagePos], receive: damage)
             
-            Debug.excute(level: .debug) {
-                
-                print("FDam \(idx) -> \(damage)")
-            }
+            Debug.print("FDam \(idx) -> \(damage)", level: .debug)
         }
     }
 }
