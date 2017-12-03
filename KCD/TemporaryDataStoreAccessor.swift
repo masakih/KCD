@@ -62,7 +62,7 @@ extension TemporaryDataStore {
         
         let p = NSPredicate.empty
             .and(NSPredicate(#keyPath(GuardEscaped.shipID), equal: shipId))
-            .and(.false(#keyPath(GuardEscaped.ensured)))
+            .and(.true(#keyPath(GuardEscaped.ensured)))
         
         guard let escapes = try? objects(of: GuardEscaped.entity, predicate: p) else { return nil }
         

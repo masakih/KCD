@@ -12,6 +12,7 @@ import Cocoa
 enum GuardEscapeAPI: String {
     
     case goback = "/kcsapi/api_req_combined_battle/goback_port"
+    case gobakAlone = "/kcsapi/api_req_sortie/goback_port"
 }
 
 extension Notification.Name {
@@ -21,9 +22,11 @@ extension Notification.Name {
 
 final class GuardShelterCommand: JSONCommand {
     
+//    static let infoName = InformationName<[Int]>(name: "Ensured")
+    
     override class func canExecuteAPI(_ api: String) -> Bool {
         
-        return GuardEscapeAPI(rawValue: api) != nil ? true : false
+        return GuardEscapeAPI(rawValue: api) != nil
     }
     
     override func execute() {
@@ -54,12 +57,21 @@ final class GuardShelterCommand: JSONCommand {
     
     private func damagedShipId(damagedPos: Int) -> Int? {
         
+        let firstDeckId = TemporaryDataStore.default.battle()?.deckId ?? 1
+        
         let store = ServerDataStore.default
         
-        switch damagedPos {
-        case 1...6: return store.deck(by: 1)?.shipId(of: damagedPos - 1)
-        case 7...12: return store.deck(by: 2)?.shipId(of: damagedPos - 6 - 1)
-        default: return nil
+        switch firstDeckId {
+        case 1:
+            switch damagedPos {
+            case 1...6: return store.deck(by: 1)?.shipId(of: damagedPos - 1)
+            case 7...12: return store.deck(by: 2)?.shipId(of: damagedPos - 6 - 1)
+            default: return nil
+            }
+        case 3:
+            return store.deck(by: 3)?.shipId(of: damagedPos - 1)
+        default:
+            return nil
         }
     }
     
@@ -67,30 +79,13 @@ final class GuardShelterCommand: JSONCommand {
         
         let escape = data["api_escape"]
         
-        guard let guardianPos = escape["api_tow_idx"][0].int else { return }
-        
-        let fixedGuardianPos = guardianPos - 6 - 1
-                
-        guard let guardianId = ServerDataStore.default.deck(by: 2)?.shipId(of: fixedGuardianPos) else {
-                
-                return Logger.shared.log("guardianPos is wrong")
-        }
-        
-        guard let escapeIdx = escape["api_escape_idx"][0].int,
-            let damagedId = damagedShipId(damagedPos: escapeIdx) else {
-                
-                return Logger.shared.log("damagedPos is wrong")
+        guard let escapeIdx = escape["api_escape_idx"][0].int else { return }
+        guard let damagedId = damagedShipId(damagedPos: escapeIdx) else {
+            
+            return  Logger.shared.log("damagedPos is wrong")
         }
         
         let store = TemporaryDataStore.oneTimeEditor()
-        
-        guard let guardian = store.createGuardEscaped() else {
-            
-            return Logger.shared.log("Can not create GuardEscaped for guardinan")
-        }
-        
-        guardian.shipID = guardianId
-        guardian.ensured = false
         
         guard let damaged = store.createGuardEscaped() else {
             
@@ -99,6 +94,24 @@ final class GuardShelterCommand: JSONCommand {
         
         damaged.shipID = damagedId
         damaged.ensured = false
+        
+        // store guardian if needs
+        guard let guardianPos = escape["api_tow_idx"][0].int else { return }
+        
+        let fixedGuardianPos = guardianPos - 6 - 1
+        
+        guard let guardianId = ServerDataStore.default.deck(by: 2)?.shipId(of: fixedGuardianPos) else {
+            
+            return Logger.shared.log("guardianPos is wrong")
+        }
+        
+        guard let guardian = store.createGuardEscaped() else {
+            
+            return Logger.shared.log("Can not create GuardEscaped for guardinan")
+        }
+        
+        guardian.shipID = guardianId
+        guardian.ensured = false
     }
     
     private func removeInvalidEntry() {
@@ -121,7 +134,7 @@ final class GuardShelterCommand: JSONCommand {
         notify()
     }
     
-    func ensureGuardShelter() {
+    private func ensureGuardShelter() {
         
         let store = TemporaryDataStore.oneTimeEditor()
         
