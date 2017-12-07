@@ -347,7 +347,7 @@ extension DamageCalculator {
                 
                 guard let pos = targetPosList.first else { return (0, 0) }
                 
-                return (pos, damageList.reduce(0, +))
+                return (pos, damageList.filter { $0 > 0 }.reduce(0, +))
             }
             .forEach { (targetPos, damage) in
                 
