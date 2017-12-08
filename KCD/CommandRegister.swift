@@ -66,20 +66,16 @@ final class CommandRegister {
             if !response.success {
                 
                 return FailedCommand(apiResponse: response)
+            }
+            
+            if IgnoreCommand.canExecuteAPI(response.api) {
                 
+                return IgnoreCommand(apiResponse: response)
             }
             
             if let c = registeredClasses.lazy.filter({ $0.canExecuteAPI(response.api) }).first {
                 
                 return c.init(apiResponse: response)
-                
-            }
-            
-            
-            if IgnoreCommand.canExecuteAPI(response.api) {
-                
-                return IgnoreCommand(apiResponse: response)
-                
             }
             
             return UnknownComand(apiResponse: response)
