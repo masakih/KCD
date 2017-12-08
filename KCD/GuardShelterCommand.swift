@@ -21,9 +21,7 @@ extension Notification.Name {
 }
 
 final class GuardShelterCommand: JSONCommand {
-    
-//    static let infoName = InformationName<[Int]>(name: "Ensured")
-    
+        
     override class func canExecuteAPI(_ api: String) -> Bool {
         
         return GuardEscapeAPI(rawValue: api) != nil
