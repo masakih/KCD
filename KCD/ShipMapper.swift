@@ -67,7 +67,7 @@ final class ShipMapper: JSONMapper {
         
         return ServerDataStore.default.sortedSlotItemsById()
     }()
-    private var isDeleteNotExist: Bool {
+    private var needsDeleteUnregisteredShip: Bool {
         
         switch apiResponse.api.endpoint {
         case .ship3, .getShip, .shipDeck,
@@ -140,7 +140,7 @@ final class ShipMapper: JSONMapper {
     
     func finishOperating() {
         
-        if !isDeleteNotExist { return }
+        if !needsDeleteUnregisteredShip { return }
         
         store?.ships(exclude: registerIds).forEach { store?.delete($0) }
     }
