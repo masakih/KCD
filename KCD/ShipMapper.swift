@@ -9,19 +9,16 @@
 import Cocoa
 import SwiftyJSON
 
-extension MappingConfiguration {
-    
-    func change(dataKeys: [String]) -> MappingConfiguration {
-        
-        return MappingConfiguration(entity: self.entity,
-                                    dataKeys: dataKeys,
-                                    primaryKeys: self.primaryKeys,
-                                    editorStore: self.editorStore,
-                                    ignoreKeys: self.ignoreKeys)
-    }
-}
-
 final class ShipMapper: JSONMapper {
+    
+    private static let ignoreKeys = ["api_gomes", "api_gomes2", "api_broken", "api_powup",
+                                     "api_voicef", "api_afterlv", "api_aftershipid", "api_backs",
+                                     "api_slotnum", "api_stype", "api_name", "api_yomi",
+                                     "api_raig", "api_luck", "api_saku", "api_raim", "api_baku",
+                                     "api_taik", "api_houg", "api_houm", "api_tyku",
+                                     "api_ndock_item", "api_star",
+                                     "api_ndock_time_str", "api_member_id",
+                                     "api_fuel_max", "api_bull_max"]
     
     let apiResponse: APIResponse
     let configuration: MappingConfiguration<Ship>
@@ -32,28 +29,17 @@ final class ShipMapper: JSONMapper {
         self.configuration = MappingConfiguration(entity: Ship.entity,
                                                   dataKeys: ShipMapper.dataKeys(apiResponse),
                                                   editorStore: ServerDataStore.oneTimeEditor(),
-                                                  ignoreKeys:
-            ["api_gomes", "api_gomes2", "api_broken", "api_powup",
-             "api_voicef", "api_afterlv", "api_aftershipid", "api_backs",
-             "api_slotnum", "api_stype", "api_name", "api_yomi",
-             "api_raig", "api_luck", "api_saku", "api_raim", "api_baku",
-             "api_taik", "api_houg", "api_houm", "api_tyku",
-             "api_ndock_item", "api_star",
-             "api_ndock_time_str", "api_member_id",
-             "api_fuel_max", "api_bull_max"])
-        
-        // kaisouSlotDepriveでは同時に２種類のデータが入る
-        if apiResponse.api.endpoint == .slotDeprive {
-            
-            let conf = self.configuration.change(dataKeys: ["api_data", "api_ship_data", "api_unset_ship"])
-            ShipMapper(apiResponse, configuration: conf).commit()
-        }
+                                                  ignoreKeys: ShipMapper.ignoreKeys)
     }
     
-    private init(_ apiResponse: APIResponse, configuration: MappingConfiguration<Ship>) {
+    // slotDepriveの時に２種類のデータが来るため
+    init(forSlotDepriveUnset apiResponse: APIResponse) {
         
         self.apiResponse = apiResponse
-        self.configuration = configuration
+        self.configuration = MappingConfiguration(entity: Ship.entity,
+                                                  dataKeys: ["api_data", "api_ship_data", "api_unset_ship"],
+                                                  editorStore: ServerDataStore.oneTimeEditor(),
+                                                  ignoreKeys: ShipMapper.ignoreKeys)
     }
     
     private class func dataKeys(_ apiResponse: APIResponse) -> [String] {

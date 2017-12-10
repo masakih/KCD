@@ -18,5 +18,8 @@ final class SlotDepriveCommand: JSONCommand {
     override func execute() {
         
         ShipMapper(apiResponse).commit()
+        
+        // ２種類のデータが来るため
+        ShipMapper(forSlotDepriveUnset: apiResponse).commit()
     }
 }
