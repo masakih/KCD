@@ -21,21 +21,15 @@ final class NyukyoDockMapper: JSONMapper {
                                                   editorStore: ServerDataStore.oneTimeEditor())
     }
     
-    
-    private enum DeckAPI: String {
-        
-        case getMemberNDock = "/kcsapi/api_get_member/ndock"
-        case port = "/kcsapi/api_port/port"
-    }
-    
     private class func dataKeys(_ apiResponse: APIResponse) -> [String] {
         
-        guard let deckApi = DeckAPI(rawValue: apiResponse.api) else { return ["api_data"] }
-        
-        switch deckApi {
+        switch apiResponse.api.endpoint {
+            
         case .port: return ["api_data", "api_ndock"]
             
-        case .getMemberNDock: return ["api_data"]
+        case .ndock: return ["api_data"]
+            
+        default: return Logger.shared.log("Missing API: \(apiResponse.api)", value: ["api_data"])
         }
     }
 }

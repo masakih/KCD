@@ -29,9 +29,8 @@ final class CalculateDamageCommand: JSONCommand {
     
     override func execute() {
         
-        guard let battleApi = BattleAPI(rawValue: api) else { return }
-        
-        switch battleApi {
+        switch api.endpoint {
+            
         case .battle, .airBattle, .ldAirBattle:
             normalBattle(battleType: .normal)
             
@@ -65,6 +64,8 @@ final class CalculateDamageCommand: JSONCommand {
         case .battleResult, .combinedBattleResult:
             applyDamage()
             resetDamage()
+            
+        default: return Logger.shared.log("Missing API: \(apiResponse.api)")
         }
     }
     

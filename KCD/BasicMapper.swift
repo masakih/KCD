@@ -21,20 +21,15 @@ final class BasicMapper: JSONMapper {
                                                   editorStore: ServerDataStore.oneTimeEditor())
     }
     
-    private enum BasicAPI: String {
-        
-        case getMemberBasic = "/kcsapi/api_get_member/basic"
-        case port = "/kcsapi/api_port/port"
-    }
-    
     private class func dataKeys(_ apiResponse: APIResponse) -> [String] {
         
-        guard let basicApi = BasicAPI(rawValue: apiResponse.api) else { return ["api_data"] }
-        
-        switch basicApi {
+        switch apiResponse.api.endpoint {
+            
         case .port: return ["api_data", "api_basic"]
             
-        case .getMemberBasic: return ["api_data"]
+        case .basic: return ["api_data"]
+            
+        default: return Logger.shared.log("Missing API: \(apiResponse.api)", value: ["api_data"])
         }
     }
     

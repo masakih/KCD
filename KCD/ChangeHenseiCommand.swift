@@ -57,11 +57,9 @@ final class ChangeHenseiCommand: JSONCommand {
     
     static let userInfoKey = "HenseiDidChangeUserInfoKey"
     
-    override class func canExecuteAPI(_ api: String) -> Bool {
+    override class func canExecuteAPI(_ api: API) -> Bool {
         
-        if api == "/kcsapi/api_req_hensei/change" { return true }
-        
-        return false
+        return api.endpoint == .change
     }
     
     // api_ship_id の値

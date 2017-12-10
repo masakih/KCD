@@ -10,11 +10,9 @@ import Cocoa
 
 final class NyukyoStartCommand: JSONCommand {
     
-    override class func canExecuteAPI(_ api: String) -> Bool {
+    override class func canExecuteAPI(_ api: API) -> Bool {
         
-        if api == "/kcsapi/api_req_nyukyo/start" { return true }
-        
-        return false
+        return api.endpoint == .startNyukyo
     }
     
     override func execute() {

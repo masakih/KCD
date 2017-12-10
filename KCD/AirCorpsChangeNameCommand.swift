@@ -10,11 +10,9 @@ import Cocoa
 
 final class AirCorpsChangeNameCommand: JSONCommand {
     
-    override class func canExecuteAPI(_ api: String) -> Bool {
+    override class func canExecuteAPI(_ api: API) -> Bool {
         
-        if api == "/kcsapi/api_req_air_corps/change_name" { return true }
-        
-        return false
+        return api.endpoint == .airCorpsRename
     }
     
     override func execute() {

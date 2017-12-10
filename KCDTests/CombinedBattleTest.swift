@@ -75,7 +75,7 @@ class CombinedBattleTest: XCTestCase {
             ]
             let param = Parameter(paramValue)
             
-            let api = APIResponse(api: MapAPI.start.rawValue, parameter: param, json: json)
+            let api = APIResponse(api: API(rawValue: RawAPI.start.rawValue), parameter: param, json: json)
             XCTAssertEqual(api.json, json)
             XCTAssertEqual(api.parameter, param)
             
@@ -214,7 +214,7 @@ class CombinedBattleTest: XCTestCase {
             ]
             guard let json = JSON(rawValue: rawValue) else { return XCTFail("json is nil") }
             let param = Parameter(["Test": "Test"])
-            let api = APIResponse(api: BattleAPI.combinedBattle.rawValue, parameter: param, json: json)
+            let api = APIResponse(api: API(rawValue: RawAPI.combinedBattle.rawValue), parameter: param, json: json)
             
             let command = BattleCommand(apiResponse: api)
             command.execute()
@@ -252,7 +252,7 @@ class CombinedBattleTest: XCTestCase {
             ]
             guard let json = JSON(rawValue: rawValue) else { return XCTFail("json is nil") }
             let param = Parameter(["Test": "Test"])
-            let api = APIResponse(api: BattleAPI.combinedMidnightBattle.rawValue, parameter: param, json: json)
+            let api = APIResponse(api: API(rawValue: RawAPI.combinedMidnightBattle.rawValue), parameter: param, json: json)
             
             let command = BattleCommand(apiResponse: api)
             command.execute()
@@ -265,7 +265,7 @@ class CombinedBattleTest: XCTestCase {
             ]
             guard let json = JSON(rawValue: rawValue) else { return XCTFail("json is nil") }
             let param = Parameter(["Test": "Test"])
-            let api = APIResponse(api: BattleAPI.combinedBattleResult.rawValue, parameter: param, json: json)
+            let api = APIResponse(api: API(rawValue: RawAPI.combinedBattleResult.rawValue), parameter: param, json: json)
             
             let command = BattleCommand(apiResponse: api)
             command.execute()

@@ -10,11 +10,9 @@ import Cocoa
 
 final class MemberKDockCommand: JSONCommand {
     
-    override class func canExecuteAPI(_ api: String) -> Bool {
+    override class func canExecuteAPI(_ api: API) -> Bool {
         
-        if api == "/kcsapi/api_get_member/kdock" { return true }
-        
-        return false
+        return api.endpoint == .kdock
     }
     
     override func execute() {

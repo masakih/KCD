@@ -21,24 +21,15 @@ final class KenzoDockMapper: JSONMapper {
                                                   editorStore: ServerDataStore.oneTimeEditor())
     }
     
-    
-    private enum KenzoDockAPI: String {
-        
-        case getMemberKDock = "/kcsapi/api_get_member/kdock"
-        case kousyouGetShip = "/kcsapi/api_req_kousyou/getship"
-        case getMemberRequireInfo = "/kcsapi/api_get_member/require_info"
-    }
-    
     private class func dataKeys(_ apiResponse: APIResponse) -> [String] {
         
-        guard let kenzoDockApi = KenzoDockAPI(rawValue: apiResponse.api) else { return ["api_data"] }
-        
-        switch kenzoDockApi {
-        case .kousyouGetShip: return ["api_data", "api_kdock"]
+        switch apiResponse.api.endpoint {
             
-        case .getMemberRequireInfo: return ["api_data", "api_kdock"]
+        case .getShip, .requireInfo: return ["api_data", "api_kdock"]
+                        
+        case .kdock: return ["api_data"]
             
-        case .getMemberKDock: return ["api_data"]
+        default: return Logger.shared.log("Missing API: \(apiResponse.api)", value: ["api_data"])
         }
     }
 }

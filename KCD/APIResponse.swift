@@ -138,7 +138,7 @@ extension Parameter: Equatable {
 
 struct APIResponse {
     
-    let api: String
+    let api: API
     let parameter: Parameter
     let json: JSON
     let date: Date
@@ -149,7 +149,7 @@ struct APIResponse {
         return false
     }
     
-    init(api: String, parameter: Parameter, json: JSON) {
+    init(api: API, parameter: Parameter, json: JSON) {
         
         self.api = api
         self.parameter = parameter
@@ -183,6 +183,6 @@ struct APIResponse {
             return nil
         }
         
-        self.api = api
+        self.api = API(endpointPath: api)
     }
 }

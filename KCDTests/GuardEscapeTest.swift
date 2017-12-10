@@ -94,10 +94,10 @@ class GuardEscapeTest: XCTestCase {
             
             guard let json = JSON(rawValue: rawValue) else { return XCTFail("json is nil") }
             let param = Parameter(["Test": "Test"])
-            let resultApi = APIResponse(api: BattleAPI.battleResult.rawValue, parameter: param, json: json)
+            let resultApi = APIResponse(api: API(rawValue: RawAPI.battleResult.rawValue), parameter: param, json: json)
             GuardShelterCommand(apiResponse: resultApi).execute()
             
-            let goBackApi = APIResponse(api: GuardEscapeAPI.goback.rawValue, parameter: param, json: json)
+            let goBackApi = APIResponse(api: API(rawValue: RawAPI.goback.rawValue), parameter: param, json: json)
             GuardShelterCommand(apiResponse: goBackApi).execute()
         }
         
@@ -167,10 +167,10 @@ class GuardEscapeTest: XCTestCase {
             
             guard let json = JSON(rawValue: rawValue) else { return XCTFail("json is nil") }
             let param = Parameter(["Test": "Test"])
-            let resultApi = APIResponse(api: BattleAPI.battleResult.rawValue, parameter: param, json: json)
+            let resultApi = APIResponse(api: API(rawValue: RawAPI.battleResult.rawValue), parameter: param, json: json)
             GuardShelterCommand(apiResponse: resultApi).execute()
             
-            let goBackApi = APIResponse(api: GuardEscapeAPI.gobakAlone.rawValue, parameter: param, json: json)
+            let goBackApi = APIResponse(api: API(rawValue: RawAPI.gobakAlone.rawValue), parameter: param, json: json)
             GuardShelterCommand(apiResponse: goBackApi).execute()
         }
         

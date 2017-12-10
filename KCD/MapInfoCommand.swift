@@ -10,11 +10,9 @@ import Cocoa
 
 final class MapInfoCommand: JSONCommand {
     
-    override class func canExecuteAPI(_ api: String) -> Bool {
+    override class func canExecuteAPI(_ api: API) -> Bool {
         
-        if api == "/kcsapi/api_get_member/mapinfo" { return true }
-        
-        return false
+        return api.endpoint == .mapInfo
     }
     
     override func execute() {

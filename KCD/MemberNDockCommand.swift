@@ -10,11 +10,9 @@ import Cocoa
 
 final class MemberNDockCommand: JSONCommand {
     
-    override class func canExecuteAPI(_ api: String) -> Bool {
+    override class func canExecuteAPI(_ api: API) -> Bool {
         
-        if api == "/kcsapi/api_get_member/ndock" { return true }
-        
-        return false
+        return api.endpoint == .ndock
     }
     
     override func execute() {

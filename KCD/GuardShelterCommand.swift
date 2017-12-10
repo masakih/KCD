@@ -8,13 +8,6 @@
 
 import Cocoa
 
-
-enum GuardEscapeAPI: String {
-    
-    case goback = "/kcsapi/api_req_combined_battle/goback_port"
-    case gobakAlone = "/kcsapi/api_req_sortie/goback_port"
-}
-
 extension Notification.Name {
     
     static let DidUpdateGuardEscape = Notification.Name("com.masakih.KCD.Notification.DidUpdateGuardEscape")
@@ -22,34 +15,28 @@ extension Notification.Name {
 
 final class GuardShelterCommand: JSONCommand {
         
-    override class func canExecuteAPI(_ api: String) -> Bool {
+    override class func canExecuteAPI(_ api: API) -> Bool {
         
-        return GuardEscapeAPI(rawValue: api) != nil
+        return api.type == .guardEscape
     }
     
     override func execute() {
         
-        if let b = BattleAPI(rawValue: api) {
+        switch api.type {
             
-            switch b {
-            case .battleResult, .combinedBattleResult:
-                registerReserve()
-                
-            default:
-                break
-            }
-        }
-        if let m = MapAPI(rawValue: api), m == .next {
+        case .battleResult:
+            registerReserve()
             
+        case .map:
             removeInvalidEntry()
-        }
-        if let _ = GuardEscapeAPI(rawValue: api) {
             
+        case .guardEscape:
             ensureGuardShelter()
-        }
-        if let _ = PortAPI(rawValue: api) {
             
+        case .port:
             removeAllEntry()
+            
+        default: return Logger.shared.log("Missing API: \(apiResponse.api)")
         }
     }
     

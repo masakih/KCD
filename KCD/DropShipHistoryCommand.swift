@@ -12,13 +12,12 @@ final class DropShipHistoryCommand: JSONCommand {
     
     override func execute() {
         
-        if api == "/kcsapi/api_port/port" || api == "/kcsapi/api_get_member/ship_deck" {
+        if api.endpoint == .port || api.endpoint == .shipDeck {
             
             storeToVisible()
-            
         }
         
-        if !api.hasSuffix("battleresult") { return }
+        if api.type != .battleResult { return }
         
         guard let shipName = data["api_get_ship"]["api_ship_name"].string else { return }
         guard let winRank = data["api_win_rank"].string else { return }

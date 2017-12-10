@@ -10,11 +10,9 @@ import Cocoa
 
 final class SlotResetCommand: JSONCommand {
     
-    override class func canExecuteAPI(_ api: String) -> Bool {
+    override class func canExecuteAPI(_ api: API) -> Bool {
         
-        if api == "/kcsapi/api_req_kaisou/slot_exchange_index" { return true }
-        
-        return false
+        return api.endpoint == .exchangeIndex
     }
     
     override func execute() {

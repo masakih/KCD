@@ -22,24 +22,17 @@ final class SlotItemMapper: JSONMapper {
                                                   editorStore: ServerDataStore.oneTimeEditor())
     }
     
-    
-    private enum SlotItemAPI: String {
-        
-        case getMemberSlotItem = "/kcsapi/api_get_member/slot_item"
-        case kousyouGetShip = "/kcsapi/api_req_kousyou/getship"
-        case getMemberRequireInfo = "/kcsapi/api_get_member/require_info"
-    }
-    
     private class func dataKeys(_ apiResponse: APIResponse) -> [String] {
         
-        guard let slotItemApi = SlotItemAPI(rawValue: apiResponse.api) else { return ["api_data"] }
-        
-        switch slotItemApi {
-        case .kousyouGetShip: return ["api_data", "api_slotitem"]
+        switch apiResponse.api.endpoint {
             
-        case .getMemberRequireInfo: return ["api_data", "api_slot_item"]
+        case .getShip: return ["api_data", "api_slotitem"]
             
-        case .getMemberSlotItem: return ["api_data"]
+        case .requireInfo: return ["api_data", "api_slot_item"]
+            
+        case .slotItem: return ["api_data"]
+            
+        default: return Logger.shared.log("Missing API: \(apiResponse.api)", value: ["api_data"])
         }
     }
     
@@ -80,11 +73,9 @@ final class SlotItemMapper: JSONMapper {
     func finishOperating() {
         
         // getshipの時は取得した艦娘の装備のみのデータのため無視
-        if let slotItemApi = SlotItemAPI(rawValue: apiResponse.api),
-            slotItemApi == .kousyouGetShip {
+        if apiResponse.api.endpoint == .getShip {
             
             return
-            
         }
         
         guard let store = configuration.editorStore as? ServerDataStore else { return }

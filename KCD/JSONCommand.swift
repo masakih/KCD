@@ -11,7 +11,7 @@ import SwiftyJSON
 
 class JSONCommand {
     
-    class func canExecuteAPI(_ api: String) -> Bool { return false }
+    class func canExecuteAPI(_ api: API) -> Bool { return false }
     
     let apiResponse: APIResponse
     
@@ -20,7 +20,7 @@ class JSONCommand {
         self.apiResponse = apiResponse
     }
     
-    var api: String { return apiResponse.api }
+    var api: API { return apiResponse.api }
     var parameter: Parameter { return apiResponse.parameter }
     var json: JSON { return apiResponse.json }
     

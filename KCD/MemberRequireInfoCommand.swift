@@ -10,11 +10,9 @@ import Cocoa
 
 final class MemberRequireInfoCommand: JSONCommand {
     
-    override class func canExecuteAPI(_ api: String) -> Bool {
+    override class func canExecuteAPI(_ api: API) -> Bool {
         
-        if api == "/kcsapi/api_get_member/require_info" { return true }
-        
-        return false
+        return api.endpoint == .requireInfo
     }
     
     override func execute() {

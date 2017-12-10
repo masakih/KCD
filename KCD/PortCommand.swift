@@ -8,16 +8,11 @@
 
 import Cocoa
 
-enum PortAPI: String {
-    
-    case port = "/kcsapi/api_port/port"
-}
-
 final class PortCommand: JSONCommand {
     
-    override class func canExecuteAPI(_ api: String) -> Bool {
+    override class func canExecuteAPI(_ api: API) -> Bool {
         
-        return PortAPI(rawValue: api) != nil ? true : false
+        return api.type == .port
     }
     
     override func execute() {

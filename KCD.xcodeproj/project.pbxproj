@@ -138,6 +138,7 @@
 		F47215AA1E1F96B60083D3BC /* ResourceHistoryDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47215A91E1F96B60083D3BC /* ResourceHistoryDataStore.swift */; };
 		F47215AC1E1FA2460083D3BC /* TemporaryDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47215AB1E1FA2460083D3BC /* TemporaryDataStore.swift */; };
 		F47215B01E1FEACC0083D3BC /* ServerDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47215AF1E1FEACC0083D3BC /* ServerDataStore.swift */; };
+		F4760CE81FDAC5F100702C3E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4760CE71FDAC5F100702C3E /* API.swift */; };
 		F47B06DD1E97ECD4006711D9 /* WindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47B06DC1E97ECD4006711D9 /* WindowManager.swift */; };
 		F47C3E981E5DB29300D97449 /* JSONMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47C3E971E5DB29300D97449 /* JSONMapper.swift */; };
 		F47C3E9A1E5DC90000D97449 /* MasterSTypeMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47C3E991E5DC90000D97449 /* MasterSTypeMapper.swift */; };
@@ -511,6 +512,7 @@
 		F47215A91E1F96B60083D3BC /* ResourceHistoryDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceHistoryDataStore.swift; sourceTree = "<group>"; };
 		F47215AB1E1FA2460083D3BC /* TemporaryDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemporaryDataStore.swift; sourceTree = "<group>"; };
 		F47215AF1E1FEACC0083D3BC /* ServerDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerDataStore.swift; sourceTree = "<group>"; };
+		F4760CE71FDAC5F100702C3E /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		F47B06DC1E97ECD4006711D9 /* WindowManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowManager.swift; sourceTree = "<group>"; };
 		F47C3E971E5DB29300D97449 /* JSONMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONMapper.swift; sourceTree = "<group>"; };
 		F47C3E991E5DC90000D97449 /* MasterSTypeMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterSTypeMapper.swift; sourceTree = "<group>"; };
@@ -1040,6 +1042,7 @@
 				F4FC3E8F1E437E1F00E41228 /* JSONReciever.swift */,
 				F4CF25A91E338ED000C02A66 /* JSONTracker.swift */,
 				F4CF25A71E325ABA00C02A66 /* APIResponse.swift */,
+				F4760CE71FDAC5F100702C3E /* API.swift */,
 				F4CF25BF1E36428400C02A66 /* MissionStatus.swift */,
 				F4CF25BD1E361F4600C02A66 /* NyukyoDockStatus.swift */,
 				F4CF25BB1E34F67400C02A66 /* KenzoDockStatus.swift */,
@@ -1674,6 +1677,7 @@
 				F47C3EAE1E5F26E900D97449 /* DeckMapper.swift in Sources */,
 				F4048AA11E1951BB008ACFD6 /* SuppliesCell.swift in Sources */,
 				F490977D1E19DF390085A45D /* SlotItemFrameView.swift in Sources */,
+				F4760CE81FDAC5F100702C3E /* API.swift in Sources */,
 				F4E471291E46ECF1009B5AF4 /* CoreDataCore.swift in Sources */,
 				F4AF56811F7BF0CF004F4F4E /* IntConvertable.swift in Sources */,
 				F47C3EA01E5DE08F00D97449 /* MasterMapInfoMapper.swift in Sources */,

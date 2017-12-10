@@ -10,11 +10,9 @@ import Cocoa
 
 final class GetShipCommand: JSONCommand {
     
-    override class func canExecuteAPI(_ api: String) -> Bool {
+    override class func canExecuteAPI(_ api: API) -> Bool {
         
-        if api == "/kcsapi/api_req_kousyou/getship" { return true }
-        
-        return false
+        return api.endpoint == .getShip
     }
     
     override func execute() {

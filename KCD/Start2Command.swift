@@ -10,11 +10,9 @@ import Cocoa
 
 final class Start2Command: JSONCommand {
     
-    override class func canExecuteAPI(_ api: String) -> Bool {
+    override class func canExecuteAPI(_ api: API) -> Bool {
         
-        if api == "/kcsapi/api_start2" { return true }
-        
-        return false
+        return api.endpoint == .start2
     }
     
     override func execute() {

@@ -10,11 +10,9 @@ import Cocoa
 
 final class PowerUpCommand: JSONCommand {
     
-    override class func canExecuteAPI(_ api: String) -> Bool {
+    override class func canExecuteAPI(_ api: API) -> Bool {
         
-        if api == "/kcsapi/api_req_kaisou/powerup" { return true }
-        
-        return false
+        return api.endpoint == .powerup
     }
     
     override func execute() {

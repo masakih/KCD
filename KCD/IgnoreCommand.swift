@@ -21,10 +21,10 @@ final class IgnoreCommand: JSONCommand {
         return array
     }()
     
-    override class func canExecuteAPI(_ api: String) -> Bool {
+    override class func canExecuteAPI(_ api: API) -> Bool {
         
-        if ignores.contains(api) { return true }
-        if api.hasPrefix("/kcsapi/api_req_ranking/") { return true }
+        if api.includs(in: ignores) { return true }
+        if api.isRanking() { return true }
         
         return false
     }

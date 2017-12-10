@@ -10,11 +10,9 @@ import Cocoa
 
 final class ShipDeckCommand: JSONCommand {
     
-    override class func canExecuteAPI(_ api: String) -> Bool {
+    override class func canExecuteAPI(_ api: API) -> Bool {
         
-        if api == "/kcsapi/api_get_member/ship_deck" { return true }
-        
-        return false
+        return api.endpoint == .shipDeck
     }
     
     override func execute() {
@@ -22,7 +20,6 @@ final class ShipDeckCommand: JSONCommand {
         ShipMapper(apiResponse).commit()
         DeckMapper(apiResponse).commit()
         DummyShipCommand(apiResponse: apiResponse).execute()
-        GuardShelterCommand(apiResponse: apiResponse).execute()
         DropShipHistoryCommand(apiResponse: apiResponse).execute()
     }
 }

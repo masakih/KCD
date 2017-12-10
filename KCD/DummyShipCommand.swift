@@ -17,9 +17,16 @@ final class DummyShipCommand: JSONCommand {
     
     override func execute() {
         
-        if api == "/kcsapi/api_req_sortie/battleresult" { checkGetShip() }
-        if api == "/kcsapi/api_get_member/ship_deck" { enterDummy() }
-        if api == "/kcsapi/api_port/port" { removeDummy() }
+        switch api.endpoint {
+            
+        case .battleResult, .combinedBattleResult: checkGetShip()
+        
+        case .shipDeck: enterDummy()
+        
+        case .port: removeDummy()
+        
+        default: return Logger.shared.log("Missing API: \(apiResponse.api)")
+        }
     }
     
     private func checkGetShip() {

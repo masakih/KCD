@@ -27,30 +27,17 @@ final class MaterialMapper: JSONMapper {
                                                   editorStore: ServerDataStore.oneTimeEditor())
     }
     
-    
-    private enum MaterialAPI: String {
-        
-        case port = "/kcsapi/api_port/port"
-        case kousyouCreateItem = "/kcsapi/api_req_kousyou/createitem"
-        case kousyouDestoroyShip = "/kcsapi/api_req_kousyou/destroyship"
-        case kousyouRemodelSlot = "/kcsapi/api_req_kousyou/remodel_slot"
-        case hokyuCharge = "/kcsapi/api_req_hokyu/charge"
-    }
-    
     private class func dataKeys(_ apiResponse: APIResponse) -> [String] {
-        
-        guard let materialApi = MaterialAPI(rawValue: apiResponse.api) else { return ["api_data"] }
-        
-        switch materialApi {
-        case .port: return ["api_data", "api_material"]
+                
+        switch apiResponse.api.endpoint {
             
-        case .kousyouCreateItem: return ["api_data", "api_material"]
+        case .material: return ["api_data"]
             
-        case .kousyouDestoroyShip: return ["api_data", "api_material"]
+        case .port, .createItem, .destroyShip, .charge: return ["api_data", "api_material"]
             
-        case .kousyouRemodelSlot: return ["api_data", "api_after_material"]
+        case .remodelSlot: return ["api_data", "api_after_material"]
             
-        case .hokyuCharge: return ["api_data", "api_material"]
+        default: return Logger.shared.log("Missing API: \(apiResponse.api)", value: ["api_data"])
         }
     }
     

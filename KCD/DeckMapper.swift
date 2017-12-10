@@ -21,35 +21,21 @@ final class DeckMapper: JSONMapper {
                                                   editorStore: ServerDataStore.oneTimeEditor())
     }
     
-    
-    private enum DeckAPI: String {
-        
-        case getMemberDeck = "/kcsapi/api_get_member/deck"
-        case port = "/kcsapi/api_port/port"
-        case getMemberShip2 = "/kcsapi/api_get_member/ship2"
-        case getMemberShip3 = "/kcsapi/api_get_member/ship3"
-        case getMemberShipDeck = "/kcsapi/api_get_member/ship_deck"
-        case getMemberDeckPort = "/kcsapi/api_get_member/deck_port"
-        case henseiPresetSelect = "/kcsapi/api_req_hensei/preset_select"
-        case kaisouPowerUp = "/kcsapi/api_req_kaisou/powerup"
-    }
-    
     private class func dataKeys(_ apiResponse: APIResponse) -> [String] {
         
-        guard let deckApi = DeckAPI(rawValue: apiResponse.api) else { return ["api_data"] }
-        
-        switch deckApi {
+        switch apiResponse.api.endpoint {
+            
         case .port: return ["api_data", "api_deck_port"]
             
-        case .getMemberShip2: return ["api_data_deck"]
+        case .ship3, .shipDeck: return ["api_data", "api_deck_data"]
             
-        case .getMemberShip3: return ["api_data", "api_deck_data"]
+        case .ship2: return ["api_data_deck"]
             
-        case .getMemberShipDeck: return ["api_data", "api_deck_data"]
+        case .powerup: return ["api_data", "api_deck"]
             
-        case .kaisouPowerUp: return ["api_data", "api_deck"]
+        case .deck, .deckPort, .presetSelect: return ["api_data"]
             
-        case .getMemberDeck, .getMemberDeckPort, .henseiPresetSelect: return ["api_data"]
+        default: return Logger.shared.log("Missing API: \(apiResponse.api)", value: ["api_data"])
         }
     }
 }

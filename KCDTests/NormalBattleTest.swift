@@ -62,7 +62,7 @@ class NormalBattleTest: XCTestCase {
             let param = Parameter(paramValue)
             XCTAssertEqual(param["api_deck_id"].string, "\(fleet)")
             
-            let api = APIResponse(api: MapAPI.start.rawValue, parameter: param, json: json)
+            let api = APIResponse(api: API(endpointPath: Endpoint.start.rawValue), parameter: param, json: json)
             XCTAssertEqual(api.json, json)
             XCTAssertEqual(api.parameter, param)
             
@@ -148,7 +148,7 @@ class NormalBattleTest: XCTestCase {
             ]
             guard let json = JSON(rawValue: rawValue) else { return XCTFail("json is nil") }
             let param = Parameter(["Test": "Test"])
-            let api = APIResponse(api: BattleAPI.battle.rawValue, parameter: param, json: json)
+            let api = APIResponse(api: API(endpointPath: Endpoint.battle.rawValue), parameter: param, json: json)
             
             let command = BattleCommand(apiResponse: api)
             command.execute()
@@ -177,7 +177,7 @@ class NormalBattleTest: XCTestCase {
             ]
             guard let json = JSON(rawValue: rawValue) else { return XCTFail("json is nil") }
             let param = Parameter(["Test": "Test"])
-            let api = APIResponse(api: BattleAPI.midnightBattle.rawValue, parameter: param, json: json)
+            let api = APIResponse(api: API(endpointPath: Endpoint.midnightBattle.rawValue), parameter: param, json: json)
             
             let command = BattleCommand(apiResponse: api)
             command.execute()
@@ -190,7 +190,7 @@ class NormalBattleTest: XCTestCase {
             ]
             guard let json = JSON(rawValue: rawValue) else { return XCTFail("json is nil") }
             let param = Parameter(["Test": "Test"])
-            let api = APIResponse(api: BattleAPI.battleResult.rawValue, parameter: param, json: json)
+            let api = APIResponse(api: API(endpointPath: Endpoint.battleResult.rawValue), parameter: param, json: json)
             
             let command = BattleCommand(apiResponse: api)
             command.execute()
@@ -259,7 +259,7 @@ class NormalBattleTest: XCTestCase {
             ]
             guard let json = JSON(rawValue: rawValue) else { return XCTFail("json is nil") }
             let param = Parameter(["Test": "Test"])
-            let api = APIResponse(api: BattleAPI.midnightBattle.rawValue, parameter: param, json: json)
+            let api = APIResponse(api: API(endpointPath: Endpoint.midnightBattle.rawValue), parameter: param, json: json)
             
             let command = BattleCommand(apiResponse: api)
             command.execute()
@@ -272,7 +272,7 @@ class NormalBattleTest: XCTestCase {
             ]
             guard let json = JSON(rawValue: rawValue) else { return XCTFail("json is nil") }
             let param = Parameter(["Test": "Test"])
-            let api = APIResponse(api: BattleAPI.battleResult.rawValue, parameter: param, json: json)
+            let api = APIResponse(api: API(endpointPath: Endpoint.battleResult.rawValue), parameter: param, json: json)
             
             let command = BattleCommand(apiResponse: api)
             command.execute()

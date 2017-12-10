@@ -10,11 +10,9 @@ import Cocoa
 
 final class HokyuChargeCommand: JSONCommand {
     
-    override class func canExecuteAPI(_ api: String) -> Bool {
+    override class func canExecuteAPI(_ api: API) -> Bool {
         
-        if api == "/kcsapi/api_req_hokyu/charge" { return true }
-        
-        return false
+        return api.endpoint == .charge
     }
     
     override func execute() {

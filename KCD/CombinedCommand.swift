@@ -25,16 +25,14 @@ final class CombinedCommand: JSONCommand {
     
     static let userInfoKey = "com.masakih.KCD.Notification.CombinedDidCange.CombinedType"
     
-    override class func canExecuteAPI(_ api: String) -> Bool {
+    override class func canExecuteAPI(_ api: API) -> Bool {
         
-        if api == "/kcsapi/api_req_hensei/combined" { return true }
-        
-        return false
+        return api.endpoint == .henseiCombined
     }
     
     override func execute() {
         
-        if api == "/kcsapi/api_port/port" {
+        if api.endpoint == .port {
             
             if let t = data["api_combined_flag"].int {
                 

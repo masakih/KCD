@@ -43,7 +43,7 @@ final class ShipMapper: JSONMapper {
              "api_fuel_max", "api_bull_max"])
         
         // kaisouSlotDepriveでは同時に２種類のデータが入る
-        if let api = ShipAPI(rawValue: apiResponse.api), api == .kaisouSlotDeprive {
+        if apiResponse.api.endpoint == .slotDeprive {
             
             let conf = self.configuration.change(dataKeys: ["api_data", "api_ship_data", "api_unset_ship"])
             ShipMapper(apiResponse, configuration: conf).commit()
@@ -56,36 +56,19 @@ final class ShipMapper: JSONMapper {
         self.configuration = configuration
     }
     
-    
-    private enum ShipAPI: String {
-        
-        case getMemberShip = "/kcsapi/api_get_member/ship"
-        case port = "/kcsapi/api_port/port"
-        case getMemberShip3 = "/kcsapi/api_get_member/ship3"
-        case kousyouGetShip = "/kcsapi/api_req_kousyou/getship"
-        case getMemberShipDeck = "/kcsapi/api_get_member/ship_deck"
-        case kaisouPowerUp = "/kcsapi/api_req_kaisou/powerup"
-        case kaisouSlotDeprive = "/kcsapi/api_req_kaisou/slot_deprive"
-    }
-    
     private class func dataKeys(_ apiResponse: APIResponse) -> [String] {
         
-        guard let shipApi = ShipAPI(rawValue: apiResponse.api) else { return ["api_data"] }
-        
-        switch shipApi {
-        case .port: return ["api_data", "api_ship"]
+        switch apiResponse.api.endpoint {
             
-        case .getMemberShip3: return ["api_data", "api_ship_data"]
+        case .port, .getShip, .powerup: return ["api_data", "api_ship"]
             
-        case .kousyouGetShip: return ["api_data", "api_ship"]
+        case .ship3, .shipDeck: return ["api_data", "api_ship_data"]
             
-        case .getMemberShipDeck: return ["api_data", "api_ship_data"]
+        case .slotDeprive: return ["api_data", "api_ship_data", "api_set_ship"]
             
-        case .kaisouPowerUp: return ["api_data", "api_ship"]
+        case .ship: return ["api_data"]
             
-        case .kaisouSlotDeprive: return ["api_data", "api_ship_data", "api_set_ship"]
-            
-        case .getMemberShip: return ["api_data"]
+        default: return Logger.shared.log("Missing API: \(apiResponse.api)", value: ["api_data"])
         }
     }
     
@@ -100,11 +83,9 @@ final class ShipMapper: JSONMapper {
     }()
     private var isDeleteNotExist: Bool {
         
-        guard let shipApi = ShipAPI(rawValue: apiResponse.api) else { return true }
-        
-        switch shipApi {
-        case .getMemberShip3, .kousyouGetShip, .getMemberShipDeck,
-             .kaisouPowerUp, .kaisouSlotDeprive:
+        switch apiResponse.api.endpoint {
+        case .ship3, .getShip, .shipDeck,
+             .powerup, .slotDeprive:
             return false
             
         default:

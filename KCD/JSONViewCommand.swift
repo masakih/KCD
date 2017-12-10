@@ -53,7 +53,7 @@ final class JSONViewCommand: JSONCommand {
         DispatchQueue.main.async {
             
             let commands: [String: Any] = [
-                "api": self.api,
+                "api": self.api.debugDescription,
                 "argument": self.parameterList,
                 "json": self.jsonTree ?? [],
                 "recieveDate": self.recieveDate ?? Date(),

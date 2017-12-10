@@ -8,32 +8,25 @@
 
 import Cocoa
 
-enum MapAPI: String {
-    
-    case start = "/kcsapi/api_req_map/start"
-    case next = "/kcsapi/api_req_map/next"
-}
-
 final class MapStartCommand: JSONCommand {
     
     private let store = TemporaryDataStore.oneTimeEditor()
     
-    override class func canExecuteAPI(_ api: String) -> Bool {
+    override class func canExecuteAPI(_ api: API) -> Bool {
         
-        return MapAPI(rawValue: api) != nil
+        return api.type == .map
     }
     
     override func execute() {
         
-        MapAPI(rawValue: api).map {
+        switch api.endpoint {
+        case .start: startBattle()
             
-            switch $0 {
-            case .start: startBattle()
-                
-            case .next:
-                nextCell()
-                updateBattleCell()
-            }
+        case .next:
+            nextCell()
+            updateBattleCell()
+            
+        default: return Logger.shared.log("Missing API: \(apiResponse.api)")
         }
         
         GuardShelterCommand(apiResponse: apiResponse).execute()
