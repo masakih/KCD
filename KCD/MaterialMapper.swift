@@ -67,11 +67,9 @@ final class MaterialMapper: JSONMapper {
     
     private func register(_ material: Material, data: [Int]) {
         
-        data.enumerated().forEach {
+        zip(data, keys).forEach {
             
-            guard $0.offset < keys.count else { return }
-            
-            material.setValue($0.element as NSNumber, forKey: keys[$0.offset])
+            material.setValue($0, forKey: $1)
         }
     }
     
