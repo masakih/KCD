@@ -52,7 +52,7 @@ final class ShipMapper: JSONMapper {
             
         case .slotDeprive: return ["api_data", "api_ship_data", "api_set_ship"]
             
-        case .ship: return ["api_data"]
+        case .ship, .ship2: return ["api_data"]
             
         default: return Logger.shared.log("Missing API: \(apiResponse.api)", value: ["api_data"])
         }
@@ -70,8 +70,7 @@ final class ShipMapper: JSONMapper {
     private var needsDeleteUnregisteredShip: Bool {
         
         switch apiResponse.api.endpoint {
-        case .ship3, .getShip, .shipDeck,
-             .powerup, .slotDeprive:
+        case .ship3, .getShip, .shipDeck, .powerup, .slotDeprive:
             return false
             
         default:
@@ -105,6 +104,8 @@ final class ShipMapper: JSONMapper {
             
             guard let masterId = value.int else { return false }
             
+            if ship.ship_id == masterId { return true }
+            
             setMaster(masterId, to: ship)
             
             return true
@@ -113,6 +114,8 @@ final class ShipMapper: JSONMapper {
         if key == "api_exp" {
             
             guard let exp = value[0].int else { return false }
+            
+            if ship.exp == exp { return true }
             
             ship.exp = exp
             
@@ -130,9 +133,11 @@ final class ShipMapper: JSONMapper {
             
             guard let ex = value.int else { return false }
             
+            if ship.slot_ex == ex { return true }
+            
             setExtraSlot(ex, to: ship)
             
-            return false
+            return true
         }
         
         return false
@@ -147,8 +152,6 @@ final class ShipMapper: JSONMapper {
     
     private func setMaster(_ masterId: Int, to ship: Ship) {
         
-        if ship.ship_id == masterId { return }
-        
         guard let mShip = masterShips.binarySearch(comparator: { $0.id ==? masterId }),
             let masterShip = store?.object(of: MasterShip.entity, with: mShip.objectID) else {
                 
@@ -161,18 +164,17 @@ final class ShipMapper: JSONMapper {
     
     private func setSlot(_ slotItems: JSON, to ship: Ship) {
         
-        guard let converSlotItems = slotItems.arrayObject as? [Int] else { return }
+        guard let convertedSlotItems = slotItems.arrayObject as? [Int] else { return }
         guard let store = store else { return }
         
-        let newItems: [SlotItem] =
-            converSlotItems.flatMap { item in
-                
-                if item == 0 || item == -1 { return nil }
+        let newItems: [SlotItem] = convertedSlotItems
+            .filter { $0 != 0 && $0 != -1 }
+            .flatMap { item in
                 
                 guard let found = self.slotItems.binarySearch(comparator: { $0.id ==? item }),
                     let slotItem = store.object(of: SlotItem.entity, with: found.objectID) else {
                         
-                        let maxV = converSlotItems.last
+                        let maxV = convertedSlotItems.last
                         if maxV != nil, maxV! < item {
                             
                             Debug.print("item is maybe unregistered, so it is new ship's equipment.")
@@ -198,5 +200,6 @@ final class ShipMapper: JSONMapper {
         }
         
         ship.extraItem = ex
+        ship.slot_ex = exSlotItem
     }
 }
