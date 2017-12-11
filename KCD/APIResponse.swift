@@ -93,6 +93,10 @@ struct ParameterValue {
         
         return false
     }
+    var array: [ParameterValue] {
+        
+        return rawValue?.components(separatedBy: ",").map { ParameterValue($0) } ?? []
+    }
     
     var valid: Bool { return rawValue != nil }
     
