@@ -84,10 +84,7 @@ extension JSONMapper {
         let old = object.value(forKey: key)
         if !isEqual(old as AnyObject?, validValue) {
             
-            object.notifyChangeValue(forKey: key) {
-                
-                object.setValue(validValue, forKey: key)
-            }
+            object.setValue(validValue, forKey: key)
         }
     }
     
