@@ -14,9 +14,21 @@ final class RealDestroyShipCommand: JSONCommand {
         
         let store = ServerDataStore.oneTimeEditor()
         
-        parameter["api_ship_id"]
-            .int
+        let ships = parameter["api_ship_id"]
+            .array
+            .flatMap { $0.int }
             .flatMap(store.ship(by:))
-            .flatMap(store.delete)
+        
+        if parameter["api_slot_dest_flag"].int == 0 {
+            
+            // remove allEquipment
+            ships.forEach {
+                    $0.equippedItem = []
+                    $0.extraItem = nil
+            }
+        }
+        
+        // destory ships
+        ships.forEach(store.delete)
     }
 }
