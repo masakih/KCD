@@ -29,14 +29,6 @@ private extension Data {
     var utf8String: String? { return String(data: self, encoding: .utf8) }
 }
 
-func +<Key, Value> (lhs: [Key: Value], rhs: (Key, Value)) -> [Key: Value] {
-    
-    var new = lhs
-    new[rhs.0] = rhs.1
-    
-    return new
-}
-
 private func splitJSON(_ data: Data) -> String? {
     
     let prefix = "svdata="
