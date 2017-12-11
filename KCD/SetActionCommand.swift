@@ -21,21 +21,9 @@ final class SetActionCommand: JSONCommand {
             
             return Logger.shared.log("api_area_id is wrong.")
         }
-        guard let rIds = parameter["api_base_id"]
-            .string?
-            .components(separatedBy: ",")
-            .map({ Int($0) ?? -1 }) else {
-                
-                return Logger.shared.log("api_base_id is wrong.")
-        }
-        guard let actions = parameter["api_action_kind"]
-            .string?
-            .components(separatedBy: ",")
-            .map({ Int($0) ?? -1 }) else {
-                
-                return Logger.shared.log("api_action_kind is rwong")
-        }
         
+        let rIds = parameter["api_base_id"].integerArray
+        let actions = parameter["api_action_kind"].integerArray
         if rIds.count != actions.count { print("missmatch count") }
         
         let store = ServerDataStore.oneTimeEditor()

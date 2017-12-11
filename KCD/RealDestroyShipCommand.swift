@@ -15,8 +15,7 @@ final class RealDestroyShipCommand: JSONCommand {
         let store = ServerDataStore.oneTimeEditor()
         
         let ships = parameter["api_ship_id"]
-            .array
-            .flatMap { $0.int }
+            .integerArray
             .flatMap(store.ship(by:))
         
         if parameter["api_slot_dest_flag"].int == 0 {

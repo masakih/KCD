@@ -15,9 +15,7 @@ final class RealPowerUpCommand: JSONCommand {
         let store = ServerDataStore.oneTimeEditor()
         
         parameter["api_id_items"]
-            .string?
-            .components(separatedBy: ",")
-            .flatMap { Int($0) }
+            .integerArray
             .flatMap(store.ship(by:))
             .forEach(store.delete)
     }

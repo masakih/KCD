@@ -21,28 +21,27 @@ final class AirCorpsSupplyCommand: JSONCommand {
         
         guard let areaId = parameter["api_area_id"].int else { return }
         guard let rId = parameter["api_base_id"].int else { return }
-        guard let squadronIdsString = parameter["api_squadron_id"].string else { return }
         guard let airBase = store.airBase(area: areaId, base: rId) else { return }
         
         let planeInfos = data["api_plane_info"]
         let planes = airBase.planeInfo
-        let squadronIds = squadronIdsString
-            .components(separatedBy: ",")
-            .flatMap { Int($0) }
         
-        squadronIds.enumerated().forEach {
-            
-            guard planes.count >= $0.element else { return }
-            guard planeInfos.count > $0.offset else { return }
-            guard let plane = planes[$0.element - 1] as? AirBasePlaneInfo else { return }
-            
-            let planeInfo = planeInfos[$0.offset]
-            
-            if let v = planeInfo["api_cond"].int { plane.cond = v }
-            if let v = planeInfo["api_slotid"].int { plane.slotid = v }
-            if let v = planeInfo["api_state"].int { plane.state = v }
-            if let v = planeInfo["api_count"].int { plane.count = v }
-            if let v = planeInfo["api_max_count"].int { plane.max_count = v }
+        parameter["api_squadron_id"]
+            .integerArray
+            .enumerated()
+            .forEach {
+                
+                guard planes.count >= $0.element else { return }
+                guard planeInfos.count > $0.offset else { return }
+                guard let plane = planes[$0.element - 1] as? AirBasePlaneInfo else { return }
+                
+                let planeInfo = planeInfos[$0.offset]
+                
+                if let v = planeInfo["api_cond"].int { plane.cond = v }
+                if let v = planeInfo["api_slotid"].int { plane.slotid = v }
+                if let v = planeInfo["api_state"].int { plane.state = v }
+                if let v = planeInfo["api_count"].int { plane.count = v }
+                if let v = planeInfo["api_max_count"].int { plane.max_count = v }
         }
         
         if let v = data["api_distance"].int { airBase.distance = v }

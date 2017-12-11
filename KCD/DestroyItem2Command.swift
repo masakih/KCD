@@ -17,17 +17,9 @@ final class DestroyItem2Command: JSONCommand {
     
     override func execute() {
         
-        guard let itemIds = parameter["api_slotitem_ids"]
-            .string?
-            .components(separatedBy: ",")
-            .flatMap({ Int($0) }) else {
-                
-                return Logger.shared.log("api_slotitem_ids is wrong")
-        }
-        
         let store = ServerDataStore.oneTimeEditor()
         
-        store.slotItems(in: itemIds).forEach(store.delete)
+        store.slotItems(in: parameter["api_slotitem_ids"].integerArray).forEach(store.delete)
         
         guard let material = store.material() else {
             
