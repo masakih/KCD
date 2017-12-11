@@ -97,6 +97,9 @@ struct ParameterValue {
         
         return rawValue?.components(separatedBy: ",").map { ParameterValue($0) } ?? []
     }
+    var integerArray: [Int] {
+        return array.flatMap { $0.int }
+    }
     
     var valid: Bool { return rawValue != nil }
     
