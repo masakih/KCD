@@ -191,8 +191,7 @@ final class FleetViewController: NSViewController {
     @objc var totalTPValue: Int {
         
         return ships
-            .map { ShipTPValueCalculator($0) }
-            .map { $0.value }
+            .map { ShipTPValueCalculator($0).value }
             .reduce(0, +)
     }
     
