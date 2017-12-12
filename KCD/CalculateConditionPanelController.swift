@@ -40,6 +40,8 @@ final class CalculateConditionPanelController: NSWindowController {
         
         guard let window = self.window else { return }
         
+        originalCondition = condition
+        
         mainWindow.beginSheet(window) { _ in
             
             handler(self.condition)
