@@ -12,7 +12,7 @@ final class KaisouLockCommand: JSONCommand {
     
     override class func canExecuteAPI(_ api: API) -> Bool {
         
-        return api.endpoint == .shipLock
+        return api.endpoint == .itemLock
     }
     
     override func execute() {

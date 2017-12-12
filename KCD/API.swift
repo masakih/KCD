@@ -43,7 +43,7 @@ enum Endpoint: String {
     
     case powerup = "/kcsapi/api_req_kaisou/powerup"
     
-    case shipLock = "/kcsapi/api_req_kaisou/lock"
+    case itemLock = "/kcsapi/api_req_kaisou/lock"
     
     // SlotItem
     case slotItem = "/kcsapi/api_get_member/slot_item"
