@@ -61,7 +61,7 @@ final class ShipDetailViewController: NSViewController {
         
         NotificationCenter.default.removeObserver(self)
         damageView.unbind(NSBindingName(#keyPath(DamageView.damageType)))
-        supply.unbind(NSBindingName(#keyPath(SuppliesView.shipStatus)))
+        supply.unbind(NSBindingName(#keyPath(SuppliesView.ship)))
         [slot00Field, slot01Field, slot02Field, slot03Field]
             .forEach { $0?.unbind(NSBindingName(#keyPath(SlotItemLevelView.slotItemID))) }
         
@@ -124,7 +124,7 @@ final class ShipDetailViewController: NSViewController {
                         to: shipController,
                         withKeyPath: "selection.status", options: nil)
         
-        supply.bind(NSBindingName(#keyPath(SuppliesView.shipStatus)),
+        supply.bind(NSBindingName(#keyPath(SuppliesView.ship)),
                     to: shipController,
                     withKeyPath: "selection.self", options: nil)
         

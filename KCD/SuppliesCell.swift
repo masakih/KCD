@@ -24,32 +24,32 @@ final class SuppliesCell: NSCell {
     private let borderColor = NSColor(calibratedWhite: 0.632, alpha: 1.0)
     private let backgroundColor = NSColor(calibratedWhite: 0.948, alpha: 1.0)
     
-    @objc dynamic var shipStatus: Ship?
+    @objc dynamic var ship: Ship?
     
     private var fuelStatusColor: NSColor {
         
-        guard let s = shipStatus else { return redColor }
+        guard let s = ship else { return redColor }
         
         return statusColor(withValue: s.fuel, max: s.maxFuel)
     }
     
     private var bullStatusColor: NSColor {
         
-        guard let s = shipStatus else { return redColor }
+        guard let s = ship else { return redColor }
         
         return statusColor(withValue: s.bull, max: s.maxBull)
     }
     
     private var numberOfFuelColoredCell: Int {
         
-        guard let s = shipStatus else { return 0 }
+        guard let s = ship else { return 0 }
         
         return numberOfColoredCell(withValue: s.fuel, max: s.maxFuel)
     }
     
-    private var numberOgBullColoredCell: Int {
+    private var numberOfBullColoredCell: Int {
         
-        guard let s = shipStatus else { return 0 }
+        guard let s = ship else { return 0 }
         
         return numberOfColoredCell(withValue: s.bull, max: s.maxBull)
     }
@@ -78,7 +78,7 @@ final class SuppliesCell: NSCell {
         
         let height = (cellFrame.height - 3.0) / 2.0
         let width = (cellFrame.width - CGFloat(numberOfCell) - 1.0) / CGFloat(numberOfCell)
-        let y = type == .fuel ? height + 2.0 : 1.0
+        let y = (type == .fuel ? height + 2.0 : 1.0)
         
         (0...numberOfCell).forEach {
             
@@ -96,7 +96,7 @@ final class SuppliesCell: NSCell {
     
     private func drawBullInterior(withFrame cellFrame: NSRect) {
         
-        drawResource(withFrame: cellFrame, border: numberOgBullColoredCell, type: .bull)
+        drawResource(withFrame: cellFrame, border: numberOfBullColoredCell, type: .bull)
     }
     
     private func numberOfColoredCell(withValue value: Int, max: Int) -> Int {

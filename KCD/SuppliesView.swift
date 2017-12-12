@@ -40,22 +40,22 @@ final class SuppliesView: NSControl {
         
         observeKeys.forEach {
             
-            suppliesCell.shipStatus?.removeObserver(self, forKeyPath: $0)
+            suppliesCell.ship?.removeObserver(self, forKeyPath: $0)
         }
     }
     
-    @objc var shipStatus: Ship? {
+    @objc var ship: Ship? {
         
-        get { return suppliesCell.shipStatus }
+        get { return suppliesCell.ship }
         set {
             observeKeys.forEach {
                 
-                suppliesCell.shipStatus?.removeObserver(self, forKeyPath: $0)
+                suppliesCell.ship?.removeObserver(self, forKeyPath: $0)
             }
-            suppliesCell.shipStatus = newValue
+            suppliesCell.ship = newValue
             observeKeys.forEach {
                 
-                suppliesCell.shipStatus?.addObserver(self, forKeyPath: $0, context: &pShipStatusContext)
+                suppliesCell.ship?.addObserver(self, forKeyPath: $0, context: &pShipStatusContext)
             }
             needsDisplay = true
         }
