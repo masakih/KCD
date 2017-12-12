@@ -22,6 +22,8 @@
 		F41465681DAB852E00D68C97 /* ScreenshotCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = F41465671DAB852E00D68C97 /* ScreenshotCollectionViewItem.xib */; };
 		F41465741DB4F1A700D68C97 /* ScreenshotListWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F41465761DB4F1A700D68C97 /* ScreenshotListWindowController.xib */; };
 		F41A451B1F4917640066F83D /* SeikuCalclator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41A451A1F4917640066F83D /* SeikuCalclator.swift */; };
+		F41AA4761FDEDC3700FFFBD1 /* Parameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41AA4751FDEDC3700FFFBD1 /* Parameter.swift */; };
+		F41AA4781FDEDCD200FFFBD1 /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41AA4771FDEDCD200FFFBD1 /* DataExtension.swift */; };
 		F421850A1DF44AA900256590 /* AirBaseWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F421850C1DF44AA900256590 /* AirBaseWindowController.xib */; };
 		F421850F1DF4518000256590 /* BroswerTouchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = F421850E1DF4518000256590 /* BroswerTouchBar.xib */; };
 		F42185111DF461A600256590 /* ScreenshotTouchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = F42185101DF461A600256590 /* ScreenshotTouchBar.xib */; };
@@ -390,6 +392,8 @@
 		F40F97721E6989B300AE81BB /* NSViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSViewExtension.swift; sourceTree = "<group>"; };
 		F41465671DAB852E00D68C97 /* ScreenshotCollectionViewItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScreenshotCollectionViewItem.xib; sourceTree = "<group>"; };
 		F41A451A1F4917640066F83D /* SeikuCalclator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeikuCalclator.swift; sourceTree = "<group>"; };
+		F41AA4751FDEDC3700FFFBD1 /* Parameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parameter.swift; sourceTree = "<group>"; };
+		F41AA4771FDEDCD200FFFBD1 /* DataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
 		F421850D1DF44AEA00256590 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AirBaseWindowController.xib; sourceTree = "<group>"; };
 		F421850E1DF4518000256590 /* BroswerTouchBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BroswerTouchBar.xib; sourceTree = "<group>"; };
 		F42185101DF461A600256590 /* ScreenshotTouchBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScreenshotTouchBar.xib; sourceTree = "<group>"; };
@@ -784,6 +788,7 @@
 				F48883441F2E095F0069E0C3 /* DefaultSettings.swift */,
 				F46FEA3E1F81285D00E2427C /* Localizable.swift */,
 				F46FEA401F8128BB00E2427C /* LocalizedStrings.swift */,
+				F41AA4771FDEDCD200FFFBD1 /* DataExtension.swift */,
 				F40F97701E68536400AE81BB /* FileManagerExtension.swift */,
 				F44AA26A1E82AD2E00EED8BE /* NSObjectExtension.swift */,
 				F4AF56851F7F6EF8004F4F4E /* NSNibExtension.swift */,
@@ -1042,6 +1047,7 @@
 				F4FC3E8F1E437E1F00E41228 /* JSONReciever.swift */,
 				F4CF25A91E338ED000C02A66 /* JSONTracker.swift */,
 				F4CF25A71E325ABA00C02A66 /* APIResponse.swift */,
+				F41AA4751FDEDC3700FFFBD1 /* Parameter.swift */,
 				F4760CE71FDAC5F100702C3E /* API.swift */,
 				F4CF25BF1E36428400C02A66 /* MissionStatus.swift */,
 				F4CF25BD1E361F4600C02A66 /* NyukyoDockStatus.swift */,
@@ -1727,6 +1733,7 @@
 				F45F3BE31E06A60A0009434E /* UpgradableShipsWindowController.swift in Sources */,
 				F4E5FF121E17D6850026868C /* GameViewController.swift in Sources */,
 				F42A8FE61E420A360099DC1D /* KaihatuHistory.swift in Sources */,
+				F41AA4761FDEDC3700FFFBD1 /* Parameter.swift in Sources */,
 				F4AA592E1E1D1D4D001667AF /* SokuTransformer.swift in Sources */,
 				F4AA594A1E1E4863001667AF /* MapWindowController.swift in Sources */,
 				F4FC3E961E46AC3000E41228 /* TSVSupport.swift in Sources */,
@@ -1765,6 +1772,7 @@
 				F49097871E1A85F70085A45D /* ImageView.swift in Sources */,
 				F4D05BC61E0ABD6800688D66 /* SlotItemWindowController.swift in Sources */,
 				F4AA593A1E1E02D9001667AF /* UpgradeShipExcludeColorTransformer.swift in Sources */,
+				F41AA4781FDEDCD200FFFBD1 /* DataExtension.swift in Sources */,
 				F4BDEEB21E73FE2000D689AE /* Entity.swift in Sources */,
 				F42A8FCC1E3DA4DF0099DC1D /* MasterMission.swift in Sources */,
 				F44BC6C71E222675004644E3 /* FailedCommand.swift in Sources */,
