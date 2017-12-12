@@ -10,7 +10,6 @@ import Cocoa
 
 class ScreenshotRegister {
     
-    
     let url: URL
     
     init(_ url: URL) {
