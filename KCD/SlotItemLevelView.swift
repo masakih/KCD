@@ -241,7 +241,7 @@ final class SlotItemLevelView: NSTextField {
     
     private var levelFont: NSFont {
         
-        return NSFont.monospacedDigitSystemFont(ofSize: NSFont.smallSystemFontSize, weight: .regular)
+        return .monospacedDigitSystemFont(ofSize: NSFont.smallSystemFontSize, weight: .regular)
     }
     
     private var levelColor: NSColor {
@@ -299,7 +299,7 @@ final class SlotItemLevelView: NSTextField {
             
         case 4, 5, 6, 7:
             let shadow = NSShadow()
-            shadow.shadowColor = NSColor.yellow
+            shadow.shadowColor = .yellow
             shadow.shadowBlurRadius = 3.0
             return shadow
             
