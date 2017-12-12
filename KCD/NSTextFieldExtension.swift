@@ -12,14 +12,12 @@ extension NSTextField {
     
     func maskImage(middle1: CGFloat, middle2: CGFloat) -> CGImage {
         
-        let colorspace = CGColorSpaceCreateDeviceGray()
-        
         guard let maskContext = CGContext(data: nil,
                                           width: Int(bounds.width),
                                           height: Int(bounds.height),
                                           bitsPerComponent: 8,
                                           bytesPerRow: Int(bounds.width),
-                                          space: colorspace,
+                                          space: CGColorSpaceCreateDeviceGray(),
                                           bitmapInfo: 0) else {
                                             
                                             fatalError("Can not create bitmap context")
