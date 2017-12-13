@@ -12,12 +12,13 @@ private var pShipStatusContext: Int = 0
 
 final class SuppliesView: NSControl {
     
-    private let observeKeys = [ #keyPath(Ship.fuel),
-                                #keyPath(Ship.maxFuel),
-                                #keyPath(Ship.bull),
-                                #keyPath(Ship.maxBull)]
     private let suppliesCell: SuppliesCell
     
+    private var fuelObservation: NSKeyValueObservation?
+    private var maxFuelObservation: NSKeyValueObservation?
+    private var bullObservation: NSKeyValueObservation?
+    private var maxBullObservation: NSKeyValueObservation?
+
     override init(frame: NSRect) {
         
         suppliesCell = SuppliesCell()
@@ -36,40 +37,24 @@ final class SuppliesView: NSControl {
         self.cell = suppliesCell
     }
     
-    deinit {
-        
-        observeKeys.forEach {
-            
-            suppliesCell.ship?.removeObserver(self, forKeyPath: $0)
-        }
-    }
     
     @objc var ship: Ship? {
         
         get { return suppliesCell.ship }
         set {
-            observeKeys.forEach {
-                
-                suppliesCell.ship?.removeObserver(self, forKeyPath: $0)
-            }
             suppliesCell.ship = newValue
-            observeKeys.forEach {
-                
-                suppliesCell.ship?.addObserver(self, forKeyPath: $0, context: &pShipStatusContext)
-            }
+            
+            fuelObservation = suppliesCell.ship?.observe(\Ship.fuel, changeHandler: updateDisplay)
+            maxFuelObservation = suppliesCell.ship?.observe(\Ship.maxFuel, changeHandler: updateDisplay)
+            bullObservation = suppliesCell.ship?.observe(\Ship.bull, changeHandler: updateDisplay)
+            maxBullObservation = suppliesCell.ship?.observe(\Ship.maxBull, changeHandler: updateDisplay)
+
             needsDisplay = true
         }
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
+    private func updateDisplay(ship: Ship, _: Any) {
         
-        if context == &pShipStatusContext {
-            
-            needsDisplay = true
-            
-            return
-        }
-        
-        super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+        needsDisplay = true
     }
 }
