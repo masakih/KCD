@@ -17,6 +17,11 @@ final class AirPlanInfoView: NSTableCellView {
         case bad = 3
     }
     
+    static let conditionBindingName = NSBindingName(#keyPath(AirPlanInfoView.condition))
+    static let slotIDBindingName = NSBindingName(#keyPath(AirPlanInfoView.slotId))
+    static let maxCountBindingName = NSBindingName(#keyPath(AirPlanInfoView.maxCount))
+    static let countBindingName = NSBindingName(#keyPath(AirPlanInfoView.count))
+    
     @IBOutlet var planNameVew: SlotItemLevelView!
     @IBOutlet var conditionBox: NSBox!
     @IBOutlet var needSupplyField: NSTextField!
@@ -76,25 +81,17 @@ final class AirPlanInfoView: NSTableCellView {
     
     deinit {
         
-        unbind(NSBindingName(#keyPath(AirPlanInfoView.condition)))
-        unbind(NSBindingName(#keyPath(AirPlanInfoView.slotId)))
-        unbind(NSBindingName(#keyPath(AirPlanInfoView.maxCount)))
-        unbind(NSBindingName(#keyPath(AirPlanInfoView.count)))
+        unbind(AirPlanInfoView.conditionBindingName)
+        unbind(AirPlanInfoView.slotIDBindingName)
+        unbind(AirPlanInfoView.maxCountBindingName)
+        unbind(AirPlanInfoView.countBindingName)
     }
     
     override func awakeFromNib() {
         
-        bind(NSBindingName(#keyPath(AirPlanInfoView.condition)),
-             to: self,
-             withKeyPath: "objectValue.cond")
-        bind(NSBindingName(#keyPath(AirPlanInfoView.slotId)),
-             to: self,
-             withKeyPath: "objectValue.slotid")
-        bind(NSBindingName(#keyPath(AirPlanInfoView.maxCount)),
-             to: self,
-             withKeyPath: "objectValue.max_count")
-        bind(NSBindingName(#keyPath(AirPlanInfoView.count)),
-             to: self,
-             withKeyPath: "objectValue.count")
+        bind(AirPlanInfoView.conditionBindingName, to: self, withKeyPath: "objectValue.cond")
+        bind(AirPlanInfoView.slotIDBindingName, to: self, withKeyPath: "objectValue.slotid")
+        bind(AirPlanInfoView.maxCountBindingName, to: self, withKeyPath: "objectValue.max_count")
+        bind(AirPlanInfoView.countBindingName, to: self, withKeyPath: "objectValue.count")
     }
 }
