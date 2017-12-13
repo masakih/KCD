@@ -50,7 +50,6 @@ class HistoryTableViewController: NSViewController {
         
         let selectedIndex = controller.selectionIndex
         selection
-            .lazy
             .map { $0.objectID }
             .map(store.object(with:))
             .forEach(store.delete)
