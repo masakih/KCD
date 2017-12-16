@@ -34,15 +34,7 @@ final class CombinedCommand: JSONCommand {
         
         if api.endpoint == .port {
             
-            if let t = data["api_combined_flag"].int {
-                
-                CombineType(rawValue: t).map(postNotification(withType:))
-                
-            } else {
-                
-                postNotification(withType: .cancel)
-            }
-            
+            handlePort()
             return
         }
         
@@ -50,6 +42,18 @@ final class CombinedCommand: JSONCommand {
             .int
             .flatMap { CombineType(rawValue: $0) }
             .map(postNotification(withType:))
+    }
+    
+    private func handlePort() {
+        
+        if let t = data["api_combined_flag"].int {
+            
+            CombineType(rawValue: t).map(postNotification(withType:))
+            
+        } else {
+            
+            postNotification(withType: .cancel)
+        }
     }
     
     private func postNotification(withType type: CombineType) {
