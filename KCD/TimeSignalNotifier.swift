@@ -70,7 +70,6 @@ final class TimeSignalNotifier: NSObject {
         if minutes + notifyTimeBeforeTimeSignal >= 60 {
             
             comp.hour = comp.hour.map { $0 + 1 }
-            
         }
         comp.minute = 60 - notifyTimeBeforeTimeSignal
         guard let notifyDate = cal.date(from: comp) else {
