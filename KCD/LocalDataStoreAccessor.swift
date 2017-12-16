@@ -65,17 +65,16 @@ extension LocalDataStore {
         return kenzoMarks.first
     }
     
-    // swiftlint:disable function_parameter_count
-    func kenzoMark(fuel: Int, bull: Int, steel: Int, bauxite: Int, kaihatusizai: Int, kDockId: Int, shipId: Int) -> KenzoMark? {
+    func kenzoMark(kenzoDock: KenzoDock, kDockId: Int) -> KenzoMark? {
         
         let predicate = NSPredicate.empty
-            .and(NSPredicate(#keyPath(KenzoMark.fuel), equal: fuel))
-            .and(NSPredicate(#keyPath(KenzoMark.bull), equal: bull))
-            .and(NSPredicate(#keyPath(KenzoMark.steel), equal: steel))
-            .and(NSPredicate(#keyPath(KenzoMark.bauxite), equal: bauxite))
-            .and(NSPredicate(#keyPath(KenzoMark.kaihatusizai), equal: kaihatusizai))
+            .and(NSPredicate(#keyPath(KenzoMark.fuel), equal: kenzoDock.item1))
+            .and(NSPredicate(#keyPath(KenzoMark.bull), equal: kenzoDock.item2))
+            .and(NSPredicate(#keyPath(KenzoMark.steel), equal: kenzoDock.item3))
+            .and(NSPredicate(#keyPath(KenzoMark.bauxite), equal: kenzoDock.item4))
+            .and(NSPredicate(#keyPath(KenzoMark.kaihatusizai), equal: kenzoDock.item5))
+            .and(NSPredicate(#keyPath(KenzoMark.created_ship_id), equal: kenzoDock.created_ship_id))
             .and(NSPredicate(#keyPath(KenzoMark.kDockId), equal: kDockId))
-            .and(NSPredicate(#keyPath(KenzoMark.created_ship_id), equal: shipId))
         
         guard let kenzoMarks = try? objects(of: KenzoMark.entity, predicate: predicate) else { return nil }
         

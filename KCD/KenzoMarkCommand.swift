@@ -23,15 +23,8 @@ final class KenzoMarkCommand: JSONCommand {
             
             return Logger.shared.log("KenzoDock is not fount")
         }
-        
-        let fuel = kenzoDock.item1
-        let bull = kenzoDock.item2
-        let steel = kenzoDock.item3
-        let bauxite = kenzoDock.item4
-        let kaihatu = kenzoDock.item5
-        let shipId = kenzoDock.created_ship_id
-        
-        guard let flagShip = store.masterShip(by: shipId) else {
+                
+        guard let flagShip = store.masterShip(by: kenzoDock.created_ship_id) else {
             
             return Logger.shared.log("MasterShip is not found")
         }
@@ -44,40 +37,21 @@ final class KenzoMarkCommand: JSONCommand {
         
         new.name = flagShip.name
         new.sTypeId = flagShip.stype.id
-        new.fuel = fuel
-        new.bull = bull
-        new.steel = steel
-        new.bauxite = bauxite
-        new.kaihatusizai = kaihatu
+        new.fuel = kenzoDock.item1
+        new.bull = kenzoDock.item2
+        new.steel = kenzoDock.item3
+        new.bauxite = kenzoDock.item4
+        new.kaihatusizai = kenzoDock.item5
         new.date = Date()
-        (new.flagShipLv, new.flagShipName, new.commanderLv) =
-            markedValues(fuel: fuel,
-                         bull: bull,
-                         steel: steel,
-                         bauxite: bauxite,
-                         kaihatu: kaihatu,
-                         kdockId: kdockId,
-                         shipId: shipId)
+        (new.flagShipLv, new.flagShipName, new.commanderLv) = markedValues(kenzoDock: kenzoDock, kdockId: kdockId)
     }
     
-    // swiftlint:disable function_parameter_count
-    private func markedValues(fuel: Int,
-                              bull: Int,
-                              steel: Int,
-                              bauxite: Int,
-                              kaihatu: Int,
-                              kdockId: Int,
-                              shipId: Int) -> (Int, String, Int) {
+    private func markedValues(kenzoDock: KenzoDock, kdockId: Int) -> (Int, String, Int) {
         
         let store = LocalDataStore.default
         
-        if let kenzoMark = store.kenzoMark(fuel: fuel,
-                                           bull: bull,
-                                           steel: steel,
-                                           bauxite: bauxite,
-                                           kaihatusizai: kaihatu,
-                                           kDockId: kdockId,
-                                           shipId: shipId) {
+        if let kenzoMark = store.kenzoMark(kenzoDock: kenzoDock,
+                                           kDockId: kdockId) {
             
             return (kenzoMark.flagShipLv, kenzoMark.flagShipName, kenzoMark.commanderLv)
         }
