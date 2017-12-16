@@ -25,20 +25,15 @@ final class DestroyItem2Command: JSONCommand {
             
             return Logger.shared.log("Material is not found")
         }
-        guard let gm = data["api_get_material"].arrayObject as? [Int] else {
+        guard let getMaterials = data["api_get_material"].arrayObject as? [Int],
+            getMaterials.count >= 4 else {
             
             return Logger.shared.log("api_get_material is wrong")
         }
         
-        let resouces = [#keyPath(Material.fuel), #keyPath(Material.bull), #keyPath(Material.steel), #keyPath(Material.bauxite)]
-        
-        zip(gm, resouces).forEach {
-            
-            if let current = material.value(forKey: $0.1) as? Int {
-                
-                material.setValue((current + $0.0) as NSNumber, forKey: $0.1)
-            }
-        }
-        
+        material.fuel += getMaterials[0]
+        material.bull += getMaterials[1]
+        material.steel += getMaterials[2]
+        material.bauxite += getMaterials[3]
     }
 }
