@@ -38,11 +38,10 @@ final class PeriodicNotifier: NSObject {
         notifyIfNeeded(nil)
     }
     
-    @objc fileprivate func notifyIfNeeded(_ timer: Timer?) {
+    @objc private func notifyIfNeeded(_ timer: Timer?) {
         
         let now = Date(timeIntervalSinceNow: 0.0)
-        let unit: Set<Calendar.Component> = [.era, .year, .month, .day]
-        var currentDay = Calendar.current.dateComponents(unit, from: now)
+        var currentDay = Calendar.current.dateComponents([.era, .year, .month, .day], from: now)
         currentDay.hour = hour
         currentDay.minute = minutes
         
@@ -53,15 +52,14 @@ final class PeriodicNotifier: NSObject {
             NotificationCenter.default.post(name: .Periodic, object: self)
         }
         
-        if let v = timer?.isValid, v {
+        timer?.invalidate()
+        
+        guard let nextNotifyDate = Calendar.current.date(from: currentDay) else {
             
-            timer?.invalidate()
+            return Logger.shared.log("Can not create time of notify")
         }
         
-        guard let nextNotifyDate = Calendar.current.date(from: currentDay) else { fatalError("Can not create time of notify") }
-        
-        let nextNotifyTime = nextNotifyDate.timeIntervalSinceNow + 0.1
-        Timer.scheduledTimer(timeInterval: nextNotifyTime,
+        Timer.scheduledTimer(timeInterval: nextNotifyDate.timeIntervalSinceNow + 0.1,
                              target: self,
                              selector: #selector(PeriodicNotifier.notifyIfNeeded(_:)),
                              userInfo: nil,
