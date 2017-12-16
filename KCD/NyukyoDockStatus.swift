@@ -62,6 +62,12 @@ final class NyukyoDockStatus: NSObject {
         unbind(NSBindingName(#keyPath(completeTime)))
     }
     
+    private func invalidate() {
+        
+        name = nil
+        time = nil
+    }
+    
     private func updateState() {
         
         guard let state = state as? Int,
@@ -73,9 +79,7 @@ final class NyukyoDockStatus: NSObject {
         if stat == .empty {
             
             didNotify = false
-            name = nil
-            time = nil
-            
+            invalidate()
             return
         }
         
@@ -104,8 +108,7 @@ final class NyukyoDockStatus: NSObject {
         
         guard let completeTime = completeTime as? Int else {
             
-            self.name = nil
-            time = nil
+            invalidate()
             return
         }
         
