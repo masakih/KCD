@@ -55,12 +55,12 @@ final class KenzoDockStatus: NSObject {
     private func updateState() {
         
         guard let state = state as? Int,
-            let s = DockState(rawValue: state) else {
+            let stat = DockState(rawValue: state) else {
                 
                 return Logger.shared.log("unknown State")
         }
         
-        switch s {
+        switch stat {
         case .empty, .notOpen:
             isTasking = false
             didNotify = false
