@@ -58,7 +58,6 @@ final class StoreCreateSlotItemHistoryCommand: JSONCommand {
         if sccess == 0 {
             
             return LocalizedStrings.failDevelop.string
-            
         }
         
         guard let slotItemId = data["api_slot_item"]["api_slotitem_id"].int else {

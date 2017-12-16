@@ -29,7 +29,6 @@ final class RemodelSlotItemCommand: JSONCommand {
         if let locked = afterSlot["api_locked"].int {
             
             slotItem.locked = (locked != 0)
-            
         }
         if let masterSlotItemId = afterSlot["api_slotitem_id"].int,
             masterSlotItemId != slotItem.slotitem_id,
@@ -42,7 +41,6 @@ final class RemodelSlotItemCommand: JSONCommand {
         if let level = afterSlot["api_level"].int {
             
             slotItem.level = level
-            
         }
         
         // remove used slot items.
