@@ -65,6 +65,12 @@ final class MissionStatus: NSObject {
         unbind(NSBindingName(#keyPath(fleetName)))
     }
     
+    private func invalidate() {
+        
+        name = nil
+        time = nil
+    }
+    
     private func updateState() {
         
         guard let state = state as? Int,
@@ -77,9 +83,7 @@ final class MissionStatus: NSObject {
             
             if stat == .none { didNotify = false }
             
-            name = nil
-            time = nil
-            
+            invalidate()
             return
         }
         
@@ -103,14 +107,12 @@ final class MissionStatus: NSObject {
         if name == nil {
             
             time = nil
-            
             return
         }
         
         guard let milliSeconds = milliseconds as? Int else {
             
-            name = nil
-            time = nil
+            invalidate()
             return
         }
         
