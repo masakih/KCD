@@ -284,7 +284,7 @@ extension WindowManager {
         }
     }
     
-    private func setTitle(_ menuItem: NSMenuItem, _ window: NSWindow?, _ showLabel: String, _ hideLabel: String) {
+    private func setTitle(to menuItem: NSMenuItem, frontWindow window: NSWindow?, show showLabel: String, hide hideLabel: String) {
         
         guard let window = window else { return }
         
@@ -305,38 +305,38 @@ extension WindowManager {
         switch action {
             
         case #selector(WindowManager.showHideHistory(_:)):
-            setTitle(menuItem,
-                     historyWindowController.window,
-                     LocalizedStrings.showHistory.string,
-                     LocalizedStrings.hideHistory.string)
+            setTitle(to: menuItem,
+                     frontWindow: historyWindowController.window,
+                     show: LocalizedStrings.showHistory.string,
+                     hide: LocalizedStrings.hideHistory.string)
             return true
             
         case #selector(WindowManager.showHideSlotItemWindow(_:)):
-            setTitle(menuItem,
-                     slotItemWindowController.window,
-                     LocalizedStrings.showSlotItem.string,
-                     LocalizedStrings.hideSlotItem.string)
+            setTitle(to: menuItem,
+                     frontWindow: slotItemWindowController.window,
+                     show: LocalizedStrings.showSlotItem.string,
+                     hide: LocalizedStrings.hideSlotItem.string)
             return true
             
         case #selector(WindowManager.showHideUpgradableShipWindow(_:)):
-            setTitle(menuItem,
-                     upgradableShipWindowController.window,
-                     LocalizedStrings.showUpgradableShips.string,
-                     LocalizedStrings.hideUpgradableShips.string)
+            setTitle(to: menuItem,
+                     frontWindow: upgradableShipWindowController.window,
+                     show: LocalizedStrings.showUpgradableShips.string,
+                     hide: LocalizedStrings.hideUpgradableShips.string)
             return true
             
         case #selector(WindowManager.showHideScreenshotListWindow(_:)):
-            setTitle(menuItem,
-                     screenshotListWindowController.window,
-                     LocalizedStrings.showScreenshotList.string,
-                     LocalizedStrings.hideScreenshotList.string)
+            setTitle(to: menuItem,
+                     frontWindow: screenshotListWindowController.window,
+                     show: LocalizedStrings.showScreenshotList.string,
+                     hide: LocalizedStrings.hideScreenshotList.string)
             return true
             
         case #selector(WindowManager.showHideAirBaseInfoWindow(_:)):
-            setTitle(menuItem,
-                     airBaseWindowController.window,
-                     LocalizedStrings.showAirbaseInfo.string,
-                     LocalizedStrings.hideAirbaseInfo.string)
+            setTitle(to: menuItem,
+                     frontWindow: airBaseWindowController.window,
+                     show: LocalizedStrings.showAirbaseInfo.string,
+                     hide: LocalizedStrings.hideAirbaseInfo.string)
             return true
             
         case #selector(WindowManager.showHidePreferencePanle(_:)):
