@@ -59,17 +59,21 @@ final class Formula33: SakutekiCalculator {
         
         let aliveShips = ships.filter(alive)
         
+        // 艦娘の索敵による索敵値
         let saku1 = aliveShips
             .map(normalSakuteki)
             .map(sqrt)
             .reduce(0, +)
         
+        // 装備および分岐点係数による索敵値
         let saku2 = aliveShips
             .map(equipsSakuteki)
             .reduce(0, +)
         
+        // 艦隊司令部Lv.による影響
         let saku3 = shireiSakuteki()
         
+        // 艦隊の艦娘数による影響
         let saku4 = 2 * (6 - ships.count)
         
         return saku1 + saku2 - saku3 + Double(saku4)
@@ -122,9 +126,7 @@ final class Formula33: SakutekiCalculator {
     
     private func typeRatio(_ item: SlotItem) -> Double {
         
-        let type2 = item.master_slotItem.type_2
-        
-        guard let eqType = EquipmentType(rawValue: type2) else { return 1 }
+        guard let eqType = EquipmentType(rawValue: item.master_slotItem.type_2) else { return 1 }
         
         switch eqType {
         case .fighter: return 0.6
@@ -160,10 +162,8 @@ final class Formula33: SakutekiCalculator {
     }
     
     private func levelRatio(_ item: SlotItem) -> Double {
-        
-        let type2 = item.master_slotItem.type_2
-        
-        guard let eqType = EquipmentType(rawValue: type2) else { return 1 }
+                
+        guard let eqType = EquipmentType(rawValue: item.master_slotItem.type_2) else { return 1 }
         
         switch eqType {
         case .smallRadar: return 1.25
