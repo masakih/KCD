@@ -34,7 +34,7 @@ final class MapStartCommand: JSONCommand {
     
     private func startBattle() {
         
-        store.battles().forEach { store.delete($0) }
+        store.battles().forEach(store.delete)
         
         guard let deckId = parameter["api_deck_id"].int,
             let mapArea = parameter["api_maparea_id"].int,
