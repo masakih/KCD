@@ -28,8 +28,8 @@ private let floatplaneFighterBonus: [Double] =  [0, 0, 2, 5, 9, 14, 14, 22]
 private let jetBomberBonus: [Double] =          [0, 0, 0, 0, 0,  0,  0,  0]
 // swiftlint:enable comma
 
-//                            sqrt 0, 1,     2.5,   4,     5.5,   7,     8.5,   10
-private let bonus: [Double] = [0, 1.000, 1.581, 2.000, 2.345, 2.645, 2.915, 3.162]
+//                             sqrt 0, 1,     2.5,   4,     5.5,   7,     8.5,   10
+private let skillBonus: [Double] = [0, 1.000, 1.581, 2.000, 2.345, 2.645, 2.915, 3.162]
 
 
 final class SeikuCalclator {
@@ -46,7 +46,7 @@ final class SeikuCalclator {
         let guardEscaped = TemporaryDataStore.default.ensuredGuardEscaped(byShipId: ship.id)
         guard guardEscaped == nil else { return 0 }
         
-        return (0...4).map(normalSeiku).map { Int($0) }.reduce(0, +)
+        return (0...4).map(slotSeiku).map { Int($0) }.reduce(0, +)
     }
     
     var totalSeiku: Int {
@@ -57,7 +57,7 @@ final class SeikuCalclator {
         return (0...4).map(seiku).reduce(0, +)
     }
     
-    private func slotItem(_ index: Int) -> SlotItem? {
+    private func slotItem(at index: Int) -> SlotItem? {
         
         return ServerDataStore.default.slotItem(by: ship.slotItemId(index))
     }
@@ -75,17 +75,29 @@ final class SeikuCalclator {
         }
     }
     
-    private func normalSeiku(_ index: Int) -> Double {
+    private enum SlotState {
+        
+        case valid(SlotItem, Int, Int)
+        
+        case invalid
+    }
+    
+    private func slotState(at index: Int) -> SlotState {
         
         let itemCount = ship.slotItemCount(index)
+        if itemCount == 0 { return .invalid }
+        guard let item = slotItem(at: index) else { return .invalid }
         
-        if itemCount == 0 { return 0 }
+        return .valid(item, itemCount, item.master_slotItem.type_2)
+    }
+    
+    private func slotSeiku(at index: Int) -> Double {
         
-        guard let item = slotItem(index) else { return 0 }
-        
-        let type2 = item.master_slotItem.type_2
-        
-        guard seikuEffectiveTypes.contains(type2) else { return 0 }
+        guard case let .valid(item, itemCount, type2) = slotState(at: index),
+            seikuEffectiveTypes.contains(type2) else {
+                
+                return 0
+        }
         
         let taiku = Double(item.master_slotItem.tyku)
         let lv = Double(item.level)
@@ -94,27 +106,22 @@ final class SeikuCalclator {
         return (taiku + lv * rate) * sqrt(Double(itemCount))
     }
     
-    private func extraSeiku(_ index: Int) -> Double {
+    private func skilledSlotSeiku(at index: Int) -> Double {
         
-        let itemCount = ship.slotItemCount(index)
-        
-        if itemCount == 0 { return 0 }
-        
-        guard let item = slotItem(index) else { return 0 }
-        
-        let type2 = item.master_slotItem.type_2
-        
-        guard let typeBonus = typeBonus(type2) else { return 0 }
+        guard case let .valid(item, _, type2) = slotState(at: index),
+            let typeBonus = typeBonus(type2) else {
+                
+                return 0
+        }
         
         let airLevel = item.alv
         
-        return typeBonus[airLevel] + bonus[airLevel]
+        return typeBonus[airLevel] + skillBonus[airLevel]
     }
     
-    private func seiku(_ index: Int) -> Int {
+    private func seiku(at index: Int) -> Int {
         
-        return Int(normalSeiku(index) + extraSeiku(index))
+        return Int(slotSeiku(at: index) + skilledSlotSeiku(at: index))
     }
-    
     
 }
