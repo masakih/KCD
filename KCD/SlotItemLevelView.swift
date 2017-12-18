@@ -53,7 +53,6 @@ final class SlotItemLevelView: NSTextField {
         didSet { needsDisplayInMainThread() }
     }
     
-    
     @objc var slotItemID: NSNumber? {
         didSet {
             slotItemController.content = nil
