@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2659" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="7104"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="13752"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-        <capability name="the Touch Bar" message="Use a version of macOS with Touch Bar support." minToolsVersion="8.1" minSystemVersion="10.12.1" requiredIntegratedClassName="NSTouchBar"/>
+        <capability name="the Touch Bar" message="Use a version of macOS with Touch Bar support." minToolsVersion="8.1" minSystemVersion="10.12.2" requiredIntegratedClassName="NSTouchBar"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="BroserWindowController">
@@ -22,15 +22,16 @@
                 <touchBarItem id="pKr-9W-iXa">
                     <viewController key="viewController" id="hTJ-9d-zGZ">
                         <segmentedControl key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bbl-dd-WqK">
-                            <rect key="frame" x="0.0" y="0.0" width="330" height="30"/>
+                            <rect key="frame" x="0.0" y="0.0" width="368" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="csj-UU-Nt7">
                                 <font key="font" metaFont="system"/>
                                 <segments>
-                                    <segment label="状況" width="64" selected="YES"/>
-                                    <segment label="編成支援" width="63" tag="1"/>
+                                    <segment label="状況" width="63" selected="YES"/>
+                                    <segment label="編成支援" width="81" tag="1"/>
                                     <segment label="近代化" width="63"/>
                                     <segment label="改修工廠"/>
-                                    <segment label="修復"/>
+                                    <segment label="修復" width="63"/>
                                 </segments>
                             </segmentedCell>
                             <connections>
@@ -39,15 +40,16 @@
                             </connections>
                         </segmentedControl>
                     </viewController>
-                    <size key="designTimeSize" width="330" height="30"/>
+                    <size key="designTimeSize" width="368" height="30"/>
                 </touchBarItem>
                 <touchBarPopoverItem collapsedRepresentationLabel="艦種" id="VCN-k6-mCb">
                     <touchBar key="popoverTouchBar" id="APL-uq-yMM">
                         <touchBarItems>
                             <touchBarItem id="vZX-un-FLk">
                                 <viewController key="viewController" id="aGC-uc-EzH">
-                                    <segmentedControl key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7HW-CC-4Ea">
-                                        <rect key="frame" x="0.0" y="0.0" width="530" height="30"/>
+                                    <segmentedControl key="view" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7HW-CC-4Ea">
+                                        <rect key="frame" x="0.0" y="0.0" width="541" height="33"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="yxg-T9-ze0">
                                             <font key="font" metaFont="system"/>
                                             <segments>
@@ -78,7 +80,7 @@
                             </constraints>
                             <buttonCell key="cell" type="push" bezelStyle="rounded" image="CameraDisabled" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fCm-1G-N0B">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
+                                <font key="font" usesAppearanceFont="YES"/>
                             </buttonCell>
                             <connections>
                                 <action selector="screenShot:" target="-2" id="ANI-9D-fKN"/>

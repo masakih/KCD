@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -186,17 +186,17 @@
                         <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="F4C-gV-FCX"/>
                     </connections>
                 </textField>
-                <segmentedControl verticalHuggingPriority="750" id="oAr-IJ-cOj">
+                <segmentedControl verticalHuggingPriority="750" misplaced="YES" id="oAr-IJ-cOj">
                     <rect key="frame" x="4" y="368" width="315" height="24"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="b1J-je-IDl">
                         <font key="font" metaFont="system"/>
                         <segments>
-                            <segment label="All" width="36" selected="YES"/>
-                            <segment label="駆逐" width="40" tag="1"/>
-                            <segment label="軽巡" width="40" tag="2"/>
-                            <segment label="重巡" width="40" tag="3"/>
-                            <segment label="空母" width="40" tag="4"/>
+                            <segment label="All" width="35" selected="YES"/>
+                            <segment label="駆逐" width="38" tag="1"/>
+                            <segment label="軽巡" width="38" tag="2"/>
+                            <segment label="重巡" width="39" tag="3"/>
+                            <segment label="空母" width="39" tag="4"/>
                             <segment label="戦艦" width="39" tag="5"/>
                             <segment label="潜水" width="39" tag="6"/>
                             <segment label="他" width="35" tag="7"/>

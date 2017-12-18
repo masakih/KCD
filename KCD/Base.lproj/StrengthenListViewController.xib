@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -373,9 +373,9 @@
                     <segmentedCell key="cell" controlSize="small" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="Ury-Lz-cPA">
                         <font key="font" metaFont="smallSystem"/>
                         <segments>
-                            <segment label="All" width="37" selected="YES"/>
-                            <segment label="主砲" width="40" tag="1"/>
-                            <segment label="副砲/魚雷/機銃" width="88"/>
+                            <segment label="All" width="36" selected="YES"/>
+                            <segment label="主砲" width="38" tag="1"/>
+                            <segment label="副砲/魚雷/機銃" width="86"/>
                             <segment label="航空機" width="43"/>
                             <segment label="電探/対潜" width="60"/>
                             <segment label="そのた" width="41"/>
