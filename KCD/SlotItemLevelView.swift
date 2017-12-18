@@ -98,145 +98,83 @@ final class SlotItemLevelView: NSTextField {
         return SlotItemLevelView.sCharacterProtrudeMaskImageMaskImage!
     }
     
-    private var levelOneBezierPath: NSBezierPath? {
+    private var levelOneBezierPath: Polygon {
         
         let width = bounds.width
         let height = bounds.height
-        let path = multiline(lines: [
-            (
-                NSPoint(x: width - offset, y: 0),
-                NSPoint(x: width - offset, y: height)
-            )
-            ])
-        path.lineWidth = 1.0
-        
-        return path
+        return Polygon(lineWidth: 1.0)
+            .move(to: NSPoint(x: width - offset, y: 0))
+            .line(to: NSPoint(x: width - offset, y: height))
     }
     
-    private var levelTwoBezierPath: NSBezierPath? {
+    private var levelTwoBezierPath: Polygon {
         
         let width = bounds.width
         let height = bounds.height
-        let path = multiline(lines:
-            [
-                (
-                    NSPoint(x: width - offset, y: 0),
-                    NSPoint(x: width - offset, y: height)
-                ),
-                (
-                    NSPoint(x: width - offset - padding, y: 0),
-                    NSPoint(x: width - offset - padding, y: height)
-                )
-            ])
-        path.lineWidth = 1.0
-        
-        return path
+        return Polygon(lineWidth: 1.0)
+            .move(to: NSPoint(x: width - offset, y: 0))
+            .line(to: NSPoint(x: width - offset, y: height))
+            .move(to: NSPoint(x: width - offset - padding, y: 0))
+            .line(to: NSPoint(x: width - offset - padding, y: height))
     }
     
-    private var levelThreeBezierPath: NSBezierPath? {
+    private var levelThreeBezierPath: Polygon {
         
         let width = bounds.width
         let height = bounds.height
-        let path = multiline(lines:
-            [
-                (
-                    NSPoint(x: width - offset, y: 0),
-                    NSPoint(x: width - offset, y: height)
-                ),
-                (
-                    NSPoint(x: width - offset - padding, y: 0),
-                    NSPoint(x: width - offset - padding, y: height)
-                ),
-                (
-                    NSPoint(x: width - offset - padding * 2, y: 0),
-                    NSPoint(x: width - offset - padding * 2, y: height)
-                )
-            ])
-        path.lineWidth = 1.0
-        
-        return path
+        return Polygon(lineWidth: 1.0)
+            .move(to: NSPoint(x: width - offset, y: 0))
+            .line(to: NSPoint(x: width - offset, y: height))
+            .move(to: NSPoint(x: width - offset - padding, y: 0))
+            .line(to: NSPoint(x: width - offset - padding, y: height))
+            .move(to: NSPoint(x: width - offset - padding * 2, y: 0))
+            .line(to: NSPoint(x: width - offset - padding * 2, y: height))
     }
     
-    private var levelFourBezierPath: NSBezierPath? {
+    private var levelFourBezierPath: Polygon {
         
         let width = bounds.width
         let height = bounds.height
-        let path = multiline(lines:
-            [
-                (
-                    NSPoint(x: width - offset - slideOffset, y: 0),
-                    NSPoint(x: width - offset, y: height)
-                )
-            ])
-        path.lineWidth = 2.0
-        
-        return path
+        return Polygon(lineWidth: 2.0)
+            .move(to: NSPoint(x: width - offset - slideOffset, y: 0))
+            .line(to: NSPoint(x: width - offset, y: height))
     }
     
-    private var levelFiveBezierPath: NSBezierPath? {
+    private var levelFiveBezierPath: Polygon {
         
         let width = bounds.width
         let height = bounds.height
-        let path = multiline(lines:
-            [
-                (
-                    NSPoint(x: width - offset - slideOffset, y: 0),
-                    NSPoint(x: width - offset, y: height)
-                ),
-                (
-                    NSPoint(x: width - offset - padding - slideOffset, y: 0),
-                    NSPoint(x: width - offset - padding, y: height)
-                )
-            ])
-        path.lineWidth = 2.0
-        
-        return path
+        return Polygon(lineWidth: 2.0)
+            .move(to: NSPoint(x: width - offset - slideOffset, y: 0))
+            .line(to: NSPoint(x: width - offset, y: height))
+            .move(to: NSPoint(x: width - offset - padding - slideOffset, y: 0))
+            .line(to: NSPoint(x: width - offset - padding, y: height))
     }
     
-    private var levelSixBezierPath: NSBezierPath? {
+    private var levelSixBezierPath: Polygon {
         
         let width = bounds.width
         let height = bounds.height
-        let path = multiline(lines:
-            [
-                (
-                    NSPoint(x: width - offset - slideOffset, y: 0),
-                    NSPoint(x: width - offset, y: height)
-                ),
-                (
-                    NSPoint(x: width - offset - padding - slideOffset, y: 0),
-                    NSPoint(x: width - offset - padding, y: height)
-                ),
-                (
-                    NSPoint(x: width - offset - padding * 2 - slideOffset, y: 0),
-                    NSPoint(x: width - offset - padding * 2, y: height)
-                )
-            ])
-        path.lineWidth = 2.0
-        
-        return path
+        return Polygon(lineWidth: 2.0)
+            .move(to: NSPoint(x: width - offset - slideOffset, y: 0))
+            .line(to: NSPoint(x: width - offset, y: height))
+            .move(to: NSPoint(x: width - offset - padding - slideOffset, y: 0))
+            .line(to: NSPoint(x: width - offset - padding, y: height))
+            .move(to: NSPoint(x: width - offset - padding * 2 - slideOffset, y: 0))
+            .line(to: NSPoint(x: width - offset - padding * 2, y: height))
     }
     
-    private var levelSevenBezierPath: NSBezierPath? {
+    private var levelSevenBezierPath: Polygon {
         
         let width = bounds.width
         let height = bounds.height
-        let path = polyline(points:
-            [
-                NSPoint(x: width - offset - slideOffset, y: 0),
-                NSPoint(x: width - offset, y: height * 0.5),
-                NSPoint(x: width - offset - anglePoint, y: height)
-            ])
-        polyline(points:
-            [
-                NSPoint(x: width - offset - padding - slideOffset, y: 0),
-                NSPoint(x: width - offset - padding, y: height * 0.5),
-                NSPoint(x: width - offset - padding - anglePoint, y: height)
-            ])
-            .map { path?.append($0) }
-        path?.lineWidth = 2.0
-        
-        return path
+        return Polygon(lineWidth: 2.0)
+            .move(to: NSPoint(x: width - offset - slideOffset, y: 0))
+            .line(to: NSPoint(x: width - offset, y: height * 0.5))
+            .line(to: NSPoint(x: width - offset - anglePoint, y: height))
+            .move(to: NSPoint(x: width - offset - padding - slideOffset, y: 0))
+            .line(to: NSPoint(x: width - offset - padding, y: height * 0.5))
+            .line(to: NSPoint(x: width - offset - padding - anglePoint, y: height))
     }
     
     private var levelFont: NSFont {
@@ -265,7 +203,7 @@ final class SlotItemLevelView: NSTextField {
         drawAirLevel()
     }
     
-    private func bezierPathForALevel(level: Int) -> NSBezierPath? {
+    private func bezierPathForALevel(level: Int) -> Polygon? {
         
         switch level {
         case 1: return levelOneBezierPath

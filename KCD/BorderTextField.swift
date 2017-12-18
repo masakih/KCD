@@ -20,11 +20,11 @@ final class BorderTextField: NSTextField {
         NSColor.controlShadowColor.set()
         NSBezierPath.defaultLineWidth = 1.0
         
-        multiline(lines:
-            [
-                (NSPoint(x: 3, y: height), NSPoint(x: bounds.maxX, y: height)),
-                (NSPoint(x: width, y: 0), NSPoint(x: width, y: height))
-            ])
+        Polygon()
+            .move(to: NSPoint(x: 3, y: height))
+            .line(to: NSPoint(x: bounds.maxX, y: height))
+            .move(to: NSPoint(x: width, y: 0))
+            .line(to: NSPoint(x: width, y: height))
             .stroke()
     }
 }

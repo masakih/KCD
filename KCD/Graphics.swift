@@ -8,61 +8,65 @@
 
 import Cocoa
 
-extension NSBezierPath {
+struct Polygon {
     
-    convenience init(start point: NSPoint) {
+    private let bezierPath: NSBezierPath
+    
+    init() {
+        
+        bezierPath = NSBezierPath()
+    }
+    
+    init(lineWidth: CGFloat) {
         
         self.init()
-        move(to: point)
+        bezierPath.lineWidth = lineWidth
     }
-}
-
-func polygon(_ point: () -> [NSPoint]) -> NSBezierPath? {
     
-    return polygon(points: point())
-}
-
-func polygon(points: [NSPoint]) -> NSBezierPath? {
+    init(point: NSPoint) {
+        
+        self.init()
+        bezierPath.move(to: point)
+    }
     
-    guard points.count > 2 else { return nil }
+    private init(path: NSBezierPath) {
+        
+        bezierPath = path
+    }
     
-    let path = polyline(points: points)
-    path?.close()
+    var lineWidth: CGFloat {
+        get { return bezierPath.lineWidth }
+        set { bezierPath.lineWidth = lineWidth }
+    }
     
-    return path
-}
-
-func polyline(_ point: () -> [NSPoint]) -> NSBezierPath? {
+    func line(to point: NSPoint) -> Polygon {
+        
+        bezierPath.line(to: point)
+        
+        return Polygon(path: bezierPath)
+    }
     
-    return polyline(points: point())
-}
-
-func polyline(points: [NSPoint]) -> NSBezierPath? {
+    func move(to point: NSPoint) -> Polygon {
+        
+        bezierPath.move(to: point)
+        
+        return Polygon(path: bezierPath)
+    }
     
-    guard points.count > 1 else { return nil }
+    func close() -> Polygon {
+        
+        bezierPath.close()
+        
+        return Polygon(path: bezierPath)
+    }
     
-    return points.dropFirst().reduce(NSBezierPath(start: points[0]), lineToPoint)
-}
-
-func lineToPoint(path: NSBezierPath, point: NSPoint) -> NSBezierPath {
+    func stroke() {
+        
+        bezierPath.stroke()
+    }
     
-    path.line(to: point)
-    return path
-}
-
-func multiline(_ lines: () -> [(NSPoint, NSPoint)]) -> NSBezierPath {
-    
-    return multiline(lines: lines())
-}
-
-func multiline(lines: [(NSPoint, NSPoint)]) -> NSBezierPath {
-    
-    return lines.reduce(NSBezierPath(), line)
-}
-
-func line(_ path: NSBezierPath, _ points: (NSPoint, NSPoint)) -> NSBezierPath {
-    
-    path.move(to: points.0)
-    path.line(to: points.1)
-    return path
+    func fill() {
+        
+        bezierPath.fill()
+    }
 }

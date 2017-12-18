@@ -21,14 +21,17 @@ final class StrengthenListItemView: NSBox {
         NSBezierPath.defaultLineWidth = borderWidth
         NSBezierPath.stroke(bounds)
         
-        multiline(lines:
-            [
-                (NSPoint(x: 29.5, y: 0), NSPoint(x: 29.5, y: height)),
-                (NSPoint(x: 67.5, y: 0), NSPoint(x: 67.5, y: height)),
-                (NSPoint(x: 209.5, y: 0), NSPoint(x: 209.5, y: height)),
-                (NSPoint(x: 0, y: 17.5), NSPoint(x: width, y: 17.5)),
-                (NSPoint(x: 0, y: 34.5), NSPoint(x: width, y: 34.5))
-            ])
+        Polygon()
+            .move(to: NSPoint(x: 29.5, y: 0))
+            .line(to: NSPoint(x: 29.5, y: height))
+            .move(to: NSPoint(x: 67.5, y: 0))
+            .line(to: NSPoint(x: 67.5, y: height))
+            .move(to: NSPoint(x: 209.5, y: 0))
+            .line(to: NSPoint(x: 209.5, y: height))
+            .move(to: NSPoint(x: 0, y: 17.5))
+            .line(to: NSPoint(x: width, y: 17.5))
+            .move(to: NSPoint(x: 0, y: 34.5))
+            .line(to: NSPoint(x: width, y: 34.5))
             .stroke()
     }
 }

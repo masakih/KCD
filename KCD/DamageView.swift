@@ -65,7 +65,7 @@ final class DamageView: NSView {
         }
     }
     
-    private var path: NSBezierPath? {
+    private var path: Polygon? {
         
         switch controlSize {
         case .regular:
@@ -76,7 +76,7 @@ final class DamageView: NSView {
         }
     }
     
-    private var pathForRegular: NSBezierPath? {
+    private var pathForRegular: Polygon? {
         
         let height = bounds.height
         
@@ -85,43 +85,36 @@ final class DamageView: NSView {
             return nil
             
         case .slightly:
-            return polygon(points:
-                [
-                    NSPoint(x: 35.0, y: height - 2.0),
-                    NSPoint(x: 0.0, y: height - 2.0),
-                    NSPoint(x: 0.0, y: height - 35.0)
-                ])
+            return Polygon()
+                .move(to: NSPoint(x: 35.0, y: height - 2.0))
+                .line(to: NSPoint(x: 0.0, y: height - 2.0))
+                .line(to: NSPoint(x: 0.0, y: height - 35.0))
+                .close()
             
         case .modest:
-            return polygon(points:
-                [
-                    NSPoint(x: 50.0, y: height - 2.0),
-                    NSPoint(x: 25.0, y: height - 2.0),
-                    NSPoint(x: 0.0, y: height - 25.0),
-                    NSPoint(x: 0.0, y: height - 50.0)
-                ])
+            return Polygon()
+                .move(to: NSPoint(x: 50.0, y: height - 2.0))
+                .line(to: NSPoint(x: 25.0, y: height - 2.0))
+                .line(to: NSPoint(x: 0.0, y: height - 25.0))
+                .line(to: NSPoint(x: 0.0, y: height - 50.0))
+                .close()
             
         case .badly:
-            let p = polygon(points:
-                [
-                    NSPoint(x: 60.0, y: height - 2.0),
-                    NSPoint(x: 53.0, y: height - 2.0),
-                    NSPoint(x: 0.0, y: height - 53.0),
-                    NSPoint(x: 0.0, y: height - 60.0)
-                ])
-            polygon(points:
-                [
-                    NSPoint(x: 47.0, y: height - 2.0),
-                    NSPoint(x: 23.0, y: height - 2.0),
-                    NSPoint(x: 0.0, y: height - 23.0),
-                    NSPoint(x: 0.0, y: height - 47.0)
-                ])
-                .map { p?.append($0) }
-            return p
+            return Polygon()
+                .move(to: NSPoint(x: 60.0, y: height - 2.0))
+                .line(to: NSPoint(x: 53.0, y: height - 2.0))
+                .line(to: NSPoint(x: 0.0, y: height - 53.0))
+                .line(to: NSPoint(x: 0.0, y: height - 60.0))
+                .close()
+                .move(to: NSPoint(x: 47.0, y: height - 2.0))
+                .line(to: NSPoint(x: 23.0, y: height - 2.0))
+                .line(to: NSPoint(x: 0.0, y: height - 23.0))
+                .line(to: NSPoint(x: 0.0, y: height - 47.0))
+                .close()
         }
     }
     
-    private var pathForSmall: NSBezierPath? {
+    private var pathForSmall: Polygon? {
         
         let height = bounds.height
         
@@ -130,39 +123,32 @@ final class DamageView: NSView {
             return nil
             
         case .slightly:
-            return polygon(points:
-                [
-                    NSPoint(x: 35.0, y: height - 2.0),
-                    NSPoint(x: 0.0, y: height - 2.0),
-                    NSPoint(x: 0.0, y: height - 35.0)
-                ])
+            return Polygon()
+                .move(to: NSPoint(x: 35.0, y: height - 2.0))
+                .line(to: NSPoint(x: 0.0, y: height - 2.0))
+                .line(to: NSPoint(x: 0.0, y: height - 35.0))
+                .close()
             
         case .modest:
-            return polygon(points:
-                [
-                    NSPoint(x: 50.0, y: height - 2.0),
-                    NSPoint(x: 25.0, y: height - 2.0),
-                    NSPoint(x: 0.0, y: height - 25.0),
-                    NSPoint(x: 0.0, y: height - 50.0)
-                ])
+            return Polygon()
+                .move(to: NSPoint(x: 50.0, y: height - 2.0))
+                .line(to: NSPoint(x: 25.0, y: height - 2.0))
+                .line(to: NSPoint(x: 0.0, y: height - 25.0))
+                .line(to: NSPoint(x: 0.0, y: height - 50.0))
+                .close()
             
         case .badly:
-            let p = polygon(points:
-                [
-                    NSPoint(x: 55.0, y: height - 2.0),
-                    NSPoint(x: 48.0, y: height - 2.0),
-                    NSPoint(x: 0.0, y: height - 48.0),
-                    NSPoint(x: 0.0, y: height - 55.0)
-                ])
-            polygon(points:
-                [
-                    NSPoint(x: 42.0, y: height - 2.0),
-                    NSPoint(x: 20.0, y: height - 2.0),
-                    NSPoint(x: 0.0, y: height - 20.0),
-                    NSPoint(x: 0.0, y: height - 42.0)
-                ])
-                .map { p?.append($0) }
-            return p
+            return Polygon()
+                .move(to: NSPoint(x: 55.0, y: height - 2.0))
+                .line(to: NSPoint(x: 48.0, y: height - 2.0))
+                .line(to: NSPoint(x: 0.0, y: height - 48.0))
+                .line(to: NSPoint(x: 0.0, y: height - 55.0))
+                .close()
+                .move(to: NSPoint(x: 42.0, y: height - 2.0))
+                .line(to: NSPoint(x: 20.0, y: height - 2.0))
+                .line(to: NSPoint(x: 0.0, y: height - 20.0))
+                .line(to: NSPoint(x: 0.0, y: height - 42.0))
+                .close()
         }
     }
     
