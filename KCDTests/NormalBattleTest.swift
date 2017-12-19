@@ -19,7 +19,7 @@ class NormalBattleTest: XCTestCase {
     var shipEquipments: [NSOrderedSet] = []
     var shipExSlot: [Int] = []
     
-    func initBattleFleet(_ fleet: Int) {
+    func initBattleFleet(_ fleet: Int, seventh: Bool = false) {
         
         savedShips = []
         shipsHp = []
@@ -31,7 +31,10 @@ class NormalBattleTest: XCTestCase {
             let store = ServerDataStore.oneTimeEditor()
             
             guard let deck = store.deck(by: fleet) else { return XCTFail("Can not get Deck.") }
-            (0...6).forEach { deck.setShip(id: $0 + 1, for: $0) }
+            
+            let max = seventh ? 6 : 5
+            (0...6).forEach { deck.setShip(id: -1, for: $0) }
+            (0...max).forEach { deck.setShip(id: $0 + 1, for: $0) }
             
             store.ships(byDeckId: fleet).forEach {
                 $0.nowhp = $0.maxhp
@@ -97,6 +100,7 @@ class NormalBattleTest: XCTestCase {
             
             guard let deck = store.deck(by: fleet) else { return XCTFail("Can not get Deck.") }
             savedShips.enumerated().forEach { deck.setShip(id: $0.element.id, for: $0.offset) }
+            (0...6).forEach { deck.setShip(id: -1, for: $0) }
         }
         
         do {
@@ -106,10 +110,13 @@ class NormalBattleTest: XCTestCase {
         }
     }
     
-    func normalBattle(_ fleet: Int) {
+    func normalBattle(_ fleet: Int, seventh: Bool = false) {
         
         // 戦闘（昼戦）
         do {
+            let dfList = seventh ? [[2, 2], [6, 6]] : [[2, 2]]
+            let damages = seventh ? [[0, 3], [0, 7]] : [[0, 3]]
+            let fdam = seventh ? [0, 0, 0, 4, 0, 6, 7] : [0, 0, 0, 4, 0, 6]
             let rawValue: [String: Any] = [
                 "api_result": 1,
                 "api_data": [
@@ -126,23 +133,15 @@ class NormalBattleTest: XCTestCase {
                         ]
                     ],
                     "api_hougeki1": [
-                        "api_df_list": [
-                            [2, 2],
-                            [7, 7]
-                        ],
-                        "api_damage": [
-                            [0, 3],
-                            [10, 10]
-                        ],
+                        "api_df_list": dfList,
+                        "api_damage": damages,
                         "api_at_eflag": [
                             1,
-                            0
+                            1
                         ]
                     ],
                     "api_raigeki": [
-                        "api_fdam": [
-                            0, 0, 0, 4, 0, 6
-                        ]
+                        "api_fdam": fdam
                     ]
                 ]
             ]
@@ -162,7 +161,7 @@ class NormalBattleTest: XCTestCase {
                     "api_hougeki": [
                         "api_df_list": [
                             [4],
-                            [6]
+                            [5]
                         ],
                         "api_damage": [
                             [5],
@@ -201,15 +200,17 @@ class NormalBattleTest: XCTestCase {
             let store = ServerDataStore.oneTimeEditor()
             let ships = store.ships(byDeckId: fleet)
             
-            XCTAssertEqual(ships.count, 7)
+            XCTAssertEqual(ships.count, seventh ? 7 : 6)
             
             XCTAssertEqual(ships[0].nowhp, shipsHp[0] - 1)
             XCTAssertEqual(ships[1].nowhp, shipsHp[1] - 2)
             XCTAssertEqual(ships[2].nowhp, shipsHp[2] - 3)
             XCTAssertEqual(ships[3].nowhp, shipsHp[3] - 4)
             XCTAssertEqual(ships[4].nowhp, shipsHp[4] - 5)
-            XCTAssertEqual(ships[5].nowhp, shipsHp[5] - 6)
-            XCTAssertEqual(ships[6].nowhp, shipsHp[6] - 7)
+            XCTAssertEqual(ships[5].nowhp, shipsHp[5] - 6 - 7)
+            if seventh {
+                XCTAssertEqual(ships[6].nowhp, shipsHp[6] - 7 - 7)
+            }
         }
     }
     
@@ -219,11 +220,11 @@ class NormalBattleTest: XCTestCase {
         do {
             let store = ServerDataStore.oneTimeEditor()
             
-            store.ship(by: 5).flatMap {
+            store.ship(by: 4).flatMap {
                 $0.nowhp = $0.maxhp
                 $0.slot_ex = 63765  // 女神
             }
-            store.ship(by: 6).flatMap {
+            store.ship(by: 5).flatMap {
                 $0.nowhp = $0.maxhp
                 // ダメコン
                 $0.equippedItem = store.slotItem(by: 72418).map { NSOrderedSet(array: [$0]) } ?? []
@@ -237,9 +238,9 @@ class NormalBattleTest: XCTestCase {
                 "api_data": [
                     "api_hougeki": [
                         "api_df_list": [
+                            [2],
                             [3],
                             [4],
-                            [5],
                             [10]
                         ],
                         "api_damage": [
@@ -283,14 +284,13 @@ class NormalBattleTest: XCTestCase {
             let store = ServerDataStore.oneTimeEditor()
             let ships = store.ships(byDeckId: fleet)
             
-            XCTAssertEqual(ships.count, 7)
+            XCTAssertEqual(ships.count, 6)
             
             XCTAssertEqual(ships[0].nowhp, shipsHp[0])
             XCTAssertEqual(ships[1].nowhp, shipsHp[1])
-            XCTAssertEqual(ships[2].nowhp, shipsHp[2])
-            XCTAssertEqual(ships[3].nowhp, 0)
-            XCTAssertEqual(ships[4].nowhp, shipsHp[4])
-            XCTAssertEqual(ships[5].nowhp, Int(Double(shipsHp[5]) * 0.2))
+            XCTAssertEqual(ships[2].nowhp, 0)
+            XCTAssertEqual(ships[3].nowhp, shipsHp[3])
+            XCTAssertEqual(ships[4].nowhp, Int(Double(shipsHp[4]) * 0.2))
         }
     }
     
@@ -316,6 +316,10 @@ class NormalBattleTest: XCTestCase {
         normalBattle(3)
         initBattleFleet(3)
         damageControl(3)
+        clear(3)
+        
+        initBattleFleet(3, seventh: true)
+        normalBattle(3, seventh: true)
         clear(3)
     }
     func testFourthFleet() {
