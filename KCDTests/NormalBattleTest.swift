@@ -316,8 +316,6 @@ class NormalBattleTest: XCTestCase {
         normalBattle(3)
         initBattleFleet(3)
         damageControl(3)
-        clear(3)
-        
         initBattleFleet(3, seventh: true)
         normalBattle(3, seventh: true)
         clear(3)
