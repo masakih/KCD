@@ -23,10 +23,6 @@ final class ScreenshotListViewController: NSViewController {
     
     @IBOutlet var screenshotsController: NSArrayController!
     @IBOutlet weak var collectionView: NSCollectionView!
-    @IBOutlet var contextMenu: NSMenu!
-    @IBOutlet weak var shareButton: NSButton!
-    @IBOutlet weak var standardView: NSView!
-    @IBOutlet weak var editorView: NSView!
     
     private var selectionObservation: NSKeyValueObservation?
     
