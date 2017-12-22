@@ -21,11 +21,6 @@ final class JSONTracker {
         start()
     }
     
-    deinit {
-        
-        print("DEINIT")
-    }
-    
     private func doAction() {
         
         do {

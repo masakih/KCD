@@ -29,8 +29,6 @@ final class PeriodicNotifier: NSObject {
         nc.addObserver(forName: .NSSystemTimeZoneDidChange, object: nil, queue: nil, using: notify)
         nc.addObserver(forName: .NSSystemClockDidChange, object: nil, queue: nil, using: notify)
         nc.addObserver(forName: NSWorkspace.didWakeNotification, object: nil, queue: nil, using: notify)
-        
-        notifyIfNeeded(nil)
     }
     
     private func notify(_ notification: Notification) {

@@ -127,7 +127,6 @@ final class TiledImageView: NSView {
             
             imageCell.image = nil
             needsDisplay = true
-            
             return
         }
         
@@ -149,14 +148,12 @@ final class TiledImageView: NSView {
             }
             let imageRect = NSRect(origin: .zero, size: size)
             
-            
             tiledImage.lockFocus()
             zip(self.images, offset).forEach {
                 
                 $0.0.draw(at: $0.1, from: imageRect, operation: .copy, fraction: 1.0)
             }
             tiledImage.unlockFocus()
-            
             
             let newInfos = offset.map { TiledImageCellInformation(with: NSRect(origin: $0, size: size)) }
             
@@ -193,7 +190,6 @@ final class TiledImageView: NSView {
             
             ratio = ratioX
             offset = (x: (bounds.width - size.width * ratio) / 2, y: 0)
-            
         }
         
         return originalInfos.map {
