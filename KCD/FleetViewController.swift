@@ -129,8 +129,8 @@ final class FleetViewController: NSViewController {
         }
     }
     
-    var extDetail: ShipDetailViewController?
-    var extShipAnimating: Bool = false
+    private var extDetail: ShipDetailViewController?
+    private var extShipAnimating: Bool = false
     weak var delegate: FleetViewControllerDelegate?
     
     var enableAnimation: Bool = false
@@ -183,11 +183,11 @@ final class FleetViewController: NSViewController {
         }
     }
     
-    @objc var totalSakuteki: Double { return sakutekiCalculator.calculate(ships) }
+    @objc private var totalSakuteki: Double { return sakutekiCalculator.calculate(ships) }
     @objc var totalSeiku: Int { return ships.reduce(0) { $0 + $1.seiku } }
     @objc var totalCalclatedSeiku: Int { return ships.reduce(0) { $0 + totalSeiku(of: $1) } }
-    @objc var totalLevel: Int { return ships.reduce(0) { $0 + $1.lv } }
-    @objc var totalDrums: Int { return ships.reduce(0) { $0 + totalDrums(of: $1) } }
+    @objc private var totalLevel: Int { return ships.reduce(0) { $0 + $1.lv } }
+    @objc private var totalDrums: Int { return ships.reduce(0) { $0 + totalDrums(of: $1) } }
     @objc var totalTPValue: Int {
         
         return ships
@@ -195,11 +195,11 @@ final class FleetViewController: NSViewController {
             .reduce(0, +)
     }
     
-    func totalSeiku(of ship: Ship) -> Int {
+    private func totalSeiku(of ship: Ship) -> Int {
         
         return SeikuCalclator(ship: ship).totalSeiku
     }
-    func totalDrums(of ship: Ship) -> Int {
+    private func totalDrums(of ship: Ship) -> Int {
         
         return (0...4).flatMap(ship.slotItem).filter { $0.slotitem_id == 75 }.count
     }
@@ -459,7 +459,7 @@ extension FleetViewController {
 
 extension FleetViewController {
     
-    func buildAnchorageRepairHolder() {
+    private func buildAnchorageRepairHolder() {
         
         AppDelegate.shared.addCounterUpdate { [weak self] in
             
@@ -481,7 +481,7 @@ extension FleetViewController {
     
     private var repairShipIds: [Int] { return [19] }
     
-    @objc dynamic var repairable: Bool {
+    @objc private dynamic var repairable: Bool {
         
         guard let flagShip = fleet?[0] else { return false }
         
