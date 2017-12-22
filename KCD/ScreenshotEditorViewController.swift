@@ -8,18 +8,19 @@
 
 import Cocoa
 
-private struct EditedImage {
+private struct URLImage {
     
-    var editedImage: NSImage
+    var image: NSImage
     var url: URL
     
     init(image: NSImage, url: URL) {
         
-        editedImage = image
+        self.image = image
         self.url = url
     }
 }
 
+/// 切り取りサイズ、位置と名前
 final class TrimRectInformation: NSObject {
     
     @objc private(set) var name: String
@@ -83,12 +84,12 @@ final class ScreenshotEditorViewController: BridgeViewController {
     
     private var editedImage: NSImage?
     private var currentSelection: [ScreenshotInformation] = []
-    private var editedImages: [EditedImage] = []
+    private var originalImages: [URLImage] = []
     private var realiesCurrentTrimInforIndex = UserDefaults.standard[.scrennshotEditorType]
     private var currentTrimInfo: TrimRectInformation {
         
         didSet {
-            makeEditedImage()
+            makeTrimedImage()
             trimInfo
                 .index {
                     
@@ -139,35 +140,35 @@ final class ScreenshotEditorViewController: BridgeViewController {
         
         removed.forEach {
             
-            removeEditedImage(url: $0.url)
+            removeOriginalImage(url: $0.url)
         }
         
         appended.forEach {
             
-            appendEditedImage(url: $0.url)
+            appendOriginalImage(url: $0.url)
         }
         
         currentSelection = selection
-        makeEditedImage()
+        makeTrimedImage()
     }
     
-    private func removeEditedImage(url: URL) {
+    private func removeOriginalImage(url: URL) {
         
-        _ = editedImages
+        _ = originalImages
             .index { $0.url == url }
-            .map { editedImages.remove(at: $0) }
+            .map { originalImages.remove(at: $0) }
     }
     
-    private func appendEditedImage(url: URL) {
+    private func appendOriginalImage(url: URL) {
         
         NSImage(contentsOf: url)
-            .flatMap { EditedImage(image: $0, url: url) }
-            .map { editedImages.append($0) }
+            .flatMap { URLImage(image: $0, url: url) }
+            .map { originalImages.append($0) }
     }
     
-    private func makeEditedImage() {
+    private func makeTrimedImage() {
         
-        guard !editedImages.isEmpty else {
+        guard !originalImages.isEmpty else {
             
             tiledImageView.images = []
             return
@@ -175,14 +176,12 @@ final class ScreenshotEditorViewController: BridgeViewController {
         
         DispatchQueue(label: "makeTrimedImage queue").async {
             
-            let images: [NSImage] = self.editedImages.flatMap {
-                
-                guard let originalImage = NSImage(contentsOf: $0.url) else { return nil }
+            let images: [NSImage] = self.originalImages.flatMap {
                 
                 let trimedImage = NSImage(size: self.currentTrimInfo.rect.size)
                 
                 trimedImage.lockFocus()
-                originalImage.draw(at: .zero,
+                $0.image.draw(at: .zero,
                                    from: self.currentTrimInfo.rect,
                                    operation: .copy,
                                    fraction: 1.0)
