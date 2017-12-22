@@ -98,9 +98,9 @@ final class StrengthenListViewController: MainTabVIewItemViewController {
         didSet { didChangeValue(forKey: #keyPath(itemList)) }
     }
     
-    private let notifier = PeriodicNotifier(hour: 0, minutes: 0)
+    private let itemListBuildNotifier = PeriodicNotifier(hour: 0, minutes: 0)
     private let plistDownloadNotifier = PeriodicNotifier(hour: 23, minutes: 55)
-    private let downloader = EnhancementListItemDownloader()
+    private let downloader = EnhancementListItemDownloader(name: resourceName, extension: resourceExtension)
     private var equipmentStrengthenList: [EnhancementListItem] = []
     private var showsTypes: [EquipmentType] = FilterCategories.allType
     
@@ -121,7 +121,7 @@ final class StrengthenListViewController: MainTabVIewItemViewController {
         }
         
         let nc = NotificationCenter.default
-        nc.addObserver(forName: .Periodic, object: notifier, queue: nil) { [weak self] _ in
+        nc.addObserver(forName: .Periodic, object: itemListBuildNotifier, queue: nil) { [weak self] _ in
             
             self?.buildList()
         }
@@ -217,55 +217,5 @@ extension StrengthenListViewController: NSTableViewDelegate {
         let item = filteredItems[row]
         
         return item.cellType.estimateCellHeightForItem(item: item, tableView: tableView)
-    }
-}
-
-private final class EnhancementListItemDownloader: NSObject, URLSessionDownloadDelegate {
-    
-    override init() {
-        
-        super.init()
-        
-        plistDownloadQueue = OperationQueue()
-        plistDownloadQueue.name = "StrengthenListViewControllerPlistDownloadQueue"
-        plistDownloadQueue.maxConcurrentOperationCount = 1
-        plistDownloadQueue.qualityOfService = .background
-        
-        let configuration = URLSessionConfiguration.default
-        
-        plistDownloadSession = URLSession(configuration: configuration,
-                                          delegate: self,
-                                          delegateQueue: plistDownloadQueue)
-    }
-    
-    private var plistDownloadSession: URLSession!
-    private var plistDownloadQueue: OperationQueue!
-    private var plistDownloadTask: URLSessionDownloadTask?
-    private var finishOperation: (([EnhancementListItem]) -> Void)?
-    
-    func download(completeHandler: @escaping ([EnhancementListItem]) -> Void) {
-        
-        if let _ = plistDownloadTask { return }
-        
-        guard let plistURL = URL(string: "http://git.osdn.jp/view?p=kcd/KCD.git;a=blob;f=KCD/\(resourceName).\(resourceExtension);hb=HEAD") else { return }
-        
-        finishOperation = completeHandler
-        plistDownloadTask = plistDownloadSession.downloadTask(with: plistURL)
-        plistDownloadTask?.resume()
-    }
-    
-    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
-        
-        plistDownloadTask = nil
-        
-        guard let data = try? Data(contentsOf: location, options: []) else { return }
-        guard let list = NSKeyedUnarchiver.unarchiveObject(with: data as Data) as? [EnhancementListItem] else { return }
-        
-        finishOperation?(list)
-    }
-    
-    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
-        
-        plistDownloadTask = nil
     }
 }
