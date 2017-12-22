@@ -22,19 +22,19 @@ final class JSONReciever {
 
 extension JSONReciever: CustomHTTPProtocolDelegate {
     
-    private func acceptProtocol(_ proto: URLProtocol) {
+    private func storeData(for proto: URLProtocol) {
         
         recievers[proto] = NSMutableData()
         
         Debug.print("Accept protorol ->", proto, level: .full)
     }
     
-    private func data(_ forProtocol: URLProtocol) -> NSMutableData? {
+    private func data(for proto: URLProtocol) -> NSMutableData? {
         
-        return recievers[forProtocol]
+        return recievers[proto]
     }
     
-    private func clearProtocol(_ proto: URLProtocol) {
+    private func releaseeData(for proto: URLProtocol) {
         
         recievers[proto] = nil
     }
@@ -44,20 +44,20 @@ extension JSONReciever: CustomHTTPProtocolDelegate {
         if let pathComp = proto.request.url?.pathComponents,
             pathComp.contains("kcsapi") {
             
-            acceptProtocol(proto)
+            storeData(for: proto)
         }
     }
     
     func customHTTPProtocol(_ proto: CustomHTTPProtocol, didRecieve data: Data) {
         
-        self.data(proto)?.append(data)
+        self.data(for: proto)?.append(data)
     }
     
     func customHTTPProtocolDidFinishLoading(_ proto: CustomHTTPProtocol) {
         
-        defer { clearProtocol(proto) }
+        defer { releaseeData(for: proto) }
         
-        guard let data = self.data(proto),
+        guard let data = self.data(for: proto),
             let response = APIResponse(request: proto.request, data: data as Data) else {
                 
                 return
@@ -70,6 +70,6 @@ extension JSONReciever: CustomHTTPProtocolDelegate {
         
         Debug.print("Connection Error! \nRequest: \(proto.request)\nError:\(error)", level: .full)
         
-        clearProtocol(proto)
+        releaseeData(for: proto)
     }
 }
