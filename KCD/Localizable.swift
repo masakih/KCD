@@ -6,6 +6,8 @@
 //  Copyright © 2017年 Hori,Masaki. All rights reserved.
 //
 
+// genstring に対応したローカライズ用プロトコル群
+
 import Foundation
 
 protocol Localizable {
