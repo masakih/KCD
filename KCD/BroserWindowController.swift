@@ -619,8 +619,7 @@ extension BroserWindowController {
         
         if let mainTouchBar = mainTouchBar { return mainTouchBar }
         
-        var array: NSArray?
-        Bundle.main.loadNibNamed(NSNib.Name("BroswerTouchBar"), owner: self, topLevelObjects: &array)
+        Bundle.main.loadNibNamed(NSNib.Name("BroswerTouchBar"), owner: self, topLevelObjects: nil)
         
         shipTypeSegment.bind(.selectedIndex,
                              to: tabViewItemViewControllers[0],

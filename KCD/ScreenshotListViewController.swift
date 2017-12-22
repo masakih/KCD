@@ -334,11 +334,9 @@ extension ScreenshotListViewController: NSTouchBarDelegate {
     
     override func makeTouchBar() -> NSTouchBar? {
         
-        var array: NSArray?
-        
-        Bundle.main.loadNibNamed(NSNib.Name("ScreenshotTouchBar"), owner: self, topLevelObjects: &array)
+        Bundle.main.loadNibNamed(NSNib.Name("ScreenshotTouchBar"), owner: self, topLevelObjects: nil)
         let identifiers = self.screenshotTouchBar.defaultItemIdentifiers
-            + [ScreenshotListViewController.ServicesItemIdentifier]
+            + [type(of: self).ServicesItemIdentifier]
         screenshotTouchBar.defaultItemIdentifiers = identifiers
         
         if collectionVisibleDidChangeHandler == nil {
