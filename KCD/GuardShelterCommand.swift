@@ -25,7 +25,7 @@ final class GuardShelterCommand: JSONCommand {
         switch api.type {
             
         case .battleResult:
-            registerReserve()
+            reserveEscapeShips()
             
         case .map:
             removeInvalidEntry()
@@ -60,7 +60,7 @@ final class GuardShelterCommand: JSONCommand {
         }
     }
     
-    private func registerReserve() {
+    private func reserveEscapeShips() {
         
         let escape = data["api_escape"]
         
