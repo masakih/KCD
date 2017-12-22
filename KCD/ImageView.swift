@@ -8,6 +8,7 @@
 
 import Cocoa
 
+///  複数の画像をカスケードして表示する
 final class ImageView: NSView {
     
     var images: [NSImage] = [] {
@@ -24,9 +25,7 @@ final class ImageView: NSView {
         let border = offset * 3
         let rect = bounds.insetBy(dx: border, dy: border)
         let size = images[0].size
-        let ratioX = rect.height / size.height
-        let ratioY = rect.width / size.width
-        let ratio = ratioX > ratioY ? ratioY : ratioX
+        let ratio = min(rect.width / size.width, rect.height / size.height)
         let drawSize = NSSize(width: size.width * ratio, height: size.height * ratio)
         
         return NSRect(
@@ -86,9 +85,7 @@ final class ImageView: NSView {
 
     private func imageRect(with rect: NSRect, imageSize: NSSize) -> NSRect {
         
-        let ratioX = rect.height / imageSize.height
-        let ratioY = rect.width / imageSize.width
-        let ratio = ratioX > ratioY ? ratioY : ratioX
+        let ratio = min(rect.width / imageSize.width, rect.height / imageSize.height)
         let drawSize = NSSize(width: imageSize.width * ratio,
                               height: imageSize.height * ratio)
         
