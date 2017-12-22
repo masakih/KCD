@@ -8,6 +8,7 @@
 
 import Cocoa
 
+/// 「編成支援」「能力値３」「艦載機搭載数」用
 final class BorderTextField: NSTextField {
     
     override func draw(_ dirtyRect: NSRect) {
