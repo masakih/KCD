@@ -19,7 +19,11 @@ final class QuestListCommand: JSONCommand {
         
         // 左のタブがAllじゃない時は無視する
         guard let tab = parameter["api_tab_id"].int, tab == 0 else { return }
-        guard let ql0No = data["api_list"][0]["api_no"].int,
+        
+        let questList = data["api_list"]
+        let questNumberList = questList.array?.flatMap { $0["api_no"].int }
+        
+        guard let firstQuestNumber = questNumberList?.first,
             let pageCount = data["api_page_count"].int,
             let page = data["api_disp_page"].int else {
                 
@@ -29,14 +33,14 @@ final class QuestListCommand: JSONCommand {
         let store = ServerDataStore.oneTimeEditor()
         
         // 範囲内の任務をいったん遂行中からはずす
-        let qlmNo = data["api_list"].last["api_no"].int ?? 9999
-        let minNo = (page == 1) ? 0 : ql0No
-        let maxNo = (page == pageCount) ? 9999 : qlmNo
+        let lastQuestNumber = questNumberList?.last ?? 9999
+        let minNo = (page == 1) ? 0 : firstQuestNumber
+        let maxNo = (page == pageCount) ? 9999 : lastQuestNumber
         store.quests(in: minNo...maxNo).forEach { $0.state = 1 }
         
         // 新しいデータ投入
         let quests = store.sortedQuestByNo()
-        data["api_list"].forEach { _, quest in
+        questList.forEach { _, quest in
             
             guard let no = quest["api_no"].int else { return }
             
