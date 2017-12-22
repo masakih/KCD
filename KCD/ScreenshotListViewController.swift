@@ -15,7 +15,7 @@ extension NSUserInterfaceItemIdentifier {
 
 final class ScreenshotListViewController: NSViewController {
     
-    private static let def = 800.0
+    private static let maxImageSize = 800.0
     private static let leftMergin = 8.0 + 1.0
     private static let rightMergin = 8.0 + 1.0
     
@@ -170,25 +170,27 @@ final class ScreenshotListViewController: NSViewController {
     
     func viewFrameDidChange(_ notification: Notification?) {
         
-        maxZoom = maxZoom(width: collectionView.frame.size.width)
+        maxZoom = calcMaxZoom()
         if zoom > maxZoom { zoom = maxZoom }
     }
     
-    private func realFromZoom(zoom: Double) -> CGFloat {
+    /// 画像の大きさの変化が自然になるようにzoom値から画像サイズを計算
+    private func sizeFrom(zoom: Double) -> CGFloat {
         
-        if zoom < 0.5 { return CGFloat(ScreenshotListViewController.def * zoom * 0.6) }
+        if zoom < 0.5 { return CGFloat(type(of: self).maxImageSize * zoom * 0.6) }
         
-        return CGFloat(ScreenshotListViewController.def * (0.8 * zoom * zoom * zoom  + 0.2))
+        return CGFloat(type(of: self).maxImageSize * (0.8 * zoom * zoom * zoom  + 0.2))
     }
     
-    private func maxZoom(width: CGFloat) -> Double {
+    /// ビューの幅に合わせたzoomの最大値を計算
+    private func calcMaxZoom() -> Double {
         
-        let w = Double(width) - ScreenshotListViewController.leftMergin - ScreenshotListViewController.rightMergin
+        let effectiveWidth = Double(collectionView.frame.size.width) - type(of: self).leftMergin - type(of: self).rightMergin
         
-        if w < 240 { return w / ScreenshotListViewController.def / 0.6 }
-        if w > 800 { return 1.0 }
+        if effectiveWidth < 240 { return effectiveWidth / type(of: self).maxImageSize / 0.6 }
+        if effectiveWidth > 800 { return 1.0 }
         
-        return pow((w / ScreenshotListViewController.def - 0.2) / 0.8, 1.0 / 3.0)
+        return pow((effectiveWidth / type(of: self).maxImageSize - 0.2) / 0.8, 1.0 / 3.0)
     }
     
     private func reloadData() {
@@ -261,9 +263,9 @@ extension ScreenshotListViewController: NSCollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: NSCollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> NSSize {
         
-        let f = realFromZoom(zoom: zoom)
+        let size = sizeFrom(zoom: zoom)
         
-        return NSSize(width: f, height: f)
+        return NSSize(width: size, height: size)
     }
     
     // Drag and Drop
@@ -373,7 +375,7 @@ extension ScreenshotListViewController: NSTouchBarDelegate {
     func touchBar(_ touchBar: NSTouchBar,
                   makeItemForIdentifier identifier: NSTouchBarItem.Identifier) -> NSTouchBarItem? {
         
-        guard identifier == ScreenshotListViewController.ServicesItemIdentifier else { return nil }
+        guard identifier == type(of: self).ServicesItemIdentifier else { return nil }
         
         if sharingItem == nil {
             
