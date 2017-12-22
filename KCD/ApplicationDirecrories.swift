@@ -48,11 +48,10 @@ func createDirectory(_ url: URL) -> Bool {
     } catch {
         
         return false
-        
     }
 }
 
-func checkDirectory(_ url: URL) -> Bool {
+func checkDirectory(_ url: URL, create: Bool) -> Bool {
     
     do {
         
@@ -66,10 +65,9 @@ func checkDirectory(_ url: URL) -> Bool {
         
         return true
         
-    } catch {
+    } catch (let error as NSError) {
         
-        let nserror = error as NSError
-        if nserror.code == NSFileReadNoSuchFileError {
+        if create, error.code == NSFileReadNoSuchFileError {
             
             return createDirectory(url)
         }

@@ -74,7 +74,7 @@ final class MOCGenerator {
     
     private func createCoordinator(_ model: NSManagedObjectModel) throws -> NSPersistentStoreCoordinator {
         
-        if !checkDirectory(ApplicationDirecrories.support) {
+        if !checkDirectory(ApplicationDirecrories.support, create: true) {
             
             throw CoreDataError.saveLocationIsUnuseable
         }
