@@ -79,9 +79,11 @@ final class MissionStatus: NSObject {
                 return Logger.shared.log("unknown State")
         }
         
-        if stat == .none || stat == .finish {
+        if stat == .none {
             
-            if stat == .none { didNotify = false }
+            didNotify = false
+        }
+        if stat == .none || stat == .finish {
             
             invalidate()
             return
