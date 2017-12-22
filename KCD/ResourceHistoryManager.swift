@@ -26,10 +26,11 @@ final class ResourceHistoryManager: NSObject {
     
     private var timer: Timer?
     
-    @objc fileprivate func notifyIfNeeded(_ timer: Timer?) {
+    @objc private func notifyIfNeeded(_ timer: Timer?) {
         
         if timer != nil { saveResources() }
-        if let valid = timer?.isValid, valid { timer?.invalidate() }
+        
+        timer?.invalidate()
         
         let now = Date()
         var nowComp = Calendar.current
@@ -46,8 +47,7 @@ final class ResourceHistoryManager: NSObject {
             return
         }
         
-        let notifyTime = notifyDate.timeIntervalSinceNow
-        self.timer = Timer.scheduledTimer(timeInterval: notifyTime,
+        self.timer = Timer.scheduledTimer(timeInterval: notifyDate.timeIntervalSinceNow,
                                           target: self,
                                           selector: #selector(ResourceHistoryManager.notifyIfNeeded(_:)),
                                           userInfo: nil,
