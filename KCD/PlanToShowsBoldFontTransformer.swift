@@ -19,8 +19,6 @@ final class PlanToShowsBoldFontTransformer: ValueTransformer {
         
         guard let v = value as? Int, v != 0 else { return false }
         
-        if UserDefaults.standard[.showsPlanColor] { return true }
-        
-        return false
+        return UserDefaults.standard[.showsPlanColor]
     }
 }
