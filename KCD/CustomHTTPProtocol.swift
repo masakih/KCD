@@ -17,6 +17,8 @@ protocol CustomHTTPProtocolDelegate: class {
     func customHTTPProtocol(_ proto: CustomHTTPProtocol, didFailWithError error: Error)
 }
 
+
+/// 生成されたスレッド上でoprationを実行する
 private final class ThreadOperator: NSObject {
     
     private let thread: Thread
@@ -26,15 +28,13 @@ private final class ThreadOperator: NSObject {
     override init() {
         
         thread = Thread.current
-        let mode = RunLoop.current.currentMode ?? .defaultRunLoopMode
-        
-        if mode == .defaultRunLoopMode {
+        if let mode = RunLoop.current.currentMode {
             
-            modes = [mode.rawValue]
+            modes = [mode, .defaultRunLoopMode].map { $0.rawValue }
             
         } else {
             
-            modes = [mode, .defaultRunLoopMode].map { $0.rawValue }
+            modes = [RunLoopMode.defaultRunLoopMode.rawValue]
         }
         
         super.init()
@@ -51,7 +51,7 @@ private final class ThreadOperator: NSObject {
         self.operation = nil
     }
     
-    @objc func operate() {
+    @objc private func operate() {
         
         operation?()
     }
