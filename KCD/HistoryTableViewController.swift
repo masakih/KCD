@@ -94,9 +94,8 @@ class HistoryTableViewController: NSViewController {
             guard let items = controller?.arrangedObjects as? [Markable] else { return false }
             guard case 0..<items.count = clickedRow else { return false }
             
-            let clickedObject = items[clickedRow]
             menuItem.isEnabled = true
-            if clickedObject.mark {
+            if items[clickedRow].mark {
                 
                 menuItem.title = LocalizedStrings.removeMark.string
                 

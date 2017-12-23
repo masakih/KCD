@@ -116,19 +116,14 @@ final class UpgradableShipsWindowController: NSWindowController {
     
     private func includeShip(shipID: Int) {
         
-        var array = excludeShiIDs
+        guard let index = excludeShiIDs.index(of: shipID) else { return }
         
-        guard let index = array.index(of: shipID) else { return }
-        
-        array.remove(at: index)
-        excludeShiIDs = array
+        excludeShiIDs.remove(at: index)
     }
     
     private func excludeShip(shipID: Int) {
         
-        var array = excludeShiIDs
-        array.append(shipID)
-        excludeShiIDs = array
+        excludeShiIDs.append(shipID)
     }
     
     @IBAction func showHideShip(_ sender: AnyObject?) {

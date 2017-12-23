@@ -26,32 +26,25 @@ final class ExternalBrowserWindowController: NSWindowController {
     @objc dynamic var canResize: Bool = true {
         
         willSet {
-            guard let window = window else { return }
-            
             if canResize == newValue { return }
             
-            var styleMask = window.styleMask
             if newValue {
                 
-                styleMask.insert(.resizable)
+                window?.styleMask.insert(.resizable)
                 
             } else {
                 
-                styleMask.remove(.resizable)
+                window?.styleMask.remove(.resizable)
             }
-            
-            window.styleMask = styleMask
         }
     }
     
     @objc dynamic var canScroll: Bool = true {
         
         willSet {
-            guard let webView = webView else { return }
-            
             if canScroll == newValue { return }
             
-            webView.mainFrame.frameView.allowsScrolling = newValue
+            webView?.mainFrame.frameView.allowsScrolling = newValue
         }
     }
     @objc dynamic var canMovePage: Bool = true
