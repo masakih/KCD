@@ -28,6 +28,7 @@
 		F421850F1DF4518000256590 /* BroswerTouchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = F421850E1DF4518000256590 /* BroswerTouchBar.xib */; };
 		F42185111DF461A600256590 /* ScreenshotTouchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = F42185101DF461A600256590 /* ScreenshotTouchBar.xib */; };
 		F422D64C1FED474100183199 /* EnhancementListItemDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F422D64B1FED474100183199 /* EnhancementListItemDownloader.swift */; };
+		F422D64E1FEE14D500183199 /* ViewAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F422D64D1FEE14D500183199 /* ViewAnimation.swift */; };
 		F42539E21EB4A7950083EB9D /* AirPlanInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42539E11EB4A7950083EB9D /* AirPlanInfoView.swift */; };
 		F42546921EF8002E00BE297E /* EquitType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42546911EF8002E00BE297E /* EquitType.swift */; };
 		F42546931EFBE0D300BE297E /* EquitType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42546911EF8002E00BE297E /* EquitType.swift */; };
@@ -399,6 +400,7 @@
 		F421850E1DF4518000256590 /* BroswerTouchBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BroswerTouchBar.xib; sourceTree = "<group>"; };
 		F42185101DF461A600256590 /* ScreenshotTouchBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScreenshotTouchBar.xib; sourceTree = "<group>"; };
 		F422D64B1FED474100183199 /* EnhancementListItemDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnhancementListItemDownloader.swift; sourceTree = "<group>"; };
+		F422D64D1FEE14D500183199 /* ViewAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAnimation.swift; sourceTree = "<group>"; };
 		F42539E11EB4A7950083EB9D /* AirPlanInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirPlanInfoView.swift; sourceTree = "<group>"; };
 		F42546911EF8002E00BE297E /* EquitType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquitType.swift; sourceTree = "<group>"; };
 		F429FAAD1F619927006299ED /* TPValueCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPValueCalculator.swift; sourceTree = "<group>"; };
@@ -1147,6 +1149,7 @@
 				F40F976C1E6708F300AE81BB /* Graphics.swift */,
 				F40F97721E6989B300AE81BB /* NSViewExtension.swift */,
 				F4AAA1501F6D6DDC00975E87 /* NSTextFieldExtension.swift */,
+				F422D64D1FEE14D500183199 /* ViewAnimation.swift */,
 				F4A9E7F21D045B8800F91746 /* ScreenshotList */,
 				F4BDEB5B187252F30069D0CE /* MainMenu.xib */,
 				F4BEEFE31B0CD3C5004702B8 /* MainWindow */,
@@ -1853,6 +1856,7 @@
 				F44BC70F1E27BE55004644E3 /* MemberShip2Command.swift in Sources */,
 				F49097811E19F2C70085A45D /* BorderTextField.swift in Sources */,
 				F4AA594E1E1E4A7C001667AF /* UITestWindowController.swift in Sources */,
+				F422D64E1FEE14D500183199 /* ViewAnimation.swift in Sources */,
 				F42A8FD01E3DB49A0099DC1D /* MasterSlotItem.swift in Sources */,
 				F49097851E1A15AF0085A45D /* SlotItemLevelView.swift in Sources */,
 				F44BC6C31E221865004644E3 /* AirCorpsSupplyCommand.swift in Sources */,
