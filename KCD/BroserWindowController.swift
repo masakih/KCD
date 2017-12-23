@@ -525,14 +525,11 @@ extension BroserWindowController {
         
         if animate {
             
-            let winAnime: [NSViewAnimation.Key: Any]  = [.target: window,
-                                                         .endFrame: NSValue(rect: winFrame) ]
-            let flashAnime: [NSViewAnimation.Key: Any] = [.target: gameViewController.view,
-                                                          .endFrame: NSValue(rect: flashRect) ]
-            let fleetAnime: [NSViewAnimation.Key: Any] = [.target: fleetViewController.view,
-                                                          .endFrame: NSValue(rect: fleetListRect) ]
+            let winAnime = ViewAnimationAttributes(target: window, endFrame: winFrame)
+            let flashAnime = ViewAnimationAttributes(target: gameViewController.view, endFrame: flashRect)
+            let fleetAnime = ViewAnimationAttributes(target: fleetViewController.view, endFrame: fleetListRect)
             
-            let anime = NSViewAnimation(viewAnimations: [winAnime, flashAnime, fleetAnime])
+            let anime = ViewAnimation(viewAnimations: [winAnime, flashAnime, fleetAnime])
             
             anime.start()
             

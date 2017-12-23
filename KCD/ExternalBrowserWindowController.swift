@@ -273,17 +273,14 @@ extension ExternalBrowserWindowController {
             newFrame.size.width = window.frame.size.width - 200
         }
         
-        let webAnime: [NSViewAnimation.Key: Any] = [
-            .target: webView,
-            .endFrame: NSValue(rect: newFrame)
-        ]
-        let bookmarkAnime: [NSViewAnimation.Key: Any] = [
-            .target: bookmarkListView,
-            .endFrame: NSValue(rect: frame)
-        ]
-        let anime = NSViewAnimation(viewAnimations: [webAnime, bookmarkAnime])
-        anime.delegate = self
-        anime.start()
+        let webAnime = ViewAnimationAttributes(target: webView, endFrame: newFrame)
+        let bookmarkAnime = ViewAnimationAttributes(target: bookmarkListView, endFrame: frame)
+
+        let anime = ViewAnimation(viewAnimations: [webAnime, bookmarkAnime])
+        anime.start { [weak self] in
+            
+            self?.bookmarkShowing = false
+        }
     }
     
     @IBAction func scrollLeft(_ sender: AnyObject?) {
@@ -358,14 +355,6 @@ extension ExternalBrowserWindowController: BookmarkListViewControllerDelegate {
     func didSelectBookmark(_ bookmark: Bookmark) {
         
         move(bookmark: bookmark)
-    }
-}
-
-extension ExternalBrowserWindowController: NSAnimationDelegate {
-    
-    func animationDidEnd(_ animation: NSAnimation) {
-        
-        bookmarkShowing = false
     }
 }
 
