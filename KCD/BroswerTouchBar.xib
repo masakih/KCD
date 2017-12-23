@@ -47,8 +47,8 @@
                         <touchBarItems>
                             <touchBarItem id="vZX-un-FLk">
                                 <viewController key="viewController" id="aGC-uc-EzH">
-                                    <segmentedControl key="view" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7HW-CC-4Ea">
-                                        <rect key="frame" x="0.0" y="0.0" width="541" height="33"/>
+                                    <segmentedControl key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7HW-CC-4Ea">
+                                        <rect key="frame" x="0.0" y="0.0" width="545" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="yxg-T9-ze0">
                                             <font key="font" metaFont="system"/>
@@ -65,7 +65,7 @@
                                         </segmentedCell>
                                     </segmentedControl>
                                 </viewController>
-                                <size key="designTimeSize" width="530" height="30"/>
+                                <size key="designTimeSize" width="545" height="30"/>
                             </touchBarItem>
                         </touchBarItems>
                     </touchBar>
