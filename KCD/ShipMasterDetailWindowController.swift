@@ -16,10 +16,10 @@ final class ShipMasterDetailWindowController: NSWindowController {
         return AppDelegate.shared.fleetManager
     }()
     let specNames = [
-        "name", "shortTypeName",
+        "id", "name", "shortTypeName",
         "slot_0", "slot_1", "slot_2", "slot_3", "slot_4",
         "onslot_0", "onslot_1", "onslot_2", "onslot_3", "onslot_4",
-        "leng", "slot_ex", "id"
+        "leng", "slot_ex", "sakuteki_0", "sakuteki_1"
     ]
     
     @IBOutlet var shipController: NSArrayController!
