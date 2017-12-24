@@ -29,6 +29,7 @@
 		F42185111DF461A600256590 /* ScreenshotTouchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = F42185101DF461A600256590 /* ScreenshotTouchBar.xib */; };
 		F422D64C1FED474100183199 /* EnhancementListItemDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F422D64B1FED474100183199 /* EnhancementListItemDownloader.swift */; };
 		F422D64E1FEE14D500183199 /* ViewAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F422D64D1FEE14D500183199 /* ViewAnimation.swift */; };
+		F422D6521FEF584100183199 /* SakutekiTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F422D6511FEF584100183199 /* SakutekiTest.swift */; };
 		F42539E21EB4A7950083EB9D /* AirPlanInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42539E11EB4A7950083EB9D /* AirPlanInfoView.swift */; };
 		F42546921EF8002E00BE297E /* EquitType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42546911EF8002E00BE297E /* EquitType.swift */; };
 		F42546931EFBE0D300BE297E /* EquitType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42546911EF8002E00BE297E /* EquitType.swift */; };
@@ -401,6 +402,7 @@
 		F42185101DF461A600256590 /* ScreenshotTouchBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScreenshotTouchBar.xib; sourceTree = "<group>"; };
 		F422D64B1FED474100183199 /* EnhancementListItemDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnhancementListItemDownloader.swift; sourceTree = "<group>"; };
 		F422D64D1FEE14D500183199 /* ViewAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAnimation.swift; sourceTree = "<group>"; };
+		F422D6511FEF584100183199 /* SakutekiTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SakutekiTest.swift; sourceTree = "<group>"; };
 		F42539E11EB4A7950083EB9D /* AirPlanInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirPlanInfoView.swift; sourceTree = "<group>"; };
 		F42546911EF8002E00BE297E /* EquitType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquitType.swift; sourceTree = "<group>"; };
 		F429FAAD1F619927006299ED /* TPValueCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPValueCalculator.swift; sourceTree = "<group>"; };
@@ -1112,6 +1114,7 @@
 				F4CB371C1FCC5FCC0086999C /* CombinedBattleTest.swift */,
 				F4FF44CB1F9E41F600039F21 /* ShipStatusTest.swift */,
 				F4CB37281FD3C1A00086999C /* GuardEscapeTest.swift */,
+				F422D6511FEF584100183199 /* SakutekiTest.swift */,
 			);
 			path = KCDTests;
 			sourceTree = "<group>";
@@ -1880,6 +1883,7 @@
 			files = (
 				F4CB37291FD3C1A00086999C /* GuardEscapeTest.swift in Sources */,
 				F4CB371D1FCC5FCC0086999C /* CombinedBattleTest.swift in Sources */,
+				F422D6521FEF584100183199 /* SakutekiTest.swift in Sources */,
 				F4FF44C71F98DA6600039F21 /* NormalBattleTest.swift in Sources */,
 				F4FF44CC1F9E41F600039F21 /* ShipStatusTest.swift in Sources */,
 			);
