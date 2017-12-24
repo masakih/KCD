@@ -83,13 +83,13 @@ final class BroserWindowController: NSWindowController {
         super.windowDidLoad()
     
         gameViewController = GameViewController()
-        replace(placeholder, with: gameViewController)
+        replace(view: placeholder, with: gameViewController)
         
         resourceViewController = ResourceViewController()
-        replace(resourcePlaceholder, with: resourceViewController)
+        replace(view: resourcePlaceholder, with: resourceViewController)
         
         ancherageRepariTimerViewController = AncherageRepairTimerViewController()
-        replace(ancherageRepariTimerPlaceholder, with: ancherageRepariTimerViewController)
+        replace(view: ancherageRepariTimerPlaceholder, with: ancherageRepariTimerViewController)
         if UserDefaults.standard[.screenshotButtonSize] == .small { toggleAnchorageSize(nil) }
         
         tabViewItemViewControllers = [
@@ -107,7 +107,7 @@ final class BroserWindowController: NSWindowController {
         }
         
         fleetViewController = FleetViewController(viewType: .detailViewType)
-        replace(deckPlaceholder, with: fleetViewController)
+        replace(view: deckPlaceholder, with: fleetViewController)
         setFleetView(position: UserDefaults.standard[.fleetViewPosition], animate: false)
         fleetViewController.enableAnimation = false
         fleetViewController.shipOrder = UserDefaults.standard[.fleetViewShipOrder]
@@ -158,14 +158,7 @@ final class BroserWindowController: NSWindowController {
         
         UserDefaults.standard[.lastHasCombinedView] = isCombinedMode
     }
-    
-    private func replace(_ view: NSView, with viewController: NSViewController) {
         
-        viewController.view.frame = view.frame
-        viewController.view.autoresizingMask = view.autoresizingMask
-        view.superview?.replaceSubview(view, with: viewController.view)
-    }
-    
     private func showCombinedView() {
         
         if isCombinedMode { return }
@@ -178,7 +171,7 @@ final class BroserWindowController: NSWindowController {
             
             combinedViewController = CombileViewController()
             combinedViewController.view.isHidden = true
-            replace(combinedViewPlaceholder, with: combinedViewController)
+            replace(view: combinedViewPlaceholder, with: combinedViewController)
         }
         
         var winFrame = window!.frame
@@ -412,7 +405,7 @@ extension BroserWindowController {
         
         newController.enableAnimation = true
         newController.shipOrder = fleetViewController.shipOrder
-        replace(fleetViewController.view, with: newController)
+        replace(view: fleetViewController.view, with: newController)
         fleetViewController = newController
         fleetViewController.delegate = self
     }

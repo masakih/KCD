@@ -20,3 +20,10 @@ extension NSView {
         DispatchQueue.main.async { self.needsDisplay = true }
     }
 }
+
+func replace(view: NSView, with viewController: NSViewController) {
+    
+    viewController.view.frame = view.frame
+    viewController.view.autoresizingMask = view.autoresizingMask
+    view.superview?.replaceSubview(view, with: viewController.view)
+}

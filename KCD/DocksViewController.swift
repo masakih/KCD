@@ -78,13 +78,8 @@ final class DocksViewController: MainTabVIewItemViewController {
             self.ndockStatus.forEach { $0.update() }
         }
         
-        battleInfoViewController.view.frame = battleInformationViewPlaceholder.frame
-        battleInfoViewController.view.autoresizingMask = battleInformationViewPlaceholder.autoresizingMask
-        battleInformationViewPlaceholder.superview?.replaceSubview(battleInformationViewPlaceholder, with: battleInfoViewController.view)
-        
-        questListViewController.view.frame = questListViewPlaceholder.frame
-        questListViewController.view.autoresizingMask = questListViewPlaceholder.autoresizingMask
-        questListViewPlaceholder.superview?.replaceSubview(questListViewPlaceholder, with: questListViewController.view)
+        replace(view: battleInformationViewPlaceholder, with: battleInfoViewController)
+        replace(view: questListViewPlaceholder, with: questListViewController)
     }
     
     private func setupStatus() {
