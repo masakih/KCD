@@ -118,11 +118,7 @@ final class Formula33: SakutekiCalculator {
         
         guard let saku = item.master_slotItem.saku as? Double else { return 0 }
         
-        let lvBounus = levelBounus(item)
-        
-        let ratio = typeRatio(item)
-        
-        return Double(condition) * ratio * (saku + lvBounus)
+        return Double(condition) * typeRatio(item) * (saku + levelBounus(item))
     }
     
     private func typeRatio(_ item: SlotItem) -> Double {
@@ -155,11 +151,7 @@ final class Formula33: SakutekiCalculator {
     
     private func levelBounus(_ item: SlotItem) -> Double {
         
-        let level = item.level
-        
-        let ratio = levelRatio(item)
-        
-        return ratio * sqrt(Double(level))
+        return levelRatio(item) * sqrt(Double(item.level))
     }
     
     private func levelRatio(_ item: SlotItem) -> Double {
