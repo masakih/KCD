@@ -20,7 +20,7 @@ final class AppDelegate: NSObject {
     let appNameForUserAgent: String = "KCD(1.9b36) is not Safari/604.4.7"
     let fleetManager: FleetManager = FleetManager()
     
-    let windowManager = WindowManager()
+    private let windowManager = WindowManager()
     
     private let historyCleanNotifer = PeriodicNotifier(hour: 0, minutes: 7)
     private let jsonTracker = JSONTracker()
