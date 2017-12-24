@@ -13,11 +13,22 @@ protocol SakutekiCalculator {
     func calculate(_ ships: [Ship]) -> Double
 }
 
+extension SakutekiCalculator {
+    
+    fileprivate func alivedShips(ships: [Ship]) -> [Ship] {
+        
+        return ships.filter {
+            TemporaryDataStore.default.ensuredGuardEscaped(byShipId: $0.id) == nil
+        }
+    }
+}
+
 final class SimpleCalculator: SakutekiCalculator {
+    
     
     func calculate(_ ships: [Ship]) -> Double {
         
-        return Double(ships.reduce(0) { $0 + $1.sakuteki_0 })
+        return Double(alivedShips(ships: ships).reduce(0) { $0 + $1.sakuteki_0 })
     }
 }
 
@@ -57,7 +68,7 @@ final class Formula33: SakutekiCalculator {
             ships.forEach(printShipData)
         }
         
-        let aliveShips = ships.filter(alive)
+        let aliveShips = alivedShips(ships: ships)
         
         // 艦娘の索敵による索敵値
         let saku1 = aliveShips
@@ -74,19 +85,9 @@ final class Formula33: SakutekiCalculator {
         let saku3 = shireiSakuteki()
         
         // 艦隊の艦娘数による影響
-        let saku4 = 2 * (6 - ships.count)
+        let saku4 = 2 * (6 - aliveShips.count)
         
         return saku1 + saku2 - saku3 + Double(saku4)
-    }
-    
-    private func alive(_ ship: Ship) -> Bool {
-        
-        if let _ = TemporaryDataStore.default.ensuredGuardEscaped(byShipId: ship.id) {
-            
-            return false
-        }
-        
-        return true
     }
     
     private func normalSakuteki(_ ship: Ship) -> Double {
