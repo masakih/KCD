@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -25,7 +25,7 @@
         </arrayController>
         <customView id="c22-O7-iKe">
             <rect key="frame" x="0.0" y="0.0" width="480" height="594"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7U1-Yk-pgg">
                     <rect key="frame" x="0.0" y="33" width="480" height="561"/>
@@ -60,24 +60,19 @@
                     </scroller>
                 </scrollView>
                 <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yAb-DI-6ut">
-                    <rect key="frame" x="207" y="6" width="267" height="21"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="17" id="XIp-hm-YVf"/>
-                    </constraints>
+                    <rect key="frame" x="207" y="6" width="267" height="19"/>
                     <sliderCell key="cell" continuous="YES" refusesFirstResponder="YES" state="on" alignment="left" minValue="0.20000000000000001" maxValue="0.90000000000000002" doubleValue="0.90000000000000002" tickMarkPosition="above" sliderType="linear" id="hO7-4z-A2O"/>
                     <connections>
                         <binding destination="-2" name="maxValue" keyPath="maxZoom" id="vam-gz-oQq"/>
                         <binding destination="-2" name="value" keyPath="zoom" previousBinding="vam-gz-oQq" id="2mY-1p-K3E"/>
                     </connections>
                 </slider>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vkb-uY-8tN">
+                <textField horizontalHuggingPriority="750" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vkb-uY-8tN">
                     <rect key="frame" x="6" y="8" width="197" height="17"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="193" id="Ifi-Y0-SQ0"/>
-                        <constraint firstAttribute="height" constant="17" id="dWO-hq-MmN"/>
-                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="193" id="i0z-t7-7Pe"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="193" id="qS4-jN-FPk"/>
                     </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="rWY-Vt-N4T">
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Label" id="rWY-Vt-N4T">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -92,15 +87,15 @@
                 </textField>
             </subviews>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="vkb-uY-8tN" secondAttribute="bottom" constant="8" id="2zb-uv-Uh7"/>
-                <constraint firstItem="vkb-uY-8tN" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="8" id="RjQ-sf-DLj"/>
+                <constraint firstItem="vkb-uY-8tN" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="8" id="Bc0-R5-pzT"/>
+                <constraint firstAttribute="bottom" secondItem="yAb-DI-6ut" secondAttribute="bottom" constant="8" id="NM8-59-rSr"/>
+                <constraint firstAttribute="trailing" secondItem="yAb-DI-6ut" secondAttribute="trailing" constant="8" id="RaU-p9-78q"/>
                 <constraint firstAttribute="trailing" secondItem="7U1-Yk-pgg" secondAttribute="trailing" id="Wx3-wj-ptE"/>
                 <constraint firstItem="7U1-Yk-pgg" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="Yix-uG-z25"/>
                 <constraint firstItem="7U1-Yk-pgg" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="Zdh-8d-J9U"/>
                 <constraint firstAttribute="bottom" secondItem="7U1-Yk-pgg" secondAttribute="bottom" constant="33" id="jlB-Hy-hgZ"/>
-                <constraint firstAttribute="bottom" secondItem="yAb-DI-6ut" secondAttribute="bottom" constant="8" id="jqK-sB-xEP"/>
-                <constraint firstItem="yAb-DI-6ut" firstAttribute="leading" secondItem="vkb-uY-8tN" secondAttribute="trailing" constant="8" id="kXa-oy-UWz"/>
-                <constraint firstAttribute="trailing" secondItem="yAb-DI-6ut" secondAttribute="trailing" constant="8" id="kYI-5T-hXR"/>
+                <constraint firstAttribute="bottom" secondItem="vkb-uY-8tN" secondAttribute="bottom" constant="8" id="l5U-bn-8yM"/>
+                <constraint firstItem="yAb-DI-6ut" firstAttribute="leading" secondItem="vkb-uY-8tN" secondAttribute="trailing" constant="8" id="lsQ-Ye-S29"/>
             </constraints>
             <point key="canvasLocation" x="72" y="135"/>
         </customView>
