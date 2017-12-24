@@ -42,12 +42,12 @@ final class ScreenshotListWindowController: NSWindowController {
         super.windowDidLoad()
         
         viewControllers.append(listViewController)
-        replaceView(left, viewController: listViewController)
+        overlapView(left, viewController: listViewController)
         listViewController.representedObject = listViewController.screenshots
         
         viewControllers.append(detailViewController)
         rightController.addChildViewController(detailViewController)
-        replaceView(right, viewController: detailViewController)
+        overlapView(right, viewController: detailViewController)
         detailViewController.representedObject = listViewController.screenshots
         
         editorViewController = createEditor()
@@ -61,7 +61,7 @@ final class ScreenshotListWindowController: NSWindowController {
         shareButton.sendAction(on: [.leftMouseDown])
     }
     
-    func replaceView(_ view: NSView, viewController: NSViewController) {
+    func overlapView(_ view: NSView, viewController: NSViewController) {
         
         viewController.view.frame = view.frame
         viewController.view.setFrameOrigin(.zero)
