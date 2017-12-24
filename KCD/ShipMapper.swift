@@ -136,6 +136,7 @@ final class ShipMapper: JSONMapper {
             if ship.slot_ex == ex { return true }
             
             setExtraSlot(ex, to: ship)
+            ship.slot_ex = ex
             
             return true
         }
@@ -192,7 +193,10 @@ final class ShipMapper: JSONMapper {
     
     private func setExtraSlot(_ exSlotItem: Int, to ship: Ship) {
         
-        guard exSlotItem != -1, exSlotItem != 0 else { return }
+        guard exSlotItem != -1, exSlotItem != 0 else {
+            ship.extraItem = nil
+            return
+        }
         guard let found = slotItems.binarySearch(comparator: { $0.id ==? exSlotItem }),
             let ex = store?.object(of: SlotItem.entity, with: found.objectID) else {
                 
@@ -200,6 +204,5 @@ final class ShipMapper: JSONMapper {
         }
         
         ship.extraItem = ex
-        ship.slot_ex = exSlotItem
     }
 }
