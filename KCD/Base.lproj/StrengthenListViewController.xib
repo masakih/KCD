@@ -133,11 +133,11 @@
                                                         <rect key="frame" x="0.0" y="57" width="306" height="5"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     </box>
-                                                    <box boxType="custom" borderType="line" title="Box" titlePosition="noTitle" id="CzU-R6-IVH" customClass="StrengthenListItemView" customModule="KCD">
-                                                        <rect key="frame" x="39" y="3" width="228" height="53"/>
+                                                    <box misplaced="YES" boxType="custom" borderType="line" title="Box" titlePosition="noTitle" id="CzU-R6-IVH" customClass="StrengthenListItemView" customModule="KCD" customModuleProvider="target">
+                                                        <rect key="frame" x="30" y="3" width="246" height="53"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <view key="contentView" id="661-9P-uWf">
-                                                            <rect key="frame" x="1" y="1" width="226" height="51"/>
+                                                            <rect key="frame" x="1" y="1" width="244" height="51"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="4eG-2g-uyx">
@@ -168,7 +168,7 @@
                                                                     </textFieldCell>
                                                                 </textField>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="8OI-al-eom">
-                                                                    <rect key="frame" x="67" y="35" width="140" height="14"/>
+                                                                    <rect key="frame" x="67" y="35" width="157" height="14"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="12.7cm連装砲B型改二ほげ" id="R1K-yU-b18">
                                                                         <font key="font" metaFont="smallSystem"/>
@@ -183,10 +183,10 @@
                                                                         </binding>
                                                                     </connections>
                                                                 </textField>
-                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="0Z2-0F-ZgF">
-                                                                    <rect key="frame" x="207" y="35" width="18" height="14"/>
+                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="0Z2-0F-ZgF">
+                                                                    <rect key="frame" x="223" y="35" width="18" height="14"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="33" id="jjl-Pt-1HC">
+                                                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="3" id="jjl-Pt-1HC">
                                                                         <font key="font" metaFont="smallSystem"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -218,7 +218,7 @@
                                                                     </connections>
                                                                 </textField>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="cfa-SL-7c8">
-                                                                    <rect key="frame" x="67" y="18" width="140" height="14"/>
+                                                                    <rect key="frame" x="67" y="18" width="157" height="14"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="61cm四連装(酸素)魚雷" id="tcc-Ep-Q8c">
                                                                         <font key="font" metaFont="smallSystem"/>
@@ -233,10 +233,10 @@
                                                                         </binding>
                                                                     </connections>
                                                                 </textField>
-                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="Jg8-Om-KU9">
-                                                                    <rect key="frame" x="207" y="18" width="18" height="14"/>
+                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="Jg8-Om-KU9">
+                                                                    <rect key="frame" x="223" y="18" width="18" height="14"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="33" id="Ds0-Hd-uQs">
+                                                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="3" id="Ds0-Hd-uQs">
                                                                         <font key="font" metaFont="smallSystem"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -268,9 +268,9 @@
                                                                     </connections>
                                                                 </textField>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="9hA-09-RKh">
-                                                                    <rect key="frame" x="67" y="1" width="140" height="14"/>
+                                                                    <rect key="frame" x="67" y="1" width="157" height="14"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="61cm五連装(酸素)魚雷" id="lnY-dS-w00">
+                                                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="新資材x1 詳報x1 22号対水上電探" id="lnY-dS-w00">
                                                                         <font key="font" metaFont="smallSystem"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -283,10 +283,10 @@
                                                                         </binding>
                                                                     </connections>
                                                                 </textField>
-                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="USu-Qu-CAe">
-                                                                    <rect key="frame" x="207" y="1" width="18" height="14"/>
+                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="USu-Qu-CAe">
+                                                                    <rect key="frame" x="223" y="1" width="18" height="14"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="33" id="atp-g5-f7u">
+                                                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="3" id="atp-g5-f7u">
                                                                         <font key="font" metaFont="smallSystem"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
