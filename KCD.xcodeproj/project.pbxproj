@@ -18,6 +18,7 @@
 		F40F976F1E67092600AE81BB /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40F976E1E67092600AE81BB /* ArrayExtensions.swift */; };
 		F40F97711E68536400AE81BB /* FileManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40F97701E68536400AE81BB /* FileManagerExtension.swift */; };
 		F40F97731E6989B300AE81BB /* NSViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40F97721E6989B300AE81BB /* NSViewExtension.swift */; };
+		F410E4601FF8C46E00FC64E6 /* ShipSlotObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = F410E45F1FF8C46E00FC64E6 /* ShipSlotObserver.swift */; };
 		F4131EDE190FEBDB004F7F9A /* SlotItemWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4131EE0190FEBDB004F7F9A /* SlotItemWindowController.xib */; };
 		F41465681DAB852E00D68C97 /* ScreenshotCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = F41465671DAB852E00D68C97 /* ScreenshotCollectionViewItem.xib */; };
 		F41465741DB4F1A700D68C97 /* ScreenshotListWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F41465761DB4F1A700D68C97 /* ScreenshotListWindowController.xib */; };
@@ -394,6 +395,7 @@
 		F40F976E1E67092600AE81BB /* ArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
 		F40F97701E68536400AE81BB /* FileManagerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManagerExtension.swift; sourceTree = "<group>"; };
 		F40F97721E6989B300AE81BB /* NSViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSViewExtension.swift; sourceTree = "<group>"; };
+		F410E45F1FF8C46E00FC64E6 /* ShipSlotObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipSlotObserver.swift; sourceTree = "<group>"; };
 		F41465671DAB852E00D68C97 /* ScreenshotCollectionViewItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScreenshotCollectionViewItem.xib; sourceTree = "<group>"; };
 		F41A451A1F4917640066F83D /* SeikuCalclator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeikuCalclator.swift; sourceTree = "<group>"; };
 		F41AA4751FDEDC3700FFFBD1 /* Parameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parameter.swift; sourceTree = "<group>"; };
@@ -1296,6 +1298,7 @@
 		F4D3D9571E87EBB90085A389 /* FleetView */ = {
 			isa = PBXGroup;
 			children = (
+				F410E45F1FF8C46E00FC64E6 /* ShipSlotObserver.swift */,
 				F4D05BD31E0F4F8500688D66 /* ShipDetailViewController.swift */,
 				F4BEF00A1B11A5DE004702B8 /* ShipDetailViewController.xib */,
 				F4BEF0011B11A5C2004702B8 /* MediumShipViewController.xib */,
@@ -1672,6 +1675,7 @@
 				F44BC6E31E230577004644E3 /* SlotDepriveCommand.swift in Sources */,
 				F42A8FCE1E3DA7E90099DC1D /* MasterShip.swift in Sources */,
 				F4AF56871F7F6EF9004F4F4E /* NSNibExtension.swift in Sources */,
+				F410E4601FF8C46E00FC64E6 /* ShipSlotObserver.swift in Sources */,
 				F4FC3E8C1E43660400E41228 /* GuardEscaped.swift in Sources */,
 				F490977B1E19C3910085A45D /* SuppliesView.swift in Sources */,
 				F4AA59341E1D2512001667AF /* SlotItemShortNameTransformer.swift in Sources */,
