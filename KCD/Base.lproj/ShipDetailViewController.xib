@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,7 +11,6 @@
             <connections>
                 <outlet property="damageView" destination="nEA-WU-NFe" id="od5-wU-CYo"/>
                 <outlet property="guardEscapedView" destination="thk-XX-zcO" id="DTR-hh-lQW"/>
-                <outlet property="shipController" destination="LyA-xZ-gxq" id="UUT-aV-NLA"/>
                 <outlet property="slot00Field" destination="9ct-MC-zEi" id="vKp-1J-o5D"/>
                 <outlet property="slot01Field" destination="WPW-1R-1aV" id="L2T-uv-b0G"/>
                 <outlet property="slot02Field" destination="4qS-ds-Fe5" id="ZbW-Id-7s4"/>
@@ -24,7 +23,7 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <objectController mode="entity" entityName="Ship" editable="NO" automaticallyPreparesContent="YES" id="LyA-xZ-gxq">
             <connections>
-                <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="5At-Ts-Skb"/>
+                <binding destination="-2" name="contentObject" keyPath="ship" id="OdW-FF-vhi"/>
             </connections>
         </objectController>
         <box autoresizesSubviews="NO" boxType="custom" borderType="line" title="Box" titlePosition="noTitle" id="SH2-fF-cTe">

@@ -8,22 +8,30 @@
 
 import Cocoa
 
-protocol ShipSlotObserving: class {
+protocol ShipSlotObserverDelegate: class {
     
-    func didCangeSlot0()
-    func didCangeSlot1()
-    func didCangeSlot2()
-    func didCangeSlot3()
-    func didCangeSlot4()
+    func didChangeSlot0()
+    func didChangeSlot1()
+    func didChangeSlot2()
+    func didChangeSlot3()
+    func didChangeSlot4()
 }
 
 class ShipSlotObserver: NSObject {
     
-    let ship: Ship
+    private enum SlotPosition {
+        case first
+        case second
+        case third
+        case fourth
+        case fifth
+    }
     
-    weak var delegate: ShipSlotObserving?
+    private let ship: Ship
     
-    var observations: [NSKeyValueObservation] = []
+    weak var delegate: ShipSlotObserverDelegate?
+    
+    private var observations: [NSKeyValueObservation] = []
     
     init(ship: Ship) {
         
@@ -31,68 +39,43 @@ class ShipSlotObserver: NSObject {
         
         super.init()
         
-        let s0 = ship.observe(\.slot_0) { (_, _) in
-            
-            self.delegate?.didCangeSlot0()
-        }
-        observations.append(s0)
-        
-        let s1 = ship.observe(\.slot_1) { (_, _) in
-            
-            self.delegate?.didCangeSlot1()
-        }
-        observations.append(s1)
-        
-        let s2 = ship.observe(\.slot_2) { (_, _) in
-            
-            self.delegate?.didCangeSlot2()
-        }
-        observations.append(s2)
-        
-        let s3 = ship.observe(\.slot_3) { (_, _) in
-            
-            self.delegate?.didCangeSlot3()
-        }
-        observations.append(s3)
-        
-        let s4 = ship.observe(\.slot_4) { (_, _) in
-            
-            self.delegate?.didCangeSlot4()
-        }
-        observations.append(s4)
-        
-        
-        let o0 = ship.observe(\.onslot_0) { (_, _) in
-            
-            self.delegate?.didCangeSlot0()
-        }
-        observations.append(o0)
-        
-        let o1 = ship.observe(\.onslot_1) { (_, _) in
-            
-            self.delegate?.didCangeSlot1()
-        }
-        observations.append(o1)
-        
-        let o2 = ship.observe(\.onslot_2) { (_, _) in
-            
-            self.delegate?.didCangeSlot2()
-        }
-        observations.append(o2)
-        
-        let o3 = ship.observe(\.onslot_3) { (_, _) in
-            
-            self.delegate?.didCangeSlot3()
-        }
-        observations.append(o3)
-        
-        let o4 = ship.observe(\.onslot_4) { (_, _) in
-            
-            self.delegate?.didCangeSlot4()
-        }
-        observations.append(o4)
-        
+        observeSlot()
+        observeOnSlot()
     }
-
     
+    private func observeSlot() {
+        
+        let keyPaths = [\Ship.slot_0, \Ship.slot_1, \Ship.slot_2, \Ship.slot_3, \Ship.slot_4]
+        observe(keyPaths: keyPaths)
+    }
+    
+    private func observeOnSlot() {
+        
+        let keyPaths = [\Ship.onslot_0, \Ship.onslot_1, \Ship.onslot_2, \Ship.onslot_3, \Ship.onslot_4]
+        observe(keyPaths: keyPaths)
+    }
+    
+    private func observe(keyPaths: [KeyPath<Ship, Int>]) {
+        
+        let positions: [SlotPosition] = [.first, .second, .third, .fourth, .fifth]
+        
+        observations += zip(keyPaths, positions)
+            .map { [weak self] keyPath, position in
+                ship.observe(keyPath) { _, _ in
+                    self?.notifyChange(on: position)
+                }
+        }
+    }
+    
+    private func notifyChange(on position: SlotPosition) {
+        
+        switch position {
+            
+        case .first: delegate?.didChangeSlot0()
+        case .second: delegate?.didChangeSlot1()
+        case .third: delegate?.didChangeSlot2()
+        case .fourth: delegate?.didChangeSlot3()
+        case .fifth: delegate?.didChangeSlot4()
+        }
+    }
 }

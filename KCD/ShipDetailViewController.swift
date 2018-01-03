@@ -24,13 +24,6 @@ private func nibNameFor(_ type: ShipDetailViewType) -> NSNib.Name {
     }
 }
 
-private var shipContext: Int = 0
-private var equippedItem0Context: Int = 0
-private var equippedItem1Context: Int = 0
-private var equippedItem2Context: Int = 0
-private var equippedItem3Context: Int = 0
-private var equippedItem4Context: Int = 0
-
 final class ShipDetailViewController: NSViewController {
     
     let type: ShipDetailViewType
@@ -46,9 +39,7 @@ final class ShipDetailViewController: NSViewController {
             .default
             .addObserver(forName: .DidUpdateGuardEscape, object: nil, queue: nil) { [weak self] _ in
                 
-                guard let `self` = self else { return }
-                
-                self.guardEscaped = self.ship?.guardEscaped ?? false
+                self?.guardEscaped = self?.ship?.guardEscaped ?? false
         }
     }
     
@@ -61,32 +52,8 @@ final class ShipDetailViewController: NSViewController {
         
         NotificationCenter.default.removeObserver(self)
         damageView.unbind(NSBindingName(#keyPath(DamageView.damageType)))
-        supply.unbind(NSBindingName(#keyPath(SuppliesView.ship)))
         [slot00Field, slot01Field, slot02Field, slot03Field]
             .forEach { $0?.unbind(NSBindingName(#keyPath(SlotItemLevelView.slotItemID))) }
-        
-        shipController.removeObserver(self, forKeyPath: "selection")
-        
-        shipController.removeObserver(self, forKeyPath: "selection.slot_0")
-        shipController.removeObserver(self, forKeyPath: "selection.onslot_0")
-        shipController.removeObserver(self, forKeyPath: "selection.master_ship.maxeq_0")
-        
-        shipController.removeObserver(self, forKeyPath: "selection.slot_1")
-        shipController.removeObserver(self, forKeyPath: "selection.onslot_1")
-        shipController.removeObserver(self, forKeyPath: "selection.master_ship.maxeq_1")
-
-        shipController.removeObserver(self, forKeyPath: "selection.slot_2")
-        shipController.removeObserver(self, forKeyPath: "selection.onslot_2")
-        shipController.removeObserver(self, forKeyPath: "selection.master_ship.maxeq_2")
-        
-        shipController.removeObserver(self, forKeyPath: "selection.slot_3")
-        shipController.removeObserver(self, forKeyPath: "selection.onslot_3")
-        shipController.removeObserver(self, forKeyPath: "selection.master_ship.maxeq_3")
-        
-        shipController.removeObserver(self, forKeyPath: "selection.slot_4")
-        shipController.removeObserver(self, forKeyPath: "selection.onslot_4")
-        shipController.removeObserver(self, forKeyPath: "selection.master_ship.maxeq_4")
-
     }
     
     
@@ -97,7 +64,8 @@ final class ShipDetailViewController: NSViewController {
     @IBOutlet weak var slot01Field: SlotItemLevelView!
     @IBOutlet weak var slot02Field: SlotItemLevelView!
     @IBOutlet weak var slot03Field: SlotItemLevelView!
-    @IBOutlet var shipController: NSObjectController!
+    
+    var observer: ShipSlotObserver?
     
     @objc dynamic var guardEscaped: Bool = false {
         
@@ -108,9 +76,47 @@ final class ShipDetailViewController: NSViewController {
     
     @objc dynamic var ship: Ship? {
         
-        get { return shipController.content as? Ship }
-        set {
-            shipController.fetchPredicate = NSPredicate(#keyPath(Ship.id), equal: newValue?.id ?? 0)
+        didSet {
+            
+            defer {
+                didChangeSlot0()
+                didChangeSlot1()
+                didChangeSlot2()
+                didChangeSlot3()
+                didChangeSlot4()
+            }
+            
+            supply.ship = ship
+            
+            observer = ship.map { ship in
+                
+                let observer  = ShipSlotObserver(ship: ship)
+                observer.delegate = self
+                
+                return observer
+            }
+            
+            // slot の lv, alv の反映のため
+            let fields = [slot00Field, slot01Field, slot02Field, slot03Field]
+            fields.forEach { $0?.unbind(NSBindingName(#keyPath(SlotItemLevelView.slotItemID))) }
+            
+            damageView.unbind(NSBindingName(#keyPath(DamageView.damageType)))
+            
+            if let ship = ship {
+                
+                zip(fields, [#keyPath(Ship.slot_0), #keyPath(Ship.slot_1), #keyPath(Ship.slot_2), #keyPath(Ship.slot_3)])
+                    .forEach { feild, keyPath in
+                        feild?.bind(NSBindingName(#keyPath(SlotItemLevelView.slotItemID)), to: ship, withKeyPath: keyPath)
+                }
+                
+                damageView.bind(NSBindingName(#keyPath(DamageView.damageType)), to: ship, withKeyPath: #keyPath(Ship.status))
+                
+            } else {
+                
+                fields.forEach { $0?.slotItemID = nil }
+                
+                damageView.damageType = 0
+            }
         }
     }
     
@@ -120,13 +126,6 @@ final class ShipDetailViewController: NSViewController {
         
         damageView.setFrameOrigin(.zero)
         view.addSubview(damageView)
-        damageView.bind(NSBindingName(#keyPath(DamageView.damageType)),
-                        to: shipController,
-                        withKeyPath: "selection.status", options: nil)
-        
-        supply.bind(NSBindingName(#keyPath(SuppliesView.ship)),
-                    to: shipController,
-                    withKeyPath: "selection.self", options: nil)
         
         guardEscapedView.setFrameOrigin(.zero)
         view.addSubview(guardEscapedView)
@@ -137,99 +136,43 @@ final class ShipDetailViewController: NSViewController {
         default: break
         }
         
-        let fields = [slot00Field, slot01Field, slot02Field, slot03Field]
-        let keypath = ["selection.slot_0", "selection.slot_1", "selection.slot_2", "selection.slot_3"]
-        zip(fields, keypath).forEach {
-            
-            $0.0?.bind(NSBindingName(#keyPath(SlotItemLevelView.slotItemID)), to: shipController, withKeyPath: $0.1, options: nil)
-        }
-        
-        // observe slotitems count
-        shipController.addObserver(self, forKeyPath: "selection", context: &shipContext)
-        
-        shipController.addObserver(self, forKeyPath: "selection.slot_0", context: &equippedItem0Context)
-        shipController.addObserver(self, forKeyPath: "selection.onslot_0", context: &equippedItem0Context)
-        shipController.addObserver(self, forKeyPath: "selection.master_ship.maxeq_0", context: &equippedItem0Context)
-        
-        shipController.addObserver(self, forKeyPath: "selection.slot_1", context: &equippedItem1Context)
-        shipController.addObserver(self, forKeyPath: "selection.onslot_1", context: &equippedItem1Context)
-        shipController.addObserver(self, forKeyPath: "selection.master_ship.maxeq_1", context: &equippedItem1Context)
-        
-        shipController.addObserver(self, forKeyPath: "selection.slot_2", context: &equippedItem2Context)
-        shipController.addObserver(self, forKeyPath: "selection.onslot_2", context: &equippedItem2Context)
-        shipController.addObserver(self, forKeyPath: "selection.master_ship.maxeq_2", context: &equippedItem2Context)
-        
-        shipController.addObserver(self, forKeyPath: "selection.slot_3", context: &equippedItem3Context)
-        shipController.addObserver(self, forKeyPath: "selection.onslot_3", context: &equippedItem3Context)
-        shipController.addObserver(self, forKeyPath: "selection.master_ship.maxeq_3", context: &equippedItem3Context)
-        
-        shipController.addObserver(self, forKeyPath: "selection.slot_4", context: &equippedItem4Context)
-        shipController.addObserver(self, forKeyPath: "selection.onslot_4", context: &equippedItem4Context)
-        shipController.addObserver(self, forKeyPath: "selection.master_ship.maxeq_4", context: &equippedItem4Context)
-        
-    }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
-        
-        if context == &shipContext {
-            
-            notifyChangeValue(forKey: #keyPath(planeString0))
-            notifyChangeValue(forKey: #keyPath(planeString0Color))
-            notifyChangeValue(forKey: #keyPath(planeString1))
-            notifyChangeValue(forKey: #keyPath(planeString1Color))
-            notifyChangeValue(forKey: #keyPath(planeString2))
-            notifyChangeValue(forKey: #keyPath(planeString2Color))
-            notifyChangeValue(forKey: #keyPath(planeString3))
-            notifyChangeValue(forKey: #keyPath(planeString3Color))
-            notifyChangeValue(forKey: #keyPath(planeString4))
-            notifyChangeValue(forKey: #keyPath(planeString4Color))
-            
-            return
-        }
-        if context == &equippedItem0Context {
-            
-            notifyChangeValue(forKey: #keyPath(planeString0))
-            notifyChangeValue(forKey: #keyPath(planeString0Color))
-            
-            return
-        }
-        if context == &equippedItem1Context {
-            
-            notifyChangeValue(forKey: #keyPath(planeString1))
-            notifyChangeValue(forKey: #keyPath(planeString1Color))
-            
-            return
-        }
-        if context == &equippedItem2Context {
-            
-            notifyChangeValue(forKey: #keyPath(planeString2))
-            notifyChangeValue(forKey: #keyPath(planeString2Color))
-            
-            return
-        }
-        if context == &equippedItem3Context {
-            
-            notifyChangeValue(forKey: #keyPath(planeString3))
-            notifyChangeValue(forKey: #keyPath(planeString3Color))
-            
-            return
-        }
-        if context == &equippedItem4Context {
-            
-            notifyChangeValue(forKey: #keyPath(planeString4))
-            notifyChangeValue(forKey: #keyPath(planeString4Color))
-            
-            return
-        }
-        
-        super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
     }
 }
 
+extension ShipDetailViewController: ShipSlotObserverDelegate {
+    
+    func didChangeSlot0() {
+        
+        notifyChangeValue(forKey: #keyPath(planeString0))
+        notifyChangeValue(forKey: #keyPath(planeString0Color))
+    }
+    
+    func didChangeSlot1() {
+        
+        notifyChangeValue(forKey: #keyPath(planeString1))
+        notifyChangeValue(forKey: #keyPath(planeString1Color))
+    }
+    
+    func didChangeSlot2() {
+        
+        notifyChangeValue(forKey: #keyPath(planeString2))
+        notifyChangeValue(forKey: #keyPath(planeString2Color))
+    }
+    
+    func didChangeSlot3() {
+        
+        notifyChangeValue(forKey: #keyPath(planeString3))
+        notifyChangeValue(forKey: #keyPath(planeString3Color))
+    }
+    
+    func didChangeSlot4() {
+        
+        notifyChangeValue(forKey: #keyPath(planeString4))
+        notifyChangeValue(forKey: #keyPath(planeString4Color))
+    }
+}
 
 private let allPlaneTypes: [Int] = [6, 7, 8, 9, 10, 11, 25, 26, 41, 45, 56, 57, 58, 59]
-
-
 extension ShipDetailViewController {
     
     // MARK: - Plane count strings
@@ -262,23 +205,16 @@ extension ShipDetailViewController {
     private func planeString(_ index: Int) -> String? {
         
         switch planState(index) {
-        case .cannotEquip:
-            return nil
-        case .notEquip(let max):
-            return "\(max)"
-        case .equiped(let count, let max):
-            return "\(count)/\(max)"
+        case .cannotEquip: return nil
+        case .notEquip(let max): return "\(max)"
+        case .equiped(let count, let max): return "\(count)/\(max)"
         }
     }
     
     @objc dynamic var planeString0: String? { return planeString(0) }
-    
     @objc dynamic var planeString1: String? { return planeString(1) }
-    
     @objc dynamic var planeString2: String? { return planeString(2) }
-    
     @objc dynamic var planeString3: String? { return planeString(3) }
-    
     @objc dynamic var planeString4: String? { return planeString(4) }
     
     // MARK: - Plane count string color
@@ -292,13 +228,9 @@ extension ShipDetailViewController {
     }
     
     @objc dynamic var planeString0Color: NSColor { return planeStringColor(0) }
-    
     @objc dynamic var planeString1Color: NSColor { return planeStringColor(1) }
-    
     @objc dynamic var planeString2Color: NSColor { return planeStringColor(2) }
-    
     @objc dynamic var planeString3Color: NSColor { return planeStringColor(3) }
-    
     @objc dynamic var planeString4Color: NSColor { return planeStringColor(4) }
 }
 
