@@ -50,12 +50,10 @@ final class ShipDetailViewController: NSViewController {
     
     deinit {
         
-        NotificationCenter.default.removeObserver(self)
         damageView.unbind(NSBindingName(#keyPath(DamageView.damageType)))
         [slot00Field, slot01Field, slot02Field, slot03Field]
             .forEach { $0?.unbind(NSBindingName(#keyPath(SlotItemLevelView.slotItemID))) }
     }
-    
     
     @IBOutlet weak var supply: SuppliesView!
     @IBOutlet weak var guardEscapedView: GuardEscapedView!
