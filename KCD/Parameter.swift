@@ -17,10 +17,9 @@ private func parseParameter(_ request: URLRequest) -> [String: String]? {
         .components(separatedBy: "&")
         .map { $0.components(separatedBy: "=") }
         .filter { $0.count == 2 }
-        .map { (piar: [String]) -> (String, String) in (piar[0], piar[1]) }
-        .reduce(into: [String: String]()) { (dict: inout [String: String], value: (String, String)) in
+        .reduce(into: [String: String]()) { (dict: inout [String: String], value: [String]) in
             
-            dict[value.0] = value.1
+            dict[value[0]] = value[1]
     }
 }
 
