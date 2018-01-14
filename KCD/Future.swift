@@ -8,14 +8,21 @@
 
 import Foundation
 
-let watingQueue = DispatchQueue(label: "Future")
+
+enum Result<T> {
+    
+    case value(T)
+    case none
+    case error(Error)
+}
+
+let watingQueue = DispatchQueue(label: "Future", attributes: .concurrent)
 class Future<T> {
     
     private let queue: DispatchQueue
     private let semaphore = DispatchSemaphore(value: 1)
     
-    private(set) var value: T?
-    private(set) var error: Error?
+    private var result: Result<T> = .none
     
     init(queue: DispatchQueue = watingQueue) {
         
@@ -33,7 +40,7 @@ class Future<T> {
         queue.async {
             
             self.semaphore.wait()
-            self.value.map(block)
+            if case .value(let value) = self.result { block(value) }
             self.semaphore.signal()
         }
         
@@ -46,7 +53,7 @@ class Future<T> {
         queue.async {
             
             self.semaphore.wait()
-            self.error.map(block)
+            if case .error(let error) = self.result { block(error) }
             self.semaphore.signal()
         }
         
@@ -55,19 +62,30 @@ class Future<T> {
     
     func success(_ value: T) {
         
-        guard self.value == nil else { return }
-        guard self.error == nil else { return }
-        
-        self.value = value
-        semaphore.signal()
+        switch result {
+            
+        case .value, .error:
+            Logger.shared.log("multi call success(_:)")
+            fatalError()
+            
+        case .none:
+            result = .value(value)
+            semaphore.signal()
+        }
     }
     
     func failure(_ error: Error) {
         
-        guard self.value == nil else { return }
-        guard self.error == nil else { return }
+        switch result {
+            
+        case .value, .error:
+            Logger.shared.log("multi call failure(_:)")
+            fatalError()
+            
+        case .none:
+            result = .error(error)
+            semaphore.signal()
+        }
         
-        self.error = error
-        semaphore.signal()
     }
 }
