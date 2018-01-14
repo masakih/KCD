@@ -26,16 +26,6 @@ protocol DockInformationFutureCreatable {
 
 func createDockInformationFuture<T: DockInformationFutureCreatable>(number: Int) -> Future<T> {
     
-    func storeInformation(to future: Future<T>) {
-        
-        guard let status = T.init(number: number) else {
-            
-            future.failure(DockInformationError.canNotCreate(String(describing: T.self)))
-            return
-        }
-        future.success(status)
-    }
-    
     let future = Future<T>()
     
     guard T.valid(number: number) else {
@@ -46,24 +36,28 @@ func createDockInformationFuture<T: DockInformationFutureCreatable>(number: Int)
     
     if T.alreadyHasData(for: number) {
         
-        storeInformation(to: future)
+        if let status = T.init(number: number) {
+            
+            future.success(status)
+            
+        } else {
+            
+            future.failure(DockInformationError.canNotCreate(String(describing: T.self)))
+        }
+        
         return future
     }
     
-    // 初回起動時などはデータがない
-    // CoreDataを監視して作成されるのを待つ
-    weak var token: NSObjectProtocol?
-    token = NotificationCenter.default
-        .addObserver(forName: .NSManagedObjectContextObjectsDidChange,
-                     object: ServerDataStore.default.context,
-                     queue: nil) { _ in
-                        
-                        if T.alreadyHasData(for: number) {
-                            
-                            storeInformation(to: future)
-                            
-                            token.map(NotificationCenter.default.removeObserver)
-                        }
+    future.waitingCoreData { _ in
+        
+        guard T.alreadyHasData(for: number) else { return .none }
+            
+        guard let status = T.init(number: number) else {
+            
+            return .error(DockInformationError.canNotCreate(String(describing: T.self)))
+        }
+        
+        return .value(status)
     }
     
     return future

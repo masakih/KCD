@@ -6,7 +6,7 @@
 //  Copyright © 2018年 Hori,Masaki. All rights reserved.
 //
 
-import Foundation
+import Cocoa
 
 
 enum Result<T> {
@@ -86,6 +86,52 @@ class Future<T> {
             result = .error(error)
             semaphore.signal()
         }
+    }
+}
+
+extension Future {
+    
+    
+    /// Notificationを待って値を設定する
+    ///
+    /// - Parameters:
+    ///   - center: NotificationCenter. default is NotificationCenter.default
+    ///   - name: Notification.Name
+    ///   - object: 監視対象
+    ///   - block:
+    ///     Parameters: Notification
+    ///     Returns: `Result<T>` : 成功時は `.value<T>`, エラー時は `.error<Error>`, 監視を継続するときは `.none`を返す
+    func waitingNotification(_ center: NotificationCenter = .default, name: Notification.Name, object: Any?, block: @escaping (Notification) -> Result<T>) {
         
+        weak var token: NSObjectProtocol?
+        token = center
+            .addObserver(forName: name,
+                         object: object,
+                         queue: nil) { notification in
+                            
+                            
+                            switch block(notification) {
+                                
+                            case .value(let val): self.success(val)
+                                
+                            case .none: return
+                                
+                            case .error(let error): self.failure(error)
+                            }
+                            
+                            token.map(NotificationCenter.default.removeObserver)
+        }
+    }
+    
+    /// 初回起動時などにデータがない時などにCoreDataを監視する
+    ///
+    /// - Parameters:
+    ///   - coreData: 監視対象
+    ///   - block:
+    ///     Parameters: Notification (NSManagedObjectContextObjectsDidChange)
+    ///     Returns: `Result<T>` : 成功時は `.value<T>`, エラー時は `.error<Error>`, 監視を継続するときは `.none`を返す
+    func waitingCoreData(_ coreData: CoreDataProvider = ServerDataStore.default, block: @escaping (Notification) -> Result<T>) {
+        
+        waitingNotification(name: .NSManagedObjectContextObjectsDidChange, object: coreData.context, block: block)
     }
 }
