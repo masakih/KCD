@@ -9,130 +9,135 @@
 
 import Cocoa
 
-private enum State: Int {
+protocol MissionStatusObserver: class {
     
-    case none = 0
-    case hasMission = 1
-    case finish = 2
-    case earlyReturn = 3
+    func didUpdate(state: MissionStatus)
+}
+
+protocol DeckMissionObserverDelegate: class {
+    
+    func didChangeState(deck: Deck)
+}
+
+final class DeckMissionObserver {
+    
+    private let deck: Deck
+    private var observation: NSKeyValueObservation?
+    
+    weak var delegate: DeckMissionObserverDelegate? {
+        
+        didSet {
+            delegate?.didChangeState(deck: deck)
+        }
+    }
+    
+    init(deck: Deck) {
+        
+        self.deck = deck
+        
+        observation = deck.observe(\Deck.mission_2) { _, _ in
+            self.delegate?.didChangeState(deck: deck)
+        }
+    }
 }
 
 final class MissionStatus: NSObject {
     
-    private let number: Int
-    private let controller = NSArrayController()
+    private enum State: Int {
+        
+        case none = 0
+        case hasMission = 1
+        case finish = 2
+        case earlyReturn = 3
+        
+        case unknown = 999999
+    }
+    
+    static func valid(number: Int) -> Bool {
+        
+        return 2...4 ~= number
+    }
+    
+    let number: Int
+    private let observer: DeckMissionObserver
+    
+    private(set) var name: String?
+    private(set) var time: TimeInterval?
+    
+    private var state: State = .unknown
+    private var rawState: Int = 0 {
+        
+        didSet {
+            state = State(rawValue: rawState) ?? .unknown
+        }
+    }
+    private var missionId: Int = 0
+    private var milliseconds: Int = 0
+    private var fleetName: String = ""
+    
     private var didNotify = false
-    private var realTime: TimeInterval = 0.0 {
-        
-        didSet { time = realTime as NSNumber }
-    }
     
-    @objc dynamic var name: String?
-    @objc dynamic var time: NSNumber?
-    @objc dynamic var state: NSNumber?
-    @objc dynamic var missionId: NSNumber? {
-        
-        didSet { updateState() }
-    }
-    @objc dynamic var milliseconds: NSNumber?
-    @objc dynamic var fleetName: String?
+    weak var delegate: MissionStatusObserver?
     
+    /// CAUTION: 初回起動時/マスタ更新時にはデータがないので失敗する
     init?(number: Int) {
         
-        guard case 2...4 = number else { return nil }
+        guard MissionStatus.valid(number: number) else { return nil }
         
         self.number = number
         
+        guard let deck = ServerDataStore.default.deck(by: number) else { return nil }
+        self.observer = DeckMissionObserver(deck: deck)
+        
         super.init()
         
-        controller.managedObjectContext = ServerDataStore.default.context
-        controller.entityName = Deck.entityName
-        controller.fetchPredicate = NSPredicate(#keyPath(Deck.id), equal: number)
-        controller.automaticallyRearrangesObjects = true
-        controller.fetch(nil)
-        
-        bind(NSBindingName(#keyPath(state)), to: controller, withKeyPath: "selection.mission_0")
-        bind(NSBindingName(#keyPath(missionId)), to: controller, withKeyPath: "selection.mission_1")
-        bind(NSBindingName(#keyPath(milliseconds)), to: controller, withKeyPath: "selection.mission_2")
-        bind(NSBindingName(#keyPath(fleetName)), to: controller, withKeyPath: "selection.name")
-    }
-    
-    deinit {
-        
-        unbind(NSBindingName(#keyPath(state)))
-        unbind(NSBindingName(#keyPath(missionId)))
-        unbind(NSBindingName(#keyPath(milliseconds)))
-        unbind(NSBindingName(#keyPath(fleetName)))
-    }
-    
-    private func invalidate() {
-        
-        name = nil
-        time = nil
+        observer.delegate = self
     }
     
     private func updateState() {
         
-        guard let state = state as? Int,
-            let stat = State(rawValue: state) else {
-                
-                return Logger.shared.log("unknown State")
-        }
-        
-        if stat == .none {
+        switch state {
             
-            didNotify = false
-        }
-        if stat == .none || stat == .finish {
+        case .none, .finish:
+            name = nil
+            time = nil
             
-            invalidate()
-            return
-        }
-        
-        guard let missionId = self.missionId as? Int else { return }
-        
-        guard let mission = ServerDataStore.default.masterMission(by: missionId) else {
+        case .hasMission, .earlyReturn:
+            name = ServerDataStore.default.masterMission(by: missionId)?.name ?? "Unknown"
             
-            name = "Unknown"
-            DispatchQueue(label: "MissionStatus").asyncAfter(deadline: .now() + 0.33) {
-                
-                self.updateState()
-            }
-            return
+        case .unknown:
+            Logger.shared.log("unknown State")
         }
         
-        name = mission.name
+        delegate?.didUpdate(state: self)
     }
+}
+
+extension MissionStatus: DockInformationUpdater {
     
     func update() {
         
-        if name == nil {
-            
-            time = nil
-            return
+        defer {
+            delegate?.didUpdate(state: self)
         }
         
-        guard let milliSeconds = milliseconds as? Int else {
-            
-            invalidate()
-            return
-        }
+        guard let name = name else { return }
         
-        let compTime = TimeInterval(Int(milliSeconds / 1_000))
+        let compTime = TimeInterval(Int(milliseconds / 1_000))
         let diff = compTime - Date().timeIntervalSince1970
         
-        realTime = max(0, diff)
+        // set to 0. if diff is less than 0.
+        time = max(0, diff)
         
+        // notify UserNotification.
         if didNotify { return }
         if diff >= 1 * 60 { return }
-        
-        guard let fleetName = fleetName else { return }
         
         let notification = NSUserNotification()
         let format = LocalizedStrings.missionWillReturnMessage.string
         notification.title = String(format: format, fleetName)
         let txtFormat = LocalizedStrings.missionWillReturnInformation.string
-        notification.informativeText = String(format: txtFormat, fleetName, name!)
+        notification.informativeText = String(format: txtFormat, fleetName, name)
         
         if UserDefaults.standard[.playFinishMissionSound] {
             
@@ -142,5 +147,18 @@ final class MissionStatus: NSObject {
         NSUserNotificationCenter.default.deliver(notification)
         
         didNotify = true
+    }
+}
+
+extension MissionStatus: DeckMissionObserverDelegate {
+    
+    func didChangeState(deck: Deck) {
+        
+        rawState = deck.mission_0
+        missionId = deck.mission_1
+        milliseconds = deck.mission_2
+        fleetName = deck.name
+        
+        updateState()
     }
 }

@@ -8,115 +8,126 @@
 
 import Cocoa
 
-private enum DockState: Int {
+protocol NyukyoDockStatusObserver: class {
     
-    case empty = 0
-    case hasShip = 1
+    func didUpdate(state: NyukyoDockStatus)
+}
+
+protocol NyukyoDockObserverDelegate: class {
+    
+    func didChangeState(dock: NyukyoDock)
+}
+
+final class NyukyoDockObserver {
+    
+    private let dock: NyukyoDock
+    private var observation: NSKeyValueObservation?
+    
+    weak var delegate: NyukyoDockObserverDelegate? {
+        
+        didSet {
+            delegate?.didChangeState(dock: dock)
+        }
+    }
+    
+    init(dock: NyukyoDock) {
+        
+        self.dock = dock
+        
+        observation = dock.observe(\NyukyoDock.state) { _, _ in
+            self.delegate?.didChangeState(dock: self.dock)
+        }
+    }
 }
 
 final class NyukyoDockStatus: NSObject {
     
-    private let number: Int
-    private let controller = NSArrayController()
+    private enum DockState: Int {
+        
+        case empty = 0
+        case hasShip = 1
+        
+        case unknown = 999999
+    }
+    
+    static func valid(number: Int) -> Bool {
+        
+        return  1...4 ~= number
+    }
+
+    let number: Int
+    private let observer: NyukyoDockObserver
+    
+    private(set) var name: String?
+    private(set) var time: TimeInterval?
+    
+    private var state: DockState = .unknown
+    
+    private var rawState: Int = 0 {
+        
+        didSet {
+            state = DockState(rawValue: rawState) ?? .unknown
+        }
+    }
+    private var shipId: Int = 0
+    private var completeTime: Int = 0
+    
     private var didNotify = false
-    private var realTime: TimeInterval = 0.0 {
-        
-        didSet { time = realTime as NSNumber }
-    }
     
-    @objc dynamic var name: String?
-    @objc dynamic var time: NSNumber?
-    @objc dynamic var state: NSNumber? {
-        
-        didSet { updateState() }
-    }
-    @objc dynamic var shipId: NSNumber? {
-        
-        didSet { updateState() }
-    }
-    @objc dynamic var completeTime: NSNumber?
+    weak var delegate: NyukyoDockStatusObserver?
     
+    /// CAUTION: 初回起動時/マスタ更新時にはデータがないので失敗する
     init?(number: Int) {
         
-        guard case 1...4 = number else { return nil }
+        guard NyukyoDockStatus.valid(number: number) else { return nil }
         
         self.number = number
         
+        guard let dock = ServerDataStore.default.nyukyoDock(by: number) else { return nil }
+        self.observer = NyukyoDockObserver(dock: dock)
+        
         super.init()
-        
-        controller.managedObjectContext = ServerDataStore.default.context
-        controller.entityName = NyukyoDock.entityName
-        controller.fetchPredicate = NSPredicate(#keyPath(NyukyoDock.id), equal: number)
-        controller.automaticallyRearrangesObjects = true
-        controller.fetch(nil)
-        
-        bind(NSBindingName(#keyPath(state)), to: controller, withKeyPath: "selection.state")
-        bind(NSBindingName(#keyPath(shipId)), to: controller, withKeyPath: "selection.ship_id")
-        bind(NSBindingName(#keyPath(completeTime)), to: controller, withKeyPath: "selection.complete_time")
-    }
-    
-    deinit {
-        
-        unbind(NSBindingName(#keyPath(state)))
-        unbind(NSBindingName(#keyPath(shipId)))
-        unbind(NSBindingName(#keyPath(completeTime)))
-    }
-    
-    private func invalidate() {
-        
-        name = nil
-        time = nil
+                
+        observer.delegate = self
     }
     
     private func updateState() {
         
-        guard let state = state as? Int,
-            let stat = DockState(rawValue: state) else {
-                
-                return Logger.shared.log("unknown State")
-        }
-        
-        if stat == .empty {
+        switch state {
             
+        case .empty:
             didNotify = false
-            invalidate()
-            return
-        }
-        
-        guard let shipId = shipId as? Int, shipId != 0 else { return }
-        
-        guard let ship = ServerDataStore.default.ship(by: shipId) else {
+            name = nil
+            time = nil
             
-            name = "Unknown"
-            DispatchQueue(label: "NyukyoDockStatus").asyncAfter(deadline: .now() + 0.33) {
-                
-                self.updateState()
-            }
-            return
+        case .hasShip:
+            name = ServerDataStore.default.ship(by: shipId)?.name ?? "Unknown"
+            
+        case .unknown:
+            Logger.shared.log("unknown State")
         }
         
-        name = ship.name
+        delegate?.didUpdate(state: self)
     }
+}
+
+extension NyukyoDockStatus: DockInformationUpdater {
     
     func update() {
         
-        guard let name = name else {
-            
-            time = nil
-            return
+        defer {
+            delegate?.didUpdate(state: self)
         }
         
-        guard let completeTime = completeTime as? Int else {
-            
-            invalidate()
-            return
-        }
+        guard let name = name else { return }
         
         let compTime = TimeInterval(Int(completeTime / 1_000))
         let diff = compTime - Date().timeIntervalSince1970
         
-        realTime = max(0, diff)
+        // set to 0. if diff is less than 0.
+        time = max(0, diff)
         
+        // notify UserNotification.
         if didNotify { return }
         if diff >= 1 * 60 { return }
         
@@ -133,5 +144,17 @@ final class NyukyoDockStatus: NSObject {
         NSUserNotificationCenter.default.deliver(notification)
         
         didNotify = true
+    }
+}
+
+extension NyukyoDockStatus: NyukyoDockObserverDelegate {
+    
+    func didChangeState(dock: NyukyoDock) {
+        
+        rawState = dock.state
+        shipId = dock.ship_id
+        completeTime = dock.complete_time
+        
+        updateState()
     }
 }
