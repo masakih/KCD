@@ -134,6 +134,7 @@
 		F4649FCE1DBC52600097AEBF /* ScreenshotDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4649FD01DBC52600097AEBF /* ScreenshotDetailViewController.xib */; };
 		F4649FD31DBC52A50097AEBF /* ScreenshotEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4649FD51DBC52A50097AEBF /* ScreenshotEditorViewController.xib */; };
 		F46C00F1200A0D3400A066E2 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46C00F0200A0D3400A066E2 /* Future.swift */; };
+		F46C00F3200A650A00A066E2 /* DockInformationFutures.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46C00F2200A650A00A066E2 /* DockInformationFutures.swift */; };
 		F46F104918ABAC910063E503 /* KCD.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F46F104718ABAC910063E503 /* KCD.xcdatamodeld */; };
 		F46FEA3F1F81285D00E2427C /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46FEA3E1F81285D00E2427C /* Localizable.swift */; };
 		F46FEA411F8128BB00E2427C /* LocalizedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46FEA401F8128BB00E2427C /* LocalizedStrings.swift */; };
@@ -516,6 +517,7 @@
 		F4649FDA1DBC54320097AEBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ScreenshotDetailViewController.xib; sourceTree = "<group>"; };
 		F4649FDB1DBC543A0097AEBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ScreenshotEditorViewController.xib; sourceTree = "<group>"; };
 		F46C00F0200A0D3400A066E2 /* Future.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
+		F46C00F2200A650A00A066E2 /* DockInformationFutures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockInformationFutures.swift; sourceTree = "<group>"; };
 		F46F104818ABAC910063E503 /* KCD.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KCD.xcdatamodel; sourceTree = "<group>"; };
 		F46FEA3E1F81285D00E2427C /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		F46FEA401F8128BB00E2427C /* LocalizedStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedStrings.swift; sourceTree = "<group>"; };
@@ -1224,6 +1226,7 @@
 				F4E5FF111E17D6850026868C /* GameViewController.swift */,
 				F4C668621C54517500601AFB /* GameViewController.xib */,
 				F45FBB701E101492000E72B9 /* DocksViewController.swift */,
+				F46C00F2200A650A00A066E2 /* DockInformationFutures.swift */,
 				F4B3DC3E18E5C87D0011B4FC /* DocksViewController.xib */,
 				F4CB371E1FD046E10086999C /* BattleInformationViewController.swift */,
 				F4CB371F1FD046E10086999C /* BattleInformationViewController.xib */,
@@ -1864,6 +1867,7 @@
 				F45FBB6F1E0FDB33000E72B9 /* StrengthenListViewController.swift in Sources */,
 				F47C3EAA1E5F085B00D97449 /* MasterMissionMapper.swift in Sources */,
 				F44BC6CB1E223208004644E3 /* IgnoreCommand.swift in Sources */,
+				F46C00F3200A650A00A066E2 /* DockInformationFutures.swift in Sources */,
 				F4AA59281E1CEF8E001667AF /* PlanToShowsBoldFontTransformer.swift in Sources */,
 				F45FBB711E101492000E72B9 /* DocksViewController.swift in Sources */,
 				F40F976F1E67092600AE81BB /* ArrayExtensions.swift in Sources */,
