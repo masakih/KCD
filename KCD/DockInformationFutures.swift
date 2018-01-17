@@ -48,10 +48,10 @@ func createDockInformationFuture<T: DockInformationFutureCreatable>(number: Int)
         return future
     }
     
-    future.waitingCoreData { _ in
+    return ServerDataStore.default.future { _ -> Result<T> in
         
         guard T.alreadyHasData(for: number) else { return .none }
-            
+        
         guard let status = T.init(number: number) else {
             
             return .error(DockInformationError.canNotCreate(String(describing: T.self)))
@@ -59,8 +59,6 @@ func createDockInformationFuture<T: DockInformationFutureCreatable>(number: Int)
         
         return .value(status)
     }
-    
-    return future
 }
 
 extension MissionStatus: DockInformationFutureCreatable {

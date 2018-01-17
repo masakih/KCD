@@ -16,7 +16,7 @@ enum Result<T> {
     case error(Error)
 }
 
-let watingQueue = DispatchQueue(label: "Future", attributes: .concurrent)
+private let watingQueue = DispatchQueue(label: "Future", attributes: .concurrent)
 class Future<T> {
     
     private let queue: DispatchQueue
@@ -89,49 +89,56 @@ class Future<T> {
     }
 }
 
-extension Future {
+
+extension NotificationCenter {
     
-    
-    /// Notificationを待って値を設定する
+    /// Notificationを待って値が設定される Future<T>を返す
     ///
     /// - Parameters:
-    ///   - center: NotificationCenter. default is NotificationCenter.default
     ///   - name: Notification.Name
     ///   - object: 監視対象
     ///   - block:
     ///     Parameters: Notification
     ///     Returns: `Result<T>` : 成功時は `.value<T>`, エラー時は `.error<Error>`, 監視を継続するときは `.none`を返す
-    func waitingNotification(_ center: NotificationCenter = .default, name: Notification.Name, object: Any?, block: @escaping (Notification) -> Result<T>) {
+    /// - Returns: Notificationによって値が設定される Future<T>
+    func future<T>(name: Notification.Name, object: Any?, block: @escaping (Notification) -> Result<T>) -> Future<T> {
+        
+        let future = Future<T>()
         
         weak var token: NSObjectProtocol?
-        token = center
+        token = self
             .addObserver(forName: name,
                          object: object,
                          queue: nil) { notification in
                             
-                            
                             switch block(notification) {
                                 
-                            case .value(let val): self.success(val)
+                            case .value(let val): future.success(val)
                                 
                             case .none: return
                                 
-                            case .error(let error): self.failure(error)
+                            case .error(let error): future.failure(error)
                             }
                             
                             token.map(NotificationCenter.default.removeObserver)
         }
+        
+        return future
     }
+}
+
+extension CoreDataProvider {
     
-    /// 初回起動時などにデータがない時などにCoreDataを監視する
+    /// 初回起動時などにデータがない時などにCoreDataを監視し値が設定される Future<T>を返す
     ///
     /// - Parameters:
-    ///   - coreData: 監視対象
     ///   - block:
     ///     Parameters: Notification (NSManagedObjectContextObjectsDidChange)
     ///     Returns: `Result<T>` : 成功時は `.value<T>`, エラー時は `.error<Error>`, 監視を継続するときは `.none`を返す
-    func waitingCoreData(_ coreData: CoreDataProvider = ServerDataStore.default, block: @escaping (Notification) -> Result<T>) {
+    /// - Returns: CoreDataの更新で値が設定される Future<T>
+    func future<T>(block: @escaping (Notification) -> Result<T>) -> Future<T> {
         
-        waitingNotification(name: .NSManagedObjectContextObjectsDidChange, object: coreData.context, block: block)
+        return NotificationCenter.default
+            .future(name: .NSManagedObjectContextObjectsDidChange, object: self.context, block: block)
     }
 }
