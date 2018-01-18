@@ -149,28 +149,25 @@ extension NotificationCenter {
     ///   - object: 監視対象
     ///   - block:
     ///     Parameters: Notification
-    ///     Returns: `Result<T>?` : 成功時は `.value<T>`, エラー時は `.error<Error>`, 監視を継続するときは `Optional.none`を返す
+    ///     Returns: `T?` : 成功時は `T`, エラー時は例外を発生させる。 監視を継続するときは `nil`を返す
     /// - Returns: Notificationによって値が設定される Future<T>
-    func future<T>(name: Notification.Name, object: Any?, block: @escaping (Notification) -> Result<T>?) -> Future<T> {
+    func future<T>(name: Notification.Name, object: Any?, block: @escaping (Notification) throws -> T?) -> Future<T> {
         
         let future = Future<T>()
         
         weak var token: NSObjectProtocol?
         token = self
-            .addObserver(forName: name,
-                         object: object,
-                         queue: nil) { notification in
-                            
-                            switch block(notification) {
-                                
-                            case .value(let val)?: future.success(val)
-                                
-                            case .error(let error)?: future.failure(error)
-                                
-                            case .none: return
-                            }
-                            
-                            token.map(NotificationCenter.default.removeObserver)
+            .addObserver(forName: name, object: object, queue: nil) { notification in
+                
+                do {
+                    guard let value = try block(notification) else { return }
+                    
+                    future.success(value)
+                } catch {
+                    future.failure(error)
+                }
+                
+                token.map(self.removeObserver)
         }
         
         return future
@@ -184,9 +181,9 @@ extension CoreDataProvider {
     /// - Parameters:
     ///   - block:
     ///     Parameters: Notification (NSManagedObjectContextObjectsDidChange)
-    ///     Returns: `Result<T>?` : 成功時は `.value<T>`, エラー時は `.error<Error>`, 監視を継続するときは `Optional.none`を返す
+    ///     Returns: `T?` : 成功時は `T`, エラー時は例外を発生させる。 監視を継続するときは `nil`を返す
     /// - Returns: CoreDataの更新で値が設定される Future<T>
-    func future<T>(block: @escaping (Notification) -> Result<T>?) -> Future<T> {
+    func future<T>(block: @escaping (Notification) throws -> T?) -> Future<T> {
         
         return NotificationCenter.default
             .future(name: .NSManagedObjectContextObjectsDidChange, object: self.context, block: block)
