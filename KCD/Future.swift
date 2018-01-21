@@ -13,45 +13,134 @@ enum Result<T> {
     case value(T)
     
     case error(Error)
+    
+    init(_ value: T) {
+        self = .value(value)
+    }
+    init(_ error: Error) {
+        self = .error(error)
+    }
 }
 
-private let watingQueue = DispatchQueue(label: "Future", attributes: .concurrent)
-class Future<T> {
+enum FutureError: Error {
+    
+    case unsolvedFuture
+    
+    case noSuchElement
+}
+
+private let defaultWaitingQueue = DispatchQueue(label: "Future", attributes: .concurrent)
+private final class FutureSynchronous {
     
     private let queue: DispatchQueue
     private let semaphore = DispatchSemaphore(value: 1)
     
-    private var result: Result<T>?
-    
-    init(queue: DispatchQueue = watingQueue) {
-        
+    init(queue: DispatchQueue = defaultWaitingQueue) {
         self.queue = queue
-        
-        self.semaphore.wait()
     }
-    convenience init(queue: DispatchQueue = watingQueue, _ block: @escaping () throws -> T) {
-        
-        self.init(queue: queue)
+    
+    func excuteAfterWaiting(_ block: @escaping () -> Void) {
         
         queue.async {
+            self.semaphore.wait()
+            block()
+            self.semaphore.signal()
+        }
+    }
+    
+    func startWaiting() {
+        self.semaphore.wait()
+    }
+    
+    func stopWaiting() {
+        self.semaphore.signal()
+    }
+}
+
+class Future<T> {
+    
+    private let synchronous: FutureSynchronous
+    
+    fileprivate var result: Result<T>? {
+        willSet {
+            if result != nil {
+                fatalError("Result already seted")
+            }
+        }
+        didSet {
+            synchronous.stopWaiting()
+        }
+    }
+    
+    /// Life cycle
+    init(queue: DispatchQueue? = nil) {
+        
+        self.synchronous = queue.map { FutureSynchronous(queue: $0) } ?? FutureSynchronous()
+        
+        synchronous.startWaiting()
+    }
+    
+    init(queue: DispatchQueue? = nil, _ block: @escaping () throws -> T) {
+        
+        self.synchronous = queue.map { FutureSynchronous(queue: $0) } ?? FutureSynchronous()
+        
+        synchronous.excuteAfterWaiting {
             do {
-                self.success(try block())
+                self.result = Result(try block())
             } catch {
-                self.failure(error)
+                self.result = Result(error)
             }
         }
     }
+    
+    init(queue: DispatchQueue? = nil, _ result: Result<T>) {
+        
+        self.synchronous = queue.map { FutureSynchronous(queue: $0) } ?? FutureSynchronous()
+        
+        self.result = result
+    }
+    convenience init(_ value: T) {
+        
+        self.init(Result(value))
+    }
+    convenience init(_ error: Error) {
+        
+        self.init(Result(error))
+    }
+    
     deinit {
-        semaphore.signal()
+        synchronous.stopWaiting()
+    }
+    
+}
+
+extension Future {
+    ///
+    @discardableResult
+    func await() -> Self {
+        
+        synchronous.excuteAfterWaiting {
+            // do nothing
+        }
+        
+        return self
+    }
+    
+    @discardableResult
+    func onComplete(_ block: @escaping (Result<T>) -> Void) -> Self {
+        
+        synchronous.excuteAfterWaiting {
+            block(self.result!)
+        }
+        
+        return self
     }
     
     @discardableResult
     func onSuccess(_ block: @escaping (T) -> Void) -> Self {
         
-        queue.async {
-            self.semaphore.wait()
+        synchronous.excuteAfterWaiting {
             if case let .value(value)? = self.result { block(value) }
-            self.semaphore.signal()
         }
         
         return self
@@ -60,85 +149,137 @@ class Future<T> {
     @discardableResult
     func onFailure(_ block: @escaping (Error) -> Void) -> Self {
         
-        queue.async {
-            self.semaphore.wait()
+        synchronous.excuteAfterWaiting {
             if case let .error(error)? = self.result { block(error) }
-            self.semaphore.signal()
         }
         
         return self
-    }
-    
-    func success(_ newValue: T) {
-        
-        switch result {
-            
-        case .none:
-            result = .value(newValue)
-            semaphore.signal()
-            
-        default:
-            fatalError("multi call success(_:)")
-        }
-    }
-    
-    func failure(_ newError: Error) {
-        
-        switch result {
-            
-        case .none:
-            result = .error(newError)
-            semaphore.signal()
-            
-        default:
-            fatalError("multi call failure(_:)")
-        }
-    }
-    
-    @discardableResult
-    func await() -> Self {
-        
-        semaphore.wait()
-        semaphore.signal()
-        
-        return self
-    }
-    
-    func map<U>(_ transform: @escaping (T) throws -> U) -> Future<U> {
-        
-        return Future<U> {
-            
-            self.semaphore.wait()
-            defer { self.semaphore.signal() }
-            
-            if case let .value(value)? = self.result {
-                return try transform(value)
-            }
-            if case let .error(error)? = self.result {
-                throw error
-            }
-            
-            fatalError("Not reach")
-        }
-    }
-    
-    func flatMap<U>(_ transform: @escaping (T) -> Future<U>) -> Future<U> {
-        
-        let future = Future<U>()
-        
-        onSuccess {
-            transform($0)
-                .onSuccess { val in future.success(val) }
-                .onFailure { error in future.failure(error) }
-        }
-        onFailure {
-            future.failure($0)
-        }
-        
-        return future
     }
 }
 
+extension Future {
+    
+    ///
+    func transform<U>(_ s: @escaping (T) -> U, _ f: @escaping (Error) -> (Error)) -> Future<U> {
+        
+        return transform {
+            switch $0 {
+                
+            case let .value(value): return Result(s(value))
+                
+            case let .error(error): return Result(f(error))
+            }
+        }
+    }
+    
+    func transform<U>(_ s: @escaping (Result<T>) -> Result<U>) ->Future<U> {
+        
+        return Promise()
+            .complete {
+                guard let r = self.await().result.map({s($0)}) else {
+                    return Result(FutureError.unsolvedFuture)
+                }
+                return r
+            }
+            .future
+    }
+    
+    func map<U>(_ t: @escaping (T) -> U) -> Future<U> {
+        
+        return transform(t, { $0 })
+    }
+    
+    func flatMap<U>(_ t: @escaping (T) -> Future<U>) -> Future<U> {
+        
+        return Promise()
+            .completeWith {
+                switch self.await().result {
+                case let .value(v)?: return t(v)
+                case let .error(e)?: return Future<U>(e)
+                case .none: return Future<U>(FutureError.unsolvedFuture)
+                }
+            }
+            .future
+    }
+    
+    func filter(_ f: @escaping (T) -> Bool) -> Future<T> {
+        
+        return Promise()
+            .complete {
+                if case let .value(v)? = self.result, f(v) {
+                    return Result(v)
+                }
+                return Result(FutureError.noSuchElement)
+            }
+            .future
+    }
+    
+    func recover(_ s: @escaping (Error) throws -> T) -> Future<T> {
+        
+        return transform {
+            do {
+                if case let .error(e) = $0 {
+                    return Result(try s(e))
+                }
+            } catch {
+                return Result(error)
+            }
+            return $0
+        }
+    }
+}
+
+fileprivate extension Future {
+    
+    func complete(_ result: Result<T>) {
+        
+        self.result = result
+    }
+}
+
+private let promiseQueue = DispatchQueue(label: "Promise", attributes: .concurrent)
+final class Promise<T> {
+    
+    let future: Future<T> = Future<T>()
+    
+    ///
+    func complete(_ result: Result<T>) {
+        
+        future.complete(result)
+    }
+    func success(_ value: T) {
+        
+        complete(Result(value))
+    }
+    func failure(_ error: Error) {
+        
+        complete(Result(error))
+    }
+    
+    func complete(_ completor: @escaping () -> Result<T>) -> Self {
+        
+        promiseQueue.async {
+            self.complete(completor())
+        }
+        
+        return self
+    }
+    
+    func completeWith(_ completor: @escaping () -> Future<T>) -> Self {
+        
+        promiseQueue.async {
+            completor()
+                .onSuccess {
+                    self.success($0)
+                }
+                .onFailure {
+                    self.failure($0)
+            }
+        }
+        
+        return self
+    }
+}
 
 extension NotificationCenter {
     
@@ -153,7 +294,7 @@ extension NotificationCenter {
     /// - Returns: Notificationによって値が設定される Future<T>
     func future<T>(name: Notification.Name, object: Any?, block: @escaping (Notification) throws -> T?) -> Future<T> {
         
-        let future = Future<T>()
+        let promise = Promise<T>()
         
         weak var token: NSObjectProtocol?
         token = self
@@ -162,15 +303,15 @@ extension NotificationCenter {
                 do {
                     guard let value = try block(notification) else { return }
                     
-                    future.success(value)
+                    promise.success(value)
                 } catch {
-                    future.failure(error)
+                    promise.failure(error)
                 }
                 
                 token.map(self.removeObserver)
         }
         
-        return future
+        return promise.future
     }
 }
 

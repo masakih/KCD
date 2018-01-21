@@ -26,26 +26,21 @@ protocol DockInformationFutureCreatable {
 
 func createDockInformationFuture<T: DockInformationFutureCreatable>(number: Int) -> Future<T> {
     
-    let future = Future<T>()
-    
     guard T.valid(number: number) else {
         
-        future.failure(DockInformationError.outOfBounds(String(describing: T.self)))
-        return future
+        return Future(DockInformationError.outOfBounds(String(describing: T.self)))
     }
     
     if T.alreadyHasData(for: number) {
         
         if let status = T.init(number: number) {
             
-            future.success(status)
+            return Future(status)
             
         } else {
             
-            future.failure(DockInformationError.canNotCreate(String(describing: T.self)))
+            return Future(DockInformationError.canNotCreate(String(describing: T.self)))
         }
-        
-        return future
     }
     
     return ServerDataStore.default.future { _ -> T? in
