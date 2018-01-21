@@ -20,3 +20,37 @@ extension NotificationCenter {
         }
     }
 }
+
+extension NotificationCenter {
+    
+    /// Notificationを待って値が設定される Future<T>を返す
+    ///
+    /// - Parameters:
+    ///   - name: Notification.Name
+    ///   - object: 監視対象
+    ///   - block:
+    ///     Parameters: Notification
+    ///     Returns: `T?` : 成功時は `T`, エラー時は例外を発生させる。 監視を継続するときは `nil`を返す
+    /// - Returns: Notificationによって値が設定される Future<T>
+    func future<T>(name: Notification.Name, object: Any?, block: @escaping (Notification) throws -> T?) -> Future<T> {
+        
+        let promise = Promise<T>()
+        
+        weak var token: NSObjectProtocol?
+        token = self
+            .addObserver(forName: name, object: object, queue: nil) { notification in
+                
+                do {
+                    guard let value = try block(notification) else { return }
+                    
+                    promise.success(value)
+                } catch {
+                    promise.failure(error)
+                }
+                
+                token.map(self.removeObserver)
+        }
+        
+        return promise.future
+    }
+}

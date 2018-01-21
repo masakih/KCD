@@ -269,6 +269,7 @@
 		F4C041BA1875CAF5009273EB /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4C041B91875CAF5009273EB /* JavaScriptCore.framework */; };
 		F4C3D1BF1F13A32D0084D0CA /* CalculateConditionPanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C3D1BD1F13A32D0084D0CA /* CalculateConditionPanelController.swift */; };
 		F4C3D1C01F13A32D0084D0CA /* CalculateConditionPanelController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C3D1BE1F13A32D0084D0CA /* CalculateConditionPanelController.xib */; };
+		F4C4A57F201464E300F8B732 /* CoreDataProviderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C4A57E201464E300F8B732 /* CoreDataProviderExtension.swift */; };
 		F4C668571C5450EB00601AFB /* BookmarkListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C668591C5450EB00601AFB /* BookmarkListViewController.xib */; };
 		F4C6685A1C54510E00601AFB /* BookmarkEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C6685C1C54510E00601AFB /* BookmarkEditorViewController.xib */; };
 		F4C6685D1C54515C00601AFB /* BrowserContentAdjuster.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C6685F1C54515C00601AFB /* BrowserContentAdjuster.xib */; };
@@ -653,6 +654,7 @@
 		F4C041B91875CAF5009273EB /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F4C3D1BD1F13A32D0084D0CA /* CalculateConditionPanelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateConditionPanelController.swift; sourceTree = "<group>"; };
 		F4C3D1BE1F13A32D0084D0CA /* CalculateConditionPanelController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalculateConditionPanelController.xib; sourceTree = "<group>"; };
+		F4C4A57E201464E300F8B732 /* CoreDataProviderExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataProviderExtension.swift; sourceTree = "<group>"; };
 		F4C5A22B1C37B8DB00533FB6 /* RequiredEquipmentSet.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RequiredEquipmentSet.txt; sourceTree = "<group>"; };
 		F4C5A22D1C37CB5100533FB6 /* EnhancementListItem.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EnhancementListItem.txt; sourceTree = "<group>"; };
 		F4C5A2331C37F87500533FB6 /* EquipmentEnhancementListBuilder */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = EquipmentEnhancementListBuilder; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1143,6 +1145,7 @@
 			children = (
 				F4BDEEB11E73FE2000D689AE /* Entity.swift */,
 				F4E471281E46ECF1009B5AF4 /* CoreDataCore.swift */,
+				F4C4A57E201464E300F8B732 /* CoreDataProviderExtension.swift */,
 				F4FF44D71FA21BF200039F21 /* CoreDataManager.swift */,
 				F44AA2661E814A4400EED8BE /* MOCGenerator.swift */,
 				F481D63E1F9105CB007E2CBE /* Entities.swift */,
@@ -1667,6 +1670,7 @@
 				F4CF25DE1E38E06300C02A66 /* EnhancementListItem.swift in Sources */,
 				F42A8FD61E3DE2C60099DC1D /* Material.swift in Sources */,
 				F4401B0E1FAF2B5200A1BF29 /* ScreenshotLoader.swift in Sources */,
+				F4C4A57F201464E300F8B732 /* CoreDataProviderExtension.swift in Sources */,
 				F491A4BC1E4B523C00D1E067 /* ApplicationDirecrories.swift in Sources */,
 				F4E5FF141E17F93B0026868C /* BroserWindowController.swift in Sources */,
 				F4FF44D01FA0BAAD00039F21 /* LocalDataStoreAccessor.swift in Sources */,
