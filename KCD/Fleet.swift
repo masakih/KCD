@@ -8,18 +8,43 @@
 
 import Cocoa
 
-private var pDeckContext = 0
+final class DeckObserver {
+    
+    private let deck: Deck
+    private let handler: (Deck) -> Void
+    
+    private var observation: [NSKeyValueObservation] = []
+    
+    init(deck: Deck, handler: @escaping (Deck) -> Void) {
+        
+        self.deck = deck
+        self.handler = handler
+        
+        observation += [deck.observe(\Deck.ship_0, changeHandler: observeHandler)]
+        observation += [deck.observe(\Deck.ship_1, changeHandler: observeHandler)]
+        observation += [deck.observe(\Deck.ship_2, changeHandler: observeHandler)]
+        observation += [deck.observe(\Deck.ship_3, changeHandler: observeHandler)]
+        observation += [deck.observe(\Deck.ship_4, changeHandler: observeHandler)]
+        observation += [deck.observe(\Deck.ship_5, changeHandler: observeHandler)]
+        observation += [deck.observe(\Deck.ship_6, changeHandler: observeHandler)]
+        
+        handler(deck)
+    }
+    
+    private func observeHandler(_: Deck, _:NSKeyValueObservedChange<Int>) {
+        
+        handler(deck)
+    }
+}
 
 final class Fleet: NSObject {
     
     let fleetNumber: Int
-    private let deckController = NSObjectController()
     
-    private let deckObserveKeys = [
-        "selection.ship_0", "selection.ship_1", "selection.ship_2",
-        "selection.ship_3", "selection.ship_4", "selection.ship_5",
-        "selection.ship_6"
-    ]
+    private var observer: DeckObserver?
+    
+    @objc dynamic private(set) var ships: [Ship] = []
+    private var deck: Deck?
     
     init?(number: Int) {
         
@@ -33,62 +58,43 @@ final class Fleet: NSObject {
         
         super.init()
         
-        deckController.entityName = Deck.entityName
-        deckController.managedObjectContext = ServerDataStore.default.context
-        deckController.fetchPredicate = NSPredicate(#keyPath(Deck.id), equal: number)
-        let req = NSFetchRequest<NSFetchRequestResult>()
-        req.entity = NSEntityDescription.entity(forEntityName: Deck.entityName,
-                                                in: deckController.managedObjectContext!)
-        req.predicate = deckController.fetchPredicate
-        
-        do {
+        if let deck = ServerDataStore.default.deck(by: number) {
             
-            try deckController.fetch(with: req, merge: false)
-            
-        } catch {
-            
-            Logger.shared.log("Fetch error")
-            return nil
-        }
-        
-        deck = deckController.content as? Deck
-        deckObserveKeys.forEach { deckController.addObserver(self, forKeyPath: $0, context: &pDeckContext) }
-    }
-    
-    deinit {
-        
-        deckObserveKeys.forEach { deckController.removeObserver(self, forKeyPath: $0) }
-    }
-    
-    @objc override class func keyPathsForValuesAffectingValue(forKey key: String) -> Set<String> {
-        
-        switch key {
-            
-        case #keyPath(name): return [#keyPath(deck.name)]
-            
-        case #keyPath(id): return [#keyPath(deck.id)]
-            
-        default: return []
-        }
-    }
-    
-    @objc dynamic private(set) var ships: [Ship] = []
-    @objc var deck: Deck?
-    
-    @objc dynamic var name: String? { return deck?.name }
-    @objc dynamic var id: NSNumber? { return deck?.id as NSNumber? }
-    
-    subscript(_ index: Int) -> Ship? { return deck?[index] }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
-        
-        if context == &pDeckContext {
-            
-            ships = (0..<Deck.maxShipCount).flatMap { self[$0] }
+            self.setupDeck(deck: deck)
             
             return
         }
         
-        super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+        ServerDataStore.default
+            .future { _ -> Deck? in
+                
+                guard let deck = ServerDataStore.default.deck(by: number) else { return .none }
+                
+                return deck
+            }
+            .onSuccess { deck in
+                
+                self.setupDeck(deck: deck)
+            }
+            .onFailure { error in
+                
+                Logger.shared.log("\(error)")
+        }
+    }
+    
+    subscript(_ index: Int) -> Ship? { return deck?[index] }
+    
+    private func setupDeck(deck: Deck) {
+        
+        self.deck = deck
+        self.observer = DeckObserver(deck: deck) { [weak self] in
+            
+            self?.setupShips(deck: $0)
+        }
+    }
+    
+    private func setupShips(deck: Deck) {
+        
+        ships = deck[0...6]
     }
 }

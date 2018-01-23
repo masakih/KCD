@@ -53,7 +53,7 @@ final class AnchorageRepairManager: NSObject {
         guard case 1...4 = fleetNumber else { return nil }
         guard case 0...5 = position else { return nil }
         
-        let ship = fleetManager.fleets[fleetNumber - 1][position]
+        let ship = fleetManager?.fleets[fleetNumber - 1][position]
         
         return ship?.master_ship.stype.id
     }

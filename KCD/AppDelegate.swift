@@ -18,7 +18,7 @@ final class AppDelegate: NSObject {
     }
         
     let appNameForUserAgent: String = "KCD(1.9b36) is not Safari/604.4.7"
-    let fleetManager: FleetManager = FleetManager()
+    private(set) var fleetManager: FleetManager?
     
     private let windowManager = WindowManager()
     
@@ -77,6 +77,8 @@ final class AppDelegate: NSObject {
         if didLoadedMainMenu { return }
         
         didLoadedMainMenu = true
+        
+        fleetManager = FleetManager()
         
         ValueTransformerRegister.registerAll()
         UserDefaults.standard.register(defaults: DefaultKeys.defaults)

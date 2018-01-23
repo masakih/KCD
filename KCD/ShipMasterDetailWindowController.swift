@@ -13,7 +13,7 @@ final class ShipMasterDetailWindowController: NSWindowController {
     @objc let managedObjectContext = ServerDataStore.default.context
     @objc let fleetManager: FleetManager = {
         
-        return AppDelegate.shared.fleetManager
+        return AppDelegate.shared.fleetManager ?? FleetManager()
     }()
     let specNames = [
         "id", "name", "shortTypeName",
