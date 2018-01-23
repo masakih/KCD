@@ -21,6 +21,17 @@ enum Result<T> {
         self = .error(error)
     }
 }
+extension Result {
+    
+    var value: T? {
+        if case let .value(value) = self { return value }
+        return nil
+    }
+    var error: Error? {
+        if case let .error(error) = self { return error }
+        return nil
+    }
+}
 
 enum FutureError: Error {
     
@@ -35,8 +46,9 @@ private final class FutureSynchronous {
     private let queue: DispatchQueue
     private let semaphore = DispatchSemaphore(value: 1)
     
-    init(queue: DispatchQueue = defaultWaitingQueue) {
-        self.queue = queue
+    init(queue: DispatchQueue? = nil) {
+        
+        self.queue = queue ?? defaultWaitingQueue
     }
     
     func excuteAfterWaiting(_ block: @escaping () -> Void) {
@@ -49,10 +61,12 @@ private final class FutureSynchronous {
     }
     
     func startWaiting() {
+        
         self.semaphore.wait()
     }
     
     func stopWaiting() {
+        
         self.semaphore.signal()
     }
 }
@@ -64,25 +78,35 @@ class Future<T> {
     fileprivate var result: Result<T>? {
         willSet {
             if result != nil {
-                fatalError("Result already seted")
+                fatalError("Result already seted.")
             }
         }
         didSet {
+            if result == nil {
+                fatalError("set nil to result.")
+            }
             synchronous.stopWaiting()
         }
     }
     
+    var isCompleted: Bool {
+        return result != nil
+    }
+    var value: Result<T>? {
+        return result
+    }
+    
     /// Life cycle
-    init(queue: DispatchQueue? = nil) {
+    init() {
         
-        self.synchronous = queue.map { FutureSynchronous(queue: $0) } ?? FutureSynchronous()
+        self.synchronous = FutureSynchronous()
         
         synchronous.startWaiting()
     }
     
-    init(queue: DispatchQueue? = nil, _ block: @escaping () throws -> T) {
+    init(_ block: @escaping () throws -> T) {
         
-        self.synchronous = queue.map { FutureSynchronous(queue: $0) } ?? FutureSynchronous()
+        self.synchronous = FutureSynchronous()
         
         synchronous.excuteAfterWaiting {
             do {
@@ -93,9 +117,9 @@ class Future<T> {
         }
     }
     
-    init(queue: DispatchQueue? = nil, _ result: Result<T>) {
+    init(_ result: Result<T>) {
         
-        self.synchronous = queue.map { FutureSynchronous(queue: $0) } ?? FutureSynchronous()
+        self.synchronous = FutureSynchronous()
         
         self.result = result
     }
@@ -111,17 +135,16 @@ class Future<T> {
     deinit {
         synchronous.stopWaiting()
     }
-    
 }
 
 extension Future {
+    
     ///
     @discardableResult
     func await() -> Self {
         
-        synchronous.excuteAfterWaiting {
-            // do nothing
-        }
+        synchronous.startWaiting()
+        synchronous.stopWaiting()
         
         return self
     }
@@ -130,7 +153,7 @@ extension Future {
     func onComplete(_ block: @escaping (Result<T>) -> Void) -> Self {
         
         synchronous.excuteAfterWaiting {
-            block(self.result!)
+            self.value.map(block)
         }
         
         return self
@@ -139,9 +162,7 @@ extension Future {
     @discardableResult
     func onSuccess(_ block: @escaping (T) -> Void) -> Self {
         
-        synchronous.excuteAfterWaiting {
-            if case let .value(value)? = self.result { block(value) }
-        }
+        onComplete { result in result.value.map(block) }
         
         return self
     }
@@ -149,9 +170,7 @@ extension Future {
     @discardableResult
     func onFailure(_ block: @escaping (Error) -> Void) -> Self {
         
-        synchronous.excuteAfterWaiting {
-            if case let .error(error)? = self.result { block(error) }
-        }
+        onComplete { result in result.error.map(block) }
         
         return self
     }
@@ -160,13 +179,11 @@ extension Future {
 extension Future {
     
     ///
-    func transform<U>(_ s: @escaping (T) -> U, _ f: @escaping (Error) -> (Error)) -> Future<U> {
+    func transform<U>(_ s: @escaping (T) -> U, _ f: @escaping (Error) -> Error) -> Future<U> {
         
-        return transform {
-            switch $0 {
-                
+        return transform { result in
+            switch result {
             case let .value(value): return Result(s(value))
-                
             case let .error(error): return Result(f(error))
             }
         }
@@ -176,10 +193,7 @@ extension Future {
         
         return Promise()
             .complete {
-                guard let r = self.await().result.map({s($0)}) else {
-                    return Result(FutureError.unsolvedFuture)
-                }
-                return r
+                self.await().value.map(s) ?? Result(FutureError.unsolvedFuture)
             }
             .future
     }
@@ -193,10 +207,10 @@ extension Future {
         
         return Promise()
             .completeWith {
-                switch self.await().result {
-                case let .value(v)?: return t(v)
-                case let .error(e)?: return Future<U>(e)
-                case .none: return Future<U>(FutureError.unsolvedFuture)
+                switch self.await().value {
+                case .value(let v)?: return t(v)
+                case .error(let e)?: return Future<U>(e)
+                case .none: fatalError("Future not complete")
                 }
             }
             .future
@@ -206,7 +220,7 @@ extension Future {
         
         return Promise()
             .complete {
-                if case let .value(v)? = self.result, f(v) {
+                if case let .value(v)? = self.await().value, f(v) {
                     return Result(v)
                 }
                 return Result(FutureError.noSuchElement)
@@ -216,20 +230,17 @@ extension Future {
     
     func recover(_ s: @escaping (Error) throws -> T) -> Future<T> {
         
-        return transform {
+        return transform { result in
             do {
-                if case let .error(e) = $0 {
-                    return Result(try s(e))
-                }
+                return try result.error.map { error in Result(try s(error)) } ?? Result(FutureError.unsolvedFuture)
             } catch {
                 return Result(error)
             }
-            return $0
         }
     }
 }
 
-fileprivate extension Future {
+private extension Future {
     
     func complete(_ result: Result<T>) {
         
