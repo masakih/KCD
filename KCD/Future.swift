@@ -238,6 +238,19 @@ extension Future {
             }
         }
     }
+    
+    @discardableResult
+    func andThen(_ f: @escaping (Result<T>) -> Void) -> Future<T> {
+        
+        return Promise<T>()
+            .complete {
+                guard let result = self.await().result else { fatalError("Future not complete") }
+                
+                f(result)
+                return result
+            }
+            .future
+    }
 }
 
 private extension Future {
