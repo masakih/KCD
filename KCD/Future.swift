@@ -40,40 +40,11 @@ enum FutureError: Error {
     case noSuchElement
 }
 
-private let defaultWaitingQueue = DispatchQueue(label: "Future", attributes: .concurrent)
-private final class FutureSynchronous {
-    
-    private let queue: DispatchQueue
-    private let semaphore = DispatchSemaphore(value: 1)
-    
-    init(queue: DispatchQueue? = nil) {
-        
-        self.queue = queue ?? defaultWaitingQueue
-    }
-    
-    func excuteAfterWaiting(_ block: @escaping () -> Void) {
-        
-        queue.async {
-            self.semaphore.wait()
-            block()
-            self.semaphore.signal()
-        }
-    }
-    
-    func startWaiting() {
-        
-        self.semaphore.wait()
-    }
-    
-    func stopWaiting() {
-        
-        self.semaphore.signal()
-    }
-}
-
 class Future<T> {
     
-    private let synchronous: FutureSynchronous
+    private let semaphore: DispatchSemaphore?
+    
+    private var callbacks: [(Result<T>) -> Void] = []
     
     fileprivate var result: Result<T>? {
         willSet {
@@ -82,10 +53,12 @@ class Future<T> {
             }
         }
         didSet {
-            if result == nil {
+            guard let result = self.result else {
                 fatalError("set nil to result.")
             }
-            synchronous.stopWaiting()
+            
+            callbacks.forEach { f in f(result) }
+            semaphore?.signal()
         }
     }
     
@@ -99,16 +72,20 @@ class Future<T> {
     /// Life cycle
     init() {
         
-        self.synchronous = FutureSynchronous()
-        
-        synchronous.startWaiting()
+        // for await()
+        semaphore = DispatchSemaphore(value: 1)
+        semaphore?.wait()
     }
     
-    init(_ block: @escaping () throws -> T) {
+    init(in queue: DispatchQueue = .global(), _ block: @escaping () throws -> T) {
         
-        self.synchronous = FutureSynchronous()
+        semaphore = DispatchSemaphore(value: 1)
+        semaphore?.wait()
         
-        synchronous.excuteAfterWaiting {
+        queue.async {
+            
+            defer { self.semaphore?.signal() }
+            
             do {
                 self.result = Result(try block())
             } catch {
@@ -119,7 +96,7 @@ class Future<T> {
     
     init(_ result: Result<T>) {
         
-        self.synchronous = FutureSynchronous()
+        semaphore = nil
         
         self.result = result
     }
@@ -133,7 +110,7 @@ class Future<T> {
     }
     
     deinit {
-        synchronous.stopWaiting()
+        semaphore?.signal()
     }
 }
 
@@ -143,34 +120,46 @@ extension Future {
     @discardableResult
     func await() -> Self {
         
-        synchronous.startWaiting()
-        synchronous.stopWaiting()
-        
-        return self
-    }
-    
-    @discardableResult
-    func onComplete(_ block: @escaping (Result<T>) -> Void) -> Self {
-        
-        synchronous.excuteAfterWaiting {
-            self.value.map(block)
+        if result == nil {
+            semaphore?.wait()
+            semaphore?.signal()
         }
         
         return self
     }
     
     @discardableResult
-    func onSuccess(_ block: @escaping (T) -> Void) -> Self {
+    func onComplete(_ callback: @escaping (Result<T>) -> Void) -> Self {
         
-        onComplete { result in result.value.map(block) }
+        if let r = result {
+            callback(r)
+        } else {
+            callbacks.append(callback)
+        }
         
         return self
     }
     
     @discardableResult
-    func onFailure(_ block: @escaping (Error) -> Void) -> Self {
+    func onSuccess(_ callback: @escaping (T) -> Void) -> Self {
         
-        onComplete { result in result.error.map(block) }
+        onComplete { result in
+            if case let .value(v) = result {
+                callback(v)
+            }
+        }
+        
+        return self
+    }
+    
+    @discardableResult
+    func onFailure(_ callback: @escaping (Error) -> Void) -> Self {
+        
+        onComplete { result in
+            if case let .error(e) = result {
+                callback(e)
+            }
+        }
         
         return self
     }
