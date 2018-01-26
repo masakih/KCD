@@ -43,8 +43,9 @@ final class ScreenshotLoader {
     }
     
     private func isPicture(_ url: URL) -> Bool {
-        
-        guard let type = try? NSWorkspace.shared.type(ofFile: url.path) else { return false }
+                
+        guard let r = try? url.resourceValues(forKeys: [.typeIdentifierKey]) else { return false }
+        guard let type = r.typeIdentifier else { return false }
         
         return NSImage.imageTypes.contains(type)
     }
