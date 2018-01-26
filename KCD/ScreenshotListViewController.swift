@@ -195,11 +195,21 @@ final class ScreenshotListViewController: NSViewController {
     
     private func reloadData() {
         
-        screenshots.screenshots = ScreenshotLoader(screenshotSaveDirectoryURL).merge(screenshots: [])
-        
-        collectionView.selectionIndexPaths = [NSIndexPath(forItem: 0, inSection: 0) as IndexPath]
-        
-        reloadHandler?()
+        Promise<[ScreenshotInformation]>()
+            .complete {
+                Result(ScreenshotLoader(self.screenshotSaveDirectoryURL).merge(screenshots: []))
+            }
+            .future
+            .onSuccess { screenshots in
+                
+                DispatchQueue.main.async {
+                    self.screenshots.screenshots = screenshots
+                    
+                    self.collectionView.selectionIndexPaths = [NSIndexPath(forItem: 0, inSection: 0) as IndexPath]
+                    
+                    self.reloadHandler?()
+                }
+        }
     }
     
 }
