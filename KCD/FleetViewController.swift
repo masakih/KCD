@@ -240,7 +240,7 @@ final class FleetViewController: NSViewController {
             sakutekiCalculator = Formula33(Int(factor))
         }
         
-        fleetController.bind(NSBindingName(#keyPath(NSArrayController.content)), to: self, withKeyPath: #keyPath(fleet), options: nil)
+        fleetController.bind(NSBindingName(#keyPath(NSArrayController.content)), to: self, withKeyPath: #keyPath(fleet))
         fleetController.addObserver(self, forKeyPath: "selection.name", context: nil)
         shipKeys.forEach {
             
@@ -250,16 +250,15 @@ final class FleetViewController: NSViewController {
         
         buildAnchorageRepairHolder()
         
-        [placeholder01, placeholder02, placeholder03, placeholder04, placeholder05, placeholder06]
-            .enumerated()
-            .forEach {
+        zip([placeholder01, placeholder02, placeholder03, placeholder04, placeholder05, placeholder06], details)
+            .forEach { view, detail in
                 
-                guard let view = $0.element else { return }
+                guard let view = view else { return }
                 
-                let detail = details[$0.offset]
                 detail.view.frame = view.frame
                 detail.view.autoresizingMask = view.autoresizingMask
                 self.view.replaceSubview(view, with: detail.view)
+                
         }
         fleetNumber = 1
         
