@@ -25,6 +25,7 @@
 		F41A451B1F4917640066F83D /* SeikuCalclator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41A451A1F4917640066F83D /* SeikuCalclator.swift */; };
 		F41AA4761FDEDC3700FFFBD1 /* Parameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41AA4751FDEDC3700FFFBD1 /* Parameter.swift */; };
 		F41AA4781FDEDCD200FFFBD1 /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41AA4771FDEDCD200FFFBD1 /* DataExtension.swift */; };
+		F42048C6201E006300B5599D /* NotificationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42048C5201E006300B5599D /* NotificationObserver.swift */; };
 		F421850A1DF44AA900256590 /* AirBaseWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F421850C1DF44AA900256590 /* AirBaseWindowController.xib */; };
 		F421850F1DF4518000256590 /* BroswerTouchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = F421850E1DF4518000256590 /* BroswerTouchBar.xib */; };
 		F42185111DF461A600256590 /* ScreenshotTouchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = F42185101DF461A600256590 /* ScreenshotTouchBar.xib */; };
@@ -403,6 +404,7 @@
 		F41A451A1F4917640066F83D /* SeikuCalclator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeikuCalclator.swift; sourceTree = "<group>"; };
 		F41AA4751FDEDC3700FFFBD1 /* Parameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parameter.swift; sourceTree = "<group>"; };
 		F41AA4771FDEDCD200FFFBD1 /* DataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
+		F42048C5201E006300B5599D /* NotificationObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationObserver.swift; sourceTree = "<group>"; };
 		F421850D1DF44AEA00256590 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AirBaseWindowController.xib; sourceTree = "<group>"; };
 		F421850E1DF4518000256590 /* BroswerTouchBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BroswerTouchBar.xib; sourceTree = "<group>"; };
 		F42185101DF461A600256590 /* ScreenshotTouchBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScreenshotTouchBar.xib; sourceTree = "<group>"; };
@@ -804,6 +806,7 @@
 				F48883441F2E095F0069E0C3 /* DefaultSettings.swift */,
 				F46FEA3E1F81285D00E2427C /* Localizable.swift */,
 				F46FEA401F8128BB00E2427C /* LocalizedStrings.swift */,
+				F42048C5201E006300B5599D /* NotificationObserver.swift */,
 				F46C00F0200A0D3400A066E2 /* Future.swift */,
 				F41AA4771FDEDCD200FFFBD1 /* DataExtension.swift */,
 				F40F97701E68536400AE81BB /* FileManagerExtension.swift */,
@@ -1790,6 +1793,7 @@
 				F4D05BD21E0F3C4E00688D66 /* CombileViewController.swift in Sources */,
 				F42CFE241E3D8309000B4F9B /* KenzoDock.swift in Sources */,
 				F47215B01E1FEACC0083D3BC /* ServerDataStore.swift in Sources */,
+				F42048C6201E006300B5599D /* NotificationObserver.swift in Sources */,
 				F4A0D7091E2BA2F300224DCE /* CalculateDamageCommand.swift in Sources */,
 				F47215A81E1F947A0083D3BC /* BookmarkDataStore.swift in Sources */,
 				F4AA59421E1E2854001667AF /* OrderedSetToArrayTransformer.swift in Sources */,
