@@ -23,3 +23,47 @@ extension CoreDataProvider {
             .future(name: .NSManagedObjectContextObjectsDidChange, object: self.context, block: block)
     }
 }
+
+extension Notification {
+    
+    struct ChangedType: OptionSet {
+        
+        let rawValue: UInt8
+        
+        static let inserted = ChangedType(rawValue: 0x0001)
+        static let updated = ChangedType(rawValue: 0x0002)
+        static let deleted = ChangedType(rawValue: 0x0004)
+    }
+    
+    func insertedManagedObjects<T: NSManagedObject>() -> [T] {
+        
+        return managedObjects(infoKey: NSInsertedObjectsKey)
+    }
+    
+    func updatedManagedObjects<T: NSManagedObject>() -> [T] {
+        
+        return managedObjects(infoKey: NSUpdatedObjectsKey)
+    }
+    
+    func deletedManagedObjects<T: NSManagedObject>() -> [T] {
+        
+        return managedObjects(infoKey: NSDeletedObjectsKey)
+    }
+    
+    func changedManagedObjects<T: NSManagedObject>(type: ChangedType) -> [T] {
+        
+        let inserted: [T] = type.contains(.inserted) ? insertedManagedObjects() : []
+        let updated: [T] = type.contains(.updated) ? updatedManagedObjects() : []
+        let deleted: [T] = type.contains(.deleted) ? deletedManagedObjects() : []
+        
+        return inserted + updated + deleted
+    }
+    
+    private func managedObjects<T: NSManagedObject>(infoKey: String) -> [T] {
+        
+        guard let userInfo = self.userInfo as? [String: Any] else { return [] }
+        
+        let inserted = userInfo[infoKey] as? Set<NSManagedObject>
+        return inserted?.flatMap({ $0 as? T }) ?? []
+    }
+}
