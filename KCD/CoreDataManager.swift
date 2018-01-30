@@ -88,7 +88,7 @@ extension CoreDataProvider {
             
             try context.save()
             
-        } catch (let error as NSError) {
+        } catch let error as NSError {
             
             throw CoreDataError.couldNotSave(error.localizedDescription)
         }
@@ -103,7 +103,7 @@ extension CoreDataProvider {
                 
                 try parent.save()
                 
-            } catch (let error as NSError) {
+            } catch let error as NSError {
                 
                 catchedError = error
             }

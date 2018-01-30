@@ -83,7 +83,7 @@ final class MOCGenerator {
             
             return try makeCoordinator(model)
             
-        } catch (let error as NSError) {
+        } catch let error as NSError {
             
             // Data Modelが更新されていたらストアファイルを削除してもう一度
             if error.domain == NSCocoaErrorDomain,

@@ -65,7 +65,7 @@ func checkDirectory(_ url: URL, create: Bool) -> Bool {
         
         return true
         
-    } catch (let error as NSError) {
+    } catch let error as NSError {
         
         if create, error.code == NSFileReadNoSuchFileError {
             
