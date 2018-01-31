@@ -22,10 +22,10 @@ final class BookmarkListViewController: NSViewController {
     
     @objc let managedObjectContext = BookmarkManager.shared.manageObjectContext
     
-    @IBOutlet var tableView: NSTableView!
-    @IBOutlet var bookmarkController: NSArrayController!
-    @IBOutlet var contextMenu: NSMenu!
-    @IBOutlet var popover: NSPopover!
+    @IBOutlet private var tableView: NSTableView!
+    @IBOutlet private var bookmarkController: NSArrayController!
+    @IBOutlet private var contextMenu: NSMenu!
+    @IBOutlet private var popover: NSPopover!
     
     weak var delegate: BookmarkListViewControllerDelegate?
     var editorController: BookmarkEditorViewController?

@@ -13,8 +13,8 @@ final class CombileViewController: NSViewController {
     let fleet1 = FleetViewController(viewType: .miniVierticalType)!
     let fleet2 = FleetViewController(viewType: .miniVierticalType)!
     
-    @IBOutlet weak var placeholder1: NSView!
-    @IBOutlet weak var placeholder2: NSView!
+    @IBOutlet private weak var placeholder1: NSView!
+    @IBOutlet private weak var placeholder2: NSView!
     
     @objc dynamic var fleet1TPValue: Int = 0 {
         willSet {

@@ -90,13 +90,13 @@ private var object1ForTouchBar: [Int: NSButton] = [:]
 @available(OSX 10.12.2, *)
 extension HistoryWindowController {
     
-    @IBOutlet var myTouchBar: NSTouchBar? {
+    @IBOutlet private var myTouchBar: NSTouchBar? {
         
         get { return objectForTouchBar[hashValue] }
         set { objectForTouchBar[hashValue] = newValue }
     }
     
-    @IBOutlet var searchButton: NSButton? {
+    @IBOutlet private var searchButton: NSButton? {
         
         get { return object1ForTouchBar[hashValue] }
         set { object1ForTouchBar[hashValue] = newValue }

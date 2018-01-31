@@ -28,8 +28,8 @@ final class ResourceViewController: NSViewController {
         unbind(NSBindingName(#keyPath(shipCount)))
     }
     
-    @IBOutlet var shipController: NSArrayController!
-    @IBOutlet var basicController: NSObjectController!
+    @IBOutlet private var shipController: NSArrayController!
+    @IBOutlet private var basicController: NSObjectController!
     
     @objc dynamic var maxChara: Int = 0
     @objc dynamic var shipCount: Int = 0

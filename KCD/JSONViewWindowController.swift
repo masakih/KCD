@@ -16,9 +16,9 @@ final class JSONViewWindowController: NSWindowController {
         unbind(NSBindingName(#keyPath(json)))
     }
     
-    @IBOutlet var argumentsView: NSTableView!
-    @IBOutlet var jsonView: NSOutlineView!
-    @IBOutlet var apis: NSArrayController!
+    @IBOutlet private var argumentsView: NSTableView!
+    @IBOutlet private var jsonView: NSOutlineView!
+    @IBOutlet private var apis: NSArrayController!
     
     override var windowNibName: NSNib.Name {
         

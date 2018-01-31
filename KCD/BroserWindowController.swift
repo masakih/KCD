@@ -587,19 +587,19 @@ private var shipTypeSegments: [Int: NSSegmentedControl] = [:]
 @available(OSX 10.12.2, *)
 extension BroserWindowController {
     
-    @IBOutlet var mainTouchBar: NSTouchBar! {
+    @IBOutlet private var mainTouchBar: NSTouchBar! {
         
         get { return mainTouchBars[hashValue] }
         set { mainTouchBars[hashValue] = newValue }
     }
     
-    @IBOutlet var shipTypeButton: NSPopoverTouchBarItem! {
+    @IBOutlet private var shipTypeButton: NSPopoverTouchBarItem! {
         
         get { return shipTypeButtons[hashValue] }
         set { shipTypeButtons[hashValue] = newValue }
     }
     
-    @IBOutlet var shipTypeSegment: NSSegmentedControl! {
+    @IBOutlet private var shipTypeSegment: NSSegmentedControl! {
         
         get { return shipTypeSegments[hashValue] }
         set { shipTypeSegments[hashValue] = newValue }

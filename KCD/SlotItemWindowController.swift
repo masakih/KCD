@@ -85,7 +85,7 @@ private var objectForTouchBar: [Int: NSTouchBar] = [:]
 @available(OSX 10.12.2, *)
 extension SlotItemWindowController {
     
-    @IBOutlet var myTouchBar: NSTouchBar? {
+    @IBOutlet private var myTouchBar: NSTouchBar? {
         
         get { return objectForTouchBar[hash] }
         set { objectForTouchBar[hash] = newValue }

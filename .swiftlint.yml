@@ -46,3 +46,12 @@ cyclomatic_complexity:
     warning: 25
     error: 60
 
+
+custom_rules:
+        use_nsmanagedobjectcontext:
+                excluded: "ServerDataStore|ResourceHistoryDataStore|LocalDataStore|TemporaryDataStore|BookmarkDataStore|CoreDataManager|CoreDataCore|MOCGenerator"
+                name: "Positive using NSManagedObjectContext"
+                regex: "NSManagedObjectContext\\s"
+                severity: error
+        private_iboutlet:
+                regex: "@IBOutlet(?!.*private[(\\s])"

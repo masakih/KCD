@@ -38,8 +38,8 @@ class HistoryTableViewController: NSViewController {
         fatalError("Subbclass MUST implement.")
     }
     
-    @IBOutlet var controller: NSArrayController!
-    @IBOutlet var tableView: NSTableView!
+    @IBOutlet private(set) var controller: NSArrayController!
+    @IBOutlet private(set) var tableView: NSTableView!
     
     @IBAction func delete(_ sender: AnyObject?) {
         

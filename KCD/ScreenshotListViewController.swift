@@ -322,19 +322,19 @@ extension ScreenshotListViewController: NSTouchBarDelegate {
     static let ServicesItemIdentifier: NSTouchBarItem.Identifier
         = NSTouchBarItem.Identifier(rawValue: "com.masakih.sharingTouchBarItem")
     
-    @IBOutlet var screenshotTouchBar: NSTouchBar! {
+    @IBOutlet private var screenshotTouchBar: NSTouchBar! {
         
         get { return kTouchBars[hashValue] }
         set { kTouchBars[hashValue] = newValue }
     }
     
-    @IBOutlet var scrubber: NSScrubber! {
+    @IBOutlet private var scrubber: NSScrubber! {
         
         get { return kScrubbers[hashValue] }
         set { kScrubbers[hashValue] = newValue }
     }
     
-    @IBOutlet var sharingItem: NSSharingServicePickerTouchBarItem! {
+    @IBOutlet private var sharingItem: NSSharingServicePickerTouchBarItem! {
         
         get { return kPickers[hashValue] }
         set { kPickers[hashValue] = newValue }
