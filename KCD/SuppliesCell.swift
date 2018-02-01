@@ -103,11 +103,11 @@ final class SuppliesCell: NSCell {
         
         if value >= max { return 10 }
         
-        let retio = ceil( Double(value) / Double(max) * Double(numberOfCell) )
+        let ratio = ceil( Double(value) / Double(max) * Double(numberOfCell) )
         
-        if retio > 9 { return 9 }
+        if ratio > 9 { return 9 }
         
-        return Int(retio)
+        return Int(ratio)
     }
     
     private func statusColor(withValue value: Int, max: Int) -> NSColor {
