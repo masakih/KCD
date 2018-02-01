@@ -174,12 +174,10 @@ final class StrengthenListViewController: MainTabVIewItemViewController {
         
         downloader.download { [weak self] items in
             
-            guard let `self` = self else { return }
-            
             DispatchQueue.main.async {
                 
-                self.equipmentStrengthenList = items
-                self.buildList()
+                self?.equipmentStrengthenList = items
+                self?.buildList()
             }
         }
     }

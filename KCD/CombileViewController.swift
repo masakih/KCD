@@ -86,12 +86,14 @@ final class CombileViewController: NSViewController {
         
         let placeholders: [NSView] = [placeholder1, placeholder2]
         let fleets = [fleet1, fleet2]
-        zip(placeholders, fleets).enumerated().forEach {
+        zip(placeholders, fleets).forEach { placeholder, fleet in
             
-            $0.element.1.view.frame = $0.element.0.frame
-            $0.element.1.view.autoresizingMask = $0.element.0.autoresizingMask
-            $0.element.0.superview?.replaceSubview($0.element.0, with: $0.element.1.view)
-            $0.element.1.fleetNumber = $0.offset + 1
+            fleet.view.frame = placeholder.frame
+            fleet.view.autoresizingMask = placeholder.autoresizingMask
+            placeholder.superview?.replaceSubview(placeholder, with: fleet.view)
+        }
+        fleets.enumerated().forEach { offset, fleet in
+            fleet.fleetNumber = offset + 1
         }
         
         bind(NSBindingName(#keyPath(fleet1TPValue)), to: fleet1, withKeyPath: #keyPath(FleetViewController.totalTPValue))
