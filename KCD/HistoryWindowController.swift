@@ -19,12 +19,12 @@ final class HistoryWindowController: NSWindowController {
     
     @objc let manageObjectContext = LocalDataStore.default.context
     
-    @IBOutlet var tabView: NSTabView!
-    @IBOutlet var kaihatsuTableVC: KaihatsuHistoryTableViewController!
-    @IBOutlet var kenzoTableVC: KenzoHistoryTableViewController!
-    @IBOutlet var dropShipTableVC: DropShipHistoryTableViewController!
+    @IBOutlet private var tabView: NSTabView!
+    @IBOutlet private var kaihatsuTableVC: KaihatsuHistoryTableViewController!
+    @IBOutlet private var kenzoTableVC: KenzoHistoryTableViewController!
+    @IBOutlet private var dropShipTableVC: DropShipHistoryTableViewController!
     
-    @IBOutlet var searchField: NSSearchField!
+    @IBOutlet private var searchField: NSSearchField!
     
     private var currentSelection: HistoryTableViewController? {
         

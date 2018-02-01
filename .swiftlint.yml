@@ -54,4 +54,4 @@ custom_rules:
                 regex: "NSManagedObjectContext\\s"
                 severity: error
         private_iboutlet:
-                regex: "@IBOutlet(?!.*private[(\\s])"
+                regex: "@IBOutlet\\s+(?!private[(\\s])"

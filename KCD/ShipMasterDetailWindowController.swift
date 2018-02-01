@@ -22,11 +22,11 @@ final class ShipMasterDetailWindowController: NSWindowController {
         "leng", "slot_ex", "sakuteki_0", "sakuteki_1"
     ]
     
-    @IBOutlet var shipController: NSArrayController!
-    @IBOutlet var fleetMemberController: NSArrayController!
-    @IBOutlet weak var shipsView: NSTableView!
-    @IBOutlet weak var fleetMemberView: NSTableView!
-    @IBOutlet weak var sally: NSTextField!
+    @IBOutlet private var shipController: NSArrayController!
+    @IBOutlet private var fleetMemberController: NSArrayController!
+    @IBOutlet private weak var shipsView: NSTableView!
+    @IBOutlet private weak var fleetMemberView: NSTableView!
+    @IBOutlet private weak var sally: NSTextField!
     
     override var windowNibName: NSNib.Name {
         

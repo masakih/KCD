@@ -10,10 +10,10 @@ import Cocoa
 
 final class ScreenshotListWindowController: NSWindowController {
     
-    @IBOutlet weak var shareButton: NSButton!
-    @IBOutlet var rightController: NSViewController!
-    @IBOutlet weak var left: NSView!
-    @IBOutlet weak var right: NSView!
+    @IBOutlet private weak var shareButton: NSButton!
+    @IBOutlet private var rightController: NSViewController!
+    @IBOutlet private weak var left: NSView!
+    @IBOutlet private weak var right: NSView!
     
     private lazy var detailViewController: ScreenshotDetailViewController = {
         return ScreenshotDetailViewController()

@@ -55,13 +55,13 @@ final class ShipDetailViewController: NSViewController {
             .forEach { $0?.unbind(NSBindingName(#keyPath(SlotItemLevelView.slotItemID))) }
     }
     
-    @IBOutlet weak var supply: SuppliesView!
-    @IBOutlet weak var guardEscapedView: GuardEscapedView!
-    @IBOutlet weak var damageView: DamageView!
-    @IBOutlet weak var slot00Field: SlotItemLevelView!
-    @IBOutlet weak var slot01Field: SlotItemLevelView!
-    @IBOutlet weak var slot02Field: SlotItemLevelView!
-    @IBOutlet weak var slot03Field: SlotItemLevelView!
+    @IBOutlet private weak var supply: SuppliesView!
+    @IBOutlet private weak var guardEscapedView: GuardEscapedView!
+    @IBOutlet private weak var damageView: DamageView!
+    @IBOutlet private weak var slot00Field: SlotItemLevelView!
+    @IBOutlet private weak var slot01Field: SlotItemLevelView!
+    @IBOutlet private weak var slot02Field: SlotItemLevelView!
+    @IBOutlet private weak var slot03Field: SlotItemLevelView!
     
     var observer: ShipSlotObserver?
     

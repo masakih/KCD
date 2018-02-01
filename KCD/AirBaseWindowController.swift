@@ -12,10 +12,10 @@ final class AirBaseWindowController: NSWindowController {
     
     @objc let managedObjectContext = ServerDataStore.default.context
     
-    @IBOutlet var areaMatrix: NSMatrix!
-    @IBOutlet var squadronTab: NSSegmentedControl!
-    @IBOutlet var planesTable: NSTableView!
-    @IBOutlet var airBaseController: NSArrayController!
+    @IBOutlet private var areaMatrix: NSMatrix!
+    @IBOutlet private var squadronTab: NSSegmentedControl!
+    @IBOutlet private var planesTable: NSTableView!
+    @IBOutlet private var airBaseController: NSArrayController!
     
     private var contentObservation: NSKeyValueObservation?
     

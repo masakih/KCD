@@ -21,8 +21,8 @@ final class ScreenshotListViewController: NSViewController {
     
     var screenshots: ScreenshotModel = ScreenshotModel()
     
-    @IBOutlet var screenshotsController: NSArrayController!
-    @IBOutlet weak var collectionView: NSCollectionView!
+    @IBOutlet private var screenshotsController: NSArrayController!
+    @IBOutlet private weak var collectionView: NSCollectionView!
     
     private var selectionObservation: NSKeyValueObservation?
     

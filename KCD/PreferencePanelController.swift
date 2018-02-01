@@ -27,9 +27,9 @@ private extension Selector {
 
 final class PreferencePanelController: NSWindowController {
     
-    @IBOutlet var screenShotSaveDirectoryPopUp: NSPopUpButton!
-    @IBOutlet var generalPane: NSView!
-    @IBOutlet var notificationPane: NSView!
+    @IBOutlet private var screenShotSaveDirectoryPopUp: NSPopUpButton!
+    @IBOutlet private var generalPane: NSView!
+    @IBOutlet private var notificationPane: NSView!
     
     override var windowNibName: NSNib.Name {
         

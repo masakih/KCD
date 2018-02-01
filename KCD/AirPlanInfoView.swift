@@ -22,9 +22,9 @@ final class AirPlanInfoView: NSTableCellView {
     static let maxCountBindingName = NSBindingName(#keyPath(AirPlanInfoView.maxCount))
     static let countBindingName = NSBindingName(#keyPath(AirPlanInfoView.count))
     
-    @IBOutlet var planNameVew: SlotItemLevelView!
-    @IBOutlet var conditionBox: NSBox!
-    @IBOutlet var needSupplyField: NSTextField!
+    @IBOutlet private var planNameVew: SlotItemLevelView!
+    @IBOutlet private var conditionBox: NSBox!
+    @IBOutlet private var needSupplyField: NSTextField!
     
     @objc dynamic var condition: Int = 1 {
         

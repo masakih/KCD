@@ -65,7 +65,7 @@ private struct FilterCategories {
 
 final class StrengthenListViewController: MainTabVIewItemViewController {
     
-    @IBOutlet weak var tableView: NSTableView!
+    @IBOutlet private weak var tableView: NSTableView!
     
     @objc dynamic var itemList: Any { return filteredItems as Any }
     @objc dynamic var offsetDay: Int = 0 {

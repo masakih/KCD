@@ -44,8 +44,8 @@ final class DocksViewController: MainTabVIewItemViewController {
     @objc dynamic var mission3Name: String?
     @objc dynamic var mission4Name: String?
     
-    @IBOutlet weak var battleInformationViewPlaceholder: NSView!
-    @IBOutlet weak var questListViewPlaceholder: NSView!
+    @IBOutlet private weak var battleInformationViewPlaceholder: NSView!
+    @IBOutlet private weak var questListViewPlaceholder: NSView!
     
     override var nibName: NSNib.Name {
         

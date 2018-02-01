@@ -10,7 +10,7 @@ import Cocoa
 
 final class ScreenshotDetailViewController: BridgeViewController {
     
-    @IBOutlet var imageView: ImageView!
+    @IBOutlet private var imageView: ImageView!
     
     override var nibName: NSNib.Name {
         

@@ -15,7 +15,7 @@ protocol ScreenshotSharingProvider {
 
 class BridgeViewController: NSViewController {
     
-    @IBOutlet var arrayController: NSArrayController!
+    @IBOutlet private(set) var arrayController: NSArrayController!
     
     deinit {
         

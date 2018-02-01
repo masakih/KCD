@@ -11,9 +11,9 @@ import Quartz
 
 final class ScreenshotCollectionViewItem: NSCollectionViewItem {
     
-    @IBOutlet weak var imageBox: NSBox!
-    @IBOutlet weak var nameField: NSTextField!
-    @IBOutlet weak var nameBox: NSBox!
+    @IBOutlet private weak var imageBox: NSBox!
+    @IBOutlet private weak var nameField: NSTextField!
+    @IBOutlet private weak var nameBox: NSBox!
     
     var info: ScreenshotInformation? {
         

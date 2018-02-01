@@ -11,9 +11,9 @@ import WebKit
 
 final class ExternalBrowserWindowController: NSWindowController {
         
-    @IBOutlet var webView: WebView!
-    @IBOutlet var goSegment: NSSegmentedControl!
-    @IBOutlet var bookmarkListView: NSView!
+    @IBOutlet private var webView: WebView!
+    @IBOutlet private var goSegment: NSSegmentedControl!
+    @IBOutlet private var bookmarkListView: NSView!
     
     private var canGoBackObservation: NSKeyValueObservation?
     private var canGoForwardObservation: NSKeyValueObservation?

@@ -19,8 +19,8 @@ final class SlotItemWindowController: NSWindowController {
     
     @objc let managedObjectContext = ServerDataStore.default.context
     
-    @IBOutlet var slotItemController: NSArrayController!
-    @IBOutlet var searchField: NSSearchField!
+    @IBOutlet private var slotItemController: NSArrayController!
+    @IBOutlet private var searchField: NSSearchField!
     
     override var windowNibName: NSNib.Name {
         

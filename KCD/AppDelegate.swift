@@ -28,8 +28,8 @@ final class AppDelegate: NSObject {
     private let resourceHistory = ResourceHistoryManager()
     
     // MARK: - Variable
-    @IBOutlet var debugMenuItem: NSMenuItem!
-    @IBOutlet var billingWindowMenuItem: NSMenuItem!
+    @IBOutlet private var debugMenuItem: NSMenuItem!
+    @IBOutlet private var billingWindowMenuItem: NSMenuItem!
     
     var jsonViewWindowController: JSONViewWindowController? {
         

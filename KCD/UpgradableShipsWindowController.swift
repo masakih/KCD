@@ -41,9 +41,9 @@ final class UpgradableShipsWindowController: NSWindowController {
     }
     
     
-    @IBOutlet var contextualMenu: NSMenu!
-    @IBOutlet var tableView: NSTableView!
-    @IBOutlet var shipsController: NSArrayController!
+    @IBOutlet private var contextualMenu: NSMenu!
+    @IBOutlet private var tableView: NSTableView!
+    @IBOutlet private var shipsController: NSArrayController!
     
     override var windowNibName: NSNib.Name {
         

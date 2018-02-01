@@ -25,12 +25,12 @@ final class ShipViewController: MainTabVIewItemViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    @IBOutlet var shipController: NSArrayController!
-    @IBOutlet var expTableView: NSScrollView!
-    @IBOutlet var powerTableView: NSScrollView!
-    @IBOutlet var power2TableView: NSScrollView!
-    @IBOutlet var power3TableView: NSScrollView!
-    @IBOutlet weak var standardDeviationField: NSTextField!
+    @IBOutlet private var shipController: NSArrayController!
+    @IBOutlet private var expTableView: NSScrollView!
+    @IBOutlet private var powerTableView: NSScrollView!
+    @IBOutlet private var power2TableView: NSScrollView!
+    @IBOutlet private var power3TableView: NSScrollView!
+    @IBOutlet private weak var standardDeviationField: NSTextField!
     
     private var sortDescriptorsObservation: NSKeyValueObservation?
     private var arrangedObjectsObservation: NSKeyValueObservation?

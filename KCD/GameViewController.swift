@@ -15,7 +15,7 @@ final class GameViewController: NSViewController {
     private static let gamePageURL = "http://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/"
     private static let loginPageURLPrefix = "https://www.dmm.com/my/-/login/=/"
     
-    @IBOutlet var webView: WebView!
+    @IBOutlet private var webView: WebView!
     
     override var nibName: NSNib.Name {
         

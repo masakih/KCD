@@ -102,12 +102,12 @@ final class FleetViewController: NSViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    @IBOutlet weak var placeholder01: NSView!
-    @IBOutlet weak var placeholder02: NSView!
-    @IBOutlet weak var placeholder03: NSView!
-    @IBOutlet weak var placeholder04: NSView!
-    @IBOutlet weak var placeholder05: NSView!
-    @IBOutlet weak var placeholder06: NSView!
+    @IBOutlet private weak var placeholder01: NSView!
+    @IBOutlet private weak var placeholder02: NSView!
+    @IBOutlet private weak var placeholder03: NSView!
+    @IBOutlet private weak var placeholder04: NSView!
+    @IBOutlet private weak var placeholder05: NSView!
+    @IBOutlet private weak var placeholder06: NSView!
     
     @objc dynamic var fleetNumber: Int = 1 {
         

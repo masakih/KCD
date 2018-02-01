@@ -35,14 +35,14 @@ final class BroserWindowController: NSWindowController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    @IBOutlet weak var placeholder: NSView!
-    @IBOutlet weak var combinedViewPlaceholder: NSView!
-    @IBOutlet weak var deckPlaceholder: NSView!
-    @IBOutlet weak var stokerContainer: NSView!
-    @IBOutlet weak var resourcePlaceholder: NSView!
-    @IBOutlet weak var ancherageRepariTimerPlaceholder: NSView!
-    @IBOutlet weak var informations: NSTabView!
-    @IBOutlet var deckContoller: NSArrayController!
+    @IBOutlet private weak var placeholder: NSView!
+    @IBOutlet private weak var combinedViewPlaceholder: NSView!
+    @IBOutlet private weak var deckPlaceholder: NSView!
+    @IBOutlet private weak var stokerContainer: NSView!
+    @IBOutlet private weak var resourcePlaceholder: NSView!
+    @IBOutlet private weak var ancherageRepariTimerPlaceholder: NSView!
+    @IBOutlet private weak var informations: NSTabView!
+    @IBOutlet private var deckContoller: NSArrayController!
     
     override var windowNibName: NSNib.Name {
         

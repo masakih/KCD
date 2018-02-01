@@ -12,8 +12,8 @@ final class PowerUpSupportViewController: MainTabVIewItemViewController {
     
     @objc let managedObjectContext = ServerDataStore.default.context
     
-    @IBOutlet var shipController: NSArrayController!
-    @IBOutlet weak var typeSegment: NSSegmentedControl!
+    @IBOutlet private var shipController: NSArrayController!
+    @IBOutlet private weak var typeSegment: NSSegmentedControl!
     
     private var sortDescriptorsObservation: NSKeyValueObservation?
     

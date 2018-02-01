@@ -54,8 +54,8 @@ final class ScreenshotEditorViewController: BridgeViewController {
     }
     
     
-    @IBOutlet weak var tiledImageView: TiledImageView!
-    @IBOutlet weak var doneButton: NSButton!
+    @IBOutlet private weak var tiledImageView: TiledImageView!
+    @IBOutlet private weak var doneButton: NSButton!
     
     @objc var columnCount: Int {
         

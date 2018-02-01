@@ -10,7 +10,7 @@ import Cocoa
 
 final class UITestWindowController: NSWindowController {
     
-    @IBOutlet var testViewPlaceholder: NSView!
+    @IBOutlet private var testViewPlaceholder: NSView!
     
     override var windowNibName: NSNib.Name {
         
