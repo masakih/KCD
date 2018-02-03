@@ -73,6 +73,10 @@ final class ShipMapper: JSONMapper {
         case .ship3, .getShip, .shipDeck, .powerup, .slotDeprive:
             return false
             
+        case .ship2:
+            // 特殊任務のクリア時にship2がapi_shipid付きでリクエストされ、その艦娘のデータしかない時があるため
+            return !apiResponse.parameter["api_shipid"].valid
+            
         default:
             return true
         }
