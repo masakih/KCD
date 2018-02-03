@@ -117,7 +117,9 @@ final class GameViewController: NSViewController {
         guard let rep = webView.bitmapImageRepForCachingDisplay(in: f) else { return }
         
         webView.cacheDisplay(in: frame, to: rep)
-        AppDelegate.shared.registerScreenshot(rep, fromOnScreen: .zero)
+        
+        ScreenshotRegister(ApplicationDirecrories.screenshotSaveDirectoryURL)
+            .registerScreenshot(rep, name: localizedAppName())
     }
     
     @available(OSX 10.13, *)
@@ -153,7 +155,8 @@ final class GameViewController: NSViewController {
             rep.size = NSSize(width: 800, height: 480)
         }
         
-        AppDelegate.shared.registerScreenshot(rep, fromOnScreen: .zero)
+        ScreenshotRegister(ApplicationDirecrories.screenshotSaveDirectoryURL)
+            .registerScreenshot(rep, name: localizedAppName())
     }
     
     @IBAction func screenShot(_ sender: AnyObject?) {

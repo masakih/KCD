@@ -18,6 +18,17 @@ private func supportDirName() -> String {
         ?? "UnknownAppliation"
 }
 
+func localizedAppName() -> String {
+    
+    guard let name = Bundle.main.localizedInfoDictionary?["CFBundleName"] as? String,
+        !name.isEmpty else {
+            
+            return supportDirName()
+    }
+    
+    return name
+}
+
 struct ApplicationDirecrories {
     
     static let support = searchedURL(for: .applicationSupportDirectory)
@@ -34,6 +45,38 @@ struct ApplicationDirecrories {
             ?? URL(fileURLWithPath: NSHomeDirectory())
     }
 }
+
+extension ApplicationDirecrories {
+    
+    static let screenshotSaveDirectoryURL: URL = {
+        
+        let parentURL = URL(fileURLWithPath: AppDelegate.shared.screenShotSaveDirectory)
+        let url = parentURL.appendingPathComponent(localizedAppName())
+        let fm = FileManager.default
+        var isDir: ObjCBool = false
+        
+        do {
+            
+            if !fm.fileExists(atPath: url.path, isDirectory: &isDir) {
+                
+                try fm.createDirectory(at: url, withIntermediateDirectories: false)
+                
+            } else if !isDir.boolValue {
+                
+                print("\(url) is regular file, not direcory.")
+                return parentURL
+            }
+            
+        } catch {
+            
+            print("Can not create screenshot save directory.")
+            return parentURL
+        }
+        
+        return url
+    }()
+}
+
 
 func createDirectory(_ url: URL) -> Bool {
     

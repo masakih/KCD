@@ -126,6 +126,24 @@ final class ScreenshotListViewController: NSViewController {
             
             self.inLiveScrolling = false
         }
+        nc.addObserver(forName: .didRegisterScreenshot,
+                       object: nil,
+                       queue: .main) { notification in
+                        
+                        guard let url = notification.userInfo?[ScreenshotRegister.screenshotURLKey] as? URL else { return }
+                        
+                        let info = ScreenshotInformation(url: url)
+                        
+                        self.screenshotsController.insert(info, atArrangedObjectIndex: 0)
+                        let set: Set<IndexPath> = [NSIndexPath(forItem: 0, inSection: 0) as IndexPath]
+                        self.collectionView.selectionIndexPaths = set
+                        
+                        self.collectionView.scrollToItems(at: set, scrollPosition: .nearestHorizontalEdge)
+                        if UserDefaults.standard[.showsListWindowAtScreenshot] {
+                            
+                            self.view.window?.makeKeyAndOrderFront(nil)
+                        }
+        }
         
         collectionView.setDraggingSourceOperationMask([.move, .copy, .delete], forLocal: false)
         
@@ -139,33 +157,6 @@ final class ScreenshotListViewController: NSViewController {
         guard let vc = segue.destinationController as? NSViewController else { return }
         
         vc.representedObject = screenshots
-    }
-    
-    func registerImage(_ image: NSImage?) {
-        
-        image?.tiffRepresentation
-            .flatMap { NSBitmapImageRep(data: $0) }
-            .map { registerScreenshot($0, fromOnScreen: .zero) }
-    }
-    
-    func registerScreenshot(_ image: NSBitmapImageRep, fromOnScreen: NSRect) {
-        
-        let register = ScreenshotRegister(screenshotSaveDirectoryURL)
-        
-        register.registerScreenshot(image, name: dirName) { url in
-            
-            let info = ScreenshotInformation(url: url)
-            
-            self.screenshotsController.insert(info, atArrangedObjectIndex: 0)
-            let set: Set<IndexPath> = [NSIndexPath(forItem: 0, inSection: 0) as IndexPath]
-            self.collectionView.selectionIndexPaths = set
-            
-            self.collectionView.scrollToItems(at: set, scrollPosition: .nearestHorizontalEdge)
-            if UserDefaults.standard[.showsListWindowAtScreenshot] {
-                
-                self.view.window?.makeKeyAndOrderFront(nil)
-            }
-        }
     }
     
     func viewFrameDidChange(_ notification: Notification?) {

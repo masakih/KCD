@@ -69,9 +69,10 @@ final class ScreenshotListWindowController: NSWindowController {
         view.addSubview(viewController.view)
     }
     
-    func registerScreenshot(_ image: NSBitmapImageRep, fromOnScreen: NSRect) {
+    func registerScreenshot(_ image: NSBitmapImageRep) {
         
-        listViewController.registerScreenshot(image, fromOnScreen: fromOnScreen)
+        ScreenshotRegister(ApplicationDirecrories.screenshotSaveDirectoryURL)
+            .registerScreenshot(image, name: localizedAppName())
     }
     
     private func createEditor() -> ScreenshotEditorViewController {
@@ -81,8 +82,13 @@ final class ScreenshotListWindowController: NSWindowController {
             
             defer { self?.changeToDetail(nil) }
             
-            guard let image = $0 else { return }
-            self?.listViewController.registerImage(image)
+            $0?.tiffRepresentation
+                .flatMap { NSBitmapImageRep(data: $0) }
+                .map {
+                    
+                    ScreenshotRegister(ApplicationDirecrories.screenshotSaveDirectoryURL)
+                        .registerScreenshot($0, name: localizedAppName())
+            }
         }
         
         return editor

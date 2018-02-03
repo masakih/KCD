@@ -8,7 +8,15 @@
 
 import Cocoa
 
+
+extension Notification.Name {
+    
+    static let didRegisterScreenshot = Notification.Name(rawValue: "ScreenshotRegister.didRegisterScreenshot")
+}
+
 class ScreenshotRegister {
+    
+    static let screenshotURLKey = "ScreenshotRegister.screenshotURLKey"
     
     let url: URL
     
@@ -17,7 +25,7 @@ class ScreenshotRegister {
         self.url = url
     }
     
-    func registerScreenshot(_ image: NSBitmapImageRep, name: String, completeHandler: @escaping (URL) -> Void) {
+    func registerScreenshot(_ image: NSBitmapImageRep, name: String) {
         
         DispatchQueue(label: "Screenshot queue").async {
             
@@ -38,10 +46,18 @@ class ScreenshotRegister {
                 return
             }
             
-            DispatchQueue.main.async {
-                
-                completeHandler(pathURL)
-            }
+            self.notify(url: pathURL)
         }
     }
+    
+    func notify(url: URL) {
+        
+        DispatchQueue.main.async {
+            NotificationCenter.default
+                .post(name: .didRegisterScreenshot,
+                      object: self,
+                      userInfo: [ScreenshotRegister.screenshotURLKey: url])
+        }
+    }
+    
 }

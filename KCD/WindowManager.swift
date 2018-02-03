@@ -134,11 +134,6 @@ final class WindowManager {
         
         return browser
     }
-    
-    func registerScreenshot(_ image: NSBitmapImageRep, fromOnScreen: NSRect) {
-        
-        screenshotListWindowController.registerScreenshot(image, fromOnScreen: fromOnScreen)
-    }
 }
 
 // MARK: - IBActions

@@ -111,11 +111,6 @@ final class AppDelegate: NSObject {
         return windowManager.createNewBrowser()
     }
     
-    func registerScreenshot(_ image: NSBitmapImageRep, fromOnScreen: NSRect) {
-        
-        windowManager.registerScreenshot(image, fromOnScreen: fromOnScreen)
-    }
-    
     @objc func fire(_ timer: Timer) {
         
         updaters.forEach { $0() }
