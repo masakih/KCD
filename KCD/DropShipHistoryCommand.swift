@@ -62,24 +62,8 @@ final class DropShipHistoryCommand: JSONCommand {
         
         let store = LocalDataStore.oneTimeEditor()
         
-        store.hiddenDropShipHistories()
-            .forEach {
-                
-                guard let new = store.createDropShipHistory() else {
-                    
-                    return Logger.shared.log("Can not create DropShipHistory")
-                }
-                
-                new.shipName = $0.shipName
-                new.mapArea = $0.mapArea
-                new.mapAreaName = $0.mapAreaName
-                new.mapInfo = $0.mapInfo
-                new.mapInfoName = $0.mapInfoName
-                new.mapCell = $0.mapCell
-                new.winRank = $0.winRank
-                new.date = $0.date
-                
-                store.delete($0)
-        }
+        let hidden = store.hiddenDropShipHistories()
+        _ = hidden.map(store.createDropShipHistory(from:))
+        hidden.forEach(store.delete)
     }
 }

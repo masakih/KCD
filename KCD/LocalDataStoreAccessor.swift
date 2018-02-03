@@ -24,9 +24,24 @@ extension LocalDataStore {
         return dropHistories
     }
     
-    func createDropShipHistory() -> DropShipHistory? {
+    func createDropShipHistory(from: HiddenDropShipHistory) -> DropShipHistory? {
         
-        return insertNewObject(for: DropShipHistory.entity)
+        guard let new = insertNewObject(for: DropShipHistory.entity) else {
+            
+            Logger.shared.log("Can not create DropShipHistory")
+            return nil
+        }
+        
+        new.shipName = from.shipName
+        new.mapArea = from.mapArea
+        new.mapAreaName = from.mapAreaName
+        new.mapInfo = from.mapInfo
+        new.mapInfoName = from.mapInfoName
+        new.mapCell = from.mapCell
+        new.winRank = from.winRank
+        new.date = from.date
+        
+        return new
     }
     
     func kaihatuHistories() -> [KaihatuHistory] {
