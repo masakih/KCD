@@ -20,11 +20,6 @@ final class ShipViewController: MainTabVIewItemViewController {
     
     @objc let managedObjectContext = ServerDataStore.default.context
     
-    deinit {
-        
-        NotificationCenter.default.removeObserver(self)
-    }
-    
     @IBOutlet private var shipController: NSArrayController!
     @IBOutlet private var expTableView: NSScrollView!
     @IBOutlet private var powerTableView: NSScrollView!
@@ -34,6 +29,8 @@ final class ShipViewController: MainTabVIewItemViewController {
     
     private var sortDescriptorsObservation: NSKeyValueObservation?
     private var arrangedObjectsObservation: NSKeyValueObservation?
+    
+    private var notificationObserver = NotificationObserver()
     
     override var nibName: NSNib.Name {
         
@@ -97,8 +94,8 @@ final class ShipViewController: MainTabVIewItemViewController {
         tableViews
             .forEach {
                 
-                NotificationCenter.default
-                    .addObserver(forName: NSScrollView.didEndLiveScrollNotification, object: $0, queue: nil) {
+                notificationObserver
+                    .addObserver(forName: NSScrollView.didEndLiveScrollNotification, object: $0, queue: .main) {
                         
                         guard let target = $0.object as? NSScrollView else { return }
                         

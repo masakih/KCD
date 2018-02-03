@@ -60,6 +60,8 @@ final class FleetViewController: NSViewController {
     private let fleetController = NSObjectController()
     private let shipObserveKeys = [#keyPath(Ship.seiku), #keyPath(Ship.lv), #keyPath(Ship.equippedItem)]
     
+    private var notificationObserver = NotificationObserver()
+    
     init?(viewType: FleetViewType) {
         
         type = viewType
@@ -95,11 +97,6 @@ final class FleetViewController: NSViewController {
     required init?(coder: NSCoder) {
         
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    deinit {
-        
-        NotificationCenter.default.removeObserver(self)
     }
     
     @IBOutlet private weak var placeholder01: NSView!
@@ -264,7 +261,7 @@ final class FleetViewController: NSViewController {
         
         // 初回起動時などデータがまだない時はportAPIを受信後設定する
         NotificationCenter.default
-            .addObserverOnce(forName: .PortAPIReceived, object: nil, queue: nil) { [weak self] _ in
+            .addObserverOnce(forName: .PortAPIReceived, object: nil, queue: .main) { [weak self] _ in
                 
                 if let current = self?.fleetNumber {
                     
@@ -275,9 +272,8 @@ final class FleetViewController: NSViewController {
                 }
         }
         
-        NotificationCenter
-            .default
-            .addObserver(forName: .DidUpdateGuardEscape, object: nil, queue: nil) { [weak self] _ in
+        notificationObserver
+            .addObserver(forName: .DidUpdateGuardEscape, object: nil, queue: .main) { [weak self] _ in
                 
                 self?.notifyChangeValue(forKey: #keyPath(totalSeiku))
                 self?.notifyChangeValue(forKey: #keyPath(totalCalclatedSeiku))
