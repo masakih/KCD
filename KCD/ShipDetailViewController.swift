@@ -35,8 +35,7 @@ final class ShipDetailViewController: NSViewController {
         
         super.init(nibName: nibNameFor(type), bundle: nil)
         
-        NotificationCenter
-            .default
+        NotificationCenter.default
             .addObserver(forName: .DidUpdateGuardEscape, object: nil, queue: nil) { [weak self] _ in
                 
                 self?.guardEscaped = self?.ship?.guardEscaped ?? false
