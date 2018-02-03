@@ -10,12 +10,11 @@ import Cocoa
 
 final class JSONTracker {
     
-    private let queue: Queue<APIResponse>
+    private let queue = Queue<APIResponse>()
     private let reciever: JSONReciever
     
     init() {
         
-        queue = Queue()
         reciever = JSONReciever(queue: queue)
         
         start()
