@@ -198,6 +198,8 @@
 		F4A0D7151E2FB11F00224DCE /* MapStartCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A0D7141E2FB11F00224DCE /* MapStartCommand.swift */; };
 		F4A0D7191E2FBE1600224DCE /* JSONViewCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A0D7181E2FBE1600224DCE /* JSONViewCommand.swift */; };
 		F4A0D71B1E30D77B00224DCE /* JSONCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A0D71A1E30D77B00224DCE /* JSONCommand.swift */; };
+		F4A0F7EE20269536001DAFE3 /* InformationTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A0F7EC20269535001DAFE3 /* InformationTabViewController.swift */; };
+		F4A0F7EF20269536001DAFE3 /* InformationTabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A0F7ED20269536001DAFE3 /* InformationTabViewController.xib */; };
 		F4A2AF581A0930160024BD9E /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A2AF571A0930160024BD9E /* Quartz.framework */; };
 		F4A3AD9419BDDE5500FDBF80 /* PreferencePanelController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A3AD9619BDDE5500FDBF80 /* PreferencePanelController.xib */; };
 		F4A9B8D41B975029005786C2 /* SlotItemShortName.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4A9B8D21B975029005786C2 /* SlotItemShortName.plist */; };
@@ -592,6 +594,8 @@
 		F4A0D7141E2FB11F00224DCE /* MapStartCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapStartCommand.swift; sourceTree = "<group>"; };
 		F4A0D7181E2FBE1600224DCE /* JSONViewCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONViewCommand.swift; sourceTree = "<group>"; };
 		F4A0D71A1E30D77B00224DCE /* JSONCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONCommand.swift; sourceTree = "<group>"; };
+		F4A0F7EC20269535001DAFE3 /* InformationTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationTabViewController.swift; sourceTree = "<group>"; };
+		F4A0F7ED20269536001DAFE3 /* InformationTabViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InformationTabViewController.xib; sourceTree = "<group>"; };
 		F4A2AF571A0930160024BD9E /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		F4A9B8D31B975029005786C2 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = ja; path = ja.lproj/SlotItemShortName.plist; sourceTree = "<group>"; };
 		F4A9B8D61B99D5B7005786C2 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text; name = ja; path = ja.lproj/Taihi.txt; sourceTree = "<group>"; };
@@ -1225,6 +1229,8 @@
 				F4E5FF131E17F93B0026868C /* BroserWindowController.swift */,
 				F4B3DC4118E5C8870011B4FC /* BroserWindowController.xib */,
 				F45FBB721E116F53000E72B9 /* MainTabVIewItemViewController.swift */,
+				F4A0F7EC20269535001DAFE3 /* InformationTabViewController.swift */,
+				F4A0F7ED20269536001DAFE3 /* InformationTabViewController.xib */,
 				F4D05BDA1E0F76A800688D66 /* ResourceViewController.swift */,
 				F4C6686B1C5451C800601AFB /* ResourceViewController.xib */,
 				F4E5FF011E150A850026868C /* AncherageRepairTimerViewController.swift */,
@@ -1549,6 +1555,7 @@
 				F49688671B3EA16800D3CEDE /* RemoveDatabaseFileAndRestart.app in Resources */,
 				F494DC6A18C8BAB900AE97E4 /* PowerUpSupportViewController.xib in Resources */,
 				F49AABE61DFC48F300E0B24F /* MainTouchBar.xib in Resources */,
+				F4A0F7EF20269536001DAFE3 /* InformationTabViewController.xib in Resources */,
 				F4BDEB51187252F30069D0CE /* InfoPlist.strings in Resources */,
 				F43E67B918BE060E0087E5B6 /* LevelUpExp.plist in Resources */,
 				F4A9B8D71B99D5B7005786C2 /* Taihi.txt in Resources */,
@@ -1799,6 +1806,7 @@
 				F4AA59421E1E2854001667AF /* OrderedSetToArrayTransformer.swift in Sources */,
 				F4A0D7191E2FBE1600224DCE /* JSONViewCommand.swift in Sources */,
 				F47C3EBC1E61AEC500D97449 /* AirBaseMapper.swift in Sources */,
+				F4A0F7EE20269536001DAFE3 /* InformationTabViewController.swift in Sources */,
 				F4AA59441E1E300B001667AF /* ActinKindTransformer.swift in Sources */,
 				F4D05BCC1E0D274100688D66 /* BookmarkEditorViewController.swift in Sources */,
 				F49097871E1A85F70085A45D /* ImageView.swift in Sources */,

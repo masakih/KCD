@@ -41,7 +41,7 @@ final class BroserWindowController: NSWindowController {
     @IBOutlet private weak var stokerContainer: NSView!
     @IBOutlet private weak var resourcePlaceholder: NSView!
     @IBOutlet private weak var ancherageRepariTimerPlaceholder: NSView!
-    @IBOutlet private weak var informations: NSTabView!
+    @IBOutlet private weak var informationsPlaceholder: NSView!
     @IBOutlet private var deckContoller: NSArrayController!
     
     override var windowNibName: NSNib.Name {
@@ -53,24 +53,12 @@ final class BroserWindowController: NSWindowController {
     @objc var flagShipName: String? {
         return ServerDataStore.default.ship(by: flagShipID)?.name
     }
-    var changeMainTabHandler: ((Int) -> Void)?
-    @objc dynamic var selectedMainTabIndex: Int = 0 {
-        
-        didSet {
-            changeMainTabHandler?(selectedMainTabIndex)
-        }
-    }
     
     private var gameViewController: GameViewController!
     private var fleetViewController: FleetViewController!
-    private var tabViewItemViewControllers: [MainTabVIewItemViewController] = []
+    @objc private var informantionViewController = InformationTabViewController()
     private var ancherageRepariTimerViewController: AncherageRepairTimerViewController!
     private var resourceViewController: ResourceViewController!
-    private var docksViewController: DocksViewController!
-    private var shipViewController: ShipViewController!
-    private var powerUpViewController: PowerUpSupportViewController!
-    private var strengthedListViewController: StrengthenListViewController!
-    private var repairListViewController: RepairListViewController!
     private var combinedViewController: CombileViewController!
     
     private var fleetViewPosition: FleetViewPosition = .above
@@ -85,26 +73,14 @@ final class BroserWindowController: NSWindowController {
         gameViewController = GameViewController()
         replace(view: placeholder, with: gameViewController)
         
+        replace(view: informationsPlaceholder, with: informantionViewController)
+        
         resourceViewController = ResourceViewController()
         replace(view: resourcePlaceholder, with: resourceViewController)
         
         ancherageRepariTimerViewController = AncherageRepairTimerViewController()
         replace(view: ancherageRepariTimerPlaceholder, with: ancherageRepariTimerViewController)
         if UserDefaults.standard[.screenshotButtonSize] == .small { toggleAnchorageSize(nil) }
-        
-        tabViewItemViewControllers = [
-            DocksViewController(),
-            ShipViewController(),
-            PowerUpSupportViewController(),
-            StrengthenListViewController(),
-            RepairListViewController()
-        ]
-        tabViewItemViewControllers.enumerated().forEach {
-            
-            _ = $0.element.view
-            let item = informations.tabViewItem(at: $0.offset)
-            item.viewController = $0.element
-        }
         
         fleetViewController = FleetViewController(viewType: .detailViewType)
         replace(view: deckPlaceholder, with: fleetViewController)
@@ -202,7 +178,7 @@ extension BroserWindowController {
     
     private func showView(number: Int) {
         
-        informations.selectTabViewItem(at: number)
+        informantionViewController.selectionIndex = number
     }
     
     @IBAction func reloadContent(_ sender: AnyObject?) {
@@ -257,10 +233,10 @@ extension BroserWindowController {
         }()
         ancherageRepariTimerViewController.controlSize = newSize
         
-        var frame = informations.frame
+        var frame = informantionViewController.view.frame
         frame.size.height -= diff
         frame.origin.y += diff
-        informations.frame = frame
+        informantionViewController.view.frame = frame
         
         UserDefaults.standard[.screenshotButtonSize] = newSize
     }
@@ -547,10 +523,10 @@ extension BroserWindowController: FleetViewControllerDelegate {
             // hide
             let diffHeight = fleetViewController.shipViewSize.height
             
-            var iFrame = informations.frame
+            var iFrame = informantionViewController.view.frame
             iFrame.origin.y -= diffHeight
             iFrame.size.height += diffHeight
-            informations.animator().frame = iFrame
+            informantionViewController.view.animator().frame = iFrame
             
             var sFrame = stokerContainer.frame
             sFrame.origin.y -= diffHeight
@@ -563,10 +539,10 @@ extension BroserWindowController: FleetViewControllerDelegate {
             //show
             let diffHeight = fleetViewController.shipViewSize.height
             
-            var iFrame = informations.frame
+            var iFrame = informantionViewController.view.frame
             iFrame.origin.y += diffHeight
             iFrame.size.height -= diffHeight
-            informations.animator().frame = iFrame
+            informantionViewController.view.animator().frame = iFrame
             
             var sFrame = stokerContainer.frame
             sFrame.origin.y += diffHeight
@@ -612,26 +588,22 @@ extension BroserWindowController {
         Bundle.main.loadNibNamed(NSNib.Name("BroswerTouchBar"), owner: self, topLevelObjects: nil)
         
         shipTypeSegment.bind(.selectedIndex,
-                             to: tabViewItemViewControllers[0],
-                             withKeyPath: #keyPath(MainTabVIewItemViewController.selectedShipType),
+                             to: informantionViewController,
+                             withKeyPath: #keyPath(InformationTabViewController.selectedShipType),
                              options: nil)
-        let o = selectedMainTabIndex
-        selectedMainTabIndex = o
         
-        changeMainTabHandler = { [weak self] in
+        informantionViewController.selectionDidChangeHandler = { [weak self] in
             
             guard let `self` = self else { return }
             
             self.shipTypeButton.dismissPopover(nil)
-            self.shipTypeSegment.unbind(.selectedIndex)
             
             guard let button = self.shipTypeButton.view as? NSButton else { return }
+            button.isHidden = !self.informantionViewController.hasShipTypeSelector
             
-            let vc = self.tabViewItemViewControllers[$0]
-            button.isHidden = !vc.hasShipTypeSelector
             self.shipTypeSegment.bind(.selectedIndex,
-                                      to: vc,
-                                      withKeyPath: #keyPath(MainTabVIewItemViewController.selectedShipType),
+                                      to: self.informantionViewController,
+                                      withKeyPath: #keyPath(InformationTabViewController.selectedShipType),
                                       options: nil)
         }
         

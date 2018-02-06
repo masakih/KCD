@@ -41,7 +41,7 @@ final class ShipViewController: MainTabVIewItemViewController {
     override var selectedShipType: ShipTabType {
         
         didSet {
-            shipController.filterPredicate = shipTypePredicte
+            shipController.filterPredicate = shipTypePredicte(for: selectedShipType)
             shipController.rearrangeObjects()
         }
     }

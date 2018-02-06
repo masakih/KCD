@@ -71,7 +71,7 @@ final class PowerUpSupportViewController: MainTabVIewItemViewController {
     
     private func customPredicate() -> NSPredicate? {
         
-        switch (shipTypePredicte, omitPredicate) {
+        switch (shipTypePredicte(for: selectedShipType), omitPredicate) {
             
         case let (s?, o?): return .and([o, s])
         case let (s?, nil): return s

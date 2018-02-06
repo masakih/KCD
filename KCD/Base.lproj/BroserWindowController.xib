@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -12,7 +12,7 @@
                 <outlet property="combinedViewPlaceholder" destination="ErU-NG-s3I" id="6hE-wI-Ikk"/>
                 <outlet property="deckContoller" destination="eqP-ex-UzI" id="8n5-Er-BIF"/>
                 <outlet property="deckPlaceholder" destination="tIf-gd-MhY" id="aXM-5K-Uwd"/>
-                <outlet property="informations" destination="fK1-fC-Xdm" id="why-oJ-aEb"/>
+                <outlet property="informationsPlaceholder" destination="jOr-vI-BKr" id="pmY-Qo-olr"/>
                 <outlet property="placeholder" destination="raX-C4-fMW" id="T7y-R7-3qy"/>
                 <outlet property="resourcePlaceholder" destination="Ztc-Gd-Ipf" id="mUG-AG-FqW"/>
                 <outlet property="stokerContainer" destination="vbb-UC-aXs" id="eae-Ze-5ug"/>
@@ -42,46 +42,6 @@
                         <rect key="frame" x="8" y="9" width="800" height="288"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                     </customView>
-                    <tabView initialItem="ETl-Gs-mBL" id="fK1-fC-Xdm">
-                        <rect key="frame" x="813" y="176" width="343" height="600"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
-                        <font key="font" metaFont="system"/>
-                        <tabViewItems>
-                            <tabViewItem label="状況" identifier="1" id="ETl-Gs-mBL">
-                                <view key="view" id="nff-Ek-C9h">
-                                    <rect key="frame" x="10" y="33" width="323" height="554"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                </view>
-                            </tabViewItem>
-                            <tabViewItem label="編成支援" identifier="2" id="vnl-eb-0bM">
-                                <view key="view" id="HTH-7g-xfp">
-                                    <rect key="frame" x="10" y="33" width="323" height="554"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                </view>
-                            </tabViewItem>
-                            <tabViewItem label="近代化" identifier="3" id="Ops-Am-LiF">
-                                <view key="view" id="ytJ-Qj-RCn">
-                                    <rect key="frame" x="10" y="33" width="323" height="547"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                </view>
-                            </tabViewItem>
-                            <tabViewItem label="改修工廠" identifier="4" id="Ls3-Cp-5p4">
-                                <view key="view" id="6ia-4I-aBI">
-                                    <rect key="frame" x="10" y="33" width="323" height="547"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                </view>
-                            </tabViewItem>
-                            <tabViewItem label=" 修復" identifier="5" id="GgO-z3-Sgk">
-                                <view key="view" id="C3D-UU-4z6">
-                                    <rect key="frame" x="10" y="33" width="323" height="547"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                </view>
-                            </tabViewItem>
-                        </tabViewItems>
-                        <connections>
-                            <binding destination="-2" name="selectedIndex" keyPath="selectedMainTabIndex" id="bvs-iv-JKe"/>
-                        </connections>
-                    </tabView>
                     <customView misplaced="YES" id="vbb-UC-aXs">
                         <rect key="frame" x="808" y="9" width="352" height="178"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
@@ -100,6 +60,10 @@
                             </customView>
                         </subviews>
                     </customView>
+                    <customView misplaced="YES" id="jOr-vI-BKr">
+                        <rect key="frame" x="808" y="187" width="352" height="591"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                    </customView>
                 </subviews>
             </view>
             <connections>
@@ -111,7 +75,7 @@
                 </binding>
                 <outlet property="delegate" destination="-2" id="4"/>
             </connections>
-            <point key="canvasLocation" x="180.5" y="-663"/>
+            <point key="canvasLocation" x="188.5" y="-705"/>
         </window>
         <arrayController mode="entity" entityName="Deck" fetchPredicateFormat="id = 1" editable="NO" automaticallyPreparesContent="YES" id="eqP-ex-UzI" userLabel="Deck">
             <connections>
