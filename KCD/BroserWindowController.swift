@@ -197,6 +197,7 @@ extension BroserWindowController {
         store.quests().forEach(store.delete)
     }
     
+    // call from menu item
     @IBAction func selectView(_ sender: AnyObject?) {
         
         guard let tag = sender?.tag else { return }
@@ -204,6 +205,7 @@ extension BroserWindowController {
         showView(number: tag)
     }
     
+    // call from touch bar
     @IBAction func changeMainTab(_ sender: AnyObject?) {
         
         guard let segment = sender?.selectedSegment else { return }
