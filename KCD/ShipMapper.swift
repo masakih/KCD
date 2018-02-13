@@ -137,19 +137,13 @@ final class ShipMapper: JSONMapper {
             
             guard let ex = value.int else {
                 
-                Logger.shared.log("slot_ex type is \(value.type)")
-                
                 ship.extraItem = nil
                 return false
             }
             
-            Logger.shared.log("slot_ex is \(ex)")
-            
             if ship.slot_ex == ex { return true }
             
             setExtraSlot(ex, to: ship)
-            
-            Logger.shared.log("new ex slotItem is \(ship.extraItem?.name ?? "none")")
             
             ship.slot_ex = ex
             
