@@ -40,7 +40,7 @@ enum FutureError: Error {
     case noSuchElement
 }
 
-class Future<T> {
+final class Future<T> {
     
     private let semaphore: DispatchSemaphore?
     

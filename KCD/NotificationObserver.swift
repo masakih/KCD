@@ -9,7 +9,7 @@
 import Foundation
 
 /// 開放時にremoveObserver(_:)を実行してくれるクラス
-class NotificationObserver {
+final class NotificationObserver {
     
     private var tokens: [NSObjectProtocol] = []
     
