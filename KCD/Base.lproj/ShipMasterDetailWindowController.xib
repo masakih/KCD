@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ShipMasterDetailWindowController">
             <connections>
+                <outlet property="deckController" destination="1b6-0l-LOD" id="ZRH-4B-e7J"/>
+                <outlet property="decksView" destination="Mzz-KV-eB2" id="MKm-Fk-Xiu"/>
                 <outlet property="fleetMemberController" destination="0ea-R5-AMf" id="nDJ-1c-T3F"/>
                 <outlet property="fleetMemberView" destination="Snb-45-B3k" id="mxa-5g-9ht"/>
                 <outlet property="sally" destination="FB6-ix-AhK" id="0JL-oC-UkB"/>
                 <outlet property="shipController" destination="hrb-ab-EE7" id="Jx2-V3-8Sq"/>
-                <outlet property="shipsView" destination="s4z-M5-vhI" id="DQj-jF-upA"/>
+                <outlet property="shipsView" destination="s4z-M5-vhI" id="Kdj-p2-DlM"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -41,7 +43,7 @@
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
-                                        <tableColumn width="116" minWidth="40" maxWidth="1000" id="ytG-84-E8m">
+                                        <tableColumn identifier="" width="116" minWidth="40" maxWidth="1000" id="ytG-84-E8m">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -61,7 +63,7 @@
                                                 </binding>
                                             </connections>
                                         </tableColumn>
-                                        <tableColumn width="153" minWidth="40" maxWidth="1000" id="Gdo-JI-JjK">
+                                        <tableColumn identifier="" width="153" minWidth="40" maxWidth="1000" id="Gdo-JI-JjK">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -111,7 +113,7 @@
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
-                                        <tableColumn width="116" minWidth="40" maxWidth="1000" id="Fgl-pl-n17">
+                                        <tableColumn identifier="" width="116" minWidth="40" maxWidth="1000" id="Fgl-pl-n17">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -127,7 +129,7 @@
                                                 <binding destination="1b6-0l-LOD" name="value" keyPath="arrangedObjects.id" id="cmM-A8-7ye"/>
                                             </connections>
                                         </tableColumn>
-                                        <tableColumn width="153" minWidth="40" maxWidth="1000" id="xgh-DN-31V">
+                                        <tableColumn identifier="" width="153" minWidth="40" maxWidth="1000" id="xgh-DN-31V">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -144,6 +146,9 @@
                                             </connections>
                                         </tableColumn>
                                     </tableColumns>
+                                    <connections>
+                                        <outlet property="delegate" destination="-2" id="VRS-Z9-z6U"/>
+                                    </connections>
                                 </tableView>
                             </subviews>
                         </clipView>
@@ -174,7 +179,7 @@
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
-                                        <tableColumn width="116" minWidth="40" maxWidth="1000" id="4w9-TS-1GK">
+                                        <tableColumn identifier="" width="116" minWidth="40" maxWidth="1000" id="4w9-TS-1GK">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -187,14 +192,10 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
-                                                <binding destination="0ea-R5-AMf" name="value" keyPath="arrangedObjects.name" id="4uu-ty-a5g">
-                                                    <dictionary key="options">
-                                                        <bool key="NSCreatesSortDescriptor" value="NO"/>
-                                                    </dictionary>
-                                                </binding>
+                                                <binding destination="0ea-R5-AMf" name="value" keyPath="arrangedObjects.id" id="6gz-kG-kDC"/>
                                             </connections>
                                         </tableColumn>
-                                        <tableColumn width="153" minWidth="40" maxWidth="1000" id="bqX-8i-GPB">
+                                        <tableColumn identifier="" width="153" minWidth="40" maxWidth="1000" id="bqX-8i-GPB">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -206,6 +207,9 @@
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                            <connections>
+                                                <binding destination="0ea-R5-AMf" name="value" keyPath="arrangedObjects.name" id="pVp-tC-ILy"/>
+                                            </connections>
                                         </tableColumn>
                                     </tableColumns>
                                     <connections>
@@ -227,7 +231,7 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </tableHeaderView>
                     </scrollView>
-                    <searchField wantsLayer="YES" verticalHuggingPriority="750" id="96e-f6-EL5">
+                    <searchField wantsLayer="YES" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="96e-f6-EL5">
                         <rect key="frame" x="20" y="636" width="277" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="ezT-8W-w3e">
@@ -248,7 +252,7 @@
                         <rect key="frame" x="12" y="302" width="285" height="5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </box>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="gtH-Yg-fa9">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="gtH-Yg-fa9">
                         <rect key="frame" x="18" y="279" width="43" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="艦隊：" id="7Po-Oi-WHz">
@@ -261,7 +265,7 @@
                         <rect key="frame" x="303" y="12" width="5" height="654"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </box>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Ipr-yT-mIm">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="Ipr-yT-mIm">
                         <rect key="frame" x="18" y="152" width="69" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="所属艦娘：" id="bQ3-Rq-cpJ">
@@ -270,7 +274,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="i4f-fG-bbh">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="i4f-fG-bbh">
                         <rect key="frame" x="312" y="641" width="43" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="諸元：" id="sN2-pw-JwP">
@@ -293,7 +297,7 @@
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
-                                        <tableColumn width="116" minWidth="40" maxWidth="1000" id="XeB-ks-bgN">
+                                        <tableColumn identifier="" width="116" minWidth="40" maxWidth="1000" id="XeB-ks-bgN">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -309,7 +313,7 @@
                                                 <binding destination="F2c-qI-d2N" name="value" keyPath="arrangedObjects.name" id="DMF-zp-klp"/>
                                             </connections>
                                         </tableColumn>
-                                        <tableColumn width="172" minWidth="40" maxWidth="1000" id="rAX-5l-OLO">
+                                        <tableColumn identifier="" width="172" minWidth="40" maxWidth="1000" id="rAX-5l-OLO">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -356,7 +360,7 @@
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
-                                        <tableColumn width="67.8671875" minWidth="10" maxWidth="3.4028234663852886e+38" id="gkb-EV-7o8">
+                                        <tableColumn identifier="" width="67.8671875" minWidth="10" maxWidth="3.4028234663852886e+38" id="gkb-EV-7o8">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -372,7 +376,7 @@
                                                 <binding destination="G2z-6Q-bHj" name="value" keyPath="arrangedObjects.id" id="Nbk-UF-Dzw"/>
                                             </connections>
                                         </tableColumn>
-                                        <tableColumn width="156.73046875" minWidth="40" maxWidth="1000" id="FbK-yu-Dnz">
+                                        <tableColumn identifier="" width="156.73046875" minWidth="40" maxWidth="1000" id="FbK-yu-Dnz">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -388,7 +392,7 @@
                                                 <binding destination="G2z-6Q-bHj" name="value" keyPath="arrangedObjects.name" id="MEo-d4-S4o"/>
                                             </connections>
                                         </tableColumn>
-                                        <tableColumn width="60.5" minWidth="40" maxWidth="1000" id="bQ5-wt-Ui7">
+                                        <tableColumn identifier="" width="60.5" minWidth="40" maxWidth="1000" id="bQ5-wt-Ui7">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -421,7 +425,7 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </tableHeaderView>
                     </scrollView>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="7aF-Db-Tk4">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="7aF-Db-Tk4">
                         <rect key="frame" x="312" y="133" width="43" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="装備：" id="peg-bA-Vqf">
@@ -430,7 +434,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="REG-ZF-A3O">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="REG-ZF-A3O">
                         <rect key="frame" x="334" y="276" width="33" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Sally" id="zRd-bf-ZGk">
@@ -439,7 +443,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField verticalHuggingPriority="750" misplaced="YES" id="FB6-ix-AhK">
+                    <textField verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="FB6-ix-AhK">
                         <rect key="frame" x="373" y="271" width="124" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="uoB-zm-em5">
@@ -472,14 +476,19 @@
                 <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="fAQ-KY-pNo"/>
             </connections>
         </arrayController>
-        <objectController id="0Bh-Il-X7K" userLabel="SelectedShip">
+        <objectController id="0Bh-Il-X7K" userLabel="SelectedDeck">
             <connections>
-                <binding destination="-2" name="contentObject" keyPath="selectedShip" id="DX7-Tg-gNd"/>
+                <binding destination="-2" name="contentObject" keyPath="selectedDeck" id="6Tr-8t-iJu"/>
             </connections>
         </objectController>
-        <arrayController objectClassName="Fleet" automaticallyPreparesContent="YES" id="1b6-0l-LOD" userLabel="Fleets">
+        <objectController id="fCa-Q2-AAl" userLabel="SelectedShip">
             <connections>
-                <binding destination="-2" name="contentArray" keyPath="fleetManager.fleets" id="OIP-Oh-bSm"/>
+                <binding destination="-2" name="contentObject" keyPath="selectedShip" id="m5p-vs-vga"/>
+            </connections>
+        </objectController>
+        <arrayController mode="entity" entityName="Deck" editable="NO" automaticallyPreparesContent="YES" id="1b6-0l-LOD" userLabel="Decks">
+            <connections>
+                <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="CpR-kM-Bv9"/>
             </connections>
         </arrayController>
         <arrayController id="F2c-qI-d2N" userLabel="Spec">
@@ -487,9 +496,9 @@
                 <binding destination="-2" name="contentArray" keyPath="spec" id="A2F-p1-hKo"/>
             </connections>
         </arrayController>
-        <arrayController objectClassName="KCShipObject" editable="NO" id="0ea-R5-AMf" userLabel="FleetMember">
+        <arrayController mode="entity" entityName="Ship" editable="NO" selectsInsertedObjects="NO" clearsFilterPredicateOnInsertion="NO" id="0ea-R5-AMf" userLabel="FleetMember">
             <connections>
-                <binding destination="1b6-0l-LOD" name="contentArray" keyPath="selection.ships" id="BCT-CP-GrM"/>
+                <binding destination="-2" name="contentArray" keyPath="fleetShips" id="Q58-IN-yTf"/>
             </connections>
         </arrayController>
         <arrayController objectClassName="KCSlotItemObject" id="G2z-6Q-bHj" userLabel="Equipment">

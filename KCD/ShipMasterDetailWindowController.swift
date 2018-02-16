@@ -24,6 +24,8 @@ final class ShipMasterDetailWindowController: NSWindowController {
     
     @IBOutlet private var shipController: NSArrayController!
     @IBOutlet private var fleetMemberController: NSArrayController!
+    @IBOutlet private var deckController: NSArrayController!
+    @IBOutlet private weak var decksView: NSTableView!
     @IBOutlet private weak var shipsView: NSTableView!
     @IBOutlet private weak var fleetMemberView: NSTableView!
     @IBOutlet private weak var sally: NSTextField!
@@ -33,27 +35,32 @@ final class ShipMasterDetailWindowController: NSWindowController {
         return .nibName(instanceOf: self)
     }
     
+    @objc dynamic var selectedDeck: Deck? {
+        
+        didSet {
+            fleetShips = selectedDeck?[0...6] ?? []
+        }
+    }
+    
+    @objc dynamic var fleetShips: [Ship] = []
+    
     @objc dynamic var selectedShip: Ship? {
         
         didSet { buildSpec() }
     }
-    @objc dynamic var spec: [[String: AnyObject]] = []
+    @objc dynamic var spec: [[String: Any]] = []
     
-    @objc var equipments: NSArray?
+    @objc dynamic var equipments: NSArray?
     
     private func buildSpec() {
         
         guard let selectedShip = selectedShip else { return }
         
-        spec = specNames.flatMap { (s: String) -> [String: AnyObject]? in
+        spec = specNames.flatMap { key -> [String: Any]? in
             
-            guard let v = selectedShip.value(forKeyPath: s) else { return nil }
+            guard let v = selectedShip.value(forKeyPath: key) else { return nil }
             
-            var d = [String: AnyObject]()
-            d["name"] = s as AnyObject?
-            d["value"] = v as AnyObject?
-            
-            return d
+            return ["name": key, "value": v]
         }
         equipments = selectedShip.equippedItem.array as NSArray?
     }
@@ -77,15 +84,21 @@ extension ShipMasterDetailWindowController: NSTableViewDelegate {
         
         let controller = [
             (shipsView, shipController),
-            (fleetMemberView, fleetMemberController)
+            (fleetMemberView, fleetMemberController),
+            (decksView, deckController)
             ]
             .lazy
             .filter { $0.0 == tableView }
             .flatMap { $0.1 }
             .first
         
-        guard let selectedObjects = controller?.selectedObjects as? [Ship] else { return }
+        if let selectedObjects = controller?.selectedObjects as? [Ship] {
+            
+            selectedShip = selectedObjects.first
+            
+        } else if let selectedObjects = controller?.selectedObjects as? [Deck] {
         
-        selectedShip = selectedObjects.first
+            selectedDeck = selectedObjects.first
+        }
     }
 }
