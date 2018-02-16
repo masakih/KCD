@@ -99,13 +99,11 @@ final class PreferencePanelController: NSWindowController {
         guard let tag = sender?.tag else { return }
         guard let paneType = PreferencesPaneType(rawValue: tag) else { return }
         
-        let pane: NSView = {
-            
-            switch paneType {
-            case .general: return generalPane
-            case .notification: return notificationPane
-            }
-        }()
+        let pane: NSView
+        switch paneType {
+        case .general: pane = generalPane
+        case .notification: pane = notificationPane
+        }
 
         guard let item = sender as? NSToolbarItem else { return }
         guard let window = self.window else { return }
