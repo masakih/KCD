@@ -41,7 +41,7 @@ final class EnhancementListItemDownloader: NSObject, URLSessionDownloadDelegate 
         
         if let _ = plistDownloadTask { return }
         
-        guard let plistURL = URL(string: "http://git.osdn.jp/view?p=kcd/KCD.git;a=blob;f=KCD/\(resourceName).\(resourceExtension);hb=HEAD") else { return }
+        guard let plistURL = URL(string: "https://osdn.net/projects/kcd/scm/git/KCD/blobs/master/KCD/\(resourceName).\(resourceExtension)?export=raw") else { return }
         
         finishOperation = completeHandler
         plistDownloadTask = plistDownloadSession.downloadTask(with: plistURL)
@@ -60,6 +60,9 @@ final class EnhancementListItemDownloader: NSObject, URLSessionDownloadDelegate 
     
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
         
+        if let error = error {
+            print(error.localizedDescription)
+        }
         plistDownloadTask = nil
     }
 }
