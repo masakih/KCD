@@ -170,15 +170,21 @@ extension ShipDetailViewController: ShipSlotObserverDelegate {
     }
 }
 
-private let allPlaneTypes: [Int] = [6, 7, 8, 9, 10, 11, 25, 26, 41, 45, 56, 57, 58, 59]
+private let allPlaneTypes: [EquipmentType] =
+    [.fighter, .bomber, .attacker, .searcher,
+     .airplaneSearcher, .airplaneBomber,
+     .autoGyro, .antiSunmrinerSercher,
+     .largeAirplane, .airplaneFighter,
+     .jetFighter, .jetBomber, .jetAttacker, .jetSearcher
+]
 extension ShipDetailViewController {
     
     // MARK: - Plane count strings
     private enum PlaneState {
         
         case cannotEquip
-        case notEquip(Int)
-        case equiped(Int, Int)
+        case notEquip(Int)  // current count
+        case equiped(Int, Int)  // current count and max
     }
     
     private func planState(_ index: Int) -> PlaneState {
@@ -192,7 +198,8 @@ extension ShipDetailViewController {
         if itemId == -1 { return .notEquip(maxCount) }
         
         if let item = ship.slotItem(index),
-            allPlaneTypes.contains(item.master_slotItem.type_2) {
+            let eqType = EquipmentType(rawValue: item.master_slotItem.type_2),
+            allPlaneTypes.contains(eqType) {
             
             return .equiped(ship.slotItemCount(index), maxCount)
         }
