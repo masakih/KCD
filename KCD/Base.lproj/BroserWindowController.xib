@@ -24,22 +24,22 @@
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="MainWindow" animationBehavior="default" tabbingMode="disallowed" id="1">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="0.0" y="122" width="1161" height="778"/>
+            <rect key="contentRect" x="0.0" y="122" width="1161" height="809"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
             <view key="contentView" id="2">
-                <rect key="frame" x="0.0" y="0.0" width="1161" height="778"/>
+                <rect key="frame" x="0.0" y="0.0" width="1161" height="809"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <customView id="ErU-NG-s3I" userLabel="CombinedView">
-                        <rect key="frame" x="0.0" y="0.0" width="185" height="778"/>
+                        <rect key="frame" x="0.0" y="0.0" width="185" height="809"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                     </customView>
                     <customView id="raX-C4-fMW">
-                        <rect key="frame" x="8" y="298" width="800" height="480"/>
+                        <rect key="frame" x="8" y="329" width="800" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     </customView>
-                    <customView id="tIf-gd-MhY">
-                        <rect key="frame" x="8" y="9" width="800" height="288"/>
+                    <customView misplaced="YES" id="tIf-gd-MhY">
+                        <rect key="frame" x="8" y="9" width="800" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                     </customView>
                     <customView misplaced="YES" id="vbb-UC-aXs">
@@ -61,7 +61,7 @@
                         </subviews>
                     </customView>
                     <customView misplaced="YES" id="jOr-vI-BKr">
-                        <rect key="frame" x="808" y="187" width="352" height="591"/>
+                        <rect key="frame" x="808" y="186" width="352" height="623"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" heightSizable="YES"/>
                     </customView>
                 </subviews>

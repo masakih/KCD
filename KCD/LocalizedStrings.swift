@@ -170,3 +170,13 @@ extension LocalizedStrings {
     static let hideBookmark = LocalizedString("Hide Bookmark", comment: "Menu item title, Hide Bookmark")
     
 }
+
+/// CombineTypeName
+extension LocalizedStrings {
+    
+    static let uncombined = LocalizedString("Normal Force", comment: "CombineTypeName")
+    static let maneuver = LocalizedString("The Carrier Task Force", comment: "CombineTypeName")
+    static let water = LocalizedString("The Surface Task Force", comment: "CombineTypeName")
+    static let transportation = LocalizedString("Transport Escort", comment: "CombineTypeName")
+    
+}

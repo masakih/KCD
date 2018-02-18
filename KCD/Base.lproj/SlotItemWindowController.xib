@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -39,7 +39,7 @@
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
-                                        <tableColumn editable="NO" width="30" minWidth="10" maxWidth="3.4028234663852886e+38" id="0ze-J2-3BD">
+                                        <tableColumn identifier="" editable="NO" width="30" minWidth="10" maxWidth="3.4028234663852886e+38" id="0ze-J2-3BD">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="レア">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -52,7 +52,7 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
-                                                <binding destination="ceg-Ko-EOy" name="value" keyPath="arrangedObjects.masterSlotItemRare" id="o7C-BZ-zR8">
+                                                <binding destination="ceg-Ko-EOy" name="value" keyPath="arrangedObjects.id" id="5dM-mf-JoA">
                                                     <dictionary key="options">
                                                         <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
                                                         <bool key="NSConditionallySetsEditable" value="YES"/>
@@ -60,7 +60,7 @@
                                                 </binding>
                                             </connections>
                                         </tableColumn>
-                                        <tableColumn editable="NO" width="153.9921875" minWidth="40" maxWidth="1000" id="x7R-Xy-lfl">
+                                        <tableColumn identifier="" editable="NO" width="153.9921875" minWidth="40" maxWidth="1000" id="x7R-Xy-lfl">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="名前">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -81,7 +81,7 @@
                                                 </binding>
                                             </connections>
                                         </tableColumn>
-                                        <tableColumn editable="NO" width="77" minWidth="10" maxWidth="3.4028234663852886e+38" id="Bhw-0J-017">
+                                        <tableColumn identifier="" editable="NO" width="77" minWidth="10" maxWidth="3.4028234663852886e+38" id="Bhw-0J-017">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="種別">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -103,7 +103,7 @@
                                                 </binding>
                                             </connections>
                                         </tableColumn>
-                                        <tableColumn editable="NO" width="64" minWidth="10" maxWidth="3.4028234663852886e+38" id="dQL-M5-EkN">
+                                        <tableColumn identifier="" editable="NO" width="64" minWidth="10" maxWidth="3.4028234663852886e+38" id="dQL-M5-EkN">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="艦娘">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -123,7 +123,7 @@
                                                 </binding>
                                             </connections>
                                         </tableColumn>
-                                        <tableColumn editable="NO" width="47" minWidth="10" maxWidth="3.4028234663852886e+38" id="U7n-ih-338">
+                                        <tableColumn identifier="" editable="NO" width="47" minWidth="10" maxWidth="3.4028234663852886e+38" id="U7n-ih-338">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="艦娘Lv.">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -147,7 +147,7 @@
                                                 </binding>
                                             </connections>
                                         </tableColumn>
-                                        <tableColumn editable="NO" width="33" minWidth="10" maxWidth="3.4028234663852886e+38" id="iPH-86-yla">
+                                        <tableColumn identifier="" editable="NO" width="33" minWidth="10" maxWidth="3.4028234663852886e+38" id="iPH-86-yla">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="right" title="Lv.">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -172,7 +172,7 @@
                                                 </binding>
                                             </connections>
                                         </tableColumn>
-                                        <tableColumn editable="NO" width="33" minWidth="10" maxWidth="3.4028234663852886e+38" id="14D-f7-UkP">
+                                        <tableColumn identifier="" editable="NO" width="33" minWidth="10" maxWidth="3.4028234663852886e+38" id="14D-f7-UkP">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="熟練度">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -196,7 +196,7 @@
                                                 </binding>
                                             </connections>
                                         </tableColumn>
-                                        <tableColumn editable="NO" width="21" minWidth="10" maxWidth="3.4028234663852886e+38" id="4YH-mg-YiR">
+                                        <tableColumn identifier="" editable="NO" width="21" minWidth="10" maxWidth="3.4028234663852886e+38" id="4YH-mg-YiR">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="ロック">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -232,7 +232,7 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </tableHeaderView>
                     </scrollView>
-                    <searchField wantsLayer="YES" verticalHuggingPriority="750" id="ERr-T4-mcK">
+                    <searchField wantsLayer="YES" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="ERr-T4-mcK">
                         <rect key="frame" x="20" y="451" width="263" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="15D-be-yiw">
@@ -249,7 +249,7 @@
                             </binding>
                         </connections>
                     </searchField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="BMN-dQ-Nx6">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="BMN-dQ-Nx6">
                         <rect key="frame" x="383" y="454" width="82" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Label" id="Php-o1-RM6">

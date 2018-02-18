@@ -75,6 +75,12 @@ final class CombileViewController: NSViewController {
     }
     @objc dynamic var calculatedSeiku: Int { return fleet1CalculatedSeiku + fleet2CalculatedSeiku }
     
+    var combineType: CombineType? {
+        willSet { willChangeValue(forKey: #keyPath(combineTypeName)) }
+        didSet { didChangeValue(forKey: #keyPath(combineTypeName)) }
+    }
+    @objc dynamic var combineTypeName: String? { return combineType?.displayName() }
+    
     override var nibName: NSNib.Name {
         
         return .nibName(instanceOf: self)
@@ -104,6 +110,13 @@ final class CombileViewController: NSViewController {
         
         bind(NSBindingName(#keyPath(fleet1CalculatedSeiku)), to: fleet1, withKeyPath: #keyPath(FleetViewController.totalCalclatedSeiku))
         bind(NSBindingName(#keyPath(fleet2CalculatedSeiku)), to: fleet2, withKeyPath: #keyPath(FleetViewController.totalCalclatedSeiku))
+        
+        NotificationCenter.default
+            .addObserver(forName: .CombinedDidCange, object: nil, queue: .main) { notification in
+                
+                let type = notification.userInfo?[CombinedCommand.userInfoKey] as? CombineType
+                self.combineType = type
+        }
     }
     
     deinit {

@@ -49,4 +49,8 @@ s/StandBy/待機/2
 s/rotating/転換中/2
 s/Show Air Base Info/基地航空隊情報を表示/2
 s/Hide Air Base Info/基地航空隊情報を隠す/2
+s/Normal Force/通常艦隊/2
+s/The Carrier Task Force/機動部隊/2
+s/The Surface Task Force/海上部隊/2
+s/Transport Escort/輸送護衛部隊/2
 

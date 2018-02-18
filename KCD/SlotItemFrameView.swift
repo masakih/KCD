@@ -29,6 +29,8 @@ final class SlotItemFrameView: NSBox {
             .line(to: NSPoint(x: width, y: 34.5))
             .move(to: NSPoint(x: 0, y: 51.5))
             .line(to: NSPoint(x: width, y: 51.5))
+            .move(to: NSPoint(x: 0, y: 68.5))
+            .line(to: NSPoint(x: width, y: 68.5))
             .stroke()
     }
 }

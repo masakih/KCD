@@ -48,7 +48,7 @@ final class FleetViewController: NSViewController {
     }
     
     static let oldStyleFleetViewHeight: CGFloat = 128.0
-    static let detailViewHeight: CGFloat = 288.0
+    static let detailViewHeight: CGFloat = 320.0
     static let heightDifference: CGFloat = detailViewHeight - oldStyleFleetViewHeight
     
     private static let maxFleetNumber: Int = 4
@@ -158,7 +158,7 @@ final class FleetViewController: NSViewController {
     var upsideHeight: CGFloat {
         
         switch type {
-        case .detailViewType: return 159.0
+        case .detailViewType: return 175.0
         case .minimumViewType: return FleetViewController.oldStyleFleetViewHeight
         case .miniVierticalType: return 0.0
         }

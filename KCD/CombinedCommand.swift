@@ -14,6 +14,16 @@ enum CombineType: Int {
     case maneuver
     case water
     case transportation
+    
+    func displayName() -> String {
+        
+        switch self {
+        case .cancel: return LocalizedStrings.uncombined.string
+        case .maneuver: return LocalizedStrings.maneuver.string
+        case .water: return LocalizedStrings.water.string
+        case .transportation: return LocalizedStrings.transportation.string
+        }
+    }
 }
 
 extension Notification.Name {

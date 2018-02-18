@@ -50,7 +50,7 @@ final class ShipDetailViewController: NSViewController {
     deinit {
         
         damageView.unbind(NSBindingName(#keyPath(DamageView.damageType)))
-        [slot00Field, slot01Field, slot02Field, slot03Field]
+        [slot00Field, slot01Field, slot02Field, slot03Field, slot04Field]
             .forEach { $0?.unbind(NSBindingName(#keyPath(SlotItemLevelView.slotItemID))) }
     }
     
@@ -61,6 +61,7 @@ final class ShipDetailViewController: NSViewController {
     @IBOutlet private weak var slot01Field: SlotItemLevelView!
     @IBOutlet private weak var slot02Field: SlotItemLevelView!
     @IBOutlet private weak var slot03Field: SlotItemLevelView!
+    @IBOutlet private weak var slot04Field: SlotItemLevelView!
     
     var observer: ShipSlotObserver?
     
@@ -94,14 +95,14 @@ final class ShipDetailViewController: NSViewController {
             }
             
             // slot の lv, alv の反映のため
-            let fields = [slot00Field, slot01Field, slot02Field, slot03Field]
+            let fields = [slot00Field, slot01Field, slot02Field, slot03Field, slot04Field]
             fields.forEach { $0?.unbind(NSBindingName(#keyPath(SlotItemLevelView.slotItemID))) }
             
             damageView.unbind(NSBindingName(#keyPath(DamageView.damageType)))
             
             if let ship = ship {
                 
-                zip(fields, [#keyPath(Ship.slot_0), #keyPath(Ship.slot_1), #keyPath(Ship.slot_2), #keyPath(Ship.slot_3)])
+                zip(fields, [#keyPath(Ship.slot_0), #keyPath(Ship.slot_1), #keyPath(Ship.slot_2), #keyPath(Ship.slot_3), #keyPath(Ship.slot_4)])
                     .forEach { feild, keyPath in
                         feild?.bind(NSBindingName(#keyPath(SlotItemLevelView.slotItemID)), to: ship, withKeyPath: keyPath)
                 }
