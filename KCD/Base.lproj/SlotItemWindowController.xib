@@ -52,7 +52,7 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
-                                                <binding destination="ceg-Ko-EOy" name="value" keyPath="arrangedObjects.id" id="5dM-mf-JoA">
+                                                <binding destination="ceg-Ko-EOy" name="value" keyPath="arrangedObjects.masterSlotItemRare" id="y50-Z8-uUr">
                                                     <dictionary key="options">
                                                         <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
                                                         <bool key="NSConditionallySetsEditable" value="YES"/>
