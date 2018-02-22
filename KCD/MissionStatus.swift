@@ -99,6 +99,7 @@ final class MissionStatus: NSObject {
         switch state {
             
         case .none, .finish:
+            didNotify = false
             name = nil
             time = nil
             
