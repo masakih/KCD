@@ -103,6 +103,8 @@ extension Ship {
         
         case #keyPath(planColor): return [#keyPath(sally_area)]
             
+        case #keyPath(soku): return [#keyPath(ship_id)]
+            
         case #keyPath(isMaxKaryoku): return [#keyPath(karyoku_1), #keyPath(kyouka_0)]
             
         case #keyPath(isMaxRaisou): return [#keyPath(raisou_1), #keyPath(kyouka_1)]
@@ -180,6 +182,8 @@ extension Ship {
         default: return .controlTextColor
         }
     }
+    
+    @objc dynamic var soku: Int { return master_ship.soku }
 }
 
 

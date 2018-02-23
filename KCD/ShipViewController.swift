@@ -16,6 +16,23 @@ private enum ViewType: Int {
     case power3
 }
 
+/// 2018.02.24
+/// #keyPath(Ship.master_ship.soku)がkeyであるNSSortDescriptorが含まれるとクラッシュする可能性があるため
+/// 新設した#keyPath(Ship.soku)をkeyにするように書き換える
+private func exchangeSortKey(original: [NSSortDescriptor]) -> [NSSortDescriptor] {
+    
+    return original
+        .map { sortDesc -> NSSortDescriptor in
+            
+            if sortDesc.key == #keyPath(Ship.master_ship.soku) {
+                
+                return NSSortDescriptor(key: #keyPath(Ship.soku), ascending: sortDesc.ascending)
+            }
+            
+            return sortDesc
+    }
+}
+
 final class ShipViewController: MainTabVIewItemViewController {
     
     @objc let managedObjectContext = ServerDataStore.default.context
@@ -61,6 +78,11 @@ final class ShipViewController: MainTabVIewItemViewController {
         return sqrt(total / Double(ships.count))
     }
     
+//    @objc dynamic var sortDescriptors: [NSSortDescriptor] {
+//        get { return UserDefaults.standard[.shipviewSortDescriptors] }
+//        set { UserDefaults.standard[.shipviewSortDescriptors] = sortDescriptors }
+//    }
+    
     private weak var currentTableView: NSView?
     
     override func viewDidLoad() {
@@ -79,10 +101,10 @@ final class ShipViewController: MainTabVIewItemViewController {
             
         }
         
-        shipController.sortDescriptors = UserDefaults.standard[.shipviewSortDescriptors]
-        
+        shipController.sortDescriptors = exchangeSortKey(original: UserDefaults.standard[.shipviewSortDescriptors])
+
         sortDescriptorsObservation = shipController.observe(\NSArrayController.sortDescriptors) { [weak self] _, _ in
-            
+
             UserDefaults.standard[.shipviewSortDescriptors] = self?.shipController.sortDescriptors ?? []
         }
         arrangedObjectsObservation = shipController.observe(\NSArrayController.arrangedObjects) { [weak self] _, _ in

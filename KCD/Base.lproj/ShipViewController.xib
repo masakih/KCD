@@ -384,7 +384,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
             <clipView key="contentView" id="V5p-7l-cBF">
                 <rect key="frame" x="1" y="0.0" width="309" height="351"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveName="shipviewtable22" rowSizeStyle="automatic" headerView="QxO-zY-mjX" viewBased="YES" floatsGroupRows="NO" id="Ze3-Gd-1Qe">
                         <rect key="frame" x="0.0" y="0.0" width="309" height="334"/>
@@ -707,7 +707,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
             <clipView key="contentView" id="qkK-9C-mZ5">
                 <rect key="frame" x="1" y="0.0" width="309" height="351"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveName="shipviewtable23" rowSizeStyle="automatic" headerView="dJx-c5-qhN" viewBased="YES" floatsGroupRows="NO" id="qaM-It-e1l">
                         <rect key="frame" x="0.0" y="0.0" width="309" height="334"/>
@@ -1030,7 +1030,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
             <clipView key="contentView" id="MyI-d7-N9C">
                 <rect key="frame" x="1" y="0.0" width="309" height="351"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveName="shipviewtable24" rowSizeStyle="automatic" headerView="TD0-tZ-Rbv" viewBased="YES" floatsGroupRows="NO" id="Js9-iC-cBR">
                         <rect key="frame" x="0.0" y="0.0" width="309" height="328"/>
@@ -1195,7 +1195,7 @@
                                     </tableCellView>
                                 </prototypeCellViews>
                                 <connections>
-                                    <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.master_ship.soku" id="Hdo-Uz-hjD">
+                                    <binding destination="b8v-Gn-JZD" name="value" keyPath="arrangedObjects.soku" id="XIi-sk-IGw">
                                         <dictionary key="options">
                                             <bool key="NSConditionallySetsEditable" value="YES"/>
                                         </dictionary>
