@@ -64,16 +64,18 @@ final class FleetManager: NSObject {
     private func setNewFleetNumberToShip() {
         
         let store = ServerDataStore.oneTimeEditor()
-        
-        // clear all
-        store.shipsInFleet().forEach { $0.fleet = 0 as NSNumber }
-        
-        // set
-        fleets.enumerated().forEach { (index, fleet) in
+        store.sync {
             
-            fleet.ships.forEach {
+            // clear all
+            store.shipsInFleet().forEach { $0.fleet = 0 as NSNumber }
+            
+            // set
+            self.fleets.enumerated().forEach { index, fleet in
                 
-                store.ship(by: $0.id)?.fleet = (index + 1) as NSNumber
+                fleet.ships.forEach { ship in
+                    
+                    store.ship(by: ship.id)?.fleet = (index + 1) as NSNumber
+                }
             }
         }
     }

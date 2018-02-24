@@ -13,21 +13,23 @@ final class RealDestroyShipCommand: JSONCommand {
     override func execute() {
         
         let store = ServerDataStore.oneTimeEditor()
-        
-        let ships = parameter["api_ship_id"]
-            .integerArray
-            .flatMap(store.ship(by:))
-        
-        if parameter["api_slot_dest_flag"].int == 0 {
+        store.sync {
             
-            // remove allEquipment
-            ships.forEach {
+            let ships = self.parameter["api_ship_id"]
+                .integerArray
+                .flatMap(store.ship(by:))
+            
+            if self.parameter["api_slot_dest_flag"].int == 0 {
+                
+                // remove allEquipment
+                ships.forEach {
                     $0.equippedItem = []
                     $0.extraItem = nil
+                }
             }
+            
+            // destory ships
+            ships.forEach(store.delete)
         }
-        
-        // destory ships
-        ships.forEach(store.delete)
     }
 }

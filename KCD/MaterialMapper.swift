@@ -43,6 +43,10 @@ final class MaterialMapper: JSONMapper {
     
     func commit() {
         
+        configuration.editorStore.sync(execute: commintInContext)
+    }
+    private func commintInContext() {
+        
         guard let store = configuration.editorStore as? ServerDataStore,
             let material = store.material() ?? store.createMaterial() else {
                 

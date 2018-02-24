@@ -149,20 +149,25 @@ extension BookmarkListViewController: NSTableViewDelegate, NSTableViewDataSource
         guard let items = info.draggingPasteboard().pasteboardItems else { return false }
         
         let store = BookmarkManager.shared.editorStore
-        items.enumerated().forEach {
+        store.sync {
+            items.enumerated().forEach {
+                
+                guard let data = $0.element.data(forType: .bookmarkItem) else { return }
+                guard let uri = NSKeyedUnarchiver.unarchiveObject(with: data) as? URL else { return }
+                guard let oID = self.managedObjectContext.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: uri) else { return }
+                guard let bookmark = store.object(of: Bookmark.entity, with: oID) else { return }
+                
+                bookmark.order = targetOrder + $0.offset + 1
+            }
             
-            guard let data = $0.element.data(forType: .bookmarkItem) else { return }
-            guard let uri = NSKeyedUnarchiver.unarchiveObject(with: data) as? URL else { return }
-            guard let oID = managedObjectContext.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: uri) else { return }
-            guard let bookmark = store.object(of: Bookmark.entity, with: oID) else { return }
+            store.save(errorHandler: store.presentOnMainThread)
             
-            bookmark.order = targetOrder + $0.offset + 1
+            self.bookmarkController.rearrangeObjects()
+            self.reorderingBoolmarks()
+            self.bookmarkController.rearrangeObjects()
         }
         
-        store.save(errorHandler: store.presentOnMainThread)
-        bookmarkController.rearrangeObjects()
-        reorderingBoolmarks()
-        bookmarkController.rearrangeObjects()
+        tableView.reloadData()
         
         return true
     }

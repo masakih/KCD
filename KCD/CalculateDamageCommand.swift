@@ -111,54 +111,65 @@ extension CalculateDamageCommand {
         
         let store = TemporaryDataStore.oneTimeEditor()
         
-        store.damages().forEach(store.delete)
+        store.sync { store.damages().forEach(store.delete) }
     }
     
     func applyDamage() {
         
         let store = TemporaryDataStore.oneTimeEditor()
         
-        let totalDamages = store.sortedDamagesById()
+        let totalDamages = store.sync { store.sortedDamagesById() }
         
-        let aStore = ServerDataStore.oneTimeEditor()
+        let aStore = ServerDataStore.default
         
         Debug.excute(level: .debug) {
             
             print("-------")
             
-            totalDamages.forEach {
-                
-                guard let ship = aStore.ship(by: $0.shipID) else { return }
-                
-                if ship.nowhp != $0.hp {
+            store.sync {
+                totalDamages.forEach { damage in
                     
-                    print("\(ship.name)(\(ship.id)),HP \(ship.nowhp) -> \($0.hp)")
+                    let shipId = damage.shipID
+                    guard let ship = aStore.sync(execute: { aStore.ship(by: shipId) }) else { return }
+                    
+                    let damagedHp = damage.hp
+                    aStore.sync {
+                        if ship.nowhp != damagedHp {
+                            
+                            print("\(ship.name)(\(ship.id)),HP \(ship.nowhp) -> \(damagedHp)")
+                        }
+                    }
                 }
             }
-            
             
             print("------- End Battle")
         }
         
         // 第二艦隊単独出撃で正しくデータが反映されるように逆順にして計算
-        totalDamages.reversed().forEach {
-            
-            guard let ship = aStore.ship(by: $0.shipID) else { return }
-            
-            ship.nowhp = $0.hp
-            
-            if $0.useDamageControl { removeFirstDamageControl(of: ship) }
+        store.sync {
+            totalDamages.reversed().forEach { damage in
+                
+                let shipId = damage.shipID
+                guard let ship = aStore.sync(execute: { aStore.ship(by: shipId) }) else { return }
+                
+                let damagedHp = damage.hp
+                aStore.sync { ship.nowhp = damagedHp }
+                
+                if damage.useDamageControl { self.removeFirstDamageControl(of: shipId) }
+            }
         }
-        
     }
     
     func updateBattleCell() {
         
         let store = TemporaryDataStore.default
         
-        guard let battle = store.battle() else { return Logger.shared.log("Battle is invalid.") }
+        guard let battle = store.sync(execute: { store.battle() }) else {
+            
+            return Logger.shared.log("Battle is invalid.")
+        }
         
-        battle.battleCell = (battle.no == 0 ? nil : battle.no as NSNumber)
+        store.sync { battle.battleCell = (battle.no == 0 ? nil : battle.no as NSNumber) }
         
         Debug.excute(level: .debug) {
             
@@ -189,22 +200,45 @@ extension CalculateDamageCommand {
         }
     }
     
-    func removeFirstDamageControl(of ship: Ship) {
+    func removeFirstDamageControl(of shipId: Int) {
         
-        let store = ServerDataStore.default
-        
-        let (item, damageControl) = ship
-            .equippedItem
-            .lazy
-            .flatMap { $0 as? SlotItem }
-            .map { ($0, store.masterSlotItemID(by: $0.id)) }
-            .map { ($0.0, DamageControlID(rawValue: $0.1)) }
-            .filter { $0.1 != nil }
-            .first ?? (nil, nil)
-        
-        if let validDamageControl = damageControl {
+        let store = ServerDataStore.oneTimeEditor()
+        store.sync {
             
-            switch validDamageControl {
+            guard let ship = store.ship(by: shipId) else { return }
+            
+            let (item, damageControl) = ship
+                .equippedItem
+                .lazy
+                .flatMap { $0 as? SlotItem }
+                .map { ($0, store.masterSlotItemID(by: $0.id)) }
+                .map { ($0.0, DamageControlID(rawValue: $0.1)) }
+                .filter { $0.1 != nil }
+                .first ?? (nil, nil)
+            
+            if let validDamageControl = damageControl {
+                
+                switch validDamageControl {
+                case .damageControl: break
+                    
+                case .goddes:
+                    ship.fuel = ship.maxFuel
+                    ship.bull = ship.maxBull
+                }
+                
+                guard let equiped = ship.equippedItem.array as? [SlotItem] else { return }
+                
+                ship.equippedItem = NSOrderedSet(array: equiped.filter { $0 != item })
+                
+                return
+            }
+            
+            // check extra slot
+            let exItemId = store.sync { store.masterSlotItemID(by: ship.slot_ex) }
+            
+            guard let exType = DamageControlID(rawValue: exItemId) else { return }
+            
+            switch exType {
             case .damageControl: break
                 
             case .goddes:
@@ -212,26 +246,7 @@ extension CalculateDamageCommand {
                 ship.bull = ship.maxBull
             }
             
-            guard let equiped = ship.equippedItem.array as? [SlotItem] else { return }
-                
-            ship.equippedItem = NSOrderedSet(array: equiped.filter { $0 != item })
-            
-            return
+            ship.slot_ex = -1
         }
-        
-        // check extra slot
-        let exItemId = store.masterSlotItemID(by: ship.slot_ex)
-        
-        guard let exType = DamageControlID(rawValue: exItemId) else { return }
-        
-        switch exType {
-        case .damageControl: break
-            
-        case .goddes:
-            ship.fuel = ship.maxFuel
-            ship.bull = ship.maxBull
-        }
-        
-        ship.slot_ex = -1
     }
 }

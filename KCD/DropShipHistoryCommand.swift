@@ -22,48 +22,54 @@ final class DropShipHistoryCommand: JSONCommand {
         guard let shipName = data["api_get_ship"]["api_ship_name"].string else { return }
         guard let winRank = data["api_win_rank"].string else { return }
         
-        guard let battle = TemporaryDataStore.default.battle() else {
+        let tempStore = TemporaryDataStore.default
+        guard let battle = tempStore.sync(execute: { tempStore.battle() }) else {
             
             return Logger.shared.log("Can not get Battle")
         }
         
-        let mapAreaId = battle.mapArea
+        let mapAreaId = tempStore.sync { battle.mapArea }
+        let mapInfoId = tempStore.sync { battle.mapInfo }
         
         let store = ServerDataStore.default
         
-        guard let mapInfo = store.mapInfo(area: mapAreaId, no: battle.mapInfo) else {
+        guard let mapInfoName = store.sync(execute: { store.mapInfo(area: mapAreaId, no: mapInfoId)?.name }) else {
             
             return Logger.shared.log("KCMasterMapInfo is not found")
         }
         
-        guard let mapArea = store.mapArea(by: mapAreaId) else {
+        guard let mapAreaName = store.sync(execute: { store.mapArea(by: mapAreaId)?.name }) else {
             
             return Logger.shared.log("KCMasterMapArea is not found")
         }
         
         
         let localStore = LocalDataStore.oneTimeEditor()
-        guard let new = localStore.createHiddenDropShipHistory() else {
+        localStore.sync {
             
-            return Logger.shared.log("Can not create HiddenDropShipHistory")
+            guard let new = localStore.createHiddenDropShipHistory() else {
+                
+                return Logger.shared.log("Can not create HiddenDropShipHistory")
+            }
+            
+            new.shipName = shipName
+            new.mapArea = "\(mapAreaId)"
+            new.mapAreaName = mapAreaName
+            new.mapInfo = tempStore.sync { battle.mapInfo }
+            new.mapInfoName = mapInfoName
+            new.mapCell = tempStore.sync { battle.no }
+            new.winRank = winRank
+            new.date = Date()
         }
-        
-        new.shipName = shipName
-        new.mapArea = "\(mapAreaId)"
-        new.mapAreaName = mapArea.name
-        new.mapInfo = battle.mapInfo
-        new.mapInfoName = mapInfo.name
-        new.mapCell = battle.no
-        new.winRank = winRank
-        new.date = Date()
     }
     
     private func storeToVisible() {
         
         let store = LocalDataStore.oneTimeEditor()
-        
-        let hidden = store.hiddenDropShipHistories()
-        _ = hidden.map(store.createDropShipHistory(from:))
-        hidden.forEach(store.delete)
+        store.sync {
+            let hidden = store.hiddenDropShipHistories()
+            _ = hidden.map(store.createDropShipHistory(from:))
+            hidden.forEach(store.delete)
+        }
     }
 }

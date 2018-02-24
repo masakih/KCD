@@ -31,29 +31,53 @@ final class CreateShipCommand: JSONCommand {
         
         let store = ServerDataStore.default
         
-        guard let kenzoDock = store.kenzoDock(by: dockId),
-            let flagShip = store.deck(by: 1)?[0],
-            let basic = store.basic() else {
-                
-                return Logger.shared.log("CreateShipCommand: CoreData is wrong")
+        let storedInfos: KenzoMarkCommand.KenzoDockInfo? = store.sync {
+            
+            guard let kenzoDock = store.kenzoDock(by: dockId)  else {
+                    
+                    return nil
+            }
+            
+            return KenzoMarkCommand.KenzoDockInfo(dockId: kenzoDock.id,
+                                                  shipId: kenzoDock.created_ship_id,
+                                                  fuel: kenzoDock.item1,
+                                                  bull: kenzoDock.item2,
+                                                  steel: kenzoDock.item3,
+                                                  bauxite: kenzoDock.item4,
+                                                  kaihatusizai: kenzoDock.item5)
+        }
+        
+        guard let infos = storedInfos else {
+            
+            return Logger.shared.log("Can not load KenzoDeck")
+        }
+        
+        guard let flagShip = store.sync(execute: { store.deck(by: 1)?[0] }) else {
+            
+            return Logger.shared.log("Can not load deck")
+        }
+        guard let commanderLv = store.sync(execute: { store.basic()?.level }) else {
+            
+            return Logger.shared.log("Can not load basic")
         }
         
         let localStore = LocalDataStore.oneTimeEditor()
-        
-        guard let newMark = localStore.kenzoMark(byDockId: dockId) ?? localStore.createKenzoMark() else {
+        localStore.sync {
+            guard let newMark = localStore.kenzoMark(byDockId: dockId) ?? localStore.createKenzoMark() else {
+                
+                return Logger.shared.log("Can not create KenzoMark")
+            }
             
-            return Logger.shared.log("Can not create KenzoMark")
+            newMark.fuel = infos.fuel
+            newMark.bull = infos.bull
+            newMark.steel = infos.steel
+            newMark.bauxite = infos.bauxite
+            newMark.kaihatusizai = infos.kaihatusizai
+            newMark.created_ship_id = infos.shipId
+            newMark.flagShipName = store.sync { flagShip.name }
+            newMark.flagShipLv = store.sync { flagShip.lv }
+            newMark.commanderLv = commanderLv
+            newMark.kDockId = dockId
         }
-        
-        newMark.fuel = kenzoDock.item1
-        newMark.bull = kenzoDock.item2
-        newMark.steel = kenzoDock.item3
-        newMark.bauxite = kenzoDock.item4
-        newMark.kaihatusizai = kenzoDock.item5
-        newMark.created_ship_id = kenzoDock.created_ship_id
-        newMark.flagShipName = flagShip.name
-        newMark.flagShipLv = flagShip.lv
-        newMark.commanderLv = basic.level
-        newMark.kDockId = dockId
     }
 }

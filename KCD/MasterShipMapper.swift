@@ -23,7 +23,9 @@ final class MasterShipMapper: JSONMapper {
     
     private lazy var masterSTypes: [MasterSType] = {
         
-        return ServerDataStore.default.sortedMasterSTypesById()
+        guard let store = configuration.editorStore as? ServerDataStore else { return [] }
+        
+        return store.sortedMasterSTypesById()
     }()
     
     func handleExtraValue(_ value: JSON, forKey key: String, to masterShip: MasterShip) -> Bool {

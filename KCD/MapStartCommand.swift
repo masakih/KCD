@@ -34,7 +34,7 @@ final class MapStartCommand: JSONCommand {
     
     private func startBattle() {
         
-        store.battles().forEach(store.delete)
+        store.sync { self.store.battles().forEach(self.store.delete) }
         
         guard let deckId = parameter["api_deck_id"].int,
             let mapArea = parameter["api_maparea_id"].int,
@@ -48,18 +48,21 @@ final class MapStartCommand: JSONCommand {
             return Logger.shared.log("startBattle JSON is wrong")
         }
         
-        guard let battle = store.createBattle() else {
+        guard let battle = store.sync(execute: { self.store.createBattle() }) else {
             
             return Logger.shared.log("Can not create Battle")
         }
         
         let kcd = ServerDataStore.default
         
-        battle.deckId = deckId
-        battle.mapArea = mapArea
-        battle.mapInfo = mapInfo
-        battle.no = no
-        battle.firstFleetShipsCount = kcd.ships(byDeckId: deckId).count
+        store.sync {
+            
+            battle.deckId = deckId
+            battle.mapArea = mapArea
+            battle.mapInfo = mapInfo
+            battle.no = no
+            battle.firstFleetShipsCount = kcd.sync { kcd.ships(byDeckId: deckId).count }
+        }
     }
     
     private func nextCell() {
@@ -70,14 +73,23 @@ final class MapStartCommand: JSONCommand {
                 return Logger.shared.log("updateBattleCell JSON is wrong")
         }
         
-        guard let battle = store.battle() else { return Logger.shared.log("Battle is invalid.") }
+        guard let battle = store.sync(execute: { self.store.battle() }) else {
+            
+            return Logger.shared.log("Battle is invalid.")
+        }
         
-        battle.no = cellNumber
-        battle.isBossCell = (eventId == 5)
+        store.sync {
+            
+            battle.no = cellNumber
+            battle.isBossCell = (eventId == 5)
+        }
     }
     
     private func updateBattleCell() {
         
-        store.battle().map { $0.battleCell = nil }
+        store.sync {
+            
+            self.store.battle().map { $0.battleCell = nil }
+        }
     }
 }

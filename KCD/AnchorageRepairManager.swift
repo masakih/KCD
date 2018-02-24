@@ -55,12 +55,13 @@ final class AnchorageRepairManager: NSObject {
         
         let ship = fleetManager?.fleets[fleetNumber - 1][position]
         
-        return ship?.master_ship.stype.id
+        return ServerDataStore.default.sync { ship?.master_ship.stype.id }
     }
     
     private func shipTypeId(shipId: Int) -> Int? {
         
-        return ServerDataStore.default.ship(by: shipId)?.master_ship.stype.id
+        let store = ServerDataStore.default
+        return store.sync { store.ship(by: shipId)?.master_ship.stype.id }
     }
     
     private func needsReset(info: HenseiDidChangeUserInfo) -> Bool {

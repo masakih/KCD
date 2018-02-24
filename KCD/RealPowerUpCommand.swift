@@ -13,10 +13,11 @@ final class RealPowerUpCommand: JSONCommand {
     override func execute() {
         
         let store = ServerDataStore.oneTimeEditor()
-        
-        parameter["api_id_items"]
-            .integerArray
-            .flatMap(store.ship(by:))
-            .forEach(store.delete)
+        store.sync {
+            self.parameter["api_id_items"]
+                .integerArray
+                .flatMap(store.ship(by:))
+                .forEach(store.delete)
+        }
     }
 }

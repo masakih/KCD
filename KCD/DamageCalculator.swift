@@ -34,48 +34,60 @@ extension DamageCalculator {
     
     func calculateBattle() {
         
-        calcKouku()
-        calcOpeningTaisen()
-        calcOpeningAttack()
-        calcHougeki1()
-        calcHougeki2()
-        calcHougeki3()
-        calcRaigeki()
+        store.sync {
+            
+            self.calcKouku()
+            self.calcOpeningTaisen()
+            self.calcOpeningAttack()
+            self.calcHougeki1()
+            self.calcHougeki2()
+            self.calcHougeki3()
+            self.calcRaigeki()
+        }
     }
     
     func calcCombinedBattleAir() {
         
-        calcKouku()
-        calcOpeningTaisen()
-        calcOpeningAttack()
-        calcHougeki1()
-        calcRaigeki()
-        calcHougeki2()
-        calcHougeki3()
+        store.sync {
+            
+            self.calcKouku()
+            self.calcOpeningTaisen()
+            self.calcOpeningAttack()
+            self.calcHougeki1()
+            self.calcRaigeki()
+            self.calcHougeki2()
+            self.calcHougeki3()
+        }
     }
     
     func calcEachBattleAir() {
         
-        calcKouku()
-        calcOpeningTaisen()
-        calcOpeningAttack()
-        calcHougeki1()
-        calcHougeki2()
-        calcRaigeki()
-        calcHougeki3()
+        store.sync {
+            
+            self.calcKouku()
+            self.calcOpeningTaisen()
+            self.calcOpeningAttack()
+            self.calcHougeki1()
+            self.calcHougeki2()
+            self.calcRaigeki()
+            self.calcHougeki3()
+        }
     }
     
     func calcEachNightToDay() {
         
-        calcNightHogeki1()
-        calcNightHogeki2()
-        calcKouku()
-        calcOpeningTaisen()
-        calcOpeningAttack()
-        calcHougeki1()
-        calcHougeki2()
-        calcRaigeki()
-        calcHougeki3()
+        store.sync {
+            
+            self.calcNightHogeki1()
+            self.calcNightHogeki2()
+            self.calcKouku()
+            self.calcOpeningTaisen()
+            self.calcOpeningAttack()
+            self.calcHougeki1()
+            self.calcHougeki2()
+            self.calcRaigeki()
+            self.calcHougeki3()
+        }
     }
     
     func calcEnemyCombinedBattle() {
@@ -86,7 +98,10 @@ extension DamageCalculator {
     
     func calcMidnight() {
         
-        calculateMidnightBattle()
+        store.sync {
+            
+            self.calculateMidnightBattle()
+        }
     }
 }
 
@@ -212,12 +227,14 @@ extension DamageCalculator {
         
         func setShip(_ ship: Ship, into damage: Damage) {
             
-            damage.shipID = ship.id
-            damage.hp = ship.nowhp
+            let sStore = ServerDataStore.default
+            
+            damage.shipID = sStore.sync { ship.id }
+            damage.hp = sStore.sync { ship.nowhp }
             
             Debug.excute(level: .debug) {
-                
-                print("add Damage entity of \(ship.name) at \(damage.id)")
+                let name = sStore.sync { ship.name }
+                print("add Damage entity of \(name) at \(damage.id)")
             }
         }
         
@@ -235,13 +252,15 @@ extension DamageCalculator {
         
         guard let battle = store.battle() else { return Logger.shared.log("Battle is invalid.") }
         
+        let sStore = ServerDataStore.default
         // 第一艦隊
-        let firstFleetShips = ServerDataStore.default.ships(byDeckId: battle.deckId)
+        let deckId = battle.deckId
+        let firstFleetShips = sStore.sync { sStore.ships(byDeckId: deckId) }
         
         // 第二艦隊
         if isCombinedBattle {
             
-            let secondFleetShips = ServerDataStore.default.ships(byDeckId: 2)
+            let secondFleetShips = sStore.sync { sStore.ships(byDeckId: 2) }
             buildDamages(first: firstFleetShips, second: secondFleetShips)
         } else {
             
@@ -298,9 +317,10 @@ extension DamageCalculator {
         
         Debug.excute(level: .debug) {
             
-            if receive != 0, let ship = ServerDataStore.default.ship(by: damage.shipID) {
+            let store = ServerDataStore.default
+            if receive != 0, let shipName = store.sync(execute: { store.ship(by: damage.shipID)?.name }) {
                 
-                print("\(ship.name) recieve Damage \(receive)")
+                print("\(shipName) recieve Damage \(receive)")
             }
         }
         
@@ -308,7 +328,8 @@ extension DamageCalculator {
         
         if damage.hp > 0 { return }
         
-        guard let ship = ServerDataStore.default.ship(by: damage.shipID) else { return }
+        let sStore = ServerDataStore.default
+        guard let ship = sStore.sync(execute: { sStore.ship(by: damage.shipID) }) else { return }
         
         damage.hp = damageControlIfPossible(ship: ship)
         damage.useDamageControl = (damage.hp != 0)
@@ -408,18 +429,34 @@ extension DamageCalculator {
     private func damageControlIfPossible(ship: Ship) -> Int {
         
         let store = ServerDataStore.default
-        
-        let damageControl = ship
-            .equippedItem
-            .lazy
-            .flatMap { $0 as? SlotItem }
-            .map { store.masterSlotItemID(by: $0.id) }
-            .flatMap { DamageControlID(rawValue: $0) }
-            .first
-        
-        if let validDamageControl = damageControl {
+        return store.sync {
+            let damageControl = ship
+                .equippedItem
+                .lazy
+                .flatMap { $0 as? SlotItem }
+                .map { store.masterSlotItemID(by: $0.id) }
+                .flatMap { DamageControlID(rawValue: $0) }
+                .first
             
-            switch validDamageControl {
+            if let validDamageControl = damageControl {
+                
+                switch validDamageControl {
+                case .damageControl:
+                    Debug.print("Damage Control", level: .debug)
+                    return Int(Double(ship.maxhp) * 0.2)
+                    
+                case .goddes:
+                    Debug.print("Goddes", level: .debug)
+                    return ship.maxhp
+                }
+            }
+            
+            // check extra slot
+            let exItemId = store.masterSlotItemID(by: ship.slot_ex)
+            
+            guard let exType = DamageControlID(rawValue: exItemId) else { return 0 }
+            
+            switch exType {
             case .damageControl:
                 Debug.print("Damage Control", level: .debug)
                 return Int(Double(ship.maxhp) * 0.2)
@@ -428,21 +465,6 @@ extension DamageCalculator {
                 Debug.print("Goddes", level: .debug)
                 return ship.maxhp
             }
-        }
-        
-        // check extra slot
-        let exItemId = store.masterSlotItemID(by: ship.slot_ex)
-        
-        guard let exType = DamageControlID(rawValue: exItemId) else { return 0 }
-        
-        switch exType {
-        case .damageControl:
-            Debug.print("Damage Control", level: .debug)
-            return Int(Double(ship.maxhp) * 0.2)
-            
-        case .goddes:
-            Debug.print("Goddes", level: .debug)
-            return ship.maxhp
         }
     }
 }

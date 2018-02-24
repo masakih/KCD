@@ -38,7 +38,10 @@ final class SlotItemMapper: JSONMapper {
     
     private var registerIds: [Int] = []
     private lazy var masterSlotItems: [MasterSlotItem] = {
-        return ServerDataStore.default.sortedMasterSlotItemsById()
+        
+        guard let store = configuration.editorStore as? ServerDataStore else { return [] }
+        
+        return store.sortedMasterSlotItemsById()
     }()
     
     func beginRegister(_ slotItem: SlotItem) {

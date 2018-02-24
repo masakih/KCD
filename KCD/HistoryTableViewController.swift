@@ -49,10 +49,12 @@ class HistoryTableViewController: NSViewController {
         guard let selection = controller.selectedObjects as? [NSManagedObject] else { return }
         
         let selectedIndex = controller.selectionIndex
-        selection
-            .map { $0.objectID }
-            .map(store.object(with:))
-            .forEach(store.delete)
+        store.sync {
+            selection
+                .map { $0.objectID }
+                .map(store.object(with:))
+                .forEach(store.delete)
+        }
         
         if selectedIndex > 1 {
             
@@ -70,14 +72,16 @@ class HistoryTableViewController: NSViewController {
         let predicate = NSPredicate(#keyPath(KenzoMark.date), equal: clickedObject.date)
         
         let store = LocalDataStore.oneTimeEditor()
-        
-        if let items = try? objects(of: predicate, in: store),
-            var history = items.first as? Markable {
+        store.sync {
             
-            history.mark = !history.mark
+            if let items = try? self.objects(of: predicate, in: store),
+                var history = items.first as? Markable {
+                
+                history.mark = !history.mark
+            }
+            
+            store.save(errorHandler: store.presentOnMainThread)
         }
-        
-        store.save(errorHandler: store.presentOnMainThread)
     }
     
     override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {

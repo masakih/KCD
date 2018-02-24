@@ -19,9 +19,9 @@ final class DestroyItem2Command: JSONCommand {
         
         let store = ServerDataStore.oneTimeEditor()
         
-        store.slotItems(in: parameter["api_slotitem_ids"].integerArray).forEach(store.delete)
+        store.sync { store.slotItems(in: self.parameter["api_slotitem_ids"].integerArray).forEach(store.delete) }
         
-        guard let material = store.material() else {
+        guard let material = store.sync(execute: { store.material() }) else {
             
             return Logger.shared.log("Material is not found")
         }
@@ -31,9 +31,12 @@ final class DestroyItem2Command: JSONCommand {
             return Logger.shared.log("api_get_material is wrong")
         }
         
-        material.fuel += getMaterials[0]
-        material.bull += getMaterials[1]
-        material.steel += getMaterials[2]
-        material.bauxite += getMaterials[3]
+        store.sync {
+            
+            material.fuel += getMaterials[0]
+            material.bull += getMaterials[1]
+            material.steel += getMaterials[2]
+            material.bauxite += getMaterials[3]
+        }
     }
 }

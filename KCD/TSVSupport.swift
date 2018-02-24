@@ -95,10 +95,17 @@ final class TSVSupport {
             
             guard $0 == .OK else { return }
             guard let url = panel.url else { return }
-            guard let kaihatuHistory = self.dataOfKaihatuHistory() else { return }
-            guard let kenzoHistory = self.dataOfKenzoHistory() else { return }
-            guard let kenzoMark = self.dataOfKenzoMark() else { return }
-            guard let dropShipHistory = self.dataOfDropShipHistory() else { return }
+            
+            let data = self.store.sync { () -> (Data, Data, Data, Data)? in
+                
+                guard let kaihatuHistory = self.dataOfKaihatuHistory() else { return nil }
+                guard let kenzoHistory = self.dataOfKenzoHistory() else { return nil }
+                guard let kenzoMark = self.dataOfKenzoMark() else { return nil }
+                guard let dropShipHistory = self.dataOfDropShipHistory() else { return nil }
+                
+                return (kaihatuHistory, kenzoHistory, kenzoMark, dropShipHistory)
+            }
+            guard let (kaihatuHistory, kenzoHistory, kenzoMark, dropShipHistory) = data else { return }
             
             let fileW = FileWrapper(directoryWithFileWrappers: [:])
             fileW.addRegularFile(withContents: kaihatuHistory, preferredFilename: "kaihatu.tsv")
@@ -217,7 +224,6 @@ final class TSVSupport {
     private func registerKaihatuHistory(_ data: Data) {
         
         let array = String(data: data, encoding: .utf8)?.components(separatedBy: "\n")
-        let store = LocalDataStore.oneTimeEditor()
         array?.forEach {
             
             let attr = $0.components(separatedBy: "\t")
@@ -254,7 +260,6 @@ final class TSVSupport {
     private func registerKenzoHistory(_ data: Data) {
         
         let array = String(data: data, encoding: .utf8)?.components(separatedBy: "\n")
-        let store = LocalDataStore.oneTimeEditor()
         
         array?.forEach {
             
@@ -294,7 +299,6 @@ final class TSVSupport {
     private func registerKenzoMark( _ data: Data) {
         
         let array = String(data: data, encoding: .utf8)?.components(separatedBy: "\n")
-        let store = LocalDataStore.oneTimeEditor()
         
         array?.forEach {
             
@@ -335,7 +339,6 @@ final class TSVSupport {
     private func registerDropShipHistory( _ data: Data) {
         
         let array = String(data: data, encoding: .utf8)?.components(separatedBy: "\n")
-        let store = LocalDataStore.oneTimeEditor()
         
         array?.forEach {
             

@@ -26,31 +26,35 @@ final class StoreCreateSlotItemHistoryCommand: JSONCommand {
         let numberOfUsedKaihatuSizai = (success != 0 ? 1 : 0)
         
         let store = ServerDataStore.default
-        
-        guard let flagShip = store.deck(by: 1)?[0] else {
+        guard let flagShip = store.sync(execute: { store.deck(by: 1)?[0] }) else {
             
             return Logger.shared.log("Flagship is not found")
         }
         
-        guard let basic = store.basic() else { return print("Basic is wrong") }
+        guard let commanderLv = store.sync(execute: { store.basic()?.level }) else {
+            
+            return print("Basic is wrong")
+        }
         
         let localStore = LocalDataStore.oneTimeEditor()
-        
-        guard let newHistory = localStore.createKaihatuHistory() else {
+        guard let newHistory = localStore.sync(execute: { localStore.createKaihatuHistory() }) else {
             
             return Logger.shared.log("Can not create new KaihatuHistory entry")
         }
         
-        newHistory.name = name
-        newHistory.fuel = fuel
-        newHistory.bull = bull
-        newHistory.steel = steel
-        newHistory.bauxite = bauxite
-        newHistory.kaihatusizai = numberOfUsedKaihatuSizai
-        newHistory.flagShipLv = flagShip.lv
-        newHistory.flagShipName = flagShip.name
-        newHistory.commanderLv = basic.level
-        newHistory.date = Date()
+        localStore.sync {
+            
+            newHistory.name = name
+            newHistory.fuel = fuel
+            newHistory.bull = bull
+            newHistory.steel = steel
+            newHistory.bauxite = bauxite
+            newHistory.kaihatusizai = numberOfUsedKaihatuSizai
+            newHistory.flagShipLv = store.sync { flagShip.lv }
+            newHistory.flagShipName = store.sync { flagShip.name }
+            newHistory.commanderLv = commanderLv
+            newHistory.date = Date()
+        }
     }
     
     private func masterSlotItemName(sccess: Int, data: JSON) -> String {
@@ -65,6 +69,7 @@ final class StoreCreateSlotItemHistoryCommand: JSONCommand {
             return Logger.shared.log("api_slotitem_id is wrong", value: "")
         }
         
-        return ServerDataStore.default.masterSlotItem(by: slotItemId)?.name ?? ""
+        let store = ServerDataStore.default
+        return store.sync { store.masterSlotItem(by: slotItemId)?.name ?? "" }
     }
 }

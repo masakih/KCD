@@ -42,19 +42,20 @@ final class GuardShelterCommand: JSONCommand {
     
     private func damagedShipId(damagedPos: Int) -> Int? {
         
-        let firstDeckId = TemporaryDataStore.default.battle()?.deckId ?? 1
+        let tempStore = TemporaryDataStore.default
+        let firstDeckId = tempStore.sync { tempStore.battle()?.deckId ?? 1 }
         
         let store = ServerDataStore.default
         
         switch firstDeckId {
         case 1:
             switch damagedPos {
-            case 1...6: return store.deck(by: 1)?.shipId(of: damagedPos - 1)
-            case 7...12: return store.deck(by: 2)?.shipId(of: damagedPos - 6 - 1)
+            case 1...6: return store.sync { store.deck(by: 1)?.shipId(of: damagedPos - 1) }
+            case 7...12: return store.sync { store.deck(by: 2)?.shipId(of: damagedPos - 6 - 1) }
             default: return nil
             }
         case 3:
-            return store.deck(by: 3)?.shipId(of: damagedPos - 1)
+            return store.sync { store.deck(by: 3)?.shipId(of: damagedPos - 1) }
         default:
             return nil
         }
@@ -71,40 +72,44 @@ final class GuardShelterCommand: JSONCommand {
         }
         
         let store = TemporaryDataStore.oneTimeEditor()
-        
-        guard let damaged = store.createGuardEscaped() else {
+        store.sync {
             
-            return Logger.shared.log("Can not create GuardEscaped for damaged")
-        }
-        
-        damaged.shipID = damagedId
-        damaged.ensured = false
-        
-        // store guardian if needs
-        guard let guardianPos = escape["api_tow_idx"][0].int else { return }
-        
-        let fixedGuardianPos = guardianPos - 6 - 1
-        
-        guard let guardianId = ServerDataStore.default.deck(by: 2)?.shipId(of: fixedGuardianPos) else {
+            guard let damaged = store.createGuardEscaped() else {
+                
+                return Logger.shared.log("Can not create GuardEscaped for damaged")
+            }
             
-            return Logger.shared.log("guardianPos is wrong")
-        }
-        
-        guard let guardian = store.createGuardEscaped() else {
+            damaged.shipID = damagedId
+            damaged.ensured = false
             
-            return Logger.shared.log("Can not create GuardEscaped for guardinan")
+            // store guardian if needs
+            guard let guardianPos = escape["api_tow_idx"][0].int else { return }
+            
+            let fixedGuardianPos = guardianPos - 6 - 1
+            
+            let sStore = ServerDataStore.default
+            guard let guardianId = sStore.sync(execute: { sStore.deck(by: 2)?.shipId(of: fixedGuardianPos) }) else {
+                
+                return Logger.shared.log("guardianPos is wrong")
+            }
+            
+            guard let guardian = store.createGuardEscaped() else {
+                
+                return Logger.shared.log("Can not create GuardEscaped for guardinan")
+            }
+            
+            guardian.shipID = guardianId
+            guardian.ensured = false
         }
-        
-        guardian.shipID = guardianId
-        guardian.ensured = false
     }
     
     private func removeInvalidEntry() {
         
         let store = TemporaryDataStore.oneTimeEditor()
-        
-        store.notEnsuredGuardEscaped().forEach(store.delete)
-        store.save(errorHandler: store.presentOnMainThread)
+        store.sync {
+            store.notEnsuredGuardEscaped().forEach(store.delete)
+            store.save(errorHandler: store.presentOnMainThread)
+        }
         Thread.sleep(forTimeInterval: 0.1)
         notify()
     }
@@ -112,9 +117,10 @@ final class GuardShelterCommand: JSONCommand {
     private func removeAllEntry() {
         
         let store = TemporaryDataStore.oneTimeEditor()
-        
-        store.guardEscaped().forEach(store.delete)
-        store.save(errorHandler: store.presentOnMainThread)
+        store.sync {
+            store.guardEscaped().forEach(store.delete)
+            store.save(errorHandler: store.presentOnMainThread)
+        }
         Thread.sleep(forTimeInterval: 0.1)
         notify()
     }
@@ -122,9 +128,10 @@ final class GuardShelterCommand: JSONCommand {
     private func ensureGuardShelter() {
         
         let store = TemporaryDataStore.oneTimeEditor()
-        
-        store.guardEscaped().forEach { $0.ensured = true }
-        store.save(errorHandler: store.presentOnMainThread)
+        store.sync {
+            store.guardEscaped().forEach { $0.ensured = true }
+            store.save(errorHandler: store.presentOnMainThread)
+        }
         Thread.sleep(forTimeInterval: 0.1)
         notify()
     }

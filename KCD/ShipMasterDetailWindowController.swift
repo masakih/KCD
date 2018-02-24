@@ -68,30 +68,31 @@ final class ShipMasterDetailWindowController: NSWindowController {
     @IBAction func applySally(_ sender: AnyObject?) {
         
         let store = ServerDataStore.oneTimeEditor()
-        
-        guard let i = selectedShip?.objectID else { return }
-        guard let ship = store.object(of: Ship.entity, with: i) else { return }
-//
-//        ship.sally_area = sally.integerValue as NSNumber
-        
-        let eq = ship.equippedItem.array
-        let slotId = sally.integerValue
-        
-        let pos = min(4, eq.count)
-        
-        if eq.count > 4 {
+        store.sync {
+            guard let i = self.selectedShip?.objectID else { return }
+            guard let ship = store.object(of: Ship.entity, with: i) else { return }
+            //
+            //        ship.sally_area = sally.integerValue as NSNumber
             
-            ship.equippedItem = NSOrderedSet(array: Array(eq.dropLast()))
+            let eq = ship.equippedItem.array
+            let slotId = self.sally.integerValue
+            
+            let pos = min(4, eq.count)
+            
+            if eq.count > 4 {
+                
+                ship.equippedItem = NSOrderedSet(array: Array(eq.dropLast()))
+            }
+            
+            if let slotItem = store.slotItem(by: slotId) {
+                
+                ship.setItem(slotId, to: pos)
+                
+                ship.equippedItem = NSOrderedSet(array: ship.equippedItem.array + [slotItem])
+            }
+            
+            store.save(errorHandler: {_ in})
         }
-        
-        if let slotItem = store.slotItem(by: slotId) {
-            
-            ship.setItem(slotId, to: pos)
-            
-            ship.equippedItem = NSOrderedSet(array: ship.equippedItem.array + [slotItem])
-        }
-        
-        store.save(errorHandler: {_ in})
     }
 }
 

@@ -235,15 +235,18 @@ extension ExternalBrowserWindowController {
     @IBAction func addBookmark(_ sender: AnyObject?) {
         
         guard let window = window else { return }
-        guard let bookmark = BookmarkManager.shared.createNewBookmark() else { return }
-        
-        bookmark.name = window.title
-        bookmark.urlString = webView.mainFrameURL
-        bookmark.windowContentSize = windowContentSize
-        bookmark.contentVisibleRect = contentVisibleRect
-        bookmark.canResize = canResize
-        bookmark.canScroll = canScroll
-        bookmark.scrollDelay = 0.5
+        _ = BookmarkManager.shared.createNewBookmark { bookmark in
+            
+            bookmark.name = window.title
+            bookmark.urlString = self.webView.mainFrameURL
+            bookmark.windowContentSize = self.windowContentSize
+            bookmark.contentVisibleRect = self.contentVisibleRect
+            bookmark.canResize = self.canResize
+            bookmark.canScroll = self.canScroll
+            bookmark.scrollDelay = 0.5
+            
+            return true
+        }
     }
     
     @IBAction func showBookmark(_ sender: AnyObject?) {

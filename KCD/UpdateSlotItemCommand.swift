@@ -23,17 +23,19 @@ final class UpdateSlotItemCommand: JSONCommand {
         
         let store = ServerDataStore.oneTimeEditor()
         
-        guard let masterSlotItem = store.masterSlotItem(by: slotItemId) else {
+        guard let masterSlotItem = store.sync(execute: { store.masterSlotItem(by: slotItemId) }) else {
             
             return Logger.shared.log("MasterSlotItem is not found")
         }
         
-        guard let new = store.createSlotItem() else {
+        guard let new = store.sync(execute: { store.createSlotItem() }) else {
             
             return Logger.shared.log("Can not create new SlotItem")
         }
         
-        new.id = newSlotItemId
-        new.master_slotItem = masterSlotItem
+        store.sync {
+            new.id = newSlotItemId
+            new.master_slotItem = masterSlotItem
+        }
     }
 }

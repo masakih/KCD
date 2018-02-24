@@ -35,11 +35,14 @@ final class BasicMapper: JSONMapper {
     
     func commit() {
         
-        let store = ServerDataStore.oneTimeEditor()
+        configuration.editorStore.async(execute: commintInContext)
+    }
+    private func commintInContext() {
         
-        guard let basic = store.basic() ?? store.createBasic() else {
-            
-            return Logger.shared.log("Can not Get Basic")
+        guard let store = configuration.editorStore as? ServerDataStore,
+            let basic = store.basic() ?? store.createBasic() else {
+                
+                return Logger.shared.log("Can not Get Basic")
         }
         
         registerElement(data, to: basic)

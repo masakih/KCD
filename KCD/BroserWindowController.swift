@@ -194,7 +194,7 @@ extension BroserWindowController {
     @IBAction func clearQuestList(_ sender: AnyObject?) {
         
         let store = ServerDataStore.oneTimeEditor()
-        store.quests().forEach(store.delete)
+        store.sync { store.quests().forEach(store.delete) }
     }
     
     // call from menu item

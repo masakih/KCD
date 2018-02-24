@@ -39,16 +39,14 @@ final class DummyShipCommand: JSONCommand {
         guard DummyShipCommand.needsEnterDummy else { return }
         
         let store = ServerDataStore.oneTimeEditor()
-        
-        store.createShip()?.id = -2
+        store.sync { store.createShip()?.id = -2 }
         DummyShipCommand.needsEnterDummy = false
     }
     
     private func removeDummy() {
         
         let store = ServerDataStore.oneTimeEditor()
-        
-        store.ships(by: -2).forEach(store.delete)
+        store.sync { store.ships(by: -2).forEach(store.delete) }
         DummyShipCommand.needsEnterDummy = false
     }
 }

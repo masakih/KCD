@@ -80,16 +80,16 @@ extension LocalDataStore {
         return kenzoMarks.first
     }
     
-    func kenzoMark(kenzoDock: KenzoDock, kDockId: Int) -> KenzoMark? {
+    func kenzoMark(docInfo: KenzoMarkCommand.KenzoDockInfo) -> KenzoMark? {
         
         let predicate = NSPredicate.empty
-            .and(NSPredicate(#keyPath(KenzoMark.fuel), equal: kenzoDock.item1))
-            .and(NSPredicate(#keyPath(KenzoMark.bull), equal: kenzoDock.item2))
-            .and(NSPredicate(#keyPath(KenzoMark.steel), equal: kenzoDock.item3))
-            .and(NSPredicate(#keyPath(KenzoMark.bauxite), equal: kenzoDock.item4))
-            .and(NSPredicate(#keyPath(KenzoMark.kaihatusizai), equal: kenzoDock.item5))
-            .and(NSPredicate(#keyPath(KenzoMark.created_ship_id), equal: kenzoDock.created_ship_id))
-            .and(NSPredicate(#keyPath(KenzoMark.kDockId), equal: kDockId))
+            .and(NSPredicate(#keyPath(KenzoMark.kDockId), equal: docInfo.dockId))
+            .and(NSPredicate(#keyPath(KenzoMark.fuel), equal: docInfo.fuel))
+            .and(NSPredicate(#keyPath(KenzoMark.bull), equal: docInfo.bull))
+            .and(NSPredicate(#keyPath(KenzoMark.steel), equal: docInfo.steel))
+            .and(NSPredicate(#keyPath(KenzoMark.bauxite), equal: docInfo.bauxite))
+            .and(NSPredicate(#keyPath(KenzoMark.kaihatusizai), equal: docInfo.kaihatusizai))
+            .and(NSPredicate(#keyPath(KenzoMark.created_ship_id), equal: docInfo.shipId))
         
         guard let kenzoMarks = try? objects(of: KenzoMark.entity, predicate: predicate) else { return nil }
         

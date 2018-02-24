@@ -15,10 +15,13 @@ final class HistoryItemCleaner {
         guard UserDefaults.standard[.cleanOldHistoryItems] else { return }
         
         let store = LocalDataStore.oneTimeEditor()
-        let cleanSinceDays = UserDefaults.standard[.cleanSinceDays]
-        
-        store.unmarkedKaihatuHistories(befor: cleanSinceDays).forEach(store.delete)
-        store.unmarkedKenzoHistories(befor: cleanSinceDays).forEach(store.delete)
-        store.unmarkedDropShipHistories(befor: cleanSinceDays).forEach(store.delete)
+        store.sync {
+            
+            let cleanSinceDays = UserDefaults.standard[.cleanSinceDays]
+            
+            store.unmarkedKaihatuHistories(befor: cleanSinceDays).forEach(store.delete)
+            store.unmarkedKenzoHistories(befor: cleanSinceDays).forEach(store.delete)
+            store.unmarkedDropShipHistories(befor: cleanSinceDays).forEach(store.delete)
+        }
     }
 }

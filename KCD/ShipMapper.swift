@@ -61,12 +61,18 @@ final class ShipMapper: JSONMapper {
     private var registerIds: [Int] = []
     private lazy var masterShips: [MasterShip] = {
         
-        return ServerDataStore.default.sortedMasterShipsById()
+        guard let store = configuration.editorStore as? ServerDataStore else { return [] }
+        
+        return store.sortedMasterShipsById()
+        
     }()
     private lazy var slotItems: [SlotItem] = {
         
-        return ServerDataStore.default.sortedSlotItemsById()
+        guard let store = configuration.editorStore as? ServerDataStore else { return [] }
+        
+        return store.sortedSlotItemsById()
     }()
+    
     private var needsDeleteUnregisteredShip: Bool {
         
         switch apiResponse.api.endpoint {

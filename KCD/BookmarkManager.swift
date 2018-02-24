@@ -51,27 +51,36 @@ final class BookmarkManager: NSObject, NSMenuDelegate {
         return items
     }
     
-    func createNewBookmark() -> Bookmark? {
+    func createNewBookmark(configurator: @escaping (Bookmark) -> Bool) -> Bookmark? {
         
         guard let maxOrder = bookmarksController.value(forKeyPath: "arrangedObjects.@max.order") as? Int else {
             
             return Logger.shared.log("BookmarkManager: Can no convert max order to Int", value: nil)
         }
         
-        guard let new = editorStore.createBookmark() else {
+        let editorStore: BookmarkDataStore = BookmarkDataStore.oneTimeEditor()
+        
+        guard let new = editorStore.sync(execute: { editorStore.createBookmark() }) else {
             
             return Logger.shared.log("BookmarkManager: Can not insert BookMarkItem", value: nil)
         }
         
-        new.identifier = String(format: "B%@", arguments: [NSDate()])
-        new.order = maxOrder + 100
-        
-        DispatchQueue.main.asyncAfter(deadline: .now()) {
+        return editorStore.sync {
             
-            self.editorStore.save(errorHandler: self.editorStore.presentOnMainThread)
+            new.identifier = String(format: "B%@", arguments: [NSDate()])
+            new.order = maxOrder + 100
+            
+            if !configurator(new) {
+                
+                editorStore.delete(new)
+                
+                return nil
+            }
+            
+            editorStore.save(errorHandler: editorStore.presentOnMainThread)
+            
+            return new
         }
-        
-        return new
     }
     
     func menuNeedsUpdate(_ menu: NSMenu) {

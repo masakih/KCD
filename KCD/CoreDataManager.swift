@@ -36,6 +36,10 @@ protocol CoreDataProvider {
 
 protocol CoreDataAccessor: CoreDataProvider {
     
+    func sync(execute: () -> Void)
+    func sync<T>(execute: () -> T) -> T
+    func async(execute: @escaping () -> Void)
+    
     func insertNewObject<T>(for entity: Entity<T>) -> T?
     func delete(_ object: NSManagedObject)
     func object<T>(of entity: Entity<T>, with objectId: NSManagedObjectID) -> T?
@@ -79,40 +83,50 @@ extension CoreDataProvider {
     
     func save() throws {
         
-        guard context.commitEditing() else {
+        var caughtError: Error?
+        context.performAndWait {
             
-            throw CoreDataError.couldNotSave("\(String(describing: type(of: self))) unable to commit editing before saveing")
-        }
-        
-        do {
-            
-            try context.save()
-            
-        } catch let error as NSError {
-            
-            throw CoreDataError.couldNotSave(error.localizedDescription)
-        }
-        
-        guard let parent = context.parent else { return }
-        
-        // save parent context
-        var catchedError: NSError? = nil
-        parent.performAndWait {
+            guard context.commitEditing() else {
+                
+                caughtError = CoreDataError.couldNotSave("\(String(describing: type(of: self))) unable to commit editing before saveing")
+                return
+            }
             
             do {
                 
-                try parent.save()
+                try context.save()
                 
             } catch let error as NSError {
                 
-                catchedError = error
+                caughtError = CoreDataError.couldNotSave(error.localizedDescription)
+                return
+            }
+            
+            guard let parent = context.parent else { return }
+            
+            // save parent context
+            var catchedError: NSError? = nil
+            parent.performAndWait {
+                
+                do {
+                    
+                    try parent.save()
+                    
+                } catch let error as NSError {
+                    
+                    catchedError = error
+                }
+            }
+            
+            if let error = catchedError {
+                
+                caughtError = CoreDataError.couldNotSave(error.localizedDescription)
             }
         }
         
-        if let error = catchedError {
+        if let error = caughtError {
             
-            throw CoreDataError.couldNotSave(error.localizedDescription)
-            
+            throw error
         }
     }
     
@@ -133,6 +147,25 @@ extension CoreDataProvider {
 }
 
 extension CoreDataAccessor {
+    
+    func sync(execute work: () -> Void) {
+        
+        self.context.performAndWait(work)
+    }
+    
+    func sync<T>(execute work: () -> T) -> T {
+        
+        var value: T!
+        sync {
+            value = work()
+        }
+        return value
+    }
+    
+    func async(execute work: @escaping () -> Void) {
+        
+        self.context.perform(work)
+    }
     
     func insertNewObject<T>(for entity: Entity<T>) -> T? {
         
@@ -155,11 +188,31 @@ extension CoreDataAccessor {
         req.sortDescriptors = sortDescriptors
         req.predicate = predicate
         
-        return try context.fetch(req)
+        var result: [T]?
+        var caughtError: Error?
+        sync {
+            do {
+                
+                result = try self.context.fetch(req)
+            } catch {
+                
+                caughtError = error
+            }
+        }
+        if let error = caughtError {
+            
+            throw error
+        }
+        
+        return result ?? []
     }
     
     func object(with objectId: NSManagedObjectID) -> NSManagedObject {
         
-        return context.object(with: objectId)
+        var result: NSManagedObject?
+        sync {
+            result = self.context.object(with: objectId)
+        }
+        return result!
     }
 }

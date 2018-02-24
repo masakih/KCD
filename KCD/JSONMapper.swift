@@ -144,7 +144,7 @@ extension JSONMapper {
         }
     }
     
-    func commit() {
+    private func commintInContext() {
         
         let store = configuration.editorStore
         
@@ -172,6 +172,14 @@ extension JSONMapper {
         
         finishOperating()
         store.save(errorHandler: store.presentOnMainThread)
+    }
+    
+    func commit() {
+        
+        configuration.editorStore
+            .sync {
+                self.commintInContext()
+        }
     }
     
     func beginRegister(_ object: ObjectType) {}

@@ -20,13 +20,14 @@ final class NyukyoStartCommand: JSONCommand {
         guard let hi = parameter["api_highspeed"].int, hi != 0 else { return }
         
         let store = ServerDataStore.oneTimeEditor()
-        
-        parameter["api_ship_id"]
-            .int
-            .flatMap(store.ship(by:))
-            .map { $0.nowhp = $0.maxhp }
-        
-        store.material()
-            .map { $0.kousokushuhuku = $0.kousokushuhuku - 1 }
+        store.sync {
+            self.parameter["api_ship_id"]
+                .int
+                .flatMap(store.ship(by:))
+                .map { $0.nowhp = $0.maxhp }
+            
+            store.material()
+                .map { $0.kousokushuhuku = $0.kousokushuhuku - 1 }
+        }
     }
 }

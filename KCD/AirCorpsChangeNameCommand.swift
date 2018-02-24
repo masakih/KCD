@@ -22,7 +22,8 @@ final class AirCorpsChangeNameCommand: JSONCommand {
         guard let name = parameter["api_name"].string else { return }
         
         let store = ServerDataStore.oneTimeEditor()
-        
-        store.airBase(area: areaId, base: rId)?.name = name
+        store.async {
+            store.airBase(area: areaId, base: rId)?.name = name
+        }
     }
 }

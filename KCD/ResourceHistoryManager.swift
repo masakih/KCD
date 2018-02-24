@@ -63,40 +63,41 @@ final class ResourceHistoryManager: NSObject {
             return Logger.shared.log("ResourceHistoryManager: Can not get Material")
         }
         
-        guard let basic = store.basic() else {
+        guard let experience = store.sync(execute: { store.basic()?.experience }) else {
             
             return Logger.shared.log("ResourceHistoryManager: Can not get Basic")
         }
         
         let historyStore = ResourceHistoryDataStore.oneTimeEditor()
-        
-        guard let newHistory = historyStore.createResource() else {
+        historyStore.sync {
+            guard let newHistory = historyStore.createResource() else {
+                
+                return Logger.shared.log("ResourceHistoryManager: Can not create ResourceHIstory")
+            }
             
-            return Logger.shared.log("ResourceHistoryManager: Can not create ResourceHIstory")
+            let now = Date()
+            var nowComp = Calendar.current
+                .dateComponents([.year, .month, .day, .hour, .minute], from: now)
+            let minutes = nowComp.minute.map { ($0 + 2) / 5 } ?? 0
+            nowComp.minute = minutes * 5
+            
+            newHistory.date = Calendar.current.date(from: nowComp)!
+            newHistory.minute = (minutes != 60) ? minutes : 0
+            newHistory.fuel = store.sync { material.fuel }
+            newHistory.bull = store.sync { material.bull }
+            newHistory.steel = store.sync { material.steel }
+            newHistory.bauxite = store.sync { material.bauxite }
+            newHistory.kaihatusizai = store.sync { material.kaihatusizai }
+            newHistory.kousokukenzo = store.sync { material.kousokukenzo }
+            newHistory.kousokushuhuku = store.sync { material.kousokushuhuku }
+            newHistory.screw = store.sync { material.screw }
+            newHistory.experience = experience
         }
-        
-        let now = Date()
-        var nowComp = Calendar.current
-            .dateComponents([.year, .month, .day, .hour, .minute], from: now)
-        let minutes = nowComp.minute.map { ($0 + 2) / 5 } ?? 0
-        nowComp.minute = minutes * 5
-        
-        newHistory.date = Calendar.current.date(from: nowComp)!
-        newHistory.minute = (minutes != 60) ? minutes : 0
-        newHistory.fuel = material.fuel
-        newHistory.bull = material.bull
-        newHistory.steel = material.steel
-        newHistory.bauxite = material.bauxite
-        newHistory.kaihatusizai = material.kaihatusizai
-        newHistory.kousokukenzo = material.kousokukenzo
-        newHistory.kousokushuhuku = material.kousokushuhuku
-        newHistory.screw = material.screw
-        newHistory.experience = basic.experience
     }
     
     private func reduceResourceByConditions(_ store: ResourceHistoryDataStore, _ target: [Int], _ ago: Date) {
         
-        store.resources(in: target, older: ago).forEach(store.delete)
+        store.sync { store.resources(in: target, older: ago).forEach(store.delete) }
     }
     
     private func dateOfMonth(_ month: Int) -> Date {

@@ -13,13 +13,14 @@ final class UpdateQuestListCommand: JSONCommand {
     override func execute() {
         
         let store = ServerDataStore.oneTimeEditor()
-        
-        parameter["api_quest_id"]
-            .int
-            .flatMap(store.quest(by:))
-            .map {
-                $0.progress_flag = 0
-                $0.state = 1
+        store.sync {
+            self.parameter["api_quest_id"]
+                .int
+                .flatMap(store.quest(by:))
+                .map {
+                    $0.progress_flag = 0
+                    $0.state = 1
+            }
         }
     }
 }

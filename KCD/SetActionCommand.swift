@@ -27,10 +27,11 @@ final class SetActionCommand: JSONCommand {
         if rIds.count != actions.count { print("missmatch count") }
         
         let store = ServerDataStore.oneTimeEditor()
-        
-        zip(rIds, actions).forEach { (rId, action) in
-            
-            store.airBase(area: areaId, base: rId)?.action_kind = action
+        store.sync {
+            zip(rIds, actions).forEach { rId, action in
+                
+                store.airBase(area: areaId, base: rId)?.action_kind = action
+            }
         }
     }
 }

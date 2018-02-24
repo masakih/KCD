@@ -46,6 +46,8 @@ final class Fleet: NSObject {
     @objc dynamic private(set) var ships: [Ship] = []
     private var deck: Deck?
     
+    let store = ServerDataStore.default
+    
     init?(number: Int) {
         
         guard case 1...4 = number else {
@@ -58,7 +60,7 @@ final class Fleet: NSObject {
         
         super.init()
         
-        if let deck = ServerDataStore.default.deck(by: number) {
+        if let deck = store.sync(execute: { self.store.deck(by: number) }) {
             
             self.setupDeck(deck: deck)
             
@@ -68,7 +70,7 @@ final class Fleet: NSObject {
         ServerDataStore.default
             .future { _ -> Deck? in
                 
-                guard let deck = ServerDataStore.default.deck(by: number) else { return .none }
+                guard let deck = self.store.sync(execute: { self.store.deck(by: number) }) else { return .none }
                 
                 return deck
             }
@@ -82,7 +84,7 @@ final class Fleet: NSObject {
         }
     }
     
-    subscript(_ index: Int) -> Ship? { return deck?[index] }
+    subscript(_ index: Int) -> Ship? { return store.sync { self.deck?[index] } }
     
     private func setupDeck(deck: Deck) {
         
@@ -95,6 +97,6 @@ final class Fleet: NSObject {
     
     private func setupShips(deck: Deck) {
         
-        ships = deck[0...6]
+        ships = store.sync { deck[0...6] }
     }
 }
