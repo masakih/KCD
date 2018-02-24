@@ -51,6 +51,7 @@ final class Ship: KCManagedObject {
     @NSManaged dynamic var slot_3: Int
     @NSManaged dynamic var slot_4: Int
     @NSManaged dynamic var slot_ex: Int
+    @NSManaged dynamic var soku: Int
     @NSManaged dynamic var sortno: NSNumber?
     @NSManaged dynamic var soukou_0: Int
     @NSManaged dynamic var soukou_1: Int
@@ -102,8 +103,6 @@ extension Ship {
         case #keyPath(status): return [#keyPath(nowhp), #keyPath(maxhp)]
         
         case #keyPath(planColor): return [#keyPath(sally_area)]
-            
-        case #keyPath(soku): return [#keyPath(ship_id)]
             
         case #keyPath(isMaxKaryoku): return [#keyPath(karyoku_1), #keyPath(kyouka_0)]
             
@@ -182,8 +181,6 @@ extension Ship {
         default: return .controlTextColor
         }
     }
-    
-    @objc dynamic var soku: Int { return master_ship.soku }
 }
 
 
