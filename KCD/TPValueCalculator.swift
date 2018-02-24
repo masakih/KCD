@@ -64,6 +64,8 @@ final class ShipTPValueCalculator: TPValueCalculator {
             
         case .aviationBattleship: return 7
             
+        case .submarineAircraftCarrier: return 1
+            
         case .seaplaneTender: return 9
             
         case .amphibiousAssaultShip: return 12
@@ -98,7 +100,7 @@ final class EquipmentTPValueCalculator: TPValueCalculator {
             
         case .carire: return 5
             
-        case .tankShip: return 2
+        case .tankShip: return 22
             
         case .onigiri: return 1
             
