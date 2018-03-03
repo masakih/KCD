@@ -27,6 +27,11 @@ final class ShipTPValueCalculator: TPValueCalculator {
     
     var value: Int {
         
+        if ship.status == 3 {
+            
+            return 0
+        }
+        
         let shipTPValue = shipTypeValue(ShipType(rawValue: ship.master_ship.stype.id))
         
         let itemValue = ship.equippedItem.array
