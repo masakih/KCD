@@ -191,6 +191,7 @@ final class FleetViewController: NSViewController {
             .map { ShipTPValueCalculator($0).value }
             .reduce(0, +)
     }
+    @objc private var totalBRankTPValue: Int { return Int(floor(Double(totalTPValue) * 0.7)) }
     
     private func totalSeiku(of ship: Ship) -> Int {
         
@@ -280,6 +281,7 @@ final class FleetViewController: NSViewController {
                 self?.notifyChangeValue(forKey: #keyPath(totalSakuteki))
                 self?.notifyChangeValue(forKey: #keyPath(totalDrums))
                 self?.notifyChangeValue(forKey: #keyPath(totalTPValue))
+                self?.notifyChangeValue(forKey: #keyPath(totalBRankTPValue))
         }
     }
     
@@ -311,7 +313,8 @@ final class FleetViewController: NSViewController {
                     notifyChangeValue(forKey: #keyPath(totalDrums))
                     notifyChangeValue(forKey: #keyPath(totalCalclatedSeiku))
                     notifyChangeValue(forKey: #keyPath(totalTPValue))
-                    
+                    notifyChangeValue(forKey: #keyPath(totalBRankTPValue))
+
                 case #keyPath(Ship.seiku):
                     notifyChangeValue(forKey: #keyPath(totalSeiku))
                     notifyChangeValue(forKey: #keyPath(totalCalclatedSeiku))
@@ -388,7 +391,7 @@ final class FleetViewController: NSViewController {
         
         [#keyPath(totalSakuteki), #keyPath(totalSeiku), #keyPath(totalCalclatedSeiku),
          #keyPath(totalLevel), #keyPath(totalDrums), #keyPath(repairable),
-         #keyPath(totalTPValue)]
+         #keyPath(totalTPValue), #keyPath(totalBRankTPValue)]
             .forEach(notifyChangeValue(forKey:))
     }
 }
@@ -513,6 +516,9 @@ extension FleetViewController {
             var frame = view.frame
             frame.size.width += width
             
+            extDetail.view.alphaValue = 0.0
+            extDetail.view.animator().alphaValue = 1.0
+            
             extDetail.view.frame = details[5].view.frame
             view.addSubview(extDetail.view, positioned: .below, relativeTo: details[5].view)
             view.animator().frame = frame
@@ -539,6 +545,8 @@ extension FleetViewController {
         extShipAnimating = true
         
         NSAnimationContext.runAnimationGroup({ _ in
+            
+            extDetail.view.animator().alphaValue = 0.0
             
             var frame = view.frame
             frame.size.width -= extDetail.view.frame.width - 1

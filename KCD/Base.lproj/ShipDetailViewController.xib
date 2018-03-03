@@ -35,7 +35,7 @@
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="Y34-Rg-VIJ" customClass="FadeoutTextField" customModule="KCD" customModuleProvider="target">
-                        <rect key="frame" x="17" y="122" width="151" height="19"/>
+                        <rect key="frame" x="17" y="122" width="148" height="19"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Prinz Eugen改" id="W58-Ho-kVQ">
                             <font key="font" metaFont="system" size="15"/>
@@ -51,7 +51,7 @@
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="Mgo-sm-Ba0">
-                        <rect key="frame" x="167" y="123" width="42" height="17"/>
+                        <rect key="frame" x="164" y="123" width="44" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Lv.123" id="mT8-P9-jjK">
                             <font key="font" metaFont="system"/>
@@ -100,7 +100,7 @@
                         <rect key="frame" x="165" y="107" width="25" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="555" id="D74-dY-yKV">
-                            <font key="font" metaFont="system" size="11"/>
+                            <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -117,13 +117,12 @@
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="ugl-Cj-bSp">
                         <rect key="frame" x="207" y="123" width="54" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="199/199" id="YS8-Um-wf7">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="108/108" id="YS8-Um-wf7">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                         <connections>
-                            <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont13" id="rRc-MT-j4d"/>
                             <binding destination="LyA-xZ-gxq" name="displayPatternValue2" keyPath="selection.maxhp" previousBinding="3F0-KK-10k" id="wvl-OZ-3j1">
                                 <dictionary key="options">
                                     <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
@@ -588,7 +587,7 @@ IA
                         <color key="fillColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </box>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="qbZ-eV-gqf">
-                        <rect key="frame" x="198" y="106" width="29" height="17"/>
+                        <rect key="frame" x="232" y="107" width="29" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="555" id="JVG-Dt-axT">
                             <font key="font" metaFont="system"/>
@@ -688,7 +687,7 @@ IA
                         </connections>
                     </textField>
                     <customView misplaced="YES" id="YLm-de-F1l" customClass="SuppliesView" customModule="KCD">
-                        <rect key="frame" x="229" y="108" width="30" height="11"/>
+                        <rect key="frame" x="196" y="109" width="30" height="11"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                 </subviews>
