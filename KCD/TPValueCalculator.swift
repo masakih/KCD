@@ -27,7 +27,7 @@ final class ShipTPValueCalculator: TPValueCalculator {
     
     var value: Int {
         
-        if ship.status == 3 {
+        if ship.nowhp == 0 {
             
             return 0
         }
