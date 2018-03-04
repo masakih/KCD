@@ -91,9 +91,9 @@ class SeikuTest: XCTestCase {
             fatalError()
         }
         
-        XCTAssertEqual([ship1].reduce(0) { $0 + $1.seiku }, 59)
+        XCTAssertEqual([ship1].reduce(0) { $0 + $1.seiku }, 67)
         
-        XCTAssertEqual([ship1].reduce(0) { $0 + totalSeiku(of: $1) }, 113)
+        XCTAssertEqual([ship1].reduce(0) { $0 + totalSeiku(of: $1) }, 119)
     }
     
     func testOne2Ship() {
@@ -122,9 +122,9 @@ class SeikuTest: XCTestCase {
             fatalError()
         }
         
-        XCTAssertEqual([ship1, ship2].reduce(0) { $0 + $1.seiku }, 81)
+        XCTAssertEqual([ship1, ship2].reduce(0) { $0 + $1.seiku }, 89)
         
-        XCTAssertEqual([ship1, ship2].reduce(0) { $0 + totalSeiku(of: $1) }, 186)
+        XCTAssertEqual([ship1, ship2].reduce(0) { $0 + totalSeiku(of: $1) }, 192)
     }
     
     func testTreeShips() {
@@ -145,9 +145,9 @@ class SeikuTest: XCTestCase {
             fatalError()
         }
         
-        XCTAssertEqual([ship1, ship2, ship3].reduce(0) { $0 + $1.seiku }, 85)
+        XCTAssertEqual([ship1, ship2, ship3].reduce(0) { $0 + $1.seiku }, 93)
         
-        XCTAssertEqual([ship1, ship2, ship3].reduce(0) { $0 + totalSeiku(of: $1) }, 215)
+        XCTAssertEqual([ship1, ship2, ship3].reduce(0) { $0 + totalSeiku(of: $1) }, 221)
     }
     
     func testEscapedShips() {
@@ -176,8 +176,8 @@ class SeikuTest: XCTestCase {
             guardEscape?.ensured = true
         }
         
-        XCTAssertEqual([ship1, ship2, ship3].reduce(0) { $0 + $1.seiku }, 63)
+        XCTAssertEqual([ship1, ship2, ship3].reduce(0) { $0 + $1.seiku }, 71)
         
-        XCTAssertEqual([ship1, ship2, ship3].reduce(0) { $0 + totalSeiku(of: $1) }, 142)
+        XCTAssertEqual([ship1, ship2, ship3].reduce(0) { $0 + totalSeiku(of: $1) }, 148)
     }
 }
