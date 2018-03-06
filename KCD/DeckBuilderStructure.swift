@@ -46,7 +46,7 @@ extension DeckBuilderStructure: DeckBuilderDescriptable {
     var deckDescription: String {
         
         let verStr = "\"version\":\(version)"
-        let fleetStr = zip(1...4, fleets)
+        let fleetStr = zip(1..., fleets)
             .map { "\"f\($0.0)\":{\($0.1.deckDescription)}" }
             .joined(separator: ",")
         let hqLvStr = hqLv.map { "\"hqlv\":\($0)" }
@@ -63,7 +63,7 @@ extension DBFleet: DeckBuilderDescriptable {
     
     var deckDescription: String {
         
-        return zip(1...6, ships)
+        return zip(1..., ships)
             .map { "\"s\($0.0)\":{\($0.1.deckDescription)}" }
             .joined(separator: ",")
     }
@@ -87,7 +87,7 @@ extension DBShip: DeckBuilderDescriptable {
     
     private var itemsDesc: String {
         
-        return zip(1...4, items)
+        return zip(1..., items)
             .map { "\"i\($0.0)\":{\($0.1.deckDescription)}" }
             .joined(separator: ",")
     }

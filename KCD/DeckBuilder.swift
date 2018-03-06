@@ -47,7 +47,7 @@ final class DeckBuilder {
     
     private static func buildDeck(deck: Deck) -> DBFleet {
         
-        let ships = deck[0...5].map(buildShip)
+        let ships = deck[0..<Deck.maxShipCount].map(buildShip)
         
         return DBFleet(ships: ships)
     }
