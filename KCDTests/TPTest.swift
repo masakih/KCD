@@ -193,7 +193,7 @@ class TPTest: XCTestCase {
         }
     }
     
-    func checkShip(_ shipId: Int, sTp: Int, bTp: Double) {
+    func checkShip(_ shipId: Int, sTp: Int, bTp: Double, file: StaticString = #file, line: UInt = #line) {
         
         guard let ship1 = store.ship(by: shipId) else {
             XCTFail("Can not get ship")
@@ -201,12 +201,12 @@ class TPTest: XCTestCase {
         }
         ship1.nowhp = ship1.maxhp
         let tp = ShipTPValueCalculator(ship1).value
-        XCTAssertEqual(tp, sTp)
-        XCTAssertLessThan(Double(tp) * 0.7 - bTp, 0.0001)
+        XCTAssertEqual(tp, sTp, file: file, line: line)
+        XCTAssertLessThan(abs(Double(tp) * 0.7 - bTp), 0.00000001, file: file, line: line)
         
         // 大破
         ship1.nowhp = Int(Double(ship1.nowhp) * 0.2)
-        XCTAssertEqual(ShipTPValueCalculator(ship1).value, 0)
+        XCTAssertEqual(ShipTPValueCalculator(ship1).value, 0, "Taiha", file: file, line: line)
     }
 
     func testTP() {
