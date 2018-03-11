@@ -46,6 +46,8 @@ cyclomatic_complexity:
     warning: 25
     error: 60
 
+private_outlet:
+private_action:
 
 custom_rules:
         use_nsmanagedobjectcontext:
@@ -53,5 +55,3 @@ custom_rules:
                 name: "Positive using NSManagedObjectContext"
                 regex: "NSManagedObjectContext\\s"
                 severity: error
-        private_iboutlet:
-                regex: "@IBOutlet\\s+(?!private[(\\s])"
