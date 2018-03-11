@@ -62,7 +62,7 @@
                     </customView>
                     <customView misplaced="YES" id="jOr-vI-BKr">
                         <rect key="frame" x="808" y="186" width="352" height="623"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
                     </customView>
                 </subviews>
             </view>
