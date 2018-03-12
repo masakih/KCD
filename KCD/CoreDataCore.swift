@@ -40,7 +40,8 @@ struct CoreDataConfiguration {
 struct CoreDataCore {
     
     let config: CoreDataConfiguration
-    let parentContext: NSManagedObjectContext
+    let writerContext: NSManagedObjectContext
+    let readerContext: NSManagedObjectContext
     private let model: NSManagedObjectModel
     private let coordinator: NSPersistentStoreCoordinator
     
@@ -50,7 +51,11 @@ struct CoreDataCore {
         
         do {
             
-            (model, coordinator, parentContext) = try MOCGenerator(config).genarate()
+            (model, coordinator, writerContext) = try MOCGenerator(config).genarate()
+            
+            readerContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+            readerContext.parent = writerContext
+            readerContext.undoManager = nil
             
         } catch {
             
@@ -62,7 +67,7 @@ struct CoreDataCore {
     func editorContext() -> NSManagedObjectContext {
         
         let moc = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
-        moc.parent = parentContext
+        moc.parent = readerContext
         moc.undoManager = nil
         
         return moc

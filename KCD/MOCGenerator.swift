@@ -120,7 +120,7 @@ final class MOCGenerator {
     
     private func createContext(_ coordinator: NSPersistentStoreCoordinator) -> NSManagedObjectContext {
         
-        let moc = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        let moc = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         moc.persistentStoreCoordinator = coordinator
         moc.undoManager = nil
         

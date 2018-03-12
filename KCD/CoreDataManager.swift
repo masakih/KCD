@@ -63,7 +63,7 @@ extension CoreDataProvider {
     static func context(for type: CoreDataManagerType) -> NSManagedObjectContext {
         
         switch type {
-        case .reader: return core.parentContext
+        case .reader: return core.readerContext
             
         case .editor: return core.editorContext()
         }
@@ -102,15 +102,32 @@ extension CoreDataProvider {
                 return
             }
             
-            guard let parent = context.parent else { return }
+            guard let reader = context.parent else { return }
             
             // save parent context
             var catchedError: NSError? = nil
-            parent.performAndWait {
+            reader.performAndWait {
                 
                 do {
                     
-                    try parent.save()
+                    try reader.save()
+                    
+                    guard let writer = reader.parent else {
+                        
+                        throw CoreDataError.couldNotSave("Could not get writer context.")
+                    }
+                    
+                    writer.performAndWait {
+                        
+                        do {
+                            
+                            try writer.save()
+                            
+                        } catch let error as NSError {
+                            
+                            catchedError = error
+                        }
+                    }
                     
                 } catch let error as NSError {
                     
