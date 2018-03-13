@@ -83,12 +83,35 @@ extension CoreDataProvider {
     
     func save() throws {
         
+        // parentを辿ってsaveしていく
+        func propagateSaveAsync(_ context: NSManagedObjectContext) {
+            
+            guard let parent = context.parent else {
+                
+                return
+            }
+            
+            parent.perform {
+                
+                do {
+                    
+                    try parent.save()
+                    
+                    propagateSaveAsync(parent)
+                    
+                } catch {
+                    
+                    Logger.shared.log("Could not save context as \(error)")
+                }
+            }
+        }
+        
         var caughtError: Error?
         context.performAndWait {
             
             guard context.commitEditing() else {
                 
-                caughtError = CoreDataError.couldNotSave("\(String(describing: type(of: self))) unable to commit editing before saveing")
+                caughtError = CoreDataError.couldNotSave("Unable to commit editing before saveing")
                 return
             }
             
@@ -96,48 +119,14 @@ extension CoreDataProvider {
                 
                 try context.save()
                 
+                // save reader and writer context async.
+                // non throw exceptions.
+                propagateSaveAsync(context)
+                
             } catch let error as NSError {
                 
                 caughtError = CoreDataError.couldNotSave(error.localizedDescription)
                 return
-            }
-            
-            guard let reader = context.parent else { return }
-            
-            // save parent context
-            var catchedError: NSError? = nil
-            reader.performAndWait {
-                
-                do {
-                    
-                    try reader.save()
-                    
-                    guard let writer = reader.parent else {
-                        
-                        throw CoreDataError.couldNotSave("Could not get writer context.")
-                    }
-                    
-                    writer.performAndWait {
-                        
-                        do {
-                            
-                            try writer.save()
-                            
-                        } catch let error as NSError {
-                            
-                            catchedError = error
-                        }
-                    }
-                    
-                } catch let error as NSError {
-                    
-                    catchedError = error
-                }
-            }
-            
-            if let error = catchedError {
-                
-                caughtError = CoreDataError.couldNotSave(error.localizedDescription)
             }
         }
         
