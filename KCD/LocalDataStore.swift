@@ -14,11 +14,6 @@ final class LocalDataStore: CoreDataManager {
     
     static let `default` = LocalDataStore(type: .reader)
     
-    class func oneTimeEditor() -> LocalDataStore {
-        
-        return LocalDataStore(type: .editor)
-    }
-    
     required init(type: CoreDataManagerType) {
         
         context = LocalDataStore.context(for: type)

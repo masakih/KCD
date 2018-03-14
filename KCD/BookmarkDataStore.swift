@@ -14,11 +14,6 @@ final class BookmarkDataStore: CoreDataManager {
     
     static let `default` = BookmarkDataStore(type: .reader)
     
-    class func oneTimeEditor() -> BookmarkDataStore {
-        
-        return BookmarkDataStore(type: .editor)
-    }
-    
     required init(type: CoreDataManagerType) {
         
         context = BookmarkDataStore.context(for: type)

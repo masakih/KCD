@@ -220,3 +220,11 @@ extension CoreDataAccessor {
         return result!
     }
 }
+
+extension CoreDataManager {
+    
+    static func oneTimeEditor() -> Self {
+        
+        return Self.init(type: .editor)
+    }
+}

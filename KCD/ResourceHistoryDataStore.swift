@@ -14,11 +14,6 @@ final class ResourceHistoryDataStore: CoreDataManager {
     
     static let `default` = ResourceHistoryDataStore(type: .reader)
     
-    class func oneTimeEditor() -> ResourceHistoryDataStore {
-        
-        return ResourceHistoryDataStore(type: .editor)
-    }
-    
     required init(type: CoreDataManagerType) {
         
         context = ResourceHistoryDataStore.context(for: type)

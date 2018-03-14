@@ -17,11 +17,6 @@ final class TemporaryDataStore: CoreDataManager {
     
     static let `default` = TemporaryDataStore(type: .reader)
     
-    class func oneTimeEditor() -> TemporaryDataStore {
-        
-        return TemporaryDataStore(type: .editor)
-    }
-    
     required init(type: CoreDataManagerType) {
         
         context = TemporaryDataStore.context(for: type)

@@ -14,11 +14,6 @@ final class ServerDataStore: CoreDataManager {
     
     static let `default` = ServerDataStore(type: .reader)
     
-    class func oneTimeEditor() -> ServerDataStore {
-        
-        return ServerDataStore(type: .editor)
-    }
-    
     required init(type: CoreDataManagerType) {
         
         context = ServerDataStore.context(for: type)
