@@ -39,15 +39,12 @@ struct CoreDataConfiguration {
 
 struct CoreDataCore {
     
-    let config: CoreDataConfiguration
     let writerContext: NSManagedObjectContext
     let readerContext: NSManagedObjectContext
     private let model: NSManagedObjectModel
     private let coordinator: NSPersistentStoreCoordinator
     
     init(_ config: CoreDataConfiguration) {
-        
-        self.config = config
         
         do {
             
