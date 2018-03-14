@@ -16,7 +16,7 @@ struct CoreDataConfiguration {
     let type: String
     
     // try remake data file, if model file modified.
-    let tryRemake: Bool
+    let tryRemakeStoreFile: Bool
     
     private static let defaultOptions: [AnyHashable: Any] = [
         NSMigratePersistentStoresAutomaticallyOption: true,
@@ -27,13 +27,13 @@ struct CoreDataConfiguration {
          fileName: String? = nil,
          options: [AnyHashable: Any] = defaultOptions,
          type: String = NSSQLiteStoreType,
-         tryRemake: Bool = false) {
+         tryRemakeStoreFile: Bool = false) {
         
         self.modelName = modelName
         self.fileName = fileName ?? "\(modelName).storedata"
         self.options = options
         self.type = type
-        self.tryRemake = tryRemake
+        self.tryRemakeStoreFile = tryRemakeStoreFile
     }
 }
 

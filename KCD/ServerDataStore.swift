@@ -10,7 +10,7 @@ import Cocoa
 
 final class ServerDataStore: CoreDataManager {
     
-    static let core = CoreDataCore(CoreDataConfiguration("KCD", tryRemake: true))
+    static let core = CoreDataCore(CoreDataConfiguration("KCD", tryRemakeStoreFile: true))
     
     static let `default` = ServerDataStore(type: .reader)
     

@@ -86,7 +86,7 @@ final class MOCGenerator {
         } catch let error as NSError {
             
             // Data Modelが更新されていたらストアファイルを削除してもう一度
-            if config.tryRemake,
+            if config.tryRemakeStoreFile,
                 error.domain == NSCocoaErrorDomain,
                 isMigrationError(error.code) {
                 
