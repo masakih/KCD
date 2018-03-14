@@ -50,11 +50,9 @@ protocol CoreDataAccessor: CoreDataProvider {
 
 protocol CoreDataManager: CoreDataAccessor {
     
-    associatedtype InstanceType = Self
+    static var `default`: Self { get }
     
-    static var `default`: InstanceType { get }
-    
-    static func oneTimeEditor() -> InstanceType
+    static func oneTimeEditor() -> Self
 }
 
 // MARK: - Extension
