@@ -171,7 +171,7 @@ extension JSONMapper {
         }
         
         finishOperating()
-        store.save(errorHandler: store.presentOnMainThread)
+        store.save()
     }
     
     func commit() {

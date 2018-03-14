@@ -80,7 +80,7 @@ class HistoryTableViewController: NSViewController {
                 history.mark = !history.mark
             }
             
-            store.save(errorHandler: store.presentOnMainThread)
+            store.save()
         }
     }
     

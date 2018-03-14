@@ -1153,13 +1153,13 @@
 		F4BEEEA818D88FF30006F70C /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				F4BDEEB11E73FE2000D689AE /* Entity.swift */,
 				F4E471281E46ECF1009B5AF4 /* CoreDataCore.swift */,
-				F4C4A57E201464E300F8B732 /* CoreDataProviderExtension.swift */,
-				F4FF44D71FA21BF200039F21 /* CoreDataManager.swift */,
 				F44AA2661E814A4400EED8BE /* MOCGenerator.swift */,
+				F4BDEEB11E73FE2000D689AE /* Entity.swift */,
+				F4FF44D71FA21BF200039F21 /* CoreDataManager.swift */,
 				F481D63E1F9105CB007E2CBE /* Entities.swift */,
 				F4FC3E8D1E4368BB00E41228 /* KCManagedObject.swift */,
+				F4C4A57E201464E300F8B732 /* CoreDataProviderExtension.swift */,
 				F4F9F8911C6BA26400D0EE76 /* KCD */,
 				F4F9F8921C6BA28200D0EE76 /* Local */,
 				F4F9F8931C6BA29500D0EE76 /* Temporary */,

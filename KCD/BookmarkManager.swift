@@ -77,7 +77,7 @@ final class BookmarkManager: NSObject, NSMenuDelegate {
                 return nil
             }
             
-            editorStore.save(errorHandler: editorStore.presentOnMainThread)
+            editorStore.save()
             
             return new
         }

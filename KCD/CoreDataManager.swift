@@ -30,8 +30,7 @@ protocol CoreDataProvider {
     
     var context: NSManagedObjectContext { get }
     
-    func save(errorHandler: (Error) -> Void)
-    func save() throws
+    func save(errorHandler: @escaping (Error) -> Void)
 }
 
 protocol CoreDataAccessor: CoreDataProvider {
@@ -55,6 +54,21 @@ protocol CoreDataManager: CoreDataAccessor {
     static func oneTimeEditor() -> Self
 }
 
+func presentOnMainThread(_ error: Error) {
+    
+    if Thread.isMainThread {
+        
+        NSApp.presentError(error)
+        
+    } else {
+        
+        DispatchQueue.main.sync {
+            
+            _ = NSApp.presentError(error)
+        }
+    }
+}
+
 // MARK: - Extension
 extension CoreDataProvider {
     
@@ -67,19 +81,7 @@ extension CoreDataProvider {
         }
     }
     
-    func save(errorHandler: (Error) -> Void) {
-        
-        do {
-            
-            try save()
-            
-        } catch {
-            
-            errorHandler(error)
-        }
-    }
-    
-    func save() throws {
+    func save(errorHandler: @escaping (Error) -> Void = presentOnMainThread) {
         
         // parentを辿ってsaveしていく
         func propagateSaveAsync(_ context: NSManagedObjectContext) {
@@ -99,17 +101,16 @@ extension CoreDataProvider {
                     
                 } catch {
                     
-                    Logger.shared.log("Could not save context as \(error)")
+                    errorHandler(error)
                 }
             }
         }
         
-        var caughtError: Error?
         context.performAndWait {
             
             guard context.commitEditing() else {
                 
-                caughtError = CoreDataError.couldNotSave("Unable to commit editing before saveing")
+                errorHandler(CoreDataError.couldNotSave("Unable to commit editing before saveing"))
                 return
             }
             
@@ -123,28 +124,7 @@ extension CoreDataProvider {
                 
             } catch let error as NSError {
                 
-                caughtError = CoreDataError.couldNotSave(error.localizedDescription)
-                return
-            }
-        }
-        
-        if let error = caughtError {
-            
-            throw error
-        }
-    }
-    
-    func presentOnMainThread(_ error: Error) {
-        
-        if Thread.isMainThread {
-            
-            NSApp.presentError(error)
-            
-        } else {
-            
-            DispatchQueue.main.sync {
-                
-                _ = NSApp.presentError(error)
+                errorHandler(CoreDataError.couldNotSave(error.localizedDescription))
             }
         }
     }

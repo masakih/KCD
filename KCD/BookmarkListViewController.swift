@@ -160,7 +160,7 @@ extension BookmarkListViewController: NSTableViewDelegate, NSTableViewDataSource
                 bookmark.order = targetOrder + $0.offset + 1
             }
             
-            store.save(errorHandler: store.presentOnMainThread)
+            store.save()
             
             self.bookmarkController.rearrangeObjects()
             self.reorderingBoolmarks()

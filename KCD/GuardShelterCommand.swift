@@ -108,7 +108,7 @@ final class GuardShelterCommand: JSONCommand {
         let store = TemporaryDataStore.oneTimeEditor()
         store.sync {
             store.notEnsuredGuardEscaped().forEach(store.delete)
-            store.save(errorHandler: store.presentOnMainThread)
+            store.save()
         }
         Thread.sleep(forTimeInterval: 0.1)
         notify()
@@ -119,7 +119,7 @@ final class GuardShelterCommand: JSONCommand {
         let store = TemporaryDataStore.oneTimeEditor()
         store.sync {
             store.guardEscaped().forEach(store.delete)
-            store.save(errorHandler: store.presentOnMainThread)
+            store.save()
         }
         Thread.sleep(forTimeInterval: 0.1)
         notify()
@@ -130,7 +130,7 @@ final class GuardShelterCommand: JSONCommand {
         let store = TemporaryDataStore.oneTimeEditor()
         store.sync {
             store.guardEscaped().forEach { $0.ensured = true }
-            store.save(errorHandler: store.presentOnMainThread)
+            store.save()
         }
         Thread.sleep(forTimeInterval: 0.1)
         notify()
