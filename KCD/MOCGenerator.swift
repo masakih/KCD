@@ -26,7 +26,7 @@ final class MOCGenerator {
         return (model: model, coordinator: coordinator, moc: moc)
     }
     
-    func removeDataFile() {
+    private func removeDataFile() {
         
         ["", "-wal", "-shm"]
             .map { config.fileName + $0 }
