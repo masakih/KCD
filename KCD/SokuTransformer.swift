@@ -8,15 +8,15 @@
 
 import Cocoa
 
-private enum SokuType: Int {
-    
-    case slow = 5
-    case fast = 10
-    case faster = 15
-    case fastest = 20
-}
-
 final class SokuTransformer: ValueTransformer {
+    
+    private enum SokuType: Int {
+        
+        case slow = 5
+        case fast = 10
+        case faster = 15
+        case fastest = 20
+    }
     
     override class func transformedValueClass() -> AnyClass {
         

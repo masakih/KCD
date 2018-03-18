@@ -8,16 +8,16 @@
 
 import Cocoa
 
-private enum AirBaseActionKind: Int {
-    
-    case standBy
-    case sortie
-    case airDifence
-    case shelter
-    case rest
-}
-
 final class ActinKindTransformer: ValueTransformer {
+    
+    private enum AirBaseActionKind: Int {
+        
+        case standBy
+        case sortie
+        case airDifence
+        case shelter
+        case rest
+    }
     
     override class func transformedValueClass() -> AnyClass {
         

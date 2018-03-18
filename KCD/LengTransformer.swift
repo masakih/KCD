@@ -8,15 +8,15 @@
 
 import Cocoa
 
-private enum LengType: Int {
-    
-    case short = 1
-    case middle
-    case long
-    case overLong
-}
-
 final class LengTransformer: ValueTransformer {
+    
+    private enum LengType: Int {
+        
+        case short = 1
+        case middle
+        case long
+        case overLong
+    }
     
     override class func transformedValueClass() -> AnyClass {
         
