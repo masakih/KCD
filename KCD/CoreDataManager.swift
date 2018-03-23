@@ -41,10 +41,15 @@ protocol CoreDataAccessor: CoreDataProvider {
     
     func insertNewObject<T>(for entity: Entity<T>) -> T?
     func delete(_ object: NSManagedObject)
-    func object<T>(of entity: Entity<T>, with objectId: NSManagedObjectID) -> T?
     func objects<T>(of entity: Entity<T>, sortDescriptors: [NSSortDescriptor]?, predicate: NSPredicate?) throws -> [T]
     
-    func object(with objectId: NSManagedObjectID) -> NSManagedObject
+    func object<T>(of entity: Entity<T>, forURIRepresentation: URL) -> T?
+    
+    /// NSManagedObectを自身が管理するNSManagedObjectに変換する
+    ///
+    /// - Parameter object: 変換するNSManagedObject
+    /// - Returns: 自身が管理するNSManagedObject。自身の管理下に該当オブジェクトがなければnilを返す。
+    func exchange<T: NSManagedObject>(_ object: T) -> T?
 }
 
 protocol CoreDataManager: CoreDataAccessor {
@@ -161,11 +166,6 @@ extension CoreDataAccessor {
         context.delete(object)
     }
     
-    func object<T>(of entity: Entity<T>, with objectId: NSManagedObjectID) -> T? {
-        
-        return context.object(with: objectId) as? T
-    }
-    
     func objects<T>(of entity: Entity<T>, sortDescriptors: [NSSortDescriptor]? = nil, predicate: NSPredicate? = nil) throws -> [T] {
         
         let req = NSFetchRequest<T>(entityName: entity.name)
@@ -191,13 +191,24 @@ extension CoreDataAccessor {
         return result ?? []
     }
     
-    func object(with objectId: NSManagedObjectID) -> NSManagedObject {
+    func object<T>(of entity: Entity<T>, forURIRepresentation uri: URL) -> T? {
+        
+        guard let oID = context.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: uri) else { return nil }
         
         var result: NSManagedObject?
         sync {
-            result = self.context.object(with: objectId)
+            result = self.context.object(with: oID)
         }
-        return result!
+        return result as? T
+    }
+    
+    func exchange<T: NSManagedObject>(_ obj: T) -> T? {
+        
+        var result: NSManagedObject?
+        sync {
+            result = self.context.object(with: obj.objectID)
+        }
+        return result as? T
     }
 }
 

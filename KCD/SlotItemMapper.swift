@@ -97,7 +97,8 @@ final class SlotItemMapper: JSONMapper {
             return Logger.shared.log("Can not find MasterSlotItem")
         }
         
-        guard let masterSlotItem = configuration.editorStore.object(of: MasterSlotItem.entity, with: mSlotItem.objectID) else {
+        // FUCK: 型推論がバカなのでダウンキャストしてるんだ！！！
+        guard let masterSlotItem = configuration.editorStore.exchange(mSlotItem) as? MasterSlotItem else {
                 
                 return Logger.shared.log("Can not convert to current moc object")
         }

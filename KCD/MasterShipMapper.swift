@@ -51,7 +51,8 @@ final class MasterShipMapper: JSONMapper {
             return Logger.shared.log("MasterShipMapper: Can not find MasterSType")
         }
         
-        guard let masterSType = configuration.editorStore.object(of: MasterSType.entity, with: stype.objectID) else {
+        // FUCK: 型推論がバカなのでダウンキャストしてるんだ！！！
+        guard let masterSType = configuration.editorStore.exchange(stype) as? MasterSType else {
             
             return Logger.shared.log("MasterShipMapper: Can not convert to current moc object masterSType")
         }

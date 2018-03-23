@@ -69,8 +69,8 @@ final class ShipMasterDetailWindowController: NSWindowController {
         
         let store = ServerDataStore.oneTimeEditor()
         store.sync {
-            guard let i = self.selectedShip?.objectID else { return }
-            guard let ship = store.object(of: Ship.entity, with: i) else { return }
+            guard let selectedShip = self.selectedShip else { return }
+            guard let ship = store.exchange(selectedShip) else { return }
             //
             //        ship.sally_area = sally.integerValue as NSNumber
             

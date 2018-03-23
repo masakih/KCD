@@ -169,7 +169,7 @@ final class ShipMapper: JSONMapper {
     private func setMaster(_ masterId: Int, to ship: Ship) {
         
         guard let mShip = masterShips.binarySearch(comparator: { $0.id ==? masterId }),
-            let masterShip = store?.object(of: MasterShip.entity, with: mShip.objectID) else {
+            let masterShip = store?.exchange(mShip) else {
                 
                 return Logger.shared.log("Can not convert to current moc object masterShip")
         }
@@ -188,7 +188,7 @@ final class ShipMapper: JSONMapper {
             .flatMap { item in
                 
                 guard let found = self.slotItems.binarySearch(comparator: { $0.id ==? item }),
-                    let slotItem = store.object(of: SlotItem.entity, with: found.objectID) else {
+                    let slotItem = store.exchange(found) else {
                         
                         let maxV = convertedSlotItems.last
                         if maxV != nil, maxV! < item {
@@ -213,7 +213,7 @@ final class ShipMapper: JSONMapper {
             return
         }
         guard let found = slotItems.binarySearch(comparator: { $0.id ==? exSlotItem }),
-            let ex = store?.object(of: SlotItem.entity, with: found.objectID) else {
+            let ex = store?.exchange(found) else {
                 
                 return Logger.shared.log("Can not convert to current moc object")
         }

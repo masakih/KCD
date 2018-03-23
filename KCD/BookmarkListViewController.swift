@@ -154,8 +154,7 @@ extension BookmarkListViewController: NSTableViewDelegate, NSTableViewDataSource
                 
                 guard let data = $0.element.data(forType: .bookmarkItem) else { return }
                 guard let uri = NSKeyedUnarchiver.unarchiveObject(with: data) as? URL else { return }
-                guard let oID = self.managedObjectContext.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: uri) else { return }
-                guard let bookmark = store.object(of: Bookmark.entity, with: oID) else { return }
+                guard let bookmark = store.object(of: Bookmark.entity, forURIRepresentation: uri) else { return }
                 
                 bookmark.order = targetOrder + $0.offset + 1
             }

@@ -51,8 +51,7 @@ class HistoryTableViewController: NSViewController {
         let selectedIndex = controller.selectionIndex
         store.sync {
             selection
-                .map { $0.objectID }
-                .map(store.object(with:))
+                .flatMap(store.exchange)
                 .forEach(store.delete)
         }
         
