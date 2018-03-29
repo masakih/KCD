@@ -6,6 +6,8 @@
 //  Copyright © 2017年 Hori,Masaki. All rights reserved.
 //
 
+import Doutaku
+
 // MARK: - KCD model
 extension AirBase: EntityProvider {}
 extension AirBasePlaneInfo: EntityProvider {}

@@ -8,6 +8,7 @@
 
 import Cocoa
 import SwiftyJSON
+import Doutaku
 
 struct MappingConfiguration<T: NSManagedObject> {
     
@@ -144,14 +145,22 @@ extension JSONMapper {
         }
     }
     
-    private func commintInContext() {
+    private func sortedObjects<T>(_ entity: Entity<T>) -> [T] {
         
         let store = configuration.editorStore
         
-        guard let objects = try? store.objects(of: configuration.entity, sortDescriptors: sortDescriptors) else {
+        guard let objects = try? store.objects(of: configuration.entity) else {
             
-            return Logger.shared.log("Can not get entity named \(configuration.entity.name)")
+            Logger.shared.log("Can not get entity named \(configuration.entity)")
+            return []
         }
+        
+        return (objects as NSArray).sortedArray(using: sortDescriptors) as? [T] ?? []
+    }
+    private func commintInContext() {
+        
+        let store = configuration.editorStore
+        let objects = sortedObjects(configuration.entity)
         
         let list = (data.type == .array ? data.arrayValue : [data])
         list.forEach {
@@ -166,7 +175,7 @@ extension JSONMapper {
                 
             } else {
                 
-                fatalError("Can not get entity named \(configuration.entity.name)")
+                fatalError("Can not get entity named \(configuration.entity)")
             }
         }
         

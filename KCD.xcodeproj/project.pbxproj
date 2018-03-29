@@ -71,7 +71,6 @@
 		F4401B0E1FAF2B5200A1BF29 /* ScreenshotLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4401B0D1FAF2B5200A1BF29 /* ScreenshotLoader.swift */; };
 		F4401B101FAF3C1A00A1BF29 /* ScreenshotRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4401B0F1FAF3C1A00A1BF29 /* ScreenshotRegister.swift */; };
 		F44775891EF6AAD900287572 /* SakutekiCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44775881EF6AAD900287572 /* SakutekiCalculator.swift */; };
-		F44AA2671E814A4400EED8BE /* MOCGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44AA2661E814A4400EED8BE /* MOCGenerator.swift */; };
 		F44AA26B1E82AD2E00EED8BE /* NSObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44AA26A1E82AD2E00EED8BE /* NSObjectExtension.swift */; };
 		F44BC6C11E221293004644E3 /* AirCorpsChangeNameCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44BC6C01E221293004644E3 /* AirCorpsChangeNameCommand.swift */; };
 		F44BC6C31E221865004644E3 /* AirCorpsSupplyCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44BC6C21E221865004644E3 /* AirCorpsSupplyCommand.swift */; };
@@ -258,7 +257,6 @@
 		F4BDEB6F187252F30069D0CE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4BDEB6D187252F30069D0CE /* InfoPlist.strings */; };
 		F4BDEB7B187253130069D0CE /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4BDEB7A187253130069D0CE /* WebKit.framework */; };
 		F4BDEEB01E72D2D700D689AE /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BDEEAF1E72D2D700D689AE /* HistoryTableViewController.swift */; };
-		F4BDEEB21E73FE2000D689AE /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BDEEB11E73FE2000D689AE /* Entity.swift */; };
 		F4BDEEB41E74017800D689AE /* MasterFurniture.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BDEEB31E74017800D689AE /* MasterFurniture.swift */; };
 		F4BDEEB61E74025700D689AE /* MasterUseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BDEEB51E74025700D689AE /* MasterUseItem.swift */; };
 		F4BDEEB81E740D9300D689AE /* HiddenDropShipHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BDEEB71E740D9300D689AE /* HiddenDropShipHistory.swift */; };
@@ -317,7 +315,7 @@
 		F4D05BDF1E0F8B6900688D66 /* PowerUpSupportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D05BDE1E0F8B6900688D66 /* PowerUpSupportViewController.swift */; };
 		F4D05BE11E0FAB8E00688D66 /* ShipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D05BE01E0FAB8E00688D66 /* ShipViewController.swift */; };
 		F4D3D9551E8544B90085A389 /* StrengthenListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D3D9541E8544B90085A389 /* StrengthenListItem.swift */; };
-		F4E471291E46ECF1009B5AF4 /* CoreDataCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E471281E46ECF1009B5AF4 /* CoreDataCore.swift */; };
+		F4D9F7FB206D16690044B4C7 /* Doutaku.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F4D9F7F8206A84890044B4C7 /* Doutaku.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F4E5FF021E150A850026868C /* AncherageRepairTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5FF011E150A850026868C /* AncherageRepairTimerViewController.swift */; };
 		F4E5FF041E1518200026868C /* ScreenshotDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5FF031E1518200026868C /* ScreenshotDetailViewController.swift */; };
 		F4E5FF061E1523900026868C /* ScreenshotCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5FF051E1523900026868C /* ScreenshotCollectionViewItem.swift */; };
@@ -352,7 +350,6 @@
 		F4FF44D21FA0BB1C00039F21 /* TemporaryDataStoreAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FF44D11FA0BB1C00039F21 /* TemporaryDataStoreAccessor.swift */; };
 		F4FF44D41FA0BB4D00039F21 /* BookmarkDataStoreAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FF44D31FA0BB4D00039F21 /* BookmarkDataStoreAccessor.swift */; };
 		F4FF44D61FA0BB7200039F21 /* ResourceHistoryDataStoreAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FF44D51FA0BB7200039F21 /* ResourceHistoryDataStoreAccessor.swift */; };
-		F4FF44D81FA21BF200039F21 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FF44D71FA21BF200039F21 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -381,6 +378,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				F4D9F7FB206D16690044B4C7 /* Doutaku.framework in Embed Frameworks */,
 				F4EFBCA61E7D757E00DE4A58 /* SwiftyJSON.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -453,7 +451,6 @@
 		F4401B0D1FAF2B5200A1BF29 /* ScreenshotLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotLoader.swift; sourceTree = "<group>"; };
 		F4401B0F1FAF3C1A00A1BF29 /* ScreenshotRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotRegister.swift; sourceTree = "<group>"; };
 		F44775881EF6AAD900287572 /* SakutekiCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SakutekiCalculator.swift; sourceTree = "<group>"; };
-		F44AA2661E814A4400EED8BE /* MOCGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOCGenerator.swift; sourceTree = "<group>"; };
 		F44AA26A1E82AD2E00EED8BE /* NSObjectExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSObjectExtension.swift; sourceTree = "<group>"; };
 		F44BC6C01E221293004644E3 /* AirCorpsChangeNameCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirCorpsChangeNameCommand.swift; sourceTree = "<group>"; };
 		F44BC6C21E221865004644E3 /* AirCorpsSupplyCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirCorpsSupplyCommand.swift; sourceTree = "<group>"; };
@@ -651,7 +648,6 @@
 		F4BDEB6C187252F30069D0CE /* KCDTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KCDTests-Info.plist"; sourceTree = "<group>"; };
 		F4BDEB7A187253130069D0CE /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		F4BDEEAF1E72D2D700D689AE /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
-		F4BDEEB11E73FE2000D689AE /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		F4BDEEB31E74017800D689AE /* MasterFurniture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterFurniture.swift; sourceTree = "<group>"; };
 		F4BDEEB51E74025700D689AE /* MasterUseItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterUseItem.swift; sourceTree = "<group>"; };
 		F4BDEEB71E740D9300D689AE /* HiddenDropShipHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HiddenDropShipHistory.swift; sourceTree = "<group>"; };
@@ -700,7 +696,7 @@
 		F4D05BE01E0FAB8E00688D66 /* ShipViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShipViewController.swift; sourceTree = "<group>"; };
 		F4D3D9541E8544B90085A389 /* StrengthenListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrengthenListItem.swift; sourceTree = "<group>"; };
 		F4D6BC4C1A923C0B00742FEB /* LocalData 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "LocalData 2.xcdatamodel"; sourceTree = "<group>"; };
-		F4E471281E46ECF1009B5AF4 /* CoreDataCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataCore.swift; sourceTree = "<group>"; };
+		F4D9F7F8206A84890044B4C7 /* Doutaku.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Doutaku.framework; path = Carthage/Build/Mac/Doutaku.framework; sourceTree = "<group>"; };
 		F4E5FF011E150A850026868C /* AncherageRepairTimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AncherageRepairTimerViewController.swift; sourceTree = "<group>"; };
 		F4E5FF031E1518200026868C /* ScreenshotDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenshotDetailViewController.swift; sourceTree = "<group>"; };
 		F4E5FF051E1523900026868C /* ScreenshotCollectionViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenshotCollectionViewItem.swift; sourceTree = "<group>"; };
@@ -759,7 +755,6 @@
 		F4FF44D11FA0BB1C00039F21 /* TemporaryDataStoreAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryDataStoreAccessor.swift; sourceTree = "<group>"; };
 		F4FF44D31FA0BB4D00039F21 /* BookmarkDataStoreAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkDataStoreAccessor.swift; sourceTree = "<group>"; };
 		F4FF44D51FA0BB7200039F21 /* ResourceHistoryDataStoreAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceHistoryDataStoreAccessor.swift; sourceTree = "<group>"; };
-		F4FF44D71FA21BF200039F21 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1036,6 +1031,7 @@
 		F4BDEB45187252F30069D0CE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F4D9F7F8206A84890044B4C7 /* Doutaku.framework */,
 				F4EFBCA21E7D439A00DE4A58 /* SwiftyJSON.framework */,
 				F4A2AF571A0930160024BD9E /* Quartz.framework */,
 				F4B3DC4D18F0C8FF0011B4FC /* Accounts.framework */,
@@ -1153,10 +1149,6 @@
 		F4BEEEA818D88FF30006F70C /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				F4E471281E46ECF1009B5AF4 /* CoreDataCore.swift */,
-				F44AA2661E814A4400EED8BE /* MOCGenerator.swift */,
-				F4BDEEB11E73FE2000D689AE /* Entity.swift */,
-				F4FF44D71FA21BF200039F21 /* CoreDataManager.swift */,
 				F481D63E1F9105CB007E2CBE /* Entities.swift */,
 				F4FC3E8D1E4368BB00E41228 /* KCManagedObject.swift */,
 				F4C4A57E201464E300F8B732 /* CoreDataProviderExtension.swift */,
@@ -1724,7 +1716,6 @@
 				F4048AA11E1951BB008ACFD6 /* SuppliesCell.swift in Sources */,
 				F490977D1E19DF390085A45D /* SlotItemFrameView.swift in Sources */,
 				F4760CE81FDAC5F100702C3E /* API.swift in Sources */,
-				F4E471291E46ECF1009B5AF4 /* CoreDataCore.swift in Sources */,
 				F4AF56811F7BF0CF004F4F4E /* IntConvertable.swift in Sources */,
 				F47C3EA01E5DE08F00D97449 /* MasterMapInfoMapper.swift in Sources */,
 				F4AA59481E1E3CBA001667AF /* AirbasePlaneStateTransformer.swift in Sources */,
@@ -1749,7 +1740,6 @@
 				F47C3EAC1E5F1AD900D97449 /* ShipMapper.swift in Sources */,
 				F44BC7351E2A295E004644E3 /* SetActionCommand.swift in Sources */,
 				F472159E1E1E6EE70083D3BC /* ShipMasterDetailWindowController.swift in Sources */,
-				F4FF44D81FA21BF200039F21 /* CoreDataManager.swift in Sources */,
 				F44BC6D71E226CB1004644E3 /* HokyuChargeCommand.swift in Sources */,
 				F4CF25BC1E34F67400C02A66 /* KenzoDockStatus.swift in Sources */,
 				F44BC6F91E23DAC5004644E3 /* RealDestroyShipCommand.swift in Sources */,
@@ -1788,7 +1778,6 @@
 				F44BC73D1E2A5D39004644E3 /* DropShipHistoryCommand.swift in Sources */,
 				F45771231E1BCC7C008A9215 /* PeriodicNotifier.swift in Sources */,
 				F4C3D1BF1F13A32D0084D0CA /* CalculateConditionPanelController.swift in Sources */,
-				F44AA2671E814A4400EED8BE /* MOCGenerator.swift in Sources */,
 				F429FAAE1F619927006299ED /* TPValueCalculator.swift in Sources */,
 				F44BC6C91E22314B004644E3 /* UnknownComand.swift in Sources */,
 				F47B06DD1E97ECD4006711D9 /* WindowManager.swift in Sources */,
@@ -1816,7 +1805,6 @@
 				F4D05BC61E0ABD6800688D66 /* SlotItemWindowController.swift in Sources */,
 				F4AA593A1E1E02D9001667AF /* UpgradeShipExcludeColorTransformer.swift in Sources */,
 				F41AA4781FDEDCD200FFFBD1 /* DataExtension.swift in Sources */,
-				F4BDEEB21E73FE2000D689AE /* Entity.swift in Sources */,
 				F42A8FCC1E3DA4DF0099DC1D /* MasterMission.swift in Sources */,
 				F44BC6C71E222675004644E3 /* FailedCommand.swift in Sources */,
 				F47215A01E1E90C10083D3BC /* JSONNode.swift in Sources */,
@@ -2440,7 +2428,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				INFOPLIST_FILE = "KCD/KCD-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				OTHER_SWIFT_FLAGS = "-DDEBUG -DDAMAGE_CHECK -DENABLE_JSON_LOG -DUI_TEST";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.masakih.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2468,7 +2456,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				INFOPLIST_FILE = "KCD/KCD-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.masakih.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "KCD/KCD-Bridging-Header.h";

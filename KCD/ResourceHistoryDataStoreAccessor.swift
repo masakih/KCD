@@ -6,15 +6,19 @@
 //  Copyright © 2017年 Hori,Masaki. All rights reserved.
 //
 
+import Doutaku
+
 extension ResourceHistoryDataStore {
     
     func resources(in minites: [Int], older: Date) -> [Resource] {
         
-        let p = NSPredicate.empty
-            .and(NSPredicate(#keyPath(Resource.minute), valuesIn: minites))
-            .and(NSPredicate(#keyPath(Resource.date), lessThan: older))
+        let predicate = Predicate(\Resource.minute, in: minites)
+            .and(Predicate(\Resource.date, lessThan: older))
         
-        guard let resources = try? objects(of: Resource.entity, predicate: p) else { return [] }
+        guard let resources = try? objects(of: Resource.entity, predicate: predicate) else {
+            
+            return []
+        }
         
         return resources
     }
