@@ -9,6 +9,8 @@ APP_NAME=$(BUILD_PATH)/$(DEPLOYMENT)/$(PRODUCT_NAME)
 SCHEME=KCD
 INFO_PLIST=KCD/KCD-Info.plist
 
+XCODEBUILD=$(shell xcrun -f xcodebuild)
+
 LOCALIZE_FILES=KCD/LocalizedStrings.swift
 
 VER_CMD=grep -A1 'CFBundleShortVersionString' $(INFO_PLIST) | tail -1 | tr -d "'\t</string>" 
@@ -34,7 +36,7 @@ deploy:
 	test -z "`git status --porcelain`"
 
 release: Carthage updateRevision
-	xcodebuild -derivedDataPath=build -configuration $(DEPLOYMENT)
+	$(XCODEBUILD) -derivedDataPath=build -configuration $(DEPLOYMENT)
 	$(MAKE) restoreInfoPlist
 
 package: deploy release
@@ -51,11 +53,11 @@ restoreInfoPlist:
 	if [ -f $(INFO_PLIST).bak ] ; then mv -f $(INFO_PLIST).bak $(INFO_PLIST) ; fi
 
 build/Release/EquipmentEnhancementListBuilder: EquipmentEnhancementListBuilder/main.swift KCD/EnhancementListItem.swift
-	xcodebuild -derivedDataPath=build -configuration $(DEPLOYMENT) -target EquipmentEnhancementListBuilder
+	$(XCODEBUILD) -derivedDataPath=build -configuration $(DEPLOYMENT) -target EquipmentEnhancementListBuilder
 
 buildEquipmentEnhancementList: build/Release/EquipmentEnhancementListBuilder
 	./build/Release/EquipmentEnhancementListBuilder ./KCD
 
-Carthage:
-	carthage update
+Carthage: cartfile
+	DEVELOPER_DIR=$(shell xcode-select -p) carthage update
 	rm -rf Carthage/Build/*OS
