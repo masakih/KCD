@@ -44,7 +44,7 @@ final class ScreenshotDetailViewController: BridgeViewController {
         
         if currentSelection == selection { return }
         
-        imageView.images = selection.flatMap { NSImage(contentsOf: $0.url) }
+        imageView.images = selection.compactMap { NSImage(contentsOf: $0.url) }
         currentSelection = selection
     }
 }

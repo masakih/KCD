@@ -45,7 +45,7 @@ final class AirBaseWindowController: NSWindowController {
         guard let content = airBaseController.content as? [AirBase] else { return [] }
         
         return content
-            .flatMap { $0.area_id }
+            .compactMap { $0.area_id }
             .unique()
             .sorted(by: <)
     }

@@ -210,7 +210,7 @@ extension CalculateDamageCommand {
             let (item, damageControl) = ship
                 .equippedItem
                 .lazy
-                .flatMap { $0 as? SlotItem }
+                .compactMap { $0 as? SlotItem }
                 .map { ($0, store.masterSlotItemID(by: $0.id)) }
                 .map { ($0.0, DamageControlID(rawValue: $0.1)) }
                 .filter { $0.1 != nil }

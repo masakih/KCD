@@ -39,7 +39,7 @@ final class FleetManager: NSObject {
     
     private func setupFleets() {
         
-        fleets = (1...4).flatMap { Fleet(number: $0) }
+        fleets = (1...4).compactMap { Fleet(number: $0) }
         
         guard fleets.count == 4 else {
             

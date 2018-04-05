@@ -33,7 +33,7 @@ final class SlotResetCommand: JSONCommand {
             
             let storedSlotItems = store.sortedSlotItemsById()
             let newSet = slotItems
-                .flatMap { slotItem -> SlotItem? in
+                .compactMap { slotItem -> SlotItem? in
                     
                     guard slotItem > 0 else { return nil }
                     

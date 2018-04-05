@@ -47,7 +47,7 @@ final class Formula33: SakutekiCalculator {
         let itemNames = ship
             .equippedItem
             .array
-            .flatMap { $0 as? SlotItem }
+            .compactMap { $0 as? SlotItem }
             .reduce("") {
                 
                 let saku = $1.master_slotItem.saku ?? 0
@@ -95,8 +95,8 @@ final class Formula33: SakutekiCalculator {
         let eqSakuteki = ship
             .equippedItem
             .array
-            .flatMap { $0 as? SlotItem }
-            .flatMap { $0.master_slotItem.saku as? Double }
+            .compactMap { $0 as? SlotItem }
+            .compactMap { $0.master_slotItem.saku as? Double }
             .reduce(0, +)
         
         return Double(ship.sakuteki_0) - eqSakuteki
@@ -107,7 +107,7 @@ final class Formula33: SakutekiCalculator {
         let saku = ship
             .equippedItem
             .array
-            .flatMap { $0 as? SlotItem }
+            .compactMap { $0 as? SlotItem }
             .map(equipSakuteki)
             .reduce(0, +)
         

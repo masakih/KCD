@@ -56,7 +56,7 @@ struct ParameterValue {
     }
     var integerArray: [Int] {
         
-        return array.flatMap { $0.int }
+        return array.compactMap { $0.int }
     }
     
     var valid: Bool { return rawValue != nil }

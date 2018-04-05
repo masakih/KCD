@@ -128,12 +128,12 @@ final class ScreenshotEditorViewController: BridgeViewController {
         
         if selection == currentSelection { return }
         
-        let removed: [ScreenshotInformation] = currentSelection.flatMap {
+        let removed: [ScreenshotInformation] = currentSelection.compactMap {
             
             selection.contains($0) ? nil : $0
         }
         
-        let appended: [ScreenshotInformation] = selection.flatMap {
+        let appended: [ScreenshotInformation] = selection.compactMap {
             
             currentSelection.contains($0) ? nil : $0
         }
@@ -176,7 +176,7 @@ final class ScreenshotEditorViewController: BridgeViewController {
         
         DispatchQueue(label: "makeTrimedImage queue").async {
             
-            let images: [NSImage] = self.originalImages.flatMap {
+            let images: [NSImage] = self.originalImages.compactMap {
                 
                 let trimedImage = NSImage(size: self.currentTrimInfo.rect.size)
                 

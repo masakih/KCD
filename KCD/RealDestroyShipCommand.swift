@@ -17,7 +17,7 @@ final class RealDestroyShipCommand: JSONCommand {
             
             let ships = self.parameter["api_ship_id"]
                 .integerArray
-                .flatMap(store.ship(by:))
+                .compactMap(store.ship(by:))
             
             if self.parameter["api_slot_dest_flag"].int == 0 {
                 

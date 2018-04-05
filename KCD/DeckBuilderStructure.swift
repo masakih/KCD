@@ -52,7 +52,7 @@ extension DeckBuilderStructure: DeckBuilderDescriptable {
         let hqLvStr = hqLv.map { "\"hqlv\":\($0)" }
         
         let join = [verStr, fleetStr, hqLvStr]
-            .flatMap { $0 }
+            .compactMap { $0 }
             .joined(separator: ",")
         
         return "{\(join)}"

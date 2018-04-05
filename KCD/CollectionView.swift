@@ -128,7 +128,7 @@ extension CollectionView: QLPreviewPanelDataSource, QLPreviewPanelDelegate {
     
     func previewPanel(_ panel: QLPreviewPanel!, previewItemAt index: Int) -> QLPreviewItem! {
         
-        let selections = selectionIndexPaths.flatMap(item(at:))
+        let selections = selectionIndexPaths.compactMap(item(at:))
         
         guard case 0..<selections.count = index else { return nil }
         guard let item = selections[index] as? QLPreviewItem else { return nil}

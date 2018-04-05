@@ -187,7 +187,7 @@ extension DefaultKeys {
     ]
     
     static let defaults: [String: Any] = settings
-        .flatMap { (k: DefaultKeys, v: Any?) -> (key: String, value: Any)? in
+        .compactMap { (k: DefaultKeys, v: Any?) -> (key: String, value: Any)? in
             
             guard let value = v else { return nil }
             

@@ -31,7 +31,7 @@ extension SlotItem {
     
     private var equippedOrExShip: Ship? {
         
-        return [equippedShip, extraEquippedShip].flatMap { $0 }.first
+        return [equippedShip, extraEquippedShip].compactMap { $0 }.first
     }
     
     @objc dynamic var equippedShipName: String? {

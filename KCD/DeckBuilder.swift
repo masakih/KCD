@@ -56,8 +56,8 @@ final class DeckBuilder {
         
         let items = ship
             .equippedItem
-            .flatMap { $0 as? SlotItem }
-            .flatMap(buildItem)
+            .compactMap { $0 as? SlotItem }
+            .compactMap(buildItem)
         let exItem = ship.extraItem.map(buildItem)
         
         return DBShip(id: ship.master_ship.id,

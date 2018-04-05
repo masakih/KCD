@@ -16,7 +16,7 @@ final class RealPowerUpCommand: JSONCommand {
         store.sync {
             self.parameter["api_id_items"]
                 .integerArray
-                .flatMap(store.ship(by:))
+                .compactMap(store.ship(by:))
                 .forEach(store.delete)
         }
     }

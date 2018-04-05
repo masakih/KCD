@@ -64,6 +64,6 @@ extension Notification {
         guard let userInfo = self.userInfo as? [String: Any] else { return [] }
         
         let inserted = userInfo[infoKey] as? Set<NSManagedObject>
-        return inserted?.flatMap({ $0 as? T }) ?? []
+        return inserted?.compactMap({ $0 as? T }) ?? []
     }
 }

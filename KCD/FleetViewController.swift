@@ -199,7 +199,7 @@ final class FleetViewController: NSViewController {
     }
     private func totalDrums(of ship: Ship) -> Int {
         
-        return (0...4).flatMap(ship.slotItem).filter { $0.slotitem_id == 75 }.count
+        return (0...4).compactMap(ship.slotItem).filter { $0.slotitem_id == 75 }.count
     }
     
     private var ships: [Ship] = [] {
@@ -387,7 +387,7 @@ final class FleetViewController: NSViewController {
         
         let extShip = fleet?[6]
         extShip.map { extDetail?.ship = $0 }
-        ships = array.flatMap { $0 } + [extShip].flatMap { $0 }
+        ships = array.compactMap { $0 } + [extShip].compactMap { $0 }
         
         [#keyPath(totalSakuteki), #keyPath(totalSeiku), #keyPath(totalCalclatedSeiku),
          #keyPath(totalLevel), #keyPath(totalDrums), #keyPath(repairable),

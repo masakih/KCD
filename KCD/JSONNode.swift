@@ -39,7 +39,7 @@ class JSONNode: NSObject, NSCoding, NSCopying {
     private class func node(withArray array: JSON) -> JSONNode {
         
         let node = JSONContainerNode()
-        node.children = array.flatMap { _, json in JSONNode.nodeWithJSON(json) }
+        node.children = array.compactMap { _, json in JSONNode.nodeWithJSON(json) }
         
         return node
     }
@@ -47,7 +47,7 @@ class JSONNode: NSObject, NSCoding, NSCopying {
     private class func node(withDictionary dict: JSON) -> JSONNode {
         
         let node = JSONContainerNode()
-        node.children = dict.flatMap { (key: String, json: JSON) -> JSONNode? in
+        node.children = dict.compactMap { (key: String, json: JSON) -> JSONNode? in
             
             if let node = JSONNode.nodeWithJSON(json) {
                 

@@ -77,7 +77,7 @@ extension BridgeViewController: NSSharingServicePickerDelegate, ScreenshotSharin
         
         guard let informations = arrayController.selectedObjects as? [ScreenshotInformation] else { return [] }
         
-        let images: [NSImage] = informations.flatMap { NSImage(contentsOf: $0.url) }
+        let images: [NSImage] = informations.compactMap { NSImage(contentsOf: $0.url) }
         if !appendKanColleTag { return images }
         if let tag = tagString {
             

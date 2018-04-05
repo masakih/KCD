@@ -185,7 +185,7 @@ final class ShipMapper: JSONMapper {
         
         let newItems: [SlotItem] = convertedSlotItems
             .filter { $0 != 0 && $0 != -1 }
-            .flatMap { item in
+            .compactMap { item in
                 
                 guard let found = self.slotItems.binarySearch(comparator: { $0.id ==? item }),
                     let slotItem = store.exchange(found) else {

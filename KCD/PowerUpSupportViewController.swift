@@ -40,7 +40,7 @@ final class PowerUpSupportViewController: MainTabVIewItemViewController {
             .appended { (sd[.hideMaxTaiku], .false(#keyPath(Ship.isMaxTaiku))) }
             .appended { (sd[.hideMaxSoukou], .false(#keyPath(Ship.isMaxSoukou))) }
             .appended { (sd[.hideMaxLucky], .false(#keyPath(Ship.isMaxLucky))) }
-            .flatMap { (b, s) in b ? s : nil }
+            .compactMap { (b, s) in b ? s : nil }
         
         if predicates.isEmpty { return nil }
         

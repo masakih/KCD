@@ -14,7 +14,7 @@ private let resourceExtension = "plist"
 
 private struct FilterCategories {
     
-    static let allType: [EquipmentType] = (1...100).flatMap { EquipmentType(rawValue: $0) }
+    static let allType: [EquipmentType] = (1...100).compactMap { EquipmentType(rawValue: $0) }
     static let canonType: [EquipmentType] = [.smallCaliberMainGun, .mediumCaliberMainGun,
                                              .largeCaliberMainGun, .largeCaliberMainGunII]
     static let torpedoType: [EquipmentType] = [.secondaryGun, .torpedo,
@@ -193,7 +193,7 @@ final class StrengthenListViewController: MainTabVIewItemViewController {
             .map { $0.identifier }
             .unique()
             .map { identifier in equipmentStrengthenList.filter { $0.identifier == identifier } }
-            .flatMap { $0.first?.replace(secondsShipNames: packSecondShipName($0)) }
+            .compactMap { $0.first?.replace(secondsShipNames: packSecondShipName($0)) }
     }
 }
 

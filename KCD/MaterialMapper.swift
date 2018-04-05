@@ -55,7 +55,7 @@ final class MaterialMapper: JSONMapper {
         
         if let _ = data[0].int {
             
-            let array = data.arrayValue.flatMap { $0.int }
+            let array = data.arrayValue.compactMap { $0.int }
             register(material, data: array)
             
         } else if let _ = data[0].dictionary {

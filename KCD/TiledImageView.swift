@@ -251,7 +251,7 @@ extension TiledImageView {
         
         let mouse = convert(event.locationInWindow, from: nil)
         
-        let items = infos.enumerated().flatMap { (offset, element) -> NSDraggingItem? in
+        let items = infos.enumerated().compactMap { (offset, element) -> NSDraggingItem? in
             
             if !NSMouseInRect(mouse, element.frame, isFlipped) { return nil }
             

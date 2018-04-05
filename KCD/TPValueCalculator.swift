@@ -35,7 +35,7 @@ final class ShipTPValueCalculator: TPValueCalculator {
         let shipTPValue = shipTypeValue(ShipType(rawValue: ship.master_ship.stype.id))
         
         let itemValue = ship.equippedItem.array
-            .flatMap { $0 as? SlotItem }
+            .compactMap { $0 as? SlotItem }
             .map { EquipmentTPValueCalculator($0) }
             .map { $0.value }
             .reduce(0, +)

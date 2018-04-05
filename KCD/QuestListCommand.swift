@@ -21,7 +21,7 @@ final class QuestListCommand: JSONCommand {
         guard let tab = parameter["api_tab_id"].int, tab == 0 else { return }
         
         let questList = data["api_list"]
-        let questNumberList = questList.array?.flatMap { $0["api_no"].int }
+        let questNumberList = questList.array?.compactMap { $0["api_no"].int }
         
         guard let firstQuestNumber = questNumberList?.first,
             let pageCount = data["api_page_count"].int,

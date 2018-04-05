@@ -30,7 +30,7 @@ final class AirBaseMapper: JSONMapper {
             
             if let store = configuration.editorStore as? ServerDataStore {
                 
-                let new: [AirBasePlaneInfo] = (0..<4).flatMap {_ in
+                let new: [AirBasePlaneInfo] = (0..<4).compactMap {_ in
                     
                     store.createAirBasePlaneInfo()
                     

@@ -56,7 +56,7 @@ final class ShipMasterDetailWindowController: NSWindowController {
         
         guard let selectedShip = selectedShip else { return }
         
-        spec = specNames.flatMap { key -> [String: Any]? in
+        spec = specNames.compactMap { key -> [String: Any]? in
             
             guard let v = selectedShip.value(forKeyPath: key) else { return nil }
             

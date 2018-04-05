@@ -43,7 +43,7 @@ func ==? <T: Comparable> (lhv: T, rhv: T) -> ComparisonResult {
     return .orderedDescending
 }
 
-extension MutableCollection where IndexDistance == Int {
+extension MutableCollection {
     
     private func bsearch(min: Int, max: Int, comparator: (Iterator.Element) -> ComparisonResult) -> Iterator.Element? {
         

@@ -208,7 +208,7 @@ extension DamageCalculator {
         
         guard let battle = store.battle() else { return Logger.shared.log("Battle is invalid.", value: []) }
         
-        return (0..<num).flatMap {
+        return (0..<num).compactMap {
             
             guard let damage = store.createDamage() else { return Logger.shared.log("Can not create Damage", value: nil) }
             
@@ -276,7 +276,7 @@ extension DamageCalculator {
         
         guard let targetArraysArray = list
             .array?
-            .flatMap({ $0.array?.flatMap { $0.int } }) else {
+            .compactMap({ $0.array?.compactMap { $0.int } }) else {
                 
                 return nil
         }
@@ -291,12 +291,12 @@ extension DamageCalculator {
     
     private func hogekiDamages(_ list: JSON) -> [[Int]]? {
         
-        return list.array?.flatMap { $0.array?.flatMap { $0.int } }
+        return list.array?.compactMap { $0.array?.compactMap { $0.int } }
     }
     
     private func enemyFlags(_ list: JSON) -> [Int]? {
         
-        return list.array?.flatMap { $0.int }
+        return list.array?.compactMap { $0.int }
     }
     
     private func validTargetPos(_ targetPos: Int, in battleFleet: BattleFleet) -> Bool {
@@ -401,14 +401,14 @@ extension DamageCalculator {
             return
         }
         
-        guard let IntFdamArray = fdamArray as? [IntConvertable] else {
+        guard let intFdamArray = fdamArray as? [IntConvertable] else {
             
             Debug.print("api_fdam value of \(baseKeyPath) is not [Int].", level: .debug)
             Debug.print(baseValue, level: .debug)
             
             return
         }
-        let frendDamages = IntFdamArray.map { $0.toInt() }
+        let frendDamages = intFdamArray.map { $0.toInt() }
         
         Debug.print("Start FDam \(baseKeyPath)", level: .debug)
         
@@ -432,10 +432,11 @@ extension DamageCalculator {
         return store.sync {
             let damageControl = ship
                 .equippedItem
+                .array
                 .lazy
-                .flatMap { $0 as? SlotItem }
+                .compactMap { $0 as? SlotItem }
                 .map { store.masterSlotItemID(by: $0.id) }
-                .flatMap { DamageControlID(rawValue: $0) }
+                .compactMap { DamageControlID(rawValue: $0) }
                 .first
             
             if let validDamageControl = damageControl {

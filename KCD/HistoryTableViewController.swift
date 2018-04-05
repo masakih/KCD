@@ -51,7 +51,7 @@ class HistoryTableViewController: NSViewController {
         let selectedIndex = controller.selectionIndex
         store.sync {
             selection
-                .flatMap(store.exchange)
+                .compactMap(store.exchange)
                 .forEach(store.delete)
         }
         
@@ -76,7 +76,8 @@ class HistoryTableViewController: NSViewController {
             if let items = try? self.objects(of: predicate, in: store),
                 var history = items.first as? Markable {
                 
-                history.mark = !history.mark
+                let currentMark = history.mark
+                history.mark = !currentMark
             }
             
             store.save()
