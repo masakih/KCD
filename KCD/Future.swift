@@ -58,6 +58,7 @@ final class Future<T> {
             }
             
             callbacks.forEach { f in f(result) }
+            callbacks = []
             semaphore?.signal()
         }
     }
