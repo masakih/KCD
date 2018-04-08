@@ -125,6 +125,7 @@
 		F455DDC11FA4A6CD00CDE64D /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F455DDC01FA4A6CD00CDE64D /* Logger.swift */; };
 		F455DDC31FA4A9E400CDE64D /* LoggerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F455DDC21FA4A9E400CDE64D /* LoggerExtension.swift */; };
 		F45771231E1BCC7C008A9215 /* PeriodicNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45771221E1BCC7C008A9215 /* PeriodicNotifier.swift */; };
+		F458531A207A53CA007B251A /* Doutaku.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D9F7F8206A84890044B4C7 /* Doutaku.framework */; };
 		F45F3BE11E067A870009434E /* HistoryItemCleaner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45F3BE01E067A870009434E /* HistoryItemCleaner.swift */; };
 		F45F3BE31E06A60A0009434E /* UpgradableShipsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45F3BE21E06A60A0009434E /* UpgradableShipsWindowController.swift */; };
 		F45FBB6F1E0FDB33000E72B9 /* StrengthenListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45FBB6E1E0FDB33000E72B9 /* StrengthenListViewController.swift */; };
@@ -777,6 +778,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4BDEB67187252F30069D0CE /* Cocoa.framework in Frameworks */,
+				F458531A207A53CA007B251A /* Doutaku.framework in Frameworks */,
 				F4FF44C81F98DB1D00039F21 /* SwiftyJSON.framework in Frameworks */,
 				F4BDEB66187252F30069D0CE /* XCTest.framework in Frameworks */,
 			);
@@ -2428,7 +2430,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				INFOPLIST_FILE = "KCD/KCD-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				OTHER_SWIFT_FLAGS = "-DDEBUG -DDAMAGE_CHECK -DENABLE_JSON_LOG -DUI_TEST";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.masakih.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2456,7 +2458,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				INFOPLIST_FILE = "KCD/KCD-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.masakih.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "KCD/KCD-Bridging-Header.h";
