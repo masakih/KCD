@@ -16,18 +16,21 @@ final class ScreenshotListWindowController: NSWindowController {
     @IBOutlet private weak var right: NSView!
     
     private lazy var detailViewController: ScreenshotDetailViewController = {
+        
         return ScreenshotDetailViewController()
     }()
     private var editorViewController: ScreenshotEditorViewController!
     private var viewControllers: [NSViewController] = []
     private weak var currentRightViewController: BridgeViewController?
     private lazy var listViewController: ScreenshotListViewController = {
+        
             return ScreenshotListViewController()
     }()
     
     @objc var filterPredicate: NSPredicate? = nil {
         
         didSet {
+            
             listViewController.screenshots.filterPredicate = filterPredicate
         }
     }
@@ -136,7 +139,10 @@ extension ScreenshotListWindowController: NSSplitViewDelegate {
                    constrainMinCoordinate proposedMinimumPosition: CGFloat,
                    ofSubviewAt dividerIndex: Int) -> CGFloat {
         
-        if dividerIndex == 0 { return ScreenshotListWindowController.leftMinWidth }
+        if dividerIndex == 0 {
+            
+            return ScreenshotListWindowController.leftMinWidth
+        }
         
         return proposedMinimumPosition
     }

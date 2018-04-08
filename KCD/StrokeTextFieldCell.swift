@@ -35,7 +35,10 @@ final class StrokeTextFieldCell: NSTextFieldCell {
         
         let attribute = attributedString.attributes(at: 0, effectiveRange: nil)
         
-        guard let forgroundColor = attribute[.foregroundColor] as? NSColor else { return }
+        guard let forgroundColor = attribute[.foregroundColor] as? NSColor else {
+            
+            return
+        }
         
         if forgroundColor == .controlTextColor {
             
@@ -44,7 +47,10 @@ final class StrokeTextFieldCell: NSTextFieldCell {
             return
         }
         
-        guard let font = attribute[.font] as? NSFont else { return }
+        guard let font = attribute[.font] as? NSFont else {
+            
+            return
+        }
         
         let textStorage = NSTextStorage(string: attributedString.string, attributes: attribute)
         textStorage.addLayoutManager(layoutManager)

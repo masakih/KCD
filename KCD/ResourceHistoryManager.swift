@@ -28,7 +28,10 @@ final class ResourceHistoryManager: NSObject {
     
     @objc private func notifyIfNeeded(_ timer: Timer?) {
         
-        if timer != nil { saveResources() }
+        if timer != nil {
+            
+            saveResources()
+        }
         
         timer?.invalidate()
         
@@ -60,19 +63,25 @@ final class ResourceHistoryManager: NSObject {
         
         guard let material = store.material() else {
             
-            return Logger.shared.log("ResourceHistoryManager: Can not get Material")
+            Logger.shared.log("ResourceHistoryManager: Can not get Material")
+            
+            return
         }
         
         guard let experience = store.sync(execute: { store.basic()?.experience }) else {
             
-            return Logger.shared.log("ResourceHistoryManager: Can not get Basic")
+            Logger.shared.log("ResourceHistoryManager: Can not get Basic")
+            
+            return
         }
         
         let historyStore = ResourceHistoryDataStore.oneTimeEditor()
         historyStore.sync {
             guard let newHistory = historyStore.createResource() else {
                 
-                return Logger.shared.log("ResourceHistoryManager: Can not create ResourceHIstory")
+                Logger.shared.log("ResourceHistoryManager: Can not create ResourceHIstory")
+                
+                return
             }
             
             let now = Date()
@@ -97,7 +106,10 @@ final class ResourceHistoryManager: NSObject {
     
     private func reduceResourceByConditions(_ store: ResourceHistoryDataStore, _ target: [Int], _ ago: Date) {
         
-        store.sync { store.resources(in: target, older: ago).forEach(store.delete) }
+        store.sync {
+            
+            store.resources(in: target, older: ago).forEach(store.delete)
+        }
     }
     
     private func dateOfMonth(_ month: Int) -> Date {

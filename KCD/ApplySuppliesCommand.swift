@@ -17,12 +17,30 @@ final class ApplySuppliesCommand: JSONCommand {
         data["api_ship"]
             .forEach { (_, json) in
                 
-                guard let i = json["api_id"].int else { return }
-                guard let ship = store.sync(execute: { store.ship(by: i) }) else { return }
-                guard let bull = json["api_bull"].int else { return }
-                guard let fuel = json["api_fuel"].int else { return }
-                guard let slots = json["api_onslot"].arrayObject as? [Int] else { return }
-                guard slots.count > 4 else { return }
+                guard let i = json["api_id"].int else {
+                    
+                    return
+                }
+                guard let ship = store.sync(execute: { store.ship(by: i) }) else {
+                    
+                    return
+                }
+                guard let bull = json["api_bull"].int else {
+                    
+                    return
+                }
+                guard let fuel = json["api_fuel"].int else {
+                    
+                    return
+                }
+                guard let slots = json["api_onslot"].arrayObject as? [Int] else {
+                    
+                    return
+                }
+                guard slots.count > 4 else {
+                    
+                    return
+                }
                 
                 store.sync {
                     

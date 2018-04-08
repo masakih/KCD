@@ -37,7 +37,11 @@ final class MaterialMapper: JSONMapper {
             
         case .remodelSlot: return ["api_data", "api_after_material"]
             
-        default: return Logger.shared.log("Missing API: \(apiResponse.api)", value: ["api_data"])
+        default:
+            
+            Logger.shared.log("Missing API: \(apiResponse.api)")
+            
+            return ["api_data"]
         }
     }
     
@@ -45,12 +49,15 @@ final class MaterialMapper: JSONMapper {
         
         configuration.editorStore.sync(execute: commintInContext)
     }
+    
     private func commintInContext() {
         
         guard let store = configuration.editorStore as? ServerDataStore,
             let material = store.material() ?? store.createMaterial() else {
                 
-                return Logger.shared.log("Can not create Material")
+                Logger.shared.log("Can not create Material")
+                
+                return
         }
         
         if let _ = data[0].int {
@@ -81,8 +88,14 @@ final class MaterialMapper: JSONMapper {
         
         data.forEach {
             
-            guard let i = $0["api_id"].int, case 1...keys.count = i else { return }
-            guard let newValue = $0["api_value"].int else { return }
+            guard let i = $0["api_id"].int, case 1...keys.count = i else {
+                
+                return
+            }
+            guard let newValue = $0["api_value"].int else {
+                
+                return
+            }
             
             material.setValue(newValue as NSNumber, forKey: keys[i - 1])
         }

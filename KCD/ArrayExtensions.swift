@@ -17,7 +17,10 @@ extension Sequence where Iterator.Element: Hashable {
         
         return filter {
             
-            if alreadyAdded.contains($0) { return false }
+            if alreadyAdded.contains($0) {
+                
+                return false
+            }
             
             alreadyAdded.insert($0)
             
@@ -37,8 +40,14 @@ extension Array {
 infix operator ==? : ComparisonPrecedence
 func ==? <T: Comparable> (lhv: T, rhv: T) -> ComparisonResult {
     
-    if lhv == rhv { return .orderedSame }
-    if lhv < rhv { return .orderedAscending }
+    if lhv == rhv {
+        
+        return .orderedSame
+    }
+    if lhv < rhv {
+        
+        return .orderedAscending
+    }
     
     return .orderedDescending
 }
@@ -47,13 +56,19 @@ extension MutableCollection {
     
     private func bsearch(min: Int, max: Int, comparator: (Iterator.Element) -> ComparisonResult) -> Iterator.Element? {
         
-        if max < min { return nil }
+        if max < min {
+            
+            return nil
+        }
         
         let current = min + (max - min) / 2
         let v = self[self.index(self.startIndex, offsetBy: current)]
         let compRes = comparator(v)
         
-        if compRes == .orderedSame { return v }
+        if compRes == .orderedSame {
+            
+            return v
+        }
         
         let newMin = (compRes == .orderedAscending) ? current + 1 : min
         let newMax = (compRes == .orderedDescending) ? current - 1 : max

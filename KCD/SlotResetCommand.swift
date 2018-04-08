@@ -22,11 +22,15 @@ final class SlotResetCommand: JSONCommand {
             
             guard let ship = self.parameter["api_id"].int.flatMap(store.ship(by:)) else {
                 
-                return Logger.shared.log("api_id is wrong")
+                Logger.shared.log("api_id is wrong")
+                
+                return
             }
             guard let slotItems = self.data["api_slot"].arrayObject as? [Int] else {
                 
-                return Logger.shared.log("Can not parse api_data.api_slot")
+                Logger.shared.log("Can not parse api_data.api_slot")
+                
+                return
             }
             
             zip(slotItems, 0...).forEach(ship.setItem)
@@ -35,10 +39,16 @@ final class SlotResetCommand: JSONCommand {
             let newSet = slotItems
                 .compactMap { slotItem -> SlotItem? in
                     
-                    guard slotItem > 0 else { return nil }
+                    guard slotItem > 0 else {
+                        
+                        return nil
+                    }
                     
                     let found = storedSlotItems.binarySearch { $0.id ==? slotItem }
-                    if let item = found { return item }
+                    if let item = found {
+                        
+                        return item
+                    }
                     print("Item \(slotItem) is not found")
                     
                     return nil

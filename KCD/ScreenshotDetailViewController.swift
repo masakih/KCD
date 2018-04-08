@@ -40,9 +40,15 @@ final class ScreenshotDetailViewController: BridgeViewController {
     
     private func updateSelections() {
         
-        guard let selection = arrayController.selectedObjects as? [ScreenshotInformation] else { return }
+        guard let selection = arrayController.selectedObjects as? [ScreenshotInformation] else {
+            
+            return
+        }
         
-        if currentSelection == selection { return }
+        if currentSelection == selection {
+            
+            return
+        }
         
         imageView.images = selection.compactMap { NSImage(contentsOf: $0.url) }
         currentSelection = selection

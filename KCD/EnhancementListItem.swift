@@ -74,6 +74,7 @@ final class EnhancementListItem: NSObject, NSCoding, NSCopying {
             let s = aDecoder.decodeObject(forKey: CodeKey.secondsShipNames) as? [String] else {
                 
                 Logger.shared.log("Can not decode EnhancementListItem")
+                
                 return nil
         }
         
@@ -137,6 +138,7 @@ final class RequiredEquipmentSet: NSObject, NSCoding, NSCopying {
             let r = aDecoder.decodeObject(forKey: CodeKey.requiredEquipments) as? [RequiredEquipment] else {
                 
                 Logger.shared.log("Can not decode RequiredEquipmentSet")
+                
                 return nil
         }
         
@@ -195,6 +197,7 @@ final class RequiredEquipment: NSObject, NSCoding, NSCopying {
             let na = aDecoder.decodeObject(forKey: CodeKey.name) as? String else {
                 
                 Logger.shared.log("Can not decode RequiredEquipment")
+                
                 return nil
         }
         
@@ -230,8 +233,14 @@ extension RequiredEquipment {
     
     @objc dynamic var numberString: String? {
         
-        if number == 0 { return nil }
-        if number == -1 { return "-" }
+        if number == 0 {
+            
+            return nil
+        }
+        if number == -1 {
+            
+            return "-"
+        }
         
         return "\(number)"
     }

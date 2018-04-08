@@ -30,6 +30,7 @@ final class DamageValueTransformer: ValueTransformer {
     private func attribute(for type: DamageType) -> (string: String, attr: [NSAttributedStringKey: Any])? {
         
         switch type {
+            
         case .none:
             return nil
             

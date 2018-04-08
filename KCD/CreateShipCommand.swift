@@ -18,6 +18,7 @@ final class CreateShipCommand: JSONCommand {
     override func execute() {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            
             self.afterExecute()
         }
     }
@@ -26,7 +27,9 @@ final class CreateShipCommand: JSONCommand {
         
         guard let dockId = parameter["api_kdock_id"].int else {
             
-            return Logger.shared.log("api_kdock_id is wrong")
+            Logger.shared.log("api_kdock_id is wrong")
+            
+            return
         }
         
         let store = ServerDataStore.default
@@ -34,8 +37,8 @@ final class CreateShipCommand: JSONCommand {
         let storedInfos: KenzoMarkCommand.KenzoDockInfo? = store.sync {
             
             guard let kenzoDock = store.kenzoDock(by: dockId)  else {
-                    
-                    return nil
+                
+                return nil
             }
             
             return KenzoMarkCommand.KenzoDockInfo(dockId: kenzoDock.id,
@@ -49,23 +52,32 @@ final class CreateShipCommand: JSONCommand {
         
         guard let infos = storedInfos else {
             
-            return Logger.shared.log("Can not load KenzoDeck")
+            Logger.shared.log("Can not load KenzoDeck")
+            
+            return
         }
         
         guard let flagShip = store.sync(execute: { store.deck(by: 1)?[0] }) else {
             
-            return Logger.shared.log("Can not load deck")
+            Logger.shared.log("Can not load deck")
+            
+            return
         }
         guard let commanderLv = store.sync(execute: { store.basic()?.level }) else {
             
-            return Logger.shared.log("Can not load basic")
+            Logger.shared.log("Can not load basic")
+            
+            return
         }
         
         let localStore = LocalDataStore.oneTimeEditor()
         localStore.sync {
+            
             guard let newMark = localStore.kenzoMark(byDockId: dockId) ?? localStore.createKenzoMark() else {
                 
-                return Logger.shared.log("Can not create KenzoMark")
+                Logger.shared.log("Can not create KenzoMark")
+                
+                return
             }
             
             newMark.fuel = infos.fuel

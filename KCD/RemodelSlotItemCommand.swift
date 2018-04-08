@@ -12,10 +12,15 @@ final class RemodelSlotItemCommand: JSONCommand {
     
     override func execute() {
         
-        guard let success = data["api_remodel_flag"].int, success != 0 else { return }
+        guard let success = data["api_remodel_flag"].int, success != 0 else {
+            
+            return
+        }
         guard let slotItemId = parameter["api_slot_id"].int else {
             
-            return Logger.shared.log("api_slot_id is wrong")
+            Logger.shared.log("api_slot_id is wrong")
+            
+            return
         }
         
         let afterSlot = data["api_after_slot"]
@@ -23,7 +28,9 @@ final class RemodelSlotItemCommand: JSONCommand {
         store.sync {
             guard let slotItem = store.slotItem(by: slotItemId) else {
                 
-                return Logger.shared.log("SlotItem not found")
+                Logger.shared.log("SlotItem not found")
+                
+                return
             }
             
             if let locked = afterSlot["api_locked"].int {
@@ -44,7 +51,10 @@ final class RemodelSlotItemCommand: JSONCommand {
             }
             
             // remove used slot items.
-            guard let useSlot = self.data["api_use_slot_id"].arrayObject as? [Int] else { return }
+            guard let useSlot = self.data["api_use_slot_id"].arrayObject as? [Int] else {
+                
+                return
+            }
             
             store.slotItems(in: useSlot).forEach(store.delete)
         }

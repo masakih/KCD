@@ -132,8 +132,15 @@ final class CustomHTTPProtocol: URLProtocol {
     private static let requestProperty = "com.masakih.KCD.requestProperty"
     static var classDelegate: CustomHTTPProtocolDelegate?
     
-    class func clearCache() { URLCache.kcd.removeAllCachedResponses() }
-    class func start() { URLProtocol.registerClass(CustomHTTPProtocol.self) }
+    class func clearCache() {
+        
+        URLCache.kcd.removeAllCachedResponses()
+    }
+    
+    class func start() {
+        
+        URLProtocol.registerClass(CustomHTTPProtocol.self)
+    }
     
     override class func canInit(with request: URLRequest) -> Bool {
         
@@ -230,7 +237,10 @@ extension CustomHTTPProtocol: URLSessionDataDelegate {
         
         threadOperator?.execute { [weak self] in
             
-            guard let `self` = self else { return }
+            guard let `self` = self else {
+                
+                return
+            }
             
             Debug.print("willPerformHTTPRedirection", level: .full)
             
@@ -247,7 +257,10 @@ extension CustomHTTPProtocol: URLSessionDataDelegate {
         
         threadOperator?.execute { [weak self] in
             
-            guard let `self` = self else { return }
+            guard let `self` = self else {
+                
+                return
+            }
             
             Debug.print("didReceive response", level: .full)
             
@@ -268,7 +281,10 @@ extension CustomHTTPProtocol: URLSessionDataDelegate {
         
         threadOperator?.execute { [weak self] in
             
-            guard let `self` = self else { return }
+            guard let `self` = self else {
+                
+                return
+            }
             
             Debug.print("didReceive data", level: .full)
             if self.cachePolicy == .allowed {
@@ -301,7 +317,10 @@ extension CustomHTTPProtocol: URLSessionDataDelegate {
         
         threadOperator?.execute { [weak self] in
             
-            guard let `self` = self else { return }
+            guard let `self` = self else {
+                
+                return
+            }
             
             if let error = error {
                 

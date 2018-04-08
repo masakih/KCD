@@ -13,8 +13,11 @@ final class Debug {
     enum Level: Int {
         
         case none
+        
         case test
+        
         case debug
+        
         case full
         
         func higher(other: Level) -> Bool {

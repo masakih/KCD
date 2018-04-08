@@ -23,15 +23,24 @@ final class AnchorageRepairManager: NSObject {
         let nc = NotificationCenter.default
         nc.addObserver(forName: .HenseiDidChange, object: nil, queue: nil) { notification in
             
-            guard let userInfo = notification.userInfo else { return }
-            guard let info = userInfo[ChangeHenseiCommand.userInfoKey] as? HenseiDidChangeUserInfo else { return }
+            guard let userInfo = notification.userInfo else {
+                
+                return
+            }
+            guard let info = userInfo[ChangeHenseiCommand.userInfoKey] as? HenseiDidChangeUserInfo else {
+                
+                return
+            }
             
             self.resetIfNeeds(info: info)
         }
         
         nc.addObserver(forName: .PortAPIReceived, object: nil, queue: nil) { _ in
             
-            if Date().timeIntervalSince(self.repairTime) < 20 * 60 { return }
+            if Date().timeIntervalSince(self.repairTime) < 20 * 60 {
+                
+                return
+            }
             
             self.reset()
         }
@@ -50,8 +59,14 @@ final class AnchorageRepairManager: NSObject {
     
     private func shipTypeId(fleetNumber: Int, position: Int) -> Int? {
         
-        guard case 1...4 = fleetNumber else { return nil }
-        guard case 0...5 = position else { return nil }
+        guard case 1...4 = fleetNumber else {
+            
+            return nil
+        }
+        guard case 0...5 = position else {
+            
+            return nil
+        }
         
         let ship = fleetManager?.fleets[fleetNumber - 1][position]
         
@@ -61,6 +76,7 @@ final class AnchorageRepairManager: NSObject {
     private func shipTypeId(shipId: Int) -> Int? {
         
         let store = ServerDataStore.default
+        
         return store.sync { store.ship(by: shipId)?.master_ship.stype.id }
     }
     
@@ -111,6 +127,7 @@ final class AnchorageRepairManager: NSObject {
         
         return false
     }
+    
     private func resetIfNeeds(info: HenseiDidChangeUserInfo) {
         
         if needsReset(info: info) { reset() }

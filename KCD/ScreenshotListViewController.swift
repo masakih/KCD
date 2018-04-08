@@ -29,6 +29,7 @@ final class ScreenshotListViewController: NSViewController {
     @objc dynamic var zoom: Double = UserDefaults.standard[.screenshotPreviewZoomValue] {
         
         didSet {
+            
             collectionView.reloadData()
             UserDefaults.standard[.screenshotPreviewZoomValue] = zoom
         }
@@ -39,10 +40,12 @@ final class ScreenshotListViewController: NSViewController {
     private var reloadHandler: (() -> Void)?
     private var collectionSelectionDidChangeHandler: ((Int) -> Void)?
     private(set) var inLiveScrolling = false
+    
     private var arrangedInformations: [ScreenshotInformation] {
         
         return screenshotsController.arrangedObjects as? [ScreenshotInformation] ?? []
     }
+    
     private var selectionInformations: [ScreenshotInformation] {
         
         return screenshotsController.selectedObjects as? [ScreenshotInformation] ?? []
@@ -58,6 +61,7 @@ final class ScreenshotListViewController: NSViewController {
         
         return name
     }
+    
     private var screenshotSaveDirectoryURL: URL {
         
         let parentURL = URL(fileURLWithPath: AppDelegate.shared.screenShotSaveDirectory)
@@ -73,13 +77,15 @@ final class ScreenshotListViewController: NSViewController {
                 
             } else if !isDir.boolValue {
                 
-                print("\(url) is regular file, not direcory.")
+                Logger.shared.log("\(url) is regular file, not direcory.")
+                
                 return parentURL
             }
             
         } catch {
             
-            print("Can not create screenshot save directory.")
+            Logger.shared.log("Can not create screenshot save directory.")
+            
             return parentURL
         }
         
@@ -99,7 +105,10 @@ final class ScreenshotListViewController: NSViewController {
         screenshots.sortDescriptors = [NSSortDescriptor(key: #keyPath(ScreenshotInformation.creationDate), ascending: false)]
         selectionObservation = collectionView.observe(\NSCollectionView.selectionIndexPaths) { [weak self] (_, _) in
             
-            guard let `self` = self else { return }
+            guard let `self` = self else {
+                
+                return
+            }
             
             let selections = self.collectionView.selectionIndexPaths
             let selectionIndexes = selections.reduce(into: IndexSet()) { $0.insert($1.item) }
@@ -130,7 +139,10 @@ final class ScreenshotListViewController: NSViewController {
                        object: nil,
                        queue: .main) { notification in
                         
-                        guard let url = notification.userInfo?[ScreenshotRegister.screenshotURLKey] as? URL else { return }
+                        guard let url = notification.userInfo?[ScreenshotRegister.screenshotURLKey] as? URL else {
+                            
+                            return
+                        }
                         
                         let info = ScreenshotInformation(url: url)
                         
@@ -154,7 +166,10 @@ final class ScreenshotListViewController: NSViewController {
     
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
         
-        guard let vc = segue.destinationController as? NSViewController else { return }
+        guard let vc = segue.destinationController as? NSViewController else {
+            
+            return
+        }
         
         vc.representedObject = screenshots
     }
@@ -168,7 +183,10 @@ final class ScreenshotListViewController: NSViewController {
     /// 画像の大きさの変化が自然になるようにzoom値から画像サイズを計算
     private func sizeFrom(zoom: Double) -> CGFloat {
         
-        if zoom < 0.5 { return CGFloat(type(of: self).maxImageSize * zoom * 0.6) }
+        if zoom < 0.5 {
+            
+            return CGFloat(type(of: self).maxImageSize * zoom * 0.6)
+        }
         
         return CGFloat(type(of: self).maxImageSize * (0.8 * zoom * zoom * zoom  + 0.2))
     }
@@ -178,8 +196,14 @@ final class ScreenshotListViewController: NSViewController {
         
         let effectiveWidth = Double(collectionView.frame.size.width) - type(of: self).leftMergin - type(of: self).rightMergin
         
-        if effectiveWidth < 240 { return effectiveWidth / type(of: self).maxImageSize / 0.6 }
-        if effectiveWidth > 800 { return 1.0 }
+        if effectiveWidth < 240 {
+            
+            return effectiveWidth / type(of: self).maxImageSize / 0.6
+        }
+        if effectiveWidth > 800 {
+            
+            return 1.0
+        }
         
         return pow((effectiveWidth / type(of: self).maxImageSize - 0.2) / 0.8, 1.0 / 3.0)
     }
@@ -188,12 +212,14 @@ final class ScreenshotListViewController: NSViewController {
         
         Promise<[ScreenshotInformation]>()
             .complete {
+                
                 Result(ScreenshotLoader(self.screenshotSaveDirectoryURL).merge(screenshots: []))
             }
             .future
             .onSuccess { screenshots in
                 
                 DispatchQueue.main.async {
+                    
                     self.screenshots.screenshots = screenshots
                     
                     self.collectionView.selectionIndexPaths = [NSIndexPath(forItem: 0, inSection: 0) as IndexPath]
@@ -227,7 +253,10 @@ extension ScreenshotListViewController {
             + "    delete { \(list) }\n"
             + "end tell"
         
-        guard let aps = NSAppleScript(source: script) else { return }
+        guard let aps = NSAppleScript(source: script) else {
+            
+            return
+        }
         
         aps.executeAndReturnError(nil)
     }
@@ -240,7 +269,10 @@ extension ScreenshotListViewController {
         screenshotsController.remove(atArrangedObjectIndexes: selectionIndexes)
         reloadHandler?()
         
-        guard var index = selectionIndexes.first else { return }
+        guard var index = selectionIndexes.first else {
+            
+            return
+        }
         
         if arrangedInformations.count <= index {
             
@@ -289,8 +321,14 @@ extension ScreenshotListViewController: NSCollectionViewDelegateFlowLayout {
         
         defer { indexPathsOfItemsBeingDragged = nil }
         
-        guard let dragged = indexPathsOfItemsBeingDragged else { return }
-        guard operation.contains(.move) || operation.contains(.delete) else { return }
+        guard let dragged = indexPathsOfItemsBeingDragged else {
+            
+            return
+        }
+        guard operation.contains(.move) || operation.contains(.delete) else {
+            
+            return
+        }
         
         var indexes = IndexSet()
         dragged.forEach { indexes.insert($0.item) }
@@ -342,8 +380,14 @@ extension ScreenshotListViewController: NSTouchBarDelegate {
             
             collectionVisibleDidChangeHandler = { [weak self] in
                 
-                guard let `self` = self else { return }
-                guard let index = $0.first else { return }
+                guard let `self` = self else {
+                    
+                    return
+                }
+                guard let index = $0.first else {
+                    
+                    return
+                }
                 
                 let middle = index.item + $0.count / 2
                 
@@ -376,7 +420,10 @@ extension ScreenshotListViewController: NSTouchBarDelegate {
     func touchBar(_ touchBar: NSTouchBar,
                   makeItemForIdentifier identifier: NSTouchBarItem.Identifier) -> NSTouchBarItem? {
         
-        guard identifier == type(of: self).ServicesItemIdentifier else { return nil }
+        guard identifier == type(of: self).ServicesItemIdentifier else {
+            
+            return nil
+        }
         
         if sharingItem == nil {
             
@@ -387,6 +434,7 @@ extension ScreenshotListViewController: NSTouchBarDelegate {
                 sharingItem.delegate = w
             }
         }
+        
         return sharingItem
     }
 }
@@ -401,7 +449,10 @@ extension ScreenshotListViewController: NSScrubberDataSource, NSScrubberDelegate
     
     func scrubber(_ scrubber: NSScrubber, viewForItemAt index: Int) -> NSScrubberItemView {
         
-        guard case 0..<arrangedInformations.count = index else { return NSScrubberImageItemView() }
+        guard case 0..<arrangedInformations.count = index else {
+            
+            return NSScrubberImageItemView()
+        }
         
         let info = arrangedInformations[index]
         let itemView = NSScrubberImageItemView()
@@ -423,7 +474,10 @@ extension ScreenshotListViewController: NSScrubberDataSource, NSScrubberDelegate
     
     func scrubber(_ scrubber: NSScrubber, didChangeVisibleRange visibleRange: NSRange) {
         
-        if inLiveScrolling { return }
+        if inLiveScrolling {
+            
+            return
+        }
         
         let center = visibleRange.location + visibleRange.length / 2
         let p = NSIndexPath(forItem: center, inSection: 0) as IndexPath

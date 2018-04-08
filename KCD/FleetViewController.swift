@@ -11,7 +11,9 @@ import Cocoa
 enum FleetViewType: Int {
     
     case detailViewType = 0
+    
     case minimumViewType = 1
+    
     case miniVierticalType = 2
 }
 
@@ -28,6 +30,7 @@ final class FleetViewController: NSViewController {
     enum ShipOrder: Int {
         
         case doubleLine = 0
+        
         case leftToRight = 1
     }
     
@@ -35,15 +38,20 @@ final class FleetViewController: NSViewController {
         
         case adding = 0
         
+        ///
         case formula33 = 100
+        
         case formula33Parameter1 = 101
+        
         case formula33Parameter3 = 103
+        
         case formula33Parameter4 = 104
     }
     
     enum SakutekiCalclationSterategy: Int {
         
         case total
+        
         case formula33
     }
     
@@ -69,14 +77,21 @@ final class FleetViewController: NSViewController {
         let shipiewType: ShipDetailViewType = {
             
             switch viewType {
+                
             case .detailViewType: return .full
+                
             case .minimumViewType: return .medium
+                
             case .miniVierticalType: return .minimum
+                
             }
         }()
         details = (1...6).map {
             
-            guard let res = ShipDetailViewController(type: shipiewType) else { fatalError("Can not create ShipDetailViewController") }
+            guard let res = ShipDetailViewController(type: shipiewType) else {
+                
+                fatalError("Can not create ShipDetailViewController")
+            }
             
             res.title = "\($0)"
             
@@ -84,10 +99,15 @@ final class FleetViewController: NSViewController {
         }
         
         let nibName: NSNib.Name = {
+            
             switch viewType {
+                
             case .detailViewType: return FleetViewController.nibName
+                
             case .minimumViewType: return NSNib.Name("FleetMinimumViewController")
+                
             case .miniVierticalType: return NSNib.Name("VerticalFleetViewController")
+                
             }
         }()
         
@@ -109,6 +129,7 @@ final class FleetViewController: NSViewController {
     @objc dynamic var fleetNumber: Int = 1 {
         
         didSet {
+            
             ServerDataStore.default
                 .deck(by: fleetNumber)
                 .map { fleet = $0 }
@@ -119,6 +140,7 @@ final class FleetViewController: NSViewController {
         
         get { return representedObject as? Deck }
         set {
+            
             representedObject = newValue
             title = newValue?.name
             checkExtShip()
@@ -135,11 +157,18 @@ final class FleetViewController: NSViewController {
     var shipOrder: FleetViewController.ShipOrder = .doubleLine {
         
         willSet {
-            if shipOrder == newValue { return }
+            
+            if shipOrder == newValue {
+                
+                return
+            }
             
             switch newValue {
+                
             case .doubleLine: reorderShipToDoubleLine()
+                
             case .leftToRight: reorderShipToLeftToRight()
+                
             }
         }
     }
@@ -149,25 +178,35 @@ final class FleetViewController: NSViewController {
     var normalHeight: CGFloat {
         
         switch type {
+            
         case .detailViewType: return FleetViewController.detailViewHeight
+            
         case .minimumViewType: return FleetViewController.oldStyleFleetViewHeight
+            
         case .miniVierticalType: return 0.0
+            
         }
     }
     
     var upsideHeight: CGFloat {
         
         switch type {
+            
         case .detailViewType: return 175.0
+            
         case .minimumViewType: return FleetViewController.oldStyleFleetViewHeight
+            
         case .miniVierticalType: return 0.0
+            
         }
     }
     
     var sakutekiCalculator: SakutekiCalculator = SimpleCalculator() {
         
         didSet {
+            
             switch sakutekiCalculator {
+                
             case _ as SimpleCalculator:
                 UserDefaults.standard[.sakutekiCalclationSterategy] = .total
                 
@@ -177,6 +216,7 @@ final class FleetViewController: NSViewController {
                 
             default: ()
             }
+            
         }
     }
     
@@ -205,12 +245,15 @@ final class FleetViewController: NSViewController {
     private var ships: [Ship] = [] {
         
         willSet {
+            
             ships.forEach { ship in
                 
                 shipObserveKeys.forEach { ship.removeObserver(self, forKeyPath: $0) }
             }
         }
+        
         didSet {
+            
             ships.forEach { ship in
                 
                 shipObserveKeys.forEach {
@@ -230,12 +273,14 @@ final class FleetViewController: NSViewController {
         super.viewDidLoad()
         
         switch UserDefaults.standard[.sakutekiCalclationSterategy] {
+            
         case .total:
             sakutekiCalculator = SimpleCalculator()
             
         case .formula33:
             let factor = UserDefaults.standard[.formula33Factor]
             sakutekiCalculator = Formula33(Int(factor))
+            
         }
         
         fleetController.bind(NSBindingName(#keyPath(NSArrayController.content)), to: self, withKeyPath: #keyPath(fleet))
@@ -251,7 +296,10 @@ final class FleetViewController: NSViewController {
         zip([placeholder01, placeholder02, placeholder03, placeholder04, placeholder05, placeholder06], details)
             .forEach { view, detail in
                 
-                guard let view = view else { return }
+                guard let view = view else {
+                    
+                    return
+                }
                 
                 detail.view.frame = view.frame
                 detail.view.autoresizingMask = view.autoresizingMask
@@ -267,6 +315,7 @@ final class FleetViewController: NSViewController {
                 if let current = self?.fleetNumber {
                     
                     self?.fleetNumber = current
+                    
                 } else {
                     
                     self?.fleetNumber = 1
@@ -308,6 +357,7 @@ final class FleetViewController: NSViewController {
             if context == &shipsContext {
                 
                 switch keyPath {
+                    
                 case #keyPath(Ship.equippedItem):
                     notifyChangeValue(forKey: #keyPath(totalSakuteki))
                     notifyChangeValue(forKey: #keyPath(totalDrums))
@@ -323,6 +373,7 @@ final class FleetViewController: NSViewController {
                     notifyChangeValue(forKey: #keyPath(totalLevel))
                     
                 default: break
+                    
                 }
                 
                 return
@@ -346,9 +397,13 @@ final class FleetViewController: NSViewController {
     
     @IBAction func changeSakutekiCalculator(_ sender: Any?) {
         
-        guard let menuItem = sender as? NSMenuItem else { return }
+        guard let menuItem = sender as? NSMenuItem else {
+            
+            return
+        }
         
         switch menuItem.tag {
+            
         case 0:
             sakutekiCalculator = SimpleCalculator()
             
@@ -359,6 +414,7 @@ final class FleetViewController: NSViewController {
             askCalcutaionTurnPoint()
             
         default: return
+            
         }
         
         notifyChangeValue(forKey: #keyPath(totalSakuteki))
@@ -366,7 +422,10 @@ final class FleetViewController: NSViewController {
     
     private func askCalcutaionTurnPoint() {
         
-        guard let window = self.view.window else { return }
+        guard let window = self.view.window else {
+            
+            return
+        }
         
         let current = (sakutekiCalculator as? Formula33)?.condition ?? 1
         
@@ -400,7 +459,10 @@ extension FleetViewController {
     
     override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
         
-        guard let action = menuItem.action else { return false }
+        guard let action = menuItem.action else {
+            
+            return false
+        }
         
         switch action {
             
@@ -422,6 +484,7 @@ extension FleetViewController {
             }
             
         default: ()
+            
         }
         
         return false
@@ -432,7 +495,12 @@ extension FleetViewController {
     
     private func reorder(order: [Int]) {
         
-        guard order.count == 6 else { return Logger.shared.log("FleetViewController: order count is not 6.") }
+        guard order.count == 6 else {
+            
+            Logger.shared.log("FleetViewController: order count is not 6.")
+            
+            return
+        }
         
         let views = details.map { $0.view }
         let options = views.map { $0.autoresizingMask }
@@ -461,7 +529,10 @@ extension FleetViewController {
         
         AppDelegate.shared.addCounterUpdate { [weak self] in
             
-            guard let `self` = self else { return }
+            guard let `self` = self else {
+                
+                return
+            }
             
             self.repairTime = self.calcRepairTime()
         }
@@ -481,7 +552,10 @@ extension FleetViewController {
     
     @objc private dynamic var repairable: Bool {
         
-        guard let flagShip = fleet?[0] else { return false }
+        guard let flagShip = fleet?[0] else {
+            
+            return false
+        }
         
         return repairShipIds.contains(flagShip.master_ship.stype.id)
     }
@@ -493,12 +567,23 @@ extension FleetViewController {
     
     private func showExtShip() {
         
-        guard type == .detailViewType else { return }
-        guard extDetail == nil else { return }
-        guard let _ = fleet?[6] else { return }
+        guard type == .detailViewType else {
+            
+            return
+        }
+        guard extDetail == nil else {
+            
+            return
+        }
+        guard let _ = fleet?[6] else {
+            
+            return
+        }
         
         if extShipAnimating {
+            
             DispatchQueue.main.async(execute: showExtShip)
+            
             return
         }
         
@@ -507,7 +592,10 @@ extension FleetViewController {
         NSAnimationContext.runAnimationGroup({ _ in
             
             extDetail = ShipDetailViewController(type: .full)
-            guard let extDetail = extDetail else { return }
+            guard let extDetail = extDetail else {
+                
+                return
+            }
             
             extDetail.title = "7"
             extDetail.view.autoresizingMask = [.minXMargin]
@@ -533,14 +621,22 @@ extension FleetViewController {
     
     private func hideExtShip() {
         
-        guard type == .detailViewType else { return }
-        
-        if extShipAnimating {
-            DispatchQueue.main.async(execute: hideExtShip)
+        guard type == .detailViewType else {
+            
             return
         }
         
-        guard let extDetail = extDetail else { return }
+        if extShipAnimating {
+            
+            DispatchQueue.main.async(execute: hideExtShip)
+            
+            return
+        }
+        
+        guard let extDetail = extDetail else {
+            
+            return
+        }
         
         extShipAnimating = true
         
@@ -569,7 +665,10 @@ extension FleetViewController {
     
     private func checkExtShip() {
                 
-        guard type == .detailViewType else { return }
+        guard type == .detailViewType else {
+            
+            return
+        }
         
         if fleet?[6] != nil {
             

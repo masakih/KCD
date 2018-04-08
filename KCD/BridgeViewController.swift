@@ -28,7 +28,11 @@ class BridgeViewController: NSViewController {
     override var representedObject: Any? {
         
         didSet {
-            guard let representedObject = representedObject as? ScreenshotModel else { return }
+            
+            guard let representedObject = representedObject as? ScreenshotModel else {
+                
+                return
+            }
             
             arrayController.bind(.contentArray, to: representedObject, withKeyPath: #keyPath(ScreenshotModel.screenshots))
             arrayController.bind(.sortDescriptors, to: representedObject, withKeyPath: #keyPath(ScreenshotModel.sortDescriptors))
@@ -59,14 +63,20 @@ extension BridgeViewController: NSSharingServicePickerDelegate, ScreenshotSharin
     private var tagString: String? {
         
         let tag = LocalizedStrings.tweetTag.string
-        if tag == "" { return "" }
+        if tag == "" {
+            
+            return ""
+        }
         
         return "#\(tag)"
     }
     
     @IBAction func share(_ sender: AnyObject?) {
         
-        guard let view = sender as? NSView else { return }
+        guard let view = sender as? NSView else {
+            
+            return
+        }
         
         let picker = NSSharingServicePicker(items: itemsForShareingServicePicker())
         picker.delegate = self
@@ -75,10 +85,16 @@ extension BridgeViewController: NSSharingServicePickerDelegate, ScreenshotSharin
     
     private func itemsForShareingServicePicker() -> [AnyObject] {
         
-        guard let informations = arrayController.selectedObjects as? [ScreenshotInformation] else { return [] }
+        guard let informations = arrayController.selectedObjects as? [ScreenshotInformation] else {
+            
+            return []
+        }
         
         let images: [NSImage] = informations.compactMap { NSImage(contentsOf: $0.url) }
-        if !appendKanColleTag { return images }
+        if !appendKanColleTag {
+            
+            return images
+        }
         if let tag = tagString {
             
             return ["\n\(tag)" as AnyObject] + images

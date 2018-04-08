@@ -12,6 +12,7 @@ import SwiftyJSON
 enum BattleFleet {
     
     case normal
+    
     case secondOnly
 }
 
@@ -116,6 +117,7 @@ extension DamageCalculator {
         let bf: () -> BattleFleet = {
             
             switch self.battleType {
+                
             case .combinedWater,
                  .combinedAir,
                  .eachCombinedWater,
@@ -123,6 +125,7 @@ extension DamageCalculator {
                 return .secondOnly
                 
             default: return .normal
+                
             }
         }
         calculateFDam(baseKeyPath: "api_data.api_kouku.api_stage3_combined", bf)
@@ -196,21 +199,33 @@ extension DamageCalculator {
     private var isCombinedBattle: Bool {
         
         switch battleType {
+            
         case .combinedAir, .combinedWater, .eachCombinedAir, .eachCombinedWater:
             return true
             
         default:
             return false
+            
         }
     }
     
     private func makeDamage(num: Int) -> [Damage] {
         
-        guard let battle = store.battle() else { return Logger.shared.log("Battle is invalid.", value: []) }
+        guard let battle = store.battle() else {
+            
+            Logger.shared.log("Battle is invalid.")
+            
+            return []
+        }
         
         return (0..<num).compactMap {
             
-            guard let damage = store.createDamage() else { return Logger.shared.log("Can not create Damage", value: nil) }
+            guard let damage = store.createDamage() else {
+                
+                Logger.shared.log("Can not create Damage")
+                
+                return nil
+            }
             
             damage.battle = battle
             damage.id = $0
@@ -221,7 +236,12 @@ extension DamageCalculator {
     
     private func buildDamages(first: [Ship], second: [Ship]?) {
         
-        guard let battle = store.battle() else { return Logger.shared.log("Battle is invalid.") }
+        guard let battle = store.battle() else {
+            
+            Logger.shared.log("Battle is invalid.")
+            
+            return
+        }
         
         let damages = makeDamage(num: 12)
         
@@ -233,6 +253,7 @@ extension DamageCalculator {
             damage.hp = sStore.sync { ship.nowhp }
             
             Debug.excute(level: .debug) {
+                
                 let name = sStore.sync { ship.name }
                 print("add Damage entity of \(name) at \(damage.id)")
             }
@@ -250,7 +271,12 @@ extension DamageCalculator {
     
     private func buildDamagedEntity() {
         
-        guard let battle = store.battle() else { return Logger.shared.log("Battle is invalid.") }
+        guard let battle = store.battle() else {
+            
+            Logger.shared.log("Battle is invalid.")
+            
+            return
+        }
         
         let sStore = ServerDataStore.default
         // 第一艦隊
@@ -262,6 +288,7 @@ extension DamageCalculator {
             
             let secondFleetShips = sStore.sync { sStore.ships(byDeckId: 2) }
             buildDamages(first: firstFleetShips, second: secondFleetShips)
+            
         } else {
             
             buildDamages(first: firstFleetShips, second: nil)
@@ -283,7 +310,9 @@ extension DamageCalculator {
         
         guard list.count == targetArraysArray.count else {
             
-            return Logger.shared.log("api_df_list is wrong", value: nil)
+            Logger.shared.log("api_df_list is wrong")
+            
+            return nil
         }
         
         return targetArraysArray
@@ -308,7 +337,10 @@ extension DamageCalculator {
         
         let damagePos = (fleet == .secondOnly ? pos + 6 : pos)
         
-        guard case 0..<damages.count = damagePos else { return nil }
+        guard case 0..<damages.count = damagePos else {
+            
+            return nil
+        }
         
         return damagePos
     }
@@ -326,10 +358,16 @@ extension DamageCalculator {
         
         damage.hp -= receive
         
-        if damage.hp > 0 { return }
+        if damage.hp > 0 {
+            
+            return
+        }
         
         let sStore = ServerDataStore.default
-        guard let ship = sStore.sync(execute: { sStore.ship(by: damage.shipID) }) else { return }
+        guard let ship = sStore.sync(execute: { sStore.ship(by: damage.shipID) }) else {
+            
+            return
+        }
         
         damage.hp = damageControlIfPossible(ship: ship)
         damage.useDamageControl = (damage.hp != 0)
@@ -343,7 +381,10 @@ extension DamageCalculator {
     
     private func omitEnemyDamage(targetPosLists: [[Int]], damageLists: [[Int]], eFlags: [Int]?) -> [([Int], [Int])] {
         
-        guard let eFlags = eFlags else { return zip(targetPosLists, damageLists).map { $0 } }
+        guard let eFlags = eFlags else {
+            
+            return zip(targetPosLists, damageLists).map { $0 }
+        }
         
         return zip(zip(targetPosLists, damageLists), eFlags).filter { $0.1 == 1 }.map { $0.0 }
     }
@@ -356,27 +397,43 @@ extension DamageCalculator {
             let damageLists = hogekiDamages(baseValue["api_damage"]) else {
                 
                 Debug.print("Cound not find api_df_list or api_damage for \(baseKeyPath)", level: .full)
+                
                 return
         }
         
-        guard targetPosLists.count == damageLists.count else { return Logger.shared.log("api_damage is wrong.") }
+        guard targetPosLists.count == damageLists.count else {
+            
+            Logger.shared.log("api_damage is wrong.")
+            
+            return
+        }
         
         Debug.print("Start Hougeki \(baseKeyPath)", level: .debug)
         
         omitEnemyDamage(targetPosLists: targetPosLists, damageLists: damageLists, eFlags: enemyFlags(baseValue["api_at_eflag"]))
             .map { (targetPosList, damageList) -> (Int, Int) in
                 
-                guard let pos = targetPosList.first else { return (0, 0) }
+                guard let pos = targetPosList.first else {
+                    
+                    return (0, 0)
+                }
                 
                 return (pos, damageList.filter { $0 > 0 }.reduce(0, +))
             }
             .forEach { (targetPos, damage) in
                 
-                guard validTargetPos(targetPos, in: battleFleet) else { return Logger.shared.log("invalid position \(targetPos)") }
+                guard validTargetPos(targetPos, in: battleFleet) else {
+                    
+                    Logger.shared.log("invalid position \(targetPos)")
+                    
+                    return
+                }
                 
                 guard let damagePos = position(targetPos, in: battleFleet) else {
                     
-                    return Logger.shared.log("damage pos is larger than damage count")
+                    Logger.shared.log("damage pos is larger than damage count")
+                    
+                    return
                 }
                 
                 calcHP(damage: damages[damagePos], receive: damage)
@@ -408,13 +465,17 @@ extension DamageCalculator {
             
             return
         }
+        
         let frendDamages = intFdamArray.map { $0.toInt() }
         
         Debug.print("Start FDam \(baseKeyPath)", level: .debug)
         
         frendDamages.enumerated().forEach { (idx, damage) in
             
-            guard let damagePos = position(idx, in: battleFleet) else { return }
+            guard let damagePos = position(idx, in: battleFleet) else {
+                
+                return
+            }
             
             calcHP(damage: damages[damagePos], receive: damage)
             
@@ -430,6 +491,7 @@ extension DamageCalculator {
         
         let store = ServerDataStore.default
         return store.sync {
+            
             let damageControl = ship
                 .equippedItem
                 .array
@@ -442,6 +504,7 @@ extension DamageCalculator {
             if let validDamageControl = damageControl {
                 
                 switch validDamageControl {
+                    
                 case .damageControl:
                     Debug.print("Damage Control", level: .debug)
                     return Int(Double(ship.maxhp) * 0.2)
@@ -449,15 +512,20 @@ extension DamageCalculator {
                 case .goddes:
                     Debug.print("Goddes", level: .debug)
                     return ship.maxhp
+                    
                 }
             }
             
             // check extra slot
             let exItemId = store.masterSlotItemID(by: ship.slot_ex)
             
-            guard let exType = DamageControlID(rawValue: exItemId) else { return 0 }
+            guard let exType = DamageControlID(rawValue: exItemId) else {
+                
+                return 0
+            }
             
             switch exType {
+                
             case .damageControl:
                 Debug.print("Damage Control", level: .debug)
                 return Int(Double(ship.maxhp) * 0.2)
@@ -465,6 +533,7 @@ extension DamageCalculator {
             case .goddes:
                 Debug.print("Goddes", level: .debug)
                 return ship.maxhp
+                
             }
         }
     }

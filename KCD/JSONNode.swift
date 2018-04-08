@@ -13,8 +13,14 @@ class JSONNode: NSObject, NSCoding, NSCopying {
     
     class func nodeWithJSON(_ json: JSON) -> JSONNode? {
         
-        if json.type == .array { return node(withArray: json) }
-        if json.type == .dictionary { return node(withDictionary: json) }
+        if json.type == .array {
+            
+            return node(withArray: json)
+        }
+        if json.type == .dictionary {
+            
+            return node(withDictionary: json)
+        }
         
         return node(withObject: json)
     }
@@ -25,10 +31,19 @@ class JSONNode: NSObject, NSCoding, NSCopying {
         let value: String?
         
         switch obj.type {
+            
         case .string: value = obj.stringValue
+            
         case .number: value = String(obj.intValue)
+            
         case .null: value = nil
-        default: print(obj); return nil
+            
+        default:
+            
+            print(obj)
+            
+            return nil
+            
         }
         
         node.value = value

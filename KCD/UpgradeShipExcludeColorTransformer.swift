@@ -17,7 +17,10 @@ final class UpgradeShipExcludeColorTransformer: ValueTransformer {
     
     override func transformedValue(_ value: Any?) -> Any? {
         
-        guard let v = value as? Int else { return nil }
+        guard let v = value as? Int else {
+            
+            return nil
+        }
         
         if UpgradableShipsWindowController.isExcludeShipID(v) {
             

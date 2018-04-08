@@ -38,6 +38,7 @@ final class ShipMasterDetailWindowController: NSWindowController {
     @objc dynamic var selectedDeck: Deck? {
         
         didSet {
+            
             fleetShips = selectedDeck?[0...6] ?? []
         }
     }
@@ -54,11 +55,17 @@ final class ShipMasterDetailWindowController: NSWindowController {
     
     private func buildSpec() {
         
-        guard let selectedShip = selectedShip else { return }
+        guard let selectedShip = selectedShip else {
+            
+            return
+        }
         
         spec = specNames.compactMap { key -> [String: Any]? in
             
-            guard let v = selectedShip.value(forKeyPath: key) else { return nil }
+            guard let v = selectedShip.value(forKeyPath: key) else {
+                
+                return nil
+            }
             
             return ["name": key, "value": v]
         }
@@ -69,8 +76,15 @@ final class ShipMasterDetailWindowController: NSWindowController {
         
         let store = ServerDataStore.oneTimeEditor()
         store.sync {
-            guard let selectedShip = self.selectedShip else { return }
-            guard let ship = store.exchange(selectedShip) else { return }
+            
+            guard let selectedShip = self.selectedShip else {
+                
+                return
+            }
+            guard let ship = store.exchange(selectedShip) else {
+                
+                return
+            }
             //
             //        ship.sally_area = sally.integerValue as NSNumber
             
@@ -100,7 +114,10 @@ extension ShipMasterDetailWindowController: NSTableViewDelegate {
     
     func tableViewSelectionDidChange(_ notification: Notification) {
         
-        guard let tableView = notification.object as? NSTableView else { return }
+        guard let tableView = notification.object as? NSTableView else {
+            
+            return
+        }
         
         let controller = [
             (shipsView, shipController),

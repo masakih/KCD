@@ -13,8 +13,11 @@ final class LengTransformer: ValueTransformer {
     private enum LengType: Int {
         
         case short = 1
+        
         case middle
+        
         case long
+        
         case overLong
     }
     
@@ -25,9 +28,13 @@ final class LengTransformer: ValueTransformer {
     
     override func transformedValue(_ value: Any?) -> Any? {
         
-        guard let v = value as? Int, let type = LengType(rawValue: v) else { return nil }
+        guard let v = value as? Int, let type = LengType(rawValue: v) else {
+            
+            return nil
+        }
         
         switch type {
+            
         case .short: return LocalizedStrings.short.string
             
         case .middle: return LocalizedStrings.middle.string
@@ -35,6 +42,7 @@ final class LengTransformer: ValueTransformer {
         case .long: return LocalizedStrings.long.string
             
         case .overLong: return LocalizedStrings.overLong.string
+            
         }
     }
 }

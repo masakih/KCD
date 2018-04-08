@@ -29,7 +29,12 @@ final class BasicMapper: JSONMapper {
             
         case .basic: return ["api_data"]
             
-        default: return Logger.shared.log("Missing API: \(apiResponse.api)", value: ["api_data"])
+        default:
+            
+            Logger.shared.log("Missing API: \(apiResponse.api)")
+            
+            return ["api_data"]
+            
         }
     }
     
@@ -37,12 +42,15 @@ final class BasicMapper: JSONMapper {
         
         configuration.editorStore.async(execute: commintInContext)
     }
+    
     private func commintInContext() {
         
         guard let store = configuration.editorStore as? ServerDataStore,
             let basic = store.basic() ?? store.createBasic() else {
                 
-                return Logger.shared.log("Can not Get Basic")
+                Logger.shared.log("Can not Get Basic")
+                
+                return
         }
         
         registerElement(data, to: basic)

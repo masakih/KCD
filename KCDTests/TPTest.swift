@@ -36,6 +36,7 @@ class TPTest: XCTestCase {
     let store = ServerDataStore.oneTimeEditor()
 
     override func setUp() {
+        
         super.setUp()
         
         // 駆逐艦　大潮改二
@@ -157,13 +158,16 @@ class TPTest: XCTestCase {
         
         let store = TemporaryDataStore.oneTimeEditor()
         store.guardEscaped().forEach(store.delete)
+        
         super.tearDown()
     }
     
     func setupShip(id shipId: Int, slotItems: [Int], exSlot: Int, saku0: Int) {
         
         guard let ship = store.ship(by: shipId) else {
+            
             XCTFail("Can not get ship, \(shipId)")
+            
             fatalError()
         }
         ship.onslot_0 = ship.master_ship.maxeq_0
@@ -189,6 +193,7 @@ class TPTest: XCTestCase {
         ship.equippedItem = NSOrderedSet(array: newItems)
         
         slotItems.enumerated().forEach { offset, element in
+            
             ship.setItem(element, to: offset)
         }
     }
@@ -196,7 +201,9 @@ class TPTest: XCTestCase {
     func checkShip(_ shipId: Int, sTp: Int, bTp: Double, file: StaticString = #file, line: UInt = #line) {
         
         guard let ship1 = store.ship(by: shipId) else {
+            
             XCTFail("Can not get ship")
+            
             fatalError()
         }
         ship1.nowhp = ship1.maxhp

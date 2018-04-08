@@ -45,7 +45,10 @@ func createDockInformationFuture<T: DockInformationFutureCreatable>(number: Int)
     
     return ServerDataStore.default.future { _ -> T? in
         
-        guard T.alreadyHasData(for: number) else { return .none }
+        guard T.alreadyHasData(for: number) else {
+            
+            return .none
+        }
         
         guard let status = T.init(number: number) else {
             

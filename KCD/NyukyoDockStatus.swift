@@ -35,6 +35,7 @@ final class NyukyoDockObserver {
         self.dock = dock
         
         observation = dock.observe(\NyukyoDock.state) { _, _ in
+            
             self.delegate?.didChangeState(dock: self.dock)
         }
     }
@@ -45,6 +46,7 @@ final class NyukyoDockStatus: NSObject {
     private enum DockState: Int {
         
         case empty = 0
+        
         case hasShip = 1
         
         case unknown = 999999
@@ -66,6 +68,7 @@ final class NyukyoDockStatus: NSObject {
     private var rawState: Int = 0 {
         
         didSet {
+            
             state = DockState(rawValue: rawState) ?? .unknown
         }
     }
@@ -79,11 +82,18 @@ final class NyukyoDockStatus: NSObject {
     /// CAUTION: 初回起動時/マスタ更新時にはデータがないので失敗する
     init?(number: Int) {
         
-        guard NyukyoDockStatus.valid(number: number) else { return nil }
+        guard NyukyoDockStatus.valid(number: number) else {
+            
+            return nil
+        }
         
         self.number = number
         
-        guard let dock = ServerDataStore.default.nyukyoDock(by: number) else { return nil }
+        guard let dock = ServerDataStore.default.nyukyoDock(by: number) else {
+            
+            return nil
+        }
+        
         self.observer = NyukyoDockObserver(dock: dock)
         
         super.init()
@@ -105,6 +115,7 @@ final class NyukyoDockStatus: NSObject {
             
         case .unknown:
             Logger.shared.log("unknown State")
+            
         }
         
         delegate?.didUpdate(state: self)
@@ -116,10 +127,14 @@ extension NyukyoDockStatus: DockInformationUpdater {
     func update() {
         
         defer {
+            
             delegate?.didUpdate(state: self)
         }
         
-        guard let name = name else { return }
+        guard let name = name else {
+            
+            return
+        }
         
         let compTime = TimeInterval(Int(completeTime / 1_000))
         let diff = compTime - Date().timeIntervalSince1970
@@ -128,8 +143,14 @@ extension NyukyoDockStatus: DockInformationUpdater {
         time = max(0, diff)
         
         // notify UserNotification.
-        if didNotify { return }
-        if diff >= 1 * 60 { return }
+        if didNotify {
+            
+            return
+        }
+        if diff >= 1 * 60 {
+            
+            return
+        }
         
         let notification = NSUserNotification()
         let format = LocalizedStrings.dockingWillFinish.string

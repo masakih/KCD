@@ -35,7 +35,12 @@ final class DeckMapper: JSONMapper {
             
         case .deck, .deckPort, .presetSelect: return ["api_data"]
             
-        default: return Logger.shared.log("Missing API: \(apiResponse.api)", value: ["api_data"])
+        default:
+            
+            Logger.shared.log("Missing API: \(apiResponse.api)")
+            
+            return ["api_data"]
+            
         }
     }
 }

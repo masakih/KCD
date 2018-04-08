@@ -25,16 +25,19 @@ struct ViewAnimationAttributes {
     }
     
     var startFrame: NSRect? {
+        
         get { return animations[.startFrame] as? NSRect }
         set { animations[.startFrame] = newValue }
     }
     
     var endFrame: NSRect? {
+        
         get { return animations[.endFrame] as? NSRect }
         set { animations[.endFrame] = newValue }
     }
     
     var effect: NSViewAnimation.EffectName? {
+        
         get { return animations[.effect] as? NSViewAnimation.EffectName }
         set { animations[.effect] = newValue }
     }
@@ -50,6 +53,7 @@ class ViewAnimation: NSViewAnimation, NSAnimationDelegate {
     }
     
     required init?(coder: NSCoder) {
+        
         fatalError("Can not initialize with NSCoder")
     }
     

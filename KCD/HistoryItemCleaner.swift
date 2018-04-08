@@ -12,7 +12,10 @@ final class HistoryItemCleaner {
     
     func cleanOldHistoryItems() {
         
-        guard UserDefaults.standard[.cleanOldHistoryItems] else { return }
+        guard UserDefaults.standard[.cleanOldHistoryItems] else {
+            
+            return
+        }
         
         let store = LocalDataStore.oneTimeEditor()
         store.sync {

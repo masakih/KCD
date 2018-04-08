@@ -37,13 +37,19 @@ final class TimeSignalNotifier: NSObject {
         
         defer { registerTimer() }
         
-        guard UserDefaults.standard[.notifyTimeSignal] else { return }
+        guard UserDefaults.standard[.notifyTimeSignal] else {
+            
+            return
+        }
         
         let now = Date()
         let cal = Calendar.current
         let minutes = cal.component(.minute, from: now)
         
-        if (59 - minutes) > notifyTimeBeforeTimeSignal { return }
+        if (59 - minutes) > notifyTimeBeforeTimeSignal {
+            
+            return
+        }
         
         let notification = NSUserNotification()
         let hour = cal.component(.hour, from: now)
@@ -74,7 +80,9 @@ final class TimeSignalNotifier: NSObject {
         comp.minute = 60 - notifyTimeBeforeTimeSignal
         guard let notifyDate = cal.date(from: comp) else {
             
-            return Logger.shared.log("Can not create notify date")
+            Logger.shared.log("Can not create notify date")
+            
+            return
         }
         
         timer = Timer.scheduledTimer(timeInterval: notifyDate.timeIntervalSinceNow,

@@ -22,7 +22,13 @@ final class ScreenshotInformation: NSObject, NSCoding {
     
     @objc lazy var image: NSImage? = {
         
-        guard let image = NSImage(contentsOf: url) else { return Logger.shared.log("Can not load image", value: nil) }
+        guard let image = NSImage(contentsOf: url) else {
+            
+            Logger.shared.log("Can not load image")
+            
+            return nil
+        }
+        
         return image
     }()
     
@@ -32,14 +38,18 @@ final class ScreenshotInformation: NSObject, NSCoding {
         
         return attr?.creationDate
     }
+    
     @objc var tags: [String]? {
         
         get {
+            
             let attr = try? url.resourceValues(forKeys: [.tagNamesKey])
             
             return attr?.tagNames
         }
+        
         set {
+            
             let url = self.url as NSURL
             do {
                 
@@ -79,7 +89,10 @@ final class ScreenshotInformation: NSObject, NSCoding {
     
     required convenience init?(coder aDecoder: NSCoder) {
         
-        guard let u = aDecoder.decodeObject(forKey: CodingKey.url) as? URL else { return nil }
+        guard let u = aDecoder.decodeObject(forKey: CodingKey.url) as? URL else {
+            
+            return nil
+        }
         
         self.init(url: u)
     }

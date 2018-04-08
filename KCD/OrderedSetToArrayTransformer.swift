@@ -22,14 +22,20 @@ final class OrderedSetToArrayTransformer: ValueTransformer {
     
     override func transformedValue(_ value: Any?) -> Any? {
         
-        guard let v = value as? NSOrderedSet else { return value }
+        guard let v = value as? NSOrderedSet else {
+            
+            return value
+        }
         
         return v.array
     }
     
     override func reverseTransformedValue(_ value: Any?) -> Any? {
         
-        guard let v = value as? [Any] else { return value }
+        guard let v = value as? [Any] else {
+            
+            return value
+        }
         
         return NSOrderedSet(array: v)
     }

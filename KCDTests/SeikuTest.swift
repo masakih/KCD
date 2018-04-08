@@ -15,6 +15,7 @@ class SeikuTest: XCTestCase {
     let store = ServerDataStore.oneTimeEditor()
     
     override func setUp() {
+        
         super.setUp()
         
         // 千歳航改二
@@ -42,13 +43,16 @@ class SeikuTest: XCTestCase {
         
         let store = TemporaryDataStore.oneTimeEditor()
         store.guardEscaped().forEach(store.delete)
+        
         super.tearDown()
     }
     
     func setupShip(id shipId: Int, slotItems: [Int], exSlot: Int, saku0: Int) {
         
         guard let ship = store.ship(by: shipId) else {
+            
             XCTFail("Can not get ship, \(shipId)")
+            
             fatalError()
         }
         ship.onslot_0 = ship.master_ship.maxeq_0
@@ -74,6 +78,7 @@ class SeikuTest: XCTestCase {
         ship.equippedItem = NSOrderedSet(array: newItems)
         
         slotItems.enumerated().forEach { offset, element in
+            
             ship.setItem(element, to: offset)
         }
     }
@@ -87,20 +92,24 @@ class SeikuTest: XCTestCase {
         
         // 千歳航改二
         guard let ship1 = store.ship(by: 228) else {
+            
             XCTFail("Can not get ship")
+            
             fatalError()
         }
         
         XCTAssertEqual([ship1].reduce(0) { $0 + $1.seiku }, 67)
         
-        XCTAssertEqual([ship1].reduce(0) { $0 + totalSeiku(of: $1) }, 119)
+        XCTAssertEqual([ship1].reduce(0) { $0 + totalSeiku(of: $1) }, 121)
     }
     
     func testOne2Ship() {
         
         // 熊野改二
         guard let ship1 = store.ship(by: 4_184) else {
+            
             XCTFail("Can not get ship")
+            
             fatalError()
         }
         
@@ -113,63 +122,80 @@ class SeikuTest: XCTestCase {
         
         // 千歳航改二
         guard let ship1 = store.ship(by: 228) else {
+            
             XCTFail("Can not get ship")
+            
             fatalError()
         }
         // 熊野改二
         guard let ship2 = store.ship(by: 4_184) else {
+            
             XCTFail("Can not get ship")
+            
             fatalError()
         }
         
         XCTAssertEqual([ship1, ship2].reduce(0) { $0 + $1.seiku }, 89)
         
-        XCTAssertEqual([ship1, ship2].reduce(0) { $0 + totalSeiku(of: $1) }, 192)
+        XCTAssertEqual([ship1, ship2].reduce(0) { $0 + totalSeiku(of: $1) }, 194)
     }
     
     func testTreeShips() {
         
         // 千歳航改二
         guard let ship1 = store.ship(by: 228) else {
+            
             XCTFail("Can not get ship")
+            
             fatalError()
         }
         // 熊野改二
         guard let ship2 = store.ship(by: 4_184) else {
+            
             XCTFail("Can not get ship")
+            
             fatalError()
         }
         // 筑摩改二
         guard let ship3 = store.ship(by: 220) else {
+            
             XCTFail("Can not get ship")
+            
             fatalError()
         }
         
         XCTAssertEqual([ship1, ship2, ship3].reduce(0) { $0 + $1.seiku }, 93)
         
-        XCTAssertEqual([ship1, ship2, ship3].reduce(0) { $0 + totalSeiku(of: $1) }, 221)
+        XCTAssertEqual([ship1, ship2, ship3].reduce(0) { $0 + totalSeiku(of: $1) }, 223)
     }
     
     func testEscapedShips() {
         
         // 千歳航改二
         guard let ship1 = store.ship(by: 228) else {
+            
             XCTFail("Can not get ship")
+            
             fatalError()
         }
         // 熊野改二
         guard let ship2 = store.ship(by: 4_184) else {
+            
             XCTFail("Can not get ship")
+            
             fatalError()
         }
         // 筑摩改二
         guard let ship3 = store.ship(by: 220) else {
+            
             XCTFail("Can not get ship")
+            
             fatalError()
         }
         
         // 熊野改二を退避
         do {
+            
             let tempStore = TemporaryDataStore.oneTimeEditor()
             let guardEscape = tempStore.createGuardEscaped()
             guardEscape?.shipID = 4_184
@@ -178,6 +204,6 @@ class SeikuTest: XCTestCase {
         
         XCTAssertEqual([ship1, ship2, ship3].reduce(0) { $0 + $1.seiku }, 71)
         
-        XCTAssertEqual([ship1, ship2, ship3].reduce(0) { $0 + totalSeiku(of: $1) }, 148)
+        XCTAssertEqual([ship1, ship2, ship3].reduce(0) { $0 + totalSeiku(of: $1) }, 150)
     }
 }

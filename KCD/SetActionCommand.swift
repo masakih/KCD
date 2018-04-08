@@ -19,15 +19,21 @@ final class SetActionCommand: JSONCommand {
         
         guard let areaId = parameter["api_area_id"].int else {
             
-            return Logger.shared.log("api_area_id is wrong.")
+            Logger.shared.log("api_area_id is wrong.")
+            
+            return
         }
         
         let rIds = parameter["api_base_id"].integerArray
         let actions = parameter["api_action_kind"].integerArray
-        if rIds.count != actions.count { print("missmatch count") }
+        if rIds.count != actions.count {
+            
+            Logger.shared.log("missmatch count")
+        }
         
         let store = ServerDataStore.oneTimeEditor()
         store.sync {
+            
             zip(rIds, actions).forEach { rId, action in
                 
                 store.airBase(area: areaId, base: rId)?.action_kind = action

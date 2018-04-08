@@ -32,14 +32,22 @@ final class SlotItemMapper: JSONMapper {
             
         case .slotItem: return ["api_data"]
             
-        default: return Logger.shared.log("Missing API: \(apiResponse.api)", value: ["api_data"])
+        default:
+            
+            Logger.shared.log("Missing API: \(apiResponse.api)")
+            
+            return ["api_data"]
+            
         }
     }
     
     private var registerIds: [Int] = []
     private lazy var masterSlotItems: [MasterSlotItem] = {
         
-        guard let store = configuration.editorStore as? ServerDataStore else { return [] }
+        guard let store = configuration.editorStore as? ServerDataStore else {
+            
+            return []
+        }
         
         return store.sortedMasterSlotItemsById()
     }()
@@ -54,7 +62,10 @@ final class SlotItemMapper: JSONMapper {
         // 取得後破棄した装備のデータを削除するため保有IDを保存
         if key == "api_id" {
             
-            guard let id = value.int else { return false }
+            guard let id = value.int else {
+                
+                return false
+            }
             
             registerIds.append(id)
             
@@ -63,7 +74,10 @@ final class SlotItemMapper: JSONMapper {
         
         if key == "api_slotitem_id" {
             
-            guard let id = value.int else { return false }
+            guard let id = value.int else {
+                
+                return false
+            }
             
             setMaster(id, to: object)
             
@@ -81,26 +95,39 @@ final class SlotItemMapper: JSONMapper {
             return
         }
         
-        guard let store = configuration.editorStore as? ServerDataStore else { return }
+        guard let store = configuration.editorStore as? ServerDataStore else {
+            
+            return
+        }
         
         store.slotItems(exclude: registerIds).forEach(store.delete)
     }
     
     private func setMaster(_ masterId: Int, to slotItem: SlotItem?) {
         
-        guard let slotItem = slotItem else { return }
+        guard let slotItem = slotItem else {
+            
+            return
+        }
         
-        if slotItem.slotitem_id == masterId { return }
+        if slotItem.slotitem_id == masterId {
+            
+            return
+        }
         
         guard let mSlotItem = masterSlotItems.binarySearch(comparator: { $0.id ==? masterId }) else {
             
-            return Logger.shared.log("Can not find MasterSlotItem")
+            Logger.shared.log("Can not find MasterSlotItem")
+            
+            return
         }
         
         // FUCK: 型推論がバカなのでダウンキャストしてるんだ！！！
         guard let masterSlotItem = configuration.editorStore.exchange(mSlotItem) as? MasterSlotItem else {
-                
-                return Logger.shared.log("Can not convert to current moc object")
+            
+            Logger.shared.log("Can not convert to current moc object")
+            
+            return
         }
         
         slotItem.master_slotItem = masterSlotItem

@@ -26,6 +26,7 @@ final class UpgradableShipsWindowController: NSWindowController {
         case #keyPath(filterPredicate): return [#keyPath(showLevelOneShipInUpgradableList), #keyPath(showsExcludedShipInUpgradableList)]
         
         default: return []
+            
         }
     }
     
@@ -72,8 +73,14 @@ final class UpgradableShipsWindowController: NSWindowController {
             return NSCompoundPredicate(andPredicateWithSubpredicates: [filterPredicate, excludeShip])
         }
         
-        if let filterPredicate = filterPredicate { return filterPredicate }
-        if let excludeShip = excludeShip { return excludeShip }
+        if let filterPredicate = filterPredicate {
+            
+            return filterPredicate
+        }
+        if let excludeShip = excludeShip {
+            
+            return excludeShip
+        }
         
         return nil
     }
@@ -116,7 +123,10 @@ final class UpgradableShipsWindowController: NSWindowController {
     
     private func includeShip(shipID: Int) {
         
-        guard let index = excludeShiIDs.index(of: shipID) else { return }
+        guard let index = excludeShiIDs.index(of: shipID) else {
+            
+            return
+        }
         
         excludeShiIDs.remove(at: index)
     }
@@ -130,8 +140,14 @@ final class UpgradableShipsWindowController: NSWindowController {
         
         let row = tableView.clickedRow
         
-        guard let ships = shipsController.arrangedObjects as? [Ship] else { return }
-        guard case 0..<ships.count = row else { return }
+        guard let ships = shipsController.arrangedObjects as? [Ship] else {
+            
+            return
+        }
+        guard case 0..<ships.count = row else {
+            
+            return
+        }
         
         let shipID = ships[row].id
         if isExcludeShipID(shipID) {
@@ -146,7 +162,10 @@ final class UpgradableShipsWindowController: NSWindowController {
     
     override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
         
-        guard let action = menuItem.action else { return false }
+        guard let action = menuItem.action else {
+            
+            return false
+        }
         
         switch action {
             
@@ -154,8 +173,14 @@ final class UpgradableShipsWindowController: NSWindowController {
             
             let row = tableView.clickedRow
             
-            guard let ships = shipsController.arrangedObjects as? [Ship] else { return false }
-            guard case 0..<ships.count = row else { return false }
+            guard let ships = shipsController.arrangedObjects as? [Ship] else {
+                
+                return false
+            }
+            guard case 0..<ships.count = row else {
+                
+                return false
+            }
             
             if isExcludeShipID(ships[row].id) {
                 
@@ -169,6 +194,7 @@ final class UpgradableShipsWindowController: NSWindowController {
             return true
             
         default: return false
+            
         }
     }
 }

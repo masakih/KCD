@@ -21,6 +21,7 @@ final class PowerUpSupportViewController: MainTabVIewItemViewController {
     override var selectedShipType: ShipTabType {
         
         didSet {
+            
             shipController.filterPredicate = customPredicate()
             shipController.rearrangeObjects()
         }
@@ -42,7 +43,10 @@ final class PowerUpSupportViewController: MainTabVIewItemViewController {
             .appended { (sd[.hideMaxLucky], .false(#keyPath(Ship.isMaxLucky))) }
             .compactMap { (b, s) in b ? s : nil }
         
-        if predicates.isEmpty { return nil }
+        if predicates.isEmpty {
+            
+            return nil
+        }
         
         return .and(predicates)
     }
@@ -74,9 +78,13 @@ final class PowerUpSupportViewController: MainTabVIewItemViewController {
         switch (shipTypePredicte(for: selectedShipType), omitPredicate) {
             
         case let (s?, o?): return .and([o, s])
+            
         case let (s?, nil): return s
+            
         case let (nil, o?): return o
+            
         default: return nil
+            
         }
     }
     

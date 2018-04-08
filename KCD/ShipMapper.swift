@@ -54,21 +54,31 @@ final class ShipMapper: JSONMapper {
             
         case .ship, .ship2: return ["api_data"]
             
-        default: return Logger.shared.log("Missing API: \(apiResponse.api)", value: ["api_data"])
+        default:
+            
+            Logger.shared.log("Missing API: \(apiResponse.api)")
+            
+            return ["api_data"]
         }
     }
     
     private var registerIds: [Int] = []
     private lazy var masterShips: [MasterShip] = {
         
-        guard let store = configuration.editorStore as? ServerDataStore else { return [] }
+        guard let store = configuration.editorStore as? ServerDataStore else {
+            
+            return []
+        }
         
         return store.sortedMasterShipsById()
         
     }()
     private lazy var slotItems: [SlotItem] = {
         
-        guard let store = configuration.editorStore as? ServerDataStore else { return [] }
+        guard let store = configuration.editorStore as? ServerDataStore else {
+            
+            return []
+        }
         
         return store.sortedSlotItemsById()
     }()
@@ -76,6 +86,7 @@ final class ShipMapper: JSONMapper {
     private var needsDeleteUnregisteredShip: Bool {
         
         switch apiResponse.api.endpoint {
+            
         case .ship3, .getShip, .shipDeck, .powerup, .slotDeprive:
             return false
             
@@ -85,6 +96,7 @@ final class ShipMapper: JSONMapper {
             
         default:
             return true
+            
         }
     }
     
@@ -103,7 +115,10 @@ final class ShipMapper: JSONMapper {
         // 取得後破棄した装備のデータを削除するため保有IDを保存
         if key == "api_id" {
             
-            guard let id = value.int else { return false }
+            guard let id = value.int else {
+                
+                return false
+            }
             
             registerIds.append(id)
             
@@ -112,9 +127,15 @@ final class ShipMapper: JSONMapper {
         
         if key == "api_ship_id" {
             
-            guard let masterId = value.int else { return false }
+            guard let masterId = value.int else {
+                
+                return false
+            }
             
-            if ship.ship_id == masterId { return true }
+            if ship.ship_id == masterId {
+                
+                return true
+            }
             
             setMaster(masterId, to: ship)
             
@@ -123,9 +144,15 @@ final class ShipMapper: JSONMapper {
         
         if key == "api_exp" {
             
-            guard let exp = value[0].int else { return false }
+            guard let exp = value[0].int else {
+                
+                return false
+            }
             
-            if ship.exp == exp { return true }
+            if ship.exp == exp {
+                
+                return true
+            }
             
             ship.exp = exp
             
@@ -144,10 +171,14 @@ final class ShipMapper: JSONMapper {
             guard let ex = value.int else {
                 
                 ship.extraItem = nil
+                
                 return false
             }
             
-            if ship.slot_ex == ex { return true }
+            if ship.slot_ex == ex {
+                
+                return true
+            }
             
             setExtraSlot(ex, to: ship)
             
@@ -161,7 +192,10 @@ final class ShipMapper: JSONMapper {
     
     func finishOperating() {
         
-        if !needsDeleteUnregisteredShip { return }
+        if !needsDeleteUnregisteredShip {
+            
+            return
+        }
         
         store?.ships(exclude: registerIds).forEach { store?.delete($0) }
     }
@@ -171,7 +205,9 @@ final class ShipMapper: JSONMapper {
         guard let mShip = masterShips.binarySearch(comparator: { $0.id ==? masterId }),
             let masterShip = store?.exchange(mShip) else {
                 
-                return Logger.shared.log("Can not convert to current moc object masterShip")
+                Logger.shared.log("Can not convert to current moc object masterShip")
+                
+                return
         }
         
         ship.master_ship = masterShip
@@ -180,8 +216,14 @@ final class ShipMapper: JSONMapper {
     
     private func setSlot(_ slotItems: JSON, to ship: Ship) {
         
-        guard let convertedSlotItems = slotItems.arrayObject as? [Int] else { return }
-        guard let store = store else { return }
+        guard let convertedSlotItems = slotItems.arrayObject as? [Int] else {
+            
+            return
+        }
+        guard let store = store else {
+            
+            return
+        }
         
         let newItems: [SlotItem] = convertedSlotItems
             .filter { $0 != 0 && $0 != -1 }
@@ -194,9 +236,11 @@ final class ShipMapper: JSONMapper {
                         if maxV != nil, maxV! < item {
                             
                             Debug.print("item is maybe unregistered, so it is new ship's equipment.")
+                            
                             return nil
                         }
                         Logger.shared.log("Can not convert to current moc object slotItem")
+                        
                         return nil
                 }
                 
@@ -215,7 +259,9 @@ final class ShipMapper: JSONMapper {
         guard let found = slotItems.binarySearch(comparator: { $0.id ==? exSlotItem }),
             let ex = store?.exchange(found) else {
                 
-                return Logger.shared.log("Can not convert to current moc object")
+                Logger.shared.log("Can not convert to current moc object")
+                
+                return
         }
         
         ship.extraItem = ex

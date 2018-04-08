@@ -49,6 +49,7 @@ final class TiledImageView: NSView {
     var images: [NSImage] = [] {
         
         didSet {
+            
             calcImagePosition()
         }
     }
@@ -56,6 +57,7 @@ final class TiledImageView: NSView {
     var columnCount: Int = 2 {
         
         didSet {
+            
             calcImagePosition()
         }
     }
@@ -63,8 +65,15 @@ final class TiledImageView: NSView {
     private var infos: [TiledImageCellInformation] = [] {
         
         didSet {
-            if inLiveResize { return }
-            if infos.count < 2 { currentSelection = nil }
+            
+            if inLiveResize {
+                
+                return
+            }
+            if infos.count < 2 {
+                
+                currentSelection = nil
+            }
             setTrackingArea()
         }
     }
@@ -113,7 +122,10 @@ final class TiledImageView: NSView {
                 
                 for j in 0..<rowTileNum {
                     
-                    if (i + j) % 2 == 1 { continue }
+                    if (i + j) % 2 == 1 {
+                        
+                        continue
+                    }
                     NSRect(x: i * checkerSize, y: j * checkerSize, width: checkerSize, height: checkerSize).fill()
                 }
             }
@@ -168,7 +180,10 @@ final class TiledImageView: NSView {
     
     private func calcurated(trackingAreaInfo originalInfos: [TiledImageCellInformation]) -> [TiledImageCellInformation] {
         
-        guard let size = imageCell.image?.size else { return originalInfos }
+        guard let size = imageCell.image?.size else {
+            
+            return originalInfos
+        }
         
         let bounds = self.bounds
         let ratioX = bounds.height / size.height
@@ -235,7 +250,10 @@ extension TiledImageView {
     
     override func mouseEntered(with event: NSEvent) {
         
-        guard let entered = event.trackingArea?.userInfo?["info"] as? TiledImageCellInformation else { return }
+        guard let entered = event.trackingArea?.userInfo?["info"] as? TiledImageCellInformation else {
+            
+            return
+        }
         
         currentSelection = entered
         needsDisplay = true
@@ -253,7 +271,10 @@ extension TiledImageView {
         
         let items = infos.enumerated().compactMap { (offset, element) -> NSDraggingItem? in
             
-            if !NSMouseInRect(mouse, element.frame, isFlipped) { return nil }
+            if !NSMouseInRect(mouse, element.frame, isFlipped) {
+                
+                return nil
+            }
             
             guard let pItem = NSPasteboardItem(pasteboardPropertyList: offset,
                                                ofType: NSPasteboard.PasteboardType(TiledImageView.privateDraggingUTI)) else {
@@ -296,7 +317,10 @@ extension TiledImageView: NSDraggingSource {
                 return []
         }
         
-        if !sender.draggingSourceOperationMask().contains(.move) { return [] }
+        if !sender.draggingSourceOperationMask().contains(.move) {
+            
+            return []
+        }
         
         let mouse = convert(sender.draggingLocation(), from: nil)
         let underMouse = infos.filter { NSMouseInRect(mouse, $0.frame, isFlipped) }
@@ -343,7 +367,10 @@ extension TiledImageView: NSDraggingSource {
         
         let pboard = sender.draggingPasteboard()
         
-        guard let pbItems = pboard.pasteboardItems, !pbItems.isEmpty else { return false }
+        guard let pbItems = pboard.pasteboardItems, !pbItems.isEmpty else {
+            
+            return false
+        }
         guard let index = pbItems.first?.propertyList(forType: NSPasteboard.PasteboardType(TiledImageView.privateDraggingUTI)) as? Int,
             case 0..<images.count = index else {
                 
@@ -354,7 +381,10 @@ extension TiledImageView: NSDraggingSource {
         
         let underMouse = infos.enumerated().filter { NSMouseInRect(mouse, $0.element.frame, isFlipped) }
         
-        guard !underMouse.isEmpty else { return false }
+        guard !underMouse.isEmpty else {
+            
+            return false
+        }
         
         var newImages = images
         let image = images[index]

@@ -19,6 +19,7 @@ final class NyukyoSpeedChangeCommand: JSONCommand {
         
         let store = ServerDataStore.oneTimeEditor()
         store.sync {
+            
             let nDock = self.parameter["api_ndock_id"].int.flatMap(store.nyukyoDock(by:))
             
             nDock.flatMap { $0.ship_id }.flatMap(store.ship(by:)).map { $0.nowhp = $0.maxhp }

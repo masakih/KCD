@@ -31,7 +31,9 @@ private func splitJSON(_ data: Data) -> String? {
     guard let string = data.utf8String,
         let range = string.range(of: prefix) else {
             
-            return Logger.shared.log("data is wrong", value: nil)
+            Logger.shared.log("data is wrong")
+            
+            return nil
     }
     
     return String(string[range.upperBound...])
@@ -43,6 +45,7 @@ struct APIResponse {
     let parameter: Parameter
     let json: JSON
     let date: Date
+    
     var success: Bool {
         
         if let r = json["api_result"].int { return r == 1 }
@@ -65,6 +68,7 @@ struct APIResponse {
         guard let josn = splitJSON(data) else {
             
             Logger.shared.log("Can not parse JSON")
+            
             return nil
         }
         
@@ -73,6 +77,7 @@ struct APIResponse {
         guard let parameter = Parameter(request) else {
             
             Logger.shared.log("Can not parse Parameter")
+            
             return nil
         }
         
@@ -81,6 +86,7 @@ struct APIResponse {
         guard let api = request.url?.path else {
             
             Logger.shared.log("URLRequest is wrong")
+            
             return nil
         }
         

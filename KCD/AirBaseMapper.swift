@@ -24,7 +24,10 @@ final class AirBaseMapper: JSONMapper {
 
     func handleExtraValue(_ value: JSON, forKey key: String, to airbase: AirBase) -> Bool {
         
-        if key != "api_plane_info" { return false }
+        if key != "api_plane_info" {
+            
+            return false
+        }
         
         if airbase.planeInfo.count == 0 {
             
@@ -42,19 +45,32 @@ final class AirBaseMapper: JSONMapper {
         
         guard let planeInfos = value.array else {
             
-            return Logger.shared.log("value is wrong", value: false)
+            Logger.shared.log("value is wrong")
+            
+            return false
         }
         
         guard let infos = airbase.planeInfo.array as? [AirBasePlaneInfo] else {
             
-            return Logger.shared.log("airbase is wrong", value: false)
+            Logger.shared.log("airbase is wrong")
+            
+            return false
         }
         
         zip(infos, planeInfos).forEach { (info, dict) in
             
-            guard let slotid = dict["api_slotid"].int, slotid != 0 else { return }
-            guard let state = dict["api_state"].int else { return }
-            guard let squadronid = dict["api_squadron_id"].int else { return }
+            guard let slotid = dict["api_slotid"].int, slotid != 0 else {
+                
+                return
+            }
+            guard let state = dict["api_state"].int else {
+                
+                return
+            }
+            guard let squadronid = dict["api_squadron_id"].int else {
+                
+                return
+            }
             
             if state == 2 {
                 
@@ -71,15 +87,21 @@ final class AirBaseMapper: JSONMapper {
 
             guard let cond = dict["api_cond"].int else {
                 
-                return Logger.shared.log("api_cond is wrong.")
+                Logger.shared.log("api_cond is wrong.")
+                
+                return
             }
             guard let count = dict["api_count"].int else {
                 
-                return Logger.shared.log("api_cond is wrong.")
+                Logger.shared.log("api_cond is wrong.")
+                
+                return
             }
             guard let maxCount = dict["api_max_count"].int else {
                 
-                return Logger.shared.log("api_max_count is wrong")
+                Logger.shared.log("api_max_count is wrong")
+                
+                return
             }
             
             info.cond = cond

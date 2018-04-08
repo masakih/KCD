@@ -61,6 +61,7 @@ final class ScreenshotEditorViewController: BridgeViewController {
         
         get { return tiledImageView.columnCount }
         set {
+            
             tiledImageView.columnCount = newValue
             UserDefaults.standard[.screenshotEditorColumnCount] = newValue
         }
@@ -75,7 +76,11 @@ final class ScreenshotEditorViewController: BridgeViewController {
         
         get { return realiesCurrentTrimInforIndex }
         set {
-            guard case 0..<trimInfo.count = newValue else { return }
+            
+            guard case 0..<trimInfo.count = newValue else {
+                
+                return
+            }
             
             realiesCurrentTrimInforIndex = newValue
             currentTrimInfo = trimInfo[newValue]
@@ -89,11 +94,15 @@ final class ScreenshotEditorViewController: BridgeViewController {
     private var currentTrimInfo: TrimRectInformation {
         
         didSet {
+            
             makeTrimedImage()
             trimInfo
                 .index {
                     
-                    if $0.name != currentTrimInfo.name { return false }
+                    if $0.name != currentTrimInfo.name {
+                        
+                        return false
+                    }
                     return $0.rect == currentTrimInfo.rect
                 }
                 .map { UserDefaults.standard[.scrennshotEditorType] = $0 }
@@ -124,9 +133,15 @@ final class ScreenshotEditorViewController: BridgeViewController {
     
     private func updateSelections() {
         
-        guard let selection = arrayController.selectedObjects as? [ScreenshotInformation] else { return }
+        guard let selection = arrayController.selectedObjects as? [ScreenshotInformation] else {
+            
+            return
+        }
         
-        if selection == currentSelection { return }
+        if selection == currentSelection {
+            
+            return
+        }
         
         let removed: [ScreenshotInformation] = currentSelection.compactMap {
             
@@ -171,6 +186,7 @@ final class ScreenshotEditorViewController: BridgeViewController {
         guard !originalImages.isEmpty else {
             
             tiledImageView.images = []
+            
             return
         }
         

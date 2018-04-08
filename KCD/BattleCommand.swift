@@ -27,6 +27,7 @@ final class BattleCommand: JSONCommand {
             GuardShelterCommand(apiResponse: apiResponse).execute()
             
         default: break
+            
         }
     }
 }

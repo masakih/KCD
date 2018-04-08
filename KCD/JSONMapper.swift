@@ -52,7 +52,10 @@ extension String {
     // delete api_ prefix.
     func keyByDeletingPrefix() -> String {
         
-        if self.count < 5 { return self }
+        if self.count < 5 {
+            
+            return self
+        }
         
         return String(self[index(startIndex, offsetBy: 4)...])
     }
@@ -64,8 +67,14 @@ extension JSONMapper {
     
     private func isEqual(_ lhs: AnyObject?, _ rhs: AnyObject?) -> Bool {
         
-        if lhs == nil, rhs == nil { return true }
-        if let lhs = lhs, let rhs = rhs { return lhs.isEqual(rhs) }
+        if lhs == nil, rhs == nil {
+            
+            return true
+        }
+        if let lhs = lhs, let rhs = rhs {
+            
+            return lhs.isEqual(rhs)
+        }
         
         return false
     }
@@ -94,8 +103,14 @@ extension JSONMapper {
         beginRegister(object)
         element.forEach { (key, value) in
             
-            if configuration.ignoreKeys.contains(key) { return }
-            if handleExtraValue(value, forKey: key, to: object) { return }
+            if configuration.ignoreKeys.contains(key) {
+                
+                return
+            }
+            if handleExtraValue(value, forKey: key, to: object) {
+                
+                return
+            }
             
             switch value.type {
             case .array:
@@ -111,9 +126,10 @@ extension JSONMapper {
                     let newKey = "\(key)_D_\(subKey.keyByDeletingPrefix())"
                     setValueIfNeeded(subValue, to: object, forKey: newKey)
                 }
-            default:
                 
+            default:
                 setValueIfNeeded(value, to: object, forKey: key)
+                
             }
         }
     }
@@ -132,9 +148,15 @@ extension JSONMapper {
             // TODO: replace to forEach
             for piar in keyPiar {
                 
-                guard let v1 = $0.value(forKey: piar.key) else { return .orderedAscending }
+                guard let v1 = $0.value(forKey: piar.key) else {
+                    
+                    return .orderedAscending
+                }
                 
-                if element[piar.apiKey].type == .null { return .orderedDescending }
+                if element[piar.apiKey].type == .null {
+                    
+                    return .orderedDescending
+                }
                 
                 let v2 = element[piar.apiKey].object
                 
@@ -152,6 +174,7 @@ extension JSONMapper {
         guard let objects = try? store.objects(of: configuration.entity) else {
             
             Logger.shared.log("Can not get entity named \(configuration.entity)")
+            
             return []
         }
         
@@ -187,6 +210,7 @@ extension JSONMapper {
         
         configuration.editorStore
             .sync {
+                
                 self.commintInContext()
         }
     }

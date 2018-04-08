@@ -71,7 +71,9 @@ private let shortSTypeNames: [String] = {
     guard let url = Bundle.main.url(forResource: "STypeShortName", withExtension: "plist"),
         let array = NSArray(contentsOf: url) as? [String] else {
             
-            return Logger.shared.log("Can not load STypeShortName.plist.", value: [])
+            Logger.shared.log("Can not load STypeShortName.plist.")
+            
+            return []
     }
     
     return array
@@ -82,7 +84,9 @@ private let levelUpExps: [Int] = {
     guard let url = Bundle.main.url(forResource: "LevelUpExp", withExtension: "plist"),
         let array = NSArray(contentsOf: url) as? [Int] else {
             
-            return Logger.shared.log("Can not load LevelUpExp.plist.", value: [])
+            Logger.shared.log("Can not load LevelUpExp.plist.")
+            
+            return []
     }
     
     return array
@@ -136,49 +140,79 @@ extension Ship {
         
         let index = master_ship.stype.id - 1
         
-        guard case 0..<shortSTypeNames.count = index else { return nil }
+        guard case 0..<shortSTypeNames.count = index else {
+            
+            return nil
+        }
         
         return shortSTypeNames[index]
     }
     
     @objc dynamic var next: NSNumber? {
         
-        guard case 0..<levelUpExps.count = lv else { return nil }
+        guard case 0..<levelUpExps.count = lv else {
+            
+            return nil
+        }
         
-        if lv == 99 { return nil }
+        if lv == 99 {
+            
+            return nil
+        }
         
         let nextExp = levelUpExps[lv]
         
-        if lv < 99 { return (nextExp - exp) as NSNumber }
+        if lv < 99 {
+            
+            return (nextExp - exp) as NSNumber
+        }
         
         return (1_000_000 + nextExp - exp) as NSNumber
     }
     
     @objc dynamic var status: Int {
         
-        let stat = Double(nowhp) / Double(maxhp)
-        
-        if stat <= 0.25 { return 3 }
-        if stat <= 0.5 { return 2 }
-        if stat <= 0.75 { return 1 }
-        
-        return 0
+        switch Double(nowhp) / Double(maxhp) {
+            
+        case (0...0.25): return 3
+            
+        case (0.25...0.50): return 2
+            
+        case (0.50...0.75): return 1
+            
+        default: return 0
+            
+        }
     }
     
     @objc dynamic var planColor: NSColor {
         
-        if !UserDefaults.standard[.showsPlanColor] { return .controlTextColor }
+        if !UserDefaults.standard[.showsPlanColor] {
+            
+            return .controlTextColor
+        }
         
-        guard let sally = sally_area else { return .controlTextColor }
+        guard let sally = sally_area else {
+            
+            return .controlTextColor
+        }
         
         switch sally {
+            
         case 1: return UserDefaults.standard[.plan01Color]
+            
         case 2: return UserDefaults.standard[.plan02Color]
+            
         case 3: return UserDefaults.standard[.plan03Color]
+            
         case 4: return UserDefaults.standard[.plan04Color]
+            
         case 5: return UserDefaults.standard[.plan05Color]
+            
         case 6: return UserDefaults.standard[.plan06Color]
+            
         default: return .controlTextColor
+            
         }
     }
 }
@@ -240,8 +274,14 @@ extension Ship {
         
         let upgradeLv = upgradeLevel
         
-        if upgradeLv <= 0 { return nil }
-        if levelUpExps.count < upgradeLv { return nil }
+        if upgradeLv <= 0 {
+            
+            return nil
+        }
+        if levelUpExps.count < upgradeLv {
+            
+            return nil
+        }
         
         let upExp = levelUpExps[upgradeLv - 1] - exp
         
@@ -252,7 +292,10 @@ extension Ship {
         
         let store = TemporaryDataStore.default
         
-        guard let _ = store.ensuredGuardEscaped(byShipId: id) else { return false }
+        guard let _ = store.ensuredGuardEscaped(byShipId: id) else {
+            
+            return false
+        }
         
         return true
     }
@@ -273,48 +316,76 @@ extension Ship {
     func setItem(_ id: Int, to slot: Int) {
         
         switch slot {
+            
         case 0: slot_0 = id
+            
         case 1: slot_1 = id
+            
         case 2: slot_2 = id
+            
         case 3: slot_3 = id
+            
         case 4: slot_4 = id
+            
         default: fatalError("Ship: setItem out of bounds.")
+            
         }
     }
     
     func slotItemId(_ index: Int) -> Int {
         
         switch index {
+            
         case 0: return slot_0
+            
         case 1: return slot_1
+            
         case 2: return slot_2
+            
         case 3: return slot_3
+            
         case 4: return slot_4
+            
         default: return 0
+            
         }
     }
     
     func slotItemCount(_ index: Int) -> Int {
         
         switch index {
+            
         case 0: return onslot_0
+            
         case 1: return onslot_1
+            
         case 2: return onslot_2
+            
         case 3: return onslot_3
+            
         case 4: return onslot_4
+            
         default: return 0
+            
         }
     }
     
     func slotItemMax(_ index: Int) -> Int {
         
         switch index {
+            
         case 0: return master_ship.maxeq_0
+            
         case 1: return master_ship.maxeq_1
+            
         case 2: return master_ship.maxeq_2
+            
         case 3: return master_ship.maxeq_3
+            
         case 4: return master_ship.maxeq_4
+            
         default: return 0
+            
         }
     }
     

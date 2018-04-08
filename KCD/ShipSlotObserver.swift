@@ -20,10 +20,15 @@ protocol ShipSlotObserverDelegate: class {
 class ShipSlotObserver: NSObject {
     
     private enum SlotPosition {
+        
         case first
+        
         case second
+        
         case third
+        
         case fourth
+        
         case fifth
     }
     
@@ -61,7 +66,9 @@ class ShipSlotObserver: NSObject {
         
         observations += zip(keyPaths, positions)
             .map { [weak self] keyPath, position in
+                
                 ship.observe(keyPath) { _, _ in
+                    
                     self?.notifyChange(on: position)
                 }
         }
@@ -72,10 +79,15 @@ class ShipSlotObserver: NSObject {
         switch position {
             
         case .first: delegate?.didChangeSlot0()
+            
         case .second: delegate?.didChangeSlot1()
+            
         case .third: delegate?.didChangeSlot2()
+            
         case .fourth: delegate?.didChangeSlot3()
+            
         case .fifth: delegate?.didChangeSlot4()
+            
         }
     }
 }

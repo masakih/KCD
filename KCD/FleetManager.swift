@@ -25,6 +25,7 @@ final class FleetManager: NSObject {
         if keyPath == "arrangedObjects.ships" {
             
             setNewFleetNumberToShip()
+            
             return
         }
         
@@ -43,7 +44,9 @@ final class FleetManager: NSObject {
         
         guard fleets.count == 4 else {
             
-            return Logger.shared.log("Can not create Fleet")
+            Logger.shared.log("Can not create Fleet")
+            
+            return
         }
         
         if fleets[0].ships.isEmpty {

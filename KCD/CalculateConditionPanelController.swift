@@ -38,7 +38,10 @@ final class CalculateConditionPanelController: NSWindowController {
     
     func beginModal(for mainWindow: NSWindow, completeHander handler: @escaping (Double) -> Void) {
         
-        guard let window = self.window else { return }
+        guard let window = self.window else {
+            
+            return
+        }
         
         originalCondition = condition
         

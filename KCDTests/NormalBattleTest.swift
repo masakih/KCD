@@ -11,6 +11,7 @@ import XCTest
 @testable import KCD
 
 import SwiftyJSON
+import Doutaku
 
 class NormalBattleTest: XCTestCase {
     
@@ -28,9 +29,15 @@ class NormalBattleTest: XCTestCase {
         
         // 艦隊を設定
         do {
+            
             let store = ServerDataStore.oneTimeEditor()
             
-            guard let deck = store.deck(by: fleet) else { return XCTFail("Can not get Deck.") }
+            guard let deck = store.deck(by: fleet) else {
+                
+                XCTFail("Can not get Deck.")
+                
+                return
+            }
             
             let max = seventh ? 6 : 5
             (0...6).forEach { deck.setShip(id: -1, for: $0) }
@@ -48,13 +55,19 @@ class NormalBattleTest: XCTestCase {
         
         // 出撃艦隊を設定
         do {
+            
             let rawValue: [String: Any] = [
                 "api_result": 1,
                 "api_data": [
                     "api_no": 1
                 ]
             ]
-            guard let json = JSON(rawValue: rawValue) else { return XCTFail("json is nil") }
+            guard let json = JSON(rawValue: rawValue) else {
+                
+                XCTFail("json is nil")
+                
+                return
+            }
             XCTAssertNotNil(json["api_result"])
             
             let paramValue: [String: String] = [
@@ -76,6 +89,7 @@ class NormalBattleTest: XCTestCase {
         
         // battleの生成確認
         do {
+            
             let store = TemporaryDataStore.default
             let battle = store.battle()
             XCTAssertNotNil(battle)
@@ -86,10 +100,12 @@ class NormalBattleTest: XCTestCase {
     func clear(_ fleet: Int) {
         
         do {
+            
             ResetSortie().reset()
         }
         
         do {
+            
             let store = ServerDataStore.oneTimeEditor()
             
             let ships = store.ships(byDeckId: fleet)
@@ -98,12 +114,18 @@ class NormalBattleTest: XCTestCase {
             zip(ships, shipEquipments).forEach { $0.equippedItem = $1 }
             zip(ships, shipExSlot).forEach { $0.slot_ex = $1 }
             
-            guard let deck = store.deck(by: fleet) else { return XCTFail("Can not get Deck.") }
+            guard let deck = store.deck(by: fleet) else {
+                
+                XCTFail("Can not get Deck.")
+                
+                return
+            }
             savedShips.enumerated().forEach { deck.setShip(id: $0.element.id, for: $0.offset) }
             (0...6).forEach { deck.setShip(id: -1, for: $0) }
         }
         
         do {
+            
             let store = TemporaryDataStore.default
             let battle = store.battle()
             XCTAssertNil(battle)
@@ -114,6 +136,7 @@ class NormalBattleTest: XCTestCase {
         
         // 戦闘（昼戦）
         do {
+            
             let dfList = seventh ? [[2, 2], [6, 6]] : [[2, 2]]
             let damages = seventh ? [[0, 3], [0, 7]] : [[0, 3]]
             let fdam = seventh ? [0, 0, 0, 4, 0, 6, 7] : [0, 0, 0, 4, 0, 6]
@@ -145,7 +168,12 @@ class NormalBattleTest: XCTestCase {
                     ]
                 ]
             ]
-            guard let json = JSON(rawValue: rawValue) else { return XCTFail("json is nil") }
+            guard let json = JSON(rawValue: rawValue) else {
+                
+                XCTFail("json is nil")
+                
+                return
+            }
             let param = Parameter(["Test": "Test"])
             let api = APIResponse(api: API(endpointPath: Endpoint.battle.rawValue), parameter: param, json: json)
             
@@ -155,6 +183,7 @@ class NormalBattleTest: XCTestCase {
         
         // 戦闘（夜戦）
         do {
+            
             let rawValue: [String: Any] = [
                 "api_result": 1,
                 "api_data": [
@@ -174,7 +203,12 @@ class NormalBattleTest: XCTestCase {
                     ]
                 ]
             ]
-            guard let json = JSON(rawValue: rawValue) else { return XCTFail("json is nil") }
+            guard let json = JSON(rawValue: rawValue) else {
+                
+                XCTFail("json is nil")
+                
+                return
+            }
             let param = Parameter(["Test": "Test"])
             let api = APIResponse(api: API(endpointPath: Endpoint.midnightBattle.rawValue), parameter: param, json: json)
             
@@ -184,10 +218,16 @@ class NormalBattleTest: XCTestCase {
         
         // 艦娘HP更新
         do {
+            
             let rawValue: [String: Any] = [
                 "api_result": 1
             ]
-            guard let json = JSON(rawValue: rawValue) else { return XCTFail("json is nil") }
+            guard let json = JSON(rawValue: rawValue) else {
+                
+                XCTFail("json is nil")
+                
+                return
+            }
             let param = Parameter(["Test": "Test"])
             let api = APIResponse(api: API(endpointPath: Endpoint.battleResult.rawValue), parameter: param, json: json)
             
@@ -197,6 +237,7 @@ class NormalBattleTest: XCTestCase {
         
         // HPチェック
         do {
+            
             let store = ServerDataStore.oneTimeEditor()
             let ships = store.ships(byDeckId: fleet)
             
@@ -218,6 +259,7 @@ class NormalBattleTest: XCTestCase {
         
         // ダメコンを設定
         do {
+            
             let store = ServerDataStore.oneTimeEditor()
             
             store.ship(by: 4).flatMap {
@@ -233,6 +275,7 @@ class NormalBattleTest: XCTestCase {
         
         // 戦闘（夜戦）
         do {
+            
             let rawValue: [String: Any] = [
                 "api_result": 1,
                 "api_data": [
@@ -258,7 +301,12 @@ class NormalBattleTest: XCTestCase {
                     ]
                 ]
             ]
-            guard let json = JSON(rawValue: rawValue) else { return XCTFail("json is nil") }
+            guard let json = JSON(rawValue: rawValue) else {
+                
+                XCTFail("json is nil")
+                
+                return
+            }
             let param = Parameter(["Test": "Test"])
             let api = APIResponse(api: API(endpointPath: Endpoint.midnightBattle.rawValue), parameter: param, json: json)
             
@@ -268,10 +316,16 @@ class NormalBattleTest: XCTestCase {
         
         // 艦娘HP更新
         do {
+            
             let rawValue: [String: Any] = [
                 "api_result": 1
             ]
-            guard let json = JSON(rawValue: rawValue) else { return XCTFail("json is nil") }
+            guard let json = JSON(rawValue: rawValue) else {
+                
+                XCTFail("json is nil")
+                
+                return
+            }
             let param = Parameter(["Test": "Test"])
             let api = APIResponse(api: API(endpointPath: Endpoint.battleResult.rawValue), parameter: param, json: json)
             
@@ -281,6 +335,7 @@ class NormalBattleTest: XCTestCase {
         
         // HPチェック
         do {
+            
             let store = ServerDataStore.oneTimeEditor()
             let ships = store.ships(byDeckId: fleet)
             
@@ -316,6 +371,7 @@ class NormalBattleTest: XCTestCase {
         normalBattle(3)
         initBattleFleet(3)
         damageControl(3)
+        
         initBattleFleet(3, seventh: true)
         normalBattle(3, seventh: true)
         clear(3)

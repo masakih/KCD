@@ -13,10 +13,15 @@ final class GuardEscapedView: NSView {
     private static var taihiStrings: String = {
         
         guard let url = Bundle.main.url(forResource: "Taihi", withExtension: "txt"),
-            let taihiString = try? String(contentsOf: url, encoding: .utf8)
-            else { fatalError("Can not load Taihi.txt") }
+            let taihiString = try? String(contentsOf: url, encoding: .utf8) else {
+                
+                fatalError("Can not load Taihi.txt")
+        }
         
-        guard (taihiString as NSString).length == 2 else { fatalError("Taihi string is not 2 charactor") }
+        guard (taihiString as NSString).length == 2 else {
+            
+            fatalError("Taihi string is not 2 charactor")
+        }
         
          return taihiString
     }()
@@ -47,8 +52,11 @@ final class GuardEscapedView: NSView {
         NSBezierPath(rect: bounds).fill()
         
         switch controlSize {
+            
         case .regular: drawTaihi(in: bounds)
+            
         case .small, .mini: drawSmallTaihi(in: bounds)
+            
         }
     }
     

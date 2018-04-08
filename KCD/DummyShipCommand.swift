@@ -25,7 +25,9 @@ final class DummyShipCommand: JSONCommand {
         
         case .port: removeDummy()
         
-        default: return Logger.shared.log("Missing API: \(apiResponse.api)")
+        default:
+            Logger.shared.log("Missing API: \(apiResponse.api)")
+            
         }
     }
     
@@ -36,7 +38,10 @@ final class DummyShipCommand: JSONCommand {
     
     private func enterDummy() {
         
-        guard DummyShipCommand.needsEnterDummy else { return }
+        guard DummyShipCommand.needsEnterDummy else {
+            
+            return
+        }
         
         let store = ServerDataStore.oneTimeEditor()
         store.sync { store.createShip()?.id = -2 }

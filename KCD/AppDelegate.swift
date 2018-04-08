@@ -74,7 +74,10 @@ final class AppDelegate: NSObject {
     // MARK: - Function
     override func awakeFromNib() {
         
-        if didLoadedMainMenu { return }
+        if didLoadedMainMenu {
+            
+            return
+        }
         
         didLoadedMainMenu = true
         
@@ -87,7 +90,10 @@ final class AppDelegate: NSObject {
         
         windowManager.prepair()
         
-        if !UserDefaults.standard[.showsDebugMenu] { debugMenuItem.isHidden = true }
+        if !UserDefaults.standard[.showsDebugMenu] {
+            
+            debugMenuItem.isHidden = true
+        }
         
         NotificationCenter.default
             .addObserver(forName: .Periodic, object: historyCleanNotifer, queue: nil) { _ in
@@ -169,7 +175,9 @@ extension AppDelegate {
         
         guard let path = Bundle.main.path(forResource: "RemoveDatabaseFileAndRestart", ofType: "app") else {
             
-            return Logger.shared.log("Can not find RemoveDatabaseFileAndRestart.app")
+            Logger.shared.log("Can not find RemoveDatabaseFileAndRestart.app")
+            
+            return
         }
         
         let process = Process()
@@ -230,7 +238,10 @@ extension AppDelegate {
     
     override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
         
-        guard let action = menuItem.action else { return false }
+        guard let action = menuItem.action else {
+            
+            return false
+        }
         
         switch action {
             
@@ -299,8 +310,14 @@ extension AppDelegate: NSTouchBarProvider {
     var touchBar: NSTouchBar? {
         
         get {
-            if windowManager.isMainWindowMostFront { return nil }
-            if let _ = mainTouchBar { return mainTouchBar }
+            if windowManager.isMainWindowMostFront {
+                
+                return nil
+            }
+            if let _ = mainTouchBar {
+                
+                return mainTouchBar
+            }
             
             var topLevel: NSArray?
             Bundle.main.loadNibNamed(NSNib.Name("MainTouchBar"), owner: self, topLevelObjects: &topLevel)

@@ -13,8 +13,11 @@ final class SokuTransformer: ValueTransformer {
     private enum SokuType: Int {
         
         case slow = 5
+        
         case fast = 10
+        
         case faster = 15
+        
         case fastest = 20
     }
     
@@ -25,9 +28,13 @@ final class SokuTransformer: ValueTransformer {
     
     override func transformedValue(_ value: Any?) -> Any? {
         
-        guard let v = value as? Int, let type = SokuType(rawValue: v) else { return nil }
+        guard let v = value as? Int, let type = SokuType(rawValue: v) else {
+            
+            return nil
+        }
         
         switch type {
+            
         case .slow: return LocalizedStrings.slow.string
             
         case .fast: return LocalizedStrings.fast.string
@@ -35,6 +42,7 @@ final class SokuTransformer: ValueTransformer {
         case .faster: return LocalizedStrings.faster.string
             
         case .fastest: return LocalizedStrings.fastest.string
+            
         }
     }
 }

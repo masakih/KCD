@@ -23,18 +23,26 @@ final class MasterShipMapper: JSONMapper {
     
     private lazy var masterSTypes: [MasterSType] = {
         
-        guard let store = configuration.editorStore as? ServerDataStore else { return [] }
+        guard let store = configuration.editorStore as? ServerDataStore else {
+            
+            return []
+        }
         
         return store.sortedMasterSTypesById()
     }()
     
     func handleExtraValue(_ value: JSON, forKey key: String, to masterShip: MasterShip) -> Bool {
         
-        if key != "api_stype" { return false }
+        if key != "api_stype" {
+            
+            return false
+        }
         
         guard let sType = value.int else {
             
-            return Logger.shared.log("MasterShipMapper: value is not Int", value: false)
+            Logger.shared.log("MasterShipMapper: value is not Int")
+            
+            return false
         }
         
         setStype(sType, to: masterShip)
@@ -48,13 +56,17 @@ final class MasterShipMapper: JSONMapper {
         
         guard let stype = masterSTypes.binarySearch(comparator: { $0.id ==? stypeID }) else {
             
-            return Logger.shared.log("MasterShipMapper: Can not find MasterSType")
+            Logger.shared.log("MasterShipMapper: Can not find MasterSType")
+            
+            return
         }
         
         // FUCK: 型推論がバカなのでダウンキャストしてるんだ！！！
         guard let masterSType = configuration.editorStore.exchange(stype) as? MasterSType else {
             
-            return Logger.shared.log("MasterShipMapper: Can not convert to current moc object masterSType")
+            Logger.shared.log("MasterShipMapper: Can not convert to current moc object masterSType")
+            
+            return
         }
         
         masterShip.stype = masterSType

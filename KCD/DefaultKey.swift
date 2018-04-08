@@ -91,8 +91,11 @@ final class DefaultKey<T>: DefaultKeys {
     var alternative: T {
         
         switch rawAlternativeValue {
+            
         case .none: fatalError("DefaultKey (\(self)) has no alternative value.")
+            
         case let .some(value): return value
+            
         }
     }
     

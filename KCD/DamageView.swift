@@ -21,9 +21,18 @@ final class DamageView: NSView {
     @objc dynamic var damageType: Int = 0 {
         
         willSet {
-            guard let v = DamageType(rawValue: newValue) else { return Logger.shared.log("Can not set damageType") }
             
-            if innerDamageType != v { needsDisplay = true }
+            guard let v = DamageType(rawValue: newValue) else {
+                
+                Logger.shared.log("Can not set damageType")
+                
+                return
+            }
+            
+            if innerDamageType != v {
+                
+                needsDisplay = true
+            }
             
             innerDamageType = v
         }
@@ -34,6 +43,7 @@ final class DamageView: NSView {
     private var color: NSColor? {
         
         switch innerDamageType {
+            
         case .none:
             return nil
             
@@ -45,12 +55,14 @@ final class DamageView: NSView {
             
         case .badly:
             return NSColor.red.withAlphaComponent(0.5)
+            
         }
     }
     
     private var borderColor: NSColor? {
         
         switch innerDamageType {
+            
         case .none:
             return nil
             
@@ -62,17 +74,20 @@ final class DamageView: NSView {
             
         case .badly:
             return NSColor.red.withAlphaComponent(0.9)
+            
         }
     }
     
     private var path: Polygon? {
         
         switch controlSize {
+            
         case .regular:
             return pathForRegular
             
         case .small, .mini:
             return pathForSmall
+            
         }
     }
     
@@ -81,6 +96,7 @@ final class DamageView: NSView {
         let height = bounds.height
         
         switch innerDamageType {
+            
         case .none:
             return nil
             
@@ -111,6 +127,7 @@ final class DamageView: NSView {
                 .line(to: NSPoint(x: 0.0, y: height - 23.0))
                 .line(to: NSPoint(x: 0.0, y: height - 47.0))
                 .close()
+            
         }
     }
     
@@ -119,6 +136,7 @@ final class DamageView: NSView {
         let height = bounds.height
         
         switch innerDamageType {
+            
         case .none:
             return nil
             
@@ -149,6 +167,7 @@ final class DamageView: NSView {
                 .line(to: NSPoint(x: 0.0, y: height - 20.0))
                 .line(to: NSPoint(x: 0.0, y: height - 42.0))
                 .close()
+            
         }
     }
     

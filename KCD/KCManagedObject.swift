@@ -37,7 +37,10 @@ class KCManagedObject: NSManagedObject {
         
         if KCManagedObject.intValueKyes.contains(key) {
             
-            if let _ = value.pointee as? Int { return }
+            if let _ = value.pointee as? Int {
+                
+                return
+            }
             if let s = value.pointee as? String {
                 
                 value.pointee = Int(s) as AnyObject?
@@ -53,7 +56,10 @@ class KCManagedObject: NSManagedObject {
     
     override func value(forUndefinedKey key: String) -> Any? {
         
-        if key == "description" { return value(forKey: "description_") }
+        if key == "description" {
+            
+            return value(forKey: "description_")
+        }
         
         if key.hasPrefix("api_") {
             

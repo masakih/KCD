@@ -13,6 +13,7 @@ private enum BookmarkMenuTag: Int {
     case bookmark = 5000
     
     case separator = 9999
+    
     case bookmarkItem = 999999
 }
 
@@ -46,7 +47,10 @@ final class BookmarkManager: NSObject, NSMenuDelegate {
         
         bookmarksController.fetch(nil)
         
-        guard let items = bookmarksController.arrangedObjects as? [Bookmark] else { return [] }
+        guard let items = bookmarksController.arrangedObjects as? [Bookmark] else {
+            
+            return []
+        }
         
         return items
     }
@@ -55,14 +59,18 @@ final class BookmarkManager: NSObject, NSMenuDelegate {
         
         guard let maxOrder = bookmarksController.value(forKeyPath: "arrangedObjects.@max.order") as? Int else {
             
-            return Logger.shared.log("BookmarkManager: Can no convert max order to Int", value: nil)
+            Logger.shared.log("BookmarkManager: Can no convert max order to Int")
+            
+            return nil
         }
         
         let editorStore: BookmarkDataStore = BookmarkDataStore.oneTimeEditor()
         
         guard let new = editorStore.sync(execute: { editorStore.createBookmark() }) else {
             
-            return Logger.shared.log("BookmarkManager: Can not insert BookMarkItem", value: nil)
+            Logger.shared.log("BookmarkManager: Can not insert BookMarkItem")
+            
+            return nil
         }
         
         return editorStore.sync {

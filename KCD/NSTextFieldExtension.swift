@@ -36,14 +36,22 @@ extension NSTextField {
                                   (.black, 1.0))
         gradient?.draw(in: bounds, angle: 0.0)
         
-        guard let r = maskContext.makeImage() else { fatalError(" can not create image from context") }
+        guard let r = maskContext.makeImage() else {
+            
+            fatalError(" can not create image from context")
+        }
         
         return r
     }
     
     func isCharacterProtrude() -> Bool {
         
-        guard let currentFont = font else { return Logger.shared.log("TextField dose not set font", value: false) }
+        guard let currentFont = font else {
+            
+            Logger.shared.log("TextField dose not set font")
+            
+            return false
+        }
         
         let string = stringValue as NSString
         let size = string.size(withAttributes: [.font: currentFont])

@@ -79,9 +79,13 @@ extension DBShip: DeckBuilderDescriptable {
     private var fullItemDesc: String {
         
         switch (items, exDesc) {
+            
         case let (items, ex?) where items.isEmpty: return ex
+            
         case let (_, ex?): return "\(itemsDesc),\(ex)"
+            
         default: return itemsDesc
+            
         }
     }
     
@@ -103,10 +107,15 @@ extension DBItem: DeckBuilderDescriptable {
     var deckDescription: String {
         
         switch (lv, aLv) {
+            
         case let (lv?, aLv?): return "\"id\":\(id),\"rf\":\(lv),\"mas\":\(aLv)"
+            
         case let (lv?, _): return "\"id\":\(id),\"rf\":\(lv)"
+            
         case let (_, aLv?): return "\"id\":\(id),\"mas\":\(aLv)"
+            
         default: return "\"id\":\(id)"
+            
         }
     }
 }

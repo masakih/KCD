@@ -129,6 +129,7 @@ extension DocksViewController: MissionStatusObserver {
             mission4Name = state.name
             
         default: ()
+            
         }
     }
 }
@@ -156,6 +157,7 @@ extension DocksViewController: NyukyoDockStatusObserver {
             nDock4ShipName = state.name
             
         default: ()
+            
         }
     }
 }
@@ -179,6 +181,7 @@ extension DocksViewController: KenzoDockStatusObserver {
             kDock4Time = state.time.map { $0 as NSNumber }
             
         default: ()
+            
         }
     }
 }

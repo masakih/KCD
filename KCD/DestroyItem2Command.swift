@@ -23,12 +23,16 @@ final class DestroyItem2Command: JSONCommand {
         
         guard let material = store.sync(execute: { store.material() }) else {
             
-            return Logger.shared.log("Material is not found")
+            Logger.shared.log("Material is not found")
+            
+            return
         }
         guard let getMaterials = data["api_get_material"].arrayObject as? [Int],
             getMaterials.count >= 4 else {
-            
-            return Logger.shared.log("api_get_material is wrong")
+                
+                Logger.shared.log("api_get_material is wrong")
+                
+                return
         }
         
         store.sync {

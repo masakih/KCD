@@ -23,8 +23,14 @@ final class IgnoreCommand: JSONCommand {
     
     override class func canExecuteAPI(_ api: API) -> Bool {
         
-        if api.includs(in: ignores) { return true }
-        if api.isRanking() { return true }
+        if api.includs(in: ignores) {
+            
+            return true
+        }
+        if api.isRanking() {
+            
+            return true
+        }
         
         return false
     }

@@ -27,6 +27,7 @@ final class DeckMissionObserver {
     weak var delegate: DeckMissionObserverDelegate? {
         
         didSet {
+            
             delegate?.didChangeState(deck: deck)
         }
     }
@@ -36,6 +37,7 @@ final class DeckMissionObserver {
         self.deck = deck
         
         observation = deck.observe(\Deck.mission_2) { _, _ in
+            
             self.delegate?.didChangeState(deck: deck)
         }
     }
@@ -46,8 +48,11 @@ final class MissionStatus: NSObject {
     private enum State: Int {
         
         case none = 0
+        
         case hasMission = 1
+        
         case finish = 2
+        
         case earlyReturn = 3
         
         case unknown = 999999
@@ -68,6 +73,7 @@ final class MissionStatus: NSObject {
     private var rawState: Int = 0 {
         
         didSet {
+            
             state = State(rawValue: rawState) ?? .unknown
         }
     }
@@ -82,11 +88,18 @@ final class MissionStatus: NSObject {
     /// CAUTION: 初回起動時/マスタ更新時にはデータがないので失敗する
     init?(number: Int) {
         
-        guard MissionStatus.valid(number: number) else { return nil }
+        guard MissionStatus.valid(number: number) else {
+            
+            return nil
+        }
         
         self.number = number
         
-        guard let deck = ServerDataStore.default.deck(by: number) else { return nil }
+        guard let deck = ServerDataStore.default.deck(by: number) else {
+            
+            return nil
+        }
+        
         self.observer = DeckMissionObserver(deck: deck)
         
         super.init()
@@ -108,6 +121,7 @@ final class MissionStatus: NSObject {
             
         case .unknown:
             Logger.shared.log("unknown State")
+            
         }
         
         delegate?.didUpdate(state: self)
@@ -119,10 +133,14 @@ extension MissionStatus: DockInformationUpdater {
     func update() {
         
         defer {
+            
             delegate?.didUpdate(state: self)
         }
         
-        guard let name = name else { return }
+        guard let name = name else {
+            
+            return
+        }
         
         let compTime = TimeInterval(Int(milliseconds / 1_000))
         let diff = compTime - Date().timeIntervalSince1970
@@ -131,8 +149,14 @@ extension MissionStatus: DockInformationUpdater {
         time = max(0, diff)
         
         // notify UserNotification.
-        if didNotify { return }
-        if diff >= 1 * 60 { return }
+        if didNotify {
+            
+            return
+        }
+        if diff >= 1 * 60 {
+            
+            return
+        }
         
         let notification = NSUserNotification()
         let format = LocalizedStrings.missionWillReturnMessage.string

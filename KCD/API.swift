@@ -161,6 +161,7 @@ private func apiType(of endpoint: Endpoint) -> APIType {
         
     default:
         return .other
+        
     }
 }
 
@@ -176,8 +177,11 @@ struct API {
     private var endpointString: String {
         
         switch endpoint {
+            
         case .unknown: return rawEndpointString ?? "Not Recorded"
+            
         default: return endpoint.rawValue
+            
         }
     }
     

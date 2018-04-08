@@ -25,8 +25,14 @@ final class CollectionView: NSCollectionView {
         
         selectionObservation = observe(\CollectionView.selectionIndexPaths) { (_, _) in
             
-            if !QLPreviewPanel.sharedPreviewPanelExists() { return }
-            if !QLPreviewPanel.shared().isVisible { return }
+            if !QLPreviewPanel.sharedPreviewPanelExists() {
+                
+                return
+            }
+            if !QLPreviewPanel.shared().isVisible {
+                
+                return
+            }
             
             DispatchQueue.main.asyncAfter(deadline: .now()) {
                 
@@ -41,12 +47,21 @@ extension CollectionView {
     
     override func rightMouseDown(with event: NSEvent) {
         
-        guard let menu = menu else { return }
+        guard let menu = menu else {
+            
+            return
+        }
         
         let mouse = convert(event.locationInWindow, from: nil)
         
-        guard let indexPath = indexPathForItem(at: mouse) else { return }
-        guard let _ = item(at: indexPath) else { return }
+        guard let indexPath = indexPathForItem(at: mouse) else {
+            
+            return
+        }
+        guard let _ = item(at: indexPath) else {
+            
+            return
+        }
         
         if !selectionIndexPaths.contains(indexPath) {
             
@@ -61,18 +76,30 @@ extension CollectionView {
         
         let key = event.charactersIgnoringModifiers
         
-        if key == " " { return quickLook(with: event) }
+        if key == " " {
+            
+            return quickLook(with: event)
+        }
         
         //  左右矢印キーの時の動作
         let leftArrow: UInt16 = 123
         let rightArrow: UInt16 = 124
         if event.keyCode == leftArrow || event.keyCode == rightArrow {
             
-            guard selectionIndexPaths.count != 0 else { return }
+            guard selectionIndexPaths.count != 0 else {
+                
+                return
+            }
             
             var index = selectionIndexPaths.first!.item
-            if event.keyCode == leftArrow && index != 0 { index -= 1 }
-            if event.keyCode == rightArrow && index != content.count - 1 { index += 1 }
+            if event.keyCode == leftArrow && index != 0 {
+                
+                index -= 1
+            }
+            if event.keyCode == rightArrow && index != content.count - 1 {
+                
+                index += 1
+            }
             let set: Set<IndexPath> = [IndexPath(item: index, section: 0)]
             scrollToItems(at: set, scrollPosition: .nearestHorizontalEdge)
             selectionIndexPaths = set
@@ -130,8 +157,14 @@ extension CollectionView: QLPreviewPanelDataSource, QLPreviewPanelDelegate {
         
         let selections = selectionIndexPaths.compactMap(item(at:))
         
-        guard case 0..<selections.count = index else { return nil }
-        guard let item = selections[index] as? QLPreviewItem else { return nil}
+        guard case 0..<selections.count = index else {
+            
+            return nil
+        }
+        guard let item = selections[index] as? QLPreviewItem else {
+            
+            return nil
+        }
         
         return item
     }
@@ -150,7 +183,10 @@ extension CollectionView: QLPreviewPanelDataSource, QLPreviewPanelDelegate {
     
     func previewPanel(_ panel: QLPreviewPanel!, sourceFrameOnScreenFor item: QLPreviewItem!) -> NSRect {
         
-        guard let item = item as? Previewable else { return .zero }
+        guard let item = item as? Previewable else {
+            
+            return .zero
+        }
         
         let frame = convert(item.imageFrame, from: item.view)
         let byWindow = convert(frame, to: nil)

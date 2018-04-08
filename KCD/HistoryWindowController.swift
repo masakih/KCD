@@ -13,7 +13,9 @@ final class HistoryWindowController: NSWindowController {
     private enum HistoryWindowTabIndex: Int {
         
         case kaihatuHistory = 0
+        
         case kenzoHistory = 1
+        
         case dropHistory = 2
     }
     
@@ -29,6 +31,7 @@ final class HistoryWindowController: NSWindowController {
     private var currentSelection: HistoryTableViewController? {
         
         didSet {
+            
             window?.makeFirstResponder(currentSelection?.tableView)
             
             if let controller = currentSelection?.controller,
@@ -48,9 +51,14 @@ final class HistoryWindowController: NSWindowController {
     @objc var selectedTabIndex: Int = -1 {
         
         didSet {
-            guard let tabIndex = HistoryWindowTabIndex(rawValue: selectedTabIndex) else { return }
+            
+            guard let tabIndex = HistoryWindowTabIndex(rawValue: selectedTabIndex) else {
+                
+                return
+            }
             
             switch tabIndex {
+                
             case .kaihatuHistory:
                 currentSelection = kaihatsuTableVC
                 
@@ -59,6 +67,7 @@ final class HistoryWindowController: NSWindowController {
                 
             case .dropHistory:
                 currentSelection = dropShipTableVC
+                
             }
         }
     }
@@ -105,6 +114,7 @@ extension HistoryWindowController {
     override var touchBar: NSTouchBar? {
         
         get {
+            
             if let _ = myTouchBar {
                 
                 return myTouchBar

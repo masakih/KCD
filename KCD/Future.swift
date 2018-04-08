@@ -15,20 +15,28 @@ enum Result<T> {
     case error(Error)
     
     init(_ value: T) {
+        
         self = .value(value)
     }
+    
     init(_ error: Error) {
+        
         self = .error(error)
     }
 }
 extension Result {
     
     var value: T? {
+        
         if case let .value(value) = self { return value }
+        
         return nil
     }
+    
     var error: Error? {
+        
         if case let .error(error) = self { return error }
+        
         return nil
     }
 }
@@ -47,26 +55,36 @@ final class Future<T> {
     private var callbacks: [(Result<T>) -> Void] = []
     
     fileprivate var result: Result<T>? {
+        
         willSet {
+            
             if result != nil {
+                
                 fatalError("Result already seted.")
             }
         }
+        
         didSet {
+            
             guard let result = self.result else {
+                
                 fatalError("set nil to result.")
             }
             
             callbacks.forEach { f in f(result) }
             callbacks = []
+            
             semaphore?.signal()
         }
     }
     
     var isCompleted: Bool {
+        
         return result != nil
     }
+    
     var value: Result<T>? {
+        
         return result
     }
     
@@ -88,8 +106,11 @@ final class Future<T> {
             defer { self.semaphore?.signal() }
             
             do {
+                
                 self.result = Result(try block())
+                
             } catch {
+                
                 self.result = Result(error)
             }
         }
@@ -101,16 +122,19 @@ final class Future<T> {
         
         self.result = result
     }
+    
     convenience init(_ value: T) {
         
         self.init(Result(value))
     }
+    
     convenience init(_ error: Error) {
         
         self.init(Result(error))
     }
     
     deinit {
+        
         semaphore?.signal()
     }
 }
@@ -122,6 +146,7 @@ extension Future {
     func await() -> Self {
         
         if result == nil {
+            
             semaphore?.wait()
             semaphore?.signal()
         }
@@ -133,8 +158,11 @@ extension Future {
     func onComplete(_ callback: @escaping (Result<T>) -> Void) -> Self {
         
         if let r = result {
+            
             callback(r)
+            
         } else {
+            
             callbacks.append(callback)
         }
         
@@ -145,7 +173,9 @@ extension Future {
     func onSuccess(_ callback: @escaping (T) -> Void) -> Self {
         
         onComplete { result in
+            
             if case let .value(v) = result {
+                
                 callback(v)
             }
         }
@@ -157,7 +187,9 @@ extension Future {
     func onFailure(_ callback: @escaping (Error) -> Void) -> Self {
         
         onComplete { result in
+            
             if case let .error(e) = result {
+                
                 callback(e)
             }
         }
@@ -172,9 +204,13 @@ extension Future {
     func transform<U>(_ s: @escaping (T) -> U, _ f: @escaping (Error) -> Error) -> Future<U> {
         
         return transform { result in
+            
             switch result {
+                
             case let .value(value): return Result(s(value))
+                
             case let .error(error): return Result(f(error))
+                
             }
         }
     }
@@ -183,6 +219,7 @@ extension Future {
         
         return Promise()
             .complete {
+                
                 self.await().value.map(s) ?? Result(FutureError.unsolvedFuture)
             }
             .future
@@ -197,10 +234,15 @@ extension Future {
         
         return Promise()
             .completeWith {
+                
                 switch self.await().value {
+                    
                 case .value(let v)?: return t(v)
+                    
                 case .error(let e)?: return Future<U>(e)
+                    
                 case .none: fatalError("Future not complete")
+                    
                 }
             }
             .future
@@ -210,9 +252,12 @@ extension Future {
         
         return Promise()
             .complete {
+                
                 if case let .value(v)? = self.await().value, f(v) {
+                    
                     return Result(v)
                 }
+                
                 return Result(FutureError.noSuchElement)
             }
             .future
@@ -221,9 +266,13 @@ extension Future {
     func recover(_ s: @escaping (Error) throws -> T) -> Future<T> {
         
         return transform { result in
+            
             do {
+                
                 return try result.error.map { error in Result(try s(error)) } ?? Result(FutureError.unsolvedFuture)
+                
             } catch {
+                
                 return Result(error)
             }
         }
@@ -234,9 +283,14 @@ extension Future {
         
         return Promise<T>()
             .complete {
-                guard let result = self.await().result else { fatalError("Future not complete") }
+                
+                guard let result = self.await().result else {
+                    
+                    fatalError("Future not complete")
+                }
                 
                 f(result)
+                
                 return result
             }
             .future
@@ -261,10 +315,12 @@ final class Promise<T> {
         
         future.complete(result)
     }
+    
     func success(_ value: T) {
         
         complete(Result(value))
     }
+    
     func failure(_ error: Error) {
         
         complete(Result(error))
@@ -273,6 +329,7 @@ final class Promise<T> {
     func complete(_ completor: @escaping () -> Result<T>) -> Self {
         
         promiseQueue.async {
+            
             self.complete(completor())
         }
         
@@ -282,12 +339,17 @@ final class Promise<T> {
     func completeWith(_ completor: @escaping () -> Future<T>) -> Self {
         
         promiseQueue.async {
+            
             completor()
                 .onSuccess {
+                    
                     self.success($0)
+                    
                 }
                 .onFailure {
+                    
                     self.failure($0)
+                    
             }
         }
         

@@ -28,11 +28,17 @@ struct ParameterValue {
     private let rawValue: String?
     
     var int: Int? { return rawValue.flatMap { Int($0) } }
+    
     var double: Double? { return rawValue.flatMap { Double($0) } }
+    
     var string: String? { return rawValue }
+    
     var bool: Bool? {
         
-        guard let _ = rawValue else { return nil }
+        guard let _ = rawValue else {
+            
+            return nil
+        }
         
         if let i = self.int {
             
@@ -42,18 +48,22 @@ struct ParameterValue {
         if let s = self.string?.lowercased() {
             
             switch s {
+                
             case "true", "yes", "t", "y": return true
                 
             default: return false
+                
             }
         }
         
         return false
     }
+    
     var array: [ParameterValue] {
         
         return rawValue?.components(separatedBy: ",").map { ParameterValue($0) } ?? []
     }
+    
     var integerArray: [Int] {
         
         return array.compactMap { $0.int }
@@ -78,7 +88,10 @@ struct Parameter {
     
     init?(_ request: URLRequest) {
         
-        guard let paramList = parseParameter(request) else { return nil }
+        guard let paramList = parseParameter(request) else {
+            
+            return nil
+        }
         
         self.init(paramList)
     }
@@ -97,6 +110,7 @@ struct Parameter {
 extension Parameter: Equatable {
     
     public static func == (lhs: Parameter, rhs: Parameter) -> Bool {
+        
         return lhs.rawValue == rhs.rawValue
     }
 }

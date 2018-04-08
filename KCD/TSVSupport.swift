@@ -56,6 +56,7 @@ final class TSVSupport {
         
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy'-'MM'-'dd' 'HH':'mm':'ss' 'Z"
+        
         return formatter
     }()
     
@@ -65,22 +66,37 @@ final class TSVSupport {
         panel.allowedFileTypes = ["kcdlocaldata"]
         panel.begin {
             
-            guard $0 == .OK else { return }
+            guard $0 == .OK else {
+                
+                return
+            }
             
             panel.urls.forEach { url in
                 
-                guard let fileW = try? FileWrapper(url: url) else { return }
+                guard let fileW = try? FileWrapper(url: url) else {
+                    
+                    return
+                }
                 
                 fileW.fileWrappers?.forEach {
                     
-                    guard let data = $0.value.regularFileContents else { return }
+                    guard let data = $0.value.regularFileContents else {
+                        
+                        return
+                    }
                     
                     switch $0.key {
+                        
                     case "kaihatu.tsv": self.registerKaihatuHistory(data)
+                        
                     case "kenzo.tsv": self.registerKenzoHistory(data)
+                        
                     case "kenzoMark.tsv": self.registerKenzoMark(data)
+                        
                     case "dropShip.tsv": self.registerDropShipHistory(data)
+                        
                     default: break
+                        
                     }
                 }
                 
@@ -94,19 +110,40 @@ final class TSVSupport {
         panel.allowedFileTypes = ["kcdlocaldata"]
         panel.begin {
             
-            guard $0 == .OK else { return }
-            guard let url = panel.url else { return }
+            guard $0 == .OK else {
+                
+                return
+            }
+            guard let url = panel.url else {
+                
+                return
+            }
             
             let data = self.store.sync { () -> (Data, Data, Data, Data)? in
                 
-                guard let kaihatuHistory = self.dataOfKaihatuHistory() else { return nil }
-                guard let kenzoHistory = self.dataOfKenzoHistory() else { return nil }
-                guard let kenzoMark = self.dataOfKenzoMark() else { return nil }
-                guard let dropShipHistory = self.dataOfDropShipHistory() else { return nil }
+                guard let kaihatuHistory = self.dataOfKaihatuHistory() else {
+                    
+                    return nil
+                }
+                guard let kenzoHistory = self.dataOfKenzoHistory() else {
+                    
+                    return nil
+                }
+                guard let kenzoMark = self.dataOfKenzoMark() else {
+                    
+                    return nil
+                }
+                guard let dropShipHistory = self.dataOfDropShipHistory() else {
+                    
+                    return nil
+                }
                 
                 return (kaihatuHistory, kenzoHistory, kenzoMark, dropShipHistory)
             }
-            guard let (kaihatuHistory, kenzoHistory, kenzoMark, dropShipHistory) = data else { return }
+            guard let (kaihatuHistory, kenzoHistory, kenzoMark, dropShipHistory) = data else {
+                
+                return
+            }
             
             let fileW = FileWrapper(directoryWithFileWrappers: [:])
             fileW.addRegularFile(withContents: kaihatuHistory, preferredFilename: "kaihatu.tsv")
@@ -229,21 +266,57 @@ final class TSVSupport {
             
             let attr = $0.components(separatedBy: "\t")
             
-            guard attr.count == 10 else { return }
-            guard let date = dateFomatter.date(from: attr[0]) else { return }
-            guard let fuel = Int(attr[1]) else { return }
-            guard let bull = Int(attr[2]) else { return }
-            guard let steel = Int(attr[3]) else { return }
-            guard let bauxite = Int(attr[4]) else { return }
-            guard let kaihatu = Int(attr[5]) else { return }
-            guard let flagLv = Int(attr[8]) else { return }
-            guard let commandLv = Int(attr[9]) else { return }
+            guard attr.count == 10 else {
+                
+                return
+            }
+            guard let date = dateFomatter.date(from: attr[0]) else {
+                
+                return
+            }
+            guard let fuel = Int(attr[1]) else {
+                
+                return
+            }
+            guard let bull = Int(attr[2]) else {
+                
+                return
+            }
+            guard let steel = Int(attr[3]) else {
+                
+                return
+            }
+            guard let bauxite = Int(attr[4]) else {
+                
+                return
+            }
+            guard let kaihatu = Int(attr[5]) else {
+                
+                return
+            }
+            guard let flagLv = Int(attr[8]) else {
+                
+                return
+            }
+            guard let commandLv = Int(attr[9]) else {
+                
+                return
+            }
             
             let predicate = Predicate(\KaihatuHistory.date, equalTo: date)
             
-            guard let oo = try? store.objects(of: KaihatuHistory.entity, predicate: predicate) else { return }
-            guard oo.count != 0 else { return }
-            guard let obj = store.insertNewObject(for: KaihatuHistory.entity) else { return }
+            guard let oo = try? store.objects(of: KaihatuHistory.entity, predicate: predicate) else {
+                
+                return
+            }
+            guard oo.count != 0 else {
+                
+                return
+            }
+            guard let obj = store.insertNewObject(for: KaihatuHistory.entity) else {
+                
+                return
+            }
             
             obj.date = date
             obj.fuel = fuel
@@ -266,22 +339,61 @@ final class TSVSupport {
             
             let attr = $0.components(separatedBy: "\t")
             
-            guard attr.count == 11 else { return }
-            guard let date = dateFomatter.date(from: attr[0]) else { return }
-            guard let fuel = Int(attr[1]) else { return }
-            guard let bull = Int(attr[2]) else { return }
-            guard let steel = Int(attr[3]) else { return }
-            guard let bauxite = Int(attr[4]) else { return }
-            guard let kaihatu = Int(attr[5]) else { return }
-            guard let sType = Int(attr[7]) else { return }
-            guard let flagLv = Int(attr[9]) else { return }
-            guard let commandLv = Int(attr[10]) else { return }
+            guard attr.count == 11 else {
+                
+                return
+            }
+            guard let date = dateFomatter.date(from: attr[0]) else {
+                
+                return
+            }
+            guard let fuel = Int(attr[1]) else {
+                
+                return
+            }
+            guard let bull = Int(attr[2]) else {
+                
+                return
+            }
+            guard let steel = Int(attr[3]) else {
+                
+                return
+            }
+            guard let bauxite = Int(attr[4]) else {
+                
+                return
+            }
+            guard let kaihatu = Int(attr[5]) else {
+                
+                return
+            }
+            guard let sType = Int(attr[7]) else {
+                
+                return
+            }
+            guard let flagLv = Int(attr[9]) else {
+                
+                return
+            }
+            guard let commandLv = Int(attr[10]) else {
+                
+                return
+            }
             
             let predicate = Predicate(\KenzoHistory.date, equalTo: date)
             
-            guard let oo = try? store.objects(of: KenzoHistory.entity, predicate: predicate) else { return }
-            guard oo.count != 0 else { return }
-            guard let obj = store.insertNewObject(for: KenzoHistory.entity) else { return }
+            guard let oo = try? store.objects(of: KenzoHistory.entity, predicate: predicate) else {
+                
+                return
+            }
+            guard oo.count != 0 else {
+                
+                return
+            }
+            guard let obj = store.insertNewObject(for: KenzoHistory.entity) else {
+                
+                return
+            }
             
             obj.date = date
             obj.fuel = fuel
@@ -305,23 +417,65 @@ final class TSVSupport {
             
             let attr = $0.components(separatedBy: "\t")
             
-            guard attr.count == 11 else { return }
-            guard let date = dateFomatter.date(from: attr[0]) else { return }
-            guard let fuel = Int(attr[1]) else { return }
-            guard let bull = Int(attr[2]) else { return }
-            guard let steel = Int(attr[3]) else { return }
-            guard let bauxite = Int(attr[4]) else { return }
-            guard let kaihatu = Int(attr[5]) else { return }
-            guard let shiId = Int(attr[6]) else { return }
-            guard let kDock = Int(attr[7]) else { return }
-            guard let flagLv = Int(attr[9]) else { return }
-            guard let commandLv = Int(attr[10]) else { return }
+            guard attr.count == 11 else {
+                
+                return
+            }
+            guard let date = dateFomatter.date(from: attr[0]) else {
+                
+                return
+            }
+            guard let fuel = Int(attr[1]) else {
+                
+                return
+            }
+            guard let bull = Int(attr[2]) else {
+                
+                return
+            }
+            guard let steel = Int(attr[3]) else {
+                
+                return
+            }
+            guard let bauxite = Int(attr[4]) else {
+                
+                return
+            }
+            guard let kaihatu = Int(attr[5]) else {
+                
+                return
+            }
+            guard let shiId = Int(attr[6]) else {
+                
+                return
+            }
+            guard let kDock = Int(attr[7]) else {
+                
+                return
+            }
+            guard let flagLv = Int(attr[9]) else {
+                
+                return
+            }
+            guard let commandLv = Int(attr[10]) else {
+                
+                return
+            }
             
             let predicate = Predicate(\KenzoMark.date, equalTo: date)
             
-            guard let oo = try? store.objects(of: KenzoMark.entity, predicate: predicate) else { return }
-            guard oo.count != 0 else { return }
-            guard let obj = store.insertNewObject(for: KenzoMark.entity) else { return }
+            guard let oo = try? store.objects(of: KenzoMark.entity, predicate: predicate) else {
+                
+                return
+            }
+            guard oo.count != 0 else {
+                
+                return
+            }
+            guard let obj = store.insertNewObject(for: KenzoMark.entity) else {
+                
+                return
+            }
             
             obj.date = date
             obj.fuel = fuel
@@ -345,17 +499,41 @@ final class TSVSupport {
             
             let attr = $0.components(separatedBy: "\t")
             
-            guard attr.count == 9 else { return }
-            guard let date = dateFomatter.date(from: attr[0]) else { return }
-            guard let mapInfo = Int(attr[3]) else { return }
-            guard let mapCell = Int(attr[4]) else { return }
-            guard let mark = Int(attr[7]) else { return }
+            guard attr.count == 9 else {
+                
+                return
+            }
+            guard let date = dateFomatter.date(from: attr[0]) else {
+                
+                return
+            }
+            guard let mapInfo = Int(attr[3]) else {
+                
+                return
+            }
+            guard let mapCell = Int(attr[4]) else {
+                
+                return
+            }
+            guard let mark = Int(attr[7]) else {
+                
+                return
+            }
             
             let predicate = Predicate(\DropShipHistory.date, equalTo: date)
             
-            guard let oo = try? store.objects(of: DropShipHistory.entity, predicate: predicate) else { return }
-            guard oo.count != 0 else { return }
-            guard let obj = store.insertNewObject(for: DropShipHistory.entity) else { return }
+            guard let oo = try? store.objects(of: DropShipHistory.entity, predicate: predicate) else {
+                
+                return
+            }
+            guard oo.count != 0 else {
+                
+                return
+            }
+            guard let obj = store.insertNewObject(for: DropShipHistory.entity) else {
+                
+                return
+            }
             
             obj.date = date
             obj.shipName = attr[1]

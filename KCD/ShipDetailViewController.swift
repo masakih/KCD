@@ -11,16 +11,22 @@ import Cocoa
 enum ShipDetailViewType {
     
     case full
+    
     case medium
+    
     case minimum
 }
 
 private func nibNameFor(_ type: ShipDetailViewType) -> NSNib.Name {
     
     switch type {
+        
     case .full: return ShipDetailViewController.nibName
+        
     case .medium: return NSNib.Name("MediumShipViewController")
+        
     case .minimum: return NSNib.Name("MediumShipViewController")
+        
     }
 }
 
@@ -68,6 +74,7 @@ final class ShipDetailViewController: NSViewController {
     @objc dynamic var guardEscaped: Bool = false {
         
         didSet {
+            
             guardEscapedView.isHidden = !guardEscaped
         }
     }
@@ -77,6 +84,7 @@ final class ShipDetailViewController: NSViewController {
         didSet {
             
             defer {
+                
                 didChangeSlot0()
                 didChangeSlot1()
                 didChangeSlot2()
@@ -104,6 +112,7 @@ final class ShipDetailViewController: NSViewController {
                 
                 zip(fields, [#keyPath(Ship.slot_0), #keyPath(Ship.slot_1), #keyPath(Ship.slot_2), #keyPath(Ship.slot_3), #keyPath(Ship.slot_4)])
                     .forEach { feild, keyPath in
+                        
                         feild?.bind(NSBindingName(#keyPath(SlotItemLevelView.slotItemID)), to: ship, withKeyPath: keyPath)
                 }
                 
@@ -128,10 +137,12 @@ final class ShipDetailViewController: NSViewController {
         guardEscapedView.setFrameOrigin(.zero)
         view.addSubview(guardEscapedView)
         switch type {
+            
         case .medium, .minimum:
             guardEscapedView.controlSize = .mini
             
         default: break
+            
         }
         
     }
@@ -183,19 +194,30 @@ extension ShipDetailViewController {
     private enum PlaneState {
         
         case cannotEquip
+        
         case notEquip(Int)  // current count
+        
         case equiped(Int, Int)  // current count and max
     }
     
     private func planState(_ index: Int) -> PlaneState {
         
-        guard let ship = ship else { return .cannotEquip }
+        guard let ship = ship else {
+            
+            return .cannotEquip
+        }
         
         let itemId = ship.slotItemId(index)
         let maxCount = ship.slotItemMax(index)
         
-        if maxCount == 0 { return .cannotEquip }
-        if itemId == -1 { return .notEquip(maxCount) }
+        if maxCount == 0 {
+            
+            return .cannotEquip
+        }
+        if itemId == -1 {
+            
+            return .notEquip(maxCount)
+        }
         
         if let item = ship.slotItem(index),
             let eqType = EquipmentType(rawValue: item.master_slotItem.type_2),
@@ -210,9 +232,13 @@ extension ShipDetailViewController {
     private func planeString(_ index: Int) -> String? {
         
         switch planState(index) {
+            
         case .cannotEquip: return nil
+            
         case .notEquip(let max): return "\(max)"
+            
         case .equiped(let count, let max): return "\(count)/\(max)"
+            
         }
     }
     
@@ -226,9 +252,13 @@ extension ShipDetailViewController {
     private func planeStringColor(_ index: Int) -> NSColor {
         
         switch planState(index) {
+            
         case .cannotEquip: return NSColor.controlTextColor
+            
         case .notEquip: return NSColor.disabledControlTextColor
+            
         case .equiped: return NSColor.controlTextColor
+            
         }
     }
     

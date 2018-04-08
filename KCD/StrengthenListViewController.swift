@@ -31,6 +31,7 @@ private struct FilterCategories {
                                              .sonar, .depthCharge,
                                              .submarineEquipment]
     static let otherType: [EquipmentType] = {
+        
         return allType
             .filter { !canonType.contains($0) }
             .filter { !torpedoType.contains($0) }
@@ -41,10 +42,15 @@ private struct FilterCategories {
     enum FilterType: Int {
         
         case all = 0
+        
         case canon
+        
         case torpedo
+        
         case airplane
+        
         case radar
+        
         case other
     }
     
@@ -75,6 +81,7 @@ final class StrengthenListViewController: MainTabVIewItemViewController {
     @objc dynamic var filterType: Int = 0 {
         
         didSet {
+            
             if let t = FilterCategories.FilterType(rawValue: filterType) {
                 
                 showsTypes = FilterCategories(type: t).categories
@@ -113,7 +120,9 @@ final class StrengthenListViewController: MainTabVIewItemViewController {
             
             guard let array = NSKeyedUnarchiver.unarchiveObject(with: data) as? [EnhancementListItem] else {
                 
-                return Logger.shared.log("\(resourceName).\(resourceExtension) not found.")
+                Logger.shared.log("\(resourceName).\(resourceExtension) not found.")
+                
+                return
             }
             
             equipmentStrengthenList = array
@@ -140,11 +149,17 @@ final class StrengthenListViewController: MainTabVIewItemViewController {
     
     private func weekdayFiltered() -> [EnhancementListItem] {
         
-        if offsetDay == -1 { return allItemList() }
+        if offsetDay == -1 {
+            
+            return allItemList()
+        }
         
         let currentDay = NSCalendar.current.dateComponents([.weekday], from: Date())
         var targetWeekday = currentDay.weekday! + offsetDay
-        if targetWeekday > 7 { targetWeekday = 1 }
+        if targetWeekday > 7 {
+            
+            targetWeekday = 1
+        }
         
         return equipmentStrengthenList.filter { $0.weekday == targetWeekday }
     }

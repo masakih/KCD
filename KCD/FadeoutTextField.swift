@@ -34,7 +34,10 @@ class FadeoutTextField: NSTextField {
     
     override func draw(_ dirtyRect: NSRect) {
         
-        guard let context = NSGraphicsContext.current?.cgContext else { fatalError("Con not get current CGContext") }
+        guard let context = NSGraphicsContext.current?.cgContext else {
+            
+            fatalError("Con not get current CGContext")
+        }
         
         context.saveGState()
         maskImage.map { context.clip(to: bounds, mask: $0) }

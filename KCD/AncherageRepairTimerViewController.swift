@@ -27,7 +27,11 @@ final class AncherageRepairTimerViewController: NSViewController {
     var controlSize: NSControl.ControlSize = .regular {
         
         willSet {
-            if controlSize == newValue { return }
+            
+            if controlSize == newValue {
+                
+                return
+            }
             var frame = view.frame
             frame.size.height = (newValue == .regular ? type(of: self).regularHeight : type(of: self).smallHeight)
             view.frame = frame
@@ -47,7 +51,10 @@ final class AncherageRepairTimerViewController: NSViewController {
         
         AppDelegate.shared.addCounterUpdate { [weak self] in
             
-            guard let `self` = self else { return }
+            guard let `self` = self else {
+                
+                return
+            }
             
             self.repairTime = self.calcRepairTime()
         }

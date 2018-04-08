@@ -46,6 +46,7 @@ import AppKit.NSColor
 
 
 enum DefaultsKeyError: Error {
+    
     case canNotStoreType
 }
 
@@ -70,16 +71,22 @@ func isDefaultValuePrimitive(_ value: Any) -> Bool {
     if value is [Any] {
         
         switch value {
+            
         case _ as [DefaultValuePrimitive]: return true
+            
         default: return false
+            
         }
     }
     
     if value is [AnyHashable: Any] {
         
         switch value {
+            
         case _ as [String: DefaultValuePrimitive]: return true
+            
         default: return false
+            
         }
     }
     
@@ -97,16 +104,22 @@ func canCoding(_ value: Any) -> Bool {
     if value is [Any] {
         
         switch value {
+            
         case _ as [NSCoding]: return true
+            
         default: return false
+            
         }
     }
     
     if value is [AnyHashable: Any] {
         
         switch value {
+            
         case _ as [String: NSCoding]: return true
+            
         default: return false
+            
         }
     }
     
@@ -189,7 +202,10 @@ extension DefaultKeys {
     static let defaults: [String: Any] = settings
         .compactMap { (k: DefaultKeys, v: Any?) -> (key: String, value: Any)? in
             
-            guard let value = v else { return nil }
+            guard let value = v else {
+                
+                return nil
+            }
             
             if isDefaultValuePrimitive(value) {
                 
@@ -206,6 +222,7 @@ extension DefaultKeys {
             return nil
         }
         .reduce(into: [String: Any]()) { (dict: inout [String: Any], pair) in
+            
             dict[pair.key] = pair.value
     }
     

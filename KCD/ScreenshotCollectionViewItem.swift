@@ -22,7 +22,10 @@ final class ScreenshotCollectionViewItem: NSCollectionViewItem {
     
     var imageFrame: NSRect {
         
-        guard let imageView = imageView else { fatalError("ScreenshotCollectionViewItem: imageView is nil") }
+        guard let imageView = imageView else {
+            
+            fatalError("ScreenshotCollectionViewItem: imageView is nil")
+        }
         
         let frame = centerFitRect(imageView.image, target: imageView.frame)
         
@@ -32,6 +35,7 @@ final class ScreenshotCollectionViewItem: NSCollectionViewItem {
     override var isSelected: Bool {
         
         didSet {
+            
             (imageBox.fillColor, nameField.textColor, nameBox.fillColor) = {
                 
                 if isSelected {
@@ -48,7 +52,10 @@ final class ScreenshotCollectionViewItem: NSCollectionViewItem {
     
     private func centerFitRect(_ image: NSImage?, target: NSRect) -> NSRect {
         
-        guard let image = image else { return target }
+        guard let image = image else {
+            
+            return target
+        }
         
         let imageSize = image.size
         
@@ -71,4 +78,4 @@ extension ScreenshotCollectionViewItem: QLPreviewItem, Previewable {
     }
 }
 
-extension ScreenshotCollectionViewItem: NibLoadable { }
+extension ScreenshotCollectionViewItem: NibLoadable {}

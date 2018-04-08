@@ -54,12 +54,6 @@ final class Logger {
         printToConsole(logMessage)
         printToDestination(logMessage)
     }
-    func log<T>(_ message: String, value: T, function: String = #function, file: String = #file, line: Int = #line) -> T {
-        
-        log(message, function: function, file: file, line: line)
-        
-        return value
-    }
 }
 
 private extension Logger {

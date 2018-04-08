@@ -44,7 +44,10 @@ final class SeikuCalclator {
     var seiku: Int {
         
         let guardEscaped = TemporaryDataStore.default.ensuredGuardEscaped(byShipId: ship.id)
-        guard guardEscaped == nil else { return 0 }
+        guard guardEscaped == nil else {
+            
+            return 0
+        }
         
         return (0...4).map(slotSeiku).map { Int($0) }.reduce(0, +)
     }
@@ -52,7 +55,10 @@ final class SeikuCalclator {
     var totalSeiku: Int {
         
         let guardEscaped = TemporaryDataStore.default.ensuredGuardEscaped(byShipId: ship.id)
-        guard guardEscaped == nil else { return 0 }
+        guard guardEscaped == nil else {
+            
+            return 0
+        }
         
         return (0...4).map(seiku).reduce(0, +)
     }
@@ -65,13 +71,21 @@ final class SeikuCalclator {
     private func typeBonus(_ type: Int) -> [Double]? {
         
         switch type {
+            
         case let t where fighterTypes.contains(t): return fighterBonus
+            
         case let t where bomberTypes.contains(t): return bomberBonus
+            
         case let t where attackerTypes.contains(t): return attackerBonus
+            
         case let t where floatplaneBomberTypes.contains(t): return floatplaneBomberBonus
+            
         case let t where floatplaneFighterTypes.contains(t): return floatplaneFighterBonus
+            
         case let t where jetBomberTypes.contains(t): return jetBomberBonus
+            
         default: return nil
+            
         }
     }
     
@@ -85,8 +99,14 @@ final class SeikuCalclator {
     private func slotState(at index: Int) -> SlotState {
         
         let itemCount = ship.slotItemCount(index)
-        if itemCount == 0 { return .invalid }
-        guard let item = slotItem(at: index) else { return .invalid }
+        if itemCount == 0 {
+            
+            return .invalid
+        }
+        guard let item = slotItem(at: index) else {
+            
+            return .invalid
+        }
         
         return .valid(item, itemCount, item.master_slotItem.type_2)
     }

@@ -36,7 +36,12 @@ final class GuardShelterCommand: JSONCommand {
         case .port:
             removeAllEntry()
             
-        default: return Logger.shared.log("Missing API: \(apiResponse.api)")
+        default:
+            
+            Logger.shared.log("Missing API: \(apiResponse.api)")
+            
+            return
+            
         }
     }
     
@@ -48,16 +53,24 @@ final class GuardShelterCommand: JSONCommand {
         let store = ServerDataStore.default
         
         switch firstDeckId {
+            
         case 1:
             switch damagedPos {
+                
             case 1...6: return store.sync { store.deck(by: 1)?.shipId(of: damagedPos - 1) }
+                
             case 7...12: return store.sync { store.deck(by: 2)?.shipId(of: damagedPos - 6 - 1) }
+                
             default: return nil
+                
             }
+            
         case 3:
             return store.sync { store.deck(by: 3)?.shipId(of: damagedPos - 1) }
+            
         default:
             return nil
+            
         }
     }
     
@@ -65,10 +78,15 @@ final class GuardShelterCommand: JSONCommand {
         
         let escape = data["api_escape"]
         
-        guard let escapeIdx = escape["api_escape_idx"][0].int else { return }
+        guard let escapeIdx = escape["api_escape_idx"][0].int else {
+            
+            return
+        }
         guard let damagedId = damagedShipId(damagedPos: escapeIdx) else {
             
-            return  Logger.shared.log("damagedPos is wrong")
+            Logger.shared.log("damagedPos is wrong")
+            
+            return
         }
         
         let store = TemporaryDataStore.oneTimeEditor()
@@ -76,26 +94,35 @@ final class GuardShelterCommand: JSONCommand {
             
             guard let damaged = store.createGuardEscaped() else {
                 
-                return Logger.shared.log("Can not create GuardEscaped for damaged")
+                Logger.shared.log("Can not create GuardEscaped for damaged")
+                
+                return
             }
             
             damaged.shipID = damagedId
             damaged.ensured = false
             
             // store guardian if needs
-            guard let guardianPos = escape["api_tow_idx"][0].int else { return }
+            guard let guardianPos = escape["api_tow_idx"][0].int else {
+                
+                return
+            }
             
             let fixedGuardianPos = guardianPos - 6 - 1
             
             let sStore = ServerDataStore.default
             guard let guardianId = sStore.sync(execute: { sStore.deck(by: 2)?.shipId(of: fixedGuardianPos) }) else {
                 
-                return Logger.shared.log("guardianPos is wrong")
+                Logger.shared.log("guardianPos is wrong")
+                
+                return
             }
             
             guard let guardian = store.createGuardEscaped() else {
                 
-                return Logger.shared.log("Can not create GuardEscaped for guardinan")
+                Logger.shared.log("Can not create GuardEscaped for guardinan")
+                
+                return
             }
             
             guardian.shipID = guardianId
@@ -107,6 +134,7 @@ final class GuardShelterCommand: JSONCommand {
         
         let store = TemporaryDataStore.oneTimeEditor()
         store.sync {
+            
             store.notEnsuredGuardEscaped().forEach(store.delete)
             store.save()
         }
@@ -118,6 +146,7 @@ final class GuardShelterCommand: JSONCommand {
         
         let store = TemporaryDataStore.oneTimeEditor()
         store.sync {
+            
             store.guardEscaped().forEach(store.delete)
             store.save()
         }
@@ -129,6 +158,7 @@ final class GuardShelterCommand: JSONCommand {
         
         let store = TemporaryDataStore.oneTimeEditor()
         store.sync {
+            
             store.guardEscaped().forEach { $0.ensured = true }
             store.save()
         }

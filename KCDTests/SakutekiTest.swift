@@ -15,6 +15,7 @@ class SakutekiTest: XCTestCase {
     let store = ServerDataStore.oneTimeEditor()
     
     override func setUp() {
+        
         super.setUp()
         
         // 千歳航改二
@@ -42,13 +43,16 @@ class SakutekiTest: XCTestCase {
         
         let store = TemporaryDataStore.oneTimeEditor()
         store.guardEscaped().forEach(store.delete)
+        
         super.tearDown()
     }
     
     func setupShip(id shipId: Int, slotItems: [Int], exSlot: Int, saku0: Int) {
         
         guard let ship = store.ship(by: shipId) else {
+            
             XCTFail("Can not get ship, \(shipId)")
+            
             fatalError()
         }
         ship.onslot_0 = ship.master_ship.maxeq_0
@@ -88,7 +92,9 @@ class SakutekiTest: XCTestCase {
         
         // 千歳航改二
         guard let ship = store.ship(by: 228) else {
+            
             XCTFail("Can not get ship")
+            
             fatalError()
         }
         
@@ -103,7 +109,9 @@ class SakutekiTest: XCTestCase {
         
         // 熊野改二
         guard let ship = store.ship(by: 4_184) else {
+            
             XCTFail("Can not get ship")
+            
             fatalError()
         }
         
@@ -118,12 +126,16 @@ class SakutekiTest: XCTestCase {
         
         // 千歳航改二
         guard let ship1 = store.ship(by: 228) else {
+            
             XCTFail("Can not get ship")
+            
             fatalError()
         }
         // 熊野改二
         guard let ship2 = store.ship(by: 4_184) else {
+            
             XCTFail("Can not get ship")
+            
             fatalError()
         }
         
@@ -138,17 +150,23 @@ class SakutekiTest: XCTestCase {
         
         // 千歳航改二
         guard let ship1 = store.ship(by: 228) else {
+            
             XCTFail("Can not get ship")
+            
             fatalError()
         }
         // 熊野改二
         guard let ship2 = store.ship(by: 4_184) else {
+            
             XCTFail("Can not get ship")
+            
             fatalError()
         }
         // 筑摩改二
         guard let ship3 = store.ship(by: 220) else {
+            
             XCTFail("Can not get ship")
+            
             fatalError()
         }
         
@@ -163,22 +181,29 @@ class SakutekiTest: XCTestCase {
         
         // 千歳航改二
         guard let ship1 = store.ship(by: 228) else {
+            
             XCTFail("Can not get ship")
+            
             fatalError()
         }
         // 熊野改二
         guard let ship2 = store.ship(by: 4_184) else {
+            
             XCTFail("Can not get ship")
+            
             fatalError()
         }
         // 筑摩改二
         guard let ship3 = store.ship(by: 220) else {
+            
             XCTFail("Can not get ship")
+            
             fatalError()
         }
         
         // 熊野改二を退避
         do {
+            
             let tempStore = TemporaryDataStore.oneTimeEditor()
             let guardEscape = tempStore.createGuardEscaped()
             guardEscape?.shipID = 4_184

@@ -17,7 +17,10 @@ extension TemporaryDataStore {
     
     func battles() -> [Battle] {
         
-        guard let battles = try? self.objects(of: Battle.entity) else { return [] }
+        guard let battles = try? self.objects(of: Battle.entity) else {
+            
+            return []
+        }
         
         return battles
     }
@@ -36,14 +39,20 @@ extension TemporaryDataStore {
         
         let sortDescriptors = SortDescriptors(keyPath: \Damage.id, ascending: true)
         
-        guard let damages = try? objects(of: Damage.entity, sortDescriptors: sortDescriptors) else { return [] }
+        guard let damages = try? objects(of: Damage.entity, sortDescriptors: sortDescriptors) else {
+            
+            return []
+        }
         
         return damages
     }
     
     func damages() -> [Damage] {
         
-        guard let damages = try? objects(of: Damage.entity) else { return [] }
+        guard let damages = try? objects(of: Damage.entity) else {
+            
+            return []
+        }
         
         return damages
     }
@@ -55,7 +64,10 @@ extension TemporaryDataStore {
     
     func guardEscaped() -> [GuardEscaped] {
         
-        guard let escapeds = try? objects(of: GuardEscaped.entity) else { return [] }
+        guard let escapeds = try? objects(of: GuardEscaped.entity) else {
+            
+            return []
+        }
         
         return escapeds
     }
@@ -65,7 +77,10 @@ extension TemporaryDataStore {
         let predicate = Predicate(\GuardEscaped.shipID, equalTo: shipId)
             .and(Predicate(true: \GuardEscaped.ensured))
         
-        guard let escapes = try? objects(of: GuardEscaped.entity, predicate: predicate) else { return nil }
+        guard let escapes = try? objects(of: GuardEscaped.entity, predicate: predicate) else {
+            
+            return nil
+        }
         
         return escapes.first
     }
@@ -74,7 +89,10 @@ extension TemporaryDataStore {
         
         let predicate = Predicate(false: \GuardEscaped.ensured)
         
-        guard let escapeds = try? objects(of: GuardEscaped.entity, predicate: predicate) else { return [] }
+        guard let escapeds = try? objects(of: GuardEscaped.entity, predicate: predicate) else {
+            
+            return []
+        }
         
         return escapeds
     }

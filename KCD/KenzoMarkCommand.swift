@@ -32,13 +32,17 @@ final class KenzoMarkCommand: JSONCommand {
         
         guard let kdockId = parameter["api_kdock_id"].int else {
             
-            return Logger.shared.log("api_kdock_id is wrong")
+            Logger.shared.log("api_kdock_id is wrong")
+            
+            return
         }
         
         let store = ServerDataStore.default
         guard let kenzoDock = store.sync(execute: { store.kenzoDock(by: kdockId) }) else {
             
-            return Logger.shared.log("KenzoDock is not found")
+            Logger.shared.log("KenzoDock is not found")
+            
+            return
         }
         let kenzoDockInfo = store.sync {
             KenzoDockInfo(dockId: kenzoDock.id,
@@ -51,12 +55,16 @@ final class KenzoMarkCommand: JSONCommand {
         }
         guard let flagShip = store.sync(execute: { store.masterShip(by: kenzoDock.created_ship_id) }) else {
             
-            return Logger.shared.log("MasterShip is not found")
+            Logger.shared.log("MasterShip is not found")
+            
+            return
         }
         
         guard let new = localStore.createKenzoHistory() else {
             
-            return Logger.shared.log("Can not create KenzoHistory")
+            Logger.shared.log("Can not create KenzoHistory")
+            
+            return
         }
         
         new.name = store.sync { flagShip.name }

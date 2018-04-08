@@ -12,16 +12,22 @@ import SwiftyJSON
 enum BattleType {
     
     case normal
+    
     case combinedAir
+    
     case combinedWater
+    
     case eachCombinedAir
+    
     case eachCombinedWater
+    
     case enemyCombined
 }
 
 enum DamageControlID: Int {
     
     case damageControl = 42
+    
     case goddes = 43
 }
 
@@ -65,7 +71,11 @@ final class CalculateDamageCommand: JSONCommand {
             applyDamage()
             resetDamage()
             
-        default: return Logger.shared.log("Missing API: \(apiResponse.api)")
+        default:
+            
+            Logger.shared.log("Missing API: \(apiResponse.api)")
+            
+            return
         }
     }
     
@@ -127,13 +137,18 @@ extension CalculateDamageCommand {
             print("-------")
             
             store.sync {
+                
                 totalDamages.forEach { damage in
                     
                     let shipId = damage.shipID
-                    guard let ship = aStore.sync(execute: { aStore.ship(by: shipId) }) else { return }
+                    guard let ship = aStore.sync(execute: { aStore.ship(by: shipId) }) else {
+                        
+                        return
+                    }
                     
                     let damagedHp = damage.hp
                     aStore.sync {
+                        
                         if ship.nowhp != damagedHp {
                             
                             print("\(ship.name)(\(ship.id)),HP \(ship.nowhp) -> \(damagedHp)")
@@ -147,15 +162,22 @@ extension CalculateDamageCommand {
         
         // 第二艦隊単独出撃で正しくデータが反映されるように逆順にして計算
         store.sync {
+            
             totalDamages.reversed().forEach { damage in
                 
                 let shipId = damage.shipID
-                guard let ship = aStore.sync(execute: { aStore.ship(by: shipId) }) else { return }
+                guard let ship = aStore.sync(execute: { aStore.ship(by: shipId) }) else {
+                    
+                    return
+                }
                 
                 let damagedHp = damage.hp
                 aStore.sync { ship.nowhp = damagedHp }
                 
-                if damage.useDamageControl { self.removeFirstDamageControl(of: shipId) }
+                if damage.useDamageControl {
+                    
+                    self.removeFirstDamageControl(of: shipId)
+                }
             }
         }
     }
@@ -166,7 +188,9 @@ extension CalculateDamageCommand {
         
         guard let battle = store.sync(execute: { store.battle() }) else {
             
-            return Logger.shared.log("Battle is invalid.")
+            Logger.shared.log("Battle is invalid.")
+            
+            return
         }
         
         store.sync { battle.battleCell = (battle.no == 0 ? nil : battle.no as NSNumber) }
@@ -178,23 +202,36 @@ extension CalculateDamageCommand {
             if let seiku = json["api_data"]["api_kouku"]["api_stage1"]["api_disp_seiku"].int {
                 
                 switch seiku {
+                    
                 case 0: print("制空権 均衡")
+                    
                 case 1: print("制空権 確保")
+                    
                 case 2: print("制空権 優勢")
+                    
                 case 3: print("制空権 劣勢")
+                    
                 case 4: print("制空権 喪失")
+                    
                 default: break
+                    
                 }
             }
             
             if let intercept = json["api_data"]["api_formation"][2].int {
                 
                 switch intercept {
+                    
                 case 1: print("交戦形態 同航戦")
+                    
                 case 2: print("交戦形態 反航戦")
+                    
                 case 3: print("交戦形態 Ｔ字戦有利")
+                    
                 case 4: print("交戦形態 Ｔ字戦不利")
+                    
                 default: break
+                    
                 }
             }
         }
@@ -205,7 +242,10 @@ extension CalculateDamageCommand {
         let store = ServerDataStore.oneTimeEditor()
         store.sync {
             
-            guard let ship = store.ship(by: shipId) else { return }
+            guard let ship = store.ship(by: shipId) else {
+                
+                return
+            }
             
             let (item, damageControl) = ship
                 .equippedItem
@@ -219,14 +259,19 @@ extension CalculateDamageCommand {
             if let validDamageControl = damageControl {
                 
                 switch validDamageControl {
+                    
                 case .damageControl: break
                     
                 case .goddes:
                     ship.fuel = ship.maxFuel
                     ship.bull = ship.maxBull
+                    
                 }
                 
-                guard let equiped = ship.equippedItem.array as? [SlotItem] else { return }
+                guard let equiped = ship.equippedItem.array as? [SlotItem] else {
+                    
+                    return
+                }
                 
                 ship.equippedItem = NSOrderedSet(array: equiped.filter { $0 != item })
                 
@@ -236,14 +281,19 @@ extension CalculateDamageCommand {
             // check extra slot
             let exItemId = store.sync { store.masterSlotItemID(by: ship.slot_ex) }
             
-            guard let exType = DamageControlID(rawValue: exItemId) else { return }
+            guard let exType = DamageControlID(rawValue: exItemId) else {
+                
+                return
+            }
             
             switch exType {
+                
             case .damageControl: break
                 
             case .goddes:
                 ship.fuel = ship.maxFuel
                 ship.bull = ship.maxBull
+                
             }
             
             ship.slot_ex = -1

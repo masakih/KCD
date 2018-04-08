@@ -17,7 +17,10 @@ final class AirbasePlaneStateTransformer: ValueTransformer {
     
     override func transformedValue(_ value: Any?) -> Any? {
         
-        guard let v = value as? Int, v == 2 else { return nil }
+        guard let v = value as? Int, v == 2 else {
+            
+            return nil
+        }
         
         return LocalizedStrings.rotating.string
     }

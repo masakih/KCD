@@ -14,7 +14,10 @@ extension UserDefaults {
     
     private func keyedArchivedObject<T>(forKey key: String) -> T? {
         
-        guard let data = self.object(forKey: key) as? Data else { return nil }
+        guard let data = self.object(forKey: key) as? Data else {
+            
+            return nil
+        }
         
         return NSKeyedUnarchiver.unarchiveObject(with: data) as? T
     }

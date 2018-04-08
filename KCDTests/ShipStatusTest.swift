@@ -16,7 +16,12 @@ class ShipStatusTest: XCTestCase {
         
         let store = ServerDataStore.oneTimeEditor()
         
-        guard let ship = store.ship(by: 1) else { return XCTFail("Can not get ship 1.") }
+        guard let ship = store.ship(by: 1) else {
+            
+            XCTFail("Can not get ship 1.")
+            
+            return
+        }
         
         ship.maxhp = 30
         

@@ -26,7 +26,11 @@ final class MapStartCommand: JSONCommand {
             nextCell()
             updateBattleCell()
             
-        default: return Logger.shared.log("Missing API: \(apiResponse.api)")
+        default:
+            
+            Logger.shared.log("Missing API: \(apiResponse.api)")
+            
+            return
         }
         
         GuardShelterCommand(apiResponse: apiResponse).execute()
@@ -40,17 +44,23 @@ final class MapStartCommand: JSONCommand {
             let mapArea = parameter["api_maparea_id"].int,
             let mapInfo = parameter["api_mapinfo_no"].int else {
                 
-                return Logger.shared.log("startBattle Arguments is wrong")
+                Logger.shared.log("startBattle Arguments is wrong")
+                
+                return
         }
         
         guard let no = data["api_no"].int else {
             
-            return Logger.shared.log("startBattle JSON is wrong")
+            Logger.shared.log("startBattle JSON is wrong")
+            
+            return
         }
         
         guard let battle = store.sync(execute: { self.store.createBattle() }) else {
             
-            return Logger.shared.log("Can not create Battle")
+            Logger.shared.log("Can not create Battle")
+            
+            return
         }
         
         let kcd = ServerDataStore.default
@@ -70,12 +80,16 @@ final class MapStartCommand: JSONCommand {
         guard let cellNumber = data["api_no"].int,
             let eventId = data["api_event_id"].int else {
                 
-                return Logger.shared.log("updateBattleCell JSON is wrong")
+                Logger.shared.log("updateBattleCell JSON is wrong")
+                
+                return
         }
         
         guard let battle = store.sync(execute: { self.store.battle() }) else {
             
-            return Logger.shared.log("Battle is invalid.")
+            Logger.shared.log("Battle is invalid.")
+            
+            return
         }
         
         store.sync {

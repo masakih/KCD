@@ -46,11 +46,18 @@ class HistoryTableViewController: NSViewController {
         
         let store = LocalDataStore.oneTimeEditor()
         
-        guard let controller = controller else { return }
-        guard let selection = controller.selectedObjects as? [NSManagedObject] else { return }
+        guard let controller = controller else {
+            
+            return
+        }
+        guard let selection = controller.selectedObjects as? [NSManagedObject] else {
+            
+            return
+        }
         
         let selectedIndex = controller.selectionIndex
         store.sync {
+            
             selection
                 .compactMap(store.exchange)
                 .forEach(store.delete)
@@ -64,9 +71,18 @@ class HistoryTableViewController: NSViewController {
     
     @IBAction func addMark(_ sender: AnyObject?) {
         
-        guard let clickedRow = tableView?.clickedRow else { return }
-        guard let items = controller?.arrangedObjects as? [HistoryObject] else { return }
-        guard case 0..<items.count = clickedRow else { return }
+        guard let clickedRow = tableView?.clickedRow else {
+            
+            return
+        }
+        guard let items = controller?.arrangedObjects as? [HistoryObject] else {
+            
+            return
+        }
+        guard case 0..<items.count = clickedRow else {
+            
+            return
+        }
         
         let clickedObject = items[clickedRow]
         let predicate = Predicate(\KenzoMark.date, equalTo: clickedObject.date)
@@ -87,17 +103,30 @@ class HistoryTableViewController: NSViewController {
     
     override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
         
-        guard let itemTag = MenuItemTag(rawValue: menuItem.tag) else { return false }
+        guard let itemTag = MenuItemTag(rawValue: menuItem.tag) else {
+            
+            return false
+        }
         
         switch itemTag {
+            
         case .delete:
             return controller.selectionIndex != -1
             
         case .addMark:
             menuItem.isEnabled = false
-            guard let clickedRow = tableView?.clickedRow else { return false }
-            guard let items = controller?.arrangedObjects as? [Markable] else { return false }
-            guard case 0..<items.count = clickedRow else { return false }
+            guard let clickedRow = tableView?.clickedRow else {
+                
+                return false
+            }
+            guard let items = controller?.arrangedObjects as? [Markable] else {
+                
+                return false
+            }
+            guard case 0..<items.count = clickedRow else {
+                
+                return false
+            }
             
             menuItem.isEnabled = true
             if items[clickedRow].mark {

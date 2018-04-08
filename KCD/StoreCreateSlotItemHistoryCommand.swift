@@ -18,7 +18,9 @@ final class StoreCreateSlotItemHistoryCommand: JSONCommand {
             let steel = parameter["api_item3"].int,
             let bauxite = parameter["api_item4"].int else {
                 
-                return Logger.shared.log("Parameter is Wrong")
+                Logger.shared.log("Parameter is Wrong")
+                
+                return
         }
         
         let success = data["api_create_flag"].int ?? 0
@@ -28,18 +30,24 @@ final class StoreCreateSlotItemHistoryCommand: JSONCommand {
         let store = ServerDataStore.default
         guard let flagShip = store.sync(execute: { store.deck(by: 1)?[0] }) else {
             
-            return Logger.shared.log("Flagship is not found")
+            Logger.shared.log("Flagship is not found")
+            
+            return
         }
         
         guard let commanderLv = store.sync(execute: { store.basic()?.level }) else {
             
-            return print("Basic is wrong")
+            Logger.shared.log("Basic is wrong")
+            
+            return
         }
         
         let localStore = LocalDataStore.oneTimeEditor()
         guard let newHistory = localStore.sync(execute: { localStore.createKaihatuHistory() }) else {
             
-            return Logger.shared.log("Can not create new KaihatuHistory entry")
+            Logger.shared.log("Can not create new KaihatuHistory entry")
+            
+            return
         }
         
         localStore.sync {
@@ -66,7 +74,9 @@ final class StoreCreateSlotItemHistoryCommand: JSONCommand {
         
         guard let slotItemId = data["api_slot_item"]["api_slotitem_id"].int else {
             
-            return Logger.shared.log("api_slotitem_id is wrong", value: "")
+            Logger.shared.log("api_slotitem_id is wrong")
+            
+            return ""
         }
         
         let store = ServerDataStore.default

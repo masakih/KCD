@@ -11,8 +11,11 @@ import Cocoa
 enum ChangeHenseiType: Int {
     
     case append
+    
     case replace
+    
     case remove
+    
     case removeAllWithoutFlagship
 }
 
@@ -72,13 +75,19 @@ final class ChangeHenseiCommand: JSONCommand {
             let shipId = parameter["api_ship_id"].int,
             let shipIndex = parameter["api_ship_idx"].int else {
                 
-                return Logger.shared.log("parameter is wrong")
+                Logger.shared.log("parameter is wrong")
+                
+                return
         }
         
         if shipId == -1 {
             
-            guard let shipId = removeShip(deckNumber: deckNumber, index: shipIndex) else { return }
+            guard let shipId = removeShip(deckNumber: deckNumber, index: shipIndex) else {
+                
+                return
+            }
             notify(type: .remove, fleetNumber: deckNumber, position: shipIndex, shipID: shipId)
+            
             return
         }
         
@@ -86,13 +95,20 @@ final class ChangeHenseiCommand: JSONCommand {
             
             excludeShipsWithoutFlagShip(deckNumber: deckNumber)
             notify(type: .removeAllWithoutFlagship)
+            
             return
         }
         
-        guard case 0..<Deck.maxShipCount = shipIndex else { return }
+        guard case 0..<Deck.maxShipCount = shipIndex else {
+            
+            return
+        }
         
         let store = ServerDataStore.oneTimeEditor()
-        guard let deck = store.sync(execute: { store.deck(by: deckNumber) }) else { return }
+        guard let deck = store.sync(execute: { store.deck(by: deckNumber) }) else {
+            
+            return
+        }
         
         // すでに編成されているか？ どこに？
         let (shipDeckNumber, shipDeckIndex) = position(of: shipId)
@@ -134,6 +150,7 @@ final class ChangeHenseiCommand: JSONCommand {
         
         let store = ServerDataStore.default
         return store.sync {
+            
             store
                 .decksSortedById()
                 .lazy
@@ -151,7 +168,9 @@ final class ChangeHenseiCommand: JSONCommand {
         
         guard let deck = store.sync(execute: { store.deck(by: deckNumber) }) else {
             
-            return Logger.shared.log("Deck not found", value: nil)
+            Logger.shared.log("Deck not found")
+            
+            return nil
         }
         
         let shipId = store.sync { deck[index]?.id ?? -1 }
@@ -168,7 +187,9 @@ final class ChangeHenseiCommand: JSONCommand {
         store.sync {
             guard let deck = store.deck(by: deckNumber) else {
                 
-                return Logger.shared.log("Deck not found")
+                Logger.shared.log("Deck not found")
+                
+                return
             }
             
             (1..<Deck.maxShipCount).forEach { deck.setShip(id: -1, for: $0) }
@@ -179,7 +200,10 @@ final class ChangeHenseiCommand: JSONCommand {
         
         func set(_ ships: [Ship], at index: Int, in deck: Deck) {
             
-            guard index < Deck.maxShipCount else { return }
+            guard index < Deck.maxShipCount else {
+                
+                return
+            }
             
             deck.setShip(id: ships.first?.id ?? -1, for: index)
             

@@ -18,7 +18,10 @@ final class ImageView: NSView {
     
     var imageRect: NSRect {
         
-        if images.isEmpty { return .zero }
+        if images.isEmpty {
+            
+            return .zero
+        }
         
         let bounds = self.bounds
         let offset = bounds.width * 0.1 / 2 / 3
@@ -39,7 +42,10 @@ final class ImageView: NSView {
     
     private var imageShadow: NSShadow {
         
-        if let s = internalImageShadow { return s }
+        if let s = internalImageShadow {
+            
+            return s
+        }
         
         let s = NSShadow()
         s.shadowOffset = NSSize(width: 2, height: -2)
@@ -76,6 +82,7 @@ final class ImageView: NSView {
             .enumerated()
             .reversed()
             .forEach {
+                
                 let offsetRect = rect.offsetBy(dx: offset * CGFloat($0.offset), dy: offset * CGFloat($0.offset))
                 let drawRect = imageRect(with: offsetRect, imageSize: $0.element.size)
                 $0.element.draw(in: drawRect, from: .zero, operation: .sourceOver, fraction: CGFloat(alpha))

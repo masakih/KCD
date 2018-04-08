@@ -14,6 +14,7 @@ final class RealPowerUpCommand: JSONCommand {
         
         let store = ServerDataStore.oneTimeEditor()
         store.sync {
+            
             self.parameter["api_id_items"]
                 .integerArray
                 .compactMap(store.ship(by:))

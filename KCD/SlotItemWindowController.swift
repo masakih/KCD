@@ -13,7 +13,9 @@ final class SlotItemWindowController: NSWindowController {
     enum ShowType: Int {
         
         case all = -1
+        
         case nonEquiped = 0
+        
         case equiped = 1
     }
     
@@ -31,6 +33,7 @@ final class SlotItemWindowController: NSWindowController {
         
         get { return UserDefaults.standard[.showEquipmentType].rawValue }
         set {
+            
             notifyChangeValue(forKey: #keyPath(showEquipmentTypeTitle)) {
                 
                 UserDefaults.standard[.showEquipmentType] = ShowType(rawValue: newValue) ?? .all
@@ -42,6 +45,7 @@ final class SlotItemWindowController: NSWindowController {
     var filterPredicate: NSPredicate? {
         
         switch UserDefaults.standard[.showEquipmentType] {
+            
         case .all:
             return nil
             
@@ -53,6 +57,7 @@ final class SlotItemWindowController: NSWindowController {
             return NSPredicate.empty
                 .and(.isNotNil(#keyPath(SlotItem.equippedShip.lv)))
                 .or(.isNotNil(#keyPath(SlotItem.extraEquippedShip.lv)))
+            
         }
     }
     
@@ -65,6 +70,7 @@ final class SlotItemWindowController: NSWindowController {
         case .nonEquiped: return LocalizedStrings.unequiped.string
             
         case .equiped: return LocalizedStrings.equiped.string
+            
         }
     }
     
@@ -94,6 +100,7 @@ extension SlotItemWindowController {
     override var touchBar: NSTouchBar? {
         
         get {
+            
             if let _ = myTouchBar {
                 
                 return myTouchBar

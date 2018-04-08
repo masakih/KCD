@@ -36,7 +36,9 @@ final class ScreenshotLoader {
         
         guard let files = try? FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil) else {
             
-            return Logger.shared.log("can not read list of screenshot directory", value: [])
+            Logger.shared.log("can not read list of screenshot directory")
+            
+            return []
         }
         
         return files.filter(isPicture)
@@ -44,8 +46,14 @@ final class ScreenshotLoader {
     
     private func isPicture(_ url: URL) -> Bool {
                 
-        guard let r = try? url.resourceValues(forKeys: [.typeIdentifierKey]) else { return false }
-        guard let type = r.typeIdentifier else { return false }
+        guard let r = try? url.resourceValues(forKeys: [.typeIdentifierKey]) else {
+            
+            return false
+        }
+        guard let type = r.typeIdentifier else {
+            
+            return false
+        }
         
         return NSImage.imageTypes.contains(type)
     }

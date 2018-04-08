@@ -13,9 +13,13 @@ final class ActinKindTransformer: ValueTransformer {
     private enum AirBaseActionKind: Int {
         
         case standBy
+        
         case sortie
+        
         case airDifence
+        
         case shelter
+        
         case rest
     }
     
@@ -33,6 +37,7 @@ final class ActinKindTransformer: ValueTransformer {
         }
         
         switch type {
+            
         case .standBy: return LocalizedStrings.standBy.string
             
         case .sortie: return LocalizedStrings.sortie.string
@@ -42,6 +47,7 @@ final class ActinKindTransformer: ValueTransformer {
         case .shelter: return LocalizedStrings.shelter.string
             
         case .rest: return LocalizedStrings.rest.string
+            
         }
     }
 }

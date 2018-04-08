@@ -36,6 +36,7 @@ extension Quest {
         case #keyPath(compositStatus): return [#keyPath(state), #keyPath(progress_flag)]
             
         default: return []
+            
         }
     }
     

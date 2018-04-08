@@ -35,6 +35,7 @@ struct LocalizedString: Localizable {
     
     
     init(_ string: String, comment: String) {
+        
         self.key = string
         self.comment = comment
     }
@@ -48,6 +49,7 @@ struct LocalizedStringFromTable: Localizable {
     
     
     init(_ string: String, tableName: String, comment: String) {
+        
         self.key = string
         self.table = tableName
         self.comment = comment

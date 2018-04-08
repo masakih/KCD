@@ -11,10 +11,12 @@ import XCTest
 @testable import KCD
 
 import SwiftyJSON
+import Doutaku
 
 class GuardEscapeTest: XCTestCase {
 
     override func setUp() {
+        
         super.setUp()
         
         let store = TemporaryDataStore.oneTimeEditor()
@@ -25,6 +27,7 @@ class GuardEscapeTest: XCTestCase {
         
         let store = TemporaryDataStore.oneTimeEditor()
         store.guardEscaped().forEach(store.delete)
+        
         super.tearDown()
     }
 
@@ -34,7 +37,9 @@ class GuardEscapeTest: XCTestCase {
         let serverStore = ServerDataStore.default
         
         guard let ship = serverStore.ship(by: shipId) else {
+            
             XCTFail("can not get Ship id \(shipId)")
+            
             return
         }
         
@@ -42,14 +47,16 @@ class GuardEscapeTest: XCTestCase {
         
         let tempStore = TemporaryDataStore.oneTimeEditor()
         guard let g = tempStore.createGuardEscaped() else {
+            
             XCTFail("can not create GuardEscaped")
+            
             return
         }
         
         g.shipID = shipId
         g.ensured = true
         
-        try? tempStore.save()
+        tempStore.save()
         
         XCTAssertTrue(ship.guardEscaped)
     }
@@ -59,11 +66,22 @@ class GuardEscapeTest: XCTestCase {
         
         // 艦隊を設定
         do {
+            
             let store = ServerDataStore.oneTimeEditor()
             
-            guard let deck1 = store.deck(by: 1) else { return XCTFail("Can not get Deck.") }
+            guard let deck1 = store.deck(by: 1) else {
+                
+                XCTFail("Can not get Deck.")
+                
+                return
+            }
             (0...5).forEach { deck1.setShip(id: $0 + 1, for: $0) }
-            guard let deck2 = store.deck(by: 2) else { return XCTFail("Can not get Deck.") }
+            guard let deck2 = store.deck(by: 2) else {
+                
+                XCTFail("Can not get Deck.")
+                
+                return
+            }
             (0...5).forEach { deck2.setShip(id: $0 + 1 + 6, for: $0) }
         }
         
@@ -74,6 +92,7 @@ class GuardEscapeTest: XCTestCase {
             store.guardEscaped().forEach(store.delete)
             store.battles().forEach(store.delete)
             guard let battle = store.createBattle() else {
+                
                 XCTFail("Can not create battle")
                 return
             }
@@ -82,6 +101,7 @@ class GuardEscapeTest: XCTestCase {
         }
         
         do {
+            
             let rawValue: [String: Any] = [
                 "api_result": 1,
                 "api_data": [
@@ -92,7 +112,12 @@ class GuardEscapeTest: XCTestCase {
                 ]
             ]
             
-            guard let json = JSON(rawValue: rawValue) else { return XCTFail("json is nil") }
+            guard let json = JSON(rawValue: rawValue) else {
+                
+                XCTFail("json is nil")
+                
+                return
+            }
             let param = Parameter(["Test": "Test"])
             let resultApi = APIResponse(api: API(endpointPath: Endpoint.battleResult.rawValue), parameter: param, json: json)
             GuardShelterCommand(apiResponse: resultApi).execute()
@@ -124,6 +149,7 @@ class GuardEscapeTest: XCTestCase {
         }
         
         do {
+            
             let store = TemporaryDataStore.oneTimeEditor()
             store.guardEscaped().forEach(store.delete)
             store.battles().forEach(store.delete)
@@ -135,9 +161,15 @@ class GuardEscapeTest: XCTestCase {
         
         // 艦隊を設定
         do {
+            
             let store = ServerDataStore.oneTimeEditor()
             
-            guard let deck1 = store.deck(by: 3) else { return XCTFail("Can not get Deck.") }
+            guard let deck1 = store.deck(by: 3) else {
+                
+                XCTFail("Can not get Deck.")
+                
+                return
+            }
             (0...6).forEach { deck1.setShip(id: $0 + 5, for: $0) }
         }
         
@@ -148,6 +180,7 @@ class GuardEscapeTest: XCTestCase {
             store.guardEscaped().forEach(store.delete)
             store.battles().forEach(store.delete)
             guard let battle = store.createBattle() else {
+                
                 XCTFail("Can not create battle")
                 return
             }
@@ -165,7 +198,12 @@ class GuardEscapeTest: XCTestCase {
                 ]
             ]
             
-            guard let json = JSON(rawValue: rawValue) else { return XCTFail("json is nil") }
+            guard let json = JSON(rawValue: rawValue) else {
+                
+                XCTFail("json is nil")
+                
+                return
+            }
             let param = Parameter(["Test": "Test"])
             let resultApi = APIResponse(api: API(endpointPath: Endpoint.battleResult.rawValue), parameter: param, json: json)
             GuardShelterCommand(apiResponse: resultApi).execute()
@@ -190,6 +228,7 @@ class GuardEscapeTest: XCTestCase {
         }
         
         do {
+            
             let store = TemporaryDataStore.oneTimeEditor()
             store.guardEscaped().forEach(store.delete)
             store.battles().forEach(store.delete)

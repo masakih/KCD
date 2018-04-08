@@ -26,7 +26,11 @@ final class ExternalBrowserWindowController: NSWindowController {
     @objc dynamic var canResize: Bool = true {
         
         willSet {
-            if canResize == newValue { return }
+            
+            if canResize == newValue {
+                
+                return
+            }
             
             if newValue {
                 
@@ -42,7 +46,11 @@ final class ExternalBrowserWindowController: NSWindowController {
     @objc dynamic var canScroll: Bool = true {
         
         willSet {
-            if canScroll == newValue { return }
+            
+            if canScroll == newValue {
+                
+                return
+            }
             
             webView?.mainFrame.frameView.allowsScrolling = newValue
         }
@@ -57,12 +65,19 @@ final class ExternalBrowserWindowController: NSWindowController {
     var windowContentSize: NSSize {
         
         get {
-            guard let window = window else { return .zero }
+            
+            guard let window = window else {
+                
+                return .zero
+            }
             
             return window.contentRect(forFrameRect: window.frame).size
         }
         set {
-            guard let window = window else { return }
+            guard let window = window else {
+                
+                return
+            }
             
             var contentRect: NSRect = .zero
             contentRect.size = newValue
@@ -85,7 +100,10 @@ final class ExternalBrowserWindowController: NSWindowController {
     
     private lazy var bookmarkListViwController: BookmarkListViewController? = { [weak self] in
         
-        guard let `self` = self else { return nil }
+        guard let `self` = self else {
+            
+            return nil
+        }
         
         let controller = BookmarkListViewController()
         self.bookmarkListView = controller.view
@@ -106,13 +124,19 @@ final class ExternalBrowserWindowController: NSWindowController {
         
         canGoBackObservation = webView.observe(\WebView.canGoBack) { [weak self] _, _ in
             
-            guard let `self` = self else { return }
+            guard let `self` = self else {
+                
+                return
+            }
             
             self.goSegment.setEnabled(self.webView.canGoBack, forSegment: 0)
         }
         canGoForwardObservation = webView.observe(\WebView.canGoForward) { [weak self] _, _ in
             
-            guard let `self` = self else { return }
+            guard let `self` = self else {
+                
+                return
+            }
             
             self.goSegment.setEnabled(self.webView.canGoForward, forSegment: 1)
         }
@@ -139,6 +163,7 @@ final class ExternalBrowserWindowController: NSWindowController {
         if !canMovePage {
             
             AppDelegate.shared.createNewBrowser().move(bookmark: bookmark)
+            
             return
         }
         
@@ -171,7 +196,10 @@ extension ExternalBrowserWindowController {
     
     override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
         
-        guard let action = menuItem.action else { return false }
+        guard let action = menuItem.action else {
+            
+            return false
+        }
         
         switch action {
             
@@ -197,12 +225,16 @@ extension ExternalBrowserWindowController {
             
         default:
             return false
+            
         }
     }
     
     @IBAction func selectBookmark(_ sender: AnyObject?) {
         
-        guard let item = sender?.representedObject as? Bookmark else { return }
+        guard let item = sender?.representedObject as? Bookmark else {
+            
+            return
+        }
         
         move(bookmark: item)
     }
@@ -219,7 +251,10 @@ extension ExternalBrowserWindowController {
     
     @IBAction func clickGoBackSegment(_ sender: AnyObject?) {
         
-        guard let cell = goSegment.cell as? NSSegmentedCell else { return }
+        guard let cell = goSegment.cell as? NSSegmentedCell else {
+            
+            return
+        }
         
         let tag = cell.tag(forSegment: cell.selectedSegment)
         switch tag {
@@ -229,12 +264,16 @@ extension ExternalBrowserWindowController {
         case 1: webView.goForward(nil)
             
         default: break
+            
         }
     }
     
     @IBAction func addBookmark(_ sender: AnyObject?) {
         
-        guard let window = window else { return }
+        guard let window = window else {
+            
+            return
+        }
         _ = BookmarkManager.shared.createNewBookmark { bookmark in
             
             bookmark.name = window.title
@@ -251,9 +290,18 @@ extension ExternalBrowserWindowController {
     
     @IBAction func showBookmark(_ sender: AnyObject?) {
         
-        guard let window = window else { return }
-        guard let _ = bookmarkListViwController else { return }
-        guard !bookmarkShowing else { return }
+        guard let window = window else {
+            
+            return
+        }
+        guard let _ = bookmarkListViwController else {
+            
+            return
+        }
+        guard !bookmarkShowing else {
+            
+            return
+        }
         
         bookmarkShowing = true
         
@@ -316,7 +364,10 @@ extension ExternalBrowserWindowController {
     
     @IBAction func increaseWidth(_ sender: AnyObject?) {
         
-        guard let window = window else { return }
+        guard let window = window else {
+            
+            return
+        }
         
         var frame = window.frame
         frame.size.width += 1
@@ -325,7 +376,10 @@ extension ExternalBrowserWindowController {
     
     @IBAction func decreaseWidth(_ sender: AnyObject?) {
         
-        guard let window = window else { return }
+        guard let window = window else {
+            
+            return
+        }
         
         var frame = window.frame
         frame.size.width -= 1
@@ -334,7 +388,10 @@ extension ExternalBrowserWindowController {
     
     @IBAction func increaseHeight(_ sender: AnyObject?) {
         
-        guard let window = window else { return }
+        guard let window = window else {
+            
+            return
+        }
         
         var frame = window.frame
         frame.size.height += 1
@@ -344,7 +401,10 @@ extension ExternalBrowserWindowController {
     
     @IBAction func decreaseHeight(_ sender: AnyObject?) {
         
-        guard let window = window else { return }
+        guard let window = window else {
+            
+            return
+        }
         
         var frame = window.frame
         frame.size.height -= 1
@@ -365,7 +425,10 @@ extension ExternalBrowserWindowController: WebFrameLoadDelegate, WebPolicyDelega
     
     @objc func updateContentVisibleRect(_ timer: Timer) {
         
-        guard let item = timer.userInfo as? Bookmark else { return }
+        guard let item = timer.userInfo as? Bookmark else {
+            
+            return
+        }
         
         contentVisibleRect = item.contentVisibleRect
     }

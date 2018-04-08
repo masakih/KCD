@@ -54,9 +54,13 @@ func rangeReguletor<T>(_ range: ClosedRange<T>) -> (T) -> T {
         let max = range.upperBound
         
         switch $0 {
+            
         case let v where v < min: return min
+            
         case let v where v > max: return max
+            
         default: return $0
+            
         }
     }
 }

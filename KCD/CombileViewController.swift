@@ -17,21 +17,27 @@ final class CombileViewController: NSViewController {
     @IBOutlet private weak var placeholder2: NSView!
     
     @objc dynamic var fleet1TPValue: Int = 0 {
+        
         willSet {
+            
             willChangeValue(forKey: #keyPath(TPValue))
             willChangeValue(forKey: #keyPath(BRankTPValue))
         }
         didSet {
+            
             didChangeValue(forKey: #keyPath(TPValue))
             didChangeValue(forKey: #keyPath(BRankTPValue))
         }
     }
     @objc dynamic var fleet2TPValue: Int = 0 {
+        
         willSet {
+            
             willChangeValue(forKey: #keyPath(TPValue))
             willChangeValue(forKey: #keyPath(BRankTPValue))
         }
         didSet {
+            
             didChangeValue(forKey: #keyPath(TPValue))
             didChangeValue(forKey: #keyPath(BRankTPValue))
         }
@@ -40,42 +46,55 @@ final class CombileViewController: NSViewController {
     @objc dynamic var BRankTPValue: Int { return Int(floor(Double(TPValue) * 0.7)) }
     
     @objc dynamic var fleet1Seiku: Int = 0 {
+        
         willSet {
+            
             willChangeValue(forKey: #keyPath(seiku))
         }
         didSet {
+            
             didChangeValue(forKey: #keyPath(seiku))
         }
     }
     @objc dynamic var fleet2Seiku: Int = 0 {
+        
         willSet {
+            
             willChangeValue(forKey: #keyPath(seiku))
         }
         didSet {
+            
             didChangeValue(forKey: #keyPath(seiku))
         }
     }
     @objc dynamic var seiku: Int { return fleet1Seiku + fleet2Seiku }
     
     @objc dynamic var fleet1CalculatedSeiku: Int = 0 {
+        
         willSet {
+            
             willChangeValue(forKey: #keyPath(seiku))
         }
         didSet {
+            
             didChangeValue(forKey: #keyPath(seiku))
         }
     }
     @objc dynamic var fleet2CalculatedSeiku: Int = 0 {
+        
         willSet {
+            
             willChangeValue(forKey: #keyPath(calculatedSeiku))
         }
         didSet {
+            
             didChangeValue(forKey: #keyPath(calculatedSeiku))
         }
     }
     @objc dynamic var calculatedSeiku: Int { return fleet1CalculatedSeiku + fleet2CalculatedSeiku }
     
     var combineType: CombineType? {
+        
         willSet { willChangeValue(forKey: #keyPath(combineTypeName)) }
         didSet { didChangeValue(forKey: #keyPath(combineTypeName)) }
     }
@@ -99,6 +118,7 @@ final class CombileViewController: NSViewController {
             placeholder.superview?.replaceSubview(placeholder, with: fleet.view)
         }
         fleets.enumerated().forEach { offset, fleet in
+            
             fleet.fleetNumber = offset + 1
         }
         

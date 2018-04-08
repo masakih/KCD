@@ -11,6 +11,7 @@ import XCTest
 @testable import KCD
 
 import SwiftyJSON
+import Doutaku
 
 class CombinedBattleTest: XCTestCase {
     
@@ -28,12 +29,23 @@ class CombinedBattleTest: XCTestCase {
         
         // 艦隊を設定
         do {
+            
             let store = ServerDataStore.oneTimeEditor()
             
-            guard let deck1 = store.deck(by: 1) else { return XCTFail("Can not get Deck.") }
+            guard let deck1 = store.deck(by: 1) else {
+                
+                XCTFail("Can not get Deck.")
+                
+                return
+            }
             (0...5).forEach { deck1.setShip(id: $0 + 1, for: $0) }
             deck1.setShip(id: 0, for: 6)
-            guard let deck2 = store.deck(by: 2) else { return XCTFail("Can not get Deck.") }
+            guard let deck2 = store.deck(by: 2) else {
+                
+                XCTFail("Can not get Deck.")
+                
+                return
+            }
             (0...5).forEach { deck2.setShip(id: $0 + 1 + 6, for: $0) }
             deck2.setShip(id: 0, for: 6)
 
@@ -59,13 +71,19 @@ class CombinedBattleTest: XCTestCase {
         
         // 出撃艦隊を設定
         do {
+            
             let rawValue: [String: Any] = [
                 "api_result": 1,
                 "api_data": [
                     "api_no": 1
                 ]
             ]
-            guard let json = JSON(rawValue: rawValue) else { return XCTFail("json is nil") }
+            guard let json = JSON(rawValue: rawValue) else {
+                
+                XCTFail("json is nil")
+                
+                return
+            }
             XCTAssertNotNil(json["api_result"])
             
             let paramValue: [String: String] = [
@@ -86,6 +104,7 @@ class CombinedBattleTest: XCTestCase {
         
         // battleの生成確認
         do {
+            
             let store = TemporaryDataStore.default
             let battle = store.battle()
             XCTAssertNotNil(battle)
@@ -96,10 +115,12 @@ class CombinedBattleTest: XCTestCase {
     func clear() {
         
         do {
+            
             ResetSortie().reset()
         }
         
         do {
+            
             let store = ServerDataStore.oneTimeEditor()
             
             let ships1 = store.ships(byDeckId: 1)
@@ -108,7 +129,12 @@ class CombinedBattleTest: XCTestCase {
             zip(ships1, shipEquipments).forEach { $0.equippedItem = $1 }
             zip(ships1, shipExSlot).forEach { $0.slot_ex = $1 }
             
-            guard let deck1 = store.deck(by: 1) else { return XCTFail("Can not get Deck.") }
+            guard let deck1 = store.deck(by: 1) else {
+                
+                XCTFail("Can not get Deck.")
+                
+                return
+            }
             savedShips.enumerated().forEach { deck1.setShip(id: $0.element.id, for: $0.offset) }
             
             let ships2 = store.ships(byDeckId: 1)
@@ -117,11 +143,17 @@ class CombinedBattleTest: XCTestCase {
             zip(ships2, shipEquipments[6...]).forEach { $0.equippedItem = $1 }
             zip(ships2, shipExSlot[6...]).forEach { $0.slot_ex = $1 }
             
-            guard let deck2 = store.deck(by: 2) else { return XCTFail("Can not get Deck.") }
+            guard let deck2 = store.deck(by: 2) else {
+                
+                XCTFail("Can not get Deck.")
+                
+                return
+            }
             savedShips.enumerated().forEach { deck2.setShip(id: $0.element.id, for: $0.offset) }
         }
         
         do {
+            
             let store = TemporaryDataStore.default
             let battle = store.battle()
             XCTAssertNil(battle)
@@ -132,6 +164,7 @@ class CombinedBattleTest: XCTestCase {
         
         // 戦闘（昼戦）
         do {
+            
             let rawValue: [String: Any] = [
                 "api_result": 1,
                 "api_data": [
@@ -212,7 +245,12 @@ class CombinedBattleTest: XCTestCase {
                     ]
                 ]
             ]
-            guard let json = JSON(rawValue: rawValue) else { return XCTFail("json is nil") }
+            guard let json = JSON(rawValue: rawValue) else {
+                
+                XCTFail("json is nil")
+                
+                return
+            }
             let param = Parameter(["Test": "Test"])
             let api = APIResponse(api: API(endpointPath: Endpoint.combinedBattle.rawValue), parameter: param, json: json)
             
@@ -221,6 +259,7 @@ class CombinedBattleTest: XCTestCase {
         }
         
         do {
+            
             let store = TemporaryDataStore.default
             let damages = store.damages()
             XCTAssertEqual(damages.count, 12)
@@ -231,6 +270,7 @@ class CombinedBattleTest: XCTestCase {
         
         // 戦闘（夜戦）
         do {
+            
             let rawValue: [String: Any] = [
                 "api_result": 1,
                 "api_data": [
@@ -250,7 +290,12 @@ class CombinedBattleTest: XCTestCase {
                     ]
                 ]
             ]
-            guard let json = JSON(rawValue: rawValue) else { return XCTFail("json is nil") }
+            guard let json = JSON(rawValue: rawValue) else {
+                
+                XCTFail("json is nil")
+                
+                return
+            }
             let param = Parameter(["Test": "Test"])
             let api = APIResponse(api: API(endpointPath: Endpoint.combinedMidnightBattle.rawValue), parameter: param, json: json)
             
@@ -260,10 +305,16 @@ class CombinedBattleTest: XCTestCase {
         
         // 艦娘HP更新
         do {
+            
             let rawValue: [String: Any] = [
                 "api_result": 1
             ]
-            guard let json = JSON(rawValue: rawValue) else { return XCTFail("json is nil") }
+            guard let json = JSON(rawValue: rawValue) else {
+                
+                XCTFail("json is nil")
+                
+                return
+            }
             let param = Parameter(["Test": "Test"])
             let api = APIResponse(api: API(endpointPath: Endpoint.combinedBattleResult.rawValue), parameter: param, json: json)
             
@@ -276,6 +327,7 @@ class CombinedBattleTest: XCTestCase {
         
         // HPチェック
         do {
+            
             let store = ServerDataStore.oneTimeEditor()
             let ships1 = store.ships(byDeckId: 1)
             

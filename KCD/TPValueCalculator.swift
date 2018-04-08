@@ -52,7 +52,10 @@ final class ShipTPValueCalculator: TPValueCalculator {
             return 10
         }
         
-        guard let type = shipType else { return 0 }
+        guard let type = shipType else {
+            
+            return 0
+        }
         
         switch type {
             
@@ -77,6 +80,7 @@ final class ShipTPValueCalculator: TPValueCalculator {
         case .supplyShip: return 15
             
         default: return 0
+            
         }
     }
 }
@@ -92,7 +96,10 @@ final class EquipmentTPValueCalculator: TPValueCalculator {
     
     var value: Int {
         
-        guard let type = EquipmentType(rawValue: slotItem.master_slotItem.type_2) else { return 0 }
+        guard let type = EquipmentType(rawValue: slotItem.master_slotItem.type_2) else {
+            
+            return 0
+        }
         
         switch type {
             
@@ -105,6 +112,7 @@ final class EquipmentTPValueCalculator: TPValueCalculator {
         case .onigiri: return 1
             
         default: return 0
+            
         }
     }
 }

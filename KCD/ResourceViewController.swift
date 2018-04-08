@@ -17,6 +17,7 @@ final class ResourceViewController: NSViewController {
         case #keyPath(shipNumberColor): return [#keyPath(maxChara), #keyPath(shipCount), #keyPath(minimumColoredShipCount)]
             
         default: return []
+            
         }
     }
     

@@ -29,7 +29,10 @@ class ScreenshotRegister {
         
         DispatchQueue(label: "Screenshot queue").async {
             
-            guard let data = image.representation(using: .jpeg, properties: [:]) else { return }
+            guard let data = image.representation(using: .jpeg, properties: [:]) else {
+                
+                return
+            }
             
             let url = self.url
                 .appendingPathComponent(name)
@@ -42,7 +45,8 @@ class ScreenshotRegister {
                 
             } catch {
                 
-                print("Can not write image")
+                Logger.shared.log("Can not write image")
+                
                 return
             }
             
@@ -53,6 +57,7 @@ class ScreenshotRegister {
     func notify(url: URL) {
         
         DispatchQueue.main.async {
+            
             NotificationCenter.default
                 .post(name: .didRegisterScreenshot,
                       object: self,

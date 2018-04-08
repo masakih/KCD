@@ -26,6 +26,7 @@ final class KenzoDockObserver {
     weak var delegate: KenzoDockStatusObserverDelegate? {
         
         didSet {
+            
             delegate?.didChangeState(dock: dock)
         }
     }
@@ -35,6 +36,7 @@ final class KenzoDockObserver {
         self.dock = dock
         
         observation = dock.observe(\KenzoDock.state) { _, _ in
+            
             self.delegate?.didChangeState(dock: self.dock)
         }
     }
@@ -45,8 +47,11 @@ final class KenzoDockStatus: NSObject {
     private enum DockState: Int {
         
         case empty = 0
+        
         case hasShip = 2
+        
         case completed = 3
+        
         case notOpen = -1
         
         case unknown = 999999
@@ -68,6 +73,7 @@ final class KenzoDockStatus: NSObject {
     private var rawState: Int = 0 {
         
         didSet {
+            
             state = DockState(rawValue: rawState) ?? .unknown
         }
     }
@@ -80,11 +86,18 @@ final class KenzoDockStatus: NSObject {
     /// CAUTION: 初回起動時/マスタ更新時にはデータがないので失敗する
     init?(number: Int) {
         
-        guard KenzoDockStatus.valid(number: number) else { return nil }
+        guard KenzoDockStatus.valid(number: number) else {
+            
+            return nil
+        }
         
         self.number = number
         
-        guard let dock = ServerDataStore.default.kenzoDock(by: number) else { return nil }
+        guard let dock = ServerDataStore.default.kenzoDock(by: number) else {
+            
+            return nil
+        }
+        
         self.observer = KenzoDockObserver(dock: dock)
         
         super.init()
@@ -106,6 +119,7 @@ final class KenzoDockStatus: NSObject {
             
         case .unknown:
             Logger.shared.log("unknown State")
+            
         }
         
         delegate?.didUpdate(state: self)
@@ -117,10 +131,14 @@ extension KenzoDockStatus: DockInformationUpdater {
     func update() {
         
         defer {
+            
             delegate?.didUpdate(state: self)
         }
         
-        guard isTasking else { return }
+        guard isTasking else {
+            
+            return
+        }
         
         let compTime = TimeInterval(Int(completeTime / 1_000))
         let diff = compTime - Date().timeIntervalSince1970
@@ -129,8 +147,14 @@ extension KenzoDockStatus: DockInformationUpdater {
         time = max(0, diff)
         
         // notify UserNotification.
-        if didNotify { return }
-        if diff > 0 { return }
+        if didNotify {
+            
+            return
+        }
+        if diff > 0 {
+            
+            return
+        }
         
         let notification = NSUserNotification()
         let format = LocalizedStrings.buildingWillFinish.string

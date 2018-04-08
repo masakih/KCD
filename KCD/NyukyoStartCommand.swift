@@ -17,10 +17,14 @@ final class NyukyoStartCommand: JSONCommand {
     
     override func execute() {
         
-        guard let hi = parameter["api_highspeed"].int, hi != 0 else { return }
+        guard let hi = parameter["api_highspeed"].int, hi != 0 else {
+            
+            return
+        }
         
         let store = ServerDataStore.oneTimeEditor()
         store.sync {
+            
             self.parameter["api_ship_id"]
                 .int
                 .flatMap(store.ship(by:))

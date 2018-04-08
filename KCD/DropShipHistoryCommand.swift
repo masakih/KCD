@@ -17,15 +17,26 @@ final class DropShipHistoryCommand: JSONCommand {
             storeToVisible()
         }
         
-        if api.type != .battleResult { return }
+        if api.type != .battleResult {
+            
+            return
+        }
         
-        guard let shipName = data["api_get_ship"]["api_ship_name"].string else { return }
-        guard let winRank = data["api_win_rank"].string else { return }
+        guard let shipName = data["api_get_ship"]["api_ship_name"].string else {
+            
+            return
+        }
+        guard let winRank = data["api_win_rank"].string else {
+            
+            return
+        }
         
         let tempStore = TemporaryDataStore.default
         guard let battle = tempStore.sync(execute: { tempStore.battle() }) else {
             
-            return Logger.shared.log("Can not get Battle")
+            Logger.shared.log("Can not get Battle")
+            
+            return
         }
         
         let mapAreaId = tempStore.sync { battle.mapArea }
@@ -35,12 +46,16 @@ final class DropShipHistoryCommand: JSONCommand {
         
         guard let mapInfoName = store.sync(execute: { store.mapInfo(area: mapAreaId, no: mapInfoId)?.name }) else {
             
-            return Logger.shared.log("KCMasterMapInfo is not found")
+            Logger.shared.log("KCMasterMapInfo is not found")
+            
+            return
         }
         
         guard let mapAreaName = store.sync(execute: { store.mapArea(by: mapAreaId)?.name }) else {
             
-            return Logger.shared.log("KCMasterMapArea is not found")
+            Logger.shared.log("KCMasterMapArea is not found")
+            
+            return
         }
         
         
@@ -49,7 +64,9 @@ final class DropShipHistoryCommand: JSONCommand {
             
             guard let new = localStore.createHiddenDropShipHistory() else {
                 
-                return Logger.shared.log("Can not create HiddenDropShipHistory")
+                Logger.shared.log("Can not create HiddenDropShipHistory")
+                
+                return
             }
             
             new.shipName = shipName
@@ -67,6 +84,7 @@ final class DropShipHistoryCommand: JSONCommand {
         
         let store = LocalDataStore.oneTimeEditor()
         store.sync {
+            
             let hidden = store.hiddenDropShipHistories()
             _ = hidden.map(store.createDropShipHistory(from:))
             hidden.forEach(store.delete)

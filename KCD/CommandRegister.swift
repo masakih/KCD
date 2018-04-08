@@ -90,7 +90,10 @@ final class CommandRegister {
     
     class func registerClass(_ commandClass: JSONCommand.Type) {
         
-        if registeredClasses.contains(where: { $0 == commandClass }) { return }
+        if registeredClasses.contains(where: { $0 == commandClass }) {
+            
+            return
+        }
         
         registeredClasses.append(commandClass)
     }

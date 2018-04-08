@@ -20,7 +20,10 @@ extension LocalDataStore {
             )
             .and(Predicate(\DropShipHistory.mapArea, in: ["1", "2", "3", "4", "5", "6", "7", "8", "9"]))
         
-        guard let dropHistories = try? objects(of: DropShipHistory.entity, predicate: predicate) else { return [] }
+        guard let dropHistories = try? objects(of: DropShipHistory.entity, predicate: predicate) else {
+            
+            return []
+        }
         
         return dropHistories
     }
@@ -30,6 +33,7 @@ extension LocalDataStore {
         guard let new = insertNewObject(for: DropShipHistory.entity) else {
             
             Logger.shared.log("Can not create DropShipHistory")
+            
             return nil
         }
         
@@ -47,7 +51,10 @@ extension LocalDataStore {
     
     func kaihatuHistories() -> [KaihatuHistory] {
         
-        guard let kaihatuHistories = try? objects(of: KaihatuHistory.entity) else { return [] }
+        guard let kaihatuHistories = try? objects(of: KaihatuHistory.entity) else {
+            
+            return []
+        }
         
         return kaihatuHistories
     }
@@ -61,7 +68,10 @@ extension LocalDataStore {
                     .or(Predicate(isNil: \KaihatuHistory.mark))
         )
         
-        guard let kaihatuHistories = try? objects(of: KaihatuHistory.entity, predicate: predicate) else { return [] }
+        guard let kaihatuHistories = try? objects(of: KaihatuHistory.entity, predicate: predicate) else {
+            
+            return []
+        }
         
         return kaihatuHistories
     }
@@ -75,7 +85,10 @@ extension LocalDataStore {
         
         let predicate = Predicate(\KenzoMark.kDockId, equalTo: dockId)
         
-        guard let kenzoMarks = try? objects(of: KenzoMark.entity, predicate: predicate) else { return nil }
+        guard let kenzoMarks = try? objects(of: KenzoMark.entity, predicate: predicate) else {
+            
+            return nil
+        }
         
         return kenzoMarks.first
     }
@@ -90,7 +103,10 @@ extension LocalDataStore {
             .and(Predicate(\KenzoMark.kaihatusizai, equalTo: docInfo.kaihatusizai))
             .and(Predicate(\KenzoMark.created_ship_id, equalTo: docInfo.shipId))
         
-        guard let kenzoMarks = try? objects(of: KenzoMark.entity, predicate: predicate) else { return nil }
+        guard let kenzoMarks = try? objects(of: KenzoMark.entity, predicate: predicate) else {
+            
+            return nil
+        }
         
         return kenzoMarks.first
     }
@@ -109,7 +125,10 @@ extension LocalDataStore {
                     .or(Predicate(isNil: \KenzoHistory.mark))
         )
         
-        guard let kenzoHistories = try? objects(of: KenzoHistory.entity, predicate: predicate) else { return [] }
+        guard let kenzoHistories = try? objects(of: KenzoHistory.entity, predicate: predicate) else {
+            
+            return []
+        }
         
         return kenzoHistories
     }
@@ -121,7 +140,10 @@ extension LocalDataStore {
     
     func hiddenDropShipHistories() -> [HiddenDropShipHistory] {
         
-        guard let dropShipHistories = try? objects(of: HiddenDropShipHistory.entity) else { return [] }
+        guard let dropShipHistories = try? objects(of: HiddenDropShipHistory.entity) else {
+            
+            return []
+        }
         
         return dropShipHistories
     }

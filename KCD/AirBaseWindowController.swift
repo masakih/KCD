@@ -27,6 +27,7 @@ final class AirBaseWindowController: NSWindowController {
     @objc dynamic var areaId: Int = 0 {
         
         didSet {
+            
             updatePredicate()
             updatePlaneSegment()
         }
@@ -35,6 +36,7 @@ final class AirBaseWindowController: NSWindowController {
     @objc dynamic var rId: Int = 1 {
         
         didSet {
+            
             updatePredicate()
             updatePlaneSegment()
         }
@@ -42,7 +44,10 @@ final class AirBaseWindowController: NSWindowController {
     
     private var areas: [Int] {
         
-        guard let content = airBaseController.content as? [AirBase] else { return [] }
+        guard let content = airBaseController.content as? [AirBase] else {
+            
+            return []
+        }
         
         return content
             .compactMap { $0.area_id }
@@ -56,7 +61,10 @@ final class AirBaseWindowController: NSWindowController {
                 
         contentObservation = airBaseController.observe(\NSArrayController.content) { [weak self] _, _ in
             
-            guard let `self` = self else { return }
+            guard let `self` = self else {
+                
+                return
+            }
             
             self.updateAreaRadio()
             self.updatePlaneSegment()
@@ -75,10 +83,16 @@ final class AirBaseWindowController: NSWindowController {
         let areas = self.areas
         let currentTags = areaMatrix.cells.map { $0.tag }
         
-        if currentTags == areas { return }
+        if currentTags == areas {
+            
+            return
+        }
         
         // 最初の設定以外でareasが空の場合は処理をしない
-        if areas.isEmpty, areaId != 0 { return }
+        if areas.isEmpty, areaId != 0 {
+            
+            return
+        }
         
         let cellCount = areaMatrix.numberOfRows * areaMatrix.numberOfColumns
         if areas.count != cellCount {
@@ -122,7 +136,10 @@ final class AirBaseWindowController: NSWindowController {
     
     private func updatePlaneSegment() {
         
-        guard let content = airBaseController.content as? [AirBase] else { return }
+        guard let content = airBaseController.content as? [AirBase] else {
+            
+            return
+        }
         
         let area = NSCountedSet()
         content.forEach { area.add($0.area_id) }
@@ -144,7 +161,10 @@ extension AirBaseWindowController: NSTableViewDelegate {
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         
-        guard let identifier = tableColumn?.identifier else { return nil }
+        guard let identifier = tableColumn?.identifier else {
+            
+            return nil
+        }
         
         return tableView.makeView(withIdentifier: identifier, owner: nil)
     }

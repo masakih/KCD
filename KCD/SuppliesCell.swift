@@ -13,6 +13,7 @@ final class SuppliesCell: NSCell {
     private enum ResourceType {
         
         case fuel
+        
         case bull
     }
     
@@ -28,28 +29,40 @@ final class SuppliesCell: NSCell {
     
     private var fuelStatusColor: NSColor {
         
-        guard let s = ship else { return redColor }
+        guard let s = ship else {
+            
+            return redColor
+        }
         
         return statusColor(withValue: s.fuel, max: s.maxFuel)
     }
     
     private var bullStatusColor: NSColor {
         
-        guard let s = ship else { return redColor }
+        guard let s = ship else {
+            
+            return redColor
+        }
         
         return statusColor(withValue: s.bull, max: s.maxBull)
     }
     
     private var numberOfFuelColoredCell: Int {
         
-        guard let s = ship else { return 0 }
+        guard let s = ship else {
+            
+            return 0
+        }
         
         return numberOfColoredCell(withValue: s.fuel, max: s.maxFuel)
     }
     
     private var numberOfBullColoredCell: Int {
         
-        guard let s = ship else { return 0 }
+        guard let s = ship else {
+            
+            return 0
+        }
         
         return numberOfColoredCell(withValue: s.bull, max: s.maxBull)
     }
@@ -69,7 +82,10 @@ final class SuppliesCell: NSCell {
     
     private func color(of type: ResourceType, position: Int, border: Int) -> NSColor {
         
-        if position >= border { return backgroundColor }
+        if position >= border {
+            
+            return backgroundColor
+        }
         
         return type == .fuel ? fuelStatusColor : bullStatusColor
     }
@@ -101,11 +117,17 @@ final class SuppliesCell: NSCell {
     
     private func numberOfColoredCell(withValue value: Int, max: Int) -> Int {
         
-        if value >= max { return 10 }
+        if value >= max {
+            
+            return 10
+        }
         
         let ratio = ceil( Double(value) / Double(max) * Double(numberOfCell) )
         
-        if ratio > 9 { return 9 }
+        if ratio > 9 {
+            
+            return 9
+        }
         
         return Int(ratio)
     }
@@ -113,10 +135,15 @@ final class SuppliesCell: NSCell {
     private func statusColor(withValue value: Int, max: Int) -> NSColor {
         
         switch numberOfColoredCell(withValue: value, max: max) {
+            
         case 1, 2, 3: return redColor
+            
         case 4, 5, 6, 7: return orangeColor
+            
         case 8, 9: return yellowColor
+            
         default: return greenColor
+            
         }
     }
 }

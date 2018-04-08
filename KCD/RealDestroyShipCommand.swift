@@ -23,6 +23,7 @@ final class RealDestroyShipCommand: JSONCommand {
                 
                 // remove allEquipment
                 ships.forEach {
+                    
                     $0.equippedItem = []
                     $0.extraItem = nil
                 }

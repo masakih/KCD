@@ -13,8 +13,11 @@ final class BroserWindowController: NSWindowController {
     enum FleetViewPosition: Int {
         
         case above = 0
+        
         case below = 1
+        
         case divided = 2
+        
         case oldStyle = 0xffffffff
     }
     
@@ -25,6 +28,7 @@ final class BroserWindowController: NSWindowController {
         case #keyPath(flagShipName): return [#keyPath(flagShipID)]
             
         default: return []
+            
         }
     }
     
@@ -51,6 +55,7 @@ final class BroserWindowController: NSWindowController {
     
     @objc var flagShipID: Int = 0
     @objc var flagShipName: String? {
+        
         return ServerDataStore.default.ship(by: flagShipID)?.name
     }
     
@@ -95,29 +100,43 @@ final class BroserWindowController: NSWindowController {
         NotificationCenter.default
             .addObserver(forName: .CombinedDidCange, object: nil, queue: nil) {
                 
-                guard UserDefaults.standard[.autoCombinedView] else { return }
-                guard let type = $0.userInfo?[CombinedCommand.userInfoKey] as? CombineType else { return }
+                guard UserDefaults.standard[.autoCombinedView] else {
+                    
+                    return
+                }
+                guard let type = $0.userInfo?[CombinedCommand.userInfoKey] as? CombineType else {
+                    
+                    return
+                }
                 
                 if !Thread.isMainThread { Thread.sleep(forTimeInterval: 0.1) }
                 
                 DispatchQueue.main.async {
                     
                     switch type {
+                        
                     case .cancel:
                         self.hideCombinedView()
                         
                     case .maneuver, .water, .transportation:
                         self.showCombinedView()
+                        
                     }
                 }
         }
         
-        if UserDefaults.standard[.lastHasCombinedView] { showCombinedView() }
+        if UserDefaults.standard[.lastHasCombinedView] {
+            
+            showCombinedView()
+        }
     }
     
     override func swipe(with event: NSEvent) {
         
-        guard UserDefaults.standard[.useSwipeChangeCombinedView] else { return }
+        guard UserDefaults.standard[.useSwipeChangeCombinedView] else {
+            
+            return
+        }
         
         if event.deltaX > 0 {
             
@@ -137,9 +156,15 @@ final class BroserWindowController: NSWindowController {
         
     private func showCombinedView() {
         
-        if isCombinedMode { return }
+        if isCombinedMode {
+            
+            return
+        }
         
-        if fleetViewPosition == .oldStyle { return }
+        if fleetViewPosition == .oldStyle {
+            
+            return
+        }
         
         isCombinedMode = true
         
@@ -160,7 +185,10 @@ final class BroserWindowController: NSWindowController {
     
     private func hideCombinedView() {
         
-        if !isCombinedMode { return }
+        if !isCombinedMode {
+            
+            return
+        }
         
         isCombinedMode = false
         
@@ -200,7 +228,10 @@ extension BroserWindowController {
     // call from menu item
     @IBAction func selectView(_ sender: AnyObject?) {
         
-        guard let tag = sender?.tag else { return }
+        guard let tag = sender?.tag else {
+            
+            return
+        }
         
         showView(number: tag)
     }
@@ -208,7 +239,10 @@ extension BroserWindowController {
     // call from touch bar
     @IBAction func changeMainTab(_ sender: AnyObject?) {
         
-        guard let segment = sender?.selectedSegment else { return }
+        guard let segment = sender?.selectedSegment else {
+            
+            return
+        }
         
         showView(number: segment)
     }
@@ -297,7 +331,10 @@ extension BroserWindowController {
     
     override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
         
-        guard let action: Selector = menuItem.action else { return false }
+        guard let action: Selector = menuItem.action else {
+            
+            return false
+        }
         
         switch action {
             
@@ -362,6 +399,7 @@ extension BroserWindowController {
             
         default:
             return false
+            
         }
     }
 }
@@ -373,13 +411,25 @@ extension BroserWindowController {
     
     private func changeFleetViewForFleetViewPositionIfNeeded(position newPosition: FleetViewPosition) {
         
-        if fleetViewPosition == newPosition { return }
-        if fleetViewPosition != .oldStyle && newPosition != .oldStyle { return }
-        if newPosition == .oldStyle && isCombinedMode { hideCombinedView() }
+        if fleetViewPosition == newPosition {
+            
+            return
+        }
+        if fleetViewPosition != .oldStyle && newPosition != .oldStyle {
+            
+            return
+        }
+        if newPosition == .oldStyle && isCombinedMode {
+            
+            hideCombinedView()
+        }
         
         let type: FleetViewType = (newPosition == .oldStyle) ? .minimumViewType : .detailViewType
         
-        guard let newController = FleetViewController(viewType: type) else { return }
+        guard let newController = FleetViewController(viewType: type) else {
+            
+            return
+        }
         
         newController.enableAnimation = true
         newController.shipOrder = fleetViewController.shipOrder
@@ -390,9 +440,15 @@ extension BroserWindowController {
     
     private func windowHeightForFleetViewPosition(position newPosition: FleetViewPosition) -> CGFloat {
         
-        guard var contentHeight = window!.contentView?.frame.size.height else { return 0.0 }
+        guard var contentHeight = window!.contentView?.frame.size.height else {
+            
+            return 0.0
+        }
         
-        if fleetViewPosition == newPosition { return contentHeight }
+        if fleetViewPosition == newPosition {
+            
+            return contentHeight
+        }
         if fleetViewPosition == .oldStyle {
             
             contentHeight += FleetViewController.heightDifference
@@ -409,7 +465,10 @@ extension BroserWindowController {
         
         var contentRect = window!.frame
         
-        if fleetViewPosition == newPosition { return contentRect }
+        if fleetViewPosition == newPosition {
+            
+            return contentRect
+        }
         if fleetViewPosition == .oldStyle {
             
             contentRect.size.height += FleetViewController.heightDifference
@@ -431,6 +490,7 @@ extension BroserWindowController {
         var flashRect = gameViewController.view.frame
         var flashY: CGFloat
         switch newPosition {
+            
         case .above:
             flashY = contentHeight - flashRect.height - fleetViewController.normalHeight
             
@@ -442,6 +502,7 @@ extension BroserWindowController {
             
         case .oldStyle:
             flashY = contentHeight - flashRect.height - BroserWindowController.flashTopMargin
+            
         }
         
         flashRect.origin.y = flashY
@@ -459,6 +520,7 @@ extension BroserWindowController {
         var fleetViewY: CGFloat
         
         switch newPosition {
+            
         case .above:
             fleetViewHeight = fleetViewController.normalHeight
             fleetViewY = contentHeight - fleetViewHeight
@@ -474,6 +536,7 @@ extension BroserWindowController {
         case .oldStyle:
             fleetViewHeight = FleetViewController.oldStyleFleetViewHeight
             fleetViewY = contentHeight - fleetViewHeight - flashRect.height - BroserWindowController.margin - BroserWindowController.flashTopMargin
+            
         }
         
         fleetListRect.size.height = fleetViewHeight
@@ -484,7 +547,10 @@ extension BroserWindowController {
     
     private func setFleetView(position newPosition: FleetViewPosition, animate: Bool) {
         
-        guard let window = window else { return }
+        guard let window = window else {
+            
+            return
+        }
         
         changeFleetViewForFleetViewPositionIfNeeded(position: newPosition)
         let winFrame = windowFrameForFleetViewPosition(position: newPosition)
@@ -518,7 +584,10 @@ extension BroserWindowController: FleetViewControllerDelegate {
     
     func changeShowsExtShip(_ fleetViewController: FleetViewController, showsExtShip: Bool) {
         
-        guard self.fleetViewController == fleetViewController else { return }
+        guard self.fleetViewController == fleetViewController else {
+            
+            return
+        }
         
         if isExtShpMode && !showsExtShip {
             
@@ -596,11 +665,17 @@ extension BroserWindowController {
         
         informantionViewController.selectionDidChangeHandler = { [weak self] in
             
-            guard let `self` = self else { return }
+            guard let `self` = self else {
+                
+                return
+            }
             
             self.shipTypeButton.dismissPopover(nil)
             
-            guard let button = self.shipTypeButton.view as? NSButton else { return }
+            guard let button = self.shipTypeButton.view as? NSButton else {
+                
+                return
+            }
             button.isHidden = !self.informantionViewController.hasShipTypeSelector
             
             self.shipTypeSegment.bind(.selectedIndex,

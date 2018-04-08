@@ -103,7 +103,10 @@ final class WindowManager {
     
     var isMainWindowMostFront: Bool {
         
-        guard let window = browserWindowController.window else { return false }
+        guard let window = browserWindowController.window else {
+            
+            return false
+        }
         
         return isFrontMostWindow(window)
     }
@@ -146,7 +149,10 @@ extension WindowManager {
     
     private func makeFrontOrOrderOut(_ window: NSWindow?) {
         
-        guard let window = window else { return }
+        guard let window = window else {
+            
+            return
+        }
         
         isFrontMostWindow(window) ? window.orderOut(nil) : window.makeKeyAndOrderFront(nil)
     }
@@ -231,9 +237,18 @@ extension WindowManager {
         
         panel.begin {
             
-            guard $0 == .OK else { return }
-            guard let url = panel.url else { return }
-            guard let array = self.jsonViewWindowController?.commands else { return }
+            guard $0 == .OK else {
+                
+                return
+            }
+            guard let url = panel.url else {
+                
+                return
+            }
+            guard let array = self.jsonViewWindowController?.commands else {
+                
+                return
+            }
             
             let data = NSKeyedArchiver.archivedData(withRootObject: array)
             
@@ -258,14 +273,23 @@ extension WindowManager {
         
         panel.begin {
             
-            guard $0 == .OK else { return }
-            guard let url = panel.url else { return }
+            guard $0 == .OK else {
+                
+                return
+            }
+            guard let url = panel.url else {
+                
+                return
+            }
             
             do {
                 
                 let data = try Data(contentsOf: url)
                 let array = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data)
-                guard let commands = array as? [[String: Any]] else { return }
+                guard let commands = array as? [[String: Any]] else {
+                    
+                    return
+                }
                 
                 self.logedJSONViewWindowController = JSONViewWindowController()
                 self.logedJSONViewWindowController?.commands = commands
@@ -281,7 +305,10 @@ extension WindowManager {
     
     private func setTitle(to menuItem: NSMenuItem, frontWindow window: NSWindow?, show showLabel: String, hide hideLabel: String) {
         
-        guard let window = window else { return }
+        guard let window = window else {
+            
+            return
+        }
         
         if isFrontMostWindow(window) {
             
@@ -295,7 +322,10 @@ extension WindowManager {
     
     func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
         
-        guard let action = menuItem.action else { return false }
+        guard let action = menuItem.action else {
+            
+            return false
+        }
         
         switch action {
             

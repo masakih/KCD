@@ -11,8 +11,11 @@ import Cocoa
 private enum ViewType: Int {
     
     case exp
+    
     case power
+    
     case power2
+    
     case power3
 }
 
@@ -58,6 +61,7 @@ final class ShipViewController: MainTabVIewItemViewController {
     override var selectedShipType: ShipTabType {
         
         didSet {
+            
             shipController.filterPredicate = shipTypePredicte(for: selectedShipType)
             shipController.rearrangeObjects()
         }
@@ -65,8 +69,14 @@ final class ShipViewController: MainTabVIewItemViewController {
     
     @objc var standardDeviation: Double {
         
-        guard let ships = shipController.arrangedObjects as? [Ship], !ships.isEmpty else { return 0.0 }
-        guard let avg = shipController.value(forKeyPath: "arrangedObjects.@avg.lv") as? Double else { return 0.0 }
+        guard let ships = shipController.arrangedObjects as? [Ship], !ships.isEmpty else {
+            
+            return 0.0
+        }
+        guard let avg = shipController.value(forKeyPath: "arrangedObjects.@avg.lv") as? Double else {
+            
+            return 0.0
+        }
         
         let total = ships.reduce(0.0) {
             
@@ -119,7 +129,10 @@ final class ShipViewController: MainTabVIewItemViewController {
                 notificationObserver
                     .addObserver(forName: NSScrollView.didEndLiveScrollNotification, object: $0, queue: .main) {
                         
-                        guard let target = $0.object as? NSScrollView else { return }
+                        guard let target = $0.object as? NSScrollView else {
+                            
+                            return
+                        }
                         
                         let visibleRect = target.documentVisibleRect
                         tableViews
@@ -137,16 +150,27 @@ final class ShipViewController: MainTabVIewItemViewController {
         let newSelection: NSView = {
             
             switch type {
+                
             case .exp: return expTableView
+                
             case .power: return powerTableView
+                
             case .power2: return power2TableView
+                
             case .power3: return power3TableView
+                
             }
         }()
         
-        if currentTableView == newSelection { return }
+        if currentTableView == newSelection {
+            
+            return
+        }
         
-        guard let tableView = currentTableView else { return }
+        guard let tableView = currentTableView else {
+            
+            return
+        }
         
         newSelection.frame = tableView.frame
         newSelection.autoresizingMask = tableView.autoresizingMask
@@ -169,6 +193,7 @@ final class ShipViewController: MainTabVIewItemViewController {
             
         default:
             return -1
+            
         }
     }
     
@@ -182,7 +207,10 @@ extension ShipViewController: NSTableViewDelegate {
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         
-        guard let identifier = tableColumn?.identifier else { return nil }
+        guard let identifier = tableColumn?.identifier else {
+            
+            return nil
+        }
         
         return tableView.makeView(withIdentifier: identifier, owner: nil)
     }

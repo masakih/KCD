@@ -53,6 +53,7 @@ final class Fleet: NSObject {
         guard case 1...4 = number else {
             
             Logger.shared.log("Fleet number out of range")
+            
             return nil
         }
         
@@ -70,7 +71,10 @@ final class Fleet: NSObject {
         ServerDataStore.default
             .future { _ -> Deck? in
                 
-                guard let deck = self.store.sync(execute: { self.store.deck(by: number) }) else { return .none }
+                guard let deck = self.store.sync(execute: { self.store.deck(by: number) }) else {
+                    
+                    return .none
+                }
                 
                 return deck
             }
@@ -84,7 +88,10 @@ final class Fleet: NSObject {
         }
     }
     
-    subscript(_ index: Int) -> Ship? { return store.sync { self.deck?[index] } }
+    subscript(_ index: Int) -> Ship? {
+        
+        return store.sync { self.deck?[index] }
+    }
     
     private func setupDeck(deck: Deck) {
         

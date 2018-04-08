@@ -21,11 +21,15 @@ final class SetPlaneCommand: JSONCommand {
             let rId = parameter["api_base_id"].int,
             let squadronId = parameter["api_squadron_id"].int else {
                 
-                return Logger.shared.log("SetPlaneCommand: Argument is wrong")
+                Logger.shared.log("SetPlaneCommand: Argument is wrong")
+                
+                return
         }
         guard let distance = data["api_distance"].int else {
             
-            return Logger.shared.log("SetPlaneCommand: JSON is wrong")
+            Logger.shared.log("SetPlaneCommand: JSON is wrong")
+            
+            return
         }
         
         let planInfo = data["api_plane_info"][0]
@@ -33,7 +37,9 @@ final class SetPlaneCommand: JSONCommand {
         guard let slotid = planInfo["api_slotid"].int,
             let state = planInfo["api_state"].int else {
                 
-                return Logger.shared.log("api_plane_info is wrong")
+                Logger.shared.log("api_plane_info is wrong")
+                
+                return
         }
         
         let store = ServerDataStore.oneTimeEditor()
@@ -41,7 +47,9 @@ final class SetPlaneCommand: JSONCommand {
             
             guard let airbase = store.airBase(area: areaId, base: rId) else {
                 
-                return Logger.shared.log("AirBase is not found")
+                Logger.shared.log("AirBase is not found")
+                
+                return
             }
             
             let planes = airbase.planeInfo
@@ -49,7 +57,9 @@ final class SetPlaneCommand: JSONCommand {
             guard planes.count >= squadronId,
                 let plane = planes[squadronId - 1] as? AirBasePlaneInfo else {
                     
-                    return Logger.shared.log("AirBase is wrong")
+                    Logger.shared.log("AirBase is wrong")
+                    
+                    return
             }
             
             // TODO: state が 2 の時のみ cond, count, max_count がnilであることを許すようにする

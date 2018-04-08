@@ -47,8 +47,18 @@ final class JSONViewCommand: JSONCommand {
             print("JSONTracker Cought Exception -> \(error)")
         }
         
-        guard let _ = jsonTree else { return Logger.shared.log("jsonTree is nil.") }
-        guard let _ = recieveDate else { return Logger.shared.log("recieveDate is nil.") }
+        guard let _ = jsonTree else {
+            
+            Logger.shared.log("jsonTree is nil.")
+            
+            return
+        }
+        guard let _ = recieveDate else {
+            
+            Logger.shared.log("recieveDate is nil.")
+            
+            return
+        }
         
         DispatchQueue.main.async {
             

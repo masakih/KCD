@@ -23,13 +23,16 @@ class BattleInformationViewController: NSViewController {
     }
     
     private var battle: Battle? {
+        
         didSet { updateProperties() }
     }
     @objc dynamic private var cellNumber: Int = 0
     private var battleCellNumber: Int = 0
     private var isBossCell: Bool = false
     private var deckId: Int = 0 {
+        
         didSet {
+            
             fleetName = ServerDataStore.default.deck(by: deckId)?.name
         }
     }
@@ -38,30 +41,52 @@ class BattleInformationViewController: NSViewController {
     private var mapInfo: Int?
     private var areaNumber: String? {
         
-        guard let mapInfo = self.mapInfo else { return nil }
+        guard let mapInfo = self.mapInfo else {
+            
+            return nil
+        }
         
         let mapArea: String
         switch self.mapArea {
+            
         case let area? where area > 10: mapArea = "E"
+            
         case let area?: mapArea = "\(area)"
+            
         case .none: return nil
+            
         }
         
         return "\(mapArea)-\(mapInfo)"
     }
     private var areaName: String? {
         
-        guard let mapArea = self.mapArea else { return nil }
-        guard let mapInfo = self.mapInfo else { return nil }
+        guard let mapArea = self.mapArea else {
+            
+            return nil
+        }
+        guard let mapInfo = self.mapInfo else {
+            
+            return nil
+        }
         
         return ServerDataStore.default.mapInfo(area: mapArea, no: mapInfo)?.name
     }
     
     @objc private var sortieString: String? {
         
-        guard let fleetName = self.fleetName else { return nil }
-        guard let areaName = self.areaName else { return nil }
-        guard let areaNumber = self.areaNumber else { return nil }
+        guard let fleetName = self.fleetName else {
+            
+            return nil
+        }
+        guard let areaName = self.areaName else {
+            
+            return nil
+        }
+        guard let areaNumber = self.areaNumber else {
+            
+            return nil
+        }
         
         if battleCellNumber == 0 {
             

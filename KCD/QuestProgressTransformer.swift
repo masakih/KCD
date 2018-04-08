@@ -17,20 +17,21 @@ final class QuestProgressTransformer: ValueTransformer {
     
     override func transformedValue(_ value: Any?) -> Any? {
         
-        guard let v = value as? Int else { return nil }
+        guard let v = value as? Int else {
+            
+            return nil
+        }
         
         switch v {
-        case 3:
-            return "100%"
             
-        case 5, 6:
-            return "50%"
+        case 3: return "100%"
             
-        case 9, 10:
-            return "80%"
+        case 5, 6: return "50%"
             
-        default:
-            return ""
+        case 9, 10: return "80%"
+            
+        default: return ""
+            
         }
     }
 }

@@ -41,10 +41,15 @@ extension NotificationCenter {
             .addObserver(forName: name, object: object, queue: nil) { notification in
                 
                 do {
-                    guard let value = try block(notification) else { return }
+                    guard let value = try block(notification) else {
+                        
+                        return
+                    }
                     
                     promise.success(value)
+                    
                 } catch {
+                    
                     promise.failure(error)
                 }
                 

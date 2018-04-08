@@ -52,6 +52,7 @@ final class GameViewController: NSViewController {
         guard let _ = webView.mainFrameURL else {
             
             webView.mainFrameURL = GameViewController.gamePageURL
+            
             return
         }
         
@@ -94,8 +95,14 @@ final class GameViewController: NSViewController {
         
         let panel = ProgressPanel()
         
-        guard let window = view.window else { return }
-        guard let panelWindow = panel.window else { return }
+        guard let window = view.window else {
+            
+            return
+        }
+        guard let panelWindow = panel.window else {
+            
+            return
+        }
         
         panel.title = ""
         panel.message = LocalizedStrings.deletingCacheInfo.string
@@ -114,7 +121,10 @@ final class GameViewController: NSViewController {
         let screenshotBorder = UserDefaults.standard[.screenShotBorderWidth]
         let f = frame.insetBy(dx: -screenshotBorder, dy: -screenshotBorder)
         
-        guard let rep = webView.bitmapImageRepForCachingDisplay(in: f) else { return }
+        guard let rep = webView.bitmapImageRepForCachingDisplay(in: f) else {
+            
+            return
+        }
         
         webView.cacheDisplay(in: frame, to: rep)
         
@@ -130,13 +140,28 @@ final class GameViewController: NSViewController {
         let f = frame.insetBy(dx: -screenshotBorder, dy: -screenshotBorder)
         let windowCoordinateFrame = view.convert(f, to: nil)
         
-        guard let window = view.window else { return Logger.shared.log("Can not get window") }
+        guard let window = view.window else {
+            
+            Logger.shared.log("Can not get window")
+            
+            return
+        }
         let screenCoordinsteFrame = window.convertToScreen(windowCoordinateFrame)
         
-        guard let screen = NSScreen.main else { return Logger.shared.log("Can not get Screen") }
+        guard let screen = NSScreen.main else {
+            
+            Logger.shared.log("Can not get Screen")
+            
+            return
+        }
         let scFrame = screen.frame
         
-        guard let cxt = window.graphicsContext?.cgContext else { return Logger.shared.log("Cannot get Context") }
+        guard let cxt = window.graphicsContext?.cgContext else {
+            
+            Logger.shared.log("Cannot get Context")
+            
+            return
+        }
         let deviceCoordinateFrame = cxt.convertToDeviceSpace(screenCoordinsteFrame)
         let raio = deviceCoordinateFrame.size.width / screenCoordinsteFrame.size.width
         
@@ -145,9 +170,19 @@ final class GameViewController: NSViewController {
                               width: raio * screenCoordinsteFrame.size.width,
                               height: raio * screenCoordinsteFrame.size.height)
         
-        guard let fullSizeImage = CGDisplayCreateImage(CGMainDisplayID()) else { return Logger.shared.log("Can not get Image") }
+        guard let fullSizeImage = CGDisplayCreateImage(CGMainDisplayID()) else {
+            
+            Logger.shared.log("Can not get Image")
+            
+            return
+        }
         
-        guard let image = fullSizeImage.cropping(to: trimRect) else { return Logger.shared.log("Can not trim image") }
+        guard let image = fullSizeImage.cropping(to: trimRect) else {
+            
+            Logger.shared.log("Can not trim image")
+            
+            return
+        }
         
         let rep = NSBitmapImageRep(cgImage: image)
         
@@ -173,15 +208,25 @@ final class GameViewController: NSViewController {
     
     override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
         
-        guard let action: Selector = menuItem.action else { return false }
+        guard let action: Selector = menuItem.action else {
+            
+            return false
+        }
         
         switch action {
             
         case #selector(GameViewController.reloadContent(_:)):
-            guard let _ = webView.mainFrame else { return true }
-            guard let frameURL = webView.mainFrameURL else { return true }
+            guard let _ = webView.mainFrame else {
+                
+                return true
+            }
+            guard let frameURL = webView.mainFrameURL else {
+                
+                return true
+            }
             
             switch frameURL {
+                
             case GameViewController.gamePageURL:
                 menuItem.title = LocalizedStrings.reload.string
                 
@@ -190,6 +235,7 @@ final class GameViewController: NSViewController {
                 
             default:
                 menuItem.title = LocalizedStrings.backToGame.string
+                
             }
             
             return true
@@ -201,6 +247,7 @@ final class GameViewController: NSViewController {
             return true
             
         default: return false
+            
         }
     }
 }
@@ -220,7 +267,10 @@ extension GameViewController: WebFrameLoadDelegate, WebUIDelegate {
     
     func webView(_ sender: WebView!, didFinishLoadFor frame: WebFrame!) {
         
-        guard let path = frame.dataSource?.initialRequest.url?.path else { return }
+        guard let path = frame.dataSource?.initialRequest.url?.path else {
+            
+            return
+        }
         
         let handler: (JSContext?, JSValue?) -> Void = { (_, exception) in
             
@@ -236,7 +286,10 @@ extension GameViewController: WebFrameLoadDelegate, WebUIDelegate {
         
         if path.hasSuffix("gadgets/ifr") {
             
-            guard let context = frame.javaScriptContext else { return }
+            guard let context = frame.javaScriptContext else {
+                
+                return
+            }
             
             context.exceptionHandler = handler
             context.evaluateScript(
@@ -253,7 +306,10 @@ extension GameViewController: WebFrameLoadDelegate, WebUIDelegate {
         
         if path.hasSuffix("app_id=854854") {
             
-            guard let context = frame.javaScriptContext else { return }
+            guard let context = frame.javaScriptContext else {
+                
+                return
+            }
             
             context.exceptionHandler = handler
             context.evaluateScript(
@@ -269,7 +325,10 @@ extension GameViewController: WebFrameLoadDelegate, WebUIDelegate {
             )
             let validIframe = context.objectForKeyedSubscript("validIframe").toInt32()
             
-            guard validIframe != 0 else { return }
+            guard validIframe != 0 else {
+                
+                return
+            }
             
             let top = context.objectForKeyedSubscript("atop").toDouble()
             let left = context.objectForKeyedSubscript("aleft").toDouble()
@@ -281,7 +340,10 @@ extension GameViewController: WebFrameLoadDelegate, WebUIDelegate {
     
     func webView(_ sender: WebView!, contextMenuItemsForElement element: [AnyHashable: Any]!, defaultMenuItems: [Any]!) -> [Any]! {
         
-        guard let menuItems = defaultMenuItems as? [NSMenuItem] else { return [] }
+        guard let menuItems = defaultMenuItems as? [NSMenuItem] else {
+            
+            return []
+        }
         
         return menuItems.filter { !GameViewController.excludeMenuItemTag.contains($0.tag) }
     }

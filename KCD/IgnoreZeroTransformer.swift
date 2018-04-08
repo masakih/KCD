@@ -17,7 +17,10 @@ final class IgnoreZeroTransformer: ValueTransformer {
     
     override func transformedValue(_ value: Any?) -> Any? {
         
-        guard let v = value as? Int, v != 0 else { return nil }
+        guard let v = value as? Int, v != 0 else {
+            
+            return nil
+        }
         
         return v
     }

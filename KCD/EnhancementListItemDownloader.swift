@@ -39,9 +39,15 @@ final class EnhancementListItemDownloader: NSObject, URLSessionDownloadDelegate 
     
     func download(completeHandler: @escaping ([EnhancementListItem]) -> Void) {
         
-        if let _ = plistDownloadTask { return }
+        if let _ = plistDownloadTask {
+            
+            return
+        }
         
-        guard let plistURL = URL(string: "https://osdn.net/projects/kcd/scm/git/KCD/blobs/master/KCD/\(resourceName).\(resourceExtension)?export=raw") else { return }
+        guard let plistURL = URL(string: "https://osdn.net/projects/kcd/scm/git/KCD/blobs/master/KCD/\(resourceName).\(resourceExtension)?export=raw") else {
+            
+            return
+        }
         
         finishOperation = completeHandler
         plistDownloadTask = plistDownloadSession.downloadTask(with: plistURL)
@@ -52,8 +58,14 @@ final class EnhancementListItemDownloader: NSObject, URLSessionDownloadDelegate 
         
         plistDownloadTask = nil
         
-        guard let data = try? Data(contentsOf: location, options: []) else { return }
-        guard let list = NSKeyedUnarchiver.unarchiveObject(with: data as Data) as? [EnhancementListItem] else { return }
+        guard let data = try? Data(contentsOf: location, options: []) else {
+            
+            return
+        }
+        guard let list = NSKeyedUnarchiver.unarchiveObject(with: data as Data) as? [EnhancementListItem] else {
+            
+            return
+        }
         
         finishOperation?(list)
     }
@@ -61,7 +73,8 @@ final class EnhancementListItemDownloader: NSObject, URLSessionDownloadDelegate 
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
         
         if let error = error {
-            print(error.localizedDescription)
+            
+            Logger.shared.log(error.localizedDescription)
         }
         plistDownloadTask = nil
     }

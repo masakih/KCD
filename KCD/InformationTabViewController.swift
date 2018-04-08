@@ -12,12 +12,19 @@ import Cocoa
 enum ShipTabType: Int {
     
     case all = 0
+    
     case destroyer = 1
+    
     case lightCruiser = 2
+    
     case heavyCruiser = 3
+    
     case aircraftCarrier = 4
+    
     case battleShip = 5
+    
     case submarine = 6
+    
     case other = 7
 }
 
@@ -35,11 +42,14 @@ private let shipTypeCategories: [[Int]] = [
 func shipTypePredicte(for type: ShipTabType) -> NSPredicate? {
     
     switch type {
+        
     case .all:
+        
         return nil
         
     case .destroyer, .lightCruiser, .heavyCruiser,
          .aircraftCarrier, .battleShip, .submarine:
+        
         return NSPredicate(#keyPath(Ship.master_ship.stype.id), valuesIn: shipTypeCategories[type.rawValue])
         
     case .other:
@@ -48,7 +58,9 @@ func shipTypePredicte(for type: ShipTabType) -> NSPredicate? {
             .enumerated()
             .filter { $0.offset != 0 && $0.offset != 7 }
             .flatMap { $0.element }
+        
         return .not(NSPredicate(#keyPath(Ship.master_ship.stype.id), valuesIn: omitTypes))
+        
     }
 }
 
@@ -58,18 +70,26 @@ class InformationTabViewController: NSViewController {
     @objc private(set) dynamic var selectedShipType: ShipTabType = .all {
         
         didSet {
-            guard case 0..<tabViewItemViewControllers.count = selectionIndex else { return }
+            guard case 0..<tabViewItemViewControllers.count = selectionIndex else {
+                
+                return
+            }
             tabViewItemViewControllers[selectionIndex].selectedShipType = selectedShipType
         }
     }
     @objc dynamic var selectionIndex: Int = 0 {
         
         willSet {
+            
             unbind(NSBindingName("selectedShipType"))
         }
 
         didSet {
-            guard case 0..<tabViewItemViewControllers.count = selectionIndex else { return }
+            
+            guard case 0..<tabViewItemViewControllers.count = selectionIndex else {
+                
+                return
+            }
             hasShipTypeSelector = tabViewItemViewControllers[selectionIndex].hasShipTypeSelector
 
             bind(NSBindingName("selectedShipType"),
