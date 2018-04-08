@@ -6,22 +6,29 @@
 //  Copyright © 2017年 Hori,Masaki. All rights reserved.
 //
 
+import Doutaku
+
 extension ServerDataStore {
     
     func airBases() -> [AirBase] {
         
-        guard let airbase = try? objects(of: AirBase.entity) else { return [] }
+        guard let airbase = try? objects(of: AirBase.entity) else {
+            
+            return []
+        }
         
         return airbase
     }
     
     func airBase(area: Int, base: Int) -> AirBase? {
         
-        let p = NSPredicate.empty
-            .and(NSPredicate(#keyPath(AirBase.area_id), equal: area))
-            .and(NSPredicate(#keyPath(AirBase.rid), equal: base))
+        let predicate = Predicate(\AirBase.area_id, equalTo: area)
+            .and(Predicate(\AirBase.rid, equalTo: base))
         
-        guard let airBases = try? objects(of: AirBase.entity, predicate: p) else { return nil }
+        guard let airBases = try? objects(of: AirBase.entity, predicate: predicate) else {
+            
+            return nil
+        }
         
         return airBases.first
     }
@@ -33,7 +40,10 @@ extension ServerDataStore {
     
     func basic() -> Basic? {
         
-        guard let basics = try? objects(of: Basic.entity) else { return nil }
+        guard let basics = try? objects(of: Basic.entity) else {
+            
+            return nil
+        }
         
         return basics.first
     }
@@ -45,137 +55,185 @@ extension ServerDataStore {
     
     func decksSortedById() -> [Deck] {
         
-        let sortDec = NSSortDescriptor(key: #keyPath(Deck.id), ascending: true)
+        let sortDecs = SortDescriptors(keyPath: \Deck.id, ascending: true)
         
-        guard let decks = try? objects(of: Deck.entity, sortDescriptors: [sortDec]) else { return [] }
+        guard let decks = try? objects(of: Deck.entity, sortDescriptors: sortDecs) else {
+            
+            return []
+        }
         
         return decks
     }
     
     func deck(by id: Int) -> Deck? {
         
-        let p = NSPredicate(#keyPath(Deck.id), equal: id)
+        let predicate = Predicate(\Deck.id, equalTo: id)
         
-        guard let decks = try? objects(of: Deck.entity, predicate: p) else { return nil }
+        guard let decks = try? objects(of: Deck.entity, predicate: predicate) else {
+            
+            return nil
+        }
         
         return decks.first
     }
     
     func kenzoDock(by dockId: Int) -> KenzoDock? {
         
-        let dockPredicate = NSPredicate(#keyPath(KenzoDock.id), equal: dockId)
+        let predicate = Predicate(\KenzoDock.id, equalTo: dockId)
         
-        guard let kenzoDocks = try? objects(of: KenzoDock.entity, predicate: dockPredicate) else { return nil }
+        guard let kenzoDocks = try? objects(of: KenzoDock.entity, predicate: predicate) else {
+            
+            return nil
+        }
         
         return kenzoDocks.first
     }
     
     func mapArea(by id: Int) -> MasterMapArea? {
         
-        let predicate = NSPredicate(#keyPath(MasterMapArea.id), equal: id)
-        guard let mapAreas = try? objects(of: MasterMapArea.entity, predicate: predicate) else { return nil }
+        let predicate = Predicate(\MasterMapArea.id, equalTo: id)
+        
+        guard let mapAreas = try? objects(of: MasterMapArea.entity, predicate: predicate) else {
+            
+            return nil
+        }
         
         return mapAreas.first
     }
     
     func mapInfo(area: Int, no: Int) -> MasterMapInfo? {
         
-        let predicate = NSPredicate.empty
-            .and(NSPredicate(#keyPath(MasterMapInfo.maparea_id), equal: area))
-            .and(NSPredicate(#keyPath(MasterMapInfo.no), equal: no))
+        let predicate = Predicate(\MasterMapInfo.maparea_id, equalTo: area)
+            .and(Predicate(\MasterMapInfo.no, equalTo: no))
         
-        guard let mapInfos = try? objects(of: MasterMapInfo.entity, predicate: predicate) else { return nil }
+        guard let mapInfos = try? objects(of: MasterMapInfo.entity, predicate: predicate) else {
+            
+            return nil
+        }
         
         return mapInfos.first
     }
     
     func masterMission(by id: Int) -> MasterMission? {
         
-        let p = NSPredicate(#keyPath(MasterMission.id), equal: id)
+        let predicate = Predicate(\MasterMission.id, equalTo: id)
         
-        guard let missions = try? objects(of: MasterMission.entity, predicate: p) else { return nil }
+        guard let missions = try? objects(of: MasterMission.entity, predicate: predicate) else {
+            
+            return nil
+        }
         
         return missions.first
     }
     
     func masterShips() -> [MasterShip] {
         
-        guard let ships = try? objects(of: MasterShip.entity) else { return [] }
+        guard let ships = try? objects(of: MasterShip.entity) else {
+            
+            return []
+        }
         
         return ships
     }
     
     func sortedMasterShipsById() -> [MasterShip] {
         
-        let sortDesc = NSSortDescriptor(key: #keyPath(MasterShip.id), ascending: true)
+        let sortDescs = SortDescriptors(keyPath: \MasterShip.id, ascending: true)
         
-        guard let ships = try? objects(of: MasterShip.entity, sortDescriptors: [sortDesc]) else { return [] }
+        guard let ships = try? objects(of: MasterShip.entity, sortDescriptors: sortDescs) else {
+            
+            return []
+        }
         
         return ships
     }
     
     func masterShip(by id: Int) -> MasterShip? {
         
-        let p = NSPredicate(#keyPath(MasterShip.id), equal: id)
+        let predicate = Predicate(\MasterShip.id, equalTo: id)
         
-        guard let ships = try? objects(of: MasterShip.entity, predicate: p) else { return nil }
+        guard let ships = try? objects(of: MasterShip.entity, predicate: predicate) else {
+            
+            return nil
+        }
         
         return ships.first
     }
     
     func sortedMasterSlotItemsById() -> [MasterSlotItem] {
         
-        let sortDesc = NSSortDescriptor(key: #keyPath(MasterSlotItem.id), ascending: true)
+        let sortDescs = SortDescriptors(keyPath: \MasterSlotItem.id, ascending: true)
         
-        guard let masterSlotItems = try? objects(of: MasterSlotItem.entity, sortDescriptors: [sortDesc]) else { return [] }
+        guard let masterSlotItems = try? objects(of: MasterSlotItem.entity, sortDescriptors: sortDescs) else {
+            
+            return []
+        }
         
         return masterSlotItems
     }
     
     func masterSlotItems() -> [MasterSlotItem] {
         
-        guard let masterSlotItems = try? objects(of: MasterSlotItem.entity) else { return [] }
+        guard let masterSlotItems = try? objects(of: MasterSlotItem.entity) else {
+            
+            return []
+        }
         
         return masterSlotItems
     }
     
     func masterSlotItem(by id: Int) -> MasterSlotItem? {
         
-        let p = NSPredicate(#keyPath(MasterSlotItem.id), equal: id)
+        let predicate = Predicate(\MasterSlotItem.id, equalTo: id)
         
-        guard let masterSlotItems = try? objects(of: MasterSlotItem.entity, predicate: p) else { return nil }
+        guard let masterSlotItems = try? objects(of: MasterSlotItem.entity, predicate: predicate) else {
+            
+            return nil
+        }
         
         return masterSlotItems.first
     }
     
     func masterSlotItemEquipType(by id: Int) -> MasterSlotItemEquipType? {
         
-        let predicate = NSPredicate(#keyPath(MasterSlotItemEquipType.id), equal: id)
+        let predicate = Predicate(\MasterSlotItemEquipType.id, equalTo: id)
         
-        guard let types = try? objects(of: MasterSlotItemEquipType.entity, predicate: predicate) else { return nil }
+        guard let types = try? objects(of: MasterSlotItemEquipType.entity, predicate: predicate) else {
+            
+            return nil
+        }
         
         return types.first
     }
     
     func masterSTypes() -> [MasterSType] {
         
-        guard let masterSTypes = try? objects(of: MasterSType.entity) else { return [] }
+        guard let masterSTypes = try? objects(of: MasterSType.entity) else {
+            
+            return []
+        }
         
         return masterSTypes
     }
     
     func sortedMasterSTypesById() -> [MasterSType] {
         
-        let sortDesc = NSSortDescriptor(key: #keyPath(MasterSType.id), ascending: true)
+        let sortDescs = SortDescriptors(keyPath: \MasterSType.id, ascending: true)
         
-        guard let masterSTypes = try? objects(of: MasterSType.entity, sortDescriptors: [sortDesc]) else { return [] }
+        guard let masterSTypes = try? objects(of: MasterSType.entity, sortDescriptors: sortDescs) else {
+            
+            return []
+        }
         
         return masterSTypes
     }
     
     func material() -> Material? {
         
-        guard let materials = try? objects(of: Material.entity) else { return nil }
+        guard let materials = try? objects(of: Material.entity) else {
+            
+            return nil
+        }
         
         return materials.first
     }
@@ -187,57 +245,82 @@ extension ServerDataStore {
     
     func nyukyoDock(by id: Int) -> NyukyoDock? {
         
-        let p = NSPredicate(#keyPath(NyukyoDock.id), equal: id)
+        let predicate = Predicate(\NyukyoDock.id, equalTo: id)
         
-        guard let ndocks = try? objects(of: NyukyoDock.entity, predicate: p) else { return nil }
+        guard let ndocks = try? objects(of: NyukyoDock.entity, predicate: predicate) else {
+            
+            return nil
+        }
         
         return ndocks.first
     }
     
     func ships(byDeckId deckId: Int) -> [Ship] {
         
-        let predicate = NSPredicate(#keyPath(Deck.id), equal: deckId)
+        let predicate = Predicate(\Deck.id, equalTo: deckId)
         
-        guard let decks = try? objects(of: Deck.entity, predicate: predicate) else { return [] }
-        guard let deck = decks.first else { return [] }
+        guard let decks = try? objects(of: Deck.entity, predicate: predicate) else {
+            
+            return []
+        }
+        
+        guard let deck = decks.first else {
+            
+            return []
+        }
         
         return deck[0..<Deck.maxShipCount]
     }
     
     func ship(by shipId: Int) -> Ship? {
         
-        if shipId < 1 { return nil }
+        if shipId < 1 {
+            
+            return nil
+        }
         
-        let predicate = NSPredicate(#keyPath(Ship.id), equal: shipId)
+        let predicate = Predicate(\Ship.id, equalTo: shipId)
         
-        guard let ships = try? objects(of: Ship.entity, predicate: predicate) else { return nil }
+        guard let ships = try? objects(of: Ship.entity, predicate: predicate) else {
+            
+            return nil
+        }
         
         return ships.first
     }
     
     func ships(by shipId: Int) -> [Ship] {
         
-        let predicate = NSPredicate(#keyPath(Ship.id), equal: shipId)
+        let predicate = Predicate(\Ship.id, equalTo: shipId)
         
-        guard let ships = try? objects(of: Ship.entity, predicate: predicate) else { return [] }
+        guard let ships = try? objects(of: Ship.entity, predicate: predicate) else {
+            
+            return []
+        }
         
         return ships
     }
     
     func ships(exclude shipIds: [Int]) -> [Ship] {
         
-        let predicate = NSPredicate.not(NSPredicate(#keyPath(Ship.id), valuesIn: shipIds))
+        let predicate = Predicate(\Ship.id, in: shipIds).negate()
         
-        guard let ships = try? objects(of: Ship.entity, predicate: predicate) else { return [] }
+        guard let ships = try? objects(of: Ship.entity, predicate: predicate) else {
+            
+            return []
+        }
         
         return ships
     }
     
     func shipsInFleet() -> [Ship] {
         
-        let predicate = NSPredicate(#keyPath(Ship.fleet), notEqual: 0)
+        let predicate = Predicate(\Ship.fleet, notEqualTo: 0)
         
-        guard let ships = try? objects(of: Ship.entity, predicate: predicate) else { return [] }
+        guard let ships = try? objects(of: Ship.entity, predicate: predicate) else {
+            
+            return []
+        }
         
         return ships
     }
@@ -249,55 +332,79 @@ extension ServerDataStore {
     
     func masterSlotItemID(by slotItemId: Int) -> Int {
         
-        if slotItemId < 1 { return 0 }
+        if slotItemId < 1 {
+            
+            return 0
+        }
         
-        let predicate = NSPredicate(#keyPath(SlotItem.id), equal: slotItemId)
+        let predicate = Predicate(\SlotItem.id, equalTo: slotItemId)
         
-        guard let slotItems = try? objects(of: SlotItem.entity, predicate: predicate) else { return 0 }
-        guard let slotItem = slotItems.first else { return 0 }
+        guard let slotItems = try? objects(of: SlotItem.entity, predicate: predicate) else {
+            
+            return 0
+        }
+        guard let slotItem = slotItems.first else {
+            
+            return 0
+        }
         
         return slotItem.master_slotItem.id
     }
     
     func slotItem(by itemId: Int) -> SlotItem? {
         
-        let p = NSPredicate(#keyPath(SlotItem.id), equal: itemId)
+        let predicate = Predicate(\SlotItem.id, equalTo: itemId)
         
-        guard let slotItems = try? objects(of: SlotItem.entity, predicate: p) else { return nil }
+        guard let slotItems = try? objects(of: SlotItem.entity, predicate: predicate) else {
+            
+            return nil
+        }
         
         return slotItems.first
     }
     
     func sortedSlotItemsById() -> [SlotItem] {
         
-        let sortDesc = NSSortDescriptor(key: #keyPath(SlotItem.id), ascending: true)
+        let sortDescs = SortDescriptors(keyPath: \SlotItem.id, ascending: true)
         
-        guard let slotItems = try? objects(of: SlotItem.entity, sortDescriptors: [sortDesc]) else { return [] }
+        guard let slotItems = try? objects(of: SlotItem.entity, sortDescriptors: sortDescs) else {
+            
+            return []
+        }
         
         return slotItems
     }
     
     func slotItems() -> [SlotItem] {
         
-        guard let slotItems = try? objects(of: SlotItem.entity) else { return [] }
+        guard let slotItems = try? objects(of: SlotItem.entity) else {
+            
+            return []
+        }
         
         return slotItems
     }
     
     func slotItems(in itemIds: [Int]) -> [SlotItem] {
         
-        let predicate = NSPredicate(#keyPath(SlotItem.id), valuesIn: itemIds)
+        let predicate = Predicate(\SlotItem.id, in: itemIds)
         
-        guard let slotItems = try? objects(of: SlotItem.entity, predicate: predicate) else { return [] }
+        guard let slotItems = try? objects(of: SlotItem.entity, predicate: predicate) else {
+            
+            return []
+        }
         
         return slotItems
     }
     
     func slotItems(exclude itemIds: [Int]) -> [SlotItem] {
         
-        let predicate = NSPredicate.not(NSPredicate(#keyPath(SlotItem.id), valuesIn: itemIds))
+        let predicate = Predicate(\SlotItem.id, in: itemIds).negate()
         
-        guard let slotItems = try? objects(of: SlotItem.entity, predicate: predicate) else { return [] }
+        guard let slotItems = try? objects(of: SlotItem.entity, predicate: predicate) else {
+            
+            return []
+        }
         
         return slotItems
     }
@@ -309,34 +416,46 @@ extension ServerDataStore {
     
     func quests() -> [Quest] {
         
-        guard let quests = try? objects(of: Quest.entity) else { return [] }
+        guard let quests = try? objects(of: Quest.entity) else {
+            
+            return []
+        }
         
         return quests
     }
     
     func quest(by no: Int) -> Quest? {
         
-        let p = NSPredicate(#keyPath(Quest.no), equal: no)
+        let predicate = Predicate(\Quest.no, equalTo: no)
         
-        guard let quests = try? objects(of: Quest.entity, predicate: p) else { return nil }
+        guard let quests = try? objects(of: Quest.entity, predicate: predicate) else {
+            
+            return nil
+        }
         
         return quests.first
     }
     
     func quests(in range: CountableClosedRange<Int>) -> [Quest] {
         
-        let p = NSPredicate(#keyPath(Quest.no), valuesIn: range.map {$0})
+        let predicate = Predicate(\Quest.no, in: range.map { $0 })
         
-        guard let quests = try? objects(of: Quest.entity, predicate: p) else { return [] }
+        guard let quests = try? objects(of: Quest.entity, predicate: predicate) else {
+            
+            return []
+        }
         
         return quests
     }
     
     func sortedQuestByNo() -> [Quest] {
         
-        let sortDesc = NSSortDescriptor(key: #keyPath(Quest.no), ascending: true)
+        let sortDescs = SortDescriptors(keyPath: \Quest.no, ascending: true)
         
-        guard let quests = try? objects(of: Quest.entity, sortDescriptors: [sortDesc]) else { return [] }
+        guard let quests = try? objects(of: Quest.entity, sortDescriptors: sortDescs) else {
+            
+            return []
+        }
         
         return quests
     }

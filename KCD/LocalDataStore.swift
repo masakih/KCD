@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import Doutaku
 
 final class LocalDataStore: CoreDataManager {
     

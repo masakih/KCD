@@ -6,6 +6,8 @@
 //  Copyright © 2017年 Hori,Masaki. All rights reserved.
 //
 
+import Doutaku
+
 extension TemporaryDataStore {
     
     func battle() -> Battle? {
@@ -32,9 +34,9 @@ extension TemporaryDataStore {
     
     func sortedDamagesById() -> [Damage] {
         
-        let sortDescriptor = NSSortDescriptor(key: #keyPath(Damage.id), ascending: true)
+        let sortDescriptors = SortDescriptors(keyPath: \Damage.id, ascending: true)
         
-        guard let damages = try? objects(of: Damage.entity, sortDescriptors: [sortDescriptor]) else { return [] }
+        guard let damages = try? objects(of: Damage.entity, sortDescriptors: sortDescriptors) else { return [] }
         
         return damages
     }
@@ -60,18 +62,17 @@ extension TemporaryDataStore {
     
     func ensuredGuardEscaped(byShipId shipId: Int) -> GuardEscaped? {
         
-        let p = NSPredicate.empty
-            .and(NSPredicate(#keyPath(GuardEscaped.shipID), equal: shipId))
-            .and(.true(#keyPath(GuardEscaped.ensured)))
+        let predicate = Predicate(\GuardEscaped.shipID, equalTo: shipId)
+            .and(Predicate(true: \GuardEscaped.ensured))
         
-        guard let escapes = try? objects(of: GuardEscaped.entity, predicate: p) else { return nil }
+        guard let escapes = try? objects(of: GuardEscaped.entity, predicate: predicate) else { return nil }
         
         return escapes.first
     }
     
     func notEnsuredGuardEscaped() -> [GuardEscaped] {
         
-        let predicate = NSPredicate.false(#keyPath(GuardEscaped.ensured))
+        let predicate = Predicate(false: \GuardEscaped.ensured)
         
         guard let escapeds = try? objects(of: GuardEscaped.entity, predicate: predicate) else { return [] }
         

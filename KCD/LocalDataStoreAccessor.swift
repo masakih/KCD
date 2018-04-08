@@ -6,18 +6,19 @@
 //  Copyright © 2017年 Hori,Masaki. All rights reserved.
 //
 
+import Doutaku
+
 extension LocalDataStore {
     
     func unmarkedDropShipHistories(befor days: Int) -> [DropShipHistory] {
         
         let date = Date(timeIntervalSinceNow: TimeInterval(-1 * days * 24 * 60 * 60))
-        let predicate = NSPredicate
-            .and([
-                NSPredicate(#keyPath(DropShipHistory.date), lessThan: date),
-                NSPredicate(#keyPath(DropShipHistory.mark), equal: 0)
-                    .or(.isNil(#keyPath(DropShipHistory.mark))),
-                NSPredicate(#keyPath(DropShipHistory.mapArea), valuesIn: ["1", "2", "3", "4", "5", "6", "7", "8", "9"])
-                ])
+        let predicate = Predicate(\DropShipHistory.date, lessThan: date)
+            .and(
+                Predicate(false: \DropShipHistory.mark)
+                    .or(Predicate(isNil: \DropShipHistory.mark))
+            )
+            .and(Predicate(\DropShipHistory.mapArea, in: ["1", "2", "3", "4", "5", "6", "7", "8", "9"]))
         
         guard let dropHistories = try? objects(of: DropShipHistory.entity, predicate: predicate) else { return [] }
         
@@ -54,12 +55,11 @@ extension LocalDataStore {
     func unmarkedKaihatuHistories(befor days: Int) -> [KaihatuHistory] {
         
         let date = Date(timeIntervalSinceNow: TimeInterval(-1 * days * 24 * 60 * 60))
-        let predicate = NSPredicate
-            .and([
-                NSPredicate(#keyPath(KaihatuHistory.date), lessThan: date),
-                NSPredicate(#keyPath(KaihatuHistory.mark), equal: 0)
-                    .or(.isNil(#keyPath(KaihatuHistory.mark)))
-                ])
+        let predicate = Predicate(\KaihatuHistory.date, lessThan: date)
+            .and(
+                Predicate(false: \KaihatuHistory.mark)
+                    .or(Predicate(isNil: \KaihatuHistory.mark))
+        )
         
         guard let kaihatuHistories = try? objects(of: KaihatuHistory.entity, predicate: predicate) else { return [] }
         
@@ -73,7 +73,7 @@ extension LocalDataStore {
     
     func kenzoMark(byDockId dockId: Int) -> KenzoMark? {
         
-        let predicate = NSPredicate(#keyPath(KenzoMark.kDockId), equal: dockId)
+        let predicate = Predicate(\KenzoMark.kDockId, equalTo: dockId)
         
         guard let kenzoMarks = try? objects(of: KenzoMark.entity, predicate: predicate) else { return nil }
         
@@ -82,14 +82,13 @@ extension LocalDataStore {
     
     func kenzoMark(docInfo: KenzoMarkCommand.KenzoDockInfo) -> KenzoMark? {
         
-        let predicate = NSPredicate.empty
-            .and(NSPredicate(#keyPath(KenzoMark.kDockId), equal: docInfo.dockId))
-            .and(NSPredicate(#keyPath(KenzoMark.fuel), equal: docInfo.fuel))
-            .and(NSPredicate(#keyPath(KenzoMark.bull), equal: docInfo.bull))
-            .and(NSPredicate(#keyPath(KenzoMark.steel), equal: docInfo.steel))
-            .and(NSPredicate(#keyPath(KenzoMark.bauxite), equal: docInfo.bauxite))
-            .and(NSPredicate(#keyPath(KenzoMark.kaihatusizai), equal: docInfo.kaihatusizai))
-            .and(NSPredicate(#keyPath(KenzoMark.created_ship_id), equal: docInfo.shipId))
+        let predicate = Predicate(\KenzoMark.kDockId, equalTo: docInfo.dockId)
+            .and(Predicate(\KenzoMark.fuel, equalTo: docInfo.fuel))
+            .and(Predicate(\KenzoMark.bull, equalTo: docInfo.bull))
+            .and(Predicate(\KenzoMark.steel, equalTo: docInfo.bull))
+            .and(Predicate(\KenzoMark.bauxite, equalTo: docInfo.bauxite))
+            .and(Predicate(\KenzoMark.kaihatusizai, equalTo: docInfo.kaihatusizai))
+            .and(Predicate(\KenzoMark.created_ship_id, equalTo: docInfo.shipId))
         
         guard let kenzoMarks = try? objects(of: KenzoMark.entity, predicate: predicate) else { return nil }
         
@@ -104,12 +103,11 @@ extension LocalDataStore {
     func unmarkedKenzoHistories(befor days: Int) -> [KenzoHistory] {
         
         let date = Date(timeIntervalSinceNow: TimeInterval(-1 * days * 24 * 60 * 60))
-        let predicate = NSPredicate
-            .and([
-                NSPredicate(#keyPath(KenzoHistory.date), lessThan: date),
-                NSPredicate(#keyPath(KenzoHistory.mark), equal: 0)
-                    .or(.isNil(#keyPath(KenzoHistory.mark)))
-                ])
+        let predicate = Predicate(\KenzoHistory.date, lessThan: date)
+            .and(
+                Predicate(\KenzoHistory.mark, equalTo: false)
+                    .or(Predicate(isNil: \KenzoHistory.mark))
+        )
         
         guard let kenzoHistories = try? objects(of: KenzoHistory.entity, predicate: predicate) else { return [] }
         
