@@ -17,6 +17,7 @@ final class WindowManager {
     
         let vc = JSONViewWindowController()
         vc.showWindow(nil)
+        
         return vc
     }()
     #else
@@ -28,6 +29,7 @@ final class WindowManager {
     
         let vc = UITestWindowController()
         vc.showWindow(nil)
+        
         return vc
     }()
     #else
@@ -330,50 +332,64 @@ extension WindowManager {
         switch action {
             
         case #selector(WindowManager.showHideHistory(_:)):
+            
             setTitle(to: menuItem,
                      frontWindow: historyWindowController.window,
                      show: LocalizedStrings.showHistory.string,
                      hide: LocalizedStrings.hideHistory.string)
+            
             return true
             
         case #selector(WindowManager.showHideSlotItemWindow(_:)):
+            
             setTitle(to: menuItem,
                      frontWindow: slotItemWindowController.window,
                      show: LocalizedStrings.showSlotItem.string,
                      hide: LocalizedStrings.hideSlotItem.string)
+            
             return true
             
         case #selector(WindowManager.showHideUpgradableShipWindow(_:)):
+            
             setTitle(to: menuItem,
                      frontWindow: upgradableShipWindowController.window,
                      show: LocalizedStrings.showUpgradableShips.string,
                      hide: LocalizedStrings.hideUpgradableShips.string)
+            
             return true
             
         case #selector(WindowManager.showHideScreenshotListWindow(_:)):
+            
             setTitle(to: menuItem,
                      frontWindow: screenshotListWindowController.window,
                      show: LocalizedStrings.showScreenshotList.string,
                      hide: LocalizedStrings.hideScreenshotList.string)
+            
             return true
             
         case #selector(WindowManager.showHideAirBaseInfoWindow(_:)):
+            
             setTitle(to: menuItem,
                      frontWindow: airBaseWindowController.window,
                      show: LocalizedStrings.showAirbaseInfo.string,
                      hide: LocalizedStrings.hideAirbaseInfo.string)
+            
             return true
             
         case #selector(WindowManager.showHidePreferencePanle(_:)):
+            
             return true
             
         case #selector(WindowManager.openNewBrowser(_:)):
+            
             return true
             
         case #selector(WindowManager.selectBookmark(_:)):
+            
             return true
             
         case #selector(WindowManager.showWindowAduster(_:)):
+            
             return true
             
         case #selector(WindowManager.showShipWindow(_:)),
@@ -389,6 +405,7 @@ extension WindowManager {
             return canSaveLog
             
         default:
+            
             return false
         }
     }

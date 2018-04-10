@@ -94,6 +94,7 @@ class GuardEscapeTest: XCTestCase {
             guard let battle = store.createBattle() else {
                 
                 XCTFail("Can not create battle")
+                
                 return
             }
             
@@ -182,6 +183,7 @@ class GuardEscapeTest: XCTestCase {
             guard let battle = store.createBattle() else {
                 
                 XCTFail("Can not create battle")
+                
                 return
             }
             

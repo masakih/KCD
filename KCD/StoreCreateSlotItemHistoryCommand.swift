@@ -80,6 +80,7 @@ final class StoreCreateSlotItemHistoryCommand: JSONCommand {
         }
         
         let store = ServerDataStore.default
+        
         return store.sync { store.masterSlotItem(by: slotItemId)?.name ?? "" }
     }
 }

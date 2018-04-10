@@ -216,6 +216,7 @@ final class GameViewController: NSViewController {
         switch action {
             
         case #selector(GameViewController.reloadContent(_:)):
+            
             guard let _ = webView.mainFrame else {
                 
                 return true
@@ -241,9 +242,11 @@ final class GameViewController: NSViewController {
             return true
             
         case #selector(GameViewController.deleteCacheAndReload(_:)):
+            
             return true
             
         case #selector(GameViewController.screenShot(_:)):
+            
             return true
             
         default: return false

@@ -139,6 +139,7 @@ final class TiledImageView: NSView {
             
             imageCell.image = nil
             needsDisplay = true
+            
             return
         }
         

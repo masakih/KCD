@@ -86,12 +86,14 @@ private extension EnhancementListItem {
         guard line.count == 6 else {
             
             print("count not 6")
+            
             return nil
         }
         
         guard let i = equSets.index(where: { $0.identifier == line[0] }) else {
             
             print("Do not find \(line[0]) in EnhancementListItem.txt")
+            
             return nil
         }
         
@@ -126,6 +128,7 @@ func loadFile(path: String) -> String? {
     } catch {
         
         print("Can not create String from \(path)")
+        
         return nil
     }
 }
@@ -148,7 +151,9 @@ let requiredEquipmentSet = requiredEquipmentSetText
     .components(separatedBy: "\n")
     .map { TabSeparatedLine(value: $0) }
     .flatMap { (line: TabSeparatedLine) -> ThreeItemsQueue<TabSeparatedLine> in
+        
         threeLines.push(item: line)
+        
         return threeLines
     }
     .map { generate(threeLines: $0) }

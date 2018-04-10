@@ -189,9 +189,11 @@ final class ShipViewController: MainTabVIewItemViewController {
             return cell?.tag(forSegment: segmented.selectedSegment) ?? -1
             
         case let control as NSControl:
+            
             return control.tag
             
         default:
+            
             return -1
             
         }

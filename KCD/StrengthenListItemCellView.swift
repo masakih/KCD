@@ -62,6 +62,7 @@ final class StrengthenListItemCellView: NSTableCellView {
     }
     
     @objc var targetEquipment: String? {
+        
         return item?.targetEquipment
     }
     

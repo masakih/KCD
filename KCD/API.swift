@@ -136,9 +136,11 @@ private func apiType(of endpoint: Endpoint) -> APIType {
     switch endpoint {
         
     case .port:
+        
         return .port
         
     case .deck, .deckPort, .presetSelect:
+        
         return .deck
         
     case .battle,
@@ -148,18 +150,23 @@ private func apiType(of endpoint: Endpoint) -> APIType {
          .airBattle, .ldAirBattle, .combinedLdAirBattle,
          .midnightBattle, .midnightSpMidnight,
          .combinedMidnightBattle, .combinedEcMidnightBattle, .combinedSpMidnight:
+        
         return .battle
         
     case .battleResult, .combinedBattleResult:
+        
         return .battleResult
         
     case .goback, .gobakAlone:
+        
         return .guardEscape
         
     case .start, .next:
+        
         return .map
         
     default:
+        
         return .other
         
     }

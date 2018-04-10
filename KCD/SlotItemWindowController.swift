@@ -47,13 +47,16 @@ final class SlotItemWindowController: NSWindowController {
         switch UserDefaults.standard[.showEquipmentType] {
             
         case .all:
+            
             return nil
             
         case .nonEquiped:
+            
             return NSPredicate.isNil(#keyPath(SlotItem.equippedShip.lv))
                 .and(.isNil(#keyPath(SlotItem.extraEquippedShip.lv)))
             
         case .equiped:
+            
             return NSPredicate.empty
                 .and(.isNotNil(#keyPath(SlotItem.equippedShip.lv)))
                 .or(.isNotNil(#keyPath(SlotItem.extraEquippedShip.lv)))
@@ -110,6 +113,7 @@ extension SlotItemWindowController {
             Bundle.main.loadNibNamed(NSNib.Name("SlotItemWindowTouchBar"),
                                      owner: self,
                                      topLevelObjects: &topLevel)
+            
             return myTouchBar
         }
         set {}

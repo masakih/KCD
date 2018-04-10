@@ -65,11 +65,9 @@ final class GuardShelterCommand: JSONCommand {
                 
             }
             
-        case 3:
-            return store.sync { store.deck(by: 3)?.shipId(of: damagedPos - 1) }
+        case 3: return store.sync { store.deck(by: 3)?.shipId(of: damagedPos - 1) }
             
-        default:
-            return nil
+        default: return nil
             
         }
     }

@@ -27,6 +27,7 @@ extension UserDefaults {
         guard let object = object else {
             
             self.removeObject(forKey: key)
+            
             return
         }
         

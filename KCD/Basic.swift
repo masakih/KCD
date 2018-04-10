@@ -8,7 +8,7 @@
 
 import Foundation
 
-// swiftlint:disable variable_name
+// swiftlint:disable identifier_name
 final class Basic: KCManagedObject {
     
     @NSManaged var active_flag: NSNumber?

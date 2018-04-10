@@ -8,7 +8,7 @@
 
 import Foundation
 
-// swiftlint:disable variable_name
+// swiftlint:disable identifier_name
 final class KenzoDock: KCManagedObject {
     
     @NSManaged var complete_time: Int

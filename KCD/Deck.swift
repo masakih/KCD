@@ -8,7 +8,7 @@
 
 import Cocoa
 
-// swiftlint:disable variable_name
+// swiftlint:disable identifier_name
 final class Deck: KCManagedObject {
     
     @NSManaged var flagship: NSNumber?
@@ -28,7 +28,7 @@ final class Deck: KCManagedObject {
     @NSManaged var ship_5: Int
     @NSManaged var ship_6: Int
 }
-// swiftlint:eable variable_name
+// swiftlint:eable identifier_name
 
 extension Deck {
     

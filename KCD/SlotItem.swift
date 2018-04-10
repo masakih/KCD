@@ -8,7 +8,7 @@
 
 import Foundation
 
-// swiftlint:disable variable_name
+// swiftlint:disable identifier_name
 final class SlotItem: KCManagedObject {
     
     @NSManaged var alv: Int
@@ -20,7 +20,7 @@ final class SlotItem: KCManagedObject {
     @NSManaged var master_slotItem: MasterSlotItem
     @NSManaged var extraEquippedShip: Ship?
 }
-// swiftlint:eable variable_name
+// swiftlint:eable identifier_name
 
 extension SlotItem {
     

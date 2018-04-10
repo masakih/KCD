@@ -51,7 +51,11 @@ custom_rules:
         use_nsmanagedobjectcontext:
                 excluded: "ServerDataStore|ResourceHistoryDataStore|LocalDataStore|TemporaryDataStore|BookmarkDataStore|CoreDataManager|CoreDataCore|MOCGenerator"
                 name: "Positive using NSManagedObjectContext"
-                regex: "NSManagedObjectContext\\s"
+                regex: 'NSManagedObjectContext\s'
                 severity: error
         private_iboutlet:
-                regex: "@IBOutlet\\s+(?!private[(\\s])"
+                regex: '@IBOutlet\s+(?!private[(\s])'
+        blank_before_return:
+                name: "Needs blank bfore return"
+                regex: '\S+\R[ \t]*return'
+                severity: error

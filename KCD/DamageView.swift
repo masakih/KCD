@@ -45,15 +45,19 @@ final class DamageView: NSView {
         switch innerDamageType {
             
         case .none:
+            
             return nil
             
         case .slightly:
+            
             return #colorLiteral(red: 1.000, green: 0.956, blue: 0.012, alpha: 0.5)
             
         case .modest:
+            
             return NSColor.orange.withAlphaComponent(0.5)
             
         case .badly:
+            
             return NSColor.red.withAlphaComponent(0.5)
             
         }
@@ -64,15 +68,19 @@ final class DamageView: NSView {
         switch innerDamageType {
             
         case .none:
+            
             return nil
             
         case .slightly:
+            
             return NSColor.orange.withAlphaComponent(0.5)
             
         case .modest:
+            
             return NSColor.orange.withAlphaComponent(0.9)
             
         case .badly:
+            
             return NSColor.red.withAlphaComponent(0.9)
             
         }
@@ -83,9 +91,11 @@ final class DamageView: NSView {
         switch controlSize {
             
         case .regular:
+            
             return pathForRegular
             
         case .small, .mini:
+            
             return pathForSmall
             
         }
@@ -98,9 +108,11 @@ final class DamageView: NSView {
         switch innerDamageType {
             
         case .none:
+            
             return nil
             
         case .slightly:
+            
             return Polygon()
                 .move(to: NSPoint(x: 35.0, y: height - 2.0))
                 .line(to: NSPoint(x: 0.0, y: height - 2.0))
@@ -108,6 +120,7 @@ final class DamageView: NSView {
                 .close()
             
         case .modest:
+            
             return Polygon()
                 .move(to: NSPoint(x: 50.0, y: height - 2.0))
                 .line(to: NSPoint(x: 25.0, y: height - 2.0))
@@ -116,6 +129,7 @@ final class DamageView: NSView {
                 .close()
             
         case .badly:
+            
             return Polygon()
                 .move(to: NSPoint(x: 60.0, y: height - 2.0))
                 .line(to: NSPoint(x: 53.0, y: height - 2.0))
@@ -138,9 +152,11 @@ final class DamageView: NSView {
         switch innerDamageType {
             
         case .none:
+            
             return nil
             
         case .slightly:
+            
             return Polygon()
                 .move(to: NSPoint(x: 35.0, y: height - 2.0))
                 .line(to: NSPoint(x: 0.0, y: height - 2.0))
@@ -148,6 +164,7 @@ final class DamageView: NSView {
                 .close()
             
         case .modest:
+            
             return Polygon()
                 .move(to: NSPoint(x: 50.0, y: height - 2.0))
                 .line(to: NSPoint(x: 25.0, y: height - 2.0))
@@ -156,6 +173,7 @@ final class DamageView: NSView {
                 .close()
             
         case .badly:
+            
             return Polygon()
                 .move(to: NSPoint(x: 55.0, y: height - 2.0))
                 .line(to: NSPoint(x: 48.0, y: height - 2.0))

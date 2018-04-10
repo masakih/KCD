@@ -68,6 +68,7 @@ extension Notification {
         }
         
         let inserted = userInfo[infoKey] as? Set<NSManagedObject>
+        
         return inserted?.compactMap({ $0 as? T }) ?? []
     }
 }

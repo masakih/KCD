@@ -13,8 +13,7 @@ final class AppDelegate: NSObject {
     
     static var shared: AppDelegate {
         
-        // swiftlint:disable:next force_cast
-        return NSApplication.shared.delegate as! AppDelegate
+        return NSApplication.shared.delegate as! AppDelegate    // swiftlint:disable:this force_cast
     }
         
     let appNameForUserAgent: String = "KCD(1.9b36) is not Safari/604.4.7"
@@ -44,9 +43,11 @@ final class AppDelegate: NSObject {
     var screenShotSaveDirectory: String {
         
         get {
+            
             return UserDefaults.standard[.screenShotSaveDirectory] ?? ApplicationDirecrories.pictures.path
         }
         set {
+            
             UserDefaults.standard[.screenShotSaveDirectory] = newValue
         }
     }
@@ -251,12 +252,15 @@ extension AppDelegate {
             return true
             
         case #selector(AppDelegate.removeDatabaseFile(_:)):
+            
             return true
             
         case #selector(openInDeckBuilder(_:)):
+            
             return true
             
         default:
+            
             return windowManager.validateMenuItem(menuItem)
         }
     }

@@ -27,8 +27,7 @@ extension StrengthenListCellType {
         
         let v = tableView.makeView(withIdentifier: cellIdentifier, owner: nil)
         
-        // swiftlint:disable:next force_cast
-        return v as! NSTableCellView
+        return v as! NSTableCellView    // swiftlint:disable:this force_cast
     }
 }
 

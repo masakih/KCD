@@ -111,9 +111,11 @@ class HistoryTableViewController: NSViewController {
         switch itemTag {
             
         case .delete:
+            
             return controller.selectionIndex != -1
             
         case .addMark:
+            
             menuItem.isEnabled = false
             guard let clickedRow = tableView?.clickedRow else {
                 

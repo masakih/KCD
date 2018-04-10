@@ -204,9 +204,11 @@ extension ExternalBrowserWindowController {
         switch action {
             
         case #selector(ExternalBrowserWindowController.addBookmark(_:)):
+            
             return webView.mainFrameURL != nil
             
         case #selector(ExternalBrowserWindowController.showBookmark(_:)):
+            
             if showsBookmarkList() {
                 
                 menuItem.title = LocalizedStrings.hideBookmark.string
@@ -215,15 +217,19 @@ extension ExternalBrowserWindowController {
                 
                 menuItem.title = LocalizedStrings.showBookmark.string
             }
+            
             return true
             
         case #selector(ExternalBrowserWindowController.selectBookmark(_:)):
+            
             return true
             
         case #selector(ExternalBrowserWindowController.reloadContent(_:)):
+            
             return true
             
         default:
+            
             return false
             
         }

@@ -88,13 +88,16 @@ final class ShipMapper: JSONMapper {
         switch apiResponse.api.endpoint {
             
         case .ship3, .getShip, .shipDeck, .powerup, .slotDeprive:
+            
             return false
             
         case .ship2:
             // 特殊任務のクリア時にship2がapi_shipid付きでリクエストされ、その艦娘のデータしかない時があるため
+            
             return !apiResponse.parameter["api_shipid"].valid
             
         default:
+            
             return true
             
         }
@@ -253,7 +256,9 @@ final class ShipMapper: JSONMapper {
     private func setExtraSlot(_ exSlotItem: Int, to ship: Ship) {
         
         guard exSlotItem != -1, exSlotItem != 0 else {
+            
             ship.extraItem = nil
+            
             return
         }
         guard let found = slotItems.binarySearch(comparator: { $0.id ==? exSlotItem }),

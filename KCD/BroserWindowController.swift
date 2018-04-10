@@ -351,33 +351,47 @@ extension BroserWindowController {
             return true
             
         case #selector(BroserWindowController.fleetListAbove(_:)):
+            
             menuItem.state = (fleetViewPosition == .above ? .on : .off)
+            
             return true
             
         case #selector(BroserWindowController.fleetListBelow(_:)):
+            
             menuItem.state = (fleetViewPosition == .below ? .on : .off)
+            
             return true
             
         case #selector(BroserWindowController.fleetListDivide(_:)):
+            
             menuItem.state = (fleetViewPosition == .divided ? .on : .off)
+            
             return true
             
         case #selector(BroserWindowController.fleetListSimple(_:)):
+            
             menuItem.state = (fleetViewPosition == .oldStyle ? .on : .off)
+            
             return true
             
         case #selector(BroserWindowController.reorderToDoubleLine(_:)):
+            
             menuItem.state = (fleetViewController.shipOrder == .doubleLine ? .on : .off)
+            
             return true
             
         case #selector(BroserWindowController.reorderToLeftToRight(_:)):
+            
             menuItem.state = (fleetViewController.shipOrder == .leftToRight ? .on: .off)
+            
             return true
             
         case #selector(BroserWindowController.clearQuestList(_:)):
+            
             return true
             
         case #selector(BroserWindowController.showHideCombinedView(_:)):
+            
             if isCombinedMode {
                 
                 menuItem.title = LocalizedStrings.hideCombinedView.string
@@ -392,12 +406,15 @@ extension BroserWindowController {
             return true
             
         case #selector(BroserWindowController.toggleAnchorageSize(_:)):
+            
             return true
             
         case #selector(BroserWindowController.changeSakutekiCalculator(_:)):
+            
             return fleetViewController.validateMenuItem(menuItem)
             
         default:
+            
             return false
             
         }

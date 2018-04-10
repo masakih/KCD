@@ -15,9 +15,11 @@ private func cacheable(status: Int) -> Bool {
     case 200, 203, 206,
          301, 304,
          404, 410:
+        
         return true
         
     default:
+        
         return false
         
     }

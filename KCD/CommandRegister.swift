@@ -82,9 +82,13 @@ final class CommandRegister {
         }
         
         #if ENABLE_JSON_LOG
+        
             return JSONViewCommand(apiResponse: response, command: concreteCommand(for: response))
+        
         #else
+        
             return concreteCommand(for: response)
+        
         #endif
     }
     

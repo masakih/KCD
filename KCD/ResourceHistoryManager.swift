@@ -47,6 +47,7 @@ final class ResourceHistoryManager: NSObject {
         guard let notifyDate = Calendar.current.date(from: nowComp) else {
             
             print("ResourceHistoryManager: Can not create notify date")
+            
             return
         }
         

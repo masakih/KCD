@@ -264,12 +264,12 @@ class NormalBattleTest: XCTestCase {
             
             store.ship(by: 4).flatMap {
                 $0.nowhp = $0.maxhp
-                $0.slot_ex = 63765  // 女神
+                $0.slot_ex = 63_765  // 女神
             }
             store.ship(by: 5).flatMap {
                 $0.nowhp = $0.maxhp
                 // ダメコン
-                $0.equippedItem = store.slotItem(by: 72418).map { NSOrderedSet(array: [$0]) } ?? []
+                $0.equippedItem = store.slotItem(by: 8_175).map { NSOrderedSet(array: [$0]) } ?? []
             }
         }
         

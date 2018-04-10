@@ -168,6 +168,7 @@ final class TSVSupport {
         guard let array = try? store.objects(of: entity, sortDescriptors: sortDesc) else {
             
             print("Can not get \(entity)")
+            
             return []
         }
         

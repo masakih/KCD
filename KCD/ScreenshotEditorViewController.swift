@@ -103,6 +103,7 @@ final class ScreenshotEditorViewController: BridgeViewController {
                         
                         return false
                     }
+                    
                     return $0.rect == currentTrimInfo.rect
                 }
                 .map { UserDefaults.standard[.scrennshotEditorType] = $0 }

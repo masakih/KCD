@@ -8,7 +8,7 @@
 
 import Foundation
 
-// swiftlint:disable variable_name
+// swiftlint:disable identifier_name
 final class Quest: KCManagedObject {
     
     @NSManaged var bonus_flag: Bool
@@ -25,7 +25,7 @@ final class Quest: KCManagedObject {
     @NSManaged var title: String
     @NSManaged var type: Int
 }
-// swiftlint:eable variable_name
+// swiftlint:eable identifier_name
 
 extension Quest {
     

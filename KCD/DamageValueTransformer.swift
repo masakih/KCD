@@ -31,20 +31,22 @@ final class DamageValueTransformer: ValueTransformer {
         
         switch type {
             
-        case .none:
-            return nil
+        case .none: return nil
             
         case .slightly:
+            
             return ("●",
                     [.foregroundColor: #colorLiteral(red: 1, green: 0.925, blue: 0, alpha: 1), .paragraphStyle: paragraphStyle]
             )
             
         case .modest:
+            
             return ("●",
                     [.foregroundColor: #colorLiteral(red: 1, green: 0.32, blue: 0, alpha: 1), .paragraphStyle: paragraphStyle]
             )
             
         case .badly:
+            
             return ("◼︎",
                     [.foregroundColor: #colorLiteral(red: 0.87, green: 0, blue: 0.036, alpha: 1), .paragraphStyle: paragraphStyle]
             )

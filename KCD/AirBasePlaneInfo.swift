@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-// swiftlint:disable variable_name
+// swiftlint:disable identifier_name
 final class AirBasePlaneInfo: KCManagedObject {
     
     @NSManaged var squadron_id: Int

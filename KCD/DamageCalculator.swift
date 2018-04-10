@@ -122,9 +122,12 @@ extension DamageCalculator {
                  .combinedAir,
                  .eachCombinedWater,
                  .eachCombinedAir:
+                
                 return .secondOnly
                 
-            default: return .normal
+            default:
+                
+                return .normal
                 
             }
         }
@@ -201,9 +204,11 @@ extension DamageCalculator {
         switch battleType {
             
         case .combinedAir, .combinedWater, .eachCombinedAir, .eachCombinedWater:
+            
             return true
             
         default:
+            
             return false
             
         }
@@ -490,6 +495,7 @@ extension DamageCalculator {
     private func damageControlIfPossible(ship: Ship) -> Int {
         
         let store = ServerDataStore.default
+        
         return store.sync {
             
             let damageControl = ship
@@ -507,10 +513,12 @@ extension DamageCalculator {
                     
                 case .damageControl:
                     Debug.print("Damage Control", level: .debug)
+                    
                     return Int(Double(ship.maxhp) * 0.2)
                     
                 case .goddes:
                     Debug.print("Goddes", level: .debug)
+                    
                     return ship.maxhp
                     
                 }
@@ -528,10 +536,12 @@ extension DamageCalculator {
                 
             case .damageControl:
                 Debug.print("Damage Control", level: .debug)
+                
                 return Int(Double(ship.maxhp) * 0.2)
                 
             case .goddes:
                 Debug.print("Goddes", level: .debug)
+                
                 return ship.maxhp
                 
             }

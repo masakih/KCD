@@ -149,6 +149,7 @@ final class ChangeHenseiCommand: JSONCommand {
     private func position(of shipId: Int) -> (deckNumber: Int?, shipId: Int) {
         
         let store = ServerDataStore.default
+        
         return store.sync {
             
             store

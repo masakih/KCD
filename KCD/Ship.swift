@@ -8,7 +8,7 @@
 
 import Cocoa
 
-// swiftlint:disable variable_name
+// swiftlint:disable identifier_name
 final class Ship: KCManagedObject {
     
     @NSManaged dynamic var bull: Int
@@ -64,7 +64,7 @@ final class Ship: KCManagedObject {
     @NSManaged dynamic var master_ship: MasterShip
     @NSManaged dynamic var extraItem: SlotItem?
 }
-// swiftlint:eable variable_name
+// swiftlint:eable identifier_name
 
 private let shortSTypeNames: [String] = {
     

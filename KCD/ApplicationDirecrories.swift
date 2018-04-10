@@ -64,12 +64,14 @@ extension ApplicationDirecrories {
             } else if !isDir.boolValue {
                 
                 print("\(url) is regular file, not direcory.")
+                
                 return parentURL
             }
             
         } catch {
             
             print("Can not create screenshot save directory.")
+            
             return parentURL
         }
         

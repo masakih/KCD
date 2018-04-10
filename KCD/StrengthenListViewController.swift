@@ -217,6 +217,7 @@ extension StrengthenListViewController: NSTableViewDelegate {
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         
         let item = filteredItems[row]
+        
         return item.cellType.makeCellWithItem(item: item, tableView: tableView, owner: nil)
     }
     
