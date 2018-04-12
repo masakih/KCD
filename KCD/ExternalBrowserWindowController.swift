@@ -74,6 +74,7 @@ final class ExternalBrowserWindowController: NSWindowController {
             return window.contentRect(forFrameRect: window.frame).size
         }
         set {
+            
             guard let window = window else {
                 
                 return

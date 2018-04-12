@@ -83,7 +83,7 @@ final class WindowManager {
     private lazy var shipMDWindowController: ShipMasterDetailWindowController = {
         
         ShipMasterDetailWindowController()
-    } ()
+    }()
     
     private lazy var equipmentWindowController: EquipmentWindowController = {
         

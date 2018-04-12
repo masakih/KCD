@@ -200,19 +200,19 @@ final class TSVSupport {
         
         return localData(KenzoHistory.entity, sortBy: \KenzoHistory.date)
             .map {
-            LFSeparateLine.empty
-                .append($0.date)
-                .append($0.fuel)
-                .append($0.bull)
-                .append($0.steel)
-                .append($0.bauxite)
-                .append($0.kaihatusizai)
-                .append($0.name)
-                .append($0.sTypeId)
-                .append($0.flagShipName)
-                .append($0.flagShipLv)
-                .append($0.commanderLv)
-                .line
+                LFSeparateLine.empty
+                    .append($0.date)
+                    .append($0.fuel)
+                    .append($0.bull)
+                    .append($0.steel)
+                    .append($0.bauxite)
+                    .append($0.kaihatusizai)
+                    .append($0.name)
+                    .append($0.sTypeId)
+                    .append($0.flagShipName)
+                    .append($0.flagShipLv)
+                    .append($0.commanderLv)
+                    .line
             }
             .joined(separator: "\n")
             .data(using: .utf8)
@@ -222,19 +222,19 @@ final class TSVSupport {
         
         return localData(KenzoMark.entity, sortBy: \KenzoMark.kDockId)
             .map {
-            LFSeparateLine.empty
-                .append($0.date)
-                .append($0.fuel)
-                .append($0.bull)
-                .append($0.steel)
-                .append($0.bauxite)
-                .append($0.kaihatusizai)
-                .append($0.created_ship_id)
-                .append($0.kDockId)
-                .append($0.flagShipName)
-                .append($0.flagShipLv)
-                .append($0.commanderLv)
-                .line
+                LFSeparateLine.empty
+                    .append($0.date)
+                    .append($0.fuel)
+                    .append($0.bull)
+                    .append($0.steel)
+                    .append($0.bauxite)
+                    .append($0.kaihatusizai)
+                    .append($0.created_ship_id)
+                    .append($0.kDockId)
+                    .append($0.flagShipName)
+                    .append($0.flagShipLv)
+                    .append($0.commanderLv)
+                    .line
             }
             .joined(separator: "\n")
             .data(using: .utf8)

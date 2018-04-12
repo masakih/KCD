@@ -32,6 +32,7 @@ final class AncherageRepairTimerViewController: NSViewController {
                 
                 return
             }
+            
             var frame = view.frame
             frame.size.height = (newValue == .regular ? type(of: self).regularHeight : type(of: self).smallHeight)
             view.frame = frame

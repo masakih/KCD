@@ -59,12 +59,19 @@ private struct FilterCategories {
     init(type: FilterType) {
         
         switch type {
+            
         case .all: categories = FilterCategories.allType
+            
         case .canon: categories = FilterCategories.canonType
+            
         case .torpedo: categories = FilterCategories.torpedoType
+            
         case .airplane: categories = FilterCategories.airplaneType
+            
         case .radar: categories = FilterCategories.radarType
+            
         case .other: categories = FilterCategories.otherType
+            
         }
     }
 }

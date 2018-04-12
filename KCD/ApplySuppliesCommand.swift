@@ -15,7 +15,7 @@ final class ApplySuppliesCommand: JSONCommand {
         let store = ServerDataStore.oneTimeEditor()
         
         data["api_ship"]
-            .forEach { (_, json) in
+            .forEach { _, json in
                 
                 guard let i = json["api_id"].int else {
                     

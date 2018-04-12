@@ -20,6 +20,7 @@ final class MapStartCommand: JSONCommand {
     override func execute() {
         
         switch api.endpoint {
+            
         case .start: startBattle()
             
         case .next:

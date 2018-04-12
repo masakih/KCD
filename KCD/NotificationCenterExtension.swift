@@ -41,6 +41,7 @@ extension NotificationCenter {
             .addObserver(forName: name, object: object, queue: nil) { notification in
                 
                 do {
+                    
                     guard let value = try block(notification) else {
                         
                         return

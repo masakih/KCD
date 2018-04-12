@@ -314,6 +314,7 @@ extension AppDelegate: NSTouchBarProvider {
     var touchBar: NSTouchBar? {
         
         get {
+            
             if windowManager.isMainWindowMostFront {
                 
                 return nil

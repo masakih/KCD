@@ -42,6 +42,7 @@ final class SuppliesView: NSControl {
         
         get { return suppliesCell.ship }
         set {
+            
             suppliesCell.ship = newValue
             
             fuelObservation = suppliesCell.ship?.observe(\Ship.fuel, changeHandler: updateDisplay)
