@@ -126,6 +126,7 @@
 		F455DDC31FA4A9E400CDE64D /* LoggerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F455DDC21FA4A9E400CDE64D /* LoggerExtension.swift */; };
 		F45771231E1BCC7C008A9215 /* PeriodicNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45771221E1BCC7C008A9215 /* PeriodicNotifier.swift */; };
 		F458531A207A53CA007B251A /* Doutaku.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D9F7F8206A84890044B4C7 /* Doutaku.framework */; };
+		F45854102084D2E3007B251A /* ApplicationDirecroriesExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F458540F2084D2E3007B251A /* ApplicationDirecroriesExtension.swift */; };
 		F45F3BE11E067A870009434E /* HistoryItemCleaner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45F3BE01E067A870009434E /* HistoryItemCleaner.swift */; };
 		F45F3BE31E06A60A0009434E /* UpgradableShipsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45F3BE21E06A60A0009434E /* UpgradableShipsWindowController.swift */; };
 		F45FBB6F1E0FDB33000E72B9 /* StrengthenListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45FBB6E1E0FDB33000E72B9 /* StrengthenListViewController.swift */; };
@@ -506,6 +507,7 @@
 		F455DDC01FA4A6CD00CDE64D /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		F455DDC21FA4A9E400CDE64D /* LoggerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerExtension.swift; sourceTree = "<group>"; };
 		F45771221E1BCC7C008A9215 /* PeriodicNotifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodicNotifier.swift; sourceTree = "<group>"; };
+		F458540F2084D2E3007B251A /* ApplicationDirecroriesExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationDirecroriesExtension.swift; sourceTree = "<group>"; };
 		F45F3BDD1E0679D80009434E /* KCD-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KCD-Bridging-Header.h"; sourceTree = "<group>"; };
 		F45F3BE01E067A870009434E /* HistoryItemCleaner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryItemCleaner.swift; sourceTree = "<group>"; };
 		F45F3BE21E06A60A0009434E /* UpgradableShipsWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpgradableShipsWindowController.swift; sourceTree = "<group>"; };
@@ -800,6 +802,7 @@
 				F45771221E1BCC7C008A9215 /* PeriodicNotifier.swift */,
 				F47215A11E1F38280083D3BC /* Queue.swift */,
 				F491A4BB1E4B523C00D1E067 /* ApplicationDirecrories.swift */,
+				F458540F2084D2E3007B251A /* ApplicationDirecroriesExtension.swift */,
 				F455DDC01FA4A6CD00CDE64D /* Logger.swift */,
 				F455DDC21FA4A9E400CDE64D /* LoggerExtension.swift */,
 				F40F976E1E67092600AE81BB /* ArrayExtensions.swift */,
@@ -1873,6 +1876,7 @@
 				F47C3EA61E5F050D00D97449 /* MasterSlotItemMapper.swift in Sources */,
 				F47215AA1E1F96B60083D3BC /* ResourceHistoryDataStore.swift in Sources */,
 				F47C3EA41E5F017500D97449 /* MasterFurnitureMapper.swift in Sources */,
+				F45854102084D2E3007B251A /* ApplicationDirecroriesExtension.swift in Sources */,
 				F45FBB6F1E0FDB33000E72B9 /* StrengthenListViewController.swift in Sources */,
 				F47C3EAA1E5F085B00D97449 /* MasterMissionMapper.swift in Sources */,
 				F44BC6CB1E223208004644E3 /* IgnoreCommand.swift in Sources */,
