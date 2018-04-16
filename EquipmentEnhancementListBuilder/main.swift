@@ -115,7 +115,7 @@ private extension EnhancementListItem {
 
 func generate(threeLines: ThreeItemsQueue<TabSeparatedLine>) -> [RequiredEquipment] {
     
-    return threeLines.items.flatMap { RequiredEquipment(lines: $0) }
+    return threeLines.items.compactMap { RequiredEquipment(lines: $0) }
 }
 
 //
@@ -150,14 +150,14 @@ var threeLines = ThreeItemsQueue<TabSeparatedLine>()
 let requiredEquipmentSet = requiredEquipmentSetText
     .components(separatedBy: "\n")
     .map { TabSeparatedLine(value: $0) }
-    .flatMap { (line: TabSeparatedLine) -> ThreeItemsQueue<TabSeparatedLine> in
+    .compactMap { (line: TabSeparatedLine) -> ThreeItemsQueue<TabSeparatedLine> in
         
         threeLines.push(item: line)
         
         return threeLines
     }
     .map { generate(threeLines: $0) }
-    .flatMap { RequiredEquipmentSet(items: $0) }
+    .compactMap { RequiredEquipmentSet(items: $0) }
 
 //
 let enhancementListItemPath = targetDirectory.appendingPathComponent("EnhancementListItem.txt")
@@ -165,7 +165,7 @@ guard let enhancementListText = loadFile(path: enhancementListItemPath) else { f
 let listItems = enhancementListText
     .components(separatedBy: "\n")
     .map { TabSeparatedLine(value: $0) }
-    .flatMap { EnhancementListItem(line: $0, equSets: requiredEquipmentSet) }
+    .compactMap { EnhancementListItem(line: $0, equSets: requiredEquipmentSet) }
 
 //
 NSKeyedArchiver.setClassName("KCD.EnhancementListItem", for: EnhancementListItem.self)
