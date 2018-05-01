@@ -51,5 +51,7 @@
 	<string>/kcsapi/api_req_quest/start</string>
 	<string>/kcsapi/api_req_quest/stop</string>
 	<string>/kcsapi/api_req_ranking/getlist</string>
+	<string>/kcsapi/api_world_transfer/get_data</string>
+	<string>/kcsapi/api_world_transfer/register</string>
 </array>
 </plist>
