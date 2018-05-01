@@ -59,14 +59,14 @@ private final class ThreadOperator: NSObject {
 
 extension HTTPURLResponse {
     
-    private var httpDateFormatter: DateFormatter {
+    private static var dateFormatter: DateFormatter = {
         
         let formatter = DateFormatter()
         formatter.dateFormat = "EEE',' dd' 'MMM' 'yyyy HH':'mm':'ss zzz"
         formatter.locale = Locale(identifier: "en_US")
         
         return formatter
-    }
+    }()
     
     func expires() -> Date? {
         
@@ -81,7 +81,7 @@ extension HTTPURLResponse {
         }
         
         if let ex = (allHeaderFields["Expires"] as? String)?.lowercased(),
-            let exp = httpDateFormatter.date(from: ex) {
+            let exp = HTTPURLResponse.dateFormatter.date(from: ex) {
             
             return exp
         }
