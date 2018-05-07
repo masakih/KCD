@@ -92,14 +92,13 @@ final class Future<T> {
     init() {
         
         // for await()
-        semaphore = DispatchSemaphore(value: 1)
-        semaphore?.wait()
+        semaphore = DispatchSemaphore(value: 0)
     }
     
     init(in queue: DispatchQueue = .global(), _ block: @escaping () throws -> T) {
         
-        semaphore = DispatchSemaphore(value: 1)
-        semaphore?.wait()
+        // for await()
+        semaphore = DispatchSemaphore(value: 0)
         
         queue.async {
             
