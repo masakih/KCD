@@ -47,21 +47,21 @@
 282A	7	1	130mm B-13連装砲		Ташкент
 
 284A	1	1	5inch単装砲 Mk.30		Samuel B.Roberts
-284A	1	2	5inch単装砲 Mk.30		Samuel B.Roberts
-284A	1	3	5inch単装砲 Mk.30		Samuel B.Roberts
-284A	1	4	5inch単装砲 Mk.30		Samuel B.Roberts
-284A	1	5	5inch単装砲 Mk.30		Samuel B.Roberts
-284A	1	6	5inch単装砲 Mk.30		Samuel B.Roberts
-284A	1	7	5inch単装砲 Mk.30		Samuel B.Roberts
+284A	2	1	5inch単装砲 Mk.30		Samuel B.Roberts
+284A	3	1	5inch単装砲 Mk.30		Samuel B.Roberts
+284A	4	1	5inch単装砲 Mk.30		Samuel B.Roberts
+284A	5	1	5inch単装砲 Mk.30		Samuel B.Roberts
+284A	6	1	5inch単装砲 Mk.30		Samuel B.Roberts
+284A	7	1	5inch単装砲 Mk.30		Samuel B.Roberts
 
 
 91A	1	1	12.7cm単装高角砲(後期型)		由良改二
-91A	1	2	12.7cm単装高角砲(後期型)		択捉改
-91A	1	3	12.7cm単装高角砲(後期型)		択捉改
-91A	1	4	12.7cm単装高角砲(後期型)		由良改二,択捉改,日振改
-91A	1	5	12.7cm単装高角砲(後期型)		由良改二,択捉改,日振改
-91A	1	6	12.7cm単装高角砲(後期型)		由良改二,日振改
-91A	1	7	12.7cm単装高角砲(後期型)		由良改二,日振改
+91A	2	1	12.7cm単装高角砲(後期型)		択捉改
+91A	3	1	12.7cm単装高角砲(後期型)		択捉改
+91A	4	1	12.7cm単装高角砲(後期型)		由良改二,択捉改,日振改
+91A	5	1	12.7cm単装高角砲(後期型)		由良改二,択捉改,日振改
+91A	6	1	12.7cm単装高角砲(後期型)		由良改二,日振改
+91A	7	1	12.7cm単装高角砲(後期型)		由良改二,日振改
 
 
 4A	1	2	14cm単装砲	14cm連装砲	
