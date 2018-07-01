@@ -122,6 +122,7 @@
 		F44BC73D1E2A5D39004644E3 /* DropShipHistoryCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44BC73C1E2A5D39004644E3 /* DropShipHistoryCommand.swift */; };
 		F44BC73F1E2B1AD4004644E3 /* DummyShipCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44BC73E1E2B1AD4004644E3 /* DummyShipCommand.swift */; };
 		F44BC7411E2B263D004644E3 /* GuardShelterCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44BC7401E2B263D004644E3 /* GuardShelterCommand.swift */; };
+		F44F9FB720DF634F0014E8C2 /* ColorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44F9FB620DF634F0014E8C2 /* ColorSet.swift */; };
 		F455DDC11FA4A6CD00CDE64D /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F455DDC01FA4A6CD00CDE64D /* Logger.swift */; };
 		F455DDC31FA4A9E400CDE64D /* LoggerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F455DDC21FA4A9E400CDE64D /* LoggerExtension.swift */; };
 		F45771231E1BCC7C008A9215 /* PeriodicNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45771221E1BCC7C008A9215 /* PeriodicNotifier.swift */; };
@@ -504,6 +505,7 @@
 		F44BC73C1E2A5D39004644E3 /* DropShipHistoryCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropShipHistoryCommand.swift; sourceTree = "<group>"; };
 		F44BC73E1E2B1AD4004644E3 /* DummyShipCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyShipCommand.swift; sourceTree = "<group>"; };
 		F44BC7401E2B263D004644E3 /* GuardShelterCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuardShelterCommand.swift; sourceTree = "<group>"; };
+		F44F9FB620DF634F0014E8C2 /* ColorSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSet.swift; sourceTree = "<group>"; };
 		F455DDC01FA4A6CD00CDE64D /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		F455DDC21FA4A9E400CDE64D /* LoggerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerExtension.swift; sourceTree = "<group>"; };
 		F45771221E1BCC7C008A9215 /* PeriodicNotifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodicNotifier.swift; sourceTree = "<group>"; };
@@ -1065,6 +1067,7 @@
 			children = (
 				F4FC3E931E44A5D600E41228 /* AppDelegate.swift */,
 				F47B06DC1E97ECD4006711D9 /* WindowManager.swift */,
+				F44F9FB620DF634F0014E8C2 /* ColorSet.swift */,
 				F4AF56801F7BF0CF004F4F4E /* IntConvertable.swift */,
 				F429FAAF1F62D769006299ED /* ShipType.swift */,
 				F42546911EF8002E00BE297E /* EquitType.swift */,
@@ -1657,6 +1660,7 @@
 				F4CF25AA1E338ED000C02A66 /* JSONTracker.swift in Sources */,
 				F46FEA411F8128BB00E2427C /* LocalizedStrings.swift in Sources */,
 				F44BC6D11E224299004644E3 /* PortCommand.swift in Sources */,
+				F44F9FB720DF634F0014E8C2 /* ColorSet.swift in Sources */,
 				F4FC3E901E437E1F00E41228 /* JSONReciever.swift in Sources */,
 				F4AAA1511F6D6DDC00975E87 /* NSTextFieldExtension.swift in Sources */,
 				F404AF571F2CDD1C00A006B8 /* DefaultKey.swift in Sources */,
