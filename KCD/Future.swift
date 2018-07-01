@@ -14,15 +14,15 @@ enum Result<T> {
     
     case error(Error)
     
-    init(_ value: T) {
-        
-        self = .value(value)
-    }
-    
-    init(_ error: Error) {
-        
-        self = .error(error)
-    }
+//    init(_ value: T) {
+//
+//        self = .value(value)
+//    }
+//
+//    init(_ error: Error) {
+//
+//        self = .error(error)
+//    }
 }
 extension Result {
     
@@ -106,11 +106,11 @@ final class Future<T> {
             
             do {
                 
-                self.result = Result(try block())
+                self.result = .value(try block())
                 
             } catch {
                 
-                self.result = Result(error)
+                self.result = .error(error)
             }
         }
     }
@@ -124,12 +124,12 @@ final class Future<T> {
     
     convenience init(_ value: T) {
         
-        self.init(Result(value))
+        self.init(.value(value))
     }
     
     convenience init(_ error: Error) {
         
-        self.init(Result(error))
+        self.init(.error(error))
     }
     
     deinit {
@@ -206,9 +206,9 @@ extension Future {
             
             switch result {
                 
-            case let .value(value): return Result(s(value))
+            case let .value(value): return .value(s(value))
                 
-            case let .error(error): return Result(f(error))
+            case let .error(error): return .error(f(error))
                 
             }
         }
@@ -219,7 +219,7 @@ extension Future {
         return Promise()
             .complete {
                 
-                self.await().value.map(s) ?? Result(FutureError.unsolvedFuture)
+                self.await().value.map(s) ?? .error(FutureError.unsolvedFuture)
             }
             .future
     }
@@ -254,10 +254,10 @@ extension Future {
                 
                 if case let .value(v)? = self.await().value, f(v) {
                     
-                    return Result(v)
+                    return .value(v)
                 }
                 
-                return Result(FutureError.noSuchElement)
+                return .error(FutureError.noSuchElement)
             }
             .future
     }
@@ -268,11 +268,11 @@ extension Future {
             
             do {
                 
-                return try result.error.map { error in Result(try s(error)) } ?? Result(FutureError.unsolvedFuture)
+                return try result.error.map { error in .value(try s(error)) } ?? .error(FutureError.unsolvedFuture)
                 
             } catch {
                 
-                return Result(error)
+                return .error(error)
             }
         }
     }
@@ -317,12 +317,12 @@ final class Promise<T> {
     
     func success(_ value: T) {
         
-        complete(Result(value))
+        complete(.value(value))
     }
     
     func failure(_ error: Error) {
         
-        complete(Result(error))
+        complete(.error(error))
     }
     
     func complete(_ completor: @escaping () -> Result<T>) -> Self {
