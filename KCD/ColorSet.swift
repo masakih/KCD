@@ -151,11 +151,11 @@ class HighContrastColorSet: ColorSet {
         
         switch named {
             
-        case .damageViewBoarderSlightly: return NSColor.red
+        case .damageViewBoarderSlightly: return .red
             
-        case .damageViewBoarderModest: return NSColor.red
+        case .damageViewBoarderModest: return .red
             
-        case .damageViewBoarderBadly: return NSColor.red
+        case .damageViewBoarderBadly: return .red
             
         default: return super[named]
         }
