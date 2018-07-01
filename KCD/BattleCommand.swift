@@ -26,8 +26,8 @@ final class BattleCommand: JSONCommand {
             DummyShipCommand(apiResponse: apiResponse).execute()
             GuardShelterCommand(apiResponse: apiResponse).execute()
             
-        default: break
-            
+        default:
+            EnemyStatusCommand(apiResponse: apiResponse).execute()
         }
     }
 }

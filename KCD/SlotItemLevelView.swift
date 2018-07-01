@@ -213,7 +213,9 @@ final class SlotItemLevelView: NSTextField {
     
     private var levelColor: NSColor {
         
-        return #colorLiteral(red: 0.135, green: 0.522, blue: 0.619, alpha: 1)
+        return ColorSet.current[.slotItemLevelViewLevel]
+        
+        
     }
     
     // MARK: - Function
@@ -262,9 +264,9 @@ final class SlotItemLevelView: NSTextField {
         
         switch level {
             
-        case 1, 2, 3: return #colorLiteral(red: 0.257, green: 0.523, blue: 0.643, alpha: 1)
+        case 1, 2, 3: return ColorSet.current[.slotItemLevelViewLowAirLevel]
             
-        case 4, 5, 6, 7: return #colorLiteral(red: 0.784, green: 0.549, blue: 0.000, alpha: 1)
+        case 4, 5, 6, 7: return ColorSet.current[.slotItemLevelViewHighAirLevel]
             
         default: return nil
             
@@ -277,14 +279,14 @@ final class SlotItemLevelView: NSTextField {
             
         case 1, 2, 3:
             let shadow = NSShadow()
-            shadow.shadowColor = #colorLiteral(red: 0.095, green: 0.364, blue: 0.917, alpha: 1)
+            shadow.shadowColor = ColorSet.current[.slotItemLevelViewLowAirLevelShadow]
             shadow.shadowBlurRadius = 4.0
             
             return shadow
             
         case 4, 5, 6, 7:
             let shadow = NSShadow()
-            shadow.shadowColor = .yellow
+            shadow.shadowColor = ColorSet.current[.slotItemLevelViewHighAirLevelShadow]
             shadow.shadowBlurRadius = 3.0
             
             return shadow

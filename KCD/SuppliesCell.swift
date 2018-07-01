@@ -18,12 +18,31 @@ final class SuppliesCell: NSCell {
     }
     
     private let numberOfCell = 10
-    private let greenColor = NSColor(calibratedWhite: 0.39, alpha: 1.0)
-    private let yellowColor = NSColor(calibratedWhite: 0.55, alpha: 1.0)
-    private let orangeColor = NSColor(calibratedWhite: 0.7, alpha: 1.0)
-    private let redColor = NSColor(calibratedWhite: 0.79, alpha: 1.0)
-    private let borderColor = NSColor(calibratedWhite: 0.632, alpha: 1.0)
-    private let backgroundColor = NSColor(calibratedWhite: 0.948, alpha: 1.0)
+    
+    private var greenColor: NSColor {
+        
+        return ColorSet.current[.suppliesCellGreen]
+    }
+    private var yellowColor: NSColor {
+        
+        return ColorSet.current[.suppliesCellYellow]
+    }
+    private var orangeColor: NSColor {
+        
+        return ColorSet.current[.suppliesCellOrange]
+    }
+    private var redColor: NSColor {
+        
+        return ColorSet.current[.suppliesCellRedColor]
+    }
+    private var borderColor: NSColor {
+        
+        return ColorSet.current[.suppliesCellBorder]
+    }
+    private var backgroundColor: NSColor {
+        
+        return ColorSet.current[.suppliesCellBackground]
+    }
     
     @objc dynamic var ship: Ship?
     

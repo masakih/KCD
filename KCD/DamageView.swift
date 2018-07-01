@@ -44,44 +44,28 @@ final class DamageView: NSView {
         
         switch innerDamageType {
             
-        case .none:
+        case .none: return nil
             
-            return nil
+        case .slightly: return ColorSet.current[.damageViewInnerSlightly]
             
-        case .slightly:
+        case .modest: return ColorSet.current[.damageViewInnerModest]
             
-            return #colorLiteral(red: 1.000, green: 0.956, blue: 0.012, alpha: 0.5)
-            
-        case .modest:
-            
-            return NSColor.orange.withAlphaComponent(0.5)
-            
-        case .badly:
-            
-            return NSColor.red.withAlphaComponent(0.5)
+        case .badly: return ColorSet.current[.damageViewInnerBadly]
             
         }
     }
     
     private var borderColor: NSColor? {
-        
+                
         switch innerDamageType {
             
-        case .none:
+        case .none: return nil
             
-            return nil
+        case .slightly: return ColorSet.current[.damageViewBoarderSlightly]
             
-        case .slightly:
+        case .modest: return ColorSet.current[.damageViewBoarderModest]
             
-            return NSColor.orange.withAlphaComponent(0.5)
-            
-        case .modest:
-            
-            return NSColor.orange.withAlphaComponent(0.9)
-            
-        case .badly:
-            
-            return NSColor.red.withAlphaComponent(0.9)
+        case .badly: return ColorSet.current[.damageViewBoarderBadly]
             
         }
     }
