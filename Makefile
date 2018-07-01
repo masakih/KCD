@@ -59,5 +59,5 @@ buildEquipmentEnhancementList: build/Release/EquipmentEnhancementListBuilder
 	./build/Release/EquipmentEnhancementListBuilder ./KCD
 
 Carthage: cartfile
-	DEVELOPER_DIR=$(shell xcode-select -p) carthage update
+	DEVELOPER_DIR=$(shell xcode-select -p) carthage bootstrap
 	rm -rf Carthage/Build/*OS
