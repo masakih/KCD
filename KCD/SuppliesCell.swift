@@ -21,27 +21,27 @@ final class SuppliesCell: NSCell {
     
     private var greenColor: NSColor {
         
-        return ColorSet.current[.suppliesCellGreen]
+        return ColorSetManager.current[.suppliesCellGreen]
     }
     private var yellowColor: NSColor {
         
-        return ColorSet.current[.suppliesCellYellow]
+        return ColorSetManager.current[.suppliesCellYellow]
     }
     private var orangeColor: NSColor {
         
-        return ColorSet.current[.suppliesCellOrange]
+        return ColorSetManager.current[.suppliesCellOrange]
     }
     private var redColor: NSColor {
         
-        return ColorSet.current[.suppliesCellRedColor]
+        return ColorSetManager.current[.suppliesCellRedColor]
     }
     private var borderColor: NSColor {
         
-        return ColorSet.current[.suppliesCellBorder]
+        return ColorSetManager.current[.suppliesCellBorder]
     }
     private var backgroundColor: NSColor {
         
-        return ColorSet.current[.suppliesCellBackground]
+        return ColorSetManager.current[.suppliesCellBackground]
     }
     
     @objc dynamic var ship: Ship?

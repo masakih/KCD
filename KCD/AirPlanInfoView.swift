@@ -61,11 +61,11 @@ final class AirPlanInfoView: NSTableCellView {
         
         switch cond {
             
-        case .normal: return ColorSet.current[.airPlanInforViewNormal]
+        case .normal: return ColorSetManager.current[.airPlanInforViewNormal]
             
-        case .tired: return ColorSet.current[.airPlanInforViewTired]
+        case .tired: return ColorSetManager.current[.airPlanInforViewTired]
             
-        case .bad: return ColorSet.current[.airPlanInforViewBad]
+        case .bad: return ColorSetManager.current[.airPlanInforViewBad]
             
         }
     }
@@ -74,11 +74,11 @@ final class AirPlanInfoView: NSTableCellView {
         
         switch cond {
             
-        case .normal: return ColorSet.current[.airPlanInforViewBoarderNormal]
+        case .normal: return ColorSetManager.current[.airPlanInforViewBoarderNormal]
             
-        case .tired: return ColorSet.current[.airPlanInforViewBoarderTired]
+        case .tired: return ColorSetManager.current[.airPlanInforViewBoarderTired]
             
-        case .bad: return ColorSet.current[.airPlanInforViewBoarderBad]
+        case .bad: return ColorSetManager.current[.airPlanInforViewBoarderBad]
             
         }
     }

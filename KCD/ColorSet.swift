@@ -65,7 +65,13 @@ extension ColorName {
     static let slotItemLevelViewHighAirLevelShadow = ColorName("SlotItemLevelView.airLevel.high.shadow")
 }
 
-class ColorSet {
+protocol ColorSet {
+    
+    subscript(named: ColorName) -> NSColor { get }
+}
+
+
+struct ColorSetManager {
     
     static var current: ColorSet {
         
@@ -74,12 +80,13 @@ class ColorSet {
             return HighContrastColorSet.shared
         }
         
-        return ColorSet.shared
+        return DefaultColorSet.shared
     }
+}
+
+private struct DefaultColorSet: ColorSet {
     
-    class var shared: ColorSet { return _shared }
-    
-    private static let _shared = ColorSet()
+    static let shared = DefaultColorSet()
     
     subscript(named: ColorName) -> NSColor {
         
@@ -141,13 +148,12 @@ class ColorSet {
 }
 
 
-class HighContrastColorSet: ColorSet {
+private struct HighContrastColorSet: ColorSet {
     
-    override class var shared: ColorSet { return _shared }
     
-    private static let _shared = HighContrastColorSet()
+    static let shared = HighContrastColorSet()
     
-    override subscript(named: ColorName) -> NSColor {
+    subscript(named: ColorName) -> NSColor {
         
         switch named {
             
@@ -157,22 +163,20 @@ class HighContrastColorSet: ColorSet {
             
         case .damageViewBoarderBadly: return .red
             
-        default: return super[named]
+        default: return DefaultColorSet.shared[named]
         }
     }
 }
 
-class DarkModeColorSet: ColorSet {
+private struct DarkModeColorSet: ColorSet {
     
-    override class var shared: ColorSet { return _shared }
+    private static let shared = DarkModeColorSet()
     
-    private static let _shared = DarkModeColorSet()
-    
-    override subscript(named: ColorName) -> NSColor {
+    subscript(named: ColorName) -> NSColor {
         
         switch named {
             
-        default: return super[named]
+        default: return DefaultColorSet.shared[named]
         }
     }
 }

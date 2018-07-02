@@ -46,11 +46,11 @@ final class DamageView: NSView {
             
         case .none: return nil
             
-        case .slightly: return ColorSet.current[.damageViewInnerSlightly]
+        case .slightly: return ColorSetManager.current[.damageViewInnerSlightly]
             
-        case .modest: return ColorSet.current[.damageViewInnerModest]
+        case .modest: return ColorSetManager.current[.damageViewInnerModest]
             
-        case .badly: return ColorSet.current[.damageViewInnerBadly]
+        case .badly: return ColorSetManager.current[.damageViewInnerBadly]
             
         }
     }
@@ -61,11 +61,11 @@ final class DamageView: NSView {
             
         case .none: return nil
             
-        case .slightly: return ColorSet.current[.damageViewBoarderSlightly]
+        case .slightly: return ColorSetManager.current[.damageViewBoarderSlightly]
             
-        case .modest: return ColorSet.current[.damageViewBoarderModest]
+        case .modest: return ColorSetManager.current[.damageViewBoarderModest]
             
-        case .badly: return ColorSet.current[.damageViewBoarderBadly]
+        case .badly: return ColorSetManager.current[.damageViewBoarderBadly]
             
         }
     }
