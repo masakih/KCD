@@ -8,6 +8,17 @@
 
 import Cocoa
 
+enum AppearanceMode {
+    
+    case normal
+    
+    case highContrast
+    
+    case dark
+    
+    case highContrastDark
+}
+
 struct ColorName {
     
     let name: String
@@ -75,18 +86,55 @@ struct ColorSetManager {
     
     static var current: ColorSet {
         
-        if NSWorkspace.shared.accessibilityDisplayShouldIncreaseContrast {
+        switch currentMode() {
             
-            return HighContrastColorSet.shared
+        case .normal: return BaseColorSet.shared
+            
+        case .highContrast: return HighContrastColorSet.shared
+            
+        case .dark: return DarkModeColorSet.shared
+            
+        case .highContrastDark: return HighContrastDarkModeColorSet.shared
+        }
+    }
+    
+    private static func currentMode() -> AppearanceMode {
+        
+        if #available(macOS 10.14, *) {
+            
+            return currentMode1014()
         }
         
-        return DefaultColorSet.shared
+        if NSWorkspace.shared.accessibilityDisplayShouldIncreaseContrast {
+            
+            return .highContrast
+        }
+        
+        return .normal
+    }
+    
+    @available(macOS 10.14, *)
+    private static func currentMode1014() -> AppearanceMode {
+        
+        switch NSAppearance.current.name {
+            
+        case .aqua: return .normal
+            
+            /// not available in macOS 10.13 SDK
+//        case .accessibilityHighContrastAqua: return .highContrast
+//
+//        case .darkAqua: return .dark
+//
+//        case .accessibilityHighContrastDarkAqua: return .highContrastDark
+            
+        default: return .normal
+        }
     }
 }
 
-private struct DefaultColorSet: ColorSet {
+private struct BaseColorSet: ColorSet {
     
-    static let shared = DefaultColorSet()
+    static let shared = BaseColorSet()
     
     subscript(named: ColorName) -> NSColor {
         
@@ -148,12 +196,25 @@ private struct DefaultColorSet: ColorSet {
 }
 
 
-private struct HighContrastColorSet: ColorSet {
+private protocol SpecialColorSet: ColorSet {
     
+    func color(named: ColorName) -> NSColor?
+}
+
+private extension SpecialColorSet {
+    
+    subscript(named: ColorName) -> NSColor {
+        
+        return color(named: named) ?? BaseColorSet.shared[named]
+    }
+}
+
+
+private struct HighContrastColorSet: SpecialColorSet {
     
     static let shared = HighContrastColorSet()
     
-    subscript(named: ColorName) -> NSColor {
+    func color(named: ColorName) -> NSColor? {
         
         switch named {
             
@@ -163,20 +224,30 @@ private struct HighContrastColorSet: ColorSet {
             
         case .damageViewBoarderBadly: return .red
             
-        default: return DefaultColorSet.shared[named]
+        default: return nil
         }
     }
 }
 
-private struct DarkModeColorSet: ColorSet {
+private struct DarkModeColorSet: SpecialColorSet {
     
-    private static let shared = DarkModeColorSet()
+    static let shared = DarkModeColorSet()
     
-    subscript(named: ColorName) -> NSColor {
+    func color(named: ColorName) -> NSColor? {
         
         switch named {
             
-        default: return DefaultColorSet.shared[named]
+        default: return nil
         }
+    }
+}
+
+private struct HighContrastDarkModeColorSet: SpecialColorSet {
+    
+    static let shared = HighContrastDarkModeColorSet()
+    
+    func color(named: ColorName) -> NSColor? {
+        
+        return nil
     }
 }
