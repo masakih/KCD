@@ -8,7 +8,7 @@
 
 import Cocoa
 
-enum AppearanceMode {
+private enum AppearanceMode {
     
     case normal
     
