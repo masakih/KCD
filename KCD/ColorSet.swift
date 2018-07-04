@@ -8,7 +8,7 @@
 
 import Cocoa
 
-private enum AppearanceMode {
+enum AppearanceMode {
     
     case normal
     
@@ -19,16 +19,47 @@ private enum AppearanceMode {
     case highContrastDark
 }
 
-struct ColorName {
+extension AppearanceMode {
     
-    let name: String
-    
-    init(name: String) {
+    static var current: AppearanceMode {
         
-        self.name = name
+        if #available(macOS 10.14, *) {
+            
+            return currentMode1014()
+        }
+        
+        if NSWorkspace.shared.accessibilityDisplayShouldIncreaseContrast {
+            
+            return .highContrast
+        }
+        
+        return .normal
     }
     
-    init(_ name: String) {
+    @available(macOS 10.14, *)
+    private static func currentMode1014() -> AppearanceMode {
+        
+        switch NSAppearance.current.name {
+            
+        case .aqua: return .normal
+            
+        /// not available in macOS 10.13 SDK
+//        case .accessibilityHighContrastAqua: return .highContrast
+//
+//        case .darkAqua: return .dark
+//
+//        case .accessibilityHighContrastDarkAqua: return .highContrastDark
+            
+        default: return .normal
+        }
+    }
+}
+
+struct ColorName {
+    
+    private let name: String
+    
+    private init(_ name: String) {
         
         self.name = name
     }
@@ -86,7 +117,7 @@ struct ColorSetManager {
     
     static var current: ColorSet {
         
-        switch currentMode() {
+        switch AppearanceMode.current {
             
         case .normal: return BaseColorSet.shared
             
@@ -95,39 +126,6 @@ struct ColorSetManager {
         case .dark: return DarkModeColorSet.shared
             
         case .highContrastDark: return HighContrastDarkModeColorSet.shared
-        }
-    }
-    
-    private static func currentMode() -> AppearanceMode {
-        
-        if #available(macOS 10.14, *) {
-            
-            return currentMode1014()
-        }
-        
-        if NSWorkspace.shared.accessibilityDisplayShouldIncreaseContrast {
-            
-            return .highContrast
-        }
-        
-        return .normal
-    }
-    
-    @available(macOS 10.14, *)
-    private static func currentMode1014() -> AppearanceMode {
-        
-        switch NSAppearance.current.name {
-            
-        case .aqua: return .normal
-            
-            /// not available in macOS 10.13 SDK
-//        case .accessibilityHighContrastAqua: return .highContrast
-//
-//        case .darkAqua: return .dark
-//
-//        case .accessibilityHighContrastDarkAqua: return .highContrastDark
-            
-        default: return .normal
         }
     }
 }
