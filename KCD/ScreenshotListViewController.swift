@@ -210,12 +210,11 @@ final class ScreenshotListViewController: NSViewController {
     
     private func reloadData() {
         
-        Promise<[ScreenshotInformation]>()
-            .complete {
-                
-                Result(ScreenshotLoader(self.screenshotSaveDirectoryURL).merge(screenshots: []))
+        Future<[ScreenshotInformation]> {
+            
+            ScreenshotLoader(self.screenshotSaveDirectoryURL).merge(screenshots: [])
+            
             }
-            .future
             .onSuccess { screenshots in
                 
                 DispatchQueue.main.async {
