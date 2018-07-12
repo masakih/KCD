@@ -27,7 +27,7 @@ final class BattleCommand: JSONCommand {
             GuardShelterCommand(apiResponse: apiResponse).execute()
             
         default:
-            EnemyStatusCommand(apiResponse: apiResponse).execute()
+            ()
         }
     }
 }
