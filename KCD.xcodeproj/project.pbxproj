@@ -20,6 +20,7 @@
 		F40F97711E68536400AE81BB /* FileManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40F97701E68536400AE81BB /* FileManagerExtension.swift */; };
 		F40F97731E6989B300AE81BB /* NSViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40F97721E6989B300AE81BB /* NSViewExtension.swift */; };
 		F410E4601FF8C46E00FC64E6 /* ShipSlotObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = F410E45F1FF8C46E00FC64E6 /* ShipSlotObserver.swift */; };
+		F412E0A720FA21DB00AEBEDA /* ForXcodebuild.swift in Sources */ = {isa = PBXBuildFile; fileRef = F412E0A620FA21DB00AEBEDA /* ForXcodebuild.swift */; };
 		F4131EDE190FEBDB004F7F9A /* SlotItemWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4131EE0190FEBDB004F7F9A /* SlotItemWindowController.xib */; };
 		F41465681DAB852E00D68C97 /* ScreenshotCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = F41465671DAB852E00D68C97 /* ScreenshotCollectionViewItem.xib */; };
 		F41465741DB4F1A700D68C97 /* ScreenshotListWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F41465761DB4F1A700D68C97 /* ScreenshotListWindowController.xib */; };
@@ -405,6 +406,7 @@
 		F40F97701E68536400AE81BB /* FileManagerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManagerExtension.swift; sourceTree = "<group>"; };
 		F40F97721E6989B300AE81BB /* NSViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSViewExtension.swift; sourceTree = "<group>"; };
 		F410E45F1FF8C46E00FC64E6 /* ShipSlotObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipSlotObserver.swift; sourceTree = "<group>"; };
+		F412E0A620FA21DB00AEBEDA /* ForXcodebuild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForXcodebuild.swift; sourceTree = "<group>"; };
 		F41465671DAB852E00D68C97 /* ScreenshotCollectionViewItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScreenshotCollectionViewItem.xib; sourceTree = "<group>"; };
 		F41A451A1F4917640066F83D /* SeikuCalclator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeikuCalclator.swift; sourceTree = "<group>"; };
 		F41AA4751FDEDC3700FFFBD1 /* Parameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parameter.swift; sourceTree = "<group>"; };
@@ -1071,6 +1073,7 @@
 				F4AF56801F7BF0CF004F4F4E /* IntConvertable.swift */,
 				F429FAAF1F62D769006299ED /* ShipType.swift */,
 				F42546911EF8002E00BE297E /* EquitType.swift */,
+				F412E0A620FA21DB00AEBEDA /* ForXcodebuild.swift */,
 				F455DDC41FA4C81C00CDE64D /* Mics */,
 				F4BEEFE21B0CD39B004702B8 /* Transformar&Formatter */,
 				F4C118F318A67B05005D5B25 /* CustomHTTPProtocol */,
@@ -1754,6 +1757,7 @@
 				F44BC6F91E23DAC5004644E3 /* RealDestroyShipCommand.swift in Sources */,
 				F44BC7071E2670BB004644E3 /* CreateShipCommand.swift in Sources */,
 				F4CF25B61E34BAD500C02A66 /* AnchorageRepairManager.swift in Sources */,
+				F412E0A720FA21DB00AEBEDA /* ForXcodebuild.swift in Sources */,
 				F44BC6D31E22581D004644E3 /* ApplySuppliesCommand.swift in Sources */,
 				F455DDC31FA4A9E400CDE64D /* LoggerExtension.swift in Sources */,
 				F4D05BDB1E0F76A800688D66 /* ResourceViewController.swift in Sources */,
