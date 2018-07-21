@@ -101,8 +101,8 @@ class SakutekiTest: XCTestCase {
         XCTAssertEqual(SimpleCalculator().calculate([ship]), 108)
         
         XCTAssertEqual(fitSakuteki(Formula33(1).calculate([ship])), -11.2)
-        XCTAssertEqual(fitSakuteki(Formula33(3).calculate([ship])), 127.9)
-        XCTAssertEqual(fitSakuteki(Formula33(4).calculate([ship])), 249.7)
+        XCTAssertEqual(fitSakuteki(Formula33(3).calculate([ship])), 23.5)
+        XCTAssertEqual(fitSakuteki(Formula33(4).calculate([ship])), 40.9)
     }
     
     func testOne2Ship() {
@@ -118,8 +118,8 @@ class SakutekiTest: XCTestCase {
         XCTAssertEqual(SimpleCalculator().calculate([ship]), 110)
         
         XCTAssertEqual(fitSakuteki(Formula33(1).calculate([ship])), -10.3)
-        XCTAssertEqual(fitSakuteki(Formula33(3).calculate([ship])), 133.6)
-        XCTAssertEqual(fitSakuteki(Formula33(4).calculate([ship])), 259.6)
+        XCTAssertEqual(fitSakuteki(Formula33(3).calculate([ship])), 25.6)
+        XCTAssertEqual(fitSakuteki(Formula33(4).calculate([ship])), 43.6)
     }
     
     func testTwoShips() {
@@ -142,8 +142,8 @@ class SakutekiTest: XCTestCase {
         XCTAssertEqual(SimpleCalculator().calculate([ship1, ship2]), 218)
         
         XCTAssertEqual(fitSakuteki(Formula33(1).calculate([ship1, ship2])), 14.4)
-        XCTAssertEqual(fitSakuteki(Formula33(3).calculate([ship1, ship2])), 297.6)
-        XCTAssertEqual(fitSakuteki(Formula33(4).calculate([ship1, ship2])), 545.4)
+        XCTAssertEqual(fitSakuteki(Formula33(3).calculate([ship1, ship2])), 85.2)
+        XCTAssertEqual(fitSakuteki(Formula33(4).calculate([ship1, ship2])), 120.6)
     }
     
     func testTreeShips() {
@@ -172,9 +172,9 @@ class SakutekiTest: XCTestCase {
         
         XCTAssertEqual(SimpleCalculator().calculate([ship1, ship2, ship3]), 348)
         
-        XCTAssertEqual(fitSakuteki(Formula33(1).calculate([ship1, ship2, ship3])), 47.7)
-        XCTAssertEqual(fitSakuteki(Formula33(3).calculate([ship1, ship2, ship3])), 531.8)
-        XCTAssertEqual(fitSakuteki(Formula33(4).calculate([ship1, ship2, ship3])), 955.3)
+        XCTAssertEqual(fitSakuteki(Formula33(1).calculate([ship1, ship2, ship3])), 47.9)
+        XCTAssertEqual(fitSakuteki(Formula33(3).calculate([ship1, ship2, ship3])), 169.2)
+        XCTAssertEqual(fitSakuteki(Formula33(4).calculate([ship1, ship2, ship3])), 229.8)
     }
     
     func testEscapedShips() {
@@ -212,8 +212,8 @@ class SakutekiTest: XCTestCase {
         
         XCTAssertEqual(SimpleCalculator().calculate([ship1, ship2, ship3]), 238)
         
-        XCTAssertEqual(fitSakuteki(Formula33(1).calculate([ship1, ship2, ship3])), 22.0)
-        XCTAssertEqual(fitSakuteki(Formula33(3).calculate([ship1, ship2, ship3])), 362.1)
-        XCTAssertEqual(fitSakuteki(Formula33(4).calculate([ship1, ship2, ship3])), 659.6)
+        XCTAssertEqual(fitSakuteki(Formula33(1).calculate([ship1, ship2, ship3])), 22.2)
+        XCTAssertEqual(fitSakuteki(Formula33(3).calculate([ship1, ship2, ship3])), 107.5)
+        XCTAssertEqual(fitSakuteki(Formula33(4).calculate([ship1, ship2, ship3])), 150.1)
     }
 }

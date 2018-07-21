@@ -89,7 +89,7 @@ final class Formula33: SakutekiCalculator {
         // 艦隊の艦娘数による影響
         let saku4 = 2 * (6 - aliveShips.count)
         
-        return saku1 + saku2 - saku3 + Double(saku4)
+        return saku1 + Double(condition) * saku2 - saku3 + Double(saku4)
     }
     
     private func normalSakuteki(_ ship: Ship) -> Double {
@@ -106,14 +106,12 @@ final class Formula33: SakutekiCalculator {
     
     private func equipsSakuteki(_ ship: Ship) -> Double {
         
-        let saku = ship
+        return ship
             .equippedItem
             .array
             .compactMap { $0 as? SlotItem }
             .map(equipSakuteki)
             .reduce(0, +)
-        
-        return Double(condition) * saku
     }
     
     private func equipSakuteki(_ item: SlotItem) -> Double {
@@ -123,7 +121,7 @@ final class Formula33: SakutekiCalculator {
             return 0
         }
         
-        return Double(condition) * typeRatio(item) * (saku + levelBounus(item))
+        return typeRatio(item) * (saku + levelBounus(item))
     }
     
     private func typeRatio(_ item: SlotItem) -> Double {
