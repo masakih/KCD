@@ -605,17 +605,17 @@ IA
                         </connections>
                     </textField>
                     <box autoresizesSubviews="NO" misplaced="YES" boxType="custom" borderType="line" title="Box" titlePosition="noTitle" id="49N-EY-dSN">
-                        <rect key="frame" x="227" y="90" width="32" height="16"/>
+                        <rect key="frame" x="196" y="90" width="63" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView" id="uEK-HG-wX8">
-                            <rect key="frame" x="1" y="1" width="30" height="14"/>
+                            <rect key="frame" x="1" y="1" width="61" height="14"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="3He-Ij-QMC">
-                                    <rect key="frame" x="1" y="0.0" width="26" height="14"/>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="3He-Ij-QMC">
+                                    <rect key="frame" x="1" y="0.0" width="57" height="14"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="女神" id="aOL-vK-iPi">
-                                        <font key="font" size="11" name="HiraKakuProN-W3"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="女神" id="aOL-vK-iPi">
+                                        <font key="font" metaFont="system" size="11"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
