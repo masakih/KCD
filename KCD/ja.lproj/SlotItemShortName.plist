@@ -3,48 +3,64 @@
 <plist version="1.0">
 <dict>
 	<key>33</key>
-	<string>ター</string>
+	<string>改タービン</string>
 	<key>37</key>
-	<string>7.7</string>
+	<string>7.7mm機</string>
 	<key>38</key>
-	<string>12.7</string>
+	<string>12.7mm単</string>
 	<key>39</key>
-	<string>25連</string>
+	<string>25mm連装</string>
 	<key>40</key>
-	<string>25三</string>
+	<string>25mm三連</string>
 	<key>42</key>
-	<string>修理</string>
+	<string>応急修要員</string>
 	<key>43</key>
-	<string>女神</string>
+	<string>応急修女神</string>
 	<key>49</key>
-	<string>25単</string>
+	<string>25mm単装</string>
 	<key>51</key>
-	<string>噴進</string>
+	<string>装噴進砲</string>
+	<key>66</key>
+	<string>8cm高角砲</string>
+	<key>71</key>
+	<string>10cm(砲架)</string>
 	<key>72</key>
-	<string>バル</string>
+	<string>バルジ中型</string>
 	<key>73</key>
-	<string>バル</string>
+	<string>バルジ大型</string>
 	<key>84</key>
-	<string>Flak</string>
+	<string>FlaK 38</string>
 	<key>85</key>
-	<string>M42</string>
+	<string>FlaK M42</string>
 	<key>92</key>
-	<string>毘式</string>
+	<string>毘式連装</string>
 	<key>131</key>
-	<string>集中</string>
+	<string>25mm集中</string>
 	<key>136</key>
-	<string>プリ</string>
+	<string>プリエーゼ</string>
 	<key>145</key>
-	<string>糧食</string>
+	<string>戦闘糧食</string>
 	<key>146</key>
-	<string>補給</string>
+	<string>洋上補給</string>
 	<key>150</key>
-	<string>秋缶</string>
+	<string>秋刀魚缶詰</string>
 	<key>173</key>
-	<string>Bof</string>
+	<string>Bofors</string>
 	<key>191</key>
-	<string>QF</string>
+	<string>ポンポン砲</string>
+	<key>203</key>
+	<string>新バルジ中</string>
 	<key>204</key>
-	<string>艦本</string>
+	<string>新バルジ大</string>
+	<key>220</key>
+	<string>8cm+機銃</string>
+	<key>241</key>
+	<string>特おにぎり</string>
+	<key>268</key>
+	<string>北方迷彩</string>
+	<key>274</key>
+	<string>噴進砲改二</string>
+	<key>275</key>
+	<string>10cm+機銃</string>
 </dict>
 </plist>
