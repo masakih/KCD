@@ -16,6 +16,39 @@ enum BattleFleet {
     case secondOnly
 }
 
+private struct PositionedDamage {
+    
+    let position: Int
+    let damage: Int
+    
+    static let zero = PositionedDamage(position: 0, damage: 0)
+}
+
+extension PositionedDamage: Equatable {
+    
+    static func == (lhs: PositionedDamage, rhs: PositionedDamage) -> Bool {
+        
+        return lhs.position == rhs.position && lhs.damage == rhs.damage
+    }
+}
+
+private struct HogekiBattleData {
+    
+    let targetPositionList: [Int]
+    let damageList: [Int]
+    let enemyFlags: Bool
+}
+
+private func friendDamage(_ data: HogekiBattleData) -> PositionedDamage {
+    
+    guard !data.enemyFlags else { return .zero }
+    
+    guard let pos = data.targetPositionList.first else { return .zero }
+    
+    return PositionedDamage(position: pos,
+                            damage: data.damageList.filter({ $0 > 0 }).reduce(0, +))
+}
+
 final class DamageCalculator {
     
     private let store = TemporaryDataStore.oneTimeEditor()
@@ -384,17 +417,7 @@ extension DamageCalculator {
         calculateHogeki(baseKeyPath: baseKeyPath, battleFleet: bf())
     }
     
-    private func omitEnemyDamage(targetPosLists: [[Int]], damageLists: [[Int]], eFlags: [Int]?) -> [([Int], [Int])] {
-        
-        guard let eFlags = eFlags else {
-            
-            return zip(targetPosLists, damageLists).map { $0 }
-        }
-        
-        return zip(zip(targetPosLists, damageLists), eFlags).filter { $0.1 == 1 }.map { $0.0 }
-    }
-    
-    private func calculateHogeki(baseKeyPath: String, battleFleet: BattleFleet = .normal) {
+    private func buildBattleData(baseKeyPath: String) -> [HogekiBattleData] {
         
         let baseValue = json[baseKeyPath.components(separatedBy: ".")]
         
@@ -403,47 +426,56 @@ extension DamageCalculator {
                 
                 Debug.print("Cound not find api_df_list or api_damage for \(baseKeyPath)", level: .full)
                 
-                return
+                return []
         }
         
         guard targetPosLists.count == damageLists.count else {
             
             Logger.shared.log("api_damage is wrong.")
             
-            return
+            return []
         }
+        
+        guard let eFlags = enemyFlags(baseValue["api_at_eflag"]) else {
+            
+            return zip(targetPosLists, damageLists).map { HogekiBattleData(targetPositionList: $0.0, damageList: $0.1, enemyFlags: false) }
+        }
+        
+        return zip(zip(targetPosLists, damageLists), eFlags)
+            .map { arg -> HogekiBattleData in
+                
+                let ((targetPosList, damageList), eflag) = arg
+                
+                return HogekiBattleData(targetPositionList: targetPosList, damageList: damageList, enemyFlags: eflag != 1)
+        }
+    }
+    
+    private func calculateHogeki(baseKeyPath: String, battleFleet: BattleFleet = .normal) {
         
         Debug.print("Start Hougeki \(baseKeyPath)", level: .debug)
         
-        omitEnemyDamage(targetPosLists: targetPosLists, damageLists: damageLists, eFlags: enemyFlags(baseValue["api_at_eflag"]))
-            .map { (targetPosList, damageList) -> (Int, Int) in
+        buildBattleData(baseKeyPath: baseKeyPath)
+            .map(friendDamage)
+            .filter { $0 != .zero }
+            .forEach { posDamage in
                 
-                guard let pos = targetPosList.first else {
+                guard validTargetPos(posDamage.position, in: battleFleet) else {
                     
-                    return (0, 0)
-                }
-                
-                return (pos, damageList.filter { $0 > 0 }.reduce(0, +))
-            }
-            .forEach { (targetPos, damage) in
-                
-                guard validTargetPos(targetPos, in: battleFleet) else {
-                    
-                    Logger.shared.log("invalid position \(targetPos)")
+                    Logger.shared.log("invalid position \(posDamage.position)")
                     
                     return
                 }
                 
-                guard let damagePos = position(targetPos, in: battleFleet) else {
+                guard let damagePos = position(posDamage.position, in: battleFleet) else {
                     
                     Logger.shared.log("damage pos is larger than damage count")
                     
                     return
                 }
                 
-                calcHP(damage: damages[damagePos], receive: damage)
+                calcHP(damage: damages[damagePos], receive: posDamage.damage)
                 
-                Debug.print("Hougeki \(targetPos) -> \(damage)", level: .debug)
+                Debug.print("Hougeki \(posDamage.position) -> \(posDamage.damage)", level: .debug)
         }
     }
     
