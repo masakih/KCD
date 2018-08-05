@@ -73,7 +73,7 @@ final class CommandRegister {
                 return IgnoreCommand(apiResponse: response)
             }
             
-            if let c = registeredClasses.lazy.filter({ $0.canExecuteAPI(response.api) }).first {
+            if let c = registeredClasses.first(where: { $0.canExecuteAPI(response.api) }) {
                 
                 return c.init(apiResponse: response)
             }
