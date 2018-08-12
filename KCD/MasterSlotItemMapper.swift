@@ -14,7 +14,7 @@ final class MasterSlotItemMapper: JSONMapper {
     let configuration = MappingConfiguration(entity: MasterSlotItem.self,
                                              dataKeys: ["api_data", "api_mst_slotitem"],
                                              editorStore: ServerDataStore.oneTimeEditor(),
-                                             ignoreKeys: ["api_version"])
+                                             ignoreKeys: ["api_version", "api_usebull"])
     
     required init(_ apiResponse: APIResponse) {
         

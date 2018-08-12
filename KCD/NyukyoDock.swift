@@ -18,7 +18,6 @@ final class NyukyoDock: KCManagedObject {
     @NSManaged var item2: NSNumber?
     @NSManaged var item3: NSNumber?
     @NSManaged var item4: NSNumber?
-    @NSManaged var member_id: NSNumber?
     @NSManaged var ship_id: Int
     @NSManaged var state: Int
 }

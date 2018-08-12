@@ -20,6 +20,5 @@ final class KenzoDock: KCManagedObject {
     @NSManaged var item3: Int
     @NSManaged var item4: Int
     @NSManaged var item5: Int
-    @NSManaged var member_id: NSNumber?
     @NSManaged var state: Int
 }

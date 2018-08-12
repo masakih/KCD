@@ -13,7 +13,6 @@ final class Basic: KCManagedObject {
     
     @NSManaged var active_flag: NSNumber?
     @NSManaged var comment: String?
-    @NSManaged var comment_id: NSNumber?
     @NSManaged var count_deck: Int
     @NSManaged var count_kdock: Int
     @NSManaged var count_ndock: Int
@@ -34,11 +33,9 @@ final class Basic: KCManagedObject {
     @NSManaged var max_kagu: Int
     @NSManaged var max_slotitem: Int
     @NSManaged var medals: Int
-    @NSManaged var member_id: NSNumber?
     @NSManaged var ms_count: NSNumber?
     @NSManaged var ms_success: NSNumber?
     @NSManaged var nickname: String
-    @NSManaged var nickname_id: NSNumber?
     @NSManaged var playtime: Int
     @NSManaged var pt_challenged: NSNumber?
     @NSManaged var pt_challenged_win: NSNumber?

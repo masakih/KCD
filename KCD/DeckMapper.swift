@@ -18,7 +18,8 @@ final class DeckMapper: JSONMapper {
         self.apiResponse = apiResponse
         self.configuration = MappingConfiguration(entity: Deck.self,
                                                   dataKeys: DeckMapper.dataKeys(apiResponse),
-                                                  editorStore: ServerDataStore.oneTimeEditor())
+                                                  editorStore: ServerDataStore.oneTimeEditor(),
+                                                  ignoreKeys: ["api_flagship", "api_member_id", "api_name_id"])
     }
     
     private class func dataKeys(_ apiResponse: APIResponse) -> [String] {

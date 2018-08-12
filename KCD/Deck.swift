@@ -11,15 +11,12 @@ import Cocoa
 // swiftlint:disable identifier_name
 final class Deck: KCManagedObject {
     
-    @NSManaged var flagship: NSNumber?
     @NSManaged var id: Int
-    @NSManaged var member_id: NSNumber?
     @NSManaged var mission_0: Int
     @NSManaged var mission_1: Int
     @NSManaged var mission_2: Int
     @NSManaged var mission_3: Int
     @NSManaged var name: String
-    @NSManaged var name_id: NSNumber?
     @NSManaged var ship_0: Int
     @NSManaged var ship_1: Int
     @NSManaged var ship_2: Int

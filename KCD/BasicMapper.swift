@@ -18,7 +18,8 @@ final class BasicMapper: JSONMapper {
         self.apiResponse = apiResponse
         self.configuration = MappingConfiguration(entity: Basic.self,
                                                   dataKeys: BasicMapper.dataKeys(apiResponse),
-                                                  editorStore: ServerDataStore.oneTimeEditor())
+                                                  editorStore: ServerDataStore.oneTimeEditor(),
+                                                  ignoreKeys: ["api_comment_id", "api_member_id", "api_nickname_id"])
     }
     
     private class func dataKeys(_ apiResponse: APIResponse) -> [String] {

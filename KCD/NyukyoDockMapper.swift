@@ -18,7 +18,8 @@ final class NyukyoDockMapper: JSONMapper {
         self.apiResponse = apiResponse
         self.configuration = MappingConfiguration(entity: NyukyoDock.self,
                                                   dataKeys: NyukyoDockMapper.dataKeys(apiResponse),
-                                                  editorStore: ServerDataStore.oneTimeEditor())
+                                                  editorStore: ServerDataStore.oneTimeEditor(),
+                                                  ignoreKeys: ["api_member_id"])
     }
     
     private class func dataKeys(_ apiResponse: APIResponse) -> [String] {

@@ -42,6 +42,5 @@ final class MasterSlotItem: KCManagedObject {
     @NSManaged var type_1: Int
     @NSManaged var type_2: Int
     @NSManaged var type_3: Int
-    @NSManaged var usebull: NSNumber?
     @NSManaged var slotItems: Set<SlotItem>
 }
