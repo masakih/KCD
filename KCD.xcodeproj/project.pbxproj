@@ -31,6 +31,7 @@
 		F421850A1DF44AA900256590 /* AirBaseWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F421850C1DF44AA900256590 /* AirBaseWindowController.xib */; };
 		F421850F1DF4518000256590 /* BroswerTouchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = F421850E1DF4518000256590 /* BroswerTouchBar.xib */; };
 		F42185111DF461A600256590 /* ScreenshotTouchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = F42185101DF461A600256590 /* ScreenshotTouchBar.xib */; };
+		F421D46B2116A083006F33E0 /* SequenceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F421D46A2116A083006F33E0 /* SequenceExtensions.swift */; };
 		F422D64C1FED474100183199 /* EnhancementListItemDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F422D64B1FED474100183199 /* EnhancementListItemDownloader.swift */; };
 		F422D64E1FEE14D500183199 /* ViewAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F422D64D1FEE14D500183199 /* ViewAnimation.swift */; };
 		F422D6521FEF584100183199 /* SakutekiTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F422D6511FEF584100183199 /* SakutekiTest.swift */; };
@@ -415,6 +416,7 @@
 		F421850D1DF44AEA00256590 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AirBaseWindowController.xib; sourceTree = "<group>"; };
 		F421850E1DF4518000256590 /* BroswerTouchBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BroswerTouchBar.xib; sourceTree = "<group>"; };
 		F42185101DF461A600256590 /* ScreenshotTouchBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScreenshotTouchBar.xib; sourceTree = "<group>"; };
+		F421D46A2116A083006F33E0 /* SequenceExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceExtensions.swift; sourceTree = "<group>"; };
 		F422D64B1FED474100183199 /* EnhancementListItemDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnhancementListItemDownloader.swift; sourceTree = "<group>"; };
 		F422D64D1FEE14D500183199 /* ViewAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAnimation.swift; sourceTree = "<group>"; };
 		F422D6511FEF584100183199 /* SakutekiTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SakutekiTest.swift; sourceTree = "<group>"; };
@@ -810,6 +812,7 @@
 				F455DDC01FA4A6CD00CDE64D /* Logger.swift */,
 				F455DDC21FA4A9E400CDE64D /* LoggerExtension.swift */,
 				F40F976E1E67092600AE81BB /* ArrayExtensions.swift */,
+				F421D46A2116A083006F33E0 /* SequenceExtensions.swift */,
 				F404AF561F2CDD1C00A006B8 /* DefaultKey.swift */,
 				F404AF611F2D8CAE00A006B8 /* DefaultKeys.swift */,
 				F48883461F2E2E9A0069E0C3 /* DefaultKeyExtendedValues.swift */,
@@ -1675,6 +1678,7 @@
 				F44BC71B1E29DCB4004644E3 /* MemberKDockCommand.swift in Sources */,
 				F46FEA3F1F81285D00E2427C /* Localizable.swift in Sources */,
 				F4AC136F1E0963DB00851147 /* ProgressPanel.swift in Sources */,
+				F421D46B2116A083006F33E0 /* SequenceExtensions.swift in Sources */,
 				F481D63F1F9105CB007E2CBE /* Entities.swift in Sources */,
 				F4AA592A1E1D1387001667AF /* IgnoreZeroTransformer.swift in Sources */,
 				F4AC136D1E0802C000851147 /* PreferencePanelController.swift in Sources */,
