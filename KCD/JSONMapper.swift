@@ -16,13 +16,13 @@ struct MappingConfiguration<T: Entity> {
     let dataKeys: [String]
     let primaryKeys: [String]
     let editorStore: CoreDataAccessor
-    let ignoreKeys: [String]
+    let ignoreKeys: Set<String>
     
     init(entity: T.Type,
          dataKeys: [String] = ["api_data"],
          primaryKeys: [String] = ["id"],
          editorStore: CoreDataAccessor,
-         ignoreKeys: [String] = []) {
+         ignoreKeys: Set<String> = []) {
         
         self.entity = entity
         self.dataKeys = dataKeys

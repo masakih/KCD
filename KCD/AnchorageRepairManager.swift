@@ -14,7 +14,7 @@ final class AnchorageRepairManager: NSObject {
     static let `default`: AnchorageRepairManager = AnchorageRepairManager()
     
     private let fleetManager = AppDelegate.shared.fleetManager
-    private let repairShipTypeIds: [Int] = [19]
+    private let repairShipTypeIds: Set<Int> = [19]
     
     override init() {
                 

@@ -17,15 +17,7 @@ enum KCManagedObjectError: Error {
 
 class KCManagedObject: NSManagedObject {
     
-    private static let intValueKyes =
-        [
-    "api_enqflg", "api_aftershipid", "api_progress", "api_usebull",
-    "api_flagship", "api_name_id",
-    "api_comment_id", "api_nickname_id", "api_member_id",
-    "api_flag_0", "api_flag_1", "api_flag_2", "api_flag_3", "api_flag_4",
-    "api_flag_5", "api_flag_6", "api_flag_7",
-    "api_level"
-    ]
+    private static let intValueKyes: Set<String> = ["api_aftershipid", "api_level"]
     
     override func validateValue(_ value: AutoreleasingUnsafeMutablePointer<AnyObject?>, forKey key: String) throws {
         

@@ -11,14 +11,14 @@ import SwiftyJSON
 
 final class ShipMapper: JSONMapper {
     
-    private static let ignoreKeys = ["api_gomes", "api_gomes2", "api_broken", "api_powup",
-                                     "api_voicef", "api_afterlv", "api_aftershipid", "api_backs",
-                                     "api_slotnum", "api_stype", "api_name", "api_yomi",
-                                     "api_raig", "api_luck", "api_saku", "api_raim", "api_baku",
-                                     "api_taik", "api_houg", "api_houm", "api_tyku",
-                                     "api_ndock_item", "api_star",
-                                     "api_ndock_time_str", "api_member_id",
-                                     "api_fuel_max", "api_bull_max"]
+    private static let ignoreKeys: Set<String> = ["api_gomes", "api_gomes2", "api_broken", "api_powup",
+                                                  "api_voicef", "api_afterlv", "api_aftershipid", "api_backs",
+                                                  "api_slotnum", "api_stype", "api_name", "api_yomi",
+                                                  "api_raig", "api_luck", "api_saku", "api_raim", "api_baku",
+                                                  "api_taik", "api_houg", "api_houm", "api_tyku",
+                                                  "api_ndock_item", "api_star",
+                                                  "api_ndock_time_str", "api_member_id",
+                                                  "api_fuel_max", "api_bull_max"]
     
     let apiResponse: APIResponse
     let configuration: MappingConfiguration<Ship>
