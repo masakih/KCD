@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import Doutaku
 
 enum KCManagedObjectError: Error {
     
@@ -68,7 +69,7 @@ class KCManagedObject: NSManagedObject {
             return value(forKey: k)
         }
         
-        print("Entity \(type(of: self).entityName) dose not have key \(key)")
+        print("Entity \(String(describing: self)) dose not have key \(key)")
         
         return nil
     }
@@ -90,6 +91,6 @@ class KCManagedObject: NSManagedObject {
             return
         }
         
-        print("Entity \(type(of: self).entityName) dose not have key \(key)")
+        print("Entity \(String(describing: self)) dose not have key \(key)")
     }
 }

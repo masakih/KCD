@@ -17,7 +17,7 @@ extension TemporaryDataStore {
     
     func battles() -> [Battle] {
         
-        guard let battles = try? self.objects(of: Battle.entity) else {
+        guard let battles = try? self.objects(of: Battle.self) else {
             
             return []
         }
@@ -32,14 +32,14 @@ extension TemporaryDataStore {
     
     func createBattle() -> Battle? {
         
-        return insertNewObject(for: Battle.entity)
+        return insertNewObject(for: Battle.self)
     }
     
     func sortedDamagesById() -> [Damage] {
         
         let sortDescriptors = SortDescriptors(keyPath: \Damage.id, ascending: true)
         
-        guard let damages = try? objects(of: Damage.entity, sortDescriptors: sortDescriptors) else {
+        guard let damages = try? objects(of: Damage.self, sortDescriptors: sortDescriptors) else {
             
             return []
         }
@@ -49,7 +49,7 @@ extension TemporaryDataStore {
     
     func damages() -> [Damage] {
         
-        guard let damages = try? objects(of: Damage.entity) else {
+        guard let damages = try? objects(of: Damage.self) else {
             
             return []
         }
@@ -59,12 +59,12 @@ extension TemporaryDataStore {
     
     func createDamage() -> Damage? {
         
-        return insertNewObject(for: Damage.entity)
+        return insertNewObject(for: Damage.self)
     }
     
     func guardEscaped() -> [GuardEscaped] {
         
-        guard let escapeds = try? objects(of: GuardEscaped.entity) else {
+        guard let escapeds = try? objects(of: GuardEscaped.self) else {
             
             return []
         }
@@ -77,7 +77,7 @@ extension TemporaryDataStore {
         let predicate = Predicate(\GuardEscaped.shipID, equalTo: shipId)
             .and(Predicate(true: \GuardEscaped.ensured))
         
-        guard let escapes = try? objects(of: GuardEscaped.entity, predicate: predicate) else {
+        guard let escapes = try? objects(of: GuardEscaped.self, predicate: predicate) else {
             
             return nil
         }
@@ -89,7 +89,7 @@ extension TemporaryDataStore {
         
         let predicate = Predicate(false: \GuardEscaped.ensured)
         
-        guard let escapeds = try? objects(of: GuardEscaped.entity, predicate: predicate) else {
+        guard let escapeds = try? objects(of: GuardEscaped.self, predicate: predicate) else {
             
             return []
         }
@@ -99,6 +99,6 @@ extension TemporaryDataStore {
     
     func createGuardEscaped() -> GuardEscaped? {
         
-        return insertNewObject(for: GuardEscaped.entity)
+        return insertNewObject(for: GuardEscaped.self)
     }
 }

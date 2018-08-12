@@ -16,7 +16,7 @@ final class DeckMapper: JSONMapper {
     required init(_ apiResponse: APIResponse) {
         
         self.apiResponse = apiResponse
-        self.configuration = MappingConfiguration(entity: Deck.entity,
+        self.configuration = MappingConfiguration(entity: Deck.self,
                                                   dataKeys: DeckMapper.dataKeys(apiResponse),
                                                   editorStore: ServerDataStore.oneTimeEditor())
     }

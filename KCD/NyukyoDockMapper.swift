@@ -16,7 +16,7 @@ final class NyukyoDockMapper: JSONMapper {
     required init(_ apiResponse: APIResponse) {
         
         self.apiResponse = apiResponse
-        self.configuration = MappingConfiguration(entity: NyukyoDock.entity,
+        self.configuration = MappingConfiguration(entity: NyukyoDock.self,
                                                   dataKeys: NyukyoDockMapper.dataKeys(apiResponse),
                                                   editorStore: ServerDataStore.oneTimeEditor())
     }

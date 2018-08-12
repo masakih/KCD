@@ -20,7 +20,7 @@ extension LocalDataStore {
             )
             .and(Predicate(\DropShipHistory.mapArea, in: ["1", "2", "3", "4", "5", "6", "7", "8", "9"]))
         
-        guard let dropHistories = try? objects(of: DropShipHistory.entity, predicate: predicate) else {
+        guard let dropHistories = try? objects(of: DropShipHistory.self, predicate: predicate) else {
             
             return []
         }
@@ -30,7 +30,7 @@ extension LocalDataStore {
     
     func createDropShipHistory(from: HiddenDropShipHistory) -> DropShipHistory? {
         
-        guard let new = insertNewObject(for: DropShipHistory.entity) else {
+        guard let new = insertNewObject(for: DropShipHistory.self) else {
             
             Logger.shared.log("Can not create DropShipHistory")
             
@@ -51,7 +51,7 @@ extension LocalDataStore {
     
     func kaihatuHistories() -> [KaihatuHistory] {
         
-        guard let kaihatuHistories = try? objects(of: KaihatuHistory.entity) else {
+        guard let kaihatuHistories = try? objects(of: KaihatuHistory.self) else {
             
             return []
         }
@@ -68,7 +68,7 @@ extension LocalDataStore {
                     .or(Predicate(isNil: \KaihatuHistory.mark))
         )
         
-        guard let kaihatuHistories = try? objects(of: KaihatuHistory.entity, predicate: predicate) else {
+        guard let kaihatuHistories = try? objects(of: KaihatuHistory.self, predicate: predicate) else {
             
             return []
         }
@@ -78,14 +78,14 @@ extension LocalDataStore {
     
     func createKaihatuHistory() -> KaihatuHistory? {
         
-        return insertNewObject(for: KaihatuHistory.entity)
+        return insertNewObject(for: KaihatuHistory.self)
     }
     
     func kenzoMark(byDockId dockId: Int) -> KenzoMark? {
         
         let predicate = Predicate(\KenzoMark.kDockId, equalTo: dockId)
         
-        guard let kenzoMarks = try? objects(of: KenzoMark.entity, predicate: predicate) else {
+        guard let kenzoMarks = try? objects(of: KenzoMark.self, predicate: predicate) else {
             
             return nil
         }
@@ -103,7 +103,7 @@ extension LocalDataStore {
             .and(Predicate(\KenzoMark.kaihatusizai, equalTo: docInfo.kaihatusizai))
             .and(Predicate(\KenzoMark.created_ship_id, equalTo: docInfo.shipId))
         
-        guard let kenzoMarks = try? objects(of: KenzoMark.entity, predicate: predicate) else {
+        guard let kenzoMarks = try? objects(of: KenzoMark.self, predicate: predicate) else {
             
             return nil
         }
@@ -113,7 +113,7 @@ extension LocalDataStore {
     
     func createKenzoMark() -> KenzoMark? {
         
-        return insertNewObject(for: KenzoMark.entity)
+        return insertNewObject(for: KenzoMark.self)
     }
     
     func unmarkedKenzoHistories(befor days: Int) -> [KenzoHistory] {
@@ -125,7 +125,7 @@ extension LocalDataStore {
                     .or(Predicate(isNil: \KenzoHistory.mark))
         )
         
-        guard let kenzoHistories = try? objects(of: KenzoHistory.entity, predicate: predicate) else {
+        guard let kenzoHistories = try? objects(of: KenzoHistory.self, predicate: predicate) else {
             
             return []
         }
@@ -135,12 +135,12 @@ extension LocalDataStore {
     
     func createKenzoHistory() -> KenzoHistory? {
         
-        return insertNewObject(for: KenzoHistory.entity)
+        return insertNewObject(for: KenzoHistory.self)
     }
     
     func hiddenDropShipHistories() -> [HiddenDropShipHistory] {
         
-        guard let dropShipHistories = try? objects(of: HiddenDropShipHistory.entity) else {
+        guard let dropShipHistories = try? objects(of: HiddenDropShipHistory.self) else {
             
             return []
         }
@@ -150,6 +150,6 @@ extension LocalDataStore {
     
     func createHiddenDropShipHistory() -> HiddenDropShipHistory? {
         
-        return insertNewObject(for: HiddenDropShipHistory.entity)
+        return insertNewObject(for: HiddenDropShipHistory.self)
     }
 }

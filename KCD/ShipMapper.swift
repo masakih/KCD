@@ -26,7 +26,7 @@ final class ShipMapper: JSONMapper {
     required init(_ apiResponse: APIResponse) {
         
         self.apiResponse = apiResponse
-        self.configuration = MappingConfiguration(entity: Ship.entity,
+        self.configuration = MappingConfiguration(entity: Ship.self,
                                                   dataKeys: ShipMapper.dataKeys(apiResponse),
                                                   editorStore: ServerDataStore.oneTimeEditor(),
                                                   ignoreKeys: ShipMapper.ignoreKeys)
@@ -36,7 +36,7 @@ final class ShipMapper: JSONMapper {
     init(forSlotDepriveUnset apiResponse: APIResponse) {
         
         self.apiResponse = apiResponse
-        self.configuration = MappingConfiguration(entity: Ship.entity,
+        self.configuration = MappingConfiguration(entity: Ship.self,
                                                   dataKeys: ["api_data", "api_ship_data", "api_unset_ship"],
                                                   editorStore: ServerDataStore.oneTimeEditor(),
                                                   ignoreKeys: ShipMapper.ignoreKeys)

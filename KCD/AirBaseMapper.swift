@@ -12,7 +12,7 @@ import SwiftyJSON
 final class AirBaseMapper: JSONMapper {
         
     let apiResponse: APIResponse
-    let configuration = MappingConfiguration(entity: AirBase.entity,
+    let configuration = MappingConfiguration(entity: AirBase.self,
                                              dataKeys: ["api_data", "api_air_base"],
                                              primaryKeys: ["area_id", "rid"],
                                              editorStore: ServerDataStore.oneTimeEditor())

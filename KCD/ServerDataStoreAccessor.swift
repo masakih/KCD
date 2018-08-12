@@ -12,7 +12,7 @@ extension ServerDataStore {
     
     func airBases() -> [AirBase] {
         
-        guard let airbase = try? objects(of: AirBase.entity) else {
+        guard let airbase = try? objects(of: AirBase.self) else {
             
             return []
         }
@@ -25,7 +25,7 @@ extension ServerDataStore {
         let predicate = Predicate(\AirBase.area_id, equalTo: area)
             .and(Predicate(\AirBase.rid, equalTo: base))
         
-        guard let airBases = try? objects(of: AirBase.entity, predicate: predicate) else {
+        guard let airBases = try? objects(of: AirBase.self, predicate: predicate) else {
             
             return nil
         }
@@ -35,12 +35,12 @@ extension ServerDataStore {
     
     func createAirBasePlaneInfo() -> AirBasePlaneInfo? {
         
-        return insertNewObject(for: AirBasePlaneInfo.entity)
+        return insertNewObject(for: AirBasePlaneInfo.self)
     }
     
     func basic() -> Basic? {
         
-        guard let basics = try? objects(of: Basic.entity) else {
+        guard let basics = try? objects(of: Basic.self) else {
             
             return nil
         }
@@ -50,14 +50,14 @@ extension ServerDataStore {
     
     func createBasic() -> Basic? {
         
-        return insertNewObject(for: Basic.entity)
+        return insertNewObject(for: Basic.self)
     }
     
     func decksSortedById() -> [Deck] {
         
         let sortDecs = SortDescriptors(keyPath: \Deck.id, ascending: true)
         
-        guard let decks = try? objects(of: Deck.entity, sortDescriptors: sortDecs) else {
+        guard let decks = try? objects(of: Deck.self, sortDescriptors: sortDecs) else {
             
             return []
         }
@@ -69,7 +69,7 @@ extension ServerDataStore {
         
         let predicate = Predicate(\Deck.id, equalTo: id)
         
-        guard let decks = try? objects(of: Deck.entity, predicate: predicate) else {
+        guard let decks = try? objects(of: Deck.self, predicate: predicate) else {
             
             return nil
         }
@@ -81,7 +81,7 @@ extension ServerDataStore {
         
         let predicate = Predicate(\KenzoDock.id, equalTo: dockId)
         
-        guard let kenzoDocks = try? objects(of: KenzoDock.entity, predicate: predicate) else {
+        guard let kenzoDocks = try? objects(of: KenzoDock.self, predicate: predicate) else {
             
             return nil
         }
@@ -93,7 +93,7 @@ extension ServerDataStore {
         
         let predicate = Predicate(\MasterMapArea.id, equalTo: id)
         
-        guard let mapAreas = try? objects(of: MasterMapArea.entity, predicate: predicate) else {
+        guard let mapAreas = try? objects(of: MasterMapArea.self, predicate: predicate) else {
             
             return nil
         }
@@ -106,7 +106,7 @@ extension ServerDataStore {
         let predicate = Predicate(\MasterMapInfo.maparea_id, equalTo: area)
             .and(Predicate(\MasterMapInfo.no, equalTo: no))
         
-        guard let mapInfos = try? objects(of: MasterMapInfo.entity, predicate: predicate) else {
+        guard let mapInfos = try? objects(of: MasterMapInfo.self, predicate: predicate) else {
             
             return nil
         }
@@ -118,7 +118,7 @@ extension ServerDataStore {
         
         let predicate = Predicate(\MasterMission.id, equalTo: id)
         
-        guard let missions = try? objects(of: MasterMission.entity, predicate: predicate) else {
+        guard let missions = try? objects(of: MasterMission.self, predicate: predicate) else {
             
             return nil
         }
@@ -128,7 +128,7 @@ extension ServerDataStore {
     
     func masterShips() -> [MasterShip] {
         
-        guard let ships = try? objects(of: MasterShip.entity) else {
+        guard let ships = try? objects(of: MasterShip.self) else {
             
             return []
         }
@@ -140,7 +140,7 @@ extension ServerDataStore {
         
         let sortDescs = SortDescriptors(keyPath: \MasterShip.id, ascending: true)
         
-        guard let ships = try? objects(of: MasterShip.entity, sortDescriptors: sortDescs) else {
+        guard let ships = try? objects(of: MasterShip.self, sortDescriptors: sortDescs) else {
             
             return []
         }
@@ -152,7 +152,7 @@ extension ServerDataStore {
         
         let predicate = Predicate(\MasterShip.id, equalTo: id)
         
-        guard let ships = try? objects(of: MasterShip.entity, predicate: predicate) else {
+        guard let ships = try? objects(of: MasterShip.self, predicate: predicate) else {
             
             return nil
         }
@@ -164,7 +164,7 @@ extension ServerDataStore {
         
         let sortDescs = SortDescriptors(keyPath: \MasterSlotItem.id, ascending: true)
         
-        guard let masterSlotItems = try? objects(of: MasterSlotItem.entity, sortDescriptors: sortDescs) else {
+        guard let masterSlotItems = try? objects(of: MasterSlotItem.self, sortDescriptors: sortDescs) else {
             
             return []
         }
@@ -174,7 +174,7 @@ extension ServerDataStore {
     
     func masterSlotItems() -> [MasterSlotItem] {
         
-        guard let masterSlotItems = try? objects(of: MasterSlotItem.entity) else {
+        guard let masterSlotItems = try? objects(of: MasterSlotItem.self) else {
             
             return []
         }
@@ -186,7 +186,7 @@ extension ServerDataStore {
         
         let predicate = Predicate(\MasterSlotItem.id, equalTo: id)
         
-        guard let masterSlotItems = try? objects(of: MasterSlotItem.entity, predicate: predicate) else {
+        guard let masterSlotItems = try? objects(of: MasterSlotItem.self, predicate: predicate) else {
             
             return nil
         }
@@ -198,7 +198,7 @@ extension ServerDataStore {
         
         let predicate = Predicate(\MasterSlotItemEquipType.id, equalTo: id)
         
-        guard let types = try? objects(of: MasterSlotItemEquipType.entity, predicate: predicate) else {
+        guard let types = try? objects(of: MasterSlotItemEquipType.self, predicate: predicate) else {
             
             return nil
         }
@@ -208,7 +208,7 @@ extension ServerDataStore {
     
     func masterSTypes() -> [MasterSType] {
         
-        guard let masterSTypes = try? objects(of: MasterSType.entity) else {
+        guard let masterSTypes = try? objects(of: MasterSType.self) else {
             
             return []
         }
@@ -220,7 +220,7 @@ extension ServerDataStore {
         
         let sortDescs = SortDescriptors(keyPath: \MasterSType.id, ascending: true)
         
-        guard let masterSTypes = try? objects(of: MasterSType.entity, sortDescriptors: sortDescs) else {
+        guard let masterSTypes = try? objects(of: MasterSType.self, sortDescriptors: sortDescs) else {
             
             return []
         }
@@ -230,7 +230,7 @@ extension ServerDataStore {
     
     func material() -> Material? {
         
-        guard let materials = try? objects(of: Material.entity) else {
+        guard let materials = try? objects(of: Material.self) else {
             
             return nil
         }
@@ -240,14 +240,14 @@ extension ServerDataStore {
     
     func createMaterial() -> Material? {
         
-        return insertNewObject(for: Material.entity)
+        return insertNewObject(for: Material.self)
     }
     
     func nyukyoDock(by id: Int) -> NyukyoDock? {
         
         let predicate = Predicate(\NyukyoDock.id, equalTo: id)
         
-        guard let ndocks = try? objects(of: NyukyoDock.entity, predicate: predicate) else {
+        guard let ndocks = try? objects(of: NyukyoDock.self, predicate: predicate) else {
             
             return nil
         }
@@ -259,7 +259,7 @@ extension ServerDataStore {
         
         let predicate = Predicate(\Deck.id, equalTo: deckId)
         
-        guard let decks = try? objects(of: Deck.entity, predicate: predicate) else {
+        guard let decks = try? objects(of: Deck.self, predicate: predicate) else {
             
             return []
         }
@@ -281,7 +281,7 @@ extension ServerDataStore {
         
         let predicate = Predicate(\Ship.id, equalTo: shipId)
         
-        guard let ships = try? objects(of: Ship.entity, predicate: predicate) else {
+        guard let ships = try? objects(of: Ship.self, predicate: predicate) else {
             
             return nil
         }
@@ -293,7 +293,7 @@ extension ServerDataStore {
         
         let predicate = Predicate(\Ship.id, equalTo: shipId)
         
-        guard let ships = try? objects(of: Ship.entity, predicate: predicate) else {
+        guard let ships = try? objects(of: Ship.self, predicate: predicate) else {
             
             return []
         }
@@ -305,7 +305,7 @@ extension ServerDataStore {
         
         let predicate = Predicate(\Ship.id, in: shipIds).negate()
         
-        guard let ships = try? objects(of: Ship.entity, predicate: predicate) else {
+        guard let ships = try? objects(of: Ship.self, predicate: predicate) else {
             
             return []
         }
@@ -317,7 +317,7 @@ extension ServerDataStore {
         
         let predicate = Predicate(\Ship.fleet, notEqualTo: 0)
         
-        guard let ships = try? objects(of: Ship.entity, predicate: predicate) else {
+        guard let ships = try? objects(of: Ship.self, predicate: predicate) else {
             
             return []
         }
@@ -327,7 +327,7 @@ extension ServerDataStore {
     
     func createShip() -> Ship? {
         
-        return insertNewObject(for: Ship.entity)
+        return insertNewObject(for: Ship.self)
     }
     
     func masterSlotItemID(by slotItemId: Int) -> Int {
@@ -339,7 +339,7 @@ extension ServerDataStore {
         
         let predicate = Predicate(\SlotItem.id, equalTo: slotItemId)
         
-        guard let slotItems = try? objects(of: SlotItem.entity, predicate: predicate) else {
+        guard let slotItems = try? objects(of: SlotItem.self, predicate: predicate) else {
             
             return 0
         }
@@ -355,7 +355,7 @@ extension ServerDataStore {
         
         let predicate = Predicate(\SlotItem.id, equalTo: itemId)
         
-        guard let slotItems = try? objects(of: SlotItem.entity, predicate: predicate) else {
+        guard let slotItems = try? objects(of: SlotItem.self, predicate: predicate) else {
             
             return nil
         }
@@ -367,7 +367,7 @@ extension ServerDataStore {
         
         let sortDescs = SortDescriptors(keyPath: \SlotItem.id, ascending: true)
         
-        guard let slotItems = try? objects(of: SlotItem.entity, sortDescriptors: sortDescs) else {
+        guard let slotItems = try? objects(of: SlotItem.self, sortDescriptors: sortDescs) else {
             
             return []
         }
@@ -377,7 +377,7 @@ extension ServerDataStore {
     
     func slotItems() -> [SlotItem] {
         
-        guard let slotItems = try? objects(of: SlotItem.entity) else {
+        guard let slotItems = try? objects(of: SlotItem.self) else {
             
             return []
         }
@@ -389,7 +389,7 @@ extension ServerDataStore {
         
         let predicate = Predicate(\SlotItem.id, in: itemIds)
         
-        guard let slotItems = try? objects(of: SlotItem.entity, predicate: predicate) else {
+        guard let slotItems = try? objects(of: SlotItem.self, predicate: predicate) else {
             
             return []
         }
@@ -401,7 +401,7 @@ extension ServerDataStore {
         
         let predicate = Predicate(\SlotItem.id, in: itemIds).negate()
         
-        guard let slotItems = try? objects(of: SlotItem.entity, predicate: predicate) else {
+        guard let slotItems = try? objects(of: SlotItem.self, predicate: predicate) else {
             
             return []
         }
@@ -411,12 +411,12 @@ extension ServerDataStore {
     
     func createSlotItem() -> SlotItem? {
         
-        return insertNewObject(for: SlotItem.entity)
+        return insertNewObject(for: SlotItem.self)
     }
     
     func quests() -> [Quest] {
         
-        guard let quests = try? objects(of: Quest.entity) else {
+        guard let quests = try? objects(of: Quest.self) else {
             
             return []
         }
@@ -428,7 +428,7 @@ extension ServerDataStore {
         
         let predicate = Predicate(\Quest.no, equalTo: no)
         
-        guard let quests = try? objects(of: Quest.entity, predicate: predicate) else {
+        guard let quests = try? objects(of: Quest.self, predicate: predicate) else {
             
             return nil
         }
@@ -440,7 +440,7 @@ extension ServerDataStore {
         
         let predicate = Predicate(\Quest.no, in: range.map { $0 })
         
-        guard let quests = try? objects(of: Quest.entity, predicate: predicate) else {
+        guard let quests = try? objects(of: Quest.self, predicate: predicate) else {
             
             return []
         }
@@ -452,7 +452,7 @@ extension ServerDataStore {
         
         let sortDescs = SortDescriptors(keyPath: \Quest.no, ascending: true)
         
-        guard let quests = try? objects(of: Quest.entity, sortDescriptors: sortDescs) else {
+        guard let quests = try? objects(of: Quest.self, sortDescriptors: sortDescs) else {
             
             return []
         }
@@ -462,6 +462,6 @@ extension ServerDataStore {
     
     func createQuest() -> Quest? {
         
-        return insertNewObject(for: Quest.entity)
+        return insertNewObject(for: Quest.self)
     }
 }

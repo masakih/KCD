@@ -11,7 +11,7 @@ import Cocoa
 final class MasterMissionMapper: JSONMapper {
     
     let apiResponse: APIResponse
-    let configuration = MappingConfiguration(entity: MasterMission.entity,
+    let configuration = MappingConfiguration(entity: MasterMission.self,
                                              dataKeys: ["api_data", "api_mst_mission"],
                                              editorStore: ServerDataStore.oneTimeEditor(),
                                              ignoreKeys: ["api_deck_num", "api_disp_no"])

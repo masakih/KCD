@@ -12,7 +12,7 @@ import SwiftyJSON
 final class MasterShipMapper: JSONMapper {
         
     let apiResponse: APIResponse
-    let configuration = MappingConfiguration(entity: MasterShip.entity,
+    let configuration = MappingConfiguration(entity: MasterShip.self,
                                              dataKeys: ["api_data", "api_mst_ship"],
                                              editorStore: ServerDataStore.oneTimeEditor())
     

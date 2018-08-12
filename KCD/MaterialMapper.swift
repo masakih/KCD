@@ -22,7 +22,7 @@ final class MaterialMapper: JSONMapper {
     required init(_ apiResponse: APIResponse) {
         
         self.apiResponse = apiResponse
-        self.configuration = MappingConfiguration(entity: Material.entity,
+        self.configuration = MappingConfiguration(entity: Material.self,
                                                   dataKeys: MaterialMapper.dataKeys(apiResponse),
                                                   editorStore: ServerDataStore.oneTimeEditor())
     }

@@ -161,13 +161,13 @@ final class TSVSupport {
         }
     }
     
-    private func localData<T, Value>(_ entity: Entity<T>, sortBy: KeyPath<T, Value>) -> [T] {
+    private func localData<ResultType: Entity, Value>(_ type: ResultType.Type, sortBy: KeyPath<ResultType, Value>) -> [ResultType] {
         
         let sortDesc = SortDescriptors(keyPath: sortBy, ascending: true)
         
-        guard let array = try? store.objects(of: entity, sortDescriptors: sortDesc) else {
+        guard let array = try? store.objects(of: type, sortDescriptors: sortDesc) else {
             
-            print("Can not get \(entity)")
+            print("Can not get \(type)")
             
             return []
         }
@@ -177,7 +177,7 @@ final class TSVSupport {
     
     private func dataOfKaihatuHistory() -> Data? {
         
-        return localData(KaihatuHistory.entity, sortBy: \KaihatuHistory.date)
+        return localData(KaihatuHistory.self, sortBy: \KaihatuHistory.date)
             .map {
                 LFSeparateLine.empty
                     .append($0.date)
@@ -198,7 +198,7 @@ final class TSVSupport {
     
     private func dataOfKenzoHistory() -> Data? {
         
-        return localData(KenzoHistory.entity, sortBy: \KenzoHistory.date)
+        return localData(KenzoHistory.self, sortBy: \KenzoHistory.date)
             .map {
                 LFSeparateLine.empty
                     .append($0.date)
@@ -220,7 +220,7 @@ final class TSVSupport {
     
     private func dataOfKenzoMark() -> Data? {
         
-        return localData(KenzoMark.entity, sortBy: \KenzoMark.kDockId)
+        return localData(KenzoMark.self, sortBy: \KenzoMark.kDockId)
             .map {
                 LFSeparateLine.empty
                     .append($0.date)
@@ -242,7 +242,7 @@ final class TSVSupport {
     
     private func dataOfDropShipHistory() -> Data? {
         
-        return localData(DropShipHistory.entity, sortBy: \DropShipHistory.date)
+        return localData(DropShipHistory.self, sortBy: \DropShipHistory.date)
             .map {
                 LFSeparateLine.empty
                     .append($0.date)
@@ -306,7 +306,7 @@ final class TSVSupport {
             
             let predicate = Predicate(\KaihatuHistory.date, equalTo: date)
             
-            guard let oo = try? store.objects(of: KaihatuHistory.entity, predicate: predicate) else {
+            guard let oo = try? store.objects(of: KaihatuHistory.self, predicate: predicate) else {
                 
                 return
             }
@@ -314,7 +314,7 @@ final class TSVSupport {
                 
                 return
             }
-            guard let obj = store.insertNewObject(for: KaihatuHistory.entity) else {
+            guard let obj = store.insertNewObject(for: KaihatuHistory.self) else {
                 
                 return
             }
@@ -383,7 +383,7 @@ final class TSVSupport {
             
             let predicate = Predicate(\KenzoHistory.date, equalTo: date)
             
-            guard let oo = try? store.objects(of: KenzoHistory.entity, predicate: predicate) else {
+            guard let oo = try? store.objects(of: KenzoHistory.self, predicate: predicate) else {
                 
                 return
             }
@@ -391,7 +391,7 @@ final class TSVSupport {
                 
                 return
             }
-            guard let obj = store.insertNewObject(for: KenzoHistory.entity) else {
+            guard let obj = store.insertNewObject(for: KenzoHistory.self) else {
                 
                 return
             }
@@ -465,7 +465,7 @@ final class TSVSupport {
             
             let predicate = Predicate(\KenzoMark.date, equalTo: date)
             
-            guard let oo = try? store.objects(of: KenzoMark.entity, predicate: predicate) else {
+            guard let oo = try? store.objects(of: KenzoMark.self, predicate: predicate) else {
                 
                 return
             }
@@ -473,7 +473,7 @@ final class TSVSupport {
                 
                 return
             }
-            guard let obj = store.insertNewObject(for: KenzoMark.entity) else {
+            guard let obj = store.insertNewObject(for: KenzoMark.self) else {
                 
                 return
             }
@@ -523,7 +523,7 @@ final class TSVSupport {
             
             let predicate = Predicate(\DropShipHistory.date, equalTo: date)
             
-            guard let oo = try? store.objects(of: DropShipHistory.entity, predicate: predicate) else {
+            guard let oo = try? store.objects(of: DropShipHistory.self, predicate: predicate) else {
                 
                 return
             }
@@ -531,7 +531,7 @@ final class TSVSupport {
                 
                 return
             }
-            guard let obj = store.insertNewObject(for: DropShipHistory.entity) else {
+            guard let obj = store.insertNewObject(for: DropShipHistory.self) else {
                 
                 return
             }

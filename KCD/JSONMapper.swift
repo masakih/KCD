@@ -10,15 +10,15 @@ import Cocoa
 import SwiftyJSON
 import Doutaku
 
-struct MappingConfiguration<T: NSManagedObject> {
+struct MappingConfiguration<T: Entity> {
     
-    let entity: Entity<T>
+    let entity: T.Type
     let dataKeys: [String]
     let primaryKeys: [String]
     let editorStore: CoreDataAccessor
     let ignoreKeys: [String]
     
-    init(entity: Entity<T>,
+    init(entity: T.Type,
          dataKeys: [String] = ["api_data"],
          primaryKeys: [String] = ["id"],
          editorStore: CoreDataAccessor,
@@ -34,7 +34,7 @@ struct MappingConfiguration<T: NSManagedObject> {
 
 protocol JSONMapper {
     
-    associatedtype ObjectType: NSManagedObject
+    associatedtype ObjectType: Entity
     
     init(_ apiResponse: APIResponse)
     
@@ -167,7 +167,7 @@ extension JSONMapper {
         }
     }
     
-    private func sortedObjects<T>(_ entity: Entity<T>) -> [T] {
+    private func sortedObjects<ResultType: Entity>(_ entity: ResultType.Type) -> [ResultType] {
         
         let store = configuration.editorStore
         
@@ -178,7 +178,7 @@ extension JSONMapper {
             return []
         }
         
-        return (objects as NSArray).sortedArray(using: sortDescriptors) as? [T] ?? []
+        return (objects as NSArray).sortedArray(using: sortDescriptors) as? [ResultType] ?? []
     }
     private func commintInContext() {
         

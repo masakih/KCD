@@ -207,7 +207,7 @@ extension BookmarkListViewController: NSTableViewDelegate, NSTableViewDataSource
                     
                     return
                 }
-                guard let bookmark = store.object(of: Bookmark.entity, forURIRepresentation: uri) else {
+                guard let bookmark = store.object(of: Bookmark.self, forURIRepresentation: uri) else {
                     
                     return
                 }

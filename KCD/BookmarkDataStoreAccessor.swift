@@ -10,6 +10,6 @@ extension BookmarkDataStore {
     
     func createBookmark() -> Bookmark? {
         
-        return insertNewObject(for: Bookmark.entity)
+        return insertNewObject(for: Bookmark.self)
     }
 }

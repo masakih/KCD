@@ -9,40 +9,40 @@
 import Doutaku
 
 // MARK: - KCD model
-extension AirBase: EntityProvider {}
-extension AirBasePlaneInfo: EntityProvider {}
-extension Basic: EntityProvider {}
-extension Deck: EntityProvider {}
-extension KenzoDock: EntityProvider {}
-extension MasterFurniture: EntityProvider {}
-extension MasterMapArea: EntityProvider {}
-extension MasterMapInfo: EntityProvider {}
-extension MasterMission: EntityProvider {}
-extension MasterShip: EntityProvider {}
-extension MasterSlotItem: EntityProvider {}
-extension MasterSType: EntityProvider {}
-extension MasterSlotItemEquipType: EntityProvider {}
-extension MasterUseItem: EntityProvider {}
-extension Material: EntityProvider {}
-extension NyukyoDock: EntityProvider {}
-extension Ship: EntityProvider {}
-extension SlotItem: EntityProvider {}
-extension Quest: EntityProvider {}
+extension AirBase: Entity {}
+extension AirBasePlaneInfo: Entity {}
+extension Basic: Entity {}
+extension Deck: Entity {}
+extension KenzoDock: Entity {}
+extension MasterFurniture: Entity {}
+extension MasterMapArea: Entity {}
+extension MasterMapInfo: Entity {}
+extension MasterMission: Entity {}
+extension MasterShip: Entity {}
+extension MasterSlotItem: Entity {}
+extension MasterSType: Entity {}
+extension MasterSlotItemEquipType: Entity {}
+extension MasterUseItem: Entity {}
+extension Material: Entity {}
+extension NyukyoDock: Entity {}
+extension Ship: Entity {}
+extension SlotItem: Entity {}
+extension Quest: Entity {}
 
 // MARK: - LocalData model
-extension DropShipHistory: EntityProvider {}
-extension HiddenDropShipHistory: EntityProvider {}
-extension KaihatuHistory: EntityProvider {}
-extension KenzoHistory: EntityProvider {}
-extension KenzoMark: EntityProvider {}
+extension DropShipHistory: Entity {}
+extension HiddenDropShipHistory: Entity {}
+extension KaihatuHistory: Entity {}
+extension KenzoHistory: Entity {}
+extension KenzoMark: Entity {}
 
 // MARK: - Temporay model
-extension Battle: EntityProvider {}
-extension Damage: EntityProvider {}
-extension GuardEscaped: EntityProvider {}
+extension Battle: Entity {}
+extension Damage: Entity {}
+extension GuardEscaped: Entity {}
 
 // MARK: - Bookmark model
-extension Bookmark: EntityProvider {}
+extension Bookmark: Entity {}
 
 // MARK: - ResourceHistory model
-extension Resource: EntityProvider {}
+extension Resource: Entity {}

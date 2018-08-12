@@ -15,7 +15,7 @@ extension ResourceHistoryDataStore {
         let predicate = Predicate(\Resource.minute, in: minites)
             .and(Predicate(\Resource.date, lessThan: older))
         
-        guard let resources = try? objects(of: Resource.entity, predicate: predicate) else {
+        guard let resources = try? objects(of: Resource.self, predicate: predicate) else {
             
             return []
         }
@@ -25,6 +25,6 @@ extension ResourceHistoryDataStore {
     
     func createResource() -> Resource? {
         
-        return insertNewObject(for: Resource.entity)
+        return insertNewObject(for: Resource.self)
     }
 }

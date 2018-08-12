@@ -11,7 +11,7 @@ import Cocoa
 final class MasterMapInfoMapper: JSONMapper {
         
     let apiResponse: APIResponse
-    let configuration = MappingConfiguration(entity: MasterMapInfo.entity,
+    let configuration = MappingConfiguration(entity: MasterMapInfo.self,
                                              dataKeys: ["api_data", "api_mst_mapinfo"],
                                              editorStore: ServerDataStore.oneTimeEditor())
     

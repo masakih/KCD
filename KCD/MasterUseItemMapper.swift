@@ -11,7 +11,7 @@ import Cocoa
 final class MasterUseItemMapper: JSONMapper {
     
     let apiResponse: APIResponse
-    let configuration = MappingConfiguration(entity: MasterUseItem.entity,
+    let configuration = MappingConfiguration(entity: MasterUseItem.self,
                                              dataKeys: ["api_data", "api_mst_useitem"],
                                              editorStore: ServerDataStore.oneTimeEditor())
     

@@ -160,7 +160,7 @@ final class KaihatsuHistoryTableViewController: HistoryTableViewController {
     override var predicateFormat: String { return "name contains $value" }
     override func objects(of predicate: Predicate?, in store: LocalDataStore) throws -> [NSManagedObject] {
         
-        return try store.objects(of: KaihatuHistory.entity, predicate: predicate)
+        return try store.objects(of: KaihatuHistory.self, predicate: predicate)
     }
 }
 
@@ -169,7 +169,7 @@ final class KenzoHistoryTableViewController: HistoryTableViewController {
     override var predicateFormat: String { return "name contains $value" }
     override func objects(of predicate: Predicate?, in store: LocalDataStore) throws -> [NSManagedObject] {
         
-        return try store.objects(of: KenzoHistory.entity, predicate: predicate)
+        return try store.objects(of: KenzoHistory.self, predicate: predicate)
     }
 }
 
@@ -178,6 +178,6 @@ final class DropShipHistoryTableViewController: HistoryTableViewController {
     override var predicateFormat: String { return "shipName contains $value" }
     override func objects(of predicate: Predicate?, in store: LocalDataStore) throws -> [NSManagedObject] {
         
-        return try store.objects(of: DropShipHistory.entity, predicate: predicate)
+        return try store.objects(of: DropShipHistory.self, predicate: predicate)
     }
 }

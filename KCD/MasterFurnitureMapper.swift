@@ -11,7 +11,7 @@ import Cocoa
 final class MasterFurnitureMapper: JSONMapper {
     
     let apiResponse: APIResponse
-    let configuration = MappingConfiguration(entity: MasterFurniture.entity,
+    let configuration = MappingConfiguration(entity: MasterFurniture.self,
                                              dataKeys: ["api_data", "api_mst_furniture"],
                                              editorStore: ServerDataStore.oneTimeEditor(),
                                              ignoreKeys: ["api_season"])

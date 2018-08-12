@@ -16,7 +16,7 @@ final class BasicMapper: JSONMapper {
     required init(_ apiResponse: APIResponse) {
         
         self.apiResponse = apiResponse
-        self.configuration = MappingConfiguration(entity: Basic.entity,
+        self.configuration = MappingConfiguration(entity: Basic.self,
                                                   dataKeys: BasicMapper.dataKeys(apiResponse),
                                                   editorStore: ServerDataStore.oneTimeEditor())
     }
