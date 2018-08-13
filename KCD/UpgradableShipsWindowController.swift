@@ -62,9 +62,9 @@ final class UpgradableShipsWindowController: NSWindowController {
         }
         
         if showsExcludedShipInUpgradableList == false,
-            excludeShiIDs.count != 0 {
+            excludeShiIDsCache.count != 0 {
             
-            excludeShip = .not(NSPredicate(#keyPath(Ship.id), valuesIn: excludeShiIDs))
+            excludeShip = .not(NSPredicate(#keyPath(Ship.id), valuesIn: excludeShiIDsCache))
         }
         
         switch (levelOnePredicate, excludeShip) {
@@ -108,9 +108,9 @@ final class UpgradableShipsWindowController: NSWindowController {
         return ApplicationDirecrories.support.appendingPathComponent("ExcludeShipIDs")
     }
     
-    override func windowDidLoad() {
+    override func windowWillLoad() {
         
-        super.windowDidLoad()
+        super.windowWillLoad()
         
         excludeShiIDsCache = excludeShiIDs
     }
