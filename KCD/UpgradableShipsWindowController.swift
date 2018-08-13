@@ -53,12 +53,12 @@ final class UpgradableShipsWindowController: NSWindowController {
     
     @objc dynamic var filterPredicate: NSPredicate? {
         
-        var filterPredicate: NSPredicate?
+        var levelOnePredicate: NSPredicate?
         var excludeShip: NSPredicate?
         
         if showLevelOneShipInUpgradableList == false {
             
-            filterPredicate = NSPredicate(#keyPath(Ship.lv), notEqual: 1)
+            levelOnePredicate = NSPredicate(#keyPath(Ship.lv), notEqual: 1)
         }
         
         if showsExcludedShipInUpgradableList == false,
@@ -67,22 +67,16 @@ final class UpgradableShipsWindowController: NSWindowController {
             excludeShip = .not(NSPredicate(#keyPath(Ship.id), valuesIn: excludeShiIDs))
         }
         
-        if let filterPredicate = filterPredicate,
-            let excludeShip = excludeShip {
+        switch (levelOnePredicate, excludeShip) {
             
-            return NSCompoundPredicate(andPredicateWithSubpredicates: [filterPredicate, excludeShip])
-        }
-        
-        if let filterPredicate = filterPredicate {
+        case let (p0?, p1?): return p0.and(p1)
             
-            return filterPredicate
-        }
-        if let excludeShip = excludeShip {
+        case let (p0?, _): return p0
             
-            return excludeShip
+        case let (_, p1?): return p1
+            
+        default: return nil
         }
-        
-        return nil
     }
     
     @objc var showLevelOneShipInUpgradableList: Bool {
