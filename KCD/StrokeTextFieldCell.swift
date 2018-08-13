@@ -69,13 +69,16 @@ final class StrokeTextFieldCell: NSTextFieldCell {
             point.y -= controlView.frame.height
         }
         
-        let nsGlyph = UnsafeMutablePointer<NSGlyph>.allocate(capacity: range.length)
-        
-        (0..<range.length).forEach { nsGlyph[$0] = NSGlyph(glyph[$0]) }
-        
         let path = NSBezierPath()
         path.move(to: point)
-        path.appendGlyphs(nsGlyph, count: glyphLength, in: font)
+        if #available(macOS 13, *) {
+            path.append(withCGGlyphs: glyph, count: glyphLength, in: font)
+        } else {
+            let nsGlyph = UnsafeMutablePointer<NSGlyph>.allocate(capacity: range.length)
+            
+            (0..<range.length).forEach { nsGlyph[$0] = NSGlyph(glyph[$0]) }
+            path.appendGlyphs(nsGlyph, count: glyphLength, in: font)
+        }
         path.lineWidth = StrokeTextFieldCell.boarderWidth
         path.lineJoinStyle = .roundLineJoinStyle
         
