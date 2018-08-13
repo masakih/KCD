@@ -54,10 +54,9 @@ func shipTypePredicte(for type: ShipTabType) -> NSPredicate? {
         
     case .other:
         let omitTypes = shipTypeCategories
-            .lazy
-            .enumerated()
-            .filter { $0.offset != 0 && $0.offset != 7 }
-            .flatMap { $0.element }
+            .dropLast()
+            .dropFirst()
+            .flatMap { $0 }
         
         return .not(NSPredicate(#keyPath(Ship.master_ship.stype.id), valuesIn: omitTypes))
         
