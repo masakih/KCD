@@ -240,7 +240,7 @@ extension Future {
                     
                 case .error(let e)?: return Future<U>(e)
                     
-                case .none: fatalError("Future not complete")
+                case nil: fatalError("Future not complete")
                     
                 }
             }

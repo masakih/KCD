@@ -47,7 +47,7 @@ func createDockInformationFuture<T: DockInformationFutureCreatable>(number: Int)
         
         guard T.alreadyHasData(for: number) else {
             
-            return .none
+            return nil
         }
         
         guard let status = T.init(number: number) else {

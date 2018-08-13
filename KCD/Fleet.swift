@@ -73,7 +73,7 @@ final class Fleet: NSObject {
                 
                 guard let deck = self.store.sync(execute: { self.store.deck(by: number) }) else {
                     
-                    return .none
+                    return nil
                 }
                 
                 return deck

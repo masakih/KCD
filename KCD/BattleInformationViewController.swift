@@ -53,7 +53,7 @@ class BattleInformationViewController: NSViewController {
             
         case let area?: mapArea = "\(area)"
             
-        case .none: return nil
+        case nil: return nil
             
         }
         
