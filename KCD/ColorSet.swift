@@ -55,21 +55,13 @@ extension AppearanceMode {
     }
 }
 
-struct ColorName {
+struct ColorName: Equatable {
     
     private let name: String
     
     private init(_ name: String) {
         
         self.name = name
-    }
-}
-
-extension ColorName: Equatable {
-    
-    static func == (lhs: ColorName, rhs: ColorName) -> Bool {
-        
-        return lhs.name == rhs.name
     }
 }
 
