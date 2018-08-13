@@ -56,7 +56,7 @@ class KCManagedObject: NSManagedObject {
         
         if key.hasPrefix("api_") {
             
-            let k = String(key[key.index(key.startIndex, offsetBy: 4)...])
+            let k = String(key.dropFirst(4))
             
             return value(forKey: k)
         }
@@ -77,7 +77,7 @@ class KCManagedObject: NSManagedObject {
         
         if key.hasPrefix("api_") {
             
-            let k = String(key[key.index(key.startIndex, offsetBy: 4)...])
+            let k = String(key.dropFirst(4))
             setValue(value, forKey: k)
             
             return
