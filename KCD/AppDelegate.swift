@@ -117,11 +117,6 @@ final class AppDelegate: NSObject {
         
         return windowManager.createNewBrowser()
     }
-    
-    @objc func fire(_ timer: Timer) {
-        
-        updaters.forEach { $0() }
-    }
 }
 
 // MARK: - IBActions
@@ -277,12 +272,10 @@ extension AppDelegate: NSApplicationDelegate {
             exit(0)
         }
         
-        NSUserNotificationCenter.default.delegate = self
-        Timer.scheduledTimer(timeInterval: 0.33,
-                             target: self,
-                             selector: #selector(AppDelegate.fire(_:)),
-                             userInfo: nil,
-                             repeats: true)
+        Timer.scheduledTimer(withTimeInterval: 0.33, repeats: true) { [weak self] _ in
+            
+            self?.updaters.forEach { $0() }
+        }
     }
     
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
