@@ -147,7 +147,7 @@ final class ScreenshotListViewController: NSViewController {
                         let info = ScreenshotInformation(url: url)
                         
                         self.screenshotsController.insert(info, atArrangedObjectIndex: 0)
-                        let set: Set<IndexPath> = [NSIndexPath(forItem: 0, inSection: 0) as IndexPath]
+                        let set: Set<IndexPath> = [IndexPath(item: 0, section: 0)]
                         self.collectionView.selectionIndexPaths = set
                         
                         self.collectionView.scrollToItems(at: set, scrollPosition: .nearestHorizontalEdge)
@@ -221,7 +221,7 @@ final class ScreenshotListViewController: NSViewController {
                     
                     self.screenshots.screenshots = screenshots
                     
-                    self.collectionView.selectionIndexPaths = [NSIndexPath(forItem: 0, inSection: 0) as IndexPath]
+                    self.collectionView.selectionIndexPaths = [IndexPath(item: 0, section: 0)]
                     
                     self.reloadHandler?()
                 }
