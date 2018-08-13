@@ -21,6 +21,8 @@ final class CalculateConditionPanelController: NSWindowController {
     
     @IBAction func ok(_ sender: Any?) {
         
+        self.window?.endEditing(for: nil)
+        
         exitModal()
     }
     
