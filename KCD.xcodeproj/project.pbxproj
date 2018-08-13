@@ -1242,6 +1242,7 @@
 				F4A0F7ED20269536001DAFE3 /* InformationTabViewController.xib */,
 				F4D05BDA1E0F76A800688D66 /* ResourceViewController.swift */,
 				F4C6686B1C5451C800601AFB /* ResourceViewController.xib */,
+				F4048A9E1E19308A008ACFD6 /* StrokeTextFieldCell.swift */,
 				F4E5FF011E150A850026868C /* AncherageRepairTimerViewController.swift */,
 				F4F9472A1D5DBC5500F95998 /* AncherageRepairTimerViewController.xib */,
 				F4E5FF111E17D6850026868C /* GameViewController.swift */,
@@ -1343,7 +1344,6 @@
 				F490977C1E19DF390085A45D /* SlotItemFrameView.swift */,
 				F4048AA01E1951BB008ACFD6 /* SuppliesCell.swift */,
 				F490977A1E19C3910085A45D /* SuppliesView.swift */,
-				F4048A9E1E19308A008ACFD6 /* StrokeTextFieldCell.swift */,
 				F4048A9C1E18D75E008ACFD6 /* DamageView.swift */,
 			);
 			name = FleetView;
