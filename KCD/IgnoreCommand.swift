@@ -10,7 +10,7 @@ import Cocoa
 
 final class IgnoreCommand: JSONCommand {
     
-    private static let ignores: [String] = {
+    private static let ignores: Set<String> = {
         
         guard let url = Bundle.main.url(forResource: "IgnoreCommand", withExtension: "plist"),
             let array = NSArray(contentsOf: url) as? [String] else {
@@ -18,7 +18,7 @@ final class IgnoreCommand: JSONCommand {
                 fatalError("Can not read IgnoreCommand.plist")
         }
         
-        return array
+        return Set(array)
     }()
     
     override class func canExecuteAPI(_ api: API) -> Bool {

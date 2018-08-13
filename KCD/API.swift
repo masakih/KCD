@@ -204,7 +204,7 @@ struct API {
         }
     }
     
-    func includs(in rawValues: [String]) -> Bool {
+    func includs(in rawValues: Set<String>) -> Bool {
         
         return rawValues.contains(endpointString)
     }
