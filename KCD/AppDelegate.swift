@@ -28,16 +28,13 @@ final class AppDelegate: NSObject {
     
     // MARK: - Variable
     @IBOutlet private var debugMenuItem: NSMenuItem!
-    @IBOutlet private var billingWindowMenuItem: NSMenuItem!
     
     var jsonViewWindowController: JSONViewWindowController? {
         
         return windowManager.jsonViewWindowController
     }
     
-    private var browserWindowControllers: [ExternalBrowserWindowController] = []
     private var updaters: [() -> Void] = []
-    private var logedJSONViewWindowController: JSONViewWindowController?
     private var didLoadedMainMenu = false
     
     var screenShotSaveDirectory: String {
