@@ -31,6 +31,8 @@ func localizedAppName() -> String {
 
 struct ApplicationDirecrories {
     
+    static let shared = ApplicationDirecrories()
+    
     static let support = searchedURL(for: .applicationSupportDirectory)
         .appendingPathComponent(supportDirName())
     
