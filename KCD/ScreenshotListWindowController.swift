@@ -74,7 +74,7 @@ final class ScreenshotListWindowController: NSWindowController {
     
     func registerScreenshot(_ image: NSBitmapImageRep) {
         
-        ScreenshotRegister(ApplicationDirecrories.screenshotSaveDirectoryURL)
+        ScreenshotRegister(ApplicationDirecrories.shared.screenshotSaveDirectoryURL)
             .registerScreenshot(image, name: localizedAppName())
     }
     
@@ -89,7 +89,7 @@ final class ScreenshotListWindowController: NSWindowController {
                 .flatMap { NSBitmapImageRep(data: $0) }
                 .map {
                     
-                    ScreenshotRegister(ApplicationDirecrories.screenshotSaveDirectoryURL)
+                    ScreenshotRegister(ApplicationDirecrories.shared.screenshotSaveDirectoryURL)
                         .registerScreenshot($0, name: localizedAppName())
             }
         }

@@ -128,7 +128,7 @@ final class GameViewController: NSViewController {
         
         webView.cacheDisplay(in: frame, to: rep)
         
-        ScreenshotRegister(ApplicationDirecrories.screenshotSaveDirectoryURL)
+        ScreenshotRegister(ApplicationDirecrories.shared.screenshotSaveDirectoryURL)
             .registerScreenshot(rep, name: localizedAppName())
     }
     
@@ -191,7 +191,7 @@ final class GameViewController: NSViewController {
             rep.size = NSSize(width: 800, height: 480)
         }
         
-        ScreenshotRegister(ApplicationDirecrories.screenshotSaveDirectoryURL)
+        ScreenshotRegister(ApplicationDirecrories.shared.screenshotSaveDirectoryURL)
             .registerScreenshot(rep, name: localizedAppName())
     }
     

@@ -37,23 +37,6 @@ final class AppDelegate: NSObject {
     private var updaters: [() -> Void] = []
     private var didLoadedMainMenu = false
     
-    var screenShotSaveDirectory: String {
-        
-        get {
-            
-            return UserDefaults.standard[.screenShotSaveDirectory] ?? ApplicationDirecrories.pictures.path
-        }
-        set {
-            
-            UserDefaults.standard[.screenShotSaveDirectory] = newValue
-        }
-    }
-    
-    var screenShotSaveDirectoryURL: URL {
-        
-        return URL(fileURLWithPath: screenShotSaveDirectory)
-    }
-    
     @objc dynamic var monospaceSystemFont11: NSFont {
         
         return NSFont.monospacedDigitSystemFont(ofSize: 11, weight: .regular)

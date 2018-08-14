@@ -8,33 +8,23 @@
 
 extension ApplicationDirecrories {
     
-    static let screenshotSaveDirectoryURL: URL = {
+    var screenshotSaveDirectoryURL: URL {
         
-        let parentURL = URL(fileURLWithPath: AppDelegate.shared.screenShotSaveDirectory)
+        let parentURL = URL(fileURLWithPath: screenShotSaveDirectory)
         let url = parentURL.appendingPathComponent(localizedAppName())
-        let fm = FileManager.default
-        var isDir: ObjCBool = false
         
-        do {
-            
-            if !fm.fileExists(atPath: url.path, isDirectory: &isDir) {
-                
-                try fm.createDirectory(at: url, withIntermediateDirectories: false)
-                
-            } else if !isDir.boolValue {
-                
-                print("\(url) is regular file, not direcory.")
-                
-                return parentURL
-            }
-            
-        } catch {
-            
-            print("Can not create screenshot save directory.")
-            
-            return parentURL
-        }
+        guard checkDirectory(url, create: true) else { return parentURL }
         
         return url
-    }()
+    }
+    
+    var screenShotSaveDirectory: String {
+        
+        return UserDefaults.standard[.screenShotSaveDirectory] ?? ApplicationDirecrories.pictures.path
+    }
+    
+    func setScreenshotDirectory(_ newValue: String) {
+        
+        UserDefaults.standard[.screenShotSaveDirectory] = newValue
+    }
 }
