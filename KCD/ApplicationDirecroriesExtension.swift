@@ -20,7 +20,7 @@ extension ApplicationDirecrories {
     
     var screenShotSaveDirectory: String {
         
-        return UserDefaults.standard[.screenShotSaveDirectory] ?? ApplicationDirecrories.pictures.path
+        return UserDefaults.standard[.screenShotSaveDirectory] ?? ApplicationDirecrories.shared.pictures.path
     }
     
     func setScreenshotDirectory(_ newValue: String) {

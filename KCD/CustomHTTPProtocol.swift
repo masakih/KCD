@@ -94,7 +94,7 @@ extension URLCache {
     
     static let kcd = URLCache(memoryCapacity: 32 * 1024 * 1024,
                               diskCapacity: 1024 * 1024 * 1024,
-                              diskPath: ApplicationDirecrories.support.appendingPathComponent("Caches").path)
+                              diskPath: ApplicationDirecrories.shared.support.appendingPathComponent("Caches").path)
     static let cachedExtensions = ["swf", "flv", "png", "jpg", "jpeg", "mp3"]
     
     func storeIfNeeded(for task: URLSessionTask, data: Data) {

@@ -10,5 +10,5 @@ import Foundation
 
 extension Logger {
     
-    static let shared = Logger(destination: ApplicationDirecrories.support.appendingPathComponent("KCD.log"))
+    static let shared = Logger(destination: ApplicationDirecrories.shared.support.appendingPathComponent("KCD.log"))
 }

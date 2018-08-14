@@ -33,14 +33,14 @@ struct ApplicationDirecrories {
     
     static let shared = ApplicationDirecrories()
     
-    static let support = searchedURL(for: .applicationSupportDirectory)
+    let support = searchedURL(for: .applicationSupportDirectory)
         .appendingPathComponent(supportDirName())
     
-    static let documents = searchedURL(for: .documentDirectory)
+    let documents = searchedURL(for: .documentDirectory)
     
-    static let pictures = searchedURL(for: .picturesDirectory)
+    let pictures = searchedURL(for: .picturesDirectory)
     
-    private static func searchedURL(for directory: FileManager.SearchPathDirectory) -> URL {
+    static func searchedURL(for directory: FileManager.SearchPathDirectory) -> URL {
         
         return FileManager.default.urls(for: directory, in: .userDomainMask)
             .last
@@ -48,44 +48,46 @@ struct ApplicationDirecrories {
     }
 }
 
-
-func createDirectory(_ url: URL) -> Bool {
+extension ApplicationDirecrories {
     
-    do {
+    func createDirectory(_ url: URL) -> Bool {
         
-        try FileManager.default.createDirectory(at: url,
-                                                withIntermediateDirectories: false,
-                                                attributes: nil)
-        
-        return true
-        
-    } catch {
-        
-        return false
-    }
-}
-
-func checkDirectory(_ url: URL, create: Bool) -> Bool {
-    
-    do {
-        
-        let resourceValue = try url.resourceValues(forKeys: [.isDirectoryKey])
-        if !resourceValue.isDirectory! {
+        do {
             
-            print("Expected a folder to store application data, found a file \(url.path).")
+            try FileManager.default.createDirectory(at: url,
+                                                    withIntermediateDirectories: false,
+                                                    attributes: nil)
+            
+            return true
+            
+        } catch {
             
             return false
         }
+    }
+    
+    func checkDirectory(_ url: URL, create: Bool) -> Bool {
         
-        return true
-        
-    } catch let error as NSError {
-        
-        if create, error.code == NSFileReadNoSuchFileError {
+        do {
             
-            return createDirectory(url)
+            let resourceValue = try url.resourceValues(forKeys: [.isDirectoryKey])
+            if !resourceValue.isDirectory! {
+                
+                print("Expected a folder to store application data, found a file \(url.path).")
+                
+                return false
+            }
+            
+            return true
+            
+        } catch let error as NSError {
+            
+            if create, error.code == NSFileReadNoSuchFileError {
+                
+                return createDirectory(url)
+            }
+            
+            return false
         }
-        
-        return false
     }
 }

@@ -105,7 +105,7 @@ final class UpgradableShipsWindowController: NSWindowController {
     
     private var excludeShipIDsSaveURL: URL {
         
-        return ApplicationDirecrories.support.appendingPathComponent("ExcludeShipIDs")
+        return ApplicationDirecrories.shared.support.appendingPathComponent("ExcludeShipIDs")
     }
     
     override func windowWillLoad() {
