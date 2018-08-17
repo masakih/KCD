@@ -11,7 +11,7 @@ import Foundation
 
 enum Endpoint: String {
     
-    case start2 = "/kcsapi/api_start2"
+    case start2 = "/kcsapi/api_start2/getData"
     case requireInfo = "/kcsapi/api_get_member/require_info"
     case mapInfo = "/kcsapi/api_get_member/mapinfo"
     
