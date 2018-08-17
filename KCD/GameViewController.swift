@@ -15,6 +15,8 @@ final class GameViewController: NSViewController {
     private static let gamePageURL = "http://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/"
     private static let loginPageURLPrefix = "https://www.dmm.com/my/-/login/=/"
     
+    private static let gameSize = NSSize(width: 1200, height: 720)
+    
     @IBOutlet private var webView: WebView!
     
     override var nibName: NSNib.Name {
@@ -186,9 +188,9 @@ final class GameViewController: NSViewController {
         
         let rep = NSBitmapImageRep(cgImage: image)
         
-        if rep.size != NSSize(width: 800, height: 480) {
+        if rep.size != GameViewController.gameSize {
             
-            rep.size = NSSize(width: 800, height: 480)
+            rep.size = GameViewController.gameSize
         }
         
         ScreenshotRegister(ApplicationDirecrories.shared.screenshotSaveDirectoryURL)
@@ -305,7 +307,9 @@ extension GameViewController: WebFrameLoadDelegate, WebUIDelegate {
             )
             let top = context.objectForKeyedSubscript("atop").toDouble()
             let left = context.objectForKeyedSubscript("aleft").toDouble()
-            flashTopLeft = NSPoint(x: CGFloat(left), y: webView.frame.size.height - CGFloat(top) - 480)
+            flashTopLeft = NSPoint(x: CGFloat(left),
+                                   y: webView.frame.size.height - CGFloat(top) - GameViewController.gameSize.height)
+            
         }
         
         if path.hasSuffix("app_id=854854") {
