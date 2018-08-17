@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,27 +20,27 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView misplaced="YES" id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="799" height="320"/>
+            <rect key="frame" x="0.0" y="0.0" width="1200" height="320"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <customView misplaced="YES" id="oKZ-TQ-Oxl">
-                    <rect key="frame" x="0.0" y="144" width="267" height="145"/>
+                    <rect key="frame" x="0.0" y="144" width="400" height="145"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </customView>
                 <customView misplaced="YES" id="BeT-FP-eCr">
-                    <rect key="frame" x="0.0" y="0.0" width="267" height="145"/>
+                    <rect key="frame" x="0.0" y="0.0" width="400" height="145"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </customView>
                 <customView misplaced="YES" id="GpH-v8-Nvl">
-                    <rect key="frame" x="266" y="144" width="267" height="145"/>
+                    <rect key="frame" x="399" y="144" width="400" height="145"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </customView>
                 <customView misplaced="YES" id="eru-mj-cKl">
-                    <rect key="frame" x="266" y="0.0" width="267" height="145"/>
+                    <rect key="frame" x="399" y="0.0" width="400" height="145"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </customView>
                 <customView misplaced="YES" id="jG7-Xp-ypT">
-                    <rect key="frame" x="532" y="0.0" width="267" height="145"/>
+                    <rect key="frame" x="798" y="0.0" width="400" height="145"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </customView>
                 <matrix verticalHuggingPriority="750" allowsEmptySelection="NO" autorecalculatesCellSize="YES" id="EJt-sg-Fk4">
@@ -98,8 +98,12 @@
                         </binding>
                     </connections>
                 </textField>
+                <customView misplaced="YES" id="uFG-Qe-q4v">
+                    <rect key="frame" x="798" y="144" width="400" height="145"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </customView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="2jU-EL-j7s">
-                    <rect key="frame" x="494" y="295" width="19" height="14"/>
+                    <rect key="frame" x="891" y="294" width="19" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Lv." id="w4a-v0-R0W">
                         <font key="font" metaFont="smallSystem"/>
@@ -108,7 +112,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="UYu-21-82G">
-                    <rect key="frame" x="510" y="295" width="24" height="14"/>
+                    <rect key="frame" x="907" y="294" width="24" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="999" id="ohp-DY-8Su">
                         <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="lBM-sa-I2G"/>
@@ -122,7 +126,7 @@
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="psc-iQ-sNL">
-                    <rect key="frame" x="535" y="295" width="19" height="14"/>
+                    <rect key="frame" x="932" y="294" width="19" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Dr." id="Eso-k3-sCk">
                         <font key="font" metaFont="smallSystem"/>
@@ -131,7 +135,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="UWt-im-IIK">
-                    <rect key="frame" x="551" y="295" width="18" height="14"/>
+                    <rect key="frame" x="948" y="294" width="18" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="99" id="I6D-UD-3HA">
                         <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="edz-Bk-fZV"/>
@@ -145,7 +149,7 @@
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="f8W-G4-mOr">
-                    <rect key="frame" x="636" y="295" width="30" height="14"/>
+                    <rect key="frame" x="1033" y="294" width="30" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="索敵:" id="vA3-9F-FLk">
                         <font key="font" metaFont="smallSystem"/>
@@ -157,7 +161,7 @@
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="mUy-1k-ALk">
-                    <rect key="frame" x="663" y="295" width="38" height="17"/>
+                    <rect key="frame" x="1060" y="294" width="38" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="-30.6" id="HeX-Wd-ikA">
                         <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" roundingMode="down" groupingSize="0" minimumIntegerDigits="1" maximumIntegerDigits="42" maximumFractionDigits="1" id="ntt-Mj-4hA"/>
@@ -172,7 +176,7 @@
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="ee5-Xk-4iW">
-                    <rect key="frame" x="703" y="295" width="30" height="14"/>
+                    <rect key="frame" x="1100" y="294" width="30" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="制空:" id="dS3-tO-y1s">
                         <font key="font" metaFont="smallSystem"/>
@@ -181,7 +185,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="Jhy-EA-ust">
-                    <rect key="frame" x="730" y="295" width="66" height="17"/>
+                    <rect key="frame" x="1127" y="294" width="66" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="999 (999)" id="ytq-FR-96e">
                         <font key="font" metaFont="system"/>
@@ -202,12 +206,8 @@
                         </binding>
                     </connections>
                 </textField>
-                <customView misplaced="YES" id="uFG-Qe-q4v">
-                    <rect key="frame" x="532" y="144" width="267" height="145"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                </customView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="6no-BM-Fb6">
-                    <rect key="frame" x="570" y="295" width="19" height="14"/>
+                    <rect key="frame" x="967" y="294" width="19" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="TP" id="8Yv-um-VP7">
                         <font key="font" metaFont="smallSystem"/>
@@ -216,7 +216,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="Wvf-D6-TEo">
-                    <rect key="frame" x="586" y="295" width="46" height="14"/>
+                    <rect key="frame" x="983" y="294" width="46" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="99" id="TIj-TV-L1V">
                         <font key="font" metaFont="smallSystem"/>
@@ -224,17 +224,17 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <binding destination="MYB-8m-P41" name="displayPatternValue1" keyPath="selection.totalTPValue" id="URF-cq-umP">
-                            <dictionary key="options">
-                                <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
-                            </dictionary>
-                        </binding>
+                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont11" id="O7q-K2-QBt"/>
                         <binding destination="MYB-8m-P41" name="displayPatternValue2" keyPath="selection.totalBRankTPValue" previousBinding="URF-cq-umP" id="1CL-bV-ugS">
                             <dictionary key="options">
                                 <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
                             </dictionary>
                         </binding>
-                        <binding destination="-3" name="font" keyPath="delegate.monospaceSystemFont11" id="O7q-K2-QBt"/>
+                        <binding destination="MYB-8m-P41" name="displayPatternValue1" keyPath="selection.totalTPValue" id="URF-cq-umP">
+                            <dictionary key="options">
+                                <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
+                            </dictionary>
+                        </binding>
                     </connections>
                 </textField>
             </subviews>

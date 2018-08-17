@@ -28,14 +28,14 @@
             </connections>
         </objectController>
         <box autoresizesSubviews="NO" misplaced="YES" boxType="custom" borderType="line" title="Box" titlePosition="noTitle" id="SH2-fF-cTe">
-            <rect key="frame" x="0.0" y="0.0" width="267" height="145"/>
+            <rect key="frame" x="0.0" y="0.0" width="400" height="145"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <view key="contentView" id="jQ9-k8-Ur5">
-                <rect key="frame" x="1" y="1" width="265" height="143"/>
+                <rect key="frame" x="1" y="1" width="398" height="143"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="Y34-Rg-VIJ" customClass="FadeoutTextField" customModule="KCD" customModuleProvider="target">
-                        <rect key="frame" x="17" y="122" width="148" height="19"/>
+                        <rect key="frame" x="17" y="122" width="282" height="19"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Prinz Eugen改" id="W58-Ho-kVQ">
                             <font key="font" metaFont="system" size="15"/>
@@ -51,7 +51,7 @@
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="Mgo-sm-Ba0">
-                        <rect key="frame" x="164" y="123" width="44" height="17"/>
+                        <rect key="frame" x="301" y="123" width="44" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Lv.123" id="mT8-P9-jjK">
                             <font key="font" metaFont="system"/>
@@ -97,7 +97,7 @@
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="Ktf-5r-pLo">
-                        <rect key="frame" x="165" y="107" width="25" height="14"/>
+                        <rect key="frame" x="163" y="17" width="25" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="555" id="D74-dY-yKV">
                             <font key="font" metaFont="smallSystem"/>
@@ -115,7 +115,7 @@
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="ugl-Cj-bSp">
-                        <rect key="frame" x="207" y="123" width="54" height="17"/>
+                        <rect key="frame" x="344" y="123" width="54" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="108/108" id="YS8-Um-wf7">
                             <font key="font" metaFont="system"/>
@@ -301,60 +301,8 @@
                             </binding>
                         </connections>
                     </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="U7o-v0-l1J">
-                        <rect key="frame" x="66" y="107" width="37" height="14"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="速力：" id="Spz-5K-xfv">
-                            <font key="font" metaFont="smallSystem"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="e8z-uk-5Kj">
-                        <rect key="frame" x="98" y="107" width="35" height="14"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="高速＋" id="Olc-Xu-clL">
-                            <font key="font" metaFont="smallSystem"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                        <connections>
-                            <binding destination="LyA-xZ-gxq" name="value" keyPath="selection.soku" id="Bba-EJ-qC6">
-                                <dictionary key="options">
-                                    <string key="NSNoSelectionPlaceholder">-</string>
-                                    <string key="NSValueTransformerName">SokuTransformer</string>
-                                </dictionary>
-                            </binding>
-                        </connections>
-                    </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="8GG-wV-a8e">
-                        <rect key="frame" x="66" y="92" width="37" height="14"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="射程：" id="8HX-j5-jq0">
-                            <font key="font" metaFont="smallSystem"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="Zhh-D8-R6Y">
-                        <rect key="frame" x="98" y="92" width="30" height="14"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="超長" id="F1x-Yu-yre">
-                            <font key="font" metaFont="smallSystem"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                        <connections>
-                            <binding destination="LyA-xZ-gxq" name="value" keyPath="selection.leng" id="8hU-vr-Al6">
-                                <dictionary key="options">
-                                    <string key="NSNoSelectionPlaceholder">-</string>
-                                    <string key="NSValueTransformerName">LengTransformer</string>
-                                </dictionary>
-                            </binding>
-                        </connections>
-                    </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="Jiw-hE-AJM">
-                        <rect key="frame" x="133" y="92" width="37" height="14"/>
+                        <rect key="frame" x="131" y="2" width="37" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="搭載：" id="SP3-pD-Caa">
                             <font key="font" metaFont="smallSystem"/>
@@ -363,7 +311,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="Cn3-Yw-zgh">
-                        <rect key="frame" x="165" y="92" width="25" height="14"/>
+                        <rect key="frame" x="163" y="2" width="25" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="555" id="0Vj-2t-qLU">
                             <font key="font" metaFont="smallSystem"/>
@@ -381,7 +329,7 @@
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="8el-1C-ACV">
-                        <rect key="frame" x="133" y="107" width="37" height="14"/>
+                        <rect key="frame" x="131" y="17" width="37" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="制空：" id="fvf-MP-0qU">
                             <font key="font" metaFont="smallSystem"/>
@@ -390,7 +338,7 @@
                         </textFieldCell>
                     </textField>
                     <box autoresizesSubviews="NO" misplaced="YES" boxType="custom" borderType="line" title="Box" titlePosition="noTitle" id="6Is-2V-XYS" customClass="SlotItemFrameView" customModule="KCD">
-                        <rect key="frame" x="68" y="2" width="191" height="86"/>
+                        <rect key="frame" x="205" y="2" width="191" height="86"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView" id="rQ9-Xi-Ego">
                             <rect key="frame" x="1" y="1" width="189" height="84"/>
@@ -587,7 +535,7 @@ IA
                         <color key="fillColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </box>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="qbZ-eV-gqf">
-                        <rect key="frame" x="232" y="107" width="29" height="17"/>
+                        <rect key="frame" x="369" y="107" width="29" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="555" id="JVG-Dt-axT">
                             <font key="font" metaFont="system"/>
@@ -605,7 +553,7 @@ IA
                         </connections>
                     </textField>
                     <box autoresizesSubviews="NO" misplaced="YES" boxType="custom" borderType="line" title="Box" titlePosition="noTitle" id="49N-EY-dSN">
-                        <rect key="frame" x="196" y="90" width="63" height="16"/>
+                        <rect key="frame" x="333" y="90" width="63" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView" id="uEK-HG-wX8">
                             <rect key="frame" x="1" y="1" width="61" height="14"/>
@@ -615,7 +563,7 @@ IA
                                     <rect key="frame" x="1" y="0.0" width="57" height="14"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="女神" id="aOL-vK-iPi">
-                                        <font key="font" metaFont="system" size="11"/>
+                                        <font key="font" metaFont="smallSystem"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
@@ -687,18 +635,70 @@ IA
                         </connections>
                     </textField>
                     <customView misplaced="YES" id="YLm-de-F1l" customClass="SuppliesView" customModule="KCD">
-                        <rect key="frame" x="196" y="109" width="30" height="11"/>
+                        <rect key="frame" x="333" y="109" width="30" height="11"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="U7o-v0-l1J">
+                        <rect key="frame" x="131" y="47" width="37" height="14"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="速力：" id="Spz-5K-xfv">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="e8z-uk-5Kj">
+                        <rect key="frame" x="163" y="47" width="35" height="14"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="高速＋" id="Olc-Xu-clL">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <binding destination="LyA-xZ-gxq" name="value" keyPath="selection.soku" id="Bba-EJ-qC6">
+                                <dictionary key="options">
+                                    <string key="NSNoSelectionPlaceholder">-</string>
+                                    <string key="NSValueTransformerName">SokuTransformer</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="8GG-wV-a8e">
+                        <rect key="frame" x="131" y="32" width="37" height="14"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="射程：" id="8HX-j5-jq0">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="Zhh-D8-R6Y">
+                        <rect key="frame" x="163" y="32" width="30" height="14"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="超長" id="F1x-Yu-yre">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <binding destination="LyA-xZ-gxq" name="value" keyPath="selection.leng" id="8hU-vr-Al6">
+                                <dictionary key="options">
+                                    <string key="NSNoSelectionPlaceholder">-</string>
+                                    <string key="NSValueTransformerName">LengTransformer</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </textField>
                 </subviews>
             </view>
             <color key="borderColor" name="gridColor" catalog="System" colorSpace="catalog"/>
             <color key="fillColor" name="controlColor" catalog="System" colorSpace="catalog"/>
             <font key="titleFont" metaFont="system"/>
-            <point key="canvasLocation" x="166.5" y="607.5"/>
+            <point key="canvasLocation" x="166" y="607.5"/>
         </box>
         <customView misplaced="YES" id="thk-XX-zcO" customClass="GuardEscapedView" customModule="KCD">
-            <rect key="frame" x="0.0" y="0.0" width="267" height="145"/>
+            <rect key="frame" x="0.0" y="0.0" width="400" height="145"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <connections>
                 <binding destination="LyA-xZ-gxq" name="hidden" keyPath="selection.guardEscaped" id="BHt-yr-bF4">
@@ -713,7 +713,7 @@ IA
             <point key="canvasLocation" x="167" y="841"/>
         </customView>
         <customView misplaced="YES" id="nEA-WU-NFe" customClass="DamageView" customModule="KCD">
-            <rect key="frame" x="0.0" y="0.0" width="267" height="145"/>
+            <rect key="frame" x="0.0" y="0.0" width="400" height="145"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <point key="canvasLocation" x="167" y="1054"/>
         </customView>
