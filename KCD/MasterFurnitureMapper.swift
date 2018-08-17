@@ -14,7 +14,7 @@ final class MasterFurnitureMapper: JSONMapper {
     let configuration = MappingConfiguration(entity: MasterFurniture.self,
                                              dataKeys: ["api_data", "api_mst_furniture"],
                                              editorStore: ServerDataStore.oneTimeEditor(),
-                                             ignoreKeys: ["api_season"])
+                                             ignoreKeys: ["api_season", "api_active_flag", "api_outside_id", "api_version"])
     
     required init(_ apiResponse: APIResponse) {
         
